@@ -1,4 +1,4 @@
-import { pgSchema, uuid } from 'drizzle-orm/pg-core';
+import { pgSchema, text, uuid } from 'drizzle-orm/pg-core';
 import { createSealer } from 'sealql';
 import { createSealed } from 'sealql/drizzle/v0.45';
 
@@ -39,3 +39,10 @@ export const probe = schema.table('probe', {
   memo: sealed.text('memo', { nullable:true, search }),
 });
 export const probeSeal = sealed.register(probe, { row: 'id', scope: 'scopeId' });
+
+/** Derived, constant-scope fixture for the V2 token-dump attack. */
+export const attackCustomers = schema.table('attack_customers', {
+  id: uuid('id').primaryKey(), scopeId: text('scope_id').notNull(),
+  memo: sealed.text('memo', { search }),
+});
+export const attackCustomersSeal = sealed.register(attackCustomers, { row: 'id', scope: 'scopeId' });

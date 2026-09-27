@@ -1,0 +1,660 @@
+{
+  "conditions": {
+    "seed": 99,
+    "victimRows": 20000,
+    "referenceRows": 20000,
+    "reviewSource": ".local/ratings.txt",
+    "dbHost": "127.0.0.1",
+    "dbPort": 56439,
+    "dbSource": "bench_realistic_100k",
+    "dbSchema": "native_verify_main",
+    "scopeId": "_",
+    "profile": "adjacent+start/end+skip; word boundary off for review, on for fixture"
+  },
+  "memory": {
+    "name": "public-review-memory",
+    "victimRows": 20000,
+    "referenceRows": 20000,
+    "uniquePieces": 172978,
+    "uniqueTokens": 60946,
+    "missing": 0,
+    "extra": 0,
+    "frequency": {
+      "byKind": {
+        "adjacent": {
+          "correct": 28270,
+          "total": 516243,
+          "pct": 5.48
+        },
+        "start": {
+          "correct": 1327,
+          "total": 20000,
+          "pct": 6.63
+        },
+        "end": {
+          "correct": 6680,
+          "total": 20000,
+          "pct": 33.4
+        },
+        "skip": {
+          "correct": 5263,
+          "total": 513382,
+          "pct": 1.03
+        }
+      },
+      "allPct": 3.88,
+      "unknown80Pct": 0,
+      "unknownRows": 20000
+    },
+    "known": [
+      {
+        "knownPct": 1,
+        "knownRows": 200,
+        "count": {
+          "byKind": {
+            "adjacent": {
+              "correct": 113948,
+              "total": 516243,
+              "pct": 22.07
+            },
+            "start": {
+              "correct": 6824,
+              "total": 20000,
+              "pct": 34.12
+            },
+            "end": {
+              "correct": 15205,
+              "total": 20000,
+              "pct": 76.03
+            },
+            "skip": {
+              "correct": 44572,
+              "total": 513382,
+              "pct": 8.68
+            }
+          },
+          "allPct": 16.88,
+          "unknown80Pct": 0.14,
+          "unknownRows": 19800
+        },
+        "consistency": {
+          "byKind": {
+            "adjacent": {
+              "correct": 149800,
+              "total": 516243,
+              "pct": 29.02
+            },
+            "start": {
+              "correct": 6824,
+              "total": 20000,
+              "pct": 34.12
+            },
+            "end": {
+              "correct": 15205,
+              "total": 20000,
+              "pct": 76.03
+            },
+            "skip": {
+              "correct": 65790,
+              "total": 513382,
+              "pct": 12.82
+            }
+          },
+          "allPct": 22.22,
+          "unknown80Pct": 0.28,
+          "unknownRows": 19800
+        },
+        "rounds": [
+          920,
+          333,
+          177,
+          52,
+          25,
+          5
+        ],
+        "addedGuesses": 1512
+      },
+      {
+        "knownPct": 5,
+        "knownRows": 1000,
+        "count": {
+          "byKind": {
+            "adjacent": {
+              "correct": 177611,
+              "total": 516243,
+              "pct": 34.4
+            },
+            "start": {
+              "correct": 9462,
+              "total": 20000,
+              "pct": 47.31
+            },
+            "end": {
+              "correct": 14098,
+              "total": 20000,
+              "pct": 70.49
+            },
+            "skip": {
+              "correct": 112600,
+              "total": 513382,
+              "pct": 21.93
+            }
+          },
+          "allPct": 29.33,
+          "unknown80Pct": 0.18,
+          "unknownRows": 19000
+        },
+        "consistency": {
+          "byKind": {
+            "adjacent": {
+              "correct": 203305,
+              "total": 516243,
+              "pct": 39.38
+            },
+            "start": {
+              "correct": 9462,
+              "total": 20000,
+              "pct": 47.31
+            },
+            "end": {
+              "correct": 14098,
+              "total": 20000,
+              "pct": 70.49
+            },
+            "skip": {
+              "correct": 127049,
+              "total": 513382,
+              "pct": 24.75
+            }
+          },
+          "allPct": 33.09,
+          "unknown80Pct": 0.39,
+          "unknownRows": 19000
+        },
+        "rounds": [
+          1575,
+          292,
+          77,
+          18,
+          1,
+          0
+        ],
+        "addedGuesses": 1963
+      },
+      {
+        "knownPct": 10,
+        "knownRows": 2000,
+        "count": {
+          "byKind": {
+            "adjacent": {
+              "correct": 174685,
+              "total": 516243,
+              "pct": 33.84
+            },
+            "start": {
+              "correct": 9078,
+              "total": 20000,
+              "pct": 45.39
+            },
+            "end": {
+              "correct": 9740,
+              "total": 20000,
+              "pct": 48.7
+            },
+            "skip": {
+              "correct": 121880,
+              "total": 513382,
+              "pct": 23.74
+            }
+          },
+          "allPct": 29.49,
+          "unknown80Pct": 0.15,
+          "unknownRows": 18000
+        },
+        "consistency": {
+          "byKind": {
+            "adjacent": {
+              "correct": 185660,
+              "total": 516243,
+              "pct": 35.96
+            },
+            "start": {
+              "correct": 9078,
+              "total": 20000,
+              "pct": 45.39
+            },
+            "end": {
+              "correct": 9740,
+              "total": 20000,
+              "pct": 48.7
+            },
+            "skip": {
+              "correct": 128139,
+              "total": 513382,
+              "pct": 24.96
+            }
+          },
+          "allPct": 31.1,
+          "unknown80Pct": 0.17,
+          "unknownRows": 18000
+        },
+        "rounds": [
+          1150,
+          141,
+          17,
+          0
+        ],
+        "addedGuesses": 1308
+      }
+    ]
+  },
+  "db": {
+    "name": "native-constant-scope-memo-token-dump",
+    "victimRows": 20000,
+    "referenceRows": 20000,
+    "uniquePieces": 3676,
+    "uniqueTokens": 3575,
+    "missing": 0,
+    "extra": 0,
+    "frequency": {
+      "byKind": {
+        "adjacent": {
+          "correct": 14606,
+          "total": 262136,
+          "pct": 5.57
+        },
+        "start": {
+          "correct": 0,
+          "total": 20000,
+          "pct": 0
+        },
+        "end": {
+          "correct": 0,
+          "total": 20000,
+          "pct": 0
+        },
+        "skip": {
+          "correct": 12201,
+          "total": 240714,
+          "pct": 5.07
+        },
+        "word-start": {
+          "correct": 8882,
+          "total": 81892,
+          "pct": 10.85
+        },
+        "word-end": {
+          "correct": 4395,
+          "total": 80029,
+          "pct": 5.49
+        }
+      },
+      "allPct": 5.69,
+      "unknown80Pct": 0,
+      "unknownRows": 20000
+    },
+    "known": [
+      {
+        "knownPct": 1,
+        "knownRows": 200,
+        "count": {
+          "byKind": {
+            "adjacent": {
+              "correct": 31686,
+              "total": 262136,
+              "pct": 12.09
+            },
+            "start": {
+              "correct": 0,
+              "total": 20000,
+              "pct": 0
+            },
+            "end": {
+              "correct": 1113,
+              "total": 20000,
+              "pct": 5.57
+            },
+            "skip": {
+              "correct": 29024,
+              "total": 240714,
+              "pct": 12.06
+            },
+            "word-start": {
+              "correct": 36230,
+              "total": 81892,
+              "pct": 44.24
+            },
+            "word-end": {
+              "correct": 11772,
+              "total": 80029,
+              "pct": 14.71
+            }
+          },
+          "allPct": 15.58,
+          "unknown80Pct": 0,
+          "unknownRows": 19800
+        },
+        "consistency": {
+          "byKind": {
+            "adjacent": {
+              "correct": 78621,
+              "total": 262136,
+              "pct": 29.99
+            },
+            "start": {
+              "correct": 0,
+              "total": 20000,
+              "pct": 0
+            },
+            "end": {
+              "correct": 1113,
+              "total": 20000,
+              "pct": 5.57
+            },
+            "skip": {
+              "correct": 57736,
+              "total": 240714,
+              "pct": 23.99
+            },
+            "word-start": {
+              "correct": 36230,
+              "total": 81892,
+              "pct": 44.24
+            },
+            "word-end": {
+              "correct": 11772,
+              "total": 80029,
+              "pct": 14.71
+            }
+          },
+          "allPct": 26.32,
+          "unknown80Pct": 0,
+          "unknownRows": 19800
+        },
+        "rounds": [
+          403,
+          374,
+          252,
+          55,
+          0
+        ],
+        "addedGuesses": 1084
+      },
+      {
+        "knownPct": 5,
+        "knownRows": 1000,
+        "count": {
+          "byKind": {
+            "adjacent": {
+              "correct": 129124,
+              "total": 262136,
+              "pct": 49.26
+            },
+            "start": {
+              "correct": 2016,
+              "total": 20000,
+              "pct": 10.08
+            },
+            "end": {
+              "correct": 1656,
+              "total": 20000,
+              "pct": 8.28
+            },
+            "skip": {
+              "correct": 113991,
+              "total": 240714,
+              "pct": 47.36
+            },
+            "word-start": {
+              "correct": 36243,
+              "total": 81892,
+              "pct": 44.26
+            },
+            "word-end": {
+              "correct": 14273,
+              "total": 80029,
+              "pct": 17.83
+            }
+          },
+          "allPct": 42.18,
+          "unknown80Pct": 10.34,
+          "unknownRows": 19000
+        },
+        "consistency": {
+          "byKind": {
+            "adjacent": {
+              "correct": 149879,
+              "total": 262136,
+              "pct": 57.18
+            },
+            "start": {
+              "correct": 2016,
+              "total": 20000,
+              "pct": 10.08
+            },
+            "end": {
+              "correct": 1656,
+              "total": 20000,
+              "pct": 8.28
+            },
+            "skip": {
+              "correct": 127196,
+              "total": 240714,
+              "pct": 52.84
+            },
+            "word-start": {
+              "correct": 36243,
+              "total": 81892,
+              "pct": 44.26
+            },
+            "word-end": {
+              "correct": 14273,
+              "total": 80029,
+              "pct": 17.83
+            }
+          },
+          "allPct": 47,
+          "unknown80Pct": 19.33,
+          "unknownRows": 19000
+        },
+        "rounds": [
+          597,
+          13,
+          8,
+          2,
+          2,
+          1
+        ],
+        "addedGuesses": 623
+      },
+      {
+        "knownPct": 10,
+        "knownRows": 2000,
+        "count": {
+          "byKind": {
+            "adjacent": {
+              "correct": 137443,
+              "total": 262136,
+              "pct": 52.43
+            },
+            "start": {
+              "correct": 3950,
+              "total": 20000,
+              "pct": 19.75
+            },
+            "end": {
+              "correct": 1656,
+              "total": 20000,
+              "pct": 8.28
+            },
+            "skip": {
+              "correct": 131500,
+              "total": 240714,
+              "pct": 54.63
+            },
+            "word-start": {
+              "correct": 35703,
+              "total": 81892,
+              "pct": 43.6
+            },
+            "word-end": {
+              "correct": 14273,
+              "total": 80029,
+              "pct": 17.83
+            }
+          },
+          "allPct": 46.05,
+          "unknown80Pct": 19.3,
+          "unknownRows": 18000
+        },
+        "consistency": {
+          "byKind": {
+            "adjacent": {
+              "correct": 153161,
+              "total": 262136,
+              "pct": 58.43
+            },
+            "start": {
+              "correct": 3950,
+              "total": 20000,
+              "pct": 19.75
+            },
+            "end": {
+              "correct": 1656,
+              "total": 20000,
+              "pct": 8.28
+            },
+            "skip": {
+              "correct": 131743,
+              "total": 240714,
+              "pct": 54.73
+            },
+            "word-start": {
+              "correct": 35703,
+              "total": 81892,
+              "pct": 43.6
+            },
+            "word-end": {
+              "correct": 14273,
+              "total": 80029,
+              "pct": 17.83
+            }
+          },
+          "allPct": 48.31,
+          "unknown80Pct": 19.3,
+          "unknownRows": 18000
+        },
+        "rounds": [
+          473,
+          5,
+          0
+        ],
+        "addedGuesses": 478
+      }
+    ]
+  },
+  "gin": [
+    {
+      "indexname": "seal_e66dc2708e915b65_gin",
+      "indexdef": "CREATE INDEX seal_e66dc2708e915b65_gin ON native_verify_main.customers_seal_index USING gin (tokens_792d75cf01821d67, tokens_1127994ab736baf4, tokens_ef1d32a52e2ce103, tokens_a639b11c8130dcf7, tokens_f289b89d86c7086a, tokens_7a1d2ba5ce2368fb)"
+    }
+  ],
+  "short": {
+    "phone": {
+      "rows": 20000,
+      "cipherLengthBuckets": 1,
+      "distinctValues": 20000,
+      "distinctTokens": 17227,
+      "cipherOverheads": [
+        29
+      ],
+      "known": [
+        {
+          "knownPct": 1,
+          "knownRows": 200,
+          "recovered": 68,
+          "correct": 0,
+          "correctPct": 0
+        },
+        {
+          "knownPct": 5,
+          "knownRows": 1000,
+          "recovered": 270,
+          "correct": 0,
+          "correctPct": 0
+        },
+        {
+          "knownPct": 10,
+          "knownRows": 2000,
+          "recovered": 512,
+          "correct": 0,
+          "correctPct": 0
+        }
+      ]
+    },
+    "email": {
+      "rows": 20000,
+      "cipherLengthBuckets": 7,
+      "distinctValues": 20000,
+      "distinctTokens": 17234,
+      "cipherOverheads": [
+        29
+      ],
+      "known": [
+        {
+          "knownPct": 1,
+          "knownRows": 200,
+          "recovered": 27,
+          "correct": 0,
+          "correctPct": 0
+        },
+        {
+          "knownPct": 5,
+          "knownRows": 1000,
+          "recovered": 110,
+          "correct": 0,
+          "correctPct": 0
+        },
+        {
+          "knownPct": 10,
+          "knownRows": 2000,
+          "recovered": 189,
+          "correct": 0,
+          "correctPct": 0
+        }
+      ]
+    },
+    "name": {
+      "rows": 20000,
+      "cipherLengthBuckets": 3,
+      "distinctValues": 19999,
+      "distinctTokens": 17244,
+      "cipherOverheads": [
+        29
+      ],
+      "known": [
+        {
+          "knownPct": 1,
+          "knownRows": 200,
+          "recovered": 33,
+          "correct": 0,
+          "correctPct": 0
+        },
+        {
+          "knownPct": 5,
+          "knownRows": 1000,
+          "recovered": 165,
+          "correct": 0,
+          "correctPct": 0
+        },
+        {
+          "knownPct": 10,
+          "knownRows": 2000,
+          "recovered": 326,
+          "correct": 0,
+          "correctPct": 0
+        }
+      ]
+    }
+  }
+}
