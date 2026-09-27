@@ -39,7 +39,7 @@ test('native managed writes and opens stay atomic', async () => {
     await pool.query(`create table "${schemaName}".orders (id uuid primary key,customer_id uuid not null)`);
     const db = drizzle(pool);
     const first = fixture[0], second = fixture[1], third = fixture[2];
-    const derivedTime = (id: string) => new Date(Number.parseInt(id.slice(0, 8), 16) * 1000);
+    const derivedTime = (id: string) => new Date(Number.parseInt(id.slice(0, 8), 16) * 1000 + Number.parseInt(id.slice(9, 12), 16) % 1000);
     const fakeTx = { insert: () => ({ values: (rows: any) => ({ returning: async () => Array.isArray(rows) ? rows : [rows] }) }) };
     const commitFails = { transaction: async (fn: any) => { await fn(fakeTx); throw Error('commit failed'); } };
     await assert.rejects(sealed.insert(commitFails as any, peopleSeal, {
@@ -127,6 +127,19 @@ test('native managed writes and opens stay atomic', async () => {
     assert.equal((rawJoined.items[0] as any).c_name_ct, first.name_plain);
     assert.equal(customerNameOpens, 1, '1:N duplicate rows share authenticated field result within a search call');
     cipher.open = originalOpen;
+    await assert.rejects(sealed.search(db, { scope: first.scope_id,
+      match: { c: [peopleSeal, m => m.name.eq(first.name_plain)] },
+      columns: { c: { id: 'c_id', scopeId: 'c_scope', name: 'c_name_ct' } },
+      query: async () => [{ c_name_ct: first.name_plain }],
+    }), { code: 'INVALID_CANDIDATE_SHAPE' });
+    await assert.rejects(sealed.search(db, { scope: first.scope_id,
+      match: { c: [peopleSeal, m => m.name.eq(first.name_plain)] },
+      budgets: { fetchBytes: 1 },
+      query: ({ where, after, orderBy, flags, limit }) => db.select({ c: people, ...flags }).from(people)
+        .where(and(where, after)).orderBy(...orderBy).limit(limit),
+    }), { code: 'LIMIT_EXCEEDED' });
+    const cancelled = new AbortController(); cancelled.abort();
+    await assert.rejects(sealed.findMany(db, peopleSeal, { scope: first.scope_id, signal: cancelled.signal }), { code: 'CANCELLED' });
     await sealed.update(db, peopleSeal, { id: first.id, scopeId: first.scope_id }, { memo: second.memo_plain });
     const afterUpdate = await sealed.open(await db.select().from(people));
     assert.equal(afterUpdate[0].name, first.name_plain);

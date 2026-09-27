@@ -139,6 +139,7 @@ test('high false-positive pages grow batches without losing rows', async () => {
     assert.deepEqual(ids, expected);
     assert.ok(peak > 1 && peak <= 64, `bounded parallel authentication peak=${peak}`);
     assert.ok(conditionOpens > projectedOpens, 'false positives do not open projected fields');
+    assert.equal(projectedOpens, expected.length, 'no projection decryption beyond accepted page rows');
     assert.ok(c.logs.some(query => query.includes('with sample as materialized')));
     assert.ok(c.logs.length > Math.ceil(expected.length / 8), 'false positives require additional candidate batches');
   } finally { await c.close(); }
