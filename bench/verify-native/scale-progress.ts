@@ -17,6 +17,9 @@ try{
     from (select completed_at from native_scale_100m.ticket_progress order by completed_at desc limit 20) x`)).rows[0]:null;
   const sizes=(await pool.query(`select relname,pg_total_relation_size(format('%I.%I',schemaname,relname)::regclass) bytes
     from pg_stat_user_tables where schemaname='native_scale_100m' order by relname`)).rows;
+  const indexProgress=(await pool.query(`select pid,relid::regclass::text table_name,index_relid::regclass::text index_name,
+    phase,blocks_total,blocks_done,tuples_total,tuples_done,partitions_total,partitions_done
+    from pg_stat_progress_create_index where relid::regclass::text like 'native_scale_100m.%'`)).rows;
   const fs=statfsSync(parse(process.cwd()).root);const freeBytes=Number(fs.bavail)*Number(fs.bsize);
   const elapsedSec=p.started&&p.latest?(Date.parse(p.latest)-Date.parse(p.started))/1000:0;
   const tailSec=tail.started&&tail.latest?(Date.parse(tail.latest)-Date.parse(tail.started))/1000:0;
@@ -27,5 +30,5 @@ try{
     ticketCopies,ticketRows:ticketCopies*100000,ticketEstimatedRemainingSec:ticketRate?(ticketTarget-ticketCopies)/ticketRate:null,
     elapsedSec,estimatedRemainingSec:rate?(1000-p.copies)/rate:null,
     databaseBytes:Number((await pool.query('select pg_database_size(current_database()) bytes')).rows[0].bytes),
-    freeBytes,tables:Object.fromEntries(sizes.map(x=>[x.relname,Number(x.bytes)]))}));
+    freeBytes,tables:Object.fromEntries(sizes.map(x=>[x.relname,Number(x.bytes)])),indexProgress}));
 }finally{await pool.end();}

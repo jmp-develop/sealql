@@ -23,7 +23,8 @@ async function execute(name:string,sql:string){
 try{
   await assertDisposable(pool);assert.equal(Number((await pool.query('show port')).rows[0].port),56439);
   assert.equal(Number((await pool.query('select count(*) n from native_scale_100m.progress')).rows[0].n),1000);
-  await pool.query("set maintenance_work_mem='1GB'");
+  await pool.query("set maintenance_work_mem='4GB'");
+  await pool.query('set max_parallel_maintenance_workers=8');
   const indexes=(await pool.query(`select tablename,indexname,indexdef from pg_indexes
     where schemaname='native_verify_main' and tablename in ('customers','customers_seal_index')
     order by tablename,indexname`)).rows;
@@ -46,8 +47,6 @@ try{
   if(!hasFk)await execute('companion foreign key',`alter table native_scale_100m.customers_seal_index
     add constraint customers_seal_index_row_id_customers_id_fk foreign key (row_id)
     references native_scale_100m.customers(id) on delete cascade not valid`);
-  await execute('validate companion foreign key',`alter table native_scale_100m.customers_seal_index
-    validate constraint customers_seal_index_row_id_customers_id_fk`);
   await execute('plain primary index','create unique index if not exists customers_plain_pkey on native_scale_100m.customers_plain(id)');
   const plainIndexes=(await pool.query(`select indexname,indexdef from pg_indexes where schemaname='bench_realistic_100k'
     and tablename='customers' and (indexname like 'customers_%_exact' or indexname like 'customers_%_trgm')

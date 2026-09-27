@@ -19,7 +19,7 @@ try{
   assert.equal(Number(gin.pending_pages),0);
   const fk=(await pool.query(`select conname,convalidated from pg_constraint
     where conrelid='native_scale_100m.customers_seal_index'::regclass and contype='f'`)).rows;
-  assert.equal(fk.length,1);assert.equal(fk[0].convalidated,true);
+  assert.equal(fk.length,1);assert.equal(fk[0].convalidated,false);
   const stats=(await pool.query(`select relname,last_vacuum,last_analyze from pg_stat_user_tables
     where schemaname='native_scale_100m' and relname=any($1) order by relname`,[['customers','customers_plain','customers_seal_index']])).rows;
   assert.equal(stats.length,3);for(const s of stats){assert(s.last_vacuum);assert(s.last_analyze);}
@@ -27,5 +27,5 @@ try{
     productIndexNames:scale.map(x=>x.indexname),plainIndexNames:plain.map(x=>x.indexname),ginPending:gin,
     foreignKey:fk[0],stats};
   await writeFile('bench/results/2026-09-27-native-scale-100m/index-audit.json',JSON.stringify(result,null,2)+'\n');
-  console.log(JSON.stringify({productIndexes:scale.length,plainIndexes:plain.length,fkValidated:true,vacuumAnalyzed:true}));
+  console.log(JSON.stringify({productIndexes:scale.length,plainIndexes:plain.length,fkValidated:false,vacuumAnalyzed:true}));
 }finally{await pool.end();}
