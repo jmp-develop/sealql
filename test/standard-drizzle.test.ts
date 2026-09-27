@@ -294,6 +294,14 @@ test('text row IDs follow C byte order with a non-C database collation', async (
     await sealed.insert(db, seal, ids.map((id, index) => ({
       id, scopeId: fixture[0].scope_id, name: fixture[index % fixture.length].name_plain,
     })));
+    const planClient = await pool.connect();
+    try {
+      await planClient.query('begin');
+      await planClient.query('set local enable_seqscan=off');
+      const plan = await planClient.query(`explain select row_id from "${schemaName}".rows_seal_index
+        where scope_id=$1 order by row_id collate "C" limit 4`, [fixture[0].scope_id]);
+      assert.match(plan.rows.map(row => row['QUERY PLAN']).join('\n'), /Sort/, 'default-collation unique index cannot order C text IDs');
+    } finally { await planClient.query('rollback'); planClient.release(); }
     const search = (cursor?: string) => sealed.search(db, { scope: fixture[0].scope_id,
       match: { r: [seal, m => m.or(m.name.eq('absent'), m.sql(sql`true`))] }, limit: 1, cursor,
       query: ({ where, after, orderBy, flags, limit }) => db.select({ r: rows, ...flags }).from(rows)
