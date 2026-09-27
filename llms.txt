@@ -1,6 +1,8 @@
 # SealQL
 
 Start: docs/current-state.md, then docs/llm-integration.md
+Install: build a tarball with npm pack and install the .tgz; Git dependency installation is unverified.
+Driver evidence: bench/results/2026-09-27-native-verification/drivers/report-ko.md (local disposable database and workerd/miniflare only; actual Cloudflare deployment including Hyperdrive unverified).
 Drizzle schema and key setup: examples/standard-consumer.ts
 Raw SQL through Drizzle: examples/standard-raw.ts
 Managed writes and count: examples/standard-operations.ts

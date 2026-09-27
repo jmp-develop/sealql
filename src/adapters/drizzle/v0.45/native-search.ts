@@ -1,7 +1,7 @@
 import { and, asc, desc, eq, gt, lt, getTableColumns, getTableName, sql, SQL, type InferSelectModel } from 'drizzle-orm';
 import { PgDialect, type PgColumn, type PgDatabase, type PgTable } from 'drizzle-orm/pg-core';
 import { canonical, compareText, hex, identity, utf8 } from '../../../core/bytes.js';
-import { ensure, fail } from '../../../core/errors.js';
+import { databaseError, driverError, ensure, fail } from '../../../core/errors.js';
 import { openCursor, sealCursor } from '../../../core/search-cursor.js';
 import {
   compileSearch, validateSearch, verifySearch,
@@ -215,7 +215,7 @@ function growBatch(current: number, remaining: number, verified: number, accepte
 }
 // Carry each text column's collation into the comparison without looking up the row.
 // The previous cursor row may have been deleted between requests.
-async function validateTextOrder(db: Db, columns: PgColumn[], positions: unknown[][]): Promise<void> {
+async function validateTextOrder(db: Db, columns: PgColumn[], positions: unknown[][], signal: AbortSignal | undefined, deadline: number): Promise<void> {
   const names = columns.map((_, index) => `p${index}`);
   const types = columns.map(column => column.getSQLType());
   const arrays = columns.map((_, index) => {
@@ -242,7 +242,17 @@ async function validateTextOrder(db: Db, columns: PgColumn[], positions: unknown
   ) select coalesce(bool_and(
     ${qualified('ordered', 'ordinal')} = 1 or (${row(prior)} < ${row(current)}) is true
   ), false) as valid from ordered`;
-  const result = await (db as any).execute(statement);
+  if (signal?.aborted) fail('CANCELLED');
+  ensure(Date.now() < deadline, 'LIMIT_EXCEEDED');
+  let result: any;
+  try { result = await (db as any).execute(statement); }
+  catch (error) {
+    const code = driverError(error)?.code;
+    if (typeof code === 'string' && ['22P02', '22P03', '22P04', '22P05', '2202E'].includes(code)) fail('INVALID_CANDIDATE_SHAPE');
+    throw databaseError(error);
+  }
+  if (signal?.aborted) fail('CANCELLED');
+  ensure(Date.now() < deadline, 'LIMIT_EXCEEDED');
   const rows = Array.isArray(result) ? result : result.rows;
   ensure(rows?.length === 1 && rows[0].valid === true, 'INVALID_CANDIDATE_SHAPE');
 }
@@ -559,7 +569,7 @@ export function searchMethods(sealerOf: () => import('../../../core/field-cipher
           });
           return parts;
         });
-        await validateTextOrder(db, positionColumns, previous ? [previous, ...positions] : positions);
+        await validateTextOrder(db, positionColumns, previous ? [previous, ...positions] : positions, options.signal, deadline);
       }
       const state: CandidateState = { scanned, fetchedBytes, decryptedBytes, limited };
       const consumed = await scanCandidates(rows as Record<string, unknown>[], () => limit - items.length,

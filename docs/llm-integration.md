@@ -4,7 +4,7 @@ This guide describes the experimental Drizzle ORM 0.45 API. The compilable [sche
 
 ## Install and driver
 
-SealQL is not published to the npm registry. Run `npm pack` in a checkout and install the resulting `.tgz` in the application, or use a Git dependency. It requires `drizzle-orm >=0.45.2 <0.46` and Node `>=22.12` or a compatible WebCrypto runtime. For Cloudflare Workers, choose a transactional PostgreSQL driver: `pg` with Workers sockets or `postgres-js` has been exercised. `neon-http` cannot perform managed writes or `reindex` because it lacks the required transaction callback. Keep the fixed key in application secret storage and configure it once at startup, before data operations.
+SealQL is not published to the npm registry. Run `npm pack` in a checkout and install the resulting `.tgz` in the application. It requires `drizzle-orm >=0.45.2 <0.46` and Node `>=22.12` or a compatible WebCrypto runtime. For Cloudflare Workers, choose a transactional PostgreSQL driver: `pg` with Workers sockets or `postgres-js` was checked with a [local disposable database and workerd (miniflare)](../bench/results/2026-09-27-native-verification/drivers/report-ko.md); actual Cloudflare deployment, including Hyperdrive, remains unverified. `neon-http` cannot perform managed writes or `reindex` because it lacks the required transaction callback. Keep the fixed key in application secret storage and configure it once at startup, before data operations.
 
 ## Schema and key
 
@@ -46,7 +46,7 @@ The three write helpers use `db.transaction`, so parent and token changes commit
 
 For raw `db.execute`, call `sealed.openRaw(notesSeal, result.rows, { columns: { id: 'n_id', scopeId: 'n_scope', body: 'n_body_ct' }, scope })`. The mapping names result columns for row, scope, and encrypted fields. Raw bytea values may be `Uint8Array` or PostgreSQL `\\x` hex text. `openRaw` never mutates its input. The scope and row entries are required; see the [raw example](../examples/standard-raw.ts).
 
-A driver that rejects transactions before entering the callback raises `UNSUPPORTED_DRIVER` for managed writes and `reindex`.
+A driver without a transaction callback, or one that explicitly reports unsupported transactions before entering the callback without a server SQLSTATE, raises `UNSUPPORTED_DRIVER` for managed writes and `reindex`. Server errors with SQLSTATE are classified as database errors.
 
 Await a Drizzle query before passing its result to `sealed.open` or `sealed.openRaw`; Promise and thenable inputs raise `INVALID_VALUE` with “await the query”. The optional fourth `openRaw` argument is an internal per-call authentication cache used by `search`; application calls should omit it.
 
@@ -97,7 +97,7 @@ When adding `search` to an existing encrypted field or changing its profile, dep
 
 ## Error codes
 
-`SealError.code` is stable for handling errors; `message` gives short context. Database wrappers keep the original error in `cause` in the caller process.
+`SealError.code` is stable for handling errors; `message` gives short context. Database errors expose only a sanitized driver summary in `cause`, without SQL parameters or server detail. Logging `code`, `message`, and `cause.code`/`cause.constraint` is sufficient for diagnosis.
 
 | Code | Meaning and common cause |
 |---|---|
@@ -111,8 +111,14 @@ When adding `search` to an existing encrypted field or changing its profile, dep
 | `LIMIT_EXCEEDED` | Row, byte, time, or candidate budget was exceeded. |
 | `QUERY_TOO_BROAD` | Search lacks at least two usable normalized characters. |
 | `CURSOR_INVALID` | Cursor is malformed or does not match the query. |
+| `CURSOR_EXPIRED` | Cursor exceeded its validity period. |
+| `INVALID_QUERY` | Invalid SQL fragment template. |
+| `VALIDATION_FAILED` | Application field validator rejected a value. |
+| `INVALID_CIPHERTEXT` | Decrypted field bytes are malformed or noncanonical. |
+| `KEY_NOT_FOUND` | The configured key is unavailable. |
+| `KEY_SCOPE_MISMATCH` | Key scope does not match the field or cursor context. |
 | `UNSUPPORTED_SEARCH` | Field lacks the selected search profile; `respectWords` needs `substring: { wordBoundary: true }`. |
-| `UNSUPPORTED_DRIVER` | Driver lacks a transaction callback. |
+| `UNSUPPORTED_DRIVER` | Driver lacks a transaction callback or explicitly rejects transactions before the callback without a server SQLSTATE. |
 | `INVALID_CANDIDATE_SHAPE` | Candidate query omitted, duplicated, or misordered keyset data. |
 | `AUTHENTICATION_FAILED` | Ciphertext could not be authenticated in its row context. |
 | `WRITE_OUTCOME_UNKNOWN` | Commit failed after a managed write callback; reconcile before retry. |

@@ -2,7 +2,7 @@
 
 SealQL encrypts selected PostgreSQL fields and searches them through a separate HMAC token table. The `standard` path uses GIN/B-tree candidate indexes and authenticates each candidate before returning it. The current integration is Drizzle ORM 0.45 on Node 22+ or a WebCrypto runtime. Read the [integration guide](docs/llm-integration.md), [current state](docs/current-state.md), and [schema example](examples/standard-consumer.ts).
 
-The package is not on the npm registry. For an application, install a tarball made with `npm pack` or use a Git dependency; use `npm ci && npm run build` when developing this repository. Peer dependency: `drizzle-orm >=0.45.2 <0.46`; runtime: Node `>=22.12` or compatible WebCrypto. In Workers, use a PostgreSQL driver with transactions (pg with Workers sockets or postgres-js); neon-http cannot run managed writes because it has no transaction callback. Public exports are `sealql` and `sealql/drizzle/v0.45`.
+The package is not on the npm registry. For an application, install a tarball made with `npm pack`; use `npm ci && npm run build` when developing this repository. Peer dependency: `drizzle-orm >=0.45.2 <0.46`; runtime: Node `>=22.12` or compatible WebCrypto. In Workers, use a PostgreSQL driver with transactions. `pg` with Workers sockets and `postgres-js` were checked with a [local disposable database and workerd (miniflare)](bench/results/2026-09-27-native-verification/drivers/report-ko.md); actual Cloudflare deployment, including Hyperdrive, remains unverified. `neon-http` cannot run managed writes because it has no transaction callback. Public exports are `sealql` and `sealql/drizzle/v0.45`.
 
 ```ts
 import { pgTable, uuid } from 'drizzle-orm/pg-core';

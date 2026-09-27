@@ -1,7 +1,7 @@
 import { and, eq, gt, getTableColumns, is, sql, type InferSelectModel } from 'drizzle-orm';
 import { PgTransaction, type PgColumn, type PgDatabase, type PgTable } from 'drizzle-orm/pg-core';
 import { identity } from '../../../core/bytes.js';
-import { databaseError, ensure, fail, SealError } from '../../../core/errors.js';
+import { databaseError, ensure, fail, SealError, unsupportedTransaction } from '../../../core/errors.js';
 import type { Sealer } from '../../../core/field-cipher.js';
 import { profiles, searchPieces, searchTokens, type SearchTokenCache } from '../../../core/search-tokens.js';
 import { Sealed, registrationOf, type Opened, type PlainShape, type Registration, type SealMeta } from './native.js';
@@ -86,7 +86,7 @@ async function writeTransaction<T>(db: Db, callback: (tx: any) => Promise<T>): P
       return value;
     });
   } catch (error) {
-    if (!callbackEntered && /transaction/i.test(String(error))) fail('UNSUPPORTED_DRIVER');
+    if (!callbackEntered && unsupportedTransaction(error)) fail('UNSUPPORTED_DRIVER');
     if (callbackDone && !is(db, PgTransaction)) fail('WRITE_OUTCOME_UNKNOWN');
     throw error;
   }
@@ -309,7 +309,7 @@ export function runtimeMethods(sealerOf: () => Sealer) {
         }
         return opened.map(row => ({ row: row[reg.row] as string, scope: reg.scope ? row[reg.scope] as string : '_' }));
       }); } catch (error) {
-        if (!callbackEntered && /transaction/i.test(String(error))) fail('UNSUPPORTED_DRIVER');
+        if (!callbackEntered && unsupportedTransaction(error)) fail('UNSUPPORTED_DRIVER');
         throw error;
       }
       if (!page.length) break;

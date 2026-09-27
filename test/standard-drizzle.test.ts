@@ -1,4 +1,5 @@
 import assert from 'node:assert/strict';
+import { inspect } from 'node:util';
 import { test } from 'node:test';
 import { Pool } from 'pg';
 import { drizzle } from 'drizzle-orm/node-postgres';
@@ -11,7 +12,7 @@ import { Sealed, registrationOf } from '../src/adapters/drizzle/v0.45/native.js'
 import { assertDisposable } from './disposable.js';
 import { databaseError } from '../src/core/errors.js';
 
-test('open rejects pending queries and database wrapping preserves cause', async () => {
+test('open rejects pending queries and database wrapping sanitizes cause', async () => {
   const sealed = createSealed({ sealer: createSealer({ key: new Uint8Array(32) }) });
   const pending = Promise.resolve({ id: 'x' });
   await assert.rejects(sealed.open(pending as never), { code: 'INVALID_VALUE', message: /await the query/ });
@@ -23,7 +24,22 @@ test('open rejects pending queries and database wrapping preserves cause', async
   const original = Object.assign(new Error('database rejected write'), { code: '23505' });
   const wrapped = databaseError(original);
   assert.equal(wrapped.code, 'CONSTRAINT_VIOLATION');
-  assert.equal(wrapped.cause, original);
+  assert.notEqual(wrapped.cause, original);
+  assert.equal((wrapped.cause as Error & { code: string }).code, '23505');
+  const driver = Object.assign(new Error('duplicate key value violates unique constraint "example_key"'), { code: '23505', constraint: 'example_key', detail: 'secret-value' });
+  const drizzle = Object.assign(new Error('Failed query: insert into t values ($1)\nparams: secret-value'), { query: 'insert into t values ($1)', params: ['secret-value'], cause: driver });
+  const safe = databaseError(drizzle);
+  for (const display of [String(safe), inspect(safe, { depth: 5 }), inspect(safe.cause, { depth: 5 })]) {
+    assert.doesNotMatch(display, /secret-value|params:|insert into t/i);
+    assert.match(display, /23505|CONSTRAINT_VIOLATION/);
+  }
+  assert.equal((safe.cause as Error & { constraint: string }).constraint, 'example_key');
+  const fkDriver = Object.assign(new Error('insert or update violates foreign key constraint'), { code: '23503', constraint: 'example_fk', detail: 'secret-value' });
+  const fkWrapped = databaseError(Object.assign(new Error('Failed query: params: secret-value'), { query: 'insert', params: ['secret-value'], cause: fkDriver }));
+  assert.equal(fkWrapped.code, 'CONSTRAINT_VIOLATION');
+  assert.equal((fkWrapped.cause as Error & { code: string; constraint: string }).code, '23503');
+  assert.equal((fkWrapped.cause as Error & { constraint: string }).constraint, 'example_fk');
+  assert.doesNotMatch(inspect(fkWrapped, { depth: 5 }), /secret-value|params:/);
 });
 
 test('transactionless drivers report UNSUPPORTED_DRIVER before any callback work', async () => {
@@ -40,6 +56,37 @@ test('transactionless drivers report UNSUPPORTED_DRIVER before any callback work
   await assert.rejects(sealed.reindex(db, seal), { code: 'UNSUPPORTED_DRIVER' });
   const disconnected = { transaction: () => { throw Error('connection failed'); } } as any;
   await assert.rejects(sealed.insert(disconnected, seal, { id, name: 'fixture' }), { code: 'DATABASE_ERROR' });
+  const serverError = Object.assign(new Error('current transaction is aborted'), { code: '25P02' });
+  const aborted = { transaction: () => { throw serverError; } } as any;
+  await assert.rejects(sealed.insert(aborted, seal, { id, name: 'fixture' }), error => {
+    assert.equal((error as { code: string }).code, 'DATABASE_ERROR');
+    assert.equal(((error as { cause: { code: string } }).cause).code, '25P02');
+    return true;
+  });
+});
+
+test('text position validation wraps SQL errors and checks cancellation before SQL', async () => {
+  const sealed = createSealed({ sealer: createSealer({ key: new Uint8Array(32).fill(91) }) });
+  const row = pgSchema('test_text_position_shape').table('rows', {
+    id: sealed.textId('id').primaryKey(), name: sealed.text('name', { search: { exact: true } }),
+  });
+  const seal = sealed.register(row, { row: 'id' });
+  const positionTable = pgSchema('test_text_position_shape').table('positions', { position: uuid('position').notNull() });
+  const candidate = { n: { id: 'row-a', name: null }, __seal_keyset_0: 'not-a-uuid' };
+  const options = { match: { n: [seal, (m: any) => m.sql(sql`true`)] as const }, keyset: [positionTable.position],
+    query: () => [candidate] };
+  const db = { execute: () => { throw Object.assign(new Error('invalid input syntax for type uuid'), { code: '22P02' }); } } as any;
+  await assert.rejects(sealed.search(db, options), { code: 'INVALID_CANDIDATE_SHAPE' });
+  const other = { execute: () => { throw Object.assign(new Error('relation unavailable'), { code: '42P01' }); } } as any;
+  await assert.rejects(sealed.search(other, options), error => {
+    assert.equal((error as { code: string }).code, 'DATABASE_ERROR');
+    assert.equal((error as { cause: { code: string } }).cause.code, '42P01');
+    return true;
+  });
+  const controller = new AbortController();
+  const cancelled = { execute: () => { throw Error('should not execute'); } } as any;
+  await assert.rejects(sealed.search(cancelled, { ...options, signal: controller.signal,
+    query: () => { controller.abort(); return [candidate]; } }), { code: 'CANCELLED' });
 });
 
 test('native managed writes and opens stay atomic', async () => {
@@ -93,6 +140,23 @@ test('native managed writes and opens stay atomic', async () => {
     await assert.rejects(sealed.insert(db, peopleSeal, Array(1001).fill({})), { code: 'LIMIT_EXCEEDED' });
     const inserted = await sealed.insert(db, peopleSeal, { id: first.id, scopeId: first.scope_id, createdAt: derivedTime(first.id), name: first.name_plain, memo: first.memo_plain });
     assert.deepEqual(inserted, [{ id: first.id, scopeId: first.scope_id }]);
+    await assert.rejects(sealed.insert(db, peopleSeal, { id: first.id, scopeId: first.scope_id, createdAt: derivedTime(first.id), name: first.name_plain, memo: first.memo_plain }), error => {
+      const wrapped = error as Error & { code: string; cause: Error & { code: string; constraint: string } };
+      assert.equal(wrapped.code, 'CONSTRAINT_VIOLATION');
+      assert.equal(wrapped.cause.code, '23505');
+      assert.ok(wrapped.cause.constraint);
+      assert.doesNotMatch(inspect(wrapped, { depth: 5 }), /params:|Failed query:/);
+      return true;
+    });
+    await assert.rejects(db.transaction(async tx => {
+      try { await tx.execute(sql`select 1 / 0`); } catch { /* Leave this transaction aborted. */ }
+      await sealed.insert(tx, peopleSeal, { id: second.id, scopeId: second.scope_id, createdAt: derivedTime(second.id), name: second.name_plain, memo: second.memo_plain });
+    }), error => {
+      const wrapped = error as Error & { code: string; cause: Error & { code: string } };
+      assert.equal(wrapped.code, 'DATABASE_ERROR');
+      assert.equal(wrapped.cause.code, '25P02');
+      return true;
+    });
     const opened = await sealed.open(await db.select().from(people));
     assert.equal(opened[0].name, first.name_plain);
     assert.equal(opened[0].memo, first.memo_plain);

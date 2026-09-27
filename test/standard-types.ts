@@ -30,8 +30,12 @@ db.select().from(customers).where(eq(customers.name, 'Ada'));
 db.update(customers).set({ status: 'b' });
 sealed.insert(db, customersSeal, { tenantId: 'x', status: 'a', name: 'Ada', age: 3 });
 sealed.insert(db, customersSeal, { tenantId: 'x', status: 'a', name: 'Ada', age: 3, memo: undefined });
+// @ts-expect-error managed insert rejects unknown columns
+sealed.insert(db, customersSeal, { tenantId: 'x', status: 'a', name: 'Ada', age: 3, unknown: 'x' });
 sealed.update(db, customersSeal, { id: 'x', tenantId: 'x' }, { memo: undefined, status: 'b' });
 sealed.update(db, customersSeal, { id: 'x', tenantId: 'x' }, { name: undefined, status: undefined });
+// @ts-expect-error managed update rejects unknown columns
+sealed.update(db, customersSeal, { id: 'x', tenantId: 'x' }, { unknown: 'x' });
 sealed.upsert(db, customersSeal, { tenantId: 'x', status: 'a', name: 'Ada', age: 3, memo: undefined });
 sealed.findMany(db, customersSeal, { scope: 'x', match: m => {
   // @ts-expect-error ordinary plaintext column is not a sealed search field
