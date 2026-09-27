@@ -20,25 +20,30 @@ async function execute(name:string,sql:string){
   const event={name,elapsedSec:+((performance.now()-t)/1000).toFixed(2),freeBytesBefore:before,freeBytesAfter:freeBytes()};
   await appendFile(logPath,JSON.stringify(event)+'\n');console.log(JSON.stringify(event));
 }
-async function buildPlainIndexes(){
-  await execute('plain primary index','create unique index if not exists customers_plain_pkey on native_scale_100m.customers_plain(id)');
+async function buildPlainIndexes(shard?:number){
+  if(shard===undefined)await execute('plain primary index','create unique index if not exists customers_plain_pkey on native_scale_100m.customers_plain(id)');
   const plainIndexes=(await pool.query(`select indexname,indexdef from pg_indexes where schemaname='bench_realistic_100k'
     and tablename='customers' and (indexname like 'customers_%_exact' or indexname like 'customers_%_trgm')
     order by indexname`)).rows;
   assert.equal(plainIndexes.length,fields.length*2);
-  for(const index of plainIndexes){
+  for(const [i,index] of plainIndexes.entries()){
+    if(shard!==undefined&&i%3!==shard)continue;
     const sql=index.indexdef.replace(/^CREATE INDEX /,'CREATE INDEX IF NOT EXISTS ')
       .replace(' ON bench_realistic_100k.customers ',' ON native_scale_100m.customers_plain ');
     await execute(index.indexname,sql);
   }
-  return plainIndexes.length;
+  return shard===undefined?plainIndexes.length:plainIndexes.filter((_:unknown,i:number)=>i%3===shard).length;
 }
 try{
   await assertDisposable(pool);assert.equal(Number((await pool.query('show port')).rows[0].port),56439);
   assert.equal(Number((await pool.query('select count(*) n from native_scale_100m.progress')).rows[0].n),1000);
-  await pool.query("set maintenance_work_mem='4GB'");
-  await pool.query('set max_parallel_maintenance_workers=8');
-  if(process.argv[2]==='plain-only'){
+  const shardMatch=/^plain-shard-([012])$/.exec(process.argv[2]??'');
+  await pool.query(`set maintenance_work_mem='${shardMatch?'2GB':'4GB'}'`);
+  await pool.query(`set max_parallel_maintenance_workers=${shardMatch?4:8}`);
+  if(shardMatch){
+    const shard=Number(shardMatch[1]);
+    console.log(JSON.stringify({shard,plainIndexes:await buildPlainIndexes(shard),finishedAt:new Date().toISOString()}));
+  }else if(process.argv[2]==='plain-only'){
     console.log(JSON.stringify({plainIndexes:await buildPlainIndexes(),finishedAt:new Date().toISOString()}));
   }else{
   const indexes=(await pool.query(`select tablename,indexname,indexdef from pg_indexes
