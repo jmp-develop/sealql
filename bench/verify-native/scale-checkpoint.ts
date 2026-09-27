@@ -6,7 +6,8 @@ import { parse } from 'node:path';
 import { Pool } from 'pg';
 import { assertDisposable } from '../../test/disposable.js';
 
-const stage=process.argv[2];assert(['25','50','75','100','index','ticket25','ticket50','ticket75','ticket100','ticket-index','measurement'].includes(stage));
+const stage=process.argv[2];assert(['25','50','75','100','index','customer-measurement',
+  'ticket25','ticket50','ticket75','ticket100','ticket-index','ticket-measurement','measurement'].includes(stage));
 const ticketTarget=stage.startsWith('ticket')?Number(process.argv[3]):null;
 if(ticketTarget!==null)assert(ticketTarget===100||ticketTarget===1000);
 const out='bench/results/2026-09-27-native-scale-100m';const file=`${out}/checkpoints.json`;
@@ -27,7 +28,7 @@ try{
   const ticketTailSec=ticketTail?.first&&ticketTail?.latest?(Date.parse(ticketTail.latest)-Date.parse(ticketTail.first))/1000:0;
   const ticketRate=ticketTail?.copies>1&&ticketTailSec>0?(ticketTail.copies-1)/ticketTailSec:null;
   if(stage.startsWith('ticket')){
-    const pct=stage==='ticket-index'?100:Number(stage.slice(6));
+    const pct=stage==='ticket-index'||stage==='ticket-measurement'?100:Number(stage.slice(6));
     assert(ticketCopies>=ticketTarget!*pct/100);
   }
   const tail=(await pool.query(`select count(*)::int copies,min(completed_at) first,max(completed_at) latest
