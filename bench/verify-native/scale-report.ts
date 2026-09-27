@@ -21,6 +21,7 @@ const matrixRows=matrix.report.map((r:any)=>{
   return `| ${r.case} | ${fmt(a.sqlMs)} / ${fmt(a.totalMs)} | ${fmt(b.sqlMs)} / ${fmt(b.totalMs)} | ${fmt(ratio)}× | ${fmt(b.totalMs/a.totalMs)}× | ${fmt(prior.summary.product.sqlMs)} / ${fmt(prior.summary.product.totalMs)} | ${b.candidates} / ${b.returned} | ${verdict} |`;
 });
 const checkpoints=await load('checkpoints');
+const meta=await load('measurement-meta');assert(meta.productCommit&&meta.build==='PASS');
 const checkpointRows=checkpoints.map((x:any)=>`| ${x.stage} | ${x.customerRows?.toLocaleString('en-US')??'—'} | ${x.ticketRows?.toLocaleString('en-US')??'—'} | ${fmt(x.elapsedSec/60)} | ${gib(x.databaseBytes)} | ${gib(x.freeBytes)} | ${x.estimatedRemainingSec===null?'미계측':`${fmt(x.estimatedRemainingSec/60)}분 (당시 추정)`} |`);
 const validation=await load('validation');
 const indexAudit=await load('index-audit');assert(indexAudit.foreignKey.convalidated);
@@ -44,7 +45,7 @@ if(batch)writeRows.push(`| insert 배치 1,000건 | ${fmt(batch.summary.plain.sq
 const last=checkpoints.at(-1);
 const md=`# Drizzle 네이티브 API 1억 행 규모 시험
 
-2026-09-27. 일회용 PostgreSQL \`127.0.0.1:56439\`에서 원본 \`bench_realistic_100k\`는 읽기만 했다. 고객 10만 행을 ID만 바꿔 1,000벌 복제하여 \`native_scale_100m\` 고객 암호·평문 테이블 각 1억 행을 만들었다. 암호문은 공개 \`createSealer.seal\`로 새 행 ID에 맞춰 재암호화했고, scope와 값에만 의존하는 보조 토큰은 같은 모델·키·scope의 10만 행 제품 테이블에서 SQL 복사했다. 부모·보조·평문 색인과 FK는 적재 후 생성하고 \`VACUUM (ANALYZE)\`를 실행했다. 암호 칸으로 정렬하지 않고 UUID ID로만 정렬했다.
+2026-09-27. 일회용 PostgreSQL \`127.0.0.1:56439\`에서 원본 \`bench_realistic_100k\`는 읽기만 했다. 측정 기준 제품 커밋은 \`${meta.productCommit}\`이며 [빌드 기록](measurement-meta.json)의 \`npm run build\`와 bench 타입 검사를 통과했다. 고객 10만 행을 ID만 바꿔 1,000벌 복제하여 \`native_scale_100m\` 고객 암호·평문 테이블 각 1억 행을 만들었다. 암호문은 공개 \`createSealer.seal\`로 새 행 ID에 맞춰 재암호화했고, scope와 값에만 의존하는 보조 토큰은 같은 모델·키·scope의 10만 행 제품 테이블에서 SQL 복사했다. 부모·보조·평문 색인과 FK는 적재 후 생성하고 \`VACUUM (ANALYZE)\`를 실행했다. 암호 칸으로 정렬하지 않고 UUID ID로만 정렬했다.
 
 **해석 전제:** 이 1억 행은 새 문장 1억 개가 아니라 **동일한 10만 행의 값 1,000벌**이다. 각 값·조각의 적중 행 수가 대체로 1,000배이며, 후보 수와 평문 LIKE 실행 계획도 달라진다. 이 수치를 실제 1억 행 서비스의 속도로 일반화하지 않는다.
 
