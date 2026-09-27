@@ -30,6 +30,14 @@ sealed.insert(db, customersSeal, { tenantId: 'x', status: 'a', age: 3 });
 // @ts-expect-error managed insert rejects wrong sealed type
 sealed.insert(db, customersSeal, { tenantId: 'x', status: 'a', name: 3, age: 3 });
 sealed.update(db, customersSeal, { id: 'x', tenantId: 'x' }, { name: 'Grace', status: 'b' });
+const selected = sealed.findMany(db, customersSeal, { scope: 'x', columns: { status: true }, limit: 1 });
+void selected.then(page => {
+  const id: string = page.items[0].id;
+  const status: string = page.items[0].status;
+  // @ts-expect-error unselected sealed field is absent
+  const name = page.items[0].name;
+  void [id, status, name];
+});
 // @ts-expect-error patch cannot move the row identifier
 sealed.update(db, customersSeal, { id: 'x', tenantId: 'x' }, { id: 'y' });
 // @ts-expect-error patch cannot move the scope

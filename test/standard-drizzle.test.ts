@@ -5,6 +5,7 @@ import { drizzle } from 'drizzle-orm/node-postgres';
 import { and, eq, sql } from 'drizzle-orm';
 import { pgSchema, uuid } from 'drizzle-orm/pg-core';
 import { createSealer } from '../src/index.js';
+import { canonical } from '../src/core/bytes.js';
 import { createSealed } from '../src/adapters/drizzle/v0.45/index.js';
 import { registrationOf } from '../src/adapters/drizzle/v0.45/native.js';
 import { assertDisposable } from './disposable.js';
@@ -99,8 +100,38 @@ test('native managed writes and opens stay atomic', async () => {
     }), /rollback/);
     assert.equal((await db.select().from(people).where(eq(people.id, second.id))).length, 0);
     assert.equal((await pool.query(`select count(*)::int as n from "${schemaName}".people_seal_index`)).rows[0].n, 1);
+    await sealed.insert(db, peopleSeal, { id: second.id, scopeId: second.id, name: second.name_plain });
+    assert.equal((await sealed.open(await db.select().from(people).where(eq(people.id, second.id))))[0].memo, null);
+    await sealed.insert(db, peopleSeal, { id: third.id, scopeId: first.scope_id, name: third.name_plain, memo: third.memo_plain });
+    await sealed.upsert(db, peopleSeal, { id: first.id, scopeId: first.scope_id, name: first.name_plain });
+    assert.equal((await sealed.open(await db.select().from(people).where(eq(people.id, first.id))))[0].memo, first.memo_plain);
+    const oneItemBytes = canonical({ id: first.id, scopeId: first.scope_id }).length;
+    const short = await sealed.findMany(db, peopleSeal, { scope: first.scope_id, columns: { id: true }, limit: 3,
+      budgets: { resultBytes: oneItemBytes + 1 } });
+    assert.equal(short.items.length, 1); assert.ok(short.nextCursor);
+    const resumed = await sealed.findMany(db, peopleSeal, { scope: first.scope_id, columns: { id: true }, limit: 3,
+      cursor: short.nextCursor!, budgets: { resultBytes: oneItemBytes + 1 } });
+    assert.equal(resumed.items.length, 1);
+    assert.deepEqual(new Set([...short.items, ...resumed.items].map(row => row.id)), new Set([first.id, third.id]));
+    await assert.rejects(sealed.count(db, peopleSeal, { scope: first.scope_id, budgets: { fetchBytes: 80 } }), { code: 'LIMIT_EXCEEDED' });
+    const tenantPage = await sealed.search(db, { scope: first.scope_id,
+      match: { p: [peopleSeal, m => m.or(m.name.eq('absent'), m.sql(sql`true`))] },
+      query: ({ where, after, orderBy, flags, limit }) => db.select({ p: people, ...flags }).from(people)
+        .where(and(where, after)).orderBy(...orderBy).limit(limit),
+    });
+    assert.deepEqual(new Set(tenantPage.items.map(row => row.p.id)), new Set([first.id, third.id]));
+    const decoy = await sealed.search(db, { scope: first.scope_id,
+      match: { p: [peopleSeal, m => m.name.eq(first.name_plain)] },
+      columns: { p: { id: 'p_id', scopeId: 'p_scope', name: 'p_name_ct' } },
+      query: ({ where, after, orderBy, limit }) => db.execute(sql`select ${people.id} as p_id,
+        ${people.scopeId} as p_scope, ${people.name} as p_name_ct, 'wrong' as name
+        from ${people} where ${where} ${after ? sql`and ${after}` : sql``}
+        order by ${sql.join(orderBy, sql.raw(','))} limit ${limit}`),
+    });
+    assert.equal(decoy.items.length, 1);
+    assert.equal((decoy.items[0] as any).p_name_ct, first.name_plain);
     await db.delete(people).where(eq(people.id, first.id));
-    assert.equal((await pool.query(`select count(*)::int as n from "${schemaName}".people_seal_index`)).rows[0].n, 0);
+    assert.equal((await pool.query(`select count(*)::int as n from "${schemaName}".people_seal_index`)).rows[0].n, 2);
   } finally {
     if (created) await pool.query('drop schema test_native_write cascade');
     await pool.end();

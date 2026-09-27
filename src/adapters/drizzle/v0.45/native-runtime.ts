@@ -1,5 +1,5 @@
-import { and, eq, gt, getTableColumns, sql, type InferSelectModel } from 'drizzle-orm';
-import type { PgColumn, PgDatabase, PgTable } from 'drizzle-orm/pg-core';
+import { and, eq, gt, getTableColumns, is, sql, type InferSelectModel } from 'drizzle-orm';
+import { PgTransaction, type PgColumn, type PgDatabase, type PgTable } from 'drizzle-orm/pg-core';
 import { identity, unhex, utf8 } from '../../../core/bytes.js';
 import { databaseError, ensure, fail, SealError } from '../../../core/errors.js';
 import { envelopeShape, type Sealer } from '../../../core/field-cipher.js';
@@ -36,8 +36,12 @@ function rowIdentity(reg: Registration, source: Record<string, unknown>, fill: b
 }
 interface Prepared { parent: Record<string, unknown>; index: Record<string, unknown>; identity: Record<string, unknown>; sealed: Sealed<unknown, unknown>[] }
 
-async function prepare(reg: Registration, source: Record<string, unknown>, sealer: Sealer, cache: SearchTokenCache, fillId: boolean): Promise<Prepared> {
+async function prepare(reg: Registration, source: Record<string, unknown>, sealer: Sealer, cache: SearchTokenCache, fillId: boolean, fillFields: boolean): Promise<Prepared> {
   const parent: Record<string, unknown> = { ...source };
+  if (fillFields) for (const [key, field] of reg.fields) if (parent[key] === undefined) {
+    ensure(!field.column.notNull, 'INVALID_VALUE');
+    parent[key] = null;
+  }
   const { rowId, scopeId } = rowIdentity(reg, parent, fillId);
   const identityValue = { [reg.row]: rowId, ...(reg.scope ? { [reg.scope]: scopeId } : {}) };
   const index: Record<string, unknown> = { scopeId, rowId };
@@ -69,6 +73,19 @@ function checkedDb(db: Db): any {
   ensure(db && typeof db.transaction === 'function', 'UNSUPPORTED_DRIVER');
   return db;
 }
+async function writeTransaction<T>(db: Db, callback: (tx: any) => Promise<T>): Promise<T> {
+  let callbackDone = false;
+  try {
+    return await checkedDb(db).transaction(async (tx: any) => {
+      const value = await callback(tx);
+      callbackDone = true;
+      return value;
+    });
+  } catch (error) {
+    if (callbackDone && !is(db, PgTransaction)) fail('WRITE_OUTCOME_UNKNOWN');
+    throw error;
+  }
+}
 function checkedValues(reg: Registration, source: Record<string, unknown>, mode: 'insert' | 'update' | 'upsert'): void {
   const columns = getTableColumns(reg.parent) as Record<string, PgColumn>;
   for (const [key, value] of Object.entries(source)) {
@@ -86,13 +103,13 @@ function indexValues(reg: Registration, row: Prepared): Record<string, unknown> 
   const columns = getTableColumns(reg.index) as Record<string, PgColumn>;
   return Object.fromEntries(Object.entries(row.index).filter(([key]) => !!columns[key]));
 }
-async function upsertIndexes(tx: any, reg: Registration, rows: readonly Prepared[], onlyChanged: boolean) {
+async function upsertIndexes(tx: any, reg: Registration, rows: readonly Prepared[], onlyChanged: boolean, changedKeys?: Set<string>) {
   const cols = getTableColumns(reg.index) as Record<string, PgColumn>;
   const values = rows.map(row => indexValues(reg, row));
   if (!values.length) return;
   if (!onlyChanged) { await tx.insert(reg.index).values(values); return; }
   for (const value of values) {
-    const changed = Object.fromEntries(Object.entries(value).filter(([key]) => key !== 'scopeId' && key !== 'rowId'));
+    const changed = Object.fromEntries(Object.entries(value).filter(([key]) => key !== 'scopeId' && key !== 'rowId' && (!changedKeys || changedKeys.has(key))));
     if (!Object.keys(changed).length) continue;
     await tx.insert(reg.index).values(value).onConflictDoUpdate({ target: [cols.scopeId, cols.rowId], set: changed });
   }
@@ -150,14 +167,13 @@ export function runtimeMethods(sealerOf: () => Sealer) {
     const sealer = sealerOf();
     const prepared: Prepared[] = [];
     try {
-      for (const row of arr) { const input = asRecord(row); checkedValues(reg, input, 'insert'); prepared.push(await prepare(reg, input, sealer, cache, true)); }
-      const dbValue = checkedDb(db);
-      const inserted = await dbValue.transaction(async (tx: any) => {
+      for (const row of arr) { const input = asRecord(row); checkedValues(reg, input, 'insert'); prepared.push(await prepare(reg, input, sealer, cache, true, true)); }
+      const inserted = await writeTransaction(db, async (tx: any) => {
         const result = await tx.insert(reg.parent).values(prepared.map(row => row.parent)).returning();
         await upsertIndexes(tx, reg, prepared, false);
         return result;
       });
-      return (options?.returning ? await open(inserted) : prepared.map(row => row.identity)) as Result<T, R, S, O>;
+      return (options?.returning ? await open(inserted, { budgets: { maxRows: inserted.length, maxBytes: 32 * 1024 * 1024, deadlineMs: 30000 } }) : prepared.map(row => row.identity)) as Result<T, R, S, O>;
     } catch (error) { if (error instanceof SealError) throw error; throw databaseError(error); }
     finally { release(prepared); }
   }
@@ -170,9 +186,9 @@ export function runtimeMethods(sealerOf: () => Sealer) {
     const where = whereIdentity(reg, asRecord(at));
     const sealer = sealerOf(), prepared: Prepared[] = [];
     try {
-      prepared.push(await prepare(reg, { ...at, ...input }, sealer, cache, false));
+      prepared.push(await prepare(reg, { ...at, ...input }, sealer, cache, false, false));
       const changed = Object.fromEntries(Object.entries(prepared[0].parent).filter(([key]) => key !== reg.row && key !== reg.scope));
-      const result = await checkedDb(db).transaction(async (tx: any) => {
+      const result = await writeTransaction(db, async (tx: any) => {
         const found = await tx.update(reg.parent).set(changed).where(where).returning();
         if (!found.length) fail('NOT_FOUND');
         await upsertIndexes(tx, reg, prepared, true);
@@ -190,16 +206,19 @@ export function runtimeMethods(sealerOf: () => Sealer) {
     checkedValues(reg, input, 'upsert');
     const sealer = sealerOf(), prepared: Prepared[] = [];
     try {
-      prepared.push(await prepare(reg, input, sealer, cache, true));
+      prepared.push(await prepare(reg, input, sealer, cache, true, true));
       const columns = getTableColumns(reg.parent) as Record<string, PgColumn>;
       const target = reg.rowUnique ? [columns[reg.row]] : [columns[reg.scope!], columns[reg.row]];
-      const changed = Object.fromEntries(Object.entries(prepared[0].parent).filter(([key]) => key !== reg.row && key !== reg.scope));
+      const changed = Object.fromEntries(Object.entries(prepared[0].parent).filter(([key]) => key !== reg.row && key !== reg.scope && Object.hasOwn(input, key)));
       const setWhere = reg.scope && reg.rowUnique ? eq(columns[reg.scope], sql.raw(`excluded."${columns[reg.scope].name}"`)) : undefined;
-      const result = await checkedDb(db).transaction(async (tx: any) => {
+      const result = await writeTransaction(db, async (tx: any) => {
         const found = await tx.insert(reg.parent).values(prepared[0].parent)
           .onConflictDoUpdate({ target, set: changed, setWhere }).returning();
         if (!found.length) fail('SCOPE_CONFLICT');
-        await upsertIndexes(tx, reg, prepared, true);
+        const changedTokens = new Set([...reg.fields].filter(([key]) => Object.hasOwn(input, key))
+          .flatMap(([key, field]) => profiles(reg.model, field.spec.id ?? key, field.spec)
+            .map(profile => reg.storage.index!.profiles![profile.indexId].tokens)));
+        await upsertIndexes(tx, reg, prepared, true, changedTokens);
         return found;
       });
       return (options?.returning ? await open(result) : prepared.map(row => row.identity)) as Result<T, R, S, O>;
@@ -253,7 +272,7 @@ export function runtimeMethods(sealerOf: () => Sealer) {
         const rows = await tx.select().from(reg.parent).where(and(
           scopeId !== undefined ? eq(parent[reg.scope!], scopeId) : undefined, after,
         )).orderBy(...(reg.scope && scopeId === undefined ? [parent[reg.scope]] : []), parent[reg.row]).limit(batch).for('update');
-        const opened = await open(rows) as Record<string, unknown>[];
+        const opened = await open(rows, { budgets: { maxRows: batch, maxBytes: 32 * 1024 * 1024, deadlineMs: 30000 } }) as Record<string, unknown>[];
         for (const row of opened) {
           const rowId = identity(row[reg.row] as string, reg.definition.rowType);
           const rowScope = reg.scope ? identity(row[reg.scope] as string, reg.definition.scopeType) : '_';
@@ -262,6 +281,10 @@ export function runtimeMethods(sealerOf: () => Sealer) {
             const value = row[key];
             const tokens = value === null ? [] : await searchTokens(ring, rowScope, profile, searchPieces(profile, value), cache);
             values[reg.storage.index!.profiles![profile.indexId].tokens] = tokens.length ? tokens.map(BigInt) : null;
+          }
+          if (tokenKeys.length && tokenKeys.every(key => values[key] === null)) {
+            await tx.delete(reg.index).where(and(eq(index.scopeId, rowScope), eq(index.rowId, rowId)));
+            continue;
           }
           const query = tx.insert(reg.index).values(values);
           if (tokenKeys.length) await query.onConflictDoUpdate({ target: [index.scopeId, index.rowId],
