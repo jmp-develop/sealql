@@ -1,6 +1,6 @@
 import { ensure } from './errors.js';
 import { profiles } from './search-tokens.js';
-import type { SealedModelDefinition, SealedStorage } from '../engine/sealed-types.js';
+import type { SealedModelDefinition, SealedStorage } from './sealed-model.js';
 
 /** Stable physical names independent of field declaration order and key scope. */
 function suffix(value: string): string {

@@ -1,7 +1,7 @@
-import { ensure } from '../../core/errors.js';
-import type { CompiledSearch } from '../../core/search-predicate.js';
-import type { SealedModelDefinition, SealedStorage } from '../../engine/sealed-types.js';
-import { column as ident, join, literal, param, pgsql as q, render, type Fragment, type Statement } from './fragment.js';
+import { ensure } from './errors.js';
+import type { CompiledSearch } from './search-predicate.js';
+import type { SealedModelDefinition, SealedStorage } from './sealed-model.js';
+import { column as ident, join, literal, param, pgsql as q, render, type Fragment, type Statement } from './sql-fragment.js';
 
 export function candidatePredicate(definition: SealedModelDefinition, storage: SealedStorage, scopeId: string, search: CompiledSearch, alias?: string): Fragment {
   ensure(storage.index, 'INVALID_SCHEMA');

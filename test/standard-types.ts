@@ -1,53 +1,51 @@
-import { sql } from 'drizzle-orm';
-import { bigint, pgTable, primaryKey, text, uuid } from 'drizzle-orm/pg-core';
-import { bindSealed, ciphertext, defineSealed, type ManagedInsert, type ManagedRow } from '../src/adapters/drizzle/v0.45/index.js';
-import type { SearchFields } from '../src/core/search-predicate.js';
+import { eq, type InferSelectModel } from 'drizzle-orm';
+import { drizzle } from 'drizzle-orm/node-postgres';
+import { pgTable, text, uuid } from 'drizzle-orm/pg-core';
+import { createSealer } from '../src/index.js';
+import { createSealed, type Sealed, type Opened } from '../src/adapters/drizzle/v0.45/index.js';
+import type { PlainShape } from '../src/adapters/drizzle/v0.45/native.js';
 
-const source = pgTable('r2_type_source', {
-  scopeId: uuid('scope_id').notNull(), id: uuid('id').notNull(), revision: bigint('revision', { mode: 'bigint' }).notNull().default(sql`1`),
-  name: ciphertext('name_ct').notNull(), note: ciphertext('note_ct'), age: ciphertext('age_ct'), status: text('status').notNull().default('new'),
-}, t => [primaryKey({ columns: [t.scopeId, t.id] })]);
-export const definition = defineSealed(source, {
-  id: 'typed', identity: { scope: 'scopeId', row: 'id', revision: 'revision' },
-  fields: { name: { type: 'text', search: { substring: true } }, note: { type: 'text' }, age: { type: 'integer', search: { exact: true } } },
+const sealed = createSealed({ sealer: () => createSealer({ key: new Uint8Array(32) }) });
+const customers = pgTable('native_type_customers', {
+  id: uuid('id').primaryKey(), tenantId: uuid('tenant_id').notNull(), status: text('status').notNull(),
+  name: sealed.text('name', { search: { exact: true, substring: true } }),
+  memo: sealed.text('memo', { nullable: true, search: { substring: true } }),
+  age: sealed.integer('age', { search: { exact: true } }),
 });
-// @ts-expect-error every branded ciphertext column requires a field or legacy entry
-defineSealed(source, { id: 'missing', identity: { scope: 'scopeId', row: 'id', revision: 'revision' }, fields: { name: { type: 'text' } } });
-export type Insert = ManagedInsert<typeof definition>;
-export type Row = ManagedRow<typeof definition>;
-export const valid: Insert = { name: 'Ada', age: 3 };
-export const validStatus: Insert = { name: 'Ada', status: 'new' };
-// @ts-expect-error sealed input must be plaintext
-export const wrongName: Insert = { name: new Uint8Array([2]) };
-// @ts-expect-error identity is not writable in managed data
-export const wrongIdentity: Insert = { name: 'Ada', id: 'bbbbbbbb-bbbb-4bbb-8bbb-bbbbbbbbbbbb' };
-// @ts-expect-error required name cannot be omitted
-export const missingName: Insert = { age: 2 };
-const selected: Row = { id: 'bbbbbbbb-bbbb-4bbb-8bbb-bbbbbbbbbbbb', revision: 1n, name: 'Ada', note: null, age: null, status: 'new' };
-void selected;
-type F = typeof definition.fields;
-declare const fields: SearchFields<F>;
-fields.name.contains('Ad');
-fields.age.eq(3);
-// @ts-expect-error substring-only field has no exact operator
-fields.name.eq('Ada');
-// @ts-expect-error integer has no substring operator
-fields.age.contains('3');
-// @ts-expect-error non-searchable field has no operator
-fields.note.eq('x');
+export const customersSeal = sealed.register(customers, { row: 'id', scope: 'tenantId' });
+// @ts-expect-error row must be a valid plain identifier column
+sealed.register(customers, { row: 'name' });
+// @ts-expect-error scope must be a valid column
+sealed.register(customers, { row: 'id', scope: 'missing' });
 
-async function typedReads(repository: ReturnType<typeof bindSealed<typeof definition>>) {
-  const scoped = repository.forScope({ scopeId: 'aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa' });
-  const full = await scoped.get({ id: 'bbbbbbbb-bbbb-4bbb-8bbb-bbbbbbbbbbbb' });
-  if (full) { const name: string = full.name; const status: string = full.status; void [name, status]; }
-  const selected = await scoped.get({ id: 'bbbbbbbb-bbbb-4bbb-8bbb-bbbbbbbbbbbb', select: { name: true } });
-  if (selected) { const name: string = selected.name; const revision: bigint = selected.revision; void [name, revision];
-    // @ts-expect-error status was not selected
-    selected.status;
-  }
-  const page = await scoped.findMany({ select: { age: true }, limit: 2 });
-  const age: number | null = page.items[0].age; void age;
-  // @ts-expect-error name was not selected
-  page.items[0].name;
-}
-void typedReads;
+const db = drizzle.mock();
+// @ts-expect-error plain values cannot be inserted into sealed fields through Drizzle
+db.insert(customers).values({ status: 'a', tenantId: 'x', name: 'Ada', age: 3 });
+// @ts-expect-error sealed predicate must not accept plaintext
+db.select().from(customers).where(eq(customers.name, 'Ada'));
+db.update(customers).set({ status: 'b' });
+sealed.insert(db, customersSeal, { tenantId: 'x', status: 'a', name: 'Ada', age: 3 });
+// @ts-expect-error managed insert requires the sealed name
+sealed.insert(db, customersSeal, { tenantId: 'x', status: 'a', age: 3 });
+// @ts-expect-error managed insert rejects wrong sealed type
+sealed.insert(db, customersSeal, { tenantId: 'x', status: 'a', name: 3, age: 3 });
+sealed.update(db, customersSeal, { id: 'x', tenantId: 'x' }, { name: 'Grace', status: 'b' });
+// @ts-expect-error patch cannot move the row identifier
+sealed.update(db, customersSeal, { id: 'x', tenantId: 'x' }, { id: 'y' });
+// @ts-expect-error patch cannot move the scope
+sealed.update(db, customersSeal, { id: 'x', tenantId: 'x' }, { tenantId: 'y' });
+
+type Row = InferSelectModel<typeof customers>;
+const validPlain: PlainShape<typeof customers> = { id: 'x', tenantId: 'x', status: 'a', name: 'Ada', age: 3 };
+// @ts-expect-error required sealed field cannot be omitted
+const missingPlain: PlainShape<typeof customers> = { id: 'x', tenantId: 'x', status: 'a', age: 3 };
+// @ts-expect-error sealed integer requires number
+const wrongPlain: PlainShape<typeof customers> = { id: 'x', tenantId: 'x', status: 'a', name: 'Ada', age: '3' };
+void [validPlain, missingPlain, wrongPlain];
+declare const row: Row;
+const sealedName: Sealed<string, { readonly exact: true; readonly substring: true }> = row.name;
+const openedName: Opened<Row>['name'] = 'Ada';
+void [sealedName, openedName];
+// @ts-expect-error unopened data is opaque
+const plainName: string = row.name;
+void plainName;

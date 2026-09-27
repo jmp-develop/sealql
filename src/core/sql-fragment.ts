@@ -1,5 +1,5 @@
-import { canonical, freeze } from '../../core/bytes.js';
-import { ensure } from '../../core/errors.js';
+import { canonical } from './bytes.js';
+import { ensure } from './errors.js';
 export type Node={kind:'literal';text:string}|{kind:'identifier';names:string[]}|{kind:'param';value:unknown}|{kind:'concat';nodes:Node[]}|{kind:'native';value:unknown};
 export class Fragment {constructor(readonly node:Node){Object.freeze(this);} compile():Statement{return render(this);} }
 export interface Statement {text:string;values:unknown[]}

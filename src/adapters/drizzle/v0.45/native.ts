@@ -8,7 +8,7 @@ import { companionIndexName, companionProfiles } from '../../../core/companion-l
 import { ensure, fail } from '../../../core/errors.js';
 import { envelopeShape, type Sealer } from '../../../core/field-cipher.js';
 import { validateField, type FieldSpec, type JsonValue } from '../../../core/field-codec.js';
-import type { SealedModelDefinition, SealedStorage } from '../../../engine/sealed-types.js';
+import type { SealedModelDefinition, SealedStorage } from '../../../core/sealed-model.js';
 import { runtimeMethods } from './native-runtime.js';
 
 declare const sealedBrand: unique symbol;
@@ -153,9 +153,9 @@ function register<T extends PgTable, R extends UuidOrTextKeys<T>, S extends Uuid
   }
   ensure(fields.size > 0, 'INVALID_SCHEMA');
   const definition: SealedModelDefinition = {
-    id: model, identity: { scope: cfg.scope ?? '__scope', row: cfg.row, revision: '__unused' },
+    id: model, identity: { scope: cfg.scope, row: cfg.row },
     fields: Object.fromEntries([...fields].map(([key, value]) => [key, value.spec])),
-    columns, scopeType, rowType, orderable: [], publicBounds: {},
+    columns, scopeType, rowType,
   };
   const profiles = companionProfiles(definition);
   const tableName = getTableName(table);

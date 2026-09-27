@@ -14,7 +14,7 @@ type InsertRow<T extends PgTable, R extends string> = Omit<PlainShape<T>, R> & P
 type Patch<T extends PgTable, R extends string, S extends string | undefined> = Partial<Omit<PlainShape<T>, R | Exclude<S, undefined>>>;
 type Result<T extends PgTable, R extends string, S extends string | undefined, O> = O extends { returning: true }
   ? Opened<InferSelectModel<T>>[] : Identity<T, R, S>[];
-interface OpenOptions { scope?: string; budgets?: { maxRows?: number; maxBytes?: number; deadlineMs?: number; concurrency?: number } }
+export interface OpenOptions { scope?: string; budgets?: { maxRows?: number; maxBytes?: number; deadlineMs?: number; concurrency?: number } }
 
 function asRecord(value: unknown): Record<string, unknown> {
   ensure(value && typeof value === 'object' && !Array.isArray(value) && Object.getPrototypeOf(value) === Object.prototype, 'INVALID_VALUE');

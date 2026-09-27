@@ -8,11 +8,11 @@ import {
   type CompiledSearch, type SearchNode, type SearchOperator,
 } from '../../../core/search-predicate.js';
 import { profiles, type SearchTokenCache } from '../../../core/search-tokens.js';
-import { candidateStatement } from '../../postgres/search-sql.js';
-import type { SearchBudgets } from '../../../engine/sealed-repository.js';
+import { candidateStatement } from '../../../core/candidate-sql.js';
 import { Sealed, registrationOf, type Opened, type Registration, type SealMeta } from './native.js';
 
 type Db = PgDatabase<any, any, any>;
+export interface SearchBudgets { batch?: number; maxCandidates?: number; fetchBytes?: number; decryptedBytes?: number; resultBytes?: number; deadlineMs?: number; decryptConcurrency?: number }
 type PlainOfSealed<V> = V extends Sealed<infer P, any> ? P : never;
 type SearchOfSealed<V> = V extends Sealed<any, infer S> ? S : never;
 type ParentOf<C> = C extends SealMeta<infer T, any, any> ? T : never;

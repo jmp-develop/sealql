@@ -3,7 +3,7 @@ import { ensure, fail } from './errors.js';
 import { encodeField, type FieldSpec, type PlainOf } from './field-codec.js';
 import { normalizeText, normalizeWords, searchPieces, searchTokens, type SearchProfile, type SearchTokenCache } from './search-tokens.js';
 import type { Keyring } from './field-cipher.js';
-import type { SealedModelDefinition } from '../engine/sealed-types.js';
+import type { SealedModelDefinition } from './sealed-model.js';
 
 export type SearchOperator = 'eq' | 'contains' | 'startsWith' | 'endsWith' | 'like';
 export type SearchNode = { op: SearchOperator; field: string; value: unknown; respectWords?: boolean } | { op: 'all'; children: SearchNode[] } | { op: 'any'; children: SearchNode[] };
