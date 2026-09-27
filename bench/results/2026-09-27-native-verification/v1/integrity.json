@@ -1,0 +1,71 @@
+{
+  "derivedRows": [
+    "10000000-0000-4000-8000-000000000001",
+    "10000000-0000-4000-8000-000000000002",
+    "10000000-0000-4000-8000-000000000003",
+    "10000000-0000-4000-8000-000000000004",
+    "10000000-0000-4000-8000-000000000005"
+  ],
+  "checks": [
+    {
+      "name": "insert and search",
+      "verdict": "통과"
+    },
+    {
+      "name": "array and tenant isolation",
+      "verdict": "통과"
+    },
+    {
+      "name": "open, openRaw, missing identity and scope",
+      "verdict": "통과"
+    },
+    {
+      "name": "ciphertext moved to another row rejected",
+      "verdict": "통과"
+    },
+    {
+      "name": "ciphertext moved to another tenant rejected",
+      "verdict": "통과"
+    },
+    {
+      "name": "one-byte tamper rejected",
+      "verdict": "통과"
+    },
+    {
+      "name": "wrong key rejected",
+      "verdict": "통과"
+    },
+    {
+      "name": "upsert",
+      "verdict": "통과"
+    },
+    {
+      "name": "update value and null",
+      "verdict": "통과"
+    },
+    {
+      "name": "transaction rollback",
+      "verdict": "통과"
+    },
+    {
+      "name": "same-field concurrent update",
+      "verdict": "통과"
+    },
+    {
+      "name": "different-field concurrent update",
+      "verdict": "통과"
+    },
+    {
+      "name": "update-delete race",
+      "verdict": "통과",
+      "details": [
+        "rejected",
+        "fulfilled"
+      ]
+    },
+    {
+      "name": "reindex-update race",
+      "verdict": "통과"
+    }
+  ]
+}
