@@ -4,10 +4,11 @@ import { Pool } from 'pg';
 import { drizzle } from 'drizzle-orm/node-postgres';
 import { eq } from 'drizzle-orm';
 import { pgSchema, uuid } from 'drizzle-orm/pg-core';
-import { createSealer, normalizeText, SealError } from '../src/index.js';
+import { createSealer, normalizeText, profiles, searchPieces, searchTokens, SealError } from '../src/index.js';
 import { createSealed } from '../src/adapters/drizzle/v0.45/index.js';
 import { registrationOf } from '../src/adapters/drizzle/v0.45/native.js';
 import { companionIndexName } from '../src/core/companion-layout.js';
+import { canonical } from '../src/core/bytes.js';
 import { assertDisposable } from './disposable.js';
 
 const source = 'bench_realistic_100k';
@@ -53,6 +54,15 @@ test('native CRUD, verified pages, OR semi-join and bounded count', async () => 
   const c = await setup('crud', 30);
   try {
     const scope = c.rows[0].scope_id, exact = c.rows[0].memo_plain;
+    c.logs.length = 0;
+    assert.equal((await c.sealed.findMany(c.db, c.seal, { scope, match: m => m.body.eq(exact), limit: 1 })).items.length, 1);
+    assert.equal(c.logs.length, 1, 'one candidate SQL request for an exact page');
+    assert.ok(c.logs[0].includes(' in (select '));
+    assert.ok(!c.logs[0].includes('exists('));
+    await assert.rejects(c.sealed.findMany(c.db, c.seal, { scope, match: m => m.body.contains('a') }), { code: 'QUERY_TOO_BROAD' });
+    const literal = Array.from(exact).slice(0, 3).join('');
+    assert.equal((await c.sealed.findMany(c.db, c.seal, { scope, match: m => m.body.like(`% ${literal} %`) })).items.length,
+      c.rows.filter(row => norm(row.memo_plain).includes(norm(literal))).length);
     const expected = c.rows.filter(row => norm(row.memo_plain).includes('빠른') || norm(row.memo_plain) === norm(exact)).map(row => row.id);
     c.logs.length = 0;
     const ids: string[] = [];
@@ -62,15 +72,35 @@ test('native CRUD, verified pages, OR semi-join and bounded count', async () => 
       ids.push(...page.items.map(row => row.id)); cursor = page.nextCursor ?? undefined;
     } while (cursor);
     assert.deepEqual(ids, expected);
+    const tinyBytes = canonical({ id: c.rows[0].id, scopeId: scope }).length + 1;
+    const allIds: string[] = [];
+    let tinyCursor: string | undefined;
+    do {
+      const page = await c.sealed.findMany(c.db, c.seal, { scope, columns: { id: true }, limit: 30,
+        cursor: tinyCursor, budgets: { resultBytes: tinyBytes } });
+      allIds.push(...page.items.map(row => row.id)); tinyCursor = page.nextCursor ?? undefined;
+    } while (tinyCursor);
+    assert.deepEqual(allIds, c.rows.map(row => row.id), 'short budget pages resume without losing any of 30 rows');
     assert.ok(c.logs.some(query => query.includes('with sample as materialized')));
     assert.equal(await c.sealed.count(c.db, c.seal, { scope, match: m => m.or(m.body.contains('빠른'), m.body.eq(exact)), maxCandidates: 50 }), expected.length);
     await assert.rejects(c.sealed.count(c.db, c.seal, { scope, match: m => m.body.contains('빠른'), maxCandidates: 1 }),
       (error: unknown) => error instanceof SealError && error.code === 'LIMIT_EXCEEDED');
     const first = c.rows[0], second = c.rows[1];
     const before = (await c.pool.query(`select * from "${c.schemaName}".memo_seal_index where row_id=$1`, [first.id])).rows[0];
+    const exactProfile = profiles('memo', 'body', registrationOf(c.seal).definition.fields.body).find(profile => profile.mode === 'exact')!;
+    const expectedToken = await searchTokens(c.cipher.ring('memo'), scope, exactProfile, searchPieces(exactProfile, first.memo_plain), { profiles: new Map() });
+    assert.deepEqual(before[c.profiles['body/exact'].tokens].map(String), expectedToken);
     await c.sealed.update(c.db, c.seal, { id: first.id, scopeId: scope }, { body: second.memo_plain });
     const after = (await c.pool.query(`select * from "${c.schemaName}".memo_seal_index where row_id=$1`, [first.id])).rows[0];
     assert.deepEqual(after[c.profiles['amount/exact'].tokens], before[c.profiles['amount/exact'].tokens]);
+    assert.notDeepEqual(after[c.profiles['body/exact'].tokens], before[c.profiles['body/exact'].tokens]);
+    assert.equal((await c.sealed.findMany(c.db, c.seal, { scope, match: m => m.body.eq(first.memo_plain) })).items.length,
+      c.rows.filter(row => row.id !== first.id && norm(row.memo_plain) === norm(first.memo_plain)).length);
+    assert.equal((await c.sealed.findMany(c.db, c.seal, { scope,
+      match: m => m.and(m.body.eq(second.memo_plain), m.address.contains(Array.from(norm(first.address_plain)).slice(0, 2).join(''))) })).items.some(row => row.id === first.id), true);
+    await c.sealed.update(c.db, c.seal, { id: first.id, scopeId: scope }, { amount: null });
+    const nulled = (await c.pool.query(`select * from "${c.schemaName}".memo_seal_index where row_id=$1`, [first.id])).rows[0];
+    assert.equal(nulled[c.profiles['amount/exact'].tokens], null);
     assert.equal((await c.sealed.open(await c.db.select().from(c.memo).where(eq(c.memo.id, first.id))))[0].body, second.memo_plain);
     await assert.rejects(c.sealed.update(c.db, c.seal, { id: c.rows[29].id, scopeId: c.rows[29].id }, { body: second.memo_plain }),
       (error: unknown) => error instanceof SealError && error.code === 'NOT_FOUND');
@@ -101,7 +131,9 @@ test('high false-positive pages grow batches without losing rows', async () => {
     const ids: string[] = [];
     let cursor: string | undefined;
     do {
+      const beforeCalls = c.logs.length;
       const page = await c.sealed.findMany(c.db, c.seal, { scope, match: m => m.body.contains(term), limit: 8, cursor, budgets: { batch: 500 } });
+      assert.ok(c.logs.length - beforeCalls <= 4, 'candidate SQL batches stay bounded per page');
       ids.push(...page.items.map(row => row.id)); cursor = page.nextCursor ?? undefined;
     } while (cursor);
     assert.deepEqual(ids, expected);
@@ -136,6 +168,13 @@ test('multicolumn GIN preserves writes, cursor search and exact count', async ()
     const changed = c.rows[1].memo_plain;
     await c.sealed.update(c.db, c.seal, { id: c.rows[0].id, scopeId: c.rows[0].scope_id }, { body: changed });
     assert.equal((await c.sealed.open(await c.db.select().from(c.memo).where(eq(c.memo.id, c.rows[0].id))))[0].body, changed);
+    const changedTerm = Array.from(norm(changed)).slice(0, 2).join('');
+    assert.ok((await c.sealed.findMany(c.db, c.seal, { scope: c.rows[0].scope_id,
+      match: m => m.and(m.body.contains(changedTerm), m.address.contains(addressTerm)) })).items.some(row => row.id === c.rows[0].id));
+    await c.db.delete(c.memo).where(eq(c.memo.id, c.rows[0].id));
+    assert.equal(await c.sealed.count(c.db, c.seal, { scope: c.rows[0].scope_id,
+      match: m => m.and(m.body.contains(changedTerm), m.address.contains(addressTerm)), maxCandidates: 50 }),
+      c.rows.slice(1).filter(row => norm(row.memo_plain).includes(changedTerm) && norm(row.address_plain).includes(addressTerm)).length);
   } finally { await c.close(); }
 });
 
@@ -144,6 +183,12 @@ test('reindex handles a fixture-derived batch above the public open row default'
   try {
     assert.deepEqual(await c.sealed.reindex(c.db, c.seal, { batch: 501 }), { rows: 501 });
     const first = c.rows[0];
+    c.logs.length = 0;
+    await c.sealed.findMany(c.db, c.seal, { scope: first.scope_id,
+      match: m => m.body.contains(Array.from(norm(first.memo_plain)).slice(0, 2).join('')),
+      limit: 200, budgets: { batch: 500 } });
+    assert.ok(c.logs.some(query => query.includes('memo_seal_index') && !query.includes('with sample as materialized')),
+      'candidate batches above 200 use the direct index path');
     assert.equal((await c.sealed.findMany(c.db, c.seal, { scope: first.scope_id,
       match: m => m.body.eq(first.memo_plain), limit: 1 })).items[0].id, first.id);
   } finally { await c.close(); }

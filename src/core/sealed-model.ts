@@ -2,7 +2,6 @@ import type { FieldSpec, SearchProtection } from './field-codec.js';
 
 export interface SealedModelDefinition {
   id: string;
-  searchProtection?: SearchProtection;
   identity: { row: string; scope?: string };
   fields: Record<string, FieldSpec>;
   columns: Record<string, { name: string; getSQLType(): string; notNull: boolean; hasDefault: boolean; generated?: unknown }>;

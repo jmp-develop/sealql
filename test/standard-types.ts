@@ -25,6 +25,19 @@ db.insert(customers).values({ status: 'a', tenantId: 'x', name: 'Ada', age: 3 })
 db.select().from(customers).where(eq(customers.name, 'Ada'));
 db.update(customers).set({ status: 'b' });
 sealed.insert(db, customersSeal, { tenantId: 'x', status: 'a', name: 'Ada', age: 3 });
+sealed.findMany(db, customersSeal, { scope: 'x', match: m => {
+  // @ts-expect-error ordinary plaintext column is not a sealed search field
+  m.status.eq('a');
+  // @ts-expect-error integer exact field has no substring operator
+  m.age.contains('23');
+  // @ts-expect-error substring-only memo has no exact operator
+  m.memo.eq('text');
+  // @ts-expect-error text substring needs a string
+  m.name.contains(3);
+  // @ts-expect-error integer exact needs a number
+  m.age.eq('3');
+  return m.name.contains('Ad');
+} });
 // @ts-expect-error managed insert requires the sealed name
 sealed.insert(db, customersSeal, { tenantId: 'x', status: 'a', age: 3 });
 // @ts-expect-error managed insert rejects wrong sealed type

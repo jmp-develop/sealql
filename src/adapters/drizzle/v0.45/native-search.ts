@@ -8,7 +8,8 @@ import {
   type CompiledSearch, type SearchNode, type SearchOperator,
 } from '../../../core/search-predicate.js';
 import { profiles, type SearchTokenCache } from '../../../core/search-tokens.js';
-import { candidateStatement } from '../../../core/candidate-sql.js';
+import { boundedCandidatePredicate, candidatePredicate } from '../../../core/candidate-sql.js';
+import type { Fragment, Node } from '../../../core/sql-fragment.js';
 import { Sealed, registrationOf, type Opened, type Registration, type SealMeta } from './native.js';
 
 type Db = PgDatabase<any, any, any>;
@@ -96,19 +97,21 @@ async function compile(node: NativeNode, reg: Registration, scopeId: string, sea
   if (node.op === 'and' || node.op === 'or') return { op: node.op, children: await Promise.all(node.children.map(child => compile(child, reg, scopeId, sealer, cache, nextFlag))) };
   fail('INVALID_VALUE');
 }
-function fromStatement(statement: { text: string; values: unknown[] }): SQL {
-  const chunks: SQL[] = []; let offset = 0;
-  for (const match of statement.text.matchAll(/\$([1-9][0-9]*)/g)) {
-    chunks.push(sql.raw(statement.text.slice(offset, match.index)));
-    const value = statement.values[Number(match[1]) - 1];
-    chunks.push(sql`${Array.isArray(value) ? `{${value.join(',')}}` : value}`);
-    offset = match.index! + match[0].length;
-  }
-  chunks.push(sql.raw(statement.text.slice(offset)));
-  return sql.join(chunks, sql.raw(''));
+function fromFragment(fragment: Fragment): SQL {
+  const build = (node: Node): SQL => {
+    switch (node.kind) {
+      case 'literal': return sql.raw(node.text);
+      case 'identifier': return sql.join(node.names.map(name => sql.identifier(name)), sql.raw('.'));
+      case 'param': return sql`${Array.isArray(node.value) ? `{${node.value.join(',')}}` : node.value}`;
+      case 'concat': return sql.join(node.nodes.map(build), sql.raw(''));
+    }
+  };
+  return build(fragment.node);
 }
 function candidate(reg: Registration, scopeId: string, node: CompiledNode, bounded?: { limit: number; after?: string }): SQL {
-  if (node.op === 'secure') return fromStatement(candidateStatement(reg.definition, reg.storage, scopeId, node.search, bounded));
+  if (node.op === 'secure') return fromFragment(bounded
+    ? boundedCandidatePredicate(reg.definition, reg.storage, scopeId, node.search, bounded.limit, bounded.after)
+    : candidatePredicate(reg.definition, reg.storage, scopeId, node.search));
   if (node.op === 'sql') return node.condition;
   const children = node.children.map(child => candidate(reg, scopeId, child));
   return node.op === 'and' ? and(...children)! : sql`(${sql.join(children.map(child => sql`(${child})`), sql.raw(' or '))})`;
@@ -367,8 +370,12 @@ export function searchMethods(sealerOf: () => import('../../../core/field-cipher
       for (const key of keys) {
         const reg = regs[key], mapping = options.columns?.[key];
         if (mapping) {
+          ensure(!!mapping[reg.row] && (!reg.scope || !!mapping[reg.scope]), 'INVALID_VALUE');
           for (const field of [reg.row, ...(reg.scope ? [reg.scope] : []), ...encryptedKeys(asts[key])])
-            if (mapping[field]) view[mapping[field]] = raw[mapping[field]];
+            if (mapping[field]) {
+              ensure(Object.hasOwn(raw, mapping[field]), 'INVALID_CANDIDATE_SHAPE');
+              view[mapping[field]] = raw[mapping[field]];
+            }
         } else {
           const nested = raw[key] as Record<string, unknown>;
           ensure(nested && typeof nested === 'object', 'INVALID_CANDIDATE_SHAPE');

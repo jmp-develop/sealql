@@ -1,8 +1,8 @@
 import { and, eq, gt, getTableColumns, is, sql, type InferSelectModel } from 'drizzle-orm';
 import { PgTransaction, type PgColumn, type PgDatabase, type PgTable } from 'drizzle-orm/pg-core';
-import { identity, unhex, utf8 } from '../../../core/bytes.js';
+import { identity } from '../../../core/bytes.js';
 import { databaseError, ensure, fail, SealError } from '../../../core/errors.js';
-import { envelopeShape, type Sealer } from '../../../core/field-cipher.js';
+import type { Sealer } from '../../../core/field-cipher.js';
 import { profiles, searchPieces, searchTokens, type SearchTokenCache } from '../../../core/search-tokens.js';
 import { Sealed, registrationOf, type Opened, type PlainShape, type Registration, type SealMeta } from './native.js';
 import { searchMethods } from './native-search.js';
@@ -52,8 +52,6 @@ async function prepare(reg: Registration, source: Record<string, unknown>, seale
   for (const [key, value] of Object.entries(parent)) {
     const field = reg.fields.get(key);
     if (!field) continue;
-    ensure(value !== undefined || !field.column.notNull, 'INVALID_VALUE');
-    if (value === undefined) { delete parent[key]; continue; }
     if (value === null) ensure(!field.column.notNull, 'INVALID_VALUE');
     if (value !== null) {
       const bytes = await sealer.seal(value, context(reg, scopeId, rowId, key, sealer), ring);

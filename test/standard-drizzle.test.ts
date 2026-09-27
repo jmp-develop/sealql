@@ -2,7 +2,7 @@ import assert from 'node:assert/strict';
 import { test } from 'node:test';
 import { Pool } from 'pg';
 import { drizzle } from 'drizzle-orm/node-postgres';
-import { and, eq, sql } from 'drizzle-orm';
+import { and, eq, relations, sql } from 'drizzle-orm';
 import { pgSchema, timestamp, uuid } from 'drizzle-orm/pg-core';
 import { createSealer } from '../src/index.js';
 import { canonical } from '../src/core/bytes.js';
@@ -53,6 +53,8 @@ test('native managed writes and opens stay atomic', async () => {
     })), { returning: true });
     assert.equal(bulk.length, 501);
     assert.equal(bulk[500].name, bulkSource[500].name_plain);
+    await assert.rejects(sealed.insert(db, peopleSeal, []), { code: 'INVALID_VALUE' });
+    await assert.rejects(sealed.insert(db, peopleSeal, Array(1001).fill({})), { code: 'LIMIT_EXCEEDED' });
     const inserted = await sealed.insert(db, peopleSeal, { id: first.id, scopeId: first.scope_id, createdAt: derivedTime(first.id), name: first.name_plain, memo: first.memo_plain });
     assert.deepEqual(inserted, [{ id: first.id, scopeId: first.scope_id }]);
     const opened = await sealed.open(await db.select().from(people));
@@ -78,6 +80,12 @@ test('native managed writes and opens stay atomic', async () => {
       match: m => m.or(m.memo.contains(second.memo_plain.slice(0, 2)), m.sql(eq(people.id, first.id))) });
     assert.equal(mixedPage.items.length, 1);
     await db.insert(orders).values([{ id: second.id, customerId: first.id }, { id: third.id, customerId: first.id }]);
+    const peopleRelations = relations(people, ({ many }) => ({ orders: many(orders) }));
+    const ordersRelations = relations(orders, ({ one }) => ({ customer: one(people, { fields: [orders.customerId], references: [people.id] }) }));
+    const relationalDb = drizzle(pool, { schema: { people, orders, peopleRelations, ordersRelations } });
+    const relational = await relationalDb.query.people.findMany({ with: { orders: true } });
+    assert.equal((await sealed.open(relational))[0].name, first.name_plain);
+    assert.equal(relational[0].orders.length, 2);
     const joined = await sealed.search(db, { scope: first.scope_id, match: { c: [peopleSeal, m => m.name.eq(first.name_plain)] },
       keyset: [orders.id], limit: 1,
       query: ({ where, after, orderBy, flags, limit }) => db.select({ c: people, o: orders, ...flags }).from(people)
@@ -92,6 +100,16 @@ test('native managed writes and opens stay atomic', async () => {
     });
     assert.equal(joinedNext.items.length, 1);
     assert.notEqual((joined.items[0] as any).o.id, (joinedNext.items[0] as any).o.id);
+    const joinedBudget = canonical(joined.items[0]).length + 1;
+    const budgetQuery = ({ where, after, orderBy, flags, limit }: any) => db.select({ c: people, o: orders, ...flags }).from(people)
+      .innerJoin(orders, eq(orders.customerId, people.id)).where(and(where, after)).orderBy(...orderBy).limit(limit);
+    const budgeted = await sealed.search(db, { scope: first.scope_id, match: { c: [peopleSeal, m => m.name.eq(first.name_plain)] },
+      keyset: [orders.id], limit: 3, budgets: { resultBytes: joinedBudget }, query: budgetQuery });
+    assert.equal(budgeted.items.length, 1); assert.ok(budgeted.nextCursor);
+    const budgetedNext = await sealed.search(db, { scope: first.scope_id, match: { c: [peopleSeal, m => m.name.eq(first.name_plain)] },
+      keyset: [orders.id], limit: 3, budgets: { resultBytes: joinedBudget }, cursor: budgeted.nextCursor!, query: budgetQuery });
+    assert.equal(budgetedNext.items.length, 1);
+    assert.deepEqual(new Set([...budgeted.items, ...budgetedNext.items].map((row: any) => row.o.id)), new Set([second.id, third.id]));
     const originalOpen = cipher.open.bind(cipher);
     let customerNameOpens = 0;
     cipher.open = async (...args) => {
@@ -127,6 +145,9 @@ test('native managed writes and opens stay atomic', async () => {
     const raw = await db.execute(sql`select id,scope_id,name_ct,memo_ct from ${people}`);
     const rawOpen = await sealed.openRaw(peopleSeal, raw.rows as Record<string, unknown>[], { columns: { id: 'id', scopeId: 'scope_id', name: 'name_ct', memo: 'memo_ct' } });
     assert.equal(rawOpen[0].name_ct, second.name_plain);
+    const hexRows = raw.rows.map((row: any) => ({ ...row, name_ct: `\\x${Buffer.from(row.name_ct).toString('hex')}` }));
+    assert.equal((await sealed.openRaw(peopleSeal, hexRows, { columns: { id: 'id', scopeId: 'scope_id', name: 'name_ct' } }))[0].name_ct, second.name_plain);
+    await assert.rejects(sealed.update(db, peopleSeal, { id: first.id, scopeId: first.scope_id }, {}), { code: 'INVALID_VALUE' });
     await assert.rejects(db.transaction(async tx => {
       await sealed.insert(tx, peopleSeal, [
         { id: second.id, scopeId: second.scope_id, createdAt: derivedTime(second.id), name: second.name_plain, memo: second.memo_plain },

@@ -14,7 +14,7 @@ export function companionProfiles(definition: SealedModelDefinition): NonNullabl
   const result: NonNullable<NonNullable<SealedStorage['index']>['profiles']> = {};
   const names = new Set<string>();
   for (const [key, spec] of Object.entries(definition.fields)) {
-    for (const profile of profiles(definition.id, spec.id ?? key, spec, definition.searchProtection)) {
+    for (const profile of profiles(definition.id, spec.id ?? key, spec)) {
       ensure(!Object.hasOwn(result, profile.indexId), 'INVALID_SCHEMA');
       const tag = suffix(profile.indexId);
       const tokens = `tokens_${tag}`;

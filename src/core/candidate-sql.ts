@@ -1,12 +1,12 @@
 import { ensure } from './errors.js';
 import type { CompiledSearch } from './search-predicate.js';
 import type { SealedModelDefinition, SealedStorage } from './sealed-model.js';
-import { column as ident, join, literal, param, pgsql as q, render, type Fragment, type Statement } from './sql-fragment.js';
+import { column as ident, join, pgsql as q, type Fragment } from './sql-fragment.js';
 
-export function candidatePredicate(definition: SealedModelDefinition, storage: SealedStorage, scopeId: string, search: CompiledSearch, alias?: string): Fragment {
+export function candidatePredicate(definition: SealedModelDefinition, storage: SealedStorage, scopeId: string, search: CompiledSearch): Fragment {
   ensure(storage.index, 'INVALID_SCHEMA');
   const companion = storage.index;
-  const parentRow = ident(alias ?? storage.parent.name, definition.columns[definition.identity.row].name);
+  const parentRow = ident(storage.parent.name, definition.columns[definition.identity.row].name);
   const index = ident(companion.schema, companion.name);
   const inside = (node: CompiledSearch): Fragment => {
     if (node.op === 'all' || node.op === 'any') return q`(${join(node.children.map(inside), node.op === 'all' ? ' and ' : ' or ')})`;
@@ -56,20 +56,4 @@ export function boundedCandidatePredicate(definition: SealedModelDefinition, sto
     select row_id from quick where (select count(*) from quick)=${limit}
     union all select row_id from fallback
   )`;
-}
-export function statementFragment(statement: Statement): Fragment {
-  const parts: Fragment[] = [];
-  let offset = 0;
-  for (const match of statement.text.matchAll(/\$([1-9][0-9]*)/g)) {
-    parts.push(literal(statement.text.slice(offset, match.index)));
-    const value = statement.values[Number(match[1]) - 1];
-    ensure(value !== undefined, 'INVALID_VALUE');
-    parts.push(param(value));
-    offset = match.index! + match[0].length;
-  }
-  parts.push(literal(statement.text.slice(offset)));
-  return join(parts);
-}
-export function candidateStatement(definition: SealedModelDefinition, storage: SealedStorage, scopeId: string, search: CompiledSearch, bounded?: { limit: number; after?: string }): Statement {
-  return render(bounded ? boundedCandidatePredicate(definition, storage, scopeId, search, bounded.limit, bounded.after) : candidatePredicate(definition, storage, scopeId, search));
 }

@@ -1,34 +1,12 @@
 import { compare, utf8 } from './bytes.js';
 import { ensure, fail } from './errors.js';
-import { encodeField, type FieldSpec, type PlainOf } from './field-codec.js';
+import { encodeField, type FieldSpec } from './field-codec.js';
 import { normalizeText, normalizeWords, searchPieces, searchTokens, type SearchProfile, type SearchTokenCache } from './search-tokens.js';
 import type { Keyring } from './field-cipher.js';
 import type { SealedModelDefinition } from './sealed-model.js';
 
 export type SearchOperator = 'eq' | 'contains' | 'startsWith' | 'endsWith' | 'like';
 export type SearchNode = { op: SearchOperator; field: string; value: unknown; respectWords?: boolean } | { op: 'all'; children: SearchNode[] } | { op: 'any'; children: SearchNode[] };
-type TextOps<S extends FieldSpec> = S extends { search: infer Q } ?
-  (Q extends { exact: unknown } ? { eq(value: string): SearchNode } : {}) &
-  (Q extends { substring: unknown } ? { contains(value: string, options?: { respectWords?: boolean }): SearchNode; startsWith(value: string): SearchNode; endsWith(value: string): SearchNode; like(value: string): SearchNode } : {}) : {};
-export type SearchFields<F extends Record<string, FieldSpec>> = {
-  [K in keyof F as F[K] extends { search: false | undefined } ? never : F[K] extends { search: unknown } ? K : never]:
-  F[K]['type'] extends 'text' ? TextOps<F[K]> : F[K] extends { search: { exact: unknown } } ? { eq(value: PlainOf<F[K]>): SearchNode } : never;
-} & { all(...children: SearchNode[]): SearchNode; any(...children: SearchNode[]): SearchNode };
-export function searchFields<F extends Record<string, FieldSpec>>(definition: Pick<SealedModelDefinition, 'fields'>): SearchFields<F> {
-  const result: Record<string, unknown> = {
-    all: (...children: SearchNode[]) => ({ op: 'all', children }),
-    any: (...children: SearchNode[]) => ({ op: 'any', children }),
-  };
-  for (const [field, spec] of Object.entries(definition.fields)) {
-    const search = spec.search;
-    if (!search) continue;
-    const ops: Record<string, (value: unknown) => SearchNode> = {};
-    if ('exact' in search) ops.eq = value => ({ op: 'eq', field, value });
-    if ('substring' in search) for (const op of ['contains', 'startsWith', 'endsWith', 'like']) ops[op] = (value: unknown, options?: { respectWords?: boolean }) => ({ op: op as SearchOperator, field, value, ...(op === 'contains' && options?.respectWords ? { respectWords: true } : {}) });
-    result[field] = ops;
-  }
-  return result as SearchFields<F>;
-}
 const compactSubstring = (value: string, normalizer: string) => normalizeText(value, normalizer).replace(/[\u0009-\u000d\u0020\u0085\u00a0\u1680\u2000-\u200a\u2028\u2029\u202f\u205f\u3000]/g, '');
 function normalizeLeaf(node: Extract<SearchNode, { field: string }>, spec: FieldSpec, profile: SearchProfile): string | Uint8Array {
   if (spec.type !== 'text') { ensure(node.op === 'eq', 'UNSUPPORTED_SEARCH'); return encodeField(spec, node.value, false); }

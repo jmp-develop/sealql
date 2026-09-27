@@ -1,7 +1,7 @@
 import { getTableColumns, getTableName, is, sql, type InferInsertModel, type InferSelectModel } from 'drizzle-orm';
 import {
-  bigint, customType, foreignKey, getTableConfig, index, pgSchema, pgTable, primaryKey, uniqueIndex,
-  text, uuid, PgCustomColumn, type PgColumn, type PgTable,
+  bigint, customType, foreignKey, getTableConfig, index, pgSchema, pgTable, uniqueIndex,
+  uuid, PgCustomColumn, type PgColumn, type PgTable,
 } from 'drizzle-orm/pg-core';
 import { unhex } from '../../../core/bytes.js';
 import { companionIndexName, companionProfiles } from '../../../core/companion-layout.js';
