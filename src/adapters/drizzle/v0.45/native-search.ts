@@ -383,7 +383,7 @@ export function searchMethods(sealerOf: () => import('../../../core/field-cipher
   type PublicRow<R> = { [K in keyof R as K extends `__seal_${string}` ? never : K]: Opened<R[K]> };
   async function search<const M extends Record<string, object>, R extends Record<string, unknown>>(db: Db, options: SearchOptions<M, R>): Promise<{ items: PublicRow<R>[]; nextCursor: string | null }> {
     ensure(options && options.match && options.query && typeof options.query === 'function', 'INVALID_VALUE');
-    const keys = Object.keys(options.match).sort();
+    const keys = Object.keys(options.match);
     ensure(keys.length > 0 && keys.length <= 8 && keys.every(key => /^[A-Za-z_][A-Za-z0-9_]*$/.test(key)), 'INVALID_VALUE');
     const limit = options.limit ?? 50;
     ensure(Number.isInteger(limit) && limit >= 1 && limit <= 200, 'INVALID_VALUE');
@@ -417,7 +417,7 @@ export function searchMethods(sealerOf: () => import('../../../core/field-cipher
     }))!;
     const queryDigest = await digest({ scopeId, match: keys.map(key => [key, regs[key].model, nodeFingerprint(asts[key])]),
       keyset: keyset.map(column => [getTableName(column.table), column.name]), limit });
-    const first = regs[keys[0]], ring = sealerOf().ring(first.model);
+    const firstByName = regs[[...keys].sort()[0]], ring = sealerOf().ring(firstByName.model);
     const cursorContext = { modelId: `search:${keys.map(key => regs[key].model).sort().join(',')}`, scopeId, keyScopeId: ring.keyScopeId, queryDigest };
     const openedCursor = options.cursor ? await openCursor(options.cursor, cursorContext, ring) : undefined;
     let previous: unknown[] | undefined;

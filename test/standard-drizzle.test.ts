@@ -3,7 +3,7 @@ import { test } from 'node:test';
 import { Pool } from 'pg';
 import { drizzle } from 'drizzle-orm/node-postgres';
 import { and, eq, relations, sql } from 'drizzle-orm';
-import { pgSchema, timestamp, uuid } from 'drizzle-orm/pg-core';
+import { PgDialect, pgSchema, timestamp, uuid } from 'drizzle-orm/pg-core';
 import { createSealer } from '../src/index.js';
 import { canonical, utf8 } from '../src/core/bytes.js';
 import { createSealed } from '../src/adapters/drizzle/v0.45/index.js';
@@ -31,12 +31,16 @@ test('native managed writes and opens stay atomic', async () => {
       memo: sealed.text('memo', { nullable: true, search: { substring: true } }),
     });
     const peopleSeal = sealed.register(people, { row: 'id', scope: 'scopeId' });
-    const orders = schema.table('orders', { id: uuid('id').primaryKey(), customerId: uuid('customer_id').notNull() });
+    const orders = schema.table('orders', { id: uuid('id').primaryKey(), scopeId: uuid('scope_id').notNull(), customerId: uuid('customer_id').notNull(),
+      label: sealed.text('label', { search: { exact: true } }) });
+    const ordersSeal = sealed.register(orders, { row: 'id', scope: 'scopeId' });
+    const orderExact = registrationOf(ordersSeal).storage.index!.profiles!['label/exact'].tokens;
     const profiles = registrationOf(peopleSeal).storage.index!.profiles!;
     const exact = profiles['name/exact'].tokens, substring = profiles['memo/substring'].tokens;
     await pool.query(`create table "${schemaName}".people (id uuid primary key,scope_id uuid not null,created_at timestamptz(3) not null,name_ct bytea not null,memo_ct bytea)`);
     await pool.query(`create table "${schemaName}".people_seal_index (scope_id uuid not null,row_id uuid not null,"${exact}" bigint[],"${substring}" bigint[],unique(scope_id,row_id),foreign key(row_id) references "${schemaName}".people(id) on delete cascade)`);
-    await pool.query(`create table "${schemaName}".orders (id uuid primary key,customer_id uuid not null)`);
+    await pool.query(`create table "${schemaName}".orders (id uuid primary key,scope_id uuid not null,customer_id uuid not null,label_ct bytea not null)`);
+    await pool.query(`create table "${schemaName}".orders_seal_index (scope_id uuid not null,row_id uuid not null,"${orderExact}" bigint[],unique(scope_id,row_id),foreign key(row_id) references "${schemaName}".orders(id) on delete cascade)`);
     const db = drizzle(pool);
     const first = fixture[0], second = fixture[1], third = fixture[2];
     const derivedTime = (id: string) => new Date(Number.parseInt(id.slice(0, 8), 16) * 1000 + Number.parseInt(id.slice(9, 12), 16) % 1000);
@@ -79,7 +83,8 @@ test('native managed writes and opens stay atomic', async () => {
     const mixedPage = await sealed.findMany(db, peopleSeal, { scope: first.scope_id,
       match: m => m.or(m.memo.contains(second.memo_plain.slice(0, 2)), m.sql(eq(people.id, first.id))) });
     assert.equal(mixedPage.items.length, 1);
-    await db.insert(orders).values([{ id: second.id, customerId: first.id }, { id: third.id, customerId: first.id }]);
+    await sealed.insert(db, ordersSeal, [{ id: second.id, scopeId: first.scope_id, customerId: first.id, label: first.name_plain },
+      { id: third.id, scopeId: first.scope_id, customerId: first.id, label: first.name_plain }]);
     const peopleRelations = relations(people, ({ many }) => ({ orders: many(orders) }));
     const ordersRelations = relations(orders, ({ one }) => ({ customer: one(people, { fields: [orders.customerId], references: [people.id] }) }));
     const relationalDb = drizzle(pool, { schema: { people, orders, peopleRelations, ordersRelations } });
@@ -177,7 +182,7 @@ test('native managed writes and opens stay atomic', async () => {
     const extraOrderIds = (await pool.query('select id from bench_realistic_100k.tickets where id<>$1 and id<>$2 order by id limit 29',
       [second.id, third.id])).rows.map(row => row.id as string);
     assert.equal(extraOrderIds.length, 29);
-    await db.insert(orders).values(extraOrderIds.map(id => ({ id, customerId: first.id })));
+    await sealed.insert(db, ordersSeal, extraOrderIds.map(id => ({ id, scopeId: first.scope_id, customerId: first.id, label: first.name_plain })));
     const fieldOpens = new Map<string, number>();
     cipher.open = async (...args) => {
       if (args[1].modelId === 'people') fieldOpens.set(args[1].fieldId, (fieldOpens.get(args[1].fieldId) ?? 0) + 1);
@@ -191,6 +196,29 @@ test('native managed writes and opens stay atomic', async () => {
     assert.equal(fieldOpens.get('name'), 1);
     assert.equal(fieldOpens.get('memo'), 1);
     cipher.open = originalOpen;
+    let joinedOrder = '';
+    const orderedJoin = ({ where, after, orderBy, flags, limit }: any) => {
+      joinedOrder = new PgDialect().sqlToQuery(sql.join(orderBy, sql.raw(','))).sql;
+      return db.select({ o: orders, c: people, ...flags }).from(orders)
+        .innerJoin(people, eq(orders.customerId, people.id)).where(and(where, after)).orderBy(...orderBy).limit(limit);
+    };
+    const orderedMatch = { o: [ordersSeal, (m: any) => m.label.eq(first.name_plain)] as const,
+      c: [peopleSeal, (m: any) => m.name.eq(first.name_plain)] as const };
+    const firstOrdered = await sealed.search(db, { scope: first.scope_id, match: orderedMatch, limit: 7, query: orderedJoin });
+    assert.ok(joinedOrder.indexOf('"orders"."id"') < joinedOrder.indexOf('"people"."id"'), joinedOrder);
+    assert.ok(firstOrdered.nextCursor);
+    await assert.rejects(sealed.search(db, { scope: first.scope_id, limit: 7, cursor: firstOrdered.nextCursor!, query: orderedJoin,
+      match: { c: orderedMatch.c, o: orderedMatch.o } }), { code: 'CURSOR_INVALID' });
+    const joinedIds = firstOrdered.items.map(row => (row as any).o.id as string);
+    let joinCursor: string | null = firstOrdered.nextCursor;
+    while (joinCursor) {
+      const page: { items: typeof firstOrdered.items; nextCursor: string | null } = await sealed.search(db,
+        { scope: first.scope_id, match: orderedMatch, limit: 7, cursor: joinCursor, query: orderedJoin });
+      joinedIds.push(...page.items.map(row => (row as any).o.id as string));
+      joinCursor = page.nextCursor;
+    }
+    assert.deepEqual(joinedIds, [second.id, third.id, ...extraOrderIds].sort());
+    assert.equal(new Set(joinedIds).size, joinedIds.length);
     await sealed.update(db, peopleSeal, { id: first.id, scopeId: first.scope_id }, { memo: second.memo_plain });
     const afterUpdate = await sealed.open(await db.select().from(people));
     assert.equal(afterUpdate[0].name, first.name_plain);
