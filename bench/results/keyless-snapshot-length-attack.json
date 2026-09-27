@@ -1,0 +1,191 @@
+{
+  "status": "complete",
+  "source": "bench_realistic_100k.customers",
+  "scope": "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa",
+  "rowsExpected": 100000,
+  "threat": "Only public id/scope/revision plus ciphertext byte lengths are projected as the snapshot view. Distinct plaintext values per field are an unordered auxiliary vocabulary, never a row mapping. No key, test seed, posting decryption or row-ID-to-value algorithm is used.",
+  "caveat": "Synthetic fixture also stores plaintext and has row-index-encoded UUIDs; these are excluded from the attacker view, so this is not a whole-fixture breach test.",
+  "visibleProjection": "id, scope_id, revision, and octet_length of six *_std_ct only",
+  "publicMeta": {
+    "rowCount": 100000,
+    "scopeCount": 1,
+    "revisionCounts": {
+      "1": 100000
+    },
+    "note": "UUID is retained only to join evaluator truth after guesses are fixed, never passed into guess functions."
+  },
+  "lengthVectors": {
+    "distinct": 6865,
+    "singletonVectors": 2462,
+    "singletonRows": 2462,
+    "singletonRowFraction": 0.02462,
+    "largestGroup": 3068,
+    "groupsOfAtLeast10": 1596,
+    "note": "ID is deliberately excluded; including a unique UUID would trivially make every vector unique."
+  },
+  "name": {
+    "vocabularySize": 99989,
+    "distinctCipherLengths": 3,
+    "inferredOverheadBytes": 33,
+    "minDifferenceBytes": 33,
+    "coveredByVocabularyLength": 100000,
+    "equallyCoveringOffsets": 1,
+    "rowsWithOneValueAtLength": 0,
+    "maxValuesSharingLength": 76220,
+    "rule": "Choose lexicographically first auxiliary value whose UTF-8 byte length plus inferred fixed envelope overhead equals public ciphertext byte length; otherwise no guess."
+  },
+  "phone": {
+    "vocabularySize": 100000,
+    "distinctCipherLengths": 1,
+    "inferredOverheadBytes": 33,
+    "minDifferenceBytes": 33,
+    "coveredByVocabularyLength": 100000,
+    "equallyCoveringOffsets": 1,
+    "rowsWithOneValueAtLength": 0,
+    "maxValuesSharingLength": 100000,
+    "rule": "Choose lexicographically first auxiliary value whose UTF-8 byte length plus inferred fixed envelope overhead equals public ciphertext byte length; otherwise no guess."
+  },
+  "address": {
+    "vocabularySize": 5994,
+    "distinctCipherLengths": 15,
+    "inferredOverheadBytes": 33,
+    "minDifferenceBytes": 33,
+    "coveredByVocabularyLength": 100000,
+    "equallyCoveringOffsets": 1,
+    "rowsWithOneValueAtLength": 0,
+    "maxValuesSharingLength": 1800,
+    "rule": "Choose lexicographically first auxiliary value whose UTF-8 byte length plus inferred fixed envelope overhead equals public ciphertext byte length; otherwise no guess."
+  },
+  "memo": {
+    "vocabularySize": 99986,
+    "distinctCipherLengths": 12,
+    "inferredOverheadBytes": 33,
+    "minDifferenceBytes": 33,
+    "coveredByVocabularyLength": 100000,
+    "equallyCoveringOffsets": 1,
+    "rowsWithOneValueAtLength": 0,
+    "maxValuesSharingLength": 48738,
+    "rule": "Choose lexicographically first auxiliary value whose UTF-8 byte length plus inferred fixed envelope overhead equals public ciphertext byte length; otherwise no guess."
+  },
+  "email": {
+    "vocabularySize": 100000,
+    "distinctCipherLengths": 8,
+    "inferredOverheadBytes": 33,
+    "minDifferenceBytes": 33,
+    "coveredByVocabularyLength": 100000,
+    "equallyCoveringOffsets": 1,
+    "rowsWithOneValueAtLength": 0,
+    "maxValuesSharingLength": 26288,
+    "rule": "Choose lexicographically first auxiliary value whose UTF-8 byte length plus inferred fixed envelope overhead equals public ciphertext byte length; otherwise no guess."
+  },
+  "company": {
+    "vocabularySize": 16,
+    "distinctCipherLengths": 10,
+    "inferredOverheadBytes": 33,
+    "minDifferenceBytes": 33,
+    "coveredByVocabularyLength": 100000,
+    "equallyCoveringOffsets": 1,
+    "rowsWithOneValueAtLength": 49955,
+    "maxValuesSharingLength": 3,
+    "rule": "Choose lexicographically first auxiliary value whose UTF-8 byte length plus inferred fixed envelope overhead equals public ciphertext byte length; otherwise no guess."
+  },
+  "guessesLockedBeforeOracle": true,
+  "attack": {
+    "correctFieldsPerRecord": [
+      30044,
+      69774,
+      180,
+      2,
+      0,
+      0,
+      0
+    ],
+    "fields": {
+      "name": {
+        "correct": 3,
+        "total": 100000,
+        "accuracy": 0.00003,
+        "wilson95Descriptive": [
+          0.000010202573900776641,
+          0.00008820964549540304
+        ],
+        "uniformVocabularyChance": 0.000010001100121013312,
+        "controlCorrect": 0,
+        "controlAccuracy": 0
+      },
+      "phone": {
+        "correct": 1,
+        "total": 100000,
+        "accuracy": 0.00001,
+        "wilson95Descriptive": [
+          0.000001765202323777592,
+          0.00005664855365337279
+        ],
+        "uniformVocabularyChance": 0.00001,
+        "controlCorrect": 1,
+        "controlAccuracy": 0.00001
+      },
+      "address": {
+        "correct": 241,
+        "total": 100000,
+        "accuracy": 0.00241,
+        "wilson95Descriptive": [
+          0.0021246130259956362,
+          0.002733616340265029
+        ],
+        "uniformVocabularyChance": 0.0001668335001668335,
+        "controlCorrect": 13,
+        "controlAccuracy": 0.00013
+      },
+      "memo": {
+        "correct": 12,
+        "total": 100000,
+        "accuracy": 0.00012,
+        "wilson95Descriptive": [
+          0.00006864819397889047,
+          0.00020975711080292104
+        ],
+        "uniformVocabularyChance": 0.000010001400196027445,
+        "controlCorrect": 2,
+        "controlAccuracy": 0.00002
+      },
+      "email": {
+        "correct": 8,
+        "total": 100000,
+        "accuracy": 0.00008,
+        "wilson95Descriptive": [
+          0.00004053804061932916,
+          0.00015787033732442377
+        ],
+        "uniformVocabularyChance": 0.00001,
+        "controlCorrect": 4,
+        "controlAccuracy": 0.00004
+      },
+      "company": {
+        "correct": 69875,
+        "total": 100000,
+        "accuracy": 0.69875,
+        "wilson95Descriptive": [
+          0.6958987308845132,
+          0.7015859993420904
+        ],
+        "uniformVocabularyChance": 0.0625,
+        "controlCorrect": 6399,
+        "controlAccuracy": 0.06399
+      }
+    },
+    "exactSixFieldRecords": {
+      "correct": 0,
+      "total": 100000,
+      "accuracy": 0,
+      "wilson95Descriptive": [
+        0,
+        0.000038414524267635735
+      ],
+      "uniformVocabularyChance": 1.0429701025065966e-25,
+      "controlCorrect": 0,
+      "controlAccuracy": 0
+    }
+  },
+  "control": "Uniform vocabulary draw per field and row from independent fixed xorshift32 seed 0x5eeda711; no secret/test seed or row ID used."
+}

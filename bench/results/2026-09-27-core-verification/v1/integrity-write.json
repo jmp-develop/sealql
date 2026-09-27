@@ -1,0 +1,75 @@
+{
+  "fixture": "core_verify_probe",
+  "cases": [
+    {
+      "label": "ciphertext-byte-tamper",
+      "verdict": "통과",
+      "actual": "AUTHENTICATION_FAILED"
+    },
+    {
+      "label": "ciphertext-other-row",
+      "verdict": "통과",
+      "actual": "AUTHENTICATION_FAILED"
+    },
+    {
+      "label": "ciphertext-other-field",
+      "verdict": "통과",
+      "actual": "AUTHENTICATION_FAILED"
+    },
+    {
+      "label": "wrong-root-key",
+      "verdict": "통과",
+      "actual": "AUTHENTICATION_FAILED"
+    },
+    {
+      "label": "wrong-model-key",
+      "verdict": "통과",
+      "actual": "AUTHENTICATION_FAILED"
+    },
+    {
+      "label": "cursor-tampered",
+      "verdict": "통과",
+      "actual": "CURSOR_INVALID"
+    },
+    {
+      "label": "cursor-other-query",
+      "verdict": "통과",
+      "actual": "CURSOR_INVALID"
+    },
+    {
+      "label": "database-omission",
+      "verdict": "한계(설계상)",
+      "actual": "token removed; result silently missing"
+    },
+    {
+      "label": "managed-insert-visible",
+      "verdict": "통과"
+    },
+    {
+      "label": "partial-update-preserves-other-token",
+      "verdict": "통과"
+    },
+    {
+      "label": "same-row-CAS-concurrency",
+      "verdict": "통과",
+      "rejection": "SealError: WRITE_CONFLICT"
+    },
+    {
+      "label": "different-row-concurrency",
+      "verdict": "통과"
+    },
+    {
+      "label": "transaction-companion-failure",
+      "verdict": "통과",
+      "actual": "DATABASE_ERROR"
+    },
+    {
+      "label": "transaction-parent-companion-rollback",
+      "verdict": "통과"
+    },
+    {
+      "label": "managed-delete-cascade",
+      "verdict": "통과"
+    }
+  ]
+}

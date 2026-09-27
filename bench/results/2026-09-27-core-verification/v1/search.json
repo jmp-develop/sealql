@@ -1,0 +1,151 @@
+{
+  "fixture": {
+    "source": "bench_realistic_100k.customers",
+    "encrypted": "bench_standard_next_100k.customers_skip_product_multi",
+    "index": "bench_standard_next_100k.customers_skip_product_multi_seal_index",
+    "rows": 100000,
+    "gin": [
+      {
+        "indexname": "seal_de9d32fbbc6ee7e5_gin",
+        "indexdef": "CREATE INDEX seal_de9d32fbbc6ee7e5_gin ON bench_standard_next_100k.customers_skip_product_multi_seal_index USING gin (tokens_792d75cf01821d67, tokens_1127994ab736baf4, tokens_ef1d32a52e2ce103, tokens_a639b11c8130dcf7, tokens_f289b89d86c7086a, tokens_7a1d2ba5ce2368fb)"
+      }
+    ]
+  },
+  "seed": 21027,
+  "fixed": [
+    {
+      "name": "eq",
+      "expected": 1,
+      "actual": 1,
+      "pages": 1,
+      "verdict": "통과"
+    },
+    {
+      "name": "contains",
+      "expected": 3,
+      "actual": 3,
+      "pages": 1,
+      "verdict": "통과"
+    },
+    {
+      "name": "startsWith",
+      "expected": 3,
+      "actual": 3,
+      "pages": 1,
+      "verdict": "통과"
+    },
+    {
+      "name": "endsWith",
+      "expected": 1,
+      "actual": 1,
+      "pages": 1,
+      "verdict": "통과"
+    },
+    {
+      "name": "like-prefix",
+      "expected": 3,
+      "actual": 3,
+      "pages": 1,
+      "verdict": "통과"
+    },
+    {
+      "name": "like-suffix",
+      "expected": 1,
+      "actual": 1,
+      "pages": 1,
+      "verdict": "통과"
+    },
+    {
+      "name": "like-infix",
+      "expected": 3,
+      "actual": 3,
+      "pages": 1,
+      "verdict": "통과"
+    },
+    {
+      "name": "respectWords",
+      "expected": 1,
+      "actual": 1,
+      "pages": 1,
+      "verdict": "통과"
+    },
+    {
+      "name": "nested",
+      "expected": 1,
+      "actual": 1,
+      "pages": 1,
+      "verdict": "통과"
+    },
+    {
+      "name": "mixed-exact-substring",
+      "expected": 1,
+      "actual": 1,
+      "pages": 1,
+      "verdict": "통과"
+    }
+  ],
+  "random": {
+    "requested": 1000,
+    "passed": 1000,
+    "failed": [],
+    "skippedBroad": 1664,
+    "attempts": 2664
+  },
+  "count": [
+    {
+      "name": "eq",
+      "expected": 1,
+      "actual": 1
+    },
+    {
+      "name": "contains",
+      "expected": 3,
+      "actual": 3
+    },
+    {
+      "name": "startsWith",
+      "expected": 3,
+      "actual": 3
+    },
+    {
+      "name": "endsWith",
+      "expected": 1,
+      "actual": 1
+    },
+    {
+      "name": "like-prefix",
+      "expected": 3,
+      "actual": 3
+    },
+    {
+      "name": "like-suffix",
+      "expected": 1,
+      "actual": 1
+    },
+    {
+      "name": "like-infix",
+      "expected": 3,
+      "actual": 3
+    },
+    {
+      "name": "respectWords",
+      "expected": 1,
+      "actual": 1
+    },
+    {
+      "name": "nested",
+      "expected": 1,
+      "actual": 1
+    },
+    {
+      "name": "mixed-exact-substring",
+      "expected": 1,
+      "actual": 1
+    },
+    {
+      "name": "budget",
+      "maxCandidates": 1,
+      "verdict": "LIMIT_EXCEEDED"
+    }
+  ]
+}

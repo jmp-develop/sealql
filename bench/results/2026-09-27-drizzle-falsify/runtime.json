@@ -1,0 +1,87 @@
+{
+  "node": {
+    "e1": {
+      "aesEqual": true,
+      "hmacEqual": true,
+      "hkdfEqual": true,
+      "decryptCalls": 60000,
+      "decryptWallMs": 1961.5629000000001,
+      "processCpuMs": 1969,
+      "bytes": 900000
+    },
+    "e7": {
+      "sameScopeMoved": "known plaintext",
+      "rowBoundMoved": "AUTH_FAIL",
+      "sameScopeOriginal": "known plaintext",
+      "rowBoundOriginal": "known plaintext",
+      "snapshotTokensEqual": true,
+      "cipherLengthsEqual": true
+    }
+  },
+  "workerd": {
+    "crypto": {
+      "e1": {
+        "aesEqual": true,
+        "hmacEqual": true,
+        "hkdfEqual": true,
+        "decryptCalls": 60000,
+        "decryptWallMs": 930,
+        "processCpuMs": null,
+        "bytes": 900000
+      },
+      "e7": {
+        "sameScopeMoved": "known plaintext",
+        "rowBoundMoved": "AUTH_FAIL",
+        "sameScopeOriginal": "known plaintext",
+        "rowBoundOriginal": "known plaintext",
+        "snapshotTokensEqual": true,
+        "cipherLengthsEqual": true
+      }
+    },
+    "scopes": [
+      "A",
+      "B"
+    ],
+    "events": [
+      [
+        "to",
+        "A"
+      ],
+      [
+        "to",
+        "B"
+      ],
+      [
+        "from",
+        "A"
+      ],
+      [
+        "from",
+        "B"
+      ],
+      [
+        "to",
+        null
+      ],
+      [
+        "from",
+        null
+      ]
+    ],
+    "outside": [
+      {
+        "value": "OUT"
+      }
+    ],
+    "outsideEvents": [
+      [
+        "to",
+        null
+      ],
+      [
+        "from",
+        null
+      ]
+    ]
+  }
+}

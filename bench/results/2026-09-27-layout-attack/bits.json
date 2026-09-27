@@ -1,0 +1,1114 @@
+{
+  "source": ".local/ratings.txt",
+  "seed": 99,
+  "bitWidths": [
+    14,
+    15,
+    16,
+    17,
+    20
+  ],
+  "victimRows": [
+    20000,
+    100000
+  ],
+  "referenceRows": 20000,
+  "referenceNote": "rows 100,001–120,000 reserved disjointly; known-row and false-positive measurements do not use reference plaintext",
+  "tokenMethod": "product searchPieces; benchmark HKDF/HMAC input framing, scope and profile descriptor fixed at product 16-bit profile; only high-bit truncation varies",
+  "product16Assertions": [
+    {
+      "layout": "adjacent",
+      "pieces": 142548,
+      "mismatches": 0
+    },
+    {
+      "layout": "adjacent+start/end+word",
+      "pieces": 148140,
+      "mismatches": 0
+    }
+  ],
+  "measures": [
+    {
+      "layout": "adjacent",
+      "uniquePiecesVerified": 142548,
+      "variants": [
+        {
+          "bits": 14,
+          "sizes": [
+            {
+              "victimRows": 20000,
+              "known": [
+                {
+                  "knownPct": 1,
+                  "knownRows": 200,
+                  "adjacentPct": 22.91,
+                  "mostlyDecodedUnknownRowsPct": 0.65
+                },
+                {
+                  "knownPct": 5,
+                  "knownRows": 1000,
+                  "adjacentPct": 26.35,
+                  "mostlyDecodedUnknownRowsPct": 0.58
+                }
+              ],
+              "search": [
+                {
+                  "name": "2-char contains",
+                  "term": "영화",
+                  "queryPieceCount": 1,
+                  "matches": 6355,
+                  "candidates": 6409,
+                  "falsePositiveFactor": 1.008
+                },
+                {
+                  "name": "middle 3-char contains",
+                  "term": "서비스",
+                  "queryPieceCount": 2,
+                  "matches": 3,
+                  "candidates": 3,
+                  "falsePositiveFactor": 1
+                },
+                {
+                  "name": "two-word contains",
+                  "term": "정말 재미",
+                  "queryPieceCount": 3,
+                  "matches": 85,
+                  "candidates": 102,
+                  "falsePositiveFactor": 1.2
+                },
+                {
+                  "name": "field-start autocomplete",
+                  "term": "정말",
+                  "queryPieceCount": 1,
+                  "matches": 489,
+                  "candidates": 1617,
+                  "falsePositiveFactor": 3.307
+                }
+              ]
+            },
+            {
+              "victimRows": 100000,
+              "known": [
+                {
+                  "knownPct": 1,
+                  "knownRows": 1000,
+                  "adjacentPct": 29.41,
+                  "mostlyDecodedUnknownRowsPct": 0.79
+                },
+                {
+                  "knownPct": 5,
+                  "knownRows": 5000,
+                  "adjacentPct": 11.55,
+                  "mostlyDecodedUnknownRowsPct": 0.16
+                }
+              ],
+              "search": [
+                {
+                  "name": "2-char contains",
+                  "term": "영화",
+                  "queryPieceCount": 1,
+                  "matches": 32015,
+                  "candidates": 32270,
+                  "falsePositiveFactor": 1.008
+                },
+                {
+                  "name": "middle 3-char contains",
+                  "term": "서비스",
+                  "queryPieceCount": 2,
+                  "matches": 8,
+                  "candidates": 8,
+                  "falsePositiveFactor": 1
+                },
+                {
+                  "name": "two-word contains",
+                  "term": "정말 재미",
+                  "queryPieceCount": 3,
+                  "matches": 510,
+                  "candidates": 605,
+                  "falsePositiveFactor": 1.186
+                },
+                {
+                  "name": "field-start autocomplete",
+                  "term": "정말",
+                  "queryPieceCount": 1,
+                  "matches": 2562,
+                  "candidates": 8295,
+                  "falsePositiveFactor": 3.238
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "bits": 15,
+          "sizes": [
+            {
+              "victimRows": 20000,
+              "known": [
+                {
+                  "knownPct": 1,
+                  "knownRows": 200,
+                  "adjacentPct": 27.02,
+                  "mostlyDecodedUnknownRowsPct": 1.26
+                },
+                {
+                  "knownPct": 5,
+                  "knownRows": 1000,
+                  "adjacentPct": 40.65,
+                  "mostlyDecodedUnknownRowsPct": 2.98
+                }
+              ],
+              "search": [
+                {
+                  "name": "2-char contains",
+                  "term": "영화",
+                  "queryPieceCount": 1,
+                  "matches": 6355,
+                  "candidates": 6379,
+                  "falsePositiveFactor": 1.004
+                },
+                {
+                  "name": "middle 3-char contains",
+                  "term": "서비스",
+                  "queryPieceCount": 2,
+                  "matches": 3,
+                  "candidates": 3,
+                  "falsePositiveFactor": 1
+                },
+                {
+                  "name": "two-word contains",
+                  "term": "정말 재미",
+                  "queryPieceCount": 3,
+                  "matches": 85,
+                  "candidates": 101,
+                  "falsePositiveFactor": 1.188
+                },
+                {
+                  "name": "field-start autocomplete",
+                  "term": "정말",
+                  "queryPieceCount": 1,
+                  "matches": 489,
+                  "candidates": 1617,
+                  "falsePositiveFactor": 3.307
+                }
+              ]
+            },
+            {
+              "victimRows": 100000,
+              "known": [
+                {
+                  "knownPct": 1,
+                  "knownRows": 1000,
+                  "adjacentPct": 41.6,
+                  "mostlyDecodedUnknownRowsPct": 3.3
+                },
+                {
+                  "knownPct": 5,
+                  "knownRows": 5000,
+                  "adjacentPct": 29.94,
+                  "mostlyDecodedUnknownRowsPct": 0.5
+                }
+              ],
+              "search": [
+                {
+                  "name": "2-char contains",
+                  "term": "영화",
+                  "queryPieceCount": 1,
+                  "matches": 32015,
+                  "candidates": 32094,
+                  "falsePositiveFactor": 1.002
+                },
+                {
+                  "name": "middle 3-char contains",
+                  "term": "서비스",
+                  "queryPieceCount": 2,
+                  "matches": 8,
+                  "candidates": 8,
+                  "falsePositiveFactor": 1
+                },
+                {
+                  "name": "two-word contains",
+                  "term": "정말 재미",
+                  "queryPieceCount": 3,
+                  "matches": 510,
+                  "candidates": 600,
+                  "falsePositiveFactor": 1.176
+                },
+                {
+                  "name": "field-start autocomplete",
+                  "term": "정말",
+                  "queryPieceCount": 1,
+                  "matches": 2562,
+                  "candidates": 8292,
+                  "falsePositiveFactor": 3.237
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "bits": 16,
+          "sizes": [
+            {
+              "victimRows": 20000,
+              "known": [
+                {
+                  "knownPct": 1,
+                  "knownRows": 200,
+                  "adjacentPct": 28.74,
+                  "mostlyDecodedUnknownRowsPct": 2.02
+                },
+                {
+                  "knownPct": 5,
+                  "knownRows": 1000,
+                  "adjacentPct": 47.72,
+                  "mostlyDecodedUnknownRowsPct": 6.26
+                }
+              ],
+              "search": [
+                {
+                  "name": "2-char contains",
+                  "term": "영화",
+                  "queryPieceCount": 1,
+                  "matches": 6355,
+                  "candidates": 6356,
+                  "falsePositiveFactor": 1
+                },
+                {
+                  "name": "middle 3-char contains",
+                  "term": "서비스",
+                  "queryPieceCount": 2,
+                  "matches": 3,
+                  "candidates": 3,
+                  "falsePositiveFactor": 1
+                },
+                {
+                  "name": "two-word contains",
+                  "term": "정말 재미",
+                  "queryPieceCount": 3,
+                  "matches": 85,
+                  "candidates": 100,
+                  "falsePositiveFactor": 1.176
+                },
+                {
+                  "name": "field-start autocomplete",
+                  "term": "정말",
+                  "queryPieceCount": 1,
+                  "matches": 489,
+                  "candidates": 1610,
+                  "falsePositiveFactor": 3.292
+                }
+              ]
+            },
+            {
+              "victimRows": 100000,
+              "known": [
+                {
+                  "knownPct": 1,
+                  "knownRows": 1000,
+                  "adjacentPct": 47.73,
+                  "mostlyDecodedUnknownRowsPct": 6.7
+                },
+                {
+                  "knownPct": 5,
+                  "knownRows": 5000,
+                  "adjacentPct": 48.04,
+                  "mostlyDecodedUnknownRowsPct": 3.64
+                }
+              ],
+              "search": [
+                {
+                  "name": "2-char contains",
+                  "term": "영화",
+                  "queryPieceCount": 1,
+                  "matches": 32015,
+                  "candidates": 32023,
+                  "falsePositiveFactor": 1
+                },
+                {
+                  "name": "middle 3-char contains",
+                  "term": "서비스",
+                  "queryPieceCount": 2,
+                  "matches": 8,
+                  "candidates": 8,
+                  "falsePositiveFactor": 1
+                },
+                {
+                  "name": "two-word contains",
+                  "term": "정말 재미",
+                  "queryPieceCount": 3,
+                  "matches": 510,
+                  "candidates": 597,
+                  "falsePositiveFactor": 1.171
+                },
+                {
+                  "name": "field-start autocomplete",
+                  "term": "정말",
+                  "queryPieceCount": 1,
+                  "matches": 2562,
+                  "candidates": 8273,
+                  "falsePositiveFactor": 3.229
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "bits": 17,
+          "sizes": [
+            {
+              "victimRows": 20000,
+              "known": [
+                {
+                  "knownPct": 1,
+                  "knownRows": 200,
+                  "adjacentPct": 29.15,
+                  "mostlyDecodedUnknownRowsPct": 2.11
+                },
+                {
+                  "knownPct": 5,
+                  "knownRows": 1000,
+                  "adjacentPct": 51.09,
+                  "mostlyDecodedUnknownRowsPct": 8.35
+                }
+              ],
+              "search": [
+                {
+                  "name": "2-char contains",
+                  "term": "영화",
+                  "queryPieceCount": 1,
+                  "matches": 6355,
+                  "candidates": 6356,
+                  "falsePositiveFactor": 1
+                },
+                {
+                  "name": "middle 3-char contains",
+                  "term": "서비스",
+                  "queryPieceCount": 2,
+                  "matches": 3,
+                  "candidates": 3,
+                  "falsePositiveFactor": 1
+                },
+                {
+                  "name": "two-word contains",
+                  "term": "정말 재미",
+                  "queryPieceCount": 3,
+                  "matches": 85,
+                  "candidates": 100,
+                  "falsePositiveFactor": 1.176
+                },
+                {
+                  "name": "field-start autocomplete",
+                  "term": "정말",
+                  "queryPieceCount": 1,
+                  "matches": 489,
+                  "candidates": 1610,
+                  "falsePositiveFactor": 3.292
+                }
+              ]
+            },
+            {
+              "victimRows": 100000,
+              "known": [
+                {
+                  "knownPct": 1,
+                  "knownRows": 1000,
+                  "adjacentPct": 51.29,
+                  "mostlyDecodedUnknownRowsPct": 8.86
+                },
+                {
+                  "knownPct": 5,
+                  "knownRows": 5000,
+                  "adjacentPct": 61.25,
+                  "mostlyDecodedUnknownRowsPct": 11.53
+                }
+              ],
+              "search": [
+                {
+                  "name": "2-char contains",
+                  "term": "영화",
+                  "queryPieceCount": 1,
+                  "matches": 32015,
+                  "candidates": 32023,
+                  "falsePositiveFactor": 1
+                },
+                {
+                  "name": "middle 3-char contains",
+                  "term": "서비스",
+                  "queryPieceCount": 2,
+                  "matches": 8,
+                  "candidates": 8,
+                  "falsePositiveFactor": 1
+                },
+                {
+                  "name": "two-word contains",
+                  "term": "정말 재미",
+                  "queryPieceCount": 3,
+                  "matches": 510,
+                  "candidates": 597,
+                  "falsePositiveFactor": 1.171
+                },
+                {
+                  "name": "field-start autocomplete",
+                  "term": "정말",
+                  "queryPieceCount": 1,
+                  "matches": 2562,
+                  "candidates": 8273,
+                  "falsePositiveFactor": 3.229
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "bits": 20,
+          "sizes": [
+            {
+              "victimRows": 20000,
+              "known": [
+                {
+                  "knownPct": 1,
+                  "knownRows": 200,
+                  "adjacentPct": 29.97,
+                  "mostlyDecodedUnknownRowsPct": 2.42
+                },
+                {
+                  "knownPct": 5,
+                  "knownRows": 1000,
+                  "adjacentPct": 56.23,
+                  "mostlyDecodedUnknownRowsPct": 13.44
+                }
+              ],
+              "search": [
+                {
+                  "name": "2-char contains",
+                  "term": "영화",
+                  "queryPieceCount": 1,
+                  "matches": 6355,
+                  "candidates": 6355,
+                  "falsePositiveFactor": 1
+                },
+                {
+                  "name": "middle 3-char contains",
+                  "term": "서비스",
+                  "queryPieceCount": 2,
+                  "matches": 3,
+                  "candidates": 3,
+                  "falsePositiveFactor": 1
+                },
+                {
+                  "name": "two-word contains",
+                  "term": "정말 재미",
+                  "queryPieceCount": 3,
+                  "matches": 85,
+                  "candidates": 100,
+                  "falsePositiveFactor": 1.176
+                },
+                {
+                  "name": "field-start autocomplete",
+                  "term": "정말",
+                  "queryPieceCount": 1,
+                  "matches": 489,
+                  "candidates": 1575,
+                  "falsePositiveFactor": 3.221
+                }
+              ]
+            },
+            {
+              "victimRows": 100000,
+              "known": [
+                {
+                  "knownPct": 1,
+                  "knownRows": 1000,
+                  "adjacentPct": 54.93,
+                  "mostlyDecodedUnknownRowsPct": 12.31
+                },
+                {
+                  "knownPct": 5,
+                  "knownRows": 5000,
+                  "adjacentPct": 74.99,
+                  "mostlyDecodedUnknownRowsPct": 43.06
+                }
+              ],
+              "search": [
+                {
+                  "name": "2-char contains",
+                  "term": "영화",
+                  "queryPieceCount": 1,
+                  "matches": 32015,
+                  "candidates": 32015,
+                  "falsePositiveFactor": 1
+                },
+                {
+                  "name": "middle 3-char contains",
+                  "term": "서비스",
+                  "queryPieceCount": 2,
+                  "matches": 8,
+                  "candidates": 8,
+                  "falsePositiveFactor": 1
+                },
+                {
+                  "name": "two-word contains",
+                  "term": "정말 재미",
+                  "queryPieceCount": 3,
+                  "matches": 510,
+                  "candidates": 596,
+                  "falsePositiveFactor": 1.169
+                },
+                {
+                  "name": "field-start autocomplete",
+                  "term": "정말",
+                  "queryPieceCount": 1,
+                  "matches": 2562,
+                  "candidates": 8095,
+                  "falsePositiveFactor": 3.16
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "layout": "adjacent+start/end+word",
+      "uniquePiecesVerified": 148140,
+      "variants": [
+        {
+          "bits": 14,
+          "sizes": [
+            {
+              "victimRows": 20000,
+              "known": [
+                {
+                  "knownPct": 1,
+                  "knownRows": 200,
+                  "adjacentPct": 23.56,
+                  "mostlyDecodedUnknownRowsPct": 0.35
+                },
+                {
+                  "knownPct": 5,
+                  "knownRows": 1000,
+                  "adjacentPct": 24.4,
+                  "mostlyDecodedUnknownRowsPct": 0.02
+                }
+              ],
+              "search": [
+                {
+                  "name": "2-char contains",
+                  "term": "영화",
+                  "queryPieceCount": 1,
+                  "matches": 6355,
+                  "candidates": 6374,
+                  "falsePositiveFactor": 1.003
+                },
+                {
+                  "name": "middle 3-char contains",
+                  "term": "서비스",
+                  "queryPieceCount": 2,
+                  "matches": 3,
+                  "candidates": 3,
+                  "falsePositiveFactor": 1
+                },
+                {
+                  "name": "two-word contains",
+                  "term": "정말 재미",
+                  "queryPieceCount": 5,
+                  "matches": 85,
+                  "candidates": 87,
+                  "falsePositiveFactor": 1.024
+                },
+                {
+                  "name": "field-start autocomplete",
+                  "term": "정말",
+                  "queryPieceCount": 2,
+                  "matches": 489,
+                  "candidates": 494,
+                  "falsePositiveFactor": 1.01
+                }
+              ]
+            },
+            {
+              "victimRows": 100000,
+              "known": [
+                {
+                  "knownPct": 1,
+                  "knownRows": 1000,
+                  "adjacentPct": 24.8,
+                  "mostlyDecodedUnknownRowsPct": 0.12
+                },
+                {
+                  "knownPct": 5,
+                  "knownRows": 5000,
+                  "adjacentPct": 8.89,
+                  "mostlyDecodedUnknownRowsPct": 0
+                }
+              ],
+              "search": [
+                {
+                  "name": "2-char contains",
+                  "term": "영화",
+                  "queryPieceCount": 1,
+                  "matches": 32015,
+                  "candidates": 32129,
+                  "falsePositiveFactor": 1.004
+                },
+                {
+                  "name": "middle 3-char contains",
+                  "term": "서비스",
+                  "queryPieceCount": 2,
+                  "matches": 8,
+                  "candidates": 8,
+                  "falsePositiveFactor": 1
+                },
+                {
+                  "name": "two-word contains",
+                  "term": "정말 재미",
+                  "queryPieceCount": 5,
+                  "matches": 510,
+                  "candidates": 526,
+                  "falsePositiveFactor": 1.031
+                },
+                {
+                  "name": "field-start autocomplete",
+                  "term": "정말",
+                  "queryPieceCount": 2,
+                  "matches": 2562,
+                  "candidates": 2585,
+                  "falsePositiveFactor": 1.009
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "bits": 15,
+          "sizes": [
+            {
+              "victimRows": 20000,
+              "known": [
+                {
+                  "knownPct": 1,
+                  "knownRows": 200,
+                  "adjacentPct": 26.35,
+                  "mostlyDecodedUnknownRowsPct": 1.51
+                },
+                {
+                  "knownPct": 5,
+                  "knownRows": 1000,
+                  "adjacentPct": 35.82,
+                  "mostlyDecodedUnknownRowsPct": 0.29
+                }
+              ],
+              "search": [
+                {
+                  "name": "2-char contains",
+                  "term": "영화",
+                  "queryPieceCount": 1,
+                  "matches": 6355,
+                  "candidates": 6373,
+                  "falsePositiveFactor": 1.003
+                },
+                {
+                  "name": "middle 3-char contains",
+                  "term": "서비스",
+                  "queryPieceCount": 2,
+                  "matches": 3,
+                  "candidates": 3,
+                  "falsePositiveFactor": 1
+                },
+                {
+                  "name": "two-word contains",
+                  "term": "정말 재미",
+                  "queryPieceCount": 5,
+                  "matches": 85,
+                  "candidates": 87,
+                  "falsePositiveFactor": 1.024
+                },
+                {
+                  "name": "field-start autocomplete",
+                  "term": "정말",
+                  "queryPieceCount": 2,
+                  "matches": 489,
+                  "candidates": 494,
+                  "falsePositiveFactor": 1.01
+                }
+              ]
+            },
+            {
+              "victimRows": 100000,
+              "known": [
+                {
+                  "knownPct": 1,
+                  "knownRows": 1000,
+                  "adjacentPct": 37.23,
+                  "mostlyDecodedUnknownRowsPct": 0.93
+                },
+                {
+                  "knownPct": 5,
+                  "knownRows": 5000,
+                  "adjacentPct": 26.85,
+                  "mostlyDecodedUnknownRowsPct": 0.04
+                }
+              ],
+              "search": [
+                {
+                  "name": "2-char contains",
+                  "term": "영화",
+                  "queryPieceCount": 1,
+                  "matches": 32015,
+                  "candidates": 32123,
+                  "falsePositiveFactor": 1.003
+                },
+                {
+                  "name": "middle 3-char contains",
+                  "term": "서비스",
+                  "queryPieceCount": 2,
+                  "matches": 8,
+                  "candidates": 8,
+                  "falsePositiveFactor": 1
+                },
+                {
+                  "name": "two-word contains",
+                  "term": "정말 재미",
+                  "queryPieceCount": 5,
+                  "matches": 510,
+                  "candidates": 526,
+                  "falsePositiveFactor": 1.031
+                },
+                {
+                  "name": "field-start autocomplete",
+                  "term": "정말",
+                  "queryPieceCount": 2,
+                  "matches": 2562,
+                  "candidates": 2580,
+                  "falsePositiveFactor": 1.007
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "bits": 16,
+          "sizes": [
+            {
+              "victimRows": 20000,
+              "known": [
+                {
+                  "knownPct": 1,
+                  "knownRows": 200,
+                  "adjacentPct": 27.77,
+                  "mostlyDecodedUnknownRowsPct": 2.18
+                },
+                {
+                  "knownPct": 5,
+                  "knownRows": 1000,
+                  "adjacentPct": 44.65,
+                  "mostlyDecodedUnknownRowsPct": 1.7
+                }
+              ],
+              "search": [
+                {
+                  "name": "2-char contains",
+                  "term": "영화",
+                  "queryPieceCount": 1,
+                  "matches": 6355,
+                  "candidates": 6355,
+                  "falsePositiveFactor": 1
+                },
+                {
+                  "name": "middle 3-char contains",
+                  "term": "서비스",
+                  "queryPieceCount": 2,
+                  "matches": 3,
+                  "candidates": 3,
+                  "falsePositiveFactor": 1
+                },
+                {
+                  "name": "two-word contains",
+                  "term": "정말 재미",
+                  "queryPieceCount": 5,
+                  "matches": 85,
+                  "candidates": 87,
+                  "falsePositiveFactor": 1.024
+                },
+                {
+                  "name": "field-start autocomplete",
+                  "term": "정말",
+                  "queryPieceCount": 2,
+                  "matches": 489,
+                  "candidates": 494,
+                  "falsePositiveFactor": 1.01
+                }
+              ]
+            },
+            {
+              "victimRows": 100000,
+              "known": [
+                {
+                  "knownPct": 1,
+                  "knownRows": 1000,
+                  "adjacentPct": 45.24,
+                  "mostlyDecodedUnknownRowsPct": 5.18
+                },
+                {
+                  "knownPct": 5,
+                  "knownRows": 5000,
+                  "adjacentPct": 46.22,
+                  "mostlyDecodedUnknownRowsPct": 1.19
+                }
+              ],
+              "search": [
+                {
+                  "name": "2-char contains",
+                  "term": "영화",
+                  "queryPieceCount": 1,
+                  "matches": 32015,
+                  "candidates": 32016,
+                  "falsePositiveFactor": 1
+                },
+                {
+                  "name": "middle 3-char contains",
+                  "term": "서비스",
+                  "queryPieceCount": 2,
+                  "matches": 8,
+                  "candidates": 8,
+                  "falsePositiveFactor": 1
+                },
+                {
+                  "name": "two-word contains",
+                  "term": "정말 재미",
+                  "queryPieceCount": 5,
+                  "matches": 510,
+                  "candidates": 526,
+                  "falsePositiveFactor": 1.031
+                },
+                {
+                  "name": "field-start autocomplete",
+                  "term": "정말",
+                  "queryPieceCount": 2,
+                  "matches": 2562,
+                  "candidates": 2578,
+                  "falsePositiveFactor": 1.006
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "bits": 17,
+          "sizes": [
+            {
+              "victimRows": 20000,
+              "known": [
+                {
+                  "knownPct": 1,
+                  "knownRows": 200,
+                  "adjacentPct": 28.46,
+                  "mostlyDecodedUnknownRowsPct": 2.53
+                },
+                {
+                  "knownPct": 5,
+                  "knownRows": 1000,
+                  "adjacentPct": 48.7,
+                  "mostlyDecodedUnknownRowsPct": 5.44
+                }
+              ],
+              "search": [
+                {
+                  "name": "2-char contains",
+                  "term": "영화",
+                  "queryPieceCount": 1,
+                  "matches": 6355,
+                  "candidates": 6355,
+                  "falsePositiveFactor": 1
+                },
+                {
+                  "name": "middle 3-char contains",
+                  "term": "서비스",
+                  "queryPieceCount": 2,
+                  "matches": 3,
+                  "candidates": 3,
+                  "falsePositiveFactor": 1
+                },
+                {
+                  "name": "two-word contains",
+                  "term": "정말 재미",
+                  "queryPieceCount": 5,
+                  "matches": 85,
+                  "candidates": 87,
+                  "falsePositiveFactor": 1.024
+                },
+                {
+                  "name": "field-start autocomplete",
+                  "term": "정말",
+                  "queryPieceCount": 2,
+                  "matches": 489,
+                  "candidates": 494,
+                  "falsePositiveFactor": 1.01
+                }
+              ]
+            },
+            {
+              "victimRows": 100000,
+              "known": [
+                {
+                  "knownPct": 1,
+                  "knownRows": 1000,
+                  "adjacentPct": 49.5,
+                  "mostlyDecodedUnknownRowsPct": 9.49
+                },
+                {
+                  "knownPct": 5,
+                  "knownRows": 5000,
+                  "adjacentPct": 58.66,
+                  "mostlyDecodedUnknownRowsPct": 7.06
+                }
+              ],
+              "search": [
+                {
+                  "name": "2-char contains",
+                  "term": "영화",
+                  "queryPieceCount": 1,
+                  "matches": 32015,
+                  "candidates": 32015,
+                  "falsePositiveFactor": 1
+                },
+                {
+                  "name": "middle 3-char contains",
+                  "term": "서비스",
+                  "queryPieceCount": 2,
+                  "matches": 8,
+                  "candidates": 8,
+                  "falsePositiveFactor": 1
+                },
+                {
+                  "name": "two-word contains",
+                  "term": "정말 재미",
+                  "queryPieceCount": 5,
+                  "matches": 510,
+                  "candidates": 526,
+                  "falsePositiveFactor": 1.031
+                },
+                {
+                  "name": "field-start autocomplete",
+                  "term": "정말",
+                  "queryPieceCount": 2,
+                  "matches": 2562,
+                  "candidates": 2578,
+                  "falsePositiveFactor": 1.006
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "bits": 20,
+          "sizes": [
+            {
+              "victimRows": 20000,
+              "known": [
+                {
+                  "knownPct": 1,
+                  "knownRows": 200,
+                  "adjacentPct": 29.43,
+                  "mostlyDecodedUnknownRowsPct": 3.81
+                },
+                {
+                  "knownPct": 5,
+                  "knownRows": 1000,
+                  "adjacentPct": 55.64,
+                  "mostlyDecodedUnknownRowsPct": 25.39
+                }
+              ],
+              "search": [
+                {
+                  "name": "2-char contains",
+                  "term": "영화",
+                  "queryPieceCount": 1,
+                  "matches": 6355,
+                  "candidates": 6355,
+                  "falsePositiveFactor": 1
+                },
+                {
+                  "name": "middle 3-char contains",
+                  "term": "서비스",
+                  "queryPieceCount": 2,
+                  "matches": 3,
+                  "candidates": 3,
+                  "falsePositiveFactor": 1
+                },
+                {
+                  "name": "two-word contains",
+                  "term": "정말 재미",
+                  "queryPieceCount": 5,
+                  "matches": 85,
+                  "candidates": 87,
+                  "falsePositiveFactor": 1.024
+                },
+                {
+                  "name": "field-start autocomplete",
+                  "term": "정말",
+                  "queryPieceCount": 2,
+                  "matches": 489,
+                  "candidates": 493,
+                  "falsePositiveFactor": 1.008
+                }
+              ]
+            },
+            {
+              "victimRows": 100000,
+              "known": [
+                {
+                  "knownPct": 1,
+                  "knownRows": 1000,
+                  "adjacentPct": 54.64,
+                  "mostlyDecodedUnknownRowsPct": 24.53
+                },
+                {
+                  "knownPct": 5,
+                  "knownRows": 5000,
+                  "adjacentPct": 75.4,
+                  "mostlyDecodedUnknownRowsPct": 70.09
+                }
+              ],
+              "search": [
+                {
+                  "name": "2-char contains",
+                  "term": "영화",
+                  "queryPieceCount": 1,
+                  "matches": 32015,
+                  "candidates": 32015,
+                  "falsePositiveFactor": 1
+                },
+                {
+                  "name": "middle 3-char contains",
+                  "term": "서비스",
+                  "queryPieceCount": 2,
+                  "matches": 8,
+                  "candidates": 8,
+                  "falsePositiveFactor": 1
+                },
+                {
+                  "name": "two-word contains",
+                  "term": "정말 재미",
+                  "queryPieceCount": 5,
+                  "matches": 510,
+                  "candidates": 526,
+                  "falsePositiveFactor": 1.031
+                },
+                {
+                  "name": "field-start autocomplete",
+                  "term": "정말",
+                  "queryPieceCount": 2,
+                  "matches": 2562,
+                  "candidates": 2577,
+                  "falsePositiveFactor": 1.006
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

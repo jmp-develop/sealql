@@ -1,0 +1,12 @@
+{
+  "fixture": "bench_standard_next_100k.core_verify_candidate",
+  "source": "bench_standard_next_100k.customers_skip_product_multi",
+  "term": "서울서비스",
+  "pageLimit": 1,
+  "firstId": "10000000-0000-4000-8000-000000000001",
+  "tamperedNextId": "10000000-0000-4000-8000-000000000003",
+  "mutation": "last ciphertext byte XOR 1; companion untouched",
+  "actual": "AUTHENTICATION_FAILED",
+  "restored": true,
+  "verdict": "통과"
+}

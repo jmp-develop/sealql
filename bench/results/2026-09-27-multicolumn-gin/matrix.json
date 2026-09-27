@@ -1,0 +1,6777 @@
+[
+  {
+    "case": "and2",
+    "rows": 20,
+    "summary": {
+      "plain": {
+        "totalMs": 0.7703000000001339,
+        "sqlMs": 0.7609000000011292,
+        "sqlCalls": 1,
+        "candidates": 0,
+        "authenticatedFields": 0,
+        "returned": 20
+      },
+      "next_separate": {
+        "totalMs": 7.998200000001816,
+        "sqlMs": 1.2141000000010536,
+        "sqlCalls": 1,
+        "candidates": 27,
+        "authenticatedFields": 134,
+        "returned": 20
+      },
+      "next_multi": {
+        "totalMs": 7.536700000000565,
+        "sqlMs": 1.350399999999354,
+        "sqlCalls": 1,
+        "candidates": 27,
+        "authenticatedFields": 134,
+        "returned": 20
+      },
+      "skip_separate": {
+        "totalMs": 7.706500000000233,
+        "sqlMs": 1.3646999999982654,
+        "sqlCalls": 1,
+        "candidates": 27,
+        "authenticatedFields": 134,
+        "returned": 20
+      },
+      "skip_multi": {
+        "totalMs": 8.117199999996956,
+        "sqlMs": 1.3152000000009139,
+        "sqlCalls": 1,
+        "candidates": 27,
+        "authenticatedFields": 134,
+        "returned": 20
+      }
+    },
+    "runs": {
+      "plain": [
+        {
+          "totalMs": 0.8459999999977299,
+          "sqlMs": 0.8249999999970896,
+          "sqlCalls": 1,
+          "candidates": 0,
+          "authenticatedFields": 0,
+          "returned": 20
+        },
+        {
+          "totalMs": 0.7703000000001339,
+          "sqlMs": 0.7586000000010245,
+          "sqlCalls": 1,
+          "candidates": 0,
+          "authenticatedFields": 0,
+          "returned": 20
+        },
+        {
+          "totalMs": 0.462599999998929,
+          "sqlMs": 0.45500000000174623,
+          "sqlCalls": 1,
+          "candidates": 0,
+          "authenticatedFields": 0,
+          "returned": 20
+        },
+        {
+          "totalMs": 0.7700000000004366,
+          "sqlMs": 0.7609000000011292,
+          "sqlCalls": 1,
+          "candidates": 0,
+          "authenticatedFields": 0,
+          "returned": 20
+        },
+        {
+          "totalMs": 0.8378000000011525,
+          "sqlMs": 0.8271999999997206,
+          "sqlCalls": 1,
+          "candidates": 0,
+          "authenticatedFields": 0,
+          "returned": 20
+        },
+        {
+          "totalMs": 0.8653999999987718,
+          "sqlMs": 0.8539000000018859,
+          "sqlCalls": 1,
+          "candidates": 0,
+          "authenticatedFields": 0,
+          "returned": 20
+        },
+        {
+          "totalMs": 0.4069999999992433,
+          "sqlMs": 0.40340000000287546,
+          "sqlCalls": 1,
+          "candidates": 0,
+          "authenticatedFields": 0,
+          "returned": 20
+        }
+      ],
+      "next_separate": [
+        {
+          "totalMs": 8.29030000000057,
+          "sqlMs": 1.2141000000010536,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 134,
+          "returned": 20
+        },
+        {
+          "totalMs": 8.217500000002474,
+          "sqlMs": 1.4685000000026776,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 134,
+          "returned": 20
+        },
+        {
+          "totalMs": 7.128499999998894,
+          "sqlMs": 1.143899999999121,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 134,
+          "returned": 20
+        },
+        {
+          "totalMs": 8.302299999999377,
+          "sqlMs": 1.613099999998667,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 134,
+          "returned": 20
+        },
+        {
+          "totalMs": 7.958699999999226,
+          "sqlMs": 1.1382999999987078,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 134,
+          "returned": 20
+        },
+        {
+          "totalMs": 7.998200000001816,
+          "sqlMs": 1.3296000000009371,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 134,
+          "returned": 20
+        },
+        {
+          "totalMs": 7.077900000000227,
+          "sqlMs": 1.0722999999998137,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 134,
+          "returned": 20
+        }
+      ],
+      "next_multi": [
+        {
+          "totalMs": 7.500300000003335,
+          "sqlMs": 1.3535999999985506,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 134,
+          "returned": 20
+        },
+        {
+          "totalMs": 7.565899999997782,
+          "sqlMs": 1.2222000000001572,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 134,
+          "returned": 20
+        },
+        {
+          "totalMs": 7.536700000000565,
+          "sqlMs": 1.350399999999354,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 134,
+          "returned": 20
+        },
+        {
+          "totalMs": 8.090799999998126,
+          "sqlMs": 1.4588000000003376,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 134,
+          "returned": 20
+        },
+        {
+          "totalMs": 8.585300000002462,
+          "sqlMs": 1.7403999999987718,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 134,
+          "returned": 20
+        },
+        {
+          "totalMs": 7.437600000001112,
+          "sqlMs": 1.3133000000016182,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 134,
+          "returned": 20
+        },
+        {
+          "totalMs": 7.470699999998033,
+          "sqlMs": 1.132499999999709,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 134,
+          "returned": 20
+        }
+      ],
+      "skip_separate": [
+        {
+          "totalMs": 7.464400000000751,
+          "sqlMs": 1.3343000000022585,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 134,
+          "returned": 20
+        },
+        {
+          "totalMs": 7.474799999999959,
+          "sqlMs": 1.4465999999993073,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 134,
+          "returned": 20
+        },
+        {
+          "totalMs": 7.706500000000233,
+          "sqlMs": 1.4380000000019209,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 134,
+          "returned": 20
+        },
+        {
+          "totalMs": 7.535700000000361,
+          "sqlMs": 1.1872999999977765,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 134,
+          "returned": 20
+        },
+        {
+          "totalMs": 7.768599999999424,
+          "sqlMs": 1.454200000000128,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 134,
+          "returned": 20
+        },
+        {
+          "totalMs": 7.775099999998929,
+          "sqlMs": 1.3646999999982654,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 134,
+          "returned": 20
+        },
+        {
+          "totalMs": 8.505600000000413,
+          "sqlMs": 1.136399999999412,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 134,
+          "returned": 20
+        }
+      ],
+      "skip_multi": [
+        {
+          "totalMs": 8.117199999996956,
+          "sqlMs": 1.3152000000009139,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 134,
+          "returned": 20
+        },
+        {
+          "totalMs": 7.0649000000012165,
+          "sqlMs": 1.173399999999674,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 134,
+          "returned": 20
+        },
+        {
+          "totalMs": 8.501600000003236,
+          "sqlMs": 1.3902999999991152,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 134,
+          "returned": 20
+        },
+        {
+          "totalMs": 7.367399999999179,
+          "sqlMs": 1.1759000000020023,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 134,
+          "returned": 20
+        },
+        {
+          "totalMs": 8.842500000002474,
+          "sqlMs": 1.3764000000010128,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 134,
+          "returned": 20
+        },
+        {
+          "totalMs": 7.253600000000006,
+          "sqlMs": 1.3136000000013155,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 134,
+          "returned": 20
+        },
+        {
+          "totalMs": 9.15570000000298,
+          "sqlMs": 1.3574999999982538,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 134,
+          "returned": 20
+        }
+      ]
+    }
+  },
+  {
+    "case": "and4",
+    "rows": 20,
+    "summary": {
+      "plain": {
+        "totalMs": 60.49040000000241,
+        "sqlMs": 60.481700000000274,
+        "sqlCalls": 1,
+        "candidates": 0,
+        "authenticatedFields": 0,
+        "returned": 20
+      },
+      "next_separate": {
+        "totalMs": 30.04080000000249,
+        "sqlMs": 22.199899999999616,
+        "sqlCalls": 1,
+        "candidates": 27,
+        "authenticatedFields": 148,
+        "returned": 20
+      },
+      "next_multi": {
+        "totalMs": 15.833999999998923,
+        "sqlMs": 8.475600000001577,
+        "sqlCalls": 1,
+        "candidates": 27,
+        "authenticatedFields": 148,
+        "returned": 20
+      },
+      "skip_separate": {
+        "totalMs": 64.25120000000243,
+        "sqlMs": 56.638999999999214,
+        "sqlCalls": 1,
+        "candidates": 27,
+        "authenticatedFields": 148,
+        "returned": 20
+      },
+      "skip_multi": {
+        "totalMs": 17.91270000000077,
+        "sqlMs": 10.59860000000117,
+        "sqlCalls": 1,
+        "candidates": 27,
+        "authenticatedFields": 148,
+        "returned": 20
+      }
+    },
+    "runs": {
+      "plain": [
+        {
+          "totalMs": 60.49040000000241,
+          "sqlMs": 60.481700000000274,
+          "sqlCalls": 1,
+          "candidates": 0,
+          "authenticatedFields": 0,
+          "returned": 20
+        },
+        {
+          "totalMs": 64.12100000000282,
+          "sqlMs": 64.11230000000069,
+          "sqlCalls": 1,
+          "candidates": 0,
+          "authenticatedFields": 0,
+          "returned": 20
+        },
+        {
+          "totalMs": 18.736399999997957,
+          "sqlMs": 18.72660000000178,
+          "sqlCalls": 1,
+          "candidates": 0,
+          "authenticatedFields": 0,
+          "returned": 20
+        },
+        {
+          "totalMs": 67.84549999999945,
+          "sqlMs": 67.83580000000075,
+          "sqlCalls": 1,
+          "candidates": 0,
+          "authenticatedFields": 0,
+          "returned": 20
+        },
+        {
+          "totalMs": 18.444400000000314,
+          "sqlMs": 18.434400000001915,
+          "sqlCalls": 1,
+          "candidates": 0,
+          "authenticatedFields": 0,
+          "returned": 20
+        },
+        {
+          "totalMs": 63.559799999999086,
+          "sqlMs": 63.55069999999978,
+          "sqlCalls": 1,
+          "candidates": 0,
+          "authenticatedFields": 0,
+          "returned": 20
+        },
+        {
+          "totalMs": 18.478799999997136,
+          "sqlMs": 18.469099999998434,
+          "sqlCalls": 1,
+          "candidates": 0,
+          "authenticatedFields": 0,
+          "returned": 20
+        }
+      ],
+      "next_separate": [
+        {
+          "totalMs": 30.04080000000249,
+          "sqlMs": 22.996900000001915,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 148,
+          "returned": 20
+        },
+        {
+          "totalMs": 30.6462999999967,
+          "sqlMs": 22.199899999999616,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 148,
+          "returned": 20
+        },
+        {
+          "totalMs": 22.181699999997363,
+          "sqlMs": 14.894199999998818,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 148,
+          "returned": 20
+        },
+        {
+          "totalMs": 32.07940000000235,
+          "sqlMs": 23.982499999998254,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 148,
+          "returned": 20
+        },
+        {
+          "totalMs": 21.90990000000238,
+          "sqlMs": 13.6420999999973,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 148,
+          "returned": 20
+        },
+        {
+          "totalMs": 34.17540000000008,
+          "sqlMs": 23.6678000000029,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 148,
+          "returned": 20
+        },
+        {
+          "totalMs": 20.858500000002095,
+          "sqlMs": 13.576600000000326,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 148,
+          "returned": 20
+        }
+      ],
+      "next_multi": [
+        {
+          "totalMs": 16.546800000000076,
+          "sqlMs": 8.475600000001577,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 148,
+          "returned": 20
+        },
+        {
+          "totalMs": 15.833999999998923,
+          "sqlMs": 8.915499999999156,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 148,
+          "returned": 20
+        },
+        {
+          "totalMs": 14.700799999998708,
+          "sqlMs": 5.705900000000838,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 148,
+          "returned": 20
+        },
+        {
+          "totalMs": 16.91400000000067,
+          "sqlMs": 9.009900000000926,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 148,
+          "returned": 20
+        },
+        {
+          "totalMs": 12.281399999999849,
+          "sqlMs": 5.395199999999022,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 148,
+          "returned": 20
+        },
+        {
+          "totalMs": 17.315200000000914,
+          "sqlMs": 9.571100000001024,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 148,
+          "returned": 20
+        },
+        {
+          "totalMs": 11.877599999999802,
+          "sqlMs": 5.179400000000896,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 148,
+          "returned": 20
+        }
+      ],
+      "skip_separate": [
+        {
+          "totalMs": 66.03369999999995,
+          "sqlMs": 57.47509999999966,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 148,
+          "returned": 20
+        },
+        {
+          "totalMs": 65.23440000000119,
+          "sqlMs": 58.02349999999933,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 148,
+          "returned": 20
+        },
+        {
+          "totalMs": 67.63290000000052,
+          "sqlMs": 60.169599999997445,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 148,
+          "returned": 20
+        },
+        {
+          "totalMs": 64.09149999999863,
+          "sqlMs": 56.54059999999663,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 148,
+          "returned": 20
+        },
+        {
+          "totalMs": 61.404200000000856,
+          "sqlMs": 54.16770000000179,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 148,
+          "returned": 20
+        },
+        {
+          "totalMs": 62.56660000000193,
+          "sqlMs": 55.184000000001106,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 148,
+          "returned": 20
+        },
+        {
+          "totalMs": 64.25120000000243,
+          "sqlMs": 56.638999999999214,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 148,
+          "returned": 20
+        }
+      ],
+      "skip_multi": [
+        {
+          "totalMs": 18.17359999999826,
+          "sqlMs": 11.05739999999787,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 148,
+          "returned": 20
+        },
+        {
+          "totalMs": 13.951900000000023,
+          "sqlMs": 7.262799999996787,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 148,
+          "returned": 20
+        },
+        {
+          "totalMs": 17.920799999999872,
+          "sqlMs": 10.840899999999237,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 148,
+          "returned": 20
+        },
+        {
+          "totalMs": 15.514400000000023,
+          "sqlMs": 8.067500000001019,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 148,
+          "returned": 20
+        },
+        {
+          "totalMs": 17.943999999999505,
+          "sqlMs": 10.59860000000117,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 148,
+          "returned": 20
+        },
+        {
+          "totalMs": 13.789200000002893,
+          "sqlMs": 6.970699999998033,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 148,
+          "returned": 20
+        },
+        {
+          "totalMs": 17.91270000000077,
+          "sqlMs": 10.81039999999848,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 148,
+          "returned": 20
+        }
+      ]
+    }
+  },
+  {
+    "case": "and6",
+    "rows": 20,
+    "summary": {
+      "plain": {
+        "totalMs": 2.5569999999970605,
+        "sqlMs": 2.5495999999984633,
+        "sqlCalls": 1,
+        "candidates": 0,
+        "authenticatedFields": 0,
+        "returned": 20
+      },
+      "next_separate": {
+        "totalMs": 23.463599999999133,
+        "sqlMs": 15.154199999997218,
+        "sqlCalls": 1,
+        "candidates": 27,
+        "authenticatedFields": 162,
+        "returned": 20
+      },
+      "next_multi": {
+        "totalMs": 17.157999999999447,
+        "sqlMs": 8.916199999999662,
+        "sqlCalls": 1,
+        "candidates": 27,
+        "authenticatedFields": 162,
+        "returned": 20
+      },
+      "skip_separate": {
+        "totalMs": 24.69880000000194,
+        "sqlMs": 16.16400000000067,
+        "sqlCalls": 1,
+        "candidates": 27,
+        "authenticatedFields": 162,
+        "returned": 20
+      },
+      "skip_multi": {
+        "totalMs": 17.44210000000021,
+        "sqlMs": 8.990200000000186,
+        "sqlCalls": 1,
+        "candidates": 27,
+        "authenticatedFields": 162,
+        "returned": 20
+      }
+    },
+    "runs": {
+      "plain": [
+        {
+          "totalMs": 2.6568000000006577,
+          "sqlMs": 2.647799999998824,
+          "sqlCalls": 1,
+          "candidates": 0,
+          "authenticatedFields": 0,
+          "returned": 20
+        },
+        {
+          "totalMs": 2.647499999999127,
+          "sqlMs": 2.639100000000326,
+          "sqlCalls": 1,
+          "candidates": 0,
+          "authenticatedFields": 0,
+          "returned": 20
+        },
+        {
+          "totalMs": 1.813799999999901,
+          "sqlMs": 1.8076000000000931,
+          "sqlCalls": 1,
+          "candidates": 0,
+          "authenticatedFields": 0,
+          "returned": 20
+        },
+        {
+          "totalMs": 2.5569999999970605,
+          "sqlMs": 2.5495999999984633,
+          "sqlCalls": 1,
+          "candidates": 0,
+          "authenticatedFields": 0,
+          "returned": 20
+        },
+        {
+          "totalMs": 1.7275000000008731,
+          "sqlMs": 1.717899999999645,
+          "sqlCalls": 1,
+          "candidates": 0,
+          "authenticatedFields": 0,
+          "returned": 20
+        },
+        {
+          "totalMs": 2.824799999998504,
+          "sqlMs": 2.817399999999907,
+          "sqlCalls": 1,
+          "candidates": 0,
+          "authenticatedFields": 0,
+          "returned": 20
+        },
+        {
+          "totalMs": 2.4048000000002503,
+          "sqlMs": 2.3985000000029686,
+          "sqlCalls": 1,
+          "candidates": 0,
+          "authenticatedFields": 0,
+          "returned": 20
+        }
+      ],
+      "next_separate": [
+        {
+          "totalMs": 23.700799999998708,
+          "sqlMs": 14.722300000001269,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 162,
+          "returned": 20
+        },
+        {
+          "totalMs": 23.251799999998184,
+          "sqlMs": 15.446200000002136,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 162,
+          "returned": 20
+        },
+        {
+          "totalMs": 23.936699999998382,
+          "sqlMs": 15.543799999999464,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 162,
+          "returned": 20
+        },
+        {
+          "totalMs": 22.41240000000107,
+          "sqlMs": 14.89310000000114,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 162,
+          "returned": 20
+        },
+        {
+          "totalMs": 22.899499999999534,
+          "sqlMs": 15.132300000001123,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 162,
+          "returned": 20
+        },
+        {
+          "totalMs": 23.852899999998044,
+          "sqlMs": 15.154199999997218,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 162,
+          "returned": 20
+        },
+        {
+          "totalMs": 23.463599999999133,
+          "sqlMs": 15.403600000001461,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 162,
+          "returned": 20
+        }
+      ],
+      "next_multi": [
+        {
+          "totalMs": 16.671300000001793,
+          "sqlMs": 8.815099999999802,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 162,
+          "returned": 20
+        },
+        {
+          "totalMs": 16.74120000000039,
+          "sqlMs": 8.809000000001106,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 162,
+          "returned": 20
+        },
+        {
+          "totalMs": 17.389500000001135,
+          "sqlMs": 9.302299999999377,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 162,
+          "returned": 20
+        },
+        {
+          "totalMs": 16.83339999999953,
+          "sqlMs": 8.958600000001752,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 162,
+          "returned": 20
+        },
+        {
+          "totalMs": 17.157999999999447,
+          "sqlMs": 8.695700000000215,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 162,
+          "returned": 20
+        },
+        {
+          "totalMs": 17.48199999999997,
+          "sqlMs": 8.916199999999662,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 162,
+          "returned": 20
+        },
+        {
+          "totalMs": 17.209200000001147,
+          "sqlMs": 9.043699999998353,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 162,
+          "returned": 20
+        }
+      ],
+      "skip_separate": [
+        {
+          "totalMs": 23.892399999996996,
+          "sqlMs": 16.22820000000138,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 162,
+          "returned": 20
+        },
+        {
+          "totalMs": 24.4291000000012,
+          "sqlMs": 16.05580000000191,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 162,
+          "returned": 20
+        },
+        {
+          "totalMs": 24.103899999998248,
+          "sqlMs": 16.32459999999992,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 162,
+          "returned": 20
+        },
+        {
+          "totalMs": 24.69880000000194,
+          "sqlMs": 16.004499999999098,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 162,
+          "returned": 20
+        },
+        {
+          "totalMs": 24.90179999999964,
+          "sqlMs": 15.899700000001758,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 162,
+          "returned": 20
+        },
+        {
+          "totalMs": 24.776600000001054,
+          "sqlMs": 16.16400000000067,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 162,
+          "returned": 20
+        },
+        {
+          "totalMs": 25.112700000001496,
+          "sqlMs": 16.892500000001746,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 162,
+          "returned": 20
+        }
+      ],
+      "skip_multi": [
+        {
+          "totalMs": 17.44210000000021,
+          "sqlMs": 8.339100000001054,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 162,
+          "returned": 20
+        },
+        {
+          "totalMs": 16.180199999998877,
+          "sqlMs": 8.653800000000047,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 162,
+          "returned": 20
+        },
+        {
+          "totalMs": 17.861899999999878,
+          "sqlMs": 9.604999999999563,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 162,
+          "returned": 20
+        },
+        {
+          "totalMs": 16.57679999999891,
+          "sqlMs": 8.990200000000186,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 162,
+          "returned": 20
+        },
+        {
+          "totalMs": 18.47769999999946,
+          "sqlMs": 8.353399999999965,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 162,
+          "returned": 20
+        },
+        {
+          "totalMs": 16.95929999999862,
+          "sqlMs": 9.43829999999798,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 162,
+          "returned": 20
+        },
+        {
+          "totalMs": 17.61279999999897,
+          "sqlMs": 9.296800000000076,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 162,
+          "returned": 20
+        }
+      ]
+    }
+  },
+  {
+    "case": "or2",
+    "rows": 20,
+    "summary": {
+      "plain": {
+        "totalMs": 0.5612999999975727,
+        "sqlMs": 0.5496999999995751,
+        "sqlCalls": 1,
+        "candidates": 0,
+        "authenticatedFields": 0,
+        "returned": 20
+      },
+      "next_separate": {
+        "totalMs": 6.745700000003126,
+        "sqlMs": 0.9884999999994761,
+        "sqlCalls": 1,
+        "candidates": 27,
+        "authenticatedFields": 134,
+        "returned": 20
+      },
+      "next_multi": {
+        "totalMs": 6.873199999998178,
+        "sqlMs": 1.1942999999992026,
+        "sqlCalls": 1,
+        "candidates": 27,
+        "authenticatedFields": 134,
+        "returned": 20
+      },
+      "skip_separate": {
+        "totalMs": 7.44970000000103,
+        "sqlMs": 1.2713000000003376,
+        "sqlCalls": 1,
+        "candidates": 27,
+        "authenticatedFields": 134,
+        "returned": 20
+      },
+      "skip_multi": {
+        "totalMs": 6.961199999997916,
+        "sqlMs": 1.2785000000003492,
+        "sqlCalls": 1,
+        "candidates": 27,
+        "authenticatedFields": 134,
+        "returned": 20
+      }
+    },
+    "runs": {
+      "plain": [
+        {
+          "totalMs": 0.6428999999989173,
+          "sqlMs": 0.6374999999970896,
+          "sqlCalls": 1,
+          "candidates": 0,
+          "authenticatedFields": 0,
+          "returned": 20
+        },
+        {
+          "totalMs": 0.9352000000035332,
+          "sqlMs": 0.9276000000027125,
+          "sqlCalls": 1,
+          "candidates": 0,
+          "authenticatedFields": 0,
+          "returned": 20
+        },
+        {
+          "totalMs": 0.5612999999975727,
+          "sqlMs": 0.5362999999997555,
+          "sqlCalls": 1,
+          "candidates": 0,
+          "authenticatedFields": 0,
+          "returned": 20
+        },
+        {
+          "totalMs": 0.553699999996752,
+          "sqlMs": 0.5496999999995751,
+          "sqlCalls": 1,
+          "candidates": 0,
+          "authenticatedFields": 0,
+          "returned": 20
+        },
+        {
+          "totalMs": 0.3978000000024622,
+          "sqlMs": 0.394800000001851,
+          "sqlCalls": 1,
+          "candidates": 0,
+          "authenticatedFields": 0,
+          "returned": 20
+        },
+        {
+          "totalMs": 0.618399999999383,
+          "sqlMs": 0.6130000000011933,
+          "sqlCalls": 1,
+          "candidates": 0,
+          "authenticatedFields": 0,
+          "returned": 20
+        },
+        {
+          "totalMs": 0.3889000000017404,
+          "sqlMs": 0.3857000000025437,
+          "sqlCalls": 1,
+          "candidates": 0,
+          "authenticatedFields": 0,
+          "returned": 20
+        }
+      ],
+      "next_separate": [
+        {
+          "totalMs": 7.4879000000000815,
+          "sqlMs": 0.9884999999994761,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 134,
+          "returned": 20
+        },
+        {
+          "totalMs": 6.887800000000425,
+          "sqlMs": 1.227999999999156,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 134,
+          "returned": 20
+        },
+        {
+          "totalMs": 7.415199999999459,
+          "sqlMs": 1.2615000000005239,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 134,
+          "returned": 20
+        },
+        {
+          "totalMs": 6.745700000003126,
+          "sqlMs": 1.163300000000163,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 134,
+          "returned": 20
+        },
+        {
+          "totalMs": 6.158799999997427,
+          "sqlMs": 0.8832999999976892,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 134,
+          "returned": 20
+        },
+        {
+          "totalMs": 6.68920000000071,
+          "sqlMs": 0.9655999999995402,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 134,
+          "returned": 20
+        },
+        {
+          "totalMs": 6.57300000000032,
+          "sqlMs": 0.940999999998894,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 134,
+          "returned": 20
+        }
+      ],
+      "next_multi": [
+        {
+          "totalMs": 10.596300000001065,
+          "sqlMs": 0.968299999996816,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 134,
+          "returned": 20
+        },
+        {
+          "totalMs": 7.371600000002218,
+          "sqlMs": 1.324799999998504,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 134,
+          "returned": 20
+        },
+        {
+          "totalMs": 7.309799999999086,
+          "sqlMs": 1.3705000000009022,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 134,
+          "returned": 20
+        },
+        {
+          "totalMs": 6.672900000001391,
+          "sqlMs": 1.0305000000007567,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 134,
+          "returned": 20
+        },
+        {
+          "totalMs": 6.674699999999575,
+          "sqlMs": 1.201600000000326,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 134,
+          "returned": 20
+        },
+        {
+          "totalMs": 6.873199999998178,
+          "sqlMs": 1.1288000000022294,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 134,
+          "returned": 20
+        },
+        {
+          "totalMs": 6.845600000000559,
+          "sqlMs": 1.1942999999992026,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 134,
+          "returned": 20
+        }
+      ],
+      "skip_separate": [
+        {
+          "totalMs": 7.944000000003143,
+          "sqlMs": 1.361399999997957,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 134,
+          "returned": 20
+        },
+        {
+          "totalMs": 7.44970000000103,
+          "sqlMs": 1.301100000000588,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 134,
+          "returned": 20
+        },
+        {
+          "totalMs": 8.683199999999488,
+          "sqlMs": 1.5221000000019558,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 134,
+          "returned": 20
+        },
+        {
+          "totalMs": 6.961299999999028,
+          "sqlMs": 1.2713000000003376,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 134,
+          "returned": 20
+        },
+        {
+          "totalMs": 6.796200000000681,
+          "sqlMs": 1.1993000000002212,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 134,
+          "returned": 20
+        },
+        {
+          "totalMs": 7.062799999999697,
+          "sqlMs": 1.2379000000000815,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 134,
+          "returned": 20
+        },
+        {
+          "totalMs": 8.753000000000611,
+          "sqlMs": 1.197599999999511,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 134,
+          "returned": 20
+        }
+      ],
+      "skip_multi": [
+        {
+          "totalMs": 7.227499999997235,
+          "sqlMs": 1.287899999999354,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 134,
+          "returned": 20
+        },
+        {
+          "totalMs": 7.229400000000169,
+          "sqlMs": 1.313399999999092,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 134,
+          "returned": 20
+        },
+        {
+          "totalMs": 7.206599999997707,
+          "sqlMs": 1.2985999999982596,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 134,
+          "returned": 20
+        },
+        {
+          "totalMs": 6.43409999999858,
+          "sqlMs": 0.9517000000014377,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 134,
+          "returned": 20
+        },
+        {
+          "totalMs": 6.92080000000351,
+          "sqlMs": 1.1993000000002212,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 134,
+          "returned": 20
+        },
+        {
+          "totalMs": 6.761800000000221,
+          "sqlMs": 1.2785000000003492,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 134,
+          "returned": 20
+        },
+        {
+          "totalMs": 6.961199999997916,
+          "sqlMs": 1.2722000000030675,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 134,
+          "returned": 20
+        }
+      ]
+    }
+  },
+  {
+    "case": "or3",
+    "rows": 2,
+    "summary": {
+      "plain": {
+        "totalMs": 0.46550000000206637,
+        "sqlMs": 0.46119999999791617,
+        "sqlCalls": 1,
+        "candidates": 0,
+        "authenticatedFields": 0,
+        "returned": 2
+      },
+      "next_separate": {
+        "totalMs": 2.6586000000024796,
+        "sqlMs": 1.1467999999986205,
+        "sqlCalls": 1,
+        "candidates": 3,
+        "authenticatedFields": 14,
+        "returned": 2
+      },
+      "next_multi": {
+        "totalMs": 2.8382999999994354,
+        "sqlMs": 1.225399999999354,
+        "sqlCalls": 1,
+        "candidates": 3,
+        "authenticatedFields": 14,
+        "returned": 2
+      },
+      "skip_separate": {
+        "totalMs": 2.98070000000007,
+        "sqlMs": 1.2376000000003842,
+        "sqlCalls": 1,
+        "candidates": 3,
+        "authenticatedFields": 14,
+        "returned": 2
+      },
+      "skip_multi": {
+        "totalMs": 2.9843999999975495,
+        "sqlMs": 1.203300000001036,
+        "sqlCalls": 1,
+        "candidates": 3,
+        "authenticatedFields": 14,
+        "returned": 2
+      }
+    },
+    "runs": {
+      "plain": [
+        {
+          "totalMs": 0.46550000000206637,
+          "sqlMs": 0.46119999999791617,
+          "sqlCalls": 1,
+          "candidates": 0,
+          "authenticatedFields": 0,
+          "returned": 2
+        },
+        {
+          "totalMs": 0.5799999999981083,
+          "sqlMs": 0.5743000000002212,
+          "sqlCalls": 1,
+          "candidates": 0,
+          "authenticatedFields": 0,
+          "returned": 2
+        },
+        {
+          "totalMs": 0.4493000000002212,
+          "sqlMs": 0.44399999999950523,
+          "sqlCalls": 1,
+          "candidates": 0,
+          "authenticatedFields": 0,
+          "returned": 2
+        },
+        {
+          "totalMs": 0.4900999999990745,
+          "sqlMs": 0.4859999999971478,
+          "sqlCalls": 1,
+          "candidates": 0,
+          "authenticatedFields": 0,
+          "returned": 2
+        },
+        {
+          "totalMs": 0.36850000000049477,
+          "sqlMs": 0.3654000000024098,
+          "sqlCalls": 1,
+          "candidates": 0,
+          "authenticatedFields": 0,
+          "returned": 2
+        },
+        {
+          "totalMs": 0.4732000000003609,
+          "sqlMs": 0.469199999999546,
+          "sqlCalls": 1,
+          "candidates": 0,
+          "authenticatedFields": 0,
+          "returned": 2
+        },
+        {
+          "totalMs": 0.3679000000011001,
+          "sqlMs": 0.3650999999990745,
+          "sqlCalls": 1,
+          "candidates": 0,
+          "authenticatedFields": 0,
+          "returned": 2
+        }
+      ],
+      "next_separate": [
+        {
+          "totalMs": 2.6268999999992957,
+          "sqlMs": 1.078799999999319,
+          "sqlCalls": 1,
+          "candidates": 3,
+          "authenticatedFields": 14,
+          "returned": 2
+        },
+        {
+          "totalMs": 2.8016000000025088,
+          "sqlMs": 1.1926999999996042,
+          "sqlCalls": 1,
+          "candidates": 3,
+          "authenticatedFields": 14,
+          "returned": 2
+        },
+        {
+          "totalMs": 2.757499999999709,
+          "sqlMs": 1.0985000000000582,
+          "sqlCalls": 1,
+          "candidates": 3,
+          "authenticatedFields": 14,
+          "returned": 2
+        },
+        {
+          "totalMs": 2.6586000000024796,
+          "sqlMs": 1.1467999999986205,
+          "sqlCalls": 1,
+          "candidates": 3,
+          "authenticatedFields": 14,
+          "returned": 2
+        },
+        {
+          "totalMs": 2.601200000000972,
+          "sqlMs": 1.1510999999991327,
+          "sqlCalls": 1,
+          "candidates": 3,
+          "authenticatedFields": 14,
+          "returned": 2
+        },
+        {
+          "totalMs": 2.7999999999992724,
+          "sqlMs": 1.3077999999986787,
+          "sqlCalls": 1,
+          "candidates": 3,
+          "authenticatedFields": 14,
+          "returned": 2
+        },
+        {
+          "totalMs": 2.5203999999976077,
+          "sqlMs": 1.0985000000000582,
+          "sqlCalls": 1,
+          "candidates": 3,
+          "authenticatedFields": 14,
+          "returned": 2
+        }
+      ],
+      "next_multi": [
+        {
+          "totalMs": 2.9372000000003027,
+          "sqlMs": 1.225399999999354,
+          "sqlCalls": 1,
+          "candidates": 3,
+          "authenticatedFields": 14,
+          "returned": 2
+        },
+        {
+          "totalMs": 3.051000000003114,
+          "sqlMs": 1.36620000000039,
+          "sqlCalls": 1,
+          "candidates": 3,
+          "authenticatedFields": 14,
+          "returned": 2
+        },
+        {
+          "totalMs": 2.7281000000002678,
+          "sqlMs": 1.0835000000006403,
+          "sqlCalls": 1,
+          "candidates": 3,
+          "authenticatedFields": 14,
+          "returned": 2
+        },
+        {
+          "totalMs": 2.8215999999993073,
+          "sqlMs": 1.2947000000021944,
+          "sqlCalls": 1,
+          "candidates": 3,
+          "authenticatedFields": 14,
+          "returned": 2
+        },
+        {
+          "totalMs": 2.7540999999982887,
+          "sqlMs": 1.2032999999973981,
+          "sqlCalls": 1,
+          "candidates": 3,
+          "authenticatedFields": 14,
+          "returned": 2
+        },
+        {
+          "totalMs": 2.8382999999994354,
+          "sqlMs": 1.2158000000017637,
+          "sqlCalls": 1,
+          "candidates": 3,
+          "authenticatedFields": 14,
+          "returned": 2
+        },
+        {
+          "totalMs": 2.8479999999981374,
+          "sqlMs": 1.3605999999999767,
+          "sqlCalls": 1,
+          "candidates": 3,
+          "authenticatedFields": 14,
+          "returned": 2
+        }
+      ],
+      "skip_separate": [
+        {
+          "totalMs": 3.346399999998539,
+          "sqlMs": 1.516299999999319,
+          "sqlCalls": 1,
+          "candidates": 3,
+          "authenticatedFields": 14,
+          "returned": 2
+        },
+        {
+          "totalMs": 3.8523999999997613,
+          "sqlMs": 1.2376000000003842,
+          "sqlCalls": 1,
+          "candidates": 3,
+          "authenticatedFields": 14,
+          "returned": 2
+        },
+        {
+          "totalMs": 2.9290000000000873,
+          "sqlMs": 1.1898999999975786,
+          "sqlCalls": 1,
+          "candidates": 3,
+          "authenticatedFields": 14,
+          "returned": 2
+        },
+        {
+          "totalMs": 2.98070000000007,
+          "sqlMs": 1.266299999999319,
+          "sqlCalls": 1,
+          "candidates": 3,
+          "authenticatedFields": 14,
+          "returned": 2
+        },
+        {
+          "totalMs": 2.8552999999992608,
+          "sqlMs": 1.2173000000002503,
+          "sqlCalls": 1,
+          "candidates": 3,
+          "authenticatedFields": 14,
+          "returned": 2
+        },
+        {
+          "totalMs": 3.106999999999971,
+          "sqlMs": 1.4261999999980617,
+          "sqlCalls": 1,
+          "candidates": 3,
+          "authenticatedFields": 14,
+          "returned": 2
+        },
+        {
+          "totalMs": 2.8770000000004075,
+          "sqlMs": 1.213499999998021,
+          "sqlCalls": 1,
+          "candidates": 3,
+          "authenticatedFields": 14,
+          "returned": 2
+        }
+      ],
+      "skip_multi": [
+        {
+          "totalMs": 2.9843999999975495,
+          "sqlMs": 1.203300000001036,
+          "sqlCalls": 1,
+          "candidates": 3,
+          "authenticatedFields": 14,
+          "returned": 2
+        },
+        {
+          "totalMs": 3.0109000000011292,
+          "sqlMs": 1.4113999999972293,
+          "sqlCalls": 1,
+          "candidates": 3,
+          "authenticatedFields": 14,
+          "returned": 2
+        },
+        {
+          "totalMs": 3.1864999999997963,
+          "sqlMs": 1.5135000000009313,
+          "sqlCalls": 1,
+          "candidates": 3,
+          "authenticatedFields": 14,
+          "returned": 2
+        },
+        {
+          "totalMs": 3.014500000001135,
+          "sqlMs": 1.3884999999972933,
+          "sqlCalls": 1,
+          "candidates": 3,
+          "authenticatedFields": 14,
+          "returned": 2
+        },
+        {
+          "totalMs": 2.7559999999975844,
+          "sqlMs": 1.159300000002986,
+          "sqlCalls": 1,
+          "candidates": 3,
+          "authenticatedFields": 14,
+          "returned": 2
+        },
+        {
+          "totalMs": 2.5630999999993946,
+          "sqlMs": 0.948499999998603,
+          "sqlCalls": 1,
+          "candidates": 3,
+          "authenticatedFields": 14,
+          "returned": 2
+        },
+        {
+          "totalMs": 2.661099999997532,
+          "sqlMs": 1.100799999996525,
+          "sqlCalls": 1,
+          "candidates": 3,
+          "authenticatedFields": 14,
+          "returned": 2
+        }
+      ]
+    }
+  },
+  {
+    "case": "common",
+    "term": "서비",
+    "rows": 20,
+    "summary": {
+      "plain": {
+        "totalMs": 0.4723999999987427,
+        "sqlMs": 0.4694000000017695,
+        "sqlCalls": 1,
+        "candidates": 0,
+        "authenticatedFields": 0,
+        "returned": 20
+      },
+      "next_separate": {
+        "totalMs": 6.5944000000017695,
+        "sqlMs": 0.9408000000003085,
+        "sqlCalls": 1,
+        "candidates": 27,
+        "authenticatedFields": 127,
+        "returned": 20
+      },
+      "next_multi": {
+        "totalMs": 6.699499999998807,
+        "sqlMs": 0.9976999999998952,
+        "sqlCalls": 1,
+        "candidates": 27,
+        "authenticatedFields": 127,
+        "returned": 20
+      },
+      "skip_separate": {
+        "totalMs": 6.625400000000809,
+        "sqlMs": 1.0276000000012573,
+        "sqlCalls": 1,
+        "candidates": 27,
+        "authenticatedFields": 127,
+        "returned": 20
+      },
+      "skip_multi": {
+        "totalMs": 6.33259999999791,
+        "sqlMs": 0.8742999999994936,
+        "sqlCalls": 1,
+        "candidates": 27,
+        "authenticatedFields": 127,
+        "returned": 20
+      }
+    },
+    "runs": {
+      "plain": [
+        {
+          "totalMs": 0.47079999999914435,
+          "sqlMs": 0.4657999999981257,
+          "sqlCalls": 1,
+          "candidates": 0,
+          "authenticatedFields": 0,
+          "returned": 20
+        },
+        {
+          "totalMs": 0.7597999999998137,
+          "sqlMs": 0.7538999999997031,
+          "sqlCalls": 1,
+          "candidates": 0,
+          "authenticatedFields": 0,
+          "returned": 20
+        },
+        {
+          "totalMs": 0.36669999999867287,
+          "sqlMs": 0.3636999999980617,
+          "sqlCalls": 1,
+          "candidates": 0,
+          "authenticatedFields": 0,
+          "returned": 20
+        },
+        {
+          "totalMs": 0.5580000000009022,
+          "sqlMs": 0.5527000000001863,
+          "sqlCalls": 1,
+          "candidates": 0,
+          "authenticatedFields": 0,
+          "returned": 20
+        },
+        {
+          "totalMs": 0.3404000000009546,
+          "sqlMs": 0.33770000000004075,
+          "sqlCalls": 1,
+          "candidates": 0,
+          "authenticatedFields": 0,
+          "returned": 20
+        },
+        {
+          "totalMs": 0.4782000000013795,
+          "sqlMs": 0.47409999999945285,
+          "sqlCalls": 1,
+          "candidates": 0,
+          "authenticatedFields": 0,
+          "returned": 20
+        },
+        {
+          "totalMs": 0.4723999999987427,
+          "sqlMs": 0.4694000000017695,
+          "sqlCalls": 1,
+          "candidates": 0,
+          "authenticatedFields": 0,
+          "returned": 20
+        }
+      ],
+      "next_separate": [
+        {
+          "totalMs": 6.258499999999913,
+          "sqlMs": 0.800599999998667,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        },
+        {
+          "totalMs": 13.670299999997951,
+          "sqlMs": 1.3786000000000058,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        },
+        {
+          "totalMs": 6.6270000000004075,
+          "sqlMs": 1.1563999999998487,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        },
+        {
+          "totalMs": 6.614000000001397,
+          "sqlMs": 1.030800000000454,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        },
+        {
+          "totalMs": 6.000500000001921,
+          "sqlMs": 0.9408000000003085,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        },
+        {
+          "totalMs": 6.5944000000017695,
+          "sqlMs": 0.9396000000015192,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        },
+        {
+          "totalMs": 6.574899999999616,
+          "sqlMs": 0.8047999999980675,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        }
+      ],
+      "next_multi": [
+        {
+          "totalMs": 6.333999999998923,
+          "sqlMs": 1.067299999998795,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        },
+        {
+          "totalMs": 7.871799999997165,
+          "sqlMs": 0.857399999997142,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        },
+        {
+          "totalMs": 6.414700000001176,
+          "sqlMs": 0.9976999999998952,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        },
+        {
+          "totalMs": 6.383499999999913,
+          "sqlMs": 0.9434000000001106,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        },
+        {
+          "totalMs": 7.121500000001106,
+          "sqlMs": 1.0721000000012282,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        },
+        {
+          "totalMs": 6.699499999998807,
+          "sqlMs": 0.9086999999999534,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        },
+        {
+          "totalMs": 7.855500000001484,
+          "sqlMs": 1.0751999999993131,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        }
+      ],
+      "skip_separate": [
+        {
+          "totalMs": 6.158400000000256,
+          "sqlMs": 0.8325000000004366,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        },
+        {
+          "totalMs": 6.107800000001589,
+          "sqlMs": 0.8261999999995169,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        },
+        {
+          "totalMs": 6.467400000001362,
+          "sqlMs": 1.0276000000012573,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        },
+        {
+          "totalMs": 6.650400000002264,
+          "sqlMs": 1.1181999999971595,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        },
+        {
+          "totalMs": 6.625400000000809,
+          "sqlMs": 0.8860999999997148,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        },
+        {
+          "totalMs": 7.031599999998434,
+          "sqlMs": 1.1824000000015076,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        },
+        {
+          "totalMs": 6.768899999999121,
+          "sqlMs": 1.2429000000011001,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        }
+      ],
+      "skip_multi": [
+        {
+          "totalMs": 6.128600000000006,
+          "sqlMs": 0.8742999999994936,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        },
+        {
+          "totalMs": 5.749100000000908,
+          "sqlMs": 0.8135999999976775,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        },
+        {
+          "totalMs": 6.33259999999791,
+          "sqlMs": 1.0610999999989872,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        },
+        {
+          "totalMs": 6.052499999997963,
+          "sqlMs": 0.836699999999837,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        },
+        {
+          "totalMs": 6.825800000002346,
+          "sqlMs": 0.807200000002922,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        },
+        {
+          "totalMs": 6.897600000000239,
+          "sqlMs": 1.1323000000011234,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        },
+        {
+          "totalMs": 6.9395000000004075,
+          "sqlMs": 1.274600000000646,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        }
+      ]
+    }
+  },
+  {
+    "case": "medium",
+    "term": "세종대로 25",
+    "rows": 20,
+    "summary": {
+      "plain": {
+        "totalMs": 1.6129000000000815,
+        "sqlMs": 1.607800000001589,
+        "sqlCalls": 1,
+        "candidates": 0,
+        "authenticatedFields": 0,
+        "returned": 20
+      },
+      "next_separate": {
+        "totalMs": 7.50249999999869,
+        "sqlMs": 1.7538000000022294,
+        "sqlCalls": 1,
+        "candidates": 27,
+        "authenticatedFields": 127,
+        "returned": 20
+      },
+      "next_multi": {
+        "totalMs": 7.44380000000092,
+        "sqlMs": 2.002100000001519,
+        "sqlCalls": 1,
+        "candidates": 27,
+        "authenticatedFields": 127,
+        "returned": 20
+      },
+      "skip_separate": {
+        "totalMs": 8.013500000000931,
+        "sqlMs": 2.363099999998667,
+        "sqlCalls": 1,
+        "candidates": 27,
+        "authenticatedFields": 127,
+        "returned": 20
+      },
+      "skip_multi": {
+        "totalMs": 7.748599999998987,
+        "sqlMs": 2.370100000000093,
+        "sqlCalls": 1,
+        "candidates": 27,
+        "authenticatedFields": 127,
+        "returned": 20
+      }
+    },
+    "runs": {
+      "plain": [
+        {
+          "totalMs": 1.7010000000009313,
+          "sqlMs": 1.6938000000009197,
+          "sqlCalls": 1,
+          "candidates": 0,
+          "authenticatedFields": 0,
+          "returned": 20
+        },
+        {
+          "totalMs": 1.7381999999997788,
+          "sqlMs": 1.7321999999985565,
+          "sqlCalls": 1,
+          "candidates": 0,
+          "authenticatedFields": 0,
+          "returned": 20
+        },
+        {
+          "totalMs": 1.1847000000016124,
+          "sqlMs": 1.1814999999987776,
+          "sqlCalls": 1,
+          "candidates": 0,
+          "authenticatedFields": 0,
+          "returned": 20
+        },
+        {
+          "totalMs": 1.6440999999977066,
+          "sqlMs": 1.6389999999992142,
+          "sqlCalls": 1,
+          "candidates": 0,
+          "authenticatedFields": 0,
+          "returned": 20
+        },
+        {
+          "totalMs": 1.2232000000003609,
+          "sqlMs": 1.2201999999997497,
+          "sqlCalls": 1,
+          "candidates": 0,
+          "authenticatedFields": 0,
+          "returned": 20
+        },
+        {
+          "totalMs": 1.6129000000000815,
+          "sqlMs": 1.607800000001589,
+          "sqlCalls": 1,
+          "candidates": 0,
+          "authenticatedFields": 0,
+          "returned": 20
+        },
+        {
+          "totalMs": 1.2884999999987485,
+          "sqlMs": 1.2845999999990454,
+          "sqlCalls": 1,
+          "candidates": 0,
+          "authenticatedFields": 0,
+          "returned": 20
+        }
+      ],
+      "next_separate": [
+        {
+          "totalMs": 9.498700000000099,
+          "sqlMs": 1.7538000000022294,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        },
+        {
+          "totalMs": 7.50249999999869,
+          "sqlMs": 1.9118000000016764,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        },
+        {
+          "totalMs": 7.226699999999255,
+          "sqlMs": 1.746500000001106,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        },
+        {
+          "totalMs": 7.5711000000010245,
+          "sqlMs": 1.9085999999988417,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        },
+        {
+          "totalMs": 7.04910000000018,
+          "sqlMs": 1.6985999999997148,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        },
+        {
+          "totalMs": 7.59599999999773,
+          "sqlMs": 2.0557999999982712,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        },
+        {
+          "totalMs": 7.2576999999982945,
+          "sqlMs": 1.7409000000006927,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        }
+      ],
+      "next_multi": [
+        {
+          "totalMs": 7.687900000000809,
+          "sqlMs": 2.002100000001519,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        },
+        {
+          "totalMs": 7.192699999999604,
+          "sqlMs": 1.8172000000013213,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        },
+        {
+          "totalMs": 7.291300000000774,
+          "sqlMs": 1.7412999999978638,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        },
+        {
+          "totalMs": 7.44380000000092,
+          "sqlMs": 2.0741000000016356,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        },
+        {
+          "totalMs": 8.847300000001269,
+          "sqlMs": 1.7934999999997672,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        },
+        {
+          "totalMs": 8.84179999999833,
+          "sqlMs": 2.5001000000011118,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        },
+        {
+          "totalMs": 7.3958999999995285,
+          "sqlMs": 2.0679000000018277,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        }
+      ],
+      "skip_separate": [
+        {
+          "totalMs": 8.07180000000153,
+          "sqlMs": 2.372899999998481,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        },
+        {
+          "totalMs": 8.013500000000931,
+          "sqlMs": 2.1804000000011,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        },
+        {
+          "totalMs": 7.69090000000142,
+          "sqlMs": 2.265400000000227,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        },
+        {
+          "totalMs": 7.981200000001991,
+          "sqlMs": 2.363099999998667,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        },
+        {
+          "totalMs": 8.684199999999691,
+          "sqlMs": 2.423000000002503,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        },
+        {
+          "totalMs": 7.7435999999979686,
+          "sqlMs": 2.111300000000483,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        },
+        {
+          "totalMs": 8.312700000002224,
+          "sqlMs": 2.717800000002171,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        }
+      ],
+      "skip_multi": [
+        {
+          "totalMs": 8.047899999997753,
+          "sqlMs": 2.41280000000188,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        },
+        {
+          "totalMs": 7.637500000000728,
+          "sqlMs": 2.2453999999997905,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        },
+        {
+          "totalMs": 7.501799999998184,
+          "sqlMs": 1.9719000000004598,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        },
+        {
+          "totalMs": 7.748599999998987,
+          "sqlMs": 2.370100000000093,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        },
+        {
+          "totalMs": 8.229899999998452,
+          "sqlMs": 2.574300000000221,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        },
+        {
+          "totalMs": 7.372600000002421,
+          "sqlMs": 2.0790000000015425,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        },
+        {
+          "totalMs": 7.920300000001589,
+          "sqlMs": 2.379399999997986,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        }
+      ]
+    }
+  },
+  {
+    "case": "rare",
+    "term": "푸른달",
+    "rows": 20,
+    "summary": {
+      "plain": {
+        "totalMs": 69.8161,
+        "sqlMs": 69.80659999999989,
+        "sqlCalls": 1,
+        "candidates": 0,
+        "authenticatedFields": 0,
+        "returned": 20
+      },
+      "next_separate": {
+        "totalMs": 7.009699999998702,
+        "sqlMs": 1.4040999999997439,
+        "sqlCalls": 1,
+        "candidates": 27,
+        "authenticatedFields": 127,
+        "returned": 20
+      },
+      "next_multi": {
+        "totalMs": 7.173099999999977,
+        "sqlMs": 1.492099999999482,
+        "sqlCalls": 1,
+        "candidates": 27,
+        "authenticatedFields": 127,
+        "returned": 20
+      },
+      "skip_separate": {
+        "totalMs": 7.11449999999968,
+        "sqlMs": 1.440099999999802,
+        "sqlCalls": 1,
+        "candidates": 27,
+        "authenticatedFields": 127,
+        "returned": 20
+      },
+      "skip_multi": {
+        "totalMs": 7.237100000002101,
+        "sqlMs": 1.5133000000023458,
+        "sqlCalls": 1,
+        "candidates": 27,
+        "authenticatedFields": 127,
+        "returned": 20
+      }
+    },
+    "runs": {
+      "plain": [
+        {
+          "totalMs": 69.8161,
+          "sqlMs": 69.80659999999989,
+          "sqlCalls": 1,
+          "candidates": 0,
+          "authenticatedFields": 0,
+          "returned": 20
+        },
+        {
+          "totalMs": 69.94540000000052,
+          "sqlMs": 69.9369000000006,
+          "sqlCalls": 1,
+          "candidates": 0,
+          "authenticatedFields": 0,
+          "returned": 20
+        },
+        {
+          "totalMs": 70.51369999999952,
+          "sqlMs": 70.50400000000081,
+          "sqlCalls": 1,
+          "candidates": 0,
+          "authenticatedFields": 0,
+          "returned": 20
+        },
+        {
+          "totalMs": 67.80949999999939,
+          "sqlMs": 67.80119999999806,
+          "sqlCalls": 1,
+          "candidates": 0,
+          "authenticatedFields": 0,
+          "returned": 20
+        },
+        {
+          "totalMs": 72.83919999999853,
+          "sqlMs": 72.8289999999979,
+          "sqlCalls": 1,
+          "candidates": 0,
+          "authenticatedFields": 0,
+          "returned": 20
+        },
+        {
+          "totalMs": 69.09850000000006,
+          "sqlMs": 69.08970000000045,
+          "sqlCalls": 1,
+          "candidates": 0,
+          "authenticatedFields": 0,
+          "returned": 20
+        },
+        {
+          "totalMs": 69.53609999999753,
+          "sqlMs": 69.52609999999913,
+          "sqlCalls": 1,
+          "candidates": 0,
+          "authenticatedFields": 0,
+          "returned": 20
+        }
+      ],
+      "next_separate": [
+        {
+          "totalMs": 7.4157000000013795,
+          "sqlMs": 1.3906999999999243,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        },
+        {
+          "totalMs": 6.499900000002526,
+          "sqlMs": 1.2402000000001863,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        },
+        {
+          "totalMs": 6.9438999999983935,
+          "sqlMs": 1.4040999999997439,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        },
+        {
+          "totalMs": 7.009699999998702,
+          "sqlMs": 1.4660000000003492,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        },
+        {
+          "totalMs": 6.922500000000582,
+          "sqlMs": 1.331399999999121,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        },
+        {
+          "totalMs": 7.422800000000279,
+          "sqlMs": 1.6815999999998894,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        },
+        {
+          "totalMs": 7.2841000000007625,
+          "sqlMs": 1.6321000000025379,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        }
+      ],
+      "next_multi": [
+        {
+          "totalMs": 7.691500000000815,
+          "sqlMs": 1.492099999999482,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        },
+        {
+          "totalMs": 6.879100000001927,
+          "sqlMs": 1.2476999999998952,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        },
+        {
+          "totalMs": 6.950800000002346,
+          "sqlMs": 1.413700000000972,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        },
+        {
+          "totalMs": 7.16479999999865,
+          "sqlMs": 1.5815999999977066,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        },
+        {
+          "totalMs": 7.337599999998929,
+          "sqlMs": 1.6673000000009779,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        },
+        {
+          "totalMs": 7.273199999999633,
+          "sqlMs": 1.4853000000002794,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        },
+        {
+          "totalMs": 7.173099999999977,
+          "sqlMs": 1.6068999999988591,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        }
+      ],
+      "skip_separate": [
+        {
+          "totalMs": 7.931599999999889,
+          "sqlMs": 1.4531999999999243,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        },
+        {
+          "totalMs": 7.11449999999968,
+          "sqlMs": 1.3535999999985506,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        },
+        {
+          "totalMs": 8.28570000000036,
+          "sqlMs": 1.3306999999986147,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        },
+        {
+          "totalMs": 6.494000000002416,
+          "sqlMs": 1.1911000000000058,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        },
+        {
+          "totalMs": 7.129299999996874,
+          "sqlMs": 1.504399999997986,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        },
+        {
+          "totalMs": 7.114100000002509,
+          "sqlMs": 1.440099999999802,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        },
+        {
+          "totalMs": 7.01850000000195,
+          "sqlMs": 1.4768000000003667,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        }
+      ],
+      "skip_multi": [
+        {
+          "totalMs": 7.652799999999843,
+          "sqlMs": 1.5476999999991676,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        },
+        {
+          "totalMs": 6.867000000002008,
+          "sqlMs": 1.3411999999989348,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        },
+        {
+          "totalMs": 7.352699999999459,
+          "sqlMs": 1.713500000001659,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        },
+        {
+          "totalMs": 6.6494000000020606,
+          "sqlMs": 1.499599999999191,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        },
+        {
+          "totalMs": 7.237100000002101,
+          "sqlMs": 1.5133000000023458,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        },
+        {
+          "totalMs": 7.068699999999808,
+          "sqlMs": 1.5514000000002852,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        },
+        {
+          "totalMs": 7.237300000000687,
+          "sqlMs": 1.4750000000021828,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        }
+      ]
+    }
+  },
+  {
+    "case": "zero",
+    "term": "없는표식",
+    "rows": 0,
+    "summary": {
+      "plain": {
+        "totalMs": 66.0711999999985,
+        "sqlMs": 66.060300000001,
+        "sqlCalls": 1,
+        "candidates": 0,
+        "authenticatedFields": 0,
+        "returned": 0
+      },
+      "next_separate": {
+        "totalMs": 1.7896999999975378,
+        "sqlMs": 0.9936999999990803,
+        "sqlCalls": 1,
+        "candidates": 0,
+        "authenticatedFields": 0,
+        "returned": 0
+      },
+      "next_multi": {
+        "totalMs": 1.3224999999983993,
+        "sqlMs": 0.77730000000156,
+        "sqlCalls": 1,
+        "candidates": 0,
+        "authenticatedFields": 0,
+        "returned": 0
+      },
+      "skip_separate": {
+        "totalMs": 1.4503999999978987,
+        "sqlMs": 0.8361000000004424,
+        "sqlCalls": 1,
+        "candidates": 0,
+        "authenticatedFields": 0,
+        "returned": 0
+      },
+      "skip_multi": {
+        "totalMs": 1.3865000000005239,
+        "sqlMs": 0.7834000000002561,
+        "sqlCalls": 1,
+        "candidates": 0,
+        "authenticatedFields": 0,
+        "returned": 0
+      }
+    },
+    "runs": {
+      "plain": [
+        {
+          "totalMs": 67.14789999999994,
+          "sqlMs": 67.13969999999972,
+          "sqlCalls": 1,
+          "candidates": 0,
+          "authenticatedFields": 0,
+          "returned": 0
+        },
+        {
+          "totalMs": 65.52330000000075,
+          "sqlMs": 65.51559999999881,
+          "sqlCalls": 1,
+          "candidates": 0,
+          "authenticatedFields": 0,
+          "returned": 0
+        },
+        {
+          "totalMs": 63.19750000000204,
+          "sqlMs": 63.1862000000001,
+          "sqlCalls": 1,
+          "candidates": 0,
+          "authenticatedFields": 0,
+          "returned": 0
+        },
+        {
+          "totalMs": 64.98739999999816,
+          "sqlMs": 64.97960000000239,
+          "sqlCalls": 1,
+          "candidates": 0,
+          "authenticatedFields": 0,
+          "returned": 0
+        },
+        {
+          "totalMs": 68.1971999999987,
+          "sqlMs": 68.18700000000172,
+          "sqlCalls": 1,
+          "candidates": 0,
+          "authenticatedFields": 0,
+          "returned": 0
+        },
+        {
+          "totalMs": 66.94320000000153,
+          "sqlMs": 66.93579999999929,
+          "sqlCalls": 1,
+          "candidates": 0,
+          "authenticatedFields": 0,
+          "returned": 0
+        },
+        {
+          "totalMs": 66.0711999999985,
+          "sqlMs": 66.060300000001,
+          "sqlCalls": 1,
+          "candidates": 0,
+          "authenticatedFields": 0,
+          "returned": 0
+        }
+      ],
+      "next_separate": [
+        {
+          "totalMs": 1.8004999999975553,
+          "sqlMs": 0.9936999999990803,
+          "sqlCalls": 1,
+          "candidates": 0,
+          "authenticatedFields": 0,
+          "returned": 0
+        },
+        {
+          "totalMs": 1.2326000000030035,
+          "sqlMs": 0.7037000000018452,
+          "sqlCalls": 1,
+          "candidates": 0,
+          "authenticatedFields": 0,
+          "returned": 0
+        },
+        {
+          "totalMs": 1.8377000000000407,
+          "sqlMs": 1.0075999999971827,
+          "sqlCalls": 1,
+          "candidates": 0,
+          "authenticatedFields": 0,
+          "returned": 0
+        },
+        {
+          "totalMs": 1.3297999999995227,
+          "sqlMs": 0.7656999999999243,
+          "sqlCalls": 1,
+          "candidates": 0,
+          "authenticatedFields": 0,
+          "returned": 0
+        },
+        {
+          "totalMs": 1.7896999999975378,
+          "sqlMs": 1.0266000000010536,
+          "sqlCalls": 1,
+          "candidates": 0,
+          "authenticatedFields": 0,
+          "returned": 0
+        },
+        {
+          "totalMs": 1.3925000000017462,
+          "sqlMs": 0.8221000000012282,
+          "sqlCalls": 1,
+          "candidates": 0,
+          "authenticatedFields": 0,
+          "returned": 0
+        },
+        {
+          "totalMs": 2.186200000000099,
+          "sqlMs": 1.233699999997043,
+          "sqlCalls": 1,
+          "candidates": 0,
+          "authenticatedFields": 0,
+          "returned": 0
+        }
+      ],
+      "next_multi": [
+        {
+          "totalMs": 1.3224999999983993,
+          "sqlMs": 0.77730000000156,
+          "sqlCalls": 1,
+          "candidates": 0,
+          "authenticatedFields": 0,
+          "returned": 0
+        },
+        {
+          "totalMs": 1.250899999999092,
+          "sqlMs": 0.7052000000003318,
+          "sqlCalls": 1,
+          "candidates": 0,
+          "authenticatedFields": 0,
+          "returned": 0
+        },
+        {
+          "totalMs": 1.311200000000099,
+          "sqlMs": 0.766299999999319,
+          "sqlCalls": 1,
+          "candidates": 0,
+          "authenticatedFields": 0,
+          "returned": 0
+        },
+        {
+          "totalMs": 1.3021999999982654,
+          "sqlMs": 0.7533000000003085,
+          "sqlCalls": 1,
+          "candidates": 0,
+          "authenticatedFields": 0,
+          "returned": 0
+        },
+        {
+          "totalMs": 1.7655000000013388,
+          "sqlMs": 1.173399999999674,
+          "sqlCalls": 1,
+          "candidates": 0,
+          "authenticatedFields": 0,
+          "returned": 0
+        },
+        {
+          "totalMs": 1.6144999999996799,
+          "sqlMs": 0.84860000000117,
+          "sqlCalls": 1,
+          "candidates": 0,
+          "authenticatedFields": 0,
+          "returned": 0
+        },
+        {
+          "totalMs": 1.5671000000002095,
+          "sqlMs": 0.9389000000010128,
+          "sqlCalls": 1,
+          "candidates": 0,
+          "authenticatedFields": 0,
+          "returned": 0
+        }
+      ],
+      "skip_separate": [
+        {
+          "totalMs": 1.4503999999978987,
+          "sqlMs": 0.8361000000004424,
+          "sqlCalls": 1,
+          "candidates": 0,
+          "authenticatedFields": 0,
+          "returned": 0
+        },
+        {
+          "totalMs": 1.3993999999984226,
+          "sqlMs": 0.744700000002922,
+          "sqlCalls": 1,
+          "candidates": 0,
+          "authenticatedFields": 0,
+          "returned": 0
+        },
+        {
+          "totalMs": 1.442300000002433,
+          "sqlMs": 0.8251000000018394,
+          "sqlCalls": 1,
+          "candidates": 0,
+          "authenticatedFields": 0,
+          "returned": 0
+        },
+        {
+          "totalMs": 1.3559999999997672,
+          "sqlMs": 0.7641999999977998,
+          "sqlCalls": 1,
+          "candidates": 0,
+          "authenticatedFields": 0,
+          "returned": 0
+        },
+        {
+          "totalMs": 1.7838000000010652,
+          "sqlMs": 1.1005000000004657,
+          "sqlCalls": 1,
+          "candidates": 0,
+          "authenticatedFields": 0,
+          "returned": 0
+        },
+        {
+          "totalMs": 1.6226000000024214,
+          "sqlMs": 0.9434000000001106,
+          "sqlCalls": 1,
+          "candidates": 0,
+          "authenticatedFields": 0,
+          "returned": 0
+        },
+        {
+          "totalMs": 1.5966000000007625,
+          "sqlMs": 0.9081000000005588,
+          "sqlCalls": 1,
+          "candidates": 0,
+          "authenticatedFields": 0,
+          "returned": 0
+        }
+      ],
+      "skip_multi": [
+        {
+          "totalMs": 1.4228000000002794,
+          "sqlMs": 0.811200000000099,
+          "sqlCalls": 1,
+          "candidates": 0,
+          "authenticatedFields": 0,
+          "returned": 0
+        },
+        {
+          "totalMs": 1.3052999999999884,
+          "sqlMs": 0.7201999999997497,
+          "sqlCalls": 1,
+          "candidates": 0,
+          "authenticatedFields": 0,
+          "returned": 0
+        },
+        {
+          "totalMs": 1.3865000000005239,
+          "sqlMs": 0.7834000000002561,
+          "sqlCalls": 1,
+          "candidates": 0,
+          "authenticatedFields": 0,
+          "returned": 0
+        },
+        {
+          "totalMs": 1.362700000001496,
+          "sqlMs": 0.7668999999987136,
+          "sqlCalls": 1,
+          "candidates": 0,
+          "authenticatedFields": 0,
+          "returned": 0
+        },
+        {
+          "totalMs": 1.6819000000032247,
+          "sqlMs": 0.8594000000011874,
+          "sqlCalls": 1,
+          "candidates": 0,
+          "authenticatedFields": 0,
+          "returned": 0
+        },
+        {
+          "totalMs": 1.3641999999999825,
+          "sqlMs": 0.746899999998277,
+          "sqlCalls": 1,
+          "candidates": 0,
+          "authenticatedFields": 0,
+          "returned": 0
+        },
+        {
+          "totalMs": 1.4578999999976077,
+          "sqlMs": 0.8307999999997264,
+          "sqlCalls": 1,
+          "candidates": 0,
+          "authenticatedFields": 0,
+          "returned": 0
+        }
+      ]
+    }
+  },
+  {
+    "case": "sejong",
+    "term": "세종대로",
+    "rows": 20,
+    "summary": {
+      "plain": {
+        "totalMs": 0.5037999999985914,
+        "sqlMs": 0.4992000000020198,
+        "sqlCalls": 1,
+        "candidates": 0,
+        "authenticatedFields": 0,
+        "returned": 20
+      },
+      "next_separate": {
+        "totalMs": 6.576999999997497,
+        "sqlMs": 1.0715999999993073,
+        "sqlCalls": 1,
+        "candidates": 27,
+        "authenticatedFields": 127,
+        "returned": 20
+      },
+      "next_multi": {
+        "totalMs": 6.3820999999989,
+        "sqlMs": 0.96480000000156,
+        "sqlCalls": 1,
+        "candidates": 27,
+        "authenticatedFields": 127,
+        "returned": 20
+      },
+      "skip_separate": {
+        "totalMs": 6.568999999999505,
+        "sqlMs": 1.001299999999901,
+        "sqlCalls": 1,
+        "candidates": 27,
+        "authenticatedFields": 127,
+        "returned": 20
+      },
+      "skip_multi": {
+        "totalMs": 6.55370000000039,
+        "sqlMs": 0.9585999999981141,
+        "sqlCalls": 1,
+        "candidates": 27,
+        "authenticatedFields": 127,
+        "returned": 20
+      }
+    },
+    "runs": {
+      "plain": [
+        {
+          "totalMs": 0.7243999999991502,
+          "sqlMs": 0.7173000000002503,
+          "sqlCalls": 1,
+          "candidates": 0,
+          "authenticatedFields": 0,
+          "returned": 20
+        },
+        {
+          "totalMs": 0.6811000000016065,
+          "sqlMs": 0.6759999999994761,
+          "sqlCalls": 1,
+          "candidates": 0,
+          "authenticatedFields": 0,
+          "returned": 20
+        },
+        {
+          "totalMs": 0.3713999999999942,
+          "sqlMs": 0.368399999999383,
+          "sqlCalls": 1,
+          "candidates": 0,
+          "authenticatedFields": 0,
+          "returned": 20
+        },
+        {
+          "totalMs": 0.7710000000006403,
+          "sqlMs": 0.7639000000017404,
+          "sqlCalls": 1,
+          "candidates": 0,
+          "authenticatedFields": 0,
+          "returned": 20
+        },
+        {
+          "totalMs": 0.37110000000029686,
+          "sqlMs": 0.3680999999996857,
+          "sqlCalls": 1,
+          "candidates": 0,
+          "authenticatedFields": 0,
+          "returned": 20
+        },
+        {
+          "totalMs": 0.5037999999985914,
+          "sqlMs": 0.4992000000020198,
+          "sqlCalls": 1,
+          "candidates": 0,
+          "authenticatedFields": 0,
+          "returned": 20
+        },
+        {
+          "totalMs": 0.3621000000021013,
+          "sqlMs": 0.35909999999785214,
+          "sqlCalls": 1,
+          "candidates": 0,
+          "authenticatedFields": 0,
+          "returned": 20
+        }
+      ],
+      "next_separate": [
+        {
+          "totalMs": 7.02809999999954,
+          "sqlMs": 1.121499999997468,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        },
+        {
+          "totalMs": 6.939699999998993,
+          "sqlMs": 1.3398999999990338,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        },
+        {
+          "totalMs": 6.1326999999982945,
+          "sqlMs": 0.9363000000012107,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        },
+        {
+          "totalMs": 8.208699999999226,
+          "sqlMs": 1.0715999999993073,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        },
+        {
+          "totalMs": 6.576999999997497,
+          "sqlMs": 1.1084000000009837,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        },
+        {
+          "totalMs": 6.1097999999983585,
+          "sqlMs": 0.8739000000023225,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        },
+        {
+          "totalMs": 5.934499999999389,
+          "sqlMs": 0.8057999999982712,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        }
+      ],
+      "next_multi": [
+        {
+          "totalMs": 6.639700000003359,
+          "sqlMs": 1.055899999999383,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        },
+        {
+          "totalMs": 6.598300000001473,
+          "sqlMs": 0.8798999999999069,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        },
+        {
+          "totalMs": 6.251400000001013,
+          "sqlMs": 0.8477999999995518,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        },
+        {
+          "totalMs": 6.3820999999989,
+          "sqlMs": 0.96480000000156,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        },
+        {
+          "totalMs": 6.807499999998981,
+          "sqlMs": 1.1975000000020373,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        },
+        {
+          "totalMs": 6.312600000001112,
+          "sqlMs": 1.0280999999995402,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        },
+        {
+          "totalMs": 6.230999999999767,
+          "sqlMs": 0.9436999999998079,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        }
+      ],
+      "skip_separate": [
+        {
+          "totalMs": 6.614900000000489,
+          "sqlMs": 1.001299999999901,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        },
+        {
+          "totalMs": 6.568999999999505,
+          "sqlMs": 1.0267999999996391,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        },
+        {
+          "totalMs": 6.548500000000786,
+          "sqlMs": 0.9794999999976426,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        },
+        {
+          "totalMs": 6.564600000001519,
+          "sqlMs": 1.1030999999966298,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        },
+        {
+          "totalMs": 6.895999999997002,
+          "sqlMs": 1.091099999997823,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        },
+        {
+          "totalMs": 6.370500000000902,
+          "sqlMs": 0.9238999999979569,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        },
+        {
+          "totalMs": 6.6203999999997905,
+          "sqlMs": 0.9302999999999884,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        }
+      ],
+      "skip_multi": [
+        {
+          "totalMs": 6.69380000000092,
+          "sqlMs": 1.1242000000020198,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        },
+        {
+          "totalMs": 6.306500000002416,
+          "sqlMs": 0.9318000000021129,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        },
+        {
+          "totalMs": 6.55370000000039,
+          "sqlMs": 0.9266000000025088,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        },
+        {
+          "totalMs": 6.643099999997503,
+          "sqlMs": 1.119299999998475,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        },
+        {
+          "totalMs": 6.314099999999598,
+          "sqlMs": 0.9585999999981141,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        },
+        {
+          "totalMs": 6.000400000000809,
+          "sqlMs": 0.8791999999994005,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        },
+        {
+          "totalMs": 7.090299999999843,
+          "sqlMs": 1.205599999997503,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        }
+      ]
+    }
+  },
+  {
+    "case": "daero6",
+    "term": "대로6고",
+    "rows": 10,
+    "summary": {
+      "plain": {
+        "totalMs": 0.7758000000030734,
+        "sqlMs": 0.7716000000000349,
+        "sqlCalls": 1,
+        "candidates": 0,
+        "authenticatedFields": 0,
+        "returned": 10
+      },
+      "next_separate": {
+        "totalMs": 13.057699999997567,
+        "sqlMs": 4.646899999999732,
+        "sqlCalls": 2,
+        "candidates": 170,
+        "authenticatedFields": 220,
+        "returned": 10
+      },
+      "next_multi": {
+        "totalMs": 13.35070000000269,
+        "sqlMs": 4.707399999999325,
+        "sqlCalls": 2,
+        "candidates": 170,
+        "authenticatedFields": 220,
+        "returned": 10
+      },
+      "skip_separate": {
+        "totalMs": 4.387599999998201,
+        "sqlMs": 1.5272000000004482,
+        "sqlCalls": 1,
+        "candidates": 10,
+        "authenticatedFields": 60,
+        "returned": 10
+      },
+      "skip_multi": {
+        "totalMs": 4.068299999998999,
+        "sqlMs": 1.244300000002113,
+        "sqlCalls": 1,
+        "candidates": 10,
+        "authenticatedFields": 60,
+        "returned": 10
+      }
+    },
+    "runs": {
+      "plain": [
+        {
+          "totalMs": 0.7758000000030734,
+          "sqlMs": 0.7716000000000349,
+          "sqlCalls": 1,
+          "candidates": 0,
+          "authenticatedFields": 0,
+          "returned": 10
+        },
+        {
+          "totalMs": 0.8918999999987136,
+          "sqlMs": 0.8855000000003201,
+          "sqlCalls": 1,
+          "candidates": 0,
+          "authenticatedFields": 0,
+          "returned": 10
+        },
+        {
+          "totalMs": 0.6932999999989988,
+          "sqlMs": 0.689699999998993,
+          "sqlCalls": 1,
+          "candidates": 0,
+          "authenticatedFields": 0,
+          "returned": 10
+        },
+        {
+          "totalMs": 0.9250999999967462,
+          "sqlMs": 0.9186999999983527,
+          "sqlCalls": 1,
+          "candidates": 0,
+          "authenticatedFields": 0,
+          "returned": 10
+        },
+        {
+          "totalMs": 0.6915000000008149,
+          "sqlMs": 0.6879999999982829,
+          "sqlCalls": 1,
+          "candidates": 0,
+          "authenticatedFields": 0,
+          "returned": 10
+        },
+        {
+          "totalMs": 0.9262000000016997,
+          "sqlMs": 0.9200000000018917,
+          "sqlCalls": 1,
+          "candidates": 0,
+          "authenticatedFields": 0,
+          "returned": 10
+        },
+        {
+          "totalMs": 0.6772000000019034,
+          "sqlMs": 0.6743999999998778,
+          "sqlCalls": 1,
+          "candidates": 0,
+          "authenticatedFields": 0,
+          "returned": 10
+        }
+      ],
+      "next_separate": [
+        {
+          "totalMs": 17.262500000000728,
+          "sqlMs": 5.105600000002596,
+          "sqlCalls": 2,
+          "candidates": 170,
+          "authenticatedFields": 220,
+          "returned": 10
+        },
+        {
+          "totalMs": 13.057699999997567,
+          "sqlMs": 4.646899999999732,
+          "sqlCalls": 2,
+          "candidates": 170,
+          "authenticatedFields": 220,
+          "returned": 10
+        },
+        {
+          "totalMs": 13.04320000000007,
+          "sqlMs": 4.5275000000001455,
+          "sqlCalls": 2,
+          "candidates": 170,
+          "authenticatedFields": 220,
+          "returned": 10
+        },
+        {
+          "totalMs": 13.70890000000145,
+          "sqlMs": 4.99120000000039,
+          "sqlCalls": 2,
+          "candidates": 170,
+          "authenticatedFields": 220,
+          "returned": 10
+        },
+        {
+          "totalMs": 12.92069999999876,
+          "sqlMs": 4.644199999998818,
+          "sqlCalls": 2,
+          "candidates": 170,
+          "authenticatedFields": 220,
+          "returned": 10
+        },
+        {
+          "totalMs": 13.136999999998807,
+          "sqlMs": 4.75959999999759,
+          "sqlCalls": 2,
+          "candidates": 170,
+          "authenticatedFields": 220,
+          "returned": 10
+        },
+        {
+          "totalMs": 12.233600000003207,
+          "sqlMs": 4.490799999999581,
+          "sqlCalls": 2,
+          "candidates": 170,
+          "authenticatedFields": 220,
+          "returned": 10
+        }
+      ],
+      "next_multi": [
+        {
+          "totalMs": 15.722200000000157,
+          "sqlMs": 5.938999999998487,
+          "sqlCalls": 2,
+          "candidates": 170,
+          "authenticatedFields": 220,
+          "returned": 10
+        },
+        {
+          "totalMs": 13.324000000000524,
+          "sqlMs": 4.702900000003865,
+          "sqlCalls": 2,
+          "candidates": 170,
+          "authenticatedFields": 220,
+          "returned": 10
+        },
+        {
+          "totalMs": 13.35070000000269,
+          "sqlMs": 4.700600000000122,
+          "sqlCalls": 2,
+          "candidates": 170,
+          "authenticatedFields": 220,
+          "returned": 10
+        },
+        {
+          "totalMs": 13.911799999998038,
+          "sqlMs": 4.80290000000241,
+          "sqlCalls": 2,
+          "candidates": 170,
+          "authenticatedFields": 220,
+          "returned": 10
+        },
+        {
+          "totalMs": 14.004399999997986,
+          "sqlMs": 4.707399999999325,
+          "sqlCalls": 2,
+          "candidates": 170,
+          "authenticatedFields": 220,
+          "returned": 10
+        },
+        {
+          "totalMs": 12.806000000000495,
+          "sqlMs": 4.535900000002584,
+          "sqlCalls": 2,
+          "candidates": 170,
+          "authenticatedFields": 220,
+          "returned": 10
+        },
+        {
+          "totalMs": 13.28559999999925,
+          "sqlMs": 4.941299999998591,
+          "sqlCalls": 2,
+          "candidates": 170,
+          "authenticatedFields": 220,
+          "returned": 10
+        }
+      ],
+      "skip_separate": [
+        {
+          "totalMs": 4.539600000000064,
+          "sqlMs": 1.5290999999997439,
+          "sqlCalls": 1,
+          "candidates": 10,
+          "authenticatedFields": 60,
+          "returned": 10
+        },
+        {
+          "totalMs": 4.387599999998201,
+          "sqlMs": 1.5272000000004482,
+          "sqlCalls": 1,
+          "candidates": 10,
+          "authenticatedFields": 60,
+          "returned": 10
+        },
+        {
+          "totalMs": 4.267199999998411,
+          "sqlMs": 1.4068000000006577,
+          "sqlCalls": 1,
+          "candidates": 10,
+          "authenticatedFields": 60,
+          "returned": 10
+        },
+        {
+          "totalMs": 4.227999999999156,
+          "sqlMs": 1.2573000000011234,
+          "sqlCalls": 1,
+          "candidates": 10,
+          "authenticatedFields": 60,
+          "returned": 10
+        },
+        {
+          "totalMs": 4.829499999999825,
+          "sqlMs": 1.654499999996915,
+          "sqlCalls": 1,
+          "candidates": 10,
+          "authenticatedFields": 60,
+          "returned": 10
+        },
+        {
+          "totalMs": 3.9444000000003143,
+          "sqlMs": 1.1793999999972584,
+          "sqlCalls": 1,
+          "candidates": 10,
+          "authenticatedFields": 60,
+          "returned": 10
+        },
+        {
+          "totalMs": 4.77889999999752,
+          "sqlMs": 1.6049999999995634,
+          "sqlCalls": 1,
+          "candidates": 10,
+          "authenticatedFields": 60,
+          "returned": 10
+        }
+      ],
+      "skip_multi": [
+        {
+          "totalMs": 4.1568999999981315,
+          "sqlMs": 1.2541999999994005,
+          "sqlCalls": 1,
+          "candidates": 10,
+          "authenticatedFields": 60,
+          "returned": 10
+        },
+        {
+          "totalMs": 3.8888999999981024,
+          "sqlMs": 1.1548000000002503,
+          "sqlCalls": 1,
+          "candidates": 10,
+          "authenticatedFields": 60,
+          "returned": 10
+        },
+        {
+          "totalMs": 4.0561000000016065,
+          "sqlMs": 1.2235000000000582,
+          "sqlCalls": 1,
+          "candidates": 10,
+          "authenticatedFields": 60,
+          "returned": 10
+        },
+        {
+          "totalMs": 3.8329000000012456,
+          "sqlMs": 1.0636000000013155,
+          "sqlCalls": 1,
+          "candidates": 10,
+          "authenticatedFields": 60,
+          "returned": 10
+        },
+        {
+          "totalMs": 4.068299999998999,
+          "sqlMs": 1.244300000002113,
+          "sqlCalls": 1,
+          "candidates": 10,
+          "authenticatedFields": 60,
+          "returned": 10
+        },
+        {
+          "totalMs": 4.1283000000003085,
+          "sqlMs": 1.4183999999986554,
+          "sqlCalls": 1,
+          "candidates": 10,
+          "authenticatedFields": 60,
+          "returned": 10
+        },
+        {
+          "totalMs": 4.5450999999993655,
+          "sqlMs": 1.4625000000014552,
+          "sqlCalls": 1,
+          "candidates": 10,
+          "authenticatedFields": 60,
+          "returned": 10
+        }
+      ]
+    }
+  },
+  {
+    "case": "sweep1",
+    "term": "대로6고",
+    "rows": 10,
+    "summary": {
+      "plain": {
+        "totalMs": 0.874100000000908,
+        "sqlMs": 0.8582000000023982,
+        "sqlCalls": 1,
+        "candidates": 0,
+        "authenticatedFields": 0,
+        "returned": 10
+      },
+      "next_separate": {
+        "totalMs": 12.673200000001088,
+        "sqlMs": 4.563699999998789,
+        "sqlCalls": 2,
+        "candidates": 170,
+        "authenticatedFields": 220,
+        "returned": 10
+      },
+      "next_multi": {
+        "totalMs": 12.79399999999805,
+        "sqlMs": 4.598399999998946,
+        "sqlCalls": 2,
+        "candidates": 170,
+        "authenticatedFields": 220,
+        "returned": 10
+      },
+      "skip_separate": {
+        "totalMs": 4.267700000000332,
+        "sqlMs": 1.275500000003376,
+        "sqlCalls": 1,
+        "candidates": 10,
+        "authenticatedFields": 60,
+        "returned": 10
+      },
+      "skip_multi": {
+        "totalMs": 3.909799999997631,
+        "sqlMs": 1.1363000000019383,
+        "sqlCalls": 1,
+        "candidates": 10,
+        "authenticatedFields": 60,
+        "returned": 10
+      }
+    },
+    "runs": {
+      "plain": [
+        {
+          "totalMs": 0.9033000000017637,
+          "sqlMs": 0.8582000000023982,
+          "sqlCalls": 1,
+          "candidates": 0,
+          "authenticatedFields": 0,
+          "returned": 10
+        },
+        {
+          "totalMs": 0.874100000000908,
+          "sqlMs": 0.8688000000001921,
+          "sqlCalls": 1,
+          "candidates": 0,
+          "authenticatedFields": 0,
+          "returned": 10
+        },
+        {
+          "totalMs": 0.6556999999993423,
+          "sqlMs": 0.6529000000009546,
+          "sqlCalls": 1,
+          "candidates": 0,
+          "authenticatedFields": 0,
+          "returned": 10
+        },
+        {
+          "totalMs": 0.9415999999982887,
+          "sqlMs": 0.9367000000020198,
+          "sqlCalls": 1,
+          "candidates": 0,
+          "authenticatedFields": 0,
+          "returned": 10
+        },
+        {
+          "totalMs": 0.6684999999997672,
+          "sqlMs": 0.6657000000013795,
+          "sqlCalls": 1,
+          "candidates": 0,
+          "authenticatedFields": 0,
+          "returned": 10
+        },
+        {
+          "totalMs": 0.9091000000007625,
+          "sqlMs": 0.904500000000553,
+          "sqlCalls": 1,
+          "candidates": 0,
+          "authenticatedFields": 0,
+          "returned": 10
+        },
+        {
+          "totalMs": 0.6706999999987602,
+          "sqlMs": 0.6679000000003725,
+          "sqlCalls": 1,
+          "candidates": 0,
+          "authenticatedFields": 0,
+          "returned": 10
+        }
+      ],
+      "next_separate": [
+        {
+          "totalMs": 12.648199999999633,
+          "sqlMs": 4.418100000002596,
+          "sqlCalls": 2,
+          "candidates": 170,
+          "authenticatedFields": 220,
+          "returned": 10
+        },
+        {
+          "totalMs": 13.140299999999115,
+          "sqlMs": 4.538300000003801,
+          "sqlCalls": 2,
+          "candidates": 170,
+          "authenticatedFields": 220,
+          "returned": 10
+        },
+        {
+          "totalMs": 12.472499999999854,
+          "sqlMs": 4.563699999998789,
+          "sqlCalls": 2,
+          "candidates": 170,
+          "authenticatedFields": 220,
+          "returned": 10
+        },
+        {
+          "totalMs": 12.838799999997718,
+          "sqlMs": 4.499299999999494,
+          "sqlCalls": 2,
+          "candidates": 170,
+          "authenticatedFields": 220,
+          "returned": 10
+        },
+        {
+          "totalMs": 12.435100000002421,
+          "sqlMs": 4.590799999998126,
+          "sqlCalls": 2,
+          "candidates": 170,
+          "authenticatedFields": 220,
+          "returned": 10
+        },
+        {
+          "totalMs": 13.291300000000774,
+          "sqlMs": 4.9122000000024855,
+          "sqlCalls": 2,
+          "candidates": 170,
+          "authenticatedFields": 220,
+          "returned": 10
+        },
+        {
+          "totalMs": 12.673200000001088,
+          "sqlMs": 4.774200000003475,
+          "sqlCalls": 2,
+          "candidates": 170,
+          "authenticatedFields": 220,
+          "returned": 10
+        }
+      ],
+      "next_multi": [
+        {
+          "totalMs": 13.056000000000495,
+          "sqlMs": 4.952100000002247,
+          "sqlCalls": 2,
+          "candidates": 170,
+          "authenticatedFields": 220,
+          "returned": 10
+        },
+        {
+          "totalMs": 12.360199999999168,
+          "sqlMs": 4.46990000000369,
+          "sqlCalls": 2,
+          "candidates": 170,
+          "authenticatedFields": 220,
+          "returned": 10
+        },
+        {
+          "totalMs": 14.981500000001688,
+          "sqlMs": 5.208099999996193,
+          "sqlCalls": 2,
+          "candidates": 170,
+          "authenticatedFields": 220,
+          "returned": 10
+        },
+        {
+          "totalMs": 12.270899999999529,
+          "sqlMs": 4.385499999996682,
+          "sqlCalls": 2,
+          "candidates": 170,
+          "authenticatedFields": 220,
+          "returned": 10
+        },
+        {
+          "totalMs": 12.79399999999805,
+          "sqlMs": 4.598399999998946,
+          "sqlCalls": 2,
+          "candidates": 170,
+          "authenticatedFields": 220,
+          "returned": 10
+        },
+        {
+          "totalMs": 13.719900000000052,
+          "sqlMs": 5.115000000001601,
+          "sqlCalls": 2,
+          "candidates": 170,
+          "authenticatedFields": 220,
+          "returned": 10
+        },
+        {
+          "totalMs": 12.68380000000252,
+          "sqlMs": 4.534599999999045,
+          "sqlCalls": 2,
+          "candidates": 170,
+          "authenticatedFields": 220,
+          "returned": 10
+        }
+      ],
+      "skip_separate": [
+        {
+          "totalMs": 4.353100000000268,
+          "sqlMs": 1.275500000003376,
+          "sqlCalls": 1,
+          "candidates": 10,
+          "authenticatedFields": 60,
+          "returned": 10
+        },
+        {
+          "totalMs": 3.878100000001723,
+          "sqlMs": 1.1395999999986088,
+          "sqlCalls": 1,
+          "candidates": 10,
+          "authenticatedFields": 60,
+          "returned": 10
+        },
+        {
+          "totalMs": 4.81619999999748,
+          "sqlMs": 1.5531999999984691,
+          "sqlCalls": 1,
+          "candidates": 10,
+          "authenticatedFields": 60,
+          "returned": 10
+        },
+        {
+          "totalMs": 3.85030000000188,
+          "sqlMs": 1.1464999999989232,
+          "sqlCalls": 1,
+          "candidates": 10,
+          "authenticatedFields": 60,
+          "returned": 10
+        },
+        {
+          "totalMs": 4.055000000000291,
+          "sqlMs": 1.3042999999997846,
+          "sqlCalls": 1,
+          "candidates": 10,
+          "authenticatedFields": 60,
+          "returned": 10
+        },
+        {
+          "totalMs": 4.267700000000332,
+          "sqlMs": 1.245199999997567,
+          "sqlCalls": 1,
+          "candidates": 10,
+          "authenticatedFields": 60,
+          "returned": 10
+        },
+        {
+          "totalMs": 5.549000000002707,
+          "sqlMs": 1.4166000000004715,
+          "sqlCalls": 1,
+          "candidates": 10,
+          "authenticatedFields": 60,
+          "returned": 10
+        }
+      ],
+      "skip_multi": [
+        {
+          "totalMs": 3.9799000000020897,
+          "sqlMs": 1.2351999999991676,
+          "sqlCalls": 1,
+          "candidates": 10,
+          "authenticatedFields": 60,
+          "returned": 10
+        },
+        {
+          "totalMs": 3.7243000000016764,
+          "sqlMs": 1.0728999999992084,
+          "sqlCalls": 1,
+          "candidates": 10,
+          "authenticatedFields": 60,
+          "returned": 10
+        },
+        {
+          "totalMs": 4.264999999999418,
+          "sqlMs": 1.4658000000017637,
+          "sqlCalls": 1,
+          "candidates": 10,
+          "authenticatedFields": 60,
+          "returned": 10
+        },
+        {
+          "totalMs": 3.6755000000011933,
+          "sqlMs": 1.0984000000025844,
+          "sqlCalls": 1,
+          "candidates": 10,
+          "authenticatedFields": 60,
+          "returned": 10
+        },
+        {
+          "totalMs": 3.909799999997631,
+          "sqlMs": 1.1363000000019383,
+          "sqlCalls": 1,
+          "candidates": 10,
+          "authenticatedFields": 60,
+          "returned": 10
+        },
+        {
+          "totalMs": 3.715299999999843,
+          "sqlMs": 1.0900000000001455,
+          "sqlCalls": 1,
+          "candidates": 10,
+          "authenticatedFields": 60,
+          "returned": 10
+        },
+        {
+          "totalMs": 4.416000000001077,
+          "sqlMs": 1.4703999999983353,
+          "sqlCalls": 1,
+          "candidates": 10,
+          "authenticatedFields": 60,
+          "returned": 10
+        }
+      ]
+    }
+  },
+  {
+    "case": "sweep2",
+    "term": "151고",
+    "rows": 20,
+    "summary": {
+      "plain": {
+        "totalMs": 0.7065000000002328,
+        "sqlMs": 0.7031999999999243,
+        "sqlCalls": 1,
+        "candidates": 0,
+        "authenticatedFields": 0,
+        "returned": 20
+      },
+      "next_separate": {
+        "totalMs": 6.965200000002369,
+        "sqlMs": 1.5400000000008731,
+        "sqlCalls": 1,
+        "candidates": 27,
+        "authenticatedFields": 127,
+        "returned": 20
+      },
+      "next_multi": {
+        "totalMs": 7.059900000000198,
+        "sqlMs": 1.4808999999986554,
+        "sqlCalls": 1,
+        "candidates": 27,
+        "authenticatedFields": 127,
+        "returned": 20
+      },
+      "skip_separate": {
+        "totalMs": 7.3862999999983,
+        "sqlMs": 1.610500000002503,
+        "sqlCalls": 1,
+        "candidates": 27,
+        "authenticatedFields": 127,
+        "returned": 20
+      },
+      "skip_multi": {
+        "totalMs": 6.822299999999814,
+        "sqlMs": 1.5432000000000698,
+        "sqlCalls": 1,
+        "candidates": 27,
+        "authenticatedFields": 127,
+        "returned": 20
+      }
+    },
+    "runs": {
+      "plain": [
+        {
+          "totalMs": 0.7423999999991793,
+          "sqlMs": 0.7354000000013912,
+          "sqlCalls": 1,
+          "candidates": 0,
+          "authenticatedFields": 0,
+          "returned": 20
+        },
+        {
+          "totalMs": 0.6956999999965774,
+          "sqlMs": 0.6898000000001048,
+          "sqlCalls": 1,
+          "candidates": 0,
+          "authenticatedFields": 0,
+          "returned": 20
+        },
+        {
+          "totalMs": 0.439699999998993,
+          "sqlMs": 0.4370000000017171,
+          "sqlCalls": 1,
+          "candidates": 0,
+          "authenticatedFields": 0,
+          "returned": 20
+        },
+        {
+          "totalMs": 0.8526000000019849,
+          "sqlMs": 0.8479000000006636,
+          "sqlCalls": 1,
+          "candidates": 0,
+          "authenticatedFields": 0,
+          "returned": 20
+        },
+        {
+          "totalMs": 0.5979000000006636,
+          "sqlMs": 0.5949000000000524,
+          "sqlCalls": 1,
+          "candidates": 0,
+          "authenticatedFields": 0,
+          "returned": 20
+        },
+        {
+          "totalMs": 0.8374000000003434,
+          "sqlMs": 0.8305000000000291,
+          "sqlCalls": 1,
+          "candidates": 0,
+          "authenticatedFields": 0,
+          "returned": 20
+        },
+        {
+          "totalMs": 0.7065000000002328,
+          "sqlMs": 0.7031999999999243,
+          "sqlCalls": 1,
+          "candidates": 0,
+          "authenticatedFields": 0,
+          "returned": 20
+        }
+      ],
+      "next_separate": [
+        {
+          "totalMs": 6.965200000002369,
+          "sqlMs": 1.5966999999982363,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        },
+        {
+          "totalMs": 7.294499999999971,
+          "sqlMs": 1.6330999999991036,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        },
+        {
+          "totalMs": 6.2731000000021595,
+          "sqlMs": 1.243000000002212,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        },
+        {
+          "totalMs": 7.05370000000039,
+          "sqlMs": 1.5400000000008731,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        },
+        {
+          "totalMs": 6.634099999999307,
+          "sqlMs": 1.4413999999997031,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        },
+        {
+          "totalMs": 7.337999999999738,
+          "sqlMs": 1.6921000000002095,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        },
+        {
+          "totalMs": 6.832200000000739,
+          "sqlMs": 1.3883999999998196,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        }
+      ],
+      "next_multi": [
+        {
+          "totalMs": 7.199000000000524,
+          "sqlMs": 1.4897999999993772,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        },
+        {
+          "totalMs": 6.474099999999453,
+          "sqlMs": 1.3139999999984866,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        },
+        {
+          "totalMs": 6.548999999999069,
+          "sqlMs": 1.3100000000013097,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        },
+        {
+          "totalMs": 7.382399999998597,
+          "sqlMs": 1.4044000000030792,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        },
+        {
+          "totalMs": 6.803100000000995,
+          "sqlMs": 1.5272000000004482,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        },
+        {
+          "totalMs": 7.89969999999812,
+          "sqlMs": 1.7208000000027823,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        },
+        {
+          "totalMs": 7.059900000000198,
+          "sqlMs": 1.4808999999986554,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        }
+      ],
+      "skip_separate": [
+        {
+          "totalMs": 7.3862999999983,
+          "sqlMs": 1.6632000000026892,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        },
+        {
+          "totalMs": 7.409200000001874,
+          "sqlMs": 1.7880999999979394,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        },
+        {
+          "totalMs": 6.684499999999389,
+          "sqlMs": 1.4137999999984459,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        },
+        {
+          "totalMs": 6.70430000000124,
+          "sqlMs": 1.3807999999989988,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        },
+        {
+          "totalMs": 7.237400000001799,
+          "sqlMs": 1.610500000002503,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        },
+        {
+          "totalMs": 18.99040000000241,
+          "sqlMs": 1.894399999997404,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        },
+        {
+          "totalMs": 7.757200000000012,
+          "sqlMs": 1.4530999999988126,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        }
+      ],
+      "skip_multi": [
+        {
+          "totalMs": 8.50249999999869,
+          "sqlMs": 1.4719999999979336,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        },
+        {
+          "totalMs": 6.822299999999814,
+          "sqlMs": 1.672099999999773,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        },
+        {
+          "totalMs": 6.630700000001525,
+          "sqlMs": 1.2942999999977474,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        },
+        {
+          "totalMs": 6.710500000001048,
+          "sqlMs": 1.3984999999993306,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        },
+        {
+          "totalMs": 7.0789999999979045,
+          "sqlMs": 1.6036999999996624,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        },
+        {
+          "totalMs": 6.788800000002084,
+          "sqlMs": 1.5432000000000698,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        },
+        {
+          "totalMs": 7.280299999998533,
+          "sqlMs": 1.7759000000005472,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        }
+      ]
+    }
+  },
+  {
+    "case": "sweep3",
+    "term": "a59",
+    "rows": 20,
+    "summary": {
+      "plain": {
+        "totalMs": 1.9552999999978056,
+        "sqlMs": 1.9491999999991094,
+        "sqlCalls": 1,
+        "candidates": 0,
+        "authenticatedFields": 0,
+        "returned": 20
+      },
+      "next_separate": {
+        "totalMs": 7.1317999999992026,
+        "sqlMs": 1.6490999999987253,
+        "sqlCalls": 1,
+        "candidates": 27,
+        "authenticatedFields": 127,
+        "returned": 20
+      },
+      "next_multi": {
+        "totalMs": 7.286499999998341,
+        "sqlMs": 1.736799999998766,
+        "sqlCalls": 1,
+        "candidates": 27,
+        "authenticatedFields": 127,
+        "returned": 20
+      },
+      "skip_separate": {
+        "totalMs": 7.521700000001147,
+        "sqlMs": 1.8603999999977532,
+        "sqlCalls": 1,
+        "candidates": 27,
+        "authenticatedFields": 127,
+        "returned": 20
+      },
+      "skip_multi": {
+        "totalMs": 7.480800000001182,
+        "sqlMs": 2.028999999998632,
+        "sqlCalls": 1,
+        "candidates": 27,
+        "authenticatedFields": 127,
+        "returned": 20
+      }
+    },
+    "runs": {
+      "plain": [
+        {
+          "totalMs": 2.0006000000030326,
+          "sqlMs": 1.992500000000291,
+          "sqlCalls": 1,
+          "candidates": 0,
+          "authenticatedFields": 0,
+          "returned": 20
+        },
+        {
+          "totalMs": 1.9552999999978056,
+          "sqlMs": 1.9491999999991094,
+          "sqlCalls": 1,
+          "candidates": 0,
+          "authenticatedFields": 0,
+          "returned": 20
+        },
+        {
+          "totalMs": 1.9099000000023807,
+          "sqlMs": 1.9048000000002503,
+          "sqlCalls": 1,
+          "candidates": 0,
+          "authenticatedFields": 0,
+          "returned": 20
+        },
+        {
+          "totalMs": 2.3008999999983644,
+          "sqlMs": 2.291900000000169,
+          "sqlCalls": 1,
+          "candidates": 0,
+          "authenticatedFields": 0,
+          "returned": 20
+        },
+        {
+          "totalMs": 1.8022999999993772,
+          "sqlMs": 1.793600000000879,
+          "sqlCalls": 1,
+          "candidates": 0,
+          "authenticatedFields": 0,
+          "returned": 20
+        },
+        {
+          "totalMs": 2.1640000000006694,
+          "sqlMs": 2.1577999999972235,
+          "sqlCalls": 1,
+          "candidates": 0,
+          "authenticatedFields": 0,
+          "returned": 20
+        },
+        {
+          "totalMs": 1.4752000000007683,
+          "sqlMs": 1.4706000000005588,
+          "sqlCalls": 1,
+          "candidates": 0,
+          "authenticatedFields": 0,
+          "returned": 20
+        }
+      ],
+      "next_separate": [
+        {
+          "totalMs": 7.449399999997695,
+          "sqlMs": 1.747800000001007,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        },
+        {
+          "totalMs": 7.1317999999992026,
+          "sqlMs": 1.6490999999987253,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        },
+        {
+          "totalMs": 6.995699999999488,
+          "sqlMs": 1.6085000000020955,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        },
+        {
+          "totalMs": 9.527600000001257,
+          "sqlMs": 1.9059999999990396,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        },
+        {
+          "totalMs": 7.238099999998667,
+          "sqlMs": 1.73149999999805,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        },
+        {
+          "totalMs": 6.904099999999744,
+          "sqlMs": 1.536499999998341,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        },
+        {
+          "totalMs": 6.7674000000006345,
+          "sqlMs": 1.5084999999999127,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        }
+      ],
+      "next_multi": [
+        {
+          "totalMs": 7.313399999999092,
+          "sqlMs": 1.736799999998766,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        },
+        {
+          "totalMs": 6.849199999996927,
+          "sqlMs": 1.625400000000809,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        },
+        {
+          "totalMs": 7.358800000001793,
+          "sqlMs": 1.7802000000010594,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        },
+        {
+          "totalMs": 7.389799999997194,
+          "sqlMs": 1.7882000000026892,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        },
+        {
+          "totalMs": 7.286499999998341,
+          "sqlMs": 1.7409000000006927,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        },
+        {
+          "totalMs": 7.078099999998813,
+          "sqlMs": 1.66990000000078,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        },
+        {
+          "totalMs": 6.923800000000483,
+          "sqlMs": 1.5070999999988999,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        }
+      ],
+      "skip_separate": [
+        {
+          "totalMs": 7.647300000000541,
+          "sqlMs": 1.8603999999977532,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        },
+        {
+          "totalMs": 7.557199999999284,
+          "sqlMs": 1.9458000000013271,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        },
+        {
+          "totalMs": 7.40309999999954,
+          "sqlMs": 1.8006999999997788,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        },
+        {
+          "totalMs": 7.829600000000937,
+          "sqlMs": 2.042300000000978,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        },
+        {
+          "totalMs": 6.986199999999371,
+          "sqlMs": 1.6519000000007509,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        },
+        {
+          "totalMs": 7.066200000001118,
+          "sqlMs": 1.6693000000013853,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        },
+        {
+          "totalMs": 7.521700000001147,
+          "sqlMs": 1.893499999998312,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        }
+      ],
+      "skip_multi": [
+        {
+          "totalMs": 7.480800000001182,
+          "sqlMs": 1.9078000000008615,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        },
+        {
+          "totalMs": 7.898400000001857,
+          "sqlMs": 2.0416000000004715,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        },
+        {
+          "totalMs": 7.91030000000319,
+          "sqlMs": 2.127199999998993,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        },
+        {
+          "totalMs": 7.4755999999979394,
+          "sqlMs": 2.028999999998632,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        },
+        {
+          "totalMs": 7.026699999998527,
+          "sqlMs": 1.5974999999998545,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        },
+        {
+          "totalMs": 7.094800000002579,
+          "sqlMs": 1.7239000000008673,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        },
+        {
+          "totalMs": 7.877500000002328,
+          "sqlMs": 2.0372999999999593,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        }
+      ]
+    }
+  },
+  {
+    "case": "sweep4",
+    "term": "82고",
+    "rows": 20,
+    "summary": {
+      "plain": {
+        "totalMs": 1.431300000000192,
+        "sqlMs": 1.4242000000012922,
+        "sqlCalls": 1,
+        "candidates": 0,
+        "authenticatedFields": 0,
+        "returned": 20
+      },
+      "next_separate": {
+        "totalMs": 7.806300000000192,
+        "sqlMs": 2.220900000000256,
+        "sqlCalls": 1,
+        "candidates": 27,
+        "authenticatedFields": 127,
+        "returned": 20
+      },
+      "next_multi": {
+        "totalMs": 8.121299999998882,
+        "sqlMs": 2.3185000000012224,
+        "sqlCalls": 1,
+        "candidates": 27,
+        "authenticatedFields": 127,
+        "returned": 20
+      },
+      "skip_separate": {
+        "totalMs": 8.11529999999766,
+        "sqlMs": 2.5059000000001106,
+        "sqlCalls": 1,
+        "candidates": 27,
+        "authenticatedFields": 127,
+        "returned": 20
+      },
+      "skip_multi": {
+        "totalMs": 8.124700000000303,
+        "sqlMs": 2.5472000000008848,
+        "sqlCalls": 1,
+        "candidates": 27,
+        "authenticatedFields": 127,
+        "returned": 20
+      }
+    },
+    "runs": {
+      "plain": [
+        {
+          "totalMs": 1.4914999999964493,
+          "sqlMs": 1.4811999999983527,
+          "sqlCalls": 1,
+          "candidates": 0,
+          "authenticatedFields": 0,
+          "returned": 20
+        },
+        {
+          "totalMs": 1.5930000000007567,
+          "sqlMs": 1.586300000002666,
+          "sqlCalls": 1,
+          "candidates": 0,
+          "authenticatedFields": 0,
+          "returned": 20
+        },
+        {
+          "totalMs": 0.9321000000018103,
+          "sqlMs": 0.9280999999973574,
+          "sqlCalls": 1,
+          "candidates": 0,
+          "authenticatedFields": 0,
+          "returned": 20
+        },
+        {
+          "totalMs": 1.2260000000023865,
+          "sqlMs": 1.2216999999982363,
+          "sqlCalls": 1,
+          "candidates": 0,
+          "authenticatedFields": 0,
+          "returned": 20
+        },
+        {
+          "totalMs": 0.8287000000018452,
+          "sqlMs": 0.8258999999998196,
+          "sqlCalls": 1,
+          "candidates": 0,
+          "authenticatedFields": 0,
+          "returned": 20
+        },
+        {
+          "totalMs": 1.5927999999985332,
+          "sqlMs": 1.5851000000002387,
+          "sqlCalls": 1,
+          "candidates": 0,
+          "authenticatedFields": 0,
+          "returned": 20
+        },
+        {
+          "totalMs": 1.431300000000192,
+          "sqlMs": 1.4242000000012922,
+          "sqlCalls": 1,
+          "candidates": 0,
+          "authenticatedFields": 0,
+          "returned": 20
+        }
+      ],
+      "next_separate": [
+        {
+          "totalMs": 8.322900000002846,
+          "sqlMs": 2.3905999999988126,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        },
+        {
+          "totalMs": 8.135199999996985,
+          "sqlMs": 2.4334000000017113,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        },
+        {
+          "totalMs": 7.7039999999979045,
+          "sqlMs": 2.1811000000016065,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        },
+        {
+          "totalMs": 7.568299999998999,
+          "sqlMs": 2.1334999999999127,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        },
+        {
+          "totalMs": 7.14799999999741,
+          "sqlMs": 1.869299999998475,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        },
+        {
+          "totalMs": 8.21849999999904,
+          "sqlMs": 2.4631999999983236,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        },
+        {
+          "totalMs": 7.806300000000192,
+          "sqlMs": 2.220900000000256,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        }
+      ],
+      "next_multi": [
+        {
+          "totalMs": 7.976399999999558,
+          "sqlMs": 2.1841999999996915,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        },
+        {
+          "totalMs": 8.425699999999779,
+          "sqlMs": 2.455600000001141,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        },
+        {
+          "totalMs": 10.059000000001106,
+          "sqlMs": 2.493800000000192,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        },
+        {
+          "totalMs": 7.295299999997951,
+          "sqlMs": 2.032599999998638,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        },
+        {
+          "totalMs": 7.428599999999278,
+          "sqlMs": 2.165899999999965,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        },
+        {
+          "totalMs": 8.802299999999377,
+          "sqlMs": 2.7685999999994237,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        },
+        {
+          "totalMs": 8.121299999998882,
+          "sqlMs": 2.3185000000012224,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        }
+      ],
+      "skip_separate": [
+        {
+          "totalMs": 7.996200000001409,
+          "sqlMs": 2.264899999998306,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        },
+        {
+          "totalMs": 8.795299999997951,
+          "sqlMs": 2.7436000000016065,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        },
+        {
+          "totalMs": 8.768599999999424,
+          "sqlMs": 2.7252000000007683,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        },
+        {
+          "totalMs": 7.6296000000002095,
+          "sqlMs": 2.2994999999973516,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        },
+        {
+          "totalMs": 7.688999999998487,
+          "sqlMs": 2.0645000000004075,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        },
+        {
+          "totalMs": 8.11529999999766,
+          "sqlMs": 2.5116999999991094,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        },
+        {
+          "totalMs": 8.185900000000402,
+          "sqlMs": 2.5059000000001106,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        }
+      ],
+      "skip_multi": [
+        {
+          "totalMs": 8.224599999997736,
+          "sqlMs": 2.458200000000943,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        },
+        {
+          "totalMs": 8.458599999998114,
+          "sqlMs": 2.650900000000547,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        },
+        {
+          "totalMs": 8.124700000000303,
+          "sqlMs": 2.602200000001176,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        },
+        {
+          "totalMs": 7.232299999999668,
+          "sqlMs": 1.9457000000002154,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        },
+        {
+          "totalMs": 8.119500000000698,
+          "sqlMs": 2.5472000000008848,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        },
+        {
+          "totalMs": 8.086899999998423,
+          "sqlMs": 2.4412999999985914,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        },
+        {
+          "totalMs": 10.055599999999686,
+          "sqlMs": 2.764599999998609,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        }
+      ]
+    }
+  },
+  {
+    "case": "sweep5",
+    "term": "da3",
+    "rows": 20,
+    "summary": {
+      "plain": {
+        "totalMs": 0.9046000000016647,
+        "sqlMs": 0.9003000000011525,
+        "sqlCalls": 1,
+        "candidates": 0,
+        "authenticatedFields": 0,
+        "returned": 20
+      },
+      "next_separate": {
+        "totalMs": 7.01220000000103,
+        "sqlMs": 1.6395999999986088,
+        "sqlCalls": 1,
+        "candidates": 27,
+        "authenticatedFields": 127,
+        "returned": 20
+      },
+      "next_multi": {
+        "totalMs": 6.999900000002526,
+        "sqlMs": 1.6563000000023749,
+        "sqlCalls": 1,
+        "candidates": 27,
+        "authenticatedFields": 127,
+        "returned": 20
+      },
+      "skip_separate": {
+        "totalMs": 8.856500000001688,
+        "sqlMs": 3.135200000000623,
+        "sqlCalls": 1,
+        "candidates": 27,
+        "authenticatedFields": 127,
+        "returned": 20
+      },
+      "skip_multi": {
+        "totalMs": 8.423200000001088,
+        "sqlMs": 3.0741000000016356,
+        "sqlCalls": 1,
+        "candidates": 27,
+        "authenticatedFields": 127,
+        "returned": 20
+      }
+    },
+    "runs": {
+      "plain": [
+        {
+          "totalMs": 1.1039999999993597,
+          "sqlMs": 1.096799999999348,
+          "sqlCalls": 1,
+          "candidates": 0,
+          "authenticatedFields": 0,
+          "returned": 20
+        },
+        {
+          "totalMs": 0.92779999999766,
+          "sqlMs": 0.9232999999985623,
+          "sqlCalls": 1,
+          "candidates": 0,
+          "authenticatedFields": 0,
+          "returned": 20
+        },
+        {
+          "totalMs": 0.6208999999980733,
+          "sqlMs": 0.618400000003021,
+          "sqlCalls": 1,
+          "candidates": 0,
+          "authenticatedFields": 0,
+          "returned": 20
+        },
+        {
+          "totalMs": 0.9046000000016647,
+          "sqlMs": 0.9003000000011525,
+          "sqlCalls": 1,
+          "candidates": 0,
+          "authenticatedFields": 0,
+          "returned": 20
+        },
+        {
+          "totalMs": 0.7852999999995518,
+          "sqlMs": 0.779500000000553,
+          "sqlCalls": 1,
+          "candidates": 0,
+          "authenticatedFields": 0,
+          "returned": 20
+        },
+        {
+          "totalMs": 0.9700000000011642,
+          "sqlMs": 0.9642000000021653,
+          "sqlCalls": 1,
+          "candidates": 0,
+          "authenticatedFields": 0,
+          "returned": 20
+        },
+        {
+          "totalMs": 0.6186999999990803,
+          "sqlMs": 0.6159999999981665,
+          "sqlCalls": 1,
+          "candidates": 0,
+          "authenticatedFields": 0,
+          "returned": 20
+        }
+      ],
+      "next_separate": [
+        {
+          "totalMs": 7.01220000000103,
+          "sqlMs": 1.578799999999319,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        },
+        {
+          "totalMs": 6.91530000000057,
+          "sqlMs": 1.6051000000006752,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        },
+        {
+          "totalMs": 6.43840000000273,
+          "sqlMs": 1.5005999999993946,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        },
+        {
+          "totalMs": 7.065300000002026,
+          "sqlMs": 1.7919000000001688,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        },
+        {
+          "totalMs": 7.192299999998795,
+          "sqlMs": 1.701600000000326,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        },
+        {
+          "totalMs": 7.091199999998935,
+          "sqlMs": 1.8186000000023341,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        },
+        {
+          "totalMs": 6.695100000000821,
+          "sqlMs": 1.6395999999986088,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        }
+      ],
+      "next_multi": [
+        {
+          "totalMs": 6.936100000002625,
+          "sqlMs": 1.6563000000023749,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        },
+        {
+          "totalMs": 7.101200000000972,
+          "sqlMs": 1.7430999999996857,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        },
+        {
+          "totalMs": 6.675599999998667,
+          "sqlMs": 1.5204999999987194,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        },
+        {
+          "totalMs": 7.269100000001345,
+          "sqlMs": 1.799300000002404,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        },
+        {
+          "totalMs": 6.999900000002526,
+          "sqlMs": 1.5957000000016706,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        },
+        {
+          "totalMs": 7.40389999999752,
+          "sqlMs": 1.9699000000000524,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        },
+        {
+          "totalMs": 6.7827999999972235,
+          "sqlMs": 1.5626999999985856,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        }
+      ],
+      "skip_separate": [
+        {
+          "totalMs": 8.287000000000262,
+          "sqlMs": 3.0027999999983876,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        },
+        {
+          "totalMs": 9.53229999999894,
+          "sqlMs": 3.4913999999989755,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        },
+        {
+          "totalMs": 8.856500000001688,
+          "sqlMs": 3.477199999997538,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        },
+        {
+          "totalMs": 8.403900000001158,
+          "sqlMs": 2.952499999999418,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        },
+        {
+          "totalMs": 8.391200000001845,
+          "sqlMs": 3.1152000000001863,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        },
+        {
+          "totalMs": 10.224599999997736,
+          "sqlMs": 3.135200000000623,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        },
+        {
+          "totalMs": 8.943999999999505,
+          "sqlMs": 3.644400000001042,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        }
+      ],
+      "skip_multi": [
+        {
+          "totalMs": 8.381400000002031,
+          "sqlMs": 3.0741000000016356,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        },
+        {
+          "totalMs": 9.721299999997427,
+          "sqlMs": 2.8449000000000524,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        },
+        {
+          "totalMs": 8.423200000001088,
+          "sqlMs": 3.212100000000646,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        },
+        {
+          "totalMs": 8.441900000001624,
+          "sqlMs": 3.199400000001333,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        },
+        {
+          "totalMs": 8.279699999999139,
+          "sqlMs": 3.0675999999984924,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        },
+        {
+          "totalMs": 8.072800000001735,
+          "sqlMs": 2.827099999998609,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        },
+        {
+          "totalMs": 8.446499999998196,
+          "sqlMs": 3.1556999999993423,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        }
+      ]
+    }
+  },
+  {
+    "case": "sweep6",
+    "term": "a3",
+    "rows": 20,
+    "summary": {
+      "plain": {
+        "totalMs": 0.6651999999994587,
+        "sqlMs": 0.6609000000025844,
+        "sqlCalls": 1,
+        "candidates": 0,
+        "authenticatedFields": 0,
+        "returned": 20
+      },
+      "next_separate": {
+        "totalMs": 6.627099999997881,
+        "sqlMs": 1.2559000000001106,
+        "sqlCalls": 1,
+        "candidates": 27,
+        "authenticatedFields": 127,
+        "returned": 20
+      },
+      "next_multi": {
+        "totalMs": 6.522399999998015,
+        "sqlMs": 1.3351999999977124,
+        "sqlCalls": 1,
+        "candidates": 27,
+        "authenticatedFields": 127,
+        "returned": 20
+      },
+      "skip_separate": {
+        "totalMs": 7.041699999997945,
+        "sqlMs": 1.5146999999997206,
+        "sqlCalls": 1,
+        "candidates": 27,
+        "authenticatedFields": 127,
+        "returned": 20
+      },
+      "skip_multi": {
+        "totalMs": 6.930299999999988,
+        "sqlMs": 1.4884999999994761,
+        "sqlCalls": 1,
+        "candidates": 27,
+        "authenticatedFields": 127,
+        "returned": 20
+      }
+    },
+    "runs": {
+      "plain": [
+        {
+          "totalMs": 0.9517999999989115,
+          "sqlMs": 0.9452000000019325,
+          "sqlCalls": 1,
+          "candidates": 0,
+          "authenticatedFields": 0,
+          "returned": 20
+        },
+        {
+          "totalMs": 0.6647999999986496,
+          "sqlMs": 0.6604000000006636,
+          "sqlCalls": 1,
+          "candidates": 0,
+          "authenticatedFields": 0,
+          "returned": 20
+        },
+        {
+          "totalMs": 0.45609999999942374,
+          "sqlMs": 0.45379999999931897,
+          "sqlCalls": 1,
+          "candidates": 0,
+          "authenticatedFields": 0,
+          "returned": 20
+        },
+        {
+          "totalMs": 0.6651999999994587,
+          "sqlMs": 0.6609000000025844,
+          "sqlCalls": 1,
+          "candidates": 0,
+          "authenticatedFields": 0,
+          "returned": 20
+        },
+        {
+          "totalMs": 0.4976999999998952,
+          "sqlMs": 0.49510000000009313,
+          "sqlCalls": 1,
+          "candidates": 0,
+          "authenticatedFields": 0,
+          "returned": 20
+        },
+        {
+          "totalMs": 0.9804999999978463,
+          "sqlMs": 0.9739000000008673,
+          "sqlCalls": 1,
+          "candidates": 0,
+          "authenticatedFields": 0,
+          "returned": 20
+        },
+        {
+          "totalMs": 0.6820000000006985,
+          "sqlMs": 0.67870000000039,
+          "sqlCalls": 1,
+          "candidates": 0,
+          "authenticatedFields": 0,
+          "returned": 20
+        }
+      ],
+      "next_separate": [
+        {
+          "totalMs": 6.3598000000019965,
+          "sqlMs": 1.2559000000001106,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        },
+        {
+          "totalMs": 6.778999999998632,
+          "sqlMs": 1.3976000000002387,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        },
+        {
+          "totalMs": 5.956600000001345,
+          "sqlMs": 1.118000000002212,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        },
+        {
+          "totalMs": 6.890900000002148,
+          "sqlMs": 1.712100000000646,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        },
+        {
+          "totalMs": 7.539800000002288,
+          "sqlMs": 1.1316999999980908,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        },
+        {
+          "totalMs": 6.627099999997881,
+          "sqlMs": 1.2491999999983818,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        },
+        {
+          "totalMs": 6.614000000001397,
+          "sqlMs": 1.3289999999979045,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        }
+      ],
+      "next_multi": [
+        {
+          "totalMs": 6.522399999998015,
+          "sqlMs": 1.1633999999976368,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        },
+        {
+          "totalMs": 6.428299999999581,
+          "sqlMs": 1.2902999999969325,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        },
+        {
+          "totalMs": 6.431799999998475,
+          "sqlMs": 1.272899999999936,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        },
+        {
+          "totalMs": 6.979200000001583,
+          "sqlMs": 1.6555000000007567,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        },
+        {
+          "totalMs": 6.9932000000007974,
+          "sqlMs": 1.6147999999993772,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        },
+        {
+          "totalMs": 6.453900000000431,
+          "sqlMs": 1.3351999999977124,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        },
+        {
+          "totalMs": 7.021099999998114,
+          "sqlMs": 1.4765999999981432,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        }
+      ],
+      "skip_separate": [
+        {
+          "totalMs": 7.041699999997945,
+          "sqlMs": 1.6054000000003725,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        },
+        {
+          "totalMs": 6.466300000000047,
+          "sqlMs": 1.3896999999997206,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        },
+        {
+          "totalMs": 6.3892999999989115,
+          "sqlMs": 1.3325000000004366,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        },
+        {
+          "totalMs": 7.428600000002916,
+          "sqlMs": 1.5146999999997206,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        },
+        {
+          "totalMs": 7.372699999999895,
+          "sqlMs": 1.8914000000004307,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        },
+        {
+          "totalMs": 6.923699999999371,
+          "sqlMs": 1.3856999999989057,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        },
+        {
+          "totalMs": 7.340700000000652,
+          "sqlMs": 1.7572000000000116,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        }
+      ],
+      "skip_multi": [
+        {
+          "totalMs": 6.483299999999872,
+          "sqlMs": 1.34599999999773,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        },
+        {
+          "totalMs": 6.733299999999872,
+          "sqlMs": 1.4606999999996333,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        },
+        {
+          "totalMs": 6.979199999997945,
+          "sqlMs": 1.6082000000023982,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        },
+        {
+          "totalMs": 6.930299999999988,
+          "sqlMs": 1.7896999999975378,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        },
+        {
+          "totalMs": 7.094900000000052,
+          "sqlMs": 1.643000000000029,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        },
+        {
+          "totalMs": 6.412499999998545,
+          "sqlMs": 1.4884999999994761,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        },
+        {
+          "totalMs": 7.482899999999063,
+          "sqlMs": 1.4209999999984575,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        }
+      ]
+    }
+  },
+  {
+    "case": "sweep7",
+    "term": "2고",
+    "rows": 20,
+    "summary": {
+      "plain": {
+        "totalMs": 0.6035000000010768,
+        "sqlMs": 0.5983999999989464,
+        "sqlCalls": 1,
+        "candidates": 0,
+        "authenticatedFields": 0,
+        "returned": 20
+      },
+      "next_separate": {
+        "totalMs": 6.8928000000014435,
+        "sqlMs": 1.2572000000000116,
+        "sqlCalls": 1,
+        "candidates": 27,
+        "authenticatedFields": 127,
+        "returned": 20
+      },
+      "next_multi": {
+        "totalMs": 6.780299999998533,
+        "sqlMs": 1.1972999999998137,
+        "sqlCalls": 1,
+        "candidates": 27,
+        "authenticatedFields": 127,
+        "returned": 20
+      },
+      "skip_separate": {
+        "totalMs": 7.010299999998097,
+        "sqlMs": 1.3660000000018044,
+        "sqlCalls": 1,
+        "candidates": 27,
+        "authenticatedFields": 127,
+        "returned": 20
+      },
+      "skip_multi": {
+        "totalMs": 6.735200000002806,
+        "sqlMs": 1.3456000000005588,
+        "sqlCalls": 1,
+        "candidates": 27,
+        "authenticatedFields": 127,
+        "returned": 20
+      }
+    },
+    "runs": {
+      "plain": [
+        {
+          "totalMs": 0.6028000000005704,
+          "sqlMs": 0.5969999999979336,
+          "sqlCalls": 1,
+          "candidates": 0,
+          "authenticatedFields": 0,
+          "returned": 20
+        },
+        {
+          "totalMs": 0.8057999999982712,
+          "sqlMs": 0.7992000000012922,
+          "sqlCalls": 1,
+          "candidates": 0,
+          "authenticatedFields": 0,
+          "returned": 20
+        },
+        {
+          "totalMs": 0.6198000000003958,
+          "sqlMs": 0.617099999999482,
+          "sqlCalls": 1,
+          "candidates": 0,
+          "authenticatedFields": 0,
+          "returned": 20
+        },
+        {
+          "totalMs": 0.6238999999986845,
+          "sqlMs": 0.617500000000291,
+          "sqlCalls": 1,
+          "candidates": 0,
+          "authenticatedFields": 0,
+          "returned": 20
+        },
+        {
+          "totalMs": 0.42669999999998254,
+          "sqlMs": 0.4238999999979569,
+          "sqlCalls": 1,
+          "candidates": 0,
+          "authenticatedFields": 0,
+          "returned": 20
+        },
+        {
+          "totalMs": 0.6035000000010768,
+          "sqlMs": 0.5983999999989464,
+          "sqlCalls": 1,
+          "candidates": 0,
+          "authenticatedFields": 0,
+          "returned": 20
+        },
+        {
+          "totalMs": 0.39259999999922,
+          "sqlMs": 0.3899999999994179,
+          "sqlCalls": 1,
+          "candidates": 0,
+          "authenticatedFields": 0,
+          "returned": 20
+        }
+      ],
+      "next_separate": [
+        {
+          "totalMs": 7.208200000000943,
+          "sqlMs": 1.048400000003312,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        },
+        {
+          "totalMs": 6.963599999999133,
+          "sqlMs": 1.3038999999989755,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        },
+        {
+          "totalMs": 6.67949999999837,
+          "sqlMs": 1.2955000000001746,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        },
+        {
+          "totalMs": 6.8928000000014435,
+          "sqlMs": 1.4738999999972293,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        },
+        {
+          "totalMs": 7.007600000000821,
+          "sqlMs": 1.2572000000000116,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        },
+        {
+          "totalMs": 6.576399999998102,
+          "sqlMs": 1.1872000000003027,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        },
+        {
+          "totalMs": 6.143499999998312,
+          "sqlMs": 0.9978999999984808,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        }
+      ],
+      "next_multi": [
+        {
+          "totalMs": 6.943499999997584,
+          "sqlMs": 1.0679000000018277,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        },
+        {
+          "totalMs": 6.924000000002707,
+          "sqlMs": 1.4334000000017113,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        },
+        {
+          "totalMs": 6.930800000001909,
+          "sqlMs": 1.2877999999982421,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        },
+        {
+          "totalMs": 6.618099999999686,
+          "sqlMs": 1.154500000000553,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        },
+        {
+          "totalMs": 6.750700000000506,
+          "sqlMs": 1.1972999999998137,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        },
+        {
+          "totalMs": 6.780299999998533,
+          "sqlMs": 1.233299999999872,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        },
+        {
+          "totalMs": 6.375299999999697,
+          "sqlMs": 1.0930999999982305,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        }
+      ],
+      "skip_separate": [
+        {
+          "totalMs": 7.372299999999086,
+          "sqlMs": 1.5234999999993306,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        },
+        {
+          "totalMs": 7.411800000001676,
+          "sqlMs": 1.529900000001362,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        },
+        {
+          "totalMs": 6.616099999999278,
+          "sqlMs": 1.2563000000009197,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        },
+        {
+          "totalMs": 7.010299999998097,
+          "sqlMs": 1.3660000000018044,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        },
+        {
+          "totalMs": 7.291799999999057,
+          "sqlMs": 1.4272999999993772,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        },
+        {
+          "totalMs": 6.770599999999831,
+          "sqlMs": 1.337100000000646,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        },
+        {
+          "totalMs": 6.682499999998981,
+          "sqlMs": 1.3214999999981956,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        }
+      ],
+      "skip_multi": [
+        {
+          "totalMs": 7.257499999999709,
+          "sqlMs": 1.4241000000001804,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        },
+        {
+          "totalMs": 6.716499999998632,
+          "sqlMs": 1.3324999999967986,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        },
+        {
+          "totalMs": 6.409899999998743,
+          "sqlMs": 1.0430000000014843,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        },
+        {
+          "totalMs": 7.723999999998341,
+          "sqlMs": 1.3456000000005588,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        },
+        {
+          "totalMs": 6.964299999999639,
+          "sqlMs": 1.4398999999975786,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        },
+        {
+          "totalMs": 6.735200000002806,
+          "sqlMs": 1.3863000000019383,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        },
+        {
+          "totalMs": 6.539300000000367,
+          "sqlMs": 1.2453999999997905,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        }
+      ]
+    }
+  },
+  {
+    "case": "sweep8",
+    "term": "ch",
+    "rows": 20,
+    "summary": {
+      "plain": {
+        "totalMs": 0.6105000000025029,
+        "sqlMs": 0.6045000000012806,
+        "sqlCalls": 1,
+        "candidates": 0,
+        "authenticatedFields": 0,
+        "returned": 20
+      },
+      "next_separate": {
+        "totalMs": 6.765500000001339,
+        "sqlMs": 1.118399999999383,
+        "sqlCalls": 1,
+        "candidates": 27,
+        "authenticatedFields": 127,
+        "returned": 20
+      },
+      "next_multi": {
+        "totalMs": 6.782000000002881,
+        "sqlMs": 1.0626000000011118,
+        "sqlCalls": 1,
+        "candidates": 27,
+        "authenticatedFields": 127,
+        "returned": 20
+      },
+      "skip_separate": {
+        "totalMs": 6.816299999998591,
+        "sqlMs": 1.1837000000014086,
+        "sqlCalls": 1,
+        "candidates": 27,
+        "authenticatedFields": 127,
+        "returned": 20
+      },
+      "skip_multi": {
+        "totalMs": 6.863900000000285,
+        "sqlMs": 1.168599999997241,
+        "sqlCalls": 1,
+        "candidates": 27,
+        "authenticatedFields": 127,
+        "returned": 20
+      }
+    },
+    "runs": {
+      "plain": [
+        {
+          "totalMs": 0.6105000000025029,
+          "sqlMs": 0.6045000000012806,
+          "sqlCalls": 1,
+          "candidates": 0,
+          "authenticatedFields": 0,
+          "returned": 20
+        },
+        {
+          "totalMs": 0.9082999999991443,
+          "sqlMs": 0.8995000000031723,
+          "sqlCalls": 1,
+          "candidates": 0,
+          "authenticatedFields": 0,
+          "returned": 20
+        },
+        {
+          "totalMs": 0.48070000000006985,
+          "sqlMs": 0.47370000000228174,
+          "sqlCalls": 1,
+          "candidates": 0,
+          "authenticatedFields": 0,
+          "returned": 20
+        },
+        {
+          "totalMs": 0.6725999999980559,
+          "sqlMs": 0.6673000000009779,
+          "sqlCalls": 1,
+          "candidates": 0,
+          "authenticatedFields": 0,
+          "returned": 20
+        },
+        {
+          "totalMs": 0.4105999999992491,
+          "sqlMs": 0.40789999999833526,
+          "sqlCalls": 1,
+          "candidates": 0,
+          "authenticatedFields": 0,
+          "returned": 20
+        },
+        {
+          "totalMs": 0.6653999999980442,
+          "sqlMs": 0.6589999999996508,
+          "sqlCalls": 1,
+          "candidates": 0,
+          "authenticatedFields": 0,
+          "returned": 20
+        },
+        {
+          "totalMs": 0.5258000000030734,
+          "sqlMs": 0.5197000000007392,
+          "sqlCalls": 1,
+          "candidates": 0,
+          "authenticatedFields": 0,
+          "returned": 20
+        }
+      ],
+      "next_separate": [
+        {
+          "totalMs": 6.482799999997951,
+          "sqlMs": 0.923399999999674,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        },
+        {
+          "totalMs": 8.25590000000011,
+          "sqlMs": 1.2188999999998487,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        },
+        {
+          "totalMs": 7.043099999998958,
+          "sqlMs": 1.118399999999383,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        },
+        {
+          "totalMs": 6.583999999998923,
+          "sqlMs": 1.2142999999996391,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        },
+        {
+          "totalMs": 6.135399999999208,
+          "sqlMs": 0.8657000000021071,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        },
+        {
+          "totalMs": 7.454400000002352,
+          "sqlMs": 1.178299999999581,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        },
+        {
+          "totalMs": 6.765500000001339,
+          "sqlMs": 0.9803999999967346,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        }
+      ],
+      "next_multi": [
+        {
+          "totalMs": 6.327300000000832,
+          "sqlMs": 1.0469000000011874,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        },
+        {
+          "totalMs": 6.680299999999988,
+          "sqlMs": 1.0626000000011118,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        },
+        {
+          "totalMs": 6.937099999999191,
+          "sqlMs": 1.1360999999997148,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        },
+        {
+          "totalMs": 6.835500000001048,
+          "sqlMs": 1.250899999999092,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        },
+        {
+          "totalMs": 6.367099999999482,
+          "sqlMs": 1.0416000000004715,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        },
+        {
+          "totalMs": 6.782000000002881,
+          "sqlMs": 1.0447999999996682,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        },
+        {
+          "totalMs": 8.150500000003376,
+          "sqlMs": 1.2869000000027881,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        }
+      ],
+      "skip_separate": [
+        {
+          "totalMs": 6.452399999998306,
+          "sqlMs": 0.9920000000020082,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        },
+        {
+          "totalMs": 7.255600000000413,
+          "sqlMs": 1.3101999999998952,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        },
+        {
+          "totalMs": 6.816299999998591,
+          "sqlMs": 1.1837000000014086,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        },
+        {
+          "totalMs": 6.742200000000594,
+          "sqlMs": 1.1692999999977474,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        },
+        {
+          "totalMs": 6.760900000001129,
+          "sqlMs": 1.069999999999709,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        },
+        {
+          "totalMs": 6.8431000000018685,
+          "sqlMs": 1.2488999999986845,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        },
+        {
+          "totalMs": 7.077799999999115,
+          "sqlMs": 1.2585999999973865,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        }
+      ],
+      "skip_multi": [
+        {
+          "totalMs": 6.5600999999987835,
+          "sqlMs": 1.048899999997957,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        },
+        {
+          "totalMs": 6.89350000000195,
+          "sqlMs": 1.2613000000019383,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        },
+        {
+          "totalMs": 6.863900000000285,
+          "sqlMs": 1.114900000000489,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        },
+        {
+          "totalMs": 7.032100000000355,
+          "sqlMs": 1.2895000000025902,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        },
+        {
+          "totalMs": 7.180899999999383,
+          "sqlMs": 1.2380000000011933,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        },
+        {
+          "totalMs": 6.378499999998894,
+          "sqlMs": 0.9349000000001979,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        },
+        {
+          "totalMs": 6.439299999998184,
+          "sqlMs": 1.168599999997241,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        }
+      ]
+    }
+  },
+  {
+    "case": "sweep9",
+    "term": "세종대로",
+    "rows": 20,
+    "summary": {
+      "plain": {
+        "totalMs": 0.4848999999994703,
+        "sqlMs": 0.4811999999983527,
+        "sqlCalls": 1,
+        "candidates": 0,
+        "authenticatedFields": 0,
+        "returned": 20
+      },
+      "next_separate": {
+        "totalMs": 6.0737000000008265,
+        "sqlMs": 0.8673000000017055,
+        "sqlCalls": 1,
+        "candidates": 27,
+        "authenticatedFields": 127,
+        "returned": 20
+      },
+      "next_multi": {
+        "totalMs": 6.213999999999942,
+        "sqlMs": 0.9367000000020198,
+        "sqlCalls": 1,
+        "candidates": 27,
+        "authenticatedFields": 127,
+        "returned": 20
+      },
+      "skip_separate": {
+        "totalMs": 6.26050000000032,
+        "sqlMs": 0.9294000000008964,
+        "sqlCalls": 1,
+        "candidates": 27,
+        "authenticatedFields": 127,
+        "returned": 20
+      },
+      "skip_multi": {
+        "totalMs": 6.278300000001764,
+        "sqlMs": 0.9870000000009895,
+        "sqlCalls": 1,
+        "candidates": 27,
+        "authenticatedFields": 127,
+        "returned": 20
+      }
+    },
+    "runs": {
+      "plain": [
+        {
+          "totalMs": 0.4845000000022992,
+          "sqlMs": 0.480200000001787,
+          "sqlCalls": 1,
+          "candidates": 0,
+          "authenticatedFields": 0,
+          "returned": 20
+        },
+        {
+          "totalMs": 0.4848999999994703,
+          "sqlMs": 0.4811999999983527,
+          "sqlCalls": 1,
+          "candidates": 0,
+          "authenticatedFields": 0,
+          "returned": 20
+        },
+        {
+          "totalMs": 0.3495999999977357,
+          "sqlMs": 0.3470000000015716,
+          "sqlCalls": 1,
+          "candidates": 0,
+          "authenticatedFields": 0,
+          "returned": 20
+        },
+        {
+          "totalMs": 0.6028000000005704,
+          "sqlMs": 0.5980999999992491,
+          "sqlCalls": 1,
+          "candidates": 0,
+          "authenticatedFields": 0,
+          "returned": 20
+        },
+        {
+          "totalMs": 0.37809999999808497,
+          "sqlMs": 0.3754000000008091,
+          "sqlCalls": 1,
+          "candidates": 0,
+          "authenticatedFields": 0,
+          "returned": 20
+        },
+        {
+          "totalMs": 0.749100000000908,
+          "sqlMs": 0.7442000000010012,
+          "sqlCalls": 1,
+          "candidates": 0,
+          "authenticatedFields": 0,
+          "returned": 20
+        },
+        {
+          "totalMs": 0.5836999999992258,
+          "sqlMs": 0.5799999999981083,
+          "sqlCalls": 1,
+          "candidates": 0,
+          "authenticatedFields": 0,
+          "returned": 20
+        }
+      ],
+      "next_separate": [
+        {
+          "totalMs": 6.092500000002474,
+          "sqlMs": 0.8414000000011583,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        },
+        {
+          "totalMs": 5.955799999999726,
+          "sqlMs": 0.8673000000017055,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        },
+        {
+          "totalMs": 5.91359999999986,
+          "sqlMs": 0.7620999999999185,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        },
+        {
+          "totalMs": 6.0737000000008265,
+          "sqlMs": 0.8698000000003958,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        },
+        {
+          "totalMs": 6.391700000000128,
+          "sqlMs": 1.0234000000018568,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        },
+        {
+          "totalMs": 5.986200000003009,
+          "sqlMs": 0.8513000000020838,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        },
+        {
+          "totalMs": 6.26850000000195,
+          "sqlMs": 0.9252000000014959,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        }
+      ],
+      "next_multi": [
+        {
+          "totalMs": 6.04910000000018,
+          "sqlMs": 0.8525000000008731,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        },
+        {
+          "totalMs": 6.228399999999965,
+          "sqlMs": 0.9367000000020198,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        },
+        {
+          "totalMs": 6.418900000000576,
+          "sqlMs": 1.1516000000010536,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        },
+        {
+          "totalMs": 6.213999999999942,
+          "sqlMs": 1.0261000000027707,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        },
+        {
+          "totalMs": 5.975600000001577,
+          "sqlMs": 0.827000000001135,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        },
+        {
+          "totalMs": 6.254300000000512,
+          "sqlMs": 1.073899999999412,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        },
+        {
+          "totalMs": 5.954499999999825,
+          "sqlMs": 0.8267999999989115,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        }
+      ],
+      "skip_separate": [
+        {
+          "totalMs": 7.610300000000279,
+          "sqlMs": 0.8667999999997846,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        },
+        {
+          "totalMs": 6.036500000001979,
+          "sqlMs": 0.8469999999979336,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        },
+        {
+          "totalMs": 6.125800000001618,
+          "sqlMs": 0.9334999999991851,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        },
+        {
+          "totalMs": 6.26050000000032,
+          "sqlMs": 0.8482999999978347,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        },
+        {
+          "totalMs": 6.474599999997736,
+          "sqlMs": 1.14259999999922,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        },
+        {
+          "totalMs": 6.872400000000198,
+          "sqlMs": 1.1841999999996915,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        },
+        {
+          "totalMs": 6.1965000000018335,
+          "sqlMs": 0.9294000000008964,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        }
+      ],
+      "skip_multi": [
+        {
+          "totalMs": 7.071800000001531,
+          "sqlMs": 1.1644000000014785,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        },
+        {
+          "totalMs": 6.278300000001764,
+          "sqlMs": 1.1463999999978114,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        },
+        {
+          "totalMs": 6.3215000000018335,
+          "sqlMs": 0.9870000000009895,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        },
+        {
+          "totalMs": 6.152799999999843,
+          "sqlMs": 0.8886999999995169,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        },
+        {
+          "totalMs": 6.1718999999975495,
+          "sqlMs": 1.0054000000018277,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        },
+        {
+          "totalMs": 7.236300000000483,
+          "sqlMs": 0.8169999999990978,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        },
+        {
+          "totalMs": 6.12749999999869,
+          "sqlMs": 0.9165000000029977,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "returned": 20
+        }
+      ]
+    }
+  }
+]

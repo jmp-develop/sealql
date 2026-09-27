@@ -1,0 +1,5692 @@
+{
+  "source": "bench/results/2026-09-27-product-multicolumn-gin/sweep.json",
+  "chosen": [
+    {
+      "target": 10,
+      "term": "대로6고",
+      "hits": 10
+    },
+    {
+      "target": 100,
+      "term": "151고",
+      "hits": 100
+    },
+    {
+      "target": 500,
+      "term": "a59",
+      "hits": 418
+    },
+    {
+      "target": 1000,
+      "term": "82고",
+      "hits": 1000
+    },
+    {
+      "target": 2000,
+      "term": "da3",
+      "hits": 1956
+    },
+    {
+      "target": 5000,
+      "term": "a3",
+      "hits": 3789
+    },
+    {
+      "target": 10000,
+      "term": "2고",
+      "hits": 10003
+    },
+    {
+      "target": 20000,
+      "term": "ch",
+      "hits": 16821
+    },
+    {
+      "target": 16574,
+      "term": "세종대로",
+      "hits": 16574
+    }
+  ],
+  "report": [
+    {
+      "case": "exact_common",
+      "rows": 20,
+      "summary": {
+        "plain": {
+          "totalMs": 0.6122000000000298,
+          "sqlMs": 0.5849999999999795,
+          "sqlCalls": 1,
+          "candidates": 0,
+          "authenticatedFields": 0,
+          "openCumulativeMs": 0,
+          "openWallMs": 0,
+          "remainderMs": 0.020200000000045293,
+          "returned": 20
+        },
+        "product": {
+          "totalMs": 7.901700000000005,
+          "sqlMs": 0.8125,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "openCumulativeMs": 194.29860000000025,
+          "openWallMs": 4.082899999999995,
+          "remainderMs": 3.0090999999999894,
+          "returned": 20
+        }
+      },
+      "runs": {
+        "plain": [
+          {
+            "totalMs": 0.7200000000000273,
+            "sqlCalls": 1,
+            "sqlMs": 0.6963999999999828,
+            "candidates": 0,
+            "authenticatedFields": 0,
+            "openCumulativeMs": 0,
+            "openWallMs": 0,
+            "remainderMs": 0.023600000000044474,
+            "returned": 20
+          },
+          {
+            "totalMs": 0.7615999999999872,
+            "sqlCalls": 1,
+            "sqlMs": 0.7426000000000386,
+            "candidates": 0,
+            "authenticatedFields": 0,
+            "openCumulativeMs": 0,
+            "openWallMs": 0,
+            "remainderMs": 0.018999999999948614,
+            "returned": 20
+          },
+          {
+            "totalMs": 0.4744000000000028,
+            "sqlCalls": 1,
+            "sqlMs": 0.46059999999999945,
+            "candidates": 0,
+            "authenticatedFields": 0,
+            "openCumulativeMs": 0,
+            "openWallMs": 0,
+            "remainderMs": 0.013800000000003365,
+            "returned": 20
+          },
+          {
+            "totalMs": 0.755800000000022,
+            "sqlCalls": 1,
+            "sqlMs": 0.7355999999999767,
+            "candidates": 0,
+            "authenticatedFields": 0,
+            "openCumulativeMs": 0,
+            "openWallMs": 0,
+            "remainderMs": 0.020200000000045293,
+            "returned": 20
+          },
+          {
+            "totalMs": 0.5355000000000132,
+            "sqlCalls": 1,
+            "sqlMs": 0.5124999999999886,
+            "candidates": 0,
+            "authenticatedFields": 0,
+            "openCumulativeMs": 0,
+            "openWallMs": 0,
+            "remainderMs": 0.023000000000024556,
+            "returned": 20
+          },
+          {
+            "totalMs": 0.6122000000000298,
+            "sqlCalls": 1,
+            "sqlMs": 0.5849999999999795,
+            "candidates": 0,
+            "authenticatedFields": 0,
+            "openCumulativeMs": 0,
+            "openWallMs": 0,
+            "remainderMs": 0.027200000000050295,
+            "returned": 20
+          },
+          {
+            "totalMs": 0.4271999999999707,
+            "sqlCalls": 1,
+            "sqlMs": 0.41329999999999245,
+            "candidates": 0,
+            "authenticatedFields": 0,
+            "openCumulativeMs": 0,
+            "openWallMs": 0,
+            "remainderMs": 0.013899999999978263,
+            "returned": 20
+          }
+        ],
+        "product": [
+          {
+            "totalMs": 8.561399999999992,
+            "sqlCalls": 1,
+            "sqlMs": 0.8125,
+            "candidates": 27,
+            "authenticatedFields": 127,
+            "openCumulativeMs": 221.76760000000013,
+            "openWallMs": 4.7398000000000025,
+            "remainderMs": 3.0090999999999894,
+            "returned": 20
+          },
+          {
+            "totalMs": 8.316599999999994,
+            "sqlCalls": 1,
+            "sqlMs": 0.9914999999999736,
+            "candidates": 27,
+            "authenticatedFields": 127,
+            "openCumulativeMs": 196.30000000000007,
+            "openWallMs": 4.357100000000003,
+            "remainderMs": 2.9680000000000177,
+            "returned": 20
+          },
+          {
+            "totalMs": 7.901700000000005,
+            "sqlCalls": 1,
+            "sqlMs": 0.6687999999999761,
+            "candidates": 27,
+            "authenticatedFields": 127,
+            "openCumulativeMs": 194.29860000000025,
+            "openWallMs": 4.082899999999995,
+            "remainderMs": 3.150000000000034,
+            "returned": 20
+          },
+          {
+            "totalMs": 7.840199999999982,
+            "sqlCalls": 1,
+            "sqlMs": 1.013900000000035,
+            "candidates": 27,
+            "authenticatedFields": 127,
+            "openCumulativeMs": 194.43509999999964,
+            "openWallMs": 4.119500000000016,
+            "remainderMs": 2.70679999999993,
+            "returned": 20
+          },
+          {
+            "totalMs": 7.942299999999989,
+            "sqlCalls": 1,
+            "sqlMs": 0.7028999999999996,
+            "candidates": 27,
+            "authenticatedFields": 127,
+            "openCumulativeMs": 188.43099999999953,
+            "openWallMs": 4.019399999999962,
+            "remainderMs": 3.2200000000000273,
+            "returned": 20
+          },
+          {
+            "totalMs": 7.22909999999996,
+            "sqlCalls": 1,
+            "sqlMs": 0.9221000000000004,
+            "candidates": 27,
+            "authenticatedFields": 127,
+            "openCumulativeMs": 174.01679999999993,
+            "openWallMs": 3.7321999999999207,
+            "remainderMs": 2.574800000000039,
+            "returned": 20
+          },
+          {
+            "totalMs": 7.851800000000026,
+            "sqlCalls": 1,
+            "sqlMs": 0.6906999999999925,
+            "candidates": 27,
+            "authenticatedFields": 127,
+            "openCumulativeMs": 189.54939999999993,
+            "openWallMs": 3.980899999999963,
+            "remainderMs": 3.1802000000000703,
+            "returned": 20
+          }
+        ]
+      }
+    },
+    {
+      "case": "exact_mid",
+      "rows": 20,
+      "summary": {
+        "plain": {
+          "totalMs": 0.6134000000000128,
+          "sqlMs": 0.5971000000000117,
+          "sqlCalls": 1,
+          "candidates": 0,
+          "authenticatedFields": 0,
+          "openCumulativeMs": 0,
+          "openWallMs": 0,
+          "remainderMs": 0.014799999999979718,
+          "returned": 20
+        },
+        "product": {
+          "totalMs": 6.816700000000026,
+          "sqlMs": 0.7547999999999888,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "openCumulativeMs": 171.9548999999999,
+          "openWallMs": 3.5954999999999586,
+          "remainderMs": 2.3437999999999874,
+          "returned": 20
+        }
+      },
+      "runs": {
+        "plain": [
+          {
+            "totalMs": 0.6134000000000128,
+            "sqlCalls": 1,
+            "sqlMs": 0.5971000000000117,
+            "candidates": 0,
+            "authenticatedFields": 0,
+            "openCumulativeMs": 0,
+            "openWallMs": 0,
+            "remainderMs": 0.01630000000000109,
+            "returned": 20
+          },
+          {
+            "totalMs": 0.7851999999999748,
+            "sqlCalls": 1,
+            "sqlMs": 0.7647000000000048,
+            "candidates": 0,
+            "authenticatedFields": 0,
+            "openCumulativeMs": 0,
+            "openWallMs": 0,
+            "remainderMs": 0.020499999999969987,
+            "returned": 20
+          },
+          {
+            "totalMs": 0.4241999999999848,
+            "sqlCalls": 1,
+            "sqlMs": 0.41219999999998436,
+            "candidates": 0,
+            "authenticatedFields": 0,
+            "openCumulativeMs": 0,
+            "openWallMs": 0,
+            "remainderMs": 0.012000000000000455,
+            "returned": 20
+          },
+          {
+            "totalMs": 0.6887999999999579,
+            "sqlCalls": 1,
+            "sqlMs": 0.6741999999999848,
+            "candidates": 0,
+            "authenticatedFields": 0,
+            "openCumulativeMs": 0,
+            "openWallMs": 0,
+            "remainderMs": 0.014599999999973079,
+            "returned": 20
+          },
+          {
+            "totalMs": 0.41440000000000055,
+            "sqlCalls": 1,
+            "sqlMs": 0.404200000000003,
+            "candidates": 0,
+            "authenticatedFields": 0,
+            "openCumulativeMs": 0,
+            "openWallMs": 0,
+            "remainderMs": 0.010199999999997544,
+            "returned": 20
+          },
+          {
+            "totalMs": 0.772199999999998,
+            "sqlCalls": 1,
+            "sqlMs": 0.745900000000006,
+            "candidates": 0,
+            "authenticatedFields": 0,
+            "openCumulativeMs": 0,
+            "openWallMs": 0,
+            "remainderMs": 0.026299999999991996,
+            "returned": 20
+          },
+          {
+            "totalMs": 0.5894000000000119,
+            "sqlCalls": 1,
+            "sqlMs": 0.5746000000000322,
+            "candidates": 0,
+            "authenticatedFields": 0,
+            "openCumulativeMs": 0,
+            "openWallMs": 0,
+            "remainderMs": 0.014799999999979718,
+            "returned": 20
+          }
+        ],
+        "product": [
+          {
+            "totalMs": 6.508299999999963,
+            "sqlCalls": 1,
+            "sqlMs": 0.7547999999999888,
+            "candidates": 27,
+            "authenticatedFields": 127,
+            "openCumulativeMs": 171.00629999999978,
+            "openWallMs": 3.5954999999999586,
+            "remainderMs": 2.1580000000000155,
+            "returned": 20
+          },
+          {
+            "totalMs": 7.238400000000013,
+            "sqlCalls": 1,
+            "sqlMs": 0.9451999999999998,
+            "candidates": 27,
+            "authenticatedFields": 127,
+            "openCumulativeMs": 186.4212999999998,
+            "openWallMs": 3.9494000000000256,
+            "remainderMs": 2.3437999999999874,
+            "returned": 20
+          },
+          {
+            "totalMs": 7.033800000000042,
+            "sqlCalls": 1,
+            "sqlMs": 0.8735999999999535,
+            "candidates": 27,
+            "authenticatedFields": 127,
+            "openCumulativeMs": 192.68489999999974,
+            "openWallMs": 3.949799999999982,
+            "remainderMs": 2.2104000000001065,
+            "returned": 20
+          },
+          {
+            "totalMs": 6.816700000000026,
+            "sqlCalls": 1,
+            "sqlMs": 0.8682000000000016,
+            "candidates": 27,
+            "authenticatedFields": 127,
+            "openCumulativeMs": 171.9548999999999,
+            "openWallMs": 3.5892000000000053,
+            "remainderMs": 2.359300000000019,
+            "returned": 20
+          },
+          {
+            "totalMs": 7.144999999999982,
+            "sqlCalls": 1,
+            "sqlMs": 0.6958999999999946,
+            "candidates": 27,
+            "authenticatedFields": 127,
+            "openCumulativeMs": 172.91370000000023,
+            "openWallMs": 3.6088000000000306,
+            "remainderMs": 2.8402999999999565,
+            "returned": 20
+          },
+          {
+            "totalMs": 6.744599999999991,
+            "sqlCalls": 1,
+            "sqlMs": 0.7363000000000284,
+            "candidates": 27,
+            "authenticatedFields": 127,
+            "openCumulativeMs": 167.06040000000007,
+            "openWallMs": 3.54729999999995,
+            "remainderMs": 2.4610000000000127,
+            "returned": 20
+          },
+          {
+            "totalMs": 6.504000000000019,
+            "sqlCalls": 1,
+            "sqlMs": 0.6665999999999599,
+            "candidates": 27,
+            "authenticatedFields": 127,
+            "openCumulativeMs": 169.2528000000001,
+            "openWallMs": 3.5756999999999834,
+            "remainderMs": 2.2617000000000758,
+            "returned": 20
+          }
+        ]
+      }
+    },
+    {
+      "case": "exact_one",
+      "rows": 1,
+      "summary": {
+        "plain": {
+          "totalMs": 0.3331999999999766,
+          "sqlMs": 0.32440000000002556,
+          "sqlCalls": 1,
+          "candidates": 0,
+          "authenticatedFields": 0,
+          "openCumulativeMs": 0,
+          "openWallMs": 0,
+          "remainderMs": 0.00929999999999609,
+          "returned": 1
+        },
+        "product": {
+          "totalMs": 1.1713000000000306,
+          "sqlMs": 0.4088999999999601,
+          "sqlCalls": 1,
+          "candidates": 1,
+          "authenticatedFields": 6,
+          "openCumulativeMs": 0.7326999999999657,
+          "openWallMs": 0.2270000000000323,
+          "remainderMs": 0.5205999999999449,
+          "returned": 1
+        }
+      },
+      "runs": {
+        "plain": [
+          {
+            "totalMs": 0.4042999999999779,
+            "sqlCalls": 1,
+            "sqlMs": 0.3935000000000173,
+            "candidates": 0,
+            "authenticatedFields": 0,
+            "openCumulativeMs": 0,
+            "openWallMs": 0,
+            "remainderMs": 0.010799999999960619,
+            "returned": 1
+          },
+          {
+            "totalMs": 0.36779999999998836,
+            "sqlCalls": 1,
+            "sqlMs": 0.35779999999999745,
+            "candidates": 0,
+            "authenticatedFields": 0,
+            "openCumulativeMs": 0,
+            "openWallMs": 0,
+            "remainderMs": 0.009999999999990905,
+            "returned": 1
+          },
+          {
+            "totalMs": 0.3205000000000382,
+            "sqlCalls": 1,
+            "sqlMs": 0.3106999999999971,
+            "candidates": 0,
+            "authenticatedFields": 0,
+            "openCumulativeMs": 0,
+            "openWallMs": 0,
+            "remainderMs": 0.00980000000004111,
+            "returned": 1
+          },
+          {
+            "totalMs": 0.3331999999999766,
+            "sqlCalls": 1,
+            "sqlMs": 0.32440000000002556,
+            "candidates": 0,
+            "authenticatedFields": 0,
+            "openCumulativeMs": 0,
+            "openWallMs": 0,
+            "remainderMs": 0.00879999999995107,
+            "returned": 1
+          },
+          {
+            "totalMs": 0.3065000000000282,
+            "sqlCalls": 1,
+            "sqlMs": 0.297300000000007,
+            "candidates": 0,
+            "authenticatedFields": 0,
+            "openCumulativeMs": 0,
+            "openWallMs": 0,
+            "remainderMs": 0.009200000000021191,
+            "returned": 1
+          },
+          {
+            "totalMs": 0.36250000000001137,
+            "sqlCalls": 1,
+            "sqlMs": 0.3540999999999599,
+            "candidates": 0,
+            "authenticatedFields": 0,
+            "openCumulativeMs": 0,
+            "openWallMs": 0,
+            "remainderMs": 0.008400000000051477,
+            "returned": 1
+          },
+          {
+            "totalMs": 0.323099999999954,
+            "sqlCalls": 1,
+            "sqlMs": 0.3137999999999579,
+            "candidates": 0,
+            "authenticatedFields": 0,
+            "openCumulativeMs": 0,
+            "openWallMs": 0,
+            "remainderMs": 0.00929999999999609,
+            "returned": 1
+          }
+        ],
+        "product": [
+          {
+            "totalMs": 1.3174000000000206,
+            "sqlCalls": 1,
+            "sqlMs": 0.4782000000000153,
+            "candidates": 1,
+            "authenticatedFields": 6,
+            "openCumulativeMs": 0.7559999999999718,
+            "openWallMs": 0.23869999999999436,
+            "remainderMs": 0.6005000000000109,
+            "returned": 1
+          },
+          {
+            "totalMs": 1.1979000000000042,
+            "sqlCalls": 1,
+            "sqlMs": 0.42950000000001864,
+            "candidates": 1,
+            "authenticatedFields": 6,
+            "openCumulativeMs": 0.8104000000000156,
+            "openWallMs": 0.257000000000005,
+            "remainderMs": 0.5113999999999805,
+            "returned": 1
+          },
+          {
+            "totalMs": 1.172200000000032,
+            "sqlCalls": 1,
+            "sqlMs": 0.4088999999999601,
+            "candidates": 1,
+            "authenticatedFields": 6,
+            "openCumulativeMs": 0.7348999999999819,
+            "openWallMs": 0.22870000000000346,
+            "remainderMs": 0.5346000000000686,
+            "returned": 1
+          },
+          {
+            "totalMs": 1.1411999999999694,
+            "sqlCalls": 1,
+            "sqlMs": 0.40159999999997353,
+            "candidates": 1,
+            "authenticatedFields": 6,
+            "openCumulativeMs": 0.7326999999999657,
+            "openWallMs": 0.22579999999999245,
+            "remainderMs": 0.5138000000000034,
+            "returned": 1
+          },
+          {
+            "totalMs": 1.1713000000000306,
+            "sqlCalls": 1,
+            "sqlMs": 0.40850000000000364,
+            "candidates": 1,
+            "authenticatedFields": 6,
+            "openCumulativeMs": 0.7291000000000167,
+            "openWallMs": 0.22530000000000427,
+            "remainderMs": 0.5375000000000227,
+            "returned": 1
+          },
+          {
+            "totalMs": 1.1190999999999462,
+            "sqlCalls": 1,
+            "sqlMs": 0.4006999999999721,
+            "candidates": 1,
+            "authenticatedFields": 6,
+            "openCumulativeMs": 0.719199999999887,
+            "openWallMs": 0.2221999999999298,
+            "remainderMs": 0.4962000000000444,
+            "returned": 1
+          },
+          {
+            "totalMs": 1.1644999999999754,
+            "sqlCalls": 1,
+            "sqlMs": 0.41689999999999827,
+            "candidates": 1,
+            "authenticatedFields": 6,
+            "openCumulativeMs": 0.7323000000000661,
+            "openWallMs": 0.2270000000000323,
+            "remainderMs": 0.5205999999999449,
+            "returned": 1
+          }
+        ]
+      }
+    },
+    {
+      "case": "exact_zero",
+      "rows": 0,
+      "summary": {
+        "plain": {
+          "totalMs": 0.32550000000003365,
+          "sqlMs": 0.31850000000002865,
+          "sqlCalls": 1,
+          "candidates": 0,
+          "authenticatedFields": 0,
+          "openCumulativeMs": 0,
+          "openWallMs": 0,
+          "remainderMs": 0.008399999999994634,
+          "returned": 0
+        },
+        "product": {
+          "totalMs": 1.0016999999999712,
+          "sqlMs": 0.44420000000002346,
+          "sqlCalls": 1,
+          "candidates": 2,
+          "authenticatedFields": 2,
+          "openCumulativeMs": 0.16900000000003956,
+          "openWallMs": 0.09250000000002956,
+          "remainderMs": 0.46520000000003847,
+          "returned": 0
+        }
+      },
+      "runs": {
+        "plain": [
+          {
+            "totalMs": 0.3591999999999871,
+            "sqlCalls": 1,
+            "sqlMs": 0.35079999999999245,
+            "candidates": 0,
+            "authenticatedFields": 0,
+            "openCumulativeMs": 0,
+            "openWallMs": 0,
+            "remainderMs": 0.008399999999994634,
+            "returned": 0
+          },
+          {
+            "totalMs": 0.32789999999999964,
+            "sqlCalls": 1,
+            "sqlMs": 0.320699999999988,
+            "candidates": 0,
+            "authenticatedFields": 0,
+            "openCumulativeMs": 0,
+            "openWallMs": 0,
+            "remainderMs": 0.0072000000000116415,
+            "returned": 0
+          },
+          {
+            "totalMs": 0.2939000000000078,
+            "sqlCalls": 1,
+            "sqlMs": 0.2850999999999999,
+            "candidates": 0,
+            "authenticatedFields": 0,
+            "openCumulativeMs": 0,
+            "openWallMs": 0,
+            "remainderMs": 0.008800000000007913,
+            "returned": 0
+          },
+          {
+            "totalMs": 0.32550000000003365,
+            "sqlCalls": 1,
+            "sqlMs": 0.31850000000002865,
+            "candidates": 0,
+            "authenticatedFields": 0,
+            "openCumulativeMs": 0,
+            "openWallMs": 0,
+            "remainderMs": 0.007000000000005002,
+            "returned": 0
+          },
+          {
+            "totalMs": 0.308400000000006,
+            "sqlCalls": 1,
+            "sqlMs": 0.2995000000000232,
+            "candidates": 0,
+            "authenticatedFields": 0,
+            "openCumulativeMs": 0,
+            "openWallMs": 0,
+            "remainderMs": 0.00889999999998281,
+            "returned": 0
+          },
+          {
+            "totalMs": 0.32840000000004466,
+            "sqlCalls": 1,
+            "sqlMs": 0.32150000000001455,
+            "candidates": 0,
+            "authenticatedFields": 0,
+            "openCumulativeMs": 0,
+            "openWallMs": 0,
+            "remainderMs": 0.006900000000030104,
+            "returned": 0
+          },
+          {
+            "totalMs": 0.31279999999998154,
+            "sqlCalls": 1,
+            "sqlMs": 0.3040999999999485,
+            "candidates": 0,
+            "authenticatedFields": 0,
+            "openCumulativeMs": 0,
+            "openWallMs": 0,
+            "remainderMs": 0.008700000000033015,
+            "returned": 0
+          }
+        ],
+        "product": [
+          {
+            "totalMs": 0.9936000000000149,
+            "sqlCalls": 1,
+            "sqlMs": 0.4171999999999798,
+            "candidates": 2,
+            "authenticatedFields": 2,
+            "openCumulativeMs": 0.165300000000002,
+            "openWallMs": 0.08999999999997499,
+            "remainderMs": 0.4864000000000601,
+            "returned": 0
+          },
+          {
+            "totalMs": 1.0016999999999712,
+            "sqlCalls": 1,
+            "sqlMs": 0.45479999999997744,
+            "candidates": 2,
+            "authenticatedFields": 2,
+            "openCumulativeMs": 0.16869999999994434,
+            "openWallMs": 0.0918999999999528,
+            "remainderMs": 0.4550000000000409,
+            "returned": 0
+          },
+          {
+            "totalMs": 1.2591999999999643,
+            "sqlCalls": 1,
+            "sqlMs": 0.4270000000000209,
+            "candidates": 2,
+            "authenticatedFields": 2,
+            "openCumulativeMs": 0.7332000000000107,
+            "openWallMs": 0.37470000000001846,
+            "remainderMs": 0.45749999999992497,
+            "returned": 0
+          },
+          {
+            "totalMs": 1.0264999999999986,
+            "sqlCalls": 1,
+            "sqlMs": 0.45369999999996935,
+            "candidates": 2,
+            "authenticatedFields": 2,
+            "openCumulativeMs": 0.17009999999999081,
+            "openWallMs": 0.0928000000000111,
+            "remainderMs": 0.4800000000000182,
+            "returned": 0
+          },
+          {
+            "totalMs": 0.9706999999999653,
+            "sqlCalls": 1,
+            "sqlMs": 0.42079999999998563,
+            "candidates": 2,
+            "authenticatedFields": 2,
+            "openCumulativeMs": 0.16900000000003956,
+            "openWallMs": 0.09250000000002956,
+            "remainderMs": 0.45739999999995007,
+            "returned": 0
+          },
+          {
+            "totalMs": 1.0008000000000266,
+            "sqlCalls": 1,
+            "sqlMs": 0.44420000000002346,
+            "candidates": 2,
+            "authenticatedFields": 2,
+            "openCumulativeMs": 0.1605000000000132,
+            "openWallMs": 0.08789999999999054,
+            "remainderMs": 0.46870000000001255,
+            "returned": 0
+          },
+          {
+            "totalMs": 1.0195999999999685,
+            "sqlCalls": 1,
+            "sqlMs": 0.4615999999999758,
+            "candidates": 2,
+            "authenticatedFields": 2,
+            "openCumulativeMs": 0.16999999999995907,
+            "openWallMs": 0.09279999999995425,
+            "remainderMs": 0.46520000000003847,
+            "returned": 0
+          }
+        ]
+      }
+    },
+    {
+      "case": "sub2_common",
+      "rows": 20,
+      "summary": {
+        "plain": {
+          "totalMs": 0.6927999999999201,
+          "sqlMs": 0.6825000000000045,
+          "sqlCalls": 1,
+          "candidates": 0,
+          "authenticatedFields": 0,
+          "openCumulativeMs": 0,
+          "openWallMs": 0,
+          "remainderMs": 0.013700000000028467,
+          "returned": 20
+        },
+        "product": {
+          "totalMs": 7.576000000000022,
+          "sqlMs": 1.1684000000000196,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "openCumulativeMs": 172.33989999999972,
+          "openWallMs": 3.6066000000000145,
+          "remainderMs": 2.4578999999998814,
+          "returned": 20
+        }
+      },
+      "runs": {
+        "plain": [
+          {
+            "totalMs": 0.6195000000000164,
+            "sqlCalls": 1,
+            "sqlMs": 0.6057999999999879,
+            "candidates": 0,
+            "authenticatedFields": 0,
+            "openCumulativeMs": 0,
+            "openWallMs": 0,
+            "remainderMs": 0.013700000000028467,
+            "returned": 20
+          },
+          {
+            "totalMs": 0.7871000000000095,
+            "sqlCalls": 1,
+            "sqlMs": 0.770900000000097,
+            "candidates": 0,
+            "authenticatedFields": 0,
+            "openCumulativeMs": 0,
+            "openWallMs": 0,
+            "remainderMs": 0.016199999999912507,
+            "returned": 20
+          },
+          {
+            "totalMs": 0.4251999999999043,
+            "sqlCalls": 1,
+            "sqlMs": 0.4152000000000271,
+            "candidates": 0,
+            "authenticatedFields": 0,
+            "openCumulativeMs": 0,
+            "openWallMs": 0,
+            "remainderMs": 0.009999999999877218,
+            "returned": 20
+          },
+          {
+            "totalMs": 0.7897999999999001,
+            "sqlCalls": 1,
+            "sqlMs": 0.7717000000000098,
+            "candidates": 0,
+            "authenticatedFields": 0,
+            "openCumulativeMs": 0,
+            "openWallMs": 0,
+            "remainderMs": 0.018099999999890315,
+            "returned": 20
+          },
+          {
+            "totalMs": 0.6927999999999201,
+            "sqlCalls": 1,
+            "sqlMs": 0.6825000000000045,
+            "candidates": 0,
+            "authenticatedFields": 0,
+            "openCumulativeMs": 0,
+            "openWallMs": 0,
+            "remainderMs": 0.010299999999915599,
+            "returned": 20
+          },
+          {
+            "totalMs": 0.7723999999999478,
+            "sqlCalls": 1,
+            "sqlMs": 0.7552999999999201,
+            "candidates": 0,
+            "authenticatedFields": 0,
+            "openCumulativeMs": 0,
+            "openWallMs": 0,
+            "remainderMs": 0.01710000000002765,
+            "returned": 20
+          },
+          {
+            "totalMs": 0.40039999999999054,
+            "sqlCalls": 1,
+            "sqlMs": 0.38999999999998636,
+            "candidates": 0,
+            "authenticatedFields": 0,
+            "openCumulativeMs": 0,
+            "openWallMs": 0,
+            "remainderMs": 0.010400000000004184,
+            "returned": 20
+          }
+        ],
+        "product": [
+          {
+            "totalMs": 7.595400000000041,
+            "sqlCalls": 1,
+            "sqlMs": 1.0947000000000457,
+            "candidates": 27,
+            "authenticatedFields": 127,
+            "openCumulativeMs": 172.33989999999972,
+            "openWallMs": 3.6066000000000145,
+            "remainderMs": 2.8940999999999804,
+            "returned": 20
+          },
+          {
+            "totalMs": 7.576000000000022,
+            "sqlCalls": 1,
+            "sqlMs": 1.2501000000000317,
+            "candidates": 27,
+            "authenticatedFields": 127,
+            "openCumulativeMs": 185.2106999999997,
+            "openWallMs": 3.8917000000000144,
+            "remainderMs": 2.4341999999999757,
+            "returned": 20
+          },
+          {
+            "totalMs": 7.127399999999966,
+            "sqlCalls": 1,
+            "sqlMs": 1.141300000000001,
+            "candidates": 27,
+            "authenticatedFields": 127,
+            "openCumulativeMs": 167.48070000000018,
+            "openWallMs": 3.5282000000000835,
+            "remainderMs": 2.4578999999998814,
+            "returned": 20
+          },
+          {
+            "totalMs": 7.7316999999999325,
+            "sqlCalls": 1,
+            "sqlMs": 1.3812000000000353,
+            "candidates": 27,
+            "authenticatedFields": 127,
+            "openCumulativeMs": 180.22820000000047,
+            "openWallMs": 3.81149999999991,
+            "remainderMs": 2.5389999999999873,
+            "returned": 20
+          },
+          {
+            "totalMs": 7.147299999999973,
+            "sqlCalls": 1,
+            "sqlMs": 1.1684000000000196,
+            "candidates": 27,
+            "authenticatedFields": 127,
+            "openCumulativeMs": 167.11720000000014,
+            "openWallMs": 3.5201000000000704,
+            "remainderMs": 2.458799999999883,
+            "returned": 20
+          },
+          {
+            "totalMs": 7.97199999999998,
+            "sqlCalls": 1,
+            "sqlMs": 1.2755999999999403,
+            "candidates": 27,
+            "authenticatedFields": 127,
+            "openCumulativeMs": 217.48600000000033,
+            "openWallMs": 4.300599999999918,
+            "remainderMs": 2.395800000000122,
+            "returned": 20
+          },
+          {
+            "totalMs": 6.945099999999911,
+            "sqlCalls": 1,
+            "sqlMs": 1.0387000000000626,
+            "candidates": 27,
+            "authenticatedFields": 127,
+            "openCumulativeMs": 165.71439999999905,
+            "openWallMs": 3.4891999999999825,
+            "remainderMs": 2.417199999999866,
+            "returned": 20
+          }
+        ]
+      }
+    },
+    {
+      "case": "sub_mid",
+      "rows": 20,
+      "summary": {
+        "plain": {
+          "totalMs": 0.6119999999999663,
+          "sqlMs": 0.5996999999999844,
+          "sqlCalls": 1,
+          "candidates": 0,
+          "authenticatedFields": 0,
+          "openCumulativeMs": 0,
+          "openWallMs": 0,
+          "remainderMs": 0.012299999999981992,
+          "returned": 20
+        },
+        "product": {
+          "totalMs": 7.311799999999948,
+          "sqlMs": 1.156500000000051,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "openCumulativeMs": 168.27909999999986,
+          "openWallMs": 3.5837000000000216,
+          "remainderMs": 2.529100000000085,
+          "returned": 20
+        }
+      },
+      "runs": {
+        "plain": [
+          {
+            "totalMs": 0.7932000000000698,
+            "sqlCalls": 1,
+            "sqlMs": 0.7744000000000142,
+            "candidates": 0,
+            "authenticatedFields": 0,
+            "openCumulativeMs": 0,
+            "openWallMs": 0,
+            "remainderMs": 0.01880000000005566,
+            "returned": 20
+          },
+          {
+            "totalMs": 0.7776999999999816,
+            "sqlCalls": 1,
+            "sqlMs": 0.7644000000000233,
+            "candidates": 0,
+            "authenticatedFields": 0,
+            "openCumulativeMs": 0,
+            "openWallMs": 0,
+            "remainderMs": 0.013299999999958345,
+            "returned": 20
+          },
+          {
+            "totalMs": 0.41459999999995034,
+            "sqlCalls": 1,
+            "sqlMs": 0.4050999999999476,
+            "candidates": 0,
+            "authenticatedFields": 0,
+            "openCumulativeMs": 0,
+            "openWallMs": 0,
+            "remainderMs": 0.009500000000002728,
+            "returned": 20
+          },
+          {
+            "totalMs": 0.6119999999999663,
+            "sqlCalls": 1,
+            "sqlMs": 0.5996999999999844,
+            "candidates": 0,
+            "authenticatedFields": 0,
+            "openCumulativeMs": 0,
+            "openWallMs": 0,
+            "remainderMs": 0.012299999999981992,
+            "returned": 20
+          },
+          {
+            "totalMs": 0.4108999999999696,
+            "sqlCalls": 1,
+            "sqlMs": 0.4013999999999669,
+            "candidates": 0,
+            "authenticatedFields": 0,
+            "openCumulativeMs": 0,
+            "openWallMs": 0,
+            "remainderMs": 0.009500000000002728,
+            "returned": 20
+          },
+          {
+            "totalMs": 0.6863999999999351,
+            "sqlCalls": 1,
+            "sqlMs": 0.6733000000000402,
+            "candidates": 0,
+            "authenticatedFields": 0,
+            "openCumulativeMs": 0,
+            "openWallMs": 0,
+            "remainderMs": 0.013099999999894862,
+            "returned": 20
+          },
+          {
+            "totalMs": 0.533800000000042,
+            "sqlCalls": 1,
+            "sqlMs": 0.5236999999999625,
+            "candidates": 0,
+            "authenticatedFields": 0,
+            "openCumulativeMs": 0,
+            "openWallMs": 0,
+            "remainderMs": 0.01010000000007949,
+            "returned": 20
+          }
+        ],
+        "product": [
+          {
+            "totalMs": 7.311799999999948,
+            "sqlCalls": 1,
+            "sqlMs": 1.156500000000051,
+            "candidates": 27,
+            "authenticatedFields": 127,
+            "openCumulativeMs": 169.6464000000002,
+            "openWallMs": 3.5919000000000096,
+            "remainderMs": 2.5633999999998878,
+            "returned": 20
+          },
+          {
+            "totalMs": 7.794800000000009,
+            "sqlCalls": 1,
+            "sqlMs": 1.4353999999999587,
+            "candidates": 27,
+            "authenticatedFields": 127,
+            "openCumulativeMs": 163.0102999999998,
+            "openWallMs": 3.4805000000000064,
+            "remainderMs": 2.878900000000044,
+            "returned": 20
+          },
+          {
+            "totalMs": 7.135400000000004,
+            "sqlCalls": 1,
+            "sqlMs": 1.0225999999998976,
+            "candidates": 27,
+            "authenticatedFields": 127,
+            "openCumulativeMs": 168.27909999999986,
+            "openWallMs": 3.5837000000000216,
+            "remainderMs": 2.529100000000085,
+            "returned": 20
+          },
+          {
+            "totalMs": 7.2590000000000146,
+            "sqlCalls": 1,
+            "sqlMs": 1.3304000000000542,
+            "candidates": 27,
+            "authenticatedFields": 127,
+            "openCumulativeMs": 163.92799999999932,
+            "openWallMs": 3.5025000000000546,
+            "remainderMs": 2.4260999999999058,
+            "returned": 20
+          },
+          {
+            "totalMs": 6.942099999999982,
+            "sqlCalls": 1,
+            "sqlMs": 1.0085000000000264,
+            "candidates": 27,
+            "authenticatedFields": 127,
+            "openCumulativeMs": 164.90599999999972,
+            "openWallMs": 3.491100000000074,
+            "remainderMs": 2.4424999999998818,
+            "returned": 20
+          },
+          {
+            "totalMs": 7.4447999999999865,
+            "sqlCalls": 1,
+            "sqlMs": 1.2057999999999538,
+            "candidates": 27,
+            "authenticatedFields": 127,
+            "openCumulativeMs": 171.43619999999942,
+            "openWallMs": 3.8251999999999953,
+            "remainderMs": 2.4138000000000375,
+            "returned": 20
+          },
+          {
+            "totalMs": 7.579899999999952,
+            "sqlCalls": 1,
+            "sqlMs": 1.065900000000056,
+            "candidates": 27,
+            "authenticatedFields": 127,
+            "openCumulativeMs": 175.3702000000004,
+            "openWallMs": 3.7998999999999796,
+            "remainderMs": 2.7140999999999167,
+            "returned": 20
+          }
+        ]
+      }
+    },
+    {
+      "case": "sub_mid_space",
+      "rows": 20,
+      "summary": {
+        "plain": {
+          "totalMs": 1.816599999999994,
+          "sqlMs": 1.7921999999999798,
+          "sqlCalls": 1,
+          "candidates": 0,
+          "authenticatedFields": 0,
+          "openCumulativeMs": 0,
+          "openWallMs": 0,
+          "remainderMs": 0.016100000000051296,
+          "returned": 20
+        },
+        "product": {
+          "totalMs": 9.606899999999996,
+          "sqlMs": 2.683899999999994,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "openCumulativeMs": 181.4756000000001,
+          "openWallMs": 3.857900000000086,
+          "remainderMs": 2.850999999999999,
+          "returned": 20
+        }
+      },
+      "runs": {
+        "plain": [
+          {
+            "totalMs": 1.7087000000000216,
+            "sqlCalls": 1,
+            "sqlMs": 1.692299999999932,
+            "candidates": 0,
+            "authenticatedFields": 0,
+            "openCumulativeMs": 0,
+            "openWallMs": 0,
+            "remainderMs": 0.016400000000089676,
+            "returned": 20
+          },
+          {
+            "totalMs": 1.816599999999994,
+            "sqlCalls": 1,
+            "sqlMs": 1.7921999999999798,
+            "candidates": 0,
+            "authenticatedFields": 0,
+            "openCumulativeMs": 0,
+            "openWallMs": 0,
+            "remainderMs": 0.024400000000014188,
+            "returned": 20
+          },
+          {
+            "totalMs": 1.3316999999999553,
+            "sqlCalls": 1,
+            "sqlMs": 1.3203000000000884,
+            "candidates": 0,
+            "authenticatedFields": 0,
+            "openCumulativeMs": 0,
+            "openWallMs": 0,
+            "remainderMs": 0.01139999999986685,
+            "returned": 20
+          },
+          {
+            "totalMs": 2.297900000000027,
+            "sqlCalls": 1,
+            "sqlMs": 2.2817999999999756,
+            "candidates": 0,
+            "authenticatedFields": 0,
+            "openCumulativeMs": 0,
+            "openWallMs": 0,
+            "remainderMs": 0.016100000000051296,
+            "returned": 20
+          },
+          {
+            "totalMs": 1.992900000000077,
+            "sqlCalls": 1,
+            "sqlMs": 1.9779000000000906,
+            "candidates": 0,
+            "authenticatedFields": 0,
+            "openCumulativeMs": 0,
+            "openWallMs": 0,
+            "remainderMs": 0.014999999999986358,
+            "returned": 20
+          },
+          {
+            "totalMs": 1.866899999999987,
+            "sqlCalls": 1,
+            "sqlMs": 1.8507999999999356,
+            "candidates": 0,
+            "authenticatedFields": 0,
+            "openCumulativeMs": 0,
+            "openWallMs": 0,
+            "remainderMs": 0.016100000000051296,
+            "returned": 20
+          },
+          {
+            "totalMs": 1.2835000000000036,
+            "sqlCalls": 1,
+            "sqlMs": 1.2717999999999847,
+            "candidates": 0,
+            "authenticatedFields": 0,
+            "openCumulativeMs": 0,
+            "openWallMs": 0,
+            "remainderMs": 0.011700000000018917,
+            "returned": 20
+          }
+        ],
+        "product": [
+          {
+            "totalMs": 8.849000000000046,
+            "sqlCalls": 1,
+            "sqlMs": 2.5153999999999996,
+            "candidates": 27,
+            "authenticatedFields": 127,
+            "openCumulativeMs": 163.58449999999868,
+            "openWallMs": 3.540899999999965,
+            "remainderMs": 2.7927000000000817,
+            "returned": 20
+          },
+          {
+            "totalMs": 9.611400000000003,
+            "sqlCalls": 1,
+            "sqlMs": 2.780999999999949,
+            "candidates": 27,
+            "authenticatedFields": 127,
+            "openCumulativeMs": 181.4756000000001,
+            "openWallMs": 3.8695000000000164,
+            "remainderMs": 2.960900000000038,
+            "returned": 20
+          },
+          {
+            "totalMs": 10.468000000000075,
+            "sqlCalls": 1,
+            "sqlMs": 2.6767999999999574,
+            "candidates": 27,
+            "authenticatedFields": 127,
+            "openCumulativeMs": 188.14299999999912,
+            "openWallMs": 4.031099999999924,
+            "remainderMs": 3.760100000000193,
+            "returned": 20
+          },
+          {
+            "totalMs": 8.518800000000056,
+            "sqlCalls": 1,
+            "sqlMs": 2.683899999999994,
+            "candidates": 27,
+            "authenticatedFields": 127,
+            "openCumulativeMs": 156.1436,
+            "openWallMs": 3.312700000000177,
+            "remainderMs": 2.5221999999998843,
+            "returned": 20
+          },
+          {
+            "totalMs": 11.008899999999926,
+            "sqlCalls": 1,
+            "sqlMs": 3.139099999999985,
+            "candidates": 27,
+            "authenticatedFields": 127,
+            "openCumulativeMs": 193.99079999999935,
+            "openWallMs": 4.246699999999919,
+            "remainderMs": 3.623100000000022,
+            "returned": 20
+          },
+          {
+            "totalMs": 9.606899999999996,
+            "sqlCalls": 1,
+            "sqlMs": 2.8985999999999876,
+            "candidates": 27,
+            "authenticatedFields": 127,
+            "openCumulativeMs": 182.54649999999924,
+            "openWallMs": 3.857900000000086,
+            "remainderMs": 2.8503999999999223,
+            "returned": 20
+          },
+          {
+            "totalMs": 8.921500000000037,
+            "sqlCalls": 1,
+            "sqlMs": 2.425700000000006,
+            "candidates": 27,
+            "authenticatedFields": 127,
+            "openCumulativeMs": 172.30609999999933,
+            "openWallMs": 3.644800000000032,
+            "remainderMs": 2.850999999999999,
+            "returned": 20
+          }
+        ]
+      }
+    },
+    {
+      "case": "sub_rare",
+      "rows": 20,
+      "summary": {
+        "plain": {
+          "totalMs": 85.55910000000017,
+          "sqlMs": 85.53719999999998,
+          "sqlCalls": 1,
+          "candidates": 0,
+          "authenticatedFields": 0,
+          "openCumulativeMs": 0,
+          "openWallMs": 0,
+          "remainderMs": 0.024899999999888678,
+          "returned": 20
+        },
+        "product": {
+          "totalMs": 7.870100000000093,
+          "sqlMs": 1.727200000000039,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "openCumulativeMs": 168.89740000000188,
+          "openWallMs": 3.5803000000000793,
+          "remainderMs": 2.5450999999998203,
+          "returned": 20
+        }
+      },
+      "runs": {
+        "plain": [
+          {
+            "totalMs": 82.42599999999993,
+            "sqlCalls": 1,
+            "sqlMs": 82.41020000000003,
+            "candidates": 0,
+            "authenticatedFields": 0,
+            "openCumulativeMs": 0,
+            "openWallMs": 0,
+            "remainderMs": 0.015799999999899228,
+            "returned": 20
+          },
+          {
+            "totalMs": 91.06449999999995,
+            "sqlCalls": 1,
+            "sqlMs": 91.03279999999995,
+            "candidates": 0,
+            "authenticatedFields": 0,
+            "openCumulativeMs": 0,
+            "openWallMs": 0,
+            "remainderMs": 0.03170000000000073,
+            "returned": 20
+          },
+          {
+            "totalMs": 87.20330000000013,
+            "sqlCalls": 1,
+            "sqlMs": 87.17539999999985,
+            "candidates": 0,
+            "authenticatedFields": 0,
+            "openCumulativeMs": 0,
+            "openWallMs": 0,
+            "remainderMs": 0.027900000000272485,
+            "returned": 20
+          },
+          {
+            "totalMs": 85.55910000000017,
+            "sqlCalls": 1,
+            "sqlMs": 85.53719999999998,
+            "candidates": 0,
+            "authenticatedFields": 0,
+            "openCumulativeMs": 0,
+            "openWallMs": 0,
+            "remainderMs": 0.021900000000186992,
+            "returned": 20
+          },
+          {
+            "totalMs": 85.90750000000003,
+            "sqlCalls": 1,
+            "sqlMs": 85.88260000000014,
+            "candidates": 0,
+            "authenticatedFields": 0,
+            "openCumulativeMs": 0,
+            "openWallMs": 0,
+            "remainderMs": 0.024899999999888678,
+            "returned": 20
+          },
+          {
+            "totalMs": 82.77469999999994,
+            "sqlCalls": 1,
+            "sqlMs": 82.75849999999991,
+            "candidates": 0,
+            "authenticatedFields": 0,
+            "openCumulativeMs": 0,
+            "openWallMs": 0,
+            "remainderMs": 0.016200000000026193,
+            "returned": 20
+          },
+          {
+            "totalMs": 80.9568999999999,
+            "sqlCalls": 1,
+            "sqlMs": 80.93020000000001,
+            "candidates": 0,
+            "authenticatedFields": 0,
+            "openCumulativeMs": 0,
+            "openWallMs": 0,
+            "remainderMs": 0.026699999999891588,
+            "returned": 20
+          }
+        ],
+        "product": [
+          {
+            "totalMs": 8.573200000000043,
+            "sqlCalls": 1,
+            "sqlMs": 1.75429999999983,
+            "candidates": 27,
+            "authenticatedFields": 127,
+            "openCumulativeMs": 216.83979999999906,
+            "openWallMs": 4.3465000000001055,
+            "remainderMs": 2.472400000000107,
+            "returned": 20
+          },
+          {
+            "totalMs": 7.688599999999951,
+            "sqlCalls": 1,
+            "sqlMs": 1.727200000000039,
+            "candidates": 27,
+            "authenticatedFields": 127,
+            "openCumulativeMs": 165.39369999999963,
+            "openWallMs": 3.5217999999999847,
+            "remainderMs": 2.4395999999999276,
+            "returned": 20
+          },
+          {
+            "totalMs": 7.755999999999858,
+            "sqlCalls": 1,
+            "sqlMs": 1.6307999999999083,
+            "candidates": 27,
+            "authenticatedFields": 127,
+            "openCumulativeMs": 161.90289999999914,
+            "openWallMs": 3.4433000000001357,
+            "remainderMs": 2.681899999999814,
+            "returned": 20
+          },
+          {
+            "totalMs": 7.717200000000048,
+            "sqlCalls": 1,
+            "sqlMs": 1.5918000000001484,
+            "candidates": 27,
+            "authenticatedFields": 127,
+            "openCumulativeMs": 168.89740000000188,
+            "openWallMs": 3.5803000000000793,
+            "remainderMs": 2.5450999999998203,
+            "returned": 20
+          },
+          {
+            "totalMs": 8.609300000000076,
+            "sqlCalls": 1,
+            "sqlMs": 1.605199999999968,
+            "candidates": 27,
+            "authenticatedFields": 127,
+            "openCumulativeMs": 170.16150000000312,
+            "openWallMs": 3.5880999999999403,
+            "remainderMs": 3.4160000000001673,
+            "returned": 20
+          },
+          {
+            "totalMs": 7.870100000000093,
+            "sqlCalls": 1,
+            "sqlMs": 1.8384000000000924,
+            "candidates": 27,
+            "authenticatedFields": 127,
+            "openCumulativeMs": 170.57440000000042,
+            "openWallMs": 3.659800000000132,
+            "remainderMs": 2.3718999999998687,
+            "returned": 20
+          },
+          {
+            "totalMs": 8.006799999999885,
+            "sqlCalls": 1,
+            "sqlMs": 1.7690999999999804,
+            "candidates": 27,
+            "authenticatedFields": 127,
+            "openCumulativeMs": 163.9060999999997,
+            "openWallMs": 3.4816000000000713,
+            "remainderMs": 2.756099999999833,
+            "returned": 20
+          }
+        ]
+      }
+    },
+    {
+      "case": "sub_long",
+      "rows": 20,
+      "summary": {
+        "plain": {
+          "totalMs": 65.91679999999997,
+          "sqlMs": 65.88770000000022,
+          "sqlCalls": 1,
+          "candidates": 0,
+          "authenticatedFields": 0,
+          "openCumulativeMs": 0,
+          "openWallMs": 0,
+          "remainderMs": 0.022399999999834108,
+          "returned": 20
+        },
+        "product": {
+          "totalMs": 11.527999999999793,
+          "sqlMs": 4.664900000000216,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "openCumulativeMs": 166.36260000000084,
+          "openWallMs": 3.6106999999997242,
+          "remainderMs": 3.2186000000001513,
+          "returned": 20
+        }
+      },
+      "runs": {
+        "plain": [
+          {
+            "totalMs": 84.8145999999997,
+            "sqlCalls": 1,
+            "sqlMs": 84.79659999999967,
+            "candidates": 0,
+            "authenticatedFields": 0,
+            "openCumulativeMs": 0,
+            "openWallMs": 0,
+            "remainderMs": 0.018000000000029104,
+            "returned": 20
+          },
+          {
+            "totalMs": 73.68059999999969,
+            "sqlCalls": 1,
+            "sqlMs": 73.65819999999985,
+            "candidates": 0,
+            "authenticatedFields": 0,
+            "openCumulativeMs": 0,
+            "openWallMs": 0,
+            "remainderMs": 0.022399999999834108,
+            "returned": 20
+          },
+          {
+            "totalMs": 65.6555000000003,
+            "sqlCalls": 1,
+            "sqlMs": 65.62559999999985,
+            "candidates": 0,
+            "authenticatedFields": 0,
+            "openCumulativeMs": 0,
+            "openWallMs": 0,
+            "remainderMs": 0.029900000000452565,
+            "returned": 20
+          },
+          {
+            "totalMs": 63.38270000000011,
+            "sqlCalls": 1,
+            "sqlMs": 63.36429999999973,
+            "candidates": 0,
+            "authenticatedFields": 0,
+            "openCumulativeMs": 0,
+            "openWallMs": 0,
+            "remainderMs": 0.018400000000383443,
+            "returned": 20
+          },
+          {
+            "totalMs": 65.91679999999997,
+            "sqlCalls": 1,
+            "sqlMs": 65.88770000000022,
+            "candidates": 0,
+            "authenticatedFields": 0,
+            "openCumulativeMs": 0,
+            "openWallMs": 0,
+            "remainderMs": 0.029099999999743886,
+            "returned": 20
+          },
+          {
+            "totalMs": 62.54090000000042,
+            "sqlCalls": 1,
+            "sqlMs": 62.52109999999993,
+            "candidates": 0,
+            "authenticatedFields": 0,
+            "openCumulativeMs": 0,
+            "openWallMs": 0,
+            "remainderMs": 0.01980000000048676,
+            "returned": 20
+          },
+          {
+            "totalMs": 66.52179999999998,
+            "sqlCalls": 1,
+            "sqlMs": 66.48979999999983,
+            "candidates": 0,
+            "authenticatedFields": 0,
+            "openCumulativeMs": 0,
+            "openWallMs": 0,
+            "remainderMs": 0.032000000000152795,
+            "returned": 20
+          }
+        ],
+        "product": [
+          {
+            "totalMs": 11.397200000000339,
+            "sqlCalls": 1,
+            "sqlMs": 4.782400000000052,
+            "candidates": 27,
+            "authenticatedFields": 127,
+            "openCumulativeMs": 162.60399999999845,
+            "openWallMs": 3.528200000000197,
+            "remainderMs": 3.0866000000000895,
+            "returned": 20
+          },
+          {
+            "totalMs": 11.846599999999853,
+            "sqlCalls": 1,
+            "sqlMs": 4.664900000000216,
+            "candidates": 27,
+            "authenticatedFields": 127,
+            "openCumulativeMs": 168.4349000000011,
+            "openWallMs": 3.6653000000001157,
+            "remainderMs": 3.5163999999995212,
+            "returned": 20
+          },
+          {
+            "totalMs": 11.510099999999966,
+            "sqlCalls": 1,
+            "sqlMs": 4.68080000000009,
+            "candidates": 27,
+            "authenticatedFields": 127,
+            "openCumulativeMs": 166.36260000000084,
+            "openWallMs": 3.6106999999997242,
+            "remainderMs": 3.2186000000001513,
+            "returned": 20
+          },
+          {
+            "totalMs": 10.986399999999776,
+            "sqlCalls": 1,
+            "sqlMs": 4.5284999999998945,
+            "candidates": 27,
+            "authenticatedFields": 127,
+            "openCumulativeMs": 164.69159999999556,
+            "openWallMs": 3.54549999999972,
+            "remainderMs": 2.9124000000001615,
+            "returned": 20
+          },
+          {
+            "totalMs": 11.600500000000011,
+            "sqlCalls": 1,
+            "sqlMs": 4.67410000000018,
+            "candidates": 27,
+            "authenticatedFields": 127,
+            "openCumulativeMs": 172.715200000001,
+            "openWallMs": 3.774499999999989,
+            "remainderMs": 3.1518999999998414,
+            "returned": 20
+          },
+          {
+            "totalMs": 11.527999999999793,
+            "sqlCalls": 1,
+            "sqlMs": 4.522100000000137,
+            "candidates": 27,
+            "authenticatedFields": 127,
+            "openCumulativeMs": 161.53870000000188,
+            "openWallMs": 3.521700000000692,
+            "remainderMs": 3.484199999998964,
+            "returned": 20
+          },
+          {
+            "totalMs": 11.725600000000213,
+            "sqlCalls": 1,
+            "sqlMs": 4.5559000000002925,
+            "candidates": 27,
+            "authenticatedFields": 127,
+            "openCumulativeMs": 166.6275000000005,
+            "openWallMs": 3.64449999999988,
+            "remainderMs": 3.5252000000000407,
+            "returned": 20
+          }
+        ]
+      }
+    },
+    {
+      "case": "sub_name_suffix",
+      "rows": 1,
+      "summary": {
+        "plain": {
+          "totalMs": 0.3506999999999607,
+          "sqlMs": 0.34149999999999636,
+          "sqlCalls": 1,
+          "candidates": 0,
+          "authenticatedFields": 0,
+          "openCumulativeMs": 0,
+          "openWallMs": 0,
+          "remainderMs": 0.008000000000265572,
+          "returned": 1
+        },
+        "product": {
+          "totalMs": 2.01529999999957,
+          "sqlMs": 0.9953000000000429,
+          "sqlCalls": 1,
+          "candidates": 1,
+          "authenticatedFields": 6,
+          "openCumulativeMs": 0.703799999999319,
+          "openWallMs": 0.2185999999996966,
+          "remainderMs": 0.7912999999998647,
+          "returned": 1
+        }
+      },
+      "runs": {
+        "plain": [
+          {
+            "totalMs": 0.3506999999999607,
+            "sqlCalls": 1,
+            "sqlMs": 0.34149999999999636,
+            "candidates": 0,
+            "authenticatedFields": 0,
+            "openCumulativeMs": 0,
+            "openWallMs": 0,
+            "remainderMs": 0.009199999999964348,
+            "returned": 1
+          },
+          {
+            "totalMs": 0.35410000000001673,
+            "sqlCalls": 1,
+            "sqlMs": 0.34629999999970096,
+            "candidates": 0,
+            "authenticatedFields": 0,
+            "openCumulativeMs": 0,
+            "openWallMs": 0,
+            "remainderMs": 0.0078000000003157766,
+            "returned": 1
+          },
+          {
+            "totalMs": 0.30729999999994106,
+            "sqlCalls": 1,
+            "sqlMs": 0.29959999999982756,
+            "candidates": 0,
+            "authenticatedFields": 0,
+            "openCumulativeMs": 0,
+            "openWallMs": 0,
+            "remainderMs": 0.007700000000113505,
+            "returned": 1
+          },
+          {
+            "totalMs": 0.42319999999972424,
+            "sqlCalls": 1,
+            "sqlMs": 0.4148000000000138,
+            "candidates": 0,
+            "authenticatedFields": 0,
+            "openCumulativeMs": 0,
+            "openWallMs": 0,
+            "remainderMs": 0.008399999999710417,
+            "returned": 1
+          },
+          {
+            "totalMs": 0.30940000000009604,
+            "sqlCalls": 1,
+            "sqlMs": 0.3012999999996282,
+            "candidates": 0,
+            "authenticatedFields": 0,
+            "openCumulativeMs": 0,
+            "openWallMs": 0,
+            "remainderMs": 0.008100000000467844,
+            "returned": 1
+          },
+          {
+            "totalMs": 0.36320000000023356,
+            "sqlCalls": 1,
+            "sqlMs": 0.355199999999968,
+            "candidates": 0,
+            "authenticatedFields": 0,
+            "openCumulativeMs": 0,
+            "openWallMs": 0,
+            "remainderMs": 0.008000000000265572,
+            "returned": 1
+          },
+          {
+            "totalMs": 0.30649999999968713,
+            "sqlCalls": 1,
+            "sqlMs": 0.29870000000028085,
+            "candidates": 0,
+            "authenticatedFields": 0,
+            "openCumulativeMs": 0,
+            "openWallMs": 0,
+            "remainderMs": 0.007799999999406282,
+            "returned": 1
+          }
+        ],
+        "product": [
+          {
+            "totalMs": 2.0010999999999513,
+            "sqlCalls": 1,
+            "sqlMs": 0.9953000000000429,
+            "candidates": 1,
+            "authenticatedFields": 6,
+            "openCumulativeMs": 0.6880000000005566,
+            "openWallMs": 0.21450000000004366,
+            "remainderMs": 0.7912999999998647,
+            "returned": 1
+          },
+          {
+            "totalMs": 1.973399999999856,
+            "sqlCalls": 1,
+            "sqlMs": 0.9908999999997832,
+            "candidates": 1,
+            "authenticatedFields": 6,
+            "openCumulativeMs": 0.703799999999319,
+            "openWallMs": 0.2185999999996966,
+            "remainderMs": 0.7639000000003762,
+            "returned": 1
+          },
+          {
+            "totalMs": 2.01529999999957,
+            "sqlCalls": 1,
+            "sqlMs": 0.9679000000000997,
+            "candidates": 1,
+            "authenticatedFields": 6,
+            "openCumulativeMs": 0.7156999999997424,
+            "openWallMs": 0.2298000000000684,
+            "remainderMs": 0.8175999999994019,
+            "returned": 1
+          },
+          {
+            "totalMs": 2.6940000000004147,
+            "sqlCalls": 1,
+            "sqlMs": 1.638300000000072,
+            "candidates": 1,
+            "authenticatedFields": 6,
+            "openCumulativeMs": 0.7260000000001128,
+            "openWallMs": 0.23210000000017317,
+            "remainderMs": 0.8236000000001695,
+            "returned": 1
+          },
+          {
+            "totalMs": 2.334600000000137,
+            "sqlCalls": 1,
+            "sqlMs": 1.1954000000000633,
+            "candidates": 1,
+            "authenticatedFields": 6,
+            "openCumulativeMs": 1.1891000000005079,
+            "openWallMs": 0.3651999999997315,
+            "remainderMs": 0.774000000000342,
+            "returned": 1
+          },
+          {
+            "totalMs": 2.1640000000002146,
+            "sqlCalls": 1,
+            "sqlMs": 1.1198999999996886,
+            "candidates": 1,
+            "authenticatedFields": 6,
+            "openCumulativeMs": 0.6871000000001004,
+            "openWallMs": 0.21500000000014552,
+            "remainderMs": 0.8291000000003805,
+            "returned": 1
+          },
+          {
+            "totalMs": 1.9027000000000953,
+            "sqlCalls": 1,
+            "sqlMs": 0.9692000000000007,
+            "candidates": 1,
+            "authenticatedFields": 6,
+            "openCumulativeMs": 0.6727000000000771,
+            "openWallMs": 0.21010000000023865,
+            "remainderMs": 0.7233999999998559,
+            "returned": 1
+          }
+        ]
+      }
+    },
+    {
+      "case": "sub_zero",
+      "rows": 0,
+      "summary": {
+        "plain": {
+          "totalMs": 66.87089999999989,
+          "sqlMs": 66.84410000000025,
+          "sqlCalls": 1,
+          "candidates": 0,
+          "authenticatedFields": 0,
+          "openCumulativeMs": 0,
+          "openWallMs": 0,
+          "remainderMs": 0.01870000000053551,
+          "returned": 0
+        },
+        "product": {
+          "totalMs": 2.0377000000003136,
+          "sqlMs": 1.2563999999997577,
+          "sqlCalls": 1,
+          "candidates": 0,
+          "authenticatedFields": 0,
+          "openCumulativeMs": 0,
+          "openWallMs": 0,
+          "remainderMs": 0.7813000000005559,
+          "returned": 0
+        }
+      },
+      "runs": {
+        "plain": [
+          {
+            "totalMs": 66.00940000000037,
+            "sqlCalls": 1,
+            "sqlMs": 65.99069999999983,
+            "candidates": 0,
+            "authenticatedFields": 0,
+            "openCumulativeMs": 0,
+            "openWallMs": 0,
+            "remainderMs": 0.01870000000053551,
+            "returned": 0
+          },
+          {
+            "totalMs": 69.26020000000017,
+            "sqlCalls": 1,
+            "sqlMs": 69.24440000000004,
+            "candidates": 0,
+            "authenticatedFields": 0,
+            "openCumulativeMs": 0,
+            "openWallMs": 0,
+            "remainderMs": 0.0158000000001266,
+            "returned": 0
+          },
+          {
+            "totalMs": 63.36500000000024,
+            "sqlCalls": 1,
+            "sqlMs": 63.339800000000196,
+            "candidates": 0,
+            "authenticatedFields": 0,
+            "openCumulativeMs": 0,
+            "openWallMs": 0,
+            "remainderMs": 0.025200000000040745,
+            "returned": 0
+          },
+          {
+            "totalMs": 66.5933,
+            "sqlCalls": 1,
+            "sqlMs": 66.58069999999998,
+            "candidates": 0,
+            "authenticatedFields": 0,
+            "openCumulativeMs": 0,
+            "openWallMs": 0,
+            "remainderMs": 0.012600000000020373,
+            "returned": 0
+          },
+          {
+            "totalMs": 66.87089999999989,
+            "sqlCalls": 1,
+            "sqlMs": 66.84410000000025,
+            "candidates": 0,
+            "authenticatedFields": 0,
+            "openCumulativeMs": 0,
+            "openWallMs": 0,
+            "remainderMs": 0.026799999999639113,
+            "returned": 0
+          },
+          {
+            "totalMs": 71.39379999999983,
+            "sqlCalls": 1,
+            "sqlMs": 71.37750000000005,
+            "candidates": 0,
+            "authenticatedFields": 0,
+            "openCumulativeMs": 0,
+            "openWallMs": 0,
+            "remainderMs": 0.016299999999773718,
+            "returned": 0
+          },
+          {
+            "totalMs": 82.24260000000004,
+            "sqlCalls": 1,
+            "sqlMs": 82.21690000000035,
+            "candidates": 0,
+            "authenticatedFields": 0,
+            "openCumulativeMs": 0,
+            "openWallMs": 0,
+            "remainderMs": 0.02569999999968786,
+            "returned": 0
+          }
+        ],
+        "product": [
+          {
+            "totalMs": 2.294600000000173,
+            "sqlCalls": 1,
+            "sqlMs": 1.3458000000000538,
+            "candidates": 0,
+            "authenticatedFields": 0,
+            "openCumulativeMs": 0,
+            "openWallMs": 0,
+            "remainderMs": 0.9488000000001193,
+            "returned": 0
+          },
+          {
+            "totalMs": 1.8274999999998727,
+            "sqlCalls": 1,
+            "sqlMs": 1.0718000000001666,
+            "candidates": 0,
+            "authenticatedFields": 0,
+            "openCumulativeMs": 0,
+            "openWallMs": 0,
+            "remainderMs": 0.755699999999706,
+            "returned": 0
+          },
+          {
+            "totalMs": 2.0377000000003136,
+            "sqlCalls": 1,
+            "sqlMs": 1.2563999999997577,
+            "candidates": 0,
+            "authenticatedFields": 0,
+            "openCumulativeMs": 0,
+            "openWallMs": 0,
+            "remainderMs": 0.7813000000005559,
+            "returned": 0
+          },
+          {
+            "totalMs": 1.615900000000238,
+            "sqlCalls": 1,
+            "sqlMs": 0.9829999999997199,
+            "candidates": 0,
+            "authenticatedFields": 0,
+            "openCumulativeMs": 0,
+            "openWallMs": 0,
+            "remainderMs": 0.632900000000518,
+            "returned": 0
+          },
+          {
+            "totalMs": 2.820299999999861,
+            "sqlCalls": 1,
+            "sqlMs": 1.4330999999997402,
+            "candidates": 0,
+            "authenticatedFields": 0,
+            "openCumulativeMs": 0,
+            "openWallMs": 0,
+            "remainderMs": 1.3872000000001208,
+            "returned": 0
+          },
+          {
+            "totalMs": 1.9183000000002721,
+            "sqlCalls": 1,
+            "sqlMs": 1.1927999999998065,
+            "candidates": 0,
+            "authenticatedFields": 0,
+            "openCumulativeMs": 0,
+            "openWallMs": 0,
+            "remainderMs": 0.7255000000004657,
+            "returned": 0
+          },
+          {
+            "totalMs": 2.249399999999696,
+            "sqlCalls": 1,
+            "sqlMs": 1.3143999999997504,
+            "candidates": 0,
+            "authenticatedFields": 0,
+            "openCumulativeMs": 0,
+            "openWallMs": 0,
+            "remainderMs": 0.9349999999999454,
+            "returned": 0
+          }
+        ]
+      }
+    },
+    {
+      "case": "starts",
+      "rows": 20,
+      "summary": {
+        "plain": {
+          "totalMs": 0.7177999999998974,
+          "sqlMs": 0.7023000000003776,
+          "sqlCalls": 1,
+          "candidates": 0,
+          "authenticatedFields": 0,
+          "openCumulativeMs": 0,
+          "openWallMs": 0,
+          "remainderMs": 0.015499999999519787,
+          "returned": 20
+        },
+        "product": {
+          "totalMs": 7.440100000000257,
+          "sqlMs": 1.2304999999996653,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "openCumulativeMs": 171.24709999999914,
+          "openWallMs": 3.6661000000003696,
+          "remainderMs": 2.4963000000002467,
+          "returned": 20
+        }
+      },
+      "runs": {
+        "plain": [
+          {
+            "totalMs": 0.7485999999998967,
+            "sqlCalls": 1,
+            "sqlMs": 0.7304999999996653,
+            "candidates": 0,
+            "authenticatedFields": 0,
+            "openCumulativeMs": 0,
+            "openWallMs": 0,
+            "remainderMs": 0.018100000000231375,
+            "returned": 20
+          },
+          {
+            "totalMs": 0.7528000000002066,
+            "sqlCalls": 1,
+            "sqlMs": 0.7363000000000284,
+            "candidates": 0,
+            "authenticatedFields": 0,
+            "openCumulativeMs": 0,
+            "openWallMs": 0,
+            "remainderMs": 0.01650000000017826,
+            "returned": 20
+          },
+          {
+            "totalMs": 0.40570000000025175,
+            "sqlCalls": 1,
+            "sqlMs": 0.3966000000000349,
+            "candidates": 0,
+            "authenticatedFields": 0,
+            "openCumulativeMs": 0,
+            "openWallMs": 0,
+            "remainderMs": 0.009100000000216824,
+            "returned": 20
+          },
+          {
+            "totalMs": 0.7208999999998014,
+            "sqlCalls": 1,
+            "sqlMs": 0.703899999999976,
+            "candidates": 0,
+            "authenticatedFields": 0,
+            "openCumulativeMs": 0,
+            "openWallMs": 0,
+            "remainderMs": 0.016999999999825377,
+            "returned": 20
+          },
+          {
+            "totalMs": 0.4281999999998334,
+            "sqlCalls": 1,
+            "sqlMs": 0.4196999999999207,
+            "candidates": 0,
+            "authenticatedFields": 0,
+            "openCumulativeMs": 0,
+            "openWallMs": 0,
+            "remainderMs": 0.008499999999912689,
+            "returned": 20
+          },
+          {
+            "totalMs": 0.7177999999998974,
+            "sqlCalls": 1,
+            "sqlMs": 0.7023000000003776,
+            "candidates": 0,
+            "authenticatedFields": 0,
+            "openCumulativeMs": 0,
+            "openWallMs": 0,
+            "remainderMs": 0.015499999999519787,
+            "returned": 20
+          },
+          {
+            "totalMs": 0.39649999999983265,
+            "sqlCalls": 1,
+            "sqlMs": 0.3878999999997177,
+            "candidates": 0,
+            "authenticatedFields": 0,
+            "openCumulativeMs": 0,
+            "openWallMs": 0,
+            "remainderMs": 0.00860000000011496,
+            "returned": 20
+          }
+        ],
+        "product": [
+          {
+            "totalMs": 8.468799999999646,
+            "sqlCalls": 1,
+            "sqlMs": 1.5196000000000822,
+            "candidates": 27,
+            "authenticatedFields": 127,
+            "openCumulativeMs": 168.4491999999973,
+            "openWallMs": 3.5806000000002314,
+            "remainderMs": 3.368599999999333,
+            "returned": 20
+          },
+          {
+            "totalMs": 7.5986000000002605,
+            "sqlCalls": 1,
+            "sqlMs": 1.3260000000000218,
+            "candidates": 27,
+            "authenticatedFields": 127,
+            "openCumulativeMs": 173.80429999999797,
+            "openWallMs": 3.7068999999996777,
+            "remainderMs": 2.565700000000561,
+            "returned": 20
+          },
+          {
+            "totalMs": 7.056600000000344,
+            "sqlCalls": 1,
+            "sqlMs": 1.0592999999998938,
+            "candidates": 27,
+            "authenticatedFields": 127,
+            "openCumulativeMs": 170.58520000000044,
+            "openWallMs": 3.6183999999998377,
+            "remainderMs": 2.3789000000006126,
+            "returned": 20
+          },
+          {
+            "totalMs": 7.180699999999888,
+            "sqlCalls": 1,
+            "sqlMs": 1.2304999999996653,
+            "candidates": 27,
+            "authenticatedFields": 127,
+            "openCumulativeMs": 161.82240000000183,
+            "openWallMs": 3.453899999999976,
+            "remainderMs": 2.4963000000002467,
+            "returned": 20
+          },
+          {
+            "totalMs": 7.440100000000257,
+            "sqlCalls": 1,
+            "sqlMs": 1.216899999999896,
+            "candidates": 27,
+            "authenticatedFields": 127,
+            "openCumulativeMs": 175.35650000000032,
+            "openWallMs": 3.719900000000507,
+            "remainderMs": 2.5032999999998538,
+            "returned": 20
+          },
+          {
+            "totalMs": 8.300199999999677,
+            "sqlCalls": 1,
+            "sqlMs": 1.4425000000001091,
+            "candidates": 27,
+            "authenticatedFields": 127,
+            "openCumulativeMs": 223.75520000000097,
+            "openWallMs": 4.52559999999994,
+            "remainderMs": 2.3320999999996275,
+            "returned": 20
+          },
+          {
+            "totalMs": 7.0578999999997905,
+            "sqlCalls": 1,
+            "sqlMs": 1.027900000000045,
+            "candidates": 27,
+            "authenticatedFields": 127,
+            "openCumulativeMs": 171.24709999999914,
+            "openWallMs": 3.6661000000003696,
+            "remainderMs": 2.3638999999993757,
+            "returned": 20
+          }
+        ]
+      }
+    },
+    {
+      "case": "ends",
+      "rows": 20,
+      "summary": {
+        "plain": {
+          "totalMs": 0.5624000000002525,
+          "sqlMs": 0.5500999999999294,
+          "sqlCalls": 1,
+          "candidates": 0,
+          "authenticatedFields": 0,
+          "openCumulativeMs": 0,
+          "openWallMs": 0,
+          "remainderMs": 0.01139999999986685,
+          "returned": 20
+        },
+        "product": {
+          "totalMs": 7.267100000000028,
+          "sqlMs": 1.279700000000048,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "openCumulativeMs": 161.27180000000317,
+          "openWallMs": 3.420900000000074,
+          "remainderMs": 2.671299999999974,
+          "returned": 20
+        }
+      },
+      "runs": {
+        "plain": [
+          {
+            "totalMs": 0.7968999999998232,
+            "sqlCalls": 1,
+            "sqlMs": 0.781800000000203,
+            "candidates": 0,
+            "authenticatedFields": 0,
+            "openCumulativeMs": 0,
+            "openWallMs": 0,
+            "remainderMs": 0.015099999999620195,
+            "returned": 20
+          },
+          {
+            "totalMs": 0.6350999999999658,
+            "sqlCalls": 1,
+            "sqlMs": 0.623700000000099,
+            "candidates": 0,
+            "authenticatedFields": 0,
+            "openCumulativeMs": 0,
+            "openWallMs": 0,
+            "remainderMs": 0.01139999999986685,
+            "returned": 20
+          },
+          {
+            "totalMs": 0.38570000000026994,
+            "sqlCalls": 1,
+            "sqlMs": 0.3764000000001033,
+            "candidates": 0,
+            "authenticatedFields": 0,
+            "openCumulativeMs": 0,
+            "openWallMs": 0,
+            "remainderMs": 0.00930000000016662,
+            "returned": 20
+          },
+          {
+            "totalMs": 0.7316000000000713,
+            "sqlCalls": 1,
+            "sqlMs": 0.7130999999999403,
+            "candidates": 0,
+            "authenticatedFields": 0,
+            "openCumulativeMs": 0,
+            "openWallMs": 0,
+            "remainderMs": 0.018500000000130967,
+            "returned": 20
+          },
+          {
+            "totalMs": 0.4014999999999418,
+            "sqlCalls": 1,
+            "sqlMs": 0.39030000000002474,
+            "candidates": 0,
+            "authenticatedFields": 0,
+            "openCumulativeMs": 0,
+            "openWallMs": 0,
+            "remainderMs": 0.011199999999917054,
+            "returned": 20
+          },
+          {
+            "totalMs": 0.5624000000002525,
+            "sqlCalls": 1,
+            "sqlMs": 0.5500999999999294,
+            "candidates": 0,
+            "authenticatedFields": 0,
+            "openCumulativeMs": 0,
+            "openWallMs": 0,
+            "remainderMs": 0.012300000000323053,
+            "returned": 20
+          },
+          {
+            "totalMs": 0.36740000000008877,
+            "sqlCalls": 1,
+            "sqlMs": 0.35849999999982174,
+            "candidates": 0,
+            "authenticatedFields": 0,
+            "openCumulativeMs": 0,
+            "openWallMs": 0,
+            "remainderMs": 0.008900000000267028,
+            "returned": 20
+          }
+        ],
+        "product": [
+          {
+            "totalMs": 7.488900000000285,
+            "sqlCalls": 1,
+            "sqlMs": 1.3736000000003514,
+            "candidates": 27,
+            "authenticatedFields": 127,
+            "openCumulativeMs": 164.4318000000003,
+            "openWallMs": 3.44399999999996,
+            "remainderMs": 2.671299999999974,
+            "returned": 20
+          },
+          {
+            "totalMs": 7.334000000000287,
+            "sqlCalls": 1,
+            "sqlMs": 1.279700000000048,
+            "candidates": 27,
+            "authenticatedFields": 127,
+            "openCumulativeMs": 161.27180000000317,
+            "openWallMs": 3.4354999999995925,
+            "remainderMs": 2.618800000000647,
+            "returned": 20
+          },
+          {
+            "totalMs": 7.267100000000028,
+            "sqlCalls": 1,
+            "sqlMs": 1.0943999999999505,
+            "candidates": 27,
+            "authenticatedFields": 127,
+            "openCumulativeMs": 160.21419999999944,
+            "openWallMs": 3.3789999999999054,
+            "remainderMs": 2.7937000000001717,
+            "returned": 20
+          },
+          {
+            "totalMs": 8.579800000000432,
+            "sqlCalls": 1,
+            "sqlMs": 1.4751999999998588,
+            "candidates": 27,
+            "authenticatedFields": 127,
+            "openCumulativeMs": 187.0310000000013,
+            "openWallMs": 3.999200000000201,
+            "remainderMs": 3.1054000000003725,
+            "returned": 20
+          },
+          {
+            "totalMs": 7.2082000000000335,
+            "sqlCalls": 1,
+            "sqlMs": 1.0902999999998428,
+            "candidates": 27,
+            "authenticatedFields": 127,
+            "openCumulativeMs": 163.61020000000144,
+            "openWallMs": 3.420900000000074,
+            "remainderMs": 2.6970000000001164,
+            "returned": 20
+          },
+          {
+            "totalMs": 7.2497999999995955,
+            "sqlCalls": 1,
+            "sqlMs": 1.347700000000259,
+            "candidates": 27,
+            "authenticatedFields": 127,
+            "openCumulativeMs": 158.33109999999624,
+            "openWallMs": 3.3058999999998377,
+            "remainderMs": 2.5961999999994987,
+            "returned": 20
+          },
+          {
+            "totalMs": 6.989399999999932,
+            "sqlCalls": 1,
+            "sqlMs": 1.0979000000002088,
+            "candidates": 27,
+            "authenticatedFields": 127,
+            "openCumulativeMs": 156.35340000000315,
+            "openWallMs": 3.273699999999735,
+            "remainderMs": 2.6177999999999884,
+            "returned": 20
+          }
+        ]
+      }
+    },
+    {
+      "case": "and2",
+      "rows": 20,
+      "summary": {
+        "plain": {
+          "totalMs": 0.614100000000235,
+          "sqlMs": 0.5949000000000524,
+          "sqlCalls": 1,
+          "candidates": 0,
+          "authenticatedFields": 0,
+          "openCumulativeMs": 0,
+          "openWallMs": 0,
+          "remainderMs": 0.019200000000182627,
+          "returned": 20
+        },
+        "product": {
+          "totalMs": 7.097299999999905,
+          "sqlMs": 1.2029999999999745,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 134,
+          "openCumulativeMs": 155.3511999999996,
+          "openWallMs": 3.345299999999952,
+          "remainderMs": 2.4659999999998945,
+          "returned": 20
+        }
+      },
+      "runs": {
+        "plain": [
+          {
+            "totalMs": 0.7096999999998843,
+            "sqlCalls": 1,
+            "sqlMs": 0.6864999999997963,
+            "candidates": 0,
+            "authenticatedFields": 0,
+            "openCumulativeMs": 0,
+            "openWallMs": 0,
+            "remainderMs": 0.02320000000008804,
+            "returned": 20
+          },
+          {
+            "totalMs": 0.614100000000235,
+            "sqlCalls": 1,
+            "sqlMs": 0.5949000000000524,
+            "candidates": 0,
+            "authenticatedFields": 0,
+            "openCumulativeMs": 0,
+            "openWallMs": 0,
+            "remainderMs": 0.019200000000182627,
+            "returned": 20
+          },
+          {
+            "totalMs": 0.3967999999999847,
+            "sqlCalls": 1,
+            "sqlMs": 0.38439999999991414,
+            "candidates": 0,
+            "authenticatedFields": 0,
+            "openCumulativeMs": 0,
+            "openWallMs": 0,
+            "remainderMs": 0.012400000000070577,
+            "returned": 20
+          },
+          {
+            "totalMs": 0.8435999999996966,
+            "sqlCalls": 1,
+            "sqlMs": 0.820299999999861,
+            "candidates": 0,
+            "authenticatedFields": 0,
+            "openCumulativeMs": 0,
+            "openWallMs": 0,
+            "remainderMs": 0.023299999999835563,
+            "returned": 20
+          },
+          {
+            "totalMs": 0.4086000000002059,
+            "sqlCalls": 1,
+            "sqlMs": 0.3955000000000837,
+            "candidates": 0,
+            "authenticatedFields": 0,
+            "openCumulativeMs": 0,
+            "openWallMs": 0,
+            "remainderMs": 0.013100000000122236,
+            "returned": 20
+          },
+          {
+            "totalMs": 0.6595999999999549,
+            "sqlCalls": 1,
+            "sqlMs": 0.641399999999976,
+            "candidates": 0,
+            "authenticatedFields": 0,
+            "openCumulativeMs": 0,
+            "openWallMs": 0,
+            "remainderMs": 0.0181999999999789,
+            "returned": 20
+          },
+          {
+            "totalMs": 0.47260000000005675,
+            "sqlCalls": 1,
+            "sqlMs": 0.3973000000000866,
+            "candidates": 0,
+            "authenticatedFields": 0,
+            "openCumulativeMs": 0,
+            "openWallMs": 0,
+            "remainderMs": 0.07529999999997017,
+            "returned": 20
+          }
+        ],
+        "product": [
+          {
+            "totalMs": 7.34230000000025,
+            "sqlCalls": 1,
+            "sqlMs": 1.148200000000088,
+            "candidates": 27,
+            "authenticatedFields": 134,
+            "openCumulativeMs": 149.89650000000074,
+            "openWallMs": 3.235399999999572,
+            "remainderMs": 2.95870000000059,
+            "returned": 20
+          },
+          {
+            "totalMs": 7.097299999999905,
+            "sqlCalls": 1,
+            "sqlMs": 1.262000000000171,
+            "candidates": 27,
+            "authenticatedFields": 134,
+            "openCumulativeMs": 156.71369999999615,
+            "openWallMs": 3.381199999999808,
+            "remainderMs": 2.454099999999926,
+            "returned": 20
+          },
+          {
+            "totalMs": 6.951500000000124,
+            "sqlCalls": 1,
+            "sqlMs": 1.1820000000002437,
+            "candidates": 27,
+            "authenticatedFields": 134,
+            "openCumulativeMs": 154.3337000000006,
+            "openWallMs": 3.345299999999952,
+            "remainderMs": 2.424199999999928,
+            "returned": 20
+          },
+          {
+            "totalMs": 6.96120000000019,
+            "sqlCalls": 1,
+            "sqlMs": 1.1595000000002074,
+            "candidates": 27,
+            "authenticatedFields": 134,
+            "openCumulativeMs": 155.3511999999996,
+            "openWallMs": 3.335700000000088,
+            "remainderMs": 2.4659999999998945,
+            "returned": 20
+          },
+          {
+            "totalMs": 7.791600000000017,
+            "sqlCalls": 1,
+            "sqlMs": 1.2029999999999745,
+            "candidates": 27,
+            "authenticatedFields": 134,
+            "openCumulativeMs": 160.88459999999986,
+            "openWallMs": 3.4684000000002015,
+            "remainderMs": 3.1201999999998407,
+            "returned": 20
+          },
+          {
+            "totalMs": 7.404899999999998,
+            "sqlCalls": 1,
+            "sqlMs": 1.3988000000003922,
+            "candidates": 27,
+            "authenticatedFields": 134,
+            "openCumulativeMs": 162.8646999999978,
+            "openWallMs": 3.4567000000001826,
+            "remainderMs": 2.549399999999423,
+            "returned": 20
+          },
+          {
+            "totalMs": 6.974800000000414,
+            "sqlCalls": 1,
+            "sqlMs": 1.2177999999998974,
+            "candidates": 27,
+            "authenticatedFields": 134,
+            "openCumulativeMs": 152.68910000000096,
+            "openWallMs": 3.2927999999997155,
+            "remainderMs": 2.464200000000801,
+            "returned": 20
+          }
+        ]
+      }
+    },
+    {
+      "case": "and4",
+      "rows": 20,
+      "summary": {
+        "plain": {
+          "totalMs": 17.8741,
+          "sqlMs": 17.83600000000024,
+          "sqlCalls": 1,
+          "candidates": 0,
+          "authenticatedFields": 0,
+          "openCumulativeMs": 0,
+          "openWallMs": 0,
+          "remainderMs": 0.036599999999907595,
+          "returned": 20
+        },
+        "product": {
+          "totalMs": 13.976999999999862,
+          "sqlMs": 6.991299999999683,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 148,
+          "openCumulativeMs": 192.8827999999976,
+          "openWallMs": 3.8793000000000575,
+          "remainderMs": 3.214600000000246,
+          "returned": 20
+        }
+      },
+      "runs": {
+        "plain": [
+          {
+            "totalMs": 17.79860000000008,
+            "sqlCalls": 1,
+            "sqlMs": 17.728099999999813,
+            "candidates": 0,
+            "authenticatedFields": 0,
+            "openCumulativeMs": 0,
+            "openWallMs": 0,
+            "remainderMs": 0.07050000000026557,
+            "returned": 20
+          },
+          {
+            "totalMs": 18.115499999999884,
+            "sqlCalls": 1,
+            "sqlMs": 18.08730000000014,
+            "candidates": 0,
+            "authenticatedFields": 0,
+            "openCumulativeMs": 0,
+            "openWallMs": 0,
+            "remainderMs": 0.02819999999974243,
+            "returned": 20
+          },
+          {
+            "totalMs": 17.8741,
+            "sqlCalls": 1,
+            "sqlMs": 17.83600000000024,
+            "candidates": 0,
+            "authenticatedFields": 0,
+            "openCumulativeMs": 0,
+            "openWallMs": 0,
+            "remainderMs": 0.03809999999975844,
+            "returned": 20
+          },
+          {
+            "totalMs": 17.922499999999673,
+            "sqlCalls": 1,
+            "sqlMs": 17.900100000000293,
+            "candidates": 0,
+            "authenticatedFields": 0,
+            "openCumulativeMs": 0,
+            "openWallMs": 0,
+            "remainderMs": 0.02239999999937936,
+            "returned": 20
+          },
+          {
+            "totalMs": 17.784299999999803,
+            "sqlCalls": 1,
+            "sqlMs": 17.747699999999895,
+            "candidates": 0,
+            "authenticatedFields": 0,
+            "openCumulativeMs": 0,
+            "openWallMs": 0,
+            "remainderMs": 0.036599999999907595,
+            "returned": 20
+          },
+          {
+            "totalMs": 18.237099999999373,
+            "sqlCalls": 1,
+            "sqlMs": 18.21190000000024,
+            "candidates": 0,
+            "authenticatedFields": 0,
+            "openCumulativeMs": 0,
+            "openWallMs": 0,
+            "remainderMs": 0.02519999999913125,
+            "returned": 20
+          },
+          {
+            "totalMs": 17.858900000000176,
+            "sqlCalls": 1,
+            "sqlMs": 17.82009999999991,
+            "candidates": 0,
+            "authenticatedFields": 0,
+            "openCumulativeMs": 0,
+            "openWallMs": 0,
+            "remainderMs": 0.038800000000264845,
+            "returned": 20
+          }
+        ],
+        "product": [
+          {
+            "totalMs": 13.960000000000036,
+            "sqlCalls": 1,
+            "sqlMs": 6.866099999999733,
+            "candidates": 27,
+            "authenticatedFields": 148,
+            "openCumulativeMs": 192.9043000000015,
+            "openWallMs": 3.8793000000000575,
+            "remainderMs": 3.214600000000246,
+            "returned": 20
+          },
+          {
+            "totalMs": 14.815399999999954,
+            "sqlCalls": 1,
+            "sqlMs": 7.027299999999741,
+            "candidates": 27,
+            "authenticatedFields": 148,
+            "openCumulativeMs": 221.9640000000013,
+            "openWallMs": 4.585400000000391,
+            "remainderMs": 3.2026999999998225,
+            "returned": 20
+          },
+          {
+            "totalMs": 13.940999999999804,
+            "sqlCalls": 1,
+            "sqlMs": 6.85990000000038,
+            "candidates": 27,
+            "authenticatedFields": 148,
+            "openCumulativeMs": 189.28409999999985,
+            "openWallMs": 3.8352999999997337,
+            "remainderMs": 3.24579999999969,
+            "returned": 20
+          },
+          {
+            "totalMs": 13.836699999999837,
+            "sqlCalls": 1,
+            "sqlMs": 6.861399999999776,
+            "candidates": 27,
+            "authenticatedFields": 148,
+            "openCumulativeMs": 192.8827999999976,
+            "openWallMs": 3.8809000000001106,
+            "remainderMs": 3.0943999999999505,
+            "returned": 20
+          },
+          {
+            "totalMs": 15.09519999999975,
+            "sqlCalls": 1,
+            "sqlMs": 7.408600000000206,
+            "candidates": 27,
+            "authenticatedFields": 148,
+            "openCumulativeMs": 190.1207000000013,
+            "openWallMs": 3.8240999999998166,
+            "remainderMs": 3.862499999999727,
+            "returned": 20
+          },
+          {
+            "totalMs": 13.976999999999862,
+            "sqlCalls": 1,
+            "sqlMs": 6.991299999999683,
+            "candidates": 27,
+            "authenticatedFields": 148,
+            "openCumulativeMs": 191.33390000000054,
+            "openWallMs": 3.8742999999994936,
+            "remainderMs": 3.1114000000006854,
+            "returned": 20
+          },
+          {
+            "totalMs": 14.56119999999919,
+            "sqlCalls": 1,
+            "sqlMs": 7.183400000000802,
+            "candidates": 27,
+            "authenticatedFields": 148,
+            "openCumulativeMs": 194.4450999999999,
+            "openWallMs": 3.9164999999993597,
+            "remainderMs": 3.461299999999028,
+            "returned": 20
+          }
+        ]
+      }
+    },
+    {
+      "case": "and6",
+      "rows": 20,
+      "summary": {
+        "plain": {
+          "totalMs": 2.726799999999457,
+          "sqlMs": 2.700800000000527,
+          "sqlCalls": 1,
+          "candidates": 0,
+          "authenticatedFields": 0,
+          "openCumulativeMs": 0,
+          "openWallMs": 0,
+          "remainderMs": 0.027199999999538704,
+          "returned": 20
+        },
+        "product": {
+          "totalMs": 17.74539999999979,
+          "sqlMs": 8.97569999999996,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 162,
+          "openCumulativeMs": 279.6099999999942,
+          "openWallMs": 4.690500000000611,
+          "remainderMs": 3.646299999999428,
+          "returned": 20
+        }
+      },
+      "runs": {
+        "plain": [
+          {
+            "totalMs": 2.623000000000502,
+            "sqlCalls": 1,
+            "sqlMs": 2.5979999999999563,
+            "candidates": 0,
+            "authenticatedFields": 0,
+            "openCumulativeMs": 0,
+            "openWallMs": 0,
+            "remainderMs": 0.025000000000545697,
+            "returned": 20
+          },
+          {
+            "totalMs": 2.7609000000002197,
+            "sqlCalls": 1,
+            "sqlMs": 2.7333000000007814,
+            "candidates": 0,
+            "authenticatedFields": 0,
+            "openCumulativeMs": 0,
+            "openWallMs": 0,
+            "remainderMs": 0.027599999999438296,
+            "returned": 20
+          },
+          {
+            "totalMs": 2.4389000000001033,
+            "sqlCalls": 1,
+            "sqlMs": 2.401600000000144,
+            "candidates": 0,
+            "authenticatedFields": 0,
+            "openCumulativeMs": 0,
+            "openWallMs": 0,
+            "remainderMs": 0.037299999999959255,
+            "returned": 20
+          },
+          {
+            "totalMs": 2.726799999999457,
+            "sqlCalls": 1,
+            "sqlMs": 2.700800000000527,
+            "candidates": 0,
+            "authenticatedFields": 0,
+            "openCumulativeMs": 0,
+            "openWallMs": 0,
+            "remainderMs": 0.025999999998930434,
+            "returned": 20
+          },
+          {
+            "totalMs": 1.8015999999997803,
+            "sqlCalls": 1,
+            "sqlMs": 1.77599999999984,
+            "candidates": 0,
+            "authenticatedFields": 0,
+            "openCumulativeMs": 0,
+            "openWallMs": 0,
+            "remainderMs": 0.025599999999940337,
+            "returned": 20
+          },
+          {
+            "totalMs": 2.8202999999994063,
+            "sqlCalls": 1,
+            "sqlMs": 2.7930999999998676,
+            "candidates": 0,
+            "authenticatedFields": 0,
+            "openCumulativeMs": 0,
+            "openWallMs": 0,
+            "remainderMs": 0.027199999999538704,
+            "returned": 20
+          },
+          {
+            "totalMs": 2.7527000000000044,
+            "sqlCalls": 1,
+            "sqlMs": 2.720900000000256,
+            "candidates": 0,
+            "authenticatedFields": 0,
+            "openCumulativeMs": 0,
+            "openWallMs": 0,
+            "remainderMs": 0.03179999999974825,
+            "returned": 20
+          }
+        ],
+        "product": [
+          {
+            "totalMs": 17.74539999999979,
+            "sqlCalls": 1,
+            "sqlMs": 8.923099999999977,
+            "candidates": 27,
+            "authenticatedFields": 162,
+            "openCumulativeMs": 308.724100000004,
+            "openWallMs": 5.1284999999998035,
+            "remainderMs": 3.69380000000001,
+            "returned": 20
+          },
+          {
+            "totalMs": 16.894600000000537,
+            "sqlCalls": 1,
+            "sqlMs": 8.909599999999955,
+            "candidates": 27,
+            "authenticatedFields": 162,
+            "openCumulativeMs": 274.591399999993,
+            "openWallMs": 4.601500000000669,
+            "remainderMs": 3.3834999999999127,
+            "returned": 20
+          },
+          {
+            "totalMs": 17.20209999999952,
+            "sqlCalls": 1,
+            "sqlMs": 8.917599999999766,
+            "candidates": 27,
+            "authenticatedFields": 162,
+            "openCumulativeMs": 276.26279999999224,
+            "openWallMs": 4.6382000000003245,
+            "remainderMs": 3.646299999999428,
+            "returned": 20
+          },
+          {
+            "totalMs": 17.72569999999996,
+            "sqlCalls": 1,
+            "sqlMs": 8.97569999999996,
+            "candidates": 27,
+            "authenticatedFields": 162,
+            "openCumulativeMs": 303.95550000000003,
+            "openWallMs": 5.392499999999927,
+            "remainderMs": 3.3575000000000728,
+            "returned": 20
+          },
+          {
+            "totalMs": 19.821600000000217,
+            "sqlCalls": 1,
+            "sqlMs": 11.608799999999974,
+            "candidates": 27,
+            "authenticatedFields": 162,
+            "openCumulativeMs": 279.6099999999942,
+            "openWallMs": 4.690500000000611,
+            "remainderMs": 3.522299999999632,
+            "returned": 20
+          },
+          {
+            "totalMs": 18.054200000000492,
+            "sqlCalls": 1,
+            "sqlMs": 9.746399999999994,
+            "candidates": 27,
+            "authenticatedFields": 162,
+            "openCumulativeMs": 276.7717000000048,
+            "openWallMs": 4.630599999999504,
+            "remainderMs": 3.677200000000994,
+            "returned": 20
+          },
+          {
+            "totalMs": 19.46929999999975,
+            "sqlCalls": 1,
+            "sqlMs": 9.773400000000038,
+            "candidates": 27,
+            "authenticatedFields": 162,
+            "openCumulativeMs": 311.4864000000016,
+            "openWallMs": 5.176000000000386,
+            "remainderMs": 4.519899999999325,
+            "returned": 20
+          }
+        ]
+      }
+    },
+    {
+      "case": "or2",
+      "rows": 20,
+      "summary": {
+        "plain": {
+          "totalMs": 0.8043999999999869,
+          "sqlMs": 0.7799999999997453,
+          "sqlCalls": 1,
+          "candidates": 0,
+          "authenticatedFields": 0,
+          "openCumulativeMs": 0,
+          "openWallMs": 0,
+          "remainderMs": 0.024400000000241562,
+          "returned": 20
+        },
+        "product": {
+          "totalMs": 7.887699999999313,
+          "sqlMs": 1.3022000000000844,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 134,
+          "openCumulativeMs": 178.44100000000344,
+          "openWallMs": 3.843300000000454,
+          "remainderMs": 2.7812000000003536,
+          "returned": 20
+        }
+      },
+      "runs": {
+        "plain": [
+          {
+            "totalMs": 0.8949000000002343,
+            "sqlCalls": 1,
+            "sqlMs": 0.8658999999997832,
+            "candidates": 0,
+            "authenticatedFields": 0,
+            "openCumulativeMs": 0,
+            "openWallMs": 0,
+            "remainderMs": 0.02900000000045111,
+            "returned": 20
+          },
+          {
+            "totalMs": 0.8265999999994165,
+            "sqlCalls": 1,
+            "sqlMs": 0.8020999999998821,
+            "candidates": 0,
+            "authenticatedFields": 0,
+            "openCumulativeMs": 0,
+            "openWallMs": 0,
+            "remainderMs": 0.02449999999953434,
+            "returned": 20
+          },
+          {
+            "totalMs": 0.4055000000007567,
+            "sqlCalls": 1,
+            "sqlMs": 0.3937999999998283,
+            "candidates": 0,
+            "authenticatedFields": 0,
+            "openCumulativeMs": 0,
+            "openWallMs": 0,
+            "remainderMs": 0.011700000000928412,
+            "returned": 20
+          },
+          {
+            "totalMs": 0.8043999999999869,
+            "sqlCalls": 1,
+            "sqlMs": 0.7799999999997453,
+            "candidates": 0,
+            "authenticatedFields": 0,
+            "openCumulativeMs": 0,
+            "openWallMs": 0,
+            "remainderMs": 0.024400000000241562,
+            "returned": 20
+          },
+          {
+            "totalMs": 0.4540999999999258,
+            "sqlCalls": 1,
+            "sqlMs": 0.4329999999999927,
+            "candidates": 0,
+            "authenticatedFields": 0,
+            "openCumulativeMs": 0,
+            "openWallMs": 0,
+            "remainderMs": 0.02109999999993306,
+            "returned": 20
+          },
+          {
+            "totalMs": 0.8623000000006869,
+            "sqlCalls": 1,
+            "sqlMs": 0.8369000000002416,
+            "candidates": 0,
+            "authenticatedFields": 0,
+            "openCumulativeMs": 0,
+            "openWallMs": 0,
+            "remainderMs": 0.02540000000044529,
+            "returned": 20
+          },
+          {
+            "totalMs": 0.7847999999994499,
+            "sqlCalls": 1,
+            "sqlMs": 0.7683999999999287,
+            "candidates": 0,
+            "authenticatedFields": 0,
+            "openCumulativeMs": 0,
+            "openWallMs": 0,
+            "remainderMs": 0.016399999999521242,
+            "returned": 20
+          }
+        ],
+        "product": [
+          {
+            "totalMs": 9.030499999999847,
+            "sqlCalls": 1,
+            "sqlMs": 1.2404999999998836,
+            "candidates": 27,
+            "authenticatedFields": 134,
+            "openCumulativeMs": 182.66469999999845,
+            "openWallMs": 3.8782000000001062,
+            "remainderMs": 3.9117999999998574,
+            "returned": 20
+          },
+          {
+            "totalMs": 11.981500000000779,
+            "sqlCalls": 1,
+            "sqlMs": 1.6248999999997977,
+            "candidates": 27,
+            "authenticatedFields": 134,
+            "openCumulativeMs": 282.87049999999545,
+            "openWallMs": 5.850400000001173,
+            "remainderMs": 4.506199999999808,
+            "returned": 20
+          },
+          {
+            "totalMs": 7.6073999999998705,
+            "sqlCalls": 1,
+            "sqlMs": 1.3807999999999083,
+            "candidates": 27,
+            "authenticatedFields": 134,
+            "openCumulativeMs": 164.74579999999787,
+            "openWallMs": 3.5480999999999767,
+            "remainderMs": 2.6784999999999854,
+            "returned": 20
+          },
+          {
+            "totalMs": 7.887699999999313,
+            "sqlCalls": 1,
+            "sqlMs": 1.4969999999993888,
+            "candidates": 27,
+            "authenticatedFields": 134,
+            "openCumulativeMs": 167.22439999999824,
+            "openWallMs": 3.6094999999995707,
+            "remainderMs": 2.7812000000003536,
+            "returned": 20
+          },
+          {
+            "totalMs": 7.413499999999658,
+            "sqlCalls": 1,
+            "sqlMs": 1.3022000000000844,
+            "candidates": 27,
+            "authenticatedFields": 134,
+            "openCumulativeMs": 163.59740000000966,
+            "openWallMs": 3.534500000000662,
+            "remainderMs": 2.5767999999989115,
+            "returned": 20
+          },
+          {
+            "totalMs": 7.737199999999575,
+            "sqlCalls": 1,
+            "sqlMs": 1.285399999999754,
+            "candidates": 27,
+            "authenticatedFields": 134,
+            "openCumulativeMs": 178.44100000000344,
+            "openWallMs": 3.843300000000454,
+            "remainderMs": 2.608499999999367,
+            "returned": 20
+          },
+          {
+            "totalMs": 8.4378999999999,
+            "sqlCalls": 1,
+            "sqlMs": 1.2893999999996595,
+            "candidates": 27,
+            "authenticatedFields": 134,
+            "openCumulativeMs": 186.05520000000524,
+            "openWallMs": 4.044499999999971,
+            "remainderMs": 3.104000000000269,
+            "returned": 20
+          }
+        ]
+      }
+    },
+    {
+      "case": "or3",
+      "rows": 2,
+      "summary": {
+        "plain": {
+          "totalMs": 0.6078999999999724,
+          "sqlMs": 0.5789000000004307,
+          "sqlCalls": 1,
+          "candidates": 0,
+          "authenticatedFields": 0,
+          "openCumulativeMs": 0,
+          "openWallMs": 0,
+          "remainderMs": 0.019399999999222928,
+          "returned": 2
+        },
+        "product": {
+          "totalMs": 3.3782000000001062,
+          "sqlMs": 1.4687999999996464,
+          "sqlCalls": 1,
+          "candidates": 3,
+          "authenticatedFields": 14,
+          "openCumulativeMs": 2.940400000002228,
+          "openWallMs": 0.5047000000004118,
+          "remainderMs": 1.404700000000048,
+          "returned": 2
+        }
+      },
+      "runs": {
+        "plain": [
+          {
+            "totalMs": 0.4768000000003667,
+            "sqlCalls": 1,
+            "sqlMs": 0.4589000000005399,
+            "candidates": 0,
+            "authenticatedFields": 0,
+            "openCumulativeMs": 0,
+            "openWallMs": 0,
+            "remainderMs": 0.017899999999826832,
+            "returned": 2
+          },
+          {
+            "totalMs": 0.6146999999991749,
+            "sqlCalls": 1,
+            "sqlMs": 0.5976999999993495,
+            "candidates": 0,
+            "authenticatedFields": 0,
+            "openCumulativeMs": 0,
+            "openWallMs": 0,
+            "remainderMs": 0.016999999999825377,
+            "returned": 2
+          },
+          {
+            "totalMs": 0.45430000000033033,
+            "sqlCalls": 1,
+            "sqlMs": 0.42110000000047876,
+            "candidates": 0,
+            "authenticatedFields": 0,
+            "openCumulativeMs": 0,
+            "openWallMs": 0,
+            "remainderMs": 0.03319999999985157,
+            "returned": 2
+          },
+          {
+            "totalMs": 0.8883999999998196,
+            "sqlCalls": 1,
+            "sqlMs": 0.8680000000003929,
+            "candidates": 0,
+            "authenticatedFields": 0,
+            "openCumulativeMs": 0,
+            "openWallMs": 0,
+            "remainderMs": 0.020399999999426655,
+            "returned": 2
+          },
+          {
+            "totalMs": 0.6078999999999724,
+            "sqlCalls": 1,
+            "sqlMs": 0.5789000000004307,
+            "candidates": 0,
+            "authenticatedFields": 0,
+            "openCumulativeMs": 0,
+            "openWallMs": 0,
+            "remainderMs": 0.028999999999541615,
+            "returned": 2
+          },
+          {
+            "totalMs": 0.7129999999997381,
+            "sqlCalls": 1,
+            "sqlMs": 0.6936000000005151,
+            "candidates": 0,
+            "authenticatedFields": 0,
+            "openCumulativeMs": 0,
+            "openWallMs": 0,
+            "remainderMs": 0.019399999999222928,
+            "returned": 2
+          },
+          {
+            "totalMs": 0.39289999999982683,
+            "sqlCalls": 1,
+            "sqlMs": 0.3801000000003114,
+            "candidates": 0,
+            "authenticatedFields": 0,
+            "openCumulativeMs": 0,
+            "openWallMs": 0,
+            "remainderMs": 0.012799999999515421,
+            "returned": 2
+          }
+        ],
+        "product": [
+          {
+            "totalMs": 3.225999999999658,
+            "sqlCalls": 1,
+            "sqlMs": 1.3200999999999112,
+            "candidates": 3,
+            "authenticatedFields": 14,
+            "openCumulativeMs": 3.2720999999992273,
+            "openWallMs": 0.5430999999998676,
+            "remainderMs": 1.3627999999998792,
+            "returned": 2
+          },
+          {
+            "totalMs": 3.286399999999958,
+            "sqlCalls": 1,
+            "sqlMs": 1.502599999999802,
+            "candidates": 3,
+            "authenticatedFields": 14,
+            "openCumulativeMs": 2.8538999999973385,
+            "openWallMs": 0.48029999999926076,
+            "remainderMs": 1.303500000000895,
+            "returned": 2
+          },
+          {
+            "totalMs": 4.104000000000269,
+            "sqlCalls": 1,
+            "sqlMs": 1.9525000000003274,
+            "candidates": 3,
+            "authenticatedFields": 14,
+            "openCumulativeMs": 3.404300000001058,
+            "openWallMs": 0.5850000000000364,
+            "remainderMs": 1.5664999999999054,
+            "returned": 2
+          },
+          {
+            "totalMs": 3.878600000000006,
+            "sqlCalls": 1,
+            "sqlMs": 1.8258999999998196,
+            "candidates": 3,
+            "authenticatedFields": 14,
+            "openCumulativeMs": 3.2203000000008615,
+            "openWallMs": 0.5511000000005879,
+            "remainderMs": 1.5015999999995984,
+            "returned": 2
+          },
+          {
+            "totalMs": 3.3782000000001062,
+            "sqlCalls": 1,
+            "sqlMs": 1.4687999999996464,
+            "candidates": 3,
+            "authenticatedFields": 14,
+            "openCumulativeMs": 2.940400000002228,
+            "openWallMs": 0.5047000000004118,
+            "remainderMs": 1.404700000000048,
+            "returned": 2
+          },
+          {
+            "totalMs": 3.1176000000004933,
+            "sqlCalls": 1,
+            "sqlMs": 1.28899999999976,
+            "candidates": 3,
+            "authenticatedFields": 14,
+            "openCumulativeMs": 2.8752999999996973,
+            "openWallMs": 0.4808999999995649,
+            "remainderMs": 1.3477000000011685,
+            "returned": 2
+          },
+          {
+            "totalMs": 3.629899999999907,
+            "sqlCalls": 1,
+            "sqlMs": 1.4510000000000218,
+            "candidates": 3,
+            "authenticatedFields": 14,
+            "openCumulativeMs": 2.745100000000093,
+            "openWallMs": 0.4580999999998312,
+            "remainderMs": 1.7208000000000538,
+            "returned": 2
+          }
+        ]
+      }
+    },
+    {
+      "case": "drain101",
+      "rows": 101,
+      "summary": {
+        "plain": {
+          "totalMs": 68.76130000000012,
+          "sqlMs": 68.73509999999987,
+          "sqlCalls": 1,
+          "candidates": 0,
+          "authenticatedFields": 0,
+          "openCumulativeMs": 0,
+          "openWallMs": 0,
+          "remainderMs": 0.026200000000244472,
+          "returned": 101
+        },
+        "product": {
+          "totalMs": 28.511199999999917,
+          "sqlMs": 2.259399999999914,
+          "sqlCalls": 1,
+          "candidates": 101,
+          "authenticatedFields": 606,
+          "openCumulativeMs": 1068.1540999999988,
+          "openWallMs": 17.86539999999968,
+          "remainderMs": 9.019500000000335,
+          "returned": 101
+        }
+      },
+      "runs": {
+        "plain": [
+          {
+            "totalMs": 75.90740000000005,
+            "sqlCalls": 1,
+            "sqlMs": 75.8721000000005,
+            "candidates": 0,
+            "authenticatedFields": 0,
+            "openCumulativeMs": 0,
+            "openWallMs": 0,
+            "remainderMs": 0.0352999999995518,
+            "returned": 101
+          },
+          {
+            "totalMs": 67.8689000000004,
+            "sqlCalls": 1,
+            "sqlMs": 67.84569999999985,
+            "candidates": 0,
+            "authenticatedFields": 0,
+            "openCumulativeMs": 0,
+            "openWallMs": 0,
+            "remainderMs": 0.023200000000542786,
+            "returned": 101
+          },
+          {
+            "totalMs": 68.76130000000012,
+            "sqlCalls": 1,
+            "sqlMs": 68.73509999999987,
+            "candidates": 0,
+            "authenticatedFields": 0,
+            "openCumulativeMs": 0,
+            "openWallMs": 0,
+            "remainderMs": 0.026200000000244472,
+            "returned": 101
+          },
+          {
+            "totalMs": 71.43009999999958,
+            "sqlCalls": 1,
+            "sqlMs": 71.40519999999924,
+            "candidates": 0,
+            "authenticatedFields": 0,
+            "openCumulativeMs": 0,
+            "openWallMs": 0,
+            "remainderMs": 0.024900000000343425,
+            "returned": 101
+          },
+          {
+            "totalMs": 69.73719999999958,
+            "sqlCalls": 1,
+            "sqlMs": 69.71090000000004,
+            "candidates": 0,
+            "authenticatedFields": 0,
+            "openCumulativeMs": 0,
+            "openWallMs": 0,
+            "remainderMs": 0.02629999999953725,
+            "returned": 101
+          },
+          {
+            "totalMs": 67.75510000000031,
+            "sqlCalls": 1,
+            "sqlMs": 67.72830000000067,
+            "candidates": 0,
+            "authenticatedFields": 0,
+            "openCumulativeMs": 0,
+            "openWallMs": 0,
+            "remainderMs": 0.026799999999639113,
+            "returned": 101
+          },
+          {
+            "totalMs": 68.4305000000004,
+            "sqlCalls": 1,
+            "sqlMs": 68.40430000000015,
+            "candidates": 0,
+            "authenticatedFields": 0,
+            "openCumulativeMs": 0,
+            "openWallMs": 0,
+            "remainderMs": 0.026200000000244472,
+            "returned": 101
+          }
+        ],
+        "product": [
+          {
+            "totalMs": 28.25960000000032,
+            "sqlCalls": 1,
+            "sqlMs": 2.2315000000007785,
+            "candidates": 101,
+            "authenticatedFields": 606,
+            "openCumulativeMs": 1053.2035000000033,
+            "openWallMs": 18.137300000000323,
+            "remainderMs": 7.890799999999217,
+            "returned": 101
+          },
+          {
+            "totalMs": 29.23189999999977,
+            "sqlCalls": 1,
+            "sqlMs": 2.4612999999999374,
+            "candidates": 101,
+            "authenticatedFields": 606,
+            "openCumulativeMs": 1121.8972999999914,
+            "openWallMs": 18.328300000000127,
+            "remainderMs": 8.442299999999705,
+            "returned": 101
+          },
+          {
+            "totalMs": 29.198199999999815,
+            "sqlCalls": 1,
+            "sqlMs": 2.121900000000096,
+            "candidates": 101,
+            "authenticatedFields": 606,
+            "openCumulativeMs": 1099.1810000000078,
+            "openWallMs": 17.86539999999968,
+            "remainderMs": 9.210900000000038,
+            "returned": 101
+          },
+          {
+            "totalMs": 28.511199999999917,
+            "sqlCalls": 1,
+            "sqlMs": 2.425799999999981,
+            "candidates": 101,
+            "authenticatedFields": 606,
+            "openCumulativeMs": 1045.4186000000054,
+            "openWallMs": 17.055500000000393,
+            "remainderMs": 9.029899999999543,
+            "returned": 101
+          },
+          {
+            "totalMs": 28.197900000000118,
+            "sqlCalls": 1,
+            "sqlMs": 2.2047999999995227,
+            "candidates": 101,
+            "authenticatedFields": 606,
+            "openCumulativeMs": 1068.1540999999988,
+            "openWallMs": 17.405099999999948,
+            "remainderMs": 8.588000000000648,
+            "returned": 101
+          },
+          {
+            "totalMs": 34.38879999999972,
+            "sqlCalls": 1,
+            "sqlMs": 2.259399999999914,
+            "candidates": 101,
+            "authenticatedFields": 606,
+            "openCumulativeMs": 1430.8865000000287,
+            "openWallMs": 23.10989999999947,
+            "remainderMs": 9.019500000000335,
+            "returned": 101
+          },
+          {
+            "totalMs": 28.342400000000453,
+            "sqlCalls": 1,
+            "sqlMs": 2.3064000000003944,
+            "candidates": 101,
+            "authenticatedFields": 606,
+            "openCumulativeMs": 1043.6356999999844,
+            "openWallMs": 16.99619999999959,
+            "remainderMs": 9.039800000000469,
+            "returned": 101
+          }
+        ]
+      }
+    },
+    {
+      "case": "word_boundary",
+      "rows": 20,
+      "summary": {
+        "plain": {
+          "totalMs": 300.84479999999985,
+          "sqlMs": 236.92470000000048,
+          "sqlCalls": 1,
+          "candidates": 0,
+          "authenticatedFields": 0,
+          "openCumulativeMs": 0,
+          "openWallMs": 0,
+          "remainderMs": 64.2513999999992,
+          "returned": 20
+        },
+        "product": {
+          "totalMs": 8.331999999999425,
+          "sqlMs": 1.6574999999993452,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "openCumulativeMs": 168.7829999999958,
+          "openWallMs": 3.631100000000515,
+          "remainderMs": 2.872199999998884,
+          "returned": 20
+        }
+      },
+      "runs": {
+        "plain": [
+          {
+            "totalMs": 282.8239999999996,
+            "sqlCalls": 1,
+            "sqlMs": 224.58890000000065,
+            "candidates": 0,
+            "authenticatedFields": 0,
+            "openCumulativeMs": 0,
+            "openWallMs": 0,
+            "remainderMs": 58.235099999998965,
+            "returned": 20
+          },
+          {
+            "totalMs": 287.0617000000002,
+            "sqlCalls": 1,
+            "sqlMs": 223.0662000000002,
+            "candidates": 0,
+            "authenticatedFields": 0,
+            "openCumulativeMs": 0,
+            "openWallMs": 0,
+            "remainderMs": 63.99549999999999,
+            "returned": 20
+          },
+          {
+            "totalMs": 307.8873000000003,
+            "sqlCalls": 1,
+            "sqlMs": 239.10010000000057,
+            "candidates": 0,
+            "authenticatedFields": 0,
+            "openCumulativeMs": 0,
+            "openWallMs": 0,
+            "remainderMs": 68.78719999999976,
+            "returned": 20
+          },
+          {
+            "totalMs": 312.65949999999975,
+            "sqlCalls": 1,
+            "sqlMs": 244.26260000000002,
+            "candidates": 0,
+            "authenticatedFields": 0,
+            "openCumulativeMs": 0,
+            "openWallMs": 0,
+            "remainderMs": 68.39689999999973,
+            "returned": 20
+          },
+          {
+            "totalMs": 300.84479999999985,
+            "sqlCalls": 1,
+            "sqlMs": 236.92470000000048,
+            "candidates": 0,
+            "authenticatedFields": 0,
+            "openCumulativeMs": 0,
+            "openWallMs": 0,
+            "remainderMs": 63.920099999999366,
+            "returned": 20
+          },
+          {
+            "totalMs": 302.08699999999953,
+            "sqlCalls": 1,
+            "sqlMs": 237.83560000000034,
+            "candidates": 0,
+            "authenticatedFields": 0,
+            "openCumulativeMs": 0,
+            "openWallMs": 0,
+            "remainderMs": 64.2513999999992,
+            "returned": 20
+          },
+          {
+            "totalMs": 296.7537000000011,
+            "sqlCalls": 1,
+            "sqlMs": 229.9958999999999,
+            "candidates": 0,
+            "authenticatedFields": 0,
+            "openCumulativeMs": 0,
+            "openWallMs": 0,
+            "remainderMs": 66.75780000000123,
+            "returned": 20
+          }
+        ],
+        "product": [
+          {
+            "totalMs": 7.9760000000005675,
+            "sqlCalls": 1,
+            "sqlMs": 1.6574999999993452,
+            "candidates": 27,
+            "authenticatedFields": 127,
+            "openCumulativeMs": 157.9550999999965,
+            "openWallMs": 3.3425999999999476,
+            "remainderMs": 2.9759000000012747,
+            "returned": 20
+          },
+          {
+            "totalMs": 8.876900000000205,
+            "sqlCalls": 1,
+            "sqlMs": 1.6638000000002648,
+            "candidates": 27,
+            "authenticatedFields": 127,
+            "openCumulativeMs": 200.3926999999985,
+            "openWallMs": 4.596699999999146,
+            "remainderMs": 2.6164000000007945,
+            "returned": 20
+          },
+          {
+            "totalMs": 8.104599999999664,
+            "sqlCalls": 1,
+            "sqlMs": 1.581600000000435,
+            "candidates": 27,
+            "authenticatedFields": 127,
+            "openCumulativeMs": 171.83830000000762,
+            "openWallMs": 3.6591000000007625,
+            "remainderMs": 2.8638999999984662,
+            "returned": 20
+          },
+          {
+            "totalMs": 8.331999999999425,
+            "sqlCalls": 1,
+            "sqlMs": 1.470100000000457,
+            "candidates": 27,
+            "authenticatedFields": 127,
+            "openCumulativeMs": 193.94830000000184,
+            "openWallMs": 3.9897000000000844,
+            "remainderMs": 2.872199999998884,
+            "returned": 20
+          },
+          {
+            "totalMs": 11.336299999999028,
+            "sqlCalls": 1,
+            "sqlMs": 1.6761999999998807,
+            "candidates": 27,
+            "authenticatedFields": 127,
+            "openCumulativeMs": 161.56049999999595,
+            "openWallMs": 3.4395999999997002,
+            "remainderMs": 6.220499999999447,
+            "returned": 20
+          },
+          {
+            "totalMs": 7.538000000000466,
+            "sqlCalls": 1,
+            "sqlMs": 1.3933999999990192,
+            "candidates": 27,
+            "authenticatedFields": 127,
+            "openCumulativeMs": 165.49950000000717,
+            "openWallMs": 3.5023999999993976,
+            "remainderMs": 2.642200000002049,
+            "returned": 20
+          },
+          {
+            "totalMs": 8.874400000000605,
+            "sqlCalls": 1,
+            "sqlMs": 1.8708000000005995,
+            "candidates": 27,
+            "authenticatedFields": 127,
+            "openCumulativeMs": 168.7829999999958,
+            "openWallMs": 3.631100000000515,
+            "remainderMs": 3.3724999999994907,
+            "returned": 20
+          }
+        ]
+      }
+    },
+    {
+      "case": "word_inside_longer",
+      "rows": 20,
+      "summary": {
+        "plain": {
+          "totalMs": 292.59729999999945,
+          "sqlMs": 230.8138999999992,
+          "sqlCalls": 1,
+          "candidates": 0,
+          "authenticatedFields": 0,
+          "openCumulativeMs": 0,
+          "openWallMs": 0,
+          "remainderMs": 61.164999999999054,
+          "returned": 20
+        },
+        "product": {
+          "totalMs": 8.136399999999412,
+          "sqlMs": 1.6826000000000931,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "openCumulativeMs": 163.75280000000203,
+          "openWallMs": 3.4804000000003725,
+          "remainderMs": 2.8580000000001746,
+          "returned": 20
+        }
+      },
+      "runs": {
+        "plain": [
+          {
+            "totalMs": 288.0064999999995,
+            "sqlCalls": 1,
+            "sqlMs": 226.84150000000045,
+            "candidates": 0,
+            "authenticatedFields": 0,
+            "openCumulativeMs": 0,
+            "openWallMs": 0,
+            "remainderMs": 61.164999999999054,
+            "returned": 20
+          },
+          {
+            "totalMs": 300.4376000000011,
+            "sqlCalls": 1,
+            "sqlMs": 235.15179999999964,
+            "candidates": 0,
+            "authenticatedFields": 0,
+            "openCumulativeMs": 0,
+            "openWallMs": 0,
+            "remainderMs": 65.28580000000147,
+            "returned": 20
+          },
+          {
+            "totalMs": 301.7399999999998,
+            "sqlCalls": 1,
+            "sqlMs": 233.28739999999925,
+            "candidates": 0,
+            "authenticatedFields": 0,
+            "openCumulativeMs": 0,
+            "openWallMs": 0,
+            "remainderMs": 68.45260000000053,
+            "returned": 20
+          },
+          {
+            "totalMs": 292.59729999999945,
+            "sqlCalls": 1,
+            "sqlMs": 227.6340999999993,
+            "candidates": 0,
+            "authenticatedFields": 0,
+            "openCumulativeMs": 0,
+            "openWallMs": 0,
+            "remainderMs": 64.96320000000014,
+            "returned": 20
+          },
+          {
+            "totalMs": 292.8995999999988,
+            "sqlCalls": 1,
+            "sqlMs": 232.90639999999985,
+            "candidates": 0,
+            "authenticatedFields": 0,
+            "openCumulativeMs": 0,
+            "openWallMs": 0,
+            "remainderMs": 59.99319999999898,
+            "returned": 20
+          },
+          {
+            "totalMs": 285.7427000000007,
+            "sqlCalls": 1,
+            "sqlMs": 227.42809999999918,
+            "candidates": 0,
+            "authenticatedFields": 0,
+            "openCumulativeMs": 0,
+            "openWallMs": 0,
+            "remainderMs": 58.31460000000152,
+            "returned": 20
+          },
+          {
+            "totalMs": 290.4350999999988,
+            "sqlCalls": 1,
+            "sqlMs": 230.8138999999992,
+            "candidates": 0,
+            "authenticatedFields": 0,
+            "openCumulativeMs": 0,
+            "openWallMs": 0,
+            "remainderMs": 59.62119999999959,
+            "returned": 20
+          }
+        ],
+        "product": [
+          {
+            "totalMs": 10.052600000000893,
+            "sqlCalls": 1,
+            "sqlMs": 1.8773000000001048,
+            "candidates": 27,
+            "authenticatedFields": 127,
+            "openCumulativeMs": 184.2273000000023,
+            "openWallMs": 3.883300000001327,
+            "remainderMs": 4.291999999999462,
+            "returned": 20
+          },
+          {
+            "totalMs": 8.12670000000071,
+            "sqlCalls": 1,
+            "sqlMs": 1.4498999999996158,
+            "candidates": 27,
+            "authenticatedFields": 127,
+            "openCumulativeMs": 179.68789999998808,
+            "openWallMs": 3.834899999999834,
+            "remainderMs": 2.84190000000126,
+            "returned": 20
+          },
+          {
+            "totalMs": 8.328099999998813,
+            "sqlCalls": 1,
+            "sqlMs": 1.7359999999989668,
+            "candidates": 27,
+            "authenticatedFields": 127,
+            "openCumulativeMs": 165.31549999999334,
+            "openWallMs": 3.734099999999671,
+            "remainderMs": 2.8580000000001746,
+            "returned": 20
+          },
+          {
+            "totalMs": 7.089900000000853,
+            "sqlCalls": 1,
+            "sqlMs": 1.3127999999996973,
+            "candidates": 27,
+            "authenticatedFields": 127,
+            "openCumulativeMs": 155.70780000000923,
+            "openWallMs": 3.3083999999998923,
+            "remainderMs": 2.468700000001263,
+            "returned": 20
+          },
+          {
+            "totalMs": 8.136399999999412,
+            "sqlCalls": 1,
+            "sqlMs": 1.6826000000000931,
+            "candidates": 27,
+            "authenticatedFields": 127,
+            "openCumulativeMs": 162.252199999999,
+            "openWallMs": 3.4649000000008527,
+            "remainderMs": 2.9888999999984662,
+            "returned": 20
+          },
+          {
+            "totalMs": 7.089500000000044,
+            "sqlCalls": 1,
+            "sqlMs": 1.1643999999996595,
+            "candidates": 27,
+            "authenticatedFields": 127,
+            "openCumulativeMs": 162.1020999999946,
+            "openWallMs": 3.4494999999988067,
+            "remainderMs": 2.4756000000015774,
+            "returned": 20
+          },
+          {
+            "totalMs": 8.390600000000632,
+            "sqlCalls": 1,
+            "sqlMs": 1.7330000000001746,
+            "candidates": 27,
+            "authenticatedFields": 127,
+            "openCumulativeMs": 163.75280000000203,
+            "openWallMs": 3.4804000000003725,
+            "remainderMs": 3.1772000000000844,
+            "returned": 20
+          }
+        ]
+      }
+    },
+    {
+      "case": "sweep_1",
+      "rows": 10,
+      "summary": {
+        "plain": {
+          "totalMs": 0.7827999999990425,
+          "sqlMs": 0.7731999999996333,
+          "sqlCalls": 1,
+          "candidates": 0,
+          "authenticatedFields": 0,
+          "openCumulativeMs": 0,
+          "openWallMs": 0,
+          "remainderMs": 0.009599999999409192,
+          "returned": 10
+        },
+        "product": {
+          "totalMs": 4.616299999999683,
+          "sqlMs": 1.4837999999999738,
+          "sqlCalls": 1,
+          "candidates": 10,
+          "authenticatedFields": 60,
+          "openCumulativeMs": 53.328599999998914,
+          "openWallMs": 1.5635000000002037,
+          "remainderMs": 1.5195000000003347,
+          "returned": 10
+        }
+      },
+      "runs": {
+        "plain": [
+          {
+            "totalMs": 0.7827999999990425,
+            "sqlCalls": 1,
+            "sqlMs": 0.7731999999996333,
+            "candidates": 0,
+            "authenticatedFields": 0,
+            "openCumulativeMs": 0,
+            "openWallMs": 0,
+            "remainderMs": 0.009599999999409192,
+            "returned": 10
+          },
+          {
+            "totalMs": 0.8906999999999243,
+            "sqlCalls": 1,
+            "sqlMs": 0.8800999999984924,
+            "candidates": 0,
+            "authenticatedFields": 0,
+            "openCumulativeMs": 0,
+            "openWallMs": 0,
+            "remainderMs": 0.010600000001431908,
+            "returned": 10
+          },
+          {
+            "totalMs": 0.6946000000007189,
+            "sqlCalls": 1,
+            "sqlMs": 0.6861000000008062,
+            "candidates": 0,
+            "authenticatedFields": 0,
+            "openCumulativeMs": 0,
+            "openWallMs": 0,
+            "remainderMs": 0.008499999999912689,
+            "returned": 10
+          },
+          {
+            "totalMs": 1.1266000000014174,
+            "sqlCalls": 1,
+            "sqlMs": 1.1125000000010914,
+            "candidates": 0,
+            "authenticatedFields": 0,
+            "openCumulativeMs": 0,
+            "openWallMs": 0,
+            "remainderMs": 0.014100000000325963,
+            "returned": 10
+          },
+          {
+            "totalMs": 0.7207999999991443,
+            "sqlCalls": 1,
+            "sqlMs": 0.7121999999999389,
+            "candidates": 0,
+            "authenticatedFields": 0,
+            "openCumulativeMs": 0,
+            "openWallMs": 0,
+            "remainderMs": 0.008599999999205465,
+            "returned": 10
+          },
+          {
+            "totalMs": 0.8726999999998952,
+            "sqlCalls": 1,
+            "sqlMs": 0.8625999999985652,
+            "candidates": 0,
+            "authenticatedFields": 0,
+            "openCumulativeMs": 0,
+            "openWallMs": 0,
+            "remainderMs": 0.010100000001330045,
+            "returned": 10
+          },
+          {
+            "totalMs": 0.7047000000002299,
+            "sqlCalls": 1,
+            "sqlMs": 0.6961999999984982,
+            "candidates": 0,
+            "authenticatedFields": 0,
+            "openCumulativeMs": 0,
+            "openWallMs": 0,
+            "remainderMs": 0.008500000001731678,
+            "returned": 10
+          }
+        ],
+        "product": [
+          {
+            "totalMs": 4.4364000000005035,
+            "sqlCalls": 1,
+            "sqlMs": 1.3684999999986758,
+            "candidates": 10,
+            "authenticatedFields": 60,
+            "openCumulativeMs": 53.008799999992334,
+            "openWallMs": 1.554599999999482,
+            "remainderMs": 1.5133000000023458,
+            "returned": 10
+          },
+          {
+            "totalMs": 4.837600000000748,
+            "sqlCalls": 1,
+            "sqlMs": 1.744300000000294,
+            "candidates": 10,
+            "authenticatedFields": 60,
+            "openCumulativeMs": 55.16870000000017,
+            "openWallMs": 1.573099999999613,
+            "remainderMs": 1.520200000000841,
+            "returned": 10
+          },
+          {
+            "totalMs": 4.357299999999668,
+            "sqlCalls": 1,
+            "sqlMs": 1.3315000000002328,
+            "candidates": 10,
+            "authenticatedFields": 60,
+            "openCumulativeMs": 51.992000000005646,
+            "openWallMs": 1.4922000000005937,
+            "remainderMs": 1.5335999999988417,
+            "returned": 10
+          },
+          {
+            "totalMs": 4.701900000000023,
+            "sqlCalls": 1,
+            "sqlMs": 1.3374000000003434,
+            "candidates": 10,
+            "authenticatedFields": 60,
+            "openCumulativeMs": 65.57489999999416,
+            "openWallMs": 1.8449999999993452,
+            "remainderMs": 1.5195000000003347,
+            "returned": 10
+          },
+          {
+            "totalMs": 4.616299999999683,
+            "sqlCalls": 1,
+            "sqlMs": 1.546700000000783,
+            "candidates": 10,
+            "authenticatedFields": 60,
+            "openCumulativeMs": 54.02280000000246,
+            "openWallMs": 1.5635000000002037,
+            "remainderMs": 1.5060999999986961,
+            "returned": 10
+          },
+          {
+            "totalMs": 4.41780000000108,
+            "sqlCalls": 1,
+            "sqlMs": 1.4837999999999738,
+            "candidates": 10,
+            "authenticatedFields": 60,
+            "openCumulativeMs": 52.73189999999704,
+            "openWallMs": 1.504800000000614,
+            "remainderMs": 1.4292000000004919,
+            "returned": 10
+          },
+          {
+            "totalMs": 4.787299999999959,
+            "sqlCalls": 1,
+            "sqlMs": 1.5671999999995023,
+            "candidates": 10,
+            "authenticatedFields": 60,
+            "openCumulativeMs": 53.328599999998914,
+            "openWallMs": 1.5729000000010274,
+            "remainderMs": 1.6471999999994296,
+            "returned": 10
+          }
+        ]
+      }
+    },
+    {
+      "case": "sweep_2",
+      "rows": 20,
+      "summary": {
+        "plain": {
+          "totalMs": 0.7674999999999272,
+          "sqlMs": 0.7541999999994005,
+          "sqlCalls": 1,
+          "candidates": 0,
+          "authenticatedFields": 0,
+          "openCumulativeMs": 0,
+          "openWallMs": 0,
+          "remainderMs": 0.013199999999415013,
+          "returned": 20
+        },
+        "product": {
+          "totalMs": 7.509100000001126,
+          "sqlMs": 1.5591000000003987,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "openCumulativeMs": 159.46890000000894,
+          "openWallMs": 3.4100000000016735,
+          "remainderMs": 2.535200000002078,
+          "returned": 20
+        }
+      },
+      "runs": {
+        "plain": [
+          {
+            "totalMs": 0.7674999999999272,
+            "sqlCalls": 1,
+            "sqlMs": 0.7541999999994005,
+            "candidates": 0,
+            "authenticatedFields": 0,
+            "openCumulativeMs": 0,
+            "openWallMs": 0,
+            "remainderMs": 0.01330000000052678,
+            "returned": 20
+          },
+          {
+            "totalMs": 0.9713000000010652,
+            "sqlCalls": 1,
+            "sqlMs": 0.9553000000014435,
+            "candidates": 0,
+            "authenticatedFields": 0,
+            "openCumulativeMs": 0,
+            "openWallMs": 0,
+            "remainderMs": 0.01599999999962165,
+            "returned": 20
+          },
+          {
+            "totalMs": 0.5052000000014232,
+            "sqlCalls": 1,
+            "sqlMs": 0.4933000000000902,
+            "candidates": 0,
+            "authenticatedFields": 0,
+            "openCumulativeMs": 0,
+            "openWallMs": 0,
+            "remainderMs": 0.011900000001332955,
+            "returned": 20
+          },
+          {
+            "totalMs": 0.85740000000078,
+            "sqlCalls": 1,
+            "sqlMs": 0.844200000001365,
+            "candidates": 0,
+            "authenticatedFields": 0,
+            "openCumulativeMs": 0,
+            "openWallMs": 0,
+            "remainderMs": 0.013199999999415013,
+            "returned": 20
+          },
+          {
+            "totalMs": 0.6932999999989988,
+            "sqlCalls": 1,
+            "sqlMs": 0.6832000000013068,
+            "candidates": 0,
+            "authenticatedFields": 0,
+            "openCumulativeMs": 0,
+            "openWallMs": 0,
+            "remainderMs": 0.010099999997692066,
+            "returned": 20
+          },
+          {
+            "totalMs": 0.8526000000001659,
+            "sqlCalls": 1,
+            "sqlMs": 0.8359000000000378,
+            "candidates": 0,
+            "authenticatedFields": 0,
+            "openCumulativeMs": 0,
+            "openWallMs": 0,
+            "remainderMs": 0.016700000000128057,
+            "returned": 20
+          },
+          {
+            "totalMs": 0.7319999999999709,
+            "sqlCalls": 1,
+            "sqlMs": 0.7223999999987427,
+            "candidates": 0,
+            "authenticatedFields": 0,
+            "openCumulativeMs": 0,
+            "openWallMs": 0,
+            "remainderMs": 0.009600000001228182,
+            "returned": 20
+          }
+        ],
+        "product": [
+          {
+            "totalMs": 7.509100000001126,
+            "sqlCalls": 1,
+            "sqlMs": 1.5591000000003987,
+            "candidates": 27,
+            "authenticatedFields": 127,
+            "openCumulativeMs": 163.3604000000105,
+            "openWallMs": 3.458599999999933,
+            "remainderMs": 2.4914000000007945,
+            "returned": 20
+          },
+          {
+            "totalMs": 7.524400000000242,
+            "sqlCalls": 1,
+            "sqlMs": 1.5645000000004075,
+            "candidates": 27,
+            "authenticatedFields": 127,
+            "openCumulativeMs": 161.65640000000712,
+            "openWallMs": 3.3861000000015338,
+            "remainderMs": 2.5737999999983003,
+            "returned": 20
+          },
+          {
+            "totalMs": 7.558000000000902,
+            "sqlCalls": 1,
+            "sqlMs": 1.6260000000002037,
+            "candidates": 27,
+            "authenticatedFields": 127,
+            "openCumulativeMs": 159.46890000000894,
+            "openWallMs": 3.4100000000016735,
+            "remainderMs": 2.521999999999025,
+            "returned": 20
+          },
+          {
+            "totalMs": 7.475599999999758,
+            "sqlCalls": 1,
+            "sqlMs": 1.7163000000000466,
+            "candidates": 27,
+            "authenticatedFields": 127,
+            "openCumulativeMs": 156.7959000000028,
+            "openWallMs": 3.3253999999978987,
+            "remainderMs": 2.433900000001813,
+            "returned": 20
+          },
+          {
+            "totalMs": 7.393599999999424,
+            "sqlCalls": 1,
+            "sqlMs": 1.4785999999985506,
+            "candidates": 27,
+            "authenticatedFields": 127,
+            "openCumulativeMs": 159.14989999999307,
+            "openWallMs": 3.379799999998795,
+            "remainderMs": 2.535200000002078,
+            "returned": 20
+          },
+          {
+            "totalMs": 7.42870000000039,
+            "sqlCalls": 1,
+            "sqlMs": 1.4472999999998137,
+            "candidates": 27,
+            "authenticatedFields": 127,
+            "openCumulativeMs": 157.29770000000826,
+            "openWallMs": 3.433600000000297,
+            "remainderMs": 2.5478000000002794,
+            "returned": 20
+          },
+          {
+            "totalMs": 7.541400000000067,
+            "sqlCalls": 1,
+            "sqlMs": 1.5349999999998545,
+            "candidates": 27,
+            "authenticatedFields": 127,
+            "openCumulativeMs": 162.8324999999968,
+            "openWallMs": 3.4662999999982276,
+            "remainderMs": 2.540100000001985,
+            "returned": 20
+          }
+        ]
+      }
+    },
+    {
+      "case": "sweep_3",
+      "rows": 20,
+      "summary": {
+        "plain": {
+          "totalMs": 1.9239999999990687,
+          "sqlMs": 1.9121999999988475,
+          "sqlCalls": 1,
+          "candidates": 0,
+          "authenticatedFields": 0,
+          "openCumulativeMs": 0,
+          "openWallMs": 0,
+          "remainderMs": 0.01539999999840802,
+          "returned": 20
+        },
+        "product": {
+          "totalMs": 7.9025000000001455,
+          "sqlMs": 1.9606000000003405,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "openCumulativeMs": 163.237099999993,
+          "openWallMs": 3.4552999999996246,
+          "remainderMs": 2.4024000000008527,
+          "returned": 20
+        }
+      },
+      "runs": {
+        "plain": [
+          {
+            "totalMs": 1.8997999999992317,
+            "sqlCalls": 1,
+            "sqlMs": 1.8844000000008236,
+            "candidates": 0,
+            "authenticatedFields": 0,
+            "openCumulativeMs": 0,
+            "openWallMs": 0,
+            "remainderMs": 0.01539999999840802,
+            "returned": 20
+          },
+          {
+            "totalMs": 2.0432999999993626,
+            "sqlCalls": 1,
+            "sqlMs": 2.028200000000652,
+            "candidates": 0,
+            "authenticatedFields": 0,
+            "openCumulativeMs": 0,
+            "openWallMs": 0,
+            "remainderMs": 0.0150999999987107,
+            "returned": 20
+          },
+          {
+            "totalMs": 1.9239999999990687,
+            "sqlCalls": 1,
+            "sqlMs": 1.9121999999988475,
+            "candidates": 0,
+            "authenticatedFields": 0,
+            "openCumulativeMs": 0,
+            "openWallMs": 0,
+            "remainderMs": 0.011800000000221189,
+            "returned": 20
+          },
+          {
+            "totalMs": 2.3451999999997497,
+            "sqlCalls": 1,
+            "sqlMs": 2.3299000000006345,
+            "candidates": 0,
+            "authenticatedFields": 0,
+            "openCumulativeMs": 0,
+            "openWallMs": 0,
+            "remainderMs": 0.015299999999115244,
+            "returned": 20
+          },
+          {
+            "totalMs": 1.7880999999997584,
+            "sqlCalls": 1,
+            "sqlMs": 1.7721000000001368,
+            "candidates": 0,
+            "authenticatedFields": 0,
+            "openCumulativeMs": 0,
+            "openWallMs": 0,
+            "remainderMs": 0.01599999999962165,
+            "returned": 20
+          },
+          {
+            "totalMs": 2.357900000000882,
+            "sqlCalls": 1,
+            "sqlMs": 2.341599999999744,
+            "candidates": 0,
+            "authenticatedFields": 0,
+            "openCumulativeMs": 0,
+            "openWallMs": 0,
+            "remainderMs": 0.01630000000113796,
+            "returned": 20
+          },
+          {
+            "totalMs": 1.6924999999991996,
+            "sqlCalls": 1,
+            "sqlMs": 1.6675999999988562,
+            "candidates": 0,
+            "authenticatedFields": 0,
+            "openCumulativeMs": 0,
+            "openWallMs": 0,
+            "remainderMs": 0.024900000000343425,
+            "returned": 20
+          }
+        ],
+        "product": [
+          {
+            "totalMs": 7.769800000000032,
+            "sqlCalls": 1,
+            "sqlMs": 1.8997999999992317,
+            "candidates": 27,
+            "authenticatedFields": 127,
+            "openCumulativeMs": 163.237099999993,
+            "openWallMs": 3.4675999999999476,
+            "remainderMs": 2.4024000000008527,
+            "returned": 20
+          },
+          {
+            "totalMs": 7.6854000000003,
+            "sqlCalls": 1,
+            "sqlMs": 1.969199999999546,
+            "candidates": 27,
+            "authenticatedFields": 127,
+            "openCumulativeMs": 162.04220000000532,
+            "openWallMs": 3.415399999999863,
+            "remainderMs": 2.3008000000008906,
+            "returned": 20
+          },
+          {
+            "totalMs": 8.022800000000643,
+            "sqlCalls": 1,
+            "sqlMs": 1.8156999999991967,
+            "candidates": 27,
+            "authenticatedFields": 127,
+            "openCumulativeMs": 174.2342000000026,
+            "openWallMs": 3.763600000000224,
+            "remainderMs": 2.4435000000012224,
+            "returned": 20
+          },
+          {
+            "totalMs": 7.721299999999246,
+            "sqlCalls": 1,
+            "sqlMs": 1.9606000000003405,
+            "candidates": 27,
+            "authenticatedFields": 127,
+            "openCumulativeMs": 162.1784999999927,
+            "openWallMs": 3.4243999999998778,
+            "remainderMs": 2.336299999999028,
+            "returned": 20
+          },
+          {
+            "totalMs": 7.9025000000001455,
+            "sqlCalls": 1,
+            "sqlMs": 1.8955999999998312,
+            "candidates": 27,
+            "authenticatedFields": 127,
+            "openCumulativeMs": 157.84639999998944,
+            "openWallMs": 3.3852999999999156,
+            "remainderMs": 2.6216000000003987,
+            "returned": 20
+          },
+          {
+            "totalMs": 8.040100000000166,
+            "sqlCalls": 1,
+            "sqlMs": 2.257499999999709,
+            "candidates": 27,
+            "authenticatedFields": 127,
+            "openCumulativeMs": 163.26059999999597,
+            "openWallMs": 3.4552999999996246,
+            "remainderMs": 2.3273000000008324,
+            "returned": 20
+          },
+          {
+            "totalMs": 8.383800000001429,
+            "sqlCalls": 1,
+            "sqlMs": 2.0763999999999214,
+            "candidates": 27,
+            "authenticatedFields": 127,
+            "openCumulativeMs": 182.3068999999996,
+            "openWallMs": 3.879899999999907,
+            "remainderMs": 2.4275000000016007,
+            "returned": 20
+          }
+        ]
+      }
+    },
+    {
+      "case": "sweep_4",
+      "rows": 20,
+      "summary": {
+        "plain": {
+          "totalMs": 1.5074000000004162,
+          "sqlMs": 1.4909000000006927,
+          "sqlCalls": 1,
+          "candidates": 0,
+          "authenticatedFields": 0,
+          "openCumulativeMs": 0,
+          "openWallMs": 0,
+          "remainderMs": 0.013399999999819556,
+          "returned": 20
+        },
+        "product": {
+          "totalMs": 8.258299999999508,
+          "sqlMs": 2.3018000000010943,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "openCumulativeMs": 160.7082000000264,
+          "openWallMs": 3.4140000000006694,
+          "remainderMs": 2.334100000000035,
+          "returned": 20
+        }
+      },
+      "runs": {
+        "plain": [
+          {
+            "totalMs": 1.5393000000003667,
+            "sqlCalls": 1,
+            "sqlMs": 1.5190999999995256,
+            "candidates": 0,
+            "authenticatedFields": 0,
+            "openCumulativeMs": 0,
+            "openWallMs": 0,
+            "remainderMs": 0.0202000000008411,
+            "returned": 20
+          },
+          {
+            "totalMs": 1.560299999999188,
+            "sqlCalls": 1,
+            "sqlMs": 1.5468999999993684,
+            "candidates": 0,
+            "authenticatedFields": 0,
+            "openCumulativeMs": 0,
+            "openWallMs": 0,
+            "remainderMs": 0.013399999999819556,
+            "returned": 20
+          },
+          {
+            "totalMs": 0.856499999999869,
+            "sqlCalls": 1,
+            "sqlMs": 0.847700000000259,
+            "candidates": 0,
+            "authenticatedFields": 0,
+            "openCumulativeMs": 0,
+            "openWallMs": 0,
+            "remainderMs": 0.008799999999610009,
+            "returned": 20
+          },
+          {
+            "totalMs": 1.5074000000004162,
+            "sqlCalls": 1,
+            "sqlMs": 1.4909000000006927,
+            "candidates": 0,
+            "authenticatedFields": 0,
+            "openCumulativeMs": 0,
+            "openWallMs": 0,
+            "remainderMs": 0.016499999999723514,
+            "returned": 20
+          },
+          {
+            "totalMs": 0.8819999999996071,
+            "sqlCalls": 1,
+            "sqlMs": 0.8708999999998923,
+            "candidates": 0,
+            "authenticatedFields": 0,
+            "openCumulativeMs": 0,
+            "openWallMs": 0,
+            "remainderMs": 0.011099999999714782,
+            "returned": 20
+          },
+          {
+            "totalMs": 1.579200000000128,
+            "sqlCalls": 1,
+            "sqlMs": 1.562099999999191,
+            "candidates": 0,
+            "authenticatedFields": 0,
+            "openCumulativeMs": 0,
+            "openWallMs": 0,
+            "remainderMs": 0.017100000000937143,
+            "returned": 20
+          },
+          {
+            "totalMs": 0.9562000000005355,
+            "sqlCalls": 1,
+            "sqlMs": 0.9461000000010245,
+            "candidates": 0,
+            "authenticatedFields": 0,
+            "openCumulativeMs": 0,
+            "openWallMs": 0,
+            "remainderMs": 0.010099999999511056,
+            "returned": 20
+          }
+        ],
+        "product": [
+          {
+            "totalMs": 8.191399999999703,
+            "sqlCalls": 1,
+            "sqlMs": 2.428299999999581,
+            "candidates": 27,
+            "authenticatedFields": 127,
+            "openCumulativeMs": 159.68290000002162,
+            "openWallMs": 3.4140000000006694,
+            "remainderMs": 2.349099999999453,
+            "returned": 20
+          },
+          {
+            "totalMs": 7.98489999999947,
+            "sqlCalls": 1,
+            "sqlMs": 2.272000000000844,
+            "candidates": 27,
+            "authenticatedFields": 127,
+            "openCumulativeMs": 160.7082000000264,
+            "openWallMs": 3.3844000000008236,
+            "remainderMs": 2.3284999999978027,
+            "returned": 20
+          },
+          {
+            "totalMs": 8.385800000000017,
+            "sqlCalls": 1,
+            "sqlMs": 2.7101000000002387,
+            "candidates": 27,
+            "authenticatedFields": 127,
+            "openCumulativeMs": 153.09239999999227,
+            "openWallMs": 3.280399999999645,
+            "remainderMs": 2.395300000000134,
+            "returned": 20
+          },
+          {
+            "totalMs": 8.258299999999508,
+            "sqlCalls": 1,
+            "sqlMs": 2.257400000000416,
+            "candidates": 27,
+            "authenticatedFields": 127,
+            "openCumulativeMs": 171.41659999999683,
+            "openWallMs": 3.7190000000009604,
+            "remainderMs": 2.2818999999981315,
+            "returned": 20
+          },
+          {
+            "totalMs": 9.400400000000445,
+            "sqlCalls": 1,
+            "sqlMs": 2.27639999999883,
+            "candidates": 27,
+            "authenticatedFields": 127,
+            "openCumulativeMs": 162.07950000000528,
+            "openWallMs": 3.4917999999997846,
+            "remainderMs": 3.6322000000018306,
+            "returned": 20
+          },
+          {
+            "totalMs": 8.540499999999156,
+            "sqlCalls": 1,
+            "sqlMs": 2.6057999999993626,
+            "candidates": 27,
+            "authenticatedFields": 127,
+            "openCumulativeMs": 164.88760000000912,
+            "openWallMs": 3.6005999999997584,
+            "remainderMs": 2.334100000000035,
+            "returned": 20
+          },
+          {
+            "totalMs": 7.988499999999476,
+            "sqlCalls": 1,
+            "sqlMs": 2.3018000000010943,
+            "candidates": 27,
+            "authenticatedFields": 127,
+            "openCumulativeMs": 159.1392999999989,
+            "openWallMs": 3.3601999999991676,
+            "remainderMs": 2.326499999999214,
+            "returned": 20
+          }
+        ]
+      }
+    },
+    {
+      "case": "sweep_5",
+      "rows": 20,
+      "summary": {
+        "plain": {
+          "totalMs": 0.9525999999987107,
+          "sqlMs": 0.940599999999904,
+          "sqlCalls": 1,
+          "candidates": 0,
+          "authenticatedFields": 0,
+          "openCumulativeMs": 0,
+          "openWallMs": 0,
+          "remainderMs": 0.0136000000002241,
+          "returned": 20
+        },
+        "product": {
+          "totalMs": 8.622400000000198,
+          "sqlMs": 3.146999999999025,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "openCumulativeMs": 153.80699999999342,
+          "openWallMs": 3.2476999999998952,
+          "remainderMs": 2.259200000002238,
+          "returned": 20
+        }
+      },
+      "runs": {
+        "plain": [
+          {
+            "totalMs": 1.0877999999993335,
+            "sqlCalls": 1,
+            "sqlMs": 1.07090000000062,
+            "candidates": 0,
+            "authenticatedFields": 0,
+            "openCumulativeMs": 0,
+            "openWallMs": 0,
+            "remainderMs": 0.01689999999871361,
+            "returned": 20
+          },
+          {
+            "totalMs": 0.9547000000002299,
+            "sqlCalls": 1,
+            "sqlMs": 0.9411000000000058,
+            "candidates": 0,
+            "authenticatedFields": 0,
+            "openCumulativeMs": 0,
+            "openWallMs": 0,
+            "remainderMs": 0.0136000000002241,
+            "returned": 20
+          },
+          {
+            "totalMs": 0.816899999999805,
+            "sqlCalls": 1,
+            "sqlMs": 0.801500000001397,
+            "candidates": 0,
+            "authenticatedFields": 0,
+            "openCumulativeMs": 0,
+            "openWallMs": 0,
+            "remainderMs": 0.01539999999840802,
+            "returned": 20
+          },
+          {
+            "totalMs": 0.9525999999987107,
+            "sqlCalls": 1,
+            "sqlMs": 0.940599999999904,
+            "candidates": 0,
+            "authenticatedFields": 0,
+            "openCumulativeMs": 0,
+            "openWallMs": 0,
+            "remainderMs": 0.011999999998806743,
+            "returned": 20
+          },
+          {
+            "totalMs": 0.6226999999998952,
+            "sqlCalls": 1,
+            "sqlMs": 0.6145999999989726,
+            "candidates": 0,
+            "authenticatedFields": 0,
+            "openCumulativeMs": 0,
+            "openWallMs": 0,
+            "remainderMs": 0.008100000000922591,
+            "returned": 20
+          },
+          {
+            "totalMs": 1.0676000000003114,
+            "sqlCalls": 1,
+            "sqlMs": 1.0522999999993772,
+            "candidates": 0,
+            "authenticatedFields": 0,
+            "openCumulativeMs": 0,
+            "openWallMs": 0,
+            "remainderMs": 0.015300000000934233,
+            "returned": 20
+          },
+          {
+            "totalMs": 0.6279000000013184,
+            "sqlCalls": 1,
+            "sqlMs": 0.6194000000014057,
+            "candidates": 0,
+            "authenticatedFields": 0,
+            "openCumulativeMs": 0,
+            "openWallMs": 0,
+            "remainderMs": 0.008499999999912689,
+            "returned": 20
+          }
+        ],
+        "product": [
+          {
+            "totalMs": 8.982099999999264,
+            "sqlCalls": 1,
+            "sqlMs": 3.2924999999995634,
+            "candidates": 27,
+            "authenticatedFields": 127,
+            "openCumulativeMs": 156.92729999999938,
+            "openWallMs": 3.414099999999962,
+            "remainderMs": 2.275499999999738,
+            "returned": 20
+          },
+          {
+            "totalMs": 8.622400000000198,
+            "sqlCalls": 1,
+            "sqlMs": 3.161600000001272,
+            "candidates": 27,
+            "authenticatedFields": 127,
+            "openCumulativeMs": 153.80699999999342,
+            "openWallMs": 3.2476999999998952,
+            "remainderMs": 2.213099999999031,
+            "returned": 20
+          },
+          {
+            "totalMs": 9.56130000000121,
+            "sqlCalls": 1,
+            "sqlMs": 3.4063999999998487,
+            "candidates": 27,
+            "authenticatedFields": 127,
+            "openCumulativeMs": 155.853500000012,
+            "openWallMs": 3.4122999999999593,
+            "remainderMs": 2.742600000001403,
+            "returned": 20
+          },
+          {
+            "totalMs": 8.422300000000178,
+            "sqlCalls": 1,
+            "sqlMs": 3.020200000000841,
+            "candidates": 27,
+            "authenticatedFields": 127,
+            "openCumulativeMs": 151.5474999999915,
+            "openWallMs": 3.195499999999811,
+            "remainderMs": 2.2065999999995256,
+            "returned": 20
+          },
+          {
+            "totalMs": 8.405700000001161,
+            "sqlCalls": 1,
+            "sqlMs": 2.970100000000457,
+            "candidates": 27,
+            "authenticatedFields": 127,
+            "openCumulativeMs": 150.5186999999969,
+            "openWallMs": 3.2300000000013824,
+            "remainderMs": 2.205599999999322,
+            "returned": 20
+          },
+          {
+            "totalMs": 8.819800000001123,
+            "sqlCalls": 1,
+            "sqlMs": 3.0886000000009517,
+            "candidates": 27,
+            "authenticatedFields": 127,
+            "openCumulativeMs": 157.2402000000111,
+            "openWallMs": 3.4306000000015047,
+            "remainderMs": 2.300599999998667,
+            "returned": 20
+          },
+          {
+            "totalMs": 8.613400000000183,
+            "sqlCalls": 1,
+            "sqlMs": 3.146999999999025,
+            "candidates": 27,
+            "authenticatedFields": 127,
+            "openCumulativeMs": 150.464699999995,
+            "openWallMs": 3.2071999999989202,
+            "remainderMs": 2.259200000002238,
+            "returned": 20
+          }
+        ]
+      }
+    },
+    {
+      "case": "sweep_6",
+      "rows": 20,
+      "summary": {
+        "plain": {
+          "totalMs": 0.8238999999994121,
+          "sqlMs": 0.8081999999994878,
+          "sqlCalls": 1,
+          "candidates": 0,
+          "authenticatedFields": 0,
+          "openCumulativeMs": 0,
+          "openWallMs": 0,
+          "remainderMs": 0.013099999998303247,
+          "returned": 20
+        },
+        "product": {
+          "totalMs": 7.3747999999995955,
+          "sqlMs": 1.4572000000007392,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "openCumulativeMs": 157.28789999999935,
+          "openWallMs": 3.3937000000005355,
+          "remainderMs": 2.4046000000016647,
+          "returned": 20
+        }
+      },
+      "runs": {
+        "plain": [
+          {
+            "totalMs": 0.6882000000005064,
+            "sqlCalls": 1,
+            "sqlMs": 0.6770000000014988,
+            "candidates": 0,
+            "authenticatedFields": 0,
+            "openCumulativeMs": 0,
+            "openWallMs": 0,
+            "remainderMs": 0.01119999999900756,
+            "returned": 20
+          },
+          {
+            "totalMs": 0.8238999999994121,
+            "sqlCalls": 1,
+            "sqlMs": 0.8081999999994878,
+            "candidates": 0,
+            "authenticatedFields": 0,
+            "openCumulativeMs": 0,
+            "openWallMs": 0,
+            "remainderMs": 0.01569999999992433,
+            "returned": 20
+          },
+          {
+            "totalMs": 0.470500000001266,
+            "sqlCalls": 1,
+            "sqlMs": 0.46129999999902793,
+            "candidates": 0,
+            "authenticatedFields": 0,
+            "openCumulativeMs": 0,
+            "openWallMs": 0,
+            "remainderMs": 0.009200000002238085,
+            "returned": 20
+          },
+          {
+            "totalMs": 0.9552000000003318,
+            "sqlCalls": 1,
+            "sqlMs": 0.9412000000011176,
+            "candidates": 0,
+            "authenticatedFields": 0,
+            "openCumulativeMs": 0,
+            "openWallMs": 0,
+            "remainderMs": 0.013999999999214197,
+            "returned": 20
+          },
+          {
+            "totalMs": 0.5190999999995256,
+            "sqlCalls": 1,
+            "sqlMs": 0.5083000000013271,
+            "candidates": 0,
+            "authenticatedFields": 0,
+            "openCumulativeMs": 0,
+            "openWallMs": 0,
+            "remainderMs": 0.010799999998198473,
+            "returned": 20
+          },
+          {
+            "totalMs": 1.0085999999992055,
+            "sqlCalls": 1,
+            "sqlMs": 0.992500000000291,
+            "candidates": 0,
+            "authenticatedFields": 0,
+            "openCumulativeMs": 0,
+            "openWallMs": 0,
+            "remainderMs": 0.016099999998914427,
+            "returned": 20
+          },
+          {
+            "totalMs": 0.9051999999992404,
+            "sqlCalls": 1,
+            "sqlMs": 0.8921000000009371,
+            "candidates": 0,
+            "authenticatedFields": 0,
+            "openCumulativeMs": 0,
+            "openWallMs": 0,
+            "remainderMs": 0.013099999998303247,
+            "returned": 20
+          }
+        ],
+        "product": [
+          {
+            "totalMs": 6.5460000000002765,
+            "sqlCalls": 1,
+            "sqlMs": 1.235500000000684,
+            "candidates": 27,
+            "authenticatedFields": 127,
+            "openCumulativeMs": 147.8759999999893,
+            "openWallMs": 3.1182000000007974,
+            "remainderMs": 2.192299999998795,
+            "returned": 20
+          },
+          {
+            "totalMs": 7.093600000000151,
+            "sqlCalls": 1,
+            "sqlMs": 1.4525999999987107,
+            "candidates": 27,
+            "authenticatedFields": 127,
+            "openCumulativeMs": 152.7213000000047,
+            "openWallMs": 3.236399999999776,
+            "remainderMs": 2.4046000000016647,
+            "returned": 20
+          },
+          {
+            "totalMs": 8.086600000000544,
+            "sqlCalls": 1,
+            "sqlMs": 1.3070000000006985,
+            "candidates": 27,
+            "authenticatedFields": 127,
+            "openCumulativeMs": 187.10379999999896,
+            "openWallMs": 4.51510000000053,
+            "remainderMs": 2.264499999999316,
+            "returned": 20
+          },
+          {
+            "totalMs": 7.153500000000349,
+            "sqlCalls": 1,
+            "sqlMs": 1.6886000000013155,
+            "candidates": 27,
+            "authenticatedFields": 127,
+            "openCumulativeMs": 153.53279999999904,
+            "openWallMs": 3.266700000001947,
+            "remainderMs": 2.1981999999970867,
+            "returned": 20
+          },
+          {
+            "totalMs": 7.693400000000111,
+            "sqlCalls": 1,
+            "sqlMs": 1.5371000000013737,
+            "candidates": 27,
+            "authenticatedFields": 127,
+            "openCumulativeMs": 174.90980000000854,
+            "openWallMs": 3.700800000000527,
+            "remainderMs": 2.45549999999821,
+            "returned": 20
+          },
+          {
+            "totalMs": 7.8422000000009575,
+            "sqlCalls": 1,
+            "sqlMs": 1.7288000000007742,
+            "candidates": 27,
+            "authenticatedFields": 127,
+            "openCumulativeMs": 164.36879999999655,
+            "openWallMs": 3.514499999999316,
+            "remainderMs": 2.5989000000008673,
+            "returned": 20
+          },
+          {
+            "totalMs": 7.3747999999995955,
+            "sqlCalls": 1,
+            "sqlMs": 1.4572000000007392,
+            "candidates": 27,
+            "authenticatedFields": 127,
+            "openCumulativeMs": 157.28789999999935,
+            "openWallMs": 3.3937000000005355,
+            "remainderMs": 2.5238999999983207,
+            "returned": 20
+          }
+        ]
+      }
+    },
+    {
+      "case": "sweep_7",
+      "rows": 20,
+      "summary": {
+        "plain": {
+          "totalMs": 0.5617999999994936,
+          "sqlMs": 0.5497999999988679,
+          "sqlCalls": 1,
+          "candidates": 0,
+          "authenticatedFields": 0,
+          "openCumulativeMs": 0,
+          "openWallMs": 0,
+          "remainderMs": 0.012000000000625732,
+          "returned": 20
+        },
+        "product": {
+          "totalMs": 6.54700000000048,
+          "sqlMs": 1.0912000000007538,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "openCumulativeMs": 151.31180000000495,
+          "openWallMs": 3.210799999998926,
+          "remainderMs": 2.152800000001662,
+          "returned": 20
+        }
+      },
+      "runs": {
+        "plain": [
+          {
+            "totalMs": 0.9395000000004075,
+            "sqlCalls": 1,
+            "sqlMs": 0.917699999999968,
+            "candidates": 0,
+            "authenticatedFields": 0,
+            "openCumulativeMs": 0,
+            "openWallMs": 0,
+            "remainderMs": 0.021800000000439468,
+            "returned": 20
+          },
+          {
+            "totalMs": 0.5617999999994936,
+            "sqlCalls": 1,
+            "sqlMs": 0.5497999999988679,
+            "candidates": 0,
+            "authenticatedFields": 0,
+            "openCumulativeMs": 0,
+            "openWallMs": 0,
+            "remainderMs": 0.012000000000625732,
+            "returned": 20
+          },
+          {
+            "totalMs": 0.3816999999999098,
+            "sqlCalls": 1,
+            "sqlMs": 0.37379999999939173,
+            "candidates": 0,
+            "authenticatedFields": 0,
+            "openCumulativeMs": 0,
+            "openWallMs": 0,
+            "remainderMs": 0.007900000000518048,
+            "returned": 20
+          },
+          {
+            "totalMs": 0.5669999999990978,
+            "sqlCalls": 1,
+            "sqlMs": 0.5532999999995809,
+            "candidates": 0,
+            "authenticatedFields": 0,
+            "openCumulativeMs": 0,
+            "openWallMs": 0,
+            "remainderMs": 0.013699999999516876,
+            "returned": 20
+          },
+          {
+            "totalMs": 0.38379999999961,
+            "sqlCalls": 1,
+            "sqlMs": 0.3757999999997992,
+            "candidates": 0,
+            "authenticatedFields": 0,
+            "openCumulativeMs": 0,
+            "openWallMs": 0,
+            "remainderMs": 0.007999999999810825,
+            "returned": 20
+          },
+          {
+            "totalMs": 0.7150000000001455,
+            "sqlCalls": 1,
+            "sqlMs": 0.7025000000012369,
+            "candidates": 0,
+            "authenticatedFields": 0,
+            "openCumulativeMs": 0,
+            "openWallMs": 0,
+            "remainderMs": 0.012499999998908606,
+            "returned": 20
+          },
+          {
+            "totalMs": 0.45319999999992433,
+            "sqlCalls": 1,
+            "sqlMs": 0.44540000000051805,
+            "candidates": 0,
+            "authenticatedFields": 0,
+            "openCumulativeMs": 0,
+            "openWallMs": 0,
+            "remainderMs": 0.007799999999406282,
+            "returned": 20
+          }
+        ],
+        "product": [
+          {
+            "totalMs": 7.369799999998577,
+            "sqlCalls": 1,
+            "sqlMs": 1.2784000000010565,
+            "candidates": 27,
+            "authenticatedFields": 127,
+            "openCumulativeMs": 175.85409999999501,
+            "openWallMs": 3.7163000000000466,
+            "remainderMs": 2.375099999997474,
+            "returned": 20
+          },
+          {
+            "totalMs": 6.803200000000288,
+            "sqlCalls": 1,
+            "sqlMs": 1.3906999999999243,
+            "candidates": 27,
+            "authenticatedFields": 127,
+            "openCumulativeMs": 151.31180000000495,
+            "openWallMs": 3.210799999998926,
+            "remainderMs": 2.2017000000014377,
+            "returned": 20
+          },
+          {
+            "totalMs": 6.298600000000079,
+            "sqlCalls": 1,
+            "sqlMs": 0.9855999999999767,
+            "candidates": 27,
+            "authenticatedFields": 127,
+            "openCumulativeMs": 149.256200000018,
+            "openWallMs": 3.164199999999255,
+            "remainderMs": 2.148800000000847,
+            "returned": 20
+          },
+          {
+            "totalMs": 6.937200000000303,
+            "sqlCalls": 1,
+            "sqlMs": 1.2735000000011496,
+            "candidates": 27,
+            "authenticatedFields": 127,
+            "openCumulativeMs": 162.96630000000732,
+            "openWallMs": 3.504799999998795,
+            "remainderMs": 2.158900000000358,
+            "returned": 20
+          },
+          {
+            "totalMs": 6.254800000000614,
+            "sqlCalls": 1,
+            "sqlMs": 0.9974000000001979,
+            "candidates": 27,
+            "authenticatedFields": 127,
+            "openCumulativeMs": 147.8764000000101,
+            "openWallMs": 3.1345000000001164,
+            "remainderMs": 2.1229000000002998,
+            "returned": 20
+          },
+          {
+            "totalMs": 6.54700000000048,
+            "sqlCalls": 1,
+            "sqlMs": 1.0103999999992084,
+            "candidates": 27,
+            "authenticatedFields": 127,
+            "openCumulativeMs": 157.75780000000123,
+            "openWallMs": 3.3955000000005384,
+            "remainderMs": 2.1411000000007334,
+            "returned": 20
+          },
+          {
+            "totalMs": 6.35910000000149,
+            "sqlCalls": 1,
+            "sqlMs": 1.0912000000007538,
+            "candidates": 27,
+            "authenticatedFields": 127,
+            "openCumulativeMs": 146.65789999999106,
+            "openWallMs": 3.1150999999990745,
+            "remainderMs": 2.152800000001662,
+            "returned": 20
+          }
+        ]
+      }
+    },
+    {
+      "case": "sweep_8",
+      "rows": 20,
+      "summary": {
+        "plain": {
+          "totalMs": 0.561200000000099,
+          "sqlMs": 0.5331999999998516,
+          "sqlCalls": 1,
+          "candidates": 0,
+          "authenticatedFields": 0,
+          "openCumulativeMs": 0,
+          "openWallMs": 0,
+          "remainderMs": 0.01419999999779975,
+          "returned": 20
+        },
+        "product": {
+          "totalMs": 6.302699999998367,
+          "sqlMs": 1.022399999999834,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "openCumulativeMs": 149.8583999999846,
+          "openWallMs": 3.190199999999095,
+          "remainderMs": 2.18579999999929,
+          "returned": 20
+        }
+      },
+      "runs": {
+        "plain": [
+          {
+            "totalMs": 0.7723999999998341,
+            "sqlCalls": 1,
+            "sqlMs": 0.7536999999992986,
+            "candidates": 0,
+            "authenticatedFields": 0,
+            "openCumulativeMs": 0,
+            "openWallMs": 0,
+            "remainderMs": 0.01870000000053551,
+            "returned": 20
+          },
+          {
+            "totalMs": 0.6384999999991123,
+            "sqlCalls": 1,
+            "sqlMs": 0.6243000000013126,
+            "candidates": 0,
+            "authenticatedFields": 0,
+            "openCumulativeMs": 0,
+            "openWallMs": 0,
+            "remainderMs": 0.01419999999779975,
+            "returned": 20
+          },
+          {
+            "totalMs": 0.39500000000043656,
+            "sqlCalls": 1,
+            "sqlMs": 0.3855999999996129,
+            "candidates": 0,
+            "authenticatedFields": 0,
+            "openCumulativeMs": 0,
+            "openWallMs": 0,
+            "remainderMs": 0.009400000000823638,
+            "returned": 20
+          },
+          {
+            "totalMs": 0.8253999999997177,
+            "sqlCalls": 1,
+            "sqlMs": 0.8106999999999971,
+            "candidates": 0,
+            "authenticatedFields": 0,
+            "openCumulativeMs": 0,
+            "openWallMs": 0,
+            "remainderMs": 0.014699999999720603,
+            "returned": 20
+          },
+          {
+            "totalMs": 0.561200000000099,
+            "sqlCalls": 1,
+            "sqlMs": 0.5331999999998516,
+            "candidates": 0,
+            "authenticatedFields": 0,
+            "openCumulativeMs": 0,
+            "openWallMs": 0,
+            "remainderMs": 0.028000000000247383,
+            "returned": 20
+          },
+          {
+            "totalMs": 0.5062000000016269,
+            "sqlCalls": 1,
+            "sqlMs": 0.49580000000059954,
+            "candidates": 0,
+            "authenticatedFields": 0,
+            "openCumulativeMs": 0,
+            "openWallMs": 0,
+            "remainderMs": 0.010400000001027365,
+            "returned": 20
+          },
+          {
+            "totalMs": 0.3621999999995751,
+            "sqlCalls": 1,
+            "sqlMs": 0.35460000000057335,
+            "candidates": 0,
+            "authenticatedFields": 0,
+            "openCumulativeMs": 0,
+            "openWallMs": 0,
+            "remainderMs": 0.007599999999001739,
+            "returned": 20
+          }
+        ],
+        "product": [
+          {
+            "totalMs": 6.572200000000521,
+            "sqlCalls": 1,
+            "sqlMs": 1.022399999999834,
+            "candidates": 27,
+            "authenticatedFields": 127,
+            "openCumulativeMs": 152.8131000000085,
+            "openWallMs": 3.257900000000518,
+            "remainderMs": 2.291900000000169,
+            "returned": 20
+          },
+          {
+            "totalMs": 6.438200000000506,
+            "sqlCalls": 1,
+            "sqlMs": 1.1101999999991676,
+            "candidates": 27,
+            "authenticatedFields": 127,
+            "openCumulativeMs": 146.62790000000496,
+            "openWallMs": 3.122400000000198,
+            "remainderMs": 2.205600000001141,
+            "returned": 20
+          },
+          {
+            "totalMs": 6.302699999998367,
+            "sqlCalls": 1,
+            "sqlMs": 0.9266999999999825,
+            "candidates": 27,
+            "authenticatedFields": 127,
+            "openCumulativeMs": 149.8583999999846,
+            "openWallMs": 3.190199999999095,
+            "remainderMs": 2.18579999999929,
+            "returned": 20
+          },
+          {
+            "totalMs": 6.1784999999999854,
+            "sqlCalls": 1,
+            "sqlMs": 1.0689000000002125,
+            "candidates": 27,
+            "authenticatedFields": 127,
+            "openCumulativeMs": 142.84630000000288,
+            "openWallMs": 3.0221999999994296,
+            "remainderMs": 2.0874000000003434,
+            "returned": 20
+          },
+          {
+            "totalMs": 6.8145000000004075,
+            "sqlCalls": 1,
+            "sqlMs": 1.0293000000001484,
+            "candidates": 27,
+            "authenticatedFields": 127,
+            "openCumulativeMs": 161.64730000000054,
+            "openWallMs": 3.452499999999418,
+            "remainderMs": 2.332700000000841,
+            "returned": 20
+          },
+          {
+            "totalMs": 6.239700000000084,
+            "sqlCalls": 1,
+            "sqlMs": 0.9579000000012456,
+            "candidates": 27,
+            "authenticatedFields": 127,
+            "openCumulativeMs": 149.48479999999472,
+            "openWallMs": 3.1489000000001397,
+            "remainderMs": 2.132899999998699,
+            "returned": 20
+          },
+          {
+            "totalMs": 6.1336000000010245,
+            "sqlCalls": 1,
+            "sqlMs": 0.8105000000014115,
+            "candidates": 27,
+            "authenticatedFields": 127,
+            "openCumulativeMs": 152.25889999999526,
+            "openWallMs": 3.206500000000233,
+            "remainderMs": 2.11659999999938,
+            "returned": 20
+          }
+        ]
+      }
+    },
+    {
+      "case": "sweep_9",
+      "rows": 20,
+      "summary": {
+        "plain": {
+          "totalMs": 0.46079999999892607,
+          "sqlMs": 0.45020000000113214,
+          "sqlCalls": 1,
+          "candidates": 0,
+          "authenticatedFields": 0,
+          "openCumulativeMs": 0,
+          "openWallMs": 0,
+          "remainderMs": 0.01059999999779393,
+          "returned": 20
+        },
+        "product": {
+          "totalMs": 6.452400000000125,
+          "sqlMs": 0.9865000000008877,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "authenticatedFields": 127,
+          "openCumulativeMs": 147.62589999998454,
+          "openWallMs": 3.1314999999995052,
+          "remainderMs": 2.322100000001228,
+          "returned": 20
+        }
+      },
+      "runs": {
+        "plain": [
+          {
+            "totalMs": 0.46079999999892607,
+            "sqlCalls": 1,
+            "sqlMs": 0.45020000000113214,
+            "candidates": 0,
+            "authenticatedFields": 0,
+            "openCumulativeMs": 0,
+            "openWallMs": 0,
+            "remainderMs": 0.01059999999779393,
+            "returned": 20
+          },
+          {
+            "totalMs": 0.6293000000005122,
+            "sqlCalls": 1,
+            "sqlMs": 0.6167999999997846,
+            "candidates": 0,
+            "authenticatedFields": 0,
+            "openCumulativeMs": 0,
+            "openWallMs": 0,
+            "remainderMs": 0.012500000000727596,
+            "returned": 20
+          },
+          {
+            "totalMs": 0.3583999999991647,
+            "sqlCalls": 1,
+            "sqlMs": 0.350800000000163,
+            "candidates": 0,
+            "authenticatedFields": 0,
+            "openCumulativeMs": 0,
+            "openWallMs": 0,
+            "remainderMs": 0.007599999999001739,
+            "returned": 20
+          },
+          {
+            "totalMs": 0.5825000000004366,
+            "sqlCalls": 1,
+            "sqlMs": 0.5694999999996071,
+            "candidates": 0,
+            "authenticatedFields": 0,
+            "openCumulativeMs": 0,
+            "openWallMs": 0,
+            "remainderMs": 0.01300000000082946,
+            "returned": 20
+          },
+          {
+            "totalMs": 0.3631999999997788,
+            "sqlCalls": 1,
+            "sqlMs": 0.35500000000138243,
+            "candidates": 0,
+            "authenticatedFields": 0,
+            "openCumulativeMs": 0,
+            "openWallMs": 0,
+            "remainderMs": 0.008199999998396379,
+            "returned": 20
+          },
+          {
+            "totalMs": 0.5805999999993219,
+            "sqlCalls": 1,
+            "sqlMs": 0.5680999999985943,
+            "candidates": 0,
+            "authenticatedFields": 0,
+            "openCumulativeMs": 0,
+            "openWallMs": 0,
+            "remainderMs": 0.012500000000727596,
+            "returned": 20
+          },
+          {
+            "totalMs": 0.3754000000008091,
+            "sqlCalls": 1,
+            "sqlMs": 0.36679999999978463,
+            "candidates": 0,
+            "authenticatedFields": 0,
+            "openCumulativeMs": 0,
+            "openWallMs": 0,
+            "remainderMs": 0.008600000001024455,
+            "returned": 20
+          }
+        ],
+        "product": [
+          {
+            "totalMs": 6.602700000001278,
+            "sqlCalls": 1,
+            "sqlMs": 1.1581999999998516,
+            "candidates": 27,
+            "authenticatedFields": 127,
+            "openCumulativeMs": 146.22059999998783,
+            "openWallMs": 3.122400000000198,
+            "remainderMs": 2.322100000001228,
+            "returned": 20
+          },
+          {
+            "totalMs": 6.940100000001621,
+            "sqlCalls": 1,
+            "sqlMs": 1.0903999999991356,
+            "candidates": 27,
+            "authenticatedFields": 127,
+            "openCumulativeMs": 161.89619999999923,
+            "openWallMs": 3.4932000000007974,
+            "remainderMs": 2.356500000001688,
+            "returned": 20
+          },
+          {
+            "totalMs": 6.360999999998967,
+            "sqlCalls": 1,
+            "sqlMs": 0.9650000000001455,
+            "candidates": 27,
+            "authenticatedFields": 127,
+            "openCumulativeMs": 148.81140000000414,
+            "openWallMs": 3.1422999999995227,
+            "remainderMs": 2.2536999999992986,
+            "returned": 20
+          },
+          {
+            "totalMs": 6.423400000001493,
+            "sqlCalls": 1,
+            "sqlMs": 0.972700000000259,
+            "candidates": 27,
+            "authenticatedFields": 127,
+            "openCumulativeMs": 151.0516000000116,
+            "openWallMs": 3.173399999997855,
+            "remainderMs": 2.277300000003379,
+            "returned": 20
+          },
+          {
+            "totalMs": 6.408000000001266,
+            "sqlCalls": 1,
+            "sqlMs": 0.9775000000008731,
+            "candidates": 27,
+            "authenticatedFields": 127,
+            "openCumulativeMs": 147.62589999998454,
+            "openWallMs": 3.129000000000815,
+            "remainderMs": 2.301499999999578,
+            "returned": 20
+          },
+          {
+            "totalMs": 6.623700000000099,
+            "sqlCalls": 1,
+            "sqlMs": 1.173900000001595,
+            "candidates": 27,
+            "authenticatedFields": 127,
+            "openCumulativeMs": 146.8581999999933,
+            "openWallMs": 3.124199999998382,
+            "remainderMs": 2.3256000000001222,
+            "returned": 20
+          },
+          {
+            "totalMs": 6.452400000000125,
+            "sqlCalls": 1,
+            "sqlMs": 0.9865000000008877,
+            "candidates": 27,
+            "authenticatedFields": 127,
+            "openCumulativeMs": 147.09920000000238,
+            "openWallMs": 3.1314999999995052,
+            "remainderMs": 2.3343999999997322,
+            "returned": 20
+          }
+        ]
+      }
+    }
+  ]
+}

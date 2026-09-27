@@ -1,0 +1,146 @@
+{
+  "single_insert": {
+    "verdict": "confirmed",
+    "observed": "ok",
+    "value": {
+      "rowCount": 1
+    }
+  },
+  "array_insert": {
+    "verdict": "confirmed",
+    "observed": "ok",
+    "value": {
+      "rowCount": 2
+    }
+  },
+  "stored_v3_and_tokens": {
+    "verdict": "confirmed",
+    "observed": "ok",
+    "value": {
+      "version": 3,
+      "exact": 1,
+      "sub": 62
+    }
+  },
+  "patch_value": {
+    "verdict": "confirmed",
+    "observed": "ok",
+    "value": {
+      "rowCount": 1
+    }
+  },
+  "patch_null": {
+    "verdict": "confirmed",
+    "observed": "ok",
+    "value": {
+      "rowCount": 1
+    }
+  },
+  "patch_null_clears_tokens": {
+    "verdict": "confirmed",
+    "observed": "ok",
+    "value": {
+      "memo_ct": null,
+      "memo_tok_e": null,
+      "memo_tok_s": null
+    }
+  },
+  "raw_cipher_without_tokens": {
+    "verdict": "confirmed",
+    "observed": "SQL02",
+    "message": "write envelope required"
+  },
+  "wrong_row_envelope": {
+    "verdict": "confirmed",
+    "observed": "SQL03",
+    "message": "binding mismatch"
+  },
+  "wrong_scope_envelope": {
+    "verdict": "confirmed",
+    "observed": "SQL03",
+    "message": "binding mismatch"
+  },
+  "wrong_field_envelope": {
+    "verdict": "confirmed",
+    "observed": "SQL03",
+    "message": "binding mismatch"
+  },
+  "wrong_row_where": {
+    "verdict": "confirmed",
+    "observed": "SQL03",
+    "message": "binding mismatch"
+  },
+  "where_matches_no_row": {
+    "verdict": "refuted",
+    "observed": "ok",
+    "value": {
+      "rowCount": 0
+    }
+  },
+  "multirow_update": {
+    "verdict": "confirmed",
+    "observed": "SQL03",
+    "message": "binding mismatch"
+  },
+  "id_change": {
+    "verdict": "confirmed",
+    "observed": "SQL01",
+    "message": "immutable row and scope"
+  },
+  "scope_change": {
+    "verdict": "confirmed",
+    "observed": "SQL01",
+    "message": "immutable row and scope"
+  },
+  "upsert_set_v": {
+    "verdict": "confirmed",
+    "observed": "ok",
+    "value": {
+      "rowCount": 1
+    }
+  },
+  "upsert_do_nothing": {
+    "verdict": "confirmed",
+    "observed": "ok",
+    "value": {
+      "rowCount": 0
+    }
+  },
+  "upsert_false_where": {
+    "verdict": "confirmed",
+    "observed": "ok",
+    "value": {
+      "rowCount": 0
+    }
+  },
+  "upsert_excluded": {
+    "verdict": "refuted",
+    "observed": "SQL02",
+    "message": "write envelope required"
+  },
+  "upsert_id_only_cross_tenant": {
+    "verdict": "confirmed",
+    "observed": "SQL01",
+    "message": "immutable row and scope"
+  },
+  "copy_restore": {
+    "verdict": "confirmed",
+    "observed": "ok",
+    "value": {
+      "rowCount": 1
+    }
+  },
+  "rollback_and_savepoint": {
+    "verdict": "confirmed",
+    "observed": "ok",
+    "value": "0"
+  },
+  "plain_update_zero_trigger_calls": {
+    "verdict": "confirmed",
+    "observed": "ok",
+    "value": {
+      "calls": 0,
+      "note": "stats may flush asynchronously"
+    }
+  }
+}

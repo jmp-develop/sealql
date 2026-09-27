@@ -1,0 +1,436 @@
+{
+  "source": "bench_realistic_100k.customers first 1000 rows",
+  "plainTable": "bench_standard_next_100k.core_v3_write_plain",
+  "productTable": "bench_standard_next_100k.core_v3_write_product",
+  "warmup": 2,
+  "alternatingRuns": 7,
+  "samplesPerOperation": 1000,
+  "plainIndexes": "PK plus six normalized-field B-tree indexes",
+  "productIndexes": [
+    "create index \"seal_e2fdf21756782d54_bt\" on \"bench_standard_next_100k\".\"core_v3_write_product_seal_index\"(scope_id,(\"tokens_988d248ff4b71bf7\"[1]),row_id)",
+    "create index \"seal_c9fdfc78c33f055b_bt\" on \"bench_standard_next_100k\".\"core_v3_write_product_seal_index\"(scope_id,(\"tokens_a106c26102b707f0\"[1]),row_id)",
+    "create index \"seal_0dcf75987e78b00c_bt\" on \"bench_standard_next_100k\".\"core_v3_write_product_seal_index\"(scope_id,(\"tokens_c5133b3810f23103\"[1]),row_id)",
+    "create index \"seal_81f1118e40e68066_bt\" on \"bench_standard_next_100k\".\"core_v3_write_product_seal_index\"(scope_id,(\"tokens_1c32fdad5d1c8367\"[1]),row_id)",
+    "create index \"seal_1bfd466e18b80aef_bt\" on \"bench_standard_next_100k\".\"core_v3_write_product_seal_index\"(scope_id,(\"tokens_cd3096c7a3cd42c2\"[1]),row_id)",
+    "create index \"seal_563f0c4bbdf10ad8_bt\" on \"bench_standard_next_100k\".\"core_v3_write_product_seal_index\"(scope_id,(\"tokens_c44ae523cca61a0b\"[1]),row_id)",
+    "create index \"seal_f2af77e7ca91f2d3_gin\" on \"bench_standard_next_100k\".\"core_v3_write_product_seal_index\" using gin(\"tokens_792d75cf01821d67\",\"tokens_1127994ab736baf4\",\"tokens_ef1d32a52e2ce103\",\"tokens_a639b11c8130dcf7\",\"tokens_f289b89d86c7086a\",\"tokens_7a1d2ba5ce2368fb\")"
+  ],
+  "summary": {
+    "plain": {
+      "insert": {
+        "totalMs": 242.93069999998988,
+        "sqlMs": 237.88080000007903,
+        "medianRowMs": 0.23139999999693828,
+        "p95RowMs": 0.30710000000544824,
+        "rowsPerSec": 4116.4002738231175
+      },
+      "update": {
+        "totalMs": 277.77450000002864,
+        "sqlMs": 276.6139000002295,
+        "medianRowMs": 0.2606999999989057,
+        "p95RowMs": 0.3522999999986496,
+        "rowsPerSec": 3600.042480500899
+      },
+      "delete": {
+        "totalMs": 226.47409999997762,
+        "sqlMs": 225.47000000006665,
+        "medianRowMs": 0.2128999999986263,
+        "p95RowMs": 0.29769999999552965,
+        "rowsPerSec": 4415.515946415501
+      }
+    },
+    "product": {
+      "insert": {
+        "totalMs": 5971.8247000000265,
+        "sqlMs": 664.6306000001787,
+        "medianRowMs": 5.79030000000057,
+        "p95RowMs": 6.930099999997765,
+        "rowsPerSec": 167.45300644876525
+      },
+      "update": {
+        "totalMs": 1924.809399999751,
+        "sqlMs": 547.728000000141,
+        "medianRowMs": 1.741200000004028,
+        "p95RowMs": 2.4292999999997846,
+        "rowsPerSec": 519.5319598917844
+      },
+      "delete": {
+        "totalMs": 419.4737000000023,
+        "sqlMs": 179.75570000054722,
+        "medianRowMs": 0.4043999999994412,
+        "p95RowMs": 0.5391000000017812,
+        "rowsPerSec": 2383.9396844188195
+      }
+    }
+  },
+  "runs": {
+    "plain": [
+      {
+        "insert": {
+          "samples": 1000,
+          "totalMs": 254.22739999995247,
+          "sqlMs": 248.18630000003395,
+          "medianRowMs": 0.24309999999968568,
+          "p95RowMs": 0.32370000000082655,
+          "rowsPerSec": 3933.486319728664
+        },
+        "update": {
+          "samples": 1000,
+          "totalMs": 284.2849000000497,
+          "sqlMs": 283.01040000001376,
+          "medianRowMs": 0.264099999996688,
+          "p95RowMs": 0.3793000000005122,
+          "rowsPerSec": 3517.598015229881
+        },
+        "delete": {
+          "samples": 1000,
+          "totalMs": 234.63980000004085,
+          "sqlMs": 233.3367999999973,
+          "medianRowMs": 0.22179999999934807,
+          "p95RowMs": 0.29980000000068685,
+          "rowsPerSec": 4261.851569937521
+        }
+      },
+      {
+        "insert": {
+          "samples": 1000,
+          "totalMs": 224.61110000004555,
+          "sqlMs": 220.08099999992555,
+          "medianRowMs": 0.21360000000277068,
+          "p95RowMs": 0.2991000000038184,
+          "rowsPerSec": 4452.139720609521
+        },
+        "update": {
+          "samples": 1000,
+          "totalMs": 260.70740000011574,
+          "sqlMs": 259.563000000162,
+          "medianRowMs": 0.24359999999433057,
+          "p95RowMs": 0.344199999999546,
+          "rowsPerSec": 3835.717743338149
+        },
+        "delete": {
+          "samples": 1000,
+          "totalMs": 221.84660000001895,
+          "sqlMs": 220.80189999991853,
+          "medianRowMs": 0.20910000000003492,
+          "p95RowMs": 0.2879000000029919,
+          "rowsPerSec": 4507.619228782026
+        }
+      },
+      {
+        "insert": {
+          "samples": 1000,
+          "totalMs": 246.04869999999937,
+          "sqlMs": 241.5373999999283,
+          "medianRowMs": 0.23139999999693828,
+          "p95RowMs": 0.3272999999971944,
+          "rowsPerSec": 4064.2360638361533
+        },
+        "update": {
+          "samples": 1000,
+          "totalMs": 277.77450000002864,
+          "sqlMs": 276.6139000002295,
+          "medianRowMs": 0.2617000000027474,
+          "p95RowMs": 0.3506000000052154,
+          "rowsPerSec": 3600.042480500899
+        },
+        "delete": {
+          "samples": 1000,
+          "totalMs": 226.47409999997762,
+          "sqlMs": 225.47000000006665,
+          "medianRowMs": 0.2128999999986263,
+          "p95RowMs": 0.29769999999552965,
+          "rowsPerSec": 4415.515946415501
+        }
+      },
+      {
+        "insert": {
+          "samples": 1000,
+          "totalMs": 242.93069999998988,
+          "sqlMs": 237.88080000007903,
+          "medianRowMs": 0.23339999999734573,
+          "p95RowMs": 0.3033999999970547,
+          "rowsPerSec": 4116.4002738231175
+        },
+        "update": {
+          "samples": 1000,
+          "totalMs": 262.8694000000178,
+          "sqlMs": 261.8668999999645,
+          "medianRowMs": 0.24420000000100117,
+          "p95RowMs": 0.3430999999982305,
+          "rowsPerSec": 3804.1704359652826
+        },
+        "delete": {
+          "samples": 1000,
+          "totalMs": 214.02929999988555,
+          "sqlMs": 213.14449999997305,
+          "medianRowMs": 0.20659999999770662,
+          "p95RowMs": 0.263200000001234,
+          "rowsPerSec": 4672.257489981675
+        }
+      },
+      {
+        "insert": {
+          "samples": 1000,
+          "totalMs": 225.0470000002315,
+          "sqlMs": 220.66909999997733,
+          "medianRowMs": 0.20939999999973224,
+          "p95RowMs": 0.3099000000001979,
+          "rowsPerSec": 4443.516243269057
+        },
+        "update": {
+          "samples": 1000,
+          "totalMs": 287.01590000017313,
+          "sqlMs": 285.79159999999683,
+          "medianRowMs": 0.2640000000028522,
+          "p95RowMs": 0.39479999999457505,
+          "rowsPerSec": 3484.1275343958187
+        },
+        "delete": {
+          "samples": 1000,
+          "totalMs": 233.98919999989448,
+          "sqlMs": 232.95399999973597,
+          "medianRowMs": 0.21970000000146683,
+          "p95RowMs": 0.2989000000015949,
+          "rowsPerSec": 4273.701521268721
+        }
+      },
+      {
+        "insert": {
+          "samples": 1000,
+          "totalMs": 244.510899999892,
+          "sqlMs": 239.28900000010617,
+          "medianRowMs": 0.23670000000856817,
+          "p95RowMs": 0.30710000000544824,
+          "rowsPerSec": 4089.7972237656554
+        },
+        "update": {
+          "samples": 1000,
+          "totalMs": 266.5525999997626,
+          "sqlMs": 265.5123999998614,
+          "medianRowMs": 0.24670000000332948,
+          "p95RowMs": 0.3522999999986496,
+          "rowsPerSec": 3751.6047489346965
+        },
+        "delete": {
+          "samples": 1000,
+          "totalMs": 230.52840000024298,
+          "sqlMs": 229.52350000015576,
+          "medianRowMs": 0.21770000000833534,
+          "p95RowMs": 0.3009999999922002,
+          "rowsPerSec": 4337.8603243632715
+        }
+      },
+      {
+        "insert": {
+          "samples": 1000,
+          "totalMs": 234.2150000000256,
+          "sqlMs": 228.79050000004645,
+          "medianRowMs": 0.2198999999964144,
+          "p95RowMs": 0.3055999999924097,
+          "rowsPerSec": 4269.581367546445
+        },
+        "update": {
+          "samples": 1000,
+          "totalMs": 278.1382999999187,
+          "sqlMs": 276.9718999999168,
+          "medianRowMs": 0.2606999999989057,
+          "p95RowMs": 0.359599999996135,
+          "rowsPerSec": 3595.333688313664
+        },
+        "delete": {
+          "samples": 1000,
+          "totalMs": 220.77139999972133,
+          "sqlMs": 219.85490000018035,
+          "medianRowMs": 0.20979999999690335,
+          "p95RowMs": 0.27730000000155997,
+          "rowsPerSec": 4529.5722181462925
+        }
+      }
+    ],
+    "product": [
+      {
+        "insert": {
+          "samples": 1000,
+          "totalMs": 5979.823400000027,
+          "sqlMs": 669.2092000000448,
+          "medianRowMs": 5.8364999999976135,
+          "p95RowMs": 6.9658999999992375,
+          "rowsPerSec": 167.22901883691006
+        },
+        "update": {
+          "samples": 1000,
+          "totalMs": 1900.5615000000653,
+          "sqlMs": 537.4956999999558,
+          "medianRowMs": 1.737700000001496,
+          "p95RowMs": 2.4292999999997846,
+          "rowsPerSec": 526.1602952600932
+        },
+        "delete": {
+          "samples": 1000,
+          "totalMs": 380.9391000000687,
+          "sqlMs": 155.65989999997691,
+          "medianRowMs": 0.36120000000300934,
+          "p95RowMs": 0.48430000000007567,
+          "rowsPerSec": 2625.091517252547
+        }
+      },
+      {
+        "insert": {
+          "samples": 1000,
+          "totalMs": 6025.695499999994,
+          "sqlMs": 687.8611999999266,
+          "medianRowMs": 5.867199999996956,
+          "p95RowMs": 7.0512999999991735,
+          "rowsPerSec": 165.9559464961349
+        },
+        "update": {
+          "samples": 1000,
+          "totalMs": 1914.587299999941,
+          "sqlMs": 519.0136000000348,
+          "medianRowMs": 1.75,
+          "p95RowMs": 2.416900000003807,
+          "rowsPerSec": 522.305773155411
+        },
+        "delete": {
+          "samples": 1000,
+          "totalMs": 427.46679999979824,
+          "sqlMs": 183.56280000004335,
+          "medianRowMs": 0.4088000000047032,
+          "p95RowMs": 0.5394999999989523,
+          "rowsPerSec": 2339.3629633938167
+        }
+      },
+      {
+        "insert": {
+          "samples": 1000,
+          "totalMs": 5944.3607999999585,
+          "sqlMs": 651.1540000000969,
+          "medianRowMs": 5.777099999999336,
+          "p95RowMs": 6.911699999996927,
+          "rowsPerSec": 168.2266661875583
+        },
+        "update": {
+          "samples": 1000,
+          "totalMs": 1913.2646999999997,
+          "sqlMs": 531.4637000000512,
+          "medianRowMs": 1.7248000000035972,
+          "p95RowMs": 2.4276000000027125,
+          "rowsPerSec": 522.6668322475192
+        },
+        "delete": {
+          "samples": 1000,
+          "totalMs": 432.54589999993186,
+          "sqlMs": 184.58490000000893,
+          "medianRowMs": 0.4099999999962165,
+          "p95RowMs": 0.5645000000004075,
+          "rowsPerSec": 2311.8933736284575
+        }
+      },
+      {
+        "insert": {
+          "samples": 1000,
+          "totalMs": 5942.359799999933,
+          "sqlMs": 651.6708000002036,
+          "medianRowMs": 5.747899999994843,
+          "p95RowMs": 6.9276000000027125,
+          "rowsPerSec": 168.2833139790713
+        },
+        "update": {
+          "samples": 1000,
+          "totalMs": 1932.653900000034,
+          "sqlMs": 547.728000000141,
+          "medianRowMs": 1.7465999999985797,
+          "p95RowMs": 2.49029999999766,
+          "rowsPerSec": 517.4232178870632
+        },
+        "delete": {
+          "samples": 1000,
+          "totalMs": 418.41099999997823,
+          "sqlMs": 176.12509999983013,
+          "medianRowMs": 0.3945000000021537,
+          "p95RowMs": 0.5391000000017812,
+          "rowsPerSec": 2389.994526912658
+        }
+      },
+      {
+        "insert": {
+          "samples": 1000,
+          "totalMs": 5919.314999999944,
+          "sqlMs": 631.4004999999743,
+          "medianRowMs": 5.79030000000057,
+          "p95RowMs": 6.930099999997765,
+          "rowsPerSec": 168.938466697584
+        },
+        "update": {
+          "samples": 1000,
+          "totalMs": 1934.4154999998718,
+          "sqlMs": 548.9489000001195,
+          "medianRowMs": 1.742900000004738,
+          "p95RowMs": 2.4486000000033528,
+          "rowsPerSec": 516.9520198737378
+        },
+        "delete": {
+          "samples": 1000,
+          "totalMs": 420.12689999990107,
+          "sqlMs": 180.6592999999266,
+          "medianRowMs": 0.40610000000015134,
+          "p95RowMs": 0.5270000000018626,
+          "rowsPerSec": 2380.233210490058
+        }
+      },
+      {
+        "insert": {
+          "samples": 1000,
+          "totalMs": 5974.736499999926,
+          "sqlMs": 677.4295000004058,
+          "medianRowMs": 5.757400000002235,
+          "p95RowMs": 6.9007999999885214,
+          "rowsPerSec": 167.37139788508034
+        },
+        "update": {
+          "samples": 1000,
+          "totalMs": 1933.9969000001001,
+          "sqlMs": 552.0596000002406,
+          "medianRowMs": 1.741200000004028,
+          "p95RowMs": 2.4786000000021886,
+          "rowsPerSec": 517.0639104953831
+        },
+        "delete": {
+          "samples": 1000,
+          "totalMs": 418.30479999996896,
+          "sqlMs": 175.76679999970656,
+          "medianRowMs": 0.39350000000558794,
+          "p95RowMs": 0.5467999999964377,
+          "rowsPerSec": 2390.60130316476
+        }
+      },
+      {
+        "insert": {
+          "samples": 1000,
+          "totalMs": 5971.8247000000265,
+          "sqlMs": 664.6306000001787,
+          "medianRowMs": 5.8070000000006985,
+          "p95RowMs": 6.991099999999278,
+          "rowsPerSec": 167.45300644876525
+        },
+        "update": {
+          "samples": 1000,
+          "totalMs": 1924.809399999751,
+          "sqlMs": 550.4540000001725,
+          "medianRowMs": 1.7325999999884516,
+          "p95RowMs": 2.411500000001979,
+          "rowsPerSec": 519.5319598917844
+        },
+        "delete": {
+          "samples": 1000,
+          "totalMs": 419.4737000000023,
+          "sqlMs": 179.75570000054722,
+          "medianRowMs": 0.4043999999994412,
+          "p95RowMs": 0.5285999999905471,
+          "rowsPerSec": 2383.9396844188195
+        }
+      }
+    ]
+  }
+}

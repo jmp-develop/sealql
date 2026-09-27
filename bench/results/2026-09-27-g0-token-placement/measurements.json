@@ -1,0 +1,879 @@
+{
+  "environment": {
+    "host": "127.0.0.1",
+    "port": 56439,
+    "scopeId": "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa",
+    "fixture": "bench_standard_next_100k.customers_skip_product_multi",
+    "source": "bench_realistic_100k.customers",
+    "warmup": 2,
+    "alternatingRuns": 7
+  },
+  "read": [
+    {
+      "selection": "all",
+      "medianMs": {
+        "current": 0.5122000000010303,
+        "parent": 3.6671000000005733
+      },
+      "deltaMs": 3.154899999999543,
+      "deltaPercent": 615.9508004672388,
+      "gateExceeded": true,
+      "runs": {
+        "current": [
+          0.5812999999998283,
+          0.5122000000010303,
+          0.41630000000077416,
+          0.5211999999992258,
+          0.41269999999894935,
+          0.44870000000082655,
+          0.6242999999994936
+        ],
+        "parent": [
+          4.014600000000428,
+          4.187099999999191,
+          3.8932000000004336,
+          3.520700000000943,
+          3.6671000000005733,
+          3.639900000000125,
+          3.467899999999645
+        ]
+      }
+    },
+    {
+      "selection": "withoutTokens",
+      "medianMs": {
+        "current": 0.4165000000011787,
+        "parent": 0.41079999999965366
+      },
+      "deltaMs": -0.005700000001525041,
+      "deltaPercent": -1.3685474193298686,
+      "gateExceeded": false,
+      "runs": {
+        "current": [
+          0.45280000000093423,
+          0.4547000000002299,
+          0.3557999999993626,
+          0.4165000000011787,
+          0.37439999999878637,
+          0.5925000000006548,
+          0.3863000000001193
+        ],
+        "parent": [
+          0.42889999999897555,
+          0.4587000000010448,
+          0.4054000000014639,
+          0.41079999999965366,
+          0.4026999999987311,
+          0.5663999999997031,
+          0.3724999999994907
+        ]
+      }
+    }
+  ],
+  "search": [
+    {
+      "case": "exact_common",
+      "plainHits": 28331,
+      "candidates": 27,
+      "medianMs": {
+        "current": 0.4675999999999476,
+        "parent": 0.28579999999965366
+      },
+      "runs": {
+        "current": [
+          0.5167000000001281,
+          0.4054999999989377,
+          0.4675999999999476,
+          0.42009999999936554,
+          0.46019999999953143,
+          0.4806000000007771,
+          0.4787999999989552
+        ],
+        "parent": [
+          0.28579999999965366,
+          0.2440999999998894,
+          0.3078000000004977,
+          0.2584999999999127,
+          0.6376999999993131,
+          0.36859999999978754,
+          0.2635000000009313
+        ]
+      },
+      "sql": {
+        "current": "select id from \"bench_standard_next_100k\".\"customers_skip_product_multi\" where scope_id='aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa' and \"customers_skip_product_multi\".\"id\" in (select \"__seal_idx\".\"row_id\" from \"bench_standard_next_100k\".\"customers_skip_product_multi_seal_index\" as \"__seal_idx\" where \"__seal_idx\".\"scope_id\"=$1 and ((\"__seal_idx\".\"tokens_a106c26102b707f0\")[1]=$2::bigint)) order by id limit 27",
+        "parent": "select id from \"bench_standard_next_100k\".\"g0_parent_tokens\" where scope_id=$1 and (\"tokens_a106c26102b707f0\")[1]=$2::bigint order by id limit 27"
+      }
+    },
+    {
+      "case": "exact_mid",
+      "plainHits": 1770,
+      "candidates": 27,
+      "medianMs": {
+        "current": 0.40120000000024447,
+        "parent": 0.26159999999981665
+      },
+      "runs": {
+        "current": [
+          0.4096000000008644,
+          0.40099999999983993,
+          0.40120000000024447,
+          0.39320000000043365,
+          0.40059999999903084,
+          0.5488999999997759,
+          0.5005999999993946
+        ],
+        "parent": [
+          0.24400000000059663,
+          0.24279999999998836,
+          0.26159999999981665,
+          0.25280000000020664,
+          0.5670000000009168,
+          0.3291000000008353,
+          0.4122000000006665
+        ]
+      },
+      "sql": {
+        "current": "select id from \"bench_standard_next_100k\".\"customers_skip_product_multi\" where scope_id='aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa' and \"customers_skip_product_multi\".\"id\" in (select \"__seal_idx\".\"row_id\" from \"bench_standard_next_100k\".\"customers_skip_product_multi_seal_index\" as \"__seal_idx\" where \"__seal_idx\".\"scope_id\"=$1 and ((\"__seal_idx\".\"tokens_a106c26102b707f0\")[1]=$2::bigint)) order by id limit 27",
+        "parent": "select id from \"bench_standard_next_100k\".\"g0_parent_tokens\" where scope_id=$1 and (\"tokens_a106c26102b707f0\")[1]=$2::bigint order by id limit 27"
+      }
+    },
+    {
+      "case": "exact_one",
+      "plainHits": 1,
+      "candidates": 1,
+      "medianMs": {
+        "current": 0.41409999999996217,
+        "parent": 0.2885999999998603
+      },
+      "runs": {
+        "current": [
+          0.5551999999988766,
+          0.43689999999878637,
+          0.5203000000001339,
+          0.3996999999999389,
+          0.39350000000013097,
+          0.41409999999996217,
+          0.4138999999995576
+        ],
+        "parent": [
+          0.270699999999124,
+          0.23279999999977008,
+          0.30160000000068976,
+          0.3033000000013999,
+          0.3047000000005937,
+          0.2885999999998603,
+          0.28290000000015425
+        ]
+      },
+      "sql": {
+        "current": "select id from \"bench_standard_next_100k\".\"customers_skip_product_multi\" where scope_id='aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa' and \"customers_skip_product_multi\".\"id\" in (select \"__seal_idx\".\"row_id\" from \"bench_standard_next_100k\".\"customers_skip_product_multi_seal_index\" as \"__seal_idx\" where \"__seal_idx\".\"scope_id\"=$1 and ((\"__seal_idx\".\"tokens_c44ae523cca61a0b\")[1]=$2::bigint)) order by id limit 27",
+        "parent": "select id from \"bench_standard_next_100k\".\"g0_parent_tokens\" where scope_id=$1 and (\"tokens_c44ae523cca61a0b\")[1]=$2::bigint order by id limit 27"
+      }
+    },
+    {
+      "case": "exact_zero",
+      "plainHits": 0,
+      "candidates": 2,
+      "medianMs": {
+        "current": 0.4591999999993277,
+        "parent": 0.3087000000014086
+      },
+      "runs": {
+        "current": [
+          0.5496999999995751,
+          0.4591999999993277,
+          0.39019999999982247,
+          0.44030000000020664,
+          0.469199999999546,
+          0.49719999999979336,
+          0.4312000000008993
+        ],
+        "parent": [
+          0.2996999999995751,
+          0.3087000000014086,
+          0.3238000000001193,
+          0.25540000000000873,
+          0.31090000000040163,
+          0.2962999999999738,
+          0.35349999999925785
+        ]
+      },
+      "sql": {
+        "current": "select id from \"bench_standard_next_100k\".\"customers_skip_product_multi\" where scope_id='aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa' and \"customers_skip_product_multi\".\"id\" in (select \"__seal_idx\".\"row_id\" from \"bench_standard_next_100k\".\"customers_skip_product_multi_seal_index\" as \"__seal_idx\" where \"__seal_idx\".\"scope_id\"=$1 and ((\"__seal_idx\".\"tokens_c44ae523cca61a0b\")[1]=$2::bigint)) order by id limit 27",
+        "parent": "select id from \"bench_standard_next_100k\".\"g0_parent_tokens\" where scope_id=$1 and (\"tokens_c44ae523cca61a0b\")[1]=$2::bigint order by id limit 27"
+      }
+    },
+    {
+      "case": "sub2_common",
+      "plainHits": 30101,
+      "candidates": 27,
+      "medianMs": {
+        "current": 0.4576999999990221,
+        "parent": 0.29289999999855354
+      },
+      "runs": {
+        "current": [
+          0.4400000000005093,
+          0.5662000000011176,
+          0.8739999999997963,
+          0.47260000000096625,
+          0.44030000000020664,
+          0.4375,
+          0.4576999999990221
+        ],
+        "parent": [
+          0.29289999999855354,
+          0.2757000000001426,
+          0.41190000000096916,
+          0.3551000000006752,
+          0.2833999999984371,
+          0.27709999999933643,
+          0.3695000000006985
+        ]
+      },
+      "sql": {
+        "current": "select id from \"bench_standard_next_100k\".\"customers_skip_product_multi\" where scope_id='aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa' and \"customers_skip_product_multi\".\"id\" in (select \"__seal_idx\".\"row_id\" from \"bench_standard_next_100k\".\"customers_skip_product_multi_seal_index\" as \"__seal_idx\" where \"__seal_idx\".\"scope_id\"=$1 and (\"__seal_idx\".\"tokens_1127994ab736baf4\" @> $2::bigint[])) order by id limit 27",
+        "parent": "select id from \"bench_standard_next_100k\".\"g0_parent_tokens\" where scope_id=$1 and \"tokens_1127994ab736baf4\" @> $2::bigint[] order by id limit 27"
+      }
+    },
+    {
+      "case": "sub_mid",
+      "plainHits": 16574,
+      "candidates": 27,
+      "medianMs": {
+        "current": 47.65989999999874,
+        "parent": 35.53180000000066
+      },
+      "runs": {
+        "current": [
+          44.84350000000086,
+          60.21910000000025,
+          45.29460000000108,
+          65.47270000000026,
+          47.65989999999874,
+          61.042599999998856,
+          47.45139999999992
+        ],
+        "parent": [
+          36.74719999999979,
+          19.088200000000143,
+          35.53180000000066,
+          19.62909999999829,
+          38.386899999999514,
+          19.011000000000422,
+          36.05290000000059
+        ]
+      },
+      "sql": {
+        "current": "select id from \"bench_standard_next_100k\".\"customers_skip_product_multi\" where scope_id='aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa' and \"customers_skip_product_multi\".\"id\" in (select \"__seal_idx\".\"row_id\" from \"bench_standard_next_100k\".\"customers_skip_product_multi_seal_index\" as \"__seal_idx\" where \"__seal_idx\".\"scope_id\"=$1 and (\"__seal_idx\".\"tokens_792d75cf01821d67\" @> $2::bigint[])) order by id limit 27",
+        "parent": "select id from \"bench_standard_next_100k\".\"g0_parent_tokens\" where scope_id=$1 and \"tokens_792d75cf01821d67\" @> $2::bigint[] order by id limit 27"
+      }
+    },
+    {
+      "case": "sub_mid_space",
+      "plainHits": 213,
+      "candidates": 27,
+      "medianMs": {
+        "current": 1.922099999999773,
+        "parent": 1.4076999999997497
+      },
+      "runs": {
+        "current": [
+          2.1837999999988824,
+          2.142100000000937,
+          1.9193999999988591,
+          1.7056999999986147,
+          1.6440000000002328,
+          1.922099999999773,
+          2.28440000000046
+        ],
+        "parent": [
+          1.596800000001167,
+          1.4076999999997497,
+          1.2785000000003492,
+          1.1620999999995547,
+          1.160200000000259,
+          1.4817000000002736,
+          1.4608999999982188
+        ]
+      },
+      "sql": {
+        "current": "select id from \"bench_standard_next_100k\".\"customers_skip_product_multi\" where scope_id='aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa' and \"customers_skip_product_multi\".\"id\" in (select \"__seal_idx\".\"row_id\" from \"bench_standard_next_100k\".\"customers_skip_product_multi_seal_index\" as \"__seal_idx\" where \"__seal_idx\".\"scope_id\"=$1 and (\"__seal_idx\".\"tokens_792d75cf01821d67\" @> $2::bigint[])) order by id limit 27",
+        "parent": "select id from \"bench_standard_next_100k\".\"g0_parent_tokens\" where scope_id=$1 and \"tokens_792d75cf01821d67\" @> $2::bigint[] order by id limit 27"
+      }
+    },
+    {
+      "case": "sub_rare",
+      "plainHits": 101,
+      "candidates": 27,
+      "medianMs": {
+        "current": 0.6810000000004948,
+        "parent": 0.46780000000035216
+      },
+      "runs": {
+        "current": [
+          0.7420000000001892,
+          0.6762999999991735,
+          0.6664000000000669,
+          0.8078999999997905,
+          0.6810000000004948,
+          0.8775000000005093,
+          0.6803999999992811
+        ],
+        "parent": [
+          0.36599999999998545,
+          0.34499999999934516,
+          0.5257999999994354,
+          0.48919999999998254,
+          0.49129999999968277,
+          0.46780000000035216,
+          0.41460000000006403
+        ]
+      },
+      "sql": {
+        "current": "select id from \"bench_standard_next_100k\".\"customers_skip_product_multi\" where scope_id='aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa' and \"customers_skip_product_multi\".\"id\" in (select \"__seal_idx\".\"row_id\" from \"bench_standard_next_100k\".\"customers_skip_product_multi_seal_index\" as \"__seal_idx\" where \"__seal_idx\".\"scope_id\"=$1 and (\"__seal_idx\".\"tokens_a639b11c8130dcf7\" @> $2::bigint[])) order by id limit 27",
+        "parent": "select id from \"bench_standard_next_100k\".\"g0_parent_tokens\" where scope_id=$1 and \"tokens_a639b11c8130dcf7\" @> $2::bigint[] order by id limit 27"
+      }
+    },
+    {
+      "case": "sub_long",
+      "plainHits": 2440,
+      "candidates": 27,
+      "medianMs": {
+        "current": 8.853500000001077,
+        "parent": 3.6312999999991007
+      },
+      "runs": {
+        "current": [
+          8.207300000000032,
+          8.560900000000402,
+          9.090700000000652,
+          8.611699999999473,
+          8.884700000000521,
+          8.853500000001077,
+          9.071500000000015
+        ],
+        "parent": [
+          4.0033000000003085,
+          3.718300000000454,
+          3.6312999999991007,
+          2.920700000000579,
+          3.996900000000096,
+          3.371399999999994,
+          3.5276000000012573
+        ]
+      },
+      "sql": {
+        "current": "select id from \"bench_standard_next_100k\".\"customers_skip_product_multi\" where scope_id='aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa' and \"customers_skip_product_multi\".\"id\" in (select \"__seal_idx\".\"row_id\" from \"bench_standard_next_100k\".\"customers_skip_product_multi_seal_index\" as \"__seal_idx\" where \"__seal_idx\".\"scope_id\"=$1 and (\"__seal_idx\".\"tokens_a639b11c8130dcf7\" @> $2::bigint[])) order by id limit 27",
+        "parent": "select id from \"bench_standard_next_100k\".\"g0_parent_tokens\" where scope_id=$1 and \"tokens_a639b11c8130dcf7\" @> $2::bigint[] order by id limit 27"
+      }
+    },
+    {
+      "case": "sub_name_suffix",
+      "plainHits": 1,
+      "candidates": 1,
+      "medianMs": {
+        "current": 0.516300000001138,
+        "parent": 0.3623999999999796
+      },
+      "runs": {
+        "current": [
+          0.516300000001138,
+          0.7757000000001426,
+          0.5681000000004133,
+          0.4588000000003376,
+          0.4338999999999942,
+          0.6745000000009895,
+          0.49539999999979045
+        ],
+        "parent": [
+          0.35050000000046566,
+          0.402299999999741,
+          0.3668999999990774,
+          0.3623999999999796,
+          0.3180000000011205,
+          0.3176999999996042,
+          0.36959999999999127
+        ]
+      },
+      "sql": {
+        "current": "select id from \"bench_standard_next_100k\".\"customers_skip_product_multi\" where scope_id='aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa' and \"customers_skip_product_multi\".\"id\" in (select \"__seal_idx\".\"row_id\" from \"bench_standard_next_100k\".\"customers_skip_product_multi_seal_index\" as \"__seal_idx\" where \"__seal_idx\".\"scope_id\"=$1 and (\"__seal_idx\".\"tokens_f289b89d86c7086a\" @> $2::bigint[])) order by id limit 27",
+        "parent": "select id from \"bench_standard_next_100k\".\"g0_parent_tokens\" where scope_id=$1 and \"tokens_f289b89d86c7086a\" @> $2::bigint[] order by id limit 27"
+      }
+    },
+    {
+      "case": "sub_zero",
+      "plainHits": 0,
+      "candidates": 0,
+      "medianMs": {
+        "current": 0.4068999999999505,
+        "parent": 0.28400000000146974
+      },
+      "runs": {
+        "current": [
+          0.41859999999905995,
+          0.4466999999986001,
+          0.4068999999999505,
+          0.38259999999900174,
+          0.3694999999988795,
+          0.3686999999990803,
+          0.4466999999986001
+        ],
+        "parent": [
+          0.28400000000146974,
+          0.27289999999993597,
+          0.27410000000054424,
+          0.33590000000003783,
+          0.26889999999912106,
+          0.31459999999970023,
+          0.3551000000006752
+        ]
+      },
+      "sql": {
+        "current": "select id from \"bench_standard_next_100k\".\"customers_skip_product_multi\" where scope_id='aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa' and \"customers_skip_product_multi\".\"id\" in (select \"__seal_idx\".\"row_id\" from \"bench_standard_next_100k\".\"customers_skip_product_multi_seal_index\" as \"__seal_idx\" where \"__seal_idx\".\"scope_id\"=$1 and (\"__seal_idx\".\"tokens_a639b11c8130dcf7\" @> $2::bigint[])) order by id limit 27",
+        "parent": "select id from \"bench_standard_next_100k\".\"g0_parent_tokens\" where scope_id=$1 and \"tokens_a639b11c8130dcf7\" @> $2::bigint[] order by id limit 27"
+      }
+    },
+    {
+      "case": "starts",
+      "plainHits": 16574,
+      "candidates": 27,
+      "medianMs": {
+        "current": 0.5275999999994383,
+        "parent": 0.3852999999999156
+      },
+      "runs": {
+        "current": [
+          0.5952999999990425,
+          0.5688000000009197,
+          0.47450000000026193,
+          0.5275999999994383,
+          0.5271000000011554,
+          0.5727999999999156,
+          0.48629999999866413
+        ],
+        "parent": [
+          0.4025000000001455,
+          0.5645999999997002,
+          0.3407000000006519,
+          0.3337000000010448,
+          0.3852999999999156,
+          0.4192000000002736,
+          0.35540000000037253
+        ]
+      },
+      "sql": {
+        "current": "select id from \"bench_standard_next_100k\".\"customers_skip_product_multi\" where scope_id='aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa' and \"customers_skip_product_multi\".\"id\" in (select \"__seal_idx\".\"row_id\" from \"bench_standard_next_100k\".\"customers_skip_product_multi_seal_index\" as \"__seal_idx\" where \"__seal_idx\".\"scope_id\"=$1 and (\"__seal_idx\".\"tokens_792d75cf01821d67\" @> $2::bigint[])) order by id limit 27",
+        "parent": "select id from \"bench_standard_next_100k\".\"g0_parent_tokens\" where scope_id=$1 and \"tokens_792d75cf01821d67\" @> $2::bigint[] order by id limit 27"
+      }
+    },
+    {
+      "case": "ends",
+      "plainHits": 26598,
+      "candidates": 27,
+      "medianMs": {
+        "current": 90.62089999999989,
+        "parent": 58.94739999999911
+      },
+      "runs": {
+        "current": [
+          94.45519999999851,
+          95.44170000000122,
+          90.62089999999989,
+          90.11369999999988,
+          88.17669999999998,
+          97.02430000000095,
+          89.46420000000035
+        ],
+        "parent": [
+          60.98710000000028,
+          58.94739999999911,
+          58.42460000000028,
+          55.98280000000159,
+          60.205299999999625,
+          61.216200000000754,
+          58.91619999999966
+        ]
+      },
+      "sql": {
+        "current": "select id from \"bench_standard_next_100k\".\"customers_skip_product_multi\" where scope_id='aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa' and \"customers_skip_product_multi\".\"id\" in (select \"__seal_idx\".\"row_id\" from \"bench_standard_next_100k\".\"customers_skip_product_multi_seal_index\" as \"__seal_idx\" where \"__seal_idx\".\"scope_id\"=$1 and (\"__seal_idx\".\"tokens_ef1d32a52e2ce103\" @> $2::bigint[])) order by id limit 27",
+        "parent": "select id from \"bench_standard_next_100k\".\"g0_parent_tokens\" where scope_id=$1 and \"tokens_ef1d32a52e2ce103\" @> $2::bigint[] order by id limit 27"
+      }
+    },
+    {
+      "case": "and2",
+      "plainHits": 21176,
+      "candidates": 27,
+      "medianMs": {
+        "current": 0.5540999999993801,
+        "parent": 0.36349999999947613
+      },
+      "runs": {
+        "current": [
+          0.9742999999998574,
+          0.5331000000005588,
+          0.6185000000004948,
+          0.5504000000000815,
+          0.5070999999988999,
+          0.6476000000002387,
+          0.5540999999993801
+        ],
+        "parent": [
+          0.5501000000003842,
+          0.36349999999947613,
+          0.3611000000000786,
+          0.3911000000007334,
+          0.3430000000007567,
+          0.3400000000001455,
+          0.4051999999992404
+        ]
+      },
+      "sql": {
+        "current": "select id from \"bench_standard_next_100k\".\"customers_skip_product_multi\" where scope_id='aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa' and \"customers_skip_product_multi\".\"id\" in (select \"__seal_idx\".\"row_id\" from \"bench_standard_next_100k\".\"customers_skip_product_multi_seal_index\" as \"__seal_idx\" where \"__seal_idx\".\"scope_id\"=$1 and (((\"__seal_idx\".\"tokens_a106c26102b707f0\")[1]=$2::bigint) and (\"__seal_idx\".\"tokens_a639b11c8130dcf7\" @> $3::bigint[]))) order by id limit 27",
+        "parent": "select id from \"bench_standard_next_100k\".\"g0_parent_tokens\" where scope_id=$1 and ((\"tokens_a106c26102b707f0\")[1]=$2::bigint and \"tokens_a639b11c8130dcf7\" @> $3::bigint[]) order by id limit 27"
+      }
+    },
+    {
+      "case": "and4",
+      "plainHits": 62,
+      "candidates": 27,
+      "medianMs": {
+        "current": 5.645099999999729,
+        "parent": 5.342099999999846
+      },
+      "runs": {
+        "current": [
+          5.419099999999162,
+          5.645099999999729,
+          5.467599999999948,
+          5.932999999999083,
+          5.44590000000062,
+          5.799399999999878,
+          5.672699999999168
+        ],
+        "parent": [
+          5.264799999999013,
+          5.084899999999834,
+          5.277099999999336,
+          5.342099999999846,
+          5.722600000000966,
+          5.811499999999796,
+          5.449699999999211
+        ]
+      },
+      "sql": {
+        "current": "select id from \"bench_standard_next_100k\".\"customers_skip_product_multi\" where scope_id='aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa' and \"customers_skip_product_multi\".\"id\" in (select \"__seal_idx\".\"row_id\" from \"bench_standard_next_100k\".\"customers_skip_product_multi_seal_index\" as \"__seal_idx\" where \"__seal_idx\".\"scope_id\"=$1 and (((\"__seal_idx\".\"tokens_a106c26102b707f0\")[1]=$2::bigint) and (\"__seal_idx\".\"tokens_792d75cf01821d67\" @> $3::bigint[]) and (\"__seal_idx\".\"tokens_a639b11c8130dcf7\" @> $4::bigint[]) and (\"__seal_idx\".\"tokens_ef1d32a52e2ce103\" @> $5::bigint[]))) order by id limit 27",
+        "parent": "select id from \"bench_standard_next_100k\".\"g0_parent_tokens\" where scope_id=$1 and ((\"tokens_a106c26102b707f0\")[1]=$2::bigint and \"tokens_792d75cf01821d67\" @> $3::bigint[] and \"tokens_a639b11c8130dcf7\" @> $4::bigint[] and \"tokens_ef1d32a52e2ce103\" @> $5::bigint[]) order by id limit 27"
+      }
+    },
+    {
+      "case": "and6",
+      "plainHits": 624,
+      "candidates": 27,
+      "medianMs": {
+        "current": 8.788100000001577,
+        "parent": 7.270700000000943
+      },
+      "runs": {
+        "current": [
+          8.40190000000075,
+          8.788100000001577,
+          8.155099999999948,
+          9.105999999999767,
+          9.042299999999159,
+          9.282100000000355,
+          8.245999999999185
+        ],
+        "parent": [
+          7.452300000000832,
+          7.00840000000062,
+          7.509700000000521,
+          7.106200000000172,
+          7.4593000000004395,
+          7.006299999999101,
+          7.270700000000943
+        ]
+      },
+      "sql": {
+        "current": "select id from \"bench_standard_next_100k\".\"customers_skip_product_multi\" where scope_id='aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa' and \"customers_skip_product_multi\".\"id\" in (select \"__seal_idx\".\"row_id\" from \"bench_standard_next_100k\".\"customers_skip_product_multi_seal_index\" as \"__seal_idx\" where \"__seal_idx\".\"scope_id\"=$1 and ((\"__seal_idx\".\"tokens_f289b89d86c7086a\" @> $2::bigint[]) and (\"__seal_idx\".\"tokens_7a1d2ba5ce2368fb\" @> $3::bigint[]) and (\"__seal_idx\".\"tokens_792d75cf01821d67\" @> $4::bigint[]) and (\"__seal_idx\".\"tokens_a639b11c8130dcf7\" @> $5::bigint[]) and (\"__seal_idx\".\"tokens_ef1d32a52e2ce103\" @> $6::bigint[]) and ((\"__seal_idx\".\"tokens_a106c26102b707f0\")[1]=$7::bigint))) order by id limit 27",
+        "parent": "select id from \"bench_standard_next_100k\".\"g0_parent_tokens\" where scope_id=$1 and (\"tokens_f289b89d86c7086a\" @> $2::bigint[] and \"tokens_7a1d2ba5ce2368fb\" @> $3::bigint[] and \"tokens_792d75cf01821d67\" @> $4::bigint[] and \"tokens_a639b11c8130dcf7\" @> $5::bigint[] and \"tokens_ef1d32a52e2ce103\" @> $6::bigint[] and (\"tokens_a106c26102b707f0\")[1]=$7::bigint) order by id limit 27"
+      }
+    },
+    {
+      "case": "or2",
+      "plainHits": 28400,
+      "candidates": 27,
+      "medianMs": {
+        "current": 0.5524000000004889,
+        "parent": 0.41009999999914726
+      },
+      "runs": {
+        "current": [
+          0.5550999999995838,
+          0.5524000000004889,
+          0.7661000000007334,
+          0.5296999999991385,
+          0.5380999999997584,
+          0.5601000000006024,
+          0.5471999999990658
+        ],
+        "parent": [
+          0.3830999999991036,
+          0.38580000000001746,
+          0.4143999999996595,
+          0.3588999999992666,
+          0.507499999999709,
+          0.457300000000032,
+          0.41009999999914726
+        ]
+      },
+      "sql": {
+        "current": "select id from \"bench_standard_next_100k\".\"customers_skip_product_multi\" where scope_id='aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa' and \"customers_skip_product_multi\".\"id\" in (select \"__seal_idx\".\"row_id\" from \"bench_standard_next_100k\".\"customers_skip_product_multi_seal_index\" as \"__seal_idx\" where \"__seal_idx\".\"scope_id\"=$1 and (((\"__seal_idx\".\"tokens_a106c26102b707f0\")[1]=$2::bigint) or (\"__seal_idx\".\"tokens_a639b11c8130dcf7\" @> $3::bigint[]))) order by id limit 27",
+        "parent": "select id from \"bench_standard_next_100k\".\"g0_parent_tokens\" where scope_id=$1 and ((\"tokens_a106c26102b707f0\")[1]=$2::bigint or \"tokens_a639b11c8130dcf7\" @> $3::bigint[]) order by id limit 27"
+      }
+    },
+    {
+      "case": "or3",
+      "plainHits": 2,
+      "candidates": 3,
+      "medianMs": {
+        "current": 0.6700999999993655,
+        "parent": 0.4374000000007072
+      },
+      "runs": {
+        "current": [
+          0.7158999999992375,
+          0.5392000000010739,
+          0.5010000000002037,
+          0.5926999999992404,
+          0.9544999999998254,
+          0.6700999999993655,
+          0.753500000000713
+        ],
+        "parent": [
+          0.4466000000011263,
+          0.38590000000112923,
+          0.4334999999991851,
+          0.4374000000007072,
+          0.6616999999987456,
+          0.40970000000015716,
+          0.480199999999968
+        ]
+      },
+      "sql": {
+        "current": "select id from \"bench_standard_next_100k\".\"customers_skip_product_multi\" where scope_id='aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa' and \"customers_skip_product_multi\".\"id\" in (select \"__seal_idx\".\"row_id\" from \"bench_standard_next_100k\".\"customers_skip_product_multi_seal_index\" as \"__seal_idx\" where \"__seal_idx\".\"scope_id\"=$1 and (((\"__seal_idx\".\"tokens_c44ae523cca61a0b\")[1]=$2::bigint) or ((\"__seal_idx\".\"tokens_c44ae523cca61a0b\")[1]=$3::bigint) or (\"__seal_idx\".\"tokens_f289b89d86c7086a\" @> $4::bigint[]))) order by id limit 27",
+        "parent": "select id from \"bench_standard_next_100k\".\"g0_parent_tokens\" where scope_id=$1 and ((\"tokens_c44ae523cca61a0b\")[1]=$2::bigint or (\"tokens_c44ae523cca61a0b\")[1]=$3::bigint or \"tokens_f289b89d86c7086a\" @> $4::bigint[]) order by id limit 27"
+      }
+    },
+    {
+      "case": "drain101",
+      "plainHits": 101,
+      "candidates": 101,
+      "medianMs": {
+        "current": 0.7067999999999302,
+        "parent": 0.43619999999827996
+      },
+      "runs": {
+        "current": [
+          0.7065999999995256,
+          1.0020999999997002,
+          0.847700000000259,
+          0.7067999999999302,
+          0.6790000000000873,
+          0.7350000000005821,
+          0.6732000000010885
+        ],
+        "parent": [
+          0.43100000000049477,
+          0.43619999999827996,
+          0.6993000000002212,
+          0.46309999999903084,
+          0.3901000000005297,
+          0.5506999999997788,
+          0.41820000000006985
+        ]
+      },
+      "sql": {
+        "current": "select id from \"bench_standard_next_100k\".\"customers_skip_product_multi\" where scope_id='aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa' and \"customers_skip_product_multi\".\"id\" in (select \"__seal_idx\".\"row_id\" from \"bench_standard_next_100k\".\"customers_skip_product_multi_seal_index\" as \"__seal_idx\" where \"__seal_idx\".\"scope_id\"=$1 and (\"__seal_idx\".\"tokens_a639b11c8130dcf7\" @> $2::bigint[])) order by id limit 200",
+        "parent": "select id from \"bench_standard_next_100k\".\"g0_parent_tokens\" where scope_id=$1 and \"tokens_a639b11c8130dcf7\" @> $2::bigint[] order by id limit 200"
+      }
+    },
+    {
+      "case": "word_boundary",
+      "plainHits": 29843,
+      "candidates": 27,
+      "medianMs": {
+        "current": 89.53919999999925,
+        "parent": 58.45929999999862
+      },
+      "runs": {
+        "current": [
+          87.98949999999968,
+          90.40690000000177,
+          87.94420000000173,
+          91.70020000000295,
+          86.25170000000071,
+          90.60680000000139,
+          89.53919999999925
+        ],
+        "parent": [
+          59.88060000000041,
+          59.72820000000138,
+          57.6906999999992,
+          56.69709999999759,
+          58.45929999999862,
+          57.77059999999983,
+          60.567699999999604
+        ]
+      },
+      "sql": {
+        "current": "select id from \"bench_standard_next_100k\".\"customers_skip_product_multi\" where scope_id='aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa' and \"customers_skip_product_multi\".\"id\" in (select \"__seal_idx\".\"row_id\" from \"bench_standard_next_100k\".\"customers_skip_product_multi_seal_index\" as \"__seal_idx\" where \"__seal_idx\".\"scope_id\"=$1 and (\"__seal_idx\".\"tokens_a639b11c8130dcf7\" @> $2::bigint[])) order by id limit 27",
+        "parent": "select id from \"bench_standard_next_100k\".\"g0_parent_tokens\" where scope_id=$1 and \"tokens_a639b11c8130dcf7\" @> $2::bigint[] order by id limit 27"
+      }
+    },
+    {
+      "case": "word_inside_longer",
+      "plainHits": 29843,
+      "candidates": 27,
+      "medianMs": {
+        "current": 57.73389999999927,
+        "parent": 55.812300000001414
+      },
+      "runs": {
+        "current": [
+          59.12260000000242,
+          58.97490000000107,
+          57.73389999999927,
+          56.87319999999818,
+          57.38639999999941,
+          58.84299999999712,
+          57.53129999999874
+        ],
+        "parent": [
+          56.38720000000103,
+          55.812300000001414,
+          55.95450000000346,
+          56.43149999999878,
+          55.59490000000005,
+          54.919300000001385,
+          55.22190000000046
+        ]
+      },
+      "sql": {
+        "current": "select id from \"bench_standard_next_100k\".\"customers_skip_product_multi\" where scope_id='aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa' and \"customers_skip_product_multi\".\"id\" in (select \"__seal_idx\".\"row_id\" from \"bench_standard_next_100k\".\"customers_skip_product_multi_seal_index\" as \"__seal_idx\" where \"__seal_idx\".\"scope_id\"=$1 and (\"__seal_idx\".\"tokens_a639b11c8130dcf7\" @> $2::bigint[])) order by id limit 27",
+        "parent": "select id from \"bench_standard_next_100k\".\"g0_parent_tokens\" where scope_id=$1 and \"tokens_a639b11c8130dcf7\" @> $2::bigint[] order by id limit 27"
+      }
+    }
+  ],
+  "write": {
+    "samplesPerOperation": 1000,
+    "medianMs": {
+      "current": {
+        "insert": 629.5522000000601,
+        "update": 578.6630000000077,
+        "delete": 445.05940000004193
+      },
+      "parent": {
+        "insert": 445.1593000000357,
+        "update": 358.44800000000396,
+        "delete": 235.19849999988946
+      }
+    },
+    "runs": {
+      "current": [
+        {
+          "insert": 589.8031999999948,
+          "update": 568.152299999987,
+          "delete": 466.287800000031
+        },
+        {
+          "insert": 618.4415999999983,
+          "update": 594.3231000001033,
+          "delete": 442.7885000000351
+        },
+        {
+          "insert": 629.5522000000601,
+          "update": 578.6630000000077,
+          "delete": 443.09069999995336
+        },
+        {
+          "insert": 639.8611000000383,
+          "update": 514.1867999999304,
+          "delete": 457.6725999999471
+        },
+        {
+          "insert": 630.1121000000712,
+          "update": 551.4326000000292,
+          "delete": 451.94529999989027
+        },
+        {
+          "insert": 622.5210999999399,
+          "update": 608.9190999999191,
+          "delete": 445.05940000004193
+        },
+        {
+          "insert": 636.871699999967,
+          "update": 598.5368999999264,
+          "delete": 424.1860999997807
+        }
+      ],
+      "parent": [
+        {
+          "insert": 445.1593000000357,
+          "update": 358.44800000000396,
+          "delete": 241.4150999999947
+        },
+        {
+          "insert": 445.0704000000078,
+          "update": 308.5519999999815,
+          "delete": 233.90439999997034
+        },
+        {
+          "insert": 457.9775999999256,
+          "update": 369.667899999964,
+          "delete": 241.22389999990992
+        },
+        {
+          "insert": 448.5627999998869,
+          "update": 356.77290000003995,
+          "delete": 244.87030000008963
+        },
+        {
+          "insert": 444.62109999997483,
+          "update": 352.2688000000271,
+          "delete": 235.19849999988946
+        },
+        {
+          "insert": 423.9678999999742,
+          "update": 366.4673999999213,
+          "delete": 235.1692999998777
+        },
+        {
+          "insert": 451.1955000000962,
+          "update": 368.9488000000638,
+          "delete": 227.2914000001183
+        }
+      ]
+    }
+  },
+  "size": [
+    {
+      "name": "customers_skip_product_multi",
+      "table_bytes": 39460864,
+      "index_bytes": 4997120,
+      "total_bytes": 44507136
+    },
+    {
+      "name": "customers_skip_product_multi_seal_index",
+      "table_bytes": 204800000,
+      "index_bytes": 99852288,
+      "total_bytes": 304742400
+    },
+    {
+      "name": "g0_parent_tokens",
+      "table_bytes": 204996608,
+      "index_bytes": 99909632,
+      "total_bytes": 304971776
+    }
+  ]
+}

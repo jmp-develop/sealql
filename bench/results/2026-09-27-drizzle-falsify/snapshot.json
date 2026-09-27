@@ -1,0 +1,32 @@
+{
+  "source": "existing 20k victim and 20k reference rows, memo token arrays; rowless AAD changes only ciphertext and leaves product token profile unchanged",
+  "rows": 20000,
+  "referenceRows": 20000,
+  "knownRows": 1000,
+  "mismatch": 0,
+  "baseline": {
+    "frequency": {
+      "decodedOccurrencePct": 7.8,
+      "mostlyDecodedUnknownRowsPct": 0
+    },
+    "knownRow": {
+      "decodedOccurrencePct": 45.75,
+      "mostlyDecodedUnknownRowsPct": 19.2
+    },
+    "uniquePieces": 1783,
+    "uniqueTokens": 1760
+  },
+  "rowlessCandidate": {
+    "frequency": {
+      "decodedOccurrencePct": 7.8,
+      "mostlyDecodedUnknownRowsPct": 0
+    },
+    "knownRow": {
+      "decodedOccurrencePct": 45.75,
+      "mostlyDecodedUnknownRowsPct": 19.2
+    },
+    "uniquePieces": 1783,
+    "uniqueTokens": 1760
+  },
+  "scoresEqual": true
+}

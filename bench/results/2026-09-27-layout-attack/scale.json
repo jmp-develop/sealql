@@ -1,0 +1,818 @@
+{
+  "source": ".local/ratings.txt",
+  "tokenBits": 16,
+  "seed": 99,
+  "victimPoolRows": 100000,
+  "referenceRows": 20000,
+  "split": "first 100,000 nonempty reviews are prefix victim pools; rows 100,001–120,000 are a fixed disjoint reference reserve, unused by known-row attack",
+  "knownSelection": "seeded Fisher-Yates separately at each n, 1% prefix nested in 5%",
+  "measures": [
+    {
+      "layout": "adjacent",
+      "scales": [
+        {
+          "victimRows": 5000,
+          "referenceRows": 20000,
+          "uniquePieces": 31288,
+          "uniqueTokens": 24772,
+          "collisionTokens": 5533,
+          "piecesOnCollidingTokens": 12049,
+          "known": [
+            {
+              "knownPct": 1,
+              "knownRows": 50,
+              "adjacentPct": 11.91,
+              "mostlyDecodedUnknownRowsPct": 0.06,
+              "decodedByKind": {
+                "adjacent": {
+                  "correct": 14974,
+                  "total": 125702,
+                  "pct": 11.91
+                }
+              }
+            },
+            {
+              "knownPct": 5,
+              "knownRows": 250,
+              "adjacentPct": 31.52,
+              "mostlyDecodedUnknownRowsPct": 2.51,
+              "decodedByKind": {
+                "adjacent": {
+                  "correct": 39627,
+                  "total": 125702,
+                  "pct": 31.52
+                }
+              }
+            }
+          ]
+        },
+        {
+          "victimRows": 20000,
+          "referenceRows": 20000,
+          "uniquePieces": 67430,
+          "uniqueTokens": 41976,
+          "collisionTokens": 18177,
+          "piecesOnCollidingTokens": 43631,
+          "known": [
+            {
+              "knownPct": 1,
+              "knownRows": 200,
+              "adjacentPct": 28.74,
+              "mostlyDecodedUnknownRowsPct": 2.02,
+              "decodedByKind": {
+                "adjacent": {
+                  "correct": 148393,
+                  "total": 516243,
+                  "pct": 28.74
+                }
+              }
+            },
+            {
+              "knownPct": 5,
+              "knownRows": 1000,
+              "adjacentPct": 47.72,
+              "mostlyDecodedUnknownRowsPct": 6.26,
+              "decodedByKind": {
+                "adjacent": {
+                  "correct": 246341,
+                  "total": 516243,
+                  "pct": 47.72
+                }
+              }
+            }
+          ]
+        },
+        {
+          "victimRows": 50000,
+          "referenceRows": 20000,
+          "uniquePieces": 104214,
+          "uniqueTokens": 52117,
+          "collisionTokens": 30890,
+          "piecesOnCollidingTokens": 82987,
+          "known": [
+            {
+              "knownPct": 1,
+              "knownRows": 500,
+              "adjacentPct": 41.68,
+              "mostlyDecodedUnknownRowsPct": 4.94,
+              "decodedByKind": {
+                "adjacent": {
+                  "correct": 534907,
+                  "total": 1283352,
+                  "pct": 41.68
+                }
+              }
+            },
+            {
+              "knownPct": 5,
+              "knownRows": 2500,
+              "adjacentPct": 52.94,
+              "mostlyDecodedUnknownRowsPct": 7.41,
+              "decodedByKind": {
+                "adjacent": {
+                  "correct": 679383,
+                  "total": 1283352,
+                  "pct": 52.94
+                }
+              }
+            }
+          ]
+        },
+        {
+          "victimRows": 100000,
+          "referenceRows": 20000,
+          "uniquePieces": 142548,
+          "uniqueTokens": 58087,
+          "collisionTokens": 41809,
+          "piecesOnCollidingTokens": 126270,
+          "known": [
+            {
+              "knownPct": 1,
+              "knownRows": 1000,
+              "adjacentPct": 47.73,
+              "mostlyDecodedUnknownRowsPct": 6.7,
+              "decodedByKind": {
+                "adjacent": {
+                  "correct": 1225948,
+                  "total": 2568423,
+                  "pct": 47.73
+                }
+              }
+            },
+            {
+              "knownPct": 5,
+              "knownRows": 5000,
+              "adjacentPct": 48.04,
+              "mostlyDecodedUnknownRowsPct": 3.64,
+              "decodedByKind": {
+                "adjacent": {
+                  "correct": 1233874,
+                  "total": 2568423,
+                  "pct": 48.04
+                }
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "layout": "adjacent+start/end+word",
+      "scales": [
+        {
+          "victimRows": 5000,
+          "referenceRows": 20000,
+          "uniquePieces": 34057,
+          "uniqueTokens": 26445,
+          "collisionTokens": 6366,
+          "piecesOnCollidingTokens": 13978,
+          "known": [
+            {
+              "knownPct": 1,
+              "knownRows": 50,
+              "adjacentPct": 10.95,
+              "mostlyDecodedUnknownRowsPct": 0.04,
+              "decodedByKind": {
+                "adjacent": {
+                  "correct": 13762,
+                  "total": 125702,
+                  "pct": 10.95
+                },
+                "start": {
+                  "correct": 555,
+                  "total": 5000,
+                  "pct": 11.1
+                },
+                "end": {
+                  "correct": 2127,
+                  "total": 5000,
+                  "pct": 42.54
+                },
+                "word-start": {
+                  "correct": 12804,
+                  "total": 34211,
+                  "pct": 37.43
+                },
+                "word-end": {
+                  "correct": 17494,
+                  "total": 31877,
+                  "pct": 54.88
+                }
+              }
+            },
+            {
+              "knownPct": 5,
+              "knownRows": 250,
+              "adjacentPct": 30.7,
+              "mostlyDecodedUnknownRowsPct": 2.44,
+              "decodedByKind": {
+                "adjacent": {
+                  "correct": 38590,
+                  "total": 125702,
+                  "pct": 30.7
+                },
+                "start": {
+                  "correct": 1975,
+                  "total": 5000,
+                  "pct": 39.5
+                },
+                "end": {
+                  "correct": 3728,
+                  "total": 5000,
+                  "pct": 74.56
+                },
+                "word-start": {
+                  "correct": 24561,
+                  "total": 34211,
+                  "pct": 71.79
+                },
+                "word-end": {
+                  "correct": 22107,
+                  "total": 31877,
+                  "pct": 69.35
+                }
+              }
+            }
+          ]
+        },
+        {
+          "victimRows": 20000,
+          "referenceRows": 20000,
+          "uniquePieces": 71363,
+          "uniqueTokens": 43522,
+          "collisionTokens": 19384,
+          "piecesOnCollidingTokens": 47225,
+          "known": [
+            {
+              "knownPct": 1,
+              "knownRows": 200,
+              "adjacentPct": 27.77,
+              "mostlyDecodedUnknownRowsPct": 2.18,
+              "decodedByKind": {
+                "adjacent": {
+                  "correct": 143379,
+                  "total": 516243,
+                  "pct": 27.77
+                },
+                "start": {
+                  "correct": 7570,
+                  "total": 20000,
+                  "pct": 37.85
+                },
+                "end": {
+                  "correct": 14187,
+                  "total": 20000,
+                  "pct": 70.94
+                },
+                "word-start": {
+                  "correct": 96337,
+                  "total": 139699,
+                  "pct": 68.96
+                },
+                "word-end": {
+                  "correct": 95519,
+                  "total": 129993,
+                  "pct": 73.48
+                }
+              }
+            },
+            {
+              "knownPct": 5,
+              "knownRows": 1000,
+              "adjacentPct": 44.65,
+              "mostlyDecodedUnknownRowsPct": 1.7,
+              "decodedByKind": {
+                "adjacent": {
+                  "correct": 230527,
+                  "total": 516243,
+                  "pct": 44.65
+                },
+                "start": {
+                  "correct": 12146,
+                  "total": 20000,
+                  "pct": 60.73
+                },
+                "end": {
+                  "correct": 14318,
+                  "total": 20000,
+                  "pct": 71.59
+                },
+                "word-start": {
+                  "correct": 103661,
+                  "total": 139699,
+                  "pct": 74.2
+                },
+                "word-end": {
+                  "correct": 77449,
+                  "total": 129993,
+                  "pct": 59.58
+                }
+              }
+            }
+          ]
+        },
+        {
+          "victimRows": 50000,
+          "referenceRows": 20000,
+          "uniquePieces": 109017,
+          "uniqueTokens": 53028,
+          "collisionTokens": 32340,
+          "piecesOnCollidingTokens": 88329,
+          "known": [
+            {
+              "knownPct": 1,
+              "knownRows": 500,
+              "adjacentPct": 39.12,
+              "mostlyDecodedUnknownRowsPct": 4.07,
+              "decodedByKind": {
+                "adjacent": {
+                  "correct": 502096,
+                  "total": 1283352,
+                  "pct": 39.12
+                },
+                "start": {
+                  "correct": 24827,
+                  "total": 50000,
+                  "pct": 49.65
+                },
+                "end": {
+                  "correct": 36477,
+                  "total": 50000,
+                  "pct": 72.95
+                },
+                "word-start": {
+                  "correct": 255268,
+                  "total": 348630,
+                  "pct": 73.22
+                },
+                "word-end": {
+                  "correct": 253935,
+                  "total": 324625,
+                  "pct": 78.22
+                }
+              }
+            },
+            {
+              "knownPct": 5,
+              "knownRows": 2500,
+              "adjacentPct": 49.5,
+              "mostlyDecodedUnknownRowsPct": 2.2,
+              "decodedByKind": {
+                "adjacent": {
+                  "correct": 635295,
+                  "total": 1283352,
+                  "pct": 49.5
+                },
+                "start": {
+                  "correct": 30926,
+                  "total": 50000,
+                  "pct": 61.85
+                },
+                "end": {
+                  "correct": 16693,
+                  "total": 50000,
+                  "pct": 33.39
+                },
+                "word-start": {
+                  "correct": 233282,
+                  "total": 348630,
+                  "pct": 66.91
+                },
+                "word-end": {
+                  "correct": 217516,
+                  "total": 324625,
+                  "pct": 67.01
+                }
+              }
+            }
+          ]
+        },
+        {
+          "victimRows": 100000,
+          "referenceRows": 20000,
+          "uniquePieces": 148140,
+          "uniqueTokens": 58720,
+          "collisionTokens": 43102,
+          "piecesOnCollidingTokens": 132522,
+          "known": [
+            {
+              "knownPct": 1,
+              "knownRows": 1000,
+              "adjacentPct": 45.24,
+              "mostlyDecodedUnknownRowsPct": 5.18,
+              "decodedByKind": {
+                "adjacent": {
+                  "correct": 1161984,
+                  "total": 2568423,
+                  "pct": 45.24
+                },
+                "start": {
+                  "correct": 61627,
+                  "total": 100000,
+                  "pct": 61.63
+                },
+                "end": {
+                  "correct": 82534,
+                  "total": 100000,
+                  "pct": 82.53
+                },
+                "word-start": {
+                  "correct": 549359,
+                  "total": 697264,
+                  "pct": 78.79
+                },
+                "word-end": {
+                  "correct": 422045,
+                  "total": 649747,
+                  "pct": 64.96
+                }
+              }
+            },
+            {
+              "knownPct": 5,
+              "knownRows": 5000,
+              "adjacentPct": 46.22,
+              "mostlyDecodedUnknownRowsPct": 1.19,
+              "decodedByKind": {
+                "adjacent": {
+                  "correct": 1187096,
+                  "total": 2568423,
+                  "pct": 46.22
+                },
+                "start": {
+                  "correct": 55297,
+                  "total": 100000,
+                  "pct": 55.3
+                },
+                "end": {
+                  "correct": 73735,
+                  "total": 100000,
+                  "pct": 73.73
+                },
+                "word-start": {
+                  "correct": 447588,
+                  "total": 697264,
+                  "pct": 64.19
+                },
+                "word-end": {
+                  "correct": 338406,
+                  "total": 649747,
+                  "pct": 52.08
+                }
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "layout": "adjacent+start/end+word+skip",
+      "scales": [
+        {
+          "victimRows": 5000,
+          "referenceRows": 20000,
+          "uniquePieces": 79624,
+          "uniqueTokens": 46203,
+          "collisionTokens": 22450,
+          "piecesOnCollidingTokens": 55871,
+          "known": [
+            {
+              "knownPct": 1,
+              "knownRows": 50,
+              "adjacentPct": 8.8,
+              "mostlyDecodedUnknownRowsPct": 0,
+              "decodedByKind": {
+                "adjacent": {
+                  "correct": 11059,
+                  "total": 125702,
+                  "pct": 8.8
+                },
+                "start": {
+                  "correct": 745,
+                  "total": 5000,
+                  "pct": 14.9
+                },
+                "end": {
+                  "correct": 2127,
+                  "total": 5000,
+                  "pct": 42.54
+                },
+                "skip": {
+                  "correct": 1726,
+                  "total": 124881,
+                  "pct": 1.38
+                },
+                "word-start": {
+                  "correct": 11900,
+                  "total": 34211,
+                  "pct": 34.78
+                },
+                "word-end": {
+                  "correct": 18431,
+                  "total": 31877,
+                  "pct": 57.82
+                }
+              }
+            },
+            {
+              "knownPct": 5,
+              "knownRows": 250,
+              "adjacentPct": 23.97,
+              "mostlyDecodedUnknownRowsPct": 0.36,
+              "decodedByKind": {
+                "adjacent": {
+                  "correct": 30133,
+                  "total": 125702,
+                  "pct": 23.97
+                },
+                "start": {
+                  "correct": 1810,
+                  "total": 5000,
+                  "pct": 36.2
+                },
+                "end": {
+                  "correct": 3746,
+                  "total": 5000,
+                  "pct": 74.92
+                },
+                "skip": {
+                  "correct": 13733,
+                  "total": 124881,
+                  "pct": 11
+                },
+                "word-start": {
+                  "correct": 23632,
+                  "total": 34211,
+                  "pct": 69.08
+                },
+                "word-end": {
+                  "correct": 23750,
+                  "total": 31877,
+                  "pct": 74.51
+                }
+              }
+            }
+          ]
+        },
+        {
+          "victimRows": 20000,
+          "referenceRows": 20000,
+          "uniquePieces": 175521,
+          "uniqueTokens": 61069,
+          "collisionTokens": 48915,
+          "piecesOnCollidingTokens": 163367,
+          "known": [
+            {
+              "knownPct": 1,
+              "knownRows": 200,
+              "adjacentPct": 20.99,
+              "mostlyDecodedUnknownRowsPct": 0.1,
+              "decodedByKind": {
+                "adjacent": {
+                  "correct": 108344,
+                  "total": 516243,
+                  "pct": 20.99
+                },
+                "start": {
+                  "correct": 7705,
+                  "total": 20000,
+                  "pct": 38.52
+                },
+                "end": {
+                  "correct": 13949,
+                  "total": 20000,
+                  "pct": 69.75
+                },
+                "skip": {
+                  "correct": 45076,
+                  "total": 513382,
+                  "pct": 8.78
+                },
+                "word-start": {
+                  "correct": 88011,
+                  "total": 139699,
+                  "pct": 63
+                },
+                "word-end": {
+                  "correct": 102556,
+                  "total": 129993,
+                  "pct": 78.89
+                }
+              }
+            },
+            {
+              "knownPct": 5,
+              "knownRows": 1000,
+              "adjacentPct": 32.41,
+              "mostlyDecodedUnknownRowsPct": 0.56,
+              "decodedByKind": {
+                "adjacent": {
+                  "correct": 167337,
+                  "total": 516243,
+                  "pct": 32.41
+                },
+                "start": {
+                  "correct": 9554,
+                  "total": 20000,
+                  "pct": 47.77
+                },
+                "end": {
+                  "correct": 12999,
+                  "total": 20000,
+                  "pct": 65
+                },
+                "skip": {
+                  "correct": 110765,
+                  "total": 513382,
+                  "pct": 21.58
+                },
+                "word-start": {
+                  "correct": 83187,
+                  "total": 139699,
+                  "pct": 59.55
+                },
+                "word-end": {
+                  "correct": 87196,
+                  "total": 129993,
+                  "pct": 67.08
+                }
+              }
+            }
+          ]
+        },
+        {
+          "victimRows": 50000,
+          "referenceRows": 20000,
+          "uniquePieces": 274085,
+          "uniqueTokens": 64610,
+          "collisionTokens": 60341,
+          "piecesOnCollidingTokens": 269816,
+          "known": [
+            {
+              "knownPct": 1,
+              "knownRows": 500,
+              "adjacentPct": 31.21,
+              "mostlyDecodedUnknownRowsPct": 0.65,
+              "decodedByKind": {
+                "adjacent": {
+                  "correct": 400572,
+                  "total": 1283352,
+                  "pct": 31.21
+                },
+                "start": {
+                  "correct": 24142,
+                  "total": 50000,
+                  "pct": 48.28
+                },
+                "end": {
+                  "correct": 31518,
+                  "total": 50000,
+                  "pct": 63.04
+                },
+                "skip": {
+                  "correct": 222713,
+                  "total": 1276210,
+                  "pct": 17.45
+                },
+                "word-start": {
+                  "correct": 245397,
+                  "total": 348630,
+                  "pct": 70.39
+                },
+                "word-end": {
+                  "correct": 261485,
+                  "total": 324625,
+                  "pct": 80.55
+                }
+              }
+            },
+            {
+              "knownPct": 5,
+              "knownRows": 2500,
+              "adjacentPct": 30.92,
+              "mostlyDecodedUnknownRowsPct": 0.32,
+              "decodedByKind": {
+                "adjacent": {
+                  "correct": 396868,
+                  "total": 1283352,
+                  "pct": 30.92
+                },
+                "start": {
+                  "correct": 18817,
+                  "total": 50000,
+                  "pct": 37.63
+                },
+                "end": {
+                  "correct": 27936,
+                  "total": 50000,
+                  "pct": 55.87
+                },
+                "skip": {
+                  "correct": 304199,
+                  "total": 1276210,
+                  "pct": 23.84
+                },
+                "word-start": {
+                  "correct": 164689,
+                  "total": 348630,
+                  "pct": 47.24
+                },
+                "word-end": {
+                  "correct": 201179,
+                  "total": 324625,
+                  "pct": 61.97
+                }
+              }
+            }
+          ]
+        },
+        {
+          "victimRows": 100000,
+          "referenceRows": 20000,
+          "uniquePieces": 376571,
+          "uniqueTokens": 65355,
+          "collisionTokens": 64169,
+          "piecesOnCollidingTokens": 375385,
+          "known": [
+            {
+              "knownPct": 1,
+              "knownRows": 1000,
+              "adjacentPct": 32.04,
+              "mostlyDecodedUnknownRowsPct": 0.54,
+              "decodedByKind": {
+                "adjacent": {
+                  "correct": 822880,
+                  "total": 2568423,
+                  "pct": 32.04
+                },
+                "start": {
+                  "correct": 49097,
+                  "total": 100000,
+                  "pct": 49.1
+                },
+                "end": {
+                  "correct": 61606,
+                  "total": 100000,
+                  "pct": 61.61
+                },
+                "skip": {
+                  "correct": 554471,
+                  "total": 2554672,
+                  "pct": 21.7
+                },
+                "word-start": {
+                  "correct": 419306,
+                  "total": 697264,
+                  "pct": 60.14
+                },
+                "word-end": {
+                  "correct": 472251,
+                  "total": 649747,
+                  "pct": 72.68
+                }
+              }
+            },
+            {
+              "knownPct": 5,
+              "knownRows": 5000,
+              "adjacentPct": 22.59,
+              "mostlyDecodedUnknownRowsPct": 0.03,
+              "decodedByKind": {
+                "adjacent": {
+                  "correct": 580133,
+                  "total": 2568423,
+                  "pct": 22.59
+                },
+                "start": {
+                  "correct": 34672,
+                  "total": 100000,
+                  "pct": 34.67
+                },
+                "end": {
+                  "correct": 42735,
+                  "total": 100000,
+                  "pct": 42.73
+                },
+                "skip": {
+                  "correct": 478862,
+                  "total": 2554672,
+                  "pct": 18.74
+                },
+                "word-start": {
+                  "correct": 192733,
+                  "total": 697264,
+                  "pct": 27.64
+                },
+                "word-end": {
+                  "correct": 247616,
+                  "total": 649747,
+                  "pct": 38.11
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

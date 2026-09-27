@@ -1,0 +1,17 @@
+# SealQL
+
+Start: docs/current-state.md, then docs/llm-integration.md
+Drizzle example: examples/standard-consumer.ts
+Raw PostgreSQL example: examples/standard-raw.ts
+Code-based key loading: examples/key-loader.ts
+Count and JOIN example: examples/standard-operations.ts
+Exports: package.json, src/index.ts, src/adapters/drizzle/v0.45/index.ts, src/adapters/postgres/sealed-index.ts
+Security limits: docs/threat-model.md
+Design decisions and evidence: docs/decisions/README.md
+Planned (not implemented) Drizzle-native API: plan/001-drizzle-native-api.md
+Contributor and agent rules: AGENTS.md
+
+Current search is standard HMAC two-character pieces plus GIN and internal verification. The app supplies a fixed global key and may supply fixed model keys; no policy tables or admin provisioning are used. `findMany`, `searchWithQuery`, and `decryptRows` accept `budgets.decryptConcurrency` (default/max 64). Partial updates replace only changed field tokens in one companion row. If a key must change, the app re-encrypts and reindexes all data. There is no stateful search mode.
+Substring profiles store one-character-gap skip grams by default, whether `substring: true` or an object omitting `skipGrams`; only `substring: { skipGrams: false }` turns them off. Changing this setting requires reindexing. A historical local 100,000-row fixture using per-field GIN indexes measured companion size of 211 MB off / 305 MB on (bench/results/2026-09-27-combined-gin/storage.json) and median single-row insert of 4.65 ms off / 6.16 ms on (bench/results/2026-09-27-skip-write-cost/report-ko.md); these are not deployment guarantees. Current multicolumn GIN results are in bench/results/2026-09-27-product-multicolumn-gin/report-ko.md.
+Substring token columns share one multicolumn GIN index; exact token columns retain separate B-tree expression indexes. Adding or removing a searchable field requires a replacement GIN and a staged column/backfill procedure; see docs/llm-integration.md.
+Not supported: range queries, ordering or aggregation on encrypted fields, one-character search, `not`, OR between a plain column and an encrypted condition in `findMany`.

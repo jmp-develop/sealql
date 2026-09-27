@@ -1,0 +1,61 @@
+{
+  "source": "actual previous and new companion memo token arrays, first 20k victims and next 20k same-source reference rows; synthetic fixture",
+  "seed": 99,
+  "layouts": [
+    {
+      "layout": "old-adjacent",
+      "rows": 20000,
+      "referenceRows": 20000,
+      "knownRows": 1000,
+      "frequency": {
+        "decodedOccurrencePct": 12.13,
+        "mostlyDecodedUnknownRowsPct": 0
+      },
+      "knownRow": {
+        "decodedOccurrencePct": 59.75,
+        "mostlyDecodedUnknownRowsPct": 19.2
+      },
+      "uniquePieces": 1622,
+      "uniqueTokens": 1603,
+      "oraclePieceMissingOccurrences": 0
+    },
+    {
+      "layout": "adjacent+boundary",
+      "rows": 20000,
+      "referenceRows": 20000,
+      "knownRows": 1000,
+      "frequency": {
+        "decodedOccurrencePct": 7.8,
+        "mostlyDecodedUnknownRowsPct": 0
+      },
+      "knownRow": {
+        "decodedOccurrencePct": 45.75,
+        "mostlyDecodedUnknownRowsPct": 19.2
+      },
+      "uniquePieces": 1783,
+      "uniqueTokens": 1760,
+      "oraclePieceMissingOccurrences": 0
+    },
+    {
+      "layout": "adjacent+boundary+skip",
+      "rows": 20000,
+      "referenceRows": 20000,
+      "knownRows": 1000,
+      "frequency": {
+        "decodedOccurrencePct": 4.81,
+        "mostlyDecodedUnknownRowsPct": 0
+      },
+      "knownRow": {
+        "decodedOccurrencePct": 42.88,
+        "mostlyDecodedUnknownRowsPct": 18.67
+      },
+      "uniquePieces": 3676,
+      "uniqueTokens": 3579,
+      "oraclePieceMissingOccurrences": 0,
+      "skipConsistency": {
+        "decodedSkipTokens": 1224,
+        "note": "Decoded skip-piece consistency is additionally measured on the independent public review corpus in token-attack.json."
+      }
+    }
+  ]
+}

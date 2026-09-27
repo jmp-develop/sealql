@@ -1,0 +1,60 @@
+{
+  "host": "127.0.0.1",
+  "port": 56439,
+  "schema": "bench_standard_next_100k",
+  "name": "customers_skip_product_multi",
+  "sourceParent": "customers_skip",
+  "sourceIndex": "customers_skip_seal_index",
+  "rows": 100000,
+  "ddl": [
+    "create table \"bench_standard_next_100k\".\"customers_skip_product_multi\" (\"scope_id\" uuid not null,\"id\" uuid not null,\"revision\" bigint not null default 1 check (\"revision\">0),\"name_ct\" bytea not null,\"phone_ct\" bytea not null,\"address_ct\" bytea not null,\"memo_ct\" bytea not null,\"email_ct\" bytea not null,\"company_ct\" bytea not null,unique (\"scope_id\",\"id\"))",
+    "create table \"bench_standard_next_100k\".\"customers_skip_product_multi_seal_index\" (scope_id uuid not null,row_id uuid not null,\"tokens_988d248ff4b71bf7\" bigint[],\"tokens_792d75cf01821d67\" bigint[],\"tokens_a106c26102b707f0\" bigint[],\"tokens_1127994ab736baf4\" bigint[],\"tokens_c5133b3810f23103\" bigint[],\"tokens_ef1d32a52e2ce103\" bigint[],\"tokens_1c32fdad5d1c8367\" bigint[],\"tokens_a639b11c8130dcf7\" bigint[],\"tokens_cd3096c7a3cd42c2\" bigint[],\"tokens_f289b89d86c7086a\" bigint[],\"tokens_c44ae523cca61a0b\" bigint[],\"tokens_7a1d2ba5ce2368fb\" bigint[],primary key(scope_id,row_id),foreign key(scope_id,row_id) references \"bench_standard_next_100k\".\"customers_skip_product_multi\"(\"scope_id\",\"id\") on delete cascade)",
+    "create index \"seal_55b3cc0d438484aa_bt\" on \"bench_standard_next_100k\".\"customers_skip_product_multi_seal_index\"(scope_id,(\"tokens_988d248ff4b71bf7\"[1]),row_id)",
+    "alter table \"bench_standard_next_100k\".\"customers_skip_product_multi_seal_index\" alter column \"tokens_792d75cf01821d67\" set statistics 1000",
+    "create index \"seal_c29e71c0a208c8d1_bt\" on \"bench_standard_next_100k\".\"customers_skip_product_multi_seal_index\"(scope_id,(\"tokens_a106c26102b707f0\"[1]),row_id)",
+    "alter table \"bench_standard_next_100k\".\"customers_skip_product_multi_seal_index\" alter column \"tokens_1127994ab736baf4\" set statistics 1000",
+    "create index \"seal_4b4f7d0b6efa3256_bt\" on \"bench_standard_next_100k\".\"customers_skip_product_multi_seal_index\"(scope_id,(\"tokens_c5133b3810f23103\"[1]),row_id)",
+    "alter table \"bench_standard_next_100k\".\"customers_skip_product_multi_seal_index\" alter column \"tokens_ef1d32a52e2ce103\" set statistics 1000",
+    "create index \"seal_25c9db95b34fd858_bt\" on \"bench_standard_next_100k\".\"customers_skip_product_multi_seal_index\"(scope_id,(\"tokens_1c32fdad5d1c8367\"[1]),row_id)",
+    "alter table \"bench_standard_next_100k\".\"customers_skip_product_multi_seal_index\" alter column \"tokens_a639b11c8130dcf7\" set statistics 1000",
+    "create index \"seal_d741c248ce6519d9_bt\" on \"bench_standard_next_100k\".\"customers_skip_product_multi_seal_index\"(scope_id,(\"tokens_cd3096c7a3cd42c2\"[1]),row_id)",
+    "alter table \"bench_standard_next_100k\".\"customers_skip_product_multi_seal_index\" alter column \"tokens_f289b89d86c7086a\" set statistics 1000",
+    "create index \"seal_ffd91271d4aa40f2_bt\" on \"bench_standard_next_100k\".\"customers_skip_product_multi_seal_index\"(scope_id,(\"tokens_c44ae523cca61a0b\"[1]),row_id)",
+    "alter table \"bench_standard_next_100k\".\"customers_skip_product_multi_seal_index\" alter column \"tokens_7a1d2ba5ce2368fb\" set statistics 1000",
+    "create index \"seal_de9d32fbbc6ee7e5_gin\" on \"bench_standard_next_100k\".\"customers_skip_product_multi_seal_index\" using gin(\"tokens_792d75cf01821d67\",\"tokens_1127994ab736baf4\",\"tokens_ef1d32a52e2ce103\",\"tokens_a639b11c8130dcf7\",\"tokens_f289b89d86c7086a\",\"tokens_7a1d2ba5ce2368fb\")"
+  ],
+  "indexes": [
+    {
+      "indexname": "customers_skip_product_multi_seal_index_pkey",
+      "indexdef": "CREATE UNIQUE INDEX customers_skip_product_multi_seal_index_pkey ON bench_standard_next_100k.customers_skip_product_multi_seal_index USING btree (scope_id, row_id)"
+    },
+    {
+      "indexname": "seal_25c9db95b34fd858_bt",
+      "indexdef": "CREATE INDEX seal_25c9db95b34fd858_bt ON bench_standard_next_100k.customers_skip_product_multi_seal_index USING btree (scope_id, (tokens_1c32fdad5d1c8367[1]), row_id)"
+    },
+    {
+      "indexname": "seal_4b4f7d0b6efa3256_bt",
+      "indexdef": "CREATE INDEX seal_4b4f7d0b6efa3256_bt ON bench_standard_next_100k.customers_skip_product_multi_seal_index USING btree (scope_id, (tokens_c5133b3810f23103[1]), row_id)"
+    },
+    {
+      "indexname": "seal_55b3cc0d438484aa_bt",
+      "indexdef": "CREATE INDEX seal_55b3cc0d438484aa_bt ON bench_standard_next_100k.customers_skip_product_multi_seal_index USING btree (scope_id, (tokens_988d248ff4b71bf7[1]), row_id)"
+    },
+    {
+      "indexname": "seal_c29e71c0a208c8d1_bt",
+      "indexdef": "CREATE INDEX seal_c29e71c0a208c8d1_bt ON bench_standard_next_100k.customers_skip_product_multi_seal_index USING btree (scope_id, (tokens_a106c26102b707f0[1]), row_id)"
+    },
+    {
+      "indexname": "seal_d741c248ce6519d9_bt",
+      "indexdef": "CREATE INDEX seal_d741c248ce6519d9_bt ON bench_standard_next_100k.customers_skip_product_multi_seal_index USING btree (scope_id, (tokens_cd3096c7a3cd42c2[1]), row_id)"
+    },
+    {
+      "indexname": "seal_de9d32fbbc6ee7e5_gin",
+      "indexdef": "CREATE INDEX seal_de9d32fbbc6ee7e5_gin ON bench_standard_next_100k.customers_skip_product_multi_seal_index USING gin (tokens_792d75cf01821d67, tokens_1127994ab736baf4, tokens_ef1d32a52e2ce103, tokens_a639b11c8130dcf7, tokens_f289b89d86c7086a, tokens_7a1d2ba5ce2368fb)"
+    },
+    {
+      "indexname": "seal_ffd91271d4aa40f2_bt",
+      "indexdef": "CREATE INDEX seal_ffd91271d4aa40f2_bt ON bench_standard_next_100k.customers_skip_product_multi_seal_index USING btree (scope_id, (tokens_c44ae523cca61a0b[1]), row_id)"
+    }
+  ]
+}

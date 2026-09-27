@@ -1,0 +1,45 @@
+{
+  "node": {
+    "crypto": {
+      "runtime": "v24.18.0",
+      "roundtrip": true,
+      "wrongAadRejected": true,
+      "hmacBytes": 48,
+      "hkdfBytes": 32,
+      "perCallMs": {
+        "syncAesMs": 0.019757000000000177,
+        "webAesMs": 0.05586399999999969,
+        "syncHmacMs": 0.01570099999999968,
+        "webHmacMs": 0.025296000000000162,
+        "syncHkdfMs": 0.017134000000000357,
+        "webHkdfMs": 0.05178400000000011
+      },
+      "timingNote": "100 sequential calls divided by 100; imported WebCrypto keys; local operation only, not production benchmark"
+    },
+    "scopes": [
+      "a",
+      "b"
+    ]
+  },
+  "workerd": {
+    "crypto": {
+      "roundtrip": true,
+      "wrongAadRejected": true,
+      "hmacBytes": 48,
+      "hkdfBytes": 32,
+      "perCallMs": {
+        "syncAesMs": 0.13,
+        "webAesMs": 0.01,
+        "syncHmacMs": 0.03,
+        "webHmacMs": 0.01,
+        "syncHkdfMs": 0,
+        "webHkdfMs": 0.06
+      },
+      "timingNote": "100 sequential calls divided by 100; imported WebCrypto keys; local operation only, not production benchmark"
+    },
+    "scopes": [
+      "a",
+      "b"
+    ]
+  }
+}

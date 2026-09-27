@@ -1,0 +1,298 @@
+{
+  "versions": {},
+  "h3": {
+    "insert": [
+      {
+        "id": 1,
+        "publicText": "public",
+        "sealed": "abc"
+      },
+      {
+        "id": 2,
+        "publicText": "other",
+        "sealed": "xyz"
+      }
+    ],
+    "whereSql": {
+      "sql": "select \"id\", \"public_text\", \"sealed\" from \"drizzle_poc\".\"items\" where ((\"drizzle_poc\".\"items\".\"public_text\" = $1 and (\"drizzle_poc\".\"items\".\"sealed\" -> 'tokens') @> $2::jsonb) or \"drizzle_poc\".\"items\".\"public_text\" = $3)",
+      "params": [
+        "public",
+        "[\"ab\"]",
+        "none"
+      ]
+    },
+    "whereRows": [
+      {
+        "id": 1,
+        "publicText": "public",
+        "sealed": "abc"
+      }
+    ],
+    "update": [
+      {
+        "id": 1,
+        "publicText": "public",
+        "sealed": "abcd"
+      }
+    ],
+    "conflict": [
+      {
+        "id": 1,
+        "publicText": "public",
+        "sealed": "abcde"
+      }
+    ],
+    "prepared": [
+      {
+        "id": 1,
+        "publicText": "public",
+        "sealed": "abcde"
+      }
+    ],
+    "raw": [
+      {
+        "sealed": {
+          "ct": "abcde",
+          "tokens": [
+            "ab",
+            "bc",
+            "cd",
+            "de"
+          ]
+        }
+      }
+    ],
+    "transaction": {
+      "id": 3,
+      "publicText": "tx",
+      "sealed": "transaction"
+    }
+  },
+  "h5": {
+    "catalog": {
+      "tableID": 1636388,
+      "columnID": 2
+    },
+    "rawSelect": [
+      {
+        "id": 1,
+        "secret": "hello"
+      }
+    ],
+    "aliasSelect": [
+      {
+        "alias": "hello"
+      }
+    ],
+    "expressionSelect": [
+      {
+        "secret": "CIPHER:AGVSBG8="
+      }
+    ],
+    "transaction": [
+      {
+        "secret": "tx"
+      }
+    ],
+    "returning": [
+      {
+        "id": 3,
+        "secret": "returning"
+      }
+    ],
+    "mappedSelect": [
+      {
+        "id": 3,
+        "secret": "returning"
+      }
+    ],
+    "prepared": [
+      {
+        "id": 3,
+        "secret": "returning"
+      }
+    ],
+    "events": [
+      {
+        "text": "insert into drizzle_poc.driver_items(id, secret) values (1, $1)",
+        "transformed": true,
+        "fields": []
+      },
+      {
+        "text": "select id, secret from drizzle_poc.driver_items where id=1",
+        "transformed": false,
+        "fields": [
+          {
+            "i": 0,
+            "name": "id",
+            "tableID": 1636388,
+            "columnID": 1,
+            "match": false
+          },
+          {
+            "i": 1,
+            "name": "secret",
+            "tableID": 1636388,
+            "columnID": 2,
+            "match": true
+          }
+        ]
+      },
+      {
+        "text": "select secret as alias from drizzle_poc.driver_items where id=1",
+        "transformed": false,
+        "fields": [
+          {
+            "i": 0,
+            "name": "alias",
+            "tableID": 1636388,
+            "columnID": 2,
+            "match": true
+          }
+        ]
+      },
+      {
+        "text": "select upper(secret) as secret from drizzle_poc.driver_items where id=1",
+        "transformed": false,
+        "fields": [
+          {
+            "i": 0,
+            "name": "secret",
+            "tableID": 0,
+            "columnID": 0,
+            "match": false
+          }
+        ]
+      },
+      {
+        "text": "begin",
+        "transformed": false,
+        "fields": []
+      },
+      {
+        "text": "insert into drizzle_poc.driver_items(id,secret) values (2, $1)",
+        "transformed": true,
+        "fields": []
+      },
+      {
+        "text": "select secret from drizzle_poc.driver_items where id=2",
+        "transformed": false,
+        "fields": [
+          {
+            "i": 0,
+            "name": "secret",
+            "tableID": 1636388,
+            "columnID": 2,
+            "match": true
+          }
+        ]
+      },
+      {
+        "text": "commit",
+        "transformed": false,
+        "fields": []
+      },
+      {
+        "text": "insert into \"drizzle_poc\".\"driver_items\" (\"id\", \"secret\") values ($1, $2) returning \"id\", \"secret\"",
+        "transformed": true,
+        "fields": [
+          {
+            "i": 0,
+            "name": "id",
+            "tableID": 1636388,
+            "columnID": 1,
+            "match": false
+          },
+          {
+            "i": 1,
+            "name": "secret",
+            "tableID": 1636388,
+            "columnID": 2,
+            "match": true
+          }
+        ]
+      },
+      {
+        "text": "select \"id\", \"secret\" from \"drizzle_poc\".\"driver_items\" where \"drizzle_poc\".\"driver_items\".\"id\" = $1",
+        "transformed": false,
+        "fields": [
+          {
+            "i": 0,
+            "name": "id",
+            "tableID": 1636388,
+            "columnID": 1,
+            "match": false
+          },
+          {
+            "i": 1,
+            "name": "secret",
+            "tableID": 1636388,
+            "columnID": 2,
+            "match": true
+          }
+        ]
+      },
+      {
+        "text": "select \"id\", \"secret\" from \"drizzle_poc\".\"driver_items\" where \"drizzle_poc\".\"driver_items\".\"id\" = $1",
+        "transformed": false,
+        "fields": [
+          {
+            "i": 0,
+            "name": "id",
+            "tableID": 1636388,
+            "columnID": 1,
+            "match": false
+          },
+          {
+            "i": 1,
+            "name": "secret",
+            "tableID": 1636388,
+            "columnID": 2,
+            "match": true
+          }
+        ]
+      }
+    ],
+    "stored": [
+      {
+        "secret": "cipher:aGVsbG8="
+      }
+    ]
+  },
+  "h7": {
+    "relational": [
+      {
+        "id": 2,
+        "publicText": "other",
+        "sealed": "xyz",
+        "children": []
+      },
+      {
+        "id": 1,
+        "publicText": "public",
+        "sealed": "abcde",
+        "children": [
+          {
+            "id": 1,
+            "itemId": 1,
+            "note": "nested"
+          }
+        ]
+      },
+      {
+        "id": 3,
+        "publicText": "tx",
+        "sealed": "transaction",
+        "children": []
+      }
+    ],
+    "directChild": [
+      {
+        "id": 1,
+        "itemId": 1,
+        "note": "nested"
+      }
+    ]
+  },
+  "cleanup": true
+}

@@ -1,0 +1,312 @@
+[
+  {
+    "variant": "next",
+    "layout": "separate",
+    "name": "customers_separate_mg_index",
+    "count": 100000,
+    "size": 184844288,
+    "indexes": [
+      {
+        "indexname": "customers_separate_mg_index_pkey",
+        "bytes": "4997120",
+        "indexdef": "CREATE UNIQUE INDEX customers_separate_mg_index_pkey ON bench_standard_next_100k.customers_separate_mg_index USING btree (scope_id, row_id)"
+      },
+      {
+        "indexname": "customers_separate_mg_index_tokens_1127994ab736baf4_gin",
+        "bytes": "3964928",
+        "indexdef": "CREATE INDEX customers_separate_mg_index_tokens_1127994ab736baf4_gin ON bench_standard_next_100k.customers_separate_mg_index USING gin (tokens_1127994ab736baf4)"
+      },
+      {
+        "indexname": "customers_separate_mg_index_tokens_1c32fdad5d1c8367_bt",
+        "bytes": "1826816",
+        "indexdef": "CREATE INDEX customers_separate_mg_index_tokens_1c32fdad5d1c8367_bt ON bench_standard_next_100k.customers_separate_mg_index USING btree ((tokens_1c32fdad5d1c8367[1]))"
+      },
+      {
+        "indexname": "customers_separate_mg_index_tokens_792d75cf01821d67_gin",
+        "bytes": "6201344",
+        "indexdef": "CREATE INDEX customers_separate_mg_index_tokens_792d75cf01821d67_gin ON bench_standard_next_100k.customers_separate_mg_index USING gin (tokens_792d75cf01821d67)"
+      },
+      {
+        "indexname": "customers_separate_mg_index_tokens_7a1d2ba5ce2368fb_gin",
+        "bytes": "4472832",
+        "indexdef": "CREATE INDEX customers_separate_mg_index_tokens_7a1d2ba5ce2368fb_gin ON bench_standard_next_100k.customers_separate_mg_index USING gin (tokens_7a1d2ba5ce2368fb)"
+      },
+      {
+        "indexname": "customers_separate_mg_index_tokens_988d248ff4b71bf7_bt",
+        "bytes": "835584",
+        "indexdef": "CREATE INDEX customers_separate_mg_index_tokens_988d248ff4b71bf7_bt ON bench_standard_next_100k.customers_separate_mg_index USING btree ((tokens_988d248ff4b71bf7[1]))"
+      },
+      {
+        "indexname": "customers_separate_mg_index_tokens_a106c26102b707f0_bt",
+        "bytes": "712704",
+        "indexdef": "CREATE INDEX customers_separate_mg_index_tokens_a106c26102b707f0_bt ON bench_standard_next_100k.customers_separate_mg_index USING btree ((tokens_a106c26102b707f0[1]))"
+      },
+      {
+        "indexname": "customers_separate_mg_index_tokens_a639b11c8130dcf7_gin",
+        "bytes": "7602176",
+        "indexdef": "CREATE INDEX customers_separate_mg_index_tokens_a639b11c8130dcf7_gin ON bench_standard_next_100k.customers_separate_mg_index USING gin (tokens_a639b11c8130dcf7)"
+      },
+      {
+        "indexname": "customers_separate_mg_index_tokens_c44ae523cca61a0b_bt",
+        "bytes": "1826816",
+        "indexdef": "CREATE INDEX customers_separate_mg_index_tokens_c44ae523cca61a0b_bt ON bench_standard_next_100k.customers_separate_mg_index USING btree ((tokens_c44ae523cca61a0b[1]))"
+      },
+      {
+        "indexname": "customers_separate_mg_index_tokens_c5133b3810f23103_bt",
+        "bytes": "1826816",
+        "indexdef": "CREATE INDEX customers_separate_mg_index_tokens_c5133b3810f23103_bt ON bench_standard_next_100k.customers_separate_mg_index USING btree ((tokens_c5133b3810f23103[1]))"
+      },
+      {
+        "indexname": "customers_separate_mg_index_tokens_cd3096c7a3cd42c2_bt",
+        "bytes": "1826816",
+        "indexdef": "CREATE INDEX customers_separate_mg_index_tokens_cd3096c7a3cd42c2_bt ON bench_standard_next_100k.customers_separate_mg_index USING btree ((tokens_cd3096c7a3cd42c2[1]))"
+      },
+      {
+        "indexname": "customers_separate_mg_index_tokens_ef1d32a52e2ce103_gin",
+        "bytes": "6291456",
+        "indexdef": "CREATE INDEX customers_separate_mg_index_tokens_ef1d32a52e2ce103_gin ON bench_standard_next_100k.customers_separate_mg_index USING gin (tokens_ef1d32a52e2ce103)"
+      },
+      {
+        "indexname": "customers_separate_mg_index_tokens_f289b89d86c7086a_gin",
+        "bytes": "5267456",
+        "indexdef": "CREATE INDEX customers_separate_mg_index_tokens_f289b89d86c7086a_gin ON bench_standard_next_100k.customers_separate_mg_index USING gin (tokens_f289b89d86c7086a)"
+      }
+    ],
+    "substringColumns": [
+      "tokens_792d75cf01821d67",
+      "tokens_1127994ab736baf4",
+      "tokens_ef1d32a52e2ce103",
+      "tokens_a639b11c8130dcf7",
+      "tokens_f289b89d86c7086a",
+      "tokens_7a1d2ba5ce2368fb"
+    ],
+    "exactColumns": [
+      "tokens_988d248ff4b71bf7",
+      "tokens_a106c26102b707f0",
+      "tokens_c5133b3810f23103",
+      "tokens_1c32fdad5d1c8367",
+      "tokens_cd3096c7a3cd42c2",
+      "tokens_c44ae523cca61a0b"
+    ]
+  },
+  {
+    "variant": "next",
+    "layout": "multi",
+    "name": "customers_multi_mg_index",
+    "count": 100000,
+    "size": 184860672,
+    "indexes": [
+      {
+        "indexname": "customers_multi_mg_index_gin",
+        "bytes": "33808384",
+        "indexdef": "CREATE INDEX customers_multi_mg_index_gin ON bench_standard_next_100k.customers_multi_mg_index USING gin (tokens_792d75cf01821d67, tokens_1127994ab736baf4, tokens_ef1d32a52e2ce103, tokens_a639b11c8130dcf7, tokens_f289b89d86c7086a, tokens_7a1d2ba5ce2368fb)"
+      },
+      {
+        "indexname": "customers_multi_mg_index_pkey",
+        "bytes": "4997120",
+        "indexdef": "CREATE UNIQUE INDEX customers_multi_mg_index_pkey ON bench_standard_next_100k.customers_multi_mg_index USING btree (scope_id, row_id)"
+      },
+      {
+        "indexname": "customers_multi_mg_index_tokens_1c32fdad5d1c8367_bt",
+        "bytes": "1826816",
+        "indexdef": "CREATE INDEX customers_multi_mg_index_tokens_1c32fdad5d1c8367_bt ON bench_standard_next_100k.customers_multi_mg_index USING btree ((tokens_1c32fdad5d1c8367[1]))"
+      },
+      {
+        "indexname": "customers_multi_mg_index_tokens_988d248ff4b71bf7_bt",
+        "bytes": "835584",
+        "indexdef": "CREATE INDEX customers_multi_mg_index_tokens_988d248ff4b71bf7_bt ON bench_standard_next_100k.customers_multi_mg_index USING btree ((tokens_988d248ff4b71bf7[1]))"
+      },
+      {
+        "indexname": "customers_multi_mg_index_tokens_a106c26102b707f0_bt",
+        "bytes": "712704",
+        "indexdef": "CREATE INDEX customers_multi_mg_index_tokens_a106c26102b707f0_bt ON bench_standard_next_100k.customers_multi_mg_index USING btree ((tokens_a106c26102b707f0[1]))"
+      },
+      {
+        "indexname": "customers_multi_mg_index_tokens_c44ae523cca61a0b_bt",
+        "bytes": "1826816",
+        "indexdef": "CREATE INDEX customers_multi_mg_index_tokens_c44ae523cca61a0b_bt ON bench_standard_next_100k.customers_multi_mg_index USING btree ((tokens_c44ae523cca61a0b[1]))"
+      },
+      {
+        "indexname": "customers_multi_mg_index_tokens_c5133b3810f23103_bt",
+        "bytes": "1826816",
+        "indexdef": "CREATE INDEX customers_multi_mg_index_tokens_c5133b3810f23103_bt ON bench_standard_next_100k.customers_multi_mg_index USING btree ((tokens_c5133b3810f23103[1]))"
+      },
+      {
+        "indexname": "customers_multi_mg_index_tokens_cd3096c7a3cd42c2_bt",
+        "bytes": "1826816",
+        "indexdef": "CREATE INDEX customers_multi_mg_index_tokens_cd3096c7a3cd42c2_bt ON bench_standard_next_100k.customers_multi_mg_index USING btree ((tokens_cd3096c7a3cd42c2[1]))"
+      }
+    ],
+    "substringColumns": [
+      "tokens_792d75cf01821d67",
+      "tokens_1127994ab736baf4",
+      "tokens_ef1d32a52e2ce103",
+      "tokens_a639b11c8130dcf7",
+      "tokens_f289b89d86c7086a",
+      "tokens_7a1d2ba5ce2368fb"
+    ],
+    "exactColumns": [
+      "tokens_988d248ff4b71bf7",
+      "tokens_a106c26102b707f0",
+      "tokens_c5133b3810f23103",
+      "tokens_1c32fdad5d1c8367",
+      "tokens_cd3096c7a3cd42c2",
+      "tokens_c44ae523cca61a0b"
+    ]
+  },
+  {
+    "variant": "skip",
+    "layout": "separate",
+    "name": "customers_skip_separate_mg_index",
+    "count": 100000,
+    "size": 278052864,
+    "indexes": [
+      {
+        "indexname": "customers_skip_separate_mg_index_pkey",
+        "bytes": "4997120",
+        "indexdef": "CREATE UNIQUE INDEX customers_skip_separate_mg_index_pkey ON bench_standard_next_100k.customers_skip_separate_mg_index USING btree (scope_id, row_id)"
+      },
+      {
+        "indexname": "customers_skip_separate_mg_index_tokens_1127994ab736baf4_gin",
+        "bytes": "6332416",
+        "indexdef": "CREATE INDEX customers_skip_separate_mg_index_tokens_1127994ab736baf4_gin ON bench_standard_next_100k.customers_skip_separate_mg_index USING gin (tokens_1127994ab736baf4)"
+      },
+      {
+        "indexname": "customers_skip_separate_mg_index_tokens_1c32fdad5d1c8367_bt",
+        "bytes": "1826816",
+        "indexdef": "CREATE INDEX customers_skip_separate_mg_index_tokens_1c32fdad5d1c8367_bt ON bench_standard_next_100k.customers_skip_separate_mg_index USING btree ((tokens_1c32fdad5d1c8367[1]))"
+      },
+      {
+        "indexname": "customers_skip_separate_mg_index_tokens_792d75cf01821d67_gin",
+        "bytes": "10428416",
+        "indexdef": "CREATE INDEX customers_skip_separate_mg_index_tokens_792d75cf01821d67_gin ON bench_standard_next_100k.customers_skip_separate_mg_index USING gin (tokens_792d75cf01821d67)"
+      },
+      {
+        "indexname": "customers_skip_separate_mg_index_tokens_7a1d2ba5ce2368fb_gin",
+        "bytes": "8044544",
+        "indexdef": "CREATE INDEX customers_skip_separate_mg_index_tokens_7a1d2ba5ce2368fb_gin ON bench_standard_next_100k.customers_skip_separate_mg_index USING gin (tokens_7a1d2ba5ce2368fb)"
+      },
+      {
+        "indexname": "customers_skip_separate_mg_index_tokens_988d248ff4b71bf7_bt",
+        "bytes": "835584",
+        "indexdef": "CREATE INDEX customers_skip_separate_mg_index_tokens_988d248ff4b71bf7_bt ON bench_standard_next_100k.customers_skip_separate_mg_index USING btree ((tokens_988d248ff4b71bf7[1]))"
+      },
+      {
+        "indexname": "customers_skip_separate_mg_index_tokens_a106c26102b707f0_bt",
+        "bytes": "712704",
+        "indexdef": "CREATE INDEX customers_skip_separate_mg_index_tokens_a106c26102b707f0_bt ON bench_standard_next_100k.customers_skip_separate_mg_index USING btree ((tokens_a106c26102b707f0[1]))"
+      },
+      {
+        "indexname": "customers_skip_separate_mg_index_tokens_a639b11c8130dcf7_gin",
+        "bytes": "12435456",
+        "indexdef": "CREATE INDEX customers_skip_separate_mg_index_tokens_a639b11c8130dcf7_gin ON bench_standard_next_100k.customers_skip_separate_mg_index USING gin (tokens_a639b11c8130dcf7)"
+      },
+      {
+        "indexname": "customers_skip_separate_mg_index_tokens_c44ae523cca61a0b_bt",
+        "bytes": "1826816",
+        "indexdef": "CREATE INDEX customers_skip_separate_mg_index_tokens_c44ae523cca61a0b_bt ON bench_standard_next_100k.customers_skip_separate_mg_index USING btree ((tokens_c44ae523cca61a0b[1]))"
+      },
+      {
+        "indexname": "customers_skip_separate_mg_index_tokens_c5133b3810f23103_bt",
+        "bytes": "1826816",
+        "indexdef": "CREATE INDEX customers_skip_separate_mg_index_tokens_c5133b3810f23103_bt ON bench_standard_next_100k.customers_skip_separate_mg_index USING btree ((tokens_c5133b3810f23103[1]))"
+      },
+      {
+        "indexname": "customers_skip_separate_mg_index_tokens_cd3096c7a3cd42c2_bt",
+        "bytes": "1826816",
+        "indexdef": "CREATE INDEX customers_skip_separate_mg_index_tokens_cd3096c7a3cd42c2_bt ON bench_standard_next_100k.customers_skip_separate_mg_index USING btree ((tokens_cd3096c7a3cd42c2[1]))"
+      },
+      {
+        "indexname": "customers_skip_separate_mg_index_tokens_ef1d32a52e2ce103_gin",
+        "bytes": "12926976",
+        "indexdef": "CREATE INDEX customers_skip_separate_mg_index_tokens_ef1d32a52e2ce103_gin ON bench_standard_next_100k.customers_skip_separate_mg_index USING gin (tokens_ef1d32a52e2ce103)"
+      },
+      {
+        "indexname": "customers_skip_separate_mg_index_tokens_f289b89d86c7086a_gin",
+        "bytes": "9011200",
+        "indexdef": "CREATE INDEX customers_skip_separate_mg_index_tokens_f289b89d86c7086a_gin ON bench_standard_next_100k.customers_skip_separate_mg_index USING gin (tokens_f289b89d86c7086a)"
+      }
+    ],
+    "substringColumns": [
+      "tokens_792d75cf01821d67",
+      "tokens_1127994ab736baf4",
+      "tokens_ef1d32a52e2ce103",
+      "tokens_a639b11c8130dcf7",
+      "tokens_f289b89d86c7086a",
+      "tokens_7a1d2ba5ce2368fb"
+    ],
+    "exactColumns": [
+      "tokens_988d248ff4b71bf7",
+      "tokens_a106c26102b707f0",
+      "tokens_c5133b3810f23103",
+      "tokens_1c32fdad5d1c8367",
+      "tokens_cd3096c7a3cd42c2",
+      "tokens_c44ae523cca61a0b"
+    ]
+  },
+  {
+    "variant": "skip",
+    "layout": "multi",
+    "name": "customers_skip_multi_mg_index",
+    "count": 100000,
+    "size": 278175744,
+    "indexes": [
+      {
+        "indexname": "customers_skip_multi_mg_index_gin",
+        "bytes": "59301888",
+        "indexdef": "CREATE INDEX customers_skip_multi_mg_index_gin ON bench_standard_next_100k.customers_skip_multi_mg_index USING gin (tokens_792d75cf01821d67, tokens_1127994ab736baf4, tokens_ef1d32a52e2ce103, tokens_a639b11c8130dcf7, tokens_f289b89d86c7086a, tokens_7a1d2ba5ce2368fb)"
+      },
+      {
+        "indexname": "customers_skip_multi_mg_index_pkey",
+        "bytes": "4997120",
+        "indexdef": "CREATE UNIQUE INDEX customers_skip_multi_mg_index_pkey ON bench_standard_next_100k.customers_skip_multi_mg_index USING btree (scope_id, row_id)"
+      },
+      {
+        "indexname": "customers_skip_multi_mg_index_tokens_1c32fdad5d1c8367_bt",
+        "bytes": "1826816",
+        "indexdef": "CREATE INDEX customers_skip_multi_mg_index_tokens_1c32fdad5d1c8367_bt ON bench_standard_next_100k.customers_skip_multi_mg_index USING btree ((tokens_1c32fdad5d1c8367[1]))"
+      },
+      {
+        "indexname": "customers_skip_multi_mg_index_tokens_988d248ff4b71bf7_bt",
+        "bytes": "835584",
+        "indexdef": "CREATE INDEX customers_skip_multi_mg_index_tokens_988d248ff4b71bf7_bt ON bench_standard_next_100k.customers_skip_multi_mg_index USING btree ((tokens_988d248ff4b71bf7[1]))"
+      },
+      {
+        "indexname": "customers_skip_multi_mg_index_tokens_a106c26102b707f0_bt",
+        "bytes": "712704",
+        "indexdef": "CREATE INDEX customers_skip_multi_mg_index_tokens_a106c26102b707f0_bt ON bench_standard_next_100k.customers_skip_multi_mg_index USING btree ((tokens_a106c26102b707f0[1]))"
+      },
+      {
+        "indexname": "customers_skip_multi_mg_index_tokens_c44ae523cca61a0b_bt",
+        "bytes": "1826816",
+        "indexdef": "CREATE INDEX customers_skip_multi_mg_index_tokens_c44ae523cca61a0b_bt ON bench_standard_next_100k.customers_skip_multi_mg_index USING btree ((tokens_c44ae523cca61a0b[1]))"
+      },
+      {
+        "indexname": "customers_skip_multi_mg_index_tokens_c5133b3810f23103_bt",
+        "bytes": "1826816",
+        "indexdef": "CREATE INDEX customers_skip_multi_mg_index_tokens_c5133b3810f23103_bt ON bench_standard_next_100k.customers_skip_multi_mg_index USING btree ((tokens_c5133b3810f23103[1]))"
+      },
+      {
+        "indexname": "customers_skip_multi_mg_index_tokens_cd3096c7a3cd42c2_bt",
+        "bytes": "1826816",
+        "indexdef": "CREATE INDEX customers_skip_multi_mg_index_tokens_cd3096c7a3cd42c2_bt ON bench_standard_next_100k.customers_skip_multi_mg_index USING btree ((tokens_cd3096c7a3cd42c2[1]))"
+      }
+    ],
+    "substringColumns": [
+      "tokens_792d75cf01821d67",
+      "tokens_1127994ab736baf4",
+      "tokens_ef1d32a52e2ce103",
+      "tokens_a639b11c8130dcf7",
+      "tokens_f289b89d86c7086a",
+      "tokens_7a1d2ba5ce2368fb"
+    ],
+    "exactColumns": [
+      "tokens_988d248ff4b71bf7",
+      "tokens_a106c26102b707f0",
+      "tokens_c5133b3810f23103",
+      "tokens_1c32fdad5d1c8367",
+      "tokens_cd3096c7a3cd42c2",
+      "tokens_c44ae523cca61a0b"
+    ]
+  }
+]

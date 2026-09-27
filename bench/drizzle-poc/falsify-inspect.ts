@@ -1,0 +1,3 @@
+import pg from 'pg';import {assertDisposable} from '../../test/disposable.js';
+const pool=new pg.Pool({host:'127.0.0.1',port:56439,user:'sealql_test',database:'postgres'});
+try{await assertDisposable(pool);for(const table of ['bench_realistic_100k.customers','bench_standard_next_100k.customers','bench_standard_next_100k.customers_seal_index']){const [s,t]=table.split('.');console.log(table,(await pool.query('select column_name,data_type from information_schema.columns where table_schema=$1 and table_name=$2 order by ordinal_position',[s,t])).rows);console.log('count',(await pool.query(`select count(*)::int as n from ${table}`)).rows[0]);}}finally{await pool.end();}

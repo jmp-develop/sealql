@@ -1,0 +1,36 @@
+{
+  "fixture": "bench_standard_next_100k.core_verify_boundary",
+  "source": "bench_realistic_100k.customers",
+  "cases": [
+    {
+      "name": "2048-char-derived-insert-get-search",
+      "verdict": "통과",
+      "characters": 2048,
+      "utf8Bytes": 5692,
+      "term": "인내용ntr",
+      "returned": 1
+    },
+    {
+      "name": "nullable-null-to-value-search",
+      "verdict": "통과",
+      "revision": "1→2"
+    },
+    {
+      "name": "nullable-value-to-null-search",
+      "verdict": "통과",
+      "revision": "2→3"
+    },
+    {
+      "name": "maxBytes-16-vs-17-db",
+      "verdict": "통과",
+      "maxBytes": 16,
+      "error": "LIMIT_EXCEEDED",
+      "revisionUnchanged": true
+    },
+    {
+      "name": "2049-char-write-rejected",
+      "verdict": "통과",
+      "error": "LIMIT_EXCEEDED"
+    }
+  ]
+}

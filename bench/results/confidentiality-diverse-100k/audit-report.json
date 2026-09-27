@@ -1,0 +1,33 @@
+{
+  "status": "pass",
+  "counts": {
+    "rows": 100000,
+    "ciphertexts": 600000,
+    "basicIndexRows": 200000,
+    "v2Pages": 14800
+  },
+  "sourceSha256": "0fb59f7d31394e40d62d03cb9422d3f47c4f7e6eba977ff6674b490135463caf",
+  "observerFiles": {
+    "observer-basic.jsonl": {
+      "bytes": 127520753,
+      "sha256": "98d213c6cd4586ca0142e7cab8c52072a5254e08e21a09ca98bade0390ed42f6"
+    },
+    "observer-v2-rows.jsonl": {
+      "bytes": 79388383,
+      "sha256": "83e1de55c4387567cc823cb66c5294b338ed388bee15ac86fa15b86c6e4dee47"
+    },
+    "observer-v2-pages.jsonl": {
+      "bytes": 90097800,
+      "sha256": "63251b1609a54511d96a1c1069b5fb48f462c2d6a005be475445fe3f5578e6df"
+    }
+  },
+  "checks": [
+    "same row IDs and ciphertext in both modes",
+    "six AES-GCM v2 envelopes per row",
+    "two basic index profiles per row",
+    "V2 pages have no public row IDs or profile labels",
+    "no source field value in its observer row",
+    "no root key in observer exports"
+  ],
+  "limits": "Structural inspection does not replace a keyed page decrypt or simulate omitted PostgreSQL physical/WAL/query-log channels."
+}

@@ -1,0 +1,38 @@
+{
+  "database": "127.0.0.1:56439",
+  "source": "bench_realistic_100k.customers",
+  "encrypted": "bench_standard_next_100k.customers_skip_product_multi",
+  "pageLimit": 200,
+  "cases": [
+    {
+      "name": "address-sejong",
+      "field": "address",
+      "term": "세종대로",
+      "plainCount": 16574,
+      "encryptedCount": 16574,
+      "count": 16574,
+      "pages": 83,
+      "stopReason": "exhausted",
+      "plainIdSha256": "28722569a0e0a7364108cb224b41bcc315539fe349bc0baee4478e15b494791e",
+      "encryptedIdSha256": "28722569a0e0a7364108cb224b41bcc315539fe349bc0baee4478e15b494791e",
+      "uniqueIds": 16574,
+      "smallBudgetCode": "LIMIT_EXCEEDED",
+      "verdict": "통과"
+    },
+    {
+      "name": "company-service",
+      "field": "company",
+      "term": "서울서비스",
+      "plainCount": 30101,
+      "encryptedCount": 30101,
+      "count": 30101,
+      "pages": 151,
+      "stopReason": "exhausted",
+      "plainIdSha256": "16b8dd130e5da9671a16ad10b1dd095bb3897adab84126d952f58be5889a51b8",
+      "encryptedIdSha256": "16b8dd130e5da9671a16ad10b1dd095bb3897adab84126d952f58be5889a51b8",
+      "uniqueIds": 30101,
+      "smallBudgetCode": "LIMIT_EXCEEDED",
+      "verdict": "통과"
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "fixture": "bench_standard_next_100k.core_verify_public_or",
+  "source": "bench_realistic_100k.customers",
+  "publicField": "tag",
+  "encryptedField": "body",
+  "expectedOr": [
+    "10000000-0000-4000-8000-000000000001",
+    "10000000-0000-4000-8000-000000000002"
+  ],
+  "encryptedOnly": [
+    "10000000-0000-4000-8000-000000000001"
+  ],
+  "publicOnly": [
+    "10000000-0000-4000-8000-000000000002"
+  ],
+  "combinedAsMatchPlusWhere": [],
+  "attemptedMatchAnyWithPublicFragment": "INVALID_VALUE",
+  "verdict": "한계(설계상)"
+}

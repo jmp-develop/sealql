@@ -1,0 +1,25 @@
+import { copyFile, mkdir, readFile, writeFile } from 'node:fs/promises';
+import { execFileSync } from 'node:child_process';
+import { fileURLToPath } from 'node:url';
+import path from 'node:path';
+
+const root=fileURLToPath(new URL('..',import.meta.url));
+const consumer=path.join(root,'.local','consumer');
+if(!process.env.npm_execpath)throw new Error('Run through npm run test:install');
+const npm=(args)=>execFileSync(process.execPath,[process.env.npm_execpath,...args],{cwd:root,stdio:'inherit'});
+await mkdir(consumer,{recursive:true});
+await writeFile(path.join(consumer,'package.json'), JSON.stringify({ private: true, type: 'module' }));
+await copyFile(path.join(root,'examples','standard-consumer.ts'),path.join(consumer,'standard-consumer.ts'));
+for(const name of ['standard-raw.ts','standard-operations.ts','key-loader.ts'])await copyFile(path.join(root,'examples',name),path.join(consumer,name));
+const pkg=JSON.parse(await readFile(path.join(root,'package.json'),'utf8'));
+npm(['pack','--pack-destination','.local','--quiet']);
+npm(['install','--prefix',consumer,'--ignore-scripts','--no-audit','--no-fund',path.join(root,'.local',`${pkg.name}-${pkg.version}.tgz`),'drizzle-orm@0.45.3','pg@8.23.0']);
+execFileSync(process.execPath,[path.join(root,'node_modules','typescript','bin','tsc'),'--target','ES2022','--module','NodeNext','--moduleResolution','NodeNext','--strict','--skipLibCheck','--noEmit',path.join(consumer,'standard-consumer.ts')],{cwd:root,stdio:'inherit'});
+execFileSync(process.execPath,[path.join(root,'node_modules','typescript','bin','tsc'),'--target','ES2022','--module','NodeNext','--moduleResolution','NodeNext','--strict','--skipLibCheck','--noEmit',path.join(consumer,'standard-raw.ts'),path.join(consumer,'standard-operations.ts'),path.join(consumer,'key-loader.ts')],{cwd:root,stdio:'inherit'});
+await writeFile(path.join(consumer,'smoke.mjs'), "import * as core from 'sealql'; import * as pg from 'sealql/postgres'; import * as drizzle from 'sealql/drizzle/v0.45'; if (!core.createSealer || !pg.bindSealed || !drizzle.bindSealed) throw new Error('Missing package export');\n");
+execFileSync(process.execPath,[path.join(consumer,'smoke.mjs')],{cwd:consumer,stdio:'inherit'});
+console.log('Installed standard consumer compiles with drizzle-orm 0.45.3');
+npm(['install','--prefix',consumer,'--ignore-scripts','--no-audit','--no-fund','drizzle-orm@0.45.2']);
+execFileSync(process.execPath,[path.join(root,'node_modules','typescript','bin','tsc'),'--target','ES2022','--module','NodeNext','--moduleResolution','NodeNext','--strict','--skipLibCheck','--noEmit',path.join(consumer,'standard-consumer.ts')],{cwd:root,stdio:'inherit'});
+execFileSync(process.execPath,[path.join(root,'node_modules','typescript','bin','tsc'),'--target','ES2022','--module','NodeNext','--moduleResolution','NodeNext','--strict','--skipLibCheck','--noEmit',path.join(consumer,'standard-raw.ts'),path.join(consumer,'standard-operations.ts'),path.join(consumer,'key-loader.ts')],{cwd:root,stdio:'inherit'});
+console.log('Installed standard consumer compiles with drizzle-orm 0.45.2');

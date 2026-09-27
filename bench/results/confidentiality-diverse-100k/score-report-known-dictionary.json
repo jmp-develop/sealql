@@ -1,0 +1,166 @@
+{
+  "status": "complete",
+  "targetRule": "lexicographically smallest 10000 UUIDv4 IDs in the pinned 100000-row V2 observer snapshot",
+  "targetRows": 10000,
+  "selectedIdsSha256": "9c6f3ee08db84f5323b39cb46f3cb9d31101d235568400ecb837e10ab83d118f",
+  "observerSha256": "83e1de55c4387567cc823cb66c5294b338ed388bee15ac86fa15b86c6e4dee47",
+  "oracleSha256": "92f86967068dec99b5471de594ae04d2a4fc15bc95b6ac030e35b918195ee7ea",
+  "evaluationCategory": "known-answer-dictionary-assisted",
+  "blindDbTheftEvidence": false,
+  "predictionContract": "exactly id plus six string-or-null fields per JSONL row; null abstains; exact raw string equality",
+  "modes": {
+    "basic": {
+      "predictionSha256": "b4093320ecb5a1601e48157c8d2c41a77dc18f8102fc9359008b4242c7e1c030",
+      "rows": 10000,
+      "fields": {
+        "name": {
+          "attempted": 10000,
+          "exactHits": 115,
+          "conditionalPrecision": 0.0115,
+          "coverage": 1
+        },
+        "phone": {
+          "attempted": 0,
+          "exactHits": 0,
+          "conditionalPrecision": null,
+          "coverage": 0
+        },
+        "address": {
+          "attempted": 0,
+          "exactHits": 0,
+          "conditionalPrecision": null,
+          "coverage": 0
+        },
+        "memo": {
+          "attempted": 8594,
+          "exactHits": 8594,
+          "conditionalPrecision": 1,
+          "coverage": 0.8594
+        },
+        "email": {
+          "attempted": 10000,
+          "exactHits": 2081,
+          "conditionalPrecision": 0.2081,
+          "coverage": 1
+        },
+        "company": {
+          "attempted": 10000,
+          "exactHits": 3133,
+          "conditionalPrecision": 0.3133,
+          "coverage": 1
+        }
+      },
+      "fullSixFieldExactRecords": 0,
+      "rowsWithAtLeastOneHit": 9040,
+      "rowsWithAtLeastOneAttempt": 10000,
+      "rowsWithAllSixAttempted": 0,
+      "rowAtLeastOneHitRate": 0.904,
+      "rowCoverage": 1,
+      "fullSixFieldAttemptCoverage": 0
+    },
+    "v2": {
+      "predictionSha256": "0a4765bd6e2c424b58e8f5969b457b77882ace4d5cde8d40b4311ee8f7ef34a6",
+      "rows": 10000,
+      "fields": {
+        "name": {
+          "attempted": 10000,
+          "exactHits": 115,
+          "conditionalPrecision": 0.0115,
+          "coverage": 1
+        },
+        "phone": {
+          "attempted": 0,
+          "exactHits": 0,
+          "conditionalPrecision": null,
+          "coverage": 0
+        },
+        "address": {
+          "attempted": 0,
+          "exactHits": 0,
+          "conditionalPrecision": null,
+          "coverage": 0
+        },
+        "memo": {
+          "attempted": 5751,
+          "exactHits": 2396,
+          "conditionalPrecision": 0.41662319596591896,
+          "coverage": 0.5751
+        },
+        "email": {
+          "attempted": 8167,
+          "exactHits": 621,
+          "conditionalPrecision": 0.07603771274641852,
+          "coverage": 0.8167
+        },
+        "company": {
+          "attempted": 10000,
+          "exactHits": 909,
+          "conditionalPrecision": 0.0909,
+          "coverage": 1
+        }
+      },
+      "fullSixFieldExactRecords": 0,
+      "rowsWithAtLeastOneHit": 3246,
+      "rowsWithAtLeastOneAttempt": 10000,
+      "rowsWithAllSixAttempted": 0,
+      "rowAtLeastOneHitRate": 0.3246,
+      "rowCoverage": 1,
+      "fullSixFieldAttemptCoverage": 0
+    },
+    "challenge": {
+      "predictionSha256": "1a110da3ba0b7fc0835fb536ec54521fe934f62a27cd1a1e8b03a35fa9f40fa6",
+      "rows": 10000,
+      "fields": {
+        "name": {
+          "attempted": 0,
+          "exactHits": 0,
+          "conditionalPrecision": null,
+          "coverage": 0
+        },
+        "phone": {
+          "attempted": 0,
+          "exactHits": 0,
+          "conditionalPrecision": null,
+          "coverage": 0
+        },
+        "address": {
+          "attempted": 0,
+          "exactHits": 0,
+          "conditionalPrecision": null,
+          "coverage": 0
+        },
+        "memo": {
+          "attempted": 8423,
+          "exactHits": 8423,
+          "conditionalPrecision": 1,
+          "coverage": 0.8423
+        },
+        "email": {
+          "attempted": 1516,
+          "exactHits": 1282,
+          "conditionalPrecision": 0.8456464379947229,
+          "coverage": 0.1516
+        },
+        "company": {
+          "attempted": 2341,
+          "exactHits": 2282,
+          "conditionalPrecision": 0.9747970952584366,
+          "coverage": 0.2341
+        }
+      },
+      "fullSixFieldExactRecords": 0,
+      "rowsWithAtLeastOneHit": 8781,
+      "rowsWithAtLeastOneAttempt": 8789,
+      "rowsWithAllSixAttempted": 0,
+      "rowAtLeastOneHitRate": 0.8781,
+      "rowCoverage": 0.8789,
+      "fullSixFieldAttemptCoverage": 0
+    }
+  },
+  "interpretationLimits": [
+    "The supplied answer-generating grammar and its known candidate dictionary make these scores invalid as blind database-theft evidence.",
+    "The corpus is hand-authored synthetic data with finite vocabulary and organization-conditioned patterns; rates do not estimate real customer-data risk.",
+    "The index fixture covers company exact and memo substring only; other protected fields contribute ciphertext length and public context, not search index tokens.",
+    "This evaluates frozen keyless observer snapshots, excluding database physical layout, WAL, query logs, and adaptive query access."
+  ]
+}

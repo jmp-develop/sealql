@@ -1,0 +1,172 @@
+{
+  "source": "bench_realistic_100k.customers first 10000 rows",
+  "plainTable": "bench_standard_next_100k.core_v3_bulk_plain",
+  "productTable": "bench_standard_next_100k.core_v3_bulk_product",
+  "warmup": 2,
+  "alternatingRuns": 7,
+  "batchSize": 100,
+  "indexesPresentDuringLoad": true,
+  "mode": "product Sealer.seal + searchPieces/searchTokens + batched parent and companion INSERT; plain batched INSERT",
+  "summary": {
+    "plain": {
+      "totalMs": 404.6351999999897,
+      "prepareMs": 0.030799999993178062,
+      "sqlMs": 382.6215000000084,
+      "sqlCalls": 300,
+      "rowsPerSec": 24713.61858780515
+    },
+    "product": {
+      "totalMs": 43043.81910000002,
+      "prepareMs": 39994.98599999974,
+      "sqlMs": 2937.798500000121,
+      "sqlCalls": 400,
+      "rowsPerSec": 232.3213926898042
+    }
+  },
+  "runs": {
+    "plain": [
+      {
+        "rows": 10000,
+        "batchSize": 100,
+        "batches": 100,
+        "totalMs": 413.95290000000386,
+        "prepareMs": 0.030799999993178062,
+        "sqlMs": 390.5070999999152,
+        "sqlCalls": 300,
+        "rowsPerSec": 24157.33770677753
+      },
+      {
+        "rows": 10000,
+        "batchSize": 100,
+        "batches": 100,
+        "totalMs": 404.6351999999897,
+        "prepareMs": 0.03649999984190799,
+        "sqlMs": 382.6215000000084,
+        "sqlCalls": 300,
+        "rowsPerSec": 24713.61858780515
+      },
+      {
+        "rows": 10000,
+        "batchSize": 100,
+        "batches": 100,
+        "totalMs": 414.1229999999923,
+        "prepareMs": 0.03559999985736795,
+        "sqlMs": 391.93529999951716,
+        "sqlCalls": 300,
+        "rowsPerSec": 24147.415139946792
+      },
+      {
+        "rows": 10000,
+        "batchSize": 100,
+        "batches": 100,
+        "totalMs": 425.27760000000126,
+        "prepareMs": 0.03329999989364296,
+        "sqlMs": 401.28129999965313,
+        "sqlCalls": 300,
+        "rowsPerSec": 23514.052938598154
+      },
+      {
+        "rows": 10000,
+        "batchSize": 100,
+        "batches": 100,
+        "totalMs": 396.99299999998766,
+        "prepareMs": 0.02569999999832362,
+        "sqlMs": 374.913899999985,
+        "sqlCalls": 300,
+        "rowsPerSec": 25189.36102147975
+      },
+      {
+        "rows": 10000,
+        "batchSize": 100,
+        "batches": 100,
+        "totalMs": 376.31359999999404,
+        "prepareMs": 0.02340000035474077,
+        "sqlMs": 354.9027000005008,
+        "sqlCalls": 300,
+        "rowsPerSec": 26573.58118335388
+      },
+      {
+        "rows": 10000,
+        "batchSize": 100,
+        "batches": 100,
+        "totalMs": 383.0462000000407,
+        "prepareMs": 0.023100000456906855,
+        "sqlMs": 360.08710000041174,
+        "sqlCalls": 300,
+        "rowsPerSec": 26106.51143386604
+      }
+    ],
+    "product": [
+      {
+        "rows": 10000,
+        "batchSize": 100,
+        "batches": 100,
+        "totalMs": 42869.82209999999,
+        "prepareMs": 39908.08340000003,
+        "sqlMs": 2937.798500000121,
+        "sqlCalls": 400,
+        "rowsPerSec": 233.26432231684026
+      },
+      {
+        "rows": 10000,
+        "batchSize": 100,
+        "batches": 100,
+        "totalMs": 43174.538299999986,
+        "prepareMs": 40217.2113000001,
+        "sqlMs": 2934.2757000003476,
+        "sqlCalls": 400,
+        "rowsPerSec": 231.61799509040733
+      },
+      {
+        "rows": 10000,
+        "batchSize": 100,
+        "batches": 100,
+        "totalMs": 42742.8529,
+        "prepareMs": 39878.0276,
+        "sqlMs": 2843.096099999879,
+        "sqlCalls": 400,
+        "rowsPerSec": 233.95724247503378
+      },
+      {
+        "rows": 10000,
+        "batchSize": 100,
+        "batches": 100,
+        "totalMs": 43174.0172,
+        "prepareMs": 40128.3014000002,
+        "sqlMs": 3023.9034999999276,
+        "sqlCalls": 400,
+        "rowsPerSec": 231.62079066388105
+      },
+      {
+        "rows": 10000,
+        "batchSize": 100,
+        "batches": 100,
+        "totalMs": 43043.81910000002,
+        "prepareMs": 39890.30669999961,
+        "sqlMs": 3131.109299999778,
+        "sqlCalls": 400,
+        "rowsPerSec": 232.3213926898042
+      },
+      {
+        "rows": 10000,
+        "batchSize": 100,
+        "batches": 100,
+        "totalMs": 43395.38280000002,
+        "prepareMs": 40311.72610000026,
+        "sqlMs": 3061.795200000226,
+        "sqlCalls": 400,
+        "rowsPerSec": 230.4392623078784
+      },
+      {
+        "rows": 10000,
+        "batchSize": 100,
+        "batches": 100,
+        "totalMs": 42907.402,
+        "prepareMs": 39994.98599999974,
+        "sqlMs": 2891.1760000001523,
+        "sqlCalls": 400,
+        "rowsPerSec": 233.0600207395451
+      }
+    ]
+  }
+}

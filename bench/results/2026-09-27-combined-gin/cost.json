@@ -1,0 +1,22 @@
+[
+  {
+    "variant": "next",
+    "originalInsertMs": 1.005200000000059,
+    "combinedInsertMs": 0.6356999999998152,
+    "originalPartialUpdateMs": 0.8528999999998632,
+    "combinedPartialUpdateMs": 0.5849000000002889,
+    "method": "one SQL statement each in one transaction; existing row tokens copied; memo update replaces full combined array; rolled back",
+    "oldMemoTokens": 40,
+    "newMemoTokens": 28
+  },
+  {
+    "variant": "skip",
+    "originalInsertMs": 1.909599999999955,
+    "combinedInsertMs": 0.8062999999997373,
+    "originalPartialUpdateMs": 0.6727999999998246,
+    "combinedPartialUpdateMs": 0.4153999999998632,
+    "method": "one SQL statement each in one transaction; existing row tokens copied; memo update replaces full combined array; rolled back",
+    "oldMemoTokens": 62,
+    "newMemoTokens": 48
+  }
+]

@@ -1,0 +1,880 @@
+{
+  "source": ".local/ratings.txt",
+  "seed": 99,
+  "victimRows": 20000,
+  "referenceRows": 20000,
+  "split": "first 20,000 nonempty reviews victim; next 20,000 reference; disjoint row positions",
+  "knownSelection": "seeded Fisher-Yates prefix, nested 1/5/10%",
+  "tokenSource": "product searchPieces/searchTokens, fixed benchmark key, one scope; key unavailable to attack",
+  "results": [
+    {
+      "layout": "adjacent",
+      "uniquePieces": 67430,
+      "uniqueTokens": 41976,
+      "storedPieceOccurrences": 516243,
+      "frequency": {
+        "byKind": {
+          "adjacent": {
+            "correct": 32434,
+            "total": 516243,
+            "pct": 6.28
+          }
+        },
+        "allPct": 6.28,
+        "adjacentPct": 6.28,
+        "mostlyDecodedUnknownRowsPct": 0.04,
+        "mostlyDecodedAdjacentUnknownRowsPct": 0.04,
+        "unknownRows": 20000
+      },
+      "known": [
+        {
+          "knownPct": 1,
+          "knownRows": 200,
+          "count": {
+            "byKind": {
+              "adjacent": {
+                "correct": 148393,
+                "total": 516243,
+                "pct": 28.74
+              }
+            },
+            "allPct": 28.74,
+            "adjacentPct": 28.74,
+            "mostlyDecodedUnknownRowsPct": 2.02,
+            "mostlyDecodedAdjacentUnknownRowsPct": 2.02,
+            "unknownRows": 19800
+          }
+        },
+        {
+          "knownPct": 5,
+          "knownRows": 1000,
+          "count": {
+            "byKind": {
+              "adjacent": {
+                "correct": 246341,
+                "total": 516243,
+                "pct": 47.72
+              }
+            },
+            "allPct": 47.72,
+            "adjacentPct": 47.72,
+            "mostlyDecodedUnknownRowsPct": 6.26,
+            "mostlyDecodedAdjacentUnknownRowsPct": 6.26,
+            "unknownRows": 19000
+          }
+        },
+        {
+          "knownPct": 10,
+          "knownRows": 2000,
+          "count": {
+            "byKind": {
+              "adjacent": {
+                "correct": 268014,
+                "total": 516243,
+                "pct": 51.92
+              }
+            },
+            "allPct": 51.92,
+            "adjacentPct": 51.92,
+            "mostlyDecodedUnknownRowsPct": 6.33,
+            "mostlyDecodedAdjacentUnknownRowsPct": 6.33,
+            "unknownRows": 18000
+          }
+        }
+      ],
+      "search": [
+        {
+          "name": "2-char contains",
+          "term": "영화",
+          "op": "contains",
+          "words": false,
+          "queryPieceCount": 1,
+          "candidates": 6356,
+          "matches": 6355,
+          "falsePositiveFactor": 1
+        },
+        {
+          "name": "middle 3-char contains",
+          "term": "서비스",
+          "op": "contains",
+          "words": false,
+          "queryPieceCount": 2,
+          "candidates": 3,
+          "matches": 3,
+          "falsePositiveFactor": 1
+        },
+        {
+          "name": "two-word contains",
+          "term": "정말 재미",
+          "op": "contains",
+          "words": true,
+          "queryPieceCount": 3,
+          "candidates": 100,
+          "matches": 85,
+          "falsePositiveFactor": 1.176
+        },
+        {
+          "name": "field-start autocomplete",
+          "term": "정말",
+          "op": "startsWith",
+          "words": false,
+          "queryPieceCount": 1,
+          "candidates": 1610,
+          "matches": 489,
+          "falsePositiveFactor": 3.292
+        }
+      ]
+    },
+    {
+      "layout": "adjacent+start/end",
+      "uniquePieces": 68820,
+      "uniqueTokens": 42468,
+      "storedPieceOccurrences": 556243,
+      "frequency": {
+        "byKind": {
+          "adjacent": {
+            "correct": 30659,
+            "total": 516243,
+            "pct": 5.94
+          },
+          "start": {
+            "correct": 0,
+            "total": 20000,
+            "pct": 0
+          },
+          "end": {
+            "correct": 6680,
+            "total": 20000,
+            "pct": 33.4
+          }
+        },
+        "allPct": 6.71,
+        "adjacentPct": 5.94,
+        "mostlyDecodedUnknownRowsPct": 0,
+        "mostlyDecodedAdjacentUnknownRowsPct": 0.04,
+        "unknownRows": 20000
+      },
+      "known": [
+        {
+          "knownPct": 1,
+          "knownRows": 200,
+          "count": {
+            "byKind": {
+              "adjacent": {
+                "correct": 147726,
+                "total": 516243,
+                "pct": 28.62
+              },
+              "start": {
+                "correct": 8267,
+                "total": 20000,
+                "pct": 41.34
+              },
+              "end": {
+                "correct": 15409,
+                "total": 20000,
+                "pct": 77.05
+              }
+            },
+            "allPct": 30.81,
+            "adjacentPct": 28.62,
+            "mostlyDecodedUnknownRowsPct": 1.85,
+            "mostlyDecodedAdjacentUnknownRowsPct": 1.99,
+            "unknownRows": 19800
+          }
+        },
+        {
+          "knownPct": 5,
+          "knownRows": 1000,
+          "count": {
+            "byKind": {
+              "adjacent": {
+                "correct": 243344,
+                "total": 516243,
+                "pct": 47.14
+              },
+              "start": {
+                "correct": 12869,
+                "total": 20000,
+                "pct": 64.34
+              },
+              "end": {
+                "correct": 16893,
+                "total": 20000,
+                "pct": 84.47
+              }
+            },
+            "allPct": 49.1,
+            "adjacentPct": 47.14,
+            "mostlyDecodedUnknownRowsPct": 5.49,
+            "mostlyDecodedAdjacentUnknownRowsPct": 5.18,
+            "unknownRows": 19000
+          }
+        },
+        {
+          "knownPct": 10,
+          "knownRows": 2000,
+          "count": {
+            "byKind": {
+              "adjacent": {
+                "correct": 263991,
+                "total": 516243,
+                "pct": 51.14
+              },
+              "start": {
+                "correct": 12993,
+                "total": 20000,
+                "pct": 64.97
+              },
+              "end": {
+                "correct": 16534,
+                "total": 20000,
+                "pct": 82.67
+              }
+            },
+            "allPct": 52.77,
+            "adjacentPct": 51.14,
+            "mostlyDecodedUnknownRowsPct": 4.91,
+            "mostlyDecodedAdjacentUnknownRowsPct": 5.12,
+            "unknownRows": 18000
+          }
+        }
+      ],
+      "search": [
+        {
+          "name": "2-char contains",
+          "term": "영화",
+          "op": "contains",
+          "words": false,
+          "queryPieceCount": 1,
+          "candidates": 6356,
+          "matches": 6355,
+          "falsePositiveFactor": 1
+        },
+        {
+          "name": "middle 3-char contains",
+          "term": "서비스",
+          "op": "contains",
+          "words": false,
+          "queryPieceCount": 2,
+          "candidates": 3,
+          "matches": 3,
+          "falsePositiveFactor": 1
+        },
+        {
+          "name": "two-word contains",
+          "term": "정말 재미",
+          "op": "contains",
+          "words": true,
+          "queryPieceCount": 3,
+          "candidates": 100,
+          "matches": 85,
+          "falsePositiveFactor": 1.176
+        },
+        {
+          "name": "field-start autocomplete",
+          "term": "정말",
+          "op": "startsWith",
+          "words": false,
+          "queryPieceCount": 2,
+          "candidates": 493,
+          "matches": 489,
+          "falsePositiveFactor": 1.008
+        }
+      ]
+    },
+    {
+      "layout": "adjacent+start/end+word",
+      "uniquePieces": 71363,
+      "uniqueTokens": 43522,
+      "storedPieceOccurrences": 825935,
+      "frequency": {
+        "byKind": {
+          "adjacent": {
+            "correct": 23350,
+            "total": 516243,
+            "pct": 4.52
+          },
+          "start": {
+            "correct": 600,
+            "total": 20000,
+            "pct": 3
+          },
+          "end": {
+            "correct": 5755,
+            "total": 20000,
+            "pct": 28.77
+          },
+          "word-start": {
+            "correct": 15038,
+            "total": 139699,
+            "pct": 10.76
+          },
+          "word-end": {
+            "correct": 27378,
+            "total": 129993,
+            "pct": 21.06
+          }
+        },
+        "allPct": 8.73,
+        "adjacentPct": 4.52,
+        "mostlyDecodedUnknownRowsPct": 0.01,
+        "mostlyDecodedAdjacentUnknownRowsPct": 0.06,
+        "unknownRows": 20000
+      },
+      "known": [
+        {
+          "knownPct": 1,
+          "knownRows": 200,
+          "count": {
+            "byKind": {
+              "adjacent": {
+                "correct": 143379,
+                "total": 516243,
+                "pct": 27.77
+              },
+              "start": {
+                "correct": 7570,
+                "total": 20000,
+                "pct": 37.85
+              },
+              "end": {
+                "correct": 14187,
+                "total": 20000,
+                "pct": 70.94
+              },
+              "word-start": {
+                "correct": 96337,
+                "total": 139699,
+                "pct": 68.96
+              },
+              "word-end": {
+                "correct": 95519,
+                "total": 129993,
+                "pct": 73.48
+              }
+            },
+            "allPct": 43.22,
+            "adjacentPct": 27.77,
+            "mostlyDecodedUnknownRowsPct": 2.18,
+            "mostlyDecodedAdjacentUnknownRowsPct": 1.87,
+            "unknownRows": 19800
+          }
+        },
+        {
+          "knownPct": 5,
+          "knownRows": 1000,
+          "count": {
+            "byKind": {
+              "adjacent": {
+                "correct": 230527,
+                "total": 516243,
+                "pct": 44.65
+              },
+              "start": {
+                "correct": 12146,
+                "total": 20000,
+                "pct": 60.73
+              },
+              "end": {
+                "correct": 14318,
+                "total": 20000,
+                "pct": 71.59
+              },
+              "word-start": {
+                "correct": 103661,
+                "total": 139699,
+                "pct": 74.2
+              },
+              "word-end": {
+                "correct": 77449,
+                "total": 129993,
+                "pct": 59.58
+              }
+            },
+            "allPct": 53.04,
+            "adjacentPct": 44.65,
+            "mostlyDecodedUnknownRowsPct": 1.7,
+            "mostlyDecodedAdjacentUnknownRowsPct": 3.26,
+            "unknownRows": 19000
+          }
+        },
+        {
+          "knownPct": 10,
+          "knownRows": 2000,
+          "count": {
+            "byKind": {
+              "adjacent": {
+                "correct": 247937,
+                "total": 516243,
+                "pct": 48.03
+              },
+              "start": {
+                "correct": 12439,
+                "total": 20000,
+                "pct": 62.2
+              },
+              "end": {
+                "correct": 14422,
+                "total": 20000,
+                "pct": 72.11
+              },
+              "word-start": {
+                "correct": 97127,
+                "total": 139699,
+                "pct": 69.53
+              },
+              "word-end": {
+                "correct": 77198,
+                "total": 129993,
+                "pct": 59.39
+              }
+            },
+            "allPct": 54.38,
+            "adjacentPct": 48.03,
+            "mostlyDecodedUnknownRowsPct": 1.86,
+            "mostlyDecodedAdjacentUnknownRowsPct": 3.55,
+            "unknownRows": 18000
+          }
+        }
+      ],
+      "search": [
+        {
+          "name": "2-char contains",
+          "term": "영화",
+          "op": "contains",
+          "words": false,
+          "queryPieceCount": 1,
+          "candidates": 6355,
+          "matches": 6355,
+          "falsePositiveFactor": 1
+        },
+        {
+          "name": "middle 3-char contains",
+          "term": "서비스",
+          "op": "contains",
+          "words": false,
+          "queryPieceCount": 2,
+          "candidates": 3,
+          "matches": 3,
+          "falsePositiveFactor": 1
+        },
+        {
+          "name": "two-word contains",
+          "term": "정말 재미",
+          "op": "contains",
+          "words": true,
+          "queryPieceCount": 5,
+          "candidates": 87,
+          "matches": 85,
+          "falsePositiveFactor": 1.024
+        },
+        {
+          "name": "field-start autocomplete",
+          "term": "정말",
+          "op": "startsWith",
+          "words": false,
+          "queryPieceCount": 2,
+          "candidates": 494,
+          "matches": 489,
+          "falsePositiveFactor": 1.01
+        }
+      ]
+    },
+    {
+      "layout": "adjacent+start/end+word+skip",
+      "uniquePieces": 175521,
+      "uniqueTokens": 61069,
+      "storedPieceOccurrences": 1339317,
+      "frequency": {
+        "byKind": {
+          "adjacent": {
+            "correct": 21921,
+            "total": 516243,
+            "pct": 4.25
+          },
+          "start": {
+            "correct": 0,
+            "total": 20000,
+            "pct": 0
+          },
+          "end": {
+            "correct": 5755,
+            "total": 20000,
+            "pct": 28.77
+          },
+          "skip": {
+            "correct": 1409,
+            "total": 513382,
+            "pct": 0.27
+          },
+          "word-start": {
+            "correct": 12570,
+            "total": 139699,
+            "pct": 9
+          },
+          "word-end": {
+            "correct": 38869,
+            "total": 129993,
+            "pct": 29.9
+          }
+        },
+        "allPct": 6.01,
+        "adjacentPct": 4.25,
+        "mostlyDecodedUnknownRowsPct": 0,
+        "mostlyDecodedAdjacentUnknownRowsPct": 0.04,
+        "unknownRows": 20000
+      },
+      "known": [
+        {
+          "knownPct": 1,
+          "knownRows": 200,
+          "count": {
+            "byKind": {
+              "adjacent": {
+                "correct": 108344,
+                "total": 516243,
+                "pct": 20.99
+              },
+              "start": {
+                "correct": 7705,
+                "total": 20000,
+                "pct": 38.52
+              },
+              "end": {
+                "correct": 13949,
+                "total": 20000,
+                "pct": 69.75
+              },
+              "skip": {
+                "correct": 45076,
+                "total": 513382,
+                "pct": 8.78
+              },
+              "word-start": {
+                "correct": 88011,
+                "total": 139699,
+                "pct": 63
+              },
+              "word-end": {
+                "correct": 102556,
+                "total": 129993,
+                "pct": 78.89
+              }
+            },
+            "allPct": 27.3,
+            "adjacentPct": 20.99,
+            "mostlyDecodedUnknownRowsPct": 0.1,
+            "mostlyDecodedAdjacentUnknownRowsPct": 0.43,
+            "unknownRows": 19800
+          },
+          "consistency": {
+            "byKind": {
+              "adjacent": {
+                "correct": 140034,
+                "total": 516243,
+                "pct": 27.13
+              },
+              "start": {
+                "correct": 7705,
+                "total": 20000,
+                "pct": 38.52
+              },
+              "end": {
+                "correct": 13949,
+                "total": 20000,
+                "pct": 69.75
+              },
+              "skip": {
+                "correct": 64530,
+                "total": 513382,
+                "pct": 12.57
+              },
+              "word-start": {
+                "correct": 88011,
+                "total": 139699,
+                "pct": 63
+              },
+              "word-end": {
+                "correct": 102556,
+                "total": 129993,
+                "pct": 78.89
+              }
+            },
+            "allPct": 31.12,
+            "adjacentPct": 27.13,
+            "mostlyDecodedUnknownRowsPct": 0.41,
+            "mostlyDecodedAdjacentUnknownRowsPct": 1.63,
+            "unknownRows": 19800,
+            "rounds": [
+              {
+                "added": 936
+              },
+              {
+                "added": 290
+              },
+              {
+                "added": 144
+              },
+              {
+                "added": 69
+              },
+              {
+                "added": 25
+              },
+              {
+                "added": 4
+              }
+            ],
+            "addedTokenGuesses": 1468
+          }
+        },
+        {
+          "knownPct": 5,
+          "knownRows": 1000,
+          "count": {
+            "byKind": {
+              "adjacent": {
+                "correct": 167337,
+                "total": 516243,
+                "pct": 32.41
+              },
+              "start": {
+                "correct": 9554,
+                "total": 20000,
+                "pct": 47.77
+              },
+              "end": {
+                "correct": 12999,
+                "total": 20000,
+                "pct": 65
+              },
+              "skip": {
+                "correct": 110765,
+                "total": 513382,
+                "pct": 21.58
+              },
+              "word-start": {
+                "correct": 83187,
+                "total": 139699,
+                "pct": 59.55
+              },
+              "word-end": {
+                "correct": 87196,
+                "total": 129993,
+                "pct": 67.08
+              }
+            },
+            "allPct": 35.17,
+            "adjacentPct": 32.41,
+            "mostlyDecodedUnknownRowsPct": 0.56,
+            "mostlyDecodedAdjacentUnknownRowsPct": 1.27,
+            "unknownRows": 19000
+          },
+          "consistency": {
+            "byKind": {
+              "adjacent": {
+                "correct": 191379,
+                "total": 516243,
+                "pct": 37.07
+              },
+              "start": {
+                "correct": 9554,
+                "total": 20000,
+                "pct": 47.77
+              },
+              "end": {
+                "correct": 12999,
+                "total": 20000,
+                "pct": 65
+              },
+              "skip": {
+                "correct": 125447,
+                "total": 513382,
+                "pct": 24.44
+              },
+              "word-start": {
+                "correct": 83187,
+                "total": 139699,
+                "pct": 59.55
+              },
+              "word-end": {
+                "correct": 87196,
+                "total": 129993,
+                "pct": 67.08
+              }
+            },
+            "allPct": 38.06,
+            "adjacentPct": 37.07,
+            "mostlyDecodedUnknownRowsPct": 0.66,
+            "mostlyDecodedAdjacentUnknownRowsPct": 2.15,
+            "unknownRows": 19000,
+            "rounds": [
+              {
+                "added": 1538
+              },
+              {
+                "added": 291
+              },
+              {
+                "added": 92
+              },
+              {
+                "added": 13
+              },
+              {
+                "added": 1
+              },
+              {
+                "added": 0
+              }
+            ],
+            "addedTokenGuesses": 1935
+          }
+        },
+        {
+          "knownPct": 10,
+          "knownRows": 2000,
+          "count": {
+            "byKind": {
+              "adjacent": {
+                "correct": 162069,
+                "total": 516243,
+                "pct": 31.39
+              },
+              "start": {
+                "correct": 9377,
+                "total": 20000,
+                "pct": 46.88
+              },
+              "end": {
+                "correct": 10741,
+                "total": 20000,
+                "pct": 53.7
+              },
+              "skip": {
+                "correct": 120268,
+                "total": 513382,
+                "pct": 23.43
+              },
+              "word-start": {
+                "correct": 61117,
+                "total": 139699,
+                "pct": 43.75
+              },
+              "word-end": {
+                "correct": 80738,
+                "total": 129993,
+                "pct": 62.11
+              }
+            },
+            "allPct": 33.17,
+            "adjacentPct": 31.39,
+            "mostlyDecodedUnknownRowsPct": 0.36,
+            "mostlyDecodedAdjacentUnknownRowsPct": 1.1,
+            "unknownRows": 18000
+          },
+          "consistency": {
+            "byKind": {
+              "adjacent": {
+                "correct": 172560,
+                "total": 516243,
+                "pct": 33.43
+              },
+              "start": {
+                "correct": 9377,
+                "total": 20000,
+                "pct": 46.88
+              },
+              "end": {
+                "correct": 10741,
+                "total": 20000,
+                "pct": 53.7
+              },
+              "skip": {
+                "correct": 125905,
+                "total": 513382,
+                "pct": 24.52
+              },
+              "word-start": {
+                "correct": 61117,
+                "total": 139699,
+                "pct": 43.75
+              },
+              "word-end": {
+                "correct": 80738,
+                "total": 129993,
+                "pct": 62.11
+              }
+            },
+            "allPct": 34.38,
+            "adjacentPct": 33.43,
+            "mostlyDecodedUnknownRowsPct": 0.37,
+            "mostlyDecodedAdjacentUnknownRowsPct": 1.33,
+            "unknownRows": 18000,
+            "rounds": [
+              {
+                "added": 1119
+              },
+              {
+                "added": 113
+              },
+              {
+                "added": 16
+              },
+              {
+                "added": 2
+              },
+              {
+                "added": 0
+              }
+            ],
+            "addedTokenGuesses": 1250
+          }
+        }
+      ],
+      "search": [
+        {
+          "name": "2-char contains",
+          "term": "영화",
+          "op": "contains",
+          "words": false,
+          "queryPieceCount": 1,
+          "candidates": 6357,
+          "matches": 6355,
+          "falsePositiveFactor": 1
+        },
+        {
+          "name": "middle 3-char contains",
+          "term": "서비스",
+          "op": "contains",
+          "words": false,
+          "queryPieceCount": 3,
+          "candidates": 3,
+          "matches": 3,
+          "falsePositiveFactor": 1
+        },
+        {
+          "name": "two-word contains",
+          "term": "정말 재미",
+          "op": "contains",
+          "words": true,
+          "queryPieceCount": 7,
+          "candidates": 85,
+          "matches": 85,
+          "falsePositiveFactor": 1
+        },
+        {
+          "name": "field-start autocomplete",
+          "term": "정말",
+          "op": "startsWith",
+          "words": false,
+          "queryPieceCount": 2,
+          "candidates": 497,
+          "matches": 489,
+          "falsePositiveFactor": 1.016
+        }
+      ]
+    }
+  ]
+}

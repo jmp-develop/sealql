@@ -1,0 +1,79 @@
+{
+  "source": ".local/ratings.txt",
+  "victimRows": 20000,
+  "referenceRows": 20000,
+  "seed": 99,
+  "versions": [
+    {
+      "layout": "adjacent+boundary",
+      "rows": 20000,
+      "frequency": {
+        "decodedOccurrencePct": 10.61,
+        "mostlyDecodedUnknownRowsPct": 0
+      },
+      "knownRowsPct": 5,
+      "knownRow": {
+        "decodedOccurrencePct": 55.82,
+        "mostlyDecodedUnknownRowsPct": 4.74
+      },
+      "search": [
+        {
+          "term": "영화",
+          "candidates": 6360,
+          "matches": 6355,
+          "falsePositiveFactor": 1.001
+        },
+        {
+          "term": "서비스",
+          "candidates": 3,
+          "matches": 3,
+          "falsePositiveFactor": 1
+        },
+        {
+          "term": "정말",
+          "candidates": 1576,
+          "matches": 1575,
+          "falsePositiveFactor": 1.001
+        }
+      ]
+    },
+    {
+      "layout": "adjacent+skip+boundary",
+      "rows": 20000,
+      "frequency": {
+        "decodedOccurrencePct": 4.63,
+        "mostlyDecodedUnknownRowsPct": 0
+      },
+      "knownRowsPct": 5,
+      "knownRow": {
+        "decodedOccurrencePct": 36.12,
+        "mostlyDecodedUnknownRowsPct": 0.62
+      },
+      "skipConsistency": {
+        "decodedSkipOccurrencePct": 21.51,
+        "confirmedByDecodedAdjacentPathPct": 34,
+        "decodedSkipOccurrences": 105289
+      },
+      "search": [
+        {
+          "term": "영화",
+          "candidates": 6356,
+          "matches": 6355,
+          "falsePositiveFactor": 1
+        },
+        {
+          "term": "서비스",
+          "candidates": 3,
+          "matches": 3,
+          "falsePositiveFactor": 1
+        },
+        {
+          "term": "정말",
+          "candidates": 1586,
+          "matches": 1575,
+          "falsePositiveFactor": 1.007
+        }
+      ]
+    }
+  ]
+}

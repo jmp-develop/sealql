@@ -1,0 +1,382 @@
+[
+  {
+    "case": "exact_common company(28k)",
+    "rows": 20,
+    "plainDb": 0.73,
+    "current": {
+      "prepare": 4.44,
+      "tokens": 0.39,
+      "db": 2.65,
+      "verify": 3.85,
+      "decrypt": 11.27,
+      "total": 22.6,
+      "sqlCalls": 4,
+      "fetched": 20,
+      "falsePositive": 0
+    },
+    "improvedSameFormat": {
+      "prepare": 0,
+      "tokens": 0.11,
+      "db": 1.35,
+      "verify": 2.71,
+      "decrypt": 9.76,
+      "total": 13.93,
+      "sqlCalls": 1,
+      "fetched": 27,
+      "falsePositive": 0
+    },
+    "improvedKeyReuse": {
+      "prepare": 0,
+      "tokens": 0.14,
+      "db": 1.21,
+      "verify": 0.76,
+      "decrypt": 2.35,
+      "total": 4.46,
+      "sqlCalls": 1,
+      "fetched": 27,
+      "falsePositive": 0
+    }
+  },
+  {
+    "case": "exact_one phone",
+    "rows": 1,
+    "plainDb": 0.41,
+    "current": {
+      "prepare": 4.05,
+      "tokens": 0.29,
+      "db": 0.91,
+      "verify": 0.19,
+      "decrypt": 0.52,
+      "total": 5.96,
+      "sqlCalls": 3,
+      "fetched": 1,
+      "falsePositive": 0
+    },
+    "improvedSameFormat": {
+      "prepare": 0,
+      "tokens": 0.1,
+      "db": 0.9,
+      "verify": 0.25,
+      "decrypt": 0.51,
+      "total": 1.76,
+      "sqlCalls": 1,
+      "fetched": 1,
+      "falsePositive": 0
+    },
+    "improvedKeyReuse": {
+      "prepare": 0,
+      "tokens": 0.09,
+      "db": 0.66,
+      "verify": 0.08,
+      "decrypt": 0.15,
+      "total": 0.98,
+      "sqlCalls": 1,
+      "fetched": 1,
+      "falsePositive": 0
+    }
+  },
+  {
+    "case": "exact_zero phone",
+    "rows": 0,
+    "plainDb": 0.35,
+    "current": {
+      "prepare": 3.79,
+      "tokens": 0.3,
+      "db": 0.87,
+      "verify": 0.35,
+      "decrypt": 0,
+      "total": 5.31,
+      "sqlCalls": 3,
+      "fetched": 2,
+      "falsePositive": 2
+    },
+    "improvedSameFormat": {
+      "prepare": 0,
+      "tokens": 0.09,
+      "db": 0.88,
+      "verify": 0.26,
+      "decrypt": 0,
+      "total": 1.23,
+      "sqlCalls": 1,
+      "fetched": 2,
+      "falsePositive": 2
+    },
+    "improvedKeyReuse": {
+      "prepare": 0,
+      "tokens": 0.09,
+      "db": 0.61,
+      "verify": 0.1,
+      "decrypt": 0,
+      "total": 0.8,
+      "sqlCalls": 1,
+      "fetched": 2,
+      "falsePositive": 2
+    }
+  },
+  {
+    "case": "sub_mid address 세종대로",
+    "rows": 20,
+    "plainDb": 0.66,
+    "current": {
+      "prepare": 3.91,
+      "tokens": 0.31,
+      "db": 2.33,
+      "verify": 3.37,
+      "decrypt": 10.52,
+      "total": 20.44,
+      "sqlCalls": 4,
+      "fetched": 20,
+      "falsePositive": 0
+    },
+    "improvedSameFormat": {
+      "prepare": 0,
+      "tokens": 0.13,
+      "db": 1.06,
+      "verify": 2.64,
+      "decrypt": 9.58,
+      "total": 13.41,
+      "sqlCalls": 1,
+      "fetched": 27,
+      "falsePositive": 0
+    },
+    "improvedKeyReuse": {
+      "prepare": 0,
+      "tokens": 0.15,
+      "db": 1.18,
+      "verify": 0.74,
+      "decrypt": 2.08,
+      "total": 4.15,
+      "sqlCalls": 1,
+      "fetched": 27,
+      "falsePositive": 0
+    }
+  },
+  {
+    "case": "sub_zero memo 없는표식",
+    "rows": 0,
+    "plainDb": 68.92,
+    "current": {
+      "prepare": 4.14,
+      "tokens": 0.38,
+      "db": 1.08,
+      "verify": 0,
+      "decrypt": 0,
+      "total": 5.6,
+      "sqlCalls": 3,
+      "fetched": 0,
+      "falsePositive": 0
+    },
+    "improvedSameFormat": {
+      "prepare": 0,
+      "tokens": 0.14,
+      "db": 0.91,
+      "verify": 0,
+      "decrypt": 0,
+      "total": 1.05,
+      "sqlCalls": 1,
+      "fetched": 0,
+      "falsePositive": 0
+    },
+    "improvedKeyReuse": {
+      "prepare": 0,
+      "tokens": 0.14,
+      "db": 0.74,
+      "verify": 0,
+      "decrypt": 0,
+      "total": 0.88,
+      "sqlCalls": 1,
+      "fetched": 0,
+      "falsePositive": 0
+    }
+  },
+  {
+    "case": "starts address 서울",
+    "rows": 20,
+    "plainDb": 0.52,
+    "current": {
+      "prepare": 3.69,
+      "tokens": 0.27,
+      "db": 3.32,
+      "verify": 4.78,
+      "decrypt": 10.49,
+      "total": 22.55,
+      "sqlCalls": 5,
+      "fetched": 30,
+      "falsePositive": 9
+    },
+    "improvedSameFormat": {
+      "prepare": 0,
+      "tokens": 0.1,
+      "db": 2.5,
+      "verify": 5.1,
+      "decrypt": 9.52,
+      "total": 17.22,
+      "sqlCalls": 2,
+      "fetched": 54,
+      "falsePositive": 21
+    },
+    "improvedKeyReuse": {
+      "prepare": 0,
+      "tokens": 0.11,
+      "db": 1.96,
+      "verify": 1.49,
+      "decrypt": 2.17,
+      "total": 5.73,
+      "sqlCalls": 2,
+      "fetched": 54,
+      "falsePositive": 21
+    }
+  },
+  {
+    "case": "and2 company+memo 서비스",
+    "rows": 20,
+    "plainDb": 0.61,
+    "current": {
+      "prepare": 3.99,
+      "tokens": 0.44,
+      "db": 2.43,
+      "verify": 4.49,
+      "decrypt": 7.97,
+      "total": 19.32,
+      "sqlCalls": 4,
+      "fetched": 20,
+      "falsePositive": 0
+    },
+    "improvedSameFormat": {
+      "prepare": 0,
+      "tokens": 0.17,
+      "db": 1.04,
+      "verify": 4.92,
+      "decrypt": 8.03,
+      "total": 14.16,
+      "sqlCalls": 1,
+      "fetched": 27,
+      "falsePositive": 0
+    },
+    "improvedKeyReuse": {
+      "prepare": 0,
+      "tokens": 0.19,
+      "db": 1.24,
+      "verify": 1.33,
+      "decrypt": 1.69,
+      "total": 4.45,
+      "sqlCalls": 1,
+      "fetched": 27,
+      "falsePositive": 0
+    }
+  },
+  {
+    "case": "and6 all fields",
+    "rows": 20,
+    "plainDb": 2.48,
+    "current": {
+      "prepare": 4.01,
+      "tokens": 1.05,
+      "db": 48.49,
+      "verify": 18.4,
+      "decrypt": 0.12,
+      "total": 72.07,
+      "sqlCalls": 5,
+      "fetched": 30,
+      "falsePositive": 9
+    },
+    "improvedSameFormat": {
+      "prepare": 0,
+      "tokens": 0.4,
+      "db": 31.2,
+      "verify": 28.96,
+      "decrypt": 0.05,
+      "total": 60.61,
+      "sqlCalls": 2,
+      "fetched": 54,
+      "falsePositive": 18
+    },
+    "improvedKeyReuse": {
+      "prepare": 0,
+      "tokens": 1.4,
+      "db": 31.36,
+      "verify": 7.64,
+      "decrypt": 0.04,
+      "total": 40.44,
+      "sqlCalls": 2,
+      "fetched": 54,
+      "falsePositive": 18
+    }
+  },
+  {
+    "case": "or3 rare",
+    "rows": 2,
+    "plainDb": 0.65,
+    "current": {
+      "prepare": 4.18,
+      "tokens": 0.53,
+      "db": 199.8,
+      "verify": 0.86,
+      "decrypt": 0.8,
+      "total": 206.17,
+      "sqlCalls": 3,
+      "fetched": 3,
+      "falsePositive": 1
+    },
+    "improvedSameFormat": {
+      "prepare": 0,
+      "tokens": 0.27,
+      "db": 1.25,
+      "verify": 0.68,
+      "decrypt": 0.76,
+      "total": 2.96,
+      "sqlCalls": 1,
+      "fetched": 3,
+      "falsePositive": 1
+    },
+    "improvedKeyReuse": {
+      "prepare": 0,
+      "tokens": 0.26,
+      "db": 1.09,
+      "verify": 0.22,
+      "decrypt": 0.22,
+      "total": 1.79,
+      "sqlCalls": 1,
+      "fetched": 3,
+      "falsePositive": 1
+    }
+  },
+  {
+    "case": "phone digits 5748",
+    "rows": 19,
+    "plainDb": 0.62,
+    "current": {
+      "prepare": 3.93,
+      "tokens": 0.32,
+      "db": 13.11,
+      "verify": 10.58,
+      "decrypt": 10.17,
+      "total": 38.11,
+      "sqlCalls": 9,
+      "fetched": 62,
+      "falsePositive": 43
+    },
+    "improvedSameFormat": {
+      "prepare": 0,
+      "tokens": 0.13,
+      "db": 5.59,
+      "verify": 6.17,
+      "decrypt": 8.73,
+      "total": 20.62,
+      "sqlCalls": 3,
+      "fetched": 62,
+      "falsePositive": 43
+    },
+    "improvedKeyReuse": {
+      "prepare": 0,
+      "tokens": 0.14,
+      "db": 4.2,
+      "verify": 1.63,
+      "decrypt": 2.18,
+      "total": 8.15,
+      "sqlCalls": 3,
+      "fetched": 62,
+      "falsePositive": 43
+    }
+  }
+]

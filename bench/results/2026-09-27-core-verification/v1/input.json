@@ -1,0 +1,58 @@
+{
+  "cases": [
+    {
+      "name": "short:\"\"",
+      "verdict": "통과",
+      "code": "QUERY_TOO_BROAD"
+    },
+    {
+      "name": "short:\"a\"",
+      "verdict": "통과",
+      "code": "QUERY_TOO_BROAD"
+    },
+    {
+      "name": "short:\"한\"",
+      "verdict": "통과",
+      "code": "QUERY_TOO_BROAD"
+    },
+    {
+      "name": "short:\" \"",
+      "verdict": "통과",
+      "code": "QUERY_TOO_BROAD"
+    },
+    {
+      "name": "normalization:한글/한글",
+      "verdict": "통과"
+    },
+    {
+      "name": "normalization:AB12/ＡＢ１２",
+      "verdict": "통과"
+    },
+    {
+      "name": "normalization:Foo/fOO",
+      "verdict": "통과"
+    },
+    {
+      "name": "normalization:a  b/a b",
+      "verdict": "통과"
+    },
+    {
+      "name": "2049 characters",
+      "verdict": "통과",
+      "code": "LIMIT_EXCEEDED"
+    },
+    {
+      "name": "maxBytes:16",
+      "verdict": "통과"
+    },
+    {
+      "name": "maxBytes:17",
+      "verdict": "통과",
+      "code": "LIMIT_EXCEEDED"
+    },
+    {
+      "name": "normalized word spacing",
+      "verdict": "통과"
+    }
+  ]
+}

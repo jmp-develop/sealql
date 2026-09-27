@@ -1,0 +1,688 @@
+{
+  "fixture": "1000 read-only derived rows from bench_realistic_100k.customers in a separate disposable schema",
+  "scopeId": "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa",
+  "cases": [
+    {
+      "field": "address",
+      "term": "세종대로",
+      "projection": "three",
+      "firstCall": {
+        "plain": {
+          "sqlMs": 0.8850000000002183,
+          "totalMs": 0.8850000000002183
+        },
+        "sealed": {
+          "sqlMs": 1.762699999999768,
+          "totalMs": 15.282400000000052
+        }
+      },
+      "warmMedian": {
+        "plain": {
+          "sqlMs": 0.3580000000001746,
+          "totalMs": 0.3580000000001746,
+          "returned": 20
+        },
+        "sealed": {
+          "sqlMs": 0.6885999999999513,
+          "totalMs": 5.089899999999943,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "returned": 20,
+          "authenticatedFieldsEstimated": 67,
+          "stopReason": "page-full"
+        }
+      },
+      "runs": {
+        "plain": [
+          {
+            "sqlMs": 0.4360999999998967,
+            "totalMs": 0.4360999999998967,
+            "returned": 20
+          },
+          {
+            "sqlMs": 0.5012000000001535,
+            "totalMs": 0.5012000000001535,
+            "returned": 20
+          },
+          {
+            "sqlMs": 0.2780000000002474,
+            "totalMs": 0.2780000000002474,
+            "returned": 20
+          },
+          {
+            "sqlMs": 0.4717000000000553,
+            "totalMs": 0.4717000000000553,
+            "returned": 20
+          },
+          {
+            "sqlMs": 0.24929999999994834,
+            "totalMs": 0.24929999999994834,
+            "returned": 20
+          },
+          {
+            "sqlMs": 0.3580000000001746,
+            "totalMs": 0.3580000000001746,
+            "returned": 20
+          },
+          {
+            "sqlMs": 0.27500000000009095,
+            "totalMs": 0.27500000000009095,
+            "returned": 20
+          }
+        ],
+        "sealed": [
+          {
+            "sqlMs": 0.7523000000001048,
+            "totalMs": 5.540999999999713,
+            "sqlCalls": 1,
+            "candidates": 27,
+            "returned": 20,
+            "authenticatedFieldsEstimated": 67,
+            "stopReason": "page-full"
+          },
+          {
+            "sqlMs": 0.8351999999999862,
+            "totalMs": 5.318299999999908,
+            "sqlCalls": 1,
+            "candidates": 27,
+            "returned": 20,
+            "authenticatedFieldsEstimated": 67,
+            "stopReason": "page-full"
+          },
+          {
+            "sqlMs": 0.6885999999999513,
+            "totalMs": 5.089899999999943,
+            "sqlCalls": 1,
+            "candidates": 27,
+            "returned": 20,
+            "authenticatedFieldsEstimated": 67,
+            "stopReason": "page-full"
+          },
+          {
+            "sqlMs": 0.8362999999999374,
+            "totalMs": 5.109899999999925,
+            "sqlCalls": 1,
+            "candidates": 27,
+            "returned": 20,
+            "authenticatedFieldsEstimated": 67,
+            "stopReason": "page-full"
+          },
+          {
+            "sqlMs": 0.544800000000123,
+            "totalMs": 4.953599999999824,
+            "sqlCalls": 1,
+            "candidates": 27,
+            "returned": 20,
+            "authenticatedFieldsEstimated": 67,
+            "stopReason": "page-full"
+          },
+          {
+            "sqlMs": 0.6098000000001775,
+            "totalMs": 4.261300000000119,
+            "sqlCalls": 1,
+            "candidates": 27,
+            "returned": 20,
+            "authenticatedFieldsEstimated": 67,
+            "stopReason": "page-full"
+          },
+          {
+            "sqlMs": 0.5416000000000167,
+            "totalMs": 4.958299999999781,
+            "sqlCalls": 1,
+            "candidates": 27,
+            "returned": 20,
+            "authenticatedFieldsEstimated": 67,
+            "stopReason": "page-full"
+          }
+        ]
+      }
+    },
+    {
+      "field": "address",
+      "term": "세종대로",
+      "projection": "six",
+      "firstCall": {
+        "plain": {
+          "sqlMs": 0.6815000000001419,
+          "totalMs": 0.6815000000001419
+        },
+        "sealed": {
+          "sqlMs": 0.9394000000002052,
+          "totalMs": 16.47440000000006
+        }
+      },
+      "warmMedian": {
+        "plain": {
+          "sqlMs": 0.4985999999998967,
+          "totalMs": 0.4985999999998967,
+          "returned": 20
+        },
+        "sealed": {
+          "sqlMs": 0.6912000000002081,
+          "totalMs": 7.185599999999795,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "returned": 20,
+          "authenticatedFieldsEstimated": 127,
+          "stopReason": "page-full"
+        }
+      },
+      "runs": {
+        "plain": [
+          {
+            "sqlMs": 0.4985999999998967,
+            "totalMs": 0.4985999999998967,
+            "returned": 20
+          },
+          {
+            "sqlMs": 0.5829000000003361,
+            "totalMs": 0.5829000000003361,
+            "returned": 20
+          },
+          {
+            "sqlMs": 0.28379999999970096,
+            "totalMs": 0.28379999999970096,
+            "returned": 20
+          },
+          {
+            "sqlMs": 0.5718999999999141,
+            "totalMs": 0.5718999999999141,
+            "returned": 20
+          },
+          {
+            "sqlMs": 0.30540000000019063,
+            "totalMs": 0.30540000000019063,
+            "returned": 20
+          },
+          {
+            "sqlMs": 0.5035000000002583,
+            "totalMs": 0.5035000000002583,
+            "returned": 20
+          },
+          {
+            "sqlMs": 0.33179999999993015,
+            "totalMs": 0.33179999999993015,
+            "returned": 20
+          }
+        ],
+        "sealed": [
+          {
+            "sqlMs": 0.7703999999998814,
+            "totalMs": 7.185599999999795,
+            "sqlCalls": 1,
+            "candidates": 27,
+            "returned": 20,
+            "authenticatedFieldsEstimated": 127,
+            "stopReason": "page-full"
+          },
+          {
+            "sqlMs": 0.6912000000002081,
+            "totalMs": 6.573599999999715,
+            "sqlCalls": 1,
+            "candidates": 27,
+            "returned": 20,
+            "authenticatedFieldsEstimated": 127,
+            "stopReason": "page-full"
+          },
+          {
+            "sqlMs": 0.6251999999999498,
+            "totalMs": 6.712500000000091,
+            "sqlCalls": 1,
+            "candidates": 27,
+            "returned": 20,
+            "authenticatedFieldsEstimated": 127,
+            "stopReason": "page-full"
+          },
+          {
+            "sqlMs": 0.9099999999998545,
+            "totalMs": 7.447099999999864,
+            "sqlCalls": 1,
+            "candidates": 27,
+            "returned": 20,
+            "authenticatedFieldsEstimated": 127,
+            "stopReason": "page-full"
+          },
+          {
+            "sqlMs": 0.6158999999997832,
+            "totalMs": 8.70699999999988,
+            "sqlCalls": 1,
+            "candidates": 27,
+            "returned": 20,
+            "authenticatedFieldsEstimated": 127,
+            "stopReason": "page-full"
+          },
+          {
+            "sqlMs": 0.8601000000003296,
+            "totalMs": 7.033100000000104,
+            "sqlCalls": 1,
+            "candidates": 27,
+            "returned": 20,
+            "authenticatedFieldsEstimated": 127,
+            "stopReason": "page-full"
+          },
+          {
+            "sqlMs": 0.5637000000001535,
+            "totalMs": 7.577700000000277,
+            "sqlCalls": 1,
+            "candidates": 27,
+            "returned": 20,
+            "authenticatedFieldsEstimated": 127,
+            "stopReason": "page-full"
+          }
+        ]
+      }
+    },
+    {
+      "field": "memo",
+      "term": "서비스",
+      "projection": "three",
+      "firstCall": {
+        "plain": {
+          "sqlMs": 0.47020000000020445,
+          "totalMs": 0.47020000000020445
+        },
+        "sealed": {
+          "sqlMs": 0.7179999999998472,
+          "totalMs": 9.547199999999975
+        }
+      },
+      "warmMedian": {
+        "plain": {
+          "sqlMs": 0.24299999999993815,
+          "totalMs": 0.24299999999993815,
+          "returned": 20
+        },
+        "sealed": {
+          "sqlMs": 0.4545000000002801,
+          "totalMs": 3.764799999999923,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "returned": 20,
+          "authenticatedFieldsEstimated": 67,
+          "stopReason": "page-full"
+        }
+      },
+      "runs": {
+        "plain": [
+          {
+            "sqlMs": 0.24299999999993815,
+            "totalMs": 0.24299999999993815,
+            "returned": 20
+          },
+          {
+            "sqlMs": 0.2616000000002714,
+            "totalMs": 0.2616000000002714,
+            "returned": 20
+          },
+          {
+            "sqlMs": 0.20879999999988286,
+            "totalMs": 0.20879999999988286,
+            "returned": 20
+          },
+          {
+            "sqlMs": 0.2646999999997206,
+            "totalMs": 0.2646999999997206,
+            "returned": 20
+          },
+          {
+            "sqlMs": 0.2112000000001899,
+            "totalMs": 0.2112000000001899,
+            "returned": 20
+          },
+          {
+            "sqlMs": 0.3514999999997599,
+            "totalMs": 0.3514999999997599,
+            "returned": 20
+          },
+          {
+            "sqlMs": 0.2151000000003478,
+            "totalMs": 0.2151000000003478,
+            "returned": 20
+          }
+        ],
+        "sealed": [
+          {
+            "sqlMs": 0.4376999999999498,
+            "totalMs": 3.764799999999923,
+            "sqlCalls": 1,
+            "candidates": 27,
+            "returned": 20,
+            "authenticatedFieldsEstimated": 67,
+            "stopReason": "page-full"
+          },
+          {
+            "sqlMs": 0.4545000000002801,
+            "totalMs": 3.744499999999789,
+            "sqlCalls": 1,
+            "candidates": 27,
+            "returned": 20,
+            "authenticatedFieldsEstimated": 67,
+            "stopReason": "page-full"
+          },
+          {
+            "sqlMs": 0.4452000000001135,
+            "totalMs": 3.8049999999998363,
+            "sqlCalls": 1,
+            "candidates": 27,
+            "returned": 20,
+            "authenticatedFieldsEstimated": 67,
+            "stopReason": "page-full"
+          },
+          {
+            "sqlMs": 0.5055999999999585,
+            "totalMs": 3.745400000000245,
+            "sqlCalls": 1,
+            "candidates": 27,
+            "returned": 20,
+            "authenticatedFieldsEstimated": 67,
+            "stopReason": "page-full"
+          },
+          {
+            "sqlMs": 0.4490000000000691,
+            "totalMs": 3.742500000000291,
+            "sqlCalls": 1,
+            "candidates": 27,
+            "returned": 20,
+            "authenticatedFieldsEstimated": 67,
+            "stopReason": "page-full"
+          },
+          {
+            "sqlMs": 0.46529999999984284,
+            "totalMs": 4.602499999999964,
+            "sqlCalls": 1,
+            "candidates": 27,
+            "returned": 20,
+            "authenticatedFieldsEstimated": 67,
+            "stopReason": "page-full"
+          },
+          {
+            "sqlMs": 0.4795000000003711,
+            "totalMs": 4.229599999999664,
+            "sqlCalls": 1,
+            "candidates": 27,
+            "returned": 20,
+            "authenticatedFieldsEstimated": 67,
+            "stopReason": "page-full"
+          }
+        ]
+      }
+    },
+    {
+      "field": "company",
+      "term": "서울",
+      "projection": "three",
+      "firstCall": {
+        "plain": {
+          "sqlMs": 0.3125,
+          "totalMs": 0.3125
+        },
+        "sealed": {
+          "sqlMs": 0.7127000000000407,
+          "totalMs": 8.72440000000006
+        }
+      },
+      "warmMedian": {
+        "plain": {
+          "sqlMs": 0.3398000000001957,
+          "totalMs": 0.3398000000001957,
+          "returned": 20
+        },
+        "sealed": {
+          "sqlMs": 0.5087000000003172,
+          "totalMs": 3.8637000000003354,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "returned": 20,
+          "authenticatedFieldsEstimated": 67,
+          "stopReason": "page-full"
+        }
+      },
+      "runs": {
+        "plain": [
+          {
+            "sqlMs": 0.3398000000001957,
+            "totalMs": 0.3398000000001957,
+            "returned": 20
+          },
+          {
+            "sqlMs": 0.24499999999989086,
+            "totalMs": 0.24499999999989086,
+            "returned": 20
+          },
+          {
+            "sqlMs": 0.19869999999991705,
+            "totalMs": 0.19869999999991705,
+            "returned": 20
+          },
+          {
+            "sqlMs": 0.5760000000000218,
+            "totalMs": 0.5760000000000218,
+            "returned": 20
+          },
+          {
+            "sqlMs": 0.255500000000211,
+            "totalMs": 0.255500000000211,
+            "returned": 20
+          },
+          {
+            "sqlMs": 0.5169000000000779,
+            "totalMs": 0.5169000000000779,
+            "returned": 20
+          },
+          {
+            "sqlMs": 0.400199999999586,
+            "totalMs": 0.400199999999586,
+            "returned": 20
+          }
+        ],
+        "sealed": [
+          {
+            "sqlMs": 0.5087000000003172,
+            "totalMs": 3.8637000000003354,
+            "sqlCalls": 1,
+            "candidates": 27,
+            "returned": 20,
+            "authenticatedFieldsEstimated": 67,
+            "stopReason": "page-full"
+          },
+          {
+            "sqlMs": 0.46319999999968786,
+            "totalMs": 3.7246000000000095,
+            "sqlCalls": 1,
+            "candidates": 27,
+            "returned": 20,
+            "authenticatedFieldsEstimated": 67,
+            "stopReason": "page-full"
+          },
+          {
+            "sqlMs": 0.4432999999999083,
+            "totalMs": 3.607300000000123,
+            "sqlCalls": 1,
+            "candidates": 27,
+            "returned": 20,
+            "authenticatedFieldsEstimated": 67,
+            "stopReason": "page-full"
+          },
+          {
+            "sqlMs": 0.4623999999998887,
+            "totalMs": 3.9605999999998858,
+            "sqlCalls": 1,
+            "candidates": 27,
+            "returned": 20,
+            "authenticatedFieldsEstimated": 67,
+            "stopReason": "page-full"
+          },
+          {
+            "sqlMs": 0.6747999999997774,
+            "totalMs": 5.293999999999869,
+            "sqlCalls": 1,
+            "candidates": 27,
+            "returned": 20,
+            "authenticatedFieldsEstimated": 67,
+            "stopReason": "page-full"
+          },
+          {
+            "sqlMs": 0.985700000000179,
+            "totalMs": 5.993799999999737,
+            "sqlCalls": 1,
+            "candidates": 27,
+            "returned": 20,
+            "authenticatedFieldsEstimated": 67,
+            "stopReason": "page-full"
+          },
+          {
+            "sqlMs": 0.5177000000003318,
+            "totalMs": 3.8499000000001615,
+            "sqlCalls": 1,
+            "candidates": 27,
+            "returned": 20,
+            "authenticatedFieldsEstimated": 67,
+            "stopReason": "page-full"
+          }
+        ]
+      }
+    },
+    {
+      "field": "memo",
+      "term": "없는검색어",
+      "projection": "three",
+      "firstCall": {
+        "plain": {
+          "sqlMs": 0.44059999999990396,
+          "totalMs": 0.44059999999990396
+        },
+        "sealed": {
+          "sqlMs": 0.8831000000000131,
+          "totalMs": 1.6846999999997934
+        }
+      },
+      "warmMedian": {
+        "plain": {
+          "sqlMs": 0.3344999999999345,
+          "totalMs": 0.3344999999999345,
+          "returned": 0
+        },
+        "sealed": {
+          "sqlMs": 0.6102000000000771,
+          "totalMs": 1.0837000000001353,
+          "sqlCalls": 1,
+          "candidates": 0,
+          "returned": 0,
+          "authenticatedFieldsEstimated": 0,
+          "stopReason": "exhausted"
+        }
+      },
+      "runs": {
+        "plain": [
+          {
+            "sqlMs": 0.3344999999999345,
+            "totalMs": 0.3344999999999345,
+            "returned": 0
+          },
+          {
+            "sqlMs": 0.31490000000030705,
+            "totalMs": 0.31490000000030705,
+            "returned": 0
+          },
+          {
+            "sqlMs": 0.3067000000000917,
+            "totalMs": 0.3067000000000917,
+            "returned": 0
+          },
+          {
+            "sqlMs": 0.3445000000001528,
+            "totalMs": 0.3445000000001528,
+            "returned": 0
+          },
+          {
+            "sqlMs": 0.31179999999994834,
+            "totalMs": 0.31179999999994834,
+            "returned": 0
+          },
+          {
+            "sqlMs": 0.41000000000030923,
+            "totalMs": 0.41000000000030923,
+            "returned": 0
+          },
+          {
+            "sqlMs": 0.42180000000007567,
+            "totalMs": 0.42180000000007567,
+            "returned": 0
+          }
+        ],
+        "sealed": [
+          {
+            "sqlMs": 0.6100000000001273,
+            "totalMs": 1.0765000000001237,
+            "sqlCalls": 1,
+            "candidates": 0,
+            "returned": 0,
+            "authenticatedFieldsEstimated": 0,
+            "stopReason": "exhausted"
+          },
+          {
+            "sqlMs": 0.5990999999999076,
+            "totalMs": 1.0540999999998348,
+            "sqlCalls": 1,
+            "candidates": 0,
+            "returned": 0,
+            "authenticatedFieldsEstimated": 0,
+            "stopReason": "exhausted"
+          },
+          {
+            "sqlMs": 0.6168999999999869,
+            "totalMs": 1.093499999999949,
+            "sqlCalls": 1,
+            "candidates": 0,
+            "returned": 0,
+            "authenticatedFieldsEstimated": 0,
+            "stopReason": "exhausted"
+          },
+          {
+            "sqlMs": 0.6069999999999709,
+            "totalMs": 1.0837000000001353,
+            "sqlCalls": 1,
+            "candidates": 0,
+            "returned": 0,
+            "authenticatedFieldsEstimated": 0,
+            "stopReason": "exhausted"
+          },
+          {
+            "sqlMs": 0.6891000000000531,
+            "totalMs": 1.2653000000000247,
+            "sqlCalls": 1,
+            "candidates": 0,
+            "returned": 0,
+            "authenticatedFieldsEstimated": 0,
+            "stopReason": "exhausted"
+          },
+          {
+            "sqlMs": 0.6102000000000771,
+            "totalMs": 1.07970000000023,
+            "sqlCalls": 1,
+            "candidates": 0,
+            "returned": 0,
+            "authenticatedFieldsEstimated": 0,
+            "stopReason": "exhausted"
+          },
+          {
+            "sqlMs": 0.8488999999999578,
+            "totalMs": 1.491899999999987,
+            "sqlCalls": 1,
+            "candidates": 0,
+            "returned": 0,
+            "authenticatedFieldsEstimated": 0,
+            "stopReason": "exhausted"
+          }
+        ]
+      }
+    }
+  ],
+  "notes": [
+    "First-call standard timing uses a fresh reader with cold derived-key and token-profile caches; database buffers may already be warm from fixture insertion.",
+    "Each case has two unreported warmup pairs followed by seven measured pairs, alternating which path runs first; warmMedian is the median of seven SQL and total times separately.",
+    "Authenticated field counts are computed from the engine path: one predicate field per candidate plus other projected fields per returned row. They are estimates, not instrumentation.",
+    "The plaintext SQL and standard calls use the same rows, predicate terms, ID order, 20-row limit, and corresponding three- or six-field projection.",
+    "This local microbenchmark is not a production write measurement."
+  ]
+}

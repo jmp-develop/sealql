@@ -1,0 +1,1182 @@
+{
+  "environment": {
+    "host": "127.0.0.1",
+    "port": 56439,
+    "scopeId": "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa",
+    "fixture": "bench_standard_next_100k.customers_skip_product_multi",
+    "source": "bench_realistic_100k.customers",
+    "warmup": 2,
+    "alternatingRuns": 7
+  },
+  "read": [
+    {
+      "selection": "all",
+      "medianMs": {
+        "current": 0.6664000000000669,
+        "parent": 4.173699999999371
+      },
+      "deltaMs": 3.5072999999993044,
+      "deltaPercent": 526.3055222087263,
+      "gateExceeded": true,
+      "runs": {
+        "current": [
+          0.5075999999990017,
+          0.6901999999990949,
+          0.47890000000006694,
+          0.6474999999991269,
+          0.6664000000000669,
+          0.8825999999990017,
+          0.8369000000002416
+        ],
+        "parent": [
+          4.1875,
+          4.333199999999124,
+          4.173699999999371,
+          4.247199999999793,
+          4.1599999999998545,
+          3.6736000000000786,
+          3.9525999999987107
+        ]
+      }
+    },
+    {
+      "selection": "withoutTokens",
+      "medianMs": {
+        "current": 0.4290999999993801,
+        "parent": 0.44870000000082655
+      },
+      "deltaMs": 0.01960000000144646,
+      "deltaPercent": 4.567699837211547,
+      "gateExceeded": false,
+      "runs": {
+        "current": [
+          0.38590000000112923,
+          0.7538999999997031,
+          0.49069999999846914,
+          0.4290999999993801,
+          0.37510000000111177,
+          0.37409999999908905,
+          0.4532999999992171
+        ],
+        "parent": [
+          0.43139999999948486,
+          0.44870000000082655,
+          0.4879000000000815,
+          0.4838000000017928,
+          0.4422999999987951,
+          0.4348999999983789,
+          0.4514999999992142
+        ]
+      }
+    }
+  ],
+  "search": [
+    {
+      "case": "exact_common",
+      "plainHits": 28331,
+      "candidates": 27,
+      "medianMs": {
+        "current": 0.4381999999986874,
+        "parent": 0.2775000000001455,
+        "prefix": 0.5249999999996362
+      },
+      "runs": {
+        "current": [
+          0.4867000000012922,
+          0.42229999999835854,
+          0.44280000000071595,
+          0.424299999998766,
+          0.4381999999986874,
+          0.4822999999996682,
+          0.4313000000001921
+        ],
+        "parent": [
+          0.2775000000001455,
+          0.269800000000032,
+          0.2703000000001339,
+          0.2644000000000233,
+          0.29769999999916763,
+          0.37010000000009313,
+          0.287400000001071
+        ],
+        "prefix": [
+          0.6790000000000873,
+          0.5817999999999302,
+          0.5249999999996362,
+          0.5271000000011554,
+          0.520700000000943,
+          0.524199999999837,
+          0.5182000000004336
+        ]
+      },
+      "sql": {
+        "current": "select id from \"bench_standard_next_100k\".\"customers_skip_product_multi\" where scope_id='aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa' and \"customers_skip_product_multi\".\"id\" in (select \"__seal_idx\".\"row_id\" from \"bench_standard_next_100k\".\"customers_skip_product_multi_seal_index\" as \"__seal_idx\" where \"__seal_idx\".\"scope_id\"=$1 and ((\"__seal_idx\".\"tokens_a106c26102b707f0\")[1]=$2::bigint)) order by id limit 27",
+        "parent": "select id from \"bench_standard_next_100k\".\"x2_parent_tokens\" where scope_id=$1 and (\"tokens_a106c26102b707f0\")[1]=$2::bigint order by id limit 27",
+        "prefix": "with pref as materialized (select * from \"bench_standard_next_100k\".\"x2_parent_tokens\" where scope_id=$1 order by id limit 256), ph as materialized (select id from pref where (\"tokens_a106c26102b707f0\")[1]=$2::bigint order by id limit 27), fb as (select id from \"bench_standard_next_100k\".\"x2_parent_tokens\" where scope_id=$1 and id>(select id from pref order by id desc limit 1) and (\"tokens_a106c26102b707f0\")[1]=$2::bigint and (select count(*) from ph)<27 order by id limit 27) select id from (select id from ph union all select id from fb) x order by id limit 27"
+      }
+    },
+    {
+      "case": "exact_mid",
+      "plainHits": 1770,
+      "candidates": 27,
+      "medianMs": {
+        "current": 0.4430000000011205,
+        "parent": 0.3084999999991851,
+        "prefix": 0.9148999999997613
+      },
+      "runs": {
+        "current": [
+          0.4375,
+          0.4624000000003434,
+          0.46370000000024447,
+          0.6334000000006199,
+          0.4430000000011205,
+          0.4279000000005908,
+          0.41740000000027067
+        ],
+        "parent": [
+          0.2812999999987369,
+          0.33650000000125146,
+          0.330999999998312,
+          0.48880000000099244,
+          0.28399999999965075,
+          0.27440000000024156,
+          0.3084999999991851
+        ],
+        "prefix": [
+          0.806800000000294,
+          0.8019000000003871,
+          0.7980999999999767,
+          1.0479000000013912,
+          0.9148999999997613,
+          1.2393000000010943,
+          1.0408000000006723
+        ]
+      },
+      "sql": {
+        "current": "select id from \"bench_standard_next_100k\".\"customers_skip_product_multi\" where scope_id='aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa' and \"customers_skip_product_multi\".\"id\" in (select \"__seal_idx\".\"row_id\" from \"bench_standard_next_100k\".\"customers_skip_product_multi_seal_index\" as \"__seal_idx\" where \"__seal_idx\".\"scope_id\"=$1 and ((\"__seal_idx\".\"tokens_a106c26102b707f0\")[1]=$2::bigint)) order by id limit 27",
+        "parent": "select id from \"bench_standard_next_100k\".\"x2_parent_tokens\" where scope_id=$1 and (\"tokens_a106c26102b707f0\")[1]=$2::bigint order by id limit 27",
+        "prefix": "with pref as materialized (select * from \"bench_standard_next_100k\".\"x2_parent_tokens\" where scope_id=$1 order by id limit 256), ph as materialized (select id from pref where (\"tokens_a106c26102b707f0\")[1]=$2::bigint order by id limit 27), fb as (select id from \"bench_standard_next_100k\".\"x2_parent_tokens\" where scope_id=$1 and id>(select id from pref order by id desc limit 1) and (\"tokens_a106c26102b707f0\")[1]=$2::bigint and (select count(*) from ph)<27 order by id limit 27) select id from (select id from ph union all select id from fb) x order by id limit 27"
+      }
+    },
+    {
+      "case": "exact_one",
+      "plainHits": 1,
+      "candidates": 1,
+      "medianMs": {
+        "current": 0.4419999999990978,
+        "parent": 0.31849999999940337,
+        "prefix": 0.8412000000007538
+      },
+      "runs": {
+        "current": [
+          0.36019999999916763,
+          0.4533000000010361,
+          0.4419999999990978,
+          0.444100000000617,
+          0.44139999999970314,
+          0.4007000000001426,
+          0.7440000000005966
+        ],
+        "parent": [
+          0.3541000000004715,
+          0.31270000000040454,
+          0.3051999999988766,
+          0.31849999999940337,
+          0.3128999999989901,
+          0.3198000000011234,
+          0.3471000000008644
+        ],
+        "prefix": [
+          0.8412000000007538,
+          0.8564000000005763,
+          0.800599999998667,
+          1.3290999999990163,
+          0.8809999999994034,
+          0.7955999999994674,
+          0.8008999999983644
+        ]
+      },
+      "sql": {
+        "current": "select id from \"bench_standard_next_100k\".\"customers_skip_product_multi\" where scope_id='aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa' and \"customers_skip_product_multi\".\"id\" in (select \"__seal_idx\".\"row_id\" from \"bench_standard_next_100k\".\"customers_skip_product_multi_seal_index\" as \"__seal_idx\" where \"__seal_idx\".\"scope_id\"=$1 and ((\"__seal_idx\".\"tokens_c44ae523cca61a0b\")[1]=$2::bigint)) order by id limit 27",
+        "parent": "select id from \"bench_standard_next_100k\".\"x2_parent_tokens\" where scope_id=$1 and (\"tokens_c44ae523cca61a0b\")[1]=$2::bigint order by id limit 27",
+        "prefix": "with pref as materialized (select * from \"bench_standard_next_100k\".\"x2_parent_tokens\" where scope_id=$1 order by id limit 256), ph as materialized (select id from pref where (\"tokens_c44ae523cca61a0b\")[1]=$2::bigint order by id limit 27), fb as (select id from \"bench_standard_next_100k\".\"x2_parent_tokens\" where scope_id=$1 and id>(select id from pref order by id desc limit 1) and (\"tokens_c44ae523cca61a0b\")[1]=$2::bigint and (select count(*) from ph)<27 order by id limit 27) select id from (select id from ph union all select id from fb) x order by id limit 27"
+      }
+    },
+    {
+      "case": "exact_zero",
+      "plainHits": 0,
+      "candidates": 2,
+      "medianMs": {
+        "current": 0.47290000000066357,
+        "parent": 0.30240000000048894,
+        "prefix": 1.1221999999997934
+      },
+      "runs": {
+        "current": [
+          0.36419999999998254,
+          0.4429999999993015,
+          0.43510000000060245,
+          0.5036000000000058,
+          0.47290000000066357,
+          0.5441000000009808,
+          0.5457999999998719
+        ],
+        "parent": [
+          0.30060000000048603,
+          0.29879999999866413,
+          0.30240000000048894,
+          0.3258000000005268,
+          0.29430000000138534,
+          0.3657999999995809,
+          0.4032000000006519
+        ],
+        "prefix": [
+          1.3924000000006345,
+          1.2193999999999505,
+          0.9639999999999418,
+          1.0455000000001746,
+          1.0877000000000407,
+          1.2274999999990541,
+          1.1221999999997934
+        ]
+      },
+      "sql": {
+        "current": "select id from \"bench_standard_next_100k\".\"customers_skip_product_multi\" where scope_id='aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa' and \"customers_skip_product_multi\".\"id\" in (select \"__seal_idx\".\"row_id\" from \"bench_standard_next_100k\".\"customers_skip_product_multi_seal_index\" as \"__seal_idx\" where \"__seal_idx\".\"scope_id\"=$1 and ((\"__seal_idx\".\"tokens_c44ae523cca61a0b\")[1]=$2::bigint)) order by id limit 27",
+        "parent": "select id from \"bench_standard_next_100k\".\"x2_parent_tokens\" where scope_id=$1 and (\"tokens_c44ae523cca61a0b\")[1]=$2::bigint order by id limit 27",
+        "prefix": "with pref as materialized (select * from \"bench_standard_next_100k\".\"x2_parent_tokens\" where scope_id=$1 order by id limit 256), ph as materialized (select id from pref where (\"tokens_c44ae523cca61a0b\")[1]=$2::bigint order by id limit 27), fb as (select id from \"bench_standard_next_100k\".\"x2_parent_tokens\" where scope_id=$1 and id>(select id from pref order by id desc limit 1) and (\"tokens_c44ae523cca61a0b\")[1]=$2::bigint and (select count(*) from ph)<27 order by id limit 27) select id from (select id from ph union all select id from fb) x order by id limit 27"
+      }
+    },
+    {
+      "case": "sub2_common",
+      "plainHits": 30101,
+      "candidates": 27,
+      "medianMs": {
+        "current": 0.5588999999999942,
+        "parent": 0.36970000000110304,
+        "prefix": 0.5419999999994616
+      },
+      "runs": {
+        "current": [
+          0.6455999999998312,
+          0.5756000000001222,
+          0.5642000000007101,
+          0.5525999999990745,
+          0.5509000000001834,
+          0.5588999999999942,
+          0.4967000000015105
+        ],
+        "parent": [
+          0.3419000000012602,
+          0.45509999999922,
+          0.38990000000012515,
+          0.36970000000110304,
+          0.3747000000003027,
+          0.3669000000008964,
+          0.3065999999998894
+        ],
+        "prefix": [
+          0.5419999999994616,
+          0.535200000000259,
+          0.529500000000553,
+          0.5270000000000437,
+          0.7114999999994325,
+          0.7745000000013533,
+          0.7091999999993277
+        ]
+      },
+      "sql": {
+        "current": "select id from \"bench_standard_next_100k\".\"customers_skip_product_multi\" where scope_id='aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa' and \"customers_skip_product_multi\".\"id\" in (select \"__seal_idx\".\"row_id\" from \"bench_standard_next_100k\".\"customers_skip_product_multi_seal_index\" as \"__seal_idx\" where \"__seal_idx\".\"scope_id\"=$1 and (\"__seal_idx\".\"tokens_1127994ab736baf4\" @> $2::bigint[])) order by id limit 27",
+        "parent": "select id from \"bench_standard_next_100k\".\"x2_parent_tokens\" where scope_id=$1 and \"tokens_1127994ab736baf4\" @> $2::bigint[] order by id limit 27",
+        "prefix": "with pref as materialized (select * from \"bench_standard_next_100k\".\"x2_parent_tokens\" where scope_id=$1 order by id limit 256), ph as materialized (select id from pref where \"tokens_1127994ab736baf4\" @> $2::bigint[] order by id limit 27), fb as (select id from \"bench_standard_next_100k\".\"x2_parent_tokens\" where scope_id=$1 and id>(select id from pref order by id desc limit 1) and \"tokens_1127994ab736baf4\" @> $2::bigint[] and (select count(*) from ph)<27 order by id limit 27) select id from (select id from ph union all select id from fb) x order by id limit 27"
+      }
+    },
+    {
+      "case": "sub_mid",
+      "plainHits": 16574,
+      "candidates": 27,
+      "medianMs": {
+        "current": 51.8166999999994,
+        "parent": 38.88370000000032,
+        "prefix": 0.7518000000000029
+      },
+      "runs": {
+        "current": [
+          48.90099999999984,
+          76.97110000000066,
+          49.972499999999854,
+          81.59870000000046,
+          51.06580000000031,
+          83.65940000000046,
+          51.8166999999994
+        ],
+        "parent": [
+          44.4505999999983,
+          25.693699999999808,
+          38.88370000000032,
+          19.42619999999988,
+          39.59259999999995,
+          21.08350000000064,
+          38.92480000000069
+        ],
+        "prefix": [
+          0.7518000000000029,
+          0.7233999999989464,
+          0.8702000000012049,
+          0.6645000000007713,
+          0.9871999999995751,
+          0.7898999999997613,
+          0.6555000000007567
+        ]
+      },
+      "sql": {
+        "current": "select id from \"bench_standard_next_100k\".\"customers_skip_product_multi\" where scope_id='aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa' and \"customers_skip_product_multi\".\"id\" in (select \"__seal_idx\".\"row_id\" from \"bench_standard_next_100k\".\"customers_skip_product_multi_seal_index\" as \"__seal_idx\" where \"__seal_idx\".\"scope_id\"=$1 and (\"__seal_idx\".\"tokens_792d75cf01821d67\" @> $2::bigint[])) order by id limit 27",
+        "parent": "select id from \"bench_standard_next_100k\".\"x2_parent_tokens\" where scope_id=$1 and \"tokens_792d75cf01821d67\" @> $2::bigint[] order by id limit 27",
+        "prefix": "with pref as materialized (select * from \"bench_standard_next_100k\".\"x2_parent_tokens\" where scope_id=$1 order by id limit 256), ph as materialized (select id from pref where \"tokens_792d75cf01821d67\" @> $2::bigint[] order by id limit 27), fb as (select id from \"bench_standard_next_100k\".\"x2_parent_tokens\" where scope_id=$1 and id>(select id from pref order by id desc limit 1) and \"tokens_792d75cf01821d67\" @> $2::bigint[] and (select count(*) from ph)<27 order by id limit 27) select id from (select id from ph union all select id from fb) x order by id limit 27"
+      }
+    },
+    {
+      "case": "sub_mid_space",
+      "plainHits": 213,
+      "candidates": 27,
+      "medianMs": {
+        "current": 1.7885999999998603,
+        "parent": 1.248700000000099,
+        "prefix": 2.1260000000002037
+      },
+      "runs": {
+        "current": [
+          1.7885999999998603,
+          1.6999999999989086,
+          1.6507000000001426,
+          1.877199999998993,
+          2.299199999999473,
+          1.8400999999994383,
+          1.6399000000001251
+        ],
+        "parent": [
+          1.485899999999674,
+          1.248700000000099,
+          1.174699999999575,
+          1.1898000000001048,
+          1.4308000000000902,
+          1.4908999999988737,
+          1.1869999999998981
+        ],
+        "prefix": [
+          2.2770999999993364,
+          2.1260000000002037,
+          2.997299999999086,
+          2.41150000000016,
+          2.007900000000518,
+          1.8434999999990396,
+          1.8513000000002648
+        ]
+      },
+      "sql": {
+        "current": "select id from \"bench_standard_next_100k\".\"customers_skip_product_multi\" where scope_id='aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa' and \"customers_skip_product_multi\".\"id\" in (select \"__seal_idx\".\"row_id\" from \"bench_standard_next_100k\".\"customers_skip_product_multi_seal_index\" as \"__seal_idx\" where \"__seal_idx\".\"scope_id\"=$1 and (\"__seal_idx\".\"tokens_792d75cf01821d67\" @> $2::bigint[])) order by id limit 27",
+        "parent": "select id from \"bench_standard_next_100k\".\"x2_parent_tokens\" where scope_id=$1 and \"tokens_792d75cf01821d67\" @> $2::bigint[] order by id limit 27",
+        "prefix": "with pref as materialized (select * from \"bench_standard_next_100k\".\"x2_parent_tokens\" where scope_id=$1 order by id limit 256), ph as materialized (select id from pref where \"tokens_792d75cf01821d67\" @> $2::bigint[] order by id limit 27), fb as (select id from \"bench_standard_next_100k\".\"x2_parent_tokens\" where scope_id=$1 and id>(select id from pref order by id desc limit 1) and \"tokens_792d75cf01821d67\" @> $2::bigint[] and (select count(*) from ph)<27 order by id limit 27) select id from (select id from ph union all select id from fb) x order by id limit 27"
+      }
+    },
+    {
+      "case": "sub_rare",
+      "plainHits": 101,
+      "candidates": 27,
+      "medianMs": {
+        "current": 0.7929999999996653,
+        "parent": 0.4441999999999098,
+        "prefix": 1.116600000001199
+      },
+      "runs": {
+        "current": [
+          0.7929999999996653,
+          0.7822999999989406,
+          0.8047999999998865,
+          0.7596000000012282,
+          0.6643999999996595,
+          0.8724999999994907,
+          0.7958999999991647
+        ],
+        "parent": [
+          0.38770000000113214,
+          0.3771000000015192,
+          0.46349999999983993,
+          0.46129999999902793,
+          0.41339999999945576,
+          0.45609999999942374,
+          0.4441999999999098
+        ],
+        "prefix": [
+          1.2759000000005472,
+          1.0991000000012718,
+          1.2993999999998778,
+          1.1817000000010012,
+          0.9482000000007247,
+          1.116600000001199,
+          1.0044999999990978
+        ]
+      },
+      "sql": {
+        "current": "select id from \"bench_standard_next_100k\".\"customers_skip_product_multi\" where scope_id='aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa' and \"customers_skip_product_multi\".\"id\" in (select \"__seal_idx\".\"row_id\" from \"bench_standard_next_100k\".\"customers_skip_product_multi_seal_index\" as \"__seal_idx\" where \"__seal_idx\".\"scope_id\"=$1 and (\"__seal_idx\".\"tokens_a639b11c8130dcf7\" @> $2::bigint[])) order by id limit 27",
+        "parent": "select id from \"bench_standard_next_100k\".\"x2_parent_tokens\" where scope_id=$1 and \"tokens_a639b11c8130dcf7\" @> $2::bigint[] order by id limit 27",
+        "prefix": "with pref as materialized (select * from \"bench_standard_next_100k\".\"x2_parent_tokens\" where scope_id=$1 order by id limit 256), ph as materialized (select id from pref where \"tokens_a639b11c8130dcf7\" @> $2::bigint[] order by id limit 27), fb as (select id from \"bench_standard_next_100k\".\"x2_parent_tokens\" where scope_id=$1 and id>(select id from pref order by id desc limit 1) and \"tokens_a639b11c8130dcf7\" @> $2::bigint[] and (select count(*) from ph)<27 order by id limit 27) select id from (select id from ph union all select id from fb) x order by id limit 27"
+      }
+    },
+    {
+      "case": "sub_long",
+      "plainHits": 2440,
+      "candidates": 27,
+      "medianMs": {
+        "current": 7.825600000000122,
+        "parent": 2.939300000000003,
+        "prefix": 4.895399999999427
+      },
+      "runs": {
+        "current": [
+          7.825600000000122,
+          8.424399999999878,
+          8.857100000001083,
+          7.539300000000367,
+          6.877600000001621,
+          8.040600000000268,
+          7.302999999999884
+        ],
+        "parent": [
+          3.9033999999992375,
+          2.808100000000195,
+          3.4481999999989057,
+          2.73279999999977,
+          2.939300000000003,
+          2.708099999999831,
+          3.7867999999998574
+        ],
+        "prefix": [
+          5.249299999999494,
+          4.895399999999427,
+          4.093600000000151,
+          3.9950000000008004,
+          4.0733000000000175,
+          5.396200000001045,
+          5.1578000000008615
+        ]
+      },
+      "sql": {
+        "current": "select id from \"bench_standard_next_100k\".\"customers_skip_product_multi\" where scope_id='aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa' and \"customers_skip_product_multi\".\"id\" in (select \"__seal_idx\".\"row_id\" from \"bench_standard_next_100k\".\"customers_skip_product_multi_seal_index\" as \"__seal_idx\" where \"__seal_idx\".\"scope_id\"=$1 and (\"__seal_idx\".\"tokens_a639b11c8130dcf7\" @> $2::bigint[])) order by id limit 27",
+        "parent": "select id from \"bench_standard_next_100k\".\"x2_parent_tokens\" where scope_id=$1 and \"tokens_a639b11c8130dcf7\" @> $2::bigint[] order by id limit 27",
+        "prefix": "with pref as materialized (select * from \"bench_standard_next_100k\".\"x2_parent_tokens\" where scope_id=$1 order by id limit 256), ph as materialized (select id from pref where \"tokens_a639b11c8130dcf7\" @> $2::bigint[] order by id limit 27), fb as (select id from \"bench_standard_next_100k\".\"x2_parent_tokens\" where scope_id=$1 and id>(select id from pref order by id desc limit 1) and \"tokens_a639b11c8130dcf7\" @> $2::bigint[] and (select count(*) from ph)<27 order by id limit 27) select id from (select id from ph union all select id from fb) x order by id limit 27"
+      }
+    },
+    {
+      "case": "sub_name_suffix",
+      "plainHits": 1,
+      "candidates": 1,
+      "medianMs": {
+        "current": 0.47339999999894644,
+        "parent": 0.35979999999835854,
+        "prefix": 1.0856000000003405
+      },
+      "runs": {
+        "current": [
+          0.8263000000006286,
+          0.5216999999993277,
+          0.470499999999447,
+          0.47339999999894644,
+          0.46709999999984575,
+          0.4735000000000582,
+          0.4665999999997439
+        ],
+        "parent": [
+          0.6576999999997497,
+          0.5183999999990192,
+          0.3650999999990745,
+          0.35239999999976135,
+          0.35759999999936554,
+          0.35979999999835854,
+          0.35939999999936845
+        ],
+        "prefix": [
+          0.9503999999997177,
+          1.0856000000003405,
+          1.0102000000006228,
+          1.0067999999992026,
+          1.1340000000000146,
+          1.2865999999994528,
+          1.6216000000003987
+        ]
+      },
+      "sql": {
+        "current": "select id from \"bench_standard_next_100k\".\"customers_skip_product_multi\" where scope_id='aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa' and \"customers_skip_product_multi\".\"id\" in (select \"__seal_idx\".\"row_id\" from \"bench_standard_next_100k\".\"customers_skip_product_multi_seal_index\" as \"__seal_idx\" where \"__seal_idx\".\"scope_id\"=$1 and (\"__seal_idx\".\"tokens_f289b89d86c7086a\" @> $2::bigint[])) order by id limit 27",
+        "parent": "select id from \"bench_standard_next_100k\".\"x2_parent_tokens\" where scope_id=$1 and \"tokens_f289b89d86c7086a\" @> $2::bigint[] order by id limit 27",
+        "prefix": "with pref as materialized (select * from \"bench_standard_next_100k\".\"x2_parent_tokens\" where scope_id=$1 order by id limit 256), ph as materialized (select id from pref where \"tokens_f289b89d86c7086a\" @> $2::bigint[] order by id limit 27), fb as (select id from \"bench_standard_next_100k\".\"x2_parent_tokens\" where scope_id=$1 and id>(select id from pref order by id desc limit 1) and \"tokens_f289b89d86c7086a\" @> $2::bigint[] and (select count(*) from ph)<27 order by id limit 27) select id from (select id from ph union all select id from fb) x order by id limit 27"
+      }
+    },
+    {
+      "case": "sub_zero",
+      "plainHits": 0,
+      "candidates": 0,
+      "medianMs": {
+        "current": 0.47739999999976135,
+        "parent": 0.37739999999939755,
+        "prefix": 0.9527999999991152
+      },
+      "runs": {
+        "current": [
+          0.4113999999990483,
+          0.4217000000007829,
+          0.4452999999994063,
+          0.5252999999993335,
+          0.5187999999998283,
+          0.6883000000016182,
+          0.47739999999976135
+        ],
+        "parent": [
+          0.3908000000010361,
+          0.33550000000104774,
+          0.37520000000040454,
+          0.3796999999995023,
+          0.528599999999642,
+          0.37739999999939755,
+          0.31999999999970896
+        ],
+        "prefix": [
+          0.9884000000001834,
+          0.882500000001528,
+          0.8020999999989726,
+          0.904500000000553,
+          0.9527999999991152,
+          1.2646999999997206,
+          0.9863999999997759
+        ]
+      },
+      "sql": {
+        "current": "select id from \"bench_standard_next_100k\".\"customers_skip_product_multi\" where scope_id='aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa' and \"customers_skip_product_multi\".\"id\" in (select \"__seal_idx\".\"row_id\" from \"bench_standard_next_100k\".\"customers_skip_product_multi_seal_index\" as \"__seal_idx\" where \"__seal_idx\".\"scope_id\"=$1 and (\"__seal_idx\".\"tokens_a639b11c8130dcf7\" @> $2::bigint[])) order by id limit 27",
+        "parent": "select id from \"bench_standard_next_100k\".\"x2_parent_tokens\" where scope_id=$1 and \"tokens_a639b11c8130dcf7\" @> $2::bigint[] order by id limit 27",
+        "prefix": "with pref as materialized (select * from \"bench_standard_next_100k\".\"x2_parent_tokens\" where scope_id=$1 order by id limit 256), ph as materialized (select id from pref where \"tokens_a639b11c8130dcf7\" @> $2::bigint[] order by id limit 27), fb as (select id from \"bench_standard_next_100k\".\"x2_parent_tokens\" where scope_id=$1 and id>(select id from pref order by id desc limit 1) and \"tokens_a639b11c8130dcf7\" @> $2::bigint[] and (select count(*) from ph)<27 order by id limit 27) select id from (select id from ph union all select id from fb) x order by id limit 27"
+      }
+    },
+    {
+      "case": "starts",
+      "plainHits": 16574,
+      "candidates": 27,
+      "medianMs": {
+        "current": 0.4892999999992753,
+        "parent": 0.36459999999897263,
+        "prefix": 0.6208999999998923
+      },
+      "runs": {
+        "current": [
+          0.5112000000008265,
+          0.4915000000000873,
+          0.4937000000008993,
+          0.4892999999992753,
+          0.486800000000585,
+          0.4830000000001746,
+          0.4827999999997701
+        ],
+        "parent": [
+          0.3698000000003958,
+          0.36310000000048603,
+          0.36189999999987776,
+          0.36459999999897263,
+          0.3680000000003929,
+          0.35720000000037544,
+          0.38990000000012515
+        ],
+        "prefix": [
+          0.7400999999990745,
+          0.6594000000004598,
+          0.6365000000005239,
+          0.615299999999479,
+          0.6167999999997846,
+          0.6208999999998923,
+          0.6122999999988679
+        ]
+      },
+      "sql": {
+        "current": "select id from \"bench_standard_next_100k\".\"customers_skip_product_multi\" where scope_id='aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa' and \"customers_skip_product_multi\".\"id\" in (select \"__seal_idx\".\"row_id\" from \"bench_standard_next_100k\".\"customers_skip_product_multi_seal_index\" as \"__seal_idx\" where \"__seal_idx\".\"scope_id\"=$1 and (\"__seal_idx\".\"tokens_792d75cf01821d67\" @> $2::bigint[])) order by id limit 27",
+        "parent": "select id from \"bench_standard_next_100k\".\"x2_parent_tokens\" where scope_id=$1 and \"tokens_792d75cf01821d67\" @> $2::bigint[] order by id limit 27",
+        "prefix": "with pref as materialized (select * from \"bench_standard_next_100k\".\"x2_parent_tokens\" where scope_id=$1 order by id limit 256), ph as materialized (select id from pref where \"tokens_792d75cf01821d67\" @> $2::bigint[] order by id limit 27), fb as (select id from \"bench_standard_next_100k\".\"x2_parent_tokens\" where scope_id=$1 and id>(select id from pref order by id desc limit 1) and \"tokens_792d75cf01821d67\" @> $2::bigint[] and (select count(*) from ph)<27 order by id limit 27) select id from (select id from ph union all select id from fb) x order by id limit 27"
+      }
+    },
+    {
+      "case": "ends",
+      "plainHits": 26598,
+      "candidates": 27,
+      "medianMs": {
+        "current": 110.05999999999949,
+        "parent": 59.70139999999992,
+        "prefix": 0.7255999999997584
+      },
+      "runs": {
+        "current": [
+          108.71899999999914,
+          110.05999999999949,
+          108.57099999999991,
+          111.75660000000062,
+          110.00879999999961,
+          120.33630000000085,
+          112.57839999999851
+        ],
+        "parent": [
+          58.25350000000071,
+          58.603000000000975,
+          59.70139999999992,
+          58.618899999999485,
+          62.17879999999968,
+          64.11139999999978,
+          66.5012999999999
+        ],
+        "prefix": [
+          0.691899999999805,
+          0.6795000000001892,
+          0.6726000000016938,
+          0.8158000000003085,
+          1.0482000000010885,
+          0.7255999999997584,
+          0.7713999999996304
+        ]
+      },
+      "sql": {
+        "current": "select id from \"bench_standard_next_100k\".\"customers_skip_product_multi\" where scope_id='aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa' and \"customers_skip_product_multi\".\"id\" in (select \"__seal_idx\".\"row_id\" from \"bench_standard_next_100k\".\"customers_skip_product_multi_seal_index\" as \"__seal_idx\" where \"__seal_idx\".\"scope_id\"=$1 and (\"__seal_idx\".\"tokens_ef1d32a52e2ce103\" @> $2::bigint[])) order by id limit 27",
+        "parent": "select id from \"bench_standard_next_100k\".\"x2_parent_tokens\" where scope_id=$1 and \"tokens_ef1d32a52e2ce103\" @> $2::bigint[] order by id limit 27",
+        "prefix": "with pref as materialized (select * from \"bench_standard_next_100k\".\"x2_parent_tokens\" where scope_id=$1 order by id limit 256), ph as materialized (select id from pref where \"tokens_ef1d32a52e2ce103\" @> $2::bigint[] order by id limit 27), fb as (select id from \"bench_standard_next_100k\".\"x2_parent_tokens\" where scope_id=$1 and id>(select id from pref order by id desc limit 1) and \"tokens_ef1d32a52e2ce103\" @> $2::bigint[] and (select count(*) from ph)<27 order by id limit 27) select id from (select id from ph union all select id from fb) x order by id limit 27"
+      }
+    },
+    {
+      "case": "and2",
+      "plainHits": 21176,
+      "candidates": 27,
+      "medianMs": {
+        "current": 0.49729999999908614,
+        "parent": 0.34760000000096625,
+        "prefix": 0.690599999999904
+      },
+      "runs": {
+        "current": [
+          0.49909999999908905,
+          0.4971000000005006,
+          0.5110999999997148,
+          0.49729999999908614,
+          0.5002999999996973,
+          0.49239999999917927,
+          0.4937000000008993
+        ],
+        "parent": [
+          0.35780000000158907,
+          0.3451999999997497,
+          0.3495999999995547,
+          0.34760000000096625,
+          0.34420000000136497,
+          0.3405000000002474,
+          0.3478999999988446
+        ],
+        "prefix": [
+          0.690599999999904,
+          0.694999999999709,
+          0.6898000000001048,
+          0.6892000000007101,
+          0.6976999999988038,
+          0.6871000000010099,
+          0.7476000000006024
+        ]
+      },
+      "sql": {
+        "current": "select id from \"bench_standard_next_100k\".\"customers_skip_product_multi\" where scope_id='aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa' and \"customers_skip_product_multi\".\"id\" in (select \"__seal_idx\".\"row_id\" from \"bench_standard_next_100k\".\"customers_skip_product_multi_seal_index\" as \"__seal_idx\" where \"__seal_idx\".\"scope_id\"=$1 and (((\"__seal_idx\".\"tokens_a106c26102b707f0\")[1]=$2::bigint) and (\"__seal_idx\".\"tokens_a639b11c8130dcf7\" @> $3::bigint[]))) order by id limit 27",
+        "parent": "select id from \"bench_standard_next_100k\".\"x2_parent_tokens\" where scope_id=$1 and ((\"tokens_a106c26102b707f0\")[1]=$2::bigint and \"tokens_a639b11c8130dcf7\" @> $3::bigint[]) order by id limit 27",
+        "prefix": "with pref as materialized (select * from \"bench_standard_next_100k\".\"x2_parent_tokens\" where scope_id=$1 order by id limit 256), ph as materialized (select id from pref where ((\"tokens_a106c26102b707f0\")[1]=$2::bigint and \"tokens_a639b11c8130dcf7\" @> $3::bigint[]) order by id limit 27), fb as (select id from \"bench_standard_next_100k\".\"x2_parent_tokens\" where scope_id=$1 and id>(select id from pref order by id desc limit 1) and ((\"tokens_a106c26102b707f0\")[1]=$2::bigint and \"tokens_a639b11c8130dcf7\" @> $3::bigint[]) and (select count(*) from ph)<27 order by id limit 27) select id from (select id from ph union all select id from fb) x order by id limit 27"
+      }
+    },
+    {
+      "case": "and4",
+      "plainHits": 62,
+      "candidates": 27,
+      "medianMs": {
+        "current": 5.724799999999959,
+        "parent": 5.5186999999987165,
+        "prefix": 6.23109999999906
+      },
+      "runs": {
+        "current": [
+          6.432799999998679,
+          5.80869999999959,
+          5.3840000000000146,
+          5.724799999999959,
+          5.370699999999488,
+          5.6414999999997235,
+          6.061099999998987
+        ],
+        "parent": [
+          5.613199999999779,
+          5.26549999999952,
+          5.268000000000029,
+          6.116500000000087,
+          5.541199999999662,
+          5.428199999998469,
+          5.5186999999987165
+        ],
+        "prefix": [
+          6.344100000000253,
+          6.586299999999028,
+          6.23109999999906,
+          6.100699999999051,
+          6.502899999999499,
+          6.041999999999462,
+          5.854900000000271
+        ]
+      },
+      "sql": {
+        "current": "select id from \"bench_standard_next_100k\".\"customers_skip_product_multi\" where scope_id='aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa' and \"customers_skip_product_multi\".\"id\" in (select \"__seal_idx\".\"row_id\" from \"bench_standard_next_100k\".\"customers_skip_product_multi_seal_index\" as \"__seal_idx\" where \"__seal_idx\".\"scope_id\"=$1 and (((\"__seal_idx\".\"tokens_a106c26102b707f0\")[1]=$2::bigint) and (\"__seal_idx\".\"tokens_792d75cf01821d67\" @> $3::bigint[]) and (\"__seal_idx\".\"tokens_a639b11c8130dcf7\" @> $4::bigint[]) and (\"__seal_idx\".\"tokens_ef1d32a52e2ce103\" @> $5::bigint[]))) order by id limit 27",
+        "parent": "select id from \"bench_standard_next_100k\".\"x2_parent_tokens\" where scope_id=$1 and ((\"tokens_a106c26102b707f0\")[1]=$2::bigint and \"tokens_792d75cf01821d67\" @> $3::bigint[] and \"tokens_a639b11c8130dcf7\" @> $4::bigint[] and \"tokens_ef1d32a52e2ce103\" @> $5::bigint[]) order by id limit 27",
+        "prefix": "with pref as materialized (select * from \"bench_standard_next_100k\".\"x2_parent_tokens\" where scope_id=$1 order by id limit 256), ph as materialized (select id from pref where ((\"tokens_a106c26102b707f0\")[1]=$2::bigint and \"tokens_792d75cf01821d67\" @> $3::bigint[] and \"tokens_a639b11c8130dcf7\" @> $4::bigint[] and \"tokens_ef1d32a52e2ce103\" @> $5::bigint[]) order by id limit 27), fb as (select id from \"bench_standard_next_100k\".\"x2_parent_tokens\" where scope_id=$1 and id>(select id from pref order by id desc limit 1) and ((\"tokens_a106c26102b707f0\")[1]=$2::bigint and \"tokens_792d75cf01821d67\" @> $3::bigint[] and \"tokens_a639b11c8130dcf7\" @> $4::bigint[] and \"tokens_ef1d32a52e2ce103\" @> $5::bigint[]) and (select count(*) from ph)<27 order by id limit 27) select id from (select id from ph union all select id from fb) x order by id limit 27"
+      }
+    },
+    {
+      "case": "and6",
+      "plainHits": 624,
+      "candidates": 27,
+      "medianMs": {
+        "current": 9.236199999999371,
+        "parent": 7.888200000001234,
+        "prefix": 9.330500000000029
+      },
+      "runs": {
+        "current": [
+          9.236199999999371,
+          8.986499999999069,
+          8.307699999999386,
+          9.675900000000183,
+          8.764800000000832,
+          11.218700000001263,
+          9.470499999999447
+        ],
+        "parent": [
+          8.477100000000064,
+          7.241100000001097,
+          7.796800000000076,
+          7.28859999999986,
+          8.939899999999398,
+          7.888200000001234,
+          8.148200000001452
+        ],
+        "prefix": [
+          10.086499999999432,
+          9.767299999999523,
+          9.330500000000029,
+          8.884000000000015,
+          9.316199999999299,
+          9.778999999998632,
+          8.996900000000096
+        ]
+      },
+      "sql": {
+        "current": "select id from \"bench_standard_next_100k\".\"customers_skip_product_multi\" where scope_id='aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa' and \"customers_skip_product_multi\".\"id\" in (select \"__seal_idx\".\"row_id\" from \"bench_standard_next_100k\".\"customers_skip_product_multi_seal_index\" as \"__seal_idx\" where \"__seal_idx\".\"scope_id\"=$1 and ((\"__seal_idx\".\"tokens_f289b89d86c7086a\" @> $2::bigint[]) and (\"__seal_idx\".\"tokens_7a1d2ba5ce2368fb\" @> $3::bigint[]) and (\"__seal_idx\".\"tokens_792d75cf01821d67\" @> $4::bigint[]) and (\"__seal_idx\".\"tokens_a639b11c8130dcf7\" @> $5::bigint[]) and (\"__seal_idx\".\"tokens_ef1d32a52e2ce103\" @> $6::bigint[]) and ((\"__seal_idx\".\"tokens_a106c26102b707f0\")[1]=$7::bigint))) order by id limit 27",
+        "parent": "select id from \"bench_standard_next_100k\".\"x2_parent_tokens\" where scope_id=$1 and (\"tokens_f289b89d86c7086a\" @> $2::bigint[] and \"tokens_7a1d2ba5ce2368fb\" @> $3::bigint[] and \"tokens_792d75cf01821d67\" @> $4::bigint[] and \"tokens_a639b11c8130dcf7\" @> $5::bigint[] and \"tokens_ef1d32a52e2ce103\" @> $6::bigint[] and (\"tokens_a106c26102b707f0\")[1]=$7::bigint) order by id limit 27",
+        "prefix": "with pref as materialized (select * from \"bench_standard_next_100k\".\"x2_parent_tokens\" where scope_id=$1 order by id limit 256), ph as materialized (select id from pref where (\"tokens_f289b89d86c7086a\" @> $2::bigint[] and \"tokens_7a1d2ba5ce2368fb\" @> $3::bigint[] and \"tokens_792d75cf01821d67\" @> $4::bigint[] and \"tokens_a639b11c8130dcf7\" @> $5::bigint[] and \"tokens_ef1d32a52e2ce103\" @> $6::bigint[] and (\"tokens_a106c26102b707f0\")[1]=$7::bigint) order by id limit 27), fb as (select id from \"bench_standard_next_100k\".\"x2_parent_tokens\" where scope_id=$1 and id>(select id from pref order by id desc limit 1) and (\"tokens_f289b89d86c7086a\" @> $2::bigint[] and \"tokens_7a1d2ba5ce2368fb\" @> $3::bigint[] and \"tokens_792d75cf01821d67\" @> $4::bigint[] and \"tokens_a639b11c8130dcf7\" @> $5::bigint[] and \"tokens_ef1d32a52e2ce103\" @> $6::bigint[] and (\"tokens_a106c26102b707f0\")[1]=$7::bigint) and (select count(*) from ph)<27 order by id limit 27) select id from (select id from ph union all select id from fb) x order by id limit 27"
+      }
+    },
+    {
+      "case": "or2",
+      "plainHits": 28400,
+      "candidates": 27,
+      "medianMs": {
+        "current": 0.5728000000017346,
+        "parent": 0.48519999999916763,
+        "prefix": 0.8132000000005064
+      },
+      "runs": {
+        "current": [
+          0.5423000000009779,
+          0.6828999999997905,
+          0.5335000000013679,
+          0.908899999998539,
+          0.5728000000017346,
+          0.5694000000003143,
+          0.6313000000009197
+        ],
+        "parent": [
+          0.3930000000000291,
+          0.5046000000002095,
+          0.38849999999729334,
+          0.5303000000021711,
+          0.7890999999981432,
+          0.4353999999984808,
+          0.48519999999916763
+        ],
+        "prefix": [
+          1.0874000000003434,
+          0.7828000000008615,
+          1.067799999997078,
+          0.8132000000005064,
+          0.8097999999990861,
+          0.8091999999996915,
+          0.9781000000002678
+        ]
+      },
+      "sql": {
+        "current": "select id from \"bench_standard_next_100k\".\"customers_skip_product_multi\" where scope_id='aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa' and \"customers_skip_product_multi\".\"id\" in (select \"__seal_idx\".\"row_id\" from \"bench_standard_next_100k\".\"customers_skip_product_multi_seal_index\" as \"__seal_idx\" where \"__seal_idx\".\"scope_id\"=$1 and (((\"__seal_idx\".\"tokens_a106c26102b707f0\")[1]=$2::bigint) or (\"__seal_idx\".\"tokens_a639b11c8130dcf7\" @> $3::bigint[]))) order by id limit 27",
+        "parent": "select id from \"bench_standard_next_100k\".\"x2_parent_tokens\" where scope_id=$1 and ((\"tokens_a106c26102b707f0\")[1]=$2::bigint or \"tokens_a639b11c8130dcf7\" @> $3::bigint[]) order by id limit 27",
+        "prefix": "with pref as materialized (select * from \"bench_standard_next_100k\".\"x2_parent_tokens\" where scope_id=$1 order by id limit 256), ph as materialized (select id from pref where ((\"tokens_a106c26102b707f0\")[1]=$2::bigint or \"tokens_a639b11c8130dcf7\" @> $3::bigint[]) order by id limit 27), fb as (select id from \"bench_standard_next_100k\".\"x2_parent_tokens\" where scope_id=$1 and id>(select id from pref order by id desc limit 1) and ((\"tokens_a106c26102b707f0\")[1]=$2::bigint or \"tokens_a639b11c8130dcf7\" @> $3::bigint[]) and (select count(*) from ph)<27 order by id limit 27) select id from (select id from ph union all select id from fb) x order by id limit 27"
+      }
+    },
+    {
+      "case": "or3",
+      "plainHits": 2,
+      "candidates": 3,
+      "medianMs": {
+        "current": 0.6039999999993597,
+        "parent": 0.4375,
+        "prefix": 1.1463999999978114
+      },
+      "runs": {
+        "current": [
+          0.6119999999973516,
+          0.6039999999993597,
+          0.6093000000000757,
+          0.5653999999994994,
+          0.5931999999993423,
+          0.5848999999980151,
+          0.7331000000012864
+        ],
+        "parent": [
+          0.7985000000007858,
+          0.514100000000326,
+          0.4304000000011001,
+          0.4062999999987369,
+          0.4418000000005122,
+          0.4375,
+          0.4346000000005006
+        ],
+        "prefix": [
+          1.083599999998114,
+          1.1103000000002794,
+          1.1463999999978114,
+          1.3787999999985914,
+          1.1013000000020838,
+          1.265400000000227,
+          1.4085999999988417
+        ]
+      },
+      "sql": {
+        "current": "select id from \"bench_standard_next_100k\".\"customers_skip_product_multi\" where scope_id='aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa' and \"customers_skip_product_multi\".\"id\" in (select \"__seal_idx\".\"row_id\" from \"bench_standard_next_100k\".\"customers_skip_product_multi_seal_index\" as \"__seal_idx\" where \"__seal_idx\".\"scope_id\"=$1 and (((\"__seal_idx\".\"tokens_c44ae523cca61a0b\")[1]=$2::bigint) or ((\"__seal_idx\".\"tokens_c44ae523cca61a0b\")[1]=$3::bigint) or (\"__seal_idx\".\"tokens_f289b89d86c7086a\" @> $4::bigint[]))) order by id limit 27",
+        "parent": "select id from \"bench_standard_next_100k\".\"x2_parent_tokens\" where scope_id=$1 and ((\"tokens_c44ae523cca61a0b\")[1]=$2::bigint or (\"tokens_c44ae523cca61a0b\")[1]=$3::bigint or \"tokens_f289b89d86c7086a\" @> $4::bigint[]) order by id limit 27",
+        "prefix": "with pref as materialized (select * from \"bench_standard_next_100k\".\"x2_parent_tokens\" where scope_id=$1 order by id limit 256), ph as materialized (select id from pref where ((\"tokens_c44ae523cca61a0b\")[1]=$2::bigint or (\"tokens_c44ae523cca61a0b\")[1]=$3::bigint or \"tokens_f289b89d86c7086a\" @> $4::bigint[]) order by id limit 27), fb as (select id from \"bench_standard_next_100k\".\"x2_parent_tokens\" where scope_id=$1 and id>(select id from pref order by id desc limit 1) and ((\"tokens_c44ae523cca61a0b\")[1]=$2::bigint or (\"tokens_c44ae523cca61a0b\")[1]=$3::bigint or \"tokens_f289b89d86c7086a\" @> $4::bigint[]) and (select count(*) from ph)<27 order by id limit 27) select id from (select id from ph union all select id from fb) x order by id limit 27"
+      }
+    },
+    {
+      "case": "drain101",
+      "plainHits": 101,
+      "candidates": 101,
+      "medianMs": {
+        "current": 0.8716999999996915,
+        "parent": 0.578799999999319,
+        "prefix": 1.2019000000000233
+      },
+      "runs": {
+        "current": [
+          0.7061999999968975,
+          0.8861000000033528,
+          0.6931999999978871,
+          0.8716999999996915,
+          1.0381000000015774,
+          1.0811000000030617,
+          0.8041000000011991
+        ],
+        "parent": [
+          0.5846999999994296,
+          0.7083999999995285,
+          0.4154000000016822,
+          0.4184000000022934,
+          0.798399999999674,
+          0.4315999999998894,
+          0.578799999999319
+        ],
+        "prefix": [
+          1.0976000000009662,
+          1.1913000000022294,
+          1.397899999999936,
+          1.5728999999992084,
+          1.2019000000000233,
+          1.5783999999985099,
+          1.0956000000005588
+        ]
+      },
+      "sql": {
+        "current": "select id from \"bench_standard_next_100k\".\"customers_skip_product_multi\" where scope_id='aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa' and \"customers_skip_product_multi\".\"id\" in (select \"__seal_idx\".\"row_id\" from \"bench_standard_next_100k\".\"customers_skip_product_multi_seal_index\" as \"__seal_idx\" where \"__seal_idx\".\"scope_id\"=$1 and (\"__seal_idx\".\"tokens_a639b11c8130dcf7\" @> $2::bigint[])) order by id limit 200",
+        "parent": "select id from \"bench_standard_next_100k\".\"x2_parent_tokens\" where scope_id=$1 and \"tokens_a639b11c8130dcf7\" @> $2::bigint[] order by id limit 200",
+        "prefix": "with pref as materialized (select * from \"bench_standard_next_100k\".\"x2_parent_tokens\" where scope_id=$1 order by id limit 256), ph as materialized (select id from pref where \"tokens_a639b11c8130dcf7\" @> $2::bigint[] order by id limit 200), fb as (select id from \"bench_standard_next_100k\".\"x2_parent_tokens\" where scope_id=$1 and id>(select id from pref order by id desc limit 1) and \"tokens_a639b11c8130dcf7\" @> $2::bigint[] and (select count(*) from ph)<200 order by id limit 200) select id from (select id from ph union all select id from fb) x order by id limit 200"
+      }
+    },
+    {
+      "case": "word_boundary",
+      "plainHits": 29843,
+      "candidates": 27,
+      "medianMs": {
+        "current": 111.51680000000124,
+        "parent": 64.41159999999945,
+        "prefix": 0.6977000000006228
+      },
+      "runs": {
+        "current": [
+          108.9364999999998,
+          118.77559999999721,
+          111.51680000000124,
+          119.58990000000267,
+          113.53930000000037,
+          111.17250000000058,
+          107.5538000000015
+        ],
+        "parent": [
+          64.41159999999945,
+          65.64929999999731,
+          64.27300000000105,
+          63.83549999999741,
+          67.75629999999728,
+          66.86909999999989,
+          62.0666999999994
+        ],
+        "prefix": [
+          0.6977000000006228,
+          0.6898999999975786,
+          0.7677999999978056,
+          1.106500000001688,
+          0.7190000000009604,
+          0.6771000000007916,
+          0.6621000000013737
+        ]
+      },
+      "sql": {
+        "current": "select id from \"bench_standard_next_100k\".\"customers_skip_product_multi\" where scope_id='aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa' and \"customers_skip_product_multi\".\"id\" in (select \"__seal_idx\".\"row_id\" from \"bench_standard_next_100k\".\"customers_skip_product_multi_seal_index\" as \"__seal_idx\" where \"__seal_idx\".\"scope_id\"=$1 and (\"__seal_idx\".\"tokens_a639b11c8130dcf7\" @> $2::bigint[])) order by id limit 27",
+        "parent": "select id from \"bench_standard_next_100k\".\"x2_parent_tokens\" where scope_id=$1 and \"tokens_a639b11c8130dcf7\" @> $2::bigint[] order by id limit 27",
+        "prefix": "with pref as materialized (select * from \"bench_standard_next_100k\".\"x2_parent_tokens\" where scope_id=$1 order by id limit 256), ph as materialized (select id from pref where \"tokens_a639b11c8130dcf7\" @> $2::bigint[] order by id limit 27), fb as (select id from \"bench_standard_next_100k\".\"x2_parent_tokens\" where scope_id=$1 and id>(select id from pref order by id desc limit 1) and \"tokens_a639b11c8130dcf7\" @> $2::bigint[] and (select count(*) from ph)<27 order by id limit 27) select id from (select id from ph union all select id from fb) x order by id limit 27"
+      }
+    },
+    {
+      "case": "word_inside_longer",
+      "plainHits": 29843,
+      "candidates": 27,
+      "medianMs": {
+        "current": 69.08380000000034,
+        "parent": 66.4310000000005,
+        "prefix": 0.6399000000019441
+      },
+      "runs": {
+        "current": [
+          69.08380000000034,
+          67.67580000000089,
+          61.27479999999923,
+          74.78130000000237,
+          74.95590000000084,
+          70.98879999999917,
+          68.3247999999985
+        ],
+        "parent": [
+          66.4310000000005,
+          64.96970000000147,
+          65.60290000000168,
+          75.64849999999933,
+          73.69850000000224,
+          70.88400000000183,
+          64.89689999999973
+        ],
+        "prefix": [
+          0.6530999999995402,
+          0.6379999999990105,
+          0.6383999999998196,
+          0.6399000000019441,
+          0.6444000000010419,
+          0.6375999999982014,
+          0.6405000000013388
+        ]
+      },
+      "sql": {
+        "current": "select id from \"bench_standard_next_100k\".\"customers_skip_product_multi\" where scope_id='aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa' and \"customers_skip_product_multi\".\"id\" in (select \"__seal_idx\".\"row_id\" from \"bench_standard_next_100k\".\"customers_skip_product_multi_seal_index\" as \"__seal_idx\" where \"__seal_idx\".\"scope_id\"=$1 and (\"__seal_idx\".\"tokens_a639b11c8130dcf7\" @> $2::bigint[])) order by id limit 27",
+        "parent": "select id from \"bench_standard_next_100k\".\"x2_parent_tokens\" where scope_id=$1 and \"tokens_a639b11c8130dcf7\" @> $2::bigint[] order by id limit 27",
+        "prefix": "with pref as materialized (select * from \"bench_standard_next_100k\".\"x2_parent_tokens\" where scope_id=$1 order by id limit 256), ph as materialized (select id from pref where \"tokens_a639b11c8130dcf7\" @> $2::bigint[] order by id limit 27), fb as (select id from \"bench_standard_next_100k\".\"x2_parent_tokens\" where scope_id=$1 and id>(select id from pref order by id desc limit 1) and \"tokens_a639b11c8130dcf7\" @> $2::bigint[] and (select count(*) from ph)<27 order by id limit 27) select id from (select id from ph union all select id from fb) x order by id limit 27"
+      }
+    }
+  ],
+  "write": {
+    "samplesPerOperation": 1000,
+    "medianMs": {
+      "current": {
+        "insert": 699.6918999999689,
+        "update": 678.0066999999544,
+        "delete": 500.3647000000419
+      },
+      "parent": {
+        "insert": 481.65610000004017,
+        "update": 395.61850000002596,
+        "delete": 276.90720000009605
+      }
+    },
+    "runs": {
+      "current": [
+        {
+          "insert": 699.6918999999689,
+          "update": 729.6599000000133,
+          "delete": 576.1014999999752
+        },
+        {
+          "insert": 774.5656000000308,
+          "update": 702.3214000000044,
+          "delete": 600.5384999999005
+        },
+        {
+          "insert": 721.4106000000611,
+          "update": 734.3805999999604,
+          "delete": 523.4894000000786
+        },
+        {
+          "insert": 671.4302000000534,
+          "update": 614.7192000000578,
+          "delete": 476.95130000002973
+        },
+        {
+          "insert": 662.7725999999748,
+          "update": 639.2771999999168,
+          "delete": 500.3647000000419
+        },
+        {
+          "insert": 725.8581000000559,
+          "update": 649.5492000001032,
+          "delete": 494.678800000067
+        },
+        {
+          "insert": 662.6782000000821,
+          "update": 678.0066999999544,
+          "delete": 490.24339999994845
+        }
+      ],
+      "parent": [
+        {
+          "insert": 481.65610000004017,
+          "update": 406.7019000000364,
+          "delete": 304.77409999998054
+        },
+        {
+          "insert": 533.4289000000426,
+          "update": 381.52849999998944,
+          "delete": 304.47119999999995
+        },
+        {
+          "insert": 457.8828999999241,
+          "update": 366.19770000001154,
+          "delete": 252.4846000000107
+        },
+        {
+          "insert": 488.8903999999893,
+          "update": 414.2609000001248,
+          "delete": 254.3650000000198
+        },
+        {
+          "insert": 513.8804000000382,
+          "update": 372.0806999999986,
+          "delete": 251.1494000002349
+        },
+        {
+          "insert": 415.71979999996256,
+          "update": 395.61850000002596,
+          "delete": 288.86030000006576
+        },
+        {
+          "insert": 470.7562999999718,
+          "update": 419.64410000010685,
+          "delete": 276.90720000009605
+        }
+      ]
+    }
+  },
+  "writeTrigger": {
+    "samplesPerOperation": 1000,
+    "medianMs": {
+      "insert": 589.304699999906,
+      "update": 423.37830000006943,
+      "delete": 280.32369999993534
+    },
+    "runs": [
+      {
+        "insert": 554.8569000000134,
+        "update": 423.37830000006943,
+        "delete": 280.32369999993534
+      },
+      {
+        "insert": 599.5517000000909,
+        "update": 444.02249999993364,
+        "delete": 281.5996999999479
+      },
+      {
+        "insert": 634.9602000002124,
+        "update": 426.32290000005014,
+        "delete": 269.55379999998695
+      },
+      {
+        "insert": 592.8790999997873,
+        "update": 401.89049999994313,
+        "delete": 257.47839999997086
+      },
+      {
+        "insert": 580.6805000001332,
+        "update": 418.12610000005225,
+        "delete": 254.6791999999623
+      },
+      {
+        "insert": 589.304699999906,
+        "update": 440.9606000000422,
+        "delete": 287.56470000018453
+      },
+      {
+        "insert": 546.1364000001777,
+        "update": 362.48880000004283,
+        "delete": 286.13320000015665
+      }
+    ]
+  },
+  "array100": {
+    "rows": 100,
+    "medianMs": {
+      "current": 16.150299999993877,
+      "trigger": 15.389999999999418
+    },
+    "runs": {
+      "current": [
+        69.72149999999965,
+        14.597499999996217,
+        14.242900000004738,
+        16.150299999993877,
+        14.847399999998743,
+        43.952799999999115,
+        16.283199999998033
+      ],
+      "trigger": [
+        13.227999999995518,
+        14.21190000000206,
+        15.63300000000163,
+        43.73689999999624,
+        15.389999999999418,
+        15.58070000000589,
+        13.2867999999944
+      ]
+    }
+  },
+  "size": [
+    {
+      "name": "customers_skip_product_multi",
+      "table_bytes": 39460864,
+      "index_bytes": 4997120,
+      "total_bytes": 44507136
+    },
+    {
+      "name": "customers_skip_product_multi_seal_index",
+      "table_bytes": 204800000,
+      "index_bytes": 99852288,
+      "total_bytes": 304742400
+    },
+    {
+      "name": "x2_parent_tokens",
+      "table_bytes": 204996608,
+      "index_bytes": 99852288,
+      "total_bytes": 304939008
+    }
+  ]
+}

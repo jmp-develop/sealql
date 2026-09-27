@@ -1,0 +1,336 @@
+{
+  "e2": {
+    "insert": [
+      {
+        "id": 1,
+        "scope": "base",
+        "secret": "one",
+        "pub": "public"
+      }
+    ],
+    "select": [
+      {
+        "id": 1,
+        "scope": "base",
+        "secret": "one",
+        "pub": "public"
+      }
+    ],
+    "partial": [
+      {
+        "secret": "one"
+      }
+    ],
+    "join": [
+      {
+        "a": "one",
+        "b": "nested"
+      }
+    ],
+    "updateReturning": [
+      {
+        "id": 1,
+        "scope": "base",
+        "secret": "two",
+        "pub": "public"
+      }
+    ],
+    "prepared": [
+      {
+        "id": 1,
+        "scope": "base",
+        "secret": "two",
+        "pub": "public"
+      }
+    ],
+    "relational": [
+      {
+        "id": 1,
+        "scope": "base",
+        "secret": "two",
+        "pub": "public",
+        "children": [
+          {
+            "id": 1,
+            "parentId": 1,
+            "secret": "nested"
+          }
+        ]
+      }
+    ],
+    "transaction": {
+      "id": 2,
+      "scope": "base",
+      "secret": "tx",
+      "pub": null
+    },
+    "raw": [
+      {
+        "secret": "enc:two"
+      }
+    ],
+    "events": [
+      {
+        "direction": "to",
+        "value": "one"
+      },
+      {
+        "direction": "from",
+        "value": "enc:one"
+      },
+      {
+        "direction": "from",
+        "value": "enc:one"
+      },
+      {
+        "direction": "from",
+        "value": "enc:one"
+      },
+      {
+        "direction": "to",
+        "value": "nested"
+      },
+      {
+        "direction": "from",
+        "value": "enc:one"
+      },
+      {
+        "direction": "from",
+        "value": "enc:nested"
+      },
+      {
+        "direction": "to",
+        "value": "two"
+      },
+      {
+        "direction": "from",
+        "value": "enc:two"
+      },
+      {
+        "direction": "from",
+        "scope": "base",
+        "value": "enc:two"
+      },
+      {
+        "direction": "from",
+        "value": "enc:two"
+      },
+      {
+        "direction": "from",
+        "value": "enc:nested"
+      },
+      {
+        "direction": "to",
+        "scope": "base",
+        "value": "tx"
+      },
+      {
+        "direction": "from",
+        "scope": "base",
+        "value": "enc:tx"
+      }
+    ]
+  },
+  "e3": {
+    "parallelQueued": [
+      "A",
+      "B"
+    ],
+    "transaction": {
+      "id": 12,
+      "scope": "TX",
+      "secret": "TX",
+      "pub": null
+    },
+    "thenableOutside": [
+      {
+        "id": 13,
+        "scope": "OUT",
+        "secret": "OUT",
+        "pub": null
+      }
+    ],
+    "thenableOutsideEvents": [
+      {
+        "direction": "to",
+        "value": "OUT"
+      },
+      {
+        "direction": "from",
+        "value": "enc:OUT"
+      }
+    ],
+    "events": [
+      {
+        "direction": "to",
+        "scope": "A",
+        "value": "A"
+      },
+      {
+        "direction": "to",
+        "scope": "B",
+        "value": "B"
+      },
+      {
+        "direction": "from",
+        "scope": "A",
+        "value": "enc:A"
+      },
+      {
+        "direction": "from",
+        "scope": "B",
+        "value": "enc:B"
+      },
+      {
+        "direction": "from",
+        "scope": "A",
+        "value": "enc:A"
+      },
+      {
+        "direction": "from",
+        "scope": "B",
+        "value": "enc:B"
+      },
+      {
+        "direction": "to",
+        "scope": "TX",
+        "value": "TX"
+      },
+      {
+        "direction": "from",
+        "scope": "TX",
+        "value": "enc:TX"
+      }
+    ]
+  },
+  "e4": {
+    "insert": {
+      "id": 1,
+      "scope": "A",
+      "input": null,
+      "ct": "c1",
+      "tokens": [
+        "x"
+      ]
+    },
+    "partial": {
+      "id": 1,
+      "scope": "A",
+      "input": null,
+      "ct": "c1",
+      "tokens": [
+        "x"
+      ]
+    },
+    "upsert": {
+      "id": 1,
+      "scope": "A",
+      "input": null,
+      "ct": "c1",
+      "tokens": [
+        "x"
+      ]
+    },
+    "copy": {
+      "id": 2,
+      "scope": "A",
+      "input": null,
+      "ct": "c1",
+      "tokens": [
+        "x"
+      ]
+    },
+    "concurrent": {
+      "id": 1,
+      "scope": "A",
+      "input": null,
+      "ct": "c4",
+      "tokens": [
+        "w"
+      ]
+    },
+    "rollback": {
+      "id": 1,
+      "scope": "A",
+      "input": null,
+      "ct": "c4",
+      "tokens": [
+        "w"
+      ]
+    },
+    "directColumn": {
+      "id": 2,
+      "scope": "A",
+      "input": null,
+      "ct": "raw-corrupt",
+      "tokens": [
+        "x"
+      ]
+    }
+  },
+  "e5": {
+    "first": "alpha",
+    "colliding": "other368",
+    "token": "a6",
+    "eq": {
+      "ok": true,
+      "value": [
+        {
+          "id": 1,
+          "sealed": "(cipher1,a6)"
+        },
+        {
+          "id": 2,
+          "sealed": "(cipher2,a6)"
+        }
+      ]
+    },
+    "lt": {
+      "ok": false,
+      "code": "0A000",
+      "message": "Failed query: select \"id\", \"sealed\" from \"drizzle_falsify\".\"pairs\" where \"drizzle_falsify\".\"pairs\".\"sealed\" < $1\nparams: (probe,a6)",
+      "cause": "input of anonymous composite types is not implemented"
+    },
+    "ltCast": {
+      "ok": true,
+      "value": [
+        {
+          "id": 1
+        },
+        {
+          "id": 2
+        }
+      ]
+    },
+    "like": {
+      "ok": false,
+      "code": "42883",
+      "message": "Failed query: select \"id\", \"sealed\" from \"drizzle_falsify\".\"pairs\" where \"drizzle_falsify\".\"pairs\".\"sealed\" like $1\nparams: %a%",
+      "cause": "operator does not exist: drizzle_falsify.seal_pair ~~ unknown"
+    }
+  },
+  "e6": {
+    "plain": {
+      "ok": false,
+      "code": "23514",
+      "message": "new row for relation \"checked\" violates check constraint \"sealed_format\""
+    },
+    "mismatch": {
+      "ok": false,
+      "code": "23514",
+      "message": "new row for relation \"checked\" violates check constraint \"sealed_scope\""
+    },
+    "forged": {
+      "ok": true,
+      "value": 1
+    },
+    "rows": [
+      {
+        "id": 3,
+        "scope": "A",
+        "secret": "sealed:A:fake"
+      }
+    ]
+  },
+  "cleanup": true
+}

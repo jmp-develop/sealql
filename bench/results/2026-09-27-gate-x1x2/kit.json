@@ -1,0 +1,49 @@
+{
+  "generated": {
+    "stdout": "Reading config file '<local>\\bench\\gate-x1x2\\kit-generate-config.ts'\n2 tables\nplain 2 columns 0 indexes 0 fks\nsealed 2 columns 0 indexes 0 fks\n\nNo schema changes, nothing to migrate 😴\n",
+    "stderr": "",
+    "status": 0
+  },
+  "pushed": {
+    "stdout": "Reading config file '<local>\\bench\\gate-x1x2\\kit-config.ts'\nUsing 'pg' driver for database querying\n[⣷] Pulling schema from database...\n\u001b[2K\u001b[1G[✓] Pulling schema from database...\n",
+    "stderr": "error: cannot drop schema gate_x1x2_kit because other objects depend on it\n    at <local>\\node_modules\\pg-pool\\index.js:45:11\n    at process.processTicksAndRejections (node:internal/process/<internal>)\n    at async Object.query (<local>\\node_modules\\drizzle-kit\\bin.cjs:78906:26)\n    at async pgPush (<local>\\node_modules\\drizzle-kit\\bin.cjs:82768:13)\n    at async Object.handler (<local>\\node_modules\\drizzle-kit\\bin.cjs:92236:9)\n    at async run (<local>\\node_modules\\drizzle-kit\\bin.cjs:91472:7) {\n  length: 314,\n  severity: 'ERROR',\n  code: '2BP01',\n  detail: 'table gate_x1x2_kit.sealed depends on schema gate_x1x2_kit\\n' +\n    'table gate_x1x2_kit.plain depends on schema gate_x1x2_kit',\n  hint: 'Use DROP ... CASCADE to drop the dependent objects too.',\n  position: undefined,\n  internalPosition: undefined,\n  internalQuery: undefined,\n  where: undefined,\n  schema: undefined,\n  table: undefined,\n  column: undefined,\n  dataType: undefined,\n  constraint: undefined,\n  file: 'dependency.c',\n  line: '1154',\n  routine: 'reportDependentObjects'\n}\n",
+    "status": 0
+  },
+  "columns": [
+    {
+      "table_name": "plain",
+      "column_name": "id"
+    },
+    {
+      "table_name": "plain",
+      "column_name": "status"
+    },
+    {
+      "table_name": "sealed",
+      "column_name": "id"
+    },
+    {
+      "table_name": "sealed",
+      "column_name": "memo_ct"
+    },
+    {
+      "table_name": "sealed",
+      "column_name": "memo_tok_s"
+    }
+  ],
+  "indexes": [
+    {
+      "indexname": "gate_hidden_tok"
+    },
+    {
+      "indexname": "plain_pkey"
+    },
+    {
+      "indexname": "sealed_pkey"
+    }
+  ],
+  "hiddenColumnRetained": true,
+  "hiddenIndexRetained": true,
+  "plainCreated": true,
+  "pushSafe": false
+}
