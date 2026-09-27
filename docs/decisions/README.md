@@ -24,8 +24,9 @@
 | [005](005-skip-grams-default-on.md) | 건너뛴 조각 기본 켬 |
 | [006](006-query-engine.md) | 쿼리 엔진: SQL 1회, semi-join, 2단계 복호화, prefix, 배치 |
 | [007](007-multicolumn-gin-not-combined-array.md) | 부분 검색 색인은 다중 컬럼 GIN, 통합 배열 기각 |
-| [008](008-drizzle-integration.md) | Drizzle 통합 방식(구현 예정, 상세는 plan/001) |
+| [008](008-drizzle-integration.md) | Drizzle 통합 방식(채택 부분은 [013](013-drizzle-native-api-implemented.md)로 구현 완료) |
 | [009](009-scope-and-non-goals.md) | 범위와 비목표 |
 | [010](010-security-claim-limits.md) | 보안 주장의 한계 |
 | [011](011-rejected-research-lines.md) | 기각된 연구 방향 |
 | [012](012-drizzle-companion-and-column-options.md) | Drizzle 통합: 보조 테이블 유지, 칸마다 옵션 (008 일부 대체) |
+| [013](013-drizzle-native-api-implemented.md) | Drizzle 네이티브 API 구현 완료 (008·012 구현 확정) |

@@ -13,6 +13,4 @@
 
 ## 현재 계획
 
-| 번호 | 계획 | 상태 |
-|---|---|---|
-| [001](001-drizzle-native-api.md) | Drizzle 네이티브 API: 미선언 부모 토큰 칸 + BEFORE 트리거 + `seal`/`patch`/`open`, `findMany`/`count`/`search`, `m.sql` | 설계 확정, 구현 전 |
+없음. Drizzle 네이티브 API 계획(001)은 구현이 끝나 [`docs/decisions/013`](../docs/decisions/013-drizzle-native-api-implemented.md)로 요약하고 지웠다.

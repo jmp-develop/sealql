@@ -1,6 +1,6 @@
 # 012. Drizzle 통합: 보조 테이블 유지와 칸마다 옵션
 
-- 상태: 확정 (2026-09-27, 사용자 결정). 구현 전. 상세는 [plan/001](../../plan/001-drizzle-native-api.md).
+- 상태: 확정 (2026-09-27, 사용자 결정). **구현 완료.** 세부 구현 결정과 검증은 [013](013-drizzle-native-api-implemented.md)에 있다.
 - 대체: [008](008-drizzle-integration.md)의 "부모 테이블의 Drizzle 미선언 토큰 칸 + BEFORE 트리거" 채택 부분과 `sealedTable` 선언 모양. 008의 연구·반증·실측 기록은 그대로 근거로 유지한다.
 
 ## 결정

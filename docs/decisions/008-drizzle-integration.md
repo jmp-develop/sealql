@@ -1,6 +1,6 @@
 # 008. Drizzle 통합 방식
 
-- 상태: 연구·실측 기록. **채택 설계(부모 테이블 숨은 칸 + 트리거, `sealedTable`)는 [012](012-drizzle-companion-and-column-options.md)로 대체됨.** (원 상태: 설계 확정 2026-09-27, 사용자 결정.) **구현 전.** 현재 제품은 companion 테이블과 `defineSealed`/`bindSealed` API다. 공개 API 계약과 작업 순서는 [plan/001](../../plan/001-drizzle-native-api.md)에 있다.
+- 상태: 연구·실측 기록. **채택 설계(부모 테이블 숨은 칸 + 트리거, `sealedTable`)는 [012](012-drizzle-companion-and-column-options.md)로 대체됨.** (원 상태: 설계 확정 2026-09-27, 사용자 결정.) **구현 완료** ([013](013-drizzle-native-api-implemented.md)). 현재 제품은 companion 테이블과 `sealql/drizzle/v0.45`의 `createSealed`/`register`/`insert`/`update`/`upsert`/`open`/`findMany`/`search` API다. 공개 API 계약은 [013](013-drizzle-native-api-implemented.md)과 [docs/llm-integration.md](../llm-integration.md)에 있다.
 
 ## 결정
 
@@ -63,5 +63,5 @@
 
 ## 대체 관계
 
-- 대체하는 것: 현재 `sealql/drizzle/v0.45`의 `defineSealed`/`bindSealed`/`forScope`/`searchWithQuery` 설계와 companion 테이블(구현 후).
-- 관련: [003](003-field-cipher-key-cache-aad.md), [007](007-multicolumn-gin-not-combined-array.md), [009](009-scope-and-non-goals.md), [plan/001](../../plan/001-drizzle-native-api.md).
+- 대체하는 것: 옛 `defineSealed`/`bindSealed`/`forScope`/`searchWithQuery` 설계. companion 테이블 채택은 [012](012-drizzle-companion-and-column-options.md)를 거쳐 [013](013-drizzle-native-api-implemented.md)로 구현 완료됐다.
+- 관련: [003](003-field-cipher-key-cache-aad.md), [007](007-multicolumn-gin-not-combined-array.md), [009](009-scope-and-non-goals.md), [013](013-drizzle-native-api-implemented.md).

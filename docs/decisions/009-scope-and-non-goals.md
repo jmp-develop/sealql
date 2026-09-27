@@ -21,11 +21,13 @@
 | 오프셋 페이지네이션, 근사 count | [006](006-query-engine.md) |
 | 키 교체·키 버전 | 고정 키. 바꾸려면 앱이 전체 재암호화·재색인 |
 
-## 현재 한계 (해결 예정)
+## 해결된 옛 한계
 
-- **일반 칸과 암호 칸 사이의 OR**(예: `상태 = '완료' OR 이름에 '김' 포함`)을 `findMany`로 표현할 수 없다. `match`와 `where`는 AND로 결합되고, 일반 SQL 조각을 OR에 넣으면 `INVALID_VALUE`로 거부된다 ([V1 재현](../../bench/results/2026-09-27-core-verification/v1/report-ko.md)). [plan/001](../../plan/001-drizzle-native-api.md)의 `m.sql(cond)`로 해결할 예정이다.
-- `searchWithQuery`(JOIN·사용자 SQL)는 옛 설계(queryId, parameters)를 물려받아 번거롭다. plan/001의 `search`로 대체한다.
+다음 두 한계는 옛 API 기준이었고 [013](013-drizzle-native-api-implemented.md)의 네이티브 API로 해결됐다.
+
+- **일반 칸과 암호 칸 사이의 OR**은 이제 `m.sql(cond)`로 표현한다. AND로만 쓰이면 WHERE로 내려가고, OR 안에 있으면 후보 SQL에 OR로 넣은 뒤 재확인 플래그로 검증한다 ([V1 재현](../../bench/results/2026-09-27-core-verification/v1/report-ko.md)의 옛 한계, [docs/llm-integration.md](../llm-integration.md) 검색 절).
+- 옛 `searchWithQuery`(queryId, parameters)는 `sealed.search`(Drizzle 콜백 또는 raw SQL 콜백)로 대체됐다.
 
 ## 대체 관계
 
-- 관련: [001](001-search-hmac-pieces-gin-verify.md), [002](002-fixed-keys-no-db-policy.md), [006](006-query-engine.md), [008](008-drizzle-integration.md).
+- 관련: [001](001-search-hmac-pieces-gin-verify.md), [002](002-fixed-keys-no-db-policy.md), [006](006-query-engine.md), [008](008-drizzle-integration.md), [013](013-drizzle-native-api-implemented.md).
