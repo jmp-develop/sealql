@@ -173,7 +173,7 @@ function register<T extends PgTable, R extends UuidOrTextKeys<T>, S extends Uuid
       t[substring[0].tokens], ...substring.slice(1).map(profile => t[profile.tokens]))] : []),
   ]);
   const storage: SealedStorage = { parent: { schema: tableConfig.schema ?? 'public', name: tableName }, index: {
-    schema: tableConfig.schema ?? 'public', name: indexName, layout: 'companion-v1', profiles,
+    schema: tableConfig.schema ?? 'public', name: indexName, profiles,
   } };
   const registration: Registration = { parent: table, index: companion, row: cfg.row, scope: cfg.scope, rowUnique, model, fields, definition, storage };
   for (const binding of fields.values()) binding.registration = registration;

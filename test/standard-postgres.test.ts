@@ -90,6 +90,15 @@ test('native CRUD, verified pages, OR semi-join and bounded count', async () => 
     const exactProfile = profiles('memo', 'body', registrationOf(c.seal).definition.fields.body).find(profile => profile.mode === 'exact')!;
     const expectedToken = await searchTokens(c.cipher.ring('memo'), scope, exactProfile, searchPieces(exactProfile, first.memo_plain), { profiles: new Map() });
     assert.deepEqual(before[c.profiles['body/exact'].tokens].map(String), expectedToken);
+    assert.equal(c.logs.some(query => query.includes('collate "C"')), false, 'UUID candidate SQL keeps its original comparison');
+    const explain = await c.pool.query(`explain (format json) select id from "${c.schemaName}".memo where id in
+      (select row_id from "${c.schemaName}".memo_seal_index where scope_id=$1 and ("${c.profiles['body/exact'].tokens}")[1]=$2::bigint)`,
+    [scope, expectedToken[0]]);
+    assert.ok(Array.isArray(explain.rows[0]['QUERY PLAN']));
+    const substringProfile = profiles('memo', 'body', registrationOf(c.seal).definition.fields.body).find(profile => profile.mode === 'substring')!;
+    const expectedSubstring = await searchTokens(c.cipher.ring('memo'), scope, substringProfile,
+      searchPieces(substringProfile, first.memo_plain), { profiles: new Map() });
+    assert.deepEqual(before[c.profiles['body/substring'].tokens].map(String), expectedSubstring);
     await c.sealed.update(c.db, c.seal, { id: first.id, scopeId: scope }, { body: second.memo_plain });
     const after = (await c.pool.query(`select * from "${c.schemaName}".memo_seal_index where row_id=$1`, [first.id])).rows[0];
     assert.deepEqual(after[c.profiles['amount/exact'].tokens], before[c.profiles['amount/exact'].tokens]);

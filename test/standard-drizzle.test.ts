@@ -86,6 +86,8 @@ test('native managed writes and opens stay atomic', async () => {
     const relational = await relationalDb.query.people.findMany({ with: { orders: true } });
     assert.equal((await sealed.open(relational))[0].name, first.name_plain);
     assert.equal(relational[0].orders.length, 2);
+    const nestedCustomer = await relationalDb.query.orders.findMany({ with: { customer: true } });
+    assert.equal((await sealed.open(nestedCustomer))[0].customer.name, first.name_plain);
     const joined = await sealed.search(db, { scope: first.scope_id, match: { c: [peopleSeal, m => m.name.eq(first.name_plain)] },
       keyset: [orders.id], limit: 1,
       query: ({ where, after, orderBy, flags, limit }) => db.select({ c: people, o: orders, ...flags }).from(people)

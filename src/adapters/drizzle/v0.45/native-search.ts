@@ -14,6 +14,17 @@ import { Sealed, registrationOf, type Opened, type Registration, type SealMeta }
 
 type Db = PgDatabase<any, any, any>;
 export interface SearchBudgets { batch?: number; maxCandidates?: number; fetchBytes?: number; decryptedBytes?: number; resultBytes?: number; deadlineMs?: number; decryptConcurrency?: number }
+type ResolvedBudgets = Required<SearchBudgets>;
+function budgetsFor(counting: boolean, requested?: SearchBudgets): ResolvedBudgets {
+  const budgets: ResolvedBudgets = { batch: counting ? 2000 : 200, maxCandidates: counting ? 20000 : 2000,
+    fetchBytes: 4 * 1024 * 1024, decryptedBytes: 4 * 1024 * 1024, resultBytes: 4 * 1024 * 1024,
+    deadlineMs: 2000, decryptConcurrency: 64, ...requested };
+  const caps: ResolvedBudgets = { batch: counting ? 2000 : 500, maxCandidates: 20000,
+    fetchBytes: 32 * 1024 * 1024, decryptedBytes: 32 * 1024 * 1024, resultBytes: 32 * 1024 * 1024,
+    deadlineMs: 30000, decryptConcurrency: 64 };
+  for (const [key, value] of Object.entries(budgets)) ensure(Number.isSafeInteger(value) && value > 0 && value <= caps[key as keyof ResolvedBudgets], 'INVALID_VALUE');
+  return budgets;
+}
 type PlainOfSealed<V> = V extends Sealed<infer P, any> ? P : never;
 type SearchOfSealed<V> = V extends Sealed<any, infer S> ? S : never;
 type ParentOf<C> = C extends SealMeta<infer T, any, any> ? T : never;
@@ -205,7 +216,7 @@ function growBatch(current: number, remaining: number, verified: number, accepte
   return Math.min(cap, Math.max(current * 2, estimated));
 }
 export function searchMethods(sealerOf: () => import('../../../core/field-cipher.js').Sealer, open: <R>(rows: R, options?: { scope?: string; budgets?: { maxRows?: number; maxBytes?: number; deadlineMs?: number; concurrency?: number } }, authCache?: AuthCache) => Promise<Opened<R>>,
-  openRaw: (seal: object, rows: Record<string, unknown>[], options: { columns: Record<string, string>; scope?: string }, authCache?: AuthCache) => Promise<Record<string, unknown>[]>, cache: SearchTokenCache) {
+  cache: SearchTokenCache) {
   async function run<T extends PgTable>(db: Db, reg: Registration, options: FindOptions<T>, counting: boolean, absoluteDeadline?: number) {
     ensure(options && typeof options === 'object', 'INVALID_VALUE');
     const scopeId = scope(reg, options.scope), columns = getTableColumns(reg.parent) as Record<string, PgColumn>;
@@ -213,13 +224,9 @@ export function searchMethods(sealerOf: () => import('../../../core/field-cipher
     const orderColumn = order(reg, options.orderBy);
     const limit = options.limit ?? 50;
     ensure(Number.isInteger(limit) && limit >= 1 && limit <= (counting ? 2000 : 200), 'INVALID_VALUE');
-    const budgets = { batch: counting ? 2000 : 200, maxCandidates: counting ? 20000 : 2000, fetchBytes: 4 * 1024 * 1024,
-      decryptedBytes: 4 * 1024 * 1024, resultBytes: 4 * 1024 * 1024, deadlineMs: 2000, decryptConcurrency: 64, ...options.budgets };
+    const budgets = budgetsFor(counting, options.budgets);
     const deadline = absoluteDeadline ?? Date.now() + budgets.deadlineMs;
     const check = () => { if (options.signal?.aborted) fail('CANCELLED'); ensure(Date.now() < deadline, 'LIMIT_EXCEEDED'); };
-    const caps = { batch: counting ? 2000 : 500, maxCandidates: 20000, fetchBytes: 32 * 1024 * 1024,
-      decryptedBytes: 32 * 1024 * 1024, resultBytes: 32 * 1024 * 1024, deadlineMs: 30000, decryptConcurrency: 64 };
-    for (const [key, value] of Object.entries(budgets)) ensure(Number.isSafeInteger(value) && value > 0 && value <= caps[key as keyof typeof caps], 'INVALID_VALUE');
     check();
     const ast = options.match?.(m<T>(reg));
     if (ast) validate(ast, reg);
@@ -346,9 +353,7 @@ export function searchMethods(sealerOf: () => import('../../../core/field-cipher
   ): Promise<number> {
     const maxCandidates = options.maxCandidates ?? 20000;
     ensure(Number.isSafeInteger(maxCandidates) && maxCandidates >= 1 && maxCandidates <= 1000000, 'INVALID_VALUE');
-    const requestedDeadline = options.budgets?.deadlineMs ?? 2000;
-    ensure(Number.isSafeInteger(requestedDeadline) && requestedDeadline > 0 && requestedDeadline <= 30000, 'INVALID_VALUE');
-    const deadline = Date.now() + requestedDeadline;
+    const deadline = Date.now() + budgetsFor(true, options.budgets).deadlineMs;
     let result = 0, scanned = 0, cursor: string | undefined;
     do {
       ensure(Date.now() < deadline, 'LIMIT_EXCEEDED');
@@ -379,11 +384,7 @@ export function searchMethods(sealerOf: () => import('../../../core/field-cipher
     ensure(keys.length > 0 && keys.length <= 8 && keys.every(key => /^[A-Za-z_][A-Za-z0-9_]*$/.test(key)), 'INVALID_VALUE');
     const limit = options.limit ?? 50;
     ensure(Number.isInteger(limit) && limit >= 1 && limit <= 200, 'INVALID_VALUE');
-    const budgets = { batch: 200, maxCandidates: 2000, fetchBytes: 4 * 1024 * 1024, decryptedBytes: 4 * 1024 * 1024,
-      resultBytes: 4 * 1024 * 1024, deadlineMs: 2000, decryptConcurrency: 64, ...options.budgets };
-    const caps = { batch: 500, maxCandidates: 20000, fetchBytes: 32 * 1024 * 1024,
-      decryptedBytes: 32 * 1024 * 1024, resultBytes: 32 * 1024 * 1024, deadlineMs: 30000, decryptConcurrency: 64 };
-    for (const [key, value] of Object.entries(budgets)) ensure(Number.isSafeInteger(value) && value > 0 && value <= caps[key as keyof typeof caps], 'INVALID_VALUE');
+    const budgets = budgetsFor(false, options.budgets);
     const deadline = Date.now() + budgets.deadlineMs;
     const regs = Object.fromEntries(keys.map(key => [key, registrationOf(options.match[key][0])])) as Record<string, Registration>;
     ensure(new Set(keys.map(key => regs[key].parent)).size === keys.length, 'INVALID_SCHEMA');
@@ -438,45 +439,49 @@ export function searchMethods(sealerOf: () => import('../../../core/field-cipher
         return bytes + length - 29;
       }, 0);
     }, 0);
-    const openCondition = async (raw: Record<string, unknown>) => {
-      const view: Record<string, unknown> = {};
-      for (const [name, value] of Object.entries(raw)) if (!value || typeof value !== 'object' || value instanceof Date || value instanceof Uint8Array || name.startsWith('__seal_')) view[name] = value;
+    const openMapped = async (raw: Record<string, unknown>, conditionOnly: boolean) => {
+      const view: Record<string, unknown> = conditionOnly ? {} : { ...raw };
+      if (conditionOnly) for (const [name, value] of Object.entries(raw))
+        if (!value || typeof value !== 'object' || value instanceof Date || value instanceof Uint8Array || name.startsWith('__seal_')) view[name] = value;
+      const mapped = new Map<string, { columns: Record<string, string>; fields: string[] }>();
       for (const key of keys) {
         const reg = regs[key], mapping = options.columns?.[key];
         if (mapping) {
           ensure(!!mapping[reg.row] && (!reg.scope || !!mapping[reg.scope]), 'INVALID_VALUE');
-          for (const field of [reg.row, ...(reg.scope ? [reg.scope] : []), ...encryptedKeys(asts[key])])
-            if (mapping[field]) {
-              ensure(Object.hasOwn(raw, mapping[field]), 'INVALID_CANDIDATE_SHAPE');
-              view[mapping[field]] = raw[mapping[field]];
-            }
+          const fields = conditionOnly ? conditionKeys[key] : [...reg.fields.keys()].filter(field => !!mapping[field] && Object.hasOwn(raw, mapping[field]));
+          const nested: Record<string, unknown> = { [reg.row]: raw[mapping[reg.row]],
+            ...(reg.scope ? { [reg.scope]: raw[mapping[reg.scope]] } : {}) };
+          ensure(Object.hasOwn(raw, mapping[reg.row]) && (!reg.scope || Object.hasOwn(raw, mapping[reg.scope])), 'INVALID_CANDIDATE_SHAPE');
+          for (const field of fields) {
+            const name = mapping[field], binding = reg.fields.get(field)!;
+            ensure(!!name && Object.hasOwn(raw, name), 'INVALID_CANDIDATE_SHAPE');
+            nested[field] = raw[name] === null ? null : Sealed.fromDriver(raw[name], binding);
+          }
+          const viewKey = `__seal_view_${key}`;
+          view[viewKey] = nested;
+          mapped.set(viewKey, { columns: mapping, fields });
         } else {
           const nested = raw[key] as Record<string, unknown>;
           ensure(nested && typeof nested === 'object' && !Array.isArray(nested), 'INVALID_CANDIDATE_SHAPE');
-          for (const field of conditionKeys[key]) {
+          if (conditionOnly) for (const field of conditionKeys[key]) {
             const value = nested[field];
             ensure(Object.hasOwn(nested, field) && (value === null || value instanceof Sealed &&
               value.binding?.registration === reg && value.binding.key === field), 'INVALID_CANDIDATE_SHAPE');
           }
-          view[key] = Object.fromEntries([reg.row, ...(reg.scope ? [reg.scope] : []), ...conditionKeys[key]]
+          if (conditionOnly) view[key] = Object.fromEntries([reg.row, ...(reg.scope ? [reg.scope] : []), ...conditionKeys[key]]
             .map(field => [field, nested[field]]));
         }
       }
-      let opened = await open(view, { scope: scopeId }, authCache) as Record<string, unknown>;
-      for (const key of keys) if (options.columns?.[key]) {
-        const reg = regs[key], mapping = options.columns[key];
-        const columns = Object.fromEntries([reg.row, ...(reg.scope ? [reg.scope] : []), ...encryptedKeys(asts[key])]
-          .filter(field => mapping[field]).map(field => [field, mapping[field]]));
-        opened = (await openRaw(options.match[key][0], [opened], { columns, scope: scopeId }, authCache))[0];
+      const opened = await open(view, { scope: scopeId }, authCache) as Record<string, unknown>;
+      for (const [viewKey, { columns, fields }] of mapped) {
+        const nested = opened[viewKey] as Record<string, unknown>;
+        for (const field of fields) opened[columns[field]] = nested[field];
+        delete opened[viewKey];
       }
       return opened;
     };
-    const openProjection = async (raw: Record<string, unknown>) => {
-      let opened = await open(raw, { scope: scopeId }, authCache) as Record<string, unknown>;
-      for (const key of keys) if (options.columns?.[key]) opened = (await openRaw(options.match[key][0], [opened],
-        { columns: options.columns[key], scope: scopeId }, authCache))[0];
-      return opened;
-    };
+    const openCondition = (raw: Record<string, unknown>) => openMapped(raw, true);
+    const openProjection = (raw: Record<string, unknown>) => openMapped(raw, false);
     const matchesCondition = async (opened: Record<string, unknown>) => {
       for (const key of keys) {
         const mapping = options.columns?.[key];
@@ -537,7 +542,7 @@ export function searchMethods(sealerOf: () => import('../../../core/field-cipher
           const get = (field: string) => mapping ? row[mapping[field]] : row[field];
           const rowId = get(reg.row);
           ensure(typeof rowId === 'string' && (!reg.scope || get(reg.scope) === scopeId), 'INVALID_CANDIDATE_SHAPE');
-          for (const field of encryptedKeys(asts[key])) ensure(get(field) !== undefined, 'INVALID_CANDIDATE_SHAPE');
+          for (const field of conditionKeys[key]) ensure(get(field) !== undefined, 'INVALID_CANDIDATE_SHAPE');
           parts.push(rowId);
         }
         keyset.forEach((_, index) => { ensure(condition[`__seal_keyset_${index}`] !== undefined, 'INVALID_CANDIDATE_SHAPE'); parts.push(condition[`__seal_keyset_${index}`]); });

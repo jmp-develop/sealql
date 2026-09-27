@@ -315,5 +315,5 @@ export function runtimeMethods(sealerOf: () => Sealer) {
     }
     return { rows: count };
   }
-  return { insert, update, upsert, open, openRaw, reindex, ...searchMethods(sealerOf, openWithCache, openRaw as any, cache) };
+  return { insert, update, upsert, open, openRaw, reindex, ...searchMethods(sealerOf, openWithCache, cache) };
 }
