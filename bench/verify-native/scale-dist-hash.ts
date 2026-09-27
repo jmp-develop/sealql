@@ -4,7 +4,7 @@ import { createHash } from 'node:crypto';
 import { readdir, readFile, writeFile } from 'node:fs/promises';
 import { join, relative } from 'node:path';
 
-const phase=process.argv[2];assert(['customer-before','customer-after','ticket-before','ticket-after'].includes(phase));
+const phase=process.argv[2];assert(['customer-before','customer-after','ticket-before','ticket-after','combo-before','combo-after'].includes(phase));
 const root='dist',out='bench/results/2026-09-27-native-scale-100m';
 async function files(path:string):Promise<string[]>{
   const entries=await readdir(path,{withFileTypes:true});const found:string[]=[];
