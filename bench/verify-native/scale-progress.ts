@@ -23,6 +23,10 @@ try{
   const vacuumProgress=(await pool.query(`select pid,relid::regclass::text table_name,phase,
     heap_blks_total,heap_blks_scanned,heap_blks_vacuumed,index_vacuum_count
     from pg_stat_progress_vacuum where relid::regclass::text like 'native_scale_100m.%'`)).rows;
+  const activity=(await pool.query(`select pid,state,wait_event_type,wait_event,
+    extract(epoch from clock_timestamp()-query_start)::int elapsed_sec,left(query,120) query_prefix
+    from pg_stat_activity where datname=current_database() and pid<>pg_backend_pid()
+    and state='active' and query like '%native_scale_100m%' order by query_start`)).rows;
   const fs=statfsSync(parse(process.cwd()).root);const freeBytes=Number(fs.bavail)*Number(fs.bsize);
   const elapsedSec=p.started&&p.latest?(Date.parse(p.latest)-Date.parse(p.started))/1000:0;
   const tailSec=tail.started&&tail.latest?(Date.parse(tail.latest)-Date.parse(tail.started))/1000:0;
@@ -33,5 +37,5 @@ try{
     ticketCopies,ticketRows:ticketCopies*100000,ticketEstimatedRemainingSec:ticketRate?(ticketTarget-ticketCopies)/ticketRate:null,
     elapsedSec,estimatedRemainingSec:rate?(1000-p.copies)/rate:null,
     databaseBytes:Number((await pool.query('select pg_database_size(current_database()) bytes')).rows[0].bytes),
-    freeBytes,tables:Object.fromEntries(sizes.map(x=>[x.relname,Number(x.bytes)])),indexProgress,vacuumProgress}));
+    freeBytes,tables:Object.fromEntries(sizes.map(x=>[x.relname,Number(x.bytes)])),indexProgress,vacuumProgress,activity}));
 }finally{await pool.end();}

@@ -9,16 +9,18 @@ const gib=(n:number)=>`${(n/2**30).toFixed(2)} GiB`;
 const matrix=await load('matrix');assert.equal(matrix.report.length,21);
 const old=JSON.parse(await readFile('bench/results/2026-09-27-native-verification/v3/matrix.json','utf8'));
 const oldByName=new Map(old.report.map((r:any)=>[r.case,r]));
-const excluded=new Set(['sub_rare','sub_long','sub_zero','and4','drain101','word_boundary','word_inside_longer']);
-let within=0,exceeded=0;
-const slowTotal=matrix.report.filter((r:any)=>r.summary.product.totalMs/r.summary.plain.totalMs>10)
+const excluded=new Set(['sub_rare','sub_long','sub_zero','and4','drain101','word_boundary','word_inside_longer','sub_mid_space']);
+const singleCases=matrix.report.filter((r:any)=>r.runs.plain.length===1).map((r:any)=>r.case);
+let within=0,exceeded=0,budgetExceeded=0;
+const slowTotal=matrix.report.filter((r:any)=>r.productOutcome!=='LIMIT_EXCEEDED'&&r.summary.product.totalMs/r.summary.plain.totalMs>10)
   .map((r:any)=>`${r.case} ${fmt(r.summary.product.totalMs/r.summary.plain.totalMs)}배`);
 const matrixRows=matrix.report.map((r:any)=>{
   const a=r.summary.plain,b=r.summary.product,prior:any=oldByName.get(r.case);
   assert(prior,`missing old case ${r.case}`);
-  const ratio=b.sqlMs/a.sqlMs;
-  const verdict=excluded.has(r.case)?'C 로캘 등 판정 제외':ratio<=2?(within++,'2배 이내'):(exceeded++,'2배 초과');
-  return `| ${r.case} | ${fmt(a.sqlMs)} / ${fmt(a.totalMs)} | ${fmt(b.sqlMs)} / ${fmt(b.totalMs)} | ${fmt(ratio)}× | ${fmt(b.totalMs/a.totalMs)}× | ${fmt(prior.summary.product.sqlMs)} / ${fmt(prior.summary.product.totalMs)} | ${b.candidates} / ${b.returned} | ${verdict} |`;
+  const failed=r.productOutcome==='LIMIT_EXCEEDED';
+  const ratio=failed?null:b.sqlMs/a.sqlMs;
+  const verdict=failed?(budgetExceeded++,'LIMIT_EXCEEDED'):excluded.has(r.case)?'C 로캘 등 판정 제외':(ratio as number)<=2?(within++,'2배 이내'):(exceeded++,'2배 초과');
+  return `| ${r.case}${r.partial?' (부분)':''} | ${r.searchRows?.toLocaleString('en-US')??'100,000,000'} | ${r.expected} / ${b.returned} | ${b.candidates} | ${fmt(a.sqlMs)} / ${fmt(a.totalMs)} | ${fmt(b.preMs)} / ${fmt(b.sqlMs)} / ${fmt(b.postMs)} / ${fmt(b.betweenSqlMs)} | ${fmt(b.totalMs)} | ${failed?'—':`${fmt(ratio)}×`} | ${fmt(prior.summary.product.sqlMs)} / ${fmt(prior.summary.product.totalMs)} | ${verdict} |`;
 });
 const checkpoints=await load('checkpoints');
 const meta=await load('measurement-meta');assert(meta.productCommit&&meta.build==='PASS');
@@ -70,13 +72,15 @@ ${checkpointRows.join('\n')}
 
 ## 21개 검색
 
-출처: [1억 행 반복 원시값](matrix.json), [10만 행 네이티브 기록](../2026-09-27-native-verification/v3/matrix.json). 두 경로는 같은 1억 행 ID·값, 질의·투영·ID 정렬·LIMIT를 썼고 최초 호출 및 모든 반복에서 ID 순서와 여섯 암호 칸 값을 비교했다. 최초 실행 시간은 JSON의 \`first\`에 따로 있으며 OS 캐시를 비우지 않아 콜드 캐시 수치라고 부르지 않는다. 예열 2회 뒤 평문·제품 순서를 교차한 7회 중앙값이다. SQL은 클라이언트의 요청~응답 합계, 전체는 API 호출 시간이며 지표별 중앙값은 서로 합산되지 않을 수 있다. 후보는 SQL 결과 행 수 합계, 실제 인증 복호화 필드 수는 **미계측**이다. 10만 행 기록은 색인 pending list가 남았던 최초 실행이므로 규모 효과만으로 차이를 설명할 수 없다.
+출처: [1억 행 반복 원시값](matrix.json), [10만 행 네이티브 기록](../2026-09-27-native-verification/v3/matrix.json). 두 경로는 같은 1억 행 ID·값, 질의·투영·ID 정렬·LIMIT를 썼고 최초 호출 및 모든 반복에서 ID 순서와 여섯 암호 칸 값을 비교했다. 최초 실행 시간은 JSON의 \`first\`에 따로 있으며 OS 캐시를 비우지 않아 콜드 캐시 수치라고 부르지 않는다. 기본 규칙은 예열 2회 뒤 평문·제품 순서를 교차한 7회 중앙값이다. C 로캘 배율 판정 제외 사례 ${singleCases.join(', ')}는 평문·제품 모두 예열 없이 **1회 실측**했고 중앙값이 아니다. SQL은 클라이언트의 요청~응답 합계, 전체는 API 호출 시간이며 지표별 중앙값은 서로 합산되지 않을 수 있다. 제품 전처리는 호출 시작~첫 SQL 요청, 후처리는 마지막 SQL 응답~반환, SQL 간 시간은 여러 요청 사이의 간격이다. 후보는 DB가 제품에 반환한 행 수 합계, 실제 인증 복호화 필드 수는 **미계측**이다. 10만 행 기록은 색인 pending list가 남았던 최초 실행이므로 규모 효과만으로 차이를 설명할 수 없다.
 
-| 사례 | 1억 평문 SQL / 전체 ms | 1억 제품 SQL / 전체 ms | SQL 배율 | 전체 배율 | 10만 제품 SQL / 전체 ms | 후보 / 반환 | 판정 |
-|---|---:|---:|---:|---:|---:|---:|---|
+| 사례 | 검색 행 | 결과 행 (평/제) | DB 후보 행 | 평문 SQL / 전체 ms | 제품 전 / SQL / 후 / SQL 간 ms | 제품 전체 ms | SQL 배율 | 10만 제품 SQL / 전체 ms | 판정 |
+|---|---:|---:|---:|---:|---:|---:|---:|---:|---|
 ${matrixRows.join('\n')}
 
-평문 SQL 약 2배 기준의 판정 대상 ${within+exceeded}개 중 ${within}개 이내, ${exceeded}개 초과다. C 로캘 한글 LIKE 전체 스캔 또는 평문 단어 필터가 낀 ${excluded.size}개는 배율 판정에서 제외했다. 전체 시간 10배 초과 사례는 ${slowTotal.length?slowTotal.join(', '):'없음'}이다. SQL 기준 판정과 별개로 전체 시간을 보고한다.
+\`drain101\`은 원본 적중 101행이 1,000벌 복제로 약 101,000행이 되는 전량 배출 사례다. 수시간 대기가 예상되어 평문·제품 각각 첫 5페이지 또는 60초까지만 측정했다. 표의 결과 행과 시간은 부분 배출이며 전체 커서 완료나 전체 성능을 뜻하지 않는다. 배율 판정에서도 제외했다.
+
+평문 SQL 약 2배 기준의 판정 대상 ${within+exceeded}개 중 ${within}개 이내, ${exceeded}개 초과다. 후보 예산 초과 ${budgetExceeded}개 사례는 제품이 LIMIT_EXCEEDED를 반환하여 배율을 판정할 수 없었다(반복별 오류 횟수는 [원시값](matrix.json)에 기록). C 로캘 한글 LIKE 전체 스캔 또는 평문 단어 필터가 낀 ${excluded.size}개는 배율 판정에서 제외했다. 전체 시간 10배 초과 사례는 ${slowTotal.length?slowTotal.join(', '):'없음'}이다. SQL 기준 판정과 별개로 전체 시간을 보고한다.
 
 ## count·mixed·JOIN·쓰기
 

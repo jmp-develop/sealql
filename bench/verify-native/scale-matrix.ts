@@ -1,5 +1,5 @@
 import assert from 'node:assert/strict';
-import { mkdir, writeFile } from 'node:fs/promises';
+import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import { performance } from 'node:perf_hooks';
 import { Client, Pool } from 'pg';
 import { drizzle } from 'drizzle-orm/node-postgres';
@@ -36,16 +36,18 @@ const cases: { name: string; node: Node; limit?: number; drain?: boolean; respec
   { name:'word_inside_longer', node:L('contains','memo','비스 상'), respectWords:true },
 ];
 const selected=cases;
+const singleCase=new Set(['sub_zero','and4','drain101','word_boundary','word_inside_longer','sub_mid_space','sub_rare','sub_long']);
 assert.equal(selected.length,21);
 const pool = new Pool({ host:'127.0.0.1', port:56439, user:'sealql_test', database:'postgres', max:4,
   options:'-c statement_timeout=600000' });
 const db = drizzle(pool);
-type Event = { sqlMs: number; rows: number; text: string };
+type Event = { started: number; ended: number; sqlMs: number; rows: number; text: string };
 let events: Event[] | null = null;
 const original = Client.prototype.query;
 (Client.prototype as any).query = function (...args: any[]) {
   const started = performance.now(), text = typeof args[0] === 'string' ? args[0] : args[0]?.text ?? '';
-  const end = (result: any) => { events?.push({ sqlMs:performance.now()-started, rows:result?.rows?.length ?? 0, text }); return result; };
+  const end = (result: any) => { const ended=performance.now();events?.push({started,ended,
+    sqlMs:ended-started,rows:result?.rows?.length ?? 0,text});return result; };
   const callback = args.findIndex(x => typeof x === 'function');
   if (callback >= 0) { const cb = args[callback]; args[callback] = (err: any, result: any) => { if (!err) end(result); cb(err, result); }; }
   const result = (original as any).apply(this, args);
@@ -61,18 +63,21 @@ function plainWhere(n: Node, p: unknown[]): string {
 }
 async function plain(c: typeof cases[number]) {
   const out: any[]=[]; let after: string | undefined; const limit=c.limit??20;
+  const started=performance.now();let pages=0;
   do {
     const p: unknown[]=[scopeId], where=plainWhere(c.node,p);
     if (after) p.push(after);
     const queryLimit=c.respectWords?1000:limit;
     const rows=(await pool.query(`select id,${fields.map(f=>`${f}_plain as ${f}`).join(',')} from native_scale_100m.customers_plain
       where scope_id=$1 and ${where}${after?` and id>$${p.length}`:''} order by id limit ${queryLimit}`,p)).rows;
+    pages++;
     if(c.respectWords){
       out.push(...rows.filter(r=>normalizeWords(r.memo).includes(normalizeWords((c.node as Leaf).value))));
       if(out.length>=limit||rows.length<queryLimit)return out.slice(0,limit);
       after=rows.at(-1).id;continue;
     }
-    out.push(...rows); if (!c.drain || rows.length<limit) break; after=rows.at(-1).id;
+    out.push(...rows); if (!c.drain || rows.length<limit || pages>=5 || performance.now()-started>=60000) break;
+    after=rows.at(-1).id;
   } while (true);
   return out;
 }
@@ -83,12 +88,15 @@ function match(n: Node, m: any, respectWords=false): any {
 }
 async function product(c: typeof cases[number]) {
   const out: any[]=[]; let cursor: string | undefined; const limit=c.limit??20;
+  const started=performance.now();let pages=0;
   do {
     const page=await scaleSealed.findMany(db, scaleCustomersSeal, { scope:scopeId, match:m=>match(c.node,m,c.respectWords),
       columns:Object.fromEntries(fields.map(f=>[f,true])) as any, limit, cursor,
       budgets:{ maxCandidates:20000, fetchBytes:32*1024*1024, decryptedBytes:32*1024*1024,
         resultBytes:32*1024*1024, deadlineMs:30000 } });
-    out.push(...page.items); if (!c.drain || !page.nextCursor) break; cursor=page.nextCursor;
+    out.push(...page.items);pages++;
+    if (!c.drain || !page.nextCursor || pages>=5 || performance.now()-started>=60000) break;
+    cursor=page.nextCursor;
   } while (true);
   return out;
 }
@@ -99,11 +107,22 @@ function same(actual: any[], expected: any[], label: string) {
     for(const f of fields) assert.equal(actual[i][f],expected[i][f],`${label}/${f}/${i}`);
   }
 }
+function verify(result:{rows:any[];error?:string},expected:any[],label:string,partial=false){
+  if(result.error){assert.equal(result.error,'LIMIT_EXCEEDED',`${label}/error`);return;}
+  if(partial){const n=Math.min(result.rows.length,expected.length);same(result.rows.slice(0,n),expected.slice(0,n),label);}
+  else same(result.rows,expected,label);
+}
 async function measure(fn:()=>Promise<any[]>) {
   const ev:Event[]=[]; events=ev; const started=performance.now();
-  try { const rows=await fn(); return { rows, totalMs:performance.now()-started, sqlMs:ev.reduce((s,x)=>s+x.sqlMs,0),
-    sqlCalls:ev.length, candidates:ev.reduce((s,x)=>s+x.rows,0), returned:rows.length,
-    sql:ev.map(x=>x.text) }; } finally { events=null; }
+  let rows:any[]=[],error:string|undefined;
+  try{rows=await fn();}catch(e:any){if(e?.code!=='LIMIT_EXCEEDED')throw e;error=e.code;}
+  finally{events=null;}
+  const finished=performance.now(),totalMs=finished-started,sqlMs=ev.reduce((s,x)=>s+x.sqlMs,0);
+  const preMs=ev.length?ev[0].started-started:totalMs;
+  const postMs=ev.length?finished-ev.at(-1)!.ended:0;
+  return {rows,error,totalMs,preMs,sqlMs,postMs,betweenSqlMs:Math.max(0,totalMs-preMs-sqlMs-postMs),
+    sqlCalls:ev.length,candidates:ev.reduce((s,x)=>s+x.rows,0),returned:rows.length,
+    sql:ev.map(x=>x.text),sqlEvents:ev};
 }
 const median=(a:number[])=>[...a].sort((x,y)=>x-y)[a.length>>1];
 try {
@@ -111,21 +130,34 @@ try {
   assert.equal(Number((await pool.query('show port')).rows[0].port),56439);
   assert.equal(Number((await pool.query('select count(*) n from native_scale_100m.progress')).rows[0].n),1000);
   const outDir='bench/results/2026-09-27-native-scale-100m'; await mkdir(outDir,{recursive:true});
-  const report=[];
-  for(const c of selected) {
+  const report:any[]=process.argv[2]==='resume'
+    ?JSON.parse(await readFile(`${outDir}/matrix.json`,'utf8')).report:[];
+  for(let i=0;i<report.length;i++)assert.equal(report[i].case,selected[i].name);
+  for(const c of selected.slice(report.length)) {
+    const single=singleCase.has(c.name);
     const firstPlain=await measure(()=>plain(c)),expected=firstPlain.rows;
-    const firstProduct=await measure(()=>product(c));same(firstProduct.rows,expected,`${c.name}/first`);
-    for(let i=0;i<2;i++) { same(await plain(c),expected,`${c.name}/warmup/plain`); same(await product(c),expected,`${c.name}/warmup/product`); }
+    const firstProduct=await measure(()=>product(c));verify(firstProduct,expected,`${c.name}/first`,!!c.drain);
+    const warmupProduct=[];
+    for(let i=0;i<(single?0:2);i++) { same(await plain(c),expected,`${c.name}/warmup/plain`);
+      const result=await measure(()=>product(c));verify(result,expected,`${c.name}/warmup/product`,!!c.drain);warmupProduct.push(result); }
     const runs:{plain:any[];product:any[]}={plain:[],product:[]};
-    for(let i=0;i<7;i++) for(const path of (i%2?['product','plain']:['plain','product']) as ('plain'|'product')[]) {
-      const result=await measure(path==='plain'?()=>plain(c):()=>product(c)); same(result.rows,expected,`${c.name}/${path}/${i}`);
+    for(let i=0;i<(single?0:7);i++) for(const path of (i%2?['product','plain']:['plain','product']) as ('plain'|'product')[]) {
+      const result=await measure(path==='plain'?()=>plain(c):()=>product(c));verify(result,expected,`${c.name}/${path}/${i}`,!!c.drain);
       runs[path].push({ ...result, rows:undefined });
     }
-    const metrics=['totalMs','sqlMs','sqlCalls','candidates','returned'] as const;
+    if(single){runs.plain.push({...firstPlain,rows:undefined});runs.product.push({...firstProduct,rows:undefined});}
+    const metrics=['totalMs','preMs','sqlMs','postMs','betweenSqlMs','sqlCalls','candidates','returned'] as const;
     const summary=Object.fromEntries(Object.entries(runs).map(([path,rs])=>[path,Object.fromEntries(metrics.map(k=>[k,median(rs.map(r=>r[k]))]))]));
-    report.push({case:c.name,expected:expected.length,first:{plain:{...firstPlain,rows:undefined},
+    const productErrors=single?Number(!!firstProduct.error)
+      :Number(!!firstProduct.error)+warmupProduct.filter(x=>x.error).length+runs.product.filter(x=>x.error).length;
+    report.push({case:c.name,searchRows:100000000,expected:expected.length,
+      partial:!!c.drain,fullMatchEstimate:c.drain?101000:null,
+      pageCap:c.drain?5:null,timeCapMs:c.drain?60000:null,
+      plainRule:single?'single':'warmup2_cross7',productRule:single?'single':'warmup2_cross7',
+      productOutcome:productErrors?'LIMIT_EXCEEDED':'value',
+      productErrorRuns:productErrors,first:{plain:{...firstPlain,rows:undefined},
       product:{...firstProduct,rows:undefined}},summary,runs});
-    console.log(JSON.stringify({case:c.name,summary}));
+    console.log(JSON.stringify({case:c.name,productErrors,summary}));
     await writeFile(`${outDir}/matrix.json`,JSON.stringify({schema:'native_scale_100m',copies:1000,warmup:2,alternatingRuns:7,report},null,2)+'\n');
   }
 } finally { Client.prototype.query=original; await pool.end(); }
