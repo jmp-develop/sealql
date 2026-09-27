@@ -59,6 +59,7 @@ rtk npm test
 | `standard-next/g0-token-placement.ts` | `2026-09-27-g0-token-placement/` | [008](../docs/decisions/008-drizzle-integration.md) |
 | `gate-x1x2/*` | `2026-09-27-gate-x1x2/` | [008](../docs/decisions/008-drizzle-integration.md) |
 | `drizzle-design/*` (타입 실험 `tsc -p bench/drizzle-design`, drizzle-kit 실험, 트리거 초안) | 결과 파일 없음 | [013](../docs/decisions/013-drizzle-native-api-implemented.md) |
+| `verify-native/scale-scope-b-*.ts` (1억 행 중 복제본 1벌을 다른 scope로 재암호화하고 21개 조회·AND/OR 200건·count를 측정) | `2026-09-27-native-scale-100m/scope-b/` ([보고](results/2026-09-27-native-scale-100m/scope-b/report-ko.md)) | 제품 결정 변경 없음 |
 
 ## 스크립트 없이 결과만 보존한 것 (재현 불가)
 

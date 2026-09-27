@@ -1,0 +1,9 @@
+{
+  "name": "customers_scope_id_id_key",
+  "definition": "UNIQUE (scope_id,id) B-tree",
+  "sourceDefinition": "CREATE UNIQUE INDEX customers_scope_id_id_key ON bench_realistic_100k.customers USING btree (scope_id, id)",
+  "elapsedMs": 81452.26239999999,
+  "maintenanceWorkMem": "4GB",
+  "maxParallelMaintenanceWorkers": 8,
+  "table": "native_scale_100m.customers_plain"
+}

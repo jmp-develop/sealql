@@ -1,0 +1,1588 @@
+{
+  "schema": "native_scale_100m",
+  "scope": "bbbbbbbb-bbbb-4bbb-8bbb-bbbbbbbbbbbb",
+  "copies": 1000,
+  "source": "bench_realistic_100k",
+  "conditionsFrom": "bench/verify-native/scale-matrix.ts",
+  "report": [
+    {
+      "case": "and2",
+      "sourceMatches": 21176,
+      "find": {
+        "mode": "findMany",
+        "searchRows": 100000000,
+        "scopeRows": 100000,
+        "expectedMatches": 21176,
+        "returned": 200,
+        "plain": {
+          "totalMs": 1.2282999999999902,
+          "preMs": 0.052999999999883585,
+          "sqlMs": 1.172900000000027,
+          "betweenSqlMs": 0,
+          "postMs": 0.03230000000007749,
+          "sqlCalls": 1,
+          "candidates": 200
+        },
+        "product": {
+          "totalMs": 60.52729999999997,
+          "preMs": 1.6440000000000055,
+          "sqlMs": 3.026600000000144,
+          "betweenSqlMs": 0,
+          "postMs": 56.197400000000016,
+          "sqlCalls": 1,
+          "candidates": 200
+        },
+        "runs": {
+          "plain": [
+            {
+              "outcome": {
+                "kind": "value"
+              },
+              "totalMs": 1.5570999999999913,
+              "preMs": 0.09830000000010841,
+              "sqlMs": 1.3988999999999123,
+              "betweenSqlMs": 0,
+              "postMs": 0.05989999999997053,
+              "sqlCalls": 1,
+              "candidates": 200,
+              "sql": [
+                "select id,name_plain as name,phone_plain as phone,address_plain as address,memo_plain as memo,email_plain as email,company_plain as company from native_scale_100m.customers_plain where scope_id=$1 and (company_norm =$2 and memo_norm like '%'||$3||'%') order by id limit 200"
+              ],
+              "returned": 200
+            },
+            {
+              "outcome": {
+                "kind": "value"
+              },
+              "totalMs": 1.5072999999999865,
+              "preMs": 0.07270000000016807,
+              "sqlMs": 1.4021999999999935,
+              "betweenSqlMs": 0,
+              "postMs": 0.03239999999982501,
+              "sqlCalls": 1,
+              "candidates": 200,
+              "sql": [
+                "select id,name_plain as name,phone_plain as phone,address_plain as address,memo_plain as memo,email_plain as email,company_plain as company from native_scale_100m.customers_plain where scope_id=$1 and (company_norm =$2 and memo_norm like '%'||$3||'%') order by id limit 200"
+              ],
+              "returned": 200
+            },
+            {
+              "outcome": {
+                "kind": "value"
+              },
+              "totalMs": 1.0096000000000913,
+              "preMs": 0.03449999999997999,
+              "sqlMs": 0.9428000000000338,
+              "betweenSqlMs": 0,
+              "postMs": 0.03230000000007749,
+              "sqlCalls": 1,
+              "candidates": 200,
+              "sql": [
+                "select id,name_plain as name,phone_plain as phone,address_plain as address,memo_plain as memo,email_plain as email,company_plain as company from native_scale_100m.customers_plain where scope_id=$1 and (company_norm =$2 and memo_norm like '%'||$3||'%') order by id limit 200"
+              ],
+              "returned": 200
+            },
+            {
+              "outcome": {
+                "kind": "value"
+              },
+              "totalMs": 1.3367000000000644,
+              "preMs": 0.052999999999883585,
+              "sqlMs": 1.2565000000001874,
+              "betweenSqlMs": 0,
+              "postMs": 0.02719999999999345,
+              "sqlCalls": 1,
+              "candidates": 200,
+              "sql": [
+                "select id,name_plain as name,phone_plain as phone,address_plain as address,memo_plain as memo,email_plain as email,company_plain as company from native_scale_100m.customers_plain where scope_id=$1 and (company_norm =$2 and memo_norm like '%'||$3||'%') order by id limit 200"
+              ],
+              "returned": 200
+            },
+            {
+              "outcome": {
+                "kind": "value"
+              },
+              "totalMs": 1.2282999999999902,
+              "preMs": 0.016200000000026193,
+              "sqlMs": 1.172900000000027,
+              "betweenSqlMs": 0,
+              "postMs": 0.03919999999993706,
+              "sqlCalls": 1,
+              "candidates": 200,
+              "sql": [
+                "select id,name_plain as name,phone_plain as phone,address_plain as address,memo_plain as memo,email_plain as email,company_plain as company from native_scale_100m.customers_plain where scope_id=$1 and (company_norm =$2 and memo_norm like '%'||$3||'%') order by id limit 200"
+              ],
+              "returned": 200
+            },
+            {
+              "outcome": {
+                "kind": "value"
+              },
+              "totalMs": 1.1437999999998283,
+              "preMs": 0.05309999999985848,
+              "sqlMs": 1.0679999999999836,
+              "betweenSqlMs": 0,
+              "postMs": 0.022699999999986176,
+              "sqlCalls": 1,
+              "candidates": 200,
+              "sql": [
+                "select id,name_plain as name,phone_plain as phone,address_plain as address,memo_plain as memo,email_plain as email,company_plain as company from native_scale_100m.customers_plain where scope_id=$1 and (company_norm =$2 and memo_norm like '%'||$3||'%') order by id limit 200"
+              ],
+              "returned": 200
+            },
+            {
+              "outcome": {
+                "kind": "value"
+              },
+              "totalMs": 1.0339000000001306,
+              "preMs": 0.019300000000157524,
+              "sqlMs": 0.9945999999999913,
+              "betweenSqlMs": 0,
+              "postMs": 0.01999999999998181,
+              "sqlCalls": 1,
+              "candidates": 200,
+              "sql": [
+                "select id,name_plain as name,phone_plain as phone,address_plain as address,memo_plain as memo,email_plain as email,company_plain as company from native_scale_100m.customers_plain where scope_id=$1 and (company_norm =$2 and memo_norm like '%'||$3||'%') order by id limit 200"
+              ],
+              "returned": 200
+            }
+          ],
+          "product": [
+            {
+              "outcome": {
+                "kind": "value"
+              },
+              "totalMs": 60.52729999999997,
+              "preMs": 1.72849999999994,
+              "sqlMs": 3.026600000000144,
+              "betweenSqlMs": 0,
+              "postMs": 55.772199999999884,
+              "sqlCalls": 1,
+              "candidates": 200,
+              "sql": [
+                "select \"id\", \"scope_id\", \"name_ct\", \"phone_ct\", \"address_ct\", \"memo_ct\", \"email_ct\", \"company_ct\" from \"native_scale_100m\".\"customers\" where (\"native_scale_100m\".\"customers\".\"scope_id\" = $1 and \"customers\".\"id\" in (\n    with sample as materialized (\n      select \"row_id\",\"tokens_a106c26102b707f0\",\"tokens_a639b11c8130dcf7\" from \"native_scale_100m\".\"customers_seal_index\" as \"c\"\n      where \"c\".\"scope_id\"=$2 order by \"c\".\"row_id\" limit 256\n    ), quick as materialized (\n      select \"c\".\"row_id\" from sample as \"c\" where ((\"c\".\"tokens_a106c26102b707f0\")[1]=$3::bigint and \"c\".\"tokens_a639b11c8130dcf7\" @> $4::bigint[]) order by \"c\".\"row_id\" limit $5\n    ), fallback as materialized (\n      select \"c\".\"row_id\" from \"native_scale_100m\".\"customers_seal_index\" as \"c\"\n      where \"c\".\"scope_id\"=$6 and ((\"c\".\"tokens_a106c26102b707f0\")[1]=$7::bigint and \"c\".\"tokens_a639b11c8130dcf7\" @> $8::bigint[])\n        and (select count(*) from quick)<$9\n      order by \"c\".\"row_id\" limit $10\n    )\n    select row_id from quick where (select count(*) from quick)=$11\n    union all select row_id from fallback\n  )) order by \"native_scale_100m\".\"customers\".\"id\" asc limit $12"
+              ],
+              "returned": 200
+            },
+            {
+              "outcome": {
+                "kind": "value"
+              },
+              "totalMs": 61.8715000000002,
+              "preMs": 1.6440000000000055,
+              "sqlMs": 3.2088000000001102,
+              "betweenSqlMs": 0,
+              "postMs": 57.01870000000008,
+              "sqlCalls": 1,
+              "candidates": 200,
+              "sql": [
+                "select \"id\", \"scope_id\", \"name_ct\", \"phone_ct\", \"address_ct\", \"memo_ct\", \"email_ct\", \"company_ct\" from \"native_scale_100m\".\"customers\" where (\"native_scale_100m\".\"customers\".\"scope_id\" = $1 and \"customers\".\"id\" in (\n    with sample as materialized (\n      select \"row_id\",\"tokens_a106c26102b707f0\",\"tokens_a639b11c8130dcf7\" from \"native_scale_100m\".\"customers_seal_index\" as \"c\"\n      where \"c\".\"scope_id\"=$2 order by \"c\".\"row_id\" limit 256\n    ), quick as materialized (\n      select \"c\".\"row_id\" from sample as \"c\" where ((\"c\".\"tokens_a106c26102b707f0\")[1]=$3::bigint and \"c\".\"tokens_a639b11c8130dcf7\" @> $4::bigint[]) order by \"c\".\"row_id\" limit $5\n    ), fallback as materialized (\n      select \"c\".\"row_id\" from \"native_scale_100m\".\"customers_seal_index\" as \"c\"\n      where \"c\".\"scope_id\"=$6 and ((\"c\".\"tokens_a106c26102b707f0\")[1]=$7::bigint and \"c\".\"tokens_a639b11c8130dcf7\" @> $8::bigint[])\n        and (select count(*) from quick)<$9\n      order by \"c\".\"row_id\" limit $10\n    )\n    select row_id from quick where (select count(*) from quick)=$11\n    union all select row_id from fallback\n  )) order by \"native_scale_100m\".\"customers\".\"id\" asc limit $12"
+              ],
+              "returned": 200
+            },
+            {
+              "outcome": {
+                "kind": "value"
+              },
+              "totalMs": 60.503400000000056,
+              "preMs": 1.421400000000176,
+              "sqlMs": 2.884599999999864,
+              "betweenSqlMs": 0,
+              "postMs": 56.197400000000016,
+              "sqlCalls": 1,
+              "candidates": 200,
+              "sql": [
+                "select \"id\", \"scope_id\", \"name_ct\", \"phone_ct\", \"address_ct\", \"memo_ct\", \"email_ct\", \"company_ct\" from \"native_scale_100m\".\"customers\" where (\"native_scale_100m\".\"customers\".\"scope_id\" = $1 and \"customers\".\"id\" in (\n    with sample as materialized (\n      select \"row_id\",\"tokens_a106c26102b707f0\",\"tokens_a639b11c8130dcf7\" from \"native_scale_100m\".\"customers_seal_index\" as \"c\"\n      where \"c\".\"scope_id\"=$2 order by \"c\".\"row_id\" limit 256\n    ), quick as materialized (\n      select \"c\".\"row_id\" from sample as \"c\" where ((\"c\".\"tokens_a106c26102b707f0\")[1]=$3::bigint and \"c\".\"tokens_a639b11c8130dcf7\" @> $4::bigint[]) order by \"c\".\"row_id\" limit $5\n    ), fallback as materialized (\n      select \"c\".\"row_id\" from \"native_scale_100m\".\"customers_seal_index\" as \"c\"\n      where \"c\".\"scope_id\"=$6 and ((\"c\".\"tokens_a106c26102b707f0\")[1]=$7::bigint and \"c\".\"tokens_a639b11c8130dcf7\" @> $8::bigint[])\n        and (select count(*) from quick)<$9\n      order by \"c\".\"row_id\" limit $10\n    )\n    select row_id from quick where (select count(*) from quick)=$11\n    union all select row_id from fallback\n  )) order by \"native_scale_100m\".\"customers\".\"id\" asc limit $12"
+              ],
+              "returned": 200
+            },
+            {
+              "outcome": {
+                "kind": "value"
+              },
+              "totalMs": 62.77670000000012,
+              "preMs": 1.687599999999975,
+              "sqlMs": 3.134900000000016,
+              "betweenSqlMs": 0,
+              "postMs": 57.95420000000013,
+              "sqlCalls": 1,
+              "candidates": 200,
+              "sql": [
+                "select \"id\", \"scope_id\", \"name_ct\", \"phone_ct\", \"address_ct\", \"memo_ct\", \"email_ct\", \"company_ct\" from \"native_scale_100m\".\"customers\" where (\"native_scale_100m\".\"customers\".\"scope_id\" = $1 and \"customers\".\"id\" in (\n    with sample as materialized (\n      select \"row_id\",\"tokens_a106c26102b707f0\",\"tokens_a639b11c8130dcf7\" from \"native_scale_100m\".\"customers_seal_index\" as \"c\"\n      where \"c\".\"scope_id\"=$2 order by \"c\".\"row_id\" limit 256\n    ), quick as materialized (\n      select \"c\".\"row_id\" from sample as \"c\" where ((\"c\".\"tokens_a106c26102b707f0\")[1]=$3::bigint and \"c\".\"tokens_a639b11c8130dcf7\" @> $4::bigint[]) order by \"c\".\"row_id\" limit $5\n    ), fallback as materialized (\n      select \"c\".\"row_id\" from \"native_scale_100m\".\"customers_seal_index\" as \"c\"\n      where \"c\".\"scope_id\"=$6 and ((\"c\".\"tokens_a106c26102b707f0\")[1]=$7::bigint and \"c\".\"tokens_a639b11c8130dcf7\" @> $8::bigint[])\n        and (select count(*) from quick)<$9\n      order by \"c\".\"row_id\" limit $10\n    )\n    select row_id from quick where (select count(*) from quick)=$11\n    union all select row_id from fallback\n  )) order by \"native_scale_100m\".\"customers\".\"id\" asc limit $12"
+              ],
+              "returned": 200
+            },
+            {
+              "outcome": {
+                "kind": "value"
+              },
+              "totalMs": 59.58309999999983,
+              "preMs": 1.6781999999998334,
+              "sqlMs": 3.021800000000212,
+              "betweenSqlMs": 0,
+              "postMs": 54.883099999999786,
+              "sqlCalls": 1,
+              "candidates": 200,
+              "sql": [
+                "select \"id\", \"scope_id\", \"name_ct\", \"phone_ct\", \"address_ct\", \"memo_ct\", \"email_ct\", \"company_ct\" from \"native_scale_100m\".\"customers\" where (\"native_scale_100m\".\"customers\".\"scope_id\" = $1 and \"customers\".\"id\" in (\n    with sample as materialized (\n      select \"row_id\",\"tokens_a106c26102b707f0\",\"tokens_a639b11c8130dcf7\" from \"native_scale_100m\".\"customers_seal_index\" as \"c\"\n      where \"c\".\"scope_id\"=$2 order by \"c\".\"row_id\" limit 256\n    ), quick as materialized (\n      select \"c\".\"row_id\" from sample as \"c\" where ((\"c\".\"tokens_a106c26102b707f0\")[1]=$3::bigint and \"c\".\"tokens_a639b11c8130dcf7\" @> $4::bigint[]) order by \"c\".\"row_id\" limit $5\n    ), fallback as materialized (\n      select \"c\".\"row_id\" from \"native_scale_100m\".\"customers_seal_index\" as \"c\"\n      where \"c\".\"scope_id\"=$6 and ((\"c\".\"tokens_a106c26102b707f0\")[1]=$7::bigint and \"c\".\"tokens_a639b11c8130dcf7\" @> $8::bigint[])\n        and (select count(*) from quick)<$9\n      order by \"c\".\"row_id\" limit $10\n    )\n    select row_id from quick where (select count(*) from quick)=$11\n    union all select row_id from fallback\n  )) order by \"native_scale_100m\".\"customers\".\"id\" asc limit $12"
+              ],
+              "returned": 200
+            },
+            {
+              "outcome": {
+                "kind": "value"
+              },
+              "totalMs": 60.90000000000009,
+              "preMs": 1.2791999999999462,
+              "sqlMs": 3.3478999999999814,
+              "betweenSqlMs": 0,
+              "postMs": 56.27290000000016,
+              "sqlCalls": 1,
+              "candidates": 200,
+              "sql": [
+                "select \"id\", \"scope_id\", \"name_ct\", \"phone_ct\", \"address_ct\", \"memo_ct\", \"email_ct\", \"company_ct\" from \"native_scale_100m\".\"customers\" where (\"native_scale_100m\".\"customers\".\"scope_id\" = $1 and \"customers\".\"id\" in (\n    with sample as materialized (\n      select \"row_id\",\"tokens_a106c26102b707f0\",\"tokens_a639b11c8130dcf7\" from \"native_scale_100m\".\"customers_seal_index\" as \"c\"\n      where \"c\".\"scope_id\"=$2 order by \"c\".\"row_id\" limit 256\n    ), quick as materialized (\n      select \"c\".\"row_id\" from sample as \"c\" where ((\"c\".\"tokens_a106c26102b707f0\")[1]=$3::bigint and \"c\".\"tokens_a639b11c8130dcf7\" @> $4::bigint[]) order by \"c\".\"row_id\" limit $5\n    ), fallback as materialized (\n      select \"c\".\"row_id\" from \"native_scale_100m\".\"customers_seal_index\" as \"c\"\n      where \"c\".\"scope_id\"=$6 and ((\"c\".\"tokens_a106c26102b707f0\")[1]=$7::bigint and \"c\".\"tokens_a639b11c8130dcf7\" @> $8::bigint[])\n        and (select count(*) from quick)<$9\n      order by \"c\".\"row_id\" limit $10\n    )\n    select row_id from quick where (select count(*) from quick)=$11\n    union all select row_id from fallback\n  )) order by \"native_scale_100m\".\"customers\".\"id\" asc limit $12"
+              ],
+              "returned": 200
+            },
+            {
+              "outcome": {
+                "kind": "value"
+              },
+              "totalMs": 59.495099999999866,
+              "preMs": 1.3514000000000124,
+              "sqlMs": 2.7918999999999414,
+              "betweenSqlMs": 0,
+              "postMs": 55.35179999999991,
+              "sqlCalls": 1,
+              "candidates": 200,
+              "sql": [
+                "select \"id\", \"scope_id\", \"name_ct\", \"phone_ct\", \"address_ct\", \"memo_ct\", \"email_ct\", \"company_ct\" from \"native_scale_100m\".\"customers\" where (\"native_scale_100m\".\"customers\".\"scope_id\" = $1 and \"customers\".\"id\" in (\n    with sample as materialized (\n      select \"row_id\",\"tokens_a106c26102b707f0\",\"tokens_a639b11c8130dcf7\" from \"native_scale_100m\".\"customers_seal_index\" as \"c\"\n      where \"c\".\"scope_id\"=$2 order by \"c\".\"row_id\" limit 256\n    ), quick as materialized (\n      select \"c\".\"row_id\" from sample as \"c\" where ((\"c\".\"tokens_a106c26102b707f0\")[1]=$3::bigint and \"c\".\"tokens_a639b11c8130dcf7\" @> $4::bigint[]) order by \"c\".\"row_id\" limit $5\n    ), fallback as materialized (\n      select \"c\".\"row_id\" from \"native_scale_100m\".\"customers_seal_index\" as \"c\"\n      where \"c\".\"scope_id\"=$6 and ((\"c\".\"tokens_a106c26102b707f0\")[1]=$7::bigint and \"c\".\"tokens_a639b11c8130dcf7\" @> $8::bigint[])\n        and (select count(*) from quick)<$9\n      order by \"c\".\"row_id\" limit $10\n    )\n    select row_id from quick where (select count(*) from quick)=$11\n    union all select row_id from fallback\n  )) order by \"native_scale_100m\".\"customers\".\"id\" asc limit $12"
+              ],
+              "returned": 200
+            }
+          ]
+        },
+        "productErrors": [],
+        "rule": "warmup2_alternating7_median"
+      },
+      "count": {
+        "mode": "count",
+        "searchRows": 100000000,
+        "scopeRows": 100000,
+        "expectedMatches": 21176,
+        "returned": 21176,
+        "plain": {
+          "outcome": {
+            "kind": "value",
+            "value": 21176
+          },
+          "totalMs": 81.09269999999992,
+          "preMs": 0.06610000000000582,
+          "sqlMs": 80.91059999999993,
+          "betweenSqlMs": 0,
+          "postMs": 0.11599999999998545,
+          "sqlCalls": 1,
+          "candidates": 1,
+          "sql": [
+            "select count(*) n from native_scale_100m.customers_plain where scope_id=$1 and (company_norm =$2 and memo_norm like '%'||$3||'%')"
+          ]
+        },
+        "product": {
+          "outcome": {
+            "kind": "value",
+            "value": 21176
+          },
+          "totalMs": 3226.7307,
+          "preMs": 1.4588999999998578,
+          "sqlMs": 1155.5607999999993,
+          "betweenSqlMs": 1943.866000000001,
+          "postMs": 125.84500000000025,
+          "sqlCalls": 11,
+          "candidates": 21176,
+          "sql": [
+            "select \"id\", \"scope_id\", \"company_ct\", \"memo_ct\" from \"native_scale_100m\".\"customers\" where (\"native_scale_100m\".\"customers\".\"scope_id\" = $1 and \"customers\".\"id\" in (select \"__seal_idx\".\"row_id\" from \"native_scale_100m\".\"customers_seal_index\" as \"__seal_idx\" where \"__seal_idx\".\"scope_id\"=$2 and (((\"__seal_idx\".\"tokens_a106c26102b707f0\")[1]=$3::bigint) and (\"__seal_idx\".\"tokens_a639b11c8130dcf7\" @> $4::bigint[])))) order by \"native_scale_100m\".\"customers\".\"id\" asc limit $5",
+            "select \"id\", \"scope_id\", \"company_ct\", \"memo_ct\" from \"native_scale_100m\".\"customers\" where (\"native_scale_100m\".\"customers\".\"scope_id\" = $1 and \"native_scale_100m\".\"customers\".\"id\" > $2 and \"customers\".\"id\" in (select \"__seal_idx\".\"row_id\" from \"native_scale_100m\".\"customers_seal_index\" as \"__seal_idx\" where \"__seal_idx\".\"scope_id\"=$3 and (((\"__seal_idx\".\"tokens_a106c26102b707f0\")[1]=$4::bigint) and (\"__seal_idx\".\"tokens_a639b11c8130dcf7\" @> $5::bigint[])))) order by \"native_scale_100m\".\"customers\".\"id\" asc limit $6",
+            "select \"id\", \"scope_id\", \"company_ct\", \"memo_ct\" from \"native_scale_100m\".\"customers\" where (\"native_scale_100m\".\"customers\".\"scope_id\" = $1 and \"native_scale_100m\".\"customers\".\"id\" > $2 and \"customers\".\"id\" in (select \"__seal_idx\".\"row_id\" from \"native_scale_100m\".\"customers_seal_index\" as \"__seal_idx\" where \"__seal_idx\".\"scope_id\"=$3 and (((\"__seal_idx\".\"tokens_a106c26102b707f0\")[1]=$4::bigint) and (\"__seal_idx\".\"tokens_a639b11c8130dcf7\" @> $5::bigint[])))) order by \"native_scale_100m\".\"customers\".\"id\" asc limit $6",
+            "select \"id\", \"scope_id\", \"company_ct\", \"memo_ct\" from \"native_scale_100m\".\"customers\" where (\"native_scale_100m\".\"customers\".\"scope_id\" = $1 and \"native_scale_100m\".\"customers\".\"id\" > $2 and \"customers\".\"id\" in (select \"__seal_idx\".\"row_id\" from \"native_scale_100m\".\"customers_seal_index\" as \"__seal_idx\" where \"__seal_idx\".\"scope_id\"=$3 and (((\"__seal_idx\".\"tokens_a106c26102b707f0\")[1]=$4::bigint) and (\"__seal_idx\".\"tokens_a639b11c8130dcf7\" @> $5::bigint[])))) order by \"native_scale_100m\".\"customers\".\"id\" asc limit $6",
+            "select \"id\", \"scope_id\", \"company_ct\", \"memo_ct\" from \"native_scale_100m\".\"customers\" where (\"native_scale_100m\".\"customers\".\"scope_id\" = $1 and \"native_scale_100m\".\"customers\".\"id\" > $2 and \"customers\".\"id\" in (select \"__seal_idx\".\"row_id\" from \"native_scale_100m\".\"customers_seal_index\" as \"__seal_idx\" where \"__seal_idx\".\"scope_id\"=$3 and (((\"__seal_idx\".\"tokens_a106c26102b707f0\")[1]=$4::bigint) and (\"__seal_idx\".\"tokens_a639b11c8130dcf7\" @> $5::bigint[])))) order by \"native_scale_100m\".\"customers\".\"id\" asc limit $6",
+            "select \"id\", \"scope_id\", \"company_ct\", \"memo_ct\" from \"native_scale_100m\".\"customers\" where (\"native_scale_100m\".\"customers\".\"scope_id\" = $1 and \"native_scale_100m\".\"customers\".\"id\" > $2 and \"customers\".\"id\" in (select \"__seal_idx\".\"row_id\" from \"native_scale_100m\".\"customers_seal_index\" as \"__seal_idx\" where \"__seal_idx\".\"scope_id\"=$3 and (((\"__seal_idx\".\"tokens_a106c26102b707f0\")[1]=$4::bigint) and (\"__seal_idx\".\"tokens_a639b11c8130dcf7\" @> $5::bigint[])))) order by \"native_scale_100m\".\"customers\".\"id\" asc limit $6",
+            "select \"id\", \"scope_id\", \"company_ct\", \"memo_ct\" from \"native_scale_100m\".\"customers\" where (\"native_scale_100m\".\"customers\".\"scope_id\" = $1 and \"native_scale_100m\".\"customers\".\"id\" > $2 and \"customers\".\"id\" in (select \"__seal_idx\".\"row_id\" from \"native_scale_100m\".\"customers_seal_index\" as \"__seal_idx\" where \"__seal_idx\".\"scope_id\"=$3 and (((\"__seal_idx\".\"tokens_a106c26102b707f0\")[1]=$4::bigint) and (\"__seal_idx\".\"tokens_a639b11c8130dcf7\" @> $5::bigint[])))) order by \"native_scale_100m\".\"customers\".\"id\" asc limit $6",
+            "select \"id\", \"scope_id\", \"company_ct\", \"memo_ct\" from \"native_scale_100m\".\"customers\" where (\"native_scale_100m\".\"customers\".\"scope_id\" = $1 and \"native_scale_100m\".\"customers\".\"id\" > $2 and \"customers\".\"id\" in (select \"__seal_idx\".\"row_id\" from \"native_scale_100m\".\"customers_seal_index\" as \"__seal_idx\" where \"__seal_idx\".\"scope_id\"=$3 and (((\"__seal_idx\".\"tokens_a106c26102b707f0\")[1]=$4::bigint) and (\"__seal_idx\".\"tokens_a639b11c8130dcf7\" @> $5::bigint[])))) order by \"native_scale_100m\".\"customers\".\"id\" asc limit $6",
+            "select \"id\", \"scope_id\", \"company_ct\", \"memo_ct\" from \"native_scale_100m\".\"customers\" where (\"native_scale_100m\".\"customers\".\"scope_id\" = $1 and \"native_scale_100m\".\"customers\".\"id\" > $2 and \"customers\".\"id\" in (select \"__seal_idx\".\"row_id\" from \"native_scale_100m\".\"customers_seal_index\" as \"__seal_idx\" where \"__seal_idx\".\"scope_id\"=$3 and (((\"__seal_idx\".\"tokens_a106c26102b707f0\")[1]=$4::bigint) and (\"__seal_idx\".\"tokens_a639b11c8130dcf7\" @> $5::bigint[])))) order by \"native_scale_100m\".\"customers\".\"id\" asc limit $6",
+            "select \"id\", \"scope_id\", \"company_ct\", \"memo_ct\" from \"native_scale_100m\".\"customers\" where (\"native_scale_100m\".\"customers\".\"scope_id\" = $1 and \"native_scale_100m\".\"customers\".\"id\" > $2 and \"customers\".\"id\" in (select \"__seal_idx\".\"row_id\" from \"native_scale_100m\".\"customers_seal_index\" as \"__seal_idx\" where \"__seal_idx\".\"scope_id\"=$3 and (((\"__seal_idx\".\"tokens_a106c26102b707f0\")[1]=$4::bigint) and (\"__seal_idx\".\"tokens_a639b11c8130dcf7\" @> $5::bigint[])))) order by \"native_scale_100m\".\"customers\".\"id\" asc limit $6",
+            "select \"id\", \"scope_id\", \"company_ct\", \"memo_ct\" from \"native_scale_100m\".\"customers\" where (\"native_scale_100m\".\"customers\".\"scope_id\" = $1 and \"native_scale_100m\".\"customers\".\"id\" > $2 and \"customers\".\"id\" in (select \"__seal_idx\".\"row_id\" from \"native_scale_100m\".\"customers_seal_index\" as \"__seal_idx\" where \"__seal_idx\".\"scope_id\"=$3 and (((\"__seal_idx\".\"tokens_a106c26102b707f0\")[1]=$4::bigint) and (\"__seal_idx\".\"tokens_a639b11c8130dcf7\" @> $5::bigint[])))) order by \"native_scale_100m\".\"customers\".\"id\" asc limit $6"
+          ]
+        },
+        "rule": "single_no_warmup",
+        "maxCandidates": 1000000,
+        "budgets": {
+          "batch": 2000,
+          "maxCandidates": 20000,
+          "fetchBytes": 33554432,
+          "decryptedBytes": 33554432,
+          "resultBytes": 33554432,
+          "deadlineMs": 30000,
+          "decryptConcurrency": 64
+        }
+      }
+    },
+    {
+      "case": "and4",
+      "sourceMatches": 62,
+      "find": {
+        "mode": "findMany",
+        "searchRows": 100000000,
+        "scopeRows": 100000,
+        "expectedMatches": 62,
+        "returned": 62,
+        "plain": {
+          "totalMs": 40.729699999999866,
+          "preMs": 0.049200000000382715,
+          "sqlMs": 40.59990000000016,
+          "betweenSqlMs": 0,
+          "postMs": 0.06210000000010041,
+          "sqlCalls": 1,
+          "candidates": 62
+        },
+        "product": {
+          "totalMs": 195.22850000000017,
+          "preMs": 2.2713000000003376,
+          "sqlMs": 173.3167000000003,
+          "betweenSqlMs": 0,
+          "postMs": 18.543099999999868,
+          "sqlCalls": 1,
+          "candidates": 62
+        },
+        "runs": {
+          "plain": [
+            {
+              "outcome": {
+                "kind": "value"
+              },
+              "totalMs": 45.38829999999962,
+              "preMs": 0.07949999999982538,
+              "sqlMs": 45.2474000000002,
+              "betweenSqlMs": 0,
+              "postMs": 0.061399999999594,
+              "sqlCalls": 1,
+              "candidates": 62,
+              "sql": [
+                "select id,name_plain as name,phone_plain as phone,address_plain as address,memo_plain as memo,email_plain as email,company_plain as company from native_scale_100m.customers_plain where scope_id=$1 and (company_norm =$2 and address_norm like '%'||$3||'%' and memo_norm like '%'||$4||'%' and email_norm like '%'||$5||'%') order by id limit 200"
+              ],
+              "returned": 62
+            },
+            {
+              "outcome": {
+                "kind": "value"
+              },
+              "totalMs": 49.71510000000035,
+              "preMs": 0.05820000000039727,
+              "sqlMs": 49.59469999999965,
+              "betweenSqlMs": 0,
+              "postMs": 0.06220000000030268,
+              "sqlCalls": 1,
+              "candidates": 62,
+              "sql": [
+                "select id,name_plain as name,phone_plain as phone,address_plain as address,memo_plain as memo,email_plain as email,company_plain as company from native_scale_100m.customers_plain where scope_id=$1 and (company_norm =$2 and address_norm like '%'||$3||'%' and memo_norm like '%'||$4||'%' and email_norm like '%'||$5||'%') order by id limit 200"
+              ],
+              "returned": 62
+            },
+            {
+              "outcome": {
+                "kind": "value"
+              },
+              "totalMs": 13.207300000000032,
+              "preMs": 0.02779999999984284,
+              "sqlMs": 13.117400000000089,
+              "betweenSqlMs": 0,
+              "postMs": 0.06210000000010041,
+              "sqlCalls": 1,
+              "candidates": 62,
+              "sql": [
+                "select id,name_plain as name,phone_plain as phone,address_plain as address,memo_plain as memo,email_plain as email,company_plain as company from native_scale_100m.customers_plain where scope_id=$1 and (company_norm =$2 and address_norm like '%'||$3||'%' and memo_norm like '%'||$4||'%' and email_norm like '%'||$5||'%') order by id limit 200"
+              ],
+              "returned": 62
+            },
+            {
+              "outcome": {
+                "kind": "value"
+              },
+              "totalMs": 41.65679999999975,
+              "preMs": 0.06480000000010477,
+              "sqlMs": 41.524899999999434,
+              "betweenSqlMs": 0,
+              "postMs": 0.06710000000020955,
+              "sqlCalls": 1,
+              "candidates": 62,
+              "sql": [
+                "select id,name_plain as name,phone_plain as phone,address_plain as address,memo_plain as memo,email_plain as email,company_plain as company from native_scale_100m.customers_plain where scope_id=$1 and (company_norm =$2 and address_norm like '%'||$3||'%' and memo_norm like '%'||$4||'%' and email_norm like '%'||$5||'%') order by id limit 200"
+              ],
+              "returned": 62
+            },
+            {
+              "outcome": {
+                "kind": "value"
+              },
+              "totalMs": 12.528599999999642,
+              "preMs": 0.028800000000046566,
+              "sqlMs": 12.452099999999518,
+              "betweenSqlMs": 0,
+              "postMs": 0.047700000000077125,
+              "sqlCalls": 1,
+              "candidates": 62,
+              "sql": [
+                "select id,name_plain as name,phone_plain as phone,address_plain as address,memo_plain as memo,email_plain as email,company_plain as company from native_scale_100m.customers_plain where scope_id=$1 and (company_norm =$2 and address_norm like '%'||$3||'%' and memo_norm like '%'||$4||'%' and email_norm like '%'||$5||'%') order by id limit 200"
+              ],
+              "returned": 62
+            },
+            {
+              "outcome": {
+                "kind": "value"
+              },
+              "totalMs": 40.729699999999866,
+              "preMs": 0.049200000000382715,
+              "sqlMs": 40.59990000000016,
+              "betweenSqlMs": 0,
+              "postMs": 0.08059999999932188,
+              "sqlCalls": 1,
+              "candidates": 62,
+              "sql": [
+                "select id,name_plain as name,phone_plain as phone,address_plain as address,memo_plain as memo,email_plain as email,company_plain as company from native_scale_100m.customers_plain where scope_id=$1 and (company_norm =$2 and address_norm like '%'||$3||'%' and memo_norm like '%'||$4||'%' and email_norm like '%'||$5||'%') order by id limit 200"
+              ],
+              "returned": 62
+            },
+            {
+              "outcome": {
+                "kind": "value"
+              },
+              "totalMs": 12.399499999999534,
+              "preMs": 0.037000000000261934,
+              "sqlMs": 12.311699999999291,
+              "betweenSqlMs": 0,
+              "postMs": 0.05079999999998108,
+              "sqlCalls": 1,
+              "candidates": 62,
+              "sql": [
+                "select id,name_plain as name,phone_plain as phone,address_plain as address,memo_plain as memo,email_plain as email,company_plain as company from native_scale_100m.customers_plain where scope_id=$1 and (company_norm =$2 and address_norm like '%'||$3||'%' and memo_norm like '%'||$4||'%' and email_norm like '%'||$5||'%') order by id limit 200"
+              ],
+              "returned": 62
+            }
+          ],
+          "product": [
+            {
+              "outcome": {
+                "kind": "value"
+              },
+              "totalMs": 184.0578999999998,
+              "preMs": 1.8735999999998967,
+              "sqlMs": 164.02930000000015,
+              "betweenSqlMs": 0,
+              "postMs": 18.154999999999745,
+              "sqlCalls": 1,
+              "candidates": 62,
+              "sql": [
+                "select \"id\", \"scope_id\", \"name_ct\", \"phone_ct\", \"address_ct\", \"memo_ct\", \"email_ct\", \"company_ct\" from \"native_scale_100m\".\"customers\" where (\"native_scale_100m\".\"customers\".\"scope_id\" = $1 and \"customers\".\"id\" in (\n    with sample as materialized (\n      select \"row_id\",\"tokens_a106c26102b707f0\",\"tokens_792d75cf01821d67\",\"tokens_a639b11c8130dcf7\",\"tokens_ef1d32a52e2ce103\" from \"native_scale_100m\".\"customers_seal_index\" as \"c\"\n      where \"c\".\"scope_id\"=$2 order by \"c\".\"row_id\" limit 256\n    ), quick as materialized (\n      select \"c\".\"row_id\" from sample as \"c\" where ((\"c\".\"tokens_a106c26102b707f0\")[1]=$3::bigint and \"c\".\"tokens_792d75cf01821d67\" @> $4::bigint[] and \"c\".\"tokens_a639b11c8130dcf7\" @> $5::bigint[] and \"c\".\"tokens_ef1d32a52e2ce103\" @> $6::bigint[]) order by \"c\".\"row_id\" limit $7\n    ), fallback as materialized (\n      select \"c\".\"row_id\" from \"native_scale_100m\".\"customers_seal_index\" as \"c\"\n      where \"c\".\"scope_id\"=$8 and ((\"c\".\"tokens_a106c26102b707f0\")[1]=$9::bigint and \"c\".\"tokens_792d75cf01821d67\" @> $10::bigint[] and \"c\".\"tokens_a639b11c8130dcf7\" @> $11::bigint[] and \"c\".\"tokens_ef1d32a52e2ce103\" @> $12::bigint[])\n        and (select count(*) from quick)<$13\n      order by \"c\".\"row_id\" limit $14\n    )\n    select row_id from quick where (select count(*) from quick)=$15\n    union all select row_id from fallback\n  )) order by \"native_scale_100m\".\"customers\".\"id\" asc limit $16"
+              ],
+              "returned": 62
+            },
+            {
+              "outcome": {
+                "kind": "value"
+              },
+              "totalMs": 201.71730000000025,
+              "preMs": 2.2713000000003376,
+              "sqlMs": 180.3076999999994,
+              "betweenSqlMs": 0,
+              "postMs": 19.138300000000527,
+              "sqlCalls": 1,
+              "candidates": 62,
+              "sql": [
+                "select \"id\", \"scope_id\", \"name_ct\", \"phone_ct\", \"address_ct\", \"memo_ct\", \"email_ct\", \"company_ct\" from \"native_scale_100m\".\"customers\" where (\"native_scale_100m\".\"customers\".\"scope_id\" = $1 and \"customers\".\"id\" in (\n    with sample as materialized (\n      select \"row_id\",\"tokens_a106c26102b707f0\",\"tokens_792d75cf01821d67\",\"tokens_a639b11c8130dcf7\",\"tokens_ef1d32a52e2ce103\" from \"native_scale_100m\".\"customers_seal_index\" as \"c\"\n      where \"c\".\"scope_id\"=$2 order by \"c\".\"row_id\" limit 256\n    ), quick as materialized (\n      select \"c\".\"row_id\" from sample as \"c\" where ((\"c\".\"tokens_a106c26102b707f0\")[1]=$3::bigint and \"c\".\"tokens_792d75cf01821d67\" @> $4::bigint[] and \"c\".\"tokens_a639b11c8130dcf7\" @> $5::bigint[] and \"c\".\"tokens_ef1d32a52e2ce103\" @> $6::bigint[]) order by \"c\".\"row_id\" limit $7\n    ), fallback as materialized (\n      select \"c\".\"row_id\" from \"native_scale_100m\".\"customers_seal_index\" as \"c\"\n      where \"c\".\"scope_id\"=$8 and ((\"c\".\"tokens_a106c26102b707f0\")[1]=$9::bigint and \"c\".\"tokens_792d75cf01821d67\" @> $10::bigint[] and \"c\".\"tokens_a639b11c8130dcf7\" @> $11::bigint[] and \"c\".\"tokens_ef1d32a52e2ce103\" @> $12::bigint[])\n        and (select count(*) from quick)<$13\n      order by \"c\".\"row_id\" limit $14\n    )\n    select row_id from quick where (select count(*) from quick)=$15\n    union all select row_id from fallback\n  )) order by \"native_scale_100m\".\"customers\".\"id\" asc limit $16"
+              ],
+              "returned": 62
+            },
+            {
+              "outcome": {
+                "kind": "value"
+              },
+              "totalMs": 195.22850000000017,
+              "preMs": 2.3436000000001513,
+              "sqlMs": 174.6851000000006,
+              "betweenSqlMs": 0,
+              "postMs": 18.199799999999414,
+              "sqlCalls": 1,
+              "candidates": 62,
+              "sql": [
+                "select \"id\", \"scope_id\", \"name_ct\", \"phone_ct\", \"address_ct\", \"memo_ct\", \"email_ct\", \"company_ct\" from \"native_scale_100m\".\"customers\" where (\"native_scale_100m\".\"customers\".\"scope_id\" = $1 and \"customers\".\"id\" in (\n    with sample as materialized (\n      select \"row_id\",\"tokens_a106c26102b707f0\",\"tokens_792d75cf01821d67\",\"tokens_a639b11c8130dcf7\",\"tokens_ef1d32a52e2ce103\" from \"native_scale_100m\".\"customers_seal_index\" as \"c\"\n      where \"c\".\"scope_id\"=$2 order by \"c\".\"row_id\" limit 256\n    ), quick as materialized (\n      select \"c\".\"row_id\" from sample as \"c\" where ((\"c\".\"tokens_a106c26102b707f0\")[1]=$3::bigint and \"c\".\"tokens_792d75cf01821d67\" @> $4::bigint[] and \"c\".\"tokens_a639b11c8130dcf7\" @> $5::bigint[] and \"c\".\"tokens_ef1d32a52e2ce103\" @> $6::bigint[]) order by \"c\".\"row_id\" limit $7\n    ), fallback as materialized (\n      select \"c\".\"row_id\" from \"native_scale_100m\".\"customers_seal_index\" as \"c\"\n      where \"c\".\"scope_id\"=$8 and ((\"c\".\"tokens_a106c26102b707f0\")[1]=$9::bigint and \"c\".\"tokens_792d75cf01821d67\" @> $10::bigint[] and \"c\".\"tokens_a639b11c8130dcf7\" @> $11::bigint[] and \"c\".\"tokens_ef1d32a52e2ce103\" @> $12::bigint[])\n        and (select count(*) from quick)<$13\n      order by \"c\".\"row_id\" limit $14\n    )\n    select row_id from quick where (select count(*) from quick)=$15\n    union all select row_id from fallback\n  )) order by \"native_scale_100m\".\"customers\".\"id\" asc limit $16"
+              ],
+              "returned": 62
+            },
+            {
+              "outcome": {
+                "kind": "value"
+              },
+              "totalMs": 197.10500000000047,
+              "preMs": 4.348899999999958,
+              "sqlMs": 173.3167000000003,
+              "betweenSqlMs": 0,
+              "postMs": 19.439400000000205,
+              "sqlCalls": 1,
+              "candidates": 62,
+              "sql": [
+                "select \"id\", \"scope_id\", \"name_ct\", \"phone_ct\", \"address_ct\", \"memo_ct\", \"email_ct\", \"company_ct\" from \"native_scale_100m\".\"customers\" where (\"native_scale_100m\".\"customers\".\"scope_id\" = $1 and \"customers\".\"id\" in (\n    with sample as materialized (\n      select \"row_id\",\"tokens_a106c26102b707f0\",\"tokens_792d75cf01821d67\",\"tokens_a639b11c8130dcf7\",\"tokens_ef1d32a52e2ce103\" from \"native_scale_100m\".\"customers_seal_index\" as \"c\"\n      where \"c\".\"scope_id\"=$2 order by \"c\".\"row_id\" limit 256\n    ), quick as materialized (\n      select \"c\".\"row_id\" from sample as \"c\" where ((\"c\".\"tokens_a106c26102b707f0\")[1]=$3::bigint and \"c\".\"tokens_792d75cf01821d67\" @> $4::bigint[] and \"c\".\"tokens_a639b11c8130dcf7\" @> $5::bigint[] and \"c\".\"tokens_ef1d32a52e2ce103\" @> $6::bigint[]) order by \"c\".\"row_id\" limit $7\n    ), fallback as materialized (\n      select \"c\".\"row_id\" from \"native_scale_100m\".\"customers_seal_index\" as \"c\"\n      where \"c\".\"scope_id\"=$8 and ((\"c\".\"tokens_a106c26102b707f0\")[1]=$9::bigint and \"c\".\"tokens_792d75cf01821d67\" @> $10::bigint[] and \"c\".\"tokens_a639b11c8130dcf7\" @> $11::bigint[] and \"c\".\"tokens_ef1d32a52e2ce103\" @> $12::bigint[])\n        and (select count(*) from quick)<$13\n      order by \"c\".\"row_id\" limit $14\n    )\n    select row_id from quick where (select count(*) from quick)=$15\n    union all select row_id from fallback\n  )) order by \"native_scale_100m\".\"customers\".\"id\" asc limit $16"
+              ],
+              "returned": 62
+            },
+            {
+              "outcome": {
+                "kind": "value"
+              },
+              "totalMs": 197.97469999999976,
+              "preMs": 1.875,
+              "sqlMs": 176.5685000000003,
+              "betweenSqlMs": 0,
+              "postMs": 19.531199999999444,
+              "sqlCalls": 1,
+              "candidates": 62,
+              "sql": [
+                "select \"id\", \"scope_id\", \"name_ct\", \"phone_ct\", \"address_ct\", \"memo_ct\", \"email_ct\", \"company_ct\" from \"native_scale_100m\".\"customers\" where (\"native_scale_100m\".\"customers\".\"scope_id\" = $1 and \"customers\".\"id\" in (\n    with sample as materialized (\n      select \"row_id\",\"tokens_a106c26102b707f0\",\"tokens_792d75cf01821d67\",\"tokens_a639b11c8130dcf7\",\"tokens_ef1d32a52e2ce103\" from \"native_scale_100m\".\"customers_seal_index\" as \"c\"\n      where \"c\".\"scope_id\"=$2 order by \"c\".\"row_id\" limit 256\n    ), quick as materialized (\n      select \"c\".\"row_id\" from sample as \"c\" where ((\"c\".\"tokens_a106c26102b707f0\")[1]=$3::bigint and \"c\".\"tokens_792d75cf01821d67\" @> $4::bigint[] and \"c\".\"tokens_a639b11c8130dcf7\" @> $5::bigint[] and \"c\".\"tokens_ef1d32a52e2ce103\" @> $6::bigint[]) order by \"c\".\"row_id\" limit $7\n    ), fallback as materialized (\n      select \"c\".\"row_id\" from \"native_scale_100m\".\"customers_seal_index\" as \"c\"\n      where \"c\".\"scope_id\"=$8 and ((\"c\".\"tokens_a106c26102b707f0\")[1]=$9::bigint and \"c\".\"tokens_792d75cf01821d67\" @> $10::bigint[] and \"c\".\"tokens_a639b11c8130dcf7\" @> $11::bigint[] and \"c\".\"tokens_ef1d32a52e2ce103\" @> $12::bigint[])\n        and (select count(*) from quick)<$13\n      order by \"c\".\"row_id\" limit $14\n    )\n    select row_id from quick where (select count(*) from quick)=$15\n    union all select row_id from fallback\n  )) order by \"native_scale_100m\".\"customers\".\"id\" asc limit $16"
+              ],
+              "returned": 62
+            },
+            {
+              "outcome": {
+                "kind": "value"
+              },
+              "totalMs": 186.317,
+              "preMs": 2.2786000000005515,
+              "sqlMs": 165.91209999999955,
+              "betweenSqlMs": 0,
+              "postMs": 18.1262999999999,
+              "sqlCalls": 1,
+              "candidates": 62,
+              "sql": [
+                "select \"id\", \"scope_id\", \"name_ct\", \"phone_ct\", \"address_ct\", \"memo_ct\", \"email_ct\", \"company_ct\" from \"native_scale_100m\".\"customers\" where (\"native_scale_100m\".\"customers\".\"scope_id\" = $1 and \"customers\".\"id\" in (\n    with sample as materialized (\n      select \"row_id\",\"tokens_a106c26102b707f0\",\"tokens_792d75cf01821d67\",\"tokens_a639b11c8130dcf7\",\"tokens_ef1d32a52e2ce103\" from \"native_scale_100m\".\"customers_seal_index\" as \"c\"\n      where \"c\".\"scope_id\"=$2 order by \"c\".\"row_id\" limit 256\n    ), quick as materialized (\n      select \"c\".\"row_id\" from sample as \"c\" where ((\"c\".\"tokens_a106c26102b707f0\")[1]=$3::bigint and \"c\".\"tokens_792d75cf01821d67\" @> $4::bigint[] and \"c\".\"tokens_a639b11c8130dcf7\" @> $5::bigint[] and \"c\".\"tokens_ef1d32a52e2ce103\" @> $6::bigint[]) order by \"c\".\"row_id\" limit $7\n    ), fallback as materialized (\n      select \"c\".\"row_id\" from \"native_scale_100m\".\"customers_seal_index\" as \"c\"\n      where \"c\".\"scope_id\"=$8 and ((\"c\".\"tokens_a106c26102b707f0\")[1]=$9::bigint and \"c\".\"tokens_792d75cf01821d67\" @> $10::bigint[] and \"c\".\"tokens_a639b11c8130dcf7\" @> $11::bigint[] and \"c\".\"tokens_ef1d32a52e2ce103\" @> $12::bigint[])\n        and (select count(*) from quick)<$13\n      order by \"c\".\"row_id\" limit $14\n    )\n    select row_id from quick where (select count(*) from quick)=$15\n    union all select row_id from fallback\n  )) order by \"native_scale_100m\".\"customers\".\"id\" asc limit $16"
+              ],
+              "returned": 62
+            },
+            {
+              "outcome": {
+                "kind": "value"
+              },
+              "totalMs": 181.45830000000024,
+              "preMs": 1.8850000000002183,
+              "sqlMs": 161.03020000000015,
+              "betweenSqlMs": 0,
+              "postMs": 18.543099999999868,
+              "sqlCalls": 1,
+              "candidates": 62,
+              "sql": [
+                "select \"id\", \"scope_id\", \"name_ct\", \"phone_ct\", \"address_ct\", \"memo_ct\", \"email_ct\", \"company_ct\" from \"native_scale_100m\".\"customers\" where (\"native_scale_100m\".\"customers\".\"scope_id\" = $1 and \"customers\".\"id\" in (\n    with sample as materialized (\n      select \"row_id\",\"tokens_a106c26102b707f0\",\"tokens_792d75cf01821d67\",\"tokens_a639b11c8130dcf7\",\"tokens_ef1d32a52e2ce103\" from \"native_scale_100m\".\"customers_seal_index\" as \"c\"\n      where \"c\".\"scope_id\"=$2 order by \"c\".\"row_id\" limit 256\n    ), quick as materialized (\n      select \"c\".\"row_id\" from sample as \"c\" where ((\"c\".\"tokens_a106c26102b707f0\")[1]=$3::bigint and \"c\".\"tokens_792d75cf01821d67\" @> $4::bigint[] and \"c\".\"tokens_a639b11c8130dcf7\" @> $5::bigint[] and \"c\".\"tokens_ef1d32a52e2ce103\" @> $6::bigint[]) order by \"c\".\"row_id\" limit $7\n    ), fallback as materialized (\n      select \"c\".\"row_id\" from \"native_scale_100m\".\"customers_seal_index\" as \"c\"\n      where \"c\".\"scope_id\"=$8 and ((\"c\".\"tokens_a106c26102b707f0\")[1]=$9::bigint and \"c\".\"tokens_792d75cf01821d67\" @> $10::bigint[] and \"c\".\"tokens_a639b11c8130dcf7\" @> $11::bigint[] and \"c\".\"tokens_ef1d32a52e2ce103\" @> $12::bigint[])\n        and (select count(*) from quick)<$13\n      order by \"c\".\"row_id\" limit $14\n    )\n    select row_id from quick where (select count(*) from quick)=$15\n    union all select row_id from fallback\n  )) order by \"native_scale_100m\".\"customers\".\"id\" asc limit $16"
+              ],
+              "returned": 62
+            }
+          ]
+        },
+        "productErrors": [],
+        "rule": "warmup2_alternating7_median"
+      },
+      "count": {
+        "mode": "count",
+        "searchRows": 100000000,
+        "scopeRows": 100000,
+        "expectedMatches": 62,
+        "returned": 62,
+        "plain": {
+          "outcome": {
+            "kind": "value",
+            "value": 62
+          },
+          "totalMs": 15.439500000000407,
+          "preMs": 0.04650000000037835,
+          "sqlMs": 15.329899999999725,
+          "betweenSqlMs": 0,
+          "postMs": 0.06310000000030414,
+          "sqlCalls": 1,
+          "candidates": 1,
+          "sql": [
+            "select count(*) n from native_scale_100m.customers_plain where scope_id=$1 and (company_norm =$2 and address_norm like '%'||$3||'%' and memo_norm like '%'||$4||'%' and email_norm like '%'||$5||'%')"
+          ]
+        },
+        "product": {
+          "outcome": {
+            "kind": "value",
+            "value": 62
+          },
+          "totalMs": 174.0553,
+          "preMs": 1.7224999999998545,
+          "sqlMs": 160.6184000000003,
+          "betweenSqlMs": 0,
+          "postMs": 11.714399999999841,
+          "sqlCalls": 1,
+          "candidates": 62,
+          "sql": [
+            "select \"id\", \"scope_id\", \"company_ct\", \"address_ct\", \"memo_ct\", \"email_ct\" from \"native_scale_100m\".\"customers\" where (\"native_scale_100m\".\"customers\".\"scope_id\" = $1 and \"customers\".\"id\" in (select \"__seal_idx\".\"row_id\" from \"native_scale_100m\".\"customers_seal_index\" as \"__seal_idx\" where \"__seal_idx\".\"scope_id\"=$2 and (((\"__seal_idx\".\"tokens_a106c26102b707f0\")[1]=$3::bigint) and (\"__seal_idx\".\"tokens_792d75cf01821d67\" @> $4::bigint[]) and (\"__seal_idx\".\"tokens_a639b11c8130dcf7\" @> $5::bigint[]) and (\"__seal_idx\".\"tokens_ef1d32a52e2ce103\" @> $6::bigint[])))) order by \"native_scale_100m\".\"customers\".\"id\" asc limit $7"
+          ]
+        },
+        "rule": "single_no_warmup",
+        "maxCandidates": 1000000,
+        "budgets": {
+          "batch": 2000,
+          "maxCandidates": 20000,
+          "fetchBytes": 33554432,
+          "decryptedBytes": 33554432,
+          "resultBytes": 33554432,
+          "deadlineMs": 30000,
+          "decryptConcurrency": 64
+        }
+      }
+    },
+    {
+      "case": "and6",
+      "sourceMatches": 624,
+      "find": {
+        "mode": "findMany",
+        "searchRows": 100000000,
+        "scopeRows": 100000,
+        "expectedMatches": 624,
+        "returned": 200,
+        "plain": {
+          "totalMs": 5.3215000000000146,
+          "preMs": 0.05230000000028667,
+          "sqlMs": 5.231999999999971,
+          "betweenSqlMs": 0,
+          "postMs": 0.03489999999965221,
+          "sqlCalls": 1,
+          "candidates": 200
+        },
+        "product": {
+          "totalMs": 85.91430000000037,
+          "preMs": 2.5484000000005835,
+          "sqlMs": 14.044299999999566,
+          "betweenSqlMs": 0,
+          "postMs": 69.17679999999928,
+          "sqlCalls": 1,
+          "candidates": 200
+        },
+        "runs": {
+          "plain": [
+            {
+              "outcome": {
+                "kind": "value"
+              },
+              "totalMs": 5.857300000000578,
+              "preMs": 0.05410000000028958,
+              "sqlMs": 5.761500000000524,
+              "betweenSqlMs": 0,
+              "postMs": 0.04169999999976426,
+              "sqlCalls": 1,
+              "candidates": 200,
+              "sql": [
+                "select id,name_plain as name,phone_plain as phone,address_plain as address,memo_plain as memo,email_plain as email,company_plain as company from native_scale_100m.customers_plain where scope_id=$1 and (name_norm like '%'||$2||'%' and phone_norm like '%'||$3||'%' and address_norm like '%'||$4||'%' and memo_norm like '%'||$5||'%' and email_norm like '%'||$6||'%' and company_norm =$7) order by id limit 200"
+              ],
+              "returned": 200
+            },
+            {
+              "outcome": {
+                "kind": "value"
+              },
+              "totalMs": 5.844899999999143,
+              "preMs": 0.05599999999958527,
+              "sqlMs": 5.767300000000432,
+              "betweenSqlMs": 0,
+              "postMs": 0.02159999999912543,
+              "sqlCalls": 1,
+              "candidates": 200,
+              "sql": [
+                "select id,name_plain as name,phone_plain as phone,address_plain as address,memo_plain as memo,email_plain as email,company_plain as company from native_scale_100m.customers_plain where scope_id=$1 and (name_norm like '%'||$2||'%' and phone_norm like '%'||$3||'%' and address_norm like '%'||$4||'%' and memo_norm like '%'||$5||'%' and email_norm like '%'||$6||'%' and company_norm =$7) order by id limit 200"
+              ],
+              "returned": 200
+            },
+            {
+              "outcome": {
+                "kind": "value"
+              },
+              "totalMs": 5.148699999999735,
+              "preMs": 0.014699999999720603,
+              "sqlMs": 5.103699999999662,
+              "betweenSqlMs": 0,
+              "postMs": 0.030300000000352156,
+              "sqlCalls": 1,
+              "candidates": 200,
+              "sql": [
+                "select id,name_plain as name,phone_plain as phone,address_plain as address,memo_plain as memo,email_plain as email,company_plain as company from native_scale_100m.customers_plain where scope_id=$1 and (name_norm like '%'||$2||'%' and phone_norm like '%'||$3||'%' and address_norm like '%'||$4||'%' and memo_norm like '%'||$5||'%' and email_norm like '%'||$6||'%' and company_norm =$7) order by id limit 200"
+              ],
+              "returned": 200
+            },
+            {
+              "outcome": {
+                "kind": "value"
+              },
+              "totalMs": 5.3215000000000146,
+              "preMs": 0.05230000000028667,
+              "sqlMs": 5.225400000000263,
+              "betweenSqlMs": 0,
+              "postMs": 0.04379999999946449,
+              "sqlCalls": 1,
+              "candidates": 200,
+              "sql": [
+                "select id,name_plain as name,phone_plain as phone,address_plain as address,memo_plain as memo,email_plain as email,company_plain as company from native_scale_100m.customers_plain where scope_id=$1 and (name_norm like '%'||$2||'%' and phone_norm like '%'||$3||'%' and address_norm like '%'||$4||'%' and memo_norm like '%'||$5||'%' and email_norm like '%'||$6||'%' and company_norm =$7) order by id limit 200"
+              ],
+              "returned": 200
+            },
+            {
+              "outcome": {
+                "kind": "value"
+              },
+              "totalMs": 4.9025000000001455,
+              "preMs": 0.034900000000561704,
+              "sqlMs": 4.832699999999932,
+              "betweenSqlMs": 0,
+              "postMs": 0.03489999999965221,
+              "sqlCalls": 1,
+              "candidates": 200,
+              "sql": [
+                "select id,name_plain as name,phone_plain as phone,address_plain as address,memo_plain as memo,email_plain as email,company_plain as company from native_scale_100m.customers_plain where scope_id=$1 and (name_norm like '%'||$2||'%' and phone_norm like '%'||$3||'%' and address_norm like '%'||$4||'%' and memo_norm like '%'||$5||'%' and email_norm like '%'||$6||'%' and company_norm =$7) order by id limit 200"
+              ],
+              "returned": 200
+            },
+            {
+              "outcome": {
+                "kind": "value"
+              },
+              "totalMs": 5.974100000000362,
+              "preMs": 0.052400000000488944,
+              "sqlMs": 5.8774999999996,
+              "betweenSqlMs": 0,
+              "postMs": 0.044200000000273576,
+              "sqlCalls": 1,
+              "candidates": 200,
+              "sql": [
+                "select id,name_plain as name,phone_plain as phone,address_plain as address,memo_plain as memo,email_plain as email,company_plain as company from native_scale_100m.customers_plain where scope_id=$1 and (name_norm like '%'||$2||'%' and phone_norm like '%'||$3||'%' and address_norm like '%'||$4||'%' and memo_norm like '%'||$5||'%' and email_norm like '%'||$6||'%' and company_norm =$7) order by id limit 200"
+              ],
+              "returned": 200
+            },
+            {
+              "outcome": {
+                "kind": "value"
+              },
+              "totalMs": 5.293700000000172,
+              "preMs": 0.028200000000651926,
+              "sqlMs": 5.231999999999971,
+              "betweenSqlMs": 0,
+              "postMs": 0.03349999999954889,
+              "sqlCalls": 1,
+              "candidates": 200,
+              "sql": [
+                "select id,name_plain as name,phone_plain as phone,address_plain as address,memo_plain as memo,email_plain as email,company_plain as company from native_scale_100m.customers_plain where scope_id=$1 and (name_norm like '%'||$2||'%' and phone_norm like '%'||$3||'%' and address_norm like '%'||$4||'%' and memo_norm like '%'||$5||'%' and email_norm like '%'||$6||'%' and company_norm =$7) order by id limit 200"
+              ],
+              "returned": 200
+            }
+          ],
+          "product": [
+            {
+              "outcome": {
+                "kind": "value"
+              },
+              "totalMs": 85.91430000000037,
+              "preMs": 2.0694000000003143,
+              "sqlMs": 13.763500000000022,
+              "betweenSqlMs": 0,
+              "postMs": 70.08140000000003,
+              "sqlCalls": 1,
+              "candidates": 200,
+              "sql": [
+                "select \"id\", \"scope_id\", \"name_ct\", \"phone_ct\", \"address_ct\", \"memo_ct\", \"email_ct\", \"company_ct\" from \"native_scale_100m\".\"customers\" where (\"native_scale_100m\".\"customers\".\"scope_id\" = $1 and \"customers\".\"id\" in (\n    with sample as materialized (\n      select \"row_id\",\"tokens_f289b89d86c7086a\",\"tokens_7a1d2ba5ce2368fb\",\"tokens_792d75cf01821d67\",\"tokens_a639b11c8130dcf7\",\"tokens_ef1d32a52e2ce103\",\"tokens_a106c26102b707f0\" from \"native_scale_100m\".\"customers_seal_index\" as \"c\"\n      where \"c\".\"scope_id\"=$2 order by \"c\".\"row_id\" limit 256\n    ), quick as materialized (\n      select \"c\".\"row_id\" from sample as \"c\" where (\"c\".\"tokens_f289b89d86c7086a\" @> $3::bigint[] and \"c\".\"tokens_7a1d2ba5ce2368fb\" @> $4::bigint[] and \"c\".\"tokens_792d75cf01821d67\" @> $5::bigint[] and \"c\".\"tokens_a639b11c8130dcf7\" @> $6::bigint[] and \"c\".\"tokens_ef1d32a52e2ce103\" @> $7::bigint[] and (\"c\".\"tokens_a106c26102b707f0\")[1]=$8::bigint) order by \"c\".\"row_id\" limit $9\n    ), fallback as materialized (\n      select \"c\".\"row_id\" from \"native_scale_100m\".\"customers_seal_index\" as \"c\"\n      where \"c\".\"scope_id\"=$10 and (\"c\".\"tokens_f289b89d86c7086a\" @> $11::bigint[] and \"c\".\"tokens_7a1d2ba5ce2368fb\" @> $12::bigint[] and \"c\".\"tokens_792d75cf01821d67\" @> $13::bigint[] and \"c\".\"tokens_a639b11c8130dcf7\" @> $14::bigint[] and \"c\".\"tokens_ef1d32a52e2ce103\" @> $15::bigint[] and (\"c\".\"tokens_a106c26102b707f0\")[1]=$16::bigint)\n        and (select count(*) from quick)<$17\n      order by \"c\".\"row_id\" limit $18\n    )\n    select row_id from quick where (select count(*) from quick)=$19\n    union all select row_id from fallback\n  )) order by \"native_scale_100m\".\"customers\".\"id\" asc limit $20"
+              ],
+              "returned": 200
+            },
+            {
+              "outcome": {
+                "kind": "value"
+              },
+              "totalMs": 83.76720000000023,
+              "preMs": 1.9984000000004016,
+              "sqlMs": 15.958700000000135,
+              "betweenSqlMs": 0,
+              "postMs": 65.8100999999997,
+              "sqlCalls": 1,
+              "candidates": 200,
+              "sql": [
+                "select \"id\", \"scope_id\", \"name_ct\", \"phone_ct\", \"address_ct\", \"memo_ct\", \"email_ct\", \"company_ct\" from \"native_scale_100m\".\"customers\" where (\"native_scale_100m\".\"customers\".\"scope_id\" = $1 and \"customers\".\"id\" in (\n    with sample as materialized (\n      select \"row_id\",\"tokens_f289b89d86c7086a\",\"tokens_7a1d2ba5ce2368fb\",\"tokens_792d75cf01821d67\",\"tokens_a639b11c8130dcf7\",\"tokens_ef1d32a52e2ce103\",\"tokens_a106c26102b707f0\" from \"native_scale_100m\".\"customers_seal_index\" as \"c\"\n      where \"c\".\"scope_id\"=$2 order by \"c\".\"row_id\" limit 256\n    ), quick as materialized (\n      select \"c\".\"row_id\" from sample as \"c\" where (\"c\".\"tokens_f289b89d86c7086a\" @> $3::bigint[] and \"c\".\"tokens_7a1d2ba5ce2368fb\" @> $4::bigint[] and \"c\".\"tokens_792d75cf01821d67\" @> $5::bigint[] and \"c\".\"tokens_a639b11c8130dcf7\" @> $6::bigint[] and \"c\".\"tokens_ef1d32a52e2ce103\" @> $7::bigint[] and (\"c\".\"tokens_a106c26102b707f0\")[1]=$8::bigint) order by \"c\".\"row_id\" limit $9\n    ), fallback as materialized (\n      select \"c\".\"row_id\" from \"native_scale_100m\".\"customers_seal_index\" as \"c\"\n      where \"c\".\"scope_id\"=$10 and (\"c\".\"tokens_f289b89d86c7086a\" @> $11::bigint[] and \"c\".\"tokens_7a1d2ba5ce2368fb\" @> $12::bigint[] and \"c\".\"tokens_792d75cf01821d67\" @> $13::bigint[] and \"c\".\"tokens_a639b11c8130dcf7\" @> $14::bigint[] and \"c\".\"tokens_ef1d32a52e2ce103\" @> $15::bigint[] and (\"c\".\"tokens_a106c26102b707f0\")[1]=$16::bigint)\n        and (select count(*) from quick)<$17\n      order by \"c\".\"row_id\" limit $18\n    )\n    select row_id from quick where (select count(*) from quick)=$19\n    union all select row_id from fallback\n  )) order by \"native_scale_100m\".\"customers\".\"id\" asc limit $20"
+              ],
+              "returned": 200
+            },
+            {
+              "outcome": {
+                "kind": "value"
+              },
+              "totalMs": 104.13640000000032,
+              "preMs": 2.3231000000005224,
+              "sqlMs": 13.611199999999371,
+              "betweenSqlMs": 0,
+              "postMs": 88.20210000000043,
+              "sqlCalls": 1,
+              "candidates": 200,
+              "sql": [
+                "select \"id\", \"scope_id\", \"name_ct\", \"phone_ct\", \"address_ct\", \"memo_ct\", \"email_ct\", \"company_ct\" from \"native_scale_100m\".\"customers\" where (\"native_scale_100m\".\"customers\".\"scope_id\" = $1 and \"customers\".\"id\" in (\n    with sample as materialized (\n      select \"row_id\",\"tokens_f289b89d86c7086a\",\"tokens_7a1d2ba5ce2368fb\",\"tokens_792d75cf01821d67\",\"tokens_a639b11c8130dcf7\",\"tokens_ef1d32a52e2ce103\",\"tokens_a106c26102b707f0\" from \"native_scale_100m\".\"customers_seal_index\" as \"c\"\n      where \"c\".\"scope_id\"=$2 order by \"c\".\"row_id\" limit 256\n    ), quick as materialized (\n      select \"c\".\"row_id\" from sample as \"c\" where (\"c\".\"tokens_f289b89d86c7086a\" @> $3::bigint[] and \"c\".\"tokens_7a1d2ba5ce2368fb\" @> $4::bigint[] and \"c\".\"tokens_792d75cf01821d67\" @> $5::bigint[] and \"c\".\"tokens_a639b11c8130dcf7\" @> $6::bigint[] and \"c\".\"tokens_ef1d32a52e2ce103\" @> $7::bigint[] and (\"c\".\"tokens_a106c26102b707f0\")[1]=$8::bigint) order by \"c\".\"row_id\" limit $9\n    ), fallback as materialized (\n      select \"c\".\"row_id\" from \"native_scale_100m\".\"customers_seal_index\" as \"c\"\n      where \"c\".\"scope_id\"=$10 and (\"c\".\"tokens_f289b89d86c7086a\" @> $11::bigint[] and \"c\".\"tokens_7a1d2ba5ce2368fb\" @> $12::bigint[] and \"c\".\"tokens_792d75cf01821d67\" @> $13::bigint[] and \"c\".\"tokens_a639b11c8130dcf7\" @> $14::bigint[] and \"c\".\"tokens_ef1d32a52e2ce103\" @> $15::bigint[] and (\"c\".\"tokens_a106c26102b707f0\")[1]=$16::bigint)\n        and (select count(*) from quick)<$17\n      order by \"c\".\"row_id\" limit $18\n    )\n    select row_id from quick where (select count(*) from quick)=$19\n    union all select row_id from fallback\n  )) order by \"native_scale_100m\".\"customers\".\"id\" asc limit $20"
+              ],
+              "returned": 200
+            },
+            {
+              "outcome": {
+                "kind": "value"
+              },
+              "totalMs": 89.95640000000003,
+              "preMs": 3.0684000000001106,
+              "sqlMs": 15.851299999999355,
+              "betweenSqlMs": 0,
+              "postMs": 71.03670000000056,
+              "sqlCalls": 1,
+              "candidates": 200,
+              "sql": [
+                "select \"id\", \"scope_id\", \"name_ct\", \"phone_ct\", \"address_ct\", \"memo_ct\", \"email_ct\", \"company_ct\" from \"native_scale_100m\".\"customers\" where (\"native_scale_100m\".\"customers\".\"scope_id\" = $1 and \"customers\".\"id\" in (\n    with sample as materialized (\n      select \"row_id\",\"tokens_f289b89d86c7086a\",\"tokens_7a1d2ba5ce2368fb\",\"tokens_792d75cf01821d67\",\"tokens_a639b11c8130dcf7\",\"tokens_ef1d32a52e2ce103\",\"tokens_a106c26102b707f0\" from \"native_scale_100m\".\"customers_seal_index\" as \"c\"\n      where \"c\".\"scope_id\"=$2 order by \"c\".\"row_id\" limit 256\n    ), quick as materialized (\n      select \"c\".\"row_id\" from sample as \"c\" where (\"c\".\"tokens_f289b89d86c7086a\" @> $3::bigint[] and \"c\".\"tokens_7a1d2ba5ce2368fb\" @> $4::bigint[] and \"c\".\"tokens_792d75cf01821d67\" @> $5::bigint[] and \"c\".\"tokens_a639b11c8130dcf7\" @> $6::bigint[] and \"c\".\"tokens_ef1d32a52e2ce103\" @> $7::bigint[] and (\"c\".\"tokens_a106c26102b707f0\")[1]=$8::bigint) order by \"c\".\"row_id\" limit $9\n    ), fallback as materialized (\n      select \"c\".\"row_id\" from \"native_scale_100m\".\"customers_seal_index\" as \"c\"\n      where \"c\".\"scope_id\"=$10 and (\"c\".\"tokens_f289b89d86c7086a\" @> $11::bigint[] and \"c\".\"tokens_7a1d2ba5ce2368fb\" @> $12::bigint[] and \"c\".\"tokens_792d75cf01821d67\" @> $13::bigint[] and \"c\".\"tokens_a639b11c8130dcf7\" @> $14::bigint[] and \"c\".\"tokens_ef1d32a52e2ce103\" @> $15::bigint[] and (\"c\".\"tokens_a106c26102b707f0\")[1]=$16::bigint)\n        and (select count(*) from quick)<$17\n      order by \"c\".\"row_id\" limit $18\n    )\n    select row_id from quick where (select count(*) from quick)=$19\n    union all select row_id from fallback\n  )) order by \"native_scale_100m\".\"customers\".\"id\" asc limit $20"
+              ],
+              "returned": 200
+            },
+            {
+              "outcome": {
+                "kind": "value"
+              },
+              "totalMs": 87.77970000000005,
+              "preMs": 3.5163000000002285,
+              "sqlMs": 15.086600000000544,
+              "betweenSqlMs": 0,
+              "postMs": 69.17679999999928,
+              "sqlCalls": 1,
+              "candidates": 200,
+              "sql": [
+                "select \"id\", \"scope_id\", \"name_ct\", \"phone_ct\", \"address_ct\", \"memo_ct\", \"email_ct\", \"company_ct\" from \"native_scale_100m\".\"customers\" where (\"native_scale_100m\".\"customers\".\"scope_id\" = $1 and \"customers\".\"id\" in (\n    with sample as materialized (\n      select \"row_id\",\"tokens_f289b89d86c7086a\",\"tokens_7a1d2ba5ce2368fb\",\"tokens_792d75cf01821d67\",\"tokens_a639b11c8130dcf7\",\"tokens_ef1d32a52e2ce103\",\"tokens_a106c26102b707f0\" from \"native_scale_100m\".\"customers_seal_index\" as \"c\"\n      where \"c\".\"scope_id\"=$2 order by \"c\".\"row_id\" limit 256\n    ), quick as materialized (\n      select \"c\".\"row_id\" from sample as \"c\" where (\"c\".\"tokens_f289b89d86c7086a\" @> $3::bigint[] and \"c\".\"tokens_7a1d2ba5ce2368fb\" @> $4::bigint[] and \"c\".\"tokens_792d75cf01821d67\" @> $5::bigint[] and \"c\".\"tokens_a639b11c8130dcf7\" @> $6::bigint[] and \"c\".\"tokens_ef1d32a52e2ce103\" @> $7::bigint[] and (\"c\".\"tokens_a106c26102b707f0\")[1]=$8::bigint) order by \"c\".\"row_id\" limit $9\n    ), fallback as materialized (\n      select \"c\".\"row_id\" from \"native_scale_100m\".\"customers_seal_index\" as \"c\"\n      where \"c\".\"scope_id\"=$10 and (\"c\".\"tokens_f289b89d86c7086a\" @> $11::bigint[] and \"c\".\"tokens_7a1d2ba5ce2368fb\" @> $12::bigint[] and \"c\".\"tokens_792d75cf01821d67\" @> $13::bigint[] and \"c\".\"tokens_a639b11c8130dcf7\" @> $14::bigint[] and \"c\".\"tokens_ef1d32a52e2ce103\" @> $15::bigint[] and (\"c\".\"tokens_a106c26102b707f0\")[1]=$16::bigint)\n        and (select count(*) from quick)<$17\n      order by \"c\".\"row_id\" limit $18\n    )\n    select row_id from quick where (select count(*) from quick)=$19\n    union all select row_id from fallback\n  )) order by \"native_scale_100m\".\"customers\".\"id\" asc limit $20"
+              ],
+              "returned": 200
+            },
+            {
+              "outcome": {
+                "kind": "value"
+              },
+              "totalMs": 85.30259999999998,
+              "preMs": 2.5484000000005835,
+              "sqlMs": 13.75839999999971,
+              "betweenSqlMs": 0,
+              "postMs": 68.99579999999969,
+              "sqlCalls": 1,
+              "candidates": 200,
+              "sql": [
+                "select \"id\", \"scope_id\", \"name_ct\", \"phone_ct\", \"address_ct\", \"memo_ct\", \"email_ct\", \"company_ct\" from \"native_scale_100m\".\"customers\" where (\"native_scale_100m\".\"customers\".\"scope_id\" = $1 and \"customers\".\"id\" in (\n    with sample as materialized (\n      select \"row_id\",\"tokens_f289b89d86c7086a\",\"tokens_7a1d2ba5ce2368fb\",\"tokens_792d75cf01821d67\",\"tokens_a639b11c8130dcf7\",\"tokens_ef1d32a52e2ce103\",\"tokens_a106c26102b707f0\" from \"native_scale_100m\".\"customers_seal_index\" as \"c\"\n      where \"c\".\"scope_id\"=$2 order by \"c\".\"row_id\" limit 256\n    ), quick as materialized (\n      select \"c\".\"row_id\" from sample as \"c\" where (\"c\".\"tokens_f289b89d86c7086a\" @> $3::bigint[] and \"c\".\"tokens_7a1d2ba5ce2368fb\" @> $4::bigint[] and \"c\".\"tokens_792d75cf01821d67\" @> $5::bigint[] and \"c\".\"tokens_a639b11c8130dcf7\" @> $6::bigint[] and \"c\".\"tokens_ef1d32a52e2ce103\" @> $7::bigint[] and (\"c\".\"tokens_a106c26102b707f0\")[1]=$8::bigint) order by \"c\".\"row_id\" limit $9\n    ), fallback as materialized (\n      select \"c\".\"row_id\" from \"native_scale_100m\".\"customers_seal_index\" as \"c\"\n      where \"c\".\"scope_id\"=$10 and (\"c\".\"tokens_f289b89d86c7086a\" @> $11::bigint[] and \"c\".\"tokens_7a1d2ba5ce2368fb\" @> $12::bigint[] and \"c\".\"tokens_792d75cf01821d67\" @> $13::bigint[] and \"c\".\"tokens_a639b11c8130dcf7\" @> $14::bigint[] and \"c\".\"tokens_ef1d32a52e2ce103\" @> $15::bigint[] and (\"c\".\"tokens_a106c26102b707f0\")[1]=$16::bigint)\n        and (select count(*) from quick)<$17\n      order by \"c\".\"row_id\" limit $18\n    )\n    select row_id from quick where (select count(*) from quick)=$19\n    union all select row_id from fallback\n  )) order by \"native_scale_100m\".\"customers\".\"id\" asc limit $20"
+              ],
+              "returned": 200
+            },
+            {
+              "outcome": {
+                "kind": "value"
+              },
+              "totalMs": 78.19419999999991,
+              "preMs": 4.798000000000684,
+              "sqlMs": 14.044299999999566,
+              "betweenSqlMs": 0,
+              "postMs": 59.35189999999966,
+              "sqlCalls": 1,
+              "candidates": 200,
+              "sql": [
+                "select \"id\", \"scope_id\", \"name_ct\", \"phone_ct\", \"address_ct\", \"memo_ct\", \"email_ct\", \"company_ct\" from \"native_scale_100m\".\"customers\" where (\"native_scale_100m\".\"customers\".\"scope_id\" = $1 and \"customers\".\"id\" in (\n    with sample as materialized (\n      select \"row_id\",\"tokens_f289b89d86c7086a\",\"tokens_7a1d2ba5ce2368fb\",\"tokens_792d75cf01821d67\",\"tokens_a639b11c8130dcf7\",\"tokens_ef1d32a52e2ce103\",\"tokens_a106c26102b707f0\" from \"native_scale_100m\".\"customers_seal_index\" as \"c\"\n      where \"c\".\"scope_id\"=$2 order by \"c\".\"row_id\" limit 256\n    ), quick as materialized (\n      select \"c\".\"row_id\" from sample as \"c\" where (\"c\".\"tokens_f289b89d86c7086a\" @> $3::bigint[] and \"c\".\"tokens_7a1d2ba5ce2368fb\" @> $4::bigint[] and \"c\".\"tokens_792d75cf01821d67\" @> $5::bigint[] and \"c\".\"tokens_a639b11c8130dcf7\" @> $6::bigint[] and \"c\".\"tokens_ef1d32a52e2ce103\" @> $7::bigint[] and (\"c\".\"tokens_a106c26102b707f0\")[1]=$8::bigint) order by \"c\".\"row_id\" limit $9\n    ), fallback as materialized (\n      select \"c\".\"row_id\" from \"native_scale_100m\".\"customers_seal_index\" as \"c\"\n      where \"c\".\"scope_id\"=$10 and (\"c\".\"tokens_f289b89d86c7086a\" @> $11::bigint[] and \"c\".\"tokens_7a1d2ba5ce2368fb\" @> $12::bigint[] and \"c\".\"tokens_792d75cf01821d67\" @> $13::bigint[] and \"c\".\"tokens_a639b11c8130dcf7\" @> $14::bigint[] and \"c\".\"tokens_ef1d32a52e2ce103\" @> $15::bigint[] and (\"c\".\"tokens_a106c26102b707f0\")[1]=$16::bigint)\n        and (select count(*) from quick)<$17\n      order by \"c\".\"row_id\" limit $18\n    )\n    select row_id from quick where (select count(*) from quick)=$19\n    union all select row_id from fallback\n  )) order by \"native_scale_100m\".\"customers\".\"id\" asc limit $20"
+              ],
+              "returned": 200
+            }
+          ]
+        },
+        "productErrors": [],
+        "rule": "warmup2_alternating7_median"
+      },
+      "count": {
+        "mode": "count",
+        "searchRows": 100000000,
+        "scopeRows": 100000,
+        "expectedMatches": 624,
+        "returned": 624,
+        "plain": {
+          "outcome": {
+            "kind": "value",
+            "value": 624
+          },
+          "totalMs": 33.50590000000011,
+          "preMs": 0.056899999999586726,
+          "sqlMs": 33.39689999999973,
+          "betweenSqlMs": 0,
+          "postMs": 0.052100000000791624,
+          "sqlCalls": 1,
+          "candidates": 1,
+          "sql": [
+            "select count(*) n from native_scale_100m.customers_plain where scope_id=$1 and (name_norm like '%'||$2||'%' and phone_norm like '%'||$3||'%' and address_norm like '%'||$4||'%' and memo_norm like '%'||$5||'%' and email_norm like '%'||$6||'%' and company_norm =$7)"
+          ]
+        },
+        "product": {
+          "outcome": {
+            "kind": "value",
+            "value": 624
+          },
+          "totalMs": 329.5025000000005,
+          "preMs": 1.7018000000007305,
+          "sqlMs": 130.2433000000001,
+          "betweenSqlMs": 0,
+          "postMs": 197.5573999999997,
+          "sqlCalls": 1,
+          "candidates": 624,
+          "sql": [
+            "select \"id\", \"scope_id\", \"name_ct\", \"phone_ct\", \"address_ct\", \"memo_ct\", \"email_ct\", \"company_ct\" from \"native_scale_100m\".\"customers\" where (\"native_scale_100m\".\"customers\".\"scope_id\" = $1 and \"customers\".\"id\" in (select \"__seal_idx\".\"row_id\" from \"native_scale_100m\".\"customers_seal_index\" as \"__seal_idx\" where \"__seal_idx\".\"scope_id\"=$2 and ((\"__seal_idx\".\"tokens_f289b89d86c7086a\" @> $3::bigint[]) and (\"__seal_idx\".\"tokens_7a1d2ba5ce2368fb\" @> $4::bigint[]) and (\"__seal_idx\".\"tokens_792d75cf01821d67\" @> $5::bigint[]) and (\"__seal_idx\".\"tokens_a639b11c8130dcf7\" @> $6::bigint[]) and (\"__seal_idx\".\"tokens_ef1d32a52e2ce103\" @> $7::bigint[]) and ((\"__seal_idx\".\"tokens_a106c26102b707f0\")[1]=$8::bigint)))) order by \"native_scale_100m\".\"customers\".\"id\" asc limit $9"
+          ]
+        },
+        "rule": "single_no_warmup",
+        "maxCandidates": 1000000,
+        "budgets": {
+          "batch": 2000,
+          "maxCandidates": 20000,
+          "fetchBytes": 33554432,
+          "decryptedBytes": 33554432,
+          "resultBytes": 33554432,
+          "deadlineMs": 30000,
+          "decryptConcurrency": 64
+        }
+      }
+    },
+    {
+      "case": "or2",
+      "sourceMatches": 28400,
+      "find": {
+        "mode": "findMany",
+        "searchRows": 100000000,
+        "scopeRows": 100000,
+        "expectedMatches": 28400,
+        "returned": 200,
+        "plain": {
+          "totalMs": 1.6704999999983556,
+          "preMs": 0.04749999999876309,
+          "sqlMs": 1.5997000000006665,
+          "betweenSqlMs": 0,
+          "postMs": 0.020899999999528518,
+          "sqlCalls": 1,
+          "candidates": 200
+        },
+        "product": {
+          "totalMs": 126.0661999999993,
+          "preMs": 1.34729999999945,
+          "sqlMs": 60.14930000000095,
+          "betweenSqlMs": 0,
+          "postMs": 65.76219999999921,
+          "sqlCalls": 1,
+          "candidates": 200
+        },
+        "runs": {
+          "plain": [
+            {
+              "outcome": {
+                "kind": "value"
+              },
+              "totalMs": 1.8964999999989232,
+              "preMs": 0.04769999999916763,
+              "sqlMs": 1.8140000000003056,
+              "betweenSqlMs": 0,
+              "postMs": 0.03479999999944994,
+              "sqlCalls": 1,
+              "candidates": 200,
+              "sql": [
+                "select id,name_plain as name,phone_plain as phone,address_plain as address,memo_plain as memo,email_plain as email,company_plain as company from native_scale_100m.customers_plain where scope_id=$1 and (company_norm =$2 or memo_norm like '%'||$3||'%') order by id limit 200"
+              ],
+              "returned": 200
+            },
+            {
+              "outcome": {
+                "kind": "value"
+              },
+              "totalMs": 1.7260999999998603,
+              "preMs": 0.062099999999190914,
+              "sqlMs": 1.6406000000006316,
+              "betweenSqlMs": 0,
+              "postMs": 0.023400000000037835,
+              "sqlCalls": 1,
+              "candidates": 200,
+              "sql": [
+                "select id,name_plain as name,phone_plain as phone,address_plain as address,memo_plain as memo,email_plain as email,company_plain as company from native_scale_100m.customers_plain where scope_id=$1 and (company_norm =$2 or memo_norm like '%'||$3||'%') order by id limit 200"
+              ],
+              "returned": 200
+            },
+            {
+              "outcome": {
+                "kind": "value"
+              },
+              "totalMs": 1.1368000000002212,
+              "preMs": 0.016799999999420834,
+              "sqlMs": 1.1002000000007683,
+              "betweenSqlMs": 0,
+              "postMs": 0.019800000000032014,
+              "sqlCalls": 1,
+              "candidates": 200,
+              "sql": [
+                "select id,name_plain as name,phone_plain as phone,address_plain as address,memo_plain as memo,email_plain as email,company_plain as company from native_scale_100m.customers_plain where scope_id=$1 and (company_norm =$2 or memo_norm like '%'||$3||'%') order by id limit 200"
+              ],
+              "returned": 200
+            },
+            {
+              "outcome": {
+                "kind": "value"
+              },
+              "totalMs": 1.8057000000007974,
+              "preMs": 0.06379999999990105,
+              "sqlMs": 1.7210000000013679,
+              "betweenSqlMs": 0,
+              "postMs": 0.020899999999528518,
+              "sqlCalls": 1,
+              "candidates": 200,
+              "sql": [
+                "select id,name_plain as name,phone_plain as phone,address_plain as address,memo_plain as memo,email_plain as email,company_plain as company from native_scale_100m.customers_plain where scope_id=$1 and (company_norm =$2 or memo_norm like '%'||$3||'%') order by id limit 200"
+              ],
+              "returned": 200
+            },
+            {
+              "outcome": {
+                "kind": "value"
+              },
+              "totalMs": 1.1768000000010943,
+              "preMs": 0.0136000000002241,
+              "sqlMs": 1.147899999999936,
+              "betweenSqlMs": 0,
+              "postMs": 0.015300000000934233,
+              "sqlCalls": 1,
+              "candidates": 200,
+              "sql": [
+                "select id,name_plain as name,phone_plain as phone,address_plain as address,memo_plain as memo,email_plain as email,company_plain as company from native_scale_100m.customers_plain where scope_id=$1 and (company_norm =$2 or memo_norm like '%'||$3||'%') order by id limit 200"
+              ],
+              "returned": 200
+            },
+            {
+              "outcome": {
+                "kind": "value"
+              },
+              "totalMs": 1.6704999999983556,
+              "preMs": 0.04749999999876309,
+              "sqlMs": 1.5997000000006665,
+              "betweenSqlMs": 0,
+              "postMs": 0.02329999999892607,
+              "sqlCalls": 1,
+              "candidates": 200,
+              "sql": [
+                "select id,name_plain as name,phone_plain as phone,address_plain as address,memo_plain as memo,email_plain as email,company_plain as company from native_scale_100m.customers_plain where scope_id=$1 and (company_norm =$2 or memo_norm like '%'||$3||'%') order by id limit 200"
+              ],
+              "returned": 200
+            },
+            {
+              "outcome": {
+                "kind": "value"
+              },
+              "totalMs": 1.0177999999996246,
+              "preMs": 0.016400000000430737,
+              "sqlMs": 0.9835000000002765,
+              "betweenSqlMs": 0,
+              "postMs": 0.017899999998917338,
+              "sqlCalls": 1,
+              "candidates": 200,
+              "sql": [
+                "select id,name_plain as name,phone_plain as phone,address_plain as address,memo_plain as memo,email_plain as email,company_plain as company from native_scale_100m.customers_plain where scope_id=$1 and (company_norm =$2 or memo_norm like '%'||$3||'%') order by id limit 200"
+              ],
+              "returned": 200
+            }
+          ],
+          "product": [
+            {
+              "outcome": {
+                "kind": "value"
+              },
+              "totalMs": 126.0661999999993,
+              "preMs": 1.2950999999993655,
+              "sqlMs": 57.970500000001266,
+              "betweenSqlMs": 0,
+              "postMs": 66.80059999999867,
+              "sqlCalls": 1,
+              "candidates": 200,
+              "sql": [
+                "select \"id\", \"scope_id\", \"name_ct\", \"phone_ct\", \"address_ct\", \"memo_ct\", \"email_ct\", \"company_ct\" from \"native_scale_100m\".\"customers\" where (\"native_scale_100m\".\"customers\".\"scope_id\" = $1 and \"customers\".\"id\" in (\n    with sample as materialized (\n      select \"row_id\",\"tokens_a106c26102b707f0\",\"tokens_a639b11c8130dcf7\" from \"native_scale_100m\".\"customers_seal_index\" as \"c\"\n      where \"c\".\"scope_id\"=$2 order by \"c\".\"row_id\" limit 256\n    ), quick as materialized (\n      select \"c\".\"row_id\" from sample as \"c\" where ((\"c\".\"tokens_a106c26102b707f0\")[1]=$3::bigint or \"c\".\"tokens_a639b11c8130dcf7\" @> $4::bigint[]) order by \"c\".\"row_id\" limit $5\n    ), fallback as materialized (\n      select \"c\".\"row_id\" from \"native_scale_100m\".\"customers_seal_index\" as \"c\"\n      where \"c\".\"scope_id\"=$6 and ((\"c\".\"tokens_a106c26102b707f0\")[1]=$7::bigint or \"c\".\"tokens_a639b11c8130dcf7\" @> $8::bigint[])\n        and (select count(*) from quick)<$9\n      order by \"c\".\"row_id\" limit $10\n    )\n    select row_id from quick where (select count(*) from quick)=$11\n    union all select row_id from fallback\n  )) order by \"native_scale_100m\".\"customers\".\"id\" asc limit $12"
+              ],
+              "returned": 200
+            },
+            {
+              "outcome": {
+                "kind": "value"
+              },
+              "totalMs": 124.5085999999992,
+              "preMs": 1.5939999999991414,
+              "sqlMs": 60.14930000000095,
+              "betweenSqlMs": 0,
+              "postMs": 62.765299999999115,
+              "sqlCalls": 1,
+              "candidates": 200,
+              "sql": [
+                "select \"id\", \"scope_id\", \"name_ct\", \"phone_ct\", \"address_ct\", \"memo_ct\", \"email_ct\", \"company_ct\" from \"native_scale_100m\".\"customers\" where (\"native_scale_100m\".\"customers\".\"scope_id\" = $1 and \"customers\".\"id\" in (\n    with sample as materialized (\n      select \"row_id\",\"tokens_a106c26102b707f0\",\"tokens_a639b11c8130dcf7\" from \"native_scale_100m\".\"customers_seal_index\" as \"c\"\n      where \"c\".\"scope_id\"=$2 order by \"c\".\"row_id\" limit 256\n    ), quick as materialized (\n      select \"c\".\"row_id\" from sample as \"c\" where ((\"c\".\"tokens_a106c26102b707f0\")[1]=$3::bigint or \"c\".\"tokens_a639b11c8130dcf7\" @> $4::bigint[]) order by \"c\".\"row_id\" limit $5\n    ), fallback as materialized (\n      select \"c\".\"row_id\" from \"native_scale_100m\".\"customers_seal_index\" as \"c\"\n      where \"c\".\"scope_id\"=$6 and ((\"c\".\"tokens_a106c26102b707f0\")[1]=$7::bigint or \"c\".\"tokens_a639b11c8130dcf7\" @> $8::bigint[])\n        and (select count(*) from quick)<$9\n      order by \"c\".\"row_id\" limit $10\n    )\n    select row_id from quick where (select count(*) from quick)=$11\n    union all select row_id from fallback\n  )) order by \"native_scale_100m\".\"customers\".\"id\" asc limit $12"
+              ],
+              "returned": 200
+            },
+            {
+              "outcome": {
+                "kind": "value"
+              },
+              "totalMs": 134.67020000000048,
+              "preMs": 1.4825999999993655,
+              "sqlMs": 58.505700000001525,
+              "betweenSqlMs": 0,
+              "postMs": 74.68189999999959,
+              "sqlCalls": 1,
+              "candidates": 200,
+              "sql": [
+                "select \"id\", \"scope_id\", \"name_ct\", \"phone_ct\", \"address_ct\", \"memo_ct\", \"email_ct\", \"company_ct\" from \"native_scale_100m\".\"customers\" where (\"native_scale_100m\".\"customers\".\"scope_id\" = $1 and \"customers\".\"id\" in (\n    with sample as materialized (\n      select \"row_id\",\"tokens_a106c26102b707f0\",\"tokens_a639b11c8130dcf7\" from \"native_scale_100m\".\"customers_seal_index\" as \"c\"\n      where \"c\".\"scope_id\"=$2 order by \"c\".\"row_id\" limit 256\n    ), quick as materialized (\n      select \"c\".\"row_id\" from sample as \"c\" where ((\"c\".\"tokens_a106c26102b707f0\")[1]=$3::bigint or \"c\".\"tokens_a639b11c8130dcf7\" @> $4::bigint[]) order by \"c\".\"row_id\" limit $5\n    ), fallback as materialized (\n      select \"c\".\"row_id\" from \"native_scale_100m\".\"customers_seal_index\" as \"c\"\n      where \"c\".\"scope_id\"=$6 and ((\"c\".\"tokens_a106c26102b707f0\")[1]=$7::bigint or \"c\".\"tokens_a639b11c8130dcf7\" @> $8::bigint[])\n        and (select count(*) from quick)<$9\n      order by \"c\".\"row_id\" limit $10\n    )\n    select row_id from quick where (select count(*) from quick)=$11\n    union all select row_id from fallback\n  )) order by \"native_scale_100m\".\"customers\".\"id\" asc limit $12"
+              ],
+              "returned": 200
+            },
+            {
+              "outcome": {
+                "kind": "value"
+              },
+              "totalMs": 137.4403999999995,
+              "preMs": 1.7124000000003434,
+              "sqlMs": 69.96579999999994,
+              "betweenSqlMs": 0,
+              "postMs": 65.76219999999921,
+              "sqlCalls": 1,
+              "candidates": 200,
+              "sql": [
+                "select \"id\", \"scope_id\", \"name_ct\", \"phone_ct\", \"address_ct\", \"memo_ct\", \"email_ct\", \"company_ct\" from \"native_scale_100m\".\"customers\" where (\"native_scale_100m\".\"customers\".\"scope_id\" = $1 and \"customers\".\"id\" in (\n    with sample as materialized (\n      select \"row_id\",\"tokens_a106c26102b707f0\",\"tokens_a639b11c8130dcf7\" from \"native_scale_100m\".\"customers_seal_index\" as \"c\"\n      where \"c\".\"scope_id\"=$2 order by \"c\".\"row_id\" limit 256\n    ), quick as materialized (\n      select \"c\".\"row_id\" from sample as \"c\" where ((\"c\".\"tokens_a106c26102b707f0\")[1]=$3::bigint or \"c\".\"tokens_a639b11c8130dcf7\" @> $4::bigint[]) order by \"c\".\"row_id\" limit $5\n    ), fallback as materialized (\n      select \"c\".\"row_id\" from \"native_scale_100m\".\"customers_seal_index\" as \"c\"\n      where \"c\".\"scope_id\"=$6 and ((\"c\".\"tokens_a106c26102b707f0\")[1]=$7::bigint or \"c\".\"tokens_a639b11c8130dcf7\" @> $8::bigint[])\n        and (select count(*) from quick)<$9\n      order by \"c\".\"row_id\" limit $10\n    )\n    select row_id from quick where (select count(*) from quick)=$11\n    union all select row_id from fallback\n  )) order by \"native_scale_100m\".\"customers\".\"id\" asc limit $12"
+              ],
+              "returned": 200
+            },
+            {
+              "outcome": {
+                "kind": "value"
+              },
+              "totalMs": 131.42180000000008,
+              "preMs": 1.2079000000012456,
+              "sqlMs": 61.59089999999924,
+              "betweenSqlMs": 0,
+              "postMs": 68.62299999999959,
+              "sqlCalls": 1,
+              "candidates": 200,
+              "sql": [
+                "select \"id\", \"scope_id\", \"name_ct\", \"phone_ct\", \"address_ct\", \"memo_ct\", \"email_ct\", \"company_ct\" from \"native_scale_100m\".\"customers\" where (\"native_scale_100m\".\"customers\".\"scope_id\" = $1 and \"customers\".\"id\" in (\n    with sample as materialized (\n      select \"row_id\",\"tokens_a106c26102b707f0\",\"tokens_a639b11c8130dcf7\" from \"native_scale_100m\".\"customers_seal_index\" as \"c\"\n      where \"c\".\"scope_id\"=$2 order by \"c\".\"row_id\" limit 256\n    ), quick as materialized (\n      select \"c\".\"row_id\" from sample as \"c\" where ((\"c\".\"tokens_a106c26102b707f0\")[1]=$3::bigint or \"c\".\"tokens_a639b11c8130dcf7\" @> $4::bigint[]) order by \"c\".\"row_id\" limit $5\n    ), fallback as materialized (\n      select \"c\".\"row_id\" from \"native_scale_100m\".\"customers_seal_index\" as \"c\"\n      where \"c\".\"scope_id\"=$6 and ((\"c\".\"tokens_a106c26102b707f0\")[1]=$7::bigint or \"c\".\"tokens_a639b11c8130dcf7\" @> $8::bigint[])\n        and (select count(*) from quick)<$9\n      order by \"c\".\"row_id\" limit $10\n    )\n    select row_id from quick where (select count(*) from quick)=$11\n    union all select row_id from fallback\n  )) order by \"native_scale_100m\".\"customers\".\"id\" asc limit $12"
+              ],
+              "returned": 200
+            },
+            {
+              "outcome": {
+                "kind": "value"
+              },
+              "totalMs": 120.51540000000023,
+              "preMs": 1.3187999999991007,
+              "sqlMs": 61.524100000000544,
+              "betweenSqlMs": 0,
+              "postMs": 57.67250000000058,
+              "sqlCalls": 1,
+              "candidates": 200,
+              "sql": [
+                "select \"id\", \"scope_id\", \"name_ct\", \"phone_ct\", \"address_ct\", \"memo_ct\", \"email_ct\", \"company_ct\" from \"native_scale_100m\".\"customers\" where (\"native_scale_100m\".\"customers\".\"scope_id\" = $1 and \"customers\".\"id\" in (\n    with sample as materialized (\n      select \"row_id\",\"tokens_a106c26102b707f0\",\"tokens_a639b11c8130dcf7\" from \"native_scale_100m\".\"customers_seal_index\" as \"c\"\n      where \"c\".\"scope_id\"=$2 order by \"c\".\"row_id\" limit 256\n    ), quick as materialized (\n      select \"c\".\"row_id\" from sample as \"c\" where ((\"c\".\"tokens_a106c26102b707f0\")[1]=$3::bigint or \"c\".\"tokens_a639b11c8130dcf7\" @> $4::bigint[]) order by \"c\".\"row_id\" limit $5\n    ), fallback as materialized (\n      select \"c\".\"row_id\" from \"native_scale_100m\".\"customers_seal_index\" as \"c\"\n      where \"c\".\"scope_id\"=$6 and ((\"c\".\"tokens_a106c26102b707f0\")[1]=$7::bigint or \"c\".\"tokens_a639b11c8130dcf7\" @> $8::bigint[])\n        and (select count(*) from quick)<$9\n      order by \"c\".\"row_id\" limit $10\n    )\n    select row_id from quick where (select count(*) from quick)=$11\n    union all select row_id from fallback\n  )) order by \"native_scale_100m\".\"customers\".\"id\" asc limit $12"
+              ],
+              "returned": 200
+            },
+            {
+              "outcome": {
+                "kind": "value"
+              },
+              "totalMs": 117.62930000000051,
+              "preMs": 1.34729999999945,
+              "sqlMs": 56.07340000000113,
+              "betweenSqlMs": 0,
+              "postMs": 60.20859999999993,
+              "sqlCalls": 1,
+              "candidates": 200,
+              "sql": [
+                "select \"id\", \"scope_id\", \"name_ct\", \"phone_ct\", \"address_ct\", \"memo_ct\", \"email_ct\", \"company_ct\" from \"native_scale_100m\".\"customers\" where (\"native_scale_100m\".\"customers\".\"scope_id\" = $1 and \"customers\".\"id\" in (\n    with sample as materialized (\n      select \"row_id\",\"tokens_a106c26102b707f0\",\"tokens_a639b11c8130dcf7\" from \"native_scale_100m\".\"customers_seal_index\" as \"c\"\n      where \"c\".\"scope_id\"=$2 order by \"c\".\"row_id\" limit 256\n    ), quick as materialized (\n      select \"c\".\"row_id\" from sample as \"c\" where ((\"c\".\"tokens_a106c26102b707f0\")[1]=$3::bigint or \"c\".\"tokens_a639b11c8130dcf7\" @> $4::bigint[]) order by \"c\".\"row_id\" limit $5\n    ), fallback as materialized (\n      select \"c\".\"row_id\" from \"native_scale_100m\".\"customers_seal_index\" as \"c\"\n      where \"c\".\"scope_id\"=$6 and ((\"c\".\"tokens_a106c26102b707f0\")[1]=$7::bigint or \"c\".\"tokens_a639b11c8130dcf7\" @> $8::bigint[])\n        and (select count(*) from quick)<$9\n      order by \"c\".\"row_id\" limit $10\n    )\n    select row_id from quick where (select count(*) from quick)=$11\n    union all select row_id from fallback\n  )) order by \"native_scale_100m\".\"customers\".\"id\" asc limit $12"
+              ],
+              "returned": 200
+            }
+          ]
+        },
+        "productErrors": [],
+        "rule": "warmup2_alternating7_median"
+      },
+      "count": {
+        "mode": "count",
+        "searchRows": 100000000,
+        "scopeRows": 100000,
+        "expectedMatches": 28400,
+        "returned": 28400,
+        "plain": {
+          "outcome": {
+            "kind": "value",
+            "value": 28400
+          },
+          "totalMs": 65.85589999999866,
+          "preMs": 0.06979999999930442,
+          "sqlMs": 65.72749999999905,
+          "betweenSqlMs": 0,
+          "postMs": 0.05860000000029686,
+          "sqlCalls": 1,
+          "candidates": 1,
+          "sql": [
+            "select count(*) n from native_scale_100m.customers_plain where scope_id=$1 and (company_norm =$2 or memo_norm like '%'||$3||'%')"
+          ]
+        },
+        "product": {
+          "outcome": {
+            "kind": "value",
+            "value": 28400
+          },
+          "totalMs": 4602.126899999999,
+          "preMs": 1.2201999999997497,
+          "sqlMs": 1611.9127999999982,
+          "betweenSqlMs": 2949.9211000000014,
+          "postMs": 39.072799999999916,
+          "sqlCalls": 15,
+          "candidates": 28400,
+          "sql": [
+            "select \"id\", \"scope_id\", \"company_ct\", \"memo_ct\" from \"native_scale_100m\".\"customers\" where (\"native_scale_100m\".\"customers\".\"scope_id\" = $1 and \"customers\".\"id\" in (select \"__seal_idx\".\"row_id\" from \"native_scale_100m\".\"customers_seal_index\" as \"__seal_idx\" where \"__seal_idx\".\"scope_id\"=$2 and (((\"__seal_idx\".\"tokens_a106c26102b707f0\")[1]=$3::bigint) or (\"__seal_idx\".\"tokens_a639b11c8130dcf7\" @> $4::bigint[])))) order by \"native_scale_100m\".\"customers\".\"id\" asc limit $5",
+            "select \"id\", \"scope_id\", \"company_ct\", \"memo_ct\" from \"native_scale_100m\".\"customers\" where (\"native_scale_100m\".\"customers\".\"scope_id\" = $1 and \"native_scale_100m\".\"customers\".\"id\" > $2 and \"customers\".\"id\" in (select \"__seal_idx\".\"row_id\" from \"native_scale_100m\".\"customers_seal_index\" as \"__seal_idx\" where \"__seal_idx\".\"scope_id\"=$3 and (((\"__seal_idx\".\"tokens_a106c26102b707f0\")[1]=$4::bigint) or (\"__seal_idx\".\"tokens_a639b11c8130dcf7\" @> $5::bigint[])))) order by \"native_scale_100m\".\"customers\".\"id\" asc limit $6",
+            "select \"id\", \"scope_id\", \"company_ct\", \"memo_ct\" from \"native_scale_100m\".\"customers\" where (\"native_scale_100m\".\"customers\".\"scope_id\" = $1 and \"native_scale_100m\".\"customers\".\"id\" > $2 and \"customers\".\"id\" in (select \"__seal_idx\".\"row_id\" from \"native_scale_100m\".\"customers_seal_index\" as \"__seal_idx\" where \"__seal_idx\".\"scope_id\"=$3 and (((\"__seal_idx\".\"tokens_a106c26102b707f0\")[1]=$4::bigint) or (\"__seal_idx\".\"tokens_a639b11c8130dcf7\" @> $5::bigint[])))) order by \"native_scale_100m\".\"customers\".\"id\" asc limit $6",
+            "select \"id\", \"scope_id\", \"company_ct\", \"memo_ct\" from \"native_scale_100m\".\"customers\" where (\"native_scale_100m\".\"customers\".\"scope_id\" = $1 and \"native_scale_100m\".\"customers\".\"id\" > $2 and \"customers\".\"id\" in (select \"__seal_idx\".\"row_id\" from \"native_scale_100m\".\"customers_seal_index\" as \"__seal_idx\" where \"__seal_idx\".\"scope_id\"=$3 and (((\"__seal_idx\".\"tokens_a106c26102b707f0\")[1]=$4::bigint) or (\"__seal_idx\".\"tokens_a639b11c8130dcf7\" @> $5::bigint[])))) order by \"native_scale_100m\".\"customers\".\"id\" asc limit $6",
+            "select \"id\", \"scope_id\", \"company_ct\", \"memo_ct\" from \"native_scale_100m\".\"customers\" where (\"native_scale_100m\".\"customers\".\"scope_id\" = $1 and \"native_scale_100m\".\"customers\".\"id\" > $2 and \"customers\".\"id\" in (select \"__seal_idx\".\"row_id\" from \"native_scale_100m\".\"customers_seal_index\" as \"__seal_idx\" where \"__seal_idx\".\"scope_id\"=$3 and (((\"__seal_idx\".\"tokens_a106c26102b707f0\")[1]=$4::bigint) or (\"__seal_idx\".\"tokens_a639b11c8130dcf7\" @> $5::bigint[])))) order by \"native_scale_100m\".\"customers\".\"id\" asc limit $6",
+            "select \"id\", \"scope_id\", \"company_ct\", \"memo_ct\" from \"native_scale_100m\".\"customers\" where (\"native_scale_100m\".\"customers\".\"scope_id\" = $1 and \"native_scale_100m\".\"customers\".\"id\" > $2 and \"customers\".\"id\" in (select \"__seal_idx\".\"row_id\" from \"native_scale_100m\".\"customers_seal_index\" as \"__seal_idx\" where \"__seal_idx\".\"scope_id\"=$3 and (((\"__seal_idx\".\"tokens_a106c26102b707f0\")[1]=$4::bigint) or (\"__seal_idx\".\"tokens_a639b11c8130dcf7\" @> $5::bigint[])))) order by \"native_scale_100m\".\"customers\".\"id\" asc limit $6",
+            "select \"id\", \"scope_id\", \"company_ct\", \"memo_ct\" from \"native_scale_100m\".\"customers\" where (\"native_scale_100m\".\"customers\".\"scope_id\" = $1 and \"native_scale_100m\".\"customers\".\"id\" > $2 and \"customers\".\"id\" in (select \"__seal_idx\".\"row_id\" from \"native_scale_100m\".\"customers_seal_index\" as \"__seal_idx\" where \"__seal_idx\".\"scope_id\"=$3 and (((\"__seal_idx\".\"tokens_a106c26102b707f0\")[1]=$4::bigint) or (\"__seal_idx\".\"tokens_a639b11c8130dcf7\" @> $5::bigint[])))) order by \"native_scale_100m\".\"customers\".\"id\" asc limit $6",
+            "select \"id\", \"scope_id\", \"company_ct\", \"memo_ct\" from \"native_scale_100m\".\"customers\" where (\"native_scale_100m\".\"customers\".\"scope_id\" = $1 and \"native_scale_100m\".\"customers\".\"id\" > $2 and \"customers\".\"id\" in (select \"__seal_idx\".\"row_id\" from \"native_scale_100m\".\"customers_seal_index\" as \"__seal_idx\" where \"__seal_idx\".\"scope_id\"=$3 and (((\"__seal_idx\".\"tokens_a106c26102b707f0\")[1]=$4::bigint) or (\"__seal_idx\".\"tokens_a639b11c8130dcf7\" @> $5::bigint[])))) order by \"native_scale_100m\".\"customers\".\"id\" asc limit $6",
+            "select \"id\", \"scope_id\", \"company_ct\", \"memo_ct\" from \"native_scale_100m\".\"customers\" where (\"native_scale_100m\".\"customers\".\"scope_id\" = $1 and \"native_scale_100m\".\"customers\".\"id\" > $2 and \"customers\".\"id\" in (select \"__seal_idx\".\"row_id\" from \"native_scale_100m\".\"customers_seal_index\" as \"__seal_idx\" where \"__seal_idx\".\"scope_id\"=$3 and (((\"__seal_idx\".\"tokens_a106c26102b707f0\")[1]=$4::bigint) or (\"__seal_idx\".\"tokens_a639b11c8130dcf7\" @> $5::bigint[])))) order by \"native_scale_100m\".\"customers\".\"id\" asc limit $6",
+            "select \"id\", \"scope_id\", \"company_ct\", \"memo_ct\" from \"native_scale_100m\".\"customers\" where (\"native_scale_100m\".\"customers\".\"scope_id\" = $1 and \"native_scale_100m\".\"customers\".\"id\" > $2 and \"customers\".\"id\" in (select \"__seal_idx\".\"row_id\" from \"native_scale_100m\".\"customers_seal_index\" as \"__seal_idx\" where \"__seal_idx\".\"scope_id\"=$3 and (((\"__seal_idx\".\"tokens_a106c26102b707f0\")[1]=$4::bigint) or (\"__seal_idx\".\"tokens_a639b11c8130dcf7\" @> $5::bigint[])))) order by \"native_scale_100m\".\"customers\".\"id\" asc limit $6",
+            "select \"id\", \"scope_id\", \"company_ct\", \"memo_ct\" from \"native_scale_100m\".\"customers\" where (\"native_scale_100m\".\"customers\".\"scope_id\" = $1 and \"native_scale_100m\".\"customers\".\"id\" > $2 and \"customers\".\"id\" in (select \"__seal_idx\".\"row_id\" from \"native_scale_100m\".\"customers_seal_index\" as \"__seal_idx\" where \"__seal_idx\".\"scope_id\"=$3 and (((\"__seal_idx\".\"tokens_a106c26102b707f0\")[1]=$4::bigint) or (\"__seal_idx\".\"tokens_a639b11c8130dcf7\" @> $5::bigint[])))) order by \"native_scale_100m\".\"customers\".\"id\" asc limit $6",
+            "select \"id\", \"scope_id\", \"company_ct\", \"memo_ct\" from \"native_scale_100m\".\"customers\" where (\"native_scale_100m\".\"customers\".\"scope_id\" = $1 and \"native_scale_100m\".\"customers\".\"id\" > $2 and \"customers\".\"id\" in (select \"__seal_idx\".\"row_id\" from \"native_scale_100m\".\"customers_seal_index\" as \"__seal_idx\" where \"__seal_idx\".\"scope_id\"=$3 and (((\"__seal_idx\".\"tokens_a106c26102b707f0\")[1]=$4::bigint) or (\"__seal_idx\".\"tokens_a639b11c8130dcf7\" @> $5::bigint[])))) order by \"native_scale_100m\".\"customers\".\"id\" asc limit $6",
+            "select \"id\", \"scope_id\", \"company_ct\", \"memo_ct\" from \"native_scale_100m\".\"customers\" where (\"native_scale_100m\".\"customers\".\"scope_id\" = $1 and \"native_scale_100m\".\"customers\".\"id\" > $2 and \"customers\".\"id\" in (select \"__seal_idx\".\"row_id\" from \"native_scale_100m\".\"customers_seal_index\" as \"__seal_idx\" where \"__seal_idx\".\"scope_id\"=$3 and (((\"__seal_idx\".\"tokens_a106c26102b707f0\")[1]=$4::bigint) or (\"__seal_idx\".\"tokens_a639b11c8130dcf7\" @> $5::bigint[])))) order by \"native_scale_100m\".\"customers\".\"id\" asc limit $6",
+            "select \"id\", \"scope_id\", \"company_ct\", \"memo_ct\" from \"native_scale_100m\".\"customers\" where (\"native_scale_100m\".\"customers\".\"scope_id\" = $1 and \"native_scale_100m\".\"customers\".\"id\" > $2 and \"customers\".\"id\" in (select \"__seal_idx\".\"row_id\" from \"native_scale_100m\".\"customers_seal_index\" as \"__seal_idx\" where \"__seal_idx\".\"scope_id\"=$3 and (((\"__seal_idx\".\"tokens_a106c26102b707f0\")[1]=$4::bigint) or (\"__seal_idx\".\"tokens_a639b11c8130dcf7\" @> $5::bigint[])))) order by \"native_scale_100m\".\"customers\".\"id\" asc limit $6",
+            "select \"id\", \"scope_id\", \"company_ct\", \"memo_ct\" from \"native_scale_100m\".\"customers\" where (\"native_scale_100m\".\"customers\".\"scope_id\" = $1 and \"native_scale_100m\".\"customers\".\"id\" > $2 and \"customers\".\"id\" in (select \"__seal_idx\".\"row_id\" from \"native_scale_100m\".\"customers_seal_index\" as \"__seal_idx\" where \"__seal_idx\".\"scope_id\"=$3 and (((\"__seal_idx\".\"tokens_a106c26102b707f0\")[1]=$4::bigint) or (\"__seal_idx\".\"tokens_a639b11c8130dcf7\" @> $5::bigint[])))) order by \"native_scale_100m\".\"customers\".\"id\" asc limit $6"
+          ]
+        },
+        "rule": "single_no_warmup",
+        "maxCandidates": 1000000,
+        "budgets": {
+          "batch": 2000,
+          "maxCandidates": 20000,
+          "fetchBytes": 33554432,
+          "decryptedBytes": 33554432,
+          "resultBytes": 33554432,
+          "deadlineMs": 30000,
+          "decryptConcurrency": 64
+        }
+      }
+    },
+    {
+      "case": "or3",
+      "sourceMatches": 2,
+      "find": {
+        "mode": "findMany",
+        "searchRows": 100000000,
+        "scopeRows": 100000,
+        "expectedMatches": 2,
+        "returned": 2,
+        "plain": {
+          "totalMs": 6.102500000000873,
+          "preMs": 0.025600000000849832,
+          "sqlMs": 6.024400000000242,
+          "betweenSqlMs": 0,
+          "postMs": 0.05040000000008149,
+          "sqlCalls": 1,
+          "candidates": 2
+        },
+        "product": {
+          "totalMs": 3.830199999998513,
+          "preMs": 1.571700000000419,
+          "sqlMs": 1.5895999999993364,
+          "betweenSqlMs": 0,
+          "postMs": 0.7639999999992142,
+          "sqlCalls": 1,
+          "candidates": 3
+        },
+        "runs": {
+          "plain": [
+            {
+              "outcome": {
+                "kind": "value"
+              },
+              "totalMs": 7.401899999998932,
+              "preMs": 0.02899999999863212,
+              "sqlMs": 7.309300000000803,
+              "betweenSqlMs": 0,
+              "postMs": 0.0635999999994965,
+              "sqlCalls": 1,
+              "candidates": 2,
+              "sql": [
+                "select id,name_plain as name,phone_plain as phone,address_plain as address,memo_plain as memo,email_plain as email,company_plain as company from native_scale_100m.customers_plain where scope_id=$1 and (phone_norm =$2 or phone_norm =$3 or name_norm like '%'||$4||'%') order by id limit 200"
+              ],
+              "returned": 2
+            },
+            {
+              "outcome": {
+                "kind": "value"
+              },
+              "totalMs": 6.1701000000011845,
+              "preMs": 0.01929999999993015,
+              "sqlMs": 6.111400000001595,
+              "betweenSqlMs": 0,
+              "postMs": 0.039399999999659485,
+              "sqlCalls": 1,
+              "candidates": 2,
+              "sql": [
+                "select id,name_plain as name,phone_plain as phone,address_plain as address,memo_plain as memo,email_plain as email,company_plain as company from native_scale_100m.customers_plain where scope_id=$1 and (phone_norm =$2 or phone_norm =$3 or name_norm like '%'||$4||'%') order by id limit 200"
+              ],
+              "returned": 2
+            },
+            {
+              "outcome": {
+                "kind": "value"
+              },
+              "totalMs": 6.272100000000137,
+              "preMs": 0.06270000000040454,
+              "sqlMs": 6.155300000000352,
+              "betweenSqlMs": 0,
+              "postMs": 0.05409999999938009,
+              "sqlCalls": 1,
+              "candidates": 2,
+              "sql": [
+                "select id,name_plain as name,phone_plain as phone,address_plain as address,memo_plain as memo,email_plain as email,company_plain as company from native_scale_100m.customers_plain where scope_id=$1 and (phone_norm =$2 or phone_norm =$3 or name_norm like '%'||$4||'%') order by id limit 200"
+              ],
+              "returned": 2
+            },
+            {
+              "outcome": {
+                "kind": "value"
+              },
+              "totalMs": 5.943799999999101,
+              "preMs": 0.018599999999423744,
+              "sqlMs": 5.8747999999995955,
+              "betweenSqlMs": 0,
+              "postMs": 0.05040000000008149,
+              "sqlCalls": 1,
+              "candidates": 2,
+              "sql": [
+                "select id,name_plain as name,phone_plain as phone,address_plain as address,memo_plain as memo,email_plain as email,company_plain as company from native_scale_100m.customers_plain where scope_id=$1 and (phone_norm =$2 or phone_norm =$3 or name_norm like '%'||$4||'%') order by id limit 200"
+              ],
+              "returned": 2
+            },
+            {
+              "outcome": {
+                "kind": "value"
+              },
+              "totalMs": 6.102500000000873,
+              "preMs": 0.025600000000849832,
+              "sqlMs": 6.024400000000242,
+              "betweenSqlMs": 0,
+              "postMs": 0.05249999999978172,
+              "sqlCalls": 1,
+              "candidates": 2,
+              "sql": [
+                "select id,name_plain as name,phone_plain as phone,address_plain as address,memo_plain as memo,email_plain as email,company_plain as company from native_scale_100m.customers_plain where scope_id=$1 and (phone_norm =$2 or phone_norm =$3 or name_norm like '%'||$4||'%') order by id limit 200"
+              ],
+              "returned": 2
+            },
+            {
+              "outcome": {
+                "kind": "value"
+              },
+              "totalMs": 6.0362999999997555,
+              "preMs": 0.032799999999042484,
+              "sqlMs": 5.96020000000135,
+              "betweenSqlMs": 0,
+              "postMs": 0.043299999999362626,
+              "sqlCalls": 1,
+              "candidates": 2,
+              "sql": [
+                "select id,name_plain as name,phone_plain as phone,address_plain as address,memo_plain as memo,email_plain as email,company_plain as company from native_scale_100m.customers_plain where scope_id=$1 and (phone_norm =$2 or phone_norm =$3 or name_norm like '%'||$4||'%') order by id limit 200"
+              ],
+              "returned": 2
+            },
+            {
+              "outcome": {
+                "kind": "value"
+              },
+              "totalMs": 5.252800000000207,
+              "preMs": 0.02260000000023865,
+              "sqlMs": 5.210699999999633,
+              "betweenSqlMs": 0,
+              "postMs": 0.019500000000334694,
+              "sqlCalls": 1,
+              "candidates": 2,
+              "sql": [
+                "select id,name_plain as name,phone_plain as phone,address_plain as address,memo_plain as memo,email_plain as email,company_plain as company from native_scale_100m.customers_plain where scope_id=$1 and (phone_norm =$2 or phone_norm =$3 or name_norm like '%'||$4||'%') order by id limit 200"
+              ],
+              "returned": 2
+            }
+          ],
+          "product": [
+            {
+              "outcome": {
+                "kind": "value"
+              },
+              "totalMs": 4.230299999999261,
+              "preMs": 1.7284999999992579,
+              "sqlMs": 1.6982000000007247,
+              "betweenSqlMs": 0,
+              "postMs": 0.8035999999992782,
+              "sqlCalls": 1,
+              "candidates": 3,
+              "sql": [
+                "select \"id\", \"scope_id\", \"name_ct\", \"phone_ct\", \"address_ct\", \"memo_ct\", \"email_ct\", \"company_ct\" from \"native_scale_100m\".\"customers\" where (\"native_scale_100m\".\"customers\".\"scope_id\" = $1 and \"customers\".\"id\" in (\n    with sample as materialized (\n      select \"row_id\",\"tokens_c44ae523cca61a0b\",\"tokens_f289b89d86c7086a\" from \"native_scale_100m\".\"customers_seal_index\" as \"c\"\n      where \"c\".\"scope_id\"=$2 order by \"c\".\"row_id\" limit 256\n    ), quick as materialized (\n      select \"c\".\"row_id\" from sample as \"c\" where ((\"c\".\"tokens_c44ae523cca61a0b\")[1]=$3::bigint or (\"c\".\"tokens_c44ae523cca61a0b\")[1]=$4::bigint or \"c\".\"tokens_f289b89d86c7086a\" @> $5::bigint[]) order by \"c\".\"row_id\" limit $6\n    ), fallback as materialized (\n      select \"c\".\"row_id\" from \"native_scale_100m\".\"customers_seal_index\" as \"c\"\n      where \"c\".\"scope_id\"=$7 and ((\"c\".\"tokens_c44ae523cca61a0b\")[1]=$8::bigint or (\"c\".\"tokens_c44ae523cca61a0b\")[1]=$9::bigint or \"c\".\"tokens_f289b89d86c7086a\" @> $10::bigint[])\n        and (select count(*) from quick)<$11\n      order by \"c\".\"row_id\" limit $12\n    )\n    select row_id from quick where (select count(*) from quick)=$13\n    union all select row_id from fallback\n  )) order by \"native_scale_100m\".\"customers\".\"id\" asc limit $14"
+              ],
+              "returned": 2
+            },
+            {
+              "outcome": {
+                "kind": "value"
+              },
+              "totalMs": 3.7643000000007305,
+              "preMs": 1.452900000000227,
+              "sqlMs": 1.5895999999993364,
+              "betweenSqlMs": 0,
+              "postMs": 0.7218000000011671,
+              "sqlCalls": 1,
+              "candidates": 3,
+              "sql": [
+                "select \"id\", \"scope_id\", \"name_ct\", \"phone_ct\", \"address_ct\", \"memo_ct\", \"email_ct\", \"company_ct\" from \"native_scale_100m\".\"customers\" where (\"native_scale_100m\".\"customers\".\"scope_id\" = $1 and \"customers\".\"id\" in (\n    with sample as materialized (\n      select \"row_id\",\"tokens_c44ae523cca61a0b\",\"tokens_f289b89d86c7086a\" from \"native_scale_100m\".\"customers_seal_index\" as \"c\"\n      where \"c\".\"scope_id\"=$2 order by \"c\".\"row_id\" limit 256\n    ), quick as materialized (\n      select \"c\".\"row_id\" from sample as \"c\" where ((\"c\".\"tokens_c44ae523cca61a0b\")[1]=$3::bigint or (\"c\".\"tokens_c44ae523cca61a0b\")[1]=$4::bigint or \"c\".\"tokens_f289b89d86c7086a\" @> $5::bigint[]) order by \"c\".\"row_id\" limit $6\n    ), fallback as materialized (\n      select \"c\".\"row_id\" from \"native_scale_100m\".\"customers_seal_index\" as \"c\"\n      where \"c\".\"scope_id\"=$7 and ((\"c\".\"tokens_c44ae523cca61a0b\")[1]=$8::bigint or (\"c\".\"tokens_c44ae523cca61a0b\")[1]=$9::bigint or \"c\".\"tokens_f289b89d86c7086a\" @> $10::bigint[])\n        and (select count(*) from quick)<$11\n      order by \"c\".\"row_id\" limit $12\n    )\n    select row_id from quick where (select count(*) from quick)=$13\n    union all select row_id from fallback\n  )) order by \"native_scale_100m\".\"customers\".\"id\" asc limit $14"
+              ],
+              "returned": 2
+            },
+            {
+              "outcome": {
+                "kind": "value"
+              },
+              "totalMs": 3.830199999998513,
+              "preMs": 1.580999999998312,
+              "sqlMs": 1.485500000000684,
+              "betweenSqlMs": 0,
+              "postMs": 0.7636999999995169,
+              "sqlCalls": 1,
+              "candidates": 3,
+              "sql": [
+                "select \"id\", \"scope_id\", \"name_ct\", \"phone_ct\", \"address_ct\", \"memo_ct\", \"email_ct\", \"company_ct\" from \"native_scale_100m\".\"customers\" where (\"native_scale_100m\".\"customers\".\"scope_id\" = $1 and \"customers\".\"id\" in (\n    with sample as materialized (\n      select \"row_id\",\"tokens_c44ae523cca61a0b\",\"tokens_f289b89d86c7086a\" from \"native_scale_100m\".\"customers_seal_index\" as \"c\"\n      where \"c\".\"scope_id\"=$2 order by \"c\".\"row_id\" limit 256\n    ), quick as materialized (\n      select \"c\".\"row_id\" from sample as \"c\" where ((\"c\".\"tokens_c44ae523cca61a0b\")[1]=$3::bigint or (\"c\".\"tokens_c44ae523cca61a0b\")[1]=$4::bigint or \"c\".\"tokens_f289b89d86c7086a\" @> $5::bigint[]) order by \"c\".\"row_id\" limit $6\n    ), fallback as materialized (\n      select \"c\".\"row_id\" from \"native_scale_100m\".\"customers_seal_index\" as \"c\"\n      where \"c\".\"scope_id\"=$7 and ((\"c\".\"tokens_c44ae523cca61a0b\")[1]=$8::bigint or (\"c\".\"tokens_c44ae523cca61a0b\")[1]=$9::bigint or \"c\".\"tokens_f289b89d86c7086a\" @> $10::bigint[])\n        and (select count(*) from quick)<$11\n      order by \"c\".\"row_id\" limit $12\n    )\n    select row_id from quick where (select count(*) from quick)=$13\n    union all select row_id from fallback\n  )) order by \"native_scale_100m\".\"customers\".\"id\" asc limit $14"
+              ],
+              "returned": 2
+            },
+            {
+              "outcome": {
+                "kind": "value"
+              },
+              "totalMs": 3.3458000000009633,
+              "preMs": 1.3159000000014203,
+              "sqlMs": 1.2829000000001543,
+              "betweenSqlMs": 0,
+              "postMs": 0.7469999999993888,
+              "sqlCalls": 1,
+              "candidates": 3,
+              "sql": [
+                "select \"id\", \"scope_id\", \"name_ct\", \"phone_ct\", \"address_ct\", \"memo_ct\", \"email_ct\", \"company_ct\" from \"native_scale_100m\".\"customers\" where (\"native_scale_100m\".\"customers\".\"scope_id\" = $1 and \"customers\".\"id\" in (\n    with sample as materialized (\n      select \"row_id\",\"tokens_c44ae523cca61a0b\",\"tokens_f289b89d86c7086a\" from \"native_scale_100m\".\"customers_seal_index\" as \"c\"\n      where \"c\".\"scope_id\"=$2 order by \"c\".\"row_id\" limit 256\n    ), quick as materialized (\n      select \"c\".\"row_id\" from sample as \"c\" where ((\"c\".\"tokens_c44ae523cca61a0b\")[1]=$3::bigint or (\"c\".\"tokens_c44ae523cca61a0b\")[1]=$4::bigint or \"c\".\"tokens_f289b89d86c7086a\" @> $5::bigint[]) order by \"c\".\"row_id\" limit $6\n    ), fallback as materialized (\n      select \"c\".\"row_id\" from \"native_scale_100m\".\"customers_seal_index\" as \"c\"\n      where \"c\".\"scope_id\"=$7 and ((\"c\".\"tokens_c44ae523cca61a0b\")[1]=$8::bigint or (\"c\".\"tokens_c44ae523cca61a0b\")[1]=$9::bigint or \"c\".\"tokens_f289b89d86c7086a\" @> $10::bigint[])\n        and (select count(*) from quick)<$11\n      order by \"c\".\"row_id\" limit $12\n    )\n    select row_id from quick where (select count(*) from quick)=$13\n    union all select row_id from fallback\n  )) order by \"native_scale_100m\".\"customers\".\"id\" asc limit $14"
+              ],
+              "returned": 2
+            },
+            {
+              "outcome": {
+                "kind": "value"
+              },
+              "totalMs": 3.803299999999581,
+              "preMs": 1.5663999999997031,
+              "sqlMs": 1.4729000000006636,
+              "betweenSqlMs": 0,
+              "postMs": 0.7639999999992142,
+              "sqlCalls": 1,
+              "candidates": 3,
+              "sql": [
+                "select \"id\", \"scope_id\", \"name_ct\", \"phone_ct\", \"address_ct\", \"memo_ct\", \"email_ct\", \"company_ct\" from \"native_scale_100m\".\"customers\" where (\"native_scale_100m\".\"customers\".\"scope_id\" = $1 and \"customers\".\"id\" in (\n    with sample as materialized (\n      select \"row_id\",\"tokens_c44ae523cca61a0b\",\"tokens_f289b89d86c7086a\" from \"native_scale_100m\".\"customers_seal_index\" as \"c\"\n      where \"c\".\"scope_id\"=$2 order by \"c\".\"row_id\" limit 256\n    ), quick as materialized (\n      select \"c\".\"row_id\" from sample as \"c\" where ((\"c\".\"tokens_c44ae523cca61a0b\")[1]=$3::bigint or (\"c\".\"tokens_c44ae523cca61a0b\")[1]=$4::bigint or \"c\".\"tokens_f289b89d86c7086a\" @> $5::bigint[]) order by \"c\".\"row_id\" limit $6\n    ), fallback as materialized (\n      select \"c\".\"row_id\" from \"native_scale_100m\".\"customers_seal_index\" as \"c\"\n      where \"c\".\"scope_id\"=$7 and ((\"c\".\"tokens_c44ae523cca61a0b\")[1]=$8::bigint or (\"c\".\"tokens_c44ae523cca61a0b\")[1]=$9::bigint or \"c\".\"tokens_f289b89d86c7086a\" @> $10::bigint[])\n        and (select count(*) from quick)<$11\n      order by \"c\".\"row_id\" limit $12\n    )\n    select row_id from quick where (select count(*) from quick)=$13\n    union all select row_id from fallback\n  )) order by \"native_scale_100m\".\"customers\".\"id\" asc limit $14"
+              ],
+              "returned": 2
+            },
+            {
+              "outcome": {
+                "kind": "value"
+              },
+              "totalMs": 4.901400000000649,
+              "preMs": 1.571700000000419,
+              "sqlMs": 2.2404999999998836,
+              "betweenSqlMs": 0,
+              "postMs": 1.0892000000003463,
+              "sqlCalls": 1,
+              "candidates": 3,
+              "sql": [
+                "select \"id\", \"scope_id\", \"name_ct\", \"phone_ct\", \"address_ct\", \"memo_ct\", \"email_ct\", \"company_ct\" from \"native_scale_100m\".\"customers\" where (\"native_scale_100m\".\"customers\".\"scope_id\" = $1 and \"customers\".\"id\" in (\n    with sample as materialized (\n      select \"row_id\",\"tokens_c44ae523cca61a0b\",\"tokens_f289b89d86c7086a\" from \"native_scale_100m\".\"customers_seal_index\" as \"c\"\n      where \"c\".\"scope_id\"=$2 order by \"c\".\"row_id\" limit 256\n    ), quick as materialized (\n      select \"c\".\"row_id\" from sample as \"c\" where ((\"c\".\"tokens_c44ae523cca61a0b\")[1]=$3::bigint or (\"c\".\"tokens_c44ae523cca61a0b\")[1]=$4::bigint or \"c\".\"tokens_f289b89d86c7086a\" @> $5::bigint[]) order by \"c\".\"row_id\" limit $6\n    ), fallback as materialized (\n      select \"c\".\"row_id\" from \"native_scale_100m\".\"customers_seal_index\" as \"c\"\n      where \"c\".\"scope_id\"=$7 and ((\"c\".\"tokens_c44ae523cca61a0b\")[1]=$8::bigint or (\"c\".\"tokens_c44ae523cca61a0b\")[1]=$9::bigint or \"c\".\"tokens_f289b89d86c7086a\" @> $10::bigint[])\n        and (select count(*) from quick)<$11\n      order by \"c\".\"row_id\" limit $12\n    )\n    select row_id from quick where (select count(*) from quick)=$13\n    union all select row_id from fallback\n  )) order by \"native_scale_100m\".\"customers\".\"id\" asc limit $14"
+              ],
+              "returned": 2
+            },
+            {
+              "outcome": {
+                "kind": "value"
+              },
+              "totalMs": 4.313000000000102,
+              "preMs": 1.7824999999993452,
+              "sqlMs": 1.6377000000011321,
+              "betweenSqlMs": 0,
+              "postMs": 0.8927999999996246,
+              "sqlCalls": 1,
+              "candidates": 3,
+              "sql": [
+                "select \"id\", \"scope_id\", \"name_ct\", \"phone_ct\", \"address_ct\", \"memo_ct\", \"email_ct\", \"company_ct\" from \"native_scale_100m\".\"customers\" where (\"native_scale_100m\".\"customers\".\"scope_id\" = $1 and \"customers\".\"id\" in (\n    with sample as materialized (\n      select \"row_id\",\"tokens_c44ae523cca61a0b\",\"tokens_f289b89d86c7086a\" from \"native_scale_100m\".\"customers_seal_index\" as \"c\"\n      where \"c\".\"scope_id\"=$2 order by \"c\".\"row_id\" limit 256\n    ), quick as materialized (\n      select \"c\".\"row_id\" from sample as \"c\" where ((\"c\".\"tokens_c44ae523cca61a0b\")[1]=$3::bigint or (\"c\".\"tokens_c44ae523cca61a0b\")[1]=$4::bigint or \"c\".\"tokens_f289b89d86c7086a\" @> $5::bigint[]) order by \"c\".\"row_id\" limit $6\n    ), fallback as materialized (\n      select \"c\".\"row_id\" from \"native_scale_100m\".\"customers_seal_index\" as \"c\"\n      where \"c\".\"scope_id\"=$7 and ((\"c\".\"tokens_c44ae523cca61a0b\")[1]=$8::bigint or (\"c\".\"tokens_c44ae523cca61a0b\")[1]=$9::bigint or \"c\".\"tokens_f289b89d86c7086a\" @> $10::bigint[])\n        and (select count(*) from quick)<$11\n      order by \"c\".\"row_id\" limit $12\n    )\n    select row_id from quick where (select count(*) from quick)=$13\n    union all select row_id from fallback\n  )) order by \"native_scale_100m\".\"customers\".\"id\" asc limit $14"
+              ],
+              "returned": 2
+            }
+          ]
+        },
+        "productErrors": [],
+        "rule": "warmup2_alternating7_median"
+      },
+      "count": {
+        "mode": "count",
+        "searchRows": 100000000,
+        "scopeRows": 100000,
+        "expectedMatches": 2,
+        "returned": 2,
+        "plain": {
+          "outcome": {
+            "kind": "value",
+            "value": 2
+          },
+          "totalMs": 6.049999999999272,
+          "preMs": 0.022799999998824205,
+          "sqlMs": 5.967000000000553,
+          "betweenSqlMs": 0,
+          "postMs": 0.060199999999895226,
+          "sqlCalls": 1,
+          "candidates": 1,
+          "sql": [
+            "select count(*) n from native_scale_100m.customers_plain where scope_id=$1 and (phone_norm =$2 or phone_norm =$3 or name_norm like '%'||$4||'%')"
+          ]
+        },
+        "product": {
+          "outcome": {
+            "kind": "value",
+            "value": 2
+          },
+          "totalMs": 2.998700000000099,
+          "preMs": 1.4737999999997555,
+          "sqlMs": 0.9359999999996944,
+          "betweenSqlMs": 0,
+          "postMs": 0.588900000000649,
+          "sqlCalls": 1,
+          "candidates": 3,
+          "sql": [
+            "select \"id\", \"scope_id\", \"phone_ct\", \"name_ct\" from \"native_scale_100m\".\"customers\" where (\"native_scale_100m\".\"customers\".\"scope_id\" = $1 and \"customers\".\"id\" in (select \"__seal_idx\".\"row_id\" from \"native_scale_100m\".\"customers_seal_index\" as \"__seal_idx\" where \"__seal_idx\".\"scope_id\"=$2 and (((\"__seal_idx\".\"tokens_c44ae523cca61a0b\")[1]=$3::bigint) or ((\"__seal_idx\".\"tokens_c44ae523cca61a0b\")[1]=$4::bigint) or (\"__seal_idx\".\"tokens_f289b89d86c7086a\" @> $5::bigint[])))) order by \"native_scale_100m\".\"customers\".\"id\" asc limit $6"
+          ]
+        },
+        "rule": "single_no_warmup",
+        "maxCandidates": 1000000,
+        "budgets": {
+          "batch": 2000,
+          "maxCandidates": 20000,
+          "fetchBytes": 33554432,
+          "decryptedBytes": 33554432,
+          "resultBytes": 33554432,
+          "deadlineMs": 30000,
+          "decryptConcurrency": 64
+        }
+      }
+    }
+  ]
+}
