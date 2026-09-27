@@ -6,14 +6,8 @@ import { createSealer, type Sealer } from 'sealql';
 import { createSealed } from 'sealql/drizzle/v0.45';
 
 let activeSealer: Sealer | undefined;
-let activeKey: Uint8Array | undefined;
 export function configureKey(rootKey: Uint8Array) {
-  if (activeKey) {
-    if (activeKey.length !== rootKey.length || !activeKey.every((byte, i) => byte === rootKey[i])) throw new Error('Fixed key already configured');
-    return;
-  }
-  activeSealer = createSealer({ key: rootKey });
-  activeKey = rootKey.slice();
+  activeSealer ??= createSealer({ key: rootKey });
 }
 export const sealed = createSealed({ sealer: () => {
   if (!activeSealer) throw new Error('Configure the fixed key before SealQL operations');
