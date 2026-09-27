@@ -109,6 +109,30 @@ test('native CRUD, verified pages, OR semi-join and bounded count', async () => 
     })).items.length, 1);
     assert.equal(c.logs.length, 1, 'UUID search needs only its candidate SQL request');
     await assert.rejects(c.sealed.findMany(c.db, c.seal, { scope, match: m => m.body.contains('a') }), { code: 'QUERY_TOO_BROAD' });
+    const prefixTerm = Array.from(norm(exact)).slice(0, 2).join('');
+    const defaultRequestIndex = c.logEntries.length;
+    await c.sealed.findMany(c.db, c.seal, { scope, match: m => m.body.contains(prefixTerm), limit: 200 });
+    assert.match(c.logEntries[defaultRequestIndex].query, /with sample as materialized/i, 'limit-200 first request uses the prefix path');
+    assert.equal(c.logEntries[defaultRequestIndex].params.at(-1), 200);
+    const callerRequestIndex = c.logEntries.length;
+    await c.sealed.findMany(c.db, c.seal, { scope, match: m => m.body.contains(prefixTerm), limit: 200,
+      budgets: { batch: 251 } });
+    assert.equal(c.logEntries[callerRequestIndex].params.at(-1), 251, 'caller batch caps the first request size');
+    const largeBatchRequestIndex = c.logEntries.length;
+    await c.sealed.findMany(c.db, c.seal, { scope, match: m => m.body.contains(prefixTerm), limit: 20,
+      budgets: { batch: 500 } });
+    assert.equal(c.logEntries[largeBatchRequestIndex].params.at(-1), 27, 'caller batch does not enlarge the first request beyond the heuristic');
+    const searchLimits: Array<number | undefined> = [];
+    const searchWithBatch = (batch?: number) => c.sealed.search(c.db, { scope,
+      match: { m: [c.seal, m => m.body.contains(prefixTerm)] }, limit: 200,
+      ...(batch === undefined ? {} : { budgets: { batch } }),
+      query: ({ limit }) => { searchLimits.push(limit); return []; },
+    });
+    await searchWithBatch();
+    await searchWithBatch(251);
+    await c.sealed.search(c.db, { scope, match: { m: [c.seal, m => m.body.contains(prefixTerm)] },
+      limit: 20, budgets: { batch: 500 }, query: ({ limit }) => { searchLimits.push(limit); return []; } });
+    assert.deepEqual(searchLimits, [200, 251, 27], 'search uses the same first request cap');
     const literal = Array.from(exact).slice(0, 3).join('');
     assert.equal((await c.sealed.findMany(c.db, c.seal, { scope, match: m => m.body.like(`% ${literal} %`) })).items.length,
       c.rows.filter(row => norm(row.memo_plain).includes(norm(literal))).length);

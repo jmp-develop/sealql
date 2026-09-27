@@ -1,6 +1,6 @@
 # SealQL current state and code map
 
-Limited pages grow finite candidate batches according to the observed match rate. Count applies SQL `LIMIT maxCandidates + 1` when the caller supplies that budget. Reindex uses a fixed internal default of 1,000 rows per batch, with caller override and no maximum. Date and timestamp cursor positions use DateStyle-independent JSON text; earlier cursors are invalid.
+Limited pages start with at most 200 candidates unless the caller sets `budgets.batch`, then grow finite candidate batches according to the observed match rate. Count applies SQL `LIMIT maxCandidates + 1` when the caller supplies that budget. Reindex uses a fixed internal default of 1,000 rows per batch, with caller override and no maximum. Date and timestamp cursor positions use DateStyle-independent JSON text; earlier cursors are invalid.
 
 The installed declaration check now runs with `skipLibCheck: false` and reports SealQL or consumer diagnostics; independent Drizzle 0.45 declaration diagnostics are excluded. `open` and `openRaw` reject unawaited thenables with `INVALID_VALUE`. Wrapped database errors expose a sanitized driver summary in `cause`, without Drizzle SQL parameters or server detail; SQLSTATE and constraint remain available. New or changed searchable profiles require a completed `reindex` before search code is deployed, since existing companion rows do not record a profile version. The integration guide gives the migration order and warns that premature queries can silently omit old rows.
 

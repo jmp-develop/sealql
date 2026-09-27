@@ -23,6 +23,10 @@ function budgetsFor(counting: boolean, requested?: SearchBudgets): ResolvedBudge
   for (const value of Object.values(requested ?? {})) ensure(Number.isSafeInteger(value) && value > 0, 'INVALID_VALUE');
   return budgets;
 }
+// Keep the first request within the 256-row prefix path (decisions 006/014); removing 200 regressed limit-200 OR queries.
+function firstPageBatch(limit: number, callerBatch?: number): number {
+  return Math.min(callerBatch ?? 200, Math.max(limit + Math.ceil(limit / 4) + 2, 16));
+}
 type PlainOfSealed<V> = V extends Sealed<infer P, any> ? P : never;
 type SearchOfSealed<V> = V extends Sealed<any, infer S> ? S : never;
 type ParentOf<C> = C extends SealMeta<infer T, any, any> ? T : never;
@@ -308,7 +312,7 @@ export function searchMethods(sealerOf: () => import('../../../core/field-cipher
     let after = openedCursor?.lastId, afterSort = openedCursor?.lastSort;
     const items: Record<string, unknown>[] = [];
     let scanned = 0, fetchedBytes = 0, decryptedBytes = 0, resultBytes = 0;
-    let batch = Number.isFinite(limit) ? Math.min(budgets.batch, Math.max(limit + Math.ceil(limit / 4) + 2, 16)) : 200;
+    let batch = Number.isFinite(limit) ? firstPageBatch(limit, options.budgets?.batch) : 200;
     let exhausted = false, limited = false;
     while (items.length < limit) {
       if (Date.now() >= deadline || scanned >= budgets.maxCandidates) {
@@ -539,7 +543,7 @@ export function searchMethods(sealerOf: () => import('../../../core/field-cipher
       return true;
     };
     let scanned = 0, fetchedBytes = 0, decryptedBytes = 0, resultBytes = 0;
-    let batch = Number.isFinite(limit) ? Math.min(budgets.batch, Math.max(limit + Math.ceil(limit / 4) + 2, 16)) : Infinity;
+    let batch = Number.isFinite(limit) ? firstPageBatch(limit, options.budgets?.batch) : Infinity;
     let exhausted = false, limited = false;
     const compare = (left: unknown, right: unknown, type: string) => ['smallint', 'integer', 'bigint'].includes(type)
       ? BigInt(left as string) < BigInt(right as string) ? -1 : BigInt(left as string) > BigInt(right as string) ? 1 : 0
