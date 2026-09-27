@@ -145,6 +145,10 @@ test('native managed writes and opens stay atomic', async () => {
       query: async () => [{ c: { id: first.id, scopeId: first.scope_id, name: cipherRow.memo } }],
     }), { code: 'INVALID_CANDIDATE_SHAPE' });
     await assert.rejects(sealed.search(db, { scope: first.scope_id,
+      match: { c: [peopleSeal, m => m.name.eq(first.name_plain)] },
+      query: async () => [{ c: { id: first.id, scopeId: first.scope_id, name: cipherRow.name, memo: first.memo_plain } }],
+    }), { code: 'INVALID_CANDIDATE_SHAPE' });
+    await assert.rejects(sealed.search(db, { scope: first.scope_id,
       match: { c: [peopleSeal, m => m.or(m.name.eq(first.name_plain), m.sql(sql`false`))] },
       columns: { c: { id: 'c_id', scopeId: 'c_scope', name: 'c_name_ct', memo: 'c_memo_ct' } },
       budgets: { decryptedBytes: 1 },

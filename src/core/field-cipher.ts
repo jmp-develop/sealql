@@ -56,7 +56,8 @@ export class Sealer {
     checkedBytes(c.modelId, 128); checkedBytes(c.fieldId, 128); checkedBytes(c.keyScopeId, 128);
     const codec = codecId(spec), codecVersionCode = codecVersion(spec), parameters = codecParameters(spec);
     const staticAad = frame(['sealql/aad/v3', header, c.modelId, c.fieldId, codec, u32(codecVersionCode), parameters, c.keyScopeId]);
-    const prepared: FieldContext = { spec, type: spec.type, precision, scale, modelId: c.modelId, fieldId: c.fieldId,
+    const prepared: FieldContext = { spec, type: spec.type, ...(precision === undefined ? {} : { precision }),
+      ...(scale === undefined ? {} : { scale }), modelId: c.modelId, fieldId: c.fieldId,
       keyScopeId: c.keyScopeId, codec, codecVersion: codecVersionCode, parameters,
       aadPrefix: concat(u32(10), staticAad.subarray(4)), keyIds: [] };
     this.fieldContexts.set(id, prepared);

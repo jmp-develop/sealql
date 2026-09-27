@@ -55,7 +55,7 @@ type NullableBuilder<T, S, O> = O extends { nullable: true } ? Builder<T, S> : R
 interface FieldBinding { key: string; column: PgColumn; spec: FieldSpec & { nullable: boolean }; registration: Registration }
 interface PendingField { name: string; spec: FieldSpec & { nullable: boolean }; bind?: FieldBinding }
 export interface Registration {
-  parent: PgTable; index: PgTable; row: string; scope?: string; rowUnique: boolean; model: string;
+  parent: PgTable; index: PgTable; row: string; scope?: string | undefined; rowUnique: boolean; model: string;
   fields: Map<string, FieldBinding>; definition: SealedModelDefinition; storage: SealedStorage;
 }
 const pendingFields = new WeakMap<Function, PendingField>();
@@ -147,7 +147,7 @@ function register<T extends PgTable, R extends UuidOrTextKeys<T>, S extends Uuid
   }
   ensure(fields.size > 0, 'INVALID_SCHEMA');
   const definition: SealedModelDefinition = {
-    id: model, identity: { scope: cfg.scope, row: cfg.row },
+    id: model, identity: { ...(cfg.scope === undefined ? {} : { scope: cfg.scope }), row: cfg.row },
     fields: Object.fromEntries([...fields].map(([key, value]) => [key, value.spec])),
     columns, scopeType, rowType,
   };

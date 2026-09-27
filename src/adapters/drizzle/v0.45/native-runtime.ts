@@ -13,10 +13,12 @@ type Db = PgDatabase<any, any, any>;
 type Identity<T extends PgTable, R extends string, S extends string | undefined> =
   Pick<InferSelectModel<T>, Extract<R | Exclude<S, undefined>, keyof InferSelectModel<T>>>;
 type InsertRow<T extends PgTable, R extends string> = Omit<PlainShape<T>, R> & Partial<Pick<PlainShape<T>, Extract<R, keyof PlainShape<T>>>>;
-type Patch<T extends PgTable, R extends string, S extends string | undefined> = Partial<Omit<PlainShape<T>, R | Exclude<S, undefined>>>;
+type Patch<T extends PgTable, R extends string, S extends string | undefined> = {
+  [K in keyof Omit<PlainShape<T>, R | Exclude<S, undefined>>]?: PlainShape<T>[K] | undefined;
+};
 type Result<T extends PgTable, R extends string, S extends string | undefined, O> = O extends { returning: true }
   ? Opened<InferSelectModel<T>>[] : Identity<T, R, S>[];
-export interface OpenOptions { scope?: string; budgets?: { maxRows?: number; maxBytes?: number; deadlineMs?: number; concurrency?: number } }
+export interface OpenOptions { scope?: string; budgets?: { maxRows?: number; maxBytes?: number; deadlineMs?: number; concurrency?: number } | undefined }
 
 function asRecord(value: unknown): Record<string, unknown> {
   ensure(value && typeof value === 'object' && !Array.isArray(value) && Object.getPrototypeOf(value) === Object.prototype, 'INVALID_VALUE');

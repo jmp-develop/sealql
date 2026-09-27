@@ -46,7 +46,7 @@ type FindOptions<T extends PgTable> = {
   scope?: string; match?: (m: MatchBuilder<T>) => NativeNode; where?: SQL;
   columns?: Partial<Record<keyof InferSelectModel<T>, boolean>>;
   orderBy?: { column: PgColumn; direction: 'asc' | 'desc' };
-  limit?: number; cursor?: string; budgets?: SearchBudgets; signal?: AbortSignal;
+  limit?: number; cursor?: string | undefined; budgets?: SearchBudgets; signal?: AbortSignal;
 };
 type CountOptions<T extends PgTable> = Omit<FindOptions<T>, 'columns' | 'orderBy' | 'limit' | 'cursor'> & { maxCandidates?: number };
 type SelectedKeys<T extends PgTable, R extends string, S extends string | undefined, O> =
@@ -119,7 +119,7 @@ function fromFragment(fragment: Fragment): SQL {
   };
   return build(fragment.node);
 }
-function candidate(reg: Registration, scopeId: string, node: CompiledNode, bounded?: { limit: number; after?: string }): SQL {
+function candidate(reg: Registration, scopeId: string, node: CompiledNode, bounded?: { limit: number; after?: string | undefined }): SQL {
   if (node.op === 'secure') return fromFragment(bounded
     ? boundedCandidatePredicate(reg.definition, reg.storage, scopeId, node.search, bounded.limit, bounded.after)
     : candidatePredicate(reg.definition, reg.storage, scopeId, node.search));
@@ -339,7 +339,8 @@ export function searchMethods(sealerOf: () => import('../../../core/field-cipher
       const remaining = limit - items.length;
       batch = growBatch(batch, remaining, verified, accepted, budgets.batch);
     }
-    const nextCursor = exhausted || !after ? null : await sealCursor(cursorContext, { lastId: after, lastSort: afterSort }, ring);
+    const nextCursor = exhausted || !after ? null : await sealCursor(cursorContext,
+      { lastId: after, ...(afterSort === undefined ? {} : { lastSort: afterSort }) }, ring);
     return { items, nextCursor, scanned, exhausted, limited };
   }
 
@@ -375,7 +376,7 @@ export function searchMethods(sealerOf: () => import('../../../core/field-cipher
     scope?: string;
     match: { [K in keyof M]: readonly [M[K], (m: MatchBuilder<ParentOf<M[K]>>) => NativeNode] };
     keyset?: PgColumn[]; columns?: Record<string, Record<string, string>>;
-    limit?: number; cursor?: string; budgets?: SearchBudgets; signal?: AbortSignal;
+    limit?: number; cursor?: string | undefined; budgets?: SearchBudgets; signal?: AbortSignal;
     query: (parts: SearchParts) => Promise<R[] | { rows: R[] }> | R[] | { rows: R[] };
   };
   type PublicRow<R> = { [K in keyof R as K extends `__seal_${string}` ? never : K]: Opened<R[K]> };
@@ -466,11 +467,12 @@ export function searchMethods(sealerOf: () => import('../../../core/field-cipher
         } else {
           const nested = raw[key] as Record<string, unknown>;
           ensure(nested && typeof nested === 'object' && !Array.isArray(nested), 'INVALID_CANDIDATE_SHAPE');
-          if (conditionOnly) for (const field of conditionKeys[key]) {
+          for (const field of reg.fields.keys()) if (Object.hasOwn(nested, field)) {
             const value = nested[field];
-            ensure(Object.hasOwn(nested, field) && (value === null || value instanceof Sealed &&
-              value.binding?.registration === reg && value.binding.key === field), 'INVALID_CANDIDATE_SHAPE');
+            ensure(value === null || value instanceof Sealed &&
+              value.binding?.registration === reg && value.binding.key === field, 'INVALID_CANDIDATE_SHAPE');
           }
+          if (conditionOnly) for (const field of conditionKeys[key]) ensure(Object.hasOwn(nested, field), 'INVALID_CANDIDATE_SHAPE');
           if (conditionOnly) view[key] = Object.fromEntries([reg.row, ...(reg.scope ? [reg.scope] : []), ...conditionKeys[key]]
             .map(field => [field, nested[field]]));
         }

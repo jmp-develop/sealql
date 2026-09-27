@@ -27,6 +27,7 @@ db.update(customers).set({ status: 'b' });
 sealed.insert(db, customersSeal, { tenantId: 'x', status: 'a', name: 'Ada', age: 3 });
 sealed.insert(db, customersSeal, { tenantId: 'x', status: 'a', name: 'Ada', age: 3, memo: undefined });
 sealed.update(db, customersSeal, { id: 'x', tenantId: 'x' }, { memo: undefined, status: 'b' });
+sealed.update(db, customersSeal, { id: 'x', tenantId: 'x' }, { name: undefined, status: undefined });
 sealed.upsert(db, customersSeal, { tenantId: 'x', status: 'a', name: 'Ada', age: 3, memo: undefined });
 sealed.findMany(db, customersSeal, { scope: 'x', match: m => {
   // @ts-expect-error ordinary plaintext column is not a sealed search field
@@ -43,6 +44,8 @@ sealed.findMany(db, customersSeal, { scope: 'x', match: m => {
 } });
 // @ts-expect-error managed insert requires the sealed name
 sealed.insert(db, customersSeal, { tenantId: 'x', status: 'a', age: 3 });
+// @ts-expect-error required sealed name cannot be undefined
+sealed.insert(db, customersSeal, { tenantId: 'x', status: 'a', name: undefined, age: 3 });
 // @ts-expect-error managed insert rejects wrong sealed type
 sealed.insert(db, customersSeal, { tenantId: 'x', status: 'a', name: 3, age: 3 });
 sealed.update(db, customersSeal, { id: 'x', tenantId: 'x' }, { name: 'Grace', status: 'b' });
