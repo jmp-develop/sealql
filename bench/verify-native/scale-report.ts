@@ -11,12 +11,14 @@ const old=JSON.parse(await readFile('bench/results/2026-09-27-native-verificatio
 const oldByName=new Map(old.report.map((r:any)=>[r.case,r]));
 const excluded=new Set(['sub_rare','sub_long','sub_zero','and4','drain101','word_boundary','word_inside_longer']);
 let within=0,exceeded=0;
+const slowTotal=matrix.report.filter((r:any)=>r.summary.product.totalMs/r.summary.plain.totalMs>10)
+  .map((r:any)=>`${r.case} ${fmt(r.summary.product.totalMs/r.summary.plain.totalMs)}배`);
 const matrixRows=matrix.report.map((r:any)=>{
   const a=r.summary.plain,b=r.summary.product,prior:any=oldByName.get(r.case);
   assert(prior,`missing old case ${r.case}`);
   const ratio=b.sqlMs/a.sqlMs;
   const verdict=excluded.has(r.case)?'C 로캘 등 판정 제외':ratio<=2?(within++,'2배 이내'):(exceeded++,'2배 초과');
-  return `| ${r.case} | ${fmt(a.sqlMs)} / ${fmt(a.totalMs)} | ${fmt(b.sqlMs)} / ${fmt(b.totalMs)} | ${fmt(ratio)}× | ${fmt(prior.summary.product.sqlMs)} / ${fmt(prior.summary.product.totalMs)} | ${b.candidates} / ${b.returned} | ${verdict} |`;
+  return `| ${r.case} | ${fmt(a.sqlMs)} / ${fmt(a.totalMs)} | ${fmt(b.sqlMs)} / ${fmt(b.totalMs)} | ${fmt(ratio)}× | ${fmt(b.totalMs/a.totalMs)}× | ${fmt(prior.summary.product.sqlMs)} / ${fmt(prior.summary.product.totalMs)} | ${b.candidates} / ${b.returned} | ${verdict} |`;
 });
 const checkpoints=await load('checkpoints');
 const checkpointRows=checkpoints.map((x:any)=>`| ${x.stage} | ${x.customerRows?.toLocaleString('en-US')??'—'} | ${x.ticketRows?.toLocaleString('en-US')??'—'} | ${fmt(x.elapsedSec/60)} | ${gib(x.databaseBytes)} | ${gib(x.freeBytes)} | ${x.estimatedRemainingSec===null?'미계측':`${fmt(x.estimatedRemainingSec/60)}분 (당시 추정)`} |`);
@@ -45,7 +47,7 @@ const md=`# Drizzle 네이티브 API 1억 행 규모 시험
 
 ## 적재·공간·정합
 
-출처: [체크포인트](checkpoints.json), [색인·VACUUM](index.json), [고객 표본 검증](validation.json)${ticketValidation?', [티켓 표본 검증](ticket-validation.json)':''}. 적재 중단 기준은 여유 200GB로 운영해 지시된 150GB 근접 전에 멈추게 했다. 아래 남은 시간은 해당 시점 완료 속도로 계산한 **추정**이며 사후 실측 시간이 아니다.
+출처: [체크포인트](checkpoints.json), [색인·VACUUM](index.json), [ID 충돌 사전 검사](id-check.json), [고객 표본 검증](validation.json)${ticketValidation?', [티켓 표본 검증](ticket-validation.json)':''}. 원본 고객·티켓 각각 10만 UUID의 앞 8자리 뒤쪽이 모두 서로 달라, 복제 번호로 앞자리만 바꾼 ID가 충돌하지 않음을 확인했다. 적재 중단 기준은 여유 200GB로 운영해 지시된 150GB 근접 전에 멈추게 했다. 아래 남은 시간은 해당 시점 완료 속도로 계산한 **추정**이며 사후 실측 시간이 아니다.
 
 | 단계 | 고객 행 | 티켓 행 | 고객 적재 경과 분 | DB 크기 | 드라이브 여유 | 고객 적재 남은 시간 |
 |---|---:|---:|---:|---:|---:|---:|
@@ -57,11 +59,11 @@ ${checkpointRows.join('\n')}
 
 출처: [1억 행 반복 원시값](matrix.json), [10만 행 네이티브 기록](../2026-09-27-native-verification/v3/matrix.json). 두 경로는 같은 1억 행 ID·값, 질의·투영·ID 정렬·LIMIT를 썼고 최초 호출 및 모든 반복에서 ID 순서와 여섯 암호 칸 값을 비교했다. 예열 2회 뒤 평문·제품 순서를 교차한 7회 중앙값이다. SQL은 클라이언트의 요청~응답 합계, 전체는 API 호출 시간이며 지표별 중앙값은 서로 합산되지 않을 수 있다. 후보는 SQL 결과 행 수 합계, 실제 인증 복호화 필드 수는 **미계측**이다. 10만 행 기록은 색인 pending list가 남았던 최초 실행이므로 규모 효과만으로 차이를 설명할 수 없다.
 
-| 사례 | 1억 평문 SQL / 전체 ms | 1억 제품 SQL / 전체 ms | SQL 배율 | 10만 제품 SQL / 전체 ms | 후보 / 반환 | 판정 |
-|---|---:|---:|---:|---:|---:|---|
+| 사례 | 1억 평문 SQL / 전체 ms | 1억 제품 SQL / 전체 ms | SQL 배율 | 전체 배율 | 10만 제품 SQL / 전체 ms | 후보 / 반환 | 판정 |
+|---|---:|---:|---:|---:|---:|---:|---|
 ${matrixRows.join('\n')}
 
-평문 SQL 약 2배 기준의 판정 대상 ${within+exceeded}개 중 ${within}개 이내, ${exceeded}개 초과다. C 로캘 한글 LIKE 전체 스캔 또는 평문 단어 필터가 낀 ${excluded.size}개는 배율 판정에서 제외했다. SQL 기준 판정과 별개로 전체 시간이 긴 사례는 표에 그대로 남겼다.
+평문 SQL 약 2배 기준의 판정 대상 ${within+exceeded}개 중 ${within}개 이내, ${exceeded}개 초과다. C 로캘 한글 LIKE 전체 스캔 또는 평문 단어 필터가 낀 ${excluded.size}개는 배율 판정에서 제외했다. 전체 시간 10배 초과 사례는 ${slowTotal.length?slowTotal.join(', '):'없음'}이다. SQL 기준 판정과 별개로 전체 시간을 보고한다.
 
 ## count·mixed·JOIN·쓰기
 
