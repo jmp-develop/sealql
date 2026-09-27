@@ -11,6 +11,7 @@ import { profiles, type SearchTokenCache } from '../../../core/search-tokens.js'
 import { boundedCandidatePredicate, candidatePredicate } from '../../../core/candidate-sql.js';
 import type { Fragment, Node } from '../../../core/sql-fragment.js';
 import { Sealed, registrationOf, type Opened, type Registration, type SealMeta } from './native.js';
+import { mapRawRow } from './native-mapping.js';
 
 type Db = PgDatabase<any, any, any>;
 export interface SearchBudgets { batch?: number; maxCandidates?: number; fetchBytes?: number; decryptedBytes?: number; resultBytes?: number; deadlineMs?: number; decryptConcurrency?: number }
@@ -453,14 +454,7 @@ export function searchMethods(sealerOf: () => import('../../../core/field-cipher
         if (mapping) {
           ensure(!!mapping[reg.row] && (!reg.scope || !!mapping[reg.scope]), 'INVALID_VALUE');
           const fields = conditionOnly ? conditionKeys[key] : [...reg.fields.keys()].filter(field => !!mapping[field] && Object.hasOwn(raw, mapping[field]));
-          const nested: Record<string, unknown> = { [reg.row]: raw[mapping[reg.row]],
-            ...(reg.scope ? { [reg.scope]: raw[mapping[reg.scope]] } : {}) };
-          ensure(Object.hasOwn(raw, mapping[reg.row]) && (!reg.scope || Object.hasOwn(raw, mapping[reg.scope])), 'INVALID_CANDIDATE_SHAPE');
-          for (const field of fields) {
-            const name = mapping[field], binding = reg.fields.get(field)!;
-            ensure(!!name && Object.hasOwn(raw, name), 'INVALID_CANDIDATE_SHAPE');
-            nested[field] = raw[name] === null ? null : Sealed.fromDriver(raw[name], binding);
-          }
+          const nested = mapRawRow(reg, raw, mapping, fields, true);
           const viewKey = `__seal_view_${key}`;
           view[viewKey] = nested;
           mapped.set(viewKey, { columns: mapping, fields });

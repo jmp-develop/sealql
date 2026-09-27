@@ -91,10 +91,21 @@ test('native CRUD, verified pages, OR semi-join and bounded count', async () => 
     const expectedToken = await searchTokens(c.cipher.ring('memo'), scope, exactProfile, searchPieces(exactProfile, first.memo_plain), { profiles: new Map() });
     assert.deepEqual(before[c.profiles['body/exact'].tokens].map(String), expectedToken);
     assert.equal(c.logs.some(query => query.includes('collate "C"')), false, 'UUID candidate SQL keeps its original comparison');
-    const explain = await c.pool.query(`explain (format json) select id from "${c.schemaName}".memo where id in
-      (select row_id from "${c.schemaName}".memo_seal_index where scope_id=$1 and ("${c.profiles['body/exact'].tokens}")[1]=$2::bigint)`,
-    [scope, expectedToken[0]]);
-    assert.ok(Array.isArray(explain.rows[0]['QUERY PLAN']));
+    const explainClient = await c.pool.connect();
+    try {
+      await explainClient.query('begin');
+      await explainClient.query('set local enable_seqscan=off');
+      const explain = await explainClient.query(`explain select id from "${c.schemaName}".memo where id=$3 and id in
+        (select row_id from "${c.schemaName}".memo_seal_index where scope_id=$1 and ("${c.profiles['body/exact'].tokens}")[1]=$2::bigint)`,
+      [scope, expectedToken[0], first.id]);
+      const parentPlan = explain.rows.map(row => row['QUERY PLAN']).join('\n');
+      assert.match(parentPlan, /Index (?:Only )?Scan using .*memo_pkey/);
+      assert.doesNotMatch(parentPlan, /Seq Scan on memo /);
+      const keyset = await explainClient.query(`explain select id from "${c.schemaName}".memo where id>$1 order by id limit 20`, [first.id]);
+      const keysetPlan = keyset.rows.map(row => row['QUERY PLAN']).join('\n');
+      assert.match(keysetPlan, /Index (?:Only )?Scan using .*memo_pkey/);
+      assert.doesNotMatch(keysetPlan, /Sort|Seq Scan on memo /);
+    } finally { await explainClient.query('rollback'); explainClient.release(); }
     const substringProfile = profiles('memo', 'body', registrationOf(c.seal).definition.fields.body).find(profile => profile.mode === 'substring')!;
     const expectedSubstring = await searchTokens(c.cipher.ring('memo'), scope, substringProfile,
       searchPieces(substringProfile, first.memo_plain), { profiles: new Map() });

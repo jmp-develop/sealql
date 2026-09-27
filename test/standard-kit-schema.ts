@@ -21,3 +21,8 @@ export const textScoped = schema.table('text_scoped', {
   name: sealed.text('name', { search: { exact: true } }),
 });
 export const textScopedSeal = sealed.register(textScoped, { row: 'id', scope: 'scopeId' });
+
+export const textUnscoped = schema.table('text_unscoped', {
+  id: sealed.textId('id').primaryKey(), name: sealed.text('name', { search: { exact: true } }),
+});
+export const textUnscopedSeal = sealed.register(textUnscoped, { row: 'id' });

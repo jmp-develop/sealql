@@ -5,6 +5,7 @@ import { databaseError, ensure, fail, SealError } from '../../../core/errors.js'
 import type { Sealer } from '../../../core/field-cipher.js';
 import { profiles, searchPieces, searchTokens, type SearchTokenCache } from '../../../core/search-tokens.js';
 import { Sealed, registrationOf, type Opened, type PlainShape, type Registration, type SealMeta } from './native.js';
+import { mapRawRow } from './native-mapping.js';
 import { searchMethods } from './native-search.js';
 
 type AuthCache = Map<string, { bytes: Uint8Array; result: Promise<unknown> }>;
@@ -247,16 +248,7 @@ export function runtimeMethods(sealerOf: () => Sealer) {
     ensure(!!columns[reg.row] && (!reg.scope || !!columns[reg.scope]), 'INVALID_VALUE');
     const source = Array.isArray(rows) ? rows : rows.rows;
     ensure(Array.isArray(source), 'INVALID_VALUE');
-    const mapped = source.map(row => {
-      const contextRow: Record<string, unknown> = { [reg.row]: row[columns[reg.row]], ...(reg.scope ? { [reg.scope]: row[columns[reg.scope]] } : {}) };
-      for (const [key, field] of reg.fields) {
-        const rawKey = columns[key];
-        if (!rawKey || !Object.hasOwn(row, rawKey)) continue;
-        const value = row[rawKey];
-        contextRow[key] = value === null ? null : Sealed.fromDriver(value, field);
-      }
-      return contextRow;
-    });
+    const mapped = source.map(row => mapRawRow(reg, row, columns, reg.fields.keys(), false));
     const opened = await openWithCache(mapped, options, authCache);
     return source.map((row, i) => {
       const output: Record<string, unknown> = { ...row };

@@ -7,7 +7,8 @@ import { createSealed } from 'sealql/drizzle/v0.45';
 
 let activeSealer: Sealer | undefined;
 export function configureKey(rootKey: Uint8Array) {
-  activeSealer ??= createSealer({ key: rootKey });
+  if (activeSealer) throw new Error('Configure the fixed key only once');
+  activeSealer = createSealer({ key: rootKey });
 }
 export const sealed = createSealed({ sealer: () => {
   if (!activeSealer) throw new Error('Configure the fixed key before SealQL operations');
@@ -21,8 +22,7 @@ export const note = pgTable('note', {
 });
 export const noteSeal = sealed.register(note, { row: 'id', scope: 'scopeId' });
 
-export async function example(db: PgDatabase<any, any, any>, rootKey: Uint8Array, scopeId: string, id: string) {
-  configureKey(rootKey);
+export async function example(db: PgDatabase<any, any, any>, scopeId: string, id: string) {
   await sealed.insert(db, noteSeal, { id, scopeId, title: 'Ada', count: 2, status: 'draft' });
   const row = await sealed.open(await db.select().from(note).where(eq(note.id, id)));
   const page = await sealed.findMany(db, noteSeal, {

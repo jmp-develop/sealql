@@ -5,7 +5,7 @@ import { drizzle } from 'drizzle-orm/node-postgres';
 import { and, eq, relations, sql } from 'drizzle-orm';
 import { pgSchema, timestamp, uuid } from 'drizzle-orm/pg-core';
 import { createSealer } from '../src/index.js';
-import { canonical, compareText } from '../src/core/bytes.js';
+import { canonical, utf8 } from '../src/core/bytes.js';
 import { createSealed } from '../src/adapters/drizzle/v0.45/index.js';
 import { Sealed, registrationOf } from '../src/adapters/drizzle/v0.45/native.js';
 import { assertDisposable } from './disposable.js';
@@ -238,6 +238,27 @@ test('native managed writes and opens stay atomic', async () => {
       cursor: short.nextCursor!, budgets: { resultBytes: oneItemBytes + 1 } });
     assert.equal(resumed.items.length, 1);
     assert.deepEqual(new Set([...short.items, ...resumed.items].map(row => row.id)), new Set([first.id, third.id]));
+    const descending: string[] = [];
+    let descendingCursor: string | undefined;
+    do {
+      const page = await sealed.findMany(db, peopleSeal, { scope: first.scope_id, columns: { id: true },
+        orderBy: { column: people.createdAt, direction: 'desc' }, limit: 1, cursor: descendingCursor });
+      descending.push(...page.items.map(row => row.id));
+      descendingCursor = page.nextCursor ?? undefined;
+    } while (descendingCursor);
+    assert.deepEqual(descending, [third.id, first.id]);
+    const decryptedLimit = Math.max(utf8(first.name_plain).length, utf8(third.name_plain).length);
+    const decryptedIds: string[] = [];
+    let decryptedCursor: string | undefined;
+    do {
+      const page = await sealed.findMany(db, peopleSeal, { scope: first.scope_id,
+        columns: { id: true, name: true }, limit: 2, cursor: decryptedCursor,
+        budgets: { decryptedBytes: decryptedLimit } });
+      assert.equal(page.items.length, 1);
+      decryptedIds.push(page.items[0].id);
+      decryptedCursor = page.nextCursor ?? undefined;
+    } while (decryptedCursor);
+    assert.deepEqual(new Set(decryptedIds), new Set([first.id, third.id]));
     const sorted = await sealed.findMany(db, peopleSeal, { scope: first.scope_id, columns: { id: true },
       orderBy: { column: people.createdAt, direction: 'asc' }, limit: 1 });
     assert.equal(sorted.items.length, 1); assert.ok(sorted.nextCursor);
