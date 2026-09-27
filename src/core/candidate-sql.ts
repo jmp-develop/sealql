@@ -7,9 +7,9 @@ export function candidatePredicate(definition: SealedModelDefinition, storage: S
   ensure(storage.index, 'INVALID_SCHEMA');
   const companion = storage.index;
   const parentRow = ident(storage.parent.name, definition.columns[definition.identity.row].name);
-  const comparedParentRow = definition.rowType === 'text' ? q`${parentRow} collate "C"` : parentRow;
+  const comparedParentRow = parentRow;
   const indexRow = ident('__seal_idx', 'row_id');
-  const comparedIndexRow = definition.rowType === 'text' ? q`${indexRow} collate "C"` : indexRow;
+  const comparedIndexRow = indexRow;
   const index = ident(companion.schema, companion.name);
   const inside = (node: CompiledSearch): Fragment => {
     if (node.op === 'all' || node.op === 'any') return q`(${join(node.children.map(inside), node.op === 'all' ? ' and ' : ' or ')})`;
@@ -41,11 +41,11 @@ export function boundedCandidatePredicate(definition: SealedModelDefinition, sto
   const tokenWhere = condition(search);
   const index = ident(companion.schema, companion.name);
   const rowId = ident('c', 'row_id');
-  const comparedRowId = definition.rowType === 'text' ? q`${rowId} collate "C"` : rowId;
+  const comparedRowId = rowId;
   const keyset = after ? q` and ${comparedRowId}>${after}` : q``;
   const sampleColumns = join([...used].map(name => ident(name)), ',');
   const row = ident(storage.parent.name, definition.columns[definition.identity.row].name);
-  const comparedRow = definition.rowType === 'text' ? q`${row} collate "C"` : row;
+  const comparedRow = row;
   return q`${comparedRow} in (
     with sample as materialized (
       select ${ident('row_id')},${sampleColumns} from ${index} as ${ident('c')}

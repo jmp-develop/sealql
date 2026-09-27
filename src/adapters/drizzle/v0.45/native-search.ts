@@ -165,7 +165,7 @@ function scope(reg: Registration, requested: string | undefined): string {
   return identity(requested, reg.definition.scopeType);
 }
 function orderedText(column: PgColumn): PgColumn | SQL {
-  return column.getSQLType() === 'text' ? sql`${column} collate "C"` : column;
+  return column;
 }
 function order(reg: Registration, requested?: FindOptions<PgTable>['orderBy']) {
   if (!requested) return undefined;
@@ -312,7 +312,8 @@ export function searchMethods(sealerOf: () => import('../../../core/field-cipher
         async (row, opened) => {
           const position = identity(row[reg.row] as string, reg.definition.rowType);
           const sort = orderColumn ? String(row.__seal_sort) : undefined;
-          ensure(after === undefined || (direction === 'asc' ? compareText(position, after) > 0 : compareText(position, after) < 0) || !!orderColumn, 'INVALID_CANDIDATE_SHAPE');
+          ensure(after === undefined || reg.definition.rowType === 'text' || !!orderColumn ||
+            (direction === 'asc' ? compareText(position, after) > 0 : compareText(position, after) < 0), 'INVALID_CANDIDATE_SHAPE');
           if (opened.matches) {
             if (!opened.projectionPlain) return false;
             const plain = { ...row, ...opened.conditionPlain, ...opened.projectionPlain };
@@ -422,6 +423,8 @@ export function searchMethods(sealerOf: () => import('../../../core/field-cipher
       try { previous = JSON.parse(openedCursor.lastId); ensure(Array.isArray(previous) && previous.length === positionColumns.length, 'CURSOR_INVALID'); }
       catch { fail('CURSOR_INVALID'); }
     }
+    const positionKey = (parts: unknown[]) => JSON.stringify(parts.map(String));
+    const seenPositions = new Set<string>(previous ? [positionKey(previous)] : []);
     const items: PublicRow<R>[] = [];
     const authCache: AuthCache = new Map();
     const conditionKeys = Object.fromEntries(keys.map(key => [key, encryptedKeys(asts[key])])) as Record<string, string[]>;
@@ -546,7 +549,10 @@ export function searchMethods(sealerOf: () => import('../../../core/field-cipher
           parts.push(rowId);
         }
         keyset.forEach((_, index) => { ensure(condition[`__seal_keyset_${index}`] !== undefined, 'INVALID_CANDIDATE_SHAPE'); parts.push(condition[`__seal_keyset_${index}`]); });
-        if (previous) {
+        const currentPosition = positionKey(parts);
+        ensure(!seenPositions.has(currentPosition), 'INVALID_CANDIDATE_SHAPE');
+        seenPositions.add(currentPosition);
+        if (previous && !positionColumns.some(column => column.getSQLType() === 'text')) {
           const signs = parts.map((value, index) => compare(value, previous![index], index < keys.length ? regs[keys[index]].definition.rowType : columnTypes[index - keys.length]));
           ensure(signs.find(sign => sign !== 0)! > 0, 'INVALID_CANDIDATE_SHAPE');
         }

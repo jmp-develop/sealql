@@ -278,9 +278,8 @@ export function runtimeMethods(sealerOf: () => Sealer) {
     const sealer = sealerOf(), ring = sealer.ring(reg.model);
     while (true) {
       const page = await checkedDb(db).transaction(async (tx: any) => {
-        const rowOrder = reg.definition.rowType === 'text' ? sql`${parent[reg.row]} collate "C"` : parent[reg.row];
-        const scopeOrder = reg.scope && reg.definition.scopeType === 'text'
-          ? sql`${parent[reg.scope]} collate "C"` : reg.scope ? parent[reg.scope] : undefined;
+        const rowOrder = parent[reg.row];
+        const scopeOrder = reg.scope ? parent[reg.scope] : undefined;
         const after = lastRow === undefined ? undefined : reg.scope && scopeId === undefined
           ? sql`(${scopeOrder},${rowOrder}) > (${lastScope},${lastRow})`
           : reg.definition.rowType === 'text' ? sql`${rowOrder} > ${lastRow}` : gt(parent[reg.row], lastRow);

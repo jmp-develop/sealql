@@ -266,7 +266,7 @@ test('native managed writes and opens stay atomic', async () => {
   }
 });
 
-test('text row IDs follow C byte order with a non-C database collation', async () => {
+test('text row IDs follow the database collation and keep index-backed keysets', async () => {
   const pool = new Pool({ host: '127.0.0.1', port: 56439, user: 'sealql_test', database: 'postgres' });
   let created = false;
   try {
@@ -289,7 +289,6 @@ test('text row IDs follow C byte order with a non-C database collation', async (
       "${exact}" bigint[],unique(scope_id,row_id),foreign key(row_id) references "${schemaName}".rows(id) on delete cascade)`);
     const db = drizzle(pool);
     const ids = [`Z${fixture[0].id}`, `a${fixture[1].id}`, `가${fixture[0].id}`, `!${fixture[1].id}`];
-    const expected = [...ids].sort(compareText);
     await assert.rejects(sealed.insert(db, seal, { scopeId: fixture[0].scope_id, name: fixture[0].name_plain }), { code: 'INVALID_VALUE' });
     await sealed.insert(db, seal, ids.map((id, index) => ({
       id, scopeId: fixture[0].scope_id, name: fixture[index % fixture.length].name_plain,
@@ -298,10 +297,18 @@ test('text row IDs follow C byte order with a non-C database collation', async (
     try {
       await planClient.query('begin');
       await planClient.query('set local enable_seqscan=off');
-      const plan = await planClient.query(`explain select row_id from "${schemaName}".rows_seal_index
-        where scope_id=$1 order by row_id collate "C" limit 4`, [fixture[0].scope_id]);
-      assert.match(plan.rows.map(row => row['QUERY PLAN']).join('\n'), /Sort/, 'default-collation unique index cannot order C text IDs');
+      const parentPlan = await planClient.query(`explain select id from "${schemaName}".rows
+        where id=$1 and id in (select row_id from "${schemaName}".rows_seal_index where scope_id=$2)`, [ids[0], fixture[0].scope_id]);
+      const parentText = parentPlan.rows.map(row => row['QUERY PLAN']).join('\n');
+      assert.match(parentText, /Index (?:Only )?Scan using .*rows_pkey/);
+      assert.doesNotMatch(parentText, /Seq Scan on rows /);
+      const pagePlan = await planClient.query(`explain select id from "${schemaName}".rows
+        where id>$1 order by id limit 2`, [ids[0]]);
+      const pageText = pagePlan.rows.map(row => row['QUERY PLAN']).join('\n');
+      assert.match(pageText, /Index (?:Only )?Scan using .*rows_pkey/);
+      assert.doesNotMatch(pageText, /Sort|Seq Scan on rows /);
     } finally { await planClient.query('rollback'); planClient.release(); }
+    const expected = (await pool.query(`select id from "${schemaName}".rows order by id`)).rows.map(row => row.id as string);
     const search = (cursor?: string) => sealed.search(db, { scope: fixture[0].scope_id,
       match: { r: [seal, m => m.or(m.name.eq('absent'), m.sql(sql`true`))] }, limit: 1, cursor,
       query: ({ where, after, orderBy, flags, limit }) => db.select({ r: rows, ...flags }).from(rows)
@@ -317,6 +324,9 @@ test('text row IDs follow C byte order with a non-C database collation', async (
     }
     assert.deepEqual(searchIds, expected);
     assert.deepEqual(findIds, expected);
+    assert.equal(await sealed.count(db, seal, { scope: fixture[0].scope_id }), ids.length);
+    assert.deepEqual(await sealed.reindex(db, seal, { scope: fixture[0].scope_id, batch: 1 }), { rows: ids.length });
+    assert.deepEqual((await sealed.findMany(db, seal, { scope: fixture[0].scope_id, limit: ids.length })).items.map(row => row.id), expected);
   } finally {
     if (created) await pool.query('drop schema test_native_text cascade');
     await pool.end();
