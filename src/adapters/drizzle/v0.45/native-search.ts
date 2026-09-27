@@ -17,13 +17,10 @@ type Db = PgDatabase<any, any, any>;
 export interface SearchBudgets { batch?: number; maxCandidates?: number; fetchBytes?: number; decryptedBytes?: number; resultBytes?: number; deadlineMs?: number; decryptConcurrency?: number }
 type ResolvedBudgets = Required<SearchBudgets>;
 function budgetsFor(counting: boolean, requested?: SearchBudgets): ResolvedBudgets {
-  const budgets: ResolvedBudgets = { batch: counting ? 2000 : 200, maxCandidates: counting ? 20000 : 2000,
-    fetchBytes: 4 * 1024 * 1024, decryptedBytes: 4 * 1024 * 1024, resultBytes: 4 * 1024 * 1024,
-    deadlineMs: 2000, decryptConcurrency: 64, ...requested };
-  const caps: ResolvedBudgets = { batch: counting ? 2000 : 500, maxCandidates: 20000,
-    fetchBytes: 32 * 1024 * 1024, decryptedBytes: 32 * 1024 * 1024, resultBytes: 32 * 1024 * 1024,
-    deadlineMs: 30000, decryptConcurrency: 64 };
-  for (const [key, value] of Object.entries(budgets)) ensure(Number.isSafeInteger(value) && value > 0 && value <= caps[key as keyof ResolvedBudgets], 'INVALID_VALUE');
+  const budgets: ResolvedBudgets = { batch: Infinity, maxCandidates: Infinity,
+    fetchBytes: Infinity, decryptedBytes: Infinity, resultBytes: Infinity,
+    deadlineMs: Infinity, decryptConcurrency: 64, ...requested };
+  for (const value of Object.values(requested ?? {})) ensure(Number.isSafeInteger(value) && value > 0, 'INVALID_VALUE');
   return budgets;
 }
 type PlainOfSealed<V> = V extends Sealed<infer P, any> ? P : never;
@@ -46,7 +43,7 @@ type CompiledNode = { op: 'secure'; search: CompiledSearch } | { op: 'sql'; cond
 type FindOptions<T extends PgTable> = {
   scope?: string; match?: (m: MatchBuilder<T>) => NativeNode; where?: SQL;
   columns?: Partial<Record<keyof InferSelectModel<T>, boolean>>;
-  orderBy?: { column: PgColumn; direction: 'asc' | 'desc' };
+  orderBy?: { column: PgColumn; direction: 'asc' | 'desc' } | readonly { column: PgColumn; direction: 'asc' | 'desc' }[];
   limit?: number; cursor?: string | undefined; budgets?: SearchBudgets; signal?: AbortSignal;
 };
 type CountOptions<T extends PgTable> = Omit<FindOptions<T>, 'columns' | 'orderBy' | 'limit' | 'cursor'> & { maxCandidates?: number };
@@ -74,20 +71,17 @@ function m<T extends PgTable>(reg: Registration): MatchBuilder<T> {
   return result as MatchBuilder<T>;
 }
 function validate(node: NativeNode, reg: Registration): void {
-  let leaves = 0;
-  const visit = (current: NativeNode, depth: number) => {
-    ensure(depth <= 8, 'INVALID_VALUE');
+  const visit = (current: NativeNode) => {
     if (current.op === 'and' || current.op === 'or') {
       ensure(current.children.length > 0, 'INVALID_VALUE');
-      current.children.forEach(child => visit(child, depth + 1)); return;
+      current.children.forEach(visit); return;
     }
-    ensure(++leaves <= 8, 'INVALID_VALUE');
     if (current.op === 'sql') return;
     ensure('field' in current, 'INVALID_VALUE');
     const field = reg.fields.get(current.field);
     ensure(field?.spec.search && (current.op === 'eq' ? 'exact' in field.spec.search : 'substring' in field.spec.search), 'UNSUPPORTED_SEARCH');
   };
-  visit(node, 1);
+  visit(node);
 }
 function plainFree(node: NativeNode): boolean {
   return node.op === 'sql' ? false : node.op === 'and' || node.op === 'or' ? node.children.every(plainFree) : true;
@@ -166,13 +160,34 @@ function scope(reg: Registration, requested: string | undefined): string {
   return identity(requested, reg.definition.scopeType);
 }
 function order(reg: Registration, requested?: FindOptions<PgTable>['orderBy']) {
-  if (!requested) return undefined;
-  const column = requested.column;
+  if (!requested) return [];
+  const items = Array.isArray(requested) ? requested : [requested];
+  ensure(items.length > 0, 'INVALID_VALUE');
   const columns = getTableColumns(reg.parent) as Record<string, PgColumn>;
-  ensure(Object.values(columns).includes(column) && ![...reg.fields.values()].some(field => field.column === column) && column.notNull &&
-    (['integer', 'bigint', 'uuid'].includes(column.getSQLType()) || /^timestamp(?:\s*\(\d+\))? with time zone$/.test(column.getSQLType())) &&
-    ['asc', 'desc'].includes(requested.direction), 'INVALID_VALUE');
-  return column;
+  const allowed = /^(?:smallint|integer|bigint|numeric(?:\(\d+(?:,\s*\d+)?\))?|decimal(?:\(\d+(?:,\s*\d+)?\))?|text|character varying(?:\(\d+\))?|varchar(?:\(\d+\))?|uuid|date|timestamp(?:\s*\(\d+\))?(?: with(?:out)? time zone)?|boolean)$/;
+  const seen = new Set<PgColumn>();
+  for (const item of items) {
+    ensure(Object.values(columns).includes(item.column) && ![...reg.fields.values()].some(field => field.column === item.column) &&
+      allowed.test(item.column.getSQLType()) && ['asc', 'desc'].includes(item.direction) && !seen.has(item.column), 'INVALID_VALUE');
+    seen.add(item.column);
+  }
+  return items;
+}
+function keysetAfter(columns: PgColumn[], values: (string | null)[], directions: ('asc' | 'desc')[]): SQL {
+  ensure(columns.length === values.length && columns.length === directions.length, 'CURSOR_INVALID');
+  if (values.every(value => value !== null) && directions.every(direction => direction === directions[0]) &&
+    columns.every(column => column.notNull)) {
+    return sql`(${sql.join(columns.map(column => sql`${column}`), sql.raw(','))})
+      ${sql.raw(directions[0] === 'asc' ? '>' : '<')}
+      (${sql.join(values.map(value => sql`${value}`), sql.raw(','))})`;
+  }
+  const terms = columns.map((column, index) => {
+    const value = values[index], direction = directions[index];
+    const comparison = value === null ? direction === 'asc' ? sql`false` : sql`${column} is not null`
+      : direction === 'asc' ? sql`(${column} > ${value} or ${column} is null)` : sql`${column} < ${value}`;
+    return and(...columns.slice(0, index).map((prior, offset) => sql`${prior} is not distinct from ${values[offset]}`), comparison)!;
+  });
+  return sql`(${sql.join(terms.map(term => sql`(${term})`), sql.raw(' or '))})`;
 }
 
 type AuthCache = Map<string, { bytes: Uint8Array; result: Promise<unknown> }>;
@@ -219,17 +234,21 @@ async function validateTextOrder(db: Db, columns: PgColumn[], positions: unknown
   const names = columns.map((_, index) => `p${index}`);
   const types = columns.map(column => column.getSQLType());
   const arrays = columns.map((_, index) => {
-    const literal = `{${positions.map(parts => `"${String(parts[index]).replace(/\\/g, '\\\\').replace(/"/g, '\\"')}"`).join(',')}}`;
+    const literal = `{${positions.map(parts => parts[index] === null ? 'NULL' : `"${String(parts[index]).replace(/\\/g, '\\\\').replace(/"/g, '\\"')}"`).join(',')}}`;
     return sql`${literal}::${sql.raw(types[index])}[]`;
   });
   const input = sql.identifier('input');
   const qualified = (table: string, name: string) => sql`${sql.identifier(table)}.${sql.identifier(name)}`;
   const inputColumn = (index: number) => qualified('input', names[index]);
-  const values = columns.map((column, index) => types[index] === 'text'
+  const values = columns.map((column, index) => /^(?:text|character varying|varchar)/.test(types[index])
     ? sql`coalesce((select ${column} from ${column.table} where false), ${inputColumn(index)})` : inputColumn(index));
   const current = values.map((_, index) => qualified('ordered', `v${index}`));
   const prior = values.map((_, index) => qualified('ordered', `previous_${index}`));
-  const row = (parts: SQL[]) => sql`(${sql.join(parts, sql.raw(','))})`;
+  const orderedAfter = sql`(${sql.join(values.map((_, index) => {
+    const before = prior[index], after = current[index];
+    const equalPrefix = prior.slice(0, index).map((value, i) => sql`${value} is not distinct from ${current[i]}`);
+    return sql`(${and(...equalPrefix, sql`(${before} < ${after} or (${before} is not null and ${after} is null))`)})`;
+  }), sql.raw(' or '))})`;
   const statement = sql`with input as (
     select * from unnest(${sql.join(arrays, sql.raw(','))}) with ordinality as ${input}(${sql.join(names.map(name => sql`${sql.identifier(name)}`), sql.raw(','))}, ordinal)
   ), resolved as (
@@ -240,7 +259,7 @@ async function validateTextOrder(db: Db, columns: PgColumn[], positions: unknown
     select *, ${sql.join(values.map((_, index) => sql`lag(${sql.identifier(`v${index}`)}) over (order by ordinal) as ${sql.identifier(`previous_${index}`)}`), sql.raw(','))}
     from resolved
   ) select coalesce(bool_and(
-    ${qualified('ordered', 'ordinal')} = 1 or (${row(prior)} < ${row(current)}) is true
+    ${qualified('ordered', 'ordinal')} = 1 or (${orderedAfter}) is true
   ), false) as valid from ordered`;
   if (signal?.aborted) fail('CANCELLED');
   ensure(Date.now() < deadline, 'LIMIT_EXCEEDED');
@@ -262,9 +281,9 @@ export function searchMethods(sealerOf: () => import('../../../core/field-cipher
     ensure(options && typeof options === 'object', 'INVALID_VALUE');
     const scopeId = scope(reg, options.scope), columns = getTableColumns(reg.parent) as Record<string, PgColumn>;
     const rowColumn = columns[reg.row], scopeColumn = reg.scope ? columns[reg.scope] : undefined;
-    const orderColumn = order(reg, options.orderBy);
-    const limit = options.limit ?? 50;
-    ensure(Number.isInteger(limit) && limit >= 1 && limit <= (counting ? 2000 : 200), 'INVALID_VALUE');
+    const orders = order(reg, options.orderBy), orderColumn = orders[0]?.column;
+    const limit = options.limit ?? Infinity;
+    if (options.limit !== undefined) ensure(Number.isSafeInteger(limit) && limit >= 1, 'INVALID_VALUE');
     const budgets = budgetsFor(counting, options.budgets);
     const deadline = absoluteDeadline ?? Date.now() + budgets.deadlineMs;
     const check = () => { if (options.signal?.aborted) fail('CANCELLED'); ensure(Date.now() < deadline, 'LIMIT_EXCEEDED'); };
@@ -279,17 +298,17 @@ export function searchMethods(sealerOf: () => import('../../../core/field-cipher
     const fetched = [...new Set([...projected, ...(ast ? encryptedKeys(ast) : [])])];
     const conditionKeys = ast ? encryptedKeys(ast) : [];
     const selected: Record<string, PgColumn | SQL> = Object.fromEntries(fetched.map(key => [key, columns[key]]));
-    if (orderColumn) selected.__seal_sort = sql<string>`${orderColumn}::text`;
+    orders.forEach(({ column }, index) => { selected[`__seal_sort_${index}`] = sql<string>`${column}::text`; });
     const flagCols = compiled ? flags(compiled) : {};
     const cursorDigest = await digest({ scopeId, match: nodeFingerprint(ast), where: sqlFingerprint(options.where),
-      selected: projected, orderBy: orderColumn?.name ?? null, direction: options.orderBy?.direction ?? null, limit });
+      orderBy: orders.map(item => [item.column.name, item.direction]) });
     const ring = sealerOf().ring(reg.model);
     const cursorContext = { modelId: reg.model, scopeId, keyScopeId: ring.keyScopeId, queryDigest: cursorDigest };
     const openedCursor = options.cursor ? await openCursor(options.cursor, cursorContext, ring) : undefined;
     let after = openedCursor?.lastId, afterSort = openedCursor?.lastSort;
     const items: Record<string, unknown>[] = [];
     let scanned = 0, fetchedBytes = 0, decryptedBytes = 0, resultBytes = 0;
-    let batch = Math.min(budgets.batch, Math.max(limit + Math.ceil(limit / 4) + 2, 16));
+    let batch = Number.isFinite(limit) ? Math.min(budgets.batch, Math.max(limit + Math.ceil(limit / 4) + 2, 16)) : 200;
     let verified = 0, accepted = 0, exhausted = false, limited = false;
     while (items.length < limit) {
       if (Date.now() >= deadline || scanned >= budgets.maxCandidates) {
@@ -299,12 +318,13 @@ export function searchMethods(sealerOf: () => import('../../../core/field-cipher
       }
       check();
       const remainingCandidates = budgets.maxCandidates - scanned;
-      const requestLimit = Math.min(batch, remainingCandidates) + (remainingCandidates <= batch ? 1 : 0);
-      const sortCol = orderColumn ?? rowColumn;
+      const requestLimit = Number.isFinite(limit) ? Math.min(batch, remainingCandidates) + (remainingCandidates <= batch ? 1 : 0) : Infinity;
       const orderedRow = rowColumn;
-      const direction = options.orderBy?.direction ?? 'asc';
-      const afterCondition = after === undefined ? undefined : orderColumn
-        ? sql`(${sortCol},${orderedRow}) ${sql.raw(direction === 'asc' ? '>' : '<')} (${afterSort},${after})`
+      const direction = orders.at(-1)?.direction ?? 'asc';
+      const sortValues = afterSort === undefined ? [] : JSON.parse(afterSort) as (string | null)[];
+      const afterCondition = after === undefined ? undefined : orders.length
+        ? keysetAfter([...orders.map(item => item.column), rowColumn], [...sortValues, after],
+          [...orders.map(item => item.direction), direction])
         : direction === 'asc' ? gt(rowColumn, after) : lt(rowColumn, after);
       const hasSql = ast && !plainFree(ast);
       const hasSubstring = (node: CompiledSearch): boolean => node.op === 'leaf' ? node.leaf.profile.mode === 'substring' : node.children.some(hasSubstring);
@@ -312,10 +332,10 @@ export function searchMethods(sealerOf: () => import('../../../core/field-cipher
         ? { limit: requestLimit, after } : undefined;
       const condition = and(scopeColumn ? eq(scopeColumn, scopeId) : undefined, options.where, afterCondition,
         compiled ? candidate(reg, scopeId, compiled, bounded) : undefined);
-      const rows = await (db as any).select({ ...selected, ...flagCols }).from(reg.parent).where(condition)
-        .orderBy(direction === 'asc' ? asc(orderColumn ?? orderedRow) : desc(orderColumn ?? orderedRow),
-          ...(orderColumn ? [direction === 'asc' ? asc(orderedRow) : desc(orderedRow)] : []))
-        .limit(requestLimit);
+      const query = (db as any).select({ ...selected, ...flagCols }).from(reg.parent).where(condition)
+        .orderBy(...orders.map(item => item.direction === 'asc' ? asc(item.column) : desc(item.column)),
+          direction === 'asc' ? asc(orderedRow) : desc(orderedRow));
+      const rows = await (Number.isFinite(requestLimit) ? query.limit(requestLimit) : query);
       ensure(rows.length <= requestLimit, 'INVALID_CANDIDATE_SHAPE');
       if (!rows.length) { exhausted = true; break; }
       const state: CandidateState = { scanned, fetchedBytes, decryptedBytes, limited };
@@ -331,7 +351,7 @@ export function searchMethods(sealerOf: () => import('../../../core/field-cipher
         async window => {
           const conditionPlains = await open(window.map(row => Object.fromEntries(
             [reg.row, ...(reg.scope ? [reg.scope] : []), ...conditionKeys, ...Object.keys(flagCols)].map(key => [key, row[key]]))),
-          { scope: scopeId, budgets: { maxRows: window.length, concurrency: budgets.decryptConcurrency, deadlineMs: budgets.deadlineMs } }) as Record<string, unknown>[];
+          { scope: scopeId, budgets: { concurrency: budgets.decryptConcurrency } }) as Record<string, unknown>[];
           const matches = await Promise.all(conditionPlains.map(plain => compiled ? verify(compiled, plain) : true));
           const remainingKeys = projected.filter(key => reg.fields.has(key) && !conditionKeys.includes(key));
           const projectionInputs: Record<string, unknown>[] = [], projectionIndexes: number[] = [];
@@ -343,14 +363,14 @@ export function searchMethods(sealerOf: () => import('../../../core/field-cipher
             projectionIndexes.push(i);
           }
           const projections = projectionInputs.length ? await open(projectionInputs, { scope: scopeId,
-            budgets: { maxRows: projectionInputs.length, concurrency: budgets.decryptConcurrency, deadlineMs: budgets.deadlineMs } }) as Record<string, unknown>[] : [];
+            budgets: { concurrency: budgets.decryptConcurrency } }) as Record<string, unknown>[] : [];
           const result = conditionPlains.map((conditionPlain, i) => ({ conditionPlain, matches: matches[i], projectionPlain: undefined as Record<string, unknown> | undefined }));
           projectionIndexes.forEach((index, i) => { result[index].projectionPlain = projections[i]; });
           return result;
         },
         async (row, opened) => {
           const position = identity(row[reg.row] as string, reg.definition.rowType);
-          const sort = orderColumn ? String(row.__seal_sort) : undefined;
+          const sort = orders.length ? JSON.stringify(orders.map((_, index) => row[`__seal_sort_${index}`] ?? null)) : undefined;
           ensure(after === undefined || reg.definition.rowType === 'text' || !!orderColumn ||
             (direction === 'asc' ? compareText(position, after) > 0 : compareText(position, after) < 0), 'INVALID_CANDIDATE_SHAPE');
           if (opened.matches) {
@@ -376,9 +396,9 @@ export function searchMethods(sealerOf: () => import('../../../core/field-cipher
         limited = scanned >= budgets.maxCandidates && !exhausted; break;
       }
       const remaining = limit - items.length;
-      batch = growBatch(batch, remaining, verified, accepted, budgets.batch);
+      batch = Infinity;
     }
-    const nextCursor = exhausted || !after ? null : await sealCursor(cursorContext,
+    const nextCursor = exhausted || after === undefined ? null : await sealCursor(cursorContext,
       { lastId: after, ...(afterSort === undefined ? {} : { lastSort: afterSort }) }, ring);
     return { items, nextCursor, scanned, exhausted, limited };
   }
@@ -392,25 +412,14 @@ export function searchMethods(sealerOf: () => import('../../../core/field-cipher
   async function count<T extends PgTable, R extends string, S extends string | undefined = undefined>(
     db: Db, seal: SealMeta<T, R, S> & object, options: CountOptions<T>,
   ): Promise<number> {
-    const maxCandidates = options.maxCandidates ?? 20000;
-    ensure(Number.isSafeInteger(maxCandidates) && maxCandidates >= 1 && maxCandidates <= 1000000, 'INVALID_VALUE');
-    const deadline = Date.now() + budgetsFor(true, options.budgets).deadlineMs;
-    let result = 0, scanned = 0, cursor: string | undefined;
-    do {
-      ensure(Date.now() < deadline, 'LIMIT_EXCEEDED');
-      const remaining = maxCandidates - scanned;
-      if (remaining <= 0) fail('LIMIT_EXCEEDED');
-      const page = await run<T>(db, registrationOf(seal), { ...options, columns: {}, limit: 2000, cursor,
-        budgets: { ...options.budgets, batch: 2000, maxCandidates: Math.min(remaining, 20000) } }, true, deadline);
-      result += page.items.length; scanned += page.scanned;
-      if (page.limited) fail('LIMIT_EXCEEDED');
-      if (page.exhausted) return result;
-      if (!page.nextCursor) fail('LIMIT_EXCEEDED');
-      cursor = page.nextCursor;
-    } while (true);
+    if (options.maxCandidates !== undefined) ensure(Number.isSafeInteger(options.maxCandidates) && options.maxCandidates > 0, 'INVALID_VALUE');
+    const page = await run<T>(db, registrationOf(seal), { ...options, columns: {},
+      budgets: { ...options.budgets, ...(options.maxCandidates === undefined ? {} : { maxCandidates: options.maxCandidates }) } }, true);
+    if (page.limited) fail('LIMIT_EXCEEDED');
+    return page.items.length;
   }
   type SearchParts = { where: SQL; after: SQL | undefined; orderBy: SQL[]; flags: Record<string, SQL | SQL.Aliased>;
-    flagsSql: SQL; limit: number };
+    flagsSql: SQL; limit: number | undefined };
   type SearchOptions<M extends Record<string, object>, R> = {
     scope?: string;
     match: { [K in keyof M]: readonly [M[K], (m: MatchBuilder<ParentOf<M[K]>>) => NativeNode] };
@@ -422,9 +431,9 @@ export function searchMethods(sealerOf: () => import('../../../core/field-cipher
   async function search<const M extends Record<string, object>, R extends Record<string, unknown>>(db: Db, options: SearchOptions<M, R>): Promise<{ items: PublicRow<R>[]; nextCursor: string | null }> {
     ensure(options && options.match && options.query && typeof options.query === 'function', 'INVALID_VALUE');
     const keys = Object.keys(options.match);
-    ensure(keys.length > 0 && keys.length <= 8 && keys.every(key => /^[A-Za-z_][A-Za-z0-9_]*$/.test(key)), 'INVALID_VALUE');
-    const limit = options.limit ?? 50;
-    ensure(Number.isInteger(limit) && limit >= 1 && limit <= 200, 'INVALID_VALUE');
+    ensure(keys.length > 0, 'INVALID_VALUE');
+    const limit = options.limit ?? Infinity;
+    if (options.limit !== undefined) ensure(Number.isSafeInteger(limit) && limit >= 1, 'INVALID_VALUE');
     const budgets = budgetsFor(false, options.budgets);
     const deadline = Date.now() + budgets.deadlineMs;
     const regs = Object.fromEntries(keys.map(key => [key, registrationOf(options.match[key][0])])) as Record<string, Registration>;
@@ -434,12 +443,12 @@ export function searchMethods(sealerOf: () => import('../../../core/field-cipher
     const asts = Object.fromEntries(keys.map(key => [key, options.match[key][1](m(regs[key]))])) as Record<string, NativeNode>;
     for (const key of keys) validate(asts[key], regs[key]);
     let flagIndex = 0;
-    const compiled: Record<string, CompiledNode> = {};
-    for (const key of keys) compiled[key] = await compile(asts[key], regs[key], scopeId, sealerOf(), cache, () => `__seal_${key}_flag_${flagIndex++}`);
+    const compiled: Record<string, CompiledNode> = Object.create(null);
+    for (const key of keys) compiled[key] = await compile(asts[key], regs[key], scopeId, sealerOf(), cache, () => `__seal_flag_${flagIndex++}`);
     const keyset = options.keyset ?? [];
+    const keysetTypes = /^(?:smallint|integer|bigint|numeric(?:\(\d+(?:,\s*\d+)?\))?|decimal(?:\(\d+(?:,\s*\d+)?\))?|text|character varying(?:\(\d+\))?|varchar(?:\(\d+\))?|uuid|date|timestamp(?:\s*\(\d+\))?(?: with(?:out)? time zone)?|boolean)$/;
     const columnTypes = keyset.map(column => {
-      ensure(column.notNull && (['uuid', 'integer', 'bigint'].includes(column.getSQLType()) ||
-        (column.getSQLType() === 'text' && column.columnType === 'PgCustomColumn')), 'INVALID_VALUE');
+      ensure(keysetTypes.test(column.getSQLType()), 'INVALID_VALUE');
       return column.getSQLType();
     });
     const positionColumns = [...keys.map(key => (getTableColumns(regs[key].parent) as Record<string, PgColumn>)[regs[key].row]), ...keyset];
@@ -453,16 +462,16 @@ export function searchMethods(sealerOf: () => import('../../../core/field-cipher
       return [reg.scope ? eq(columns[reg.scope], scopeId) : undefined, candidate(reg, scopeId, compiled[key])];
     }))!;
     const queryDigest = await digest({ scopeId, match: keys.map(key => [key, regs[key].model, nodeFingerprint(asts[key])]),
-      keyset: keyset.map(column => [getTableName(column.table), column.name]), limit });
+      keyset: keyset.map(column => [getTableName(column.table), column.name]) });
     const firstByName = regs[[...keys].sort()[0]], ring = sealerOf().ring(firstByName.model);
-    const cursorContext = { modelId: `search:${keys.map(key => regs[key].model).sort().join(',')}`, scopeId, keyScopeId: ring.keyScopeId, queryDigest };
+    const cursorContext = { modelId: `search:${JSON.stringify(keys.map(key => regs[key].model).sort())}`, scopeId, keyScopeId: ring.keyScopeId, queryDigest };
     const openedCursor = options.cursor ? await openCursor(options.cursor, cursorContext, ring) : undefined;
     let previous: unknown[] | undefined;
     if (openedCursor) {
       try { previous = JSON.parse(openedCursor.lastId); ensure(Array.isArray(previous) && previous.length === positionColumns.length, 'CURSOR_INVALID'); }
       catch { fail('CURSOR_INVALID'); }
     }
-    const positionKey = (parts: unknown[]) => JSON.stringify(parts.map(String));
+    const positionKey = (parts: unknown[]) => JSON.stringify(parts.map(value => value === null ? null : String(value)));
     const seenPositions = new Set<string>(previous ? [positionKey(previous)] : []);
     const items: PublicRow<R>[] = [];
     const authCache: AuthCache = new Map();
@@ -529,9 +538,9 @@ export function searchMethods(sealerOf: () => import('../../../core/field-cipher
       return true;
     };
     let scanned = 0, fetchedBytes = 0, decryptedBytes = 0, resultBytes = 0;
-    let batch = Math.min(budgets.batch, Math.max(limit + Math.ceil(limit / 4) + 2, 16));
+    let batch = Number.isFinite(limit) ? Math.min(budgets.batch, Math.max(limit + Math.ceil(limit / 4) + 2, 16)) : Infinity;
     let accepted = 0, exhausted = false, limited = false;
-    const compare = (left: unknown, right: unknown, type: string) => type === 'integer' || type === 'bigint'
+    const compare = (left: unknown, right: unknown, type: string) => ['smallint', 'integer', 'bigint'].includes(type)
       ? BigInt(left as string) < BigInt(right as string) ? -1 : BigInt(left as string) > BigInt(right as string) ? 1 : 0
       : compareText(String(left), String(right));
     const measured = (value: unknown): { fetched: number; decrypted: number } => {
@@ -546,15 +555,18 @@ export function searchMethods(sealerOf: () => import('../../../core/field-cipher
       if (options.signal?.aborted) fail('CANCELLED');
       if (Date.now() >= deadline || scanned >= budgets.maxCandidates) { if (!scanned) fail('LIMIT_EXCEEDED'); limited = true; break; }
       const requestLimit = Math.min(batch, budgets.maxCandidates - scanned);
-      const after = previous ? sql`(${sql.join(positionColumns.map(column => sql`${column}`), sql.raw(','))}) > (${sql.join(previous.map(value => sql`${value}`), sql.raw(','))})` : undefined;
-      const returned = await options.query({ where, after, orderBy, flags: allFlags, flagsSql, limit: requestLimit });
+      const after = previous ? keysetAfter(positionColumns, previous.map(value => value === null ? null : String(value)),
+        positionColumns.map(() => 'asc')) : undefined;
+      const returned = await options.query({ where, after, orderBy, flags: allFlags, flagsSql,
+        limit: Number.isFinite(requestLimit) ? requestLimit : undefined });
       const rows = Array.isArray(returned) ? returned : returned?.rows;
       ensure(Array.isArray(rows) && rows.length <= requestLimit, 'INVALID_CANDIDATE_SHAPE');
       if (!rows.length) { exhausted = true; break; }
-      if (positionColumns.some(column => column.getSQLType() === 'text')) {
+      const needsDbOrder = positionColumns.some(column => !column.notNull || !['uuid', 'smallint', 'integer', 'bigint'].includes(column.getSQLType()));
+      if (needsDbOrder) {
         const positions = rows.map(raw => {
           ensure(raw && typeof raw === 'object', 'INVALID_CANDIDATE_SHAPE');
-          const parts = keys.map(key => {
+          const parts: (string | null)[] = keys.map(key => {
             const reg = regs[key], mapping = options.columns?.[key];
             const source = mapping ? raw : raw[key] as Record<string, unknown>;
             ensure(source && typeof source === 'object', 'INVALID_CANDIDATE_SHAPE');
@@ -564,8 +576,8 @@ export function searchMethods(sealerOf: () => import('../../../core/field-cipher
           });
           keyset.forEach((_, index) => {
             const value = raw[`__seal_keyset_${index}`];
-            ensure(value !== undefined && value !== null, 'INVALID_CANDIDATE_SHAPE');
-            parts.push(String(value));
+            ensure(value !== undefined, 'INVALID_CANDIDATE_SHAPE');
+            parts.push(value === null ? null : String(value));
           });
           return parts;
         });
@@ -605,7 +617,7 @@ export function searchMethods(sealerOf: () => import('../../../core/field-cipher
         const currentPosition = positionKey(parts);
         ensure(!seenPositions.has(currentPosition), 'INVALID_CANDIDATE_SHAPE');
         seenPositions.add(currentPosition);
-        if (previous && !positionColumns.some(column => column.getSQLType() === 'text')) {
+        if (previous && !needsDbOrder) {
           const signs = parts.map((value, index) => compare(value, previous![index], index < keys.length ? regs[keys[index]].definition.rowType : columnTypes[index - keys.length]));
           ensure(signs.find(sign => sign !== 0)! > 0, 'INVALID_CANDIDATE_SHAPE');
         }
@@ -625,7 +637,7 @@ export function searchMethods(sealerOf: () => import('../../../core/field-cipher
       if (items.length === limit || rows.length < requestLimit) { exhausted = items.length < limit && rows.length < requestLimit; break; }
       if (consumed === 0) { if (!scanned) fail('LIMIT_EXCEEDED'); break; }
       const remaining = limit - items.length;
-      batch = growBatch(batch, remaining, scanned, accepted, budgets.batch);
+      batch = Infinity;
     }
     const nextCursor = exhausted || !previous ? null : await sealCursor(cursorContext, { lastId: JSON.stringify(previous) }, ring);
     return { items, nextCursor };

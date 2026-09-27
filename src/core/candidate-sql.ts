@@ -39,7 +39,7 @@ export function boundedCandidatePredicate(definition: SealedModelDefinition, sto
   const tokenWhere = condition(search);
   const index = ident(companion.schema, companion.name);
   const rowId = ident('c', 'row_id');
-  const keyset = after ? q` and ${rowId}>${after}` : q``;
+  const keyset = after === undefined ? q`` : q` and ${rowId}>${after}`;
   const sampleColumns = join([...used].map(name => ident(name)), ',');
   const row = ident(storage.parent.name, definition.columns[definition.identity.row].name);
   return q`${row} in (

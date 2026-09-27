@@ -137,7 +137,6 @@ test('native managed writes and opens stay atomic', async () => {
     assert.equal(bulk.length, 501);
     assert.equal(bulk[500].name, bulkSource[500].name_plain);
     await assert.rejects(sealed.insert(db, peopleSeal, []), { code: 'INVALID_VALUE' });
-    await assert.rejects(sealed.insert(db, peopleSeal, Array(1001).fill({})), { code: 'LIMIT_EXCEEDED' });
     const inserted = await sealed.insert(db, peopleSeal, { id: first.id, scopeId: first.scope_id, createdAt: derivedTime(first.id), name: first.name_plain, memo: first.memo_plain });
     assert.deepEqual(inserted, [{ id: first.id, scopeId: first.scope_id }]);
     await assert.rejects(sealed.insert(db, peopleSeal, { id: first.id, scopeId: first.scope_id, createdAt: derivedTime(first.id), name: first.name_plain, memo: first.memo_plain }), error => {
@@ -192,7 +191,7 @@ test('native managed writes and opens stay atomic', async () => {
     const joined = await sealed.search(db, { scope: first.scope_id, match: { c: [peopleSeal, m => m.name.eq(first.name_plain)] },
       keyset: [orders.id], limit: 1,
       query: ({ where, after, orderBy, flags, limit }) => db.select({ c: people, o: orders, ...flags }).from(people)
-        .innerJoin(orders, eq(orders.customerId, people.id)).where(and(where, after)).orderBy(...orderBy).limit(limit),
+        .innerJoin(orders, eq(orders.customerId, people.id)).where(and(where, after)).orderBy(...orderBy).limit(limit!),
     });
     assert.equal(joined.items.length, 1);
     assert.ok(joined.nextCursor);
@@ -200,13 +199,13 @@ test('native managed writes and opens stay atomic', async () => {
     const joinedNext = await sealed.search(db, { scope: first.scope_id, match: { c: [peopleSeal, m => m.name.eq(first.name_plain)] },
       keyset: [orders.id], limit: 1, cursor: joined.nextCursor!,
       query: ({ where, after, orderBy, flags, limit }) => db.select({ c: people, o: orders, ...flags }).from(people)
-        .innerJoin(orders, eq(orders.customerId, people.id)).where(and(where, after)).orderBy(...orderBy).limit(limit),
+        .innerJoin(orders, eq(orders.customerId, people.id)).where(and(where, after)).orderBy(...orderBy).limit(limit!),
     });
     assert.equal(joinedNext.items.length, 1);
     assert.notEqual((joined.items[0] as any).o.id, (joinedNext.items[0] as any).o.id);
     const joinedBudget = canonical(joined.items[0]).length + 1;
     const budgetQuery = ({ where, after, orderBy, flags, limit }: any) => db.select({ c: people, o: orders, ...flags }).from(people)
-      .innerJoin(orders, eq(orders.customerId, people.id)).where(and(where, after)).orderBy(...orderBy).limit(limit);
+      .innerJoin(orders, eq(orders.customerId, people.id)).where(and(where, after)).orderBy(...orderBy).limit(limit!);
     const budgeted = await sealed.search(db, { scope: first.scope_id, match: { c: [peopleSeal, m => m.name.eq(first.name_plain)] },
       keyset: [orders.id], limit: 3, budgets: { resultBytes: joinedBudget }, query: budgetQuery });
     assert.equal(budgeted.items.length, 1); assert.ok(budgeted.nextCursor);
@@ -256,22 +255,22 @@ test('native managed writes and opens stay atomic', async () => {
       query: ({ where, after, orderBy, flagsSql, limit }) => db.execute(sql`select ${people.id} as c_id,
         ${people.scopeId} as c_scope, ${people.name} as c_name_ct, ${people.memo} as c_memo_ct, ${flagsSql}
         from ${people} where ${where} ${after ? sql`and ${after}` : sql``}
-        order by ${sql.join(orderBy, sql.raw(','))} limit ${limit}`),
+        order by ${sql.join(orderBy, sql.raw(','))} ${limit === undefined ? sql`` : sql`limit ${limit}`}`),
     }), { code: 'LIMIT_EXCEEDED' });
     await assert.rejects(sealed.search(db, { scope: first.scope_id,
       match: { c: [peopleSeal, m => m.or(m.name.eq(first.name_plain), m.sql(sql`false`))] },
       columns: { c: { id: 'c_id', scopeId: 'c_scope', name: 'c_name_ct', memo: 'c_memo_ct' } },
-      budgets: { decryptedBytes: cipherRow.name.bytes.length - 29 },
+      budgets: { decryptedBytes: cipherRow.name.bytes.length - 29 }, limit: 1,
       query: ({ where, after, orderBy, flagsSql, limit }) => db.execute(sql`select ${people.id} as c_id,
         ${people.scopeId} as c_scope, ${people.name} as c_name_ct, ${people.memo} as c_memo_ct, ${flagsSql}
         from ${people} where ${where} ${after ? sql`and ${after}` : sql``}
-        order by ${sql.join(orderBy, sql.raw(','))} limit ${limit}`),
+        order by ${sql.join(orderBy, sql.raw(','))} ${limit === undefined ? sql`` : sql`limit ${limit}`}`),
     }), { code: 'LIMIT_EXCEEDED' });
     await assert.rejects(sealed.search(db, { scope: first.scope_id,
       match: { c: [peopleSeal, m => m.name.eq(first.name_plain)] },
-      budgets: { fetchBytes: 1 },
+      budgets: { fetchBytes: 1 }, limit: 1,
       query: ({ where, after, orderBy, flags, limit }) => db.select({ c: people, ...flags }).from(people)
-        .where(and(where, after)).orderBy(...orderBy).limit(limit),
+        .where(and(where, after)).orderBy(...orderBy).limit(limit!),
     }), { code: 'LIMIT_EXCEEDED' });
     const cancelled = new AbortController(); cancelled.abort();
     await assert.rejects(sealed.findMany(db, peopleSeal, { scope: first.scope_id, signal: cancelled.signal }), { code: 'CANCELLED' });
@@ -296,7 +295,7 @@ test('native managed writes and opens stay atomic', async () => {
     const orderedJoin = ({ where, after, orderBy, flags, limit }: any) => {
       joinedOrder = new PgDialect().sqlToQuery(sql.join(orderBy, sql.raw(','))).sql;
       return db.select({ o: orders, c: people, ...flags }).from(orders)
-        .innerJoin(people, eq(orders.customerId, people.id)).where(and(where, after)).orderBy(...orderBy).limit(limit);
+        .innerJoin(people, eq(orders.customerId, people.id)).where(and(where, after)).orderBy(...orderBy).limit(limit!);
     };
     const orderedMatch = { o: [ordersSeal, (m: any) => m.label.eq(first.name_plain)] as const,
       c: [peopleSeal, (m: any) => m.name.eq(first.name_plain)] as const };
@@ -414,7 +413,7 @@ test('native managed writes and opens stay atomic', async () => {
     const tenantPage = await sealed.search(db, { scope: first.scope_id,
       match: { p: [peopleSeal, m => m.or(m.name.eq('absent'), m.sql(sql`true`))] },
       query: ({ where, after, orderBy, flags, limit }) => db.select({ p: people, ...flags }).from(people)
-        .where(and(where, after)).orderBy(...orderBy).limit(limit),
+        .where(and(where, after)).orderBy(...orderBy).limit(limit!),
     });
     assert.deepEqual(tenantPage.items.map(row => row.p.id), [first.id, third.id]);
     const decoy = await sealed.search(db, { scope: first.scope_id,
@@ -423,7 +422,7 @@ test('native managed writes and opens stay atomic', async () => {
       query: ({ where, after, orderBy, limit }) => db.execute(sql`select ${people.id} as p_id,
         ${people.scopeId} as p_scope, ${people.name} as p_name_ct, 'wrong' as name
         from ${people} where ${where} ${after ? sql`and ${after}` : sql``}
-        order by ${sql.join(orderBy, sql.raw(','))} limit ${limit}`),
+        order by ${sql.join(orderBy, sql.raw(','))} ${limit === undefined ? sql`` : sql`limit ${limit}`}`),
     });
     assert.equal(decoy.items.length, 1);
     assert.equal((decoy.items[0] as any).p_name_ct, first.name_plain);
@@ -460,11 +459,17 @@ test('text row IDs follow the database collation and keep index-backed keysets',
     const logged: { query: string; params: unknown[] }[] = [];
     const db = drizzle(pool, { logger: { logQuery(query, params) { logged.push({ query, params }); } } });
     const prefixes = ['Z', 'a', '가', '!'];
-    const ids = fixture.map((row, index) => `${prefixes[index % prefixes.length]}${row.id}`);
+    const ids = fixture.map((row, index) => index === 0 ? '' : `${prefixes[index % prefixes.length]}${row.id}`);
     await assert.rejects(sealed.insert(db, seal, { scopeId: fixture[0].scope_id, name: fixture[0].name_plain }), { code: 'INVALID_VALUE' });
     await sealed.insert(db, seal, ids.map((id, index) => ({
       id, scopeId: fixture[0].scope_id, name: fixture[index].name_plain,
     })));
+    assert.equal((await sealed.open(await db.select().from(rows).where(eq(rows.id, ''))))[0].name, fixture[0].name_plain);
+    const emptyPage = await sealed.findMany(db, seal, { scope: fixture[0].scope_id, limit: 1 });
+    assert.equal(emptyPage.items[0].id, '');
+    assert.ok(emptyPage.nextCursor);
+    assert.notEqual((await sealed.findMany(db, seal, { scope: fixture[0].scope_id,
+      limit: 1, cursor: emptyPage.nextCursor! })).items[0].id, '');
     await pool.query(`analyze "${schemaName}".rows`);
     await pool.query(`analyze "${schemaName}".rows_seal_index`);
     const expected = (await pool.query(`select id from "${schemaName}".rows order by id`)).rows.map(row => row.id as string);
@@ -472,7 +477,7 @@ test('text row IDs follow the database collation and keep index-backed keysets',
     const search = (cursor?: string) => sealed.search(db, { scope: fixture[0].scope_id,
       match: { r: [seal, m => m.or(m.name.eq('absent'), m.sql(sql`true`))] }, limit: 20, cursor,
       query: ({ where, after, orderBy, flags, limit }) => db.select({ r: rows, ...flags }).from(rows)
-        .where(and(where, after)).orderBy(...orderBy).limit(limit),
+        .where(and(where, after)).orderBy(...orderBy).limit(limit!),
     });
     const searchIds: string[] = [], findIds: string[] = [];
     let nonemptySearchPages = 0;
@@ -487,12 +492,12 @@ test('text row IDs follow the database collation and keep index-backed keysets',
     await assert.rejects(sealed.search(db, { scope: fixture[0].scope_id,
       match: { r: [seal, m => m.or(m.name.eq('absent'), m.sql(sql`true`))] }, limit: 20,
       query: ({ where, after, orderBy, flags, limit }) => db.select({ r: rows, ...flags }).from(rows)
-        .where(and(where, after)).orderBy(desc(rows.id), ...orderBy).limit(limit),
+        .where(and(where, after)).orderBy(desc(rows.id), ...orderBy).limit(limit!),
     }), { code: 'INVALID_CANDIDATE_SHAPE' });
     await assert.rejects(sealed.search(db, { scope: fixture[0].scope_id,
       match: { r: [seal, m => m.or(m.name.eq('absent'), m.sql(sql`true`))] }, limit: 20,
       query: async ({ where, after, flags, limit }) => (await db.select({ r: rows, ...flags }).from(rows)
-        .where(and(where, after)).limit(limit)).reverse(),
+        .where(and(where, after)).limit(limit!)).reverse(),
     }), { code: 'INVALID_CANDIDATE_SHAPE' });
     do {
       const found = await sealed.findMany(db, seal, { scope: fixture[0].scope_id, limit: 20, cursor: findCursor });
@@ -522,13 +527,13 @@ test('text row IDs follow the database collation and keep index-backed keysets',
     const beforeDelete = await sealed.search(db, { scope: fixture[0].scope_id,
       match: { r: [seal, m => m.or(m.name.eq('absent'), m.sql(sql`true`))] }, limit: 1,
       query: ({ where, after, orderBy, flags, limit }) => db.select({ r: rows, ...flags }).from(rows)
-        .where(and(where, after)).orderBy(...orderBy).limit(limit),
+        .where(and(where, after)).orderBy(...orderBy).limit(limit!),
     });
     await db.delete(rows).where(eq(rows.id, beforeDelete.items[0].r.id));
     const afterDelete = await sealed.search(db, { scope: fixture[0].scope_id,
       match: { r: [seal, m => m.or(m.name.eq('absent'), m.sql(sql`true`))] }, limit: 1, cursor: beforeDelete.nextCursor!,
       query: ({ where, after, orderBy, flags, limit }) => db.select({ r: rows, ...flags }).from(rows)
-        .where(and(where, after)).orderBy(...orderBy).limit(limit),
+        .where(and(where, after)).orderBy(...orderBy).limit(limit!),
     });
     assert.equal(afterDelete.items[0].r.id, expected[1]);
   } finally {

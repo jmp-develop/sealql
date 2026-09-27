@@ -20,7 +20,7 @@ export function normalizeText(value: string, normalizer: string): string {
   s = s.replace(whitespace, '');
   if (normalizer === 'legacy-text-v1') return s;
   s = s.replace(/[-().]/g, '').replace(/^\+/, '');
-  ensure(/^[0-9]*$/.test(s) && s.length <= 32 && (value === '' || s !== ''), 'INVALID_VALUE');
+  ensure(/^[0-9]*$/.test(s) && (value === '' || s !== ''), 'INVALID_VALUE');
   return s;
 }
 export function normalizeWords(value: string): string {
@@ -55,7 +55,6 @@ export function searchPieces(p: SearchProfile, value: unknown, operation: 'write
   ensure(typeof value === 'string', 'INVALID_VALUE');
   const normalized = p.mode === 'substring' ? normalizeText(value, p.normalizer).replace(whitespace, '') : normalizeText(value, p.normalizer);
   const chars = Array.from(normalized);
-  ensure(chars.length <= 2048, 'LIMIT_EXCEEDED');
   if (p.mode === 'exact') return [utf8(normalized)];
   if (chars.length < 2) return [];
   const result: Uint8Array[] = [];

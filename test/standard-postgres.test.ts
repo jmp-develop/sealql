@@ -2,8 +2,8 @@ import assert from 'node:assert/strict';
 import { test } from 'node:test';
 import { Pool } from 'pg';
 import { drizzle } from 'drizzle-orm/node-postgres';
-import { and, eq } from 'drizzle-orm';
-import { pgSchema, uuid } from 'drizzle-orm/pg-core';
+import { and, eq, sql } from 'drizzle-orm';
+import { integer, pgSchema, text, uuid } from 'drizzle-orm/pg-core';
 import { createSealer, normalizeText, profiles, searchPieces, searchTokens, SealError } from '../src/index.js';
 import { createSealed } from '../src/adapters/drizzle/v0.45/index.js';
 import { registrationOf } from '../src/adapters/drizzle/v0.45/native.js';
@@ -27,6 +27,7 @@ async function setup(caseName: string, count: number) {
     const schema = pgSchema(schemaName), cipher = createSealer({ key: new Uint8Array(32).fill(7) });
     const sealed = createSealed({ sealer: cipher });
     const memo = schema.table('memo', { id: uuid('id').primaryKey(), scopeId: uuid('scope_id').notNull(),
+      rank: integer('rank'), label: text('label'),
       body: sealed.text('body', { search: { exact: true, substring: true } }),
       address: sealed.text('address', { search: { substring: true } }),
       amount: sealed.integer('amount', { nullable: true, search: { exact: true } }),
@@ -34,7 +35,7 @@ async function setup(caseName: string, count: number) {
     const seal = sealed.register(memo, { row: 'id', scope: 'scopeId' });
     const profiles = registrationOf(seal).storage.index!.profiles!;
     const tokenColumns = Object.values(profiles).map(profile => `"${profile.tokens}" bigint[]`).join(',');
-    await pool.query(`create table "${schemaName}".memo (id uuid primary key,scope_id uuid not null,body_ct bytea not null,address_ct bytea not null,amount_ct bytea)`);
+    await pool.query(`create table "${schemaName}".memo (id uuid primary key,scope_id uuid not null,rank integer,label text,body_ct bytea not null,address_ct bytea not null,amount_ct bytea)`);
     await pool.query(`create table "${schemaName}".memo_seal_index (scope_id uuid not null,row_id uuid not null,${tokenColumns},unique(scope_id,row_id),foreign key(row_id) references "${schemaName}".memo(id) on delete cascade)`);
     for (const [profileId, profile] of Object.entries(profiles)) if (profile.mode === 'exact')
       await pool.query(`create index "${companionIndexName('memo_seal_index', profileId)}_bt" on "${schemaName}".memo_seal_index(scope_id,(("${profile.tokens}")[1]),row_id)`);
@@ -43,7 +44,9 @@ async function setup(caseName: string, count: number) {
     const logs: string[] = [], logEntries: { query: string; params: unknown[] }[] = [];
     const db = drizzle(pool, { logger: { logQuery(query, params) { logs.push(query); logEntries.push({ query, params }); } } });
     for (let start = 0; start < rows.length; start += 500) await sealed.insert(db, seal, rows.slice(start, start + 500).map(row => ({
-      id: row.id, scopeId: row.scope_id, body: row.memo_plain, address: row.address_plain, amount: row.name_plain.length,
+      id: row.id, scopeId: row.scope_id, rank: row.name_plain.length % 4 === 0 ? null : row.name_plain.length % 3,
+      label: row.name_plain.length % 5 === 0 ? null : row.name_plain.slice(0, 2),
+      body: row.memo_plain, address: row.address_plain, amount: row.name_plain.length,
     })));
     const close = async () => { await pool.query(`drop schema "${schemaName}" cascade`); await pool.end(); };
     return { rows, schemaName, pool, db, sealed, cipher, memo, seal, profiles, logs, logEntries, close };
@@ -54,6 +57,41 @@ test('native CRUD, verified pages, OR semi-join and bounded count', async () => 
   const c = await setup('crud', 30);
   try {
     const scope = c.rows[0].scope_id, exact = c.rows[0].memo_plain;
+    const unrestricted = await c.sealed.findMany(c.db, c.seal, { scope, columns: { id: true } });
+    assert.deepEqual(unrestricted.items.map(row => row.id), c.rows.map(row => row.id));
+    assert.equal(unrestricted.nextCursor, null);
+    const firstSized = await c.sealed.findMany(c.db, c.seal, { scope, columns: { id: true }, limit: 2 });
+    const nextSized = await c.sealed.findMany(c.db, c.seal, { scope, columns: { body: true }, limit: 3,
+      cursor: firstSized.nextCursor! });
+    assert.deepEqual(nextSized.items.map(row => row.id), c.rows.slice(2, 5).map(row => row.id));
+    assert.ok(nextSized.items[0].body);
+    const expectedSorted = (await c.pool.query(`select id from "${c.schemaName}".memo where scope_id=$1
+      order by rank asc nulls last,label asc nulls last,id asc`, [scope])).rows.map(row => row.id);
+    const sortedIds: string[] = [];
+    let sortedCursor: string | undefined;
+    do {
+      const page = await c.sealed.findMany(c.db, c.seal, { scope, columns: { rank: true, label: true },
+        orderBy: [{ column: c.memo.rank, direction: 'asc' }, { column: c.memo.label, direction: 'asc' }],
+        limit: 4, cursor: sortedCursor });
+      sortedIds.push(...page.items.map(row => row.id));
+      sortedCursor = page.nextCursor ?? undefined;
+    } while (sortedCursor);
+    assert.deepEqual(sortedIds, expectedSorted);
+    const joinedIds: string[] = [];
+    let joinedCursor: string | undefined;
+    do {
+      const page = await c.sealed.search(c.db, { scope, match: { m: [c.seal, m => m.sql(sql`true`)] },
+        keyset: [c.memo.rank], limit: 4, cursor: joinedCursor,
+        query: ({ where, after, orderBy, flags, limit }) => c.db.select({ m: c.memo, ...flags }).from(c.memo)
+          .where(and(where, after)).orderBy(...orderBy).limit(limit!),
+      });
+      joinedIds.push(...page.items.map(row => row.m.id));
+      joinedCursor = page.nextCursor ?? undefined;
+    } while (joinedCursor);
+    assert.deepEqual(joinedIds, c.rows.map(row => row.id));
+    c.logs.length = 0;
+    assert.equal(await c.sealed.count(c.db, c.seal, { scope, match: m => m.body.eq(exact) }), 1);
+    assert.equal(c.logs.length, 1, 'count computes candidates in one SQL request');
     c.logs.length = 0;
     assert.equal((await c.sealed.findMany(c.db, c.seal, { scope, match: m => m.body.eq(exact), limit: 1 })).items.length, 1);
     assert.equal(c.logs.length, 1, 'one candidate SQL request for an exact page');
@@ -62,8 +100,10 @@ test('native CRUD, verified pages, OR semi-join and bounded count', async () => 
     c.logs.length = 0;
     assert.equal((await c.sealed.search(c.db, { scope,
       match: { m: [c.seal, m => m.body.eq(exact)] },
-      query: ({ where, after, orderBy, flags, limit }) => c.db.select({ m: c.memo, ...flags }).from(c.memo)
-        .where(and(where, after)).orderBy(...orderBy).limit(limit),
+      query: ({ where, after, orderBy, flags, limit }) => {
+        const query = c.db.select({ m: c.memo, ...flags }).from(c.memo).where(and(where, after)).orderBy(...orderBy);
+        return limit === undefined ? query : query.limit(limit);
+      },
     })).items.length, 1);
     assert.equal(c.logs.length, 1, 'UUID search needs only its candidate SQL request');
     await assert.rejects(c.sealed.findMany(c.db, c.seal, { scope, match: m => m.body.contains('a') }), { code: 'QUERY_TOO_BROAD' });
@@ -117,6 +157,25 @@ test('native CRUD, verified pages, OR semi-join and bounded count', async () => 
         if (entry === keysetSql) assert.doesNotMatch(plan, /Sort/, plan);
       }
     } finally { await explainClient.query('rollback'); explainClient.release(); }
+    await c.pool.query(`create index memo_rank_label_id on "${c.schemaName}".memo(scope_id,rank,label,id)`);
+    c.logEntries.length = 0;
+    const indexedFirst = await c.sealed.findMany(c.db, c.seal, { scope,
+      orderBy: [{ column: c.memo.rank, direction: 'asc' }, { column: c.memo.label, direction: 'asc' }],
+      columns: { id: true }, limit: 2 });
+    await c.sealed.findMany(c.db, c.seal, { scope,
+      orderBy: [{ column: c.memo.rank, direction: 'asc' }, { column: c.memo.label, direction: 'asc' }],
+      columns: { id: true }, limit: 2, cursor: indexedFirst.nextCursor! });
+    const indexedKeysetSql = c.logEntries.at(-1)!;
+    const indexedClient = await c.pool.connect();
+    try {
+      await indexedClient.query('begin');
+      await indexedClient.query('set local enable_seqscan=off');
+      await indexedClient.query('set local enable_bitmapscan=off');
+      const plan = (await indexedClient.query(`explain ${indexedKeysetSql.query}`, indexedKeysetSql.params))
+        .rows.map(row => row['QUERY PLAN']).join('\n');
+      assert.match(plan, /Index (?:Only )?Scan using memo_rank_label_id/, plan);
+      assert.doesNotMatch(plan, /Sort/, plan);
+    } finally { await indexedClient.query('rollback'); indexedClient.release(); }
     const substringProfile = profiles('memo', 'body', registrationOf(c.seal).definition.fields.body).find(profile => profile.mode === 'substring')!;
     const expectedSubstring = await searchTokens(c.cipher.ring('memo'), scope, substringProfile,
       searchPieces(substringProfile, first.memo_plain), { profiles: new Map() });
@@ -137,6 +196,52 @@ test('native CRUD, verified pages, OR semi-join and bounded count', async () => 
       (error: unknown) => error instanceof SealError && error.code === 'NOT_FOUND');
     await c.db.delete(c.memo).where(eq(c.memo.id, first.id));
     assert.equal((await c.pool.query(`select 1 from "${c.schemaName}".memo_seal_index where row_id=$1`, [first.id])).rowCount, 0);
+  } finally { await c.close(); }
+});
+
+test('large searchable fields and public open have no implicit size or row budget', async () => {
+  const c = await setup('large_open', 501);
+  try {
+    const opened = await c.sealed.open(await c.db.select().from(c.memo));
+    assert.equal(opened.length, 501);
+    assert.equal((await c.sealed.findMany(c.db, c.seal, { scope: c.rows[0].scope_id,
+      columns: { id: true }, limit: 501 })).items.length, 501);
+    const first = c.rows[0];
+    const longText = first.memo_plain.repeat(Math.ceil(70000 / first.memo_plain.length));
+    await c.sealed.update(c.db, c.seal, { id: first.id, scopeId: first.scope_id }, { body: longText });
+    const found = await c.sealed.findMany(c.db, c.seal, {
+      scope: first.scope_id, match: m => m.body.contains(longText.slice(0, 2050)), columns: { body: true },
+    });
+    assert.equal(found.items.length, 1);
+    assert.equal(found.items[0].body, longText);
+    assert.equal((await c.sealed.findMany(c.db, c.seal, {
+      scope: first.scope_id, match: m => m.body.like(`${longText.slice(0, 2)}${'%'.repeat(30)}`),
+      columns: { id: true },
+    })).items.length, 1);
+  } finally { await c.close(); }
+});
+
+test('insert splits above the PostgreSQL parameter limit within one transaction', async () => {
+  const c = await setup('bulk_params', 1);
+  try {
+    const sourceRows = (await c.pool.query(`select id,scope_id,memo_plain,address_plain,name_plain
+      from bench_realistic_100k.customers order by id limit 10000 offset 1`)).rows;
+    assert.equal(sourceRows.length, 10000);
+    const records = sourceRows.map(row => ({
+      id: row.id as string, scopeId: row.scope_id as string, rank: null, label: null,
+      body: row.memo_plain as string, address: row.address_plain as string, amount: null,
+    }));
+    const duplicate = { ...records[records.length - 1], id: c.rows[0].id };
+    await assert.rejects(c.sealed.insert(c.db, c.seal, [...records.slice(0, -1), duplicate]),
+      { code: 'CONSTRAINT_VIOLATION' });
+    const parentAfterFailure = await c.pool.query(`select count(*)::int as n from "${c.schemaName}".memo`);
+    const indexAfterFailure = await c.pool.query(`select count(*)::int as n from "${c.schemaName}".memo_seal_index`);
+    assert.equal(parentAfterFailure.rows[0].n, 1);
+    assert.equal(indexAfterFailure.rows[0].n, 1);
+    const inserted = await c.sealed.insert(c.db, c.seal, records);
+    assert.equal(inserted.length, 10000);
+    assert.equal((await c.pool.query(`select count(*)::int as n from "${c.schemaName}".memo`)).rows[0].n, 10001);
+    assert.equal((await c.pool.query(`select count(*)::int as n from "${c.schemaName}".memo_seal_index`)).rows[0].n, 10001);
   } finally { await c.close(); }
 });
 
@@ -210,15 +315,15 @@ test('multicolumn GIN preserves writes, cursor search and exact count', async ()
   } finally { await c.close(); }
 });
 
-test('reindex handles a fixture-derived batch above the public open row default', async () => {
-  const c = await setup('reindex', 501);
+test('reindex accepts a caller batch above the old maximum', async () => {
+  const c = await setup('reindex', 1001);
   try {
-    assert.deepEqual(await c.sealed.reindex(c.db, c.seal, { batch: 501 }), { rows: 501 });
+    assert.deepEqual(await c.sealed.reindex(c.db, c.seal, { batch: 1001 }), { rows: 1001 });
     const first = c.rows[0];
     c.logs.length = 0;
     await c.sealed.findMany(c.db, c.seal, { scope: first.scope_id,
       match: m => m.body.contains(Array.from(norm(first.memo_plain)).slice(0, 2).join('')),
-      limit: 200, budgets: { batch: 500 } });
+      limit: 200, budgets: { batch: 501 } });
     assert.ok(c.logs.some(query => query.includes('memo_seal_index') && !query.includes('with sample as materialized')),
       'candidate batches above 200 use the direct index path');
     assert.equal((await c.sealed.findMany(c.db, c.seal, { scope: first.scope_id,
@@ -226,13 +331,15 @@ test('reindex handles a fixture-derived batch above the public open row default'
   } finally { await c.close(); }
 });
 
-test('count spans internal pages and accepts an exact candidate ceiling', async () => {
+test('count uses one SQL candidate stream and accepts an exact candidate ceiling', async () => {
   const c = await setup('count_pages', 2001);
   try {
     const scope = c.rows[0].scope_id;
     assert.equal(c.rows.filter(row => row.scope_id === scope).length, 2001);
+    c.logs.length = 0;
     assert.equal(await c.sealed.count(c.db, c.seal, { scope, maxCandidates: 2001,
       budgets: { deadlineMs: 30000, fetchBytes: 32 * 1024 * 1024, resultBytes: 32 * 1024 * 1024 } }), 2001);
+    assert.equal(c.logs.length, 1);
     await assert.rejects(c.sealed.count(c.db, c.seal, { scope, maxCandidates: 2000,
       budgets: { deadlineMs: 30000, fetchBytes: 32 * 1024 * 1024, resultBytes: 32 * 1024 * 1024 } }),
     { code: 'LIMIT_EXCEEDED' });

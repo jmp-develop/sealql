@@ -7,10 +7,9 @@ export interface SealerSettings { key: Uint8Array; models?: Readonly<Record<stri
 export interface Keyring { keyScopeId: string; key: Uint8Array }
 export interface CipherContext { modelId: string; fieldId: string; keyScopeId: string; scopeId: string; rowId: string; spec: FieldSpec }
 const buffer = (bytes: Uint8Array): ArrayBuffer => Uint8Array.from(bytes).buffer as ArrayBuffer;
-function checkedBytes(value: string, maxBytes: number): Uint8Array {
+function checkedBytes(value: string): Uint8Array {
   ensure(typeof value === 'string' && !value.includes('\0'), 'INVALID_VALUE');
   const bytes = utf8(value);
-  ensure(bytes.length >= 1 && bytes.length <= maxBytes, 'INVALID_VALUE');
   return bytes;
 }
 function checkedRoot(value: Uint8Array): Uint8Array {
@@ -24,10 +23,10 @@ interface FieldContext {
   aadPrefix: Uint8Array; keyIds: (string | undefined)[];
 }
 const header = new Uint8Array([3]);
-function envelopeShapeInternal(value: unknown, maxBytes: number): asserts value is Ciphertext {
+function envelopeShapeInternal(value: unknown, maxBytes = Infinity): asserts value is Ciphertext {
   ensure(value instanceof Uint8Array && value.length >= 29 && value.length <= maxBytes + 29 && value[0] === 3, 'INVALID_CIPHERTEXT');
 }
-export function envelopeShape(value: unknown, maxBytes = 1048576): asserts value is Ciphertext { envelopeShapeInternal(value, maxBytes); }
+export function envelopeShape(value: unknown, maxBytes = Infinity): asserts value is Ciphertext { envelopeShapeInternal(value, maxBytes); }
 
 export class Sealer {
   private readonly rings = new Map<string, Keyring>();
@@ -37,7 +36,7 @@ export class Sealer {
     ensure(settings && typeof settings === 'object', 'INVALID_VALUE');
     this.rings.set('global', { keyScopeId: 'global', key: checkedRoot(settings.key) });
     for (const [modelId, model] of Object.entries(settings.models ?? {})) {
-      checkedBytes(modelId, 128);
+      checkedBytes(modelId);
       ensure(model && typeof model === 'object', 'INVALID_VALUE');
       this.rings.set(`model:${modelId}`, { keyScopeId: `model:${modelId}`, key: checkedRoot(model.key) });
     }
@@ -53,7 +52,7 @@ export class Sealer {
     const precision = spec.type === 'decimal' ? spec.precision : undefined;
     const scale = spec.type === 'decimal' ? spec.scale : undefined;
     if (cached && cached.spec === spec && cached.type === spec.type && cached.precision === precision && cached.scale === scale) return cached;
-    checkedBytes(c.modelId, 128); checkedBytes(c.fieldId, 128); checkedBytes(c.keyScopeId, 128);
+    checkedBytes(c.modelId); checkedBytes(c.fieldId); checkedBytes(c.keyScopeId);
     const codec = codecId(spec), codecVersionCode = codecVersion(spec), parameters = codecParameters(spec);
     const staticAad = frame(['sealql/aad/v3', header, c.modelId, c.fieldId, codec, u32(codecVersionCode), parameters, c.keyScopeId]);
     const prepared: FieldContext = { spec, type: spec.type, ...(precision === undefined ? {} : { precision }),
@@ -97,7 +96,7 @@ export class Sealer {
   async seal(value: unknown, context: CipherContext, ring: Keyring): Promise<Ciphertext> {
     ensure(ring.keyScopeId === context.keyScopeId, 'KEY_SCOPE_MISMATCH');
     const prepared = this.fieldContext(context);
-    const scopeBytes = checkedBytes(context.scopeId, 1024), rowBytes = checkedBytes(context.rowId, 1024);
+    const scopeBytes = checkedBytes(context.scopeId), rowBytes = checkedBytes(context.rowId);
     const plain = encodeField(context.spec, value);
     const nonce = crypto.getRandomValues(new Uint8Array(12));
     const body = new Uint8Array(await crypto.subtle.encrypt({ name: 'AES-GCM', iv: nonce,
@@ -106,10 +105,10 @@ export class Sealer {
     return concat(header, nonce, body) as Ciphertext;
   }
   async open(envelope: Uint8Array, context: CipherContext, ring: Keyring): Promise<unknown> {
-    envelopeShapeInternal(envelope, context.spec.maxBytes ?? 65536);
+    envelopeShapeInternal(envelope, context.spec.maxBytes);
     ensure(ring.keyScopeId === context.keyScopeId, 'KEY_SCOPE_MISMATCH');
     const prepared = this.fieldContext(context);
-    const scopeBytes = checkedBytes(context.scopeId, 1024), rowBytes = checkedBytes(context.rowId, 1024);
+    const scopeBytes = checkedBytes(context.scopeId), rowBytes = checkedBytes(context.rowId);
     let plain: Uint8Array;
     try {
       const bytes = typeof SharedArrayBuffer !== 'undefined' && envelope.buffer instanceof SharedArrayBuffer ? Uint8Array.from(envelope) : envelope;

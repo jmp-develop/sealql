@@ -2,13 +2,33 @@ import assert from 'node:assert/strict';
 import { test } from 'node:test';
 import { createSealer, exactBitsForPopulation, normalizeText, normalizeWords, profiles, searchPieces, searchTokens } from '../src/index.js';
 import { frame, hex, u32, utf8 } from '../src/core/bytes.js';
-import { codecId, codecParameters, codecVersion } from '../src/core/field-codec.js';
+import { codecId, codecParameters, codecVersion, decodeField, encodeField } from '../src/core/field-codec.js';
 import { openCursor, sealCursor } from '../src/core/search-cursor.js';
+import { validateSearch, type SearchNode } from '../src/core/search-predicate.js';
 import type { SearchTokenCache } from '../src/core/search-tokens.js';
 
 const root = Uint8Array.from({ length: 32 }, (_, i) => i + 1);
 const spec = { type: 'text', search: { exact: { bits: 32 }, substring: { wordBoundary: true, skipGrams: true } } } as const;
 const context = (rowId: string, fieldId = 'body') => ({ modelId: 'note', fieldId, keyScopeId: 'global', scopeId: 'tenant', rowId, spec });
+
+test('large JSON and deep nesting have no library size or depth cap', () => {
+  const many = Array.from({ length: 10001 }, (_, index) => index);
+  assert.deepEqual(decodeField({ type: 'json' }, encodeField({ type: 'json' }, many)), many);
+  let deep: any = null;
+  for (let i = 0; i < 1000; i++) deep = [deep];
+  const encoded = encodeField({ type: 'json' }, deep);
+  let decoded: any = decodeField({ type: 'json' }, encoded);
+  for (let i = 0; i < 1000; i++) decoded = decoded[0];
+  assert.equal(decoded, null);
+});
+
+test('search expression accepts more than eight leaves and nested groups', () => {
+  const leaf: SearchNode = { op: 'eq', field: 'body', value: 'sample' };
+  const many: SearchNode = { op: 'all', children: Array.from({ length: 20 }, () => leaf) };
+  let deep: SearchNode = many;
+  for (let i = 0; i < 20; i++) deep = { op: 'any', children: [deep] };
+  validateSearch(deep, { fields: { body: { type: 'text', search: { exact: true } } } } as any);
+});
 
 test('normalization folds NFC, full-width ASCII, and ASCII case', () => {
   assert.equal(normalizeText('한ＡＢ１２', 'legacy-text-v1'), '한ab12');

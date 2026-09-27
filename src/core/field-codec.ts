@@ -20,7 +20,7 @@ export type FieldSpec =
 export type PlainOf<F extends FieldSpec> = F['type'] extends 'integer' ? number : F['type'] extends 'bigint' ? bigint : F['type'] extends 'boolean' ? boolean : F['type'] extends 'instant' ? Date : F['type'] extends 'json' ? JsonValue : F['type'] extends 'bytes' ? Uint8Array : string;
 const ascii = (s: string) => utf8(s);
 const decimal = (value: unknown, precision: number, scale: number): string => {
-  ensure(Number.isInteger(precision) && precision >= 1 && precision <= 1000 && Number.isInteger(scale) && scale >= 0 && scale <= precision, 'INVALID_SCHEMA');
+  ensure(Number.isSafeInteger(precision) && precision >= 1 && Number.isSafeInteger(scale) && scale >= 0 && scale <= precision, 'INVALID_SCHEMA');
   ensure(typeof value === 'string' && /^[+-]?[0-9]+(?:\.[0-9]+)?$/.test(value), 'INVALID_VALUE');
   const sign = value[0] === '-' ? '-' : '';
   const raw = value.replace(/^[+-]/, '').split('.');
@@ -31,24 +31,63 @@ const decimal = (value: unknown, precision: number, scale: number): string => {
   const zero = whole === '0' && !/[1-9]/.test(fraction);
   return `${zero ? '' : sign}${whole}${scale ? `.${fraction}` : ''}`;
 };
-function jsonGuard(value: unknown, seen = new Set<object>(), depth = 0, count = { n: 0 }): asserts value is JsonValue {
-  ensure(depth <= 64 && ++count.n <= 10000, 'LIMIT_EXCEEDED');
-  if (value === null || typeof value === 'string' || typeof value === 'boolean') { if (typeof value === 'string') utf8(value); return; }
-  if (typeof value === 'number') { ensure(Number.isFinite(value), 'INVALID_VALUE'); return; }
-  ensure(typeof value === 'object' && !seen.has(value), 'INVALID_VALUE');
-  seen.add(value);
-  try {
-    if (Array.isArray(value)) { for (const item of value) jsonGuard(item, seen, depth + 1, count); return; }
-    ensure(Object.getPrototypeOf(value) === Object.prototype || Object.getPrototypeOf(value) === null, 'INVALID_VALUE');
-    ensure(Object.getOwnPropertySymbols(value).length === 0, 'INVALID_VALUE');
-    for (const key of Object.keys(value)) { utf8(key); jsonGuard((value as Record<string, unknown>)[key], seen, depth + 1, count); }
-  } finally { seen.delete(value); }
+function jsonGuard(value: unknown): asserts value is JsonValue {
+  const active = new Set<object>();
+  const stack: { value: unknown; exit?: boolean }[] = [{ value }];
+  while (stack.length) {
+    const next = stack.pop()!;
+    const part = next.value;
+    if (next.exit) { active.delete(part as object); continue; }
+    if (part === null || typeof part === 'boolean') continue;
+    if (typeof part === 'string') { utf8(part); continue; }
+    if (typeof part === 'number') { ensure(Number.isFinite(part), 'INVALID_VALUE'); continue; }
+    ensure(typeof part === 'object' && !active.has(part), 'INVALID_VALUE');
+    active.add(part);
+    stack.push({ value: part, exit: true });
+    if (Array.isArray(part)) {
+      for (let i = part.length - 1; i >= 0; i--) stack.push({ value: part[i] });
+    } else {
+      ensure(Object.getPrototypeOf(part) === Object.prototype || Object.getPrototypeOf(part) === null, 'INVALID_VALUE');
+      ensure(Object.getOwnPropertySymbols(part).length === 0, 'INVALID_VALUE');
+      for (const key of Object.keys(part).reverse()) { utf8(key); stack.push({ value: (part as Record<string, unknown>)[key] }); }
+    }
+  }
+}
+function stringifyJson(value: JsonValue): string {
+  const output: string[] = [];
+  const stack: ({ value: JsonValue } | { text: string })[] = [{ value }];
+  while (stack.length) {
+    const part = stack.pop()!;
+    if ('text' in part) { output.push(part.text); continue; }
+    const item = part.value;
+    if (item === null || typeof item !== 'object') { output.push(JSON.stringify(item)); continue; }
+    if (Array.isArray(item)) {
+      output.push('[');
+      stack.push({ text: ']' });
+      for (let i = item.length - 1; i >= 0; i--) {
+        stack.push({ value: item[i] });
+        if (i > 0) stack.push({ text: ',' });
+      }
+    } else {
+      output.push('{');
+      stack.push({ text: '}' });
+      const entries = Object.entries(item);
+      for (let i = entries.length - 1; i >= 0; i--) {
+        const [key, child] = entries[i];
+        stack.push({ value: child });
+        stack.push({ text: ':' });
+        stack.push({ text: JSON.stringify(key) });
+        if (i > 0) stack.push({ text: ',' });
+      }
+    }
+  }
+  return output.join('');
 }
 export function validateField(spec: FieldSpec): void {
   ensure(spec && typeof spec === 'object', 'INVALID_SCHEMA');
   ensure(['text', 'integer', 'bigint', 'decimal', 'boolean', 'instant', 'json', 'bytes'].includes(spec.type), 'INVALID_SCHEMA');
-  if (spec.id !== undefined) ensure(typeof spec.id === 'string' && utf8(spec.id).length > 0 && utf8(spec.id).length <= 128 && !spec.id.includes('/'), 'INVALID_SCHEMA');
-  if (spec.maxBytes !== undefined) ensure(Number.isInteger(spec.maxBytes) && spec.maxBytes > 0 && spec.maxBytes <= 1048576, 'INVALID_SCHEMA');
+  if (spec.id !== undefined) ensure(typeof spec.id === 'string' && utf8(spec.id).length > 0 && !spec.id.includes('/'), 'INVALID_SCHEMA');
+  if (spec.maxBytes !== undefined) ensure(Number.isSafeInteger(spec.maxBytes) && spec.maxBytes > 0, 'INVALID_SCHEMA');
   if (spec.type === 'decimal') decimal('0', spec.precision, spec.scale);
   if (spec.validate) ensure(typeof spec.validate.id === 'string' && spec.validate.id.length > 0 && Number.isInteger(spec.validate.version) && spec.validate.version > 0 && typeof spec.validate.check === 'function', 'INVALID_SCHEMA');
   const search = spec.search;
@@ -73,24 +112,24 @@ export function encodeField(spec: FieldSpec, value: unknown, writing = true): Ui
   switch (spec.type) {
     case 'text': ensure(typeof value === 'string', 'INVALID_VALUE'); bytes = utf8(value); break;
     case 'integer': ensure(typeof value === 'number' && Number.isSafeInteger(value), 'INVALID_VALUE'); bytes = ascii(Object.is(value, -0) ? '0' : String(value)); break;
-    case 'bigint': ensure(typeof value === 'bigint' && value.toString().replace('-', '').length <= 4096, 'INVALID_VALUE'); bytes = ascii(value.toString()); break;
+    case 'bigint': ensure(typeof value === 'bigint', 'INVALID_VALUE'); bytes = ascii(value.toString()); break;
     case 'decimal': bytes = ascii(decimal(value, spec.precision, spec.scale)); break;
     case 'boolean': ensure(typeof value === 'boolean', 'INVALID_VALUE'); bytes = new Uint8Array([value ? 1 : 0]); break;
     case 'instant': ensure(value instanceof Date && Number.isFinite(value.getTime()), 'INVALID_VALUE'); bytes = ascii(String(value.getTime())); break;
-    case 'json': jsonGuard(value); bytes = utf8(JSON.stringify(value)); break;
+    case 'json': jsonGuard(value); bytes = utf8(stringifyJson(value)); break;
     case 'bytes': ensure(value instanceof Uint8Array, 'INVALID_VALUE'); bytes = value.slice(); break;
   }
-  ensure(bytes.length <= (spec.maxBytes ?? 65536) && bytes.length <= 1048576, 'LIMIT_EXCEEDED');
+  ensure(bytes.length <= (spec.maxBytes ?? Infinity), 'LIMIT_EXCEEDED');
   if (writing && spec.validate) { try { ensure(spec.validate.check(value as never) === true, 'VALIDATION_FAILED'); } catch { fail('VALIDATION_FAILED'); } }
   return bytes;
 }
 export function decodeField(spec: FieldSpec, bytes: Uint8Array): unknown {
-  ensure(bytes instanceof Uint8Array && bytes.length <= (spec.maxBytes ?? 65536), 'INVALID_CIPHERTEXT');
+  ensure(bytes instanceof Uint8Array && bytes.length <= (spec.maxBytes ?? Infinity), 'INVALID_CIPHERTEXT');
   let value: unknown;
   switch (spec.type) {
     case 'text': value = decode(bytes); break;
     case 'integer': { const s = decode(bytes); ensure(/^(?:0|-?[1-9][0-9]*)$/.test(s), 'INVALID_CIPHERTEXT'); value = Number(s); break; }
-    case 'bigint': { const s = decode(bytes); ensure(/^(?:0|-?[1-9][0-9]*)$/.test(s) && s.replace('-', '').length <= 4096, 'INVALID_CIPHERTEXT'); value = BigInt(s); break; }
+    case 'bigint': { const s = decode(bytes); ensure(/^(?:0|-?[1-9][0-9]*)$/.test(s), 'INVALID_CIPHERTEXT'); value = BigInt(s); break; }
     case 'decimal': value = decode(bytes); break;
     case 'boolean': ensure(bytes.length === 1 && (bytes[0] === 0 || bytes[0] === 1), 'INVALID_CIPHERTEXT'); value = bytes[0] === 1; break;
     case 'instant': { const s = decode(bytes); ensure(/^(?:0|-?[1-9][0-9]*)$/.test(s), 'INVALID_CIPHERTEXT'); value = new Date(Number(s)); break; }

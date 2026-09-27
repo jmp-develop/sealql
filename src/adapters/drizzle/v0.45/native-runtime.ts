@@ -112,11 +112,26 @@ function indexValues(reg: Registration, row: Prepared): Record<string, unknown> 
   const columns = getTableColumns(reg.index) as Record<string, PgColumn>;
   return Object.fromEntries(Object.entries(row.index).filter(([key]) => !!columns[key]));
 }
+function parameterChunks<T>(rows: readonly T[], width: (row: T) => number): T[][] {
+  const chunks: T[][] = [];
+  let chunk: T[] = [], used = 0;
+  for (const row of rows) {
+    const count = width(row);
+    ensure(count <= 65535, 'INVALID_SCHEMA');
+    if (chunk.length && used + count > 60000) { chunks.push(chunk); chunk = []; used = 0; }
+    chunk.push(row); used += count;
+  }
+  if (chunk.length) chunks.push(chunk);
+  return chunks;
+}
 async function upsertIndexes(tx: any, reg: Registration, rows: readonly Prepared[], onlyChanged: boolean, changedKeys?: Set<string>) {
   const cols = getTableColumns(reg.index) as Record<string, PgColumn>;
   const values = rows.map(row => indexValues(reg, row));
   if (!values.length) return;
-  if (!onlyChanged) { await tx.insert(reg.index).values(values); return; }
+  if (!onlyChanged) {
+    for (const chunk of parameterChunks(values, row => Object.keys(row).length)) await tx.insert(reg.index).values(chunk);
+    return;
+  }
   for (const value of values) {
     const changed = Object.fromEntries(Object.entries(value).filter(([key]) => key !== 'scopeId' && key !== 'rowId' && (!changedKeys || changedKeys.has(key))));
     if (!Object.keys(changed).length) continue;
@@ -127,8 +142,8 @@ async function upsertIndexes(tx: any, reg: Registration, rows: readonly Prepared
 export function runtimeMethods(sealerOf: () => Sealer) {
   const cache: SearchTokenCache = { profiles: new Map() };
   async function openWithCache<R>(rows: R, options: OpenOptions = {}, authCache?: AuthCache): Promise<Opened<R>> {
-    const budget = { maxRows: 500, maxBytes: 4 * 1024 * 1024, deadlineMs: 2000, concurrency: 64, ...options.budgets };
-    for (const value of Object.values(budget)) ensure(Number.isSafeInteger(value) && value > 0, 'INVALID_VALUE');
+    const budget = { maxRows: Infinity, maxBytes: Infinity, deadlineMs: Infinity, concurrency: 64, ...options.budgets };
+    for (const value of Object.values(options.budgets ?? {})) ensure(Number.isSafeInteger(value) && value > 0, 'INVALID_VALUE');
     const deadline = Date.now() + budget.deadlineMs;
     let count = 0, bytes = 0;
     const jobs: { target: Record<string, unknown>; key: string; value: Sealed<unknown, unknown>; rowId: string; scopeId: string }[] = [];
@@ -183,17 +198,19 @@ export function runtimeMethods(sealerOf: () => Sealer) {
     db: Db, seal: SealMeta<T, R, S> & object, rows: InsertRow<T, R> | InsertRow<T, R>[], options?: O,
   ): Promise<Result<T, R, S, O>> {
     const reg = registrationOf(seal), arr = Array.isArray(rows) ? rows : [rows];
-    ensure(arr.length > 0, 'INVALID_VALUE'); ensure(arr.length <= 1000, 'LIMIT_EXCEEDED');
+    ensure(arr.length > 0, 'INVALID_VALUE');
     const sealer = sealerOf();
     const prepared: Prepared[] = [];
     try {
       for (const row of arr) { const input = checkedValues(reg, asRecord(row), 'insert'); prepared.push(await prepare(reg, input, sealer, cache, true, true)); }
       const inserted = await writeTransaction(db, async (tx: any) => {
-        const result = await tx.insert(reg.parent).values(prepared.map(row => row.parent)).returning();
+        const result: Record<string, unknown>[] = [];
+        for (const chunk of parameterChunks(prepared, row => Object.keys(row.parent).length))
+          result.push(...await tx.insert(reg.parent).values(chunk.map(row => row.parent)).returning());
         await upsertIndexes(tx, reg, prepared, false);
         return result;
       });
-      return (options?.returning ? await open(inserted, { budgets: { maxRows: inserted.length, maxBytes: 32 * 1024 * 1024, deadlineMs: 30000 } }) : prepared.map(row => row.identity)) as Result<T, R, S, O>;
+      return (options?.returning ? await open(inserted) : prepared.map(row => row.identity)) as Result<T, R, S, O>;
     } catch (error) { if (error instanceof SealError) throw error; throw databaseError(error); }
     finally { release(prepared); }
   }
@@ -265,8 +282,9 @@ export function runtimeMethods(sealerOf: () => Sealer) {
   async function reindex<T extends PgTable, R extends string, S extends string | undefined = undefined>(
     db: Db, seal: SealMeta<T, R, S> & object, options: { scope?: string; batch?: number } = {},
   ): Promise<{ rows: number }> {
-    const reg = registrationOf(seal), batch = options.batch ?? 500;
-    ensure(Number.isSafeInteger(batch) && batch >= 1 && batch <= 1000, 'INVALID_VALUE');
+    const reg = registrationOf(seal);
+    if (options.batch !== undefined) ensure(Number.isSafeInteger(options.batch) && options.batch >= 1, 'INVALID_VALUE');
+    let batch = options.batch ?? 256;
     ensure(!options.scope || !!reg.scope, 'INVALID_VALUE');
     const scopeId = options.scope === undefined ? undefined : identity(options.scope, reg.definition.scopeType);
     const parent = getTableColumns(reg.parent) as Record<string, PgColumn>;
@@ -288,7 +306,7 @@ export function runtimeMethods(sealerOf: () => Sealer) {
         const rows = await tx.select().from(reg.parent).where(and(
           scopeId !== undefined ? eq(parent[reg.scope!], scopeId) : undefined, after,
         )).orderBy(...(scopeOrder && scopeId === undefined ? [scopeOrder] : []), rowOrder).limit(batch).for('update');
-        const opened = await open(rows, { budgets: { maxRows: batch, maxBytes: 32 * 1024 * 1024, deadlineMs: 30000 } }) as Record<string, unknown>[];
+        const opened = await open(rows) as Record<string, unknown>[];
         for (const row of opened) {
           const rowId = identity(row[reg.row] as string, reg.definition.rowType);
           const rowScope = reg.scope ? identity(row[reg.scope] as string, reg.definition.scopeType) : '_';
@@ -316,6 +334,7 @@ export function runtimeMethods(sealerOf: () => Sealer) {
       count += page.length;
       lastRow = page.at(-1)!.row; lastScope = page.at(-1)!.scope;
       if (page.length < batch) break;
+      if (options.batch === undefined) batch = Math.min(Number.MAX_SAFE_INTEGER, batch * 2);
     }
     return { rows: count };
   }

@@ -10,22 +10,21 @@ export type SearchNode = { op: SearchOperator; field: string; value: unknown; re
 const compactSubstring = (value: string, normalizer: string) => normalizeText(value, normalizer).replace(/[\u0009-\u000d\u0020\u0085\u00a0\u1680\u2000-\u200a\u2028\u2029\u202f\u205f\u3000]/g, '');
 function normalizeLeaf(node: Extract<SearchNode, { field: string }>, spec: FieldSpec, profile: SearchProfile): string | Uint8Array {
   if (spec.type !== 'text') { ensure(node.op === 'eq', 'UNSUPPORTED_SEARCH'); return encodeField(spec, node.value, false); }
-  ensure(typeof node.value === 'string' && Array.from(node.value).length <= 256, 'INVALID_VALUE');
+  ensure(typeof node.value === 'string', 'INVALID_VALUE');
   if (node.op === 'like') return node.value;
   const value = profile.mode === 'substring' ? compactSubstring(node.value, profile.normalizer) : normalizeText(node.value, profile.normalizer);
   if (node.op !== 'eq') ensure(Array.from(value).length >= 2, 'QUERY_TOO_BROAD');
   return value;
 }
 export function validateSearch(node: SearchNode, definition: SealedModelDefinition): void {
-  let leaves = 0;
-  const visit = (current: SearchNode, depth: number) => {
-    ensure(depth <= 8 && current && typeof current === 'object', 'INVALID_VALUE');
-    if (current.op === 'all' || current.op === 'any') { ensure(Array.isArray(current.children) && current.children.length > 0, 'INVALID_VALUE'); current.children.forEach(child => visit(child, depth + 1)); return; }
-    ensure(++leaves <= 8 && ['eq', 'contains', 'startsWith', 'endsWith', 'like'].includes(current.op), 'INVALID_VALUE');
+  const visit = (current: SearchNode) => {
+    ensure(current && typeof current === 'object', 'INVALID_VALUE');
+    if (current.op === 'all' || current.op === 'any') { ensure(Array.isArray(current.children) && current.children.length > 0, 'INVALID_VALUE'); current.children.forEach(visit); return; }
+    ensure(['eq', 'contains', 'startsWith', 'endsWith', 'like'].includes(current.op), 'INVALID_VALUE');
     const spec = definition.fields[current.field]; ensure(spec?.search, 'UNSUPPORTED_SEARCH');
     ensure(current.op === 'eq' ? 'exact' in spec.search : 'substring' in spec.search, 'UNSUPPORTED_SEARCH');
   };
-  visit(node, 1);
+  visit(node);
 }
 export interface CompiledLeaf { node: Extract<SearchNode, { field: string }>; profile: SearchProfile; tokens: string[]; normalized: string | Uint8Array }
 export type CompiledSearch = { op: 'all'; children: CompiledSearch[] } | { op: 'any'; children: CompiledSearch[] } | { op: 'leaf'; leaf: CompiledLeaf };
@@ -68,7 +67,7 @@ function likeMatch(value: string, pattern: string, normalizer: string): boolean 
     else run += c;
   }
   flush();
-  const chars = Array.from(value); ensure(chars.length * tokens.length <= 2000000, 'LIMIT_EXCEEDED');
+  const chars = Array.from(value);
   let prev = new Uint8Array(tokens.length + 1); prev[0] = 1;
   for (let j = 1; j <= tokens.length; j++) prev[j] = tokens[j - 1].type === '%' ? prev[j - 1] : 0;
   for (const char of chars) { const next = new Uint8Array(tokens.length + 1); for (let j = 1; j <= tokens.length; j++) { const token = tokens[j - 1]; next[j] = token.type === '%' ? (prev[j] || next[j - 1]) : token.type === '_' || (token.type === 'literal' && token.value === char) ? prev[j - 1] : 0; } prev = next; }
