@@ -297,7 +297,8 @@ test('text row IDs follow the database collation and keep index-backed keysets',
   try {
     await assertDisposable(pool);
     assert.equal(Number((await pool.query('show port')).rows[0].port), 56439);
-    const fixture = (await pool.query('select id,scope_id,name_plain from bench_realistic_100k.customers order by id limit 2')).rows;
+    const fixture = (await pool.query('select id,scope_id,name_plain from bench_realistic_100k.customers order by id limit 200')).rows;
+    assert.equal(fixture.length, 200);
     const schemaName = 'test_native_text';
     assert.equal((await pool.query('select 1 from pg_namespace where nspname=$1', [schemaName])).rowCount, 0);
     await pool.query(`create schema "${schemaName}"`); created = true;
@@ -313,11 +314,14 @@ test('text row IDs follow the database collation and keep index-backed keysets',
     await pool.query(`create table "${schemaName}".rows_seal_index (scope_id uuid not null,row_id text collate "und-x-icu" not null,
       "${exact}" bigint[],unique(scope_id,row_id),foreign key(row_id) references "${schemaName}".rows(id) on delete cascade)`);
     const db = drizzle(pool);
-    const ids = [`Z${fixture[0].id}`, `a${fixture[1].id}`, `가${fixture[0].id}`, `!${fixture[1].id}`];
+    const prefixes = ['Z', 'a', '가', '!'];
+    const ids = fixture.map((row, index) => `${prefixes[index % prefixes.length]}${row.id}`);
     await assert.rejects(sealed.insert(db, seal, { scopeId: fixture[0].scope_id, name: fixture[0].name_plain }), { code: 'INVALID_VALUE' });
     await sealed.insert(db, seal, ids.map((id, index) => ({
-      id, scopeId: fixture[0].scope_id, name: fixture[index % fixture.length].name_plain,
+      id, scopeId: fixture[0].scope_id, name: fixture[index].name_plain,
     })));
+    await pool.query(`analyze "${schemaName}".rows`);
+    await pool.query(`analyze "${schemaName}".rows_seal_index`);
     const planClient = await pool.connect();
     try {
       await planClient.query('begin');
@@ -335,22 +339,26 @@ test('text row IDs follow the database collation and keep index-backed keysets',
     } finally { await planClient.query('rollback'); planClient.release(); }
     const expected = (await pool.query(`select id from "${schemaName}".rows order by id`)).rows.map(row => row.id as string);
     const search = (cursor?: string) => sealed.search(db, { scope: fixture[0].scope_id,
-      match: { r: [seal, m => m.or(m.name.eq('absent'), m.sql(sql`true`))] }, limit: 1, cursor,
+      match: { r: [seal, m => m.or(m.name.eq('absent'), m.sql(sql`true`))] }, limit: 20, cursor,
       query: ({ where, after, orderBy, flags, limit }) => db.select({ r: rows, ...flags }).from(rows)
         .where(and(where, after)).orderBy(...orderBy).limit(limit),
     });
     const searchIds: string[] = [], findIds: string[] = [];
     let searchCursor: string | undefined, findCursor: string | undefined;
-    for (let index = 0; index < ids.length; index++) {
+    do {
       const searched = await search(searchCursor);
-      const found = await sealed.findMany(db, seal, { scope: fixture[0].scope_id, limit: 1, cursor: findCursor });
-      searchIds.push(searched.items[0].r.id); findIds.push(found.items[0].id);
-      searchCursor = searched.nextCursor ?? undefined; findCursor = found.nextCursor ?? undefined;
-    }
+      searchIds.push(...searched.items.map(item => item.r.id));
+      searchCursor = searched.nextCursor ?? undefined;
+    } while (searchCursor);
+    do {
+      const found = await sealed.findMany(db, seal, { scope: fixture[0].scope_id, limit: 20, cursor: findCursor });
+      findIds.push(...found.items.map(item => item.id));
+      findCursor = found.nextCursor ?? undefined;
+    } while (findCursor);
     assert.deepEqual(searchIds, expected);
     assert.deepEqual(findIds, expected);
     assert.equal(await sealed.count(db, seal, { scope: fixture[0].scope_id }), ids.length);
-    assert.deepEqual(await sealed.reindex(db, seal, { scope: fixture[0].scope_id, batch: 1 }), { rows: ids.length });
+    assert.deepEqual(await sealed.reindex(db, seal, { scope: fixture[0].scope_id, batch: 50 }), { rows: ids.length });
     assert.deepEqual((await sealed.findMany(db, seal, { scope: fixture[0].scope_id, limit: ids.length })).items.map(row => row.id), expected);
   } finally {
     if (created) await pool.query('drop schema test_native_text cascade');
