@@ -14,16 +14,20 @@
     "docs/threat-model.md"
   ],
   "engines": {
-    "node": ">=22"
+    "node": ">=22.12"
   },
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
-      "import": "./dist/index.js"
+      "import": "./dist/index.js",
+      "require": "./dist/index.js",
+      "default": "./dist/index.js"
     },
     "./drizzle/v0.45": {
       "types": "./dist/adapters/drizzle/v0.45/index.d.ts",
-      "import": "./dist/adapters/drizzle/v0.45/index.js"
+      "import": "./dist/adapters/drizzle/v0.45/index.js",
+      "require": "./dist/adapters/drizzle/v0.45/index.js",
+      "default": "./dist/adapters/drizzle/v0.45/index.js"
     }
   },
   "scripts": {

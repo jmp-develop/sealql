@@ -1,4 +1,4 @@
-import { copyFile, mkdir, readFile, writeFile } from 'node:fs/promises';
+import { copyFile, mkdir, readFile, readdir, writeFile } from 'node:fs/promises';
 import { execFileSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
 import path from 'node:path';
@@ -13,11 +13,16 @@ await copyFile(path.join(root,'examples','standard-consumer.ts'),path.join(consu
 for(const name of ['standard-raw.ts','standard-operations.ts','key-loader.ts'])await copyFile(path.join(root,'examples',name),path.join(consumer,name));
 const pkg=JSON.parse(await readFile(path.join(root,'package.json'),'utf8'));
 npm(['pack','--pack-destination','.local','--quiet']);
-npm(['install','--prefix',consumer,'--ignore-scripts','--no-audit','--no-fund',path.join(root,'.local',`${pkg.name}-${pkg.version}.tgz`),'drizzle-orm@0.45.3','pg@8.23.0']);
+npm(['install','--prefix',consumer,'--ignore-scripts','--no-audit','--no-fund',path.join(root,'.local',`${pkg.name}-${pkg.version}.tgz`),'drizzle-orm@0.45.3','drizzle-kit@0.31.11','pg@8.23.0']);
 execFileSync(process.execPath,[path.join(root,'node_modules','typescript','bin','tsc'),'--target','ES2022','--module','NodeNext','--moduleResolution','NodeNext','--strict','--skipLibCheck','--noEmit',path.join(consumer,'standard-consumer.ts')],{cwd:root,stdio:'inherit'});
 execFileSync(process.execPath,[path.join(root,'node_modules','typescript','bin','tsc'),'--target','ES2022','--module','NodeNext','--moduleResolution','NodeNext','--strict','--skipLibCheck','--noEmit',path.join(consumer,'standard-raw.ts'),path.join(consumer,'standard-operations.ts'),path.join(consumer,'key-loader.ts')],{cwd:root,stdio:'inherit'});
 await writeFile(path.join(consumer,'smoke.mjs'), "import * as core from 'sealql'; import * as drizzle from 'sealql/drizzle/v0.45'; if (!core.createSealer || !drizzle.createSealed) throw new Error('Missing package export');\n");
 execFileSync(process.execPath,[path.join(consumer,'smoke.mjs')],{cwd:consumer,stdio:'inherit'});
+await writeFile(path.join(consumer,'kit-schema.ts'), "import { pgTable, uuid } from 'drizzle-orm/pg-core';\nimport { createSealer } from 'sealql';\nimport { createSealed } from 'sealql/drizzle/v0.45';\nconst sealed = createSealed({ sealer: () => createSealer({ key: new Uint8Array(32) }) });\nexport const note = pgTable('kit_smoke_note', { id: uuid('id').primaryKey(), title: sealed.text('title', { search: { exact: true } }) });\nexport const noteSeal = sealed.register(note, { row: 'id' });\n");
+await writeFile(path.join(consumer,'kit.config.ts'), "import { defineConfig } from 'drizzle-kit';\nexport default defineConfig({ dialect: 'postgresql', schema: './kit-schema.ts', out: './kit-generated' });\n");
+execFileSync(process.execPath,[path.join(consumer,'node_modules','drizzle-kit','bin.cjs'),'generate','--config=kit.config.ts'],{cwd:consumer,stdio:'inherit'});
+const kitFiles=await readdir(path.join(consumer,'kit-generated'));
+if(!kitFiles.some((name)=>name.endsWith('.sql')))throw new Error('drizzle-kit did not generate SQL from package-name imports');
 console.log('Installed standard consumer compiles with drizzle-orm 0.45.3');
 npm(['install','--prefix',consumer,'--ignore-scripts','--no-audit','--no-fund','drizzle-orm@0.45.2']);
 execFileSync(process.execPath,[path.join(root,'node_modules','typescript','bin','tsc'),'--target','ES2022','--module','NodeNext','--moduleResolution','NodeNext','--strict','--skipLibCheck','--noEmit',path.join(consumer,'standard-consumer.ts')],{cwd:root,stdio:'inherit'});
