@@ -40,5 +40,5 @@
 
 - [012](012-drizzle-companion-and-column-options.md)의 "구현 전" 상태를 이 기록으로 구현 완료로 확정한다.
 - [008](008-drizzle-integration.md)의 채택 부분(현재 `sealql/drizzle/v0.45`의 companion 테이블 설계, 옛 `defineSealed`/`bindSealed`/`forScope`/`searchWithQuery` 대체)을 이 기록으로 구현 완료로 확정한다.
-- 대체하는 계획: 옛 `plan/001-drizzle-native-api.md`(§10 실행 가능성 점검 포함) 전체. 계획 문서는 이 기록 발행 후 삭제됐다.
+- 대체하는 계획: 옛 Drizzle 네이티브 API 계획 001(§10 실행 가능성 점검 포함) 전체. 계획 문서는 이 기록 발행 후 삭제됐다.
 - 관련: [003](003-field-cipher-key-cache-aad.md), [006](006-query-engine.md), [007](007-multicolumn-gin-not-combined-array.md), [009](009-scope-and-non-goals.md), [010](010-security-claim-limits.md).
