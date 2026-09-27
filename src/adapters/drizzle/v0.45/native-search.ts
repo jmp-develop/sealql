@@ -361,12 +361,50 @@ export function searchMethods(sealerOf: () => import('../../../core/field-cipher
     }
     const items: Opened<R>[] = [];
     const authCache: AuthCache = new Map();
+    const openCondition = async (raw: Record<string, unknown>) => {
+      const view: Record<string, unknown> = {};
+      for (const [name, value] of Object.entries(raw)) if (!value || typeof value !== 'object' || value instanceof Date || value instanceof Uint8Array || name.startsWith('__seal_')) view[name] = value;
+      for (const key of keys) {
+        const reg = regs[key], mapping = options.columns?.[key];
+        if (mapping) {
+          for (const field of [reg.row, ...(reg.scope ? [reg.scope] : []), ...encryptedKeys(asts[key])])
+            if (mapping[field]) view[mapping[field]] = raw[mapping[field]];
+        } else {
+          const nested = raw[key] as Record<string, unknown>;
+          ensure(nested && typeof nested === 'object', 'INVALID_CANDIDATE_SHAPE');
+          view[key] = Object.fromEntries([reg.row, ...(reg.scope ? [reg.scope] : []), ...encryptedKeys(asts[key])]
+            .map(field => [field, nested[field]]));
+        }
+      }
+      let opened = await open(view, { scope: scopeId }, authCache) as Record<string, unknown>;
+      for (const key of keys) if (options.columns?.[key]) {
+        const reg = regs[key], mapping = options.columns[key];
+        const columns = Object.fromEntries([reg.row, ...(reg.scope ? [reg.scope] : []), ...encryptedKeys(asts[key])]
+          .filter(field => mapping[field]).map(field => [field, mapping[field]]));
+        opened = (await openRaw(options.match[key][0], [opened], { columns, scope: scopeId }, authCache))[0];
+      }
+      return opened;
+    };
+    const openProjection = async (raw: Record<string, unknown>) => {
+      let opened = await open(raw, { scope: scopeId }, authCache) as Record<string, unknown>;
+      for (const key of keys) if (options.columns?.[key]) opened = (await openRaw(options.match[key][0], [opened],
+        { columns: options.columns[key], scope: scopeId }, authCache))[0];
+      return opened;
+    };
     let scanned = 0, fetchedBytes = 0, decryptedBytes = 0, resultBytes = 0;
     let batch = Math.min(budgets.batch, Math.max(limit + Math.ceil(limit / 4) + 2, 16));
     let accepted = 0, exhausted = false, limited = false;
     const compare = (left: unknown, right: unknown, type: string) => type === 'integer' || type === 'bigint'
       ? BigInt(left as string) < BigInt(right as string) ? -1 : BigInt(left as string) > BigInt(right as string) ? 1 : 0
       : compareText(String(left), String(right));
+    const measured = (value: unknown): { fetched: number; decrypted: number } => {
+      if (value instanceof Sealed) return { fetched: value.bytes.length, decrypted: value.bytes.length - 29 };
+      if (value instanceof Uint8Array) return { fetched: value.length, decrypted: 0 };
+      if (typeof value === 'string') return { fetched: utf8(value).length, decrypted: 0 };
+      if (value && typeof value === 'object' && !(value instanceof Date))
+        return Object.values(value).reduce((sum, part) => { const next = measured(part); return { fetched: sum.fetched + next.fetched, decrypted: sum.decrypted + next.decrypted }; }, { fetched: 0, decrypted: 0 });
+      return { fetched: 16, decrypted: 0 };
+    };
     while (items.length < limit) {
       if (options.signal?.aborted) fail('CANCELLED');
       if (Date.now() >= deadline || scanned >= budgets.maxCandidates) { if (!scanned) fail('LIMIT_EXCEEDED'); limited = true; break; }
@@ -376,17 +414,23 @@ export function searchMethods(sealerOf: () => import('../../../core/field-cipher
       const rows = Array.isArray(returned) ? returned : returned?.rows;
       ensure(Array.isArray(rows) && rows.length <= requestLimit, 'INVALID_CANDIDATE_SHAPE');
       if (!rows.length) { exhausted = true; break; }
-      let consumed = 0;
-      for (const raw of rows) {
-        if (Date.now() >= deadline || scanned >= budgets.maxCandidates) { limited = true; break; }
-        ensure(raw && typeof raw === 'object', 'INVALID_CANDIDATE_SHAPE');
-        const bytes = Object.values(raw).reduce((sum: number, value) => sum + (value instanceof Sealed ? value.bytes.length : typeof value === 'string' ? utf8(value).length : 16), 0);
-        if (fetchedBytes + bytes > budgets.fetchBytes) { limited = true; break; }
-        fetchedBytes += bytes;
-        decryptedBytes += Object.values(raw).reduce((sum: number, value) => sum + (value instanceof Sealed ? value.bytes.length - 29 : 0), 0);
-        if (decryptedBytes > budgets.decryptedBytes) { limited = true; break; }
-        let opened = await open(raw, { scope: scopeId }, authCache) as Record<string, unknown>;
-        for (const key of keys) if (options.columns?.[key]) opened = (await openRaw(options.match[key][0], [opened], { columns: options.columns[key], scope: scopeId }, authCache))[0];
+      let consumed = 0, offset = 0;
+      while (offset < rows.length && items.length < limit && !limited) {
+        const window: Record<string, unknown>[] = [];
+        const windowSize = Math.min(budgets.decryptConcurrency, limit - items.length);
+        while (offset < rows.length && window.length < windowSize) {
+          const raw = rows[offset];
+          if (Date.now() >= deadline || scanned + window.length >= budgets.maxCandidates) { limited = true; break; }
+          ensure(raw && typeof raw === 'object', 'INVALID_CANDIDATE_SHAPE');
+          const size = measured(raw);
+          if (fetchedBytes + size.fetched > budgets.fetchBytes || decryptedBytes + size.decrypted > budgets.decryptedBytes) { limited = true; break; }
+          fetchedBytes += size.fetched; decryptedBytes += size.decrypted;
+          window.push(raw); offset++;
+        }
+        if (!window.length) break;
+        const openedWindow = await Promise.all(window.map(openCondition));
+        for (let i = 0; i < window.length; i++) {
+        const raw = window[i], opened = openedWindow[i];
         const parts: unknown[] = [];
         for (const key of keys) {
           const reg = regs[key], mapping = options.columns?.[key];
@@ -411,13 +455,15 @@ export function searchMethods(sealerOf: () => import('../../../core/field-cipher
           if (!(await verify(compiled[key], { ...opened, ...view }))) { matched = false; break; }
         }
         if (matched) {
-          const size = canonical(opened).length;
+          const full = await openProjection(raw);
+          const size = canonical(full).length;
           if (resultBytes + size > budgets.resultBytes) { limited = true; break; }
           resultBytes += size;
-          items.push(opened as Opened<R>); accepted++;
+          items.push(full as Opened<R>); accepted++;
         }
         previous = parts; scanned++; consumed++;
         if (items.length === limit) break;
+        }
       }
       if (limited) { if (!scanned) fail('LIMIT_EXCEEDED'); break; }
       if (items.length === limit || rows.length < requestLimit) { exhausted = items.length < limit && rows.length < requestLimit; break; }

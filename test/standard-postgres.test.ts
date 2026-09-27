@@ -23,7 +23,8 @@ async function setup(caseName: string, count: number) {
   assert.equal((await pool.query('select 1 from pg_namespace where nspname=$1', [schemaName])).rowCount, 0);
   await pool.query(`create schema "${schemaName}"`);
   try {
-    const schema = pgSchema(schemaName), sealed = createSealed({ sealer: createSealer({ key: new Uint8Array(32).fill(7) }) });
+    const schema = pgSchema(schemaName), cipher = createSealer({ key: new Uint8Array(32).fill(7) });
+    const sealed = createSealed({ sealer: cipher });
     const memo = schema.table('memo', { id: uuid('id').primaryKey(), scopeId: uuid('scope_id').notNull(),
       body: sealed.text('body', { search: { exact: true, substring: true } }),
       address: sealed.text('address', { search: { substring: true } }),
@@ -44,7 +45,7 @@ async function setup(caseName: string, count: number) {
       id: row.id, scopeId: row.scope_id, body: row.memo_plain, address: row.address_plain, amount: row.name_plain.length,
     })));
     const close = async () => { await pool.query(`drop schema "${schemaName}" cascade`); await pool.end(); };
-    return { rows, schemaName, pool, db, sealed, memo, seal, profiles, logs, close };
+    return { rows, schemaName, pool, db, sealed, cipher, memo, seal, profiles, logs, close };
   } catch (error) { await pool.query(`drop schema "${schemaName}" cascade`); await pool.end(); throw error; }
 }
 
@@ -87,6 +88,15 @@ test('high false-positive pages grow batches without losing rows', async () => {
     const tokens = c.profiles['body/substring'].tokens;
     await c.pool.query(`update "${c.schemaName}".memo_seal_index as target set "${tokens}"=source."${tokens}"
       from "${c.schemaName}".memo_seal_index as source where source.row_id=$1 and target.row_id<>source.row_id`, [expected[0]]);
+    const originalOpen = c.cipher.open.bind(c.cipher);
+    let active = 0, peak = 0, conditionOpens = 0, projectedOpens = 0;
+    c.cipher.open = async (...args) => {
+      if (args[1].fieldId === 'body') conditionOpens++;
+      if (args[1].fieldId === 'address') projectedOpens++;
+      active++; peak = Math.max(peak, active);
+      try { await new Promise(resolve => setTimeout(resolve, 1)); return await originalOpen(...args); }
+      finally { active--; }
+    };
     c.logs.length = 0;
     const ids: string[] = [];
     let cursor: string | undefined;
@@ -95,6 +105,8 @@ test('high false-positive pages grow batches without losing rows', async () => {
       ids.push(...page.items.map(row => row.id)); cursor = page.nextCursor ?? undefined;
     } while (cursor);
     assert.deepEqual(ids, expected);
+    assert.ok(peak > 1 && peak <= 64, `bounded parallel authentication peak=${peak}`);
+    assert.ok(conditionOpens > projectedOpens, 'false positives do not open projected fields');
     assert.ok(c.logs.some(query => query.includes('with sample as materialized')));
     assert.ok(c.logs.length > Math.ceil(expected.length / 8), 'false positives require additional candidate batches');
   } finally { await c.close(); }
@@ -124,5 +136,15 @@ test('multicolumn GIN preserves writes, cursor search and exact count', async ()
     const changed = c.rows[1].memo_plain;
     await c.sealed.update(c.db, c.seal, { id: c.rows[0].id, scopeId: c.rows[0].scope_id }, { body: changed });
     assert.equal((await c.sealed.open(await c.db.select().from(c.memo).where(eq(c.memo.id, c.rows[0].id))))[0].body, changed);
+  } finally { await c.close(); }
+});
+
+test('reindex handles a fixture-derived batch above the public open row default', async () => {
+  const c = await setup('reindex', 501);
+  try {
+    assert.deepEqual(await c.sealed.reindex(c.db, c.seal, { batch: 501 }), { rows: 501 });
+    const first = c.rows[0];
+    assert.equal((await c.sealed.findMany(c.db, c.seal, { scope: first.scope_id,
+      match: m => m.body.eq(first.memo_plain), limit: 1 })).items[0].id, first.id);
   } finally { await c.close(); }
 });

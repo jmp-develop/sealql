@@ -22,7 +22,8 @@ test('native managed writes and opens stay atomic', async () => {
     assert.equal((await pool.query('select 1 from pg_namespace where nspname=$1', [schemaName])).rowCount, 0);
     await pool.query(`create schema "${schemaName}"`); created = true;
     const schema = pgSchema(schemaName);
-    const sealed = createSealed({ sealer: createSealer({ key: new Uint8Array(32).fill(93) }) });
+    const cipher = createSealer({ key: new Uint8Array(32).fill(93) });
+    const sealed = createSealed({ sealer: cipher });
     const people = schema.table('people', {
       id: uuid('id').primaryKey(), scopeId: uuid('scope_id').notNull(),
       createdAt: timestamp('created_at', { withTimezone: true, precision: 3 }).notNull(),
@@ -91,6 +92,12 @@ test('native managed writes and opens stay atomic', async () => {
     });
     assert.equal(joinedNext.items.length, 1);
     assert.notEqual((joined.items[0] as any).o.id, (joinedNext.items[0] as any).o.id);
+    const originalOpen = cipher.open.bind(cipher);
+    let customerNameOpens = 0;
+    cipher.open = async (...args) => {
+      if (args[1].modelId === 'people' && args[1].fieldId === 'name') customerNameOpens++;
+      return originalOpen(...args);
+    };
     const rawJoined = await sealed.search(db, { scope: first.scope_id, match: { c: [peopleSeal, m => m.name.eq(first.name_plain)] },
       keyset: [orders.id], limit: 2, columns: { c: { id: 'c_id', scopeId: 'c_scope', name: 'c_name_ct', memo: 'c_memo_ct' } },
       query: ({ where, after, orderBy, flagsSql, limit }) => db.execute(sql`select ${people.id} as c_id, ${people.scopeId} as c_scope,
@@ -100,6 +107,8 @@ test('native managed writes and opens stay atomic', async () => {
     });
     assert.equal(rawJoined.items.length, 2);
     assert.equal((rawJoined.items[0] as any).c_name_ct, first.name_plain);
+    assert.equal(customerNameOpens, 1, '1:N duplicate rows share authenticated field result within a search call');
+    cipher.open = originalOpen;
     await sealed.update(db, peopleSeal, { id: first.id, scopeId: first.scope_id }, { memo: second.memo_plain });
     const afterUpdate = await sealed.open(await db.select().from(people));
     assert.equal(afterUpdate[0].name, first.name_plain);
