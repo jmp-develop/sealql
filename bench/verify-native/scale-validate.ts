@@ -23,7 +23,7 @@ try{
   assert.equal(ids.length,n);
   const parent=(await pool.query('select * from native_scale_100m.customers where id=any($1::uuid[])',[ids])).rows;
   const plain=(await pool.query('select * from native_scale_100m.customers_plain where id=any($1::uuid[])',[ids])).rows;
-  const index=(await pool.query('select * from native_scale_100m.customers_seal_index where row_id=any($1::uuid[])',[ids])).rows;
+  const index=(await pool.query('select * from native_scale_100m.customers_seal_index where scope_id=$2 and row_id=any($1::uuid[])',[ids,scopeId])).rows;
   assert.equal(parent.length,n);assert.equal(plain.length,n);assert.equal(index.length,n);
   const mapping={id:'id',scopeId:'scope_id',...Object.fromEntries(fields.map(f=>[f,`${f}_ct`]))};
   const opened=await scaleSealed.openRaw(scaleCustomersSeal,parent,{columns:mapping as any,scope:scopeId});
