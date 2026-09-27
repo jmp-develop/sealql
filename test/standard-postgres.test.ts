@@ -3,7 +3,7 @@ import { test } from 'node:test';
 import { Pool } from 'pg';
 import { drizzle } from 'drizzle-orm/node-postgres';
 import { and, eq, sql } from 'drizzle-orm';
-import { integer, pgSchema, text, uuid } from 'drizzle-orm/pg-core';
+import { integer, pgSchema, text, timestamp, uuid } from 'drizzle-orm/pg-core';
 import { createSealer, normalizeText, profiles, searchPieces, searchTokens, SealError } from '../src/index.js';
 import { createSealed } from '../src/adapters/drizzle/v0.45/index.js';
 import { registrationOf } from '../src/adapters/drizzle/v0.45/native.js';
@@ -27,15 +27,17 @@ async function setup(caseName: string, count: number) {
     const schema = pgSchema(schemaName), cipher = createSealer({ key: new Uint8Array(32).fill(7) });
     const sealed = createSealed({ sealer: cipher });
     const memo = schema.table('memo', { id: uuid('id').primaryKey(), scopeId: uuid('scope_id').notNull(),
-      rank: integer('rank'), label: text('label'),
+      rank: integer('rank'), label: text('label'), extra: text('extra').$defaultFn(() => 'default'),
+      moment: timestamp('moment', { withTimezone: true, precision: 6 }),
       body: sealed.text('body', { search: { exact: true, substring: true } }),
       address: sealed.text('address', { search: { substring: true } }),
       amount: sealed.integer('amount', { nullable: true, search: { exact: true } }),
+      jsonData: sealed.json('json_data', { nullable: true }),
     });
     const seal = sealed.register(memo, { row: 'id', scope: 'scopeId' });
     const profiles = registrationOf(seal).storage.index!.profiles!;
     const tokenColumns = Object.values(profiles).map(profile => `"${profile.tokens}" bigint[]`).join(',');
-    await pool.query(`create table "${schemaName}".memo (id uuid primary key,scope_id uuid not null,rank integer,label text,body_ct bytea not null,address_ct bytea not null,amount_ct bytea)`);
+    await pool.query(`create table "${schemaName}".memo (id uuid primary key,scope_id uuid not null,rank integer,label text,extra text,moment timestamptz(6),body_ct bytea not null,address_ct bytea not null,amount_ct bytea,json_data_ct bytea)`);
     await pool.query(`create table "${schemaName}".memo_seal_index (scope_id uuid not null,row_id uuid not null,${tokenColumns},unique(scope_id,row_id),foreign key(row_id) references "${schemaName}".memo(id) on delete cascade)`);
     for (const [profileId, profile] of Object.entries(profiles)) if (profile.mode === 'exact')
       await pool.query(`create index "${companionIndexName('memo_seal_index', profileId)}_bt" on "${schemaName}".memo_seal_index(scope_id,(("${profile.tokens}")[1]),row_id)`);
@@ -228,8 +230,8 @@ test('insert splits above the PostgreSQL parameter limit within one transaction'
       from bench_realistic_100k.customers order by id limit 10000 offset 1`)).rows;
     assert.equal(sourceRows.length, 10000);
     const records = sourceRows.map(row => ({
-      id: row.id as string, scopeId: row.scope_id as string, rank: null, label: null,
-      body: row.memo_plain as string, address: row.address_plain as string, amount: null,
+      id: row.id as string, scopeId: row.scope_id as string,
+      body: row.memo_plain as string, address: row.address_plain as string,
     }));
     const duplicate = { ...records[records.length - 1], id: c.rows[0].id };
     await assert.rejects(c.sealed.insert(c.db, c.seal, [...records.slice(0, -1), duplicate]),
@@ -238,8 +240,12 @@ test('insert splits above the PostgreSQL parameter limit within one transaction'
     const indexAfterFailure = await c.pool.query(`select count(*)::int as n from "${c.schemaName}".memo_seal_index`);
     assert.equal(parentAfterFailure.rows[0].n, 1);
     assert.equal(indexAfterFailure.rows[0].n, 1);
+    c.logEntries.length = 0;
     const inserted = await c.sealed.insert(c.db, c.seal, records);
     assert.equal(inserted.length, 10000);
+    const parentInserts = c.logEntries.filter(entry => entry.query.includes(`insert into "${c.schemaName}"."memo"`));
+    assert.ok(parentInserts.length > 1, 'defaultFn columns require parent insert splitting');
+    assert.ok(parentInserts.every(entry => entry.params.length <= 60000));
     assert.equal((await c.pool.query(`select count(*)::int as n from "${c.schemaName}".memo`)).rows[0].n, 10001);
     assert.equal((await c.pool.query(`select count(*)::int as n from "${c.schemaName}".memo_seal_index`)).rows[0].n, 10001);
   } finally { await c.close(); }
@@ -264,6 +270,14 @@ test('high false-positive pages grow batches without losing rows', async () => {
       finally { active--; }
     };
     c.logs.length = 0;
+    const firstPage = await c.sealed.findMany(c.db, c.seal, { scope, match: m => m.body.contains(term), limit: 8,
+      budgets: { batch: 16 } });
+    assert.equal(firstPage.items.length, 8);
+    const candidateRequests = c.logs.filter(query => query.includes('from') && query.includes('"memo"'));
+    assert.ok(candidateRequests.length > 1, 'first candidate batch requires a follow-up');
+    assert.ok(candidateRequests.every(query => /\blimit\s+\$\d+/i.test(query)), 'every limited page request has SQL LIMIT');
+    c.logs.length = 0;
+    conditionOpens = 0; projectedOpens = 0; peak = 0;
     const ids: string[] = [];
     let cursor: string | undefined;
     do {
@@ -319,6 +333,11 @@ test('reindex accepts a caller batch above the old maximum', async () => {
   const c = await setup('reindex', 1001);
   try {
     assert.deepEqual(await c.sealed.reindex(c.db, c.seal, { batch: 1001 }), { rows: 1001 });
+    c.logEntries.length = 0;
+    assert.deepEqual(await c.sealed.reindex(c.db, c.seal), { rows: 1001 });
+    const locks = c.logEntries.filter(entry => /for update/i.test(entry.query));
+    assert.equal(locks.length, 2);
+    assert.ok(locks.every(entry => entry.params.at(-1) === 1000));
     const first = c.rows[0];
     c.logs.length = 0;
     await c.sealed.findMany(c.db, c.seal, { scope: first.scope_id,
@@ -340,10 +359,65 @@ test('count uses one SQL candidate stream and accepts an exact candidate ceiling
     assert.equal(await c.sealed.count(c.db, c.seal, { scope, maxCandidates: 2001,
       budgets: { deadlineMs: 30000, fetchBytes: 32 * 1024 * 1024, resultBytes: 32 * 1024 * 1024 } }), 2001);
     assert.equal(c.logs.length, 1);
+    assert.match(c.logs[0], /\blimit\s+\$\d+/i);
+    assert.equal(c.logEntries.at(-1)?.params.at(-1), 2002);
     await assert.rejects(c.sealed.count(c.db, c.seal, { scope, maxCandidates: 2000,
       budgets: { deadlineMs: 30000, fetchBytes: 32 * 1024 * 1024, resultBytes: 32 * 1024 * 1024 } }),
     { code: 'LIMIT_EXCEEDED' });
     await assert.rejects(c.sealed.count(c.db, c.seal, { scope, maxCandidates: 2001,
       budgets: { deadlineMs: 1 } }), { code: 'LIMIT_EXCEEDED' });
+  } finally { await c.close(); }
+});
+
+test('microsecond timestamp keysets resume under another DateStyle', async () => {
+  const c = await setup('microseconds', 3);
+  const client = await c.pool.connect();
+  try {
+    await assertDisposable(c.pool);
+    assert.equal(Number((await client.query('show port')).rows[0].port), 56439);
+    const dates = ['2024-02-03 04:05:06.000001+00', '2024-02-03 04:05:06.000002+00', '2024-02-03 04:05:06.000003+00'];
+    for (let i = 0; i < 3; i++) await client.query(`update "${c.schemaName}".memo set moment=$1 where id=$2`, [dates[i], c.rows[i].id]);
+    const db = drizzle(client);
+    const scope = c.rows[0].scope_id;
+    const expected = (await client.query(`select id from "${c.schemaName}".memo where scope_id=$1 order by moment,id`, [scope])).rows.map(row => row.id);
+    assert.equal(expected.length, 3);
+    await client.query("set datestyle to 'SQL, DMY'");
+    const findIds: string[] = [];
+    let cursor: string | undefined;
+    do {
+      const page = await c.sealed.findMany(db, c.seal, { scope, orderBy: { column: c.memo.moment, direction: 'asc' }, limit: 1, cursor });
+      findIds.push(...page.items.map(row => row.id)); cursor = page.nextCursor ?? undefined;
+    } while (cursor);
+    assert.deepEqual(findIds, expected);
+    const positions = pgSchema(c.schemaName).table('positions', { id: text('id').primaryKey(), value: timestamp('value', { withTimezone: true, precision: 6 }).notNull() });
+    await client.query(`create table "${c.schemaName}".positions (id text primary key,value timestamptz(6) not null)`);
+    for (let i = 0; i < 3; i++) await client.query(`insert into "${c.schemaName}".positions(id,value) values($1,$2)`, [`p${i}`, dates[i]]);
+    const expectedPositions = (await client.query(`select id from "${c.schemaName}".positions order by value`)).rows.map(row => row.id);
+    const searchIds: string[] = [];
+    cursor = undefined;
+    do {
+      const page: { items: any[]; nextCursor: string | null } = await c.sealed.search(db, { scope, match: { n: [c.seal, m => m.sql(sql`true`)] }, keyset: [positions.value], limit: 1, cursor,
+        query: ({ where, after, orderBy, flags, limit }) => db.select({ n: c.memo, positionId: positions.id, ...flags }).from(c.memo)
+          .innerJoin(positions, sql`true`).where(and(where, eq(c.memo.id, c.rows[0].id), after)).orderBy(...orderBy).limit(limit!),
+      });
+      searchIds.push(...page.items.map(row => (row as any).positionId)); cursor = page.nextCursor ?? undefined;
+    } while (cursor);
+    assert.deepEqual(searchIds, expectedPositions);
+  } finally { client.release(); await c.close(); }
+});
+
+test('findMany returns a thousand-level JSON field with a result byte budget', async () => {
+  const c = await setup('deep_json', 1);
+  try {
+    let deep: any = 'end';
+    for (let i = 0; i < 1000; i++) deep = [deep];
+    const first = c.rows[0];
+    await c.sealed.update(c.db, c.seal, { id: first.id, scopeId: first.scope_id }, { jsonData: deep });
+    const page = await c.sealed.findMany(c.db, c.seal, { scope: first.scope_id, columns: { jsonData: true },
+      budgets: { resultBytes: 1000000 } });
+    assert.equal(page.items.length, 1);
+    let value: any = page.items[0].jsonData;
+    for (let i = 0; i < 1000; i++) value = value[0];
+    assert.equal(value, 'end');
   } finally { await c.close(); }
 });

@@ -129,7 +129,7 @@ async function upsertIndexes(tx: any, reg: Registration, rows: readonly Prepared
   const values = rows.map(row => indexValues(reg, row));
   if (!values.length) return;
   if (!onlyChanged) {
-    for (const chunk of parameterChunks(values, row => Object.keys(row).length)) await tx.insert(reg.index).values(chunk);
+    for (const chunk of parameterChunks(values, () => Object.keys(cols).length)) await tx.insert(reg.index).values(chunk);
     return;
   }
   for (const value of values) {
@@ -205,7 +205,7 @@ export function runtimeMethods(sealerOf: () => Sealer) {
       for (const row of arr) { const input = checkedValues(reg, asRecord(row), 'insert'); prepared.push(await prepare(reg, input, sealer, cache, true, true)); }
       const inserted = await writeTransaction(db, async (tx: any) => {
         const result: Record<string, unknown>[] = [];
-        for (const chunk of parameterChunks(prepared, row => Object.keys(row.parent).length))
+        for (const chunk of parameterChunks(prepared, () => Object.keys(getTableColumns(reg.parent)).length))
           result.push(...await tx.insert(reg.parent).values(chunk.map(row => row.parent)).returning());
         await upsertIndexes(tx, reg, prepared, false);
         return result;
@@ -284,7 +284,7 @@ export function runtimeMethods(sealerOf: () => Sealer) {
   ): Promise<{ rows: number }> {
     const reg = registrationOf(seal);
     if (options.batch !== undefined) ensure(Number.isSafeInteger(options.batch) && options.batch >= 1, 'INVALID_VALUE');
-    let batch = options.batch ?? 256;
+    const batch = options.batch ?? 1000;
     ensure(!options.scope || !!reg.scope, 'INVALID_VALUE');
     const scopeId = options.scope === undefined ? undefined : identity(options.scope, reg.definition.scopeType);
     const parent = getTableColumns(reg.parent) as Record<string, PgColumn>;
@@ -334,7 +334,6 @@ export function runtimeMethods(sealerOf: () => Sealer) {
       count += page.length;
       lastRow = page.at(-1)!.row; lastScope = page.at(-1)!.scope;
       if (page.length < batch) break;
-      if (options.batch === undefined) batch = Math.min(Number.MAX_SAFE_INTEGER, batch * 2);
     }
     return { rows: count };
   }

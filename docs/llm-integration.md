@@ -50,6 +50,8 @@ A driver without a transaction callback, or one that explicitly reports unsuppor
 
 Await a Drizzle query before passing its result to `sealed.open` or `sealed.openRaw`; Promise and thenable inputs raise `INVALID_VALUE` with “await the query”. The optional fourth `openRaw` argument is an internal per-call authentication cache used by `search`; application calls should omit it.
 
+`reindex` processes 1,000 rows per batch by default. Callers may supply another batch size with no library maximum; the batch size does not limit the total number of rows rebuilt.
+
 ## Search
 
 ```ts
@@ -78,6 +80,8 @@ Searchable text folds NFC, full-width ASCII, ASCII case, and whitespace as speci
 `findMany` accepts `scope` (required for a scoped table), `match`, `where`, `columns`, `orderBy`, `limit`, `cursor`, `budgets`, and `signal`. Use `orderBy: { column, direction: 'asc' | 'desc' }` or an array of those entries with unencrypted sortable columns, including nullable columns. PostgreSQL NULL order applies, and SealQL adds the row ID as a final tie breaker. Continue with `cursor: page.nextCursor`; `columns` selects returned properties, `budgets` bounds work, and `signal` cancels it. `contains(value, { respectWords: true })` requires `search: { substring: { wordBoundary: true } }`, otherwise it raises `UNSUPPORTED_SEARCH`. `m.like` supports `%` for zero or more characters, `_` for one character, and backslash escapes for `%`, `_`, and `\`; at least one literal run needs two normalized characters.
 
 Drizzle's `eq` on a sealed column raises `SEAL_REQUIRED`; `like`/`ilike` can silently return zero; `orderBy(asc(sealedColumn))` can silently sort ciphertext into a meaningless order. Never use ordinary Drizzle predicates or ordering on encrypted columns. String conversion or JSON serialization of an unopened encrypted handle raises `SEAL_REQUIRED`; do not log such handles.
+
+Limited `findMany` and `search` pages fetch finite candidate batches sized from the observed match rate. `count` with `maxCandidates` applies SQL `LIMIT maxCandidates + 1`; without it, count reads the whole candidate stream. Date and timestamp cursor positions use a DateStyle-independent database text form, so cursors created before this change cannot be resumed.
 
 ## Migrations and searchable field changes
 

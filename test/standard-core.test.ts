@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import { test } from 'node:test';
 import { createSealer, exactBitsForPopulation, normalizeText, normalizeWords, profiles, searchPieces, searchTokens } from '../src/index.js';
-import { frame, hex, u32, utf8 } from '../src/core/bytes.js';
+import { canonical, frame, hex, u32, utf8 } from '../src/core/bytes.js';
 import { codecId, codecParameters, codecVersion, decodeField, encodeField } from '../src/core/field-codec.js';
 import { openCursor, sealCursor } from '../src/core/search-cursor.js';
 import { validateSearch, type SearchNode } from '../src/core/search-predicate.js';
@@ -20,6 +20,11 @@ test('large JSON and deep nesting have no library size or depth cap', () => {
   let decoded: any = decodeField({ type: 'json' }, encoded);
   for (let i = 0; i < 1000; i++) decoded = decoded[0];
   assert.equal(decoded, null);
+  assert.deepEqual(canonical({ nested: [1, 'x', null], empty: {} }), frame(['object',
+    frame(['empty', frame(['object'])]),
+    frame(['nested', frame(['array', frame(['num', new Uint8Array([63, 240, 0, 0, 0, 0, 0, 0])]), frame(['str', 'x']), frame(['null'])])]),
+  ]));
+  assert.ok(canonical({ deep }).length > 0);
 });
 
 test('search expression accepts more than eight leaves and nested groups', () => {

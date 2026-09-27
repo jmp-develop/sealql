@@ -42,5 +42,5 @@ export async function openCursor(encoded: string, context: CursorContext, ring: 
     ensure(JSON.stringify(payload) === text && payload.queryDigest === context.queryDigest, 'CURSOR_INVALID');
     ensure(typeof payload.lastId === 'string' && (payload.lastSort === null || typeof payload.lastSort === 'string'), 'CURSOR_INVALID');
     return { lastId: payload.lastId, lastSort: payload.lastSort ?? undefined } as CursorPosition;
-  } catch (error) { if (error instanceof Error && error.message === 'CURSOR_EXPIRED') fail('CURSOR_EXPIRED'); fail('CURSOR_INVALID'); }
+  } catch { fail('CURSOR_INVALID'); }
 }

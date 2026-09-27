@@ -128,7 +128,7 @@ function register<T extends PgTable, R extends UuidOrTextKeys<T>, S extends Uuid
   const rowUnique = rowColumn.primary || rowColumn.isUnique || hasUnique([rowColumn.name]);
   ensure(rowUnique || !!scopeColumn && hasUnique([scopeColumn.name, rowColumn.name]), 'INVALID_SCHEMA');
   const model = cfg.model ?? getTableName(table);
-  ensure(!models.has(model), 'INVALID_SCHEMA');
+  ensure(model.length > 0 && !models.has(model), 'INVALID_SCHEMA');
   const fields = new Map<string, FieldBinding>();
   const usedIds = new Set<string>();
   for (const [key, column] of Object.entries(columns)) {

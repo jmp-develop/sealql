@@ -36,7 +36,7 @@ export class Sealer {
     ensure(settings && typeof settings === 'object', 'INVALID_VALUE');
     this.rings.set('global', { keyScopeId: 'global', key: checkedRoot(settings.key) });
     for (const [modelId, model] of Object.entries(settings.models ?? {})) {
-      checkedBytes(modelId);
+      ensure(modelId.length > 0, 'INVALID_VALUE'); checkedBytes(modelId);
       ensure(model && typeof model === 'object', 'INVALID_VALUE');
       this.rings.set(`model:${modelId}`, { keyScopeId: `model:${modelId}`, key: checkedRoot(model.key) });
     }
@@ -52,6 +52,7 @@ export class Sealer {
     const precision = spec.type === 'decimal' ? spec.precision : undefined;
     const scale = spec.type === 'decimal' ? spec.scale : undefined;
     if (cached && cached.spec === spec && cached.type === spec.type && cached.precision === precision && cached.scale === scale) return cached;
+    ensure(c.modelId.length > 0 && c.fieldId.length > 0 && c.keyScopeId.length > 0, 'INVALID_VALUE');
     checkedBytes(c.modelId); checkedBytes(c.fieldId); checkedBytes(c.keyScopeId);
     const codec = codecId(spec), codecVersionCode = codecVersion(spec), parameters = codecParameters(spec);
     const staticAad = frame(['sealql/aad/v3', header, c.modelId, c.fieldId, codec, u32(codecVersionCode), parameters, c.keyScopeId]);

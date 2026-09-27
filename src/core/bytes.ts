@@ -11,25 +11,45 @@ export function u32(n: number): Uint8Array { ensure(Number.isInteger(n)&&n>=0&&n
 export function frame(parts: (string|Uint8Array)[]): Uint8Array { const p=parts.map(x=>typeof x==='string'?utf8(x):x);return concat(u32(p.length),...p.flatMap(x=>[u32(x.length),x])); }
 export function compare(a: Uint8Array,b: Uint8Array): number { for(let i=0;i<Math.min(a.length,b.length);i++)if(a[i]!==b[i])return a[i]-b[i];return a.length-b.length; }
 export function compareText(a:string,b:string):number{return compare(utf8(a),utf8(b));}
-export function canonical(value: unknown, seen = new Set<object>()): Uint8Array {
-  if(value===null)return frame(['null']);
-  if(typeof value==='boolean')return frame(['bool',new Uint8Array([+value])]);
-  if(typeof value==='string')return frame(['str',utf8(value)]);
-  if(typeof value==='bigint')return frame(['int',value.toString()]);
-  if(typeof value==='number'){ensure(Number.isFinite(value));const b=new Uint8Array(8);new DataView(b.buffer).setFloat64(0,Object.is(value,-0)?0:value);return frame(['num',b]);}
-  if(value instanceof Uint8Array)return frame(['bytes',value]);
-  if(value instanceof Date){ensure(Number.isFinite(value.getTime()));return frame(['date',value.toISOString()]);}
-  if(typeof value==='object'){
-    ensure(!seen.has(value));seen.add(value);
-    try {
-      if(Array.isArray(value))return frame(['array',...value.map(v=>canonical(v,seen))]);
-      ensure(Object.getPrototypeOf(value)===Object.prototype||Object.getPrototypeOf(value)===null);
-      ensure(Object.getOwnPropertySymbols(value).length===0);
-      const o=value as Record<string,unknown>;
-      return frame(['object',...Object.keys(o).sort((a,b)=>compare(utf8(a),utf8(b))).map(k=>frame([k,canonical(o[k],seen)]))]);
-    } finally {seen.delete(value);}
+export function canonical(value: unknown): Uint8Array {
+  const active = new Set<object>();
+  const results: Uint8Array[] = [];
+  const stack: ({ value: unknown } | { object: object; keys: string[] | null })[] = [{ value }];
+  while (stack.length) {
+    const task = stack.pop()!;
+    if ('object' in task) {
+      const count = task.keys?.length ?? (task.object as unknown[]).length;
+      const children = results.splice(results.length - count, count);
+      results.push(task.keys === null ? frame(['array', ...children])
+        : frame(['object', ...children.map((child, index) => frame([task.keys![index], child]))]));
+      active.delete(task.object);
+      continue;
+    }
+    const item = task.value;
+    if(item===null){results.push(frame(['null']));continue;}
+    if(typeof item==='boolean'){results.push(frame(['bool',new Uint8Array([+item])]));continue;}
+    if(typeof item==='string'){results.push(frame(['str',utf8(item)]));continue;}
+    if(typeof item==='bigint'){results.push(frame(['int',item.toString()]));continue;}
+    if(typeof item==='number'){ensure(Number.isFinite(item));const b=new Uint8Array(8);new DataView(b.buffer).setFloat64(0,Object.is(item,-0)?0:item);results.push(frame(['num',b]));continue;}
+    if(item instanceof Uint8Array){results.push(frame(['bytes',item]));continue;}
+    if(item instanceof Date){ensure(Number.isFinite(item.getTime()));results.push(frame(['date',item.toISOString()]));continue;}
+    if(typeof item==='object'){
+      ensure(!active.has(item));active.add(item);
+      if(Array.isArray(item)) {
+        stack.push({object:item,keys:null});
+        for(let i=item.length-1;i>=0;i--)stack.push({value:item[i]});
+      } else {
+        ensure(Object.getPrototypeOf(item)===Object.prototype||Object.getPrototypeOf(item)===null);
+        ensure(Object.getOwnPropertySymbols(item).length===0);
+        const keys=Object.keys(item).sort((a,b)=>compare(utf8(a),utf8(b)));
+        stack.push({object:item,keys});
+        for(let i=keys.length-1;i>=0;i--)stack.push({value:(item as Record<string,unknown>)[keys[i]]});
+      }
+      continue;
+    }
+    return fail('INVALID_VALUE');
   }
-  return fail('INVALID_VALUE');
+  return results[0];
 }
 export function hex(b: Uint8Array): string { return Array.from(b,x=>x.toString(16).padStart(2,'0')).join(''); }
 export function unhex(s: string): Uint8Array {ensure(/^(?:[0-9a-f]{2})*$/.test(s));return Uint8Array.from(s.match(/../g)??[],x=>parseInt(x,16));}

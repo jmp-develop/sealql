@@ -224,9 +224,9 @@ async function scanCandidates<R, P>(rows: R[], remaining: () => number, budgets:
   }
   return consumed;
 }
-function growBatch(current: number, remaining: number, verified: number, accepted: number, cap: number): number {
+function growBatch(current: number, remaining: number, verified: number, accepted: number): number {
   const estimated = accepted === 0 ? current * 2 : Math.ceil(remaining * verified / accepted * 1.25);
-  return Math.min(cap, Math.max(current * 2, estimated));
+  return Math.min(Number.MAX_SAFE_INTEGER, Math.max(current * 2, estimated));
 }
 // Carry each text column's collation into the comparison without looking up the row.
 // The previous cursor row may have been deleted between requests.
@@ -298,9 +298,9 @@ export function searchMethods(sealerOf: () => import('../../../core/field-cipher
     const fetched = [...new Set([...projected, ...(ast ? encryptedKeys(ast) : [])])];
     const conditionKeys = ast ? encryptedKeys(ast) : [];
     const selected: Record<string, PgColumn | SQL> = Object.fromEntries(fetched.map(key => [key, columns[key]]));
-    orders.forEach(({ column }, index) => { selected[`__seal_sort_${index}`] = sql<string>`${column}::text`; });
+    orders.forEach(({ column }, index) => { selected[`__seal_sort_${index}`] = sql<string>`to_jsonb(${column}) #>> '{}'`; });
     const flagCols = compiled ? flags(compiled) : {};
-    const cursorDigest = await digest({ scopeId, match: nodeFingerprint(ast), where: sqlFingerprint(options.where),
+    const cursorDigest = await digest({ scopeId, positionEncoding: 'jsonb-v1', match: nodeFingerprint(ast), where: sqlFingerprint(options.where),
       orderBy: orders.map(item => [item.column.name, item.direction]) });
     const ring = sealerOf().ring(reg.model);
     const cursorContext = { modelId: reg.model, scopeId, keyScopeId: ring.keyScopeId, queryDigest: cursorDigest };
@@ -309,7 +309,7 @@ export function searchMethods(sealerOf: () => import('../../../core/field-cipher
     const items: Record<string, unknown>[] = [];
     let scanned = 0, fetchedBytes = 0, decryptedBytes = 0, resultBytes = 0;
     let batch = Number.isFinite(limit) ? Math.min(budgets.batch, Math.max(limit + Math.ceil(limit / 4) + 2, 16)) : 200;
-    let verified = 0, accepted = 0, exhausted = false, limited = false;
+    let exhausted = false, limited = false;
     while (items.length < limit) {
       if (Date.now() >= deadline || scanned >= budgets.maxCandidates) {
         if (scanned === 0) fail('LIMIT_EXCEEDED');
@@ -318,7 +318,8 @@ export function searchMethods(sealerOf: () => import('../../../core/field-cipher
       }
       check();
       const remainingCandidates = budgets.maxCandidates - scanned;
-      const requestLimit = Number.isFinite(limit) ? Math.min(batch, remainingCandidates) + (remainingCandidates <= batch ? 1 : 0) : Infinity;
+      const requestLimit = Number.isFinite(limit) ? Math.min(batch, remainingCandidates) + (remainingCandidates <= batch ? 1 : 0)
+        : counting && Number.isFinite(remainingCandidates) ? remainingCandidates + 1 : Infinity;
       const orderedRow = rowColumn;
       const direction = orders.at(-1)?.direction ?? 'asc';
       const sortValues = afterSort === undefined ? [] : JSON.parse(afterSort) as (string | null)[];
@@ -338,6 +339,7 @@ export function searchMethods(sealerOf: () => import('../../../core/field-cipher
       const rows = await (Number.isFinite(requestLimit) ? query.limit(requestLimit) : query);
       ensure(rows.length <= requestLimit, 'INVALID_CANDIDATE_SHAPE');
       if (!rows.length) { exhausted = true; break; }
+      const acceptedBefore = items.length;
       const state: CandidateState = { scanned, fetchedBytes, decryptedBytes, limited };
       const consumed = await scanCandidates(rows as Record<string, unknown>[], () => limit - items.length, budgets, deadline, options.signal, state,
         row => {
@@ -377,12 +379,12 @@ export function searchMethods(sealerOf: () => import('../../../core/field-cipher
             if (!opened.projectionPlain) return false;
             const plain = { ...row, ...opened.conditionPlain, ...opened.projectionPlain };
             const item = Object.fromEntries(projected.map(key => [key, plain[key]]));
-            const itemBytes = canonical(item).length;
+            const itemBytes = Number.isFinite(budgets.resultBytes) ? canonical(item).length : 0;
             if (resultBytes + itemBytes > budgets.resultBytes) return false;
             resultBytes += itemBytes;
-            items.push(item); accepted++;
+            items.push(item);
           }
-          after = position; afterSort = sort; verified++;
+          after = position; afterSort = sort;
           return true;
         });
       ({ scanned, fetchedBytes, decryptedBytes, limited } = state);
@@ -395,8 +397,7 @@ export function searchMethods(sealerOf: () => import('../../../core/field-cipher
         exhausted = consumed === rows.length && rows.length < requestLimit;
         limited = scanned >= budgets.maxCandidates && !exhausted; break;
       }
-      const remaining = limit - items.length;
-      batch = Infinity;
+      batch = growBatch(batch, limit - items.length, consumed, items.length - acceptedBefore);
     }
     const nextCursor = exhausted || after === undefined ? null : await sealCursor(cursorContext,
       { lastId: after, ...(afterSort === undefined ? {} : { lastSort: afterSort }) }, ring);
@@ -454,14 +455,14 @@ export function searchMethods(sealerOf: () => import('../../../core/field-cipher
     const positionColumns = [...keys.map(key => (getTableColumns(regs[key].parent) as Record<string, PgColumn>)[regs[key].row]), ...keyset];
     const orderBy = positionColumns.map(column => asc(column));
     const allFlags = Object.assign({}, ...keys.map(key => flags(compiled[key]))) as Record<string, SQL | SQL.Aliased>;
-    keyset.forEach((column, index) => { allFlags[`__seal_keyset_${index}`] = sql`${column}`.as(`__seal_keyset_${index}`); });
+    keyset.forEach((column, index) => { allFlags[`__seal_keyset_${index}`] = sql<string>`to_jsonb(${column}) #>> '{}'`.as(`__seal_keyset_${index}`); });
     const flagsSql = sql.join(Object.entries(allFlags).map(([name, expression]) => sql`${expression instanceof SQL ? expression : expression.sql} as ${sql.identifier(name)}`), sql.raw(','));
     const where = and(...keys.flatMap(key => {
       const reg = regs[key];
       const columns = getTableColumns(reg.parent) as Record<string, PgColumn>;
       return [reg.scope ? eq(columns[reg.scope], scopeId) : undefined, candidate(reg, scopeId, compiled[key])];
     }))!;
-    const queryDigest = await digest({ scopeId, match: keys.map(key => [key, regs[key].model, nodeFingerprint(asts[key])]),
+    const queryDigest = await digest({ scopeId, positionEncoding: 'jsonb-v1', match: keys.map(key => [key, regs[key].model, nodeFingerprint(asts[key])]),
       keyset: keyset.map(column => [getTableName(column.table), column.name]) });
     const firstByName = regs[[...keys].sort()[0]], ring = sealerOf().ring(firstByName.model);
     const cursorContext = { modelId: `search:${JSON.stringify(keys.map(key => regs[key].model).sort())}`, scopeId, keyScopeId: ring.keyScopeId, queryDigest };
@@ -539,7 +540,7 @@ export function searchMethods(sealerOf: () => import('../../../core/field-cipher
     };
     let scanned = 0, fetchedBytes = 0, decryptedBytes = 0, resultBytes = 0;
     let batch = Number.isFinite(limit) ? Math.min(budgets.batch, Math.max(limit + Math.ceil(limit / 4) + 2, 16)) : Infinity;
-    let accepted = 0, exhausted = false, limited = false;
+    let exhausted = false, limited = false;
     const compare = (left: unknown, right: unknown, type: string) => ['smallint', 'integer', 'bigint'].includes(type)
       ? BigInt(left as string) < BigInt(right as string) ? -1 : BigInt(left as string) > BigInt(right as string) ? 1 : 0
       : compareText(String(left), String(right));
@@ -583,6 +584,7 @@ export function searchMethods(sealerOf: () => import('../../../core/field-cipher
         });
         await validateTextOrder(db, positionColumns, previous ? [previous, ...positions] : positions, options.signal, deadline);
       }
+      const acceptedBefore = items.length;
       const state: CandidateState = { scanned, fetchedBytes, decryptedBytes, limited };
       const consumed = await scanCandidates(rows as Record<string, unknown>[], () => limit - items.length,
         budgets, deadline, options.signal, state,
@@ -624,10 +626,10 @@ export function searchMethods(sealerOf: () => import('../../../core/field-cipher
         if (opened.matched) {
           if (!opened.full) return false;
           const full = Object.fromEntries(Object.entries(opened.full).filter(([key]) => !key.startsWith('__seal_'))) as PublicRow<R>;
-          const size = canonical(full).length;
+          const size = Number.isFinite(budgets.resultBytes) ? canonical(full).length : 0;
           if (resultBytes + size > budgets.resultBytes) return false;
           resultBytes += size;
-          items.push(full); accepted++;
+          items.push(full);
         }
         previous = parts;
         return true;
@@ -636,8 +638,7 @@ export function searchMethods(sealerOf: () => import('../../../core/field-cipher
       if (limited) { if (!scanned) fail('LIMIT_EXCEEDED'); break; }
       if (items.length === limit || rows.length < requestLimit) { exhausted = items.length < limit && rows.length < requestLimit; break; }
       if (consumed === 0) { if (!scanned) fail('LIMIT_EXCEEDED'); break; }
-      const remaining = limit - items.length;
-      batch = Infinity;
+      batch = growBatch(batch, limit - items.length, consumed, items.length - acceptedBefore);
     }
     const nextCursor = exhausted || !previous ? null : await sealCursor(cursorContext, { lastId: JSON.stringify(previous) }, ring);
     return { items, nextCursor };
