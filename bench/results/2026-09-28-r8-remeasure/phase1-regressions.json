@@ -1,0 +1,23 @@
+{
+  "regressions": [
+    {
+      "case": "exact_mid",
+      "condition": "company = \"서울서비스 중앙지사\"",
+      "productDbMs": 0.8755999999999631,
+      "v3ProductSqlMs": 0.6845000000000709
+    },
+    {
+      "case": "exact_one",
+      "condition": "phone = \"42-5748-1542\"",
+      "productDbMs": 0.5520999999999958,
+      "v3ProductSqlMs": 0.38429999999993925
+    },
+    {
+      "case": "exact_zero",
+      "condition": "phone = \"99-0000-0000\"",
+      "productDbMs": 0.4775000000000773,
+      "v3ProductSqlMs": 0.3823000000001002
+    }
+  ],
+  "plans": []
+}
