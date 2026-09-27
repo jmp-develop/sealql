@@ -53,8 +53,8 @@ try{
         await client.query(`insert into native_scale_100m.customers (${parentCols.join(',')}) values ${parentValues}`,prepared.flat());
       }
       await client.query(`insert into native_scale_100m.customers_plain
-        (id,scope_id,${fields.flatMap(f=>[`${f}_plain`,`${f}_norm`]).join(',')})
-        select ${cloneSql('id')},scope_id,${fields.flatMap(f=>[`${f}_plain`,`${f}_norm`]).join(',')}
+        (id,scope_id,revision,${fields.flatMap(f=>[`${f}_plain`,`${f}_norm`]).join(',')})
+        select ${cloneSql('id')},scope_id,revision,${fields.flatMap(f=>[`${f}_plain`,`${f}_norm`]).join(',')}
         from bench_realistic_100k.customers where scope_id=$2`,[copy,scopeId]);
       await client.query(`insert into native_scale_100m.customers_seal_index
         (scope_id,row_id,${tokenCols.join(',')})

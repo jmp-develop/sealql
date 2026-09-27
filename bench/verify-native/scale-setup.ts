@@ -13,7 +13,7 @@ try{
   await pool.query('create table if not exists native_scale_100m.customers (like native_verify_main.customers including defaults)');
   await pool.query('create table if not exists native_scale_100m.customers_seal_index (like native_verify_main.customers_seal_index including defaults)');
   await pool.query(`create table if not exists native_scale_100m.customers_plain as
-    select id,scope_id,${fields.flatMap(f=>[`${f}_plain`,`${f}_norm`]).join(',')}
+    select id,scope_id,revision,${fields.flatMap(f=>[`${f}_plain`,`${f}_norm`]).join(',')}
     from bench_realistic_100k.customers where false`);
   await pool.query(`create table if not exists native_scale_100m.progress (
     copy_no integer primary key check(copy_no between 0 and 999),
