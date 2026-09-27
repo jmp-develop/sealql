@@ -362,7 +362,8 @@ export function searchMethods(sealerOf: () => import('../../../core/field-cipher
     limit?: number; cursor?: string; budgets?: SearchBudgets; signal?: AbortSignal;
     query: (parts: SearchParts) => Promise<R[] | { rows: R[] }> | R[] | { rows: R[] };
   };
-  async function search<const M extends Record<string, object>, R extends Record<string, unknown>>(db: Db, options: SearchOptions<M, R>): Promise<{ items: Opened<R>[]; nextCursor: string | null }> {
+  type PublicRow<R> = { [K in keyof R as K extends `__seal_${string}` ? never : K]: Opened<R[K]> };
+  async function search<const M extends Record<string, object>, R extends Record<string, unknown>>(db: Db, options: SearchOptions<M, R>): Promise<{ items: PublicRow<R>[]; nextCursor: string | null }> {
     ensure(options && options.match && options.query && typeof options.query === 'function', 'INVALID_VALUE');
     const keys = Object.keys(options.match).sort();
     ensure(keys.length > 0 && keys.length <= 8 && keys.every(key => /^[A-Za-z_][A-Za-z0-9_]*$/.test(key)), 'INVALID_VALUE');
@@ -410,8 +411,23 @@ export function searchMethods(sealerOf: () => import('../../../core/field-cipher
       try { previous = JSON.parse(openedCursor.lastId); ensure(Array.isArray(previous) && previous.length === positionColumns.length, 'CURSOR_INVALID'); }
       catch { fail('CURSOR_INVALID'); }
     }
-    const items: Opened<R>[] = [];
+    const items: PublicRow<R>[] = [];
     const authCache: AuthCache = new Map();
+    const conditionKeys = Object.fromEntries(keys.map(key => [key, encryptedKeys(asts[key])])) as Record<string, string[]>;
+    const ciphertextBytes = (value: unknown): number => value instanceof Sealed ? value.bytes.length : value instanceof Uint8Array ? value.length
+      : typeof value === 'string' && /^\\x(?:[0-9a-f]{2})*$/i.test(value) ? (value.length - 2) / 2 : 0;
+    const rawDecryptedBytes = (raw: Record<string, unknown>, conditionOnly: boolean): number => keys.reduce((sum, key) => {
+      const mapping = options.columns?.[key];
+      if (!mapping) return sum;
+      const fields = conditionOnly ? conditionKeys[key] : [...regs[key].fields.keys()].filter(field => !conditionKeys[key].includes(field));
+      return sum + fields.reduce((bytes, field) => {
+        const name = mapping[field];
+        if (!name || raw[name] === null || !Object.hasOwn(raw, name)) return bytes;
+        const length = ciphertextBytes(raw[name]);
+        ensure(length >= 29, 'INVALID_CANDIDATE_SHAPE');
+        return bytes + length - 29;
+      }, 0);
+    }, 0);
     const openCondition = async (raw: Record<string, unknown>) => {
       const view: Record<string, unknown> = {};
       for (const [name, value] of Object.entries(raw)) if (!value || typeof value !== 'object' || value instanceof Date || value instanceof Uint8Array || name.startsWith('__seal_')) view[name] = value;
@@ -426,8 +442,13 @@ export function searchMethods(sealerOf: () => import('../../../core/field-cipher
             }
         } else {
           const nested = raw[key] as Record<string, unknown>;
-          ensure(nested && typeof nested === 'object', 'INVALID_CANDIDATE_SHAPE');
-          view[key] = Object.fromEntries([reg.row, ...(reg.scope ? [reg.scope] : []), ...encryptedKeys(asts[key])]
+          ensure(nested && typeof nested === 'object' && !Array.isArray(nested), 'INVALID_CANDIDATE_SHAPE');
+          for (const field of conditionKeys[key]) {
+            const value = nested[field];
+            ensure(Object.hasOwn(nested, field) && (value === null || value instanceof Sealed &&
+              value.binding?.registration === reg && value.binding.key === field), 'INVALID_CANDIDATE_SHAPE');
+          }
+          view[key] = Object.fromEntries([reg.row, ...(reg.scope ? [reg.scope] : []), ...conditionKeys[key]]
             .map(field => [field, nested[field]]));
         }
       }
@@ -482,11 +503,18 @@ export function searchMethods(sealerOf: () => import('../../../core/field-cipher
       const state: CandidateState = { scanned, fetchedBytes, decryptedBytes, limited };
       const consumed = await scanCandidates(rows as Record<string, unknown>[], () => limit - items.length,
         budgets, deadline, options.signal, state,
-        raw => { ensure(raw && typeof raw === 'object', 'INVALID_CANDIDATE_SHAPE'); return measured(raw); },
+        raw => { ensure(raw && typeof raw === 'object', 'INVALID_CANDIDATE_SHAPE');
+          const size = measured(raw); return { fetched: size.fetched, decrypted: size.decrypted + rawDecryptedBytes(raw, true) }; },
         async window => {
           const conditions = await Promise.all(window.map(openCondition));
           const matches = await Promise.all(conditions.map(matchesCondition));
-          const projections = await Promise.all(window.map((raw, i) => matches[i] ? openProjection(raw) : undefined));
+          const projections = await Promise.all(window.map((raw, i) => {
+            if (!matches[i]) return undefined;
+            const extraBytes = rawDecryptedBytes(raw, false);
+            if (state.decryptedBytes + extraBytes > budgets.decryptedBytes) return undefined;
+            state.decryptedBytes += extraBytes;
+            return openProjection(raw);
+          }));
           return conditions.map((condition, i) => ({ condition, matched: matches[i], full: projections[i] }));
         },
         async (_raw, opened) => {
@@ -508,11 +536,12 @@ export function searchMethods(sealerOf: () => import('../../../core/field-cipher
           ensure(signs.find(sign => sign !== 0)! > 0, 'INVALID_CANDIDATE_SHAPE');
         }
         if (opened.matched) {
-          const full = opened.full!;
+          if (!opened.full) return false;
+          const full = Object.fromEntries(Object.entries(opened.full).filter(([key]) => !key.startsWith('__seal_'))) as PublicRow<R>;
           const size = canonical(full).length;
           if (resultBytes + size > budgets.resultBytes) return false;
           resultBytes += size;
-          items.push(full as Opened<R>); accepted++;
+          items.push(full); accepted++;
         }
         previous = parts;
         return true;

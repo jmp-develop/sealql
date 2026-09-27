@@ -93,6 +93,7 @@ test('native managed writes and opens stay atomic', async () => {
     });
     assert.equal(joined.items.length, 1);
     assert.ok(joined.nextCursor);
+    assert.equal(Object.keys(joined.items[0]).some(key => key.startsWith('__seal_')), false);
     const joinedNext = await sealed.search(db, { scope: first.scope_id, match: { c: [peopleSeal, m => m.name.eq(first.name_plain)] },
       keyset: [orders.id], limit: 1, cursor: joined.nextCursor!,
       query: ({ where, after, orderBy, flags, limit }) => db.select({ c: people, o: orders, ...flags }).from(people)
@@ -125,6 +126,7 @@ test('native managed writes and opens stay atomic', async () => {
     });
     assert.equal(rawJoined.items.length, 2);
     assert.equal((rawJoined.items[0] as any).c_name_ct, first.name_plain);
+    assert.equal(Object.keys(rawJoined.items[0]).some(key => key.startsWith('__seal_')), false);
     assert.equal(customerNameOpens, 1, '1:N duplicate rows share authenticated field result within a search call');
     cipher.open = originalOpen;
     await assert.rejects(sealed.search(db, { scope: first.scope_id,
@@ -132,6 +134,32 @@ test('native managed writes and opens stay atomic', async () => {
       columns: { c: { id: 'c_id', scopeId: 'c_scope', name: 'c_name_ct' } },
       query: async () => [{ c_name_ct: first.name_plain }],
     }), { code: 'INVALID_CANDIDATE_SHAPE' });
+    await assert.rejects(sealed.search(db, { scope: first.scope_id,
+      match: { c: [peopleSeal, m => m.name.eq(first.name_plain)] },
+      query: async () => [{ c: { id: first.id, scopeId: first.scope_id, name: first.name_plain } }],
+    }), { code: 'INVALID_CANDIDATE_SHAPE' });
+    await assert.rejects(sealed.search(db, { scope: first.scope_id,
+      match: { c: [peopleSeal, m => m.name.eq(first.name_plain)] },
+      query: async () => [{ c: { id: first.id, scopeId: first.scope_id, name: cipherRow.memo } }],
+    }), { code: 'INVALID_CANDIDATE_SHAPE' });
+    await assert.rejects(sealed.search(db, { scope: first.scope_id,
+      match: { c: [peopleSeal, m => m.or(m.name.eq(first.name_plain), m.sql(sql`false`))] },
+      columns: { c: { id: 'c_id', scopeId: 'c_scope', name: 'c_name_ct', memo: 'c_memo_ct' } },
+      budgets: { decryptedBytes: 1 },
+      query: ({ where, after, orderBy, flagsSql, limit }) => db.execute(sql`select ${people.id} as c_id,
+        ${people.scopeId} as c_scope, ${people.name} as c_name_ct, ${people.memo} as c_memo_ct, ${flagsSql}
+        from ${people} where ${where} ${after ? sql`and ${after}` : sql``}
+        order by ${sql.join(orderBy, sql.raw(','))} limit ${limit}`),
+    }), { code: 'LIMIT_EXCEEDED' });
+    await assert.rejects(sealed.search(db, { scope: first.scope_id,
+      match: { c: [peopleSeal, m => m.or(m.name.eq(first.name_plain), m.sql(sql`false`))] },
+      columns: { c: { id: 'c_id', scopeId: 'c_scope', name: 'c_name_ct', memo: 'c_memo_ct' } },
+      budgets: { decryptedBytes: cipherRow.name.bytes.length - 29 },
+      query: ({ where, after, orderBy, flagsSql, limit }) => db.execute(sql`select ${people.id} as c_id,
+        ${people.scopeId} as c_scope, ${people.name} as c_name_ct, ${people.memo} as c_memo_ct, ${flagsSql}
+        from ${people} where ${where} ${after ? sql`and ${after}` : sql``}
+        order by ${sql.join(orderBy, sql.raw(','))} limit ${limit}`),
+    }), { code: 'LIMIT_EXCEEDED' });
     await assert.rejects(sealed.search(db, { scope: first.scope_id,
       match: { c: [peopleSeal, m => m.name.eq(first.name_plain)] },
       budgets: { fetchBytes: 1 },
