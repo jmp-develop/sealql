@@ -24,6 +24,16 @@ db.insert(customers).values({ status: 'a', tenantId: 'x', name: 'Ada', age: 3 })
 // @ts-expect-error sealed predicate must not accept plaintext
 db.select().from(customers).where(eq(customers.name, 'Ada'));
 db.update(customers).set({ status: 'b' });
+sealed.insert(db, customersSeal, { tenantId: 'x', status: 'a', name: 'Ada', age: 3 });
+// @ts-expect-error managed insert requires the sealed name
+sealed.insert(db, customersSeal, { tenantId: 'x', status: 'a', age: 3 });
+// @ts-expect-error managed insert rejects wrong sealed type
+sealed.insert(db, customersSeal, { tenantId: 'x', status: 'a', name: 3, age: 3 });
+sealed.update(db, customersSeal, { id: 'x', tenantId: 'x' }, { name: 'Grace', status: 'b' });
+// @ts-expect-error patch cannot move the row identifier
+sealed.update(db, customersSeal, { id: 'x', tenantId: 'x' }, { id: 'y' });
+// @ts-expect-error patch cannot move the scope
+sealed.update(db, customersSeal, { id: 'x', tenantId: 'x' }, { tenantId: 'y' });
 
 type Row = InferSelectModel<typeof customers>;
 const validPlain: PlainShape<typeof customers> = { id: 'x', tenantId: 'x', status: 'a', name: 'Ada', age: 3 };

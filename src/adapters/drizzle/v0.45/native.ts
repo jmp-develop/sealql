@@ -1,6 +1,6 @@
 import { getTableColumns, getTableName, is, sql, type InferInsertModel, type InferSelectModel } from 'drizzle-orm';
 import {
-  bigint, customType, foreignKey, getTableConfig, index, pgSchema, pgTable, primaryKey,
+  bigint, customType, foreignKey, getTableConfig, index, pgSchema, pgTable, primaryKey, uniqueIndex,
   text, uuid, PgCustomColumn, type PgColumn, type PgTable,
 } from 'drizzle-orm/pg-core';
 import { unhex } from '../../../core/bytes.js';
@@ -9,6 +9,7 @@ import { ensure, fail } from '../../../core/errors.js';
 import { envelopeShape, type Sealer } from '../../../core/field-cipher.js';
 import { validateField, type FieldSpec, type JsonValue } from '../../../core/field-codec.js';
 import type { SealedModelDefinition, SealedStorage } from '../../../engine/sealed-types.js';
+import { runtimeMethods } from './native-runtime.js';
 
 declare const sealedBrand: unique symbol;
 declare const sealMetaBrand: unique symbol;
@@ -27,6 +28,7 @@ export class Sealed<T, S = false> {
     writable.add(value);
     return value;
   }
+  static releaseWrite(value: Sealed<unknown, unknown>): void { writable.delete(value); }
   toJSON(): never { return fail('SEAL_REQUIRED'); }
   toString(): never { return fail('SEAL_REQUIRED'); }
 }
@@ -53,7 +55,7 @@ type NullableBuilder<T, S, O> = O extends { nullable: true } ? Builder<T, S> : R
 interface FieldBinding { key: string; column: PgColumn; spec: FieldSpec & { nullable: boolean }; registration: Registration }
 interface PendingField { name: string; spec: FieldSpec & { nullable: boolean }; bind?: FieldBinding }
 export interface Registration {
-  parent: PgTable; index: PgTable; row: string; scope?: string; model: string;
+  parent: PgTable; index: PgTable; row: string; scope?: string; rowUnique: boolean; model: string;
   fields: Map<string, FieldBinding>; definition: SealedModelDefinition; storage: SealedStorage;
 }
 const pendingFields = new WeakMap<Function, PendingField>();
@@ -166,7 +168,8 @@ function register<T extends PgTable, R extends UuidOrTextKeys<T>, S extends Uuid
   const substring = Object.values(profiles).filter(profile => profile.mode === 'substring');
   const tableFactory: typeof pgTable = (tableConfig.schema ? pgSchema(tableConfig.schema).table : pgTable) as typeof pgTable;
   const companion = tableFactory(indexName, companionColumns, (t: any) => [
-    primaryKey({ columns: [t.scopeId, t.rowId] }),
+    // drizzle-kit 0.31 reads composite PK columns out of order on push; the same unique B-tree stays stable.
+    uniqueIndex(`${indexName}_scope_row_uq`).on(t.scopeId, t.rowId),
     rowUnique
       ? foreignKey({ columns: [t.rowId], foreignColumns: [rowColumn] }).onDelete('cascade')
       : foreignKey({ columns: [t.scopeId, t.rowId], foreignColumns: [scopeColumn!, rowColumn] }).onDelete('cascade'),
@@ -178,7 +181,7 @@ function register<T extends PgTable, R extends UuidOrTextKeys<T>, S extends Uuid
   const storage: SealedStorage = { parent: { schema: tableConfig.schema ?? 'public', name: tableName }, index: {
     schema: tableConfig.schema ?? 'public', name: indexName, layout: 'companion-v1', profiles,
   } };
-  const registration: Registration = { parent: table, index: companion, row: cfg.row, scope: cfg.scope, model, fields, definition, storage };
+  const registration: Registration = { parent: table, index: companion, row: cfg.row, scope: cfg.scope, rowUnique, model, fields, definition, storage };
   for (const binding of fields.values()) binding.registration = registration;
   registrations.set(companion, registration);
   models.add(model);
@@ -211,6 +214,6 @@ export function createSealed(options: { sealer: Sealer | (() => Sealer) }) {
       return Object.values(reg.storage.index?.profiles ?? {}).filter(profile => profile.mode === 'substring')
         .map(profile => `alter table "${reg.storage.index!.schema}"."${reg.storage.index!.name}" alter column "${profile.tokens}" set statistics 1000`);
     },
-    _sealer: sealer,
+    ...runtimeMethods(sealer),
   };
 }
