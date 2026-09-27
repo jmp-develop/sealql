@@ -160,8 +160,9 @@ function order(reg: Registration, requested?: FindOptions<PgTable>['orderBy']) {
   return column;
 }
 
-export function searchMethods(sealerOf: () => import('../../../core/field-cipher.js').Sealer, open: <R>(rows: R, options?: { scope?: string }) => Promise<Opened<R>>,
-  openRaw: (seal: object, rows: Record<string, unknown>[], options: { columns: Record<string, string>; scope?: string }) => Promise<Record<string, unknown>[]>, cache: SearchTokenCache) {
+type AuthCache = Map<string, { bytes: Uint8Array; result: Promise<unknown> }>;
+export function searchMethods(sealerOf: () => import('../../../core/field-cipher.js').Sealer, open: <R>(rows: R, options?: { scope?: string; budgets?: { maxRows?: number; maxBytes?: number; deadlineMs?: number; concurrency?: number } }, authCache?: AuthCache) => Promise<Opened<R>>,
+  openRaw: (seal: object, rows: Record<string, unknown>[], options: { columns: Record<string, string>; scope?: string }, authCache?: AuthCache) => Promise<Record<string, unknown>[]>, cache: SearchTokenCache) {
   async function run<T extends PgTable>(db: Db, reg: Registration, options: FindOptions<T>, counting: boolean) {
     ensure(options && typeof options === 'object', 'INVALID_VALUE');
     const scopeId = scope(reg, options.scope), columns = getTableColumns(reg.parent) as Record<string, PgColumn>;
@@ -173,7 +174,9 @@ export function searchMethods(sealerOf: () => import('../../../core/field-cipher
       decryptedBytes: 4 * 1024 * 1024, resultBytes: 4 * 1024 * 1024, deadlineMs: 2000, decryptConcurrency: 64, ...options.budgets };
     const deadline = Date.now() + budgets.deadlineMs;
     const check = () => { if (options.signal?.aborted) fail('CANCELLED'); ensure(Date.now() < deadline, 'LIMIT_EXCEEDED'); };
-    for (const value of Object.values(budgets)) ensure(Number.isSafeInteger(value) && value > 0, 'INVALID_VALUE');
+    const caps = { batch: counting ? 2000 : 500, maxCandidates: 20000, fetchBytes: 32 * 1024 * 1024,
+      decryptedBytes: 32 * 1024 * 1024, resultBytes: 32 * 1024 * 1024, deadlineMs: 30000, decryptConcurrency: 64 };
+    for (const [key, value] of Object.entries(budgets)) ensure(Number.isSafeInteger(value) && value > 0 && value <= caps[key as keyof typeof caps], 'INVALID_VALUE');
     check();
     const ast = options.match?.(m<T>(reg));
     if (ast) validate(ast, reg);
@@ -183,6 +186,7 @@ export function searchMethods(sealerOf: () => import('../../../core/field-cipher
     for (const key of selection) ensure(!!columns[key], 'INVALID_VALUE');
     const projected = [...new Set([reg.row, ...(reg.scope ? [reg.scope] : []), ...selection])];
     const fetched = [...new Set([...projected, ...(ast ? encryptedKeys(ast) : [])])];
+    const conditionKeys = ast ? encryptedKeys(ast) : [];
     const selected: Record<string, PgColumn | SQL> = Object.fromEntries(fetched.map(key => [key, columns[key]]));
     if (orderColumn) selected.__seal_sort = sql<string>`${orderColumn}::text`;
     const flagCols = compiled ? flags(compiled) : {};
@@ -220,29 +224,49 @@ export function searchMethods(sealerOf: () => import('../../../core/field-cipher
         .limit(requestLimit);
       ensure(rows.length <= requestLimit, 'INVALID_CANDIDATE_SHAPE');
       if (!rows.length) { exhausted = true; break; }
-      for (const row of rows as Record<string, unknown>[]) {
-        if (Date.now() >= deadline || scanned >= budgets.maxCandidates) { limited = true; break; }
-        const rowId = identity(row[reg.row] as string, reg.definition.rowType);
-        ensure(!reg.scope || row[reg.scope] === scopeId, 'INVALID_CANDIDATE_SHAPE');
-        const rawBytes = Object.values(row).reduce((sum: number, value) => sum + (value instanceof Sealed ? value.bytes.length : typeof value === 'string' ? utf8(value).length : 16), 0);
-        if (fetchedBytes + rawBytes > budgets.fetchBytes) { limited = true; break; }
-        fetchedBytes += rawBytes;
-        decryptedBytes += Object.values(row).reduce((sum: number, value) => sum + (value instanceof Sealed ? value.bytes.length - 29 : 0), 0);
-        if (decryptedBytes > budgets.decryptedBytes) { limited = true; break; }
-        const plain = await open(row, { scope: scopeId }) as Record<string, unknown>;
-        const position = rowId;
-        const sort = orderColumn ? String(row.__seal_sort) : undefined;
-        ensure(after === undefined || (direction === 'asc' ? position > after : position < after) || !!orderColumn, 'INVALID_CANDIDATE_SHAPE');
-        const matches = !compiled || await verify(compiled, plain);
-        if (matches) {
-          const item = Object.fromEntries(projected.map(key => [key, plain[key]]));
-          const itemBytes = canonical(item).length;
-          if (resultBytes + itemBytes > budgets.resultBytes) { limited = true; break; }
-          resultBytes += itemBytes;
-          items.push(item); accepted++;
+      let offset = 0;
+      while (offset < rows.length && items.length < limit && !limited) {
+        const window: Record<string, unknown>[] = [];
+        const windowSize = Math.min(budgets.decryptConcurrency, limit - items.length);
+        while (offset < rows.length && window.length < windowSize) {
+          const row = rows[offset] as Record<string, unknown>;
+          if (Date.now() >= deadline || scanned + window.length >= budgets.maxCandidates) { limited = true; break; }
+          identity(row[reg.row] as string, reg.definition.rowType);
+          ensure(!reg.scope || row[reg.scope] === scopeId, 'INVALID_CANDIDATE_SHAPE');
+          const rawBytes = Object.values(row).reduce((sum: number, value) => sum + (value instanceof Sealed ? value.bytes.length : typeof value === 'string' ? utf8(value).length : 16), 0);
+          const conditionBytes = conditionKeys.reduce((sum, key) => sum + (row[key] instanceof Sealed ? (row[key] as Sealed<unknown>).bytes.length - 29 : 0), 0);
+          if (fetchedBytes + rawBytes > budgets.fetchBytes || decryptedBytes + conditionBytes > budgets.decryptedBytes) { limited = true; break; }
+          fetchedBytes += rawBytes; decryptedBytes += conditionBytes;
+          window.push(row); offset++;
         }
-        after = position; afterSort = sort; scanned++; verified++;
-        if (items.length === limit) break;
+        if (!window.length) break;
+        const conditionInputs = window.map(row => Object.fromEntries(
+          [reg.row, ...(reg.scope ? [reg.scope] : []), ...conditionKeys, ...Object.keys(flagCols)].map(key => [key, row[key]])));
+        const conditionPlains = await open(conditionInputs, { scope: scopeId,
+          budgets: { maxRows: window.length, concurrency: budgets.decryptConcurrency, deadlineMs: budgets.deadlineMs } }) as Record<string, unknown>[];
+        for (let i = 0; i < window.length; i++) {
+          const row = window[i], conditionPlain = conditionPlains[i];
+          const position = identity(row[reg.row] as string, reg.definition.rowType);
+          const sort = orderColumn ? String(row.__seal_sort) : undefined;
+          ensure(after === undefined || (direction === 'asc' ? position > after : position < after) || !!orderColumn, 'INVALID_CANDIDATE_SHAPE');
+          const matches = !compiled || await verify(compiled, conditionPlain);
+          if (matches) {
+            const remainingKeys = projected.filter(key => reg.fields.has(key) && !conditionKeys.includes(key));
+            const extraBytes = remainingKeys.reduce((sum, key) => sum + (row[key] instanceof Sealed ? (row[key] as Sealed<unknown>).bytes.length - 29 : 0), 0);
+            if (decryptedBytes + extraBytes > budgets.decryptedBytes) { limited = true; break; }
+            decryptedBytes += extraBytes;
+            const projectionInput = Object.fromEntries([reg.row, ...(reg.scope ? [reg.scope] : []), ...remainingKeys].map(key => [key, row[key]]));
+            const projectionPlain = await open(projectionInput, { scope: scopeId }) as Record<string, unknown>;
+            const plain = { ...row, ...conditionPlain, ...projectionPlain };
+            const item = Object.fromEntries(projected.map(key => [key, plain[key]]));
+            const itemBytes = canonical(item).length;
+            if (resultBytes + itemBytes > budgets.resultBytes) { limited = true; break; }
+            resultBytes += itemBytes;
+            items.push(item); accepted++;
+          }
+          after = position; afterSort = sort; scanned++; verified++;
+          if (items.length === limit) break;
+        }
       }
       if (limited) { if (!scanned) fail('LIMIT_EXCEEDED'); break; }
       if (items.length === limit || rows.length < requestLimit || scanned >= budgets.maxCandidates) {
@@ -297,7 +321,9 @@ export function searchMethods(sealerOf: () => import('../../../core/field-cipher
     ensure(Number.isInteger(limit) && limit >= 1 && limit <= 200, 'INVALID_VALUE');
     const budgets = { batch: 200, maxCandidates: 2000, fetchBytes: 4 * 1024 * 1024, decryptedBytes: 4 * 1024 * 1024,
       resultBytes: 4 * 1024 * 1024, deadlineMs: 2000, decryptConcurrency: 64, ...options.budgets };
-    for (const value of Object.values(budgets)) ensure(Number.isSafeInteger(value) && value > 0, 'INVALID_VALUE');
+    const caps = { batch: 500, maxCandidates: 20000, fetchBytes: 32 * 1024 * 1024,
+      decryptedBytes: 32 * 1024 * 1024, resultBytes: 32 * 1024 * 1024, deadlineMs: 30000, decryptConcurrency: 64 };
+    for (const [key, value] of Object.entries(budgets)) ensure(Number.isSafeInteger(value) && value > 0 && value <= caps[key as keyof typeof caps], 'INVALID_VALUE');
     const deadline = Date.now() + budgets.deadlineMs;
     const regs = Object.fromEntries(keys.map(key => [key, registrationOf(options.match[key][0])])) as Record<string, Registration>;
     ensure(new Set(keys.map(key => regs[key].parent)).size === keys.length, 'INVALID_SCHEMA');
@@ -334,6 +360,7 @@ export function searchMethods(sealerOf: () => import('../../../core/field-cipher
       catch { fail('CURSOR_INVALID'); }
     }
     const items: Opened<R>[] = [];
+    const authCache: AuthCache = new Map();
     let scanned = 0, fetchedBytes = 0, decryptedBytes = 0, resultBytes = 0;
     let batch = Math.min(budgets.batch, Math.max(limit + Math.ceil(limit / 4) + 2, 16));
     let accepted = 0, exhausted = false, limited = false;
@@ -358,8 +385,8 @@ export function searchMethods(sealerOf: () => import('../../../core/field-cipher
         fetchedBytes += bytes;
         decryptedBytes += Object.values(raw).reduce((sum: number, value) => sum + (value instanceof Sealed ? value.bytes.length - 29 : 0), 0);
         if (decryptedBytes > budgets.decryptedBytes) { limited = true; break; }
-        let opened = await open(raw, { scope: scopeId }) as Record<string, unknown>;
-        for (const key of keys) if (options.columns?.[key]) opened = (await openRaw(options.match[key][0], [opened], { columns: options.columns[key], scope: scopeId }))[0];
+        let opened = await open(raw, { scope: scopeId }, authCache) as Record<string, unknown>;
+        for (const key of keys) if (options.columns?.[key]) opened = (await openRaw(options.match[key][0], [opened], { columns: options.columns[key], scope: scopeId }, authCache))[0];
         const parts: unknown[] = [];
         for (const key of keys) {
           const reg = regs[key], mapping = options.columns?.[key];

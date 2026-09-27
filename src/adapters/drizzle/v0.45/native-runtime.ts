@@ -7,6 +7,8 @@ import { profiles, searchPieces, searchTokens, type SearchTokenCache } from '../
 import { Sealed, registrationOf, type Opened, type PlainShape, type Registration, type SealMeta } from './native.js';
 import { searchMethods } from './native-search.js';
 
+type AuthCache = Map<string, { bytes: Uint8Array; result: Promise<unknown> }>;
+
 type Db = PgDatabase<any, any, any>;
 type Identity<T extends PgTable, R extends string, S extends string | undefined> =
   Pick<InferSelectModel<T>, Extract<R | Exclude<S, undefined>, keyof InferSelectModel<T>>>;
@@ -117,7 +119,7 @@ async function upsertIndexes(tx: any, reg: Registration, rows: readonly Prepared
 
 export function runtimeMethods(sealerOf: () => Sealer) {
   const cache: SearchTokenCache = { profiles: new Map() };
-  async function open<R>(rows: R, options: OpenOptions = {}): Promise<Opened<R>> {
+  async function openWithCache<R>(rows: R, options: OpenOptions = {}, authCache?: AuthCache): Promise<Opened<R>> {
     const budget = { maxRows: 500, maxBytes: 4 * 1024 * 1024, deadlineMs: 2000, concurrency: 64, ...options.budgets };
     for (const value of Object.values(budget)) ensure(Number.isSafeInteger(value) && value > 0, 'INVALID_VALUE');
     const deadline = Date.now() + budget.deadlineMs;
@@ -153,11 +155,20 @@ export function runtimeMethods(sealerOf: () => Sealer) {
         ensure(Date.now() < deadline, 'LIMIT_EXCEEDED');
         const job = jobs[cursor++], field = job.value.binding!;
         const reg = field.registration, sealer = sealerOf();
-        job.target[job.key] = await sealer.open(job.value.bytes, context(reg, job.scopeId, job.rowId, field.key, sealer), sealer.ring(reg.model));
+        const key = `${reg.model}\0${job.scopeId}\0${job.rowId}\0${field.key}`;
+        let entry = authCache?.get(key);
+        if (entry) ensure(entry.bytes.length === job.value.bytes.length && entry.bytes.every((byte, i) => byte === job.value.bytes[i]), 'INVALID_CANDIDATE_SHAPE');
+        else {
+          entry = { bytes: job.value.bytes, result: sealer.open(job.value.bytes,
+            context(reg, job.scopeId, job.rowId, field.key, sealer), sealer.ring(reg.model)) };
+          authCache?.set(key, entry);
+        }
+        job.target[job.key] = await entry.result;
       }
     }));
     return result as Opened<R>;
   }
+  const open = <R>(rows: R, options?: OpenOptions): Promise<Opened<R>> => openWithCache(rows, options);
 
   async function insert<T extends PgTable, R extends string, S extends string | undefined = undefined, O extends { returning?: boolean } = {}>(
     db: Db, seal: SealMeta<T, R, S> & object, rows: InsertRow<T, R> | InsertRow<T, R>[], options?: O,
@@ -228,6 +239,7 @@ export function runtimeMethods(sealerOf: () => Sealer) {
 
   async function openRaw<T extends PgTable, R extends string, S extends string | undefined, V extends Record<string, unknown>>(
     seal: SealMeta<T, R, S> & object, rows: V[] | { rows: V[] }, options: { columns: Record<string, string>; scope?: string; budgets?: OpenOptions['budgets'] },
+    authCache?: AuthCache,
   ): Promise<V[]> {
     const reg = registrationOf(seal), columns = options.columns;
     ensure(!!columns[reg.row] && (!reg.scope || !!columns[reg.scope]), 'INVALID_VALUE');
@@ -243,7 +255,7 @@ export function runtimeMethods(sealerOf: () => Sealer) {
       }
       return contextRow;
     });
-    const opened = await open(mapped, options);
+    const opened = await openWithCache(mapped, options, authCache);
     return source.map((row, i) => {
       const output: Record<string, unknown> = { ...row };
       for (const key of reg.fields.keys()) if (columns[key] && Object.hasOwn(opened[i], key)) output[columns[key]] = opened[i][key];
@@ -300,5 +312,5 @@ export function runtimeMethods(sealerOf: () => Sealer) {
     }
     return { rows: count };
   }
-  return { insert, update, upsert, open, openRaw, reindex, ...searchMethods(sealerOf, open, openRaw as any, cache) };
+  return { insert, update, upsert, open, openRaw, reindex, ...searchMethods(sealerOf, openWithCache, openRaw as any, cache) };
 }
