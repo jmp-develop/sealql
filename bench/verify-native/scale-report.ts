@@ -22,6 +22,8 @@ const matrixRows=matrix.report.map((r:any)=>{
 });
 const checkpoints=await load('checkpoints');
 const meta=await load('measurement-meta');assert(meta.productCommit&&meta.build==='PASS');
+const distBefore=await load('dist-customer-before'),distAfter=await load('dist-customer-after');
+assert.deepEqual(distBefore.files,distAfter.files,'customer timing dist changed');
 const checkpointRows=checkpoints.map((x:any)=>`| ${x.stage} | ${x.customerRows?.toLocaleString('en-US')??'—'} | ${x.ticketRows?.toLocaleString('en-US')??'—'} | ${fmt(x.elapsedSec/60)} | ${gib(x.databaseBytes)} | ${gib(x.freeBytes)} | ${x.estimatedRemainingSec===null?'미계측':`${fmt(x.estimatedRemainingSec/60)}분 (당시 추정)`} |`);
 const validation=await load('validation');
 const indexAudit=await load('index-audit');assert(indexAudit.foreignKey.convalidated);
@@ -29,9 +31,13 @@ const count=await maybe('count'),mixed=await maybe('mixed'),join=await maybe('jo
 const write=await maybe('write'),batch=await maybe('write-batch'),ticketValidation=await maybe('ticket-validation');
 const ticketIndex=await maybe('ticket-index');
 const ticketIndexAudit=await maybe('ticket-index-audit');
+const ticketDistBefore=await maybe('dist-ticket-before'),ticketDistAfter=await maybe('dist-ticket-after');
 assert(count&&mixed&&write&&batch,'required measurements are missing');
 assert(await maybe('index'),'customer indexes and vacuum are not recorded');
-if(checkpoints.some((x:any)=>x.ticketRows>0))assert(join&&ticketValidation&&ticketIndex&&ticketIndexAudit,'ticket evidence is incomplete');
+if(checkpoints.some((x:any)=>x.ticketRows>0)){
+  assert(join&&ticketValidation&&ticketIndex&&ticketIndexAudit&&ticketDistBefore&&ticketDistAfter,'ticket evidence is incomplete');
+  assert.deepEqual(ticketDistBefore.files,ticketDistAfter.files,'ticket timing dist changed');
+}
 const countRows=count?.map((r:any)=>{
   const a=r.summary.plain,b=r.summary.product;
   return `| ${r.case} | ${r.expected.toLocaleString('en-US')} | ${r.productOutcome.kind==='value'?r.productOutcome.value:'LIMIT_EXCEEDED'} | ${fmt(a.sqlMs)} / ${fmt(a.totalMs)} | ${fmt(b.sqlMs)} / ${fmt(b.totalMs)} |`;
@@ -45,7 +51,7 @@ if(batch)writeRows.push(`| insert 배치 1,000건 | ${fmt(batch.summary.plain.sq
 const last=checkpoints.at(-1);
 const md=`# Drizzle 네이티브 API 1억 행 규모 시험
 
-2026-09-27. 일회용 PostgreSQL \`127.0.0.1:56439\`에서 원본 \`bench_realistic_100k\`는 읽기만 했다. 측정 기준 제품 커밋은 \`${meta.productCommit}\`이며 [빌드 기록](measurement-meta.json)의 \`npm run build\`와 bench 타입 검사를 통과했다. 고객 10만 행을 ID만 바꿔 1,000벌 복제하여 \`native_scale_100m\` 고객 암호·평문 테이블 각 1억 행을 만들었다. 암호문은 공개 \`createSealer.seal\`로 새 행 ID에 맞춰 재암호화했고, scope와 값에만 의존하는 보조 토큰은 같은 모델·키·scope의 10만 행 제품 테이블에서 SQL 복사했다. 부모·보조·평문 색인과 FK는 적재 후 생성하고 \`VACUUM (ANALYZE)\`를 실행했다. 암호 칸으로 정렬하지 않고 UUID ID로만 정렬했다.
+2026-09-27. 일회용 PostgreSQL \`127.0.0.1:56439\`에서 원본 \`bench_realistic_100k\`는 읽기만 했다. 측정 기준 제품 커밋은 \`${meta.productCommit}\`이며 [빌드 기록](measurement-meta.json)의 \`npm run build\`와 bench 타입 검사를 통과했다. 규모 시험 스크립트의 직접 \`src/\` import는 ${meta.directSrcImportsInScaleScripts}개다. 고객 측정 직전·직후 [전체 dist 해시](dist-customer-before.json), [사후 해시](dist-customer-after.json)는 파일 ${distBefore.fileCount}개에 대해 일치했다${ticketDistBefore?`; 티켓 측정도 [사전](dist-ticket-before.json)·[사후](dist-ticket-after.json) 해시가 일치했다`:''}. 고객 10만 행을 ID만 바꿔 1,000벌 복제하여 \`native_scale_100m\` 고객 암호·평문 테이블 각 1억 행을 만들었다. 암호문은 공개 \`createSealer.seal\`로 새 행 ID에 맞춰 재암호화했고, scope와 값에만 의존하는 보조 토큰은 같은 모델·키·scope의 10만 행 제품 테이블에서 SQL 복사했다. 부모·보조·평문 색인과 FK는 적재 후 생성하고 \`VACUUM (ANALYZE)\`를 실행했다. 암호 칸으로 정렬하지 않고 UUID ID로만 정렬했다.
 
 **해석 전제:** 이 1억 행은 새 문장 1억 개가 아니라 **동일한 10만 행의 값 1,000벌**이다. 각 값·조각의 적중 행 수가 대체로 1,000배이며, 후보 수와 평문 LIKE 실행 계획도 달라진다. 이 수치를 실제 1억 행 서비스의 속도로 일반화하지 않는다.
 
