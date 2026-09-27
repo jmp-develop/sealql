@@ -8,12 +8,12 @@ const readme = readFileSync('README.md', 'utf8');
 const sample = readFileSync('examples/standard-consumer.ts', 'utf8');
 const raw = readFileSync('examples/standard-raw.ts', 'utf8');
 const operations = readFileSync('examples/standard-operations.ts', 'utf8');
-for (const path of ['.', './postgres', './drizzle/v0.45']) {
+for (const path of ['.', './drizzle/v0.45']) {
   if (!packageJson.exports[path]) throw Error(`Missing package export: ${path}`);
 }
-for (const name of ['createSealer', 'ciphertext', 'defineSealed', 'defineSealStorage', 'drizzleExecutor', 'bindSealed']) {
-  if (!guide.includes(name) || !sample.includes(name)) throw Error(`Guide/sample API drift: ${name}`);
-}
+if (packageJson.exports['./postgres']) throw Error('Legacy Postgres export remains');
+for (const name of ['createSealer', 'createSealed', 'register', 'findMany', 'count'])
+  if (!sample.includes(name)) throw Error(`Sample API drift: ${name}`);
 const markdown = dir => readdirSync(dir, { recursive: true })
   .map(path => `${dir}/${path.replaceAll('\\', '/')}`)
   .filter(path => path.endsWith('.md') && !path.startsWith('bench/results/'));
@@ -38,8 +38,7 @@ if (!entry.includes('docs/current-state.md') || !readme.includes('docs/current-s
 for (const path of ['examples/standard-consumer.ts', 'examples/standard-raw.ts', 'examples/standard-operations.ts', 'examples/key-loader.ts']) {
   if (!entry.includes(path) || !guide.includes(path)) throw Error(`Unlinked shared example: ${path}`);
 }
-if (!raw.includes('postgresExecutor') || !raw.includes('searchWithQuery') || !operations.includes('decryptRows') || !operations.includes('createSealer({ key })')) throw Error('Raw/operations example drift');
-if (!guide.includes('createSealer({ key, models:') || !readme.includes('createSealer({ key: rootKey })')) throw Error('Fixed-key API documentation drift');
+if (!raw.includes('sealed.search') || !raw.includes('flagsSql') || !operations.includes('sealed.insert') || !operations.includes('sealed.open')) throw Error('Raw/operations example drift');
 for (const path of ['examples', 'llms.txt', 'docs/llm-integration.md', 'docs/current-state.md', 'docs/threat-model.md']) {
   if (!packageJson.files.includes(path)) throw Error(`AI docs missing from package: ${path}`);
 }

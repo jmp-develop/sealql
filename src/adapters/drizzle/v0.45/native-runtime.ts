@@ -1,4 +1,4 @@
-import { and, eq, getTableColumns, sql, type InferSelectModel } from 'drizzle-orm';
+import { and, eq, gt, getTableColumns, sql, type InferSelectModel } from 'drizzle-orm';
 import type { PgColumn, PgDatabase, PgTable } from 'drizzle-orm/pg-core';
 import { identity, unhex, utf8 } from '../../../core/bytes.js';
 import { databaseError, ensure, fail, SealError } from '../../../core/errors.js';
@@ -231,5 +231,51 @@ export function runtimeMethods(sealerOf: () => Sealer) {
       return output as V;
     });
   }
-  return { insert, update, upsert, open, openRaw, ...searchMethods(sealerOf, open, openRaw as any, cache) };
+
+  async function reindex<T extends PgTable, R extends string, S extends string | undefined = undefined>(
+    db: Db, seal: SealMeta<T, R, S> & object, options: { scope?: string; batch?: number } = {},
+  ): Promise<{ rows: number }> {
+    const reg = registrationOf(seal), batch = options.batch ?? 500;
+    ensure(Number.isSafeInteger(batch) && batch >= 1 && batch <= 1000, 'INVALID_VALUE');
+    ensure(!options.scope || !!reg.scope, 'INVALID_VALUE');
+    const scopeId = options.scope === undefined ? undefined : identity(options.scope, reg.definition.scopeType);
+    const parent = getTableColumns(reg.parent) as Record<string, PgColumn>;
+    const index = getTableColumns(reg.index) as Record<string, PgColumn>;
+    const profileList = [...reg.fields].flatMap(([key, field]) => profiles(reg.model, field.spec.id ?? key, field.spec).map(profile => ({ key, profile })));
+    const tokenKeys = [...new Set(profileList.map(({ profile }) => reg.storage.index?.profiles?.[profile.indexId]?.tokens ?? fail('INVALID_SCHEMA')))];
+    let lastRow: string | undefined, lastScope: string | undefined, count = 0;
+    const sealer = sealerOf(), ring = sealer.ring(reg.model);
+    while (true) {
+      const page = await checkedDb(db).transaction(async (tx: any) => {
+        const after = lastRow === undefined ? undefined : reg.scope && scopeId === undefined
+          ? sql`(${parent[reg.scope]},${parent[reg.row]}) > (${lastScope},${lastRow})`
+          : gt(parent[reg.row], lastRow);
+        const rows = await tx.select().from(reg.parent).where(and(
+          scopeId !== undefined ? eq(parent[reg.scope!], scopeId) : undefined, after,
+        )).orderBy(...(reg.scope && scopeId === undefined ? [parent[reg.scope]] : []), parent[reg.row]).limit(batch).for('update');
+        const opened = await open(rows) as Record<string, unknown>[];
+        for (const row of opened) {
+          const rowId = identity(row[reg.row] as string, reg.definition.rowType);
+          const rowScope = reg.scope ? identity(row[reg.scope] as string, reg.definition.scopeType) : '_';
+          const values: Record<string, unknown> = { scopeId: rowScope, rowId };
+          for (const { key, profile } of profileList) {
+            const value = row[key];
+            const tokens = value === null ? [] : await searchTokens(ring, rowScope, profile, searchPieces(profile, value), cache);
+            values[reg.storage.index!.profiles![profile.indexId].tokens] = tokens.length ? tokens.map(BigInt) : null;
+          }
+          const query = tx.insert(reg.index).values(values);
+          if (tokenKeys.length) await query.onConflictDoUpdate({ target: [index.scopeId, index.rowId],
+            set: Object.fromEntries(tokenKeys.map(key => [key, values[key]])) });
+          else await query.onConflictDoNothing({ target: [index.scopeId, index.rowId] });
+        }
+        return opened.map(row => ({ row: row[reg.row] as string, scope: reg.scope ? row[reg.scope] as string : '_' }));
+      });
+      if (!page.length) break;
+      count += page.length;
+      lastRow = page.at(-1)!.row; lastScope = page.at(-1)!.scope;
+      if (page.length < batch) break;
+    }
+    return { rows: count };
+  }
+  return { insert, update, upsert, open, openRaw, reindex, ...searchMethods(sealerOf, open, openRaw as any, cache) };
 }

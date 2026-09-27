@@ -82,6 +82,10 @@ test('native managed writes and opens stay atomic', async () => {
     const afterUpsert = await sealed.open(await db.select().from(people));
     assert.equal(afterUpsert[0].name, second.name_plain);
     assert.equal(afterUpsert[0].memo, first.memo_plain);
+    await pool.query(`update "${schemaName}".people_seal_index set "${exact}" = null, "${substring}" = null`);
+    assert.equal((await sealed.findMany(db, peopleSeal, { scope: first.scope_id, match: m => m.name.eq(second.name_plain) })).items.length, 0);
+    assert.deepEqual(await sealed.reindex(db, peopleSeal, { scope: first.scope_id, batch: 1 }), { rows: 1 });
+    assert.equal((await sealed.findMany(db, peopleSeal, { scope: first.scope_id, match: m => m.name.eq(second.name_plain) })).items.length, 1);
     await assert.rejects(sealed.upsert(db, peopleSeal, { id: first.id, scopeId: second.id, name: second.name_plain, memo: second.memo_plain }), { code: 'SCOPE_CONFLICT' });
     const raw = await db.execute(sql`select id,scope_id,name_ct,memo_ct from ${people}`);
     const rawOpen = await sealed.openRaw(peopleSeal, raw.rows as Record<string, unknown>[], { columns: { id: 'id', scopeId: 'scope_id', name: 'name_ct', memo: 'memo_ct' } });
