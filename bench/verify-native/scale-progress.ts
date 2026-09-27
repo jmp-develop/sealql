@@ -1,5 +1,6 @@
 import assert from 'node:assert/strict';
 import { statfsSync } from 'node:fs';
+import { parse } from 'node:path';
 import { Pool } from 'pg';
 import { assertDisposable } from '../../test/disposable.js';
 const pool=new Pool({host:'127.0.0.1',port:56439,user:'sealql_test',database:'postgres'});
@@ -11,7 +12,7 @@ try{
     from (select completed_at from native_scale_100m.progress order by completed_at desc limit 20) x`)).rows[0];
   const sizes=(await pool.query(`select relname,pg_total_relation_size(format('%I.%I',schemaname,relname)::regclass) bytes
     from pg_stat_user_tables where schemaname='native_scale_100m' order by relname`)).rows;
-  const fs=statfsSync('D:\\');const freeBytes=Number(fs.bavail)*Number(fs.bsize);
+  const fs=statfsSync(parse(process.cwd()).root);const freeBytes=Number(fs.bavail)*Number(fs.bsize);
   const elapsedSec=p.started&&p.latest?(Date.parse(p.latest)-Date.parse(p.started))/1000:0;
   const tailSec=tail.started&&tail.latest?(Date.parse(tail.latest)-Date.parse(tail.started))/1000:0;
   const rate=tail.copies>1&&tailSec>0?(tail.copies-1)/tailSec:null;
