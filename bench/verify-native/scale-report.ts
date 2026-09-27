@@ -53,11 +53,11 @@ const md=`# Drizzle 네이티브 API 1억 행 규모 시험
 |---|---:|---:|---:|---:|---:|---:|
 ${checkpointRows.join('\n')}
 
-고객 ${validation.rows.toLocaleString('en-US')}행 × 여섯 칸의 암호문을 공개 \`openRaw\`로 인증·복호화해 원본 평문과 비교했다. 같은 행의 복사한 토큰 ${validation.tokenColumns.toLocaleString('en-US')}개 열을 공개 \`searchPieces\`·\`searchTokens\` 재계산과 비교한 결과 불일치 0건이었다.${ticketValidation?` 티켓도 ${ticketValidation.rows.toLocaleString('en-US')}행, ${ticketValidation.tokenColumns.toLocaleString('en-US')}개 토큰 열에서 불일치 0건이었다.`:''} 초기 10행 시험과 별도로 최종 1만 행 이상을 확인했다.
+고객 ${validation.rows.toLocaleString('en-US')}행은 시드 ${validation.sampleSeed}의 무작위 원본 ID를 ${validation.copiesCovered}개 복제 구간에 고르게 뽑았다. 여섯 칸의 암호문을 공개 \`openRaw\`로 인증·복호화해 원본 평문과 비교했다. 같은 행의 복사한 토큰 ${validation.tokenColumns.toLocaleString('en-US')}개 열을 공개 \`searchPieces\`·\`searchTokens\` 재계산과 비교한 결과 불일치 0건이었다.${ticketValidation?` 티켓도 ${ticketValidation.copiesCovered}개 복제 구간의 무작위 ${ticketValidation.rows.toLocaleString('en-US')}행, ${ticketValidation.tokenColumns.toLocaleString('en-US')}개 토큰 열에서 불일치 0건이었다.`:''} 초기 10행 시험과 별도로 최종 1만 행 이상을 확인했다.
 
 ## 21개 검색
 
-출처: [1억 행 반복 원시값](matrix.json), [10만 행 네이티브 기록](../2026-09-27-native-verification/v3/matrix.json). 두 경로는 같은 1억 행 ID·값, 질의·투영·ID 정렬·LIMIT를 썼고 최초 호출 및 모든 반복에서 ID 순서와 여섯 암호 칸 값을 비교했다. 예열 2회 뒤 평문·제품 순서를 교차한 7회 중앙값이다. SQL은 클라이언트의 요청~응답 합계, 전체는 API 호출 시간이며 지표별 중앙값은 서로 합산되지 않을 수 있다. 후보는 SQL 결과 행 수 합계, 실제 인증 복호화 필드 수는 **미계측**이다. 10만 행 기록은 색인 pending list가 남았던 최초 실행이므로 규모 효과만으로 차이를 설명할 수 없다.
+출처: [1억 행 반복 원시값](matrix.json), [10만 행 네이티브 기록](../2026-09-27-native-verification/v3/matrix.json). 두 경로는 같은 1억 행 ID·값, 질의·투영·ID 정렬·LIMIT를 썼고 최초 호출 및 모든 반복에서 ID 순서와 여섯 암호 칸 값을 비교했다. 최초 실행 시간은 JSON의 \`first\`에 따로 있으며 OS 캐시를 비우지 않아 콜드 캐시 수치라고 부르지 않는다. 예열 2회 뒤 평문·제품 순서를 교차한 7회 중앙값이다. SQL은 클라이언트의 요청~응답 합계, 전체는 API 호출 시간이며 지표별 중앙값은 서로 합산되지 않을 수 있다. 후보는 SQL 결과 행 수 합계, 실제 인증 복호화 필드 수는 **미계측**이다. 10만 행 기록은 색인 pending list가 남았던 최초 실행이므로 규모 효과만으로 차이를 설명할 수 없다.
 
 | 사례 | 1억 평문 SQL / 전체 ms | 1억 제품 SQL / 전체 ms | SQL 배율 | 전체 배율 | 10만 제품 SQL / 전체 ms | 후보 / 반환 | 판정 |
 |---|---:|---:|---:|---:|---:|---:|---|

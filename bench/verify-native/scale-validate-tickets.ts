@@ -13,10 +13,17 @@ try{
   await assertDisposable(pool);assert.equal(Number((await pool.query('show port')).rows[0].port),56439);
   const ticketCopies=Number((await pool.query('select count(*) n from native_scale_100m.ticket_progress')).rows[0].n);
   assert(ticketCopies===100||ticketCopies===1000);
-  const originals=(await pool.query('select id from bench_realistic_100k.tickets where scope_id=$1 order by id limit 100',[scopeId])).rows;
-  assert.equal(originals.length,100);
-  const step=ticketCopies/100;
-  const ids=Array.from({length:n},(_,i)=>cloneId(originals[i%100].id,n===10?0:Math.floor(i/100)*step));
+  const originals=(await pool.query('select id from bench_realistic_100k.tickets where scope_id=$1 order by id',[scopeId])).rows;
+  assert.equal(originals.length,100000);
+  let state=21027;const random=()=>{state=(Math.imul(state,1664525)+1013904223)>>>0;return state/2**32;};
+  const ids:string[]=[];
+  if(n===10)for(let i=0;i<10;i++)ids.push(cloneId(originals[i].id,0));
+  else for(let copy=0;copy<ticketCopies;copy++){
+    const chosen=new Set<number>(),perCopy=n/ticketCopies;
+    while(chosen.size<perCopy)chosen.add(Math.floor(random()*originals.length));
+    for(const j of chosen)ids.push(cloneId(originals[j].id,copy));
+  }
+  assert.equal(ids.length,n);
   const parent=(await pool.query('select * from native_scale_100m.tickets where id=any($1::uuid[])',[ids])).rows;
   const plain=(await pool.query('select * from native_scale_100m.tickets_plain where id=any($1::uuid[])',[ids])).rows;
   const index=(await pool.query('select * from native_scale_100m.tickets_seal_index where row_id=any($1::uuid[])',[ids])).rows;
@@ -39,7 +46,7 @@ try{
     }
   }
   const report={rows:n,fields:fields.length,tokenColumns,missing:0,extra:0,cipherMismatches:0,scopeId,
-    copies:n===10?[0]:Array.from({length:100},(_,i)=>i*step)};
+    sampleSeed:n===10?null:21027,copiesCovered:n===10?1:ticketCopies};
   if(n===10000){
     const out='bench/results/2026-09-27-native-scale-100m';await mkdir(out,{recursive:true});
     await writeFile(`${out}/ticket-validation.json`,JSON.stringify({...report,ticketCopies},null,2)+'\n');

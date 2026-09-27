@@ -11,9 +11,16 @@ const n=Number(process.argv[2]??'10000');assert(n===10||n===10000);
 const pool=new Pool({host:'127.0.0.1',port:56439,user:'sealql_test',database:'postgres',options:'-c statement_timeout=120000'});
 try{
   await assertDisposable(pool);assert.equal(Number((await pool.query('show port')).rows[0].port),56439);
-  const originals=(await pool.query('select id from bench_realistic_100k.customers where scope_id=$1 order by id limit 100',[scopeId])).rows;
-  assert.equal(originals.length,100);
-  const ids=Array.from({length:n},(_,i)=>cloneId(originals[i%100].id,n===10?0:Math.floor(i/100)*10));
+  const originals=(await pool.query('select id from bench_realistic_100k.customers where scope_id=$1 order by id',[scopeId])).rows;
+  assert.equal(originals.length,100000);
+  let state=21027;const random=()=>{state=(Math.imul(state,1664525)+1013904223)>>>0;return state/2**32;};
+  const ids:string[]=[];
+  if(n===10)for(let i=0;i<10;i++)ids.push(cloneId(originals[i].id,0));
+  else for(let copy=0;copy<1000;copy++){
+    const chosen=new Set<number>();while(chosen.size<10)chosen.add(Math.floor(random()*originals.length));
+    for(const j of chosen)ids.push(cloneId(originals[j].id,copy));
+  }
+  assert.equal(ids.length,n);
   const parent=(await pool.query('select * from native_scale_100m.customers where id=any($1::uuid[])',[ids])).rows;
   const plain=(await pool.query('select * from native_scale_100m.customers_plain where id=any($1::uuid[])',[ids])).rows;
   const index=(await pool.query('select * from native_scale_100m.customers_seal_index where row_id=any($1::uuid[])',[ids])).rows;
@@ -34,7 +41,7 @@ try{
     }
   }
   const report={rows:n,fields:fields.length,tokenColumns,missing:0,extra:0,cipherMismatches:0,scopeId,
-    copies:n===10?[0]:Array.from({length:100},(_,i)=>i*10)};
+    sampleSeed:n===10?null:21027,copiesCovered:n===10?1:1000};
   if(n===10000){
     const out='bench/results/2026-09-27-native-scale-100m';await mkdir(out,{recursive:true});
     await writeFile(`${out}/validation.json`,JSON.stringify(report,null,2)+'\n');

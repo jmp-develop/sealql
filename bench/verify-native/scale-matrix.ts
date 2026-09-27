@@ -113,7 +113,8 @@ try {
   const outDir='bench/results/2026-09-27-native-scale-100m'; await mkdir(outDir,{recursive:true});
   const report=[];
   for(const c of selected) {
-    const expected=await plain(c); same(await product(c),expected,`${c.name}/first`);
+    const firstPlain=await measure(()=>plain(c)),expected=firstPlain.rows;
+    const firstProduct=await measure(()=>product(c));same(firstProduct.rows,expected,`${c.name}/first`);
     for(let i=0;i<2;i++) { same(await plain(c),expected,`${c.name}/warmup/plain`); same(await product(c),expected,`${c.name}/warmup/product`); }
     const runs:{plain:any[];product:any[]}={plain:[],product:[]};
     for(let i=0;i<7;i++) for(const path of (i%2?['product','plain']:['plain','product']) as ('plain'|'product')[]) {
@@ -122,7 +123,8 @@ try {
     }
     const metrics=['totalMs','sqlMs','sqlCalls','candidates','returned'] as const;
     const summary=Object.fromEntries(Object.entries(runs).map(([path,rs])=>[path,Object.fromEntries(metrics.map(k=>[k,median(rs.map(r=>r[k]))]))]));
-    report.push({case:c.name,expected:expected.length,summary,runs});
+    report.push({case:c.name,expected:expected.length,first:{plain:{...firstPlain,rows:undefined},
+      product:{...firstProduct,rows:undefined}},summary,runs});
     console.log(JSON.stringify({case:c.name,summary}));
     await writeFile(`${outDir}/matrix.json`,JSON.stringify({schema:'native_scale_100m',copies:1000,warmup:2,alternatingRuns:7,report},null,2)+'\n');
   }
