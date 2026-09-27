@@ -259,6 +259,26 @@ test('native managed writes and opens stay atomic', async () => {
       decryptedCursor = page.nextCursor ?? undefined;
     } while (decryptedCursor);
     assert.deepEqual(new Set(decryptedIds), new Set([first.id, third.id]));
+    const realNow = Date.now, previousOpen = cipher.open;
+    const baseNow = realNow();
+    let logicalNow = baseNow, openedFields = 0;
+    Date.now = () => logicalNow;
+    cipher.open = async (...args) => {
+      const value = await previousOpen(...args);
+      if (args[1].fieldId === 'name') logicalNow = baseNow + (++openedFields === 1 ? 999 : 1000);
+      return value;
+    };
+    let deadlinePage;
+    try {
+      deadlinePage = await sealed.findMany(db, peopleSeal, { scope: first.scope_id,
+        columns: { id: true, name: true }, limit: 2,
+        budgets: { deadlineMs: 1000, decryptConcurrency: 1 } });
+    } finally { Date.now = realNow; cipher.open = previousOpen; }
+    assert.equal(deadlinePage.items.length, 1);
+    assert.ok(deadlinePage.nextCursor);
+    const deadlineResumed = await sealed.findMany(db, peopleSeal, { scope: first.scope_id,
+      columns: { id: true, name: true }, limit: 2, cursor: deadlinePage.nextCursor! });
+    assert.deepEqual(new Set([...deadlinePage.items, ...deadlineResumed.items].map(row => row.id)), new Set([first.id, third.id]));
     const sorted = await sealed.findMany(db, peopleSeal, { scope: first.scope_id, columns: { id: true },
       orderBy: { column: people.createdAt, direction: 'asc' }, limit: 1 });
     assert.equal(sorted.items.length, 1); assert.ok(sorted.nextCursor);
