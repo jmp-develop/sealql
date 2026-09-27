@@ -2,7 +2,7 @@ import assert from 'node:assert/strict';
 import { test } from 'node:test';
 import { Pool } from 'pg';
 import { drizzle } from 'drizzle-orm/node-postgres';
-import { eq } from 'drizzle-orm';
+import { and, eq } from 'drizzle-orm';
 import { pgSchema, uuid } from 'drizzle-orm/pg-core';
 import { createSealer, normalizeText, profiles, searchPieces, searchTokens, SealError } from '../src/index.js';
 import { createSealed } from '../src/adapters/drizzle/v0.45/index.js';
@@ -40,13 +40,13 @@ async function setup(caseName: string, count: number) {
       await pool.query(`create index "${companionIndexName('memo_seal_index', profileId)}_bt" on "${schemaName}".memo_seal_index(scope_id,(("${profile.tokens}")[1]),row_id)`);
     const substring = Object.values(profiles).filter(profile => profile.mode === 'substring');
     await pool.query(`create index "${companionIndexName('memo_seal_index', 'substring')}_gin" on "${schemaName}".memo_seal_index using gin(${substring.map(profile => `"${profile.tokens}"`).join(',')})`);
-    const logs: string[] = [];
-    const db = drizzle(pool, { logger: { logQuery(query) { logs.push(query); } } });
+    const logs: string[] = [], logEntries: { query: string; params: unknown[] }[] = [];
+    const db = drizzle(pool, { logger: { logQuery(query, params) { logs.push(query); logEntries.push({ query, params }); } } });
     for (let start = 0; start < rows.length; start += 500) await sealed.insert(db, seal, rows.slice(start, start + 500).map(row => ({
       id: row.id, scopeId: row.scope_id, body: row.memo_plain, address: row.address_plain, amount: row.name_plain.length,
     })));
     const close = async () => { await pool.query(`drop schema "${schemaName}" cascade`); await pool.end(); };
-    return { rows, schemaName, pool, db, sealed, cipher, memo, seal, profiles, logs, close };
+    return { rows, schemaName, pool, db, sealed, cipher, memo, seal, profiles, logs, logEntries, close };
   } catch (error) { await pool.query(`drop schema "${schemaName}" cascade`); await pool.end(); throw error; }
 }
 
@@ -59,6 +59,13 @@ test('native CRUD, verified pages, OR semi-join and bounded count', async () => 
     assert.equal(c.logs.length, 1, 'one candidate SQL request for an exact page');
     assert.ok(c.logs[0].includes(' in (select '));
     assert.ok(!c.logs[0].includes('exists('));
+    c.logs.length = 0;
+    assert.equal((await c.sealed.search(c.db, { scope,
+      match: { m: [c.seal, m => m.body.eq(exact)] },
+      query: ({ where, after, orderBy, flags, limit }) => c.db.select({ m: c.memo, ...flags }).from(c.memo)
+        .where(and(where, after)).orderBy(...orderBy).limit(limit),
+    })).items.length, 1);
+    assert.equal(c.logs.length, 1, 'UUID search needs only its candidate SQL request');
     await assert.rejects(c.sealed.findMany(c.db, c.seal, { scope, match: m => m.body.contains('a') }), { code: 'QUERY_TOO_BROAD' });
     const literal = Array.from(exact).slice(0, 3).join('');
     assert.equal((await c.sealed.findMany(c.db, c.seal, { scope, match: m => m.body.like(`% ${literal} %`) })).items.length,
@@ -90,21 +97,25 @@ test('native CRUD, verified pages, OR semi-join and bounded count', async () => 
     const exactProfile = profiles('memo', 'body', registrationOf(c.seal).definition.fields.body).find(profile => profile.mode === 'exact')!;
     const expectedToken = await searchTokens(c.cipher.ring('memo'), scope, exactProfile, searchPieces(exactProfile, first.memo_plain), { profiles: new Map() });
     assert.deepEqual(before[c.profiles['body/exact'].tokens].map(String), expectedToken);
-    assert.equal(c.logs.some(query => query.includes('collate "C"')), false, 'UUID candidate SQL keeps its original comparison');
+    const exactSql = c.logEntries.find(entry => entry.query.includes(' in (select ') && entry.query.includes(c.profiles['body/exact'].tokens));
+    assert.ok(exactSql);
+    assert.doesNotMatch(exactSql.query, /collate "C"/i);
+    const prefixSql = c.logEntries.find(entry => entry.query.includes('with sample as materialized'));
+    assert.ok(prefixSql);
+    const keysetSql = c.logEntries.find(entry => /"memo"\."id"\s*>\s*\$\d+/.test(entry.query));
+    assert.ok(keysetSql);
     const explainClient = await c.pool.connect();
     try {
       await explainClient.query('begin');
       await explainClient.query('set local enable_seqscan=off');
-      const explain = await explainClient.query(`explain select id from "${c.schemaName}".memo where id=$3 and id in
-        (select row_id from "${c.schemaName}".memo_seal_index where scope_id=$1 and ("${c.profiles['body/exact'].tokens}")[1]=$2::bigint)`,
-      [scope, expectedToken[0], first.id]);
-      const parentPlan = explain.rows.map(row => row['QUERY PLAN']).join('\n');
-      assert.match(parentPlan, /Index (?:Only )?Scan using .*memo_pkey/);
-      assert.doesNotMatch(parentPlan, /Seq Scan on memo /);
-      const keyset = await explainClient.query(`explain select id from "${c.schemaName}".memo where id>$1 order by id limit 20`, [first.id]);
-      const keysetPlan = keyset.rows.map(row => row['QUERY PLAN']).join('\n');
-      assert.match(keysetPlan, /Index (?:Only )?Scan using .*memo_pkey/);
-      assert.doesNotMatch(keysetPlan, /Sort|Seq Scan on memo /);
+      await explainClient.query('set local enable_bitmapscan=off');
+      for (const entry of [exactSql, prefixSql, keysetSql]) {
+        const explain = await explainClient.query(`explain ${entry.query}`, entry.params);
+        const plan = explain.rows.map(row => row['QUERY PLAN']).join('\n');
+        assert.match(plan, /Index (?:Only )?Scan using .*memo_pkey/, plan);
+        assert.doesNotMatch(plan, /Seq Scan on memo /, plan);
+        if (entry === keysetSql) assert.doesNotMatch(plan, /Sort/, plan);
+      }
     } finally { await explainClient.query('rollback'); explainClient.release(); }
     const substringProfile = profiles('memo', 'body', registrationOf(c.seal).definition.fields.body).find(profile => profile.mode === 'substring')!;
     const expectedSubstring = await searchTokens(c.cipher.ring('memo'), scope, substringProfile,

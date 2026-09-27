@@ -7,9 +7,7 @@ export function candidatePredicate(definition: SealedModelDefinition, storage: S
   ensure(storage.index, 'INVALID_SCHEMA');
   const companion = storage.index;
   const parentRow = ident(storage.parent.name, definition.columns[definition.identity.row].name);
-  const comparedParentRow = parentRow;
   const indexRow = ident('__seal_idx', 'row_id');
-  const comparedIndexRow = indexRow;
   const index = ident(companion.schema, companion.name);
   const inside = (node: CompiledSearch): Fragment => {
     if (node.op === 'all' || node.op === 'any') return q`(${join(node.children.map(inside), node.op === 'all' ? ' and ' : ' or ')})`;
@@ -21,7 +19,7 @@ export function candidatePredicate(definition: SealedModelDefinition, storage: S
     const tokenPredicate = mapped.mode === 'exact' ? (ensure(tokens.length === 1, 'INVALID_SCHEMA'), q`(${col})[1]=${tokens[0]}::bigint`) : q`${col} @> ${tokens}::bigint[]`;
     return q`(${tokenPredicate})`;
   };
-  return q`${comparedParentRow} in (select ${comparedIndexRow} from ${index} as ${ident('__seal_idx')} where ${ident('__seal_idx', 'scope_id')}=${scopeId} and ${inside(search)})`;
+  return q`${parentRow} in (select ${indexRow} from ${index} as ${ident('__seal_idx')} where ${ident('__seal_idx', 'scope_id')}=${scopeId} and ${inside(search)})`;
 }
 /** Probe a bounded ordered prefix before allowing the GIN path to read every match. */
 export function boundedCandidatePredicate(definition: SealedModelDefinition, storage: SealedStorage, scopeId: string, search: CompiledSearch, limit: number, after?: string): Fragment {
@@ -41,22 +39,20 @@ export function boundedCandidatePredicate(definition: SealedModelDefinition, sto
   const tokenWhere = condition(search);
   const index = ident(companion.schema, companion.name);
   const rowId = ident('c', 'row_id');
-  const comparedRowId = rowId;
-  const keyset = after ? q` and ${comparedRowId}>${after}` : q``;
+  const keyset = after ? q` and ${rowId}>${after}` : q``;
   const sampleColumns = join([...used].map(name => ident(name)), ',');
   const row = ident(storage.parent.name, definition.columns[definition.identity.row].name);
-  const comparedRow = row;
-  return q`${comparedRow} in (
+  return q`${row} in (
     with sample as materialized (
       select ${ident('row_id')},${sampleColumns} from ${index} as ${ident('c')}
-      where ${ident('c', 'scope_id')}=${scopeId}${keyset} order by ${comparedRowId} limit 256
+      where ${ident('c', 'scope_id')}=${scopeId}${keyset} order by ${rowId} limit 256
     ), quick as materialized (
-      select ${rowId} from sample as ${ident('c')} where ${tokenWhere} order by ${comparedRowId} limit ${limit}
+      select ${rowId} from sample as ${ident('c')} where ${tokenWhere} order by ${rowId} limit ${limit}
     ), fallback as materialized (
       select ${rowId} from ${index} as ${ident('c')}
       where ${ident('c', 'scope_id')}=${scopeId}${keyset} and ${tokenWhere}
         and (select count(*) from quick)<${limit}
-      order by ${comparedRowId} limit ${limit}
+      order by ${rowId} limit ${limit}
     )
     select row_id from quick where (select count(*) from quick)=${limit}
     union all select row_id from fallback

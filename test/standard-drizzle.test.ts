@@ -2,13 +2,29 @@ import assert from 'node:assert/strict';
 import { test } from 'node:test';
 import { Pool } from 'pg';
 import { drizzle } from 'drizzle-orm/node-postgres';
-import { and, eq, relations, sql } from 'drizzle-orm';
+import { and, desc, eq, relations, sql } from 'drizzle-orm';
 import { PgDialect, pgSchema, timestamp, uuid } from 'drizzle-orm/pg-core';
 import { createSealer } from '../src/index.js';
 import { canonical, utf8 } from '../src/core/bytes.js';
 import { createSealed } from '../src/adapters/drizzle/v0.45/index.js';
 import { Sealed, registrationOf } from '../src/adapters/drizzle/v0.45/native.js';
 import { assertDisposable } from './disposable.js';
+
+test('transactionless drivers report UNSUPPORTED_DRIVER before any callback work', async () => {
+  const sealed = createSealed({ sealer: createSealer({ key: new Uint8Array(32).fill(93) }) });
+  const row = pgSchema('test_driver_shape').table('rows', {
+    id: uuid('id').primaryKey(), name: sealed.text('name', { search: { exact: true } }),
+  });
+  const seal = sealed.register(row, { row: 'id' });
+  const db = { transaction: (_callback: unknown) => { throw Error('No transactions support in neon-http driver'); } } as any;
+  const id = '00000000-0000-4000-8000-000000000001';
+  await assert.rejects(sealed.insert(db, seal, { id, name: 'fixture' }), { code: 'UNSUPPORTED_DRIVER' });
+  await assert.rejects(sealed.update(db, seal, { id }, { name: 'fixture' }), { code: 'UNSUPPORTED_DRIVER' });
+  await assert.rejects(sealed.upsert(db, seal, { id, name: 'fixture' }), { code: 'UNSUPPORTED_DRIVER' });
+  await assert.rejects(sealed.reindex(db, seal), { code: 'UNSUPPORTED_DRIVER' });
+  const disconnected = { transaction: () => { throw Error('connection failed'); } } as any;
+  await assert.rejects(sealed.insert(disconnected, seal, { id, name: 'fixture' }), { code: 'DATABASE_ERROR' });
+});
 
 test('native managed writes and opens stay atomic', async () => {
   const pool = new Pool({ host: '127.0.0.1', port: 56439, user: 'sealql_test', database: 'postgres' });
@@ -117,7 +133,7 @@ test('native managed writes and opens stay atomic', async () => {
     const budgetedNext = await sealed.search(db, { scope: first.scope_id, match: { c: [peopleSeal, m => m.name.eq(first.name_plain)] },
       keyset: [orders.id], limit: 3, budgets: { resultBytes: joinedBudget }, cursor: budgeted.nextCursor!, query: budgetQuery });
     assert.equal(budgetedNext.items.length, 1);
-    assert.deepEqual(new Set([...budgeted.items, ...budgetedNext.items].map((row: any) => row.o.id)), new Set([second.id, third.id]));
+    assert.deepEqual([...budgeted.items, ...budgetedNext.items].map((row: any) => row.o.id), [second.id, third.id]);
     const originalOpen = cipher.open.bind(cipher);
     let customerNameOpens = 0;
     cipher.open = async (...args) => {
@@ -265,7 +281,7 @@ test('native managed writes and opens stay atomic', async () => {
     const resumed = await sealed.findMany(db, peopleSeal, { scope: first.scope_id, columns: { id: true }, limit: 3,
       cursor: short.nextCursor!, budgets: { resultBytes: oneItemBytes + 1 } });
     assert.equal(resumed.items.length, 1);
-    assert.deepEqual(new Set([...short.items, ...resumed.items].map(row => row.id)), new Set([first.id, third.id]));
+    assert.deepEqual([...short.items, ...resumed.items].map(row => row.id), [first.id, third.id]);
     const descending: string[] = [];
     let descendingCursor: string | undefined;
     do {
@@ -286,7 +302,7 @@ test('native managed writes and opens stay atomic', async () => {
       decryptedIds.push(page.items[0].id);
       decryptedCursor = page.nextCursor ?? undefined;
     } while (decryptedCursor);
-    assert.deepEqual(new Set(decryptedIds), new Set([first.id, third.id]));
+    assert.deepEqual(decryptedIds, [first.id, third.id]);
     const realNow = Date.now, previousOpen = cipher.open;
     const baseNow = realNow();
     let logicalNow = baseNow, openedFields = 0;
@@ -306,21 +322,21 @@ test('native managed writes and opens stay atomic', async () => {
     assert.ok(deadlinePage.nextCursor);
     const deadlineResumed = await sealed.findMany(db, peopleSeal, { scope: first.scope_id,
       columns: { id: true, name: true }, limit: 2, cursor: deadlinePage.nextCursor! });
-    assert.deepEqual(new Set([...deadlinePage.items, ...deadlineResumed.items].map(row => row.id)), new Set([first.id, third.id]));
+    assert.deepEqual([...deadlinePage.items, ...deadlineResumed.items].map(row => row.id), [first.id, third.id]);
     const sorted = await sealed.findMany(db, peopleSeal, { scope: first.scope_id, columns: { id: true },
       orderBy: { column: people.createdAt, direction: 'asc' }, limit: 1 });
     assert.equal(sorted.items.length, 1); assert.ok(sorted.nextCursor);
     const sortedNext = await sealed.findMany(db, peopleSeal, { scope: first.scope_id, columns: { id: true },
       orderBy: { column: people.createdAt, direction: 'asc' }, limit: 1, cursor: sorted.nextCursor! });
     assert.equal(sortedNext.items.length, 1);
-    assert.deepEqual(new Set([sorted.items[0].id, sortedNext.items[0].id]), new Set([first.id, third.id]));
+    assert.deepEqual([sorted.items[0].id, sortedNext.items[0].id], [first.id, third.id]);
     await assert.rejects(sealed.count(db, peopleSeal, { scope: first.scope_id, budgets: { fetchBytes: 80 } }), { code: 'LIMIT_EXCEEDED' });
     const tenantPage = await sealed.search(db, { scope: first.scope_id,
       match: { p: [peopleSeal, m => m.or(m.name.eq('absent'), m.sql(sql`true`))] },
       query: ({ where, after, orderBy, flags, limit }) => db.select({ p: people, ...flags }).from(people)
         .where(and(where, after)).orderBy(...orderBy).limit(limit),
     });
-    assert.deepEqual(new Set(tenantPage.items.map(row => row.p.id)), new Set([first.id, third.id]));
+    assert.deepEqual(tenantPage.items.map(row => row.p.id), [first.id, third.id]);
     const decoy = await sealed.search(db, { scope: first.scope_id,
       match: { p: [peopleSeal, m => m.name.eq(first.name_plain)] },
       columns: { p: { id: 'p_id', scopeId: 'p_scope', name: 'p_name_ct' } },
@@ -361,7 +377,8 @@ test('text row IDs follow the database collation and keep index-backed keysets',
     await pool.query(`create table "${schemaName}".rows (id text collate "und-x-icu" primary key,scope_id uuid not null,name_ct bytea not null)`);
     await pool.query(`create table "${schemaName}".rows_seal_index (scope_id uuid not null,row_id text collate "und-x-icu" not null,
       "${exact}" bigint[],unique(scope_id,row_id),foreign key(row_id) references "${schemaName}".rows(id) on delete cascade)`);
-    const db = drizzle(pool);
+    const logged: { query: string; params: unknown[] }[] = [];
+    const db = drizzle(pool, { logger: { logQuery(query, params) { logged.push({ query, params }); } } });
     const prefixes = ['Z', 'a', '가', '!'];
     const ids = fixture.map((row, index) => `${prefixes[index % prefixes.length]}${row.id}`);
     await assert.rejects(sealed.insert(db, seal, { scopeId: fixture[0].scope_id, name: fixture[0].name_plain }), { code: 'INVALID_VALUE' });
@@ -370,34 +387,33 @@ test('text row IDs follow the database collation and keep index-backed keysets',
     })));
     await pool.query(`analyze "${schemaName}".rows`);
     await pool.query(`analyze "${schemaName}".rows_seal_index`);
-    const planClient = await pool.connect();
-    try {
-      await planClient.query('begin');
-      await planClient.query('set local enable_seqscan=off');
-      const parentPlan = await planClient.query(`explain select id from "${schemaName}".rows
-        where id=$1 and id in (select row_id from "${schemaName}".rows_seal_index where scope_id=$2)`, [ids[0], fixture[0].scope_id]);
-      const parentText = parentPlan.rows.map(row => row['QUERY PLAN']).join('\n');
-      assert.match(parentText, /Index (?:Only )?Scan using .*rows_pkey/);
-      assert.doesNotMatch(parentText, /Seq Scan on rows /);
-      const pagePlan = await planClient.query(`explain select id from "${schemaName}".rows
-        where id>$1 order by id limit 2`, [ids[0]]);
-      const pageText = pagePlan.rows.map(row => row['QUERY PLAN']).join('\n');
-      assert.match(pageText, /Index (?:Only )?Scan using .*rows_pkey/);
-      assert.doesNotMatch(pageText, /Sort|Seq Scan on rows /);
-    } finally { await planClient.query('rollback'); planClient.release(); }
     const expected = (await pool.query(`select id from "${schemaName}".rows order by id`)).rows.map(row => row.id as string);
+    await sealed.findMany(db, seal, { scope: fixture[0].scope_id, match: m => m.name.eq(fixture[0].name_plain), limit: 2 });
     const search = (cursor?: string) => sealed.search(db, { scope: fixture[0].scope_id,
       match: { r: [seal, m => m.or(m.name.eq('absent'), m.sql(sql`true`))] }, limit: 20, cursor,
       query: ({ where, after, orderBy, flags, limit }) => db.select({ r: rows, ...flags }).from(rows)
         .where(and(where, after)).orderBy(...orderBy).limit(limit),
     });
     const searchIds: string[] = [], findIds: string[] = [];
+    let nonemptySearchPages = 0;
     let searchCursor: string | undefined, findCursor: string | undefined;
     do {
       const searched = await search(searchCursor);
+      if (searched.items.length) nonemptySearchPages++;
       searchIds.push(...searched.items.map(item => item.r.id));
       searchCursor = searched.nextCursor ?? undefined;
     } while (searchCursor);
+    assert.equal(logged.filter(entry => entry.query.includes('with input as')).length, nonemptySearchPages);
+    await assert.rejects(sealed.search(db, { scope: fixture[0].scope_id,
+      match: { r: [seal, m => m.or(m.name.eq('absent'), m.sql(sql`true`))] }, limit: 20,
+      query: ({ where, after, orderBy, flags, limit }) => db.select({ r: rows, ...flags }).from(rows)
+        .where(and(where, after)).orderBy(desc(rows.id), ...orderBy).limit(limit),
+    }), { code: 'INVALID_CANDIDATE_SHAPE' });
+    await assert.rejects(sealed.search(db, { scope: fixture[0].scope_id,
+      match: { r: [seal, m => m.or(m.name.eq('absent'), m.sql(sql`true`))] }, limit: 20,
+      query: async ({ where, after, flags, limit }) => (await db.select({ r: rows, ...flags }).from(rows)
+        .where(and(where, after)).limit(limit)).reverse(),
+    }), { code: 'INVALID_CANDIDATE_SHAPE' });
     do {
       const found = await sealed.findMany(db, seal, { scope: fixture[0].scope_id, limit: 20, cursor: findCursor });
       findIds.push(...found.items.map(item => item.id));
@@ -405,9 +421,36 @@ test('text row IDs follow the database collation and keep index-backed keysets',
     } while (findCursor);
     assert.deepEqual(searchIds, expected);
     assert.deepEqual(findIds, expected);
+    const candidateSql = logged.find(entry => entry.query.includes(' in (select ') && entry.query.includes(exact));
+    const keysetSql = logged.find(entry => /"rows"\."id"\s*>\s*\$\d+/.test(entry.query) && entry.query.includes('order by'));
+    assert.ok(candidateSql); assert.ok(keysetSql);
+    const planClient = await pool.connect();
+    try {
+      await planClient.query('begin');
+      await planClient.query('set local enable_seqscan=off');
+      for (const entry of [candidateSql, keysetSql]) {
+        const explained = await planClient.query(`explain ${entry.query}`, entry.params);
+        const plan = explained.rows.map(row => row['QUERY PLAN']).join('\n');
+        assert.match(plan, /Index (?:Only )?Scan using .*rows_pkey/, plan);
+        assert.doesNotMatch(plan, /Seq Scan on rows /, plan);
+        if (entry === keysetSql) assert.doesNotMatch(plan, /Sort/, plan);
+      }
+    } finally { await planClient.query('rollback'); planClient.release(); }
     assert.equal(await sealed.count(db, seal, { scope: fixture[0].scope_id }), ids.length);
     assert.deepEqual(await sealed.reindex(db, seal, { scope: fixture[0].scope_id, batch: 50 }), { rows: ids.length });
     assert.deepEqual((await sealed.findMany(db, seal, { scope: fixture[0].scope_id, limit: ids.length })).items.map(row => row.id), expected);
+    const beforeDelete = await sealed.search(db, { scope: fixture[0].scope_id,
+      match: { r: [seal, m => m.or(m.name.eq('absent'), m.sql(sql`true`))] }, limit: 1,
+      query: ({ where, after, orderBy, flags, limit }) => db.select({ r: rows, ...flags }).from(rows)
+        .where(and(where, after)).orderBy(...orderBy).limit(limit),
+    });
+    await db.delete(rows).where(eq(rows.id, beforeDelete.items[0].r.id));
+    const afterDelete = await sealed.search(db, { scope: fixture[0].scope_id,
+      match: { r: [seal, m => m.or(m.name.eq('absent'), m.sql(sql`true`))] }, limit: 1, cursor: beforeDelete.nextCursor!,
+      query: ({ where, after, orderBy, flags, limit }) => db.select({ r: rows, ...flags }).from(rows)
+        .where(and(where, after)).orderBy(...orderBy).limit(limit),
+    });
+    assert.equal(afterDelete.items[0].r.id, expected[1]);
   } finally {
     if (created) await pool.query('drop schema test_native_text cascade');
     await pool.end();

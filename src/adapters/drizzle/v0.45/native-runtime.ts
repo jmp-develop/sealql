@@ -77,14 +77,16 @@ function checkedDb(db: Db): any {
   return db;
 }
 async function writeTransaction<T>(db: Db, callback: (tx: any) => Promise<T>): Promise<T> {
-  let callbackDone = false;
+  let callbackEntered = false, callbackDone = false;
   try {
     return await checkedDb(db).transaction(async (tx: any) => {
+      callbackEntered = true;
       const value = await callback(tx);
       callbackDone = true;
       return value;
     });
   } catch (error) {
+    if (!callbackEntered && /transaction/i.test(String(error))) fail('UNSUPPORTED_DRIVER');
     if (callbackDone && !is(db, PgTransaction)) fail('WRITE_OUTCOME_UNKNOWN');
     throw error;
   }
@@ -271,12 +273,15 @@ export function runtimeMethods(sealerOf: () => Sealer) {
     let lastRow: string | undefined, lastScope: string | undefined, count = 0;
     const sealer = sealerOf(), ring = sealer.ring(reg.model);
     while (true) {
-      const page = await checkedDb(db).transaction(async (tx: any) => {
+      let callbackEntered = false;
+      let page: { row: string; scope: string }[];
+      try { page = await checkedDb(db).transaction(async (tx: any) => {
+        callbackEntered = true;
         const rowOrder = parent[reg.row];
         const scopeOrder = reg.scope ? parent[reg.scope] : undefined;
         const after = lastRow === undefined ? undefined : reg.scope && scopeId === undefined
           ? sql`(${scopeOrder},${rowOrder}) > (${lastScope},${lastRow})`
-          : reg.definition.rowType === 'text' ? sql`${rowOrder} > ${lastRow}` : gt(parent[reg.row], lastRow);
+          : gt(parent[reg.row], lastRow);
         const rows = await tx.select().from(reg.parent).where(and(
           scopeId !== undefined ? eq(parent[reg.scope!], scopeId) : undefined, after,
         )).orderBy(...(scopeOrder && scopeId === undefined ? [scopeOrder] : []), rowOrder).limit(batch).for('update');
@@ -300,7 +305,10 @@ export function runtimeMethods(sealerOf: () => Sealer) {
           else await query.onConflictDoNothing({ target: [index.scopeId, index.rowId] });
         }
         return opened.map(row => ({ row: row[reg.row] as string, scope: reg.scope ? row[reg.scope] as string : '_' }));
-      });
+      }); } catch (error) {
+        if (!callbackEntered && /transaction/i.test(String(error))) fail('UNSUPPORTED_DRIVER');
+        throw error;
+      }
       if (!page.length) break;
       count += page.length;
       lastRow = page.at(-1)!.row; lastScope = page.at(-1)!.scope;

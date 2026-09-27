@@ -165,9 +165,6 @@ function scope(reg: Registration, requested: string | undefined): string {
   ensure(requested !== undefined, 'INVALID_VALUE');
   return identity(requested, reg.definition.scopeType);
 }
-function orderedText(column: PgColumn): PgColumn | SQL {
-  return column;
-}
 function order(reg: Registration, requested?: FindOptions<PgTable>['orderBy']) {
   if (!requested) return undefined;
   const column = requested.column;
@@ -216,6 +213,39 @@ function growBatch(current: number, remaining: number, verified: number, accepte
   const estimated = accepted === 0 ? current * 2 : Math.ceil(remaining * verified / accepted * 1.25);
   return Math.min(cap, Math.max(current * 2, estimated));
 }
+// Carry each text column's collation into the comparison without looking up the row.
+// The previous cursor row may have been deleted between requests.
+async function validateTextOrder(db: Db, columns: PgColumn[], positions: unknown[][]): Promise<void> {
+  const names = columns.map((_, index) => `p${index}`);
+  const types = columns.map(column => column.getSQLType());
+  const arrays = columns.map((_, index) => {
+    const literal = `{${positions.map(parts => `"${String(parts[index]).replace(/\\/g, '\\\\').replace(/"/g, '\\"')}"`).join(',')}}`;
+    return sql`${literal}::${sql.raw(types[index])}[]`;
+  });
+  const input = sql.identifier('input');
+  const qualified = (table: string, name: string) => sql`${sql.identifier(table)}.${sql.identifier(name)}`;
+  const inputColumn = (index: number) => qualified('input', names[index]);
+  const values = columns.map((column, index) => types[index] === 'text'
+    ? sql`coalesce((select ${column} from ${column.table} where false), ${inputColumn(index)})` : inputColumn(index));
+  const current = values.map((_, index) => qualified('ordered', `v${index}`));
+  const prior = values.map((_, index) => qualified('ordered', `previous_${index}`));
+  const row = (parts: SQL[]) => sql`(${sql.join(parts, sql.raw(','))})`;
+  const statement = sql`with input as (
+    select * from unnest(${sql.join(arrays, sql.raw(','))}) with ordinality as ${input}(${sql.join(names.map(name => sql`${sql.identifier(name)}`), sql.raw(','))}, ordinal)
+  ), resolved as (
+    select ${qualified('input', 'ordinal')} as ordinal,
+      ${sql.join(values.map((value, index) => sql`${value} as ${sql.identifier(`v${index}`)}`), sql.raw(','))}
+    from input
+  ), ordered as (
+    select *, ${sql.join(values.map((_, index) => sql`lag(${sql.identifier(`v${index}`)}) over (order by ordinal) as ${sql.identifier(`previous_${index}`)}`), sql.raw(','))}
+    from resolved
+  ) select coalesce(bool_and(
+    ${qualified('ordered', 'ordinal')} = 1 or (${row(prior)} < ${row(current)}) is true
+  ), false) as valid from ordered`;
+  const result = await (db as any).execute(statement);
+  const rows = Array.isArray(result) ? result : result.rows;
+  ensure(rows?.length === 1 && rows[0].valid === true, 'INVALID_CANDIDATE_SHAPE');
+}
 export function searchMethods(sealerOf: () => import('../../../core/field-cipher.js').Sealer, open: <R>(rows: R, options?: { scope?: string; budgets?: { maxRows?: number; maxBytes?: number; deadlineMs?: number; concurrency?: number } }, authCache?: AuthCache) => Promise<Opened<R>>,
   cache: SearchTokenCache) {
   async function run<T extends PgTable>(db: Db, reg: Registration, options: FindOptions<T>, counting: boolean, absoluteDeadline?: number) {
@@ -261,13 +291,11 @@ export function searchMethods(sealerOf: () => import('../../../core/field-cipher
       const remainingCandidates = budgets.maxCandidates - scanned;
       const requestLimit = Math.min(batch, remainingCandidates) + (remainingCandidates <= batch ? 1 : 0);
       const sortCol = orderColumn ?? rowColumn;
-      const orderedRow = reg.definition.rowType === 'text' ? orderedText(rowColumn) : rowColumn;
+      const orderedRow = rowColumn;
       const direction = options.orderBy?.direction ?? 'asc';
       const afterCondition = after === undefined ? undefined : orderColumn
         ? sql`(${sortCol},${orderedRow}) ${sql.raw(direction === 'asc' ? '>' : '<')} (${afterSort},${after})`
-        : reg.definition.rowType === 'text'
-          ? sql`${orderedRow} ${sql.raw(direction === 'asc' ? '>' : '<')} ${after}`
-          : direction === 'asc' ? gt(rowColumn, after) : lt(rowColumn, after);
+        : direction === 'asc' ? gt(rowColumn, after) : lt(rowColumn, after);
       const hasSql = ast && !plainFree(ast);
       const hasSubstring = (node: CompiledSearch): boolean => node.op === 'leaf' ? node.leaf.profile.mode === 'substring' : node.children.some(hasSubstring);
       const bounded = compiled?.op === 'secure' && hasSubstring(compiled.search) && !options.where && !orderColumn && !hasSql && requestLimit <= 200
@@ -405,8 +433,7 @@ export function searchMethods(sealerOf: () => import('../../../core/field-cipher
       return column.getSQLType();
     });
     const positionColumns = [...keys.map(key => (getTableColumns(regs[key].parent) as Record<string, PgColumn>)[regs[key].row]), ...keyset];
-    const orderedPositions = positionColumns.map(orderedText);
-    const orderBy = orderedPositions.map(column => asc(column));
+    const orderBy = positionColumns.map(column => asc(column));
     const allFlags = Object.assign({}, ...keys.map(key => flags(compiled[key]))) as Record<string, SQL | SQL.Aliased>;
     keyset.forEach((column, index) => { allFlags[`__seal_keyset_${index}`] = sql`${column}`.as(`__seal_keyset_${index}`); });
     const flagsSql = sql.join(Object.entries(allFlags).map(([name, expression]) => sql`${expression instanceof SQL ? expression : expression.sql} as ${sql.identifier(name)}`), sql.raw(','));
@@ -509,11 +536,31 @@ export function searchMethods(sealerOf: () => import('../../../core/field-cipher
       if (options.signal?.aborted) fail('CANCELLED');
       if (Date.now() >= deadline || scanned >= budgets.maxCandidates) { if (!scanned) fail('LIMIT_EXCEEDED'); limited = true; break; }
       const requestLimit = Math.min(batch, budgets.maxCandidates - scanned);
-      const after = previous ? sql`(${sql.join(orderedPositions.map(column => sql`${column}`), sql.raw(','))}) > (${sql.join(previous.map(value => sql`${value}`), sql.raw(','))})` : undefined;
+      const after = previous ? sql`(${sql.join(positionColumns.map(column => sql`${column}`), sql.raw(','))}) > (${sql.join(previous.map(value => sql`${value}`), sql.raw(','))})` : undefined;
       const returned = await options.query({ where, after, orderBy, flags: allFlags, flagsSql, limit: requestLimit });
       const rows = Array.isArray(returned) ? returned : returned?.rows;
       ensure(Array.isArray(rows) && rows.length <= requestLimit, 'INVALID_CANDIDATE_SHAPE');
       if (!rows.length) { exhausted = true; break; }
+      if (positionColumns.some(column => column.getSQLType() === 'text')) {
+        const positions = rows.map(raw => {
+          ensure(raw && typeof raw === 'object', 'INVALID_CANDIDATE_SHAPE');
+          const parts = keys.map(key => {
+            const reg = regs[key], mapping = options.columns?.[key];
+            const source = mapping ? raw : raw[key] as Record<string, unknown>;
+            ensure(source && typeof source === 'object', 'INVALID_CANDIDATE_SHAPE');
+            const id = source[mapping ? mapping[reg.row] : reg.row];
+            ensure(typeof id === 'string', 'INVALID_CANDIDATE_SHAPE');
+            return id;
+          });
+          keyset.forEach((_, index) => {
+            const value = raw[`__seal_keyset_${index}`];
+            ensure(value !== undefined && value !== null, 'INVALID_CANDIDATE_SHAPE');
+            parts.push(String(value));
+          });
+          return parts;
+        });
+        await validateTextOrder(db, positionColumns, previous ? [previous, ...positions] : positions);
+      }
       const state: CandidateState = { scanned, fetchedBytes, decryptedBytes, limited };
       const consumed = await scanCandidates(rows as Record<string, unknown>[], () => limit - items.length,
         budgets, deadline, options.signal, state,

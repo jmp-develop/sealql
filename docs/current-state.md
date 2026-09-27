@@ -1,5 +1,7 @@
 # SealQL current state and code map
 
+For `search` positions containing text, one additional SQL request per nonempty candidate batch verifies strict increase using the database column collation; malformed ordering raises `INVALID_CANDIDATE_SHAPE`. UUID and integer positions retain the in-process check without an extra request. Transactionless drivers raise `UNSUPPORTED_DRIVER` before managed write or reindex callbacks run.
+
 As of 2026-09-27, the product has one search mode: `standard` HMAC pieces, PostgreSQL companion GIN/B-tree indexes, and internal authenticated predicate verification. Stateful search, V2 posting pages, and bucket search are rejected research lines ([decision 011](decisions/011-rejected-research-lines.md)). They are not product modes.
 
 The public database integration is `sealql/drizzle/v0.45`. `createSealed({ sealer })` provides encrypted field builders, `register(table, { row, scope? })`, managed `insert/update/upsert`, `open/openRaw`, `findMany/count/search`, and `reindex`. The parent and returned companion are ordinary Drizzle tables and both must be exported to drizzle-kit. SealQL does not wrap `drizzle()` or the driver. The former raw PostgreSQL export, repository binding API, and row revision have been removed. Read the [integration guide](llm-integration.md) and [examples](../examples/standard-consumer.ts).
