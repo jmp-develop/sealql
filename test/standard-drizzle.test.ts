@@ -140,6 +140,23 @@ test('native managed writes and opens stay atomic', async () => {
     }), { code: 'LIMIT_EXCEEDED' });
     const cancelled = new AbortController(); cancelled.abort();
     await assert.rejects(sealed.findMany(db, peopleSeal, { scope: first.scope_id, signal: cancelled.signal }), { code: 'CANCELLED' });
+    const extraOrderIds = (await pool.query('select id from bench_realistic_100k.tickets where id<>$1 and id<>$2 order by id limit 29',
+      [second.id, third.id])).rows.map(row => row.id as string);
+    assert.equal(extraOrderIds.length, 29);
+    await db.insert(orders).values(extraOrderIds.map(id => ({ id, customerId: first.id })));
+    const fieldOpens = new Map<string, number>();
+    cipher.open = async (...args) => {
+      if (args[1].modelId === 'people') fieldOpens.set(args[1].fieldId, (fieldOpens.get(args[1].fieldId) ?? 0) + 1);
+      return originalOpen(...args);
+    };
+    const duplicatePage = await sealed.search(db, { scope: first.scope_id,
+      match: { c: [peopleSeal, m => m.name.eq(first.name_plain)] }, keyset: [orders.id], limit: 31,
+      query: budgetQuery,
+    });
+    assert.equal(duplicatePage.items.length, 31);
+    assert.equal(fieldOpens.get('name'), 1);
+    assert.equal(fieldOpens.get('memo'), 1);
+    cipher.open = originalOpen;
     await sealed.update(db, peopleSeal, { id: first.id, scopeId: first.scope_id }, { memo: second.memo_plain });
     const afterUpdate = await sealed.open(await db.select().from(people));
     assert.equal(afterUpdate[0].name, first.name_plain);

@@ -274,22 +274,33 @@ export function searchMethods(sealerOf: () => import('../../../core/field-cipher
             decrypted: conditionKeys.reduce((sum, key) => sum + (row[key] instanceof Sealed ? (row[key] as Sealed<unknown>).bytes.length - 29 : 0), 0),
           };
         },
-        async window => open(window.map(row => Object.fromEntries(
-          [reg.row, ...(reg.scope ? [reg.scope] : []), ...conditionKeys, ...Object.keys(flagCols)].map(key => [key, row[key]]))),
-        { scope: scopeId, budgets: { maxRows: window.length, concurrency: budgets.decryptConcurrency, deadlineMs: budgets.deadlineMs } }) as Promise<Record<string, unknown>[]>,
-        async (row, conditionPlain) => {
+        async window => {
+          const conditionPlains = await open(window.map(row => Object.fromEntries(
+            [reg.row, ...(reg.scope ? [reg.scope] : []), ...conditionKeys, ...Object.keys(flagCols)].map(key => [key, row[key]]))),
+          { scope: scopeId, budgets: { maxRows: window.length, concurrency: budgets.decryptConcurrency, deadlineMs: budgets.deadlineMs } }) as Record<string, unknown>[];
+          const matches = await Promise.all(conditionPlains.map(plain => compiled ? verify(compiled, plain) : true));
+          const remainingKeys = projected.filter(key => reg.fields.has(key) && !conditionKeys.includes(key));
+          const projectionInputs: Record<string, unknown>[] = [], projectionIndexes: number[] = [];
+          for (let i = 0; i < window.length; i++) if (matches[i]) {
+            const extraBytes = remainingKeys.reduce((sum, key) => sum + (window[i][key] instanceof Sealed ? (window[i][key] as Sealed<unknown>).bytes.length - 29 : 0), 0);
+            if (state.decryptedBytes + extraBytes > budgets.decryptedBytes) break;
+            state.decryptedBytes += extraBytes;
+            projectionInputs.push(Object.fromEntries([reg.row, ...(reg.scope ? [reg.scope] : []), ...remainingKeys].map(key => [key, window[i][key]])));
+            projectionIndexes.push(i);
+          }
+          const projections = projectionInputs.length ? await open(projectionInputs, { scope: scopeId,
+            budgets: { maxRows: projectionInputs.length, concurrency: budgets.decryptConcurrency, deadlineMs: budgets.deadlineMs } }) as Record<string, unknown>[] : [];
+          const result = conditionPlains.map((conditionPlain, i) => ({ conditionPlain, matches: matches[i], projectionPlain: undefined as Record<string, unknown> | undefined }));
+          projectionIndexes.forEach((index, i) => { result[index].projectionPlain = projections[i]; });
+          return result;
+        },
+        async (row, opened) => {
           const position = identity(row[reg.row] as string, reg.definition.rowType);
           const sort = orderColumn ? String(row.__seal_sort) : undefined;
           ensure(after === undefined || (direction === 'asc' ? position > after : position < after) || !!orderColumn, 'INVALID_CANDIDATE_SHAPE');
-          const matches = !compiled || await verify(compiled, conditionPlain);
-          if (matches) {
-            const remainingKeys = projected.filter(key => reg.fields.has(key) && !conditionKeys.includes(key));
-            const extraBytes = remainingKeys.reduce((sum, key) => sum + (row[key] instanceof Sealed ? (row[key] as Sealed<unknown>).bytes.length - 29 : 0), 0);
-            if (state.decryptedBytes + extraBytes > budgets.decryptedBytes) return false;
-            state.decryptedBytes += extraBytes;
-            const projectionInput = Object.fromEntries([reg.row, ...(reg.scope ? [reg.scope] : []), ...remainingKeys].map(key => [key, row[key]]));
-            const projectionPlain = await open(projectionInput, { scope: scopeId }) as Record<string, unknown>;
-            const plain = { ...row, ...conditionPlain, ...projectionPlain };
+          if (opened.matches) {
+            if (!opened.projectionPlain) return false;
+            const plain = { ...row, ...opened.conditionPlain, ...opened.projectionPlain };
             const item = Object.fromEntries(projected.map(key => [key, plain[key]]));
             const itemBytes = canonical(item).length;
             if (resultBytes + itemBytes > budgets.resultBytes) return false;
@@ -426,6 +437,16 @@ export function searchMethods(sealerOf: () => import('../../../core/field-cipher
         { columns: options.columns[key], scope: scopeId }, authCache))[0];
       return opened;
     };
+    const matchesCondition = async (opened: Record<string, unknown>) => {
+      for (const key of keys) {
+        const mapping = options.columns?.[key];
+        const row = mapping ? opened : opened[key] as Record<string, unknown>;
+        ensure(row && typeof row === 'object', 'INVALID_CANDIDATE_SHAPE');
+        const view = mapping ? Object.fromEntries([...regs[key].fields.keys()].map(field => [field, row[mapping[field]]])) : row;
+        if (!(await verify(compiled[key], { ...opened, ...view }))) return false;
+      }
+      return true;
+    };
     let scanned = 0, fetchedBytes = 0, decryptedBytes = 0, resultBytes = 0;
     let batch = Math.min(budgets.batch, Math.max(limit + Math.ceil(limit / 4) + 2, 16));
     let accepted = 0, exhausted = false, limited = false;
@@ -453,12 +474,18 @@ export function searchMethods(sealerOf: () => import('../../../core/field-cipher
       const consumed = await scanCandidates(rows as Record<string, unknown>[], () => limit - items.length,
         budgets, deadline, options.signal, state,
         raw => { ensure(raw && typeof raw === 'object', 'INVALID_CANDIDATE_SHAPE'); return measured(raw); },
-        window => Promise.all(window.map(openCondition)),
-        async (raw, opened) => {
+        async window => {
+          const conditions = await Promise.all(window.map(openCondition));
+          const matches = await Promise.all(conditions.map(matchesCondition));
+          const projections = await Promise.all(window.map((raw, i) => matches[i] ? openProjection(raw) : undefined));
+          return conditions.map((condition, i) => ({ condition, matched: matches[i], full: projections[i] }));
+        },
+        async (_raw, opened) => {
+        const condition = opened.condition;
         const parts: unknown[] = [];
         for (const key of keys) {
           const reg = regs[key], mapping = options.columns?.[key];
-          const row = mapping ? opened : opened[key] as Record<string, unknown>;
+          const row = mapping ? condition : condition[key] as Record<string, unknown>;
           ensure(row && typeof row === 'object', 'INVALID_CANDIDATE_SHAPE');
           const get = (field: string) => mapping ? row[mapping[field]] : row[field];
           const rowId = get(reg.row);
@@ -466,20 +493,13 @@ export function searchMethods(sealerOf: () => import('../../../core/field-cipher
           for (const field of encryptedKeys(asts[key])) ensure(get(field) !== undefined, 'INVALID_CANDIDATE_SHAPE');
           parts.push(rowId);
         }
-        keyset.forEach((_, index) => { ensure(opened[`__seal_keyset_${index}`] !== undefined, 'INVALID_CANDIDATE_SHAPE'); parts.push(opened[`__seal_keyset_${index}`]); });
+        keyset.forEach((_, index) => { ensure(condition[`__seal_keyset_${index}`] !== undefined, 'INVALID_CANDIDATE_SHAPE'); parts.push(condition[`__seal_keyset_${index}`]); });
         if (previous) {
           const signs = parts.map((value, index) => compare(value, previous![index], index < keys.length ? regs[keys[index]].definition.rowType : columnTypes[index - keys.length]));
           ensure(signs.find(sign => sign !== 0)! > 0, 'INVALID_CANDIDATE_SHAPE');
         }
-        let matched = true;
-        for (const key of keys) {
-          const mapping = options.columns?.[key];
-          const row = mapping ? opened : opened[key] as Record<string, unknown>;
-          const view = mapping ? Object.fromEntries([...regs[key].fields.keys()].map(field => [field, row[mapping[field]]])) : row;
-          if (!(await verify(compiled[key], { ...opened, ...view }))) { matched = false; break; }
-        }
-        if (matched) {
-          const full = await openProjection(raw);
+        if (opened.matched) {
+          const full = opened.full!;
           const size = canonical(full).length;
           if (resultBytes + size > budgets.resultBytes) return false;
           resultBytes += size;
