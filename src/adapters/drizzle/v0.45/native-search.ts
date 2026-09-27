@@ -153,6 +153,9 @@ function scope(reg: Registration, requested: string | undefined): string {
   ensure(requested !== undefined, 'INVALID_VALUE');
   return identity(requested, reg.definition.scopeType);
 }
+function orderedText(column: PgColumn): PgColumn | SQL {
+  return column.getSQLType() === 'text' ? sql`${column} collate "C"` : column;
+}
 function order(reg: Registration, requested?: FindOptions<PgTable>['orderBy']) {
   if (!requested) return undefined;
   const column = requested.column;
@@ -249,10 +252,13 @@ export function searchMethods(sealerOf: () => import('../../../core/field-cipher
       check();
       const requestLimit = Math.min(batch, budgets.maxCandidates - scanned);
       const sortCol = orderColumn ?? rowColumn;
+      const orderedRow = reg.definition.rowType === 'text' ? orderedText(rowColumn) : rowColumn;
       const direction = options.orderBy?.direction ?? 'asc';
       const afterCondition = after === undefined ? undefined : orderColumn
-        ? sql`(${sortCol},${rowColumn}) ${sql.raw(direction === 'asc' ? '>' : '<')} (${afterSort},${after})`
-        : direction === 'asc' ? gt(rowColumn, after) : lt(rowColumn, after);
+        ? sql`(${sortCol},${orderedRow}) ${sql.raw(direction === 'asc' ? '>' : '<')} (${afterSort},${after})`
+        : reg.definition.rowType === 'text'
+          ? sql`${orderedRow} ${sql.raw(direction === 'asc' ? '>' : '<')} ${after}`
+          : direction === 'asc' ? gt(rowColumn, after) : lt(rowColumn, after);
       const hasSql = ast && !plainFree(ast);
       const hasSubstring = (node: CompiledSearch): boolean => node.op === 'leaf' ? node.leaf.profile.mode === 'substring' : node.children.some(hasSubstring);
       const bounded = compiled?.op === 'secure' && hasSubstring(compiled.search) && !options.where && !orderColumn && !hasSql && requestLimit <= 200
@@ -260,7 +266,8 @@ export function searchMethods(sealerOf: () => import('../../../core/field-cipher
       const condition = and(scopeColumn ? eq(scopeColumn, scopeId) : undefined, options.where, afterCondition,
         compiled ? candidate(reg, scopeId, compiled, bounded) : undefined);
       const rows = await (db as any).select({ ...selected, ...flagCols }).from(reg.parent).where(condition)
-        .orderBy(direction === 'asc' ? asc(sortCol) : desc(sortCol), ...(orderColumn ? [direction === 'asc' ? asc(rowColumn) : desc(rowColumn)] : []))
+        .orderBy(direction === 'asc' ? asc(orderColumn ?? orderedRow) : desc(orderColumn ?? orderedRow),
+          ...(orderColumn ? [direction === 'asc' ? asc(orderedRow) : desc(orderedRow)] : []))
         .limit(requestLimit);
       ensure(rows.length <= requestLimit, 'INVALID_CANDIDATE_SHAPE');
       if (!rows.length) { exhausted = true; break; }
@@ -297,7 +304,7 @@ export function searchMethods(sealerOf: () => import('../../../core/field-cipher
         async (row, opened) => {
           const position = identity(row[reg.row] as string, reg.definition.rowType);
           const sort = orderColumn ? String(row.__seal_sort) : undefined;
-          ensure(after === undefined || (direction === 'asc' ? position > after : position < after) || !!orderColumn, 'INVALID_CANDIDATE_SHAPE');
+          ensure(after === undefined || (direction === 'asc' ? compareText(position, after) > 0 : compareText(position, after) < 0) || !!orderColumn, 'INVALID_CANDIDATE_SHAPE');
           if (opened.matches) {
             if (!opened.projectionPlain) return false;
             const plain = { ...row, ...opened.conditionPlain, ...opened.projectionPlain };
@@ -378,11 +385,13 @@ export function searchMethods(sealerOf: () => import('../../../core/field-cipher
     for (const key of keys) compiled[key] = await compile(asts[key], regs[key], scopeId, sealerOf(), cache, () => `__seal_${key}_flag_${flagIndex++}`);
     const keyset = options.keyset ?? [];
     const columnTypes = keyset.map(column => {
-      ensure(column.notNull && ['uuid', 'text COLLATE "C"', 'integer', 'bigint'].includes(column.getSQLType()), 'INVALID_VALUE');
+      ensure(column.notNull && (['uuid', 'integer', 'bigint'].includes(column.getSQLType()) ||
+        (column.getSQLType() === 'text' && column.columnType === 'PgCustomColumn')), 'INVALID_VALUE');
       return column.getSQLType();
     });
     const positionColumns = [...keys.map(key => (getTableColumns(regs[key].parent) as Record<string, PgColumn>)[regs[key].row]), ...keyset];
-    const orderBy = positionColumns.map(column => asc(column));
+    const orderedPositions = positionColumns.map(orderedText);
+    const orderBy = orderedPositions.map(column => asc(column));
     const allFlags = Object.assign({}, ...keys.map(key => flags(compiled[key]))) as Record<string, SQL | SQL.Aliased>;
     keyset.forEach((column, index) => { allFlags[`__seal_keyset_${index}`] = sql`${column}`.as(`__seal_keyset_${index}`); });
     const flagsSql = sql.join(Object.entries(allFlags).map(([name, expression]) => sql`${expression instanceof SQL ? expression : expression.sql} as ${sql.identifier(name)}`), sql.raw(','));
@@ -465,7 +474,7 @@ export function searchMethods(sealerOf: () => import('../../../core/field-cipher
       if (options.signal?.aborted) fail('CANCELLED');
       if (Date.now() >= deadline || scanned >= budgets.maxCandidates) { if (!scanned) fail('LIMIT_EXCEEDED'); limited = true; break; }
       const requestLimit = Math.min(batch, budgets.maxCandidates - scanned);
-      const after = previous ? sql`(${sql.join(positionColumns.map(column => sql`${column}`), sql.raw(','))}) > (${sql.join(previous.map(value => sql`${value}`), sql.raw(','))})` : undefined;
+      const after = previous ? sql`(${sql.join(orderedPositions.map(column => sql`${column}`), sql.raw(','))}) > (${sql.join(previous.map(value => sql`${value}`), sql.raw(','))})` : undefined;
       const returned = await options.query({ where, after, orderBy, flags: allFlags, flagsSql, limit: requestLimit });
       const rows = Array.isArray(returned) ? returned : returned?.rows;
       ensure(Array.isArray(rows) && rows.length <= requestLimit, 'INVALID_CANDIDATE_SHAPE');

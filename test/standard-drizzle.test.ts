@@ -5,7 +5,7 @@ import { drizzle } from 'drizzle-orm/node-postgres';
 import { and, eq, relations, sql } from 'drizzle-orm';
 import { pgSchema, timestamp, uuid } from 'drizzle-orm/pg-core';
 import { createSealer } from '../src/index.js';
-import { canonical } from '../src/core/bytes.js';
+import { canonical, compareText } from '../src/core/bytes.js';
 import { createSealed } from '../src/adapters/drizzle/v0.45/index.js';
 import { Sealed, registrationOf } from '../src/adapters/drizzle/v0.45/native.js';
 import { assertDisposable } from './disposable.js';
@@ -236,7 +236,7 @@ test('native managed writes and opens stay atomic', async () => {
   }
 });
 
-test('text row IDs follow C byte order in custom search cursors', async () => {
+test('text row IDs follow C byte order with a non-C database collation', async () => {
   const pool = new Pool({ host: '127.0.0.1', port: 56439, user: 'sealql_test', database: 'postgres' });
   let created = false;
   try {
@@ -253,23 +253,32 @@ test('text row IDs follow C byte order in custom search cursors', async () => {
     });
     const seal = sealed.register(rows, { row: 'id', scope: 'scopeId' });
     const exact = registrationOf(seal).storage.index!.profiles!['name/exact'].tokens;
-    await pool.query(`create table "${schemaName}".rows (id text collate "C" primary key,scope_id uuid not null,name_ct bytea not null)`);
-    await pool.query(`create table "${schemaName}".rows_seal_index (scope_id uuid not null,row_id text collate "C" not null,
+    assert.equal((await pool.query("select count(*)::int as n from pg_collation where collname='und-x-icu'")).rows[0].n, 1);
+    await pool.query(`create table "${schemaName}".rows (id text collate "und-x-icu" primary key,scope_id uuid not null,name_ct bytea not null)`);
+    await pool.query(`create table "${schemaName}".rows_seal_index (scope_id uuid not null,row_id text collate "und-x-icu" not null,
       "${exact}" bigint[],unique(scope_id,row_id),foreign key(row_id) references "${schemaName}".rows(id) on delete cascade)`);
     const db = drizzle(pool);
-    const ids = [`Z${fixture[0].id}`, `a${fixture[1].id}`];
+    const ids = [`Z${fixture[0].id}`, `a${fixture[1].id}`, `가${fixture[0].id}`, `!${fixture[1].id}`];
+    const expected = [...ids].sort(compareText);
     await assert.rejects(sealed.insert(db, seal, { scopeId: fixture[0].scope_id, name: fixture[0].name_plain }), { code: 'INVALID_VALUE' });
-    await sealed.insert(db, seal, [
-      { id: ids[0], scopeId: fixture[0].scope_id, name: fixture[0].name_plain },
-      { id: ids[1], scopeId: fixture[0].scope_id, name: fixture[1].name_plain },
-    ]);
+    await sealed.insert(db, seal, ids.map((id, index) => ({
+      id, scopeId: fixture[0].scope_id, name: fixture[index % fixture.length].name_plain,
+    })));
     const search = (cursor?: string) => sealed.search(db, { scope: fixture[0].scope_id,
       match: { r: [seal, m => m.or(m.name.eq('absent'), m.sql(sql`true`))] }, limit: 1, cursor,
       query: ({ where, after, orderBy, flags, limit }) => db.select({ r: rows, ...flags }).from(rows)
         .where(and(where, after)).orderBy(...orderBy).limit(limit),
     });
-    const first = await search(); const second = await search(first.nextCursor!);
-    assert.deepEqual([first.items[0].r.id, second.items[0].r.id], ids);
+    const searchIds: string[] = [], findIds: string[] = [];
+    let searchCursor: string | undefined, findCursor: string | undefined;
+    for (let index = 0; index < ids.length; index++) {
+      const searched = await search(searchCursor);
+      const found = await sealed.findMany(db, seal, { scope: fixture[0].scope_id, limit: 1, cursor: findCursor });
+      searchIds.push(searched.items[0].r.id); findIds.push(found.items[0].id);
+      searchCursor = searched.nextCursor ?? undefined; findCursor = found.nextCursor ?? undefined;
+    }
+    assert.deepEqual(searchIds, expected);
+    assert.deepEqual(findIds, expected);
   } finally {
     if (created) await pool.query('drop schema test_native_text cascade');
     await pool.end();

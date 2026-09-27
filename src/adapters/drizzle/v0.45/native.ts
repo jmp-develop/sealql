@@ -1,6 +1,6 @@
 import { getTableColumns, getTableName, is, sql, type InferInsertModel, type InferSelectModel } from 'drizzle-orm';
 import {
-  bigint, customType, foreignKey, getTableConfig, index, pgSchema, pgTable, uniqueIndex,
+  bigint, customType, foreignKey, getTableConfig, index, pgSchema, pgTable, text, uniqueIndex,
   uuid, PgCustomColumn, type PgColumn, type PgTable,
 } from 'drizzle-orm/pg-core';
 import { unhex } from '../../../core/bytes.js';
@@ -106,11 +106,11 @@ function createField<T, O extends { nullable?: boolean; column?: string }, S>(ty
 
 function keyType(column: PgColumn): 'uuid' | 'text' {
   const kind = column.getSQLType();
-  ensure(kind === 'uuid' || kind === 'text COLLATE "C"', 'INVALID_SCHEMA');
+  ensure(kind === 'uuid' || (kind === 'text' && is(column, PgCustomColumn)), 'INVALID_SCHEMA');
   return kind === 'uuid' ? 'uuid' : 'text';
 }
 function mirrorKey(name: string, type: 'uuid' | 'text') { return type === 'uuid' ? uuid(name) : textId(name); }
-export const textId = customType<{ data: string; driverData: string }>({ dataType: () => 'text COLLATE "C"' });
+export const textId = customType<{ data: string; driverData: string }>({ dataType: () => 'text' });
 
 function register<T extends PgTable, R extends UuidOrTextKeys<T>, S extends UuidOrTextKeys<T> | undefined = undefined>(
   table: T, cfg: { row: R; scope?: S; model?: string }, models: Set<string>,
@@ -120,7 +120,7 @@ function register<T extends PgTable, R extends UuidOrTextKeys<T>, S extends Uuid
   ensure(!!rowColumn && !rowColumn.keyAsName && rowColumn.notNull, 'INVALID_SCHEMA');
   const rowType = keyType(rowColumn);
   const scopeColumn = cfg.scope ? columns[cfg.scope] : undefined;
-  ensure(!cfg.scope || (!!scopeColumn && !scopeColumn.keyAsName && scopeColumn.notNull && ['uuid', 'text', 'text COLLATE "C"'].includes(scopeColumn.getSQLType())), 'INVALID_SCHEMA');
+  ensure(!cfg.scope || (!!scopeColumn && !scopeColumn.keyAsName && scopeColumn.notNull && ['uuid', 'text'].includes(scopeColumn.getSQLType())), 'INVALID_SCHEMA');
   const scopeType = scopeColumn?.getSQLType() === 'uuid' ? 'uuid' : 'text';
   const tableConfig = getTableConfig(table);
   const hasUnique = [...tableConfig.primaryKeys, ...tableConfig.uniqueConstraints, ...tableConfig.indexes.filter(i => i.config.unique)]
@@ -162,7 +162,7 @@ function register<T extends PgTable, R extends UuidOrTextKeys<T>, S extends Uuid
   const tableName = getTableName(table);
   const indexName = `${tableName}_seal_index`;
   const companionColumns: Record<string, any> = {
-    scopeId: (scopeColumn ? mirrorKey('scope_id', scopeType) : textId('scope_id').default('_')).notNull(),
+    scopeId: (scopeColumn ? mirrorKey('scope_id', scopeType) : text('scope_id').default('_')).notNull(),
     rowId: mirrorKey('row_id', rowType).notNull(),
   };
   for (const profile of Object.values(profiles)) companionColumns[profile.tokens] = bigint(profile.tokens, { mode: 'bigint' }).array();

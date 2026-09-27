@@ -278,12 +278,15 @@ export function runtimeMethods(sealerOf: () => Sealer) {
     const sealer = sealerOf(), ring = sealer.ring(reg.model);
     while (true) {
       const page = await checkedDb(db).transaction(async (tx: any) => {
+        const rowOrder = reg.definition.rowType === 'text' ? sql`${parent[reg.row]} collate "C"` : parent[reg.row];
+        const scopeOrder = reg.scope && reg.definition.scopeType === 'text'
+          ? sql`${parent[reg.scope]} collate "C"` : reg.scope ? parent[reg.scope] : undefined;
         const after = lastRow === undefined ? undefined : reg.scope && scopeId === undefined
-          ? sql`(${parent[reg.scope]},${parent[reg.row]}) > (${lastScope},${lastRow})`
-          : gt(parent[reg.row], lastRow);
+          ? sql`(${scopeOrder},${rowOrder}) > (${lastScope},${lastRow})`
+          : reg.definition.rowType === 'text' ? sql`${rowOrder} > ${lastRow}` : gt(parent[reg.row], lastRow);
         const rows = await tx.select().from(reg.parent).where(and(
           scopeId !== undefined ? eq(parent[reg.scope!], scopeId) : undefined, after,
-        )).orderBy(...(reg.scope && scopeId === undefined ? [parent[reg.scope]] : []), parent[reg.row]).limit(batch).for('update');
+        )).orderBy(...(scopeOrder && scopeId === undefined ? [scopeOrder] : []), rowOrder).limit(batch).for('update');
         const opened = await open(rows, { budgets: { maxRows: batch, maxBytes: 32 * 1024 * 1024, deadlineMs: 30000 } }) as Record<string, unknown>[];
         for (const row of opened) {
           const rowId = identity(row[reg.row] as string, reg.definition.rowType);
