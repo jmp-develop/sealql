@@ -1,48 +1,42 @@
 # SealQL (experimental)
 
-SealQL manages encrypted PostgreSQL fields and searchable HMAC companion indexes. The `standard` search path uses truncated tokens, PostgreSQL GIN, and authenticated plaintext verification inside the library. It supports Drizzle ORM 0.45 and raw PostgreSQL on Node 22+ and Cloudflare Workers (WebCrypto only, no native modules). See the [integration guide](docs/llm-integration.md), [current state](docs/current-state.md), and [Drizzle](examples/standard-consumer.ts) or [raw SQL](examples/standard-raw.ts) examples.
+SealQL encrypts selected PostgreSQL fields and searches them through a separate HMAC token table. The `standard` path uses GIN/B-tree candidate indexes and authenticates each candidate before returning it. The current integration is Drizzle ORM 0.45 on Node 22+ or a WebCrypto runtime. Read the [integration guide](docs/llm-integration.md), [current state](docs/current-state.md), and [schema example](examples/standard-consumer.ts).
 
-Install from this checkout with Node 22 or newer: `npm ci && npm run build`. Drizzle is an optional peer. The exports are `sealql`, `sealql/drizzle/v0.45`, and `sealql/postgres`.
-
-## Setup
+Install with `npm ci && npm run build`. Public exports are `sealql` and `sealql/drizzle/v0.45`.
 
 ```ts
+import { pgTable, uuid } from 'drizzle-orm/pg-core';
 import { createSealer } from 'sealql';
-import { bindSealed, defineSealed, defineSealStorage } from 'sealql/drizzle/v0.45';
+import { createSealed } from 'sealql/drizzle/v0.45';
 
-const definition = defineSealed(table, {
-  id: 'note', identity: { scope: 'scopeId', row: 'id', revision: 'revision' },
-  fields: { body: { type: 'text', search: { exact: true, substring: true } } },
+const rootKey = await loadFixedKey(); // app-supplied 32-byte Uint8Array
+const sealed = createSealed({ sealer: createSealer({ key: rootKey }) });
+export const notes = pgTable('notes', {
+  id: uuid('id').primaryKey(),
+  body: sealed.text('body', { search: { exact: true, substring: true } }),
 });
-const storage = defineSealStorage(definition);
-const sealer = createSealer({ key: rootKey }); // 32-byte Uint8Array loaded by the app
-const notes = bindSealed({ sealer, definition, storage, executor });
-const scoped = notes.forScope({ scopeId });
-const page = await scoped.findMany({ match: f => f.body.contains('ell'), limit: 20, budgets: { decryptConcurrency: 64 } });
+export const notesSeal = sealed.register(notes, { row: 'id' });
+// Export both notes and notesSeal to drizzle-kit.
+
+await sealed.insert(db, notesSeal, { body: 'Ada' });
+const page = await sealed.findMany(db, notesSeal, {
+  match: m => m.body.contains('Ad'), limit: 20,
+});
+const rows = await sealed.open(await db.select().from(notes));
 ```
 
-Apply the companion table DDL before use. Raw SQL users can generate a reviewed manifest with `definePostgresStorage`. Drizzle users export the table from `defineSealStorage` to Drizzle Kit. The application loads a fixed 32 byte unpredictable root key before creating the sealer and authorizes `scopeId`. Managed inserts and updates keep ciphertext and companion tokens in one transaction; direct SQL writes bypass index maintenance.
+Use `sealed.insert`, `update`, or `upsert` for encrypted writes; they update parent ciphertext and companion tokens in a transaction. Ordinary Drizzle reads return ciphertext handles, and `sealed.open` returns decrypted copies. For `db.execute` results, pass a property-to-column map to `sealed.openRaw`. Plain Drizzle writes to encrypted columns and raw SQL writes to them bypass token maintenance. Ordinary Drizzle deletes cascade to the companion through its foreign key.
 
-Search supports exact and substring matching of configured fields. Substring searches need at least two characters. Exact token columns have B-tree expression indexes; all substring token columns share one multicolumn GIN index. A page uses a cursor, verifies every returned result, and fills from later candidates when collisions occur. `budgets.decryptConcurrency` sets the field authentication pool size for search and `decryptRows` (default and maximum 64). `count({ match, maxCandidates })` performs bounded exact verification and returns a number; it throws `LIMIT_EXCEEDED` if the bound is reached. If the fixed key must change, the application must re-encrypt and reindex all data.
+Search supports exact and substring predicates, Boolean combinations, and `m.sql(...)` for ordinary SQL predicates. `sealed.search` accepts a Drizzle or raw SQL candidate query for joins; the callback must apply the supplied `where`, `after`, ordering, flags, and limit. A 1:N join needs a unique keyset column from the many-side table. `findMany` returns `{ items, nextCursor }`; `count` returns an exact `number` or throws `LIMIT_EXCEEDED`. Search needs at least two normalized characters. Encrypted fields do not support range filters, sorting, or database aggregation.
 
-Substring profiles store one-character-gap pieces by default, including `substring: true` and objects that omit `skipGrams`. Set `substring: { skipGrams: false }` to turn them off; changing this setting requires reindexing. In an earlier local 100,000-row fixture with per-field GIN indexes, the companion measured 211 MB with them off and 305 MB on ([storage data](bench/results/2026-09-27-combined-gin/storage.json)); median single-row insert time was 4.65 ms off and 6.16 ms on ([write data](bench/results/2026-09-27-skip-write-cost/report-ko.md)). The [current multicolumn GIN check](bench/results/2026-09-27-product-multicolumn-gin/report-ko.md) is separate. These experimental measurements are not deployment guarantees.
-
-## Limits
-
-- The standard index leaks deterministic token frequency and co-occurrence, ciphertext length, and query and update patterns visible to the database. A hostile database can omit rows. Keyless database theft resistance for full records is not established by current evidence; see the [threat model](docs/threat-model.md).
-- Encrypted fields do not support range queries, order by, `not`, one-character search, or database aggregation such as SUM, AVG, and GROUP BY. Keep fields that need exact database calculation in plaintext.
-- `findMany` cannot yet express OR between a plain column and an encrypted condition. A Drizzle-native API that addresses this is planned ([plan/001](plan/001-drizzle-native-api.md)), not implemented.
-- Total page time with authenticated decryption is well above plaintext in local measurements ([core verification](bench/results/2026-09-27-core-verification/v3/report-ko.md)).
+The database can observe deterministic token frequency, co-occurrence, ciphertext length, and query patterns, and a hostile database can omit rows. Keyless theft resistance for full records is not established by current evidence. Avoid substring indexes on low-vocabulary fields such as status or short choices. See the [threat model](docs/threat-model.md) and [mechanical attack method](docs/attack-simulation.md). If the fixed key changes, the application must re-encrypt all data and rebuild the index. Historical [measurements](bench/README.md) are experimental and do not predict deployment performance.
 
 ## Documents
 
 | Document | Purpose |
 |---|---|
-| [docs/current-state.md](docs/current-state.md) | What is implemented now |
-| [docs/llm-integration.md](docs/llm-integration.md) | Public API usage |
-| [docs/threat-model.md](docs/threat-model.md) | Attackers, leakage, allowed security statements, operator duties |
-| [docs/decisions/](docs/decisions/README.md) | Design decisions with measurements and rejected options |
-| [docs/measurement.md](docs/measurement.md), [docs/attack-simulation.md](docs/attack-simulation.md) | Benchmark and mechanical attack rules |
-| [plan/](plan/README.md) | Planned work only |
-| [bench/README.md](bench/README.md) | Disposable DB rules, fixture, scripts → results → decisions |
-| [AGENTS.md](AGENTS.md) | Rules for contributors and coding agents |
+| [Integration guide](docs/llm-integration.md) | API, schema, writes, reads, search, and operational limits |
+| [Current state](docs/current-state.md) | Implemented code and verification status |
+| [Decisions](docs/decisions/README.md) | Design choices and evidence |
+| [Plan](plan/README.md) | Work still in progress |
+| [Contributor rules](AGENTS.md) | Safety and verification rules |

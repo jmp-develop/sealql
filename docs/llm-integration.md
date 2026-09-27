@@ -1,50 +1,63 @@
 # SealQL integration
 
-This guide describes the current experimental implementation. Use the compilable [Drizzle consumer](../examples/standard-consumer.ts), [raw PostgreSQL consumer](../examples/standard-raw.ts), [key loader](../examples/key-loader.ts), and [operations example](../examples/standard-operations.ts) as references.
+This guide describes the experimental Drizzle ORM 0.45 API. The compilable [schema and key example](../examples/standard-consumer.ts), [managed operations](../examples/standard-operations.ts), [raw SQL example](../examples/standard-raw.ts), and [key loader](../examples/key-loader.ts) show the calls in context.
 
-## Imports and schema
+## Schema and key
 
-The root `sealql` export supplies `createSealer`, codecs, search helpers, and `SealError`. `sealql/drizzle/v0.45` supplies `ciphertext`, `defineSealed`, `defineSealStorage`, `drizzleExecutor`, and `bindSealed`. `sealql/postgres` supplies `defineSealedModel`, `definePostgresStorage`, `postgresExecutor`, `pgSql`, and `bindSealed`.
-
-Declare a business table with a scope ID, row ID, non-null bigint revision, and `ciphertext` bytea columns. Make `(scope,row)` unique. The Drizzle definition supplies logical model and field IDs. `defineSealStorage(definition)` returns the companion table to export to Drizzle Kit. The raw builder returns a DDL manifest for explicit review and application. Each companion row has `scope_id`, `row_id`, and nullable token columns for configured profiles. Exact profiles use separate B-tree expression indexes. All substring token columns share one multicolumn GIN index (a single-column GIN if there is only one substring field); raw DDL keeps the elevated statistics target on each substring column. The business table has no token columns. Only `companion-v1` is supported.
-
-Adding a searchable field to an existing companion needs a staged database change. Add its nullable token column first, arrange for new writes to populate it, then backfill existing rows by authenticated decryption and token generation. Keep searches on that field closed until backfill is complete: opening them earlier can omit rows. Build a replacement GIN including the new column with `CREATE INDEX CONCURRENTLY` outside a transaction, then drop the old GIN. To remove a field, build a replacement GIN excluding its column concurrently, drop the old GIN, then drop the column. PostgreSQL drops an index containing a column when that column is dropped, so the replacement must exist first. The field's exact B-tree index and application model/DDL must be updated as applicable. Coordinate application writes and schema deployment so every live writer uses the matching field definition throughout the transition.
+`sealql` exports `createSealer`, codecs, and `SealError`. `sealql/drizzle/v0.45` exports `createSealed` and the `Sealed`/`Opened` types. The app loads a fixed 32-byte root key; it may configure a separate fixed key for a model with `createSealer({ key, models: { modelName: { key: modelKey } } })`. There is no key version, DB policy table, or user/group key. The app authorizes scope values. Changing a key requires full application-managed re-encryption and index rebuild.
 
 ```ts
-const [key, sensitiveKey] = await Promise.all([
-  secretManager.load('sealql/global'), secretManager.load('sealql/sensitiveNote'),
-]);
-const sealer = createSealer({ key, models: { sensitiveNote: { key: sensitiveKey } } });
-const notes = bindSealed({ sealer, definition, storage, executor });
-const scoped = notes.forScope({ scopeId });
+import { pgTable, text, uuid } from 'drizzle-orm/pg-core';
+import { createSealer } from 'sealql';
+import { createSealed } from 'sealql/drizzle/v0.45';
+
+const sealed = createSealed({ sealer: createSealer({ key: rootKey }) });
+export const notes = pgTable('notes', {
+  id: uuid('id').primaryKey(), scopeId: uuid('scope_id').notNull(),
+  status: text('status').notNull(),
+  body: sealed.text('body', { search: { exact: true, substring: true } }),
+});
+export const notesSeal = sealed.register(notes, { row: 'id', scope: 'scopeId' });
 ```
 
-The fixed global key is the default. The `models` map selects a distinct fixed key for a logical model. Load keys from a secret manager before creating the sealer. Data scope remains the SQL isolation boundary and is supplied by `forScope`; authorize it in the application. There is no database key registration, canary, policy generation, or admin provisioning. A model key configuration cannot search across unrelated key configurations. If a key must change, the application must re-encrypt and reindex all data.
+Export both the parent and returned companion table in the schema read by drizzle-kit. The key can load lazily through `createSealed({ sealer: () => sealer })`, allowing drizzle-kit to import the schema without secret access; data operations still require the key. `sealed.text`, `integer`, `bigint`, `decimal`, `boolean`, `instant`, `json`, and `bytes` build encrypted columns. They accept field options such as `nullable`, physical `column`, `maxBytes`, stable field `id`, `validate`, and eligible `search` profiles. `decimal` also requires `precision` and `scale`. The property name is not the field ID: the builder's first argument sets the default field ID and physical column name (`body_ct`). A renamed property can therefore keep its cipher context by retaining that first argument. Row IDs use UUID or `sealed.textId` (`text COLLATE "C"`); scope IDs use UUID or text. A scope-free table uses the constant scope `_` in AAD, tokens, and cursors. Adding a scope to one later requires re-encryption and reindexing all rows, and puts them in a new token space.
+
+The parent row ID must already be unique or primary, or its `(scope,row)` pair must be unique. The companion foreign key refers to the parent row ID when it is unique, otherwise the pair. No extra parent unique constraint is needed for a normal `id` primary key. The companion has `(scope_id,row_id)` uniqueness, one row per parent row, exact B-tree expression indexes, and one multicolumn GIN index across substring token columns. `sealed.extraMigrationSql(notesSeal)` returns the `SET STATISTICS 1000` statements for substring columns; apply them after the schema migration. The business table has no token columns and no trigger.
 
 ## Writes and reads
 
 ```ts
-await scoped.insert({ id, data: { body: 'Ada', status: 'open' } });
-const row = await scoped.get({ id });
-await scoped.update({ id, expectedRevision: 1n, patch: { body: 'Ada Lovelace' } });
-await scoped.delete({ id, expectedRevision: 2n });
-const page = await scoped.findMany({
-  match: f => f.body.contains('Ada'), select: { body: true }, limit: 20,
-});
-const next = page.nextCursor
-  ? await scoped.findMany({ match: f => f.body.contains('Ada'), select: { body: true }, limit: 20, cursor: page.nextCursor })
-  : null;
-const total = await scoped.count({ match: f => f.body.contains('Ada'), maxCandidates: 10000 });
+await sealed.insert(db, notesSeal, { id, scopeId, status: 'draft', body: 'Ada' });
+await sealed.update(db, notesSeal, { id, scopeId }, { body: 'Ada Lovelace' });
+await sealed.upsert(db, notesSeal, { id, scopeId, status: 'active', body: 'Ada' });
+const rows = await sealed.open(await db.select().from(notes));
 ```
 
-Managed writes use a transaction for the parent row compare and swap and companion update. A partial update changes only affected token columns in the single companion row, preserving mixed-field AND search. Delete cascades through the parent foreign key. Native SQL or Drizzle updates of ciphertext do not maintain the companion. A `findMany` page returns `items`, `nextCursor`, and `stopReason` (`page-full`, `exhausted`, or `budget-exceeded`). Keep match, public filter, selection, order, and limit stable when resuming. There is no offset pagination. `budgets.decryptConcurrency` limits concurrent authenticated field decryptions (default and maximum 64). `count` checks all candidates and returns an exact number; a `maxCandidates` or deadline bound throws `LIMIT_EXCEEDED`.
+The three write helpers use `db.transaction`, so parent and token changes commit together; they also work inside a Drizzle transaction as a savepoint. They return row/scope identities in an array, or decrypted rows when passed `{ returning: true }`. A UUID row ID can be omitted and will be generated. The app may delete through Drizzle; the companion foreign key cascades. An encrypted-column write through plain Drizzle or raw SQL bypasses companion maintenance and can cause search omissions. A partial managed update changes only token columns for patched encrypted fields. `reindex(db, notesSeal, { scope?, batch? })` locks parent rows in keyset batches, decrypts them, and rebuilds companion tokens; its result is `{ rows }`. It does not change ciphertext or replace a key rotation.
 
-Searchable text is normalized to NFC, full-width ASCII is folded, ASCII capitals are lowered, and whitespace is removed for substring pieces. `contains`, `startsWith`, `endsWith`, and `like` require at least two normalized characters. Each stored value has adjacent two-character pieces and structurally separate start/end markers. `substring: true` and substring objects that omit `skipGrams` also store one-character-gap pieces by default. Set `substring: { skipGrams: false }` to omit them. `substring: { wordBoundary: true }` adds word markers; `contains(value, { respectWords: true })` enforces spacing. These options affect the stored index and require rebuilding it if changed. Substring tokens stay at 16 bits. Exact tokens default to 16 bits, accept 8–32 bits, and `exactBitsForPopulation(P)` returns a width from the expected maximum distinct values.
+`sealed.open` accepts whole, partial, or nested Drizzle result objects and returns decrypted copies. Select the row ID and scope ID under the same property names as the registered table whenever selecting ciphertext. A partial selection or join that omits them fails with `ROW_CONTEXT_MISSING`; if joined tables share names such as `id`, use nested selections (for example `{ n: notes, o: orders }`). The optional `{ scope }` requires every opened row to match the caller's authorized scope. A normal `db.select()` returns ciphertext handles until opened.
 
-In an earlier local 100,000-row comparison using per-field GIN indexes, the companion occupied 211 MB with skip grams off and 305 MB with them on ([storage measurement](../bench/results/2026-09-27-combined-gin/storage.json)); median single-row insert time was 4.65 ms versus 6.16 ms ([write measurement](../bench/results/2026-09-27-skip-write-cost/report-ko.md)). These historical fixture measurements describe the storage and write cost of skip grams in that layout; they are not deployment guarantees. A [new DDL check](../bench/results/2026-09-27-product-multicolumn-gin/report-ko.md) measures the current multicolumn GIN layout.
+For raw `db.execute`, call `sealed.openRaw(notesSeal, result.rows, { columns: { id: 'n_id', scopeId: 'n_scope', body: 'n_body_ct' }, scope })`. The mapping names result columns for row, scope, and encrypted fields. Raw bytea values may be `Uint8Array` or PostgreSQL `\\x` hex text. `openRaw` never mutates its input. The scope and row entries are required; see the [raw example](../examples/standard-raw.ts).
 
-`searchWithQuery` supports a custom Drizzle query or raw SQL JOIN, and `decryptRows` handles already fetched joined rows. These paths still authenticate ciphertext; `searchWithQuery` verifies match predicates. `decryptRows` accepts `budgets.decryptConcurrency` (default and maximum 64) across all supplied rows and fields. Bound extra projections with `maxBytes`. Ordinary `db.select()` returns ciphertext.
+## Search
+
+```ts
+const page = await sealed.findMany(db, notesSeal, {
+  scope: scopeId,
+  match: m => m.or(m.body.contains('Ada'), m.sql(eq(notes.status, 'draft'))),
+  columns: { body: true, status: true }, limit: 20,
+});
+const total = await sealed.count(db, notesSeal, {
+  scope: scopeId, match: m => m.body.contains('Ada'), maxCandidates: 10000,
+});
+```
+
+The result is `{ items, nextCursor }`. Every item includes row and scope IDs even with `columns`. `count` returns an exact `number`; if the candidate or time budget prevents proof, it throws `LIMIT_EXCEEDED`. A cursor must resume the same scope, match, `where`, selection, order, and limit. Separate pages are not a database snapshot. `m.sql` composes ordinary SQL with encrypted conditions, including OR; the SQL expression is evaluated by the DB and its Boolean result is carried as a flag for final verification. The caller must pass safe parameterized Drizzle SQL. Plain `where` is ANDed with the match. An encrypted condition is always authenticated and rechecked inside SealQL.
+
+`sealed.search(db, { scope, match: { n: [notesSeal, m => m.body.contains('Ad')] }, keyset, query })` handles a custom Drizzle JOIN or raw `db.execute` query. The callback receives `{ where, after, orderBy, flags, flagsSql, limit }` and must apply `where`, optional `after`, `orderBy`, and `limit`, plus select `flags` for Drizzle or `flagsSql` for raw SQL. A one-to-many JOIN needs a NOT NULL unique many-side column in `keyset` so each candidate has a distinct position. For a raw flat result, provide top-level `columns: { n: { id: 'n_id', scopeId: 'n_scope', body: 'n_body_ct' } }`. A malformed or repeated candidate position is rejected. See the [raw JOIN example](../examples/standard-raw.ts).
+
+Searchable text folds NFC, full-width ASCII, ASCII case, and whitespace as specified by the token profile. `contains`, `startsWith`, `endsWith`, and `like` require at least two normalized characters. `like` follows SealQL's supported substring pattern semantics, not arbitrary PostgreSQL `LIKE` syntax; confirm the pattern before replacing a SQL `LIKE` predicate. Substring profiles include one-character-gap pieces by default; `substring: { skipGrams: false }` disables them. Changing search profile options requires rebuilding stored tokens. Exact tokens may use 8–32 bits; substring tokens remain 16 bits. Token matches are candidates only, so collisions may increase decrypted rows but cannot authorize a false result.
 
 ## Limits and security
 
-The database sees deterministic token frequency, co-occurrence, result volume, and timing. Token collisions can add candidates; SealQL decrypts and verifies results before returning them. A malicious database can omit rows, so completeness is not guaranteed. A cursor spans separate SQL requests and does not create a snapshot. Search has candidate, byte, deadline, and cancellation budgets. Encrypted fields cannot serve database range queries, sort keys, or SUM/AVG/GROUP BY calculations. Store fields requiring exact database calculations unencrypted. Avoid substring search on low-vocabulary fields (status values, short choice lists): their tokens leak far more under known-plaintext attacks. `findMany` cannot yet express OR between a plain column and an encrypted condition. There is no stateful search mode. See the [threat model](threat-model.md), [security claim limits](decisions/010-security-claim-limits.md), and the [attack simulation method](attack-simulation.md).
+The database sees deterministic token frequency and co-occurrence, ciphertext length, query and update patterns, and result volume. A hostile database can omit rows; complete answers are not guaranteed under that attacker. Avoid substring search on low-vocabulary fields such as status values or short choice lists: known plaintext can reveal far more than for varied prose. Encrypted fields cannot be used for range queries, sorting, or SUM/AVG/GROUP BY. There is no one-character search or stateful mode. The [threat model](threat-model.md), [claim limits](decisions/010-security-claim-limits.md), and [mechanical attack method](attack-simulation.md) delimit security claims. Historical fixture [measurements](../bench/README.md) are experimental and do not establish deployment performance.

@@ -38,7 +38,9 @@ if (!entry.includes('docs/current-state.md') || !readme.includes('docs/current-s
 for (const path of ['examples/standard-consumer.ts', 'examples/standard-raw.ts', 'examples/standard-operations.ts', 'examples/key-loader.ts']) {
   if (!entry.includes(path) || !guide.includes(path)) throw Error(`Unlinked shared example: ${path}`);
 }
-if (!raw.includes('sealed.search') || !raw.includes('flagsSql') || !operations.includes('sealed.insert') || !operations.includes('sealed.open')) throw Error('Raw/operations example drift');
+if (!raw.includes('sealed.search') || !raw.includes('flagsSql') || !operations.includes('sealed.count') || !sample.includes('sealed.insert') || !sample.includes('sealed.open')) throw Error('Raw/operations example drift');
+for (const name of ['createSealed', 'register', 'findMany', 'count', 'openRaw', 'reindex'])
+  if (!guide.includes(name)) throw Error(`Guide API drift: ${name}`);
 for (const path of ['examples', 'llms.txt', 'docs/llm-integration.md', 'docs/current-state.md', 'docs/threat-model.md']) {
   if (!packageJson.files.includes(path)) throw Error(`AI docs missing from package: ${path}`);
 }
