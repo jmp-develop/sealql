@@ -1,4 +1,6 @@
 import { getTableConfig } from 'drizzle-orm/pg-core';
+export { createSealed } from './native.js';
+export type { Sealed, Opened } from './native.js';
 import { bindSealed as bindEngine } from '../../../engine/sealed-repository.js';
 import type { SealedStorage } from '../../../engine/sealed-types.js';
 import type { Sealer } from '../../../core/field-cipher.js';
