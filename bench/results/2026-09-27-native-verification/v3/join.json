@@ -4,15 +4,15 @@
     "expected": 20,
     "summary": {
       "plain": {
-        "totalMs": 72.01880000000006,
-        "sqlMs": 71.84929999999986,
+        "totalMs": 74.3166,
+        "sqlMs": 74.09789999999998,
         "sqlCalls": 1,
         "candidates": 0,
         "returned": 20
       },
       "product": {
-        "totalMs": 17.85590000000002,
-        "sqlMs": 3.6970000000001164,
+        "totalMs": 18.544200000000046,
+        "sqlMs": 3.959899999999834,
         "sqlCalls": 1,
         "candidates": 27,
         "returned": 20
@@ -21,8 +21,8 @@
     "runs": {
       "plain": [
         {
-          "totalMs": 67.83530000000007,
-          "sqlMs": 67.62510000000009,
+          "totalMs": 74.3166,
+          "sqlMs": 74.09789999999998,
           "sqlCalls": 1,
           "candidates": 0,
           "returned": 20,
@@ -31,8 +31,8 @@
           ]
         },
         {
-          "totalMs": 74.9190000000001,
-          "sqlMs": 74.7052000000001,
+          "totalMs": 76.99099999999999,
+          "sqlMs": 76.7849000000001,
           "sqlCalls": 1,
           "candidates": 0,
           "returned": 20,
@@ -41,8 +41,8 @@
           ]
         },
         {
-          "totalMs": 74.13930000000005,
-          "sqlMs": 73.91560000000004,
+          "totalMs": 74.52050000000008,
+          "sqlMs": 74.3094000000001,
           "sqlCalls": 1,
           "candidates": 0,
           "returned": 20,
@@ -51,8 +51,8 @@
           ]
         },
         {
-          "totalMs": 70.31850000000009,
-          "sqlMs": 70.12200000000007,
+          "totalMs": 67.87440000000015,
+          "sqlMs": 67.70399999999995,
           "sqlCalls": 1,
           "candidates": 0,
           "returned": 20,
@@ -61,8 +61,8 @@
           ]
         },
         {
-          "totalMs": 72.01880000000006,
-          "sqlMs": 71.84929999999986,
+          "totalMs": 62.87020000000007,
+          "sqlMs": 62.69859999999994,
           "sqlCalls": 1,
           "candidates": 0,
           "returned": 20,
@@ -71,8 +71,8 @@
           ]
         },
         {
-          "totalMs": 70.53790000000004,
-          "sqlMs": 70.2663,
+          "totalMs": 67.18630000000007,
+          "sqlMs": 67.00209999999993,
           "sqlCalls": 1,
           "candidates": 0,
           "returned": 20,
@@ -81,8 +81,8 @@
           ]
         },
         {
-          "totalMs": 72.4828,
-          "sqlMs": 72.27350000000001,
+          "totalMs": 74.94550000000004,
+          "sqlMs": 74.7478000000001,
           "sqlCalls": 1,
           "candidates": 0,
           "returned": 20,
@@ -93,73 +93,73 @@
       ],
       "product": [
         {
-          "totalMs": 25.41669999999999,
-          "sqlMs": 3.8328999999998814,
+          "totalMs": 23.516700000000014,
+          "sqlMs": 4.061699999999973,
           "sqlCalls": 1,
           "candidates": 27,
           "returned": 20,
           "sql": [
-            "select \"native_verify_main\".\"tickets\".\"id\", \"native_verify_main\".\"tickets\".\"scope_id\", \"native_verify_main\".\"tickets\".\"customer_id\", \"native_verify_main\".\"tickets\".\"name_ct\", \"native_verify_main\".\"tickets\".\"phone_ct\", \"native_verify_main\".\"tickets\".\"address_ct\", \"native_verify_main\".\"tickets\".\"memo_ct\", \"native_verify_main\".\"tickets\".\"email_ct\", \"native_verify_main\".\"tickets\".\"company_ct\", \"native_verify_main\".\"customers\".\"id\", \"native_verify_main\".\"customers\".\"scope_id\", \"native_verify_main\".\"customers\".\"name_ct\", \"native_verify_main\".\"customers\".\"phone_ct\", \"native_verify_main\".\"customers\".\"address_ct\", \"native_verify_main\".\"customers\".\"memo_ct\", \"native_verify_main\".\"customers\".\"email_ct\", \"native_verify_main\".\"customers\".\"company_ct\" from \"native_verify_main\".\"tickets\" inner join \"native_verify_main\".\"customers\" on \"native_verify_main\".\"tickets\".\"customer_id\" = \"native_verify_main\".\"customers\".\"id\" where (\"native_verify_main\".\"customers\".\"scope_id\" = $1 and \"customers\".\"id\" in (select \"__seal_idx\".\"row_id\" from \"native_verify_main\".\"customers_seal_index\" as \"__seal_idx\" where \"__seal_idx\".\"scope_id\"=$2 and (\"__seal_idx\".\"tokens_a639b11c8130dcf7\" @> $3::bigint[])) and \"native_verify_main\".\"tickets\".\"scope_id\" = $4 and \"tickets\".\"id\" in (select \"__seal_idx\".\"row_id\" from \"native_verify_main\".\"tickets_seal_index\" as \"__seal_idx\" where \"__seal_idx\".\"scope_id\"=$5 and (\"__seal_idx\".\"tokens_a639b11c8130dcf7\" @> $6::bigint[]))) order by \"native_verify_main\".\"customers\".\"id\" asc, \"native_verify_main\".\"tickets\".\"id\" asc limit $7"
+            "select \"native_verify_main\".\"tickets\".\"id\", \"native_verify_main\".\"tickets\".\"scope_id\", \"native_verify_main\".\"tickets\".\"customer_id\", \"native_verify_main\".\"tickets\".\"name_ct\", \"native_verify_main\".\"tickets\".\"phone_ct\", \"native_verify_main\".\"tickets\".\"address_ct\", \"native_verify_main\".\"tickets\".\"memo_ct\", \"native_verify_main\".\"tickets\".\"email_ct\", \"native_verify_main\".\"tickets\".\"company_ct\", \"native_verify_main\".\"customers\".\"id\", \"native_verify_main\".\"customers\".\"scope_id\", \"native_verify_main\".\"customers\".\"name_ct\", \"native_verify_main\".\"customers\".\"phone_ct\", \"native_verify_main\".\"customers\".\"address_ct\", \"native_verify_main\".\"customers\".\"memo_ct\", \"native_verify_main\".\"customers\".\"email_ct\", \"native_verify_main\".\"customers\".\"company_ct\" from \"native_verify_main\".\"tickets\" inner join \"native_verify_main\".\"customers\" on \"native_verify_main\".\"tickets\".\"customer_id\" = \"native_verify_main\".\"customers\".\"id\" where (\"native_verify_main\".\"tickets\".\"scope_id\" = $1 and \"tickets\".\"id\" in (select \"__seal_idx\".\"row_id\" from \"native_verify_main\".\"tickets_seal_index\" as \"__seal_idx\" where \"__seal_idx\".\"scope_id\"=$2 and (\"__seal_idx\".\"tokens_a639b11c8130dcf7\" @> $3::bigint[])) and \"native_verify_main\".\"customers\".\"scope_id\" = $4 and \"customers\".\"id\" in (select \"__seal_idx\".\"row_id\" from \"native_verify_main\".\"customers_seal_index\" as \"__seal_idx\" where \"__seal_idx\".\"scope_id\"=$5 and (\"__seal_idx\".\"tokens_a639b11c8130dcf7\" @> $6::bigint[]))) order by \"native_verify_main\".\"tickets\".\"id\" asc, \"native_verify_main\".\"customers\".\"id\" asc limit $7"
           ]
         },
         {
-          "totalMs": 18.397300000000087,
-          "sqlMs": 3.9075000000000273,
+          "totalMs": 18.372899999999845,
+          "sqlMs": 4.276299999999992,
           "sqlCalls": 1,
           "candidates": 27,
           "returned": 20,
           "sql": [
-            "select \"native_verify_main\".\"tickets\".\"id\", \"native_verify_main\".\"tickets\".\"scope_id\", \"native_verify_main\".\"tickets\".\"customer_id\", \"native_verify_main\".\"tickets\".\"name_ct\", \"native_verify_main\".\"tickets\".\"phone_ct\", \"native_verify_main\".\"tickets\".\"address_ct\", \"native_verify_main\".\"tickets\".\"memo_ct\", \"native_verify_main\".\"tickets\".\"email_ct\", \"native_verify_main\".\"tickets\".\"company_ct\", \"native_verify_main\".\"customers\".\"id\", \"native_verify_main\".\"customers\".\"scope_id\", \"native_verify_main\".\"customers\".\"name_ct\", \"native_verify_main\".\"customers\".\"phone_ct\", \"native_verify_main\".\"customers\".\"address_ct\", \"native_verify_main\".\"customers\".\"memo_ct\", \"native_verify_main\".\"customers\".\"email_ct\", \"native_verify_main\".\"customers\".\"company_ct\" from \"native_verify_main\".\"tickets\" inner join \"native_verify_main\".\"customers\" on \"native_verify_main\".\"tickets\".\"customer_id\" = \"native_verify_main\".\"customers\".\"id\" where (\"native_verify_main\".\"customers\".\"scope_id\" = $1 and \"customers\".\"id\" in (select \"__seal_idx\".\"row_id\" from \"native_verify_main\".\"customers_seal_index\" as \"__seal_idx\" where \"__seal_idx\".\"scope_id\"=$2 and (\"__seal_idx\".\"tokens_a639b11c8130dcf7\" @> $3::bigint[])) and \"native_verify_main\".\"tickets\".\"scope_id\" = $4 and \"tickets\".\"id\" in (select \"__seal_idx\".\"row_id\" from \"native_verify_main\".\"tickets_seal_index\" as \"__seal_idx\" where \"__seal_idx\".\"scope_id\"=$5 and (\"__seal_idx\".\"tokens_a639b11c8130dcf7\" @> $6::bigint[]))) order by \"native_verify_main\".\"customers\".\"id\" asc, \"native_verify_main\".\"tickets\".\"id\" asc limit $7"
+            "select \"native_verify_main\".\"tickets\".\"id\", \"native_verify_main\".\"tickets\".\"scope_id\", \"native_verify_main\".\"tickets\".\"customer_id\", \"native_verify_main\".\"tickets\".\"name_ct\", \"native_verify_main\".\"tickets\".\"phone_ct\", \"native_verify_main\".\"tickets\".\"address_ct\", \"native_verify_main\".\"tickets\".\"memo_ct\", \"native_verify_main\".\"tickets\".\"email_ct\", \"native_verify_main\".\"tickets\".\"company_ct\", \"native_verify_main\".\"customers\".\"id\", \"native_verify_main\".\"customers\".\"scope_id\", \"native_verify_main\".\"customers\".\"name_ct\", \"native_verify_main\".\"customers\".\"phone_ct\", \"native_verify_main\".\"customers\".\"address_ct\", \"native_verify_main\".\"customers\".\"memo_ct\", \"native_verify_main\".\"customers\".\"email_ct\", \"native_verify_main\".\"customers\".\"company_ct\" from \"native_verify_main\".\"tickets\" inner join \"native_verify_main\".\"customers\" on \"native_verify_main\".\"tickets\".\"customer_id\" = \"native_verify_main\".\"customers\".\"id\" where (\"native_verify_main\".\"tickets\".\"scope_id\" = $1 and \"tickets\".\"id\" in (select \"__seal_idx\".\"row_id\" from \"native_verify_main\".\"tickets_seal_index\" as \"__seal_idx\" where \"__seal_idx\".\"scope_id\"=$2 and (\"__seal_idx\".\"tokens_a639b11c8130dcf7\" @> $3::bigint[])) and \"native_verify_main\".\"customers\".\"scope_id\" = $4 and \"customers\".\"id\" in (select \"__seal_idx\".\"row_id\" from \"native_verify_main\".\"customers_seal_index\" as \"__seal_idx\" where \"__seal_idx\".\"scope_id\"=$5 and (\"__seal_idx\".\"tokens_a639b11c8130dcf7\" @> $6::bigint[]))) order by \"native_verify_main\".\"tickets\".\"id\" asc, \"native_verify_main\".\"customers\".\"id\" asc limit $7"
           ]
         },
         {
-          "totalMs": 16.86740000000009,
-          "sqlMs": 3.6970000000001164,
+          "totalMs": 18.393299999999954,
+          "sqlMs": 4.301600000000008,
           "sqlCalls": 1,
           "candidates": 27,
           "returned": 20,
           "sql": [
-            "select \"native_verify_main\".\"tickets\".\"id\", \"native_verify_main\".\"tickets\".\"scope_id\", \"native_verify_main\".\"tickets\".\"customer_id\", \"native_verify_main\".\"tickets\".\"name_ct\", \"native_verify_main\".\"tickets\".\"phone_ct\", \"native_verify_main\".\"tickets\".\"address_ct\", \"native_verify_main\".\"tickets\".\"memo_ct\", \"native_verify_main\".\"tickets\".\"email_ct\", \"native_verify_main\".\"tickets\".\"company_ct\", \"native_verify_main\".\"customers\".\"id\", \"native_verify_main\".\"customers\".\"scope_id\", \"native_verify_main\".\"customers\".\"name_ct\", \"native_verify_main\".\"customers\".\"phone_ct\", \"native_verify_main\".\"customers\".\"address_ct\", \"native_verify_main\".\"customers\".\"memo_ct\", \"native_verify_main\".\"customers\".\"email_ct\", \"native_verify_main\".\"customers\".\"company_ct\" from \"native_verify_main\".\"tickets\" inner join \"native_verify_main\".\"customers\" on \"native_verify_main\".\"tickets\".\"customer_id\" = \"native_verify_main\".\"customers\".\"id\" where (\"native_verify_main\".\"customers\".\"scope_id\" = $1 and \"customers\".\"id\" in (select \"__seal_idx\".\"row_id\" from \"native_verify_main\".\"customers_seal_index\" as \"__seal_idx\" where \"__seal_idx\".\"scope_id\"=$2 and (\"__seal_idx\".\"tokens_a639b11c8130dcf7\" @> $3::bigint[])) and \"native_verify_main\".\"tickets\".\"scope_id\" = $4 and \"tickets\".\"id\" in (select \"__seal_idx\".\"row_id\" from \"native_verify_main\".\"tickets_seal_index\" as \"__seal_idx\" where \"__seal_idx\".\"scope_id\"=$5 and (\"__seal_idx\".\"tokens_a639b11c8130dcf7\" @> $6::bigint[]))) order by \"native_verify_main\".\"customers\".\"id\" asc, \"native_verify_main\".\"tickets\".\"id\" asc limit $7"
+            "select \"native_verify_main\".\"tickets\".\"id\", \"native_verify_main\".\"tickets\".\"scope_id\", \"native_verify_main\".\"tickets\".\"customer_id\", \"native_verify_main\".\"tickets\".\"name_ct\", \"native_verify_main\".\"tickets\".\"phone_ct\", \"native_verify_main\".\"tickets\".\"address_ct\", \"native_verify_main\".\"tickets\".\"memo_ct\", \"native_verify_main\".\"tickets\".\"email_ct\", \"native_verify_main\".\"tickets\".\"company_ct\", \"native_verify_main\".\"customers\".\"id\", \"native_verify_main\".\"customers\".\"scope_id\", \"native_verify_main\".\"customers\".\"name_ct\", \"native_verify_main\".\"customers\".\"phone_ct\", \"native_verify_main\".\"customers\".\"address_ct\", \"native_verify_main\".\"customers\".\"memo_ct\", \"native_verify_main\".\"customers\".\"email_ct\", \"native_verify_main\".\"customers\".\"company_ct\" from \"native_verify_main\".\"tickets\" inner join \"native_verify_main\".\"customers\" on \"native_verify_main\".\"tickets\".\"customer_id\" = \"native_verify_main\".\"customers\".\"id\" where (\"native_verify_main\".\"tickets\".\"scope_id\" = $1 and \"tickets\".\"id\" in (select \"__seal_idx\".\"row_id\" from \"native_verify_main\".\"tickets_seal_index\" as \"__seal_idx\" where \"__seal_idx\".\"scope_id\"=$2 and (\"__seal_idx\".\"tokens_a639b11c8130dcf7\" @> $3::bigint[])) and \"native_verify_main\".\"customers\".\"scope_id\" = $4 and \"customers\".\"id\" in (select \"__seal_idx\".\"row_id\" from \"native_verify_main\".\"customers_seal_index\" as \"__seal_idx\" where \"__seal_idx\".\"scope_id\"=$5 and (\"__seal_idx\".\"tokens_a639b11c8130dcf7\" @> $6::bigint[]))) order by \"native_verify_main\".\"tickets\".\"id\" asc, \"native_verify_main\".\"customers\".\"id\" asc limit $7"
           ]
         },
         {
-          "totalMs": 17.280700000000024,
-          "sqlMs": 3.5506000000000313,
+          "totalMs": 16.41800000000012,
+          "sqlMs": 3.724899999999934,
           "sqlCalls": 1,
           "candidates": 27,
           "returned": 20,
           "sql": [
-            "select \"native_verify_main\".\"tickets\".\"id\", \"native_verify_main\".\"tickets\".\"scope_id\", \"native_verify_main\".\"tickets\".\"customer_id\", \"native_verify_main\".\"tickets\".\"name_ct\", \"native_verify_main\".\"tickets\".\"phone_ct\", \"native_verify_main\".\"tickets\".\"address_ct\", \"native_verify_main\".\"tickets\".\"memo_ct\", \"native_verify_main\".\"tickets\".\"email_ct\", \"native_verify_main\".\"tickets\".\"company_ct\", \"native_verify_main\".\"customers\".\"id\", \"native_verify_main\".\"customers\".\"scope_id\", \"native_verify_main\".\"customers\".\"name_ct\", \"native_verify_main\".\"customers\".\"phone_ct\", \"native_verify_main\".\"customers\".\"address_ct\", \"native_verify_main\".\"customers\".\"memo_ct\", \"native_verify_main\".\"customers\".\"email_ct\", \"native_verify_main\".\"customers\".\"company_ct\" from \"native_verify_main\".\"tickets\" inner join \"native_verify_main\".\"customers\" on \"native_verify_main\".\"tickets\".\"customer_id\" = \"native_verify_main\".\"customers\".\"id\" where (\"native_verify_main\".\"customers\".\"scope_id\" = $1 and \"customers\".\"id\" in (select \"__seal_idx\".\"row_id\" from \"native_verify_main\".\"customers_seal_index\" as \"__seal_idx\" where \"__seal_idx\".\"scope_id\"=$2 and (\"__seal_idx\".\"tokens_a639b11c8130dcf7\" @> $3::bigint[])) and \"native_verify_main\".\"tickets\".\"scope_id\" = $4 and \"tickets\".\"id\" in (select \"__seal_idx\".\"row_id\" from \"native_verify_main\".\"tickets_seal_index\" as \"__seal_idx\" where \"__seal_idx\".\"scope_id\"=$5 and (\"__seal_idx\".\"tokens_a639b11c8130dcf7\" @> $6::bigint[]))) order by \"native_verify_main\".\"customers\".\"id\" asc, \"native_verify_main\".\"tickets\".\"id\" asc limit $7"
+            "select \"native_verify_main\".\"tickets\".\"id\", \"native_verify_main\".\"tickets\".\"scope_id\", \"native_verify_main\".\"tickets\".\"customer_id\", \"native_verify_main\".\"tickets\".\"name_ct\", \"native_verify_main\".\"tickets\".\"phone_ct\", \"native_verify_main\".\"tickets\".\"address_ct\", \"native_verify_main\".\"tickets\".\"memo_ct\", \"native_verify_main\".\"tickets\".\"email_ct\", \"native_verify_main\".\"tickets\".\"company_ct\", \"native_verify_main\".\"customers\".\"id\", \"native_verify_main\".\"customers\".\"scope_id\", \"native_verify_main\".\"customers\".\"name_ct\", \"native_verify_main\".\"customers\".\"phone_ct\", \"native_verify_main\".\"customers\".\"address_ct\", \"native_verify_main\".\"customers\".\"memo_ct\", \"native_verify_main\".\"customers\".\"email_ct\", \"native_verify_main\".\"customers\".\"company_ct\" from \"native_verify_main\".\"tickets\" inner join \"native_verify_main\".\"customers\" on \"native_verify_main\".\"tickets\".\"customer_id\" = \"native_verify_main\".\"customers\".\"id\" where (\"native_verify_main\".\"tickets\".\"scope_id\" = $1 and \"tickets\".\"id\" in (select \"__seal_idx\".\"row_id\" from \"native_verify_main\".\"tickets_seal_index\" as \"__seal_idx\" where \"__seal_idx\".\"scope_id\"=$2 and (\"__seal_idx\".\"tokens_a639b11c8130dcf7\" @> $3::bigint[])) and \"native_verify_main\".\"customers\".\"scope_id\" = $4 and \"customers\".\"id\" in (select \"__seal_idx\".\"row_id\" from \"native_verify_main\".\"customers_seal_index\" as \"__seal_idx\" where \"__seal_idx\".\"scope_id\"=$5 and (\"__seal_idx\".\"tokens_a639b11c8130dcf7\" @> $6::bigint[]))) order by \"native_verify_main\".\"tickets\".\"id\" asc, \"native_verify_main\".\"customers\".\"id\" asc limit $7"
           ]
         },
         {
-          "totalMs": 16.739699999999857,
-          "sqlMs": 3.509599999999864,
+          "totalMs": 19.23440000000005,
+          "sqlMs": 3.573799999999892,
           "sqlCalls": 1,
           "candidates": 27,
           "returned": 20,
           "sql": [
-            "select \"native_verify_main\".\"tickets\".\"id\", \"native_verify_main\".\"tickets\".\"scope_id\", \"native_verify_main\".\"tickets\".\"customer_id\", \"native_verify_main\".\"tickets\".\"name_ct\", \"native_verify_main\".\"tickets\".\"phone_ct\", \"native_verify_main\".\"tickets\".\"address_ct\", \"native_verify_main\".\"tickets\".\"memo_ct\", \"native_verify_main\".\"tickets\".\"email_ct\", \"native_verify_main\".\"tickets\".\"company_ct\", \"native_verify_main\".\"customers\".\"id\", \"native_verify_main\".\"customers\".\"scope_id\", \"native_verify_main\".\"customers\".\"name_ct\", \"native_verify_main\".\"customers\".\"phone_ct\", \"native_verify_main\".\"customers\".\"address_ct\", \"native_verify_main\".\"customers\".\"memo_ct\", \"native_verify_main\".\"customers\".\"email_ct\", \"native_verify_main\".\"customers\".\"company_ct\" from \"native_verify_main\".\"tickets\" inner join \"native_verify_main\".\"customers\" on \"native_verify_main\".\"tickets\".\"customer_id\" = \"native_verify_main\".\"customers\".\"id\" where (\"native_verify_main\".\"customers\".\"scope_id\" = $1 and \"customers\".\"id\" in (select \"__seal_idx\".\"row_id\" from \"native_verify_main\".\"customers_seal_index\" as \"__seal_idx\" where \"__seal_idx\".\"scope_id\"=$2 and (\"__seal_idx\".\"tokens_a639b11c8130dcf7\" @> $3::bigint[])) and \"native_verify_main\".\"tickets\".\"scope_id\" = $4 and \"tickets\".\"id\" in (select \"__seal_idx\".\"row_id\" from \"native_verify_main\".\"tickets_seal_index\" as \"__seal_idx\" where \"__seal_idx\".\"scope_id\"=$5 and (\"__seal_idx\".\"tokens_a639b11c8130dcf7\" @> $6::bigint[]))) order by \"native_verify_main\".\"customers\".\"id\" asc, \"native_verify_main\".\"tickets\".\"id\" asc limit $7"
+            "select \"native_verify_main\".\"tickets\".\"id\", \"native_verify_main\".\"tickets\".\"scope_id\", \"native_verify_main\".\"tickets\".\"customer_id\", \"native_verify_main\".\"tickets\".\"name_ct\", \"native_verify_main\".\"tickets\".\"phone_ct\", \"native_verify_main\".\"tickets\".\"address_ct\", \"native_verify_main\".\"tickets\".\"memo_ct\", \"native_verify_main\".\"tickets\".\"email_ct\", \"native_verify_main\".\"tickets\".\"company_ct\", \"native_verify_main\".\"customers\".\"id\", \"native_verify_main\".\"customers\".\"scope_id\", \"native_verify_main\".\"customers\".\"name_ct\", \"native_verify_main\".\"customers\".\"phone_ct\", \"native_verify_main\".\"customers\".\"address_ct\", \"native_verify_main\".\"customers\".\"memo_ct\", \"native_verify_main\".\"customers\".\"email_ct\", \"native_verify_main\".\"customers\".\"company_ct\" from \"native_verify_main\".\"tickets\" inner join \"native_verify_main\".\"customers\" on \"native_verify_main\".\"tickets\".\"customer_id\" = \"native_verify_main\".\"customers\".\"id\" where (\"native_verify_main\".\"tickets\".\"scope_id\" = $1 and \"tickets\".\"id\" in (select \"__seal_idx\".\"row_id\" from \"native_verify_main\".\"tickets_seal_index\" as \"__seal_idx\" where \"__seal_idx\".\"scope_id\"=$2 and (\"__seal_idx\".\"tokens_a639b11c8130dcf7\" @> $3::bigint[])) and \"native_verify_main\".\"customers\".\"scope_id\" = $4 and \"customers\".\"id\" in (select \"__seal_idx\".\"row_id\" from \"native_verify_main\".\"customers_seal_index\" as \"__seal_idx\" where \"__seal_idx\".\"scope_id\"=$5 and (\"__seal_idx\".\"tokens_a639b11c8130dcf7\" @> $6::bigint[]))) order by \"native_verify_main\".\"tickets\".\"id\" asc, \"native_verify_main\".\"customers\".\"id\" asc limit $7"
           ]
         },
         {
-          "totalMs": 21.071199999999862,
-          "sqlMs": 3.794300000000021,
+          "totalMs": 18.544200000000046,
+          "sqlMs": 3.901200000000017,
           "sqlCalls": 1,
           "candidates": 27,
           "returned": 20,
           "sql": [
-            "select \"native_verify_main\".\"tickets\".\"id\", \"native_verify_main\".\"tickets\".\"scope_id\", \"native_verify_main\".\"tickets\".\"customer_id\", \"native_verify_main\".\"tickets\".\"name_ct\", \"native_verify_main\".\"tickets\".\"phone_ct\", \"native_verify_main\".\"tickets\".\"address_ct\", \"native_verify_main\".\"tickets\".\"memo_ct\", \"native_verify_main\".\"tickets\".\"email_ct\", \"native_verify_main\".\"tickets\".\"company_ct\", \"native_verify_main\".\"customers\".\"id\", \"native_verify_main\".\"customers\".\"scope_id\", \"native_verify_main\".\"customers\".\"name_ct\", \"native_verify_main\".\"customers\".\"phone_ct\", \"native_verify_main\".\"customers\".\"address_ct\", \"native_verify_main\".\"customers\".\"memo_ct\", \"native_verify_main\".\"customers\".\"email_ct\", \"native_verify_main\".\"customers\".\"company_ct\" from \"native_verify_main\".\"tickets\" inner join \"native_verify_main\".\"customers\" on \"native_verify_main\".\"tickets\".\"customer_id\" = \"native_verify_main\".\"customers\".\"id\" where (\"native_verify_main\".\"customers\".\"scope_id\" = $1 and \"customers\".\"id\" in (select \"__seal_idx\".\"row_id\" from \"native_verify_main\".\"customers_seal_index\" as \"__seal_idx\" where \"__seal_idx\".\"scope_id\"=$2 and (\"__seal_idx\".\"tokens_a639b11c8130dcf7\" @> $3::bigint[])) and \"native_verify_main\".\"tickets\".\"scope_id\" = $4 and \"tickets\".\"id\" in (select \"__seal_idx\".\"row_id\" from \"native_verify_main\".\"tickets_seal_index\" as \"__seal_idx\" where \"__seal_idx\".\"scope_id\"=$5 and (\"__seal_idx\".\"tokens_a639b11c8130dcf7\" @> $6::bigint[]))) order by \"native_verify_main\".\"customers\".\"id\" asc, \"native_verify_main\".\"tickets\".\"id\" asc limit $7"
+            "select \"native_verify_main\".\"tickets\".\"id\", \"native_verify_main\".\"tickets\".\"scope_id\", \"native_verify_main\".\"tickets\".\"customer_id\", \"native_verify_main\".\"tickets\".\"name_ct\", \"native_verify_main\".\"tickets\".\"phone_ct\", \"native_verify_main\".\"tickets\".\"address_ct\", \"native_verify_main\".\"tickets\".\"memo_ct\", \"native_verify_main\".\"tickets\".\"email_ct\", \"native_verify_main\".\"tickets\".\"company_ct\", \"native_verify_main\".\"customers\".\"id\", \"native_verify_main\".\"customers\".\"scope_id\", \"native_verify_main\".\"customers\".\"name_ct\", \"native_verify_main\".\"customers\".\"phone_ct\", \"native_verify_main\".\"customers\".\"address_ct\", \"native_verify_main\".\"customers\".\"memo_ct\", \"native_verify_main\".\"customers\".\"email_ct\", \"native_verify_main\".\"customers\".\"company_ct\" from \"native_verify_main\".\"tickets\" inner join \"native_verify_main\".\"customers\" on \"native_verify_main\".\"tickets\".\"customer_id\" = \"native_verify_main\".\"customers\".\"id\" where (\"native_verify_main\".\"tickets\".\"scope_id\" = $1 and \"tickets\".\"id\" in (select \"__seal_idx\".\"row_id\" from \"native_verify_main\".\"tickets_seal_index\" as \"__seal_idx\" where \"__seal_idx\".\"scope_id\"=$2 and (\"__seal_idx\".\"tokens_a639b11c8130dcf7\" @> $3::bigint[])) and \"native_verify_main\".\"customers\".\"scope_id\" = $4 and \"customers\".\"id\" in (select \"__seal_idx\".\"row_id\" from \"native_verify_main\".\"customers_seal_index\" as \"__seal_idx\" where \"__seal_idx\".\"scope_id\"=$5 and (\"__seal_idx\".\"tokens_a639b11c8130dcf7\" @> $6::bigint[]))) order by \"native_verify_main\".\"tickets\".\"id\" asc, \"native_verify_main\".\"customers\".\"id\" asc limit $7"
           ]
         },
         {
-          "totalMs": 17.85590000000002,
-          "sqlMs": 3.668100000000095,
+          "totalMs": 24.23779999999988,
+          "sqlMs": 3.959899999999834,
           "sqlCalls": 1,
           "candidates": 27,
           "returned": 20,
           "sql": [
-            "select \"native_verify_main\".\"tickets\".\"id\", \"native_verify_main\".\"tickets\".\"scope_id\", \"native_verify_main\".\"tickets\".\"customer_id\", \"native_verify_main\".\"tickets\".\"name_ct\", \"native_verify_main\".\"tickets\".\"phone_ct\", \"native_verify_main\".\"tickets\".\"address_ct\", \"native_verify_main\".\"tickets\".\"memo_ct\", \"native_verify_main\".\"tickets\".\"email_ct\", \"native_verify_main\".\"tickets\".\"company_ct\", \"native_verify_main\".\"customers\".\"id\", \"native_verify_main\".\"customers\".\"scope_id\", \"native_verify_main\".\"customers\".\"name_ct\", \"native_verify_main\".\"customers\".\"phone_ct\", \"native_verify_main\".\"customers\".\"address_ct\", \"native_verify_main\".\"customers\".\"memo_ct\", \"native_verify_main\".\"customers\".\"email_ct\", \"native_verify_main\".\"customers\".\"company_ct\" from \"native_verify_main\".\"tickets\" inner join \"native_verify_main\".\"customers\" on \"native_verify_main\".\"tickets\".\"customer_id\" = \"native_verify_main\".\"customers\".\"id\" where (\"native_verify_main\".\"customers\".\"scope_id\" = $1 and \"customers\".\"id\" in (select \"__seal_idx\".\"row_id\" from \"native_verify_main\".\"customers_seal_index\" as \"__seal_idx\" where \"__seal_idx\".\"scope_id\"=$2 and (\"__seal_idx\".\"tokens_a639b11c8130dcf7\" @> $3::bigint[])) and \"native_verify_main\".\"tickets\".\"scope_id\" = $4 and \"tickets\".\"id\" in (select \"__seal_idx\".\"row_id\" from \"native_verify_main\".\"tickets_seal_index\" as \"__seal_idx\" where \"__seal_idx\".\"scope_id\"=$5 and (\"__seal_idx\".\"tokens_a639b11c8130dcf7\" @> $6::bigint[]))) order by \"native_verify_main\".\"customers\".\"id\" asc, \"native_verify_main\".\"tickets\".\"id\" asc limit $7"
+            "select \"native_verify_main\".\"tickets\".\"id\", \"native_verify_main\".\"tickets\".\"scope_id\", \"native_verify_main\".\"tickets\".\"customer_id\", \"native_verify_main\".\"tickets\".\"name_ct\", \"native_verify_main\".\"tickets\".\"phone_ct\", \"native_verify_main\".\"tickets\".\"address_ct\", \"native_verify_main\".\"tickets\".\"memo_ct\", \"native_verify_main\".\"tickets\".\"email_ct\", \"native_verify_main\".\"tickets\".\"company_ct\", \"native_verify_main\".\"customers\".\"id\", \"native_verify_main\".\"customers\".\"scope_id\", \"native_verify_main\".\"customers\".\"name_ct\", \"native_verify_main\".\"customers\".\"phone_ct\", \"native_verify_main\".\"customers\".\"address_ct\", \"native_verify_main\".\"customers\".\"memo_ct\", \"native_verify_main\".\"customers\".\"email_ct\", \"native_verify_main\".\"customers\".\"company_ct\" from \"native_verify_main\".\"tickets\" inner join \"native_verify_main\".\"customers\" on \"native_verify_main\".\"tickets\".\"customer_id\" = \"native_verify_main\".\"customers\".\"id\" where (\"native_verify_main\".\"tickets\".\"scope_id\" = $1 and \"tickets\".\"id\" in (select \"__seal_idx\".\"row_id\" from \"native_verify_main\".\"tickets_seal_index\" as \"__seal_idx\" where \"__seal_idx\".\"scope_id\"=$2 and (\"__seal_idx\".\"tokens_a639b11c8130dcf7\" @> $3::bigint[])) and \"native_verify_main\".\"customers\".\"scope_id\" = $4 and \"customers\".\"id\" in (select \"__seal_idx\".\"row_id\" from \"native_verify_main\".\"customers_seal_index\" as \"__seal_idx\" where \"__seal_idx\".\"scope_id\"=$5 and (\"__seal_idx\".\"tokens_a639b11c8130dcf7\" @> $6::bigint[]))) order by \"native_verify_main\".\"tickets\".\"id\" asc, \"native_verify_main\".\"customers\".\"id\" asc limit $7"
           ]
         }
       ]
@@ -170,15 +170,15 @@
     "expected": 20,
     "summary": {
       "plain": {
-        "totalMs": 0.9813999999998941,
-        "sqlMs": 0.9080999999998767,
+        "totalMs": 1.2558999999998832,
+        "sqlMs": 1.1802000000000135,
         "sqlCalls": 1,
         "candidates": 0,
         "returned": 20
       },
       "product": {
-        "totalMs": 68.91779999999972,
-        "sqlMs": 56.25829999999996,
+        "totalMs": 15.305899999999838,
+        "sqlMs": 2.2975000000001273,
         "sqlCalls": 1,
         "candidates": 27,
         "returned": 20
@@ -187,8 +187,8 @@
     "runs": {
       "plain": [
         {
-          "totalMs": 0.9433000000001357,
-          "sqlMs": 0.870200000000068,
+          "totalMs": 0.9063999999998487,
+          "sqlMs": 0.8278999999999996,
           "sqlCalls": 1,
           "candidates": 0,
           "returned": 20,
@@ -197,8 +197,8 @@
           ]
         },
         {
-          "totalMs": 1.4461999999998625,
-          "sqlMs": 1.307800000000043,
+          "totalMs": 1.4249999999999545,
+          "sqlMs": 1.236599999999953,
           "sqlCalls": 1,
           "candidates": 0,
           "returned": 20,
@@ -207,8 +207,8 @@
           ]
         },
         {
-          "totalMs": 0.9813999999998941,
-          "sqlMs": 0.9080999999998767,
+          "totalMs": 1.2558999999998832,
+          "sqlMs": 1.1802000000000135,
           "sqlCalls": 1,
           "candidates": 0,
           "returned": 20,
@@ -217,8 +217,8 @@
           ]
         },
         {
-          "totalMs": 1.477100000000064,
-          "sqlMs": 1.3633999999997286,
+          "totalMs": 1.3877999999999702,
+          "sqlMs": 1.2695999999998548,
           "sqlCalls": 1,
           "candidates": 0,
           "returned": 20,
@@ -227,8 +227,8 @@
           ]
         },
         {
-          "totalMs": 0.9130000000000109,
-          "sqlMs": 0.8479999999999563,
+          "totalMs": 1.2495000000001255,
+          "sqlMs": 1.1709000000000742,
           "sqlCalls": 1,
           "candidates": 0,
           "returned": 20,
@@ -237,8 +237,8 @@
           ]
         },
         {
-          "totalMs": 1.5954000000001543,
-          "sqlMs": 1.4673999999999978,
+          "totalMs": 1.4611999999999625,
+          "sqlMs": 1.328800000000001,
           "sqlCalls": 1,
           "candidates": 0,
           "returned": 20,
@@ -247,8 +247,8 @@
           ]
         },
         {
-          "totalMs": 0.9588999999996304,
-          "sqlMs": 0.883600000000115,
+          "totalMs": 0.9615999999998621,
+          "sqlMs": 0.8908999999998741,
           "sqlCalls": 1,
           "candidates": 0,
           "returned": 20,
@@ -259,73 +259,73 @@
       ],
       "product": [
         {
-          "totalMs": 67.89900000000011,
-          "sqlMs": 55.013299999999845,
+          "totalMs": 15.272699999999986,
+          "sqlMs": 2.420599999999922,
           "sqlCalls": 1,
           "candidates": 27,
           "returned": 20,
           "sql": [
-            "select \"native_verify_main\".\"tickets\".\"id\", \"native_verify_main\".\"tickets\".\"scope_id\", \"native_verify_main\".\"tickets\".\"customer_id\", \"native_verify_main\".\"tickets\".\"name_ct\", \"native_verify_main\".\"tickets\".\"phone_ct\", \"native_verify_main\".\"tickets\".\"address_ct\", \"native_verify_main\".\"tickets\".\"memo_ct\", \"native_verify_main\".\"tickets\".\"email_ct\", \"native_verify_main\".\"tickets\".\"company_ct\", \"native_verify_main\".\"customers\".\"id\", \"native_verify_main\".\"customers\".\"scope_id\", \"native_verify_main\".\"customers\".\"name_ct\", \"native_verify_main\".\"customers\".\"phone_ct\", \"native_verify_main\".\"customers\".\"address_ct\", \"native_verify_main\".\"customers\".\"memo_ct\", \"native_verify_main\".\"customers\".\"email_ct\", \"native_verify_main\".\"customers\".\"company_ct\" from \"native_verify_main\".\"tickets\" inner join \"native_verify_main\".\"customers\" on \"native_verify_main\".\"tickets\".\"customer_id\" = \"native_verify_main\".\"customers\".\"id\" where (\"native_verify_main\".\"customers\".\"scope_id\" = $1 and \"customers\".\"id\" in (select \"__seal_idx\".\"row_id\" from \"native_verify_main\".\"customers_seal_index\" as \"__seal_idx\" where \"__seal_idx\".\"scope_id\"=$2 and ((\"__seal_idx\".\"tokens_a106c26102b707f0\")[1]=$3::bigint)) and \"native_verify_main\".\"tickets\".\"scope_id\" = $4 and \"tickets\".\"id\" in (select \"__seal_idx\".\"row_id\" from \"native_verify_main\".\"tickets_seal_index\" as \"__seal_idx\" where \"__seal_idx\".\"scope_id\"=$5 and (\"__seal_idx\".\"tokens_a639b11c8130dcf7\" @> $6::bigint[]))) order by \"native_verify_main\".\"customers\".\"id\" asc, \"native_verify_main\".\"tickets\".\"id\" asc limit $7"
+            "select \"native_verify_main\".\"tickets\".\"id\", \"native_verify_main\".\"tickets\".\"scope_id\", \"native_verify_main\".\"tickets\".\"customer_id\", \"native_verify_main\".\"tickets\".\"name_ct\", \"native_verify_main\".\"tickets\".\"phone_ct\", \"native_verify_main\".\"tickets\".\"address_ct\", \"native_verify_main\".\"tickets\".\"memo_ct\", \"native_verify_main\".\"tickets\".\"email_ct\", \"native_verify_main\".\"tickets\".\"company_ct\", \"native_verify_main\".\"customers\".\"id\", \"native_verify_main\".\"customers\".\"scope_id\", \"native_verify_main\".\"customers\".\"name_ct\", \"native_verify_main\".\"customers\".\"phone_ct\", \"native_verify_main\".\"customers\".\"address_ct\", \"native_verify_main\".\"customers\".\"memo_ct\", \"native_verify_main\".\"customers\".\"email_ct\", \"native_verify_main\".\"customers\".\"company_ct\" from \"native_verify_main\".\"tickets\" inner join \"native_verify_main\".\"customers\" on \"native_verify_main\".\"tickets\".\"customer_id\" = \"native_verify_main\".\"customers\".\"id\" where (\"native_verify_main\".\"tickets\".\"scope_id\" = $1 and \"tickets\".\"id\" in (select \"__seal_idx\".\"row_id\" from \"native_verify_main\".\"tickets_seal_index\" as \"__seal_idx\" where \"__seal_idx\".\"scope_id\"=$2 and (\"__seal_idx\".\"tokens_a639b11c8130dcf7\" @> $3::bigint[])) and \"native_verify_main\".\"customers\".\"scope_id\" = $4 and \"customers\".\"id\" in (select \"__seal_idx\".\"row_id\" from \"native_verify_main\".\"customers_seal_index\" as \"__seal_idx\" where \"__seal_idx\".\"scope_id\"=$5 and ((\"__seal_idx\".\"tokens_a106c26102b707f0\")[1]=$6::bigint))) order by \"native_verify_main\".\"tickets\".\"id\" asc, \"native_verify_main\".\"customers\".\"id\" asc limit $7"
           ]
         },
         {
-          "totalMs": 68.70050000000015,
-          "sqlMs": 56.25829999999996,
+          "totalMs": 15.433099999999968,
+          "sqlMs": 2.2865999999999076,
           "sqlCalls": 1,
           "candidates": 27,
           "returned": 20,
           "sql": [
-            "select \"native_verify_main\".\"tickets\".\"id\", \"native_verify_main\".\"tickets\".\"scope_id\", \"native_verify_main\".\"tickets\".\"customer_id\", \"native_verify_main\".\"tickets\".\"name_ct\", \"native_verify_main\".\"tickets\".\"phone_ct\", \"native_verify_main\".\"tickets\".\"address_ct\", \"native_verify_main\".\"tickets\".\"memo_ct\", \"native_verify_main\".\"tickets\".\"email_ct\", \"native_verify_main\".\"tickets\".\"company_ct\", \"native_verify_main\".\"customers\".\"id\", \"native_verify_main\".\"customers\".\"scope_id\", \"native_verify_main\".\"customers\".\"name_ct\", \"native_verify_main\".\"customers\".\"phone_ct\", \"native_verify_main\".\"customers\".\"address_ct\", \"native_verify_main\".\"customers\".\"memo_ct\", \"native_verify_main\".\"customers\".\"email_ct\", \"native_verify_main\".\"customers\".\"company_ct\" from \"native_verify_main\".\"tickets\" inner join \"native_verify_main\".\"customers\" on \"native_verify_main\".\"tickets\".\"customer_id\" = \"native_verify_main\".\"customers\".\"id\" where (\"native_verify_main\".\"customers\".\"scope_id\" = $1 and \"customers\".\"id\" in (select \"__seal_idx\".\"row_id\" from \"native_verify_main\".\"customers_seal_index\" as \"__seal_idx\" where \"__seal_idx\".\"scope_id\"=$2 and ((\"__seal_idx\".\"tokens_a106c26102b707f0\")[1]=$3::bigint)) and \"native_verify_main\".\"tickets\".\"scope_id\" = $4 and \"tickets\".\"id\" in (select \"__seal_idx\".\"row_id\" from \"native_verify_main\".\"tickets_seal_index\" as \"__seal_idx\" where \"__seal_idx\".\"scope_id\"=$5 and (\"__seal_idx\".\"tokens_a639b11c8130dcf7\" @> $6::bigint[]))) order by \"native_verify_main\".\"customers\".\"id\" asc, \"native_verify_main\".\"tickets\".\"id\" asc limit $7"
+            "select \"native_verify_main\".\"tickets\".\"id\", \"native_verify_main\".\"tickets\".\"scope_id\", \"native_verify_main\".\"tickets\".\"customer_id\", \"native_verify_main\".\"tickets\".\"name_ct\", \"native_verify_main\".\"tickets\".\"phone_ct\", \"native_verify_main\".\"tickets\".\"address_ct\", \"native_verify_main\".\"tickets\".\"memo_ct\", \"native_verify_main\".\"tickets\".\"email_ct\", \"native_verify_main\".\"tickets\".\"company_ct\", \"native_verify_main\".\"customers\".\"id\", \"native_verify_main\".\"customers\".\"scope_id\", \"native_verify_main\".\"customers\".\"name_ct\", \"native_verify_main\".\"customers\".\"phone_ct\", \"native_verify_main\".\"customers\".\"address_ct\", \"native_verify_main\".\"customers\".\"memo_ct\", \"native_verify_main\".\"customers\".\"email_ct\", \"native_verify_main\".\"customers\".\"company_ct\" from \"native_verify_main\".\"tickets\" inner join \"native_verify_main\".\"customers\" on \"native_verify_main\".\"tickets\".\"customer_id\" = \"native_verify_main\".\"customers\".\"id\" where (\"native_verify_main\".\"tickets\".\"scope_id\" = $1 and \"tickets\".\"id\" in (select \"__seal_idx\".\"row_id\" from \"native_verify_main\".\"tickets_seal_index\" as \"__seal_idx\" where \"__seal_idx\".\"scope_id\"=$2 and (\"__seal_idx\".\"tokens_a639b11c8130dcf7\" @> $3::bigint[])) and \"native_verify_main\".\"customers\".\"scope_id\" = $4 and \"customers\".\"id\" in (select \"__seal_idx\".\"row_id\" from \"native_verify_main\".\"customers_seal_index\" as \"__seal_idx\" where \"__seal_idx\".\"scope_id\"=$5 and ((\"__seal_idx\".\"tokens_a106c26102b707f0\")[1]=$6::bigint))) order by \"native_verify_main\".\"tickets\".\"id\" asc, \"native_verify_main\".\"customers\".\"id\" asc limit $7"
           ]
         },
         {
-          "totalMs": 152.43929999999978,
-          "sqlMs": 137.61069999999995,
+          "totalMs": 15.305899999999838,
+          "sqlMs": 2.3068000000000666,
           "sqlCalls": 1,
           "candidates": 27,
           "returned": 20,
           "sql": [
-            "select \"native_verify_main\".\"tickets\".\"id\", \"native_verify_main\".\"tickets\".\"scope_id\", \"native_verify_main\".\"tickets\".\"customer_id\", \"native_verify_main\".\"tickets\".\"name_ct\", \"native_verify_main\".\"tickets\".\"phone_ct\", \"native_verify_main\".\"tickets\".\"address_ct\", \"native_verify_main\".\"tickets\".\"memo_ct\", \"native_verify_main\".\"tickets\".\"email_ct\", \"native_verify_main\".\"tickets\".\"company_ct\", \"native_verify_main\".\"customers\".\"id\", \"native_verify_main\".\"customers\".\"scope_id\", \"native_verify_main\".\"customers\".\"name_ct\", \"native_verify_main\".\"customers\".\"phone_ct\", \"native_verify_main\".\"customers\".\"address_ct\", \"native_verify_main\".\"customers\".\"memo_ct\", \"native_verify_main\".\"customers\".\"email_ct\", \"native_verify_main\".\"customers\".\"company_ct\" from \"native_verify_main\".\"tickets\" inner join \"native_verify_main\".\"customers\" on \"native_verify_main\".\"tickets\".\"customer_id\" = \"native_verify_main\".\"customers\".\"id\" where (\"native_verify_main\".\"customers\".\"scope_id\" = $1 and \"customers\".\"id\" in (select \"__seal_idx\".\"row_id\" from \"native_verify_main\".\"customers_seal_index\" as \"__seal_idx\" where \"__seal_idx\".\"scope_id\"=$2 and ((\"__seal_idx\".\"tokens_a106c26102b707f0\")[1]=$3::bigint)) and \"native_verify_main\".\"tickets\".\"scope_id\" = $4 and \"tickets\".\"id\" in (select \"__seal_idx\".\"row_id\" from \"native_verify_main\".\"tickets_seal_index\" as \"__seal_idx\" where \"__seal_idx\".\"scope_id\"=$5 and (\"__seal_idx\".\"tokens_a639b11c8130dcf7\" @> $6::bigint[]))) order by \"native_verify_main\".\"customers\".\"id\" asc, \"native_verify_main\".\"tickets\".\"id\" asc limit $7"
+            "select \"native_verify_main\".\"tickets\".\"id\", \"native_verify_main\".\"tickets\".\"scope_id\", \"native_verify_main\".\"tickets\".\"customer_id\", \"native_verify_main\".\"tickets\".\"name_ct\", \"native_verify_main\".\"tickets\".\"phone_ct\", \"native_verify_main\".\"tickets\".\"address_ct\", \"native_verify_main\".\"tickets\".\"memo_ct\", \"native_verify_main\".\"tickets\".\"email_ct\", \"native_verify_main\".\"tickets\".\"company_ct\", \"native_verify_main\".\"customers\".\"id\", \"native_verify_main\".\"customers\".\"scope_id\", \"native_verify_main\".\"customers\".\"name_ct\", \"native_verify_main\".\"customers\".\"phone_ct\", \"native_verify_main\".\"customers\".\"address_ct\", \"native_verify_main\".\"customers\".\"memo_ct\", \"native_verify_main\".\"customers\".\"email_ct\", \"native_verify_main\".\"customers\".\"company_ct\" from \"native_verify_main\".\"tickets\" inner join \"native_verify_main\".\"customers\" on \"native_verify_main\".\"tickets\".\"customer_id\" = \"native_verify_main\".\"customers\".\"id\" where (\"native_verify_main\".\"tickets\".\"scope_id\" = $1 and \"tickets\".\"id\" in (select \"__seal_idx\".\"row_id\" from \"native_verify_main\".\"tickets_seal_index\" as \"__seal_idx\" where \"__seal_idx\".\"scope_id\"=$2 and (\"__seal_idx\".\"tokens_a639b11c8130dcf7\" @> $3::bigint[])) and \"native_verify_main\".\"customers\".\"scope_id\" = $4 and \"customers\".\"id\" in (select \"__seal_idx\".\"row_id\" from \"native_verify_main\".\"customers_seal_index\" as \"__seal_idx\" where \"__seal_idx\".\"scope_id\"=$5 and ((\"__seal_idx\".\"tokens_a106c26102b707f0\")[1]=$6::bigint))) order by \"native_verify_main\".\"tickets\".\"id\" asc, \"native_verify_main\".\"customers\".\"id\" asc limit $7"
           ]
         },
         {
-          "totalMs": 69.02790000000005,
-          "sqlMs": 55.86110000000008,
+          "totalMs": 16.241800000000012,
+          "sqlMs": 2.2975000000001273,
           "sqlCalls": 1,
           "candidates": 27,
           "returned": 20,
           "sql": [
-            "select \"native_verify_main\".\"tickets\".\"id\", \"native_verify_main\".\"tickets\".\"scope_id\", \"native_verify_main\".\"tickets\".\"customer_id\", \"native_verify_main\".\"tickets\".\"name_ct\", \"native_verify_main\".\"tickets\".\"phone_ct\", \"native_verify_main\".\"tickets\".\"address_ct\", \"native_verify_main\".\"tickets\".\"memo_ct\", \"native_verify_main\".\"tickets\".\"email_ct\", \"native_verify_main\".\"tickets\".\"company_ct\", \"native_verify_main\".\"customers\".\"id\", \"native_verify_main\".\"customers\".\"scope_id\", \"native_verify_main\".\"customers\".\"name_ct\", \"native_verify_main\".\"customers\".\"phone_ct\", \"native_verify_main\".\"customers\".\"address_ct\", \"native_verify_main\".\"customers\".\"memo_ct\", \"native_verify_main\".\"customers\".\"email_ct\", \"native_verify_main\".\"customers\".\"company_ct\" from \"native_verify_main\".\"tickets\" inner join \"native_verify_main\".\"customers\" on \"native_verify_main\".\"tickets\".\"customer_id\" = \"native_verify_main\".\"customers\".\"id\" where (\"native_verify_main\".\"customers\".\"scope_id\" = $1 and \"customers\".\"id\" in (select \"__seal_idx\".\"row_id\" from \"native_verify_main\".\"customers_seal_index\" as \"__seal_idx\" where \"__seal_idx\".\"scope_id\"=$2 and ((\"__seal_idx\".\"tokens_a106c26102b707f0\")[1]=$3::bigint)) and \"native_verify_main\".\"tickets\".\"scope_id\" = $4 and \"tickets\".\"id\" in (select \"__seal_idx\".\"row_id\" from \"native_verify_main\".\"tickets_seal_index\" as \"__seal_idx\" where \"__seal_idx\".\"scope_id\"=$5 and (\"__seal_idx\".\"tokens_a639b11c8130dcf7\" @> $6::bigint[]))) order by \"native_verify_main\".\"customers\".\"id\" asc, \"native_verify_main\".\"tickets\".\"id\" asc limit $7"
+            "select \"native_verify_main\".\"tickets\".\"id\", \"native_verify_main\".\"tickets\".\"scope_id\", \"native_verify_main\".\"tickets\".\"customer_id\", \"native_verify_main\".\"tickets\".\"name_ct\", \"native_verify_main\".\"tickets\".\"phone_ct\", \"native_verify_main\".\"tickets\".\"address_ct\", \"native_verify_main\".\"tickets\".\"memo_ct\", \"native_verify_main\".\"tickets\".\"email_ct\", \"native_verify_main\".\"tickets\".\"company_ct\", \"native_verify_main\".\"customers\".\"id\", \"native_verify_main\".\"customers\".\"scope_id\", \"native_verify_main\".\"customers\".\"name_ct\", \"native_verify_main\".\"customers\".\"phone_ct\", \"native_verify_main\".\"customers\".\"address_ct\", \"native_verify_main\".\"customers\".\"memo_ct\", \"native_verify_main\".\"customers\".\"email_ct\", \"native_verify_main\".\"customers\".\"company_ct\" from \"native_verify_main\".\"tickets\" inner join \"native_verify_main\".\"customers\" on \"native_verify_main\".\"tickets\".\"customer_id\" = \"native_verify_main\".\"customers\".\"id\" where (\"native_verify_main\".\"tickets\".\"scope_id\" = $1 and \"tickets\".\"id\" in (select \"__seal_idx\".\"row_id\" from \"native_verify_main\".\"tickets_seal_index\" as \"__seal_idx\" where \"__seal_idx\".\"scope_id\"=$2 and (\"__seal_idx\".\"tokens_a639b11c8130dcf7\" @> $3::bigint[])) and \"native_verify_main\".\"customers\".\"scope_id\" = $4 and \"customers\".\"id\" in (select \"__seal_idx\".\"row_id\" from \"native_verify_main\".\"customers_seal_index\" as \"__seal_idx\" where \"__seal_idx\".\"scope_id\"=$5 and ((\"__seal_idx\".\"tokens_a106c26102b707f0\")[1]=$6::bigint))) order by \"native_verify_main\".\"tickets\".\"id\" asc, \"native_verify_main\".\"customers\".\"id\" asc limit $7"
           ]
         },
         {
-          "totalMs": 67.7168999999999,
-          "sqlMs": 55.123699999999644,
+          "totalMs": 14.842000000000098,
+          "sqlMs": 2.262200000000121,
           "sqlCalls": 1,
           "candidates": 27,
           "returned": 20,
           "sql": [
-            "select \"native_verify_main\".\"tickets\".\"id\", \"native_verify_main\".\"tickets\".\"scope_id\", \"native_verify_main\".\"tickets\".\"customer_id\", \"native_verify_main\".\"tickets\".\"name_ct\", \"native_verify_main\".\"tickets\".\"phone_ct\", \"native_verify_main\".\"tickets\".\"address_ct\", \"native_verify_main\".\"tickets\".\"memo_ct\", \"native_verify_main\".\"tickets\".\"email_ct\", \"native_verify_main\".\"tickets\".\"company_ct\", \"native_verify_main\".\"customers\".\"id\", \"native_verify_main\".\"customers\".\"scope_id\", \"native_verify_main\".\"customers\".\"name_ct\", \"native_verify_main\".\"customers\".\"phone_ct\", \"native_verify_main\".\"customers\".\"address_ct\", \"native_verify_main\".\"customers\".\"memo_ct\", \"native_verify_main\".\"customers\".\"email_ct\", \"native_verify_main\".\"customers\".\"company_ct\" from \"native_verify_main\".\"tickets\" inner join \"native_verify_main\".\"customers\" on \"native_verify_main\".\"tickets\".\"customer_id\" = \"native_verify_main\".\"customers\".\"id\" where (\"native_verify_main\".\"customers\".\"scope_id\" = $1 and \"customers\".\"id\" in (select \"__seal_idx\".\"row_id\" from \"native_verify_main\".\"customers_seal_index\" as \"__seal_idx\" where \"__seal_idx\".\"scope_id\"=$2 and ((\"__seal_idx\".\"tokens_a106c26102b707f0\")[1]=$3::bigint)) and \"native_verify_main\".\"tickets\".\"scope_id\" = $4 and \"tickets\".\"id\" in (select \"__seal_idx\".\"row_id\" from \"native_verify_main\".\"tickets_seal_index\" as \"__seal_idx\" where \"__seal_idx\".\"scope_id\"=$5 and (\"__seal_idx\".\"tokens_a639b11c8130dcf7\" @> $6::bigint[]))) order by \"native_verify_main\".\"customers\".\"id\" asc, \"native_verify_main\".\"tickets\".\"id\" asc limit $7"
+            "select \"native_verify_main\".\"tickets\".\"id\", \"native_verify_main\".\"tickets\".\"scope_id\", \"native_verify_main\".\"tickets\".\"customer_id\", \"native_verify_main\".\"tickets\".\"name_ct\", \"native_verify_main\".\"tickets\".\"phone_ct\", \"native_verify_main\".\"tickets\".\"address_ct\", \"native_verify_main\".\"tickets\".\"memo_ct\", \"native_verify_main\".\"tickets\".\"email_ct\", \"native_verify_main\".\"tickets\".\"company_ct\", \"native_verify_main\".\"customers\".\"id\", \"native_verify_main\".\"customers\".\"scope_id\", \"native_verify_main\".\"customers\".\"name_ct\", \"native_verify_main\".\"customers\".\"phone_ct\", \"native_verify_main\".\"customers\".\"address_ct\", \"native_verify_main\".\"customers\".\"memo_ct\", \"native_verify_main\".\"customers\".\"email_ct\", \"native_verify_main\".\"customers\".\"company_ct\" from \"native_verify_main\".\"tickets\" inner join \"native_verify_main\".\"customers\" on \"native_verify_main\".\"tickets\".\"customer_id\" = \"native_verify_main\".\"customers\".\"id\" where (\"native_verify_main\".\"tickets\".\"scope_id\" = $1 and \"tickets\".\"id\" in (select \"__seal_idx\".\"row_id\" from \"native_verify_main\".\"tickets_seal_index\" as \"__seal_idx\" where \"__seal_idx\".\"scope_id\"=$2 and (\"__seal_idx\".\"tokens_a639b11c8130dcf7\" @> $3::bigint[])) and \"native_verify_main\".\"customers\".\"scope_id\" = $4 and \"customers\".\"id\" in (select \"__seal_idx\".\"row_id\" from \"native_verify_main\".\"customers_seal_index\" as \"__seal_idx\" where \"__seal_idx\".\"scope_id\"=$5 and ((\"__seal_idx\".\"tokens_a106c26102b707f0\")[1]=$6::bigint))) order by \"native_verify_main\".\"tickets\".\"id\" asc, \"native_verify_main\".\"customers\".\"id\" asc limit $7"
           ]
         },
         {
-          "totalMs": 68.91779999999972,
-          "sqlMs": 56.614100000000235,
+          "totalMs": 20.93450000000007,
+          "sqlMs": 4.4237000000000535,
           "sqlCalls": 1,
           "candidates": 27,
           "returned": 20,
           "sql": [
-            "select \"native_verify_main\".\"tickets\".\"id\", \"native_verify_main\".\"tickets\".\"scope_id\", \"native_verify_main\".\"tickets\".\"customer_id\", \"native_verify_main\".\"tickets\".\"name_ct\", \"native_verify_main\".\"tickets\".\"phone_ct\", \"native_verify_main\".\"tickets\".\"address_ct\", \"native_verify_main\".\"tickets\".\"memo_ct\", \"native_verify_main\".\"tickets\".\"email_ct\", \"native_verify_main\".\"tickets\".\"company_ct\", \"native_verify_main\".\"customers\".\"id\", \"native_verify_main\".\"customers\".\"scope_id\", \"native_verify_main\".\"customers\".\"name_ct\", \"native_verify_main\".\"customers\".\"phone_ct\", \"native_verify_main\".\"customers\".\"address_ct\", \"native_verify_main\".\"customers\".\"memo_ct\", \"native_verify_main\".\"customers\".\"email_ct\", \"native_verify_main\".\"customers\".\"company_ct\" from \"native_verify_main\".\"tickets\" inner join \"native_verify_main\".\"customers\" on \"native_verify_main\".\"tickets\".\"customer_id\" = \"native_verify_main\".\"customers\".\"id\" where (\"native_verify_main\".\"customers\".\"scope_id\" = $1 and \"customers\".\"id\" in (select \"__seal_idx\".\"row_id\" from \"native_verify_main\".\"customers_seal_index\" as \"__seal_idx\" where \"__seal_idx\".\"scope_id\"=$2 and ((\"__seal_idx\".\"tokens_a106c26102b707f0\")[1]=$3::bigint)) and \"native_verify_main\".\"tickets\".\"scope_id\" = $4 and \"tickets\".\"id\" in (select \"__seal_idx\".\"row_id\" from \"native_verify_main\".\"tickets_seal_index\" as \"__seal_idx\" where \"__seal_idx\".\"scope_id\"=$5 and (\"__seal_idx\".\"tokens_a639b11c8130dcf7\" @> $6::bigint[]))) order by \"native_verify_main\".\"customers\".\"id\" asc, \"native_verify_main\".\"tickets\".\"id\" asc limit $7"
+            "select \"native_verify_main\".\"tickets\".\"id\", \"native_verify_main\".\"tickets\".\"scope_id\", \"native_verify_main\".\"tickets\".\"customer_id\", \"native_verify_main\".\"tickets\".\"name_ct\", \"native_verify_main\".\"tickets\".\"phone_ct\", \"native_verify_main\".\"tickets\".\"address_ct\", \"native_verify_main\".\"tickets\".\"memo_ct\", \"native_verify_main\".\"tickets\".\"email_ct\", \"native_verify_main\".\"tickets\".\"company_ct\", \"native_verify_main\".\"customers\".\"id\", \"native_verify_main\".\"customers\".\"scope_id\", \"native_verify_main\".\"customers\".\"name_ct\", \"native_verify_main\".\"customers\".\"phone_ct\", \"native_verify_main\".\"customers\".\"address_ct\", \"native_verify_main\".\"customers\".\"memo_ct\", \"native_verify_main\".\"customers\".\"email_ct\", \"native_verify_main\".\"customers\".\"company_ct\" from \"native_verify_main\".\"tickets\" inner join \"native_verify_main\".\"customers\" on \"native_verify_main\".\"tickets\".\"customer_id\" = \"native_verify_main\".\"customers\".\"id\" where (\"native_verify_main\".\"tickets\".\"scope_id\" = $1 and \"tickets\".\"id\" in (select \"__seal_idx\".\"row_id\" from \"native_verify_main\".\"tickets_seal_index\" as \"__seal_idx\" where \"__seal_idx\".\"scope_id\"=$2 and (\"__seal_idx\".\"tokens_a639b11c8130dcf7\" @> $3::bigint[])) and \"native_verify_main\".\"customers\".\"scope_id\" = $4 and \"customers\".\"id\" in (select \"__seal_idx\".\"row_id\" from \"native_verify_main\".\"customers_seal_index\" as \"__seal_idx\" where \"__seal_idx\".\"scope_id\"=$5 and ((\"__seal_idx\".\"tokens_a106c26102b707f0\")[1]=$6::bigint))) order by \"native_verify_main\".\"tickets\".\"id\" asc, \"native_verify_main\".\"customers\".\"id\" asc limit $7"
           ]
         },
         {
-          "totalMs": 72.68139999999994,
-          "sqlMs": 58.59830000000011,
+          "totalMs": 14.796399999999949,
+          "sqlMs": 2.1860999999998967,
           "sqlCalls": 1,
           "candidates": 27,
           "returned": 20,
           "sql": [
-            "select \"native_verify_main\".\"tickets\".\"id\", \"native_verify_main\".\"tickets\".\"scope_id\", \"native_verify_main\".\"tickets\".\"customer_id\", \"native_verify_main\".\"tickets\".\"name_ct\", \"native_verify_main\".\"tickets\".\"phone_ct\", \"native_verify_main\".\"tickets\".\"address_ct\", \"native_verify_main\".\"tickets\".\"memo_ct\", \"native_verify_main\".\"tickets\".\"email_ct\", \"native_verify_main\".\"tickets\".\"company_ct\", \"native_verify_main\".\"customers\".\"id\", \"native_verify_main\".\"customers\".\"scope_id\", \"native_verify_main\".\"customers\".\"name_ct\", \"native_verify_main\".\"customers\".\"phone_ct\", \"native_verify_main\".\"customers\".\"address_ct\", \"native_verify_main\".\"customers\".\"memo_ct\", \"native_verify_main\".\"customers\".\"email_ct\", \"native_verify_main\".\"customers\".\"company_ct\" from \"native_verify_main\".\"tickets\" inner join \"native_verify_main\".\"customers\" on \"native_verify_main\".\"tickets\".\"customer_id\" = \"native_verify_main\".\"customers\".\"id\" where (\"native_verify_main\".\"customers\".\"scope_id\" = $1 and \"customers\".\"id\" in (select \"__seal_idx\".\"row_id\" from \"native_verify_main\".\"customers_seal_index\" as \"__seal_idx\" where \"__seal_idx\".\"scope_id\"=$2 and ((\"__seal_idx\".\"tokens_a106c26102b707f0\")[1]=$3::bigint)) and \"native_verify_main\".\"tickets\".\"scope_id\" = $4 and \"tickets\".\"id\" in (select \"__seal_idx\".\"row_id\" from \"native_verify_main\".\"tickets_seal_index\" as \"__seal_idx\" where \"__seal_idx\".\"scope_id\"=$5 and (\"__seal_idx\".\"tokens_a639b11c8130dcf7\" @> $6::bigint[]))) order by \"native_verify_main\".\"customers\".\"id\" asc, \"native_verify_main\".\"tickets\".\"id\" asc limit $7"
+            "select \"native_verify_main\".\"tickets\".\"id\", \"native_verify_main\".\"tickets\".\"scope_id\", \"native_verify_main\".\"tickets\".\"customer_id\", \"native_verify_main\".\"tickets\".\"name_ct\", \"native_verify_main\".\"tickets\".\"phone_ct\", \"native_verify_main\".\"tickets\".\"address_ct\", \"native_verify_main\".\"tickets\".\"memo_ct\", \"native_verify_main\".\"tickets\".\"email_ct\", \"native_verify_main\".\"tickets\".\"company_ct\", \"native_verify_main\".\"customers\".\"id\", \"native_verify_main\".\"customers\".\"scope_id\", \"native_verify_main\".\"customers\".\"name_ct\", \"native_verify_main\".\"customers\".\"phone_ct\", \"native_verify_main\".\"customers\".\"address_ct\", \"native_verify_main\".\"customers\".\"memo_ct\", \"native_verify_main\".\"customers\".\"email_ct\", \"native_verify_main\".\"customers\".\"company_ct\" from \"native_verify_main\".\"tickets\" inner join \"native_verify_main\".\"customers\" on \"native_verify_main\".\"tickets\".\"customer_id\" = \"native_verify_main\".\"customers\".\"id\" where (\"native_verify_main\".\"tickets\".\"scope_id\" = $1 and \"tickets\".\"id\" in (select \"__seal_idx\".\"row_id\" from \"native_verify_main\".\"tickets_seal_index\" as \"__seal_idx\" where \"__seal_idx\".\"scope_id\"=$2 and (\"__seal_idx\".\"tokens_a639b11c8130dcf7\" @> $3::bigint[])) and \"native_verify_main\".\"customers\".\"scope_id\" = $4 and \"customers\".\"id\" in (select \"__seal_idx\".\"row_id\" from \"native_verify_main\".\"customers_seal_index\" as \"__seal_idx\" where \"__seal_idx\".\"scope_id\"=$5 and ((\"__seal_idx\".\"tokens_a106c26102b707f0\")[1]=$6::bigint))) order by \"native_verify_main\".\"tickets\".\"id\" asc, \"native_verify_main\".\"customers\".\"id\" asc limit $7"
           ]
         }
       ]
@@ -336,15 +336,15 @@
     "expected": 0,
     "summary": {
       "plain": {
-        "totalMs": 70.9974000000002,
-        "sqlMs": 70.90050000000019,
+        "totalMs": 71.76139999999987,
+        "sqlMs": 71.66580000000022,
         "sqlCalls": 1,
         "candidates": 0,
         "returned": 0
       },
       "product": {
-        "totalMs": 3.650300000000243,
-        "sqlMs": 2.1797999999998865,
+        "totalMs": 3.4812999999999192,
+        "sqlMs": 2.0957000000003063,
         "sqlCalls": 1,
         "candidates": 0,
         "returned": 0
@@ -353,8 +353,8 @@
     "runs": {
       "plain": [
         {
-          "totalMs": 74.52309999999989,
-          "sqlMs": 74.39660000000003,
+          "totalMs": 95.32180000000017,
+          "sqlMs": 95.14990000000012,
           "sqlCalls": 1,
           "candidates": 0,
           "returned": 0,
@@ -363,8 +363,8 @@
           ]
         },
         {
-          "totalMs": 67.56629999999996,
-          "sqlMs": 67.46600000000035,
+          "totalMs": 87.09619999999995,
+          "sqlMs": 86.94249999999965,
           "sqlCalls": 1,
           "candidates": 0,
           "returned": 0,
@@ -373,8 +373,8 @@
           ]
         },
         {
-          "totalMs": 69.69599999999991,
-          "sqlMs": 69.57720000000018,
+          "totalMs": 76.63580000000002,
+          "sqlMs": 76.47449999999981,
           "sqlCalls": 1,
           "candidates": 0,
           "returned": 0,
@@ -383,8 +383,8 @@
           ]
         },
         {
-          "totalMs": 73.33809999999994,
-          "sqlMs": 73.23430000000008,
+          "totalMs": 71.76139999999987,
+          "sqlMs": 71.66580000000022,
           "sqlCalls": 1,
           "candidates": 0,
           "returned": 0,
@@ -393,8 +393,8 @@
           ]
         },
         {
-          "totalMs": 74.80429999999978,
-          "sqlMs": 74.68329999999969,
+          "totalMs": 68.02840000000015,
+          "sqlMs": 67.90920000000006,
           "sqlCalls": 1,
           "candidates": 0,
           "returned": 0,
@@ -403,8 +403,8 @@
           ]
         },
         {
-          "totalMs": 70.9974000000002,
-          "sqlMs": 70.90050000000019,
+          "totalMs": 67.64080000000013,
+          "sqlMs": 67.54680000000008,
           "sqlCalls": 1,
           "candidates": 0,
           "returned": 0,
@@ -413,8 +413,8 @@
           ]
         },
         {
-          "totalMs": 68.4715000000001,
-          "sqlMs": 68.34949999999981,
+          "totalMs": 67.6849000000002,
+          "sqlMs": 67.5646999999999,
           "sqlCalls": 1,
           "candidates": 0,
           "returned": 0,
@@ -425,73 +425,73 @@
       ],
       "product": [
         {
-          "totalMs": 3.9265000000000327,
-          "sqlMs": 2.303599999999733,
+          "totalMs": 4.136799999999766,
+          "sqlMs": 2.413100000000213,
           "sqlCalls": 1,
           "candidates": 0,
           "returned": 0,
           "sql": [
-            "select \"native_verify_main\".\"tickets\".\"id\", \"native_verify_main\".\"tickets\".\"scope_id\", \"native_verify_main\".\"tickets\".\"customer_id\", \"native_verify_main\".\"tickets\".\"name_ct\", \"native_verify_main\".\"tickets\".\"phone_ct\", \"native_verify_main\".\"tickets\".\"address_ct\", \"native_verify_main\".\"tickets\".\"memo_ct\", \"native_verify_main\".\"tickets\".\"email_ct\", \"native_verify_main\".\"tickets\".\"company_ct\", \"native_verify_main\".\"customers\".\"id\", \"native_verify_main\".\"customers\".\"scope_id\", \"native_verify_main\".\"customers\".\"name_ct\", \"native_verify_main\".\"customers\".\"phone_ct\", \"native_verify_main\".\"customers\".\"address_ct\", \"native_verify_main\".\"customers\".\"memo_ct\", \"native_verify_main\".\"customers\".\"email_ct\", \"native_verify_main\".\"customers\".\"company_ct\" from \"native_verify_main\".\"tickets\" inner join \"native_verify_main\".\"customers\" on \"native_verify_main\".\"tickets\".\"customer_id\" = \"native_verify_main\".\"customers\".\"id\" where (\"native_verify_main\".\"customers\".\"scope_id\" = $1 and \"customers\".\"id\" in (select \"__seal_idx\".\"row_id\" from \"native_verify_main\".\"customers_seal_index\" as \"__seal_idx\" where \"__seal_idx\".\"scope_id\"=$2 and ((\"__seal_idx\".\"tokens_a106c26102b707f0\")[1]=$3::bigint)) and \"native_verify_main\".\"tickets\".\"scope_id\" = $4 and \"tickets\".\"id\" in (select \"__seal_idx\".\"row_id\" from \"native_verify_main\".\"tickets_seal_index\" as \"__seal_idx\" where \"__seal_idx\".\"scope_id\"=$5 and (\"__seal_idx\".\"tokens_a639b11c8130dcf7\" @> $6::bigint[]))) order by \"native_verify_main\".\"customers\".\"id\" asc, \"native_verify_main\".\"tickets\".\"id\" asc limit $7"
+            "select \"native_verify_main\".\"tickets\".\"id\", \"native_verify_main\".\"tickets\".\"scope_id\", \"native_verify_main\".\"tickets\".\"customer_id\", \"native_verify_main\".\"tickets\".\"name_ct\", \"native_verify_main\".\"tickets\".\"phone_ct\", \"native_verify_main\".\"tickets\".\"address_ct\", \"native_verify_main\".\"tickets\".\"memo_ct\", \"native_verify_main\".\"tickets\".\"email_ct\", \"native_verify_main\".\"tickets\".\"company_ct\", \"native_verify_main\".\"customers\".\"id\", \"native_verify_main\".\"customers\".\"scope_id\", \"native_verify_main\".\"customers\".\"name_ct\", \"native_verify_main\".\"customers\".\"phone_ct\", \"native_verify_main\".\"customers\".\"address_ct\", \"native_verify_main\".\"customers\".\"memo_ct\", \"native_verify_main\".\"customers\".\"email_ct\", \"native_verify_main\".\"customers\".\"company_ct\" from \"native_verify_main\".\"tickets\" inner join \"native_verify_main\".\"customers\" on \"native_verify_main\".\"tickets\".\"customer_id\" = \"native_verify_main\".\"customers\".\"id\" where (\"native_verify_main\".\"tickets\".\"scope_id\" = $1 and \"tickets\".\"id\" in (select \"__seal_idx\".\"row_id\" from \"native_verify_main\".\"tickets_seal_index\" as \"__seal_idx\" where \"__seal_idx\".\"scope_id\"=$2 and (\"__seal_idx\".\"tokens_a639b11c8130dcf7\" @> $3::bigint[])) and \"native_verify_main\".\"customers\".\"scope_id\" = $4 and \"customers\".\"id\" in (select \"__seal_idx\".\"row_id\" from \"native_verify_main\".\"customers_seal_index\" as \"__seal_idx\" where \"__seal_idx\".\"scope_id\"=$5 and ((\"__seal_idx\".\"tokens_a106c26102b707f0\")[1]=$6::bigint))) order by \"native_verify_main\".\"tickets\".\"id\" asc, \"native_verify_main\".\"customers\".\"id\" asc limit $7"
           ]
         },
         {
-          "totalMs": 3.3989000000001397,
-          "sqlMs": 2.103399999999965,
+          "totalMs": 4.04970000000003,
+          "sqlMs": 2.6010999999998603,
           "sqlCalls": 1,
           "candidates": 0,
           "returned": 0,
           "sql": [
-            "select \"native_verify_main\".\"tickets\".\"id\", \"native_verify_main\".\"tickets\".\"scope_id\", \"native_verify_main\".\"tickets\".\"customer_id\", \"native_verify_main\".\"tickets\".\"name_ct\", \"native_verify_main\".\"tickets\".\"phone_ct\", \"native_verify_main\".\"tickets\".\"address_ct\", \"native_verify_main\".\"tickets\".\"memo_ct\", \"native_verify_main\".\"tickets\".\"email_ct\", \"native_verify_main\".\"tickets\".\"company_ct\", \"native_verify_main\".\"customers\".\"id\", \"native_verify_main\".\"customers\".\"scope_id\", \"native_verify_main\".\"customers\".\"name_ct\", \"native_verify_main\".\"customers\".\"phone_ct\", \"native_verify_main\".\"customers\".\"address_ct\", \"native_verify_main\".\"customers\".\"memo_ct\", \"native_verify_main\".\"customers\".\"email_ct\", \"native_verify_main\".\"customers\".\"company_ct\" from \"native_verify_main\".\"tickets\" inner join \"native_verify_main\".\"customers\" on \"native_verify_main\".\"tickets\".\"customer_id\" = \"native_verify_main\".\"customers\".\"id\" where (\"native_verify_main\".\"customers\".\"scope_id\" = $1 and \"customers\".\"id\" in (select \"__seal_idx\".\"row_id\" from \"native_verify_main\".\"customers_seal_index\" as \"__seal_idx\" where \"__seal_idx\".\"scope_id\"=$2 and ((\"__seal_idx\".\"tokens_a106c26102b707f0\")[1]=$3::bigint)) and \"native_verify_main\".\"tickets\".\"scope_id\" = $4 and \"tickets\".\"id\" in (select \"__seal_idx\".\"row_id\" from \"native_verify_main\".\"tickets_seal_index\" as \"__seal_idx\" where \"__seal_idx\".\"scope_id\"=$5 and (\"__seal_idx\".\"tokens_a639b11c8130dcf7\" @> $6::bigint[]))) order by \"native_verify_main\".\"customers\".\"id\" asc, \"native_verify_main\".\"tickets\".\"id\" asc limit $7"
+            "select \"native_verify_main\".\"tickets\".\"id\", \"native_verify_main\".\"tickets\".\"scope_id\", \"native_verify_main\".\"tickets\".\"customer_id\", \"native_verify_main\".\"tickets\".\"name_ct\", \"native_verify_main\".\"tickets\".\"phone_ct\", \"native_verify_main\".\"tickets\".\"address_ct\", \"native_verify_main\".\"tickets\".\"memo_ct\", \"native_verify_main\".\"tickets\".\"email_ct\", \"native_verify_main\".\"tickets\".\"company_ct\", \"native_verify_main\".\"customers\".\"id\", \"native_verify_main\".\"customers\".\"scope_id\", \"native_verify_main\".\"customers\".\"name_ct\", \"native_verify_main\".\"customers\".\"phone_ct\", \"native_verify_main\".\"customers\".\"address_ct\", \"native_verify_main\".\"customers\".\"memo_ct\", \"native_verify_main\".\"customers\".\"email_ct\", \"native_verify_main\".\"customers\".\"company_ct\" from \"native_verify_main\".\"tickets\" inner join \"native_verify_main\".\"customers\" on \"native_verify_main\".\"tickets\".\"customer_id\" = \"native_verify_main\".\"customers\".\"id\" where (\"native_verify_main\".\"tickets\".\"scope_id\" = $1 and \"tickets\".\"id\" in (select \"__seal_idx\".\"row_id\" from \"native_verify_main\".\"tickets_seal_index\" as \"__seal_idx\" where \"__seal_idx\".\"scope_id\"=$2 and (\"__seal_idx\".\"tokens_a639b11c8130dcf7\" @> $3::bigint[])) and \"native_verify_main\".\"customers\".\"scope_id\" = $4 and \"customers\".\"id\" in (select \"__seal_idx\".\"row_id\" from \"native_verify_main\".\"customers_seal_index\" as \"__seal_idx\" where \"__seal_idx\".\"scope_id\"=$5 and ((\"__seal_idx\".\"tokens_a106c26102b707f0\")[1]=$6::bigint))) order by \"native_verify_main\".\"tickets\".\"id\" asc, \"native_verify_main\".\"customers\".\"id\" asc limit $7"
           ]
         },
         {
-          "totalMs": 3.650300000000243,
-          "sqlMs": 2.3304999999995744,
+          "totalMs": 3.698700000000372,
+          "sqlMs": 2.3134000000000015,
           "sqlCalls": 1,
           "candidates": 0,
           "returned": 0,
           "sql": [
-            "select \"native_verify_main\".\"tickets\".\"id\", \"native_verify_main\".\"tickets\".\"scope_id\", \"native_verify_main\".\"tickets\".\"customer_id\", \"native_verify_main\".\"tickets\".\"name_ct\", \"native_verify_main\".\"tickets\".\"phone_ct\", \"native_verify_main\".\"tickets\".\"address_ct\", \"native_verify_main\".\"tickets\".\"memo_ct\", \"native_verify_main\".\"tickets\".\"email_ct\", \"native_verify_main\".\"tickets\".\"company_ct\", \"native_verify_main\".\"customers\".\"id\", \"native_verify_main\".\"customers\".\"scope_id\", \"native_verify_main\".\"customers\".\"name_ct\", \"native_verify_main\".\"customers\".\"phone_ct\", \"native_verify_main\".\"customers\".\"address_ct\", \"native_verify_main\".\"customers\".\"memo_ct\", \"native_verify_main\".\"customers\".\"email_ct\", \"native_verify_main\".\"customers\".\"company_ct\" from \"native_verify_main\".\"tickets\" inner join \"native_verify_main\".\"customers\" on \"native_verify_main\".\"tickets\".\"customer_id\" = \"native_verify_main\".\"customers\".\"id\" where (\"native_verify_main\".\"customers\".\"scope_id\" = $1 and \"customers\".\"id\" in (select \"__seal_idx\".\"row_id\" from \"native_verify_main\".\"customers_seal_index\" as \"__seal_idx\" where \"__seal_idx\".\"scope_id\"=$2 and ((\"__seal_idx\".\"tokens_a106c26102b707f0\")[1]=$3::bigint)) and \"native_verify_main\".\"tickets\".\"scope_id\" = $4 and \"tickets\".\"id\" in (select \"__seal_idx\".\"row_id\" from \"native_verify_main\".\"tickets_seal_index\" as \"__seal_idx\" where \"__seal_idx\".\"scope_id\"=$5 and (\"__seal_idx\".\"tokens_a639b11c8130dcf7\" @> $6::bigint[]))) order by \"native_verify_main\".\"customers\".\"id\" asc, \"native_verify_main\".\"tickets\".\"id\" asc limit $7"
+            "select \"native_verify_main\".\"tickets\".\"id\", \"native_verify_main\".\"tickets\".\"scope_id\", \"native_verify_main\".\"tickets\".\"customer_id\", \"native_verify_main\".\"tickets\".\"name_ct\", \"native_verify_main\".\"tickets\".\"phone_ct\", \"native_verify_main\".\"tickets\".\"address_ct\", \"native_verify_main\".\"tickets\".\"memo_ct\", \"native_verify_main\".\"tickets\".\"email_ct\", \"native_verify_main\".\"tickets\".\"company_ct\", \"native_verify_main\".\"customers\".\"id\", \"native_verify_main\".\"customers\".\"scope_id\", \"native_verify_main\".\"customers\".\"name_ct\", \"native_verify_main\".\"customers\".\"phone_ct\", \"native_verify_main\".\"customers\".\"address_ct\", \"native_verify_main\".\"customers\".\"memo_ct\", \"native_verify_main\".\"customers\".\"email_ct\", \"native_verify_main\".\"customers\".\"company_ct\" from \"native_verify_main\".\"tickets\" inner join \"native_verify_main\".\"customers\" on \"native_verify_main\".\"tickets\".\"customer_id\" = \"native_verify_main\".\"customers\".\"id\" where (\"native_verify_main\".\"tickets\".\"scope_id\" = $1 and \"tickets\".\"id\" in (select \"__seal_idx\".\"row_id\" from \"native_verify_main\".\"tickets_seal_index\" as \"__seal_idx\" where \"__seal_idx\".\"scope_id\"=$2 and (\"__seal_idx\".\"tokens_a639b11c8130dcf7\" @> $3::bigint[])) and \"native_verify_main\".\"customers\".\"scope_id\" = $4 and \"customers\".\"id\" in (select \"__seal_idx\".\"row_id\" from \"native_verify_main\".\"customers_seal_index\" as \"__seal_idx\" where \"__seal_idx\".\"scope_id\"=$5 and ((\"__seal_idx\".\"tokens_a106c26102b707f0\")[1]=$6::bigint))) order by \"native_verify_main\".\"tickets\".\"id\" asc, \"native_verify_main\".\"customers\".\"id\" asc limit $7"
           ]
         },
         {
-          "totalMs": 3.785599999999704,
-          "sqlMs": 2.3364000000001397,
+          "totalMs": 2.7939000000001215,
+          "sqlMs": 1.6902000000000044,
           "sqlCalls": 1,
           "candidates": 0,
           "returned": 0,
           "sql": [
-            "select \"native_verify_main\".\"tickets\".\"id\", \"native_verify_main\".\"tickets\".\"scope_id\", \"native_verify_main\".\"tickets\".\"customer_id\", \"native_verify_main\".\"tickets\".\"name_ct\", \"native_verify_main\".\"tickets\".\"phone_ct\", \"native_verify_main\".\"tickets\".\"address_ct\", \"native_verify_main\".\"tickets\".\"memo_ct\", \"native_verify_main\".\"tickets\".\"email_ct\", \"native_verify_main\".\"tickets\".\"company_ct\", \"native_verify_main\".\"customers\".\"id\", \"native_verify_main\".\"customers\".\"scope_id\", \"native_verify_main\".\"customers\".\"name_ct\", \"native_verify_main\".\"customers\".\"phone_ct\", \"native_verify_main\".\"customers\".\"address_ct\", \"native_verify_main\".\"customers\".\"memo_ct\", \"native_verify_main\".\"customers\".\"email_ct\", \"native_verify_main\".\"customers\".\"company_ct\" from \"native_verify_main\".\"tickets\" inner join \"native_verify_main\".\"customers\" on \"native_verify_main\".\"tickets\".\"customer_id\" = \"native_verify_main\".\"customers\".\"id\" where (\"native_verify_main\".\"customers\".\"scope_id\" = $1 and \"customers\".\"id\" in (select \"__seal_idx\".\"row_id\" from \"native_verify_main\".\"customers_seal_index\" as \"__seal_idx\" where \"__seal_idx\".\"scope_id\"=$2 and ((\"__seal_idx\".\"tokens_a106c26102b707f0\")[1]=$3::bigint)) and \"native_verify_main\".\"tickets\".\"scope_id\" = $4 and \"tickets\".\"id\" in (select \"__seal_idx\".\"row_id\" from \"native_verify_main\".\"tickets_seal_index\" as \"__seal_idx\" where \"__seal_idx\".\"scope_id\"=$5 and (\"__seal_idx\".\"tokens_a639b11c8130dcf7\" @> $6::bigint[]))) order by \"native_verify_main\".\"customers\".\"id\" asc, \"native_verify_main\".\"tickets\".\"id\" asc limit $7"
+            "select \"native_verify_main\".\"tickets\".\"id\", \"native_verify_main\".\"tickets\".\"scope_id\", \"native_verify_main\".\"tickets\".\"customer_id\", \"native_verify_main\".\"tickets\".\"name_ct\", \"native_verify_main\".\"tickets\".\"phone_ct\", \"native_verify_main\".\"tickets\".\"address_ct\", \"native_verify_main\".\"tickets\".\"memo_ct\", \"native_verify_main\".\"tickets\".\"email_ct\", \"native_verify_main\".\"tickets\".\"company_ct\", \"native_verify_main\".\"customers\".\"id\", \"native_verify_main\".\"customers\".\"scope_id\", \"native_verify_main\".\"customers\".\"name_ct\", \"native_verify_main\".\"customers\".\"phone_ct\", \"native_verify_main\".\"customers\".\"address_ct\", \"native_verify_main\".\"customers\".\"memo_ct\", \"native_verify_main\".\"customers\".\"email_ct\", \"native_verify_main\".\"customers\".\"company_ct\" from \"native_verify_main\".\"tickets\" inner join \"native_verify_main\".\"customers\" on \"native_verify_main\".\"tickets\".\"customer_id\" = \"native_verify_main\".\"customers\".\"id\" where (\"native_verify_main\".\"tickets\".\"scope_id\" = $1 and \"tickets\".\"id\" in (select \"__seal_idx\".\"row_id\" from \"native_verify_main\".\"tickets_seal_index\" as \"__seal_idx\" where \"__seal_idx\".\"scope_id\"=$2 and (\"__seal_idx\".\"tokens_a639b11c8130dcf7\" @> $3::bigint[])) and \"native_verify_main\".\"customers\".\"scope_id\" = $4 and \"customers\".\"id\" in (select \"__seal_idx\".\"row_id\" from \"native_verify_main\".\"customers_seal_index\" as \"__seal_idx\" where \"__seal_idx\".\"scope_id\"=$5 and ((\"__seal_idx\".\"tokens_a106c26102b707f0\")[1]=$6::bigint))) order by \"native_verify_main\".\"tickets\".\"id\" asc, \"native_verify_main\".\"customers\".\"id\" asc limit $7"
           ]
         },
         {
-          "totalMs": 3.731000000000222,
-          "sqlMs": 2.1797999999998865,
+          "totalMs": 3.4812999999999192,
+          "sqlMs": 2.0957000000003063,
           "sqlCalls": 1,
           "candidates": 0,
           "returned": 0,
           "sql": [
-            "select \"native_verify_main\".\"tickets\".\"id\", \"native_verify_main\".\"tickets\".\"scope_id\", \"native_verify_main\".\"tickets\".\"customer_id\", \"native_verify_main\".\"tickets\".\"name_ct\", \"native_verify_main\".\"tickets\".\"phone_ct\", \"native_verify_main\".\"tickets\".\"address_ct\", \"native_verify_main\".\"tickets\".\"memo_ct\", \"native_verify_main\".\"tickets\".\"email_ct\", \"native_verify_main\".\"tickets\".\"company_ct\", \"native_verify_main\".\"customers\".\"id\", \"native_verify_main\".\"customers\".\"scope_id\", \"native_verify_main\".\"customers\".\"name_ct\", \"native_verify_main\".\"customers\".\"phone_ct\", \"native_verify_main\".\"customers\".\"address_ct\", \"native_verify_main\".\"customers\".\"memo_ct\", \"native_verify_main\".\"customers\".\"email_ct\", \"native_verify_main\".\"customers\".\"company_ct\" from \"native_verify_main\".\"tickets\" inner join \"native_verify_main\".\"customers\" on \"native_verify_main\".\"tickets\".\"customer_id\" = \"native_verify_main\".\"customers\".\"id\" where (\"native_verify_main\".\"customers\".\"scope_id\" = $1 and \"customers\".\"id\" in (select \"__seal_idx\".\"row_id\" from \"native_verify_main\".\"customers_seal_index\" as \"__seal_idx\" where \"__seal_idx\".\"scope_id\"=$2 and ((\"__seal_idx\".\"tokens_a106c26102b707f0\")[1]=$3::bigint)) and \"native_verify_main\".\"tickets\".\"scope_id\" = $4 and \"tickets\".\"id\" in (select \"__seal_idx\".\"row_id\" from \"native_verify_main\".\"tickets_seal_index\" as \"__seal_idx\" where \"__seal_idx\".\"scope_id\"=$5 and (\"__seal_idx\".\"tokens_a639b11c8130dcf7\" @> $6::bigint[]))) order by \"native_verify_main\".\"customers\".\"id\" asc, \"native_verify_main\".\"tickets\".\"id\" asc limit $7"
+            "select \"native_verify_main\".\"tickets\".\"id\", \"native_verify_main\".\"tickets\".\"scope_id\", \"native_verify_main\".\"tickets\".\"customer_id\", \"native_verify_main\".\"tickets\".\"name_ct\", \"native_verify_main\".\"tickets\".\"phone_ct\", \"native_verify_main\".\"tickets\".\"address_ct\", \"native_verify_main\".\"tickets\".\"memo_ct\", \"native_verify_main\".\"tickets\".\"email_ct\", \"native_verify_main\".\"tickets\".\"company_ct\", \"native_verify_main\".\"customers\".\"id\", \"native_verify_main\".\"customers\".\"scope_id\", \"native_verify_main\".\"customers\".\"name_ct\", \"native_verify_main\".\"customers\".\"phone_ct\", \"native_verify_main\".\"customers\".\"address_ct\", \"native_verify_main\".\"customers\".\"memo_ct\", \"native_verify_main\".\"customers\".\"email_ct\", \"native_verify_main\".\"customers\".\"company_ct\" from \"native_verify_main\".\"tickets\" inner join \"native_verify_main\".\"customers\" on \"native_verify_main\".\"tickets\".\"customer_id\" = \"native_verify_main\".\"customers\".\"id\" where (\"native_verify_main\".\"tickets\".\"scope_id\" = $1 and \"tickets\".\"id\" in (select \"__seal_idx\".\"row_id\" from \"native_verify_main\".\"tickets_seal_index\" as \"__seal_idx\" where \"__seal_idx\".\"scope_id\"=$2 and (\"__seal_idx\".\"tokens_a639b11c8130dcf7\" @> $3::bigint[])) and \"native_verify_main\".\"customers\".\"scope_id\" = $4 and \"customers\".\"id\" in (select \"__seal_idx\".\"row_id\" from \"native_verify_main\".\"customers_seal_index\" as \"__seal_idx\" where \"__seal_idx\".\"scope_id\"=$5 and ((\"__seal_idx\".\"tokens_a106c26102b707f0\")[1]=$6::bigint))) order by \"native_verify_main\".\"tickets\".\"id\" asc, \"native_verify_main\".\"customers\".\"id\" asc limit $7"
           ]
         },
         {
-          "totalMs": 3.2807000000002517,
-          "sqlMs": 2.0027000000000044,
+          "totalMs": 2.935699999999997,
+          "sqlMs": 1.6835000000000946,
           "sqlCalls": 1,
           "candidates": 0,
           "returned": 0,
           "sql": [
-            "select \"native_verify_main\".\"tickets\".\"id\", \"native_verify_main\".\"tickets\".\"scope_id\", \"native_verify_main\".\"tickets\".\"customer_id\", \"native_verify_main\".\"tickets\".\"name_ct\", \"native_verify_main\".\"tickets\".\"phone_ct\", \"native_verify_main\".\"tickets\".\"address_ct\", \"native_verify_main\".\"tickets\".\"memo_ct\", \"native_verify_main\".\"tickets\".\"email_ct\", \"native_verify_main\".\"tickets\".\"company_ct\", \"native_verify_main\".\"customers\".\"id\", \"native_verify_main\".\"customers\".\"scope_id\", \"native_verify_main\".\"customers\".\"name_ct\", \"native_verify_main\".\"customers\".\"phone_ct\", \"native_verify_main\".\"customers\".\"address_ct\", \"native_verify_main\".\"customers\".\"memo_ct\", \"native_verify_main\".\"customers\".\"email_ct\", \"native_verify_main\".\"customers\".\"company_ct\" from \"native_verify_main\".\"tickets\" inner join \"native_verify_main\".\"customers\" on \"native_verify_main\".\"tickets\".\"customer_id\" = \"native_verify_main\".\"customers\".\"id\" where (\"native_verify_main\".\"customers\".\"scope_id\" = $1 and \"customers\".\"id\" in (select \"__seal_idx\".\"row_id\" from \"native_verify_main\".\"customers_seal_index\" as \"__seal_idx\" where \"__seal_idx\".\"scope_id\"=$2 and ((\"__seal_idx\".\"tokens_a106c26102b707f0\")[1]=$3::bigint)) and \"native_verify_main\".\"tickets\".\"scope_id\" = $4 and \"tickets\".\"id\" in (select \"__seal_idx\".\"row_id\" from \"native_verify_main\".\"tickets_seal_index\" as \"__seal_idx\" where \"__seal_idx\".\"scope_id\"=$5 and (\"__seal_idx\".\"tokens_a639b11c8130dcf7\" @> $6::bigint[]))) order by \"native_verify_main\".\"customers\".\"id\" asc, \"native_verify_main\".\"tickets\".\"id\" asc limit $7"
+            "select \"native_verify_main\".\"tickets\".\"id\", \"native_verify_main\".\"tickets\".\"scope_id\", \"native_verify_main\".\"tickets\".\"customer_id\", \"native_verify_main\".\"tickets\".\"name_ct\", \"native_verify_main\".\"tickets\".\"phone_ct\", \"native_verify_main\".\"tickets\".\"address_ct\", \"native_verify_main\".\"tickets\".\"memo_ct\", \"native_verify_main\".\"tickets\".\"email_ct\", \"native_verify_main\".\"tickets\".\"company_ct\", \"native_verify_main\".\"customers\".\"id\", \"native_verify_main\".\"customers\".\"scope_id\", \"native_verify_main\".\"customers\".\"name_ct\", \"native_verify_main\".\"customers\".\"phone_ct\", \"native_verify_main\".\"customers\".\"address_ct\", \"native_verify_main\".\"customers\".\"memo_ct\", \"native_verify_main\".\"customers\".\"email_ct\", \"native_verify_main\".\"customers\".\"company_ct\" from \"native_verify_main\".\"tickets\" inner join \"native_verify_main\".\"customers\" on \"native_verify_main\".\"tickets\".\"customer_id\" = \"native_verify_main\".\"customers\".\"id\" where (\"native_verify_main\".\"tickets\".\"scope_id\" = $1 and \"tickets\".\"id\" in (select \"__seal_idx\".\"row_id\" from \"native_verify_main\".\"tickets_seal_index\" as \"__seal_idx\" where \"__seal_idx\".\"scope_id\"=$2 and (\"__seal_idx\".\"tokens_a639b11c8130dcf7\" @> $3::bigint[])) and \"native_verify_main\".\"customers\".\"scope_id\" = $4 and \"customers\".\"id\" in (select \"__seal_idx\".\"row_id\" from \"native_verify_main\".\"customers_seal_index\" as \"__seal_idx\" where \"__seal_idx\".\"scope_id\"=$5 and ((\"__seal_idx\".\"tokens_a106c26102b707f0\")[1]=$6::bigint))) order by \"native_verify_main\".\"tickets\".\"id\" asc, \"native_verify_main\".\"customers\".\"id\" asc limit $7"
           ]
         },
         {
-          "totalMs": 3.522399999999834,
-          "sqlMs": 2.121599999999944,
+          "totalMs": 3.3715000000001965,
+          "sqlMs": 2.0713999999998123,
           "sqlCalls": 1,
           "candidates": 0,
           "returned": 0,
           "sql": [
-            "select \"native_verify_main\".\"tickets\".\"id\", \"native_verify_main\".\"tickets\".\"scope_id\", \"native_verify_main\".\"tickets\".\"customer_id\", \"native_verify_main\".\"tickets\".\"name_ct\", \"native_verify_main\".\"tickets\".\"phone_ct\", \"native_verify_main\".\"tickets\".\"address_ct\", \"native_verify_main\".\"tickets\".\"memo_ct\", \"native_verify_main\".\"tickets\".\"email_ct\", \"native_verify_main\".\"tickets\".\"company_ct\", \"native_verify_main\".\"customers\".\"id\", \"native_verify_main\".\"customers\".\"scope_id\", \"native_verify_main\".\"customers\".\"name_ct\", \"native_verify_main\".\"customers\".\"phone_ct\", \"native_verify_main\".\"customers\".\"address_ct\", \"native_verify_main\".\"customers\".\"memo_ct\", \"native_verify_main\".\"customers\".\"email_ct\", \"native_verify_main\".\"customers\".\"company_ct\" from \"native_verify_main\".\"tickets\" inner join \"native_verify_main\".\"customers\" on \"native_verify_main\".\"tickets\".\"customer_id\" = \"native_verify_main\".\"customers\".\"id\" where (\"native_verify_main\".\"customers\".\"scope_id\" = $1 and \"customers\".\"id\" in (select \"__seal_idx\".\"row_id\" from \"native_verify_main\".\"customers_seal_index\" as \"__seal_idx\" where \"__seal_idx\".\"scope_id\"=$2 and ((\"__seal_idx\".\"tokens_a106c26102b707f0\")[1]=$3::bigint)) and \"native_verify_main\".\"tickets\".\"scope_id\" = $4 and \"tickets\".\"id\" in (select \"__seal_idx\".\"row_id\" from \"native_verify_main\".\"tickets_seal_index\" as \"__seal_idx\" where \"__seal_idx\".\"scope_id\"=$5 and (\"__seal_idx\".\"tokens_a639b11c8130dcf7\" @> $6::bigint[]))) order by \"native_verify_main\".\"customers\".\"id\" asc, \"native_verify_main\".\"tickets\".\"id\" asc limit $7"
+            "select \"native_verify_main\".\"tickets\".\"id\", \"native_verify_main\".\"tickets\".\"scope_id\", \"native_verify_main\".\"tickets\".\"customer_id\", \"native_verify_main\".\"tickets\".\"name_ct\", \"native_verify_main\".\"tickets\".\"phone_ct\", \"native_verify_main\".\"tickets\".\"address_ct\", \"native_verify_main\".\"tickets\".\"memo_ct\", \"native_verify_main\".\"tickets\".\"email_ct\", \"native_verify_main\".\"tickets\".\"company_ct\", \"native_verify_main\".\"customers\".\"id\", \"native_verify_main\".\"customers\".\"scope_id\", \"native_verify_main\".\"customers\".\"name_ct\", \"native_verify_main\".\"customers\".\"phone_ct\", \"native_verify_main\".\"customers\".\"address_ct\", \"native_verify_main\".\"customers\".\"memo_ct\", \"native_verify_main\".\"customers\".\"email_ct\", \"native_verify_main\".\"customers\".\"company_ct\" from \"native_verify_main\".\"tickets\" inner join \"native_verify_main\".\"customers\" on \"native_verify_main\".\"tickets\".\"customer_id\" = \"native_verify_main\".\"customers\".\"id\" where (\"native_verify_main\".\"tickets\".\"scope_id\" = $1 and \"tickets\".\"id\" in (select \"__seal_idx\".\"row_id\" from \"native_verify_main\".\"tickets_seal_index\" as \"__seal_idx\" where \"__seal_idx\".\"scope_id\"=$2 and (\"__seal_idx\".\"tokens_a639b11c8130dcf7\" @> $3::bigint[])) and \"native_verify_main\".\"customers\".\"scope_id\" = $4 and \"customers\".\"id\" in (select \"__seal_idx\".\"row_id\" from \"native_verify_main\".\"customers_seal_index\" as \"__seal_idx\" where \"__seal_idx\".\"scope_id\"=$5 and ((\"__seal_idx\".\"tokens_a106c26102b707f0\")[1]=$6::bigint))) order by \"native_verify_main\".\"tickets\".\"id\" asc, \"native_verify_main\".\"customers\".\"id\" asc limit $7"
           ]
         }
       ]

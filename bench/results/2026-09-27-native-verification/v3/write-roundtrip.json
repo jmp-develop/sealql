@@ -1,0 +1,104 @@
+{
+  "plainInsert": {
+    "totalMs": 3.3725999999999203,
+    "sqlMs": 3.280399999999986,
+    "sqlCalls": 1,
+    "events": [
+      {
+        "sql": "insert into native_verify_main.customers_write_plain(scope_id,id,name_plain,name_norm,phone_plain,phone_norm,address_plain,address_norm,memo_plain,memo_norm,email_plain,email_norm,company_plain,company_norm) values($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14)",
+        "ms": 3.280399999999986,
+        "rows": 0
+      }
+    ]
+  },
+  "productInsert": {
+    "totalMs": 23.81009999999992,
+    "sqlMs": 3.8272000000000617,
+    "sqlCalls": 4,
+    "events": [
+      {
+        "sql": "begin",
+        "ms": 0.32760000000007494,
+        "rows": 0
+      },
+      {
+        "sql": "insert into \"native_verify_main\".\"customers_write\" (\"id\", \"scope_id\", \"name_ct\", \"phone_ct\", \"address_ct\", \"memo_ct\", \"email_ct\", \"company_ct\") values ($1, $2, $3, $4, $5, $6, $7, $8) returning \"id\", \"scope_id\", \"name_ct\", \"phone_ct\", \"address_ct\", \"memo_ct\", \"email_ct\", \"company_ct\"",
+        "ms": 1.1707999999999856,
+        "rows": 1
+      },
+      {
+        "sql": "insert into \"native_verify_main\".\"customers_write_seal_index\" (\"scope_id\", \"row_id\", \"tokens_988d248ff4b71bf7\", \"tokens_792d75cf01821d67\", \"tokens_a106c26102b707f0\", \"tokens_1127994ab736baf4\", \"tokens_c5133b3810f23103\", \"tokens_ef1d32a52e2ce103\", \"tokens_1c32fdad5d1c8367\", \"tokens_a639b11c8130dcf7\", \"tokens_cd3096c7a3cd42c2\", \"tokens_f289b89d86c7086a\", \"tokens_c44ae523cca61a0b\", \"tokens_7a1d2ba5ce2368fb\") values ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14)",
+        "ms": 2.042100000000005,
+        "rows": 0
+      },
+      {
+        "sql": "commit",
+        "ms": 0.2866999999999962,
+        "rows": 0
+      }
+    ]
+  },
+  "plainUpdate": {
+    "totalMs": 0.7833000000000538,
+    "sqlMs": 0.6592999999999165,
+    "sqlCalls": 1,
+    "events": [
+      {
+        "sql": "update native_verify_main.customers_write_plain set memo_plain=$3,memo_norm=$4 where scope_id=$1 and id=$2",
+        "ms": 0.6592999999999165,
+        "rows": 0
+      }
+    ]
+  },
+  "productUpdate": {
+    "totalMs": 4.38149999999996,
+    "sqlMs": 1.3496999999999844,
+    "sqlCalls": 4,
+    "events": [
+      {
+        "sql": "begin",
+        "ms": 0.17870000000004893,
+        "rows": 0
+      },
+      {
+        "sql": "update \"native_verify_main\".\"customers_write\" set \"memo_ct\" = $1 where (\"native_verify_main\".\"customers_write\".\"id\" = $2 and \"native_verify_main\".\"customers_write\".\"scope_id\" = $3) returning \"id\", \"scope_id\", \"name_ct\", \"phone_ct\", \"address_ct\", \"memo_ct\", \"email_ct\", \"company_ct\"",
+        "ms": 0.4329999999999927,
+        "rows": 1
+      },
+      {
+        "sql": "insert into \"native_verify_main\".\"customers_write_seal_index\" (\"scope_id\", \"row_id\", \"tokens_988d248ff4b71bf7\", \"tokens_792d75cf01821d67\", \"tokens_a106c26102b707f0\", \"tokens_1127994ab736baf4\", \"tokens_c5133b3810f23103\", \"tokens_ef1d32a52e2ce103\", \"tokens_1c32fdad5d1c8367\", \"tokens_a639b11c8130dcf7\", \"tokens_cd3096c7a3cd42c2\", \"tokens_f289b89d86c7086a\", \"tokens_c44ae523cca61a0b\", \"tokens_7a1d2ba5ce2368fb\") values ($1, $2, default, default, default, default, default, default, $3, $4, default, default, default, default) on conflict (\"scope_id\",\"row_id\") do update set \"tokens_1c32fdad5d1c8367\" = $5, \"tokens_a639b11c8130dcf7\" = $6",
+        "ms": 0.5240999999999758,
+        "rows": 0
+      },
+      {
+        "sql": "commit",
+        "ms": 0.2138999999999669,
+        "rows": 0
+      }
+    ]
+  },
+  "plainDelete": {
+    "totalMs": 0.33809999999994034,
+    "sqlMs": 0.2783000000000584,
+    "sqlCalls": 1,
+    "events": [
+      {
+        "sql": "delete from native_verify_main.customers_write_plain where scope_id=$1 and id=$2",
+        "ms": 0.2783000000000584,
+        "rows": 0
+      }
+    ]
+  },
+  "productDelete": {
+    "totalMs": 1.4326999999999543,
+    "sqlMs": 1.1709000000000742,
+    "sqlCalls": 1,
+    "events": [
+      {
+        "sql": "delete from \"native_verify_main\".\"customers_write\" where \"native_verify_main\".\"customers_write\".\"id\" = $1",
+        "ms": 1.1709000000000742,
+        "rows": 0
+      }
+    ]
+  }
+}

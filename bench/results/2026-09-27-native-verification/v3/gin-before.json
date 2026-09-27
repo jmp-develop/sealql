@@ -1,0 +1,136 @@
+{
+  "mode": "before",
+  "pgstattuple": true,
+  "targets": [
+    {
+      "schema": "native_verify_main",
+      "table": "customers_seal_index",
+      "tableBytes": 204800000,
+      "indexes": [
+        {
+          "indexname": "customers_seal_index_scope_row_uq",
+          "indexdef": "CREATE UNIQUE INDEX customers_seal_index_scope_row_uq ON native_verify_main.customers_seal_index USING btree (scope_id, row_id)",
+          "bytes": 4997120
+        },
+        {
+          "indexname": "seal_411905c9deef5c59_bt",
+          "indexdef": "CREATE INDEX seal_411905c9deef5c59_bt ON native_verify_main.customers_seal_index USING btree (scope_id, (tokens_cd3096c7a3cd42c2[1]), row_id)",
+          "bytes": 7946240
+        },
+        {
+          "indexname": "seal_4c8e2d2bddde3451_bt",
+          "indexdef": "CREATE INDEX seal_4c8e2d2bddde3451_bt ON native_verify_main.customers_seal_index USING btree (scope_id, (tokens_a106c26102b707f0[1]), row_id)",
+          "bytes": 10469376
+        },
+        {
+          "indexname": "seal_62e346c0ef994072_bt",
+          "indexdef": "CREATE INDEX seal_62e346c0ef994072_bt ON native_verify_main.customers_seal_index USING btree (scope_id, (tokens_c44ae523cca61a0b[1]), row_id)",
+          "bytes": 7790592
+        },
+        {
+          "indexname": "seal_8fa11f16c3da1ad8_bt",
+          "indexdef": "CREATE INDEX seal_8fa11f16c3da1ad8_bt ON native_verify_main.customers_seal_index USING btree (scope_id, (tokens_1c32fdad5d1c8367[1]), row_id)",
+          "bytes": 7766016
+        },
+        {
+          "indexname": "seal_ae59b15a89e931d6_bt",
+          "indexdef": "CREATE INDEX seal_ae59b15a89e931d6_bt ON native_verify_main.customers_seal_index USING btree (scope_id, (tokens_c5133b3810f23103[1]), row_id)",
+          "bytes": 8085504
+        },
+        {
+          "indexname": "seal_dfa387787f59f02a_bt",
+          "indexdef": "CREATE INDEX seal_dfa387787f59f02a_bt ON native_verify_main.customers_seal_index USING btree (scope_id, (tokens_988d248ff4b71bf7[1]), row_id)",
+          "bytes": 7815168
+        },
+        {
+          "indexname": "seal_e66dc2708e915b65_gin",
+          "indexdef": "CREATE INDEX seal_e66dc2708e915b65_gin ON native_verify_main.customers_seal_index USING gin (tokens_792d75cf01821d67, tokens_1127994ab736baf4, tokens_ef1d32a52e2ce103, tokens_a639b11c8130dcf7, tokens_f289b89d86c7086a, tokens_7a1d2ba5ce2368fb)",
+          "bytes": 69066752
+        }
+      ],
+      "stats": {
+        "relname": "customers_seal_index",
+        "n_live_tup": "100000",
+        "n_dead_tup": "0",
+        "last_vacuum": null,
+        "last_autovacuum": "2026-09-27T12:15:04.619Z",
+        "last_analyze": "2026-09-27T12:15:23.759Z",
+        "last_autoanalyze": "2026-09-27T12:15:12.119Z",
+        "vacuum_count": "0",
+        "autovacuum_count": "8",
+        "analyze_count": "1",
+        "autoanalyze_count": "10"
+      },
+      "ginStats": {
+        "version": 2,
+        "pending_pages": 425,
+        "pending_tuples": "425"
+      }
+    },
+    {
+      "schema": "bench_standard_next_100k",
+      "table": "customers_skip_product_multi_seal_index",
+      "tableBytes": 204800000,
+      "indexes": [
+        {
+          "indexname": "customers_skip_product_multi_seal_index_pkey",
+          "indexdef": "CREATE UNIQUE INDEX customers_skip_product_multi_seal_index_pkey ON bench_standard_next_100k.customers_skip_product_multi_seal_index USING btree (scope_id, row_id)",
+          "bytes": 4997120
+        },
+        {
+          "indexname": "seal_25c9db95b34fd858_bt",
+          "indexdef": "CREATE INDEX seal_25c9db95b34fd858_bt ON bench_standard_next_100k.customers_skip_product_multi_seal_index USING btree (scope_id, (tokens_1c32fdad5d1c8367[1]), row_id)",
+          "bytes": 5922816
+        },
+        {
+          "indexname": "seal_4b4f7d0b6efa3256_bt",
+          "indexdef": "CREATE INDEX seal_4b4f7d0b6efa3256_bt ON bench_standard_next_100k.customers_skip_product_multi_seal_index USING btree (scope_id, (tokens_c5133b3810f23103[1]), row_id)",
+          "bytes": 5922816
+        },
+        {
+          "indexname": "seal_55b3cc0d438484aa_bt",
+          "indexdef": "CREATE INDEX seal_55b3cc0d438484aa_bt ON bench_standard_next_100k.customers_skip_product_multi_seal_index USING btree (scope_id, (tokens_988d248ff4b71bf7[1]), row_id)",
+          "bytes": 5931008
+        },
+        {
+          "indexname": "seal_c29e71c0a208c8d1_bt",
+          "indexdef": "CREATE INDEX seal_c29e71c0a208c8d1_bt ON bench_standard_next_100k.customers_skip_product_multi_seal_index USING btree (scope_id, (tokens_a106c26102b707f0[1]), row_id)",
+          "bytes": 5931008
+        },
+        {
+          "indexname": "seal_d741c248ce6519d9_bt",
+          "indexdef": "CREATE INDEX seal_d741c248ce6519d9_bt ON bench_standard_next_100k.customers_skip_product_multi_seal_index USING btree (scope_id, (tokens_cd3096c7a3cd42c2[1]), row_id)",
+          "bytes": 5922816
+        },
+        {
+          "indexname": "seal_de9d32fbbc6ee7e5_gin",
+          "indexdef": "CREATE INDEX seal_de9d32fbbc6ee7e5_gin ON bench_standard_next_100k.customers_skip_product_multi_seal_index USING gin (tokens_792d75cf01821d67, tokens_1127994ab736baf4, tokens_ef1d32a52e2ce103, tokens_a639b11c8130dcf7, tokens_f289b89d86c7086a, tokens_7a1d2ba5ce2368fb)",
+          "bytes": 59301888
+        },
+        {
+          "indexname": "seal_ffd91271d4aa40f2_bt",
+          "indexdef": "CREATE INDEX seal_ffd91271d4aa40f2_bt ON bench_standard_next_100k.customers_skip_product_multi_seal_index USING btree (scope_id, (tokens_c44ae523cca61a0b[1]), row_id)",
+          "bytes": 5922816
+        }
+      ],
+      "stats": {
+        "relname": "customers_skip_product_multi_seal_index",
+        "n_live_tup": "0",
+        "n_dead_tup": "0",
+        "last_vacuum": null,
+        "last_autovacuum": null,
+        "last_analyze": null,
+        "last_autoanalyze": null,
+        "vacuum_count": "0",
+        "autovacuum_count": "0",
+        "analyze_count": "0",
+        "autoanalyze_count": "0"
+      },
+      "ginStats": {
+        "version": 2,
+        "pending_pages": 0,
+        "pending_tuples": "0"
+      }
+    }
+  ]
+}

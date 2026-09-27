@@ -34,6 +34,11 @@ const cases: { name: string; node: Node; limit?: number; drain?: boolean; respec
   { name:'word_boundary', node:L('contains','memo','서비스 상담'), respectWords:true },
   { name:'word_inside_longer', node:L('contains','memo','비스 상'), respectWords:true },
 ];
+const mode=process.argv[2];
+assert(mode===undefined||mode==='before-vacuum'||mode==='after-vacuum');
+const followup=new Set(['sub_name_suffix','or3','and6','sub_mid_space','sub_long','exact_common','sub_mid','starts']);
+const selected=mode?cases.filter(c=>followup.has(c.name)):cases;
+assert.equal(selected.length,mode?8:21);
 const pool = new Pool({ host:'127.0.0.1', port:56439, user:'sealql_test', database:'postgres', max:4,
   options:'-c statement_timeout=120000' });
 const db = drizzle(pool);
@@ -104,7 +109,7 @@ try {
   for(const table of ['customers','tickets']) assert.equal(Number((await pool.query(`select count(*) n from native_verify_main.${table}`)).rows[0].n),100000);
   const outDir='bench/results/2026-09-27-native-verification/v3'; await mkdir(outDir,{recursive:true});
   const report=[];
-  for(const c of cases) {
+  for(const c of selected) {
     const expected=await plain(c); same(await product(c),expected,`${c.name}/first`);
     for(let i=0;i<2;i++) { same(await plain(c),expected,`${c.name}/warmup/plain`); same(await product(c),expected,`${c.name}/warmup/product`); }
     const runs:{plain:any[];product:any[]}={plain:[],product:[]};
@@ -116,6 +121,6 @@ try {
     const summary=Object.fromEntries(Object.entries(runs).map(([path,rs])=>[path,Object.fromEntries(metrics.map(k=>[k,median(rs.map(r=>r[k]))]))]));
     report.push({case:c.name,expected:expected.length,summary,runs});
     console.log(JSON.stringify({case:c.name,summary}));
-    await writeFile(`${outDir}/matrix.json`,JSON.stringify({schema:'native_verify_main',warmup:2,alternatingRuns:7,report},null,2)+'\n');
+    await writeFile(`${outDir}/${mode?`matrix-${mode}`:'matrix'}.json`,JSON.stringify({schema:'native_verify_main',mode:mode??'baseline',warmup:2,alternatingRuns:7,report},null,2)+'\n');
   }
 } finally { Client.prototype.query=original; await pool.end(); }

@@ -1,0 +1,1336 @@
+{
+  "schema": "native_verify_main",
+  "mode": "before-vacuum",
+  "warmup": 2,
+  "alternatingRuns": 7,
+  "report": [
+    {
+      "case": "exact_common",
+      "expected": 20,
+      "summary": {
+        "plain": {
+          "totalMs": 0.8559999999999945,
+          "sqlMs": 0.7391999999999825,
+          "sqlCalls": 1,
+          "candidates": 20,
+          "returned": 20
+        },
+        "product": {
+          "totalMs": 8.125400000000013,
+          "sqlMs": 0.9720999999999549,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "returned": 20
+        }
+      },
+      "runs": {
+        "plain": [
+          {
+            "totalMs": 0.9932000000000016,
+            "sqlMs": 0.8646999999999707,
+            "sqlCalls": 1,
+            "candidates": 20,
+            "returned": 20,
+            "sql": [
+              "select id,name_plain as name,phone_plain as phone,address_plain as address,memo_plain as memo,email_plain as email,company_plain as company from bench_realistic_100k.customers\n      where scope_id=$1 and company_norm=$2 order by id limit 20"
+            ]
+          },
+          {
+            "totalMs": 0.9075000000000273,
+            "sqlMs": 0.8017999999999574,
+            "sqlCalls": 1,
+            "candidates": 20,
+            "returned": 20,
+            "sql": [
+              "select id,name_plain as name,phone_plain as phone,address_plain as address,memo_plain as memo,email_plain as email,company_plain as company from bench_realistic_100k.customers\n      where scope_id=$1 and company_norm=$2 order by id limit 20"
+            ]
+          },
+          {
+            "totalMs": 0.5468999999999369,
+            "sqlMs": 0.47929999999996653,
+            "sqlCalls": 1,
+            "candidates": 20,
+            "returned": 20,
+            "sql": [
+              "select id,name_plain as name,phone_plain as phone,address_plain as address,memo_plain as memo,email_plain as email,company_plain as company from bench_realistic_100k.customers\n      where scope_id=$1 and company_norm=$2 order by id limit 20"
+            ]
+          },
+          {
+            "totalMs": 0.8559999999999945,
+            "sqlMs": 0.7391999999999825,
+            "sqlCalls": 1,
+            "candidates": 20,
+            "returned": 20,
+            "sql": [
+              "select id,name_plain as name,phone_plain as phone,address_plain as address,memo_plain as memo,email_plain as email,company_plain as company from bench_realistic_100k.customers\n      where scope_id=$1 and company_norm=$2 order by id limit 20"
+            ]
+          },
+          {
+            "totalMs": 0.5163000000000011,
+            "sqlMs": 0.4371999999999616,
+            "sqlCalls": 1,
+            "candidates": 20,
+            "returned": 20,
+            "sql": [
+              "select id,name_plain as name,phone_plain as phone,address_plain as address,memo_plain as memo,email_plain as email,company_plain as company from bench_realistic_100k.customers\n      where scope_id=$1 and company_norm=$2 order by id limit 20"
+            ]
+          },
+          {
+            "totalMs": 0.9166999999999916,
+            "sqlMs": 0.8070999999999913,
+            "sqlCalls": 1,
+            "candidates": 20,
+            "returned": 20,
+            "sql": [
+              "select id,name_plain as name,phone_plain as phone,address_plain as address,memo_plain as memo,email_plain as email,company_plain as company from bench_realistic_100k.customers\n      where scope_id=$1 and company_norm=$2 order by id limit 20"
+            ]
+          },
+          {
+            "totalMs": 0.7884999999999991,
+            "sqlMs": 0.7157999999999447,
+            "sqlCalls": 1,
+            "candidates": 20,
+            "returned": 20,
+            "sql": [
+              "select id,name_plain as name,phone_plain as phone,address_plain as address,memo_plain as memo,email_plain as email,company_plain as company from bench_realistic_100k.customers\n      where scope_id=$1 and company_norm=$2 order by id limit 20"
+            ]
+          }
+        ],
+        "product": [
+          {
+            "totalMs": 9.501300000000015,
+            "sqlMs": 1.226500000000101,
+            "sqlCalls": 1,
+            "candidates": 27,
+            "returned": 20,
+            "sql": [
+              "select \"id\", \"scope_id\", \"name_ct\", \"phone_ct\", \"address_ct\", \"memo_ct\", \"email_ct\", \"company_ct\" from \"native_verify_main\".\"customers\" where (\"native_verify_main\".\"customers\".\"scope_id\" = $1 and \"customers\".\"id\" in (select \"__seal_idx\".\"row_id\" from \"native_verify_main\".\"customers_seal_index\" as \"__seal_idx\" where \"__seal_idx\".\"scope_id\"=$2 and ((\"__seal_idx\".\"tokens_a106c26102b707f0\")[1]=$3::bigint))) order by \"native_verify_main\".\"customers\".\"id\" asc limit $4"
+            ]
+          },
+          {
+            "totalMs": 9.569599999999923,
+            "sqlMs": 1.1050000000000182,
+            "sqlCalls": 1,
+            "candidates": 27,
+            "returned": 20,
+            "sql": [
+              "select \"id\", \"scope_id\", \"name_ct\", \"phone_ct\", \"address_ct\", \"memo_ct\", \"email_ct\", \"company_ct\" from \"native_verify_main\".\"customers\" where (\"native_verify_main\".\"customers\".\"scope_id\" = $1 and \"customers\".\"id\" in (select \"__seal_idx\".\"row_id\" from \"native_verify_main\".\"customers_seal_index\" as \"__seal_idx\" where \"__seal_idx\".\"scope_id\"=$2 and ((\"__seal_idx\".\"tokens_a106c26102b707f0\")[1]=$3::bigint))) order by \"native_verify_main\".\"customers\".\"id\" asc limit $4"
+            ]
+          },
+          {
+            "totalMs": 8.076400000000035,
+            "sqlMs": 0.8751999999999498,
+            "sqlCalls": 1,
+            "candidates": 27,
+            "returned": 20,
+            "sql": [
+              "select \"id\", \"scope_id\", \"name_ct\", \"phone_ct\", \"address_ct\", \"memo_ct\", \"email_ct\", \"company_ct\" from \"native_verify_main\".\"customers\" where (\"native_verify_main\".\"customers\".\"scope_id\" = $1 and \"customers\".\"id\" in (select \"__seal_idx\".\"row_id\" from \"native_verify_main\".\"customers_seal_index\" as \"__seal_idx\" where \"__seal_idx\".\"scope_id\"=$2 and ((\"__seal_idx\".\"tokens_a106c26102b707f0\")[1]=$3::bigint))) order by \"native_verify_main\".\"customers\".\"id\" asc limit $4"
+            ]
+          },
+          {
+            "totalMs": 7.906900000000064,
+            "sqlMs": 1.0054000000000087,
+            "sqlCalls": 1,
+            "candidates": 27,
+            "returned": 20,
+            "sql": [
+              "select \"id\", \"scope_id\", \"name_ct\", \"phone_ct\", \"address_ct\", \"memo_ct\", \"email_ct\", \"company_ct\" from \"native_verify_main\".\"customers\" where (\"native_verify_main\".\"customers\".\"scope_id\" = $1 and \"customers\".\"id\" in (select \"__seal_idx\".\"row_id\" from \"native_verify_main\".\"customers_seal_index\" as \"__seal_idx\" where \"__seal_idx\".\"scope_id\"=$2 and ((\"__seal_idx\".\"tokens_a106c26102b707f0\")[1]=$3::bigint))) order by \"native_verify_main\".\"customers\".\"id\" asc limit $4"
+            ]
+          },
+          {
+            "totalMs": 8.125400000000013,
+            "sqlMs": 0.8675000000000637,
+            "sqlCalls": 1,
+            "candidates": 27,
+            "returned": 20,
+            "sql": [
+              "select \"id\", \"scope_id\", \"name_ct\", \"phone_ct\", \"address_ct\", \"memo_ct\", \"email_ct\", \"company_ct\" from \"native_verify_main\".\"customers\" where (\"native_verify_main\".\"customers\".\"scope_id\" = $1 and \"customers\".\"id\" in (select \"__seal_idx\".\"row_id\" from \"native_verify_main\".\"customers_seal_index\" as \"__seal_idx\" where \"__seal_idx\".\"scope_id\"=$2 and ((\"__seal_idx\".\"tokens_a106c26102b707f0\")[1]=$3::bigint))) order by \"native_verify_main\".\"customers\".\"id\" asc limit $4"
+            ]
+          },
+          {
+            "totalMs": 13.31230000000005,
+            "sqlMs": 0.9720999999999549,
+            "sqlCalls": 1,
+            "candidates": 27,
+            "returned": 20,
+            "sql": [
+              "select \"id\", \"scope_id\", \"name_ct\", \"phone_ct\", \"address_ct\", \"memo_ct\", \"email_ct\", \"company_ct\" from \"native_verify_main\".\"customers\" where (\"native_verify_main\".\"customers\".\"scope_id\" = $1 and \"customers\".\"id\" in (select \"__seal_idx\".\"row_id\" from \"native_verify_main\".\"customers_seal_index\" as \"__seal_idx\" where \"__seal_idx\".\"scope_id\"=$2 and ((\"__seal_idx\".\"tokens_a106c26102b707f0\")[1]=$3::bigint))) order by \"native_verify_main\".\"customers\".\"id\" asc limit $4"
+            ]
+          },
+          {
+            "totalMs": 7.577699999999936,
+            "sqlMs": 0.7102999999999611,
+            "sqlCalls": 1,
+            "candidates": 27,
+            "returned": 20,
+            "sql": [
+              "select \"id\", \"scope_id\", \"name_ct\", \"phone_ct\", \"address_ct\", \"memo_ct\", \"email_ct\", \"company_ct\" from \"native_verify_main\".\"customers\" where (\"native_verify_main\".\"customers\".\"scope_id\" = $1 and \"customers\".\"id\" in (select \"__seal_idx\".\"row_id\" from \"native_verify_main\".\"customers_seal_index\" as \"__seal_idx\" where \"__seal_idx\".\"scope_id\"=$2 and ((\"__seal_idx\".\"tokens_a106c26102b707f0\")[1]=$3::bigint))) order by \"native_verify_main\".\"customers\".\"id\" asc limit $4"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "case": "sub_mid",
+      "expected": 20,
+      "summary": {
+        "plain": {
+          "totalMs": 0.8742999999999483,
+          "sqlMs": 0.801900000000046,
+          "sqlCalls": 1,
+          "candidates": 20,
+          "returned": 20
+        },
+        "product": {
+          "totalMs": 9.710199999999986,
+          "sqlMs": 1.2424000000000888,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "returned": 20
+        }
+      },
+      "runs": {
+        "plain": [
+          {
+            "totalMs": 0.8742999999999483,
+            "sqlMs": 0.801900000000046,
+            "sqlCalls": 1,
+            "candidates": 20,
+            "returned": 20,
+            "sql": [
+              "select id,name_plain as name,phone_plain as phone,address_plain as address,memo_plain as memo,email_plain as email,company_plain as company from bench_realistic_100k.customers\n      where scope_id=$1 and address_norm like '%'||$2||'%' order by id limit 20"
+            ]
+          },
+          {
+            "totalMs": 1.4577999999999065,
+            "sqlMs": 1.2136000000000422,
+            "sqlCalls": 1,
+            "candidates": 20,
+            "returned": 20,
+            "sql": [
+              "select id,name_plain as name,phone_plain as phone,address_plain as address,memo_plain as memo,email_plain as email,company_plain as company from bench_realistic_100k.customers\n      where scope_id=$1 and address_norm like '%'||$2||'%' order by id limit 20"
+            ]
+          },
+          {
+            "totalMs": 0.6371000000000322,
+            "sqlMs": 0.5367999999999711,
+            "sqlCalls": 1,
+            "candidates": 20,
+            "returned": 20,
+            "sql": [
+              "select id,name_plain as name,phone_plain as phone,address_plain as address,memo_plain as memo,email_plain as email,company_plain as company from bench_realistic_100k.customers\n      where scope_id=$1 and address_norm like '%'||$2||'%' order by id limit 20"
+            ]
+          },
+          {
+            "totalMs": 0.9815000000000964,
+            "sqlMs": 0.8821000000000367,
+            "sqlCalls": 1,
+            "candidates": 20,
+            "returned": 20,
+            "sql": [
+              "select id,name_plain as name,phone_plain as phone,address_plain as address,memo_plain as memo,email_plain as email,company_plain as company from bench_realistic_100k.customers\n      where scope_id=$1 and address_norm like '%'||$2||'%' order by id limit 20"
+            ]
+          },
+          {
+            "totalMs": 0.47870000000000346,
+            "sqlMs": 0.4356999999999971,
+            "sqlCalls": 1,
+            "candidates": 20,
+            "returned": 20,
+            "sql": [
+              "select id,name_plain as name,phone_plain as phone,address_plain as address,memo_plain as memo,email_plain as email,company_plain as company from bench_realistic_100k.customers\n      where scope_id=$1 and address_norm like '%'||$2||'%' order by id limit 20"
+            ]
+          },
+          {
+            "totalMs": 1.0238000000000511,
+            "sqlMs": 0.9098999999999933,
+            "sqlCalls": 1,
+            "candidates": 20,
+            "returned": 20,
+            "sql": [
+              "select id,name_plain as name,phone_plain as phone,address_plain as address,memo_plain as memo,email_plain as email,company_plain as company from bench_realistic_100k.customers\n      where scope_id=$1 and address_norm like '%'||$2||'%' order by id limit 20"
+            ]
+          },
+          {
+            "totalMs": 0.44839999999999236,
+            "sqlMs": 0.40850000000000364,
+            "sqlCalls": 1,
+            "candidates": 20,
+            "returned": 20,
+            "sql": [
+              "select id,name_plain as name,phone_plain as phone,address_plain as address,memo_plain as memo,email_plain as email,company_plain as company from bench_realistic_100k.customers\n      where scope_id=$1 and address_norm like '%'||$2||'%' order by id limit 20"
+            ]
+          }
+        ],
+        "product": [
+          {
+            "totalMs": 8.698500000000081,
+            "sqlMs": 1.1358999999999924,
+            "sqlCalls": 1,
+            "candidates": 27,
+            "returned": 20,
+            "sql": [
+              "select \"id\", \"scope_id\", \"name_ct\", \"phone_ct\", \"address_ct\", \"memo_ct\", \"email_ct\", \"company_ct\" from \"native_verify_main\".\"customers\" where (\"native_verify_main\".\"customers\".\"scope_id\" = $1 and \"customers\".\"id\" in (\n    with sample as materialized (\n      select \"row_id\",\"tokens_792d75cf01821d67\" from \"native_verify_main\".\"customers_seal_index\" as \"c\"\n      where \"c\".\"scope_id\"=$2 order by \"c\".\"row_id\" limit 256\n    ), quick as materialized (\n      select \"c\".\"row_id\" from sample as \"c\" where \"c\".\"tokens_792d75cf01821d67\" @> $3::bigint[] order by \"c\".\"row_id\" limit $4\n    ), fallback as materialized (\n      select \"c\".\"row_id\" from \"native_verify_main\".\"customers_seal_index\" as \"c\"\n      where \"c\".\"scope_id\"=$5 and \"c\".\"tokens_792d75cf01821d67\" @> $6::bigint[]\n        and (select count(*) from quick)<$7\n      order by \"c\".\"row_id\" limit $8\n    )\n    select row_id from quick where (select count(*) from quick)=$9\n    union all select row_id from fallback\n  )) order by \"native_verify_main\".\"customers\".\"id\" asc limit $10"
+            ]
+          },
+          {
+            "totalMs": 10.132299999999987,
+            "sqlMs": 1.2424000000000888,
+            "sqlCalls": 1,
+            "candidates": 27,
+            "returned": 20,
+            "sql": [
+              "select \"id\", \"scope_id\", \"name_ct\", \"phone_ct\", \"address_ct\", \"memo_ct\", \"email_ct\", \"company_ct\" from \"native_verify_main\".\"customers\" where (\"native_verify_main\".\"customers\".\"scope_id\" = $1 and \"customers\".\"id\" in (\n    with sample as materialized (\n      select \"row_id\",\"tokens_792d75cf01821d67\" from \"native_verify_main\".\"customers_seal_index\" as \"c\"\n      where \"c\".\"scope_id\"=$2 order by \"c\".\"row_id\" limit 256\n    ), quick as materialized (\n      select \"c\".\"row_id\" from sample as \"c\" where \"c\".\"tokens_792d75cf01821d67\" @> $3::bigint[] order by \"c\".\"row_id\" limit $4\n    ), fallback as materialized (\n      select \"c\".\"row_id\" from \"native_verify_main\".\"customers_seal_index\" as \"c\"\n      where \"c\".\"scope_id\"=$5 and \"c\".\"tokens_792d75cf01821d67\" @> $6::bigint[]\n        and (select count(*) from quick)<$7\n      order by \"c\".\"row_id\" limit $8\n    )\n    select row_id from quick where (select count(*) from quick)=$9\n    union all select row_id from fallback\n  )) order by \"native_verify_main\".\"customers\".\"id\" asc limit $10"
+            ]
+          },
+          {
+            "totalMs": 12.587599999999952,
+            "sqlMs": 2.018899999999917,
+            "sqlCalls": 1,
+            "candidates": 27,
+            "returned": 20,
+            "sql": [
+              "select \"id\", \"scope_id\", \"name_ct\", \"phone_ct\", \"address_ct\", \"memo_ct\", \"email_ct\", \"company_ct\" from \"native_verify_main\".\"customers\" where (\"native_verify_main\".\"customers\".\"scope_id\" = $1 and \"customers\".\"id\" in (\n    with sample as materialized (\n      select \"row_id\",\"tokens_792d75cf01821d67\" from \"native_verify_main\".\"customers_seal_index\" as \"c\"\n      where \"c\".\"scope_id\"=$2 order by \"c\".\"row_id\" limit 256\n    ), quick as materialized (\n      select \"c\".\"row_id\" from sample as \"c\" where \"c\".\"tokens_792d75cf01821d67\" @> $3::bigint[] order by \"c\".\"row_id\" limit $4\n    ), fallback as materialized (\n      select \"c\".\"row_id\" from \"native_verify_main\".\"customers_seal_index\" as \"c\"\n      where \"c\".\"scope_id\"=$5 and \"c\".\"tokens_792d75cf01821d67\" @> $6::bigint[]\n        and (select count(*) from quick)<$7\n      order by \"c\".\"row_id\" limit $8\n    )\n    select row_id from quick where (select count(*) from quick)=$9\n    union all select row_id from fallback\n  )) order by \"native_verify_main\".\"customers\".\"id\" asc limit $10"
+            ]
+          },
+          {
+            "totalMs": 9.710199999999986,
+            "sqlMs": 1.5133999999999332,
+            "sqlCalls": 1,
+            "candidates": 27,
+            "returned": 20,
+            "sql": [
+              "select \"id\", \"scope_id\", \"name_ct\", \"phone_ct\", \"address_ct\", \"memo_ct\", \"email_ct\", \"company_ct\" from \"native_verify_main\".\"customers\" where (\"native_verify_main\".\"customers\".\"scope_id\" = $1 and \"customers\".\"id\" in (\n    with sample as materialized (\n      select \"row_id\",\"tokens_792d75cf01821d67\" from \"native_verify_main\".\"customers_seal_index\" as \"c\"\n      where \"c\".\"scope_id\"=$2 order by \"c\".\"row_id\" limit 256\n    ), quick as materialized (\n      select \"c\".\"row_id\" from sample as \"c\" where \"c\".\"tokens_792d75cf01821d67\" @> $3::bigint[] order by \"c\".\"row_id\" limit $4\n    ), fallback as materialized (\n      select \"c\".\"row_id\" from \"native_verify_main\".\"customers_seal_index\" as \"c\"\n      where \"c\".\"scope_id\"=$5 and \"c\".\"tokens_792d75cf01821d67\" @> $6::bigint[]\n        and (select count(*) from quick)<$7\n      order by \"c\".\"row_id\" limit $8\n    )\n    select row_id from quick where (select count(*) from quick)=$9\n    union all select row_id from fallback\n  )) order by \"native_verify_main\".\"customers\".\"id\" asc limit $10"
+            ]
+          },
+          {
+            "totalMs": 8.87880000000007,
+            "sqlMs": 1.096300000000042,
+            "sqlCalls": 1,
+            "candidates": 27,
+            "returned": 20,
+            "sql": [
+              "select \"id\", \"scope_id\", \"name_ct\", \"phone_ct\", \"address_ct\", \"memo_ct\", \"email_ct\", \"company_ct\" from \"native_verify_main\".\"customers\" where (\"native_verify_main\".\"customers\".\"scope_id\" = $1 and \"customers\".\"id\" in (\n    with sample as materialized (\n      select \"row_id\",\"tokens_792d75cf01821d67\" from \"native_verify_main\".\"customers_seal_index\" as \"c\"\n      where \"c\".\"scope_id\"=$2 order by \"c\".\"row_id\" limit 256\n    ), quick as materialized (\n      select \"c\".\"row_id\" from sample as \"c\" where \"c\".\"tokens_792d75cf01821d67\" @> $3::bigint[] order by \"c\".\"row_id\" limit $4\n    ), fallback as materialized (\n      select \"c\".\"row_id\" from \"native_verify_main\".\"customers_seal_index\" as \"c\"\n      where \"c\".\"scope_id\"=$5 and \"c\".\"tokens_792d75cf01821d67\" @> $6::bigint[]\n        and (select count(*) from quick)<$7\n      order by \"c\".\"row_id\" limit $8\n    )\n    select row_id from quick where (select count(*) from quick)=$9\n    union all select row_id from fallback\n  )) order by \"native_verify_main\".\"customers\".\"id\" asc limit $10"
+            ]
+          },
+          {
+            "totalMs": 15.23720000000003,
+            "sqlMs": 1.7162000000000717,
+            "sqlCalls": 1,
+            "candidates": 27,
+            "returned": 20,
+            "sql": [
+              "select \"id\", \"scope_id\", \"name_ct\", \"phone_ct\", \"address_ct\", \"memo_ct\", \"email_ct\", \"company_ct\" from \"native_verify_main\".\"customers\" where (\"native_verify_main\".\"customers\".\"scope_id\" = $1 and \"customers\".\"id\" in (\n    with sample as materialized (\n      select \"row_id\",\"tokens_792d75cf01821d67\" from \"native_verify_main\".\"customers_seal_index\" as \"c\"\n      where \"c\".\"scope_id\"=$2 order by \"c\".\"row_id\" limit 256\n    ), quick as materialized (\n      select \"c\".\"row_id\" from sample as \"c\" where \"c\".\"tokens_792d75cf01821d67\" @> $3::bigint[] order by \"c\".\"row_id\" limit $4\n    ), fallback as materialized (\n      select \"c\".\"row_id\" from \"native_verify_main\".\"customers_seal_index\" as \"c\"\n      where \"c\".\"scope_id\"=$5 and \"c\".\"tokens_792d75cf01821d67\" @> $6::bigint[]\n        and (select count(*) from quick)<$7\n      order by \"c\".\"row_id\" limit $8\n    )\n    select row_id from quick where (select count(*) from quick)=$9\n    union all select row_id from fallback\n  )) order by \"native_verify_main\".\"customers\".\"id\" asc limit $10"
+            ]
+          },
+          {
+            "totalMs": 8.926399999999944,
+            "sqlMs": 1.0789000000000897,
+            "sqlCalls": 1,
+            "candidates": 27,
+            "returned": 20,
+            "sql": [
+              "select \"id\", \"scope_id\", \"name_ct\", \"phone_ct\", \"address_ct\", \"memo_ct\", \"email_ct\", \"company_ct\" from \"native_verify_main\".\"customers\" where (\"native_verify_main\".\"customers\".\"scope_id\" = $1 and \"customers\".\"id\" in (\n    with sample as materialized (\n      select \"row_id\",\"tokens_792d75cf01821d67\" from \"native_verify_main\".\"customers_seal_index\" as \"c\"\n      where \"c\".\"scope_id\"=$2 order by \"c\".\"row_id\" limit 256\n    ), quick as materialized (\n      select \"c\".\"row_id\" from sample as \"c\" where \"c\".\"tokens_792d75cf01821d67\" @> $3::bigint[] order by \"c\".\"row_id\" limit $4\n    ), fallback as materialized (\n      select \"c\".\"row_id\" from \"native_verify_main\".\"customers_seal_index\" as \"c\"\n      where \"c\".\"scope_id\"=$5 and \"c\".\"tokens_792d75cf01821d67\" @> $6::bigint[]\n        and (select count(*) from quick)<$7\n      order by \"c\".\"row_id\" limit $8\n    )\n    select row_id from quick where (select count(*) from quick)=$9\n    union all select row_id from fallback\n  )) order by \"native_verify_main\".\"customers\".\"id\" asc limit $10"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "case": "sub_mid_space",
+      "expected": 20,
+      "summary": {
+        "plain": {
+          "totalMs": 2.124900000000025,
+          "sqlMs": 2.025000000000091,
+          "sqlCalls": 1,
+          "candidates": 20,
+          "returned": 20
+        },
+        "product": {
+          "totalMs": 11.317999999999984,
+          "sqlMs": 3.736799999999903,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "returned": 20
+        }
+      },
+      "runs": {
+        "plain": [
+          {
+            "totalMs": 2.5552000000000135,
+            "sqlMs": 2.350900000000024,
+            "sqlCalls": 1,
+            "candidates": 20,
+            "returned": 20,
+            "sql": [
+              "select id,name_plain as name,phone_plain as phone,address_plain as address,memo_plain as memo,email_plain as email,company_plain as company from bench_realistic_100k.customers\n      where scope_id=$1 and address_norm like '%'||$2||'%' order by id limit 20"
+            ]
+          },
+          {
+            "totalMs": 2.1888000000000147,
+            "sqlMs": 2.0592000000000326,
+            "sqlCalls": 1,
+            "candidates": 20,
+            "returned": 20,
+            "sql": [
+              "select id,name_plain as name,phone_plain as phone,address_plain as address,memo_plain as memo,email_plain as email,company_plain as company from bench_realistic_100k.customers\n      where scope_id=$1 and address_norm like '%'||$2||'%' order by id limit 20"
+            ]
+          },
+          {
+            "totalMs": 1.568300000000022,
+            "sqlMs": 1.4956999999999425,
+            "sqlCalls": 1,
+            "candidates": 20,
+            "returned": 20,
+            "sql": [
+              "select id,name_plain as name,phone_plain as phone,address_plain as address,memo_plain as memo,email_plain as email,company_plain as company from bench_realistic_100k.customers\n      where scope_id=$1 and address_norm like '%'||$2||'%' order by id limit 20"
+            ]
+          },
+          {
+            "totalMs": 2.519900000000007,
+            "sqlMs": 2.377999999999929,
+            "sqlCalls": 1,
+            "candidates": 20,
+            "returned": 20,
+            "sql": [
+              "select id,name_plain as name,phone_plain as phone,address_plain as address,memo_plain as memo,email_plain as email,company_plain as company from bench_realistic_100k.customers\n      where scope_id=$1 and address_norm like '%'||$2||'%' order by id limit 20"
+            ]
+          },
+          {
+            "totalMs": 1.8657000000000608,
+            "sqlMs": 1.7870000000000346,
+            "sqlCalls": 1,
+            "candidates": 20,
+            "returned": 20,
+            "sql": [
+              "select id,name_plain as name,phone_plain as phone,address_plain as address,memo_plain as memo,email_plain as email,company_plain as company from bench_realistic_100k.customers\n      where scope_id=$1 and address_norm like '%'||$2||'%' order by id limit 20"
+            ]
+          },
+          {
+            "totalMs": 2.124900000000025,
+            "sqlMs": 2.025000000000091,
+            "sqlCalls": 1,
+            "candidates": 20,
+            "returned": 20,
+            "sql": [
+              "select id,name_plain as name,phone_plain as phone,address_plain as address,memo_plain as memo,email_plain as email,company_plain as company from bench_realistic_100k.customers\n      where scope_id=$1 and address_norm like '%'||$2||'%' order by id limit 20"
+            ]
+          },
+          {
+            "totalMs": 1.5629999999998745,
+            "sqlMs": 1.4786000000001422,
+            "sqlCalls": 1,
+            "candidates": 20,
+            "returned": 20,
+            "sql": [
+              "select id,name_plain as name,phone_plain as phone,address_plain as address,memo_plain as memo,email_plain as email,company_plain as company from bench_realistic_100k.customers\n      where scope_id=$1 and address_norm like '%'||$2||'%' order by id limit 20"
+            ]
+          }
+        ],
+        "product": [
+          {
+            "totalMs": 11.620900000000006,
+            "sqlMs": 4.213700000000017,
+            "sqlCalls": 1,
+            "candidates": 27,
+            "returned": 20,
+            "sql": [
+              "select \"id\", \"scope_id\", \"name_ct\", \"phone_ct\", \"address_ct\", \"memo_ct\", \"email_ct\", \"company_ct\" from \"native_verify_main\".\"customers\" where (\"native_verify_main\".\"customers\".\"scope_id\" = $1 and \"customers\".\"id\" in (\n    with sample as materialized (\n      select \"row_id\",\"tokens_792d75cf01821d67\" from \"native_verify_main\".\"customers_seal_index\" as \"c\"\n      where \"c\".\"scope_id\"=$2 order by \"c\".\"row_id\" limit 256\n    ), quick as materialized (\n      select \"c\".\"row_id\" from sample as \"c\" where \"c\".\"tokens_792d75cf01821d67\" @> $3::bigint[] order by \"c\".\"row_id\" limit $4\n    ), fallback as materialized (\n      select \"c\".\"row_id\" from \"native_verify_main\".\"customers_seal_index\" as \"c\"\n      where \"c\".\"scope_id\"=$5 and \"c\".\"tokens_792d75cf01821d67\" @> $6::bigint[]\n        and (select count(*) from quick)<$7\n      order by \"c\".\"row_id\" limit $8\n    )\n    select row_id from quick where (select count(*) from quick)=$9\n    union all select row_id from fallback\n  )) order by \"native_verify_main\".\"customers\".\"id\" asc limit $10"
+            ]
+          },
+          {
+            "totalMs": 10.319700000000012,
+            "sqlMs": 3.5372999999999593,
+            "sqlCalls": 1,
+            "candidates": 27,
+            "returned": 20,
+            "sql": [
+              "select \"id\", \"scope_id\", \"name_ct\", \"phone_ct\", \"address_ct\", \"memo_ct\", \"email_ct\", \"company_ct\" from \"native_verify_main\".\"customers\" where (\"native_verify_main\".\"customers\".\"scope_id\" = $1 and \"customers\".\"id\" in (\n    with sample as materialized (\n      select \"row_id\",\"tokens_792d75cf01821d67\" from \"native_verify_main\".\"customers_seal_index\" as \"c\"\n      where \"c\".\"scope_id\"=$2 order by \"c\".\"row_id\" limit 256\n    ), quick as materialized (\n      select \"c\".\"row_id\" from sample as \"c\" where \"c\".\"tokens_792d75cf01821d67\" @> $3::bigint[] order by \"c\".\"row_id\" limit $4\n    ), fallback as materialized (\n      select \"c\".\"row_id\" from \"native_verify_main\".\"customers_seal_index\" as \"c\"\n      where \"c\".\"scope_id\"=$5 and \"c\".\"tokens_792d75cf01821d67\" @> $6::bigint[]\n        and (select count(*) from quick)<$7\n      order by \"c\".\"row_id\" limit $8\n    )\n    select row_id from quick where (select count(*) from quick)=$9\n    union all select row_id from fallback\n  )) order by \"native_verify_main\".\"customers\".\"id\" asc limit $10"
+            ]
+          },
+          {
+            "totalMs": 16.626800000000117,
+            "sqlMs": 3.9238000000000284,
+            "sqlCalls": 1,
+            "candidates": 27,
+            "returned": 20,
+            "sql": [
+              "select \"id\", \"scope_id\", \"name_ct\", \"phone_ct\", \"address_ct\", \"memo_ct\", \"email_ct\", \"company_ct\" from \"native_verify_main\".\"customers\" where (\"native_verify_main\".\"customers\".\"scope_id\" = $1 and \"customers\".\"id\" in (\n    with sample as materialized (\n      select \"row_id\",\"tokens_792d75cf01821d67\" from \"native_verify_main\".\"customers_seal_index\" as \"c\"\n      where \"c\".\"scope_id\"=$2 order by \"c\".\"row_id\" limit 256\n    ), quick as materialized (\n      select \"c\".\"row_id\" from sample as \"c\" where \"c\".\"tokens_792d75cf01821d67\" @> $3::bigint[] order by \"c\".\"row_id\" limit $4\n    ), fallback as materialized (\n      select \"c\".\"row_id\" from \"native_verify_main\".\"customers_seal_index\" as \"c\"\n      where \"c\".\"scope_id\"=$5 and \"c\".\"tokens_792d75cf01821d67\" @> $6::bigint[]\n        and (select count(*) from quick)<$7\n      order by \"c\".\"row_id\" limit $8\n    )\n    select row_id from quick where (select count(*) from quick)=$9\n    union all select row_id from fallback\n  )) order by \"native_verify_main\".\"customers\".\"id\" asc limit $10"
+            ]
+          },
+          {
+            "totalMs": 11.317999999999984,
+            "sqlMs": 3.736799999999903,
+            "sqlCalls": 1,
+            "candidates": 27,
+            "returned": 20,
+            "sql": [
+              "select \"id\", \"scope_id\", \"name_ct\", \"phone_ct\", \"address_ct\", \"memo_ct\", \"email_ct\", \"company_ct\" from \"native_verify_main\".\"customers\" where (\"native_verify_main\".\"customers\".\"scope_id\" = $1 and \"customers\".\"id\" in (\n    with sample as materialized (\n      select \"row_id\",\"tokens_792d75cf01821d67\" from \"native_verify_main\".\"customers_seal_index\" as \"c\"\n      where \"c\".\"scope_id\"=$2 order by \"c\".\"row_id\" limit 256\n    ), quick as materialized (\n      select \"c\".\"row_id\" from sample as \"c\" where \"c\".\"tokens_792d75cf01821d67\" @> $3::bigint[] order by \"c\".\"row_id\" limit $4\n    ), fallback as materialized (\n      select \"c\".\"row_id\" from \"native_verify_main\".\"customers_seal_index\" as \"c\"\n      where \"c\".\"scope_id\"=$5 and \"c\".\"tokens_792d75cf01821d67\" @> $6::bigint[]\n        and (select count(*) from quick)<$7\n      order by \"c\".\"row_id\" limit $8\n    )\n    select row_id from quick where (select count(*) from quick)=$9\n    union all select row_id from fallback\n  )) order by \"native_verify_main\".\"customers\".\"id\" asc limit $10"
+            ]
+          },
+          {
+            "totalMs": 10.387499999999818,
+            "sqlMs": 3.5844999999999345,
+            "sqlCalls": 1,
+            "candidates": 27,
+            "returned": 20,
+            "sql": [
+              "select \"id\", \"scope_id\", \"name_ct\", \"phone_ct\", \"address_ct\", \"memo_ct\", \"email_ct\", \"company_ct\" from \"native_verify_main\".\"customers\" where (\"native_verify_main\".\"customers\".\"scope_id\" = $1 and \"customers\".\"id\" in (\n    with sample as materialized (\n      select \"row_id\",\"tokens_792d75cf01821d67\" from \"native_verify_main\".\"customers_seal_index\" as \"c\"\n      where \"c\".\"scope_id\"=$2 order by \"c\".\"row_id\" limit 256\n    ), quick as materialized (\n      select \"c\".\"row_id\" from sample as \"c\" where \"c\".\"tokens_792d75cf01821d67\" @> $3::bigint[] order by \"c\".\"row_id\" limit $4\n    ), fallback as materialized (\n      select \"c\".\"row_id\" from \"native_verify_main\".\"customers_seal_index\" as \"c\"\n      where \"c\".\"scope_id\"=$5 and \"c\".\"tokens_792d75cf01821d67\" @> $6::bigint[]\n        and (select count(*) from quick)<$7\n      order by \"c\".\"row_id\" limit $8\n    )\n    select row_id from quick where (select count(*) from quick)=$9\n    union all select row_id from fallback\n  )) order by \"native_verify_main\".\"customers\".\"id\" asc limit $10"
+            ]
+          },
+          {
+            "totalMs": 11.395099999999957,
+            "sqlMs": 4.233899999999949,
+            "sqlCalls": 1,
+            "candidates": 27,
+            "returned": 20,
+            "sql": [
+              "select \"id\", \"scope_id\", \"name_ct\", \"phone_ct\", \"address_ct\", \"memo_ct\", \"email_ct\", \"company_ct\" from \"native_verify_main\".\"customers\" where (\"native_verify_main\".\"customers\".\"scope_id\" = $1 and \"customers\".\"id\" in (\n    with sample as materialized (\n      select \"row_id\",\"tokens_792d75cf01821d67\" from \"native_verify_main\".\"customers_seal_index\" as \"c\"\n      where \"c\".\"scope_id\"=$2 order by \"c\".\"row_id\" limit 256\n    ), quick as materialized (\n      select \"c\".\"row_id\" from sample as \"c\" where \"c\".\"tokens_792d75cf01821d67\" @> $3::bigint[] order by \"c\".\"row_id\" limit $4\n    ), fallback as materialized (\n      select \"c\".\"row_id\" from \"native_verify_main\".\"customers_seal_index\" as \"c\"\n      where \"c\".\"scope_id\"=$5 and \"c\".\"tokens_792d75cf01821d67\" @> $6::bigint[]\n        and (select count(*) from quick)<$7\n      order by \"c\".\"row_id\" limit $8\n    )\n    select row_id from quick where (select count(*) from quick)=$9\n    union all select row_id from fallback\n  )) order by \"native_verify_main\".\"customers\".\"id\" asc limit $10"
+            ]
+          },
+          {
+            "totalMs": 11.134000000000015,
+            "sqlMs": 3.6963000000000648,
+            "sqlCalls": 1,
+            "candidates": 27,
+            "returned": 20,
+            "sql": [
+              "select \"id\", \"scope_id\", \"name_ct\", \"phone_ct\", \"address_ct\", \"memo_ct\", \"email_ct\", \"company_ct\" from \"native_verify_main\".\"customers\" where (\"native_verify_main\".\"customers\".\"scope_id\" = $1 and \"customers\".\"id\" in (\n    with sample as materialized (\n      select \"row_id\",\"tokens_792d75cf01821d67\" from \"native_verify_main\".\"customers_seal_index\" as \"c\"\n      where \"c\".\"scope_id\"=$2 order by \"c\".\"row_id\" limit 256\n    ), quick as materialized (\n      select \"c\".\"row_id\" from sample as \"c\" where \"c\".\"tokens_792d75cf01821d67\" @> $3::bigint[] order by \"c\".\"row_id\" limit $4\n    ), fallback as materialized (\n      select \"c\".\"row_id\" from \"native_verify_main\".\"customers_seal_index\" as \"c\"\n      where \"c\".\"scope_id\"=$5 and \"c\".\"tokens_792d75cf01821d67\" @> $6::bigint[]\n        and (select count(*) from quick)<$7\n      order by \"c\".\"row_id\" limit $8\n    )\n    select row_id from quick where (select count(*) from quick)=$9\n    union all select row_id from fallback\n  )) order by \"native_verify_main\".\"customers\".\"id\" asc limit $10"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "case": "sub_long",
+      "expected": 20,
+      "summary": {
+        "plain": {
+          "totalMs": 76.9692,
+          "sqlMs": 76.83629999999994,
+          "sqlCalls": 1,
+          "candidates": 20,
+          "returned": 20
+        },
+        "product": {
+          "totalMs": 14.441199999999753,
+          "sqlMs": 6.338600000000042,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "returned": 20
+        }
+      },
+      "runs": {
+        "plain": [
+          {
+            "totalMs": 94.99330000000009,
+            "sqlMs": 94.86030000000005,
+            "sqlCalls": 1,
+            "candidates": 20,
+            "returned": 20,
+            "sql": [
+              "select id,name_plain as name,phone_plain as phone,address_plain as address,memo_plain as memo,email_plain as email,company_plain as company from bench_realistic_100k.customers\n      where scope_id=$1 and memo_norm like '%'||$2||'%' order by id limit 20"
+            ]
+          },
+          {
+            "totalMs": 77.97109999999998,
+            "sqlMs": 77.8478,
+            "sqlCalls": 1,
+            "candidates": 20,
+            "returned": 20,
+            "sql": [
+              "select id,name_plain as name,phone_plain as phone,address_plain as address,memo_plain as memo,email_plain as email,company_plain as company from bench_realistic_100k.customers\n      where scope_id=$1 and memo_norm like '%'||$2||'%' order by id limit 20"
+            ]
+          },
+          {
+            "totalMs": 67.24379999999996,
+            "sqlMs": 67.13300000000004,
+            "sqlCalls": 1,
+            "candidates": 20,
+            "returned": 20,
+            "sql": [
+              "select id,name_plain as name,phone_plain as phone,address_plain as address,memo_plain as memo,email_plain as email,company_plain as company from bench_realistic_100k.customers\n      where scope_id=$1 and memo_norm like '%'||$2||'%' order by id limit 20"
+            ]
+          },
+          {
+            "totalMs": 76.9692,
+            "sqlMs": 76.83629999999994,
+            "sqlCalls": 1,
+            "candidates": 20,
+            "returned": 20,
+            "sql": [
+              "select id,name_plain as name,phone_plain as phone,address_plain as address,memo_plain as memo,email_plain as email,company_plain as company from bench_realistic_100k.customers\n      where scope_id=$1 and memo_norm like '%'||$2||'%' order by id limit 20"
+            ]
+          },
+          {
+            "totalMs": 79.55389999999989,
+            "sqlMs": 79.40740000000005,
+            "sqlCalls": 1,
+            "candidates": 20,
+            "returned": 20,
+            "sql": [
+              "select id,name_plain as name,phone_plain as phone,address_plain as address,memo_plain as memo,email_plain as email,company_plain as company from bench_realistic_100k.customers\n      where scope_id=$1 and memo_norm like '%'||$2||'%' order by id limit 20"
+            ]
+          },
+          {
+            "totalMs": 72.16599999999994,
+            "sqlMs": 72.04099999999994,
+            "sqlCalls": 1,
+            "candidates": 20,
+            "returned": 20,
+            "sql": [
+              "select id,name_plain as name,phone_plain as phone,address_plain as address,memo_plain as memo,email_plain as email,company_plain as company from bench_realistic_100k.customers\n      where scope_id=$1 and memo_norm like '%'||$2||'%' order by id limit 20"
+            ]
+          },
+          {
+            "totalMs": 69.8291999999999,
+            "sqlMs": 69.71949999999993,
+            "sqlCalls": 1,
+            "candidates": 20,
+            "returned": 20,
+            "sql": [
+              "select id,name_plain as name,phone_plain as phone,address_plain as address,memo_plain as memo,email_plain as email,company_plain as company from bench_realistic_100k.customers\n      where scope_id=$1 and memo_norm like '%'||$2||'%' order by id limit 20"
+            ]
+          }
+        ],
+        "product": [
+          {
+            "totalMs": 15.13650000000007,
+            "sqlMs": 6.6965000000000146,
+            "sqlCalls": 1,
+            "candidates": 27,
+            "returned": 20,
+            "sql": [
+              "select \"id\", \"scope_id\", \"name_ct\", \"phone_ct\", \"address_ct\", \"memo_ct\", \"email_ct\", \"company_ct\" from \"native_verify_main\".\"customers\" where (\"native_verify_main\".\"customers\".\"scope_id\" = $1 and \"customers\".\"id\" in (\n    with sample as materialized (\n      select \"row_id\",\"tokens_a639b11c8130dcf7\" from \"native_verify_main\".\"customers_seal_index\" as \"c\"\n      where \"c\".\"scope_id\"=$2 order by \"c\".\"row_id\" limit 256\n    ), quick as materialized (\n      select \"c\".\"row_id\" from sample as \"c\" where \"c\".\"tokens_a639b11c8130dcf7\" @> $3::bigint[] order by \"c\".\"row_id\" limit $4\n    ), fallback as materialized (\n      select \"c\".\"row_id\" from \"native_verify_main\".\"customers_seal_index\" as \"c\"\n      where \"c\".\"scope_id\"=$5 and \"c\".\"tokens_a639b11c8130dcf7\" @> $6::bigint[]\n        and (select count(*) from quick)<$7\n      order by \"c\".\"row_id\" limit $8\n    )\n    select row_id from quick where (select count(*) from quick)=$9\n    union all select row_id from fallback\n  )) order by \"native_verify_main\".\"customers\".\"id\" asc limit $10"
+            ]
+          },
+          {
+            "totalMs": 14.120000000000118,
+            "sqlMs": 6.338600000000042,
+            "sqlCalls": 1,
+            "candidates": 27,
+            "returned": 20,
+            "sql": [
+              "select \"id\", \"scope_id\", \"name_ct\", \"phone_ct\", \"address_ct\", \"memo_ct\", \"email_ct\", \"company_ct\" from \"native_verify_main\".\"customers\" where (\"native_verify_main\".\"customers\".\"scope_id\" = $1 and \"customers\".\"id\" in (\n    with sample as materialized (\n      select \"row_id\",\"tokens_a639b11c8130dcf7\" from \"native_verify_main\".\"customers_seal_index\" as \"c\"\n      where \"c\".\"scope_id\"=$2 order by \"c\".\"row_id\" limit 256\n    ), quick as materialized (\n      select \"c\".\"row_id\" from sample as \"c\" where \"c\".\"tokens_a639b11c8130dcf7\" @> $3::bigint[] order by \"c\".\"row_id\" limit $4\n    ), fallback as materialized (\n      select \"c\".\"row_id\" from \"native_verify_main\".\"customers_seal_index\" as \"c\"\n      where \"c\".\"scope_id\"=$5 and \"c\".\"tokens_a639b11c8130dcf7\" @> $6::bigint[]\n        and (select count(*) from quick)<$7\n      order by \"c\".\"row_id\" limit $8\n    )\n    select row_id from quick where (select count(*) from quick)=$9\n    union all select row_id from fallback\n  )) order by \"native_verify_main\".\"customers\".\"id\" asc limit $10"
+            ]
+          },
+          {
+            "totalMs": 13.45640000000003,
+            "sqlMs": 5.953899999999976,
+            "sqlCalls": 1,
+            "candidates": 27,
+            "returned": 20,
+            "sql": [
+              "select \"id\", \"scope_id\", \"name_ct\", \"phone_ct\", \"address_ct\", \"memo_ct\", \"email_ct\", \"company_ct\" from \"native_verify_main\".\"customers\" where (\"native_verify_main\".\"customers\".\"scope_id\" = $1 and \"customers\".\"id\" in (\n    with sample as materialized (\n      select \"row_id\",\"tokens_a639b11c8130dcf7\" from \"native_verify_main\".\"customers_seal_index\" as \"c\"\n      where \"c\".\"scope_id\"=$2 order by \"c\".\"row_id\" limit 256\n    ), quick as materialized (\n      select \"c\".\"row_id\" from sample as \"c\" where \"c\".\"tokens_a639b11c8130dcf7\" @> $3::bigint[] order by \"c\".\"row_id\" limit $4\n    ), fallback as materialized (\n      select \"c\".\"row_id\" from \"native_verify_main\".\"customers_seal_index\" as \"c\"\n      where \"c\".\"scope_id\"=$5 and \"c\".\"tokens_a639b11c8130dcf7\" @> $6::bigint[]\n        and (select count(*) from quick)<$7\n      order by \"c\".\"row_id\" limit $8\n    )\n    select row_id from quick where (select count(*) from quick)=$9\n    union all select row_id from fallback\n  )) order by \"native_verify_main\".\"customers\".\"id\" asc limit $10"
+            ]
+          },
+          {
+            "totalMs": 12.870400000000018,
+            "sqlMs": 6.061500000000024,
+            "sqlCalls": 1,
+            "candidates": 27,
+            "returned": 20,
+            "sql": [
+              "select \"id\", \"scope_id\", \"name_ct\", \"phone_ct\", \"address_ct\", \"memo_ct\", \"email_ct\", \"company_ct\" from \"native_verify_main\".\"customers\" where (\"native_verify_main\".\"customers\".\"scope_id\" = $1 and \"customers\".\"id\" in (\n    with sample as materialized (\n      select \"row_id\",\"tokens_a639b11c8130dcf7\" from \"native_verify_main\".\"customers_seal_index\" as \"c\"\n      where \"c\".\"scope_id\"=$2 order by \"c\".\"row_id\" limit 256\n    ), quick as materialized (\n      select \"c\".\"row_id\" from sample as \"c\" where \"c\".\"tokens_a639b11c8130dcf7\" @> $3::bigint[] order by \"c\".\"row_id\" limit $4\n    ), fallback as materialized (\n      select \"c\".\"row_id\" from \"native_verify_main\".\"customers_seal_index\" as \"c\"\n      where \"c\".\"scope_id\"=$5 and \"c\".\"tokens_a639b11c8130dcf7\" @> $6::bigint[]\n        and (select count(*) from quick)<$7\n      order by \"c\".\"row_id\" limit $8\n    )\n    select row_id from quick where (select count(*) from quick)=$9\n    union all select row_id from fallback\n  )) order by \"native_verify_main\".\"customers\".\"id\" asc limit $10"
+            ]
+          },
+          {
+            "totalMs": 15.112300000000005,
+            "sqlMs": 6.815599999999904,
+            "sqlCalls": 1,
+            "candidates": 27,
+            "returned": 20,
+            "sql": [
+              "select \"id\", \"scope_id\", \"name_ct\", \"phone_ct\", \"address_ct\", \"memo_ct\", \"email_ct\", \"company_ct\" from \"native_verify_main\".\"customers\" where (\"native_verify_main\".\"customers\".\"scope_id\" = $1 and \"customers\".\"id\" in (\n    with sample as materialized (\n      select \"row_id\",\"tokens_a639b11c8130dcf7\" from \"native_verify_main\".\"customers_seal_index\" as \"c\"\n      where \"c\".\"scope_id\"=$2 order by \"c\".\"row_id\" limit 256\n    ), quick as materialized (\n      select \"c\".\"row_id\" from sample as \"c\" where \"c\".\"tokens_a639b11c8130dcf7\" @> $3::bigint[] order by \"c\".\"row_id\" limit $4\n    ), fallback as materialized (\n      select \"c\".\"row_id\" from \"native_verify_main\".\"customers_seal_index\" as \"c\"\n      where \"c\".\"scope_id\"=$5 and \"c\".\"tokens_a639b11c8130dcf7\" @> $6::bigint[]\n        and (select count(*) from quick)<$7\n      order by \"c\".\"row_id\" limit $8\n    )\n    select row_id from quick where (select count(*) from quick)=$9\n    union all select row_id from fallback\n  )) order by \"native_verify_main\".\"customers\".\"id\" asc limit $10"
+            ]
+          },
+          {
+            "totalMs": 16.121199999999817,
+            "sqlMs": 7.498600000000124,
+            "sqlCalls": 1,
+            "candidates": 27,
+            "returned": 20,
+            "sql": [
+              "select \"id\", \"scope_id\", \"name_ct\", \"phone_ct\", \"address_ct\", \"memo_ct\", \"email_ct\", \"company_ct\" from \"native_verify_main\".\"customers\" where (\"native_verify_main\".\"customers\".\"scope_id\" = $1 and \"customers\".\"id\" in (\n    with sample as materialized (\n      select \"row_id\",\"tokens_a639b11c8130dcf7\" from \"native_verify_main\".\"customers_seal_index\" as \"c\"\n      where \"c\".\"scope_id\"=$2 order by \"c\".\"row_id\" limit 256\n    ), quick as materialized (\n      select \"c\".\"row_id\" from sample as \"c\" where \"c\".\"tokens_a639b11c8130dcf7\" @> $3::bigint[] order by \"c\".\"row_id\" limit $4\n    ), fallback as materialized (\n      select \"c\".\"row_id\" from \"native_verify_main\".\"customers_seal_index\" as \"c\"\n      where \"c\".\"scope_id\"=$5 and \"c\".\"tokens_a639b11c8130dcf7\" @> $6::bigint[]\n        and (select count(*) from quick)<$7\n      order by \"c\".\"row_id\" limit $8\n    )\n    select row_id from quick where (select count(*) from quick)=$9\n    union all select row_id from fallback\n  )) order by \"native_verify_main\".\"customers\".\"id\" asc limit $10"
+            ]
+          },
+          {
+            "totalMs": 14.441199999999753,
+            "sqlMs": 6.143299999999954,
+            "sqlCalls": 1,
+            "candidates": 27,
+            "returned": 20,
+            "sql": [
+              "select \"id\", \"scope_id\", \"name_ct\", \"phone_ct\", \"address_ct\", \"memo_ct\", \"email_ct\", \"company_ct\" from \"native_verify_main\".\"customers\" where (\"native_verify_main\".\"customers\".\"scope_id\" = $1 and \"customers\".\"id\" in (\n    with sample as materialized (\n      select \"row_id\",\"tokens_a639b11c8130dcf7\" from \"native_verify_main\".\"customers_seal_index\" as \"c\"\n      where \"c\".\"scope_id\"=$2 order by \"c\".\"row_id\" limit 256\n    ), quick as materialized (\n      select \"c\".\"row_id\" from sample as \"c\" where \"c\".\"tokens_a639b11c8130dcf7\" @> $3::bigint[] order by \"c\".\"row_id\" limit $4\n    ), fallback as materialized (\n      select \"c\".\"row_id\" from \"native_verify_main\".\"customers_seal_index\" as \"c\"\n      where \"c\".\"scope_id\"=$5 and \"c\".\"tokens_a639b11c8130dcf7\" @> $6::bigint[]\n        and (select count(*) from quick)<$7\n      order by \"c\".\"row_id\" limit $8\n    )\n    select row_id from quick where (select count(*) from quick)=$9\n    union all select row_id from fallback\n  )) order by \"native_verify_main\".\"customers\".\"id\" asc limit $10"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "case": "sub_name_suffix",
+      "expected": 1,
+      "summary": {
+        "plain": {
+          "totalMs": 0.43360000000029686,
+          "sqlMs": 0.3876999999997679,
+          "sqlCalls": 1,
+          "candidates": 1,
+          "returned": 1
+        },
+        "product": {
+          "totalMs": 3.689300000000003,
+          "sqlMs": 2.094500000000153,
+          "sqlCalls": 1,
+          "candidates": 1,
+          "returned": 1
+        }
+      },
+      "runs": {
+        "plain": [
+          {
+            "totalMs": 0.3865000000000691,
+            "sqlMs": 0.34369999999989886,
+            "sqlCalls": 1,
+            "candidates": 1,
+            "returned": 1,
+            "sql": [
+              "select id,name_plain as name,phone_plain as phone,address_plain as address,memo_plain as memo,email_plain as email,company_plain as company from bench_realistic_100k.customers\n      where scope_id=$1 and name_norm like '%'||$2||'%' order by id limit 20"
+            ]
+          },
+          {
+            "totalMs": 0.5189999999997781,
+            "sqlMs": 0.4697000000001026,
+            "sqlCalls": 1,
+            "candidates": 1,
+            "returned": 1,
+            "sql": [
+              "select id,name_plain as name,phone_plain as phone,address_plain as address,memo_plain as memo,email_plain as email,company_plain as company from bench_realistic_100k.customers\n      where scope_id=$1 and name_norm like '%'||$2||'%' order by id limit 20"
+            ]
+          },
+          {
+            "totalMs": 0.4942000000000917,
+            "sqlMs": 0.4535999999998239,
+            "sqlCalls": 1,
+            "candidates": 1,
+            "returned": 1,
+            "sql": [
+              "select id,name_plain as name,phone_plain as phone,address_plain as address,memo_plain as memo,email_plain as email,company_plain as company from bench_realistic_100k.customers\n      where scope_id=$1 and name_norm like '%'||$2||'%' order by id limit 20"
+            ]
+          },
+          {
+            "totalMs": 0.43360000000029686,
+            "sqlMs": 0.3876999999997679,
+            "sqlCalls": 1,
+            "candidates": 1,
+            "returned": 1,
+            "sql": [
+              "select id,name_plain as name,phone_plain as phone,address_plain as address,memo_plain as memo,email_plain as email,company_plain as company from bench_realistic_100k.customers\n      where scope_id=$1 and name_norm like '%'||$2||'%' order by id limit 20"
+            ]
+          },
+          {
+            "totalMs": 0.3301000000001295,
+            "sqlMs": 0.29440000000022337,
+            "sqlCalls": 1,
+            "candidates": 1,
+            "returned": 1,
+            "sql": [
+              "select id,name_plain as name,phone_plain as phone,address_plain as address,memo_plain as memo,email_plain as email,company_plain as company from bench_realistic_100k.customers\n      where scope_id=$1 and name_norm like '%'||$2||'%' order by id limit 20"
+            ]
+          },
+          {
+            "totalMs": 0.645799999999781,
+            "sqlMs": 0.5614000000000487,
+            "sqlCalls": 1,
+            "candidates": 1,
+            "returned": 1,
+            "sql": [
+              "select id,name_plain as name,phone_plain as phone,address_plain as address,memo_plain as memo,email_plain as email,company_plain as company from bench_realistic_100k.customers\n      where scope_id=$1 and name_norm like '%'||$2||'%' order by id limit 20"
+            ]
+          },
+          {
+            "totalMs": 0.3908999999998741,
+            "sqlMs": 0.33359999999993306,
+            "sqlCalls": 1,
+            "candidates": 1,
+            "returned": 1,
+            "sql": [
+              "select id,name_plain as name,phone_plain as phone,address_plain as address,memo_plain as memo,email_plain as email,company_plain as company from bench_realistic_100k.customers\n      where scope_id=$1 and name_norm like '%'||$2||'%' order by id limit 20"
+            ]
+          }
+        ],
+        "product": [
+          {
+            "totalMs": 2.982600000000275,
+            "sqlMs": 1.659900000000107,
+            "sqlCalls": 1,
+            "candidates": 1,
+            "returned": 1,
+            "sql": [
+              "select \"id\", \"scope_id\", \"name_ct\", \"phone_ct\", \"address_ct\", \"memo_ct\", \"email_ct\", \"company_ct\" from \"native_verify_main\".\"customers\" where (\"native_verify_main\".\"customers\".\"scope_id\" = $1 and \"customers\".\"id\" in (\n    with sample as materialized (\n      select \"row_id\",\"tokens_f289b89d86c7086a\" from \"native_verify_main\".\"customers_seal_index\" as \"c\"\n      where \"c\".\"scope_id\"=$2 order by \"c\".\"row_id\" limit 256\n    ), quick as materialized (\n      select \"c\".\"row_id\" from sample as \"c\" where \"c\".\"tokens_f289b89d86c7086a\" @> $3::bigint[] order by \"c\".\"row_id\" limit $4\n    ), fallback as materialized (\n      select \"c\".\"row_id\" from \"native_verify_main\".\"customers_seal_index\" as \"c\"\n      where \"c\".\"scope_id\"=$5 and \"c\".\"tokens_f289b89d86c7086a\" @> $6::bigint[]\n        and (select count(*) from quick)<$7\n      order by \"c\".\"row_id\" limit $8\n    )\n    select row_id from quick where (select count(*) from quick)=$9\n    union all select row_id from fallback\n  )) order by \"native_verify_main\".\"customers\".\"id\" asc limit $10"
+            ]
+          },
+          {
+            "totalMs": 3.693200000000161,
+            "sqlMs": 2.1968000000001666,
+            "sqlCalls": 1,
+            "candidates": 1,
+            "returned": 1,
+            "sql": [
+              "select \"id\", \"scope_id\", \"name_ct\", \"phone_ct\", \"address_ct\", \"memo_ct\", \"email_ct\", \"company_ct\" from \"native_verify_main\".\"customers\" where (\"native_verify_main\".\"customers\".\"scope_id\" = $1 and \"customers\".\"id\" in (\n    with sample as materialized (\n      select \"row_id\",\"tokens_f289b89d86c7086a\" from \"native_verify_main\".\"customers_seal_index\" as \"c\"\n      where \"c\".\"scope_id\"=$2 order by \"c\".\"row_id\" limit 256\n    ), quick as materialized (\n      select \"c\".\"row_id\" from sample as \"c\" where \"c\".\"tokens_f289b89d86c7086a\" @> $3::bigint[] order by \"c\".\"row_id\" limit $4\n    ), fallback as materialized (\n      select \"c\".\"row_id\" from \"native_verify_main\".\"customers_seal_index\" as \"c\"\n      where \"c\".\"scope_id\"=$5 and \"c\".\"tokens_f289b89d86c7086a\" @> $6::bigint[]\n        and (select count(*) from quick)<$7\n      order by \"c\".\"row_id\" limit $8\n    )\n    select row_id from quick where (select count(*) from quick)=$9\n    union all select row_id from fallback\n  )) order by \"native_verify_main\".\"customers\".\"id\" asc limit $10"
+            ]
+          },
+          {
+            "totalMs": 3.8886999999999716,
+            "sqlMs": 2.2112999999999374,
+            "sqlCalls": 1,
+            "candidates": 1,
+            "returned": 1,
+            "sql": [
+              "select \"id\", \"scope_id\", \"name_ct\", \"phone_ct\", \"address_ct\", \"memo_ct\", \"email_ct\", \"company_ct\" from \"native_verify_main\".\"customers\" where (\"native_verify_main\".\"customers\".\"scope_id\" = $1 and \"customers\".\"id\" in (\n    with sample as materialized (\n      select \"row_id\",\"tokens_f289b89d86c7086a\" from \"native_verify_main\".\"customers_seal_index\" as \"c\"\n      where \"c\".\"scope_id\"=$2 order by \"c\".\"row_id\" limit 256\n    ), quick as materialized (\n      select \"c\".\"row_id\" from sample as \"c\" where \"c\".\"tokens_f289b89d86c7086a\" @> $3::bigint[] order by \"c\".\"row_id\" limit $4\n    ), fallback as materialized (\n      select \"c\".\"row_id\" from \"native_verify_main\".\"customers_seal_index\" as \"c\"\n      where \"c\".\"scope_id\"=$5 and \"c\".\"tokens_f289b89d86c7086a\" @> $6::bigint[]\n        and (select count(*) from quick)<$7\n      order by \"c\".\"row_id\" limit $8\n    )\n    select row_id from quick where (select count(*) from quick)=$9\n    union all select row_id from fallback\n  )) order by \"native_verify_main\".\"customers\".\"id\" asc limit $10"
+            ]
+          },
+          {
+            "totalMs": 3.369000000000142,
+            "sqlMs": 1.9911000000001877,
+            "sqlCalls": 1,
+            "candidates": 1,
+            "returned": 1,
+            "sql": [
+              "select \"id\", \"scope_id\", \"name_ct\", \"phone_ct\", \"address_ct\", \"memo_ct\", \"email_ct\", \"company_ct\" from \"native_verify_main\".\"customers\" where (\"native_verify_main\".\"customers\".\"scope_id\" = $1 and \"customers\".\"id\" in (\n    with sample as materialized (\n      select \"row_id\",\"tokens_f289b89d86c7086a\" from \"native_verify_main\".\"customers_seal_index\" as \"c\"\n      where \"c\".\"scope_id\"=$2 order by \"c\".\"row_id\" limit 256\n    ), quick as materialized (\n      select \"c\".\"row_id\" from sample as \"c\" where \"c\".\"tokens_f289b89d86c7086a\" @> $3::bigint[] order by \"c\".\"row_id\" limit $4\n    ), fallback as materialized (\n      select \"c\".\"row_id\" from \"native_verify_main\".\"customers_seal_index\" as \"c\"\n      where \"c\".\"scope_id\"=$5 and \"c\".\"tokens_f289b89d86c7086a\" @> $6::bigint[]\n        and (select count(*) from quick)<$7\n      order by \"c\".\"row_id\" limit $8\n    )\n    select row_id from quick where (select count(*) from quick)=$9\n    union all select row_id from fallback\n  )) order by \"native_verify_main\".\"customers\".\"id\" asc limit $10"
+            ]
+          },
+          {
+            "totalMs": 3.689300000000003,
+            "sqlMs": 2.094500000000153,
+            "sqlCalls": 1,
+            "candidates": 1,
+            "returned": 1,
+            "sql": [
+              "select \"id\", \"scope_id\", \"name_ct\", \"phone_ct\", \"address_ct\", \"memo_ct\", \"email_ct\", \"company_ct\" from \"native_verify_main\".\"customers\" where (\"native_verify_main\".\"customers\".\"scope_id\" = $1 and \"customers\".\"id\" in (\n    with sample as materialized (\n      select \"row_id\",\"tokens_f289b89d86c7086a\" from \"native_verify_main\".\"customers_seal_index\" as \"c\"\n      where \"c\".\"scope_id\"=$2 order by \"c\".\"row_id\" limit 256\n    ), quick as materialized (\n      select \"c\".\"row_id\" from sample as \"c\" where \"c\".\"tokens_f289b89d86c7086a\" @> $3::bigint[] order by \"c\".\"row_id\" limit $4\n    ), fallback as materialized (\n      select \"c\".\"row_id\" from \"native_verify_main\".\"customers_seal_index\" as \"c\"\n      where \"c\".\"scope_id\"=$5 and \"c\".\"tokens_f289b89d86c7086a\" @> $6::bigint[]\n        and (select count(*) from quick)<$7\n      order by \"c\".\"row_id\" limit $8\n    )\n    select row_id from quick where (select count(*) from quick)=$9\n    union all select row_id from fallback\n  )) order by \"native_verify_main\".\"customers\".\"id\" asc limit $10"
+            ]
+          },
+          {
+            "totalMs": 3.7789999999999964,
+            "sqlMs": 2.2009000000002743,
+            "sqlCalls": 1,
+            "candidates": 1,
+            "returned": 1,
+            "sql": [
+              "select \"id\", \"scope_id\", \"name_ct\", \"phone_ct\", \"address_ct\", \"memo_ct\", \"email_ct\", \"company_ct\" from \"native_verify_main\".\"customers\" where (\"native_verify_main\".\"customers\".\"scope_id\" = $1 and \"customers\".\"id\" in (\n    with sample as materialized (\n      select \"row_id\",\"tokens_f289b89d86c7086a\" from \"native_verify_main\".\"customers_seal_index\" as \"c\"\n      where \"c\".\"scope_id\"=$2 order by \"c\".\"row_id\" limit 256\n    ), quick as materialized (\n      select \"c\".\"row_id\" from sample as \"c\" where \"c\".\"tokens_f289b89d86c7086a\" @> $3::bigint[] order by \"c\".\"row_id\" limit $4\n    ), fallback as materialized (\n      select \"c\".\"row_id\" from \"native_verify_main\".\"customers_seal_index\" as \"c\"\n      where \"c\".\"scope_id\"=$5 and \"c\".\"tokens_f289b89d86c7086a\" @> $6::bigint[]\n        and (select count(*) from quick)<$7\n      order by \"c\".\"row_id\" limit $8\n    )\n    select row_id from quick where (select count(*) from quick)=$9\n    union all select row_id from fallback\n  )) order by \"native_verify_main\".\"customers\".\"id\" asc limit $10"
+            ]
+          },
+          {
+            "totalMs": 3.4608000000002903,
+            "sqlMs": 2.0145000000002256,
+            "sqlCalls": 1,
+            "candidates": 1,
+            "returned": 1,
+            "sql": [
+              "select \"id\", \"scope_id\", \"name_ct\", \"phone_ct\", \"address_ct\", \"memo_ct\", \"email_ct\", \"company_ct\" from \"native_verify_main\".\"customers\" where (\"native_verify_main\".\"customers\".\"scope_id\" = $1 and \"customers\".\"id\" in (\n    with sample as materialized (\n      select \"row_id\",\"tokens_f289b89d86c7086a\" from \"native_verify_main\".\"customers_seal_index\" as \"c\"\n      where \"c\".\"scope_id\"=$2 order by \"c\".\"row_id\" limit 256\n    ), quick as materialized (\n      select \"c\".\"row_id\" from sample as \"c\" where \"c\".\"tokens_f289b89d86c7086a\" @> $3::bigint[] order by \"c\".\"row_id\" limit $4\n    ), fallback as materialized (\n      select \"c\".\"row_id\" from \"native_verify_main\".\"customers_seal_index\" as \"c\"\n      where \"c\".\"scope_id\"=$5 and \"c\".\"tokens_f289b89d86c7086a\" @> $6::bigint[]\n        and (select count(*) from quick)<$7\n      order by \"c\".\"row_id\" limit $8\n    )\n    select row_id from quick where (select count(*) from quick)=$9\n    union all select row_id from fallback\n  )) order by \"native_verify_main\".\"customers\".\"id\" asc limit $10"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "case": "starts",
+      "expected": 20,
+      "summary": {
+        "plain": {
+          "totalMs": 0.6098999999999251,
+          "sqlMs": 0.5628999999998996,
+          "sqlCalls": 1,
+          "candidates": 20,
+          "returned": 20
+        },
+        "product": {
+          "totalMs": 6.805899999999838,
+          "sqlMs": 0.9614000000001397,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "returned": 20
+        }
+      },
+      "runs": {
+        "plain": [
+          {
+            "totalMs": 0.6098999999999251,
+            "sqlMs": 0.5628999999998996,
+            "sqlCalls": 1,
+            "candidates": 20,
+            "returned": 20,
+            "sql": [
+              "select id,name_plain as name,phone_plain as phone,address_plain as address,memo_plain as memo,email_plain as email,company_plain as company from bench_realistic_100k.customers\n      where scope_id=$1 and address_norm like $2||'%' order by id limit 20"
+            ]
+          },
+          {
+            "totalMs": 0.7855999999997039,
+            "sqlMs": 0.7294999999999163,
+            "sqlCalls": 1,
+            "candidates": 20,
+            "returned": 20,
+            "sql": [
+              "select id,name_plain as name,phone_plain as phone,address_plain as address,memo_plain as memo,email_plain as email,company_plain as company from bench_realistic_100k.customers\n      where scope_id=$1 and address_norm like $2||'%' order by id limit 20"
+            ]
+          },
+          {
+            "totalMs": 0.4443999999998596,
+            "sqlMs": 0.4070000000001528,
+            "sqlCalls": 1,
+            "candidates": 20,
+            "returned": 20,
+            "sql": [
+              "select id,name_plain as name,phone_plain as phone,address_plain as address,memo_plain as memo,email_plain as email,company_plain as company from bench_realistic_100k.customers\n      where scope_id=$1 and address_norm like $2||'%' order by id limit 20"
+            ]
+          },
+          {
+            "totalMs": 0.6422000000002299,
+            "sqlMs": 0.5925000000002001,
+            "sqlCalls": 1,
+            "candidates": 20,
+            "returned": 20,
+            "sql": [
+              "select id,name_plain as name,phone_plain as phone,address_plain as address,memo_plain as memo,email_plain as email,company_plain as company from bench_realistic_100k.customers\n      where scope_id=$1 and address_norm like $2||'%' order by id limit 20"
+            ]
+          },
+          {
+            "totalMs": 0.40319999999974243,
+            "sqlMs": 0.3667000000000371,
+            "sqlCalls": 1,
+            "candidates": 20,
+            "returned": 20,
+            "sql": [
+              "select id,name_plain as name,phone_plain as phone,address_plain as address,memo_plain as memo,email_plain as email,company_plain as company from bench_realistic_100k.customers\n      where scope_id=$1 and address_norm like $2||'%' order by id limit 20"
+            ]
+          },
+          {
+            "totalMs": 0.7210000000000036,
+            "sqlMs": 0.6579999999999018,
+            "sqlCalls": 1,
+            "candidates": 20,
+            "returned": 20,
+            "sql": [
+              "select id,name_plain as name,phone_plain as phone,address_plain as address,memo_plain as memo,email_plain as email,company_plain as company from bench_realistic_100k.customers\n      where scope_id=$1 and address_norm like $2||'%' order by id limit 20"
+            ]
+          },
+          {
+            "totalMs": 0.3969999999999345,
+            "sqlMs": 0.3605999999999767,
+            "sqlCalls": 1,
+            "candidates": 20,
+            "returned": 20,
+            "sql": [
+              "select id,name_plain as name,phone_plain as phone,address_plain as address,memo_plain as memo,email_plain as email,company_plain as company from bench_realistic_100k.customers\n      where scope_id=$1 and address_norm like $2||'%' order by id limit 20"
+            ]
+          }
+        ],
+        "product": [
+          {
+            "totalMs": 6.732300000000123,
+            "sqlMs": 0.9425000000001091,
+            "sqlCalls": 1,
+            "candidates": 27,
+            "returned": 20,
+            "sql": [
+              "select \"id\", \"scope_id\", \"name_ct\", \"phone_ct\", \"address_ct\", \"memo_ct\", \"email_ct\", \"company_ct\" from \"native_verify_main\".\"customers\" where (\"native_verify_main\".\"customers\".\"scope_id\" = $1 and \"customers\".\"id\" in (\n    with sample as materialized (\n      select \"row_id\",\"tokens_792d75cf01821d67\" from \"native_verify_main\".\"customers_seal_index\" as \"c\"\n      where \"c\".\"scope_id\"=$2 order by \"c\".\"row_id\" limit 256\n    ), quick as materialized (\n      select \"c\".\"row_id\" from sample as \"c\" where \"c\".\"tokens_792d75cf01821d67\" @> $3::bigint[] order by \"c\".\"row_id\" limit $4\n    ), fallback as materialized (\n      select \"c\".\"row_id\" from \"native_verify_main\".\"customers_seal_index\" as \"c\"\n      where \"c\".\"scope_id\"=$5 and \"c\".\"tokens_792d75cf01821d67\" @> $6::bigint[]\n        and (select count(*) from quick)<$7\n      order by \"c\".\"row_id\" limit $8\n    )\n    select row_id from quick where (select count(*) from quick)=$9\n    union all select row_id from fallback\n  )) order by \"native_verify_main\".\"customers\".\"id\" asc limit $10"
+            ]
+          },
+          {
+            "totalMs": 6.951999999999771,
+            "sqlMs": 1.0834999999997308,
+            "sqlCalls": 1,
+            "candidates": 27,
+            "returned": 20,
+            "sql": [
+              "select \"id\", \"scope_id\", \"name_ct\", \"phone_ct\", \"address_ct\", \"memo_ct\", \"email_ct\", \"company_ct\" from \"native_verify_main\".\"customers\" where (\"native_verify_main\".\"customers\".\"scope_id\" = $1 and \"customers\".\"id\" in (\n    with sample as materialized (\n      select \"row_id\",\"tokens_792d75cf01821d67\" from \"native_verify_main\".\"customers_seal_index\" as \"c\"\n      where \"c\".\"scope_id\"=$2 order by \"c\".\"row_id\" limit 256\n    ), quick as materialized (\n      select \"c\".\"row_id\" from sample as \"c\" where \"c\".\"tokens_792d75cf01821d67\" @> $3::bigint[] order by \"c\".\"row_id\" limit $4\n    ), fallback as materialized (\n      select \"c\".\"row_id\" from \"native_verify_main\".\"customers_seal_index\" as \"c\"\n      where \"c\".\"scope_id\"=$5 and \"c\".\"tokens_792d75cf01821d67\" @> $6::bigint[]\n        and (select count(*) from quick)<$7\n      order by \"c\".\"row_id\" limit $8\n    )\n    select row_id from quick where (select count(*) from quick)=$9\n    union all select row_id from fallback\n  )) order by \"native_verify_main\".\"customers\".\"id\" asc limit $10"
+            ]
+          },
+          {
+            "totalMs": 6.76319999999987,
+            "sqlMs": 0.9614000000001397,
+            "sqlCalls": 1,
+            "candidates": 27,
+            "returned": 20,
+            "sql": [
+              "select \"id\", \"scope_id\", \"name_ct\", \"phone_ct\", \"address_ct\", \"memo_ct\", \"email_ct\", \"company_ct\" from \"native_verify_main\".\"customers\" where (\"native_verify_main\".\"customers\".\"scope_id\" = $1 and \"customers\".\"id\" in (\n    with sample as materialized (\n      select \"row_id\",\"tokens_792d75cf01821d67\" from \"native_verify_main\".\"customers_seal_index\" as \"c\"\n      where \"c\".\"scope_id\"=$2 order by \"c\".\"row_id\" limit 256\n    ), quick as materialized (\n      select \"c\".\"row_id\" from sample as \"c\" where \"c\".\"tokens_792d75cf01821d67\" @> $3::bigint[] order by \"c\".\"row_id\" limit $4\n    ), fallback as materialized (\n      select \"c\".\"row_id\" from \"native_verify_main\".\"customers_seal_index\" as \"c\"\n      where \"c\".\"scope_id\"=$5 and \"c\".\"tokens_792d75cf01821d67\" @> $6::bigint[]\n        and (select count(*) from quick)<$7\n      order by \"c\".\"row_id\" limit $8\n    )\n    select row_id from quick where (select count(*) from quick)=$9\n    union all select row_id from fallback\n  )) order by \"native_verify_main\".\"customers\".\"id\" asc limit $10"
+            ]
+          },
+          {
+            "totalMs": 6.805899999999838,
+            "sqlMs": 1.134900000000016,
+            "sqlCalls": 1,
+            "candidates": 27,
+            "returned": 20,
+            "sql": [
+              "select \"id\", \"scope_id\", \"name_ct\", \"phone_ct\", \"address_ct\", \"memo_ct\", \"email_ct\", \"company_ct\" from \"native_verify_main\".\"customers\" where (\"native_verify_main\".\"customers\".\"scope_id\" = $1 and \"customers\".\"id\" in (\n    with sample as materialized (\n      select \"row_id\",\"tokens_792d75cf01821d67\" from \"native_verify_main\".\"customers_seal_index\" as \"c\"\n      where \"c\".\"scope_id\"=$2 order by \"c\".\"row_id\" limit 256\n    ), quick as materialized (\n      select \"c\".\"row_id\" from sample as \"c\" where \"c\".\"tokens_792d75cf01821d67\" @> $3::bigint[] order by \"c\".\"row_id\" limit $4\n    ), fallback as materialized (\n      select \"c\".\"row_id\" from \"native_verify_main\".\"customers_seal_index\" as \"c\"\n      where \"c\".\"scope_id\"=$5 and \"c\".\"tokens_792d75cf01821d67\" @> $6::bigint[]\n        and (select count(*) from quick)<$7\n      order by \"c\".\"row_id\" limit $8\n    )\n    select row_id from quick where (select count(*) from quick)=$9\n    union all select row_id from fallback\n  )) order by \"native_verify_main\".\"customers\".\"id\" asc limit $10"
+            ]
+          },
+          {
+            "totalMs": 6.659799999999905,
+            "sqlMs": 0.9206999999996697,
+            "sqlCalls": 1,
+            "candidates": 27,
+            "returned": 20,
+            "sql": [
+              "select \"id\", \"scope_id\", \"name_ct\", \"phone_ct\", \"address_ct\", \"memo_ct\", \"email_ct\", \"company_ct\" from \"native_verify_main\".\"customers\" where (\"native_verify_main\".\"customers\".\"scope_id\" = $1 and \"customers\".\"id\" in (\n    with sample as materialized (\n      select \"row_id\",\"tokens_792d75cf01821d67\" from \"native_verify_main\".\"customers_seal_index\" as \"c\"\n      where \"c\".\"scope_id\"=$2 order by \"c\".\"row_id\" limit 256\n    ), quick as materialized (\n      select \"c\".\"row_id\" from sample as \"c\" where \"c\".\"tokens_792d75cf01821d67\" @> $3::bigint[] order by \"c\".\"row_id\" limit $4\n    ), fallback as materialized (\n      select \"c\".\"row_id\" from \"native_verify_main\".\"customers_seal_index\" as \"c\"\n      where \"c\".\"scope_id\"=$5 and \"c\".\"tokens_792d75cf01821d67\" @> $6::bigint[]\n        and (select count(*) from quick)<$7\n      order by \"c\".\"row_id\" limit $8\n    )\n    select row_id from quick where (select count(*) from quick)=$9\n    union all select row_id from fallback\n  )) order by \"native_verify_main\".\"customers\".\"id\" asc limit $10"
+            ]
+          },
+          {
+            "totalMs": 7.212700000000041,
+            "sqlMs": 1.3382999999998901,
+            "sqlCalls": 1,
+            "candidates": 27,
+            "returned": 20,
+            "sql": [
+              "select \"id\", \"scope_id\", \"name_ct\", \"phone_ct\", \"address_ct\", \"memo_ct\", \"email_ct\", \"company_ct\" from \"native_verify_main\".\"customers\" where (\"native_verify_main\".\"customers\".\"scope_id\" = $1 and \"customers\".\"id\" in (\n    with sample as materialized (\n      select \"row_id\",\"tokens_792d75cf01821d67\" from \"native_verify_main\".\"customers_seal_index\" as \"c\"\n      where \"c\".\"scope_id\"=$2 order by \"c\".\"row_id\" limit 256\n    ), quick as materialized (\n      select \"c\".\"row_id\" from sample as \"c\" where \"c\".\"tokens_792d75cf01821d67\" @> $3::bigint[] order by \"c\".\"row_id\" limit $4\n    ), fallback as materialized (\n      select \"c\".\"row_id\" from \"native_verify_main\".\"customers_seal_index\" as \"c\"\n      where \"c\".\"scope_id\"=$5 and \"c\".\"tokens_792d75cf01821d67\" @> $6::bigint[]\n        and (select count(*) from quick)<$7\n      order by \"c\".\"row_id\" limit $8\n    )\n    select row_id from quick where (select count(*) from quick)=$9\n    union all select row_id from fallback\n  )) order by \"native_verify_main\".\"customers\".\"id\" asc limit $10"
+            ]
+          },
+          {
+            "totalMs": 6.814899999999852,
+            "sqlMs": 0.9487000000003718,
+            "sqlCalls": 1,
+            "candidates": 27,
+            "returned": 20,
+            "sql": [
+              "select \"id\", \"scope_id\", \"name_ct\", \"phone_ct\", \"address_ct\", \"memo_ct\", \"email_ct\", \"company_ct\" from \"native_verify_main\".\"customers\" where (\"native_verify_main\".\"customers\".\"scope_id\" = $1 and \"customers\".\"id\" in (\n    with sample as materialized (\n      select \"row_id\",\"tokens_792d75cf01821d67\" from \"native_verify_main\".\"customers_seal_index\" as \"c\"\n      where \"c\".\"scope_id\"=$2 order by \"c\".\"row_id\" limit 256\n    ), quick as materialized (\n      select \"c\".\"row_id\" from sample as \"c\" where \"c\".\"tokens_792d75cf01821d67\" @> $3::bigint[] order by \"c\".\"row_id\" limit $4\n    ), fallback as materialized (\n      select \"c\".\"row_id\" from \"native_verify_main\".\"customers_seal_index\" as \"c\"\n      where \"c\".\"scope_id\"=$5 and \"c\".\"tokens_792d75cf01821d67\" @> $6::bigint[]\n        and (select count(*) from quick)<$7\n      order by \"c\".\"row_id\" limit $8\n    )\n    select row_id from quick where (select count(*) from quick)=$9\n    union all select row_id from fallback\n  )) order by \"native_verify_main\".\"customers\".\"id\" asc limit $10"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "case": "and6",
+      "expected": 20,
+      "summary": {
+        "plain": {
+          "totalMs": 2.8371000000001914,
+          "sqlMs": 2.7352999999998246,
+          "sqlCalls": 1,
+          "candidates": 20,
+          "returned": 20
+        },
+        "product": {
+          "totalMs": 18.318699999999808,
+          "sqlMs": 10.50500000000011,
+          "sqlCalls": 1,
+          "candidates": 27,
+          "returned": 20
+        }
+      },
+      "runs": {
+        "plain": [
+          {
+            "totalMs": 2.7523000000001048,
+            "sqlMs": 2.637200000000121,
+            "sqlCalls": 1,
+            "candidates": 20,
+            "returned": 20,
+            "sql": [
+              "select id,name_plain as name,phone_plain as phone,address_plain as address,memo_plain as memo,email_plain as email,company_plain as company from bench_realistic_100k.customers\n      where scope_id=$1 and (name_norm like '%'||$2||'%' and phone_norm like '%'||$3||'%' and address_norm like '%'||$4||'%' and memo_norm like '%'||$5||'%' and email_norm like '%'||$6||'%' and company_norm=$7) order by id limit 20"
+            ]
+          },
+          {
+            "totalMs": 2.9394999999999527,
+            "sqlMs": 2.817399999999907,
+            "sqlCalls": 1,
+            "candidates": 20,
+            "returned": 20,
+            "sql": [
+              "select id,name_plain as name,phone_plain as phone,address_plain as address,memo_plain as memo,email_plain as email,company_plain as company from bench_realistic_100k.customers\n      where scope_id=$1 and (name_norm like '%'||$2||'%' and phone_norm like '%'||$3||'%' and address_norm like '%'||$4||'%' and memo_norm like '%'||$5||'%' and email_norm like '%'||$6||'%' and company_norm=$7) order by id limit 20"
+            ]
+          },
+          {
+            "totalMs": 2.334400000000187,
+            "sqlMs": 2.2369999999996253,
+            "sqlCalls": 1,
+            "candidates": 20,
+            "returned": 20,
+            "sql": [
+              "select id,name_plain as name,phone_plain as phone,address_plain as address,memo_plain as memo,email_plain as email,company_plain as company from bench_realistic_100k.customers\n      where scope_id=$1 and (name_norm like '%'||$2||'%' and phone_norm like '%'||$3||'%' and address_norm like '%'||$4||'%' and memo_norm like '%'||$5||'%' and email_norm like '%'||$6||'%' and company_norm=$7) order by id limit 20"
+            ]
+          },
+          {
+            "totalMs": 3.1518999999998414,
+            "sqlMs": 3.0207000000000335,
+            "sqlCalls": 1,
+            "candidates": 20,
+            "returned": 20,
+            "sql": [
+              "select id,name_plain as name,phone_plain as phone,address_plain as address,memo_plain as memo,email_plain as email,company_plain as company from bench_realistic_100k.customers\n      where scope_id=$1 and (name_norm like '%'||$2||'%' and phone_norm like '%'||$3||'%' and address_norm like '%'||$4||'%' and memo_norm like '%'||$5||'%' and email_norm like '%'||$6||'%' and company_norm=$7) order by id limit 20"
+            ]
+          },
+          {
+            "totalMs": 2.6186000000002423,
+            "sqlMs": 2.516700000000128,
+            "sqlCalls": 1,
+            "candidates": 20,
+            "returned": 20,
+            "sql": [
+              "select id,name_plain as name,phone_plain as phone,address_plain as address,memo_plain as memo,email_plain as email,company_plain as company from bench_realistic_100k.customers\n      where scope_id=$1 and (name_norm like '%'||$2||'%' and phone_norm like '%'||$3||'%' and address_norm like '%'||$4||'%' and memo_norm like '%'||$5||'%' and email_norm like '%'||$6||'%' and company_norm=$7) order by id limit 20"
+            ]
+          },
+          {
+            "totalMs": 2.9207000000001244,
+            "sqlMs": 2.8004000000000815,
+            "sqlCalls": 1,
+            "candidates": 20,
+            "returned": 20,
+            "sql": [
+              "select id,name_plain as name,phone_plain as phone,address_plain as address,memo_plain as memo,email_plain as email,company_plain as company from bench_realistic_100k.customers\n      where scope_id=$1 and (name_norm like '%'||$2||'%' and phone_norm like '%'||$3||'%' and address_norm like '%'||$4||'%' and memo_norm like '%'||$5||'%' and email_norm like '%'||$6||'%' and company_norm=$7) order by id limit 20"
+            ]
+          },
+          {
+            "totalMs": 2.8371000000001914,
+            "sqlMs": 2.7352999999998246,
+            "sqlCalls": 1,
+            "candidates": 20,
+            "returned": 20,
+            "sql": [
+              "select id,name_plain as name,phone_plain as phone,address_plain as address,memo_plain as memo,email_plain as email,company_plain as company from bench_realistic_100k.customers\n      where scope_id=$1 and (name_norm like '%'||$2||'%' and phone_norm like '%'||$3||'%' and address_norm like '%'||$4||'%' and memo_norm like '%'||$5||'%' and email_norm like '%'||$6||'%' and company_norm=$7) order by id limit 20"
+            ]
+          }
+        ],
+        "product": [
+          {
+            "totalMs": 18.62689999999975,
+            "sqlMs": 11.042899999999918,
+            "sqlCalls": 1,
+            "candidates": 27,
+            "returned": 20,
+            "sql": [
+              "select \"id\", \"scope_id\", \"name_ct\", \"phone_ct\", \"address_ct\", \"memo_ct\", \"email_ct\", \"company_ct\" from \"native_verify_main\".\"customers\" where (\"native_verify_main\".\"customers\".\"scope_id\" = $1 and \"customers\".\"id\" in (\n    with sample as materialized (\n      select \"row_id\",\"tokens_f289b89d86c7086a\",\"tokens_7a1d2ba5ce2368fb\",\"tokens_792d75cf01821d67\",\"tokens_a639b11c8130dcf7\",\"tokens_ef1d32a52e2ce103\",\"tokens_a106c26102b707f0\" from \"native_verify_main\".\"customers_seal_index\" as \"c\"\n      where \"c\".\"scope_id\"=$2 order by \"c\".\"row_id\" limit 256\n    ), quick as materialized (\n      select \"c\".\"row_id\" from sample as \"c\" where (\"c\".\"tokens_f289b89d86c7086a\" @> $3::bigint[] and \"c\".\"tokens_7a1d2ba5ce2368fb\" @> $4::bigint[] and \"c\".\"tokens_792d75cf01821d67\" @> $5::bigint[] and \"c\".\"tokens_a639b11c8130dcf7\" @> $6::bigint[] and \"c\".\"tokens_ef1d32a52e2ce103\" @> $7::bigint[] and (\"c\".\"tokens_a106c26102b707f0\")[1]=$8::bigint) order by \"c\".\"row_id\" limit $9\n    ), fallback as materialized (\n      select \"c\".\"row_id\" from \"native_verify_main\".\"customers_seal_index\" as \"c\"\n      where \"c\".\"scope_id\"=$10 and (\"c\".\"tokens_f289b89d86c7086a\" @> $11::bigint[] and \"c\".\"tokens_7a1d2ba5ce2368fb\" @> $12::bigint[] and \"c\".\"tokens_792d75cf01821d67\" @> $13::bigint[] and \"c\".\"tokens_a639b11c8130dcf7\" @> $14::bigint[] and \"c\".\"tokens_ef1d32a52e2ce103\" @> $15::bigint[] and (\"c\".\"tokens_a106c26102b707f0\")[1]=$16::bigint)\n        and (select count(*) from quick)<$17\n      order by \"c\".\"row_id\" limit $18\n    )\n    select row_id from quick where (select count(*) from quick)=$19\n    union all select row_id from fallback\n  )) order by \"native_verify_main\".\"customers\".\"id\" asc limit $20"
+            ]
+          },
+          {
+            "totalMs": 17.960199999999986,
+            "sqlMs": 10.50500000000011,
+            "sqlCalls": 1,
+            "candidates": 27,
+            "returned": 20,
+            "sql": [
+              "select \"id\", \"scope_id\", \"name_ct\", \"phone_ct\", \"address_ct\", \"memo_ct\", \"email_ct\", \"company_ct\" from \"native_verify_main\".\"customers\" where (\"native_verify_main\".\"customers\".\"scope_id\" = $1 and \"customers\".\"id\" in (\n    with sample as materialized (\n      select \"row_id\",\"tokens_f289b89d86c7086a\",\"tokens_7a1d2ba5ce2368fb\",\"tokens_792d75cf01821d67\",\"tokens_a639b11c8130dcf7\",\"tokens_ef1d32a52e2ce103\",\"tokens_a106c26102b707f0\" from \"native_verify_main\".\"customers_seal_index\" as \"c\"\n      where \"c\".\"scope_id\"=$2 order by \"c\".\"row_id\" limit 256\n    ), quick as materialized (\n      select \"c\".\"row_id\" from sample as \"c\" where (\"c\".\"tokens_f289b89d86c7086a\" @> $3::bigint[] and \"c\".\"tokens_7a1d2ba5ce2368fb\" @> $4::bigint[] and \"c\".\"tokens_792d75cf01821d67\" @> $5::bigint[] and \"c\".\"tokens_a639b11c8130dcf7\" @> $6::bigint[] and \"c\".\"tokens_ef1d32a52e2ce103\" @> $7::bigint[] and (\"c\".\"tokens_a106c26102b707f0\")[1]=$8::bigint) order by \"c\".\"row_id\" limit $9\n    ), fallback as materialized (\n      select \"c\".\"row_id\" from \"native_verify_main\".\"customers_seal_index\" as \"c\"\n      where \"c\".\"scope_id\"=$10 and (\"c\".\"tokens_f289b89d86c7086a\" @> $11::bigint[] and \"c\".\"tokens_7a1d2ba5ce2368fb\" @> $12::bigint[] and \"c\".\"tokens_792d75cf01821d67\" @> $13::bigint[] and \"c\".\"tokens_a639b11c8130dcf7\" @> $14::bigint[] and \"c\".\"tokens_ef1d32a52e2ce103\" @> $15::bigint[] and (\"c\".\"tokens_a106c26102b707f0\")[1]=$16::bigint)\n        and (select count(*) from quick)<$17\n      order by \"c\".\"row_id\" limit $18\n    )\n    select row_id from quick where (select count(*) from quick)=$19\n    union all select row_id from fallback\n  )) order by \"native_verify_main\".\"customers\".\"id\" asc limit $20"
+            ]
+          },
+          {
+            "totalMs": 17.653600000000097,
+            "sqlMs": 10.13740000000007,
+            "sqlCalls": 1,
+            "candidates": 27,
+            "returned": 20,
+            "sql": [
+              "select \"id\", \"scope_id\", \"name_ct\", \"phone_ct\", \"address_ct\", \"memo_ct\", \"email_ct\", \"company_ct\" from \"native_verify_main\".\"customers\" where (\"native_verify_main\".\"customers\".\"scope_id\" = $1 and \"customers\".\"id\" in (\n    with sample as materialized (\n      select \"row_id\",\"tokens_f289b89d86c7086a\",\"tokens_7a1d2ba5ce2368fb\",\"tokens_792d75cf01821d67\",\"tokens_a639b11c8130dcf7\",\"tokens_ef1d32a52e2ce103\",\"tokens_a106c26102b707f0\" from \"native_verify_main\".\"customers_seal_index\" as \"c\"\n      where \"c\".\"scope_id\"=$2 order by \"c\".\"row_id\" limit 256\n    ), quick as materialized (\n      select \"c\".\"row_id\" from sample as \"c\" where (\"c\".\"tokens_f289b89d86c7086a\" @> $3::bigint[] and \"c\".\"tokens_7a1d2ba5ce2368fb\" @> $4::bigint[] and \"c\".\"tokens_792d75cf01821d67\" @> $5::bigint[] and \"c\".\"tokens_a639b11c8130dcf7\" @> $6::bigint[] and \"c\".\"tokens_ef1d32a52e2ce103\" @> $7::bigint[] and (\"c\".\"tokens_a106c26102b707f0\")[1]=$8::bigint) order by \"c\".\"row_id\" limit $9\n    ), fallback as materialized (\n      select \"c\".\"row_id\" from \"native_verify_main\".\"customers_seal_index\" as \"c\"\n      where \"c\".\"scope_id\"=$10 and (\"c\".\"tokens_f289b89d86c7086a\" @> $11::bigint[] and \"c\".\"tokens_7a1d2ba5ce2368fb\" @> $12::bigint[] and \"c\".\"tokens_792d75cf01821d67\" @> $13::bigint[] and \"c\".\"tokens_a639b11c8130dcf7\" @> $14::bigint[] and \"c\".\"tokens_ef1d32a52e2ce103\" @> $15::bigint[] and (\"c\".\"tokens_a106c26102b707f0\")[1]=$16::bigint)\n        and (select count(*) from quick)<$17\n      order by \"c\".\"row_id\" limit $18\n    )\n    select row_id from quick where (select count(*) from quick)=$19\n    union all select row_id from fallback\n  )) order by \"native_verify_main\".\"customers\".\"id\" asc limit $20"
+            ]
+          },
+          {
+            "totalMs": 18.307500000000346,
+            "sqlMs": 10.475600000000213,
+            "sqlCalls": 1,
+            "candidates": 27,
+            "returned": 20,
+            "sql": [
+              "select \"id\", \"scope_id\", \"name_ct\", \"phone_ct\", \"address_ct\", \"memo_ct\", \"email_ct\", \"company_ct\" from \"native_verify_main\".\"customers\" where (\"native_verify_main\".\"customers\".\"scope_id\" = $1 and \"customers\".\"id\" in (\n    with sample as materialized (\n      select \"row_id\",\"tokens_f289b89d86c7086a\",\"tokens_7a1d2ba5ce2368fb\",\"tokens_792d75cf01821d67\",\"tokens_a639b11c8130dcf7\",\"tokens_ef1d32a52e2ce103\",\"tokens_a106c26102b707f0\" from \"native_verify_main\".\"customers_seal_index\" as \"c\"\n      where \"c\".\"scope_id\"=$2 order by \"c\".\"row_id\" limit 256\n    ), quick as materialized (\n      select \"c\".\"row_id\" from sample as \"c\" where (\"c\".\"tokens_f289b89d86c7086a\" @> $3::bigint[] and \"c\".\"tokens_7a1d2ba5ce2368fb\" @> $4::bigint[] and \"c\".\"tokens_792d75cf01821d67\" @> $5::bigint[] and \"c\".\"tokens_a639b11c8130dcf7\" @> $6::bigint[] and \"c\".\"tokens_ef1d32a52e2ce103\" @> $7::bigint[] and (\"c\".\"tokens_a106c26102b707f0\")[1]=$8::bigint) order by \"c\".\"row_id\" limit $9\n    ), fallback as materialized (\n      select \"c\".\"row_id\" from \"native_verify_main\".\"customers_seal_index\" as \"c\"\n      where \"c\".\"scope_id\"=$10 and (\"c\".\"tokens_f289b89d86c7086a\" @> $11::bigint[] and \"c\".\"tokens_7a1d2ba5ce2368fb\" @> $12::bigint[] and \"c\".\"tokens_792d75cf01821d67\" @> $13::bigint[] and \"c\".\"tokens_a639b11c8130dcf7\" @> $14::bigint[] and \"c\".\"tokens_ef1d32a52e2ce103\" @> $15::bigint[] and (\"c\".\"tokens_a106c26102b707f0\")[1]=$16::bigint)\n        and (select count(*) from quick)<$17\n      order by \"c\".\"row_id\" limit $18\n    )\n    select row_id from quick where (select count(*) from quick)=$19\n    union all select row_id from fallback\n  )) order by \"native_verify_main\".\"customers\".\"id\" asc limit $20"
+            ]
+          },
+          {
+            "totalMs": 18.43119999999999,
+            "sqlMs": 10.485499999999774,
+            "sqlCalls": 1,
+            "candidates": 27,
+            "returned": 20,
+            "sql": [
+              "select \"id\", \"scope_id\", \"name_ct\", \"phone_ct\", \"address_ct\", \"memo_ct\", \"email_ct\", \"company_ct\" from \"native_verify_main\".\"customers\" where (\"native_verify_main\".\"customers\".\"scope_id\" = $1 and \"customers\".\"id\" in (\n    with sample as materialized (\n      select \"row_id\",\"tokens_f289b89d86c7086a\",\"tokens_7a1d2ba5ce2368fb\",\"tokens_792d75cf01821d67\",\"tokens_a639b11c8130dcf7\",\"tokens_ef1d32a52e2ce103\",\"tokens_a106c26102b707f0\" from \"native_verify_main\".\"customers_seal_index\" as \"c\"\n      where \"c\".\"scope_id\"=$2 order by \"c\".\"row_id\" limit 256\n    ), quick as materialized (\n      select \"c\".\"row_id\" from sample as \"c\" where (\"c\".\"tokens_f289b89d86c7086a\" @> $3::bigint[] and \"c\".\"tokens_7a1d2ba5ce2368fb\" @> $4::bigint[] and \"c\".\"tokens_792d75cf01821d67\" @> $5::bigint[] and \"c\".\"tokens_a639b11c8130dcf7\" @> $6::bigint[] and \"c\".\"tokens_ef1d32a52e2ce103\" @> $7::bigint[] and (\"c\".\"tokens_a106c26102b707f0\")[1]=$8::bigint) order by \"c\".\"row_id\" limit $9\n    ), fallback as materialized (\n      select \"c\".\"row_id\" from \"native_verify_main\".\"customers_seal_index\" as \"c\"\n      where \"c\".\"scope_id\"=$10 and (\"c\".\"tokens_f289b89d86c7086a\" @> $11::bigint[] and \"c\".\"tokens_7a1d2ba5ce2368fb\" @> $12::bigint[] and \"c\".\"tokens_792d75cf01821d67\" @> $13::bigint[] and \"c\".\"tokens_a639b11c8130dcf7\" @> $14::bigint[] and \"c\".\"tokens_ef1d32a52e2ce103\" @> $15::bigint[] and (\"c\".\"tokens_a106c26102b707f0\")[1]=$16::bigint)\n        and (select count(*) from quick)<$17\n      order by \"c\".\"row_id\" limit $18\n    )\n    select row_id from quick where (select count(*) from quick)=$19\n    union all select row_id from fallback\n  )) order by \"native_verify_main\".\"customers\".\"id\" asc limit $20"
+            ]
+          },
+          {
+            "totalMs": 18.318699999999808,
+            "sqlMs": 10.592699999999695,
+            "sqlCalls": 1,
+            "candidates": 27,
+            "returned": 20,
+            "sql": [
+              "select \"id\", \"scope_id\", \"name_ct\", \"phone_ct\", \"address_ct\", \"memo_ct\", \"email_ct\", \"company_ct\" from \"native_verify_main\".\"customers\" where (\"native_verify_main\".\"customers\".\"scope_id\" = $1 and \"customers\".\"id\" in (\n    with sample as materialized (\n      select \"row_id\",\"tokens_f289b89d86c7086a\",\"tokens_7a1d2ba5ce2368fb\",\"tokens_792d75cf01821d67\",\"tokens_a639b11c8130dcf7\",\"tokens_ef1d32a52e2ce103\",\"tokens_a106c26102b707f0\" from \"native_verify_main\".\"customers_seal_index\" as \"c\"\n      where \"c\".\"scope_id\"=$2 order by \"c\".\"row_id\" limit 256\n    ), quick as materialized (\n      select \"c\".\"row_id\" from sample as \"c\" where (\"c\".\"tokens_f289b89d86c7086a\" @> $3::bigint[] and \"c\".\"tokens_7a1d2ba5ce2368fb\" @> $4::bigint[] and \"c\".\"tokens_792d75cf01821d67\" @> $5::bigint[] and \"c\".\"tokens_a639b11c8130dcf7\" @> $6::bigint[] and \"c\".\"tokens_ef1d32a52e2ce103\" @> $7::bigint[] and (\"c\".\"tokens_a106c26102b707f0\")[1]=$8::bigint) order by \"c\".\"row_id\" limit $9\n    ), fallback as materialized (\n      select \"c\".\"row_id\" from \"native_verify_main\".\"customers_seal_index\" as \"c\"\n      where \"c\".\"scope_id\"=$10 and (\"c\".\"tokens_f289b89d86c7086a\" @> $11::bigint[] and \"c\".\"tokens_7a1d2ba5ce2368fb\" @> $12::bigint[] and \"c\".\"tokens_792d75cf01821d67\" @> $13::bigint[] and \"c\".\"tokens_a639b11c8130dcf7\" @> $14::bigint[] and \"c\".\"tokens_ef1d32a52e2ce103\" @> $15::bigint[] and (\"c\".\"tokens_a106c26102b707f0\")[1]=$16::bigint)\n        and (select count(*) from quick)<$17\n      order by \"c\".\"row_id\" limit $18\n    )\n    select row_id from quick where (select count(*) from quick)=$19\n    union all select row_id from fallback\n  )) order by \"native_verify_main\".\"customers\".\"id\" asc limit $20"
+            ]
+          },
+          {
+            "totalMs": 18.45089999999982,
+            "sqlMs": 10.509300000000167,
+            "sqlCalls": 1,
+            "candidates": 27,
+            "returned": 20,
+            "sql": [
+              "select \"id\", \"scope_id\", \"name_ct\", \"phone_ct\", \"address_ct\", \"memo_ct\", \"email_ct\", \"company_ct\" from \"native_verify_main\".\"customers\" where (\"native_verify_main\".\"customers\".\"scope_id\" = $1 and \"customers\".\"id\" in (\n    with sample as materialized (\n      select \"row_id\",\"tokens_f289b89d86c7086a\",\"tokens_7a1d2ba5ce2368fb\",\"tokens_792d75cf01821d67\",\"tokens_a639b11c8130dcf7\",\"tokens_ef1d32a52e2ce103\",\"tokens_a106c26102b707f0\" from \"native_verify_main\".\"customers_seal_index\" as \"c\"\n      where \"c\".\"scope_id\"=$2 order by \"c\".\"row_id\" limit 256\n    ), quick as materialized (\n      select \"c\".\"row_id\" from sample as \"c\" where (\"c\".\"tokens_f289b89d86c7086a\" @> $3::bigint[] and \"c\".\"tokens_7a1d2ba5ce2368fb\" @> $4::bigint[] and \"c\".\"tokens_792d75cf01821d67\" @> $5::bigint[] and \"c\".\"tokens_a639b11c8130dcf7\" @> $6::bigint[] and \"c\".\"tokens_ef1d32a52e2ce103\" @> $7::bigint[] and (\"c\".\"tokens_a106c26102b707f0\")[1]=$8::bigint) order by \"c\".\"row_id\" limit $9\n    ), fallback as materialized (\n      select \"c\".\"row_id\" from \"native_verify_main\".\"customers_seal_index\" as \"c\"\n      where \"c\".\"scope_id\"=$10 and (\"c\".\"tokens_f289b89d86c7086a\" @> $11::bigint[] and \"c\".\"tokens_7a1d2ba5ce2368fb\" @> $12::bigint[] and \"c\".\"tokens_792d75cf01821d67\" @> $13::bigint[] and \"c\".\"tokens_a639b11c8130dcf7\" @> $14::bigint[] and \"c\".\"tokens_ef1d32a52e2ce103\" @> $15::bigint[] and (\"c\".\"tokens_a106c26102b707f0\")[1]=$16::bigint)\n        and (select count(*) from quick)<$17\n      order by \"c\".\"row_id\" limit $18\n    )\n    select row_id from quick where (select count(*) from quick)=$19\n    union all select row_id from fallback\n  )) order by \"native_verify_main\".\"customers\".\"id\" asc limit $20"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "case": "or3",
+      "expected": 2,
+      "summary": {
+        "plain": {
+          "totalMs": 0.6285000000002583,
+          "sqlMs": 0.5731000000000677,
+          "sqlCalls": 1,
+          "candidates": 2,
+          "returned": 2
+        },
+        "product": {
+          "totalMs": 4.625600000000304,
+          "sqlMs": 2.4785000000001673,
+          "sqlCalls": 1,
+          "candidates": 3,
+          "returned": 2
+        }
+      },
+      "runs": {
+        "plain": [
+          {
+            "totalMs": 0.7545000000000073,
+            "sqlMs": 0.6594000000000051,
+            "sqlCalls": 1,
+            "candidates": 2,
+            "returned": 2,
+            "sql": [
+              "select id,name_plain as name,phone_plain as phone,address_plain as address,memo_plain as memo,email_plain as email,company_plain as company from bench_realistic_100k.customers\n      where scope_id=$1 and (phone_norm=$2 or phone_norm=$3 or name_norm like '%'||$4||'%') order by id limit 20"
+            ]
+          },
+          {
+            "totalMs": 0.6466999999997824,
+            "sqlMs": 0.5889999999999418,
+            "sqlCalls": 1,
+            "candidates": 2,
+            "returned": 2,
+            "sql": [
+              "select id,name_plain as name,phone_plain as phone,address_plain as address,memo_plain as memo,email_plain as email,company_plain as company from bench_realistic_100k.customers\n      where scope_id=$1 and (phone_norm=$2 or phone_norm=$3 or name_norm like '%'||$4||'%') order by id limit 20"
+            ]
+          },
+          {
+            "totalMs": 0.5371000000000095,
+            "sqlMs": 0.4614999999998872,
+            "sqlCalls": 1,
+            "candidates": 2,
+            "returned": 2,
+            "sql": [
+              "select id,name_plain as name,phone_plain as phone,address_plain as address,memo_plain as memo,email_plain as email,company_plain as company from bench_realistic_100k.customers\n      where scope_id=$1 and (phone_norm=$2 or phone_norm=$3 or name_norm like '%'||$4||'%') order by id limit 20"
+            ]
+          },
+          {
+            "totalMs": 0.6285000000002583,
+            "sqlMs": 0.5731000000000677,
+            "sqlCalls": 1,
+            "candidates": 2,
+            "returned": 2,
+            "sql": [
+              "select id,name_plain as name,phone_plain as phone,address_plain as address,memo_plain as memo,email_plain as email,company_plain as company from bench_realistic_100k.customers\n      where scope_id=$1 and (phone_norm=$2 or phone_norm=$3 or name_norm like '%'||$4||'%') order by id limit 20"
+            ]
+          },
+          {
+            "totalMs": 0.5795000000002801,
+            "sqlMs": 0.5374000000001615,
+            "sqlCalls": 1,
+            "candidates": 2,
+            "returned": 2,
+            "sql": [
+              "select id,name_plain as name,phone_plain as phone,address_plain as address,memo_plain as memo,email_plain as email,company_plain as company from bench_realistic_100k.customers\n      where scope_id=$1 and (phone_norm=$2 or phone_norm=$3 or name_norm like '%'||$4||'%') order by id limit 20"
+            ]
+          },
+          {
+            "totalMs": 0.8087000000000444,
+            "sqlMs": 0.7132999999998901,
+            "sqlCalls": 1,
+            "candidates": 2,
+            "returned": 2,
+            "sql": [
+              "select id,name_plain as name,phone_plain as phone,address_plain as address,memo_plain as memo,email_plain as email,company_plain as company from bench_realistic_100k.customers\n      where scope_id=$1 and (phone_norm=$2 or phone_norm=$3 or name_norm like '%'||$4||'%') order by id limit 20"
+            ]
+          },
+          {
+            "totalMs": 0.468199999999797,
+            "sqlMs": 0.4011000000000422,
+            "sqlCalls": 1,
+            "candidates": 2,
+            "returned": 2,
+            "sql": [
+              "select id,name_plain as name,phone_plain as phone,address_plain as address,memo_plain as memo,email_plain as email,company_plain as company from bench_realistic_100k.customers\n      where scope_id=$1 and (phone_norm=$2 or phone_norm=$3 or name_norm like '%'||$4||'%') order by id limit 20"
+            ]
+          }
+        ],
+        "product": [
+          {
+            "totalMs": 4.534400000000005,
+            "sqlMs": 2.312199999999848,
+            "sqlCalls": 1,
+            "candidates": 3,
+            "returned": 2,
+            "sql": [
+              "select \"id\", \"scope_id\", \"name_ct\", \"phone_ct\", \"address_ct\", \"memo_ct\", \"email_ct\", \"company_ct\" from \"native_verify_main\".\"customers\" where (\"native_verify_main\".\"customers\".\"scope_id\" = $1 and \"customers\".\"id\" in (\n    with sample as materialized (\n      select \"row_id\",\"tokens_c44ae523cca61a0b\",\"tokens_f289b89d86c7086a\" from \"native_verify_main\".\"customers_seal_index\" as \"c\"\n      where \"c\".\"scope_id\"=$2 order by \"c\".\"row_id\" limit 256\n    ), quick as materialized (\n      select \"c\".\"row_id\" from sample as \"c\" where ((\"c\".\"tokens_c44ae523cca61a0b\")[1]=$3::bigint or (\"c\".\"tokens_c44ae523cca61a0b\")[1]=$4::bigint or \"c\".\"tokens_f289b89d86c7086a\" @> $5::bigint[]) order by \"c\".\"row_id\" limit $6\n    ), fallback as materialized (\n      select \"c\".\"row_id\" from \"native_verify_main\".\"customers_seal_index\" as \"c\"\n      where \"c\".\"scope_id\"=$7 and ((\"c\".\"tokens_c44ae523cca61a0b\")[1]=$8::bigint or (\"c\".\"tokens_c44ae523cca61a0b\")[1]=$9::bigint or \"c\".\"tokens_f289b89d86c7086a\" @> $10::bigint[])\n        and (select count(*) from quick)<$11\n      order by \"c\".\"row_id\" limit $12\n    )\n    select row_id from quick where (select count(*) from quick)=$13\n    union all select row_id from fallback\n  )) order by \"native_verify_main\".\"customers\".\"id\" asc limit $14"
+            ]
+          },
+          {
+            "totalMs": 4.655499999999847,
+            "sqlMs": 2.5574000000001433,
+            "sqlCalls": 1,
+            "candidates": 3,
+            "returned": 2,
+            "sql": [
+              "select \"id\", \"scope_id\", \"name_ct\", \"phone_ct\", \"address_ct\", \"memo_ct\", \"email_ct\", \"company_ct\" from \"native_verify_main\".\"customers\" where (\"native_verify_main\".\"customers\".\"scope_id\" = $1 and \"customers\".\"id\" in (\n    with sample as materialized (\n      select \"row_id\",\"tokens_c44ae523cca61a0b\",\"tokens_f289b89d86c7086a\" from \"native_verify_main\".\"customers_seal_index\" as \"c\"\n      where \"c\".\"scope_id\"=$2 order by \"c\".\"row_id\" limit 256\n    ), quick as materialized (\n      select \"c\".\"row_id\" from sample as \"c\" where ((\"c\".\"tokens_c44ae523cca61a0b\")[1]=$3::bigint or (\"c\".\"tokens_c44ae523cca61a0b\")[1]=$4::bigint or \"c\".\"tokens_f289b89d86c7086a\" @> $5::bigint[]) order by \"c\".\"row_id\" limit $6\n    ), fallback as materialized (\n      select \"c\".\"row_id\" from \"native_verify_main\".\"customers_seal_index\" as \"c\"\n      where \"c\".\"scope_id\"=$7 and ((\"c\".\"tokens_c44ae523cca61a0b\")[1]=$8::bigint or (\"c\".\"tokens_c44ae523cca61a0b\")[1]=$9::bigint or \"c\".\"tokens_f289b89d86c7086a\" @> $10::bigint[])\n        and (select count(*) from quick)<$11\n      order by \"c\".\"row_id\" limit $12\n    )\n    select row_id from quick where (select count(*) from quick)=$13\n    union all select row_id from fallback\n  )) order by \"native_verify_main\".\"customers\".\"id\" asc limit $14"
+            ]
+          },
+          {
+            "totalMs": 4.9365999999999985,
+            "sqlMs": 2.6479999999996835,
+            "sqlCalls": 1,
+            "candidates": 3,
+            "returned": 2,
+            "sql": [
+              "select \"id\", \"scope_id\", \"name_ct\", \"phone_ct\", \"address_ct\", \"memo_ct\", \"email_ct\", \"company_ct\" from \"native_verify_main\".\"customers\" where (\"native_verify_main\".\"customers\".\"scope_id\" = $1 and \"customers\".\"id\" in (\n    with sample as materialized (\n      select \"row_id\",\"tokens_c44ae523cca61a0b\",\"tokens_f289b89d86c7086a\" from \"native_verify_main\".\"customers_seal_index\" as \"c\"\n      where \"c\".\"scope_id\"=$2 order by \"c\".\"row_id\" limit 256\n    ), quick as materialized (\n      select \"c\".\"row_id\" from sample as \"c\" where ((\"c\".\"tokens_c44ae523cca61a0b\")[1]=$3::bigint or (\"c\".\"tokens_c44ae523cca61a0b\")[1]=$4::bigint or \"c\".\"tokens_f289b89d86c7086a\" @> $5::bigint[]) order by \"c\".\"row_id\" limit $6\n    ), fallback as materialized (\n      select \"c\".\"row_id\" from \"native_verify_main\".\"customers_seal_index\" as \"c\"\n      where \"c\".\"scope_id\"=$7 and ((\"c\".\"tokens_c44ae523cca61a0b\")[1]=$8::bigint or (\"c\".\"tokens_c44ae523cca61a0b\")[1]=$9::bigint or \"c\".\"tokens_f289b89d86c7086a\" @> $10::bigint[])\n        and (select count(*) from quick)<$11\n      order by \"c\".\"row_id\" limit $12\n    )\n    select row_id from quick where (select count(*) from quick)=$13\n    union all select row_id from fallback\n  )) order by \"native_verify_main\".\"customers\".\"id\" asc limit $14"
+            ]
+          },
+          {
+            "totalMs": 4.546299999999974,
+            "sqlMs": 2.4785000000001673,
+            "sqlCalls": 1,
+            "candidates": 3,
+            "returned": 2,
+            "sql": [
+              "select \"id\", \"scope_id\", \"name_ct\", \"phone_ct\", \"address_ct\", \"memo_ct\", \"email_ct\", \"company_ct\" from \"native_verify_main\".\"customers\" where (\"native_verify_main\".\"customers\".\"scope_id\" = $1 and \"customers\".\"id\" in (\n    with sample as materialized (\n      select \"row_id\",\"tokens_c44ae523cca61a0b\",\"tokens_f289b89d86c7086a\" from \"native_verify_main\".\"customers_seal_index\" as \"c\"\n      where \"c\".\"scope_id\"=$2 order by \"c\".\"row_id\" limit 256\n    ), quick as materialized (\n      select \"c\".\"row_id\" from sample as \"c\" where ((\"c\".\"tokens_c44ae523cca61a0b\")[1]=$3::bigint or (\"c\".\"tokens_c44ae523cca61a0b\")[1]=$4::bigint or \"c\".\"tokens_f289b89d86c7086a\" @> $5::bigint[]) order by \"c\".\"row_id\" limit $6\n    ), fallback as materialized (\n      select \"c\".\"row_id\" from \"native_verify_main\".\"customers_seal_index\" as \"c\"\n      where \"c\".\"scope_id\"=$7 and ((\"c\".\"tokens_c44ae523cca61a0b\")[1]=$8::bigint or (\"c\".\"tokens_c44ae523cca61a0b\")[1]=$9::bigint or \"c\".\"tokens_f289b89d86c7086a\" @> $10::bigint[])\n        and (select count(*) from quick)<$11\n      order by \"c\".\"row_id\" limit $12\n    )\n    select row_id from quick where (select count(*) from quick)=$13\n    union all select row_id from fallback\n  )) order by \"native_verify_main\".\"customers\".\"id\" asc limit $14"
+            ]
+          },
+          {
+            "totalMs": 4.604099999999562,
+            "sqlMs": 2.370600000000195,
+            "sqlCalls": 1,
+            "candidates": 3,
+            "returned": 2,
+            "sql": [
+              "select \"id\", \"scope_id\", \"name_ct\", \"phone_ct\", \"address_ct\", \"memo_ct\", \"email_ct\", \"company_ct\" from \"native_verify_main\".\"customers\" where (\"native_verify_main\".\"customers\".\"scope_id\" = $1 and \"customers\".\"id\" in (\n    with sample as materialized (\n      select \"row_id\",\"tokens_c44ae523cca61a0b\",\"tokens_f289b89d86c7086a\" from \"native_verify_main\".\"customers_seal_index\" as \"c\"\n      where \"c\".\"scope_id\"=$2 order by \"c\".\"row_id\" limit 256\n    ), quick as materialized (\n      select \"c\".\"row_id\" from sample as \"c\" where ((\"c\".\"tokens_c44ae523cca61a0b\")[1]=$3::bigint or (\"c\".\"tokens_c44ae523cca61a0b\")[1]=$4::bigint or \"c\".\"tokens_f289b89d86c7086a\" @> $5::bigint[]) order by \"c\".\"row_id\" limit $6\n    ), fallback as materialized (\n      select \"c\".\"row_id\" from \"native_verify_main\".\"customers_seal_index\" as \"c\"\n      where \"c\".\"scope_id\"=$7 and ((\"c\".\"tokens_c44ae523cca61a0b\")[1]=$8::bigint or (\"c\".\"tokens_c44ae523cca61a0b\")[1]=$9::bigint or \"c\".\"tokens_f289b89d86c7086a\" @> $10::bigint[])\n        and (select count(*) from quick)<$11\n      order by \"c\".\"row_id\" limit $12\n    )\n    select row_id from quick where (select count(*) from quick)=$13\n    union all select row_id from fallback\n  )) order by \"native_verify_main\".\"customers\".\"id\" asc limit $14"
+            ]
+          },
+          {
+            "totalMs": 4.970499999999902,
+            "sqlMs": 2.780499999999847,
+            "sqlCalls": 1,
+            "candidates": 3,
+            "returned": 2,
+            "sql": [
+              "select \"id\", \"scope_id\", \"name_ct\", \"phone_ct\", \"address_ct\", \"memo_ct\", \"email_ct\", \"company_ct\" from \"native_verify_main\".\"customers\" where (\"native_verify_main\".\"customers\".\"scope_id\" = $1 and \"customers\".\"id\" in (\n    with sample as materialized (\n      select \"row_id\",\"tokens_c44ae523cca61a0b\",\"tokens_f289b89d86c7086a\" from \"native_verify_main\".\"customers_seal_index\" as \"c\"\n      where \"c\".\"scope_id\"=$2 order by \"c\".\"row_id\" limit 256\n    ), quick as materialized (\n      select \"c\".\"row_id\" from sample as \"c\" where ((\"c\".\"tokens_c44ae523cca61a0b\")[1]=$3::bigint or (\"c\".\"tokens_c44ae523cca61a0b\")[1]=$4::bigint or \"c\".\"tokens_f289b89d86c7086a\" @> $5::bigint[]) order by \"c\".\"row_id\" limit $6\n    ), fallback as materialized (\n      select \"c\".\"row_id\" from \"native_verify_main\".\"customers_seal_index\" as \"c\"\n      where \"c\".\"scope_id\"=$7 and ((\"c\".\"tokens_c44ae523cca61a0b\")[1]=$8::bigint or (\"c\".\"tokens_c44ae523cca61a0b\")[1]=$9::bigint or \"c\".\"tokens_f289b89d86c7086a\" @> $10::bigint[])\n        and (select count(*) from quick)<$11\n      order by \"c\".\"row_id\" limit $12\n    )\n    select row_id from quick where (select count(*) from quick)=$13\n    union all select row_id from fallback\n  )) order by \"native_verify_main\".\"customers\".\"id\" asc limit $14"
+            ]
+          },
+          {
+            "totalMs": 4.625600000000304,
+            "sqlMs": 2.348899999999958,
+            "sqlCalls": 1,
+            "candidates": 3,
+            "returned": 2,
+            "sql": [
+              "select \"id\", \"scope_id\", \"name_ct\", \"phone_ct\", \"address_ct\", \"memo_ct\", \"email_ct\", \"company_ct\" from \"native_verify_main\".\"customers\" where (\"native_verify_main\".\"customers\".\"scope_id\" = $1 and \"customers\".\"id\" in (\n    with sample as materialized (\n      select \"row_id\",\"tokens_c44ae523cca61a0b\",\"tokens_f289b89d86c7086a\" from \"native_verify_main\".\"customers_seal_index\" as \"c\"\n      where \"c\".\"scope_id\"=$2 order by \"c\".\"row_id\" limit 256\n    ), quick as materialized (\n      select \"c\".\"row_id\" from sample as \"c\" where ((\"c\".\"tokens_c44ae523cca61a0b\")[1]=$3::bigint or (\"c\".\"tokens_c44ae523cca61a0b\")[1]=$4::bigint or \"c\".\"tokens_f289b89d86c7086a\" @> $5::bigint[]) order by \"c\".\"row_id\" limit $6\n    ), fallback as materialized (\n      select \"c\".\"row_id\" from \"native_verify_main\".\"customers_seal_index\" as \"c\"\n      where \"c\".\"scope_id\"=$7 and ((\"c\".\"tokens_c44ae523cca61a0b\")[1]=$8::bigint or (\"c\".\"tokens_c44ae523cca61a0b\")[1]=$9::bigint or \"c\".\"tokens_f289b89d86c7086a\" @> $10::bigint[])\n        and (select count(*) from quick)<$11\n      order by \"c\".\"row_id\" limit $12\n    )\n    select row_id from quick where (select count(*) from quick)=$13\n    union all select row_id from fallback\n  )) order by \"native_verify_main\".\"customers\".\"id\" asc limit $14"
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}

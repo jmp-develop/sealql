@@ -9,9 +9,10 @@ import { customersWrite, customersWriteSeal, fields, sealed, scopeId } from './s
 
 const pool=new Pool({host:'127.0.0.1',port:56439,user:'sealql_test',database:'postgres',options:'-c statement_timeout=120000'});
 const db=drizzle(pool),original=Client.prototype.query;
-let events:{ms:number;rows:number}[]|null=null;
+let events:{ms:number;rows:number;sql:string}[]|null=null;
 (Client.prototype as any).query=function(...args:any[]){
-  const start=performance.now(),record=(r:any)=>{events?.push({ms:performance.now()-start,rows:r?.rows?.length??0});return r;};
+  const start=performance.now(),sql=typeof args[0]==='string'?args[0]:args[0]?.text??'';
+  const record=(r:any)=>{events?.push({ms:performance.now()-start,rows:r?.rows?.length??0,sql});return r;};
   const i=args.findIndex(x=>typeof x==='function');if(i>=0){const cb=args[i];args[i]=(e:any,r:any)=>{if(!e)record(r);cb(e,r);};}
   const r=(original as any).apply(this,args);return i<0&&r?.then?r.then(record):r;
 };
@@ -22,8 +23,11 @@ async function clear(){
   await pool.query('truncate native_verify_main.customers_write_plain');
   await pool.query('truncate native_verify_main.customers_write cascade');
 }
-async function timed(fn:()=>Promise<any>){const ev:{ms:number;rows:number}[]=[];events=ev;const start=performance.now();
-  try{await fn();return{totalMs:performance.now()-start,sqlMs:ev.reduce((s,x)=>s+x.ms,0),sqlCalls:ev.length};}
+async function timed(fn:()=>Promise<any>){const ev:{ms:number;rows:number;sql:string}[]=[];events=ev;const start=performance.now();
+  try{await fn();const data=ev.filter(x=>!/^(begin|commit|rollback)$/i.test(x.sql.trim()));
+    return{totalMs:performance.now()-start,sqlMs:ev.reduce((s,x)=>s+x.ms,0),sqlCalls:ev.length,
+      dataSqlMs:data.reduce((s,x)=>s+x.ms,0),dataCalls:data.length,
+      txnSqlMs:ev.filter(x=>/^(begin|commit|rollback)$/i.test(x.sql.trim())).reduce((s,x)=>s+x.ms,0)};}
   finally{events=null;}}
 async function stage(path:'plain'|'product',rows:Row[]){
   await clear();
@@ -71,7 +75,7 @@ try{
     runs[path].push(await stage(path,rows));console.log(`run ${i+1}/7 ${path}`);
   }
   const summary=Object.fromEntries(Object.entries(runs).map(([p,rs])=>[p,Object.fromEntries(['insert','update','delete'].map(op=>[op,
-    Object.fromEntries(['totalMs','sqlMs','sqlCalls'].map(k=>[k,median(rs.map(r=>r[op][k]))]))]))]));
+    Object.fromEntries(['totalMs','sqlMs','sqlCalls','dataSqlMs','dataCalls','txnSqlMs'].map(k=>[k,median(rs.map(r=>r[op][k]))]))]))]));
   await writeFile('bench/results/2026-09-27-native-verification/v3/write.json',JSON.stringify({rows:1000,warmup:2,alternatingRuns:7,summary,runs},null,2)+'\n');
   console.log(JSON.stringify(summary));
   // One batch per path, repeated with the same derived rows.
@@ -87,7 +91,7 @@ try{
     if(i>=2)batch[path].push(result);console.log(`batch ${i+1}/9 ${path}`);
   }
   await clear();
-  const batchSummary=Object.fromEntries(Object.entries(batch).map(([p,rs])=>[p,Object.fromEntries(['totalMs','sqlMs','sqlCalls'].map(k=>[k,median(rs.map(r=>r[k]))]))]));
+  const batchSummary=Object.fromEntries(Object.entries(batch).map(([p,rs])=>[p,Object.fromEntries(['totalMs','sqlMs','sqlCalls','dataSqlMs','dataCalls','txnSqlMs'].map(k=>[k,median(rs.map(r=>r[k]))]))]));
   await writeFile('bench/results/2026-09-27-native-verification/v3/write-batch.json',JSON.stringify({rows:1000,warmup:2,alternatingRuns:7,summary:batchSummary,runs:batch},null,2)+'\n');
   console.log(JSON.stringify(batchSummary));
 }finally{Client.prototype.query=original;await pool.end();}
