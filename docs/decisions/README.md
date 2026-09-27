@@ -28,3 +28,4 @@
 | [009](009-scope-and-non-goals.md) | 범위와 비목표 |
 | [010](010-security-claim-limits.md) | 보안 주장의 한계 |
 | [011](011-rejected-research-lines.md) | 기각된 연구 방향 |
+| [012](012-drizzle-companion-and-column-options.md) | Drizzle 통합: 보조 테이블 유지, 칸마다 옵션 (008 일부 대체) |

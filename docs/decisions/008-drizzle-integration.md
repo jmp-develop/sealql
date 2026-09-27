@@ -1,6 +1,6 @@
 # 008. Drizzle 통합 방식
 
-- 상태: 설계 확정 (2026-09-27, 사용자 결정). **구현 전.** 현재 제품은 companion 테이블과 `defineSealed`/`bindSealed` API다. 공개 API 계약과 작업 순서는 [plan/001](../../plan/001-drizzle-native-api.md)에 있다.
+- 상태: 연구·실측 기록. **채택 설계(부모 테이블 숨은 칸 + 트리거, `sealedTable`)는 [012](012-drizzle-companion-and-column-options.md)로 대체됨.** (원 상태: 설계 확정 2026-09-27, 사용자 결정.) **구현 전.** 현재 제품은 companion 테이블과 `defineSealed`/`bindSealed` API다. 공개 API 계약과 작업 순서는 [plan/001](../../plan/001-drizzle-native-api.md)에 있다.
 
 ## 결정
 
