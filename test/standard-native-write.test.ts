@@ -2,7 +2,7 @@ import assert from 'node:assert/strict';
 import { test } from 'node:test';
 import { Pool } from 'pg';
 import { drizzle } from 'drizzle-orm/node-postgres';
-import { eq, sql } from 'drizzle-orm';
+import { and, eq, sql } from 'drizzle-orm';
 import { pgSchema, uuid } from 'drizzle-orm/pg-core';
 import { createSealer } from '../src/index.js';
 import { createSealed } from '../src/adapters/drizzle/v0.45/index.js';
@@ -28,10 +28,12 @@ test('native managed writes and opens stay atomic', async () => {
       memo: sealed.text('memo', { nullable: true, search: { substring: true } }),
     });
     const peopleSeal = sealed.register(people, { row: 'id', scope: 'scopeId' });
+    const orders = schema.table('orders', { id: uuid('id').primaryKey(), customerId: uuid('customer_id').notNull() });
     const profiles = registrationOf(peopleSeal).storage.index!.profiles!;
     const exact = profiles['name/exact'].tokens, substring = profiles['memo/substring'].tokens;
     await pool.query(`create table "${schemaName}".people (id uuid primary key,scope_id uuid not null,name_ct bytea not null,memo_ct bytea)`);
     await pool.query(`create table "${schemaName}".people_seal_index (scope_id uuid not null,row_id uuid not null,"${exact}" bigint[],"${substring}" bigint[],unique(scope_id,row_id),foreign key(row_id) references "${schemaName}".people(id) on delete cascade)`);
+    await pool.query(`create table "${schemaName}".orders (id uuid primary key,customer_id uuid not null)`);
     const db = drizzle(pool);
     const first = fixture[0], second = fixture[1], third = fixture[2];
     const inserted = await sealed.insert(db, peopleSeal, { id: first.id, scopeId: first.scope_id, name: first.name_plain, memo: first.memo_plain });
@@ -39,6 +41,37 @@ test('native managed writes and opens stay atomic', async () => {
     const opened = await sealed.open(await db.select().from(people));
     assert.equal(opened[0].name, first.name_plain);
     assert.equal(opened[0].memo, first.memo_plain);
+    const exactPage = await sealed.findMany(db, peopleSeal, { scope: first.scope_id, match: m => m.name.eq(first.name_plain) });
+    assert.equal(exactPage.items.length, 1);
+    assert.equal(exactPage.items[0].name, first.name_plain);
+    assert.equal(await sealed.count(db, peopleSeal, { scope: first.scope_id, match: m => m.name.eq(first.name_plain) }), 1);
+    const mixedPage = await sealed.findMany(db, peopleSeal, { scope: first.scope_id,
+      match: m => m.or(m.memo.contains(second.memo_plain.slice(0, 2)), m.sql(eq(people.id, first.id))) });
+    assert.equal(mixedPage.items.length, 1);
+    await db.insert(orders).values([{ id: second.id, customerId: first.id }, { id: third.id, customerId: first.id }]);
+    const joined = await sealed.search(db, { scope: first.scope_id, match: { c: [peopleSeal, m => m.name.eq(first.name_plain)] },
+      keyset: [orders.id], limit: 1,
+      query: ({ where, after, orderBy, flags, limit }) => db.select({ c: people, o: orders, ...flags }).from(people)
+        .innerJoin(orders, eq(orders.customerId, people.id)).where(and(where, after)).orderBy(...orderBy).limit(limit),
+    });
+    assert.equal(joined.items.length, 1);
+    assert.ok(joined.nextCursor);
+    const joinedNext = await sealed.search(db, { scope: first.scope_id, match: { c: [peopleSeal, m => m.name.eq(first.name_plain)] },
+      keyset: [orders.id], limit: 1, cursor: joined.nextCursor!,
+      query: ({ where, after, orderBy, flags, limit }) => db.select({ c: people, o: orders, ...flags }).from(people)
+        .innerJoin(orders, eq(orders.customerId, people.id)).where(and(where, after)).orderBy(...orderBy).limit(limit),
+    });
+    assert.equal(joinedNext.items.length, 1);
+    assert.notEqual((joined.items[0] as any).o.id, (joinedNext.items[0] as any).o.id);
+    const rawJoined = await sealed.search(db, { scope: first.scope_id, match: { c: [peopleSeal, m => m.name.eq(first.name_plain)] },
+      keyset: [orders.id], limit: 2, columns: { c: { id: 'c_id', scopeId: 'c_scope', name: 'c_name_ct', memo: 'c_memo_ct' } },
+      query: ({ where, after, orderBy, flagsSql, limit }) => db.execute(sql`select ${people.id} as c_id, ${people.scopeId} as c_scope,
+        ${people.name} as c_name_ct, ${people.memo} as c_memo_ct, ${orders.id} as o_id, ${flagsSql}
+        from ${people} inner join ${orders} on ${orders.customerId} = ${people.id}
+        where ${where} ${after ? sql`and ${after}` : sql``} order by ${sql.join(orderBy, sql.raw(','))} limit ${limit}`),
+    });
+    assert.equal(rawJoined.items.length, 2);
+    assert.equal((rawJoined.items[0] as any).c_name_ct, first.name_plain);
     await sealed.update(db, peopleSeal, { id: first.id, scopeId: first.scope_id }, { memo: second.memo_plain });
     const afterUpdate = await sealed.open(await db.select().from(people));
     assert.equal(afterUpdate[0].name, first.name_plain);

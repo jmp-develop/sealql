@@ -5,6 +5,7 @@ import { databaseError, ensure, fail, SealError } from '../../../core/errors.js'
 import { envelopeShape, type Sealer } from '../../../core/field-cipher.js';
 import { profiles, searchPieces, searchTokens, type SearchTokenCache } from '../../../core/search-tokens.js';
 import { Sealed, registrationOf, type Opened, type PlainShape, type Registration, type SealMeta } from './native.js';
+import { searchMethods } from './native-search.js';
 
 type Db = PgDatabase<any, any, any>;
 type Identity<T extends PgTable, R extends string, S extends string | undefined> =
@@ -230,5 +231,5 @@ export function runtimeMethods(sealerOf: () => Sealer) {
       return output as V;
     });
   }
-  return { insert, update, upsert, open, openRaw };
+  return { insert, update, upsert, open, openRaw, ...searchMethods(sealerOf, open, openRaw as any, cache) };
 }
