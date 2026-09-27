@@ -65,13 +65,14 @@ type SealedKeys<T extends PgTable> = {
   [K in keyof InferSelectModel<T>]: NonNullable<InferSelectModel<T>[K]> extends Sealed<any, any> ? K : never;
 }[keyof InferSelectModel<T>];
 type Unseal<V> = V extends Sealed<infer P, any> ? P : V;
-export type PlainShape<T extends PgTable> = {
+type ExplicitUndefined<T> = { [K in keyof T]: {} extends Pick<T, K> ? T[K] | undefined : T[K] };
+export type PlainShape<T extends PgTable> = ExplicitUndefined<{
   [K in Exclude<keyof InferInsertModel<T>, SealedKeys<T>>]: InferInsertModel<T>[K]
 } & {
   [K in SealedKeys<T> as null extends InferSelectModel<T>[K] ? never : K]-?: Unseal<InferSelectModel<T>[K]>
 } & {
   [K in SealedKeys<T> as null extends InferSelectModel<T>[K] ? K : never]?: Unseal<InferSelectModel<T>[K]> | null
-};
+}>;
 export type UuidOrTextKeys<T extends PgTable> = {
   [K in keyof T['_']['columns']]: NonNullable<T['_']['columns'][K]['_']['data']> extends Sealed<any, any> ? never :
     T['_']['columns'][K]['_']['columnType'] extends 'PgUUID' | 'PgText' | 'PgCustomColumn' ? K : never;

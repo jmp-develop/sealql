@@ -163,6 +163,10 @@ test('native managed writes and opens stay atomic', async () => {
     assert.equal(afterUpdate[0].memo, second.memo_plain);
     await sealed.update(db, peopleSeal, { id: first.id, scopeId: first.scope_id }, { memo: null });
     assert.equal((await sealed.open(await db.select().from(people)))[0].memo, null);
+    await assert.rejects(sealed.update(db, peopleSeal, { id: first.id, scopeId: first.scope_id }, { memo: undefined }), { code: 'INVALID_VALUE' });
+    await assert.rejects(sealed.update(db, peopleSeal, { id: first.id, scopeId: first.scope_id }, { unknown: undefined } as any), { code: 'INVALID_VALUE' });
+    await sealed.update(db, peopleSeal, { id: first.id, scopeId: first.scope_id }, { memo: undefined, name: first.name_plain });
+    assert.equal((await sealed.open(await db.select().from(people)))[0].memo, null);
     await sealed.upsert(db, peopleSeal, { id: first.id, scopeId: first.scope_id, createdAt: derivedTime(first.id), name: second.name_plain, memo: first.memo_plain });
     const afterUpsert = await sealed.open(await db.select().from(people));
     assert.equal(afterUpsert[0].name, second.name_plain);
@@ -187,10 +191,10 @@ test('native managed writes and opens stay atomic', async () => {
     }), /rollback/);
     assert.equal((await db.select().from(people).where(eq(people.id, second.id))).length, 0);
     assert.equal((await pool.query(`select count(*)::int as n from "${schemaName}".people_seal_index`)).rows[0].n, 1);
-    await sealed.insert(db, peopleSeal, { id: second.id, scopeId: second.id, createdAt: derivedTime(second.id), name: second.name_plain });
+    await sealed.insert(db, peopleSeal, { id: second.id, scopeId: second.id, createdAt: derivedTime(second.id), name: second.name_plain, memo: undefined });
     assert.equal((await sealed.open(await db.select().from(people).where(eq(people.id, second.id))))[0].memo, null);
     await sealed.insert(db, peopleSeal, { id: third.id, scopeId: first.scope_id, createdAt: derivedTime(third.id), name: third.name_plain, memo: third.memo_plain });
-    await sealed.upsert(db, peopleSeal, { id: first.id, scopeId: first.scope_id, createdAt: derivedTime(first.id), name: first.name_plain });
+    await sealed.upsert(db, peopleSeal, { id: first.id, scopeId: first.scope_id, createdAt: derivedTime(first.id), name: first.name_plain, memo: undefined });
     assert.equal((await sealed.open(await db.select().from(people).where(eq(people.id, first.id))))[0].memo, first.memo_plain);
     const oneItemBytes = canonical({ id: first.id, scopeId: first.scope_id }).length;
     const short = await sealed.findMany(db, peopleSeal, { scope: first.scope_id, columns: { id: true }, limit: 3,

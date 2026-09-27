@@ -86,13 +86,17 @@ async function writeTransaction<T>(db: Db, callback: (tx: any) => Promise<T>): P
     throw error;
   }
 }
-function checkedValues(reg: Registration, source: Record<string, unknown>, mode: 'insert' | 'update' | 'upsert'): void {
+function checkedValues(reg: Registration, source: Record<string, unknown>, mode: 'insert' | 'update' | 'upsert'): Record<string, unknown> {
   const columns = getTableColumns(reg.parent) as Record<string, PgColumn>;
+  const values: Record<string, unknown> = {};
   for (const [key, value] of Object.entries(source)) {
-    ensure(Object.hasOwn(columns, key) && value !== undefined, 'INVALID_VALUE');
+    ensure(Object.hasOwn(columns, key), 'INVALID_VALUE');
+    if (value === undefined) continue;
     if (mode === 'update') ensure(key !== reg.row && key !== reg.scope, 'INVALID_VALUE');
+    values[key] = value;
   }
-  ensure(mode !== 'update' || Object.keys(source).length > 0, 'INVALID_VALUE');
+  ensure(mode !== 'update' || Object.keys(values).length > 0, 'INVALID_VALUE');
+  return values;
 }
 function whereIdentity(reg: Registration, value: Record<string, unknown>) {
   const columns = getTableColumns(reg.parent) as Record<string, PgColumn>;
@@ -176,7 +180,7 @@ export function runtimeMethods(sealerOf: () => Sealer) {
     const sealer = sealerOf();
     const prepared: Prepared[] = [];
     try {
-      for (const row of arr) { const input = asRecord(row); checkedValues(reg, input, 'insert'); prepared.push(await prepare(reg, input, sealer, cache, true, true)); }
+      for (const row of arr) { const input = checkedValues(reg, asRecord(row), 'insert'); prepared.push(await prepare(reg, input, sealer, cache, true, true)); }
       const inserted = await writeTransaction(db, async (tx: any) => {
         const result = await tx.insert(reg.parent).values(prepared.map(row => row.parent)).returning();
         await upsertIndexes(tx, reg, prepared, false);
@@ -190,8 +194,7 @@ export function runtimeMethods(sealerOf: () => Sealer) {
   async function update<T extends PgTable, R extends string, S extends string | undefined = undefined, O extends { returning?: boolean } = {}>(
     db: Db, seal: SealMeta<T, R, S> & object, at: Identity<T, R, S>, patch: Patch<T, R, S>, options?: O,
   ): Promise<Result<T, R, S, O>> {
-    const reg = registrationOf(seal), input = asRecord(patch);
-    checkedValues(reg, input, 'update');
+    const reg = registrationOf(seal), input = checkedValues(reg, asRecord(patch), 'update');
     const where = whereIdentity(reg, asRecord(at));
     const sealer = sealerOf(), prepared: Prepared[] = [];
     try {
@@ -211,8 +214,7 @@ export function runtimeMethods(sealerOf: () => Sealer) {
   async function upsert<T extends PgTable, R extends string, S extends string | undefined = undefined, O extends { returning?: boolean } = {}>(
     db: Db, seal: SealMeta<T, R, S> & object, row: InsertRow<T, R>, options?: O,
   ): Promise<Result<T, R, S, O>> {
-    const reg = registrationOf(seal), input = asRecord(row);
-    checkedValues(reg, input, 'upsert');
+    const reg = registrationOf(seal), input = checkedValues(reg, asRecord(row), 'upsert');
     const sealer = sealerOf(), prepared: Prepared[] = [];
     try {
       prepared.push(await prepare(reg, input, sealer, cache, true, true));

@@ -25,6 +25,9 @@ db.insert(customers).values({ status: 'a', tenantId: 'x', name: 'Ada', age: 3 })
 db.select().from(customers).where(eq(customers.name, 'Ada'));
 db.update(customers).set({ status: 'b' });
 sealed.insert(db, customersSeal, { tenantId: 'x', status: 'a', name: 'Ada', age: 3 });
+sealed.insert(db, customersSeal, { tenantId: 'x', status: 'a', name: 'Ada', age: 3, memo: undefined });
+sealed.update(db, customersSeal, { id: 'x', tenantId: 'x' }, { memo: undefined, status: 'b' });
+sealed.upsert(db, customersSeal, { tenantId: 'x', status: 'a', name: 'Ada', age: 3, memo: undefined });
 sealed.findMany(db, customersSeal, { scope: 'x', match: m => {
   // @ts-expect-error ordinary plaintext column is not a sealed search field
   m.status.eq('a');
