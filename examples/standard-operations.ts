@@ -7,9 +7,8 @@ export function initializeSealql(key: Uint8Array) {
   configureKey(key);
 }
 export async function countMatching(db: PgDatabase<any, any, any>, scopeId: string) {
-  return sealed.count(db, noteSeal, { scope: scopeId, match: m => m.title.contains('ell'), maxCandidates: 10000 });
+  return sealed.count(db, noteSeal, { scope: scopeId, match: m => m.title.contains('ell') });
 }
 export async function findMatching(db: PgDatabase<any, any, any>, scopeId: string) {
-  return sealed.findMany(db, noteSeal, { scope: scopeId, match: m => m.title.contains('ell'), limit: 20,
-    budgets: { decryptConcurrency: 64 } });
+  return sealed.findMany(db, noteSeal, { scope: scopeId, match: m => m.title.contains('ell'), limit: 20 });
 }

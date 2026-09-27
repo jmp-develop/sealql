@@ -30,3 +30,4 @@
 | [011](011-rejected-research-lines.md) | 기각된 연구 방향 |
 | [012](012-drizzle-companion-and-column-options.md) | Drizzle 통합: 보조 테이블 유지, 칸마다 옵션 (008 일부 대체) |
 | [013](013-drizzle-native-api-implemented.md) | Drizzle 네이티브 API 구현 완료 (008·012 구현 확정) |
+| [014](014-unbounded-query-work.md) | 호출자 선택 예산, count 단일 후보 흐름, 커서 결속 정리 |

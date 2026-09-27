@@ -28,7 +28,7 @@ export async function example(db: PgDatabase<any, any, any>, scopeId: string, id
   const page = await sealed.findMany(db, noteSeal, {
     scope: scopeId, match: m => m.title.contains('Ad'), where: eq(note.status, 'draft'), limit: 20,
   });
-  const total = await sealed.count(db, noteSeal, { scope: scopeId, match: m => m.title.contains('Ad'), maxCandidates: 10000 });
+  const total = await sealed.count(db, noteSeal, { scope: scopeId, match: m => m.title.contains('Ad') });
   await sealed.update(db, noteSeal, { id, scopeId }, { status: 'active' });
   return { row, page, total };
 }
