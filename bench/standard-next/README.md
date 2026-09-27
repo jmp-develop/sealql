@@ -1,5 +1,7 @@
 # Standard core 100k verification
 
+These scripts preserve historical experimental records. They import the removed repository API and cannot run against the current native Drizzle API. Their existing results under `bench/results/` remain evidence for the version measured; use `bench/verify-core/` for current verification preparation.
+
 Run only against the owned disposable cluster at `127.0.0.1:56439`. Every DB script calls `assertDisposable` and checks the port before using SQL. The source `bench_realistic_100k` schema is read only. The derived `bench_standard_next_100k` schema is the only fixture written.
 
 1. `rtk proxy node --import tsx bench/standard-next/load.ts` creates the product DDL tables and loads all 100,000 customers and tickets. The parent ciphertext uses the product sealer; companion arrays use the product piece and token functions. Batched SQL inserts reduce round trips. The skip variant copies the same authenticated ciphertext because its model and field codec are identical, then computes a distinct companion profile. A numeric argument limits the number of 100-row batches for a smoke run. Repeated runs resume by ID.
