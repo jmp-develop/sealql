@@ -206,7 +206,7 @@ function growBatch(current: number, remaining: number, verified: number, accepte
 }
 export function searchMethods(sealerOf: () => import('../../../core/field-cipher.js').Sealer, open: <R>(rows: R, options?: { scope?: string; budgets?: { maxRows?: number; maxBytes?: number; deadlineMs?: number; concurrency?: number } }, authCache?: AuthCache) => Promise<Opened<R>>,
   openRaw: (seal: object, rows: Record<string, unknown>[], options: { columns: Record<string, string>; scope?: string }, authCache?: AuthCache) => Promise<Record<string, unknown>[]>, cache: SearchTokenCache) {
-  async function run<T extends PgTable>(db: Db, reg: Registration, options: FindOptions<T>, counting: boolean) {
+  async function run<T extends PgTable>(db: Db, reg: Registration, options: FindOptions<T>, counting: boolean, absoluteDeadline?: number) {
     ensure(options && typeof options === 'object', 'INVALID_VALUE');
     const scopeId = scope(reg, options.scope), columns = getTableColumns(reg.parent) as Record<string, PgColumn>;
     const rowColumn = columns[reg.row], scopeColumn = reg.scope ? columns[reg.scope] : undefined;
@@ -215,7 +215,7 @@ export function searchMethods(sealerOf: () => import('../../../core/field-cipher
     ensure(Number.isInteger(limit) && limit >= 1 && limit <= (counting ? 2000 : 200), 'INVALID_VALUE');
     const budgets = { batch: counting ? 2000 : 200, maxCandidates: counting ? 20000 : 2000, fetchBytes: 4 * 1024 * 1024,
       decryptedBytes: 4 * 1024 * 1024, resultBytes: 4 * 1024 * 1024, deadlineMs: 2000, decryptConcurrency: 64, ...options.budgets };
-    const deadline = Date.now() + budgets.deadlineMs;
+    const deadline = absoluteDeadline ?? Date.now() + budgets.deadlineMs;
     const check = () => { if (options.signal?.aborted) fail('CANCELLED'); ensure(Date.now() < deadline, 'LIMIT_EXCEEDED'); };
     const caps = { batch: counting ? 2000 : 500, maxCandidates: 20000, fetchBytes: 32 * 1024 * 1024,
       decryptedBytes: 32 * 1024 * 1024, resultBytes: 32 * 1024 * 1024, deadlineMs: 30000, decryptConcurrency: 64 };
@@ -250,7 +250,8 @@ export function searchMethods(sealerOf: () => import('../../../core/field-cipher
         break;
       }
       check();
-      const requestLimit = Math.min(batch, budgets.maxCandidates - scanned);
+      const remainingCandidates = budgets.maxCandidates - scanned;
+      const requestLimit = Math.min(batch, remainingCandidates) + (remainingCandidates <= batch ? 1 : 0);
       const sortCol = orderColumn ?? rowColumn;
       const orderedRow = reg.definition.rowType === 'text' ? orderedText(rowColumn) : rowColumn;
       const direction = options.orderBy?.direction ?? 'asc';
@@ -272,7 +273,7 @@ export function searchMethods(sealerOf: () => import('../../../core/field-cipher
       ensure(rows.length <= requestLimit, 'INVALID_CANDIDATE_SHAPE');
       if (!rows.length) { exhausted = true; break; }
       const state: CandidateState = { scanned, fetchedBytes, decryptedBytes, limited };
-      await scanCandidates(rows as Record<string, unknown>[], () => limit - items.length, budgets, deadline, options.signal, state,
+      const consumed = await scanCandidates(rows as Record<string, unknown>[], () => limit - items.length, budgets, deadline, options.signal, state,
         row => {
           identity(row[reg.row] as string, reg.definition.rowType);
           ensure(!reg.scope || row[reg.scope] === scopeId, 'INVALID_CANDIDATE_SHAPE');
@@ -318,9 +319,14 @@ export function searchMethods(sealerOf: () => import('../../../core/field-cipher
           return true;
         });
       ({ scanned, fetchedBytes, decryptedBytes, limited } = state);
-      if (limited) { if (!scanned) fail('LIMIT_EXCEEDED'); break; }
+      if (limited) {
+        if (!scanned) fail('LIMIT_EXCEEDED');
+        if (scanned >= budgets.maxCandidates && consumed === rows.length && rows.length < requestLimit) { exhausted = true; limited = false; }
+        break;
+      }
       if (items.length === limit || rows.length < requestLimit || scanned >= budgets.maxCandidates) {
-        exhausted = items.length < limit && rows.length < requestLimit; limited = scanned >= budgets.maxCandidates && !exhausted; break;
+        exhausted = consumed === rows.length && rows.length < requestLimit;
+        limited = scanned >= budgets.maxCandidates && !exhausted; break;
       }
       const remaining = limit - items.length;
       batch = growBatch(batch, remaining, verified, accepted, budgets.batch);
@@ -340,12 +346,16 @@ export function searchMethods(sealerOf: () => import('../../../core/field-cipher
   ): Promise<number> {
     const maxCandidates = options.maxCandidates ?? 20000;
     ensure(Number.isSafeInteger(maxCandidates) && maxCandidates >= 1 && maxCandidates <= 1000000, 'INVALID_VALUE');
+    const requestedDeadline = options.budgets?.deadlineMs ?? 2000;
+    ensure(Number.isSafeInteger(requestedDeadline) && requestedDeadline > 0 && requestedDeadline <= 30000, 'INVALID_VALUE');
+    const deadline = Date.now() + requestedDeadline;
     let result = 0, scanned = 0, cursor: string | undefined;
     do {
+      ensure(Date.now() < deadline, 'LIMIT_EXCEEDED');
       const remaining = maxCandidates - scanned;
       if (remaining <= 0) fail('LIMIT_EXCEEDED');
       const page = await run<T>(db, registrationOf(seal), { ...options, columns: {}, limit: 2000, cursor,
-        budgets: { ...options.budgets, batch: 2000, maxCandidates: Math.min(remaining, 20000) } }, true);
+        budgets: { ...options.budgets, batch: 2000, maxCandidates: Math.min(remaining, 20000) } }, true, deadline);
       result += page.items.length; scanned += page.scanned;
       if (page.limited) fail('LIMIT_EXCEEDED');
       if (page.exhausted) return result;

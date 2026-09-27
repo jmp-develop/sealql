@@ -194,3 +194,18 @@ test('reindex handles a fixture-derived batch above the public open row default'
       match: m => m.body.eq(first.memo_plain), limit: 1 })).items[0].id, first.id);
   } finally { await c.close(); }
 });
+
+test('count spans internal pages and accepts an exact candidate ceiling', async () => {
+  const c = await setup('count_pages', 2001);
+  try {
+    const scope = c.rows[0].scope_id;
+    assert.equal(c.rows.filter(row => row.scope_id === scope).length, 2001);
+    assert.equal(await c.sealed.count(c.db, c.seal, { scope, maxCandidates: 2001,
+      budgets: { deadlineMs: 30000, fetchBytes: 32 * 1024 * 1024, resultBytes: 32 * 1024 * 1024 } }), 2001);
+    await assert.rejects(c.sealed.count(c.db, c.seal, { scope, maxCandidates: 2000,
+      budgets: { deadlineMs: 30000, fetchBytes: 32 * 1024 * 1024, resultBytes: 32 * 1024 * 1024 } }),
+    { code: 'LIMIT_EXCEEDED' });
+    await assert.rejects(c.sealed.count(c.db, c.seal, { scope, maxCandidates: 2001,
+      budgets: { deadlineMs: 1 } }), { code: 'LIMIT_EXCEEDED' });
+  } finally { await c.close(); }
+});

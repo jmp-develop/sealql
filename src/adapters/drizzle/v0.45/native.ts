@@ -123,19 +123,12 @@ function register<T extends PgTable, R extends UuidOrTextKeys<T>, S extends Uuid
   ensure(!cfg.scope || (!!scopeColumn && !scopeColumn.keyAsName && scopeColumn.notNull && ['uuid', 'text'].includes(scopeColumn.getSQLType())), 'INVALID_SCHEMA');
   const scopeType = scopeColumn?.getSQLType() === 'uuid' ? 'uuid' : 'text';
   const tableConfig = getTableConfig(table);
-  const hasUnique = [...tableConfig.primaryKeys, ...tableConfig.uniqueConstraints, ...tableConfig.indexes.filter(i => i.config.unique)]
-    .some(key => {
-      const keyColumns = 'columns' in key ? key.columns : key.config.columns;
-      const names = keyColumns.map(c => 'name' in c ? c.name : undefined);
-      return names.length === (cfg.scope ? 2 : 1) && names.includes(rowColumn.name) && (!scopeColumn || names.includes(scopeColumn.name));
-    }) || (rowColumn.primary && !scopeColumn);
-  // A row primary key is already enough to back a row-only FK even on scoped tables.
-  const rowUnique = rowColumn.primary || [...tableConfig.primaryKeys, ...tableConfig.uniqueConstraints, ...tableConfig.indexes.filter(i => i.config.unique)]
-    .some(key => {
-      const keyColumns = 'columns' in key ? key.columns : key.config.columns;
-      return keyColumns.length === 1 && 'name' in keyColumns[0] && keyColumns[0].name === rowColumn.name;
-    });
-  ensure(hasUnique || rowUnique, 'INVALID_SCHEMA');
+  const uniqueSets = [...tableConfig.primaryKeys, ...tableConfig.uniqueConstraints, ...tableConfig.indexes.filter(i => i.config.unique)]
+    .map(key => ('columns' in key ? key.columns : key.config.columns).map(column => 'name' in column ? column.name : undefined));
+  const hasUnique = (names: string[]) => uniqueSets.some(columns => columns.length === names.length && names.every(name => columns.includes(name)));
+  // A unique row column is enough to back a row-only FK even on scoped tables.
+  const rowUnique = rowColumn.primary || rowColumn.isUnique || hasUnique([rowColumn.name]);
+  ensure(rowUnique || !!scopeColumn && hasUnique([scopeColumn.name, rowColumn.name]), 'INVALID_SCHEMA');
   const model = cfg.model ?? getTableName(table);
   ensure(!models.has(model), 'INVALID_SCHEMA');
   const fields = new Map<string, FieldBinding>();

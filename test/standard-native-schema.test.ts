@@ -23,4 +23,6 @@ test('native registration builds same-schema companion without loading a key', (
   assert.throws(() => parent.name.mapToDriverValue('plain' as never), /SEAL_REQUIRED/);
   const withDefault = schema.table('invalid_default', { id: uuid('id').primaryKey(), name: sealed.text('name').default(null as never) });
   assert.throws(() => sealed.register(withDefault, { row: 'id' }), /INVALID_SCHEMA/);
+  const uniqueRow = schema.table('unique_row', { id: uuid('id').unique().notNull(), name: sealed.text('unique_name') });
+  assert.equal(registrationOf(sealed.register(uniqueRow, { row: 'id' })).rowUnique, true);
 });
