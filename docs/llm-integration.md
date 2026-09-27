@@ -2,6 +2,10 @@
 
 This guide describes the experimental Drizzle ORM 0.45 API. The compilable [schema and key example](../examples/standard-consumer.ts), [managed operations](../examples/standard-operations.ts), [raw SQL example](../examples/standard-raw.ts), and [key loader](../examples/key-loader.ts) show the calls in context.
 
+## Install and driver
+
+SealQL is not published to the npm registry. Run `npm pack` in a checkout and install the resulting `.tgz` in the application, or use a Git dependency. It requires `drizzle-orm >=0.45.2 <0.46` and Node `>=22.12` or a compatible WebCrypto runtime. For Cloudflare Workers, choose a transactional PostgreSQL driver: `pg` with Workers sockets or `postgres-js` has been exercised. `neon-http` cannot perform managed writes or `reindex` because it lacks the required transaction callback. Keep the fixed key in application secret storage and configure it once at startup, before data operations.
+
 ## Schema and key
 
 `sealql` exports `createSealer`, codecs, and `SealError`. `sealql/drizzle/v0.45` exports `createSealed` and the `Sealed`/`Opened` types. The app loads a fixed 32-byte root key; it may configure a separate fixed key for a model with `createSealer({ key, models: { modelName: { key: modelKey } } })`. There is no key version, DB policy table, or user/group key. The app authorizes scope values. Changing a key requires full application-managed re-encryption and index rebuild.
@@ -44,6 +48,8 @@ For raw `db.execute`, call `sealed.openRaw(notesSeal, result.rows, { columns: { 
 
 A driver that rejects transactions before entering the callback raises `UNSUPPORTED_DRIVER` for managed writes and `reindex`.
 
+Await a Drizzle query before passing its result to `sealed.open` or `sealed.openRaw`; Promise and thenable inputs raise `INVALID_VALUE` with “await the query”. The optional fourth `openRaw` argument is an internal per-call authentication cache used by `search`; application calls should omit it.
+
 ## Search
 
 ```ts
@@ -68,6 +74,54 @@ The `db` argument keeps `search` calls consistent with `findMany` and `count`; t
 Search defaults to at most 2,000 candidates, 4 MiB each of fetched, decrypted, and result bytes, a 2-second deadline, and 64 concurrent field authentications. The per-call `budgets` option can raise these only to 20,000 candidates, 32 MiB for each byte budget, a 30-second deadline, and 64 concurrent authentications; `batch` is capped at 500 for pages and 2,000 for count. `count` may scan more than 20,000 candidates through bounded internal pages when its explicit `maxCandidates` permits it. An invalid budget is `INVALID_VALUE`. A page that cannot process even one candidate raises `LIMIT_EXCEEDED`. Candidate fields are authenticated first; remaining selected fields are opened only for matches. A call-scoped cache reuses authentication of the same model, row, and field in a 1:N JOIN.
 
 Searchable text folds NFC, full-width ASCII, ASCII case, and whitespace as specified by the token profile. `contains`, `startsWith`, `endsWith`, and `like` require at least two normalized characters. `like` follows SealQL's supported substring pattern semantics, not arbitrary PostgreSQL `LIKE` syntax; confirm the pattern before replacing a SQL `LIKE` predicate. Drizzle's `like`/`ilike` on a sealed column can pass type checking and silently return no rows; use the match builder for encrypted fields. Substring profiles include one-character-gap pieces by default; `substring: { skipGrams: false }` disables them. Changing search profile options requires rebuilding stored tokens. Exact tokens may use 8–32 bits; substring tokens remain 16 bits. Token matches are candidates only, so collisions may increase decrypted rows but cannot authorize a false result.
+
+`findMany` accepts `scope` (required for a scoped table), `match`, `where`, `columns`, `orderBy`, `limit`, `cursor`, `budgets`, and `signal`. Use `orderBy: { column, direction: 'asc' | 'desc' }` only with an unencrypted NOT NULL integer, bigint, UUID, or timestamptz column. Continue with `cursor: page.nextCursor`; `columns` selects returned properties, `budgets` bounds work, and `signal` cancels it. `contains(value, { respectWords: true })` requires `search: { substring: { wordBoundary: true } }`, otherwise it raises `UNSUPPORTED_SEARCH`. `m.like` supports `%` for zero or more characters, `_` for one character, and backslash escapes for `%`, `_`, and `\`; at least one literal run needs two normalized characters.
+
+Drizzle's `eq` on a sealed column raises `SEAL_REQUIRED`; `like`/`ilike` can silently return zero; `orderBy(asc(sealedColumn))` can silently sort ciphertext into a meaningless order. Never use ordinary Drizzle predicates or ordering on encrypted columns. String conversion or JSON serialization of an unopened encrypted handle raises `SEAL_REQUIRED`; do not log such handles.
+
+## Migrations and searchable field changes
+
+After `drizzle-kit generate`, run `drizzle-kit generate --custom --name seal_stats`, paste every statement returned by `sealed.extraMigrationSql(notesSeal)` into that custom SQL migration, then migrate. With `push`, execute those statements directly after the push. Reapply them whenever searchable fields or profiles change. A drizzle-kit config for a dedicated schema can set `schemaFilter`, `migrations.schema`, and `tablesFilter` together:
+
+```ts
+export default defineConfig({
+  dialect: 'postgresql', schema: './src/schema.ts', out: './drizzle',
+  schemaFilter: ['app'], migrations: { schema: 'app' },
+  tablesFilter: ['!__drizzle_migrations'],
+});
+```
+
+Import `defineConfig` from `drizzle-kit`. When using `pgSchema`, check where the migration journal is created; moving the journal into the application schema can make an existing `CREATE SCHEMA` migration conflict. `push` may propose deleting the journal table unless excluded with `tablesFilter` as above.
+
+When adding `search` to an existing encrypted field or changing its profile, deploy in this order: **(1) schema migration, (2) `extraMigrationSql` statements, (3) complete `reindex`, (4) deploy code that searches the new field**. **Before step 4, searching or counting on the new profile silently omits existing rows, possibly returning zero.** The companion has token columns but no persisted profile version or completion marker, so a query cannot cheaply tell whether all old rows were rebuilt. A per-query parent scan would be expensive. Generated migrations may drop and recreate the GIN index without `CONCURRENTLY`; on a large table, allow for locking and rebuild time (estimate, not measured here).
+
+## Error codes
+
+`SealError.code` is stable for handling errors; `message` gives short context. Database wrappers keep the original error in `cause` in the caller process.
+
+| Code | Meaning and common cause |
+|---|---|
+| `SEAL_REQUIRED` | Plain Drizzle write or string/JSON serialization of an unopened encrypted handle. Avoid logging unopened handles. |
+| `INVALID_VALUE` | Invalid value, option, budget, or an unawaited query passed to `open`/`openRaw`. |
+| `INVALID_SCHEMA` | Registration, column, or companion metadata does not match requirements. |
+| `NOT_FOUND` | Managed update target is absent. |
+| `SCOPE_CONFLICT` | Upsert conflicts with a row in another scope. |
+| `SCOPE_MISMATCH` | Opened row differs from the authorized scope. |
+| `ROW_CONTEXT_MISSING` | Selected encrypted field lacks its registered row or scope property. |
+| `LIMIT_EXCEEDED` | Row, byte, time, or candidate budget was exceeded. |
+| `QUERY_TOO_BROAD` | Search lacks at least two usable normalized characters. |
+| `CURSOR_INVALID` | Cursor is malformed or does not match the query. |
+| `UNSUPPORTED_SEARCH` | Field lacks the selected search profile; `respectWords` needs `substring: { wordBoundary: true }`. |
+| `UNSUPPORTED_DRIVER` | Driver lacks a transaction callback. |
+| `INVALID_CANDIDATE_SHAPE` | Candidate query omitted, duplicated, or misordered keyset data. |
+| `AUTHENTICATION_FAILED` | Ciphertext could not be authenticated in its row context. |
+| `WRITE_OUTCOME_UNKNOWN` | Commit failed after a managed write callback; reconcile before retry. |
+| `DATABASE_ERROR` | Other database failure; inspect `cause`. |
+| `CONSTRAINT_VIOLATION` | Database unique, foreign key, null, or check constraint failed. |
+| `TRANSACTION_CONFLICT` | Serialization failure or deadlock. |
+| `DB_TIMEOUT` | Database cancelled or timed out a statement. |
+| `CANCELLED` | Search `signal` was aborted. |
+| `INVALID_ID` | Row or scope ID has an invalid form or length. |
 
 ## Limits and security
 

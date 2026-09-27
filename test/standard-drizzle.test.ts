@@ -9,6 +9,22 @@ import { canonical, utf8 } from '../src/core/bytes.js';
 import { createSealed } from '../src/adapters/drizzle/v0.45/index.js';
 import { Sealed, registrationOf } from '../src/adapters/drizzle/v0.45/native.js';
 import { assertDisposable } from './disposable.js';
+import { databaseError } from '../src/core/errors.js';
+
+test('open rejects pending queries and database wrapping preserves cause', async () => {
+  const sealed = createSealed({ sealer: createSealer({ key: new Uint8Array(32) }) });
+  const pending = Promise.resolve({ id: 'x' });
+  await assert.rejects(sealed.open(pending as never), { code: 'INVALID_VALUE', message: /await the query/ });
+  const row = pgSchema('test_open_raw_shape').table('rows', {
+    id: uuid('id').primaryKey(), name: sealed.text('name', { search: { exact: true } }),
+  });
+  const seal = sealed.register(row, { row: 'id' });
+  await assert.rejects(sealed.openRaw(seal, pending as never, { columns: { id: 'id' } }), { code: 'INVALID_VALUE', message: /await the query/ });
+  const original = Object.assign(new Error('database rejected write'), { code: '23505' });
+  const wrapped = databaseError(original);
+  assert.equal(wrapped.code, 'CONSTRAINT_VIOLATION');
+  assert.equal(wrapped.cause, original);
+});
 
 test('transactionless drivers report UNSUPPORTED_DRIVER before any callback work', async () => {
   const sealed = createSealed({ sealer: createSealer({ key: new Uint8Array(32).fill(93) }) });

@@ -1,6 +1,6 @@
 export class SealError extends Error {
-  constructor(public readonly code: string, public readonly fieldId?: string) {
-    super(fieldId ? `${code}: ${fieldId}` : code);
+  constructor(public readonly code: string, public readonly fieldId?: string, options?: ErrorOptions & { detail?: string }) {
+    super(fieldId ? `${code}: ${fieldId}` : options?.detail ? `${code}: ${options.detail}` : code, options);
     this.name = 'SealError';
   }
 }
@@ -12,5 +12,5 @@ export function databaseError(error: unknown): SealError {
   const code = wrapped?.code??wrapped?.cause?.code;
   return new SealError(code === '23505' || code === '23503' || code === '23502' || code === '23514' ? 'CONSTRAINT_VIOLATION'
     : code === '40001' || code === '40P01' ? 'TRANSACTION_CONFLICT'
-    : code === '57014' ? 'DB_TIMEOUT' : 'DATABASE_ERROR');
+    : code === '57014' ? 'DB_TIMEOUT' : 'DATABASE_ERROR', undefined, { cause: error });
 }

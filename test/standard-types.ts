@@ -19,6 +19,10 @@ sealed.register(customers, { row: 'name' });
 sealed.register(customers, { row: 'id', scope: 'missing' });
 
 const db = drizzle.mock();
+// @ts-expect-error open requires an awaited query result
+sealed.open(Promise.resolve({ id: 'x' }));
+// @ts-expect-error openRaw requires awaited raw rows
+sealed.openRaw(customersSeal, Promise.resolve({ rows: [] }), { columns: { id: 'id', tenantId: 'tenant_id' } });
 // @ts-expect-error plain values cannot be inserted into sealed fields through Drizzle
 db.insert(customers).values({ status: 'a', tenantId: 'x', name: 'Ada', age: 3 });
 // @ts-expect-error sealed predicate must not accept plaintext

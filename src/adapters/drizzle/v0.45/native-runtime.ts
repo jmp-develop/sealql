@@ -13,7 +13,7 @@ type AuthCache = Map<string, { bytes: Uint8Array; result: Promise<unknown> }>;
 type Db = PgDatabase<any, any, any>;
 type Identity<T extends PgTable, R extends string, S extends string | undefined> =
   Pick<InferSelectModel<T>, Extract<R | Exclude<S, undefined>, keyof InferSelectModel<T>>>;
-type InsertRow<T extends PgTable, R extends string> = Omit<PlainShape<T>, R> & Partial<Pick<PlainShape<T>, Extract<R, keyof PlainShape<T>>>>;
+type InsertRow<T extends PgTable, R extends string> = Omit<PlainShape<T>, R> & Partial<PlainShape<T>>;
 type Patch<T extends PgTable, R extends string, S extends string | undefined> = {
   [K in keyof Omit<PlainShape<T>, R | Exclude<S, undefined>>]?: PlainShape<T>[K] | undefined;
 };
@@ -134,6 +134,8 @@ export function runtimeMethods(sealerOf: () => Sealer) {
     const jobs: { target: Record<string, unknown>; key: string; value: Sealed<unknown, unknown>; rowId: string; scopeId: string }[] = [];
     const walk = (value: unknown): unknown => {
       ensure(Date.now() < deadline, 'LIMIT_EXCEEDED');
+      if (value && (typeof value === 'object' || typeof value === 'function') && typeof (value as PromiseLike<unknown>).then === 'function')
+        throw new SealError('INVALID_VALUE', undefined, { detail: 'await the query' });
       if (Array.isArray(value)) return value.map(walk);
       if (value === null || typeof value !== 'object' || value instanceof Date || value instanceof Uint8Array) return value;
       if (value instanceof Sealed) fail('ROW_CONTEXT_MISSING');
@@ -175,7 +177,7 @@ export function runtimeMethods(sealerOf: () => Sealer) {
     }));
     return result as Opened<R>;
   }
-  const open = <R>(rows: R, options?: OpenOptions): Promise<Opened<R>> => openWithCache(rows, options);
+  const open = <R>(rows: R & (R extends PromiseLike<unknown> ? never : unknown), options?: OpenOptions): Promise<Opened<R>> => openWithCache(rows, options);
 
   async function insert<T extends PgTable, R extends string, S extends string | undefined = undefined, O extends { returning?: boolean } = {}>(
     db: Db, seal: SealMeta<T, R, S> & object, rows: InsertRow<T, R> | InsertRow<T, R>[], options?: O,
@@ -246,6 +248,7 @@ export function runtimeMethods(sealerOf: () => Sealer) {
     seal: SealMeta<T, R, S> & object, rows: V[] | { rows: V[] }, options: { columns: Record<string, string>; scope?: string; budgets?: OpenOptions['budgets'] },
     authCache?: AuthCache,
   ): Promise<V[]> {
+    if (rows && typeof (rows as unknown as PromiseLike<unknown>).then === 'function') throw new SealError('INVALID_VALUE', undefined, { detail: 'await the query' });
     const reg = registrationOf(seal), columns = options.columns;
     ensure(!!columns[reg.row] && (!reg.scope || !!columns[reg.scope]), 'INVALID_VALUE');
     const source = Array.isArray(rows) ? rows : rows.rows;

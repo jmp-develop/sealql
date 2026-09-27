@@ -2,16 +2,14 @@
 import type { PgDatabase } from 'drizzle-orm/pg-core';
 import { configureKey, noteSeal, sealed } from './standard-consumer.js';
 
-export function bindWithKey(key: Uint8Array) {
+/** Call once during application startup, before any data operation. */
+export function initializeSealql(key: Uint8Array) {
   configureKey(key);
-  return sealed;
 }
-export async function countMatching(db: PgDatabase<any, any, any>, key: Uint8Array, scopeId: string) {
-  bindWithKey(key);
+export async function countMatching(db: PgDatabase<any, any, any>, scopeId: string) {
   return sealed.count(db, noteSeal, { scope: scopeId, match: m => m.title.contains('ell'), maxCandidates: 10000 });
 }
-export async function findMatching(db: PgDatabase<any, any, any>, key: Uint8Array, scopeId: string) {
-  bindWithKey(key);
+export async function findMatching(db: PgDatabase<any, any, any>, scopeId: string) {
   return sealed.findMany(db, noteSeal, { scope: scopeId, match: m => m.title.contains('ell'), limit: 20,
     budgets: { decryptConcurrency: 64 } });
 }

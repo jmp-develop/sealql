@@ -32,7 +32,6 @@
   },
   "scripts": {
     "build": "node scripts/clean-dist.mjs && tsc -p tsconfig.json",
-    "prepare": "npm run build",
     "prepack": "npm run build",
     "test": "node --import tsx --test test/*.test.ts",
     "check": "tsc -p tsconfig.check.json --noEmit",

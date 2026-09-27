@@ -1,5 +1,7 @@
 # SealQL current state and code map
 
+The installed declaration check now runs with `skipLibCheck: false` and reports SealQL or consumer diagnostics; independent Drizzle 0.45 declaration diagnostics are excluded. `open` and `openRaw` reject unawaited thenables with `INVALID_VALUE`, and wrapped database errors preserve their original `cause`. New or changed searchable profiles require a completed `reindex` before search code is deployed, since existing companion rows do not record a profile version. The integration guide gives the migration order and warns that premature queries can silently omit old rows.
+
 For `search` positions containing text, one additional SQL request per nonempty candidate batch verifies strict increase using the database column collation; malformed ordering raises `INVALID_CANDIDATE_SHAPE`. UUID and integer positions retain the in-process check without an extra request. Transactionless drivers raise `UNSUPPORTED_DRIVER` before managed write or reindex callbacks run.
 
 As of 2026-09-27, the product has one search mode: `standard` HMAC pieces, PostgreSQL companion GIN/B-tree indexes, and internal authenticated predicate verification. Stateful search, V2 posting pages, and bucket search are rejected research lines ([decision 011](decisions/011-rejected-research-lines.md)). They are not product modes.
