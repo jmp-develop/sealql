@@ -1,9 +1,10 @@
-/** Read-only audit of the deferred customer indexes and validated companion FK. */
+/** Audit deferred indexes and the GIN pending list before or after timing. */
 import assert from 'node:assert/strict';
 import { writeFile } from 'node:fs/promises';
 import { Pool } from 'pg';
 import { assertDisposable } from '../../test/disposable.js';
 const pool=new Pool({host:'127.0.0.1',port:56439,user:'sealql_test',database:'postgres'});
+const post=process.argv[2]==='post';
 try{
   await assertDisposable(pool);assert.equal(Number((await pool.query('show port')).rows[0].port),56439);
   assert.equal(Number((await pool.query('select count(*) n from native_scale_100m.progress')).rows[0].n),1000);
@@ -14,18 +15,30 @@ try{
   assert.deepEqual(scale.map(x=>[x.tablename,x.indexname]),base.map(x=>[x.tablename,x.indexname]));
   const plain=await names('native_scale_100m',['customers_plain']);assert.equal(plain.length,13);
   const ginName=scale.filter(x=>x.indexname.endsWith('_gin'));assert.equal(ginName.length,1);
+  const ginBefore=(await pool.query('select pending_pages,pending_tuples from pgstatginindex($1::regclass)',
+    [`native_scale_100m.${ginName[0].indexname}`])).rows[0];
+  let cleaned=false;
+  if(!post&&Number(ginBefore.pending_pages)>0){
+    await pool.query('select gin_clean_pending_list($1::regclass)',
+      [`native_scale_100m.${ginName[0].indexname}`]);cleaned=true;
+  }
   const gin=(await pool.query('select pending_pages,pending_tuples from pgstatginindex($1::regclass)',
     [`native_scale_100m.${ginName[0].indexname}`])).rows[0];
-  assert.equal(Number(gin.pending_pages),0);
+  if(!post)assert.equal(Number(gin.pending_pages),0);
   const fk=(await pool.query(`select conname,convalidated from pg_constraint
     where conrelid='native_scale_100m.customers_seal_index'::regclass and contype='f'`)).rows;
   assert.equal(fk.length,1);assert.equal(fk[0].convalidated,false);
   const stats=(await pool.query(`select relname,last_vacuum,last_analyze from pg_stat_user_tables
     where schemaname='native_scale_100m' and relname=any($1) order by relname`,[['customers','customers_plain','customers_seal_index']])).rows;
-  assert.equal(stats.length,3);for(const s of stats){assert(s.last_vacuum);assert(s.last_analyze);}
+  assert.equal(stats.length,3);for(const s of stats){
+    if(s.relname!=='customers_seal_index')assert(s.last_vacuum);
+    assert(s.last_analyze);
+  }
   const result={baseIndexes:base.length,scaleIndexes:scale.length,plainIndexes:plain.length,
-    productIndexNames:scale.map(x=>x.indexname),plainIndexNames:plain.map(x=>x.indexname),ginPending:gin,
+    productIndexNames:scale.map(x=>x.indexname),plainIndexNames:plain.map(x=>x.indexname),
+    ginPendingBefore:ginBefore,ginPending:gin,ginPendingCleaned:cleaned,
     foreignKey:fk[0],stats};
-  await writeFile('bench/results/2026-09-27-native-scale-100m/index-audit.json',JSON.stringify(result,null,2)+'\n');
-  console.log(JSON.stringify({productIndexes:scale.length,plainIndexes:plain.length,fkValidated:false,vacuumAnalyzed:true}));
+  await writeFile(`bench/results/2026-09-27-native-scale-100m/index-audit${post?'-post':''}.json`,JSON.stringify(result,null,2)+'\n');
+  console.log(JSON.stringify({productIndexes:scale.length,plainIndexes:plain.length,fkValidated:false,
+    vacuumAnalyzed:true,ginPending:gin,ginPendingCleaned:cleaned,post}));
 }finally{await pool.end();}

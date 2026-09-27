@@ -1,0 +1,61 @@
+{
+  "baseIndexes": 9,
+  "scaleIndexes": 9,
+  "plainIndexes": 13,
+  "productIndexNames": [
+    "customers_pkey",
+    "customers_seal_index_scope_row_uq",
+    "seal_411905c9deef5c59_bt",
+    "seal_4c8e2d2bddde3451_bt",
+    "seal_62e346c0ef994072_bt",
+    "seal_8fa11f16c3da1ad8_bt",
+    "seal_ae59b15a89e931d6_bt",
+    "seal_dfa387787f59f02a_bt",
+    "seal_e66dc2708e915b65_gin"
+  ],
+  "plainIndexNames": [
+    "customers_address_exact",
+    "customers_address_trgm",
+    "customers_company_exact",
+    "customers_company_trgm",
+    "customers_email_exact",
+    "customers_email_trgm",
+    "customers_memo_exact",
+    "customers_memo_trgm",
+    "customers_name_exact",
+    "customers_name_trgm",
+    "customers_phone_exact",
+    "customers_phone_trgm",
+    "customers_plain_pkey"
+  ],
+  "ginPendingBefore": {
+    "pending_pages": 0,
+    "pending_tuples": "0"
+  },
+  "ginPending": {
+    "pending_pages": 0,
+    "pending_tuples": "0"
+  },
+  "ginPendingCleaned": false,
+  "foreignKey": {
+    "conname": "customers_seal_index_row_id_customers_id_fk",
+    "convalidated": false
+  },
+  "stats": [
+    {
+      "relname": "customers",
+      "last_vacuum": "2026-09-27T16:22:56.965Z",
+      "last_analyze": "2026-09-27T16:22:58.450Z"
+    },
+    {
+      "relname": "customers_plain",
+      "last_vacuum": "2026-09-27T16:30:26.991Z",
+      "last_analyze": "2026-09-27T16:30:28.163Z"
+    },
+    {
+      "relname": "customers_seal_index",
+      "last_vacuum": null,
+      "last_analyze": "2026-09-27T16:30:59.257Z"
+    }
+  ]
+}

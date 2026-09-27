@@ -40,7 +40,29 @@ try{
   const shardMatch=/^plain-shard-([012])$/.exec(process.argv[2]??'');
   await pool.query(`set maintenance_work_mem='${shardMatch?'2GB':'4GB'}'`);
   await pool.query(`set max_parallel_maintenance_workers=${shardMatch?4:8}`);
-  if(shardMatch){
+  if(process.argv[2]==='finalize'){
+    await execute('disable companion autovacuum',
+      'alter table native_scale_100m.customers_seal_index set (autovacuum_enabled=false)');
+    await execute('disable plain autovacuum',
+      'alter table native_scale_100m.customers_plain set (autovacuum_enabled=false)');
+    await execute('vacuum analyze customers_plain',
+      'vacuum (analyze, parallel 8) native_scale_100m.customers_plain');
+    await execute('analyze customers_seal_index','analyze native_scale_100m.customers_seal_index');
+    const result={finishedAt:new Date().toISOString(),indexCount:22,foreignKey:true,
+      companionVacuumSkipped:true,companionAnalyzed:true,plainVacuumCompleted:true,
+      autovacuumTemporarilyDisabled:['customers_seal_index','customers_plain'],
+      freeBytes:freeBytes(),databaseBytes:Number((await pool.query('select pg_database_size(current_database()) bytes')).rows[0].bytes)};
+    const out='bench/results/2026-09-27-native-scale-100m';await mkdir(out,{recursive:true});
+    await writeFile(`${out}/index.json`,JSON.stringify(result,null,2)+'\n');
+    console.log(JSON.stringify(result));
+  }else if(process.argv[2]==='restore-autovacuum'){
+    await execute('restore companion autovacuum',
+      'alter table native_scale_100m.customers_seal_index reset (autovacuum_enabled)');
+    await execute('restore plain autovacuum',
+      'alter table native_scale_100m.customers_plain reset (autovacuum_enabled)');
+    await writeFile('bench/results/2026-09-27-native-scale-100m/autovacuum-restored.json',
+      JSON.stringify({restoredAt:new Date().toISOString(),tables:['customers_seal_index','customers_plain']},null,2)+'\n');
+  }else if(shardMatch){
     const shard=Number(shardMatch[1]);
     console.log(JSON.stringify({shard,plainIndexes:await buildPlainIndexes(shard),finishedAt:new Date().toISOString()}));
   }else if(process.argv[2]==='plain-only'){

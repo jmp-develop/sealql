@@ -27,13 +27,16 @@ assert.deepEqual(distBefore.files,distAfter.files,'customer timing dist changed'
 const checkpointRows=checkpoints.map((x:any)=>`| ${x.stage} | ${x.customerRows?.toLocaleString('en-US')??'—'} | ${x.ticketRows?.toLocaleString('en-US')??'—'} | ${fmt(x.elapsedSec/60)} | ${gib(x.databaseBytes)} | ${gib(x.freeBytes)} | ${x.estimatedRemainingSec===null?'미계측':`${fmt(x.estimatedRemainingSec/60)}분 (당시 추정)`} |`);
 const validation=await load('validation');
 const indexAudit=await load('index-audit');assert.equal(indexAudit.foreignKey.convalidated,false);
+const indexAuditPost=await load('index-audit-post');
+const autovacuumRestored=await load('autovacuum-restored');assert.equal(autovacuumRestored.tables.length,2);
 const count=await maybe('count'),mixed=await maybe('mixed'),join=await maybe('join');
 const write=await maybe('write'),batch=await maybe('write-batch'),ticketValidation=await maybe('ticket-validation');
 const ticketIndex=await maybe('ticket-index');
 const ticketIndexAudit=await maybe('ticket-index-audit');
 const ticketDistBefore=await maybe('dist-ticket-before'),ticketDistAfter=await maybe('dist-ticket-after');
 assert(count&&mixed&&write&&batch,'required measurements are missing');
-assert(await maybe('index'),'customer indexes and vacuum are not recorded');
+  const index=await maybe('index');assert(index,'customer indexes and vacuum are not recorded');
+  assert(index.companionVacuumSkipped&&index.companionAnalyzed&&index.plainVacuumCompleted);
 if(checkpoints.some((x:any)=>x.ticketRows>0)){
   assert(join&&ticketValidation&&ticketIndex&&ticketIndexAudit&&ticketDistBefore&&ticketDistAfter,'ticket evidence is incomplete');
   assert.deepEqual(ticketDistBefore.files,ticketDistAfter.files,'ticket timing dist changed');
@@ -57,7 +60,7 @@ const md=`# Drizzle 네이티브 API 1억 행 규모 시험
 
 ## 적재·공간·정합
 
-출처: [체크포인트](checkpoints.json), [고객 색인·VACUUM](index.json), [고객 색인·FK 감사](index-audit.json), [ID 충돌 사전 검사](id-check.json), [고객 표본 검증](validation.json)${ticketValidation?', [티켓 색인·VACUUM](ticket-index.json), [티켓 색인·FK 감사](ticket-index-audit.json), [티켓 표본 검증](ticket-validation.json)':''}. 원본 고객·티켓 각각 10만 UUID의 앞 8자리 뒤쪽이 모두 서로 달라, 복제 번호로 앞자리만 바꾼 ID가 충돌하지 않음을 확인했다. 보조 FK는 "NOT VALID"로 추가해 이후 쓰기를 강제하되 기존 1억 행의 검증 스캔은 생략했다. 적재 중단 기준은 여유 200GB로 운영해 지시된 150GB 근접 전에 멈추게 했다. 아래 남은 시간은 해당 시점 완료 속도로 계산한 **추정**이며 사후 실측 시간이 아니다.
+출처: [체크포인트](checkpoints.json), [고객 색인·VACUUM](index.json), [고객 색인·FK 감사](index-audit.json), [ID 충돌 사전 검사](id-check.json), [고객 표본 검증](validation.json)${ticketValidation?', [티켓 색인·VACUUM](ticket-index.json), [티켓 색인·FK 감사](ticket-index-audit.json), [티켓 표본 검증](ticket-validation.json)':''}. 원본 고객·티켓 각각 10만 UUID의 앞 8자리 뒤쪽이 모두 서로 달라, 복제 번호로 앞자리만 바꾼 ID가 충돌하지 않음을 확인했다. 평문 색인은 원본의 기본 키와 정확 일치 Btree 6개·trigram GIN 6개를 전부 만들었으며 생략한 색인은 없다. 보조 FK는 "NOT VALID"로 추가해 이후 쓰기를 강제하되 기존 1억 행의 검증 스캔은 생략했다. **보조 테이블 VACUUM은 생략하고 ANALYZE만 했다.** 가시성 맵이 없는 상태는 제품 SQL 쪽에 불리한 조건이다. 부모와 평문 테이블에는 VACUUM (ANALYZE)를 마쳤다. 측정 동안 평문·보조 테이블 자동 VACUUM을 중지했고 [측정 후 복원](autovacuum-restored.json)했다. 보조 GIN pending list는 [측정 전](index-audit.json) ${indexAudit.ginPending.pending_pages}페이지/${indexAudit.ginPending.pending_tuples}건, [측정 후](index-audit-post.json) ${indexAuditPost.ginPending.pending_pages}페이지/${indexAuditPost.ginPending.pending_tuples}건이었다. 적재 중단 기준은 여유 200GB로 운영해 지시된 150GB 근접 전에 멈추게 했다. 아래 남은 시간은 해당 시점 완료 속도로 계산한 **추정**이며 사후 실측 시간이 아니다.
 
 | 단계 | 고객 행 | 티켓 행 | 고객 적재 경과 분 | DB 크기 | 드라이브 여유 | 고객 적재 남은 시간 |
 |---|---:|---:|---:|---:|---:|---:|

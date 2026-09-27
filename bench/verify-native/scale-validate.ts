@@ -26,7 +26,10 @@ try{
   const index=(await pool.query('select * from native_scale_100m.customers_seal_index where scope_id=$2 and row_id=any($1::uuid[])',[ids,scopeId])).rows;
   assert.equal(parent.length,n);assert.equal(plain.length,n);assert.equal(index.length,n);
   const mapping={id:'id',scopeId:'scope_id',...Object.fromEntries(fields.map(f=>[f,`${f}_ct`]))};
-  const opened=await scaleSealed.openRaw(scaleCustomersSeal,parent,{columns:mapping as any,scope:scopeId});
+  const opened:any[]=[];
+  for(let i=0;i<parent.length;i+=100)
+    opened.push(...await scaleSealed.openRaw(scaleCustomersSeal,parent.slice(i,i+100),
+      {columns:mapping as any,scope:scopeId}));
   const plainById=new Map(plain.map(r=>[r.id,r])),indexById=new Map(index.map(r=>[r.row_id,r]));
   let tokenColumns=0;
   for(const row of opened){
