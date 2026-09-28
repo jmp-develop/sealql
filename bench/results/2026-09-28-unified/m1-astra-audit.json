@@ -1,0 +1,55 @@
+{
+  "at": "2026-09-28T14:30:49.609Z",
+  "databaseAccess": false,
+  "normalQueries": 42,
+  "knownFailure": {
+    "path": "B",
+    "expected": 0,
+    "actual": 2440
+  },
+  "unifiedJoin": "not measured by coordinator instruction",
+  "completedWriteOperations": [
+    "insert",
+    "update",
+    "delete"
+  ],
+  "writeChecks": [
+    {
+      "op": "insert",
+      "checks": 18,
+      "BChecks": 9,
+      "timingComplete": true,
+      "failure": {}
+    },
+    {
+      "op": "update",
+      "checks": 18,
+      "BChecks": 9,
+      "timingComplete": true,
+      "failure": {}
+    },
+    {
+      "op": "delete",
+      "checks": 18,
+      "BChecks": 9,
+      "timingComplete": true,
+      "failure": {}
+    },
+    {
+      "op": "concurrent8",
+      "checks": 5,
+      "BChecks": 2,
+      "timingComplete": false,
+      "failure": {
+        "B": "AssertionError [ERR_ASSERTION]: coordinator lock handoff deadline; incomplete operation not measured\n    at deadline (bench\\research-unified\\b-write.ts:14:21)\n    at insert (bench\\research-unified\\b-write.ts:17:51)\n    at <anonymous> (bench\\research-unified\\b-write.ts:43:215)\n    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)\n    at async Promise.all (index 4)\n    at async <anonymous> (bench\\research-unified\\b-write.ts:43:29)\n    at async measured (bench\\research-unified\\b-runtime.ts:25:143)\n    at async <anonymous> (bench\\research-unified\\b-write.ts:42:15)"
+      }
+    }
+  ],
+  "limitPlans": [
+    "exact_common_list_20",
+    "and6_list_20",
+    "and2_list_20",
+    "or2_list_20"
+  ],
+  "verdict": "saved metrics, repetitions, units, and failure classification consistent; not a security proof"
+}

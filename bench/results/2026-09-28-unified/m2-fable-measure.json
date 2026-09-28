@@ -1,0 +1,938 @@
+[
+ {
+  "label": "count exact_common | company = \"서울서비스 담당\"",
+  "truth": 28331,
+  "medians": {
+   "plain": 2.8,
+   "A": 1170.6,
+   "C": 311.4,
+   "D": 310.9
+  },
+  "dbMedians": {
+   "plain": 2.7,
+   "A": 105.6,
+   "C": 311.3,
+   "D": 310.8
+  },
+  "meta": {
+   "plain": {
+    "app": 0,
+    "decrypts": 0,
+    "sql": 1
+   },
+   "A": {
+    "app": 28331,
+    "decrypts": 0,
+    "sql": 1
+   },
+   "C": {
+    "app": 0,
+    "decrypts": 0,
+    "sql": 1
+   },
+   "D": {
+    "app": 0,
+    "decrypts": 0,
+    "sql": 1
+   }
+  },
+  "failed": {}
+ },
+ {
+  "label": "count exact_mid | company = \"서울서비스 중앙지사\"",
+  "truth": 1770,
+  "medians": {
+   "plain": 0.6,
+   "A": 85.8,
+   "C": 9.7,
+   "D": 28.2
+  },
+  "dbMedians": {
+   "plain": 0.6,
+   "A": 19.7,
+   "C": 9.7,
+   "D": 28.1
+  },
+  "meta": {
+   "plain": {
+    "app": 0,
+    "decrypts": 0,
+    "sql": 1
+   },
+   "A": {
+    "app": 1770,
+    "decrypts": 0,
+    "sql": 1
+   },
+   "C": {
+    "app": 0,
+    "decrypts": 0,
+    "sql": 1
+   },
+   "D": {
+    "app": 0,
+    "decrypts": 0,
+    "sql": 1
+   }
+  },
+  "failed": {}
+ },
+ {
+  "label": "count exact_one | phone = \"42-5748-1542\"",
+  "truth": 1,
+  "medians": {
+   "plain": 0.4,
+   "A": 1.4,
+   "C": 0.4,
+   "D": 11.4
+  },
+  "dbMedians": {
+   "plain": 0.4,
+   "A": 0.5,
+   "C": 0.4,
+   "D": 11.4
+  },
+  "meta": {
+   "plain": {
+    "app": 0,
+    "decrypts": 0,
+    "sql": 1
+   },
+   "A": {
+    "app": 1,
+    "decrypts": 0,
+    "sql": 1
+   },
+   "C": {
+    "app": 0,
+    "decrypts": 0,
+    "sql": 1
+   },
+   "D": {
+    "app": 0,
+    "decrypts": 0,
+    "sql": 1
+   }
+  },
+  "failed": {}
+ },
+ {
+  "label": "count exact_zero | phone = \"99-0000-0000\"",
+  "truth": 0,
+  "medians": {
+   "plain": 0.4,
+   "A": 1.5,
+   "C": 0.5,
+   "D": 6.3
+  },
+  "dbMedians": {
+   "plain": 0.4,
+   "A": 0.6,
+   "C": 0.4,
+   "D": 6.2
+  },
+  "meta": {
+   "plain": {
+    "app": 0,
+    "decrypts": 0,
+    "sql": 1
+   },
+   "A": {
+    "app": 1,
+    "decrypts": 0,
+    "sql": 1
+   },
+   "C": {
+    "app": 0,
+    "decrypts": 0,
+    "sql": 1
+   },
+   "D": {
+    "app": 0,
+    "decrypts": 0,
+    "sql": 1
+   }
+  },
+  "failed": {}
+ },
+ {
+  "label": "count sub2_common | company contains \"서비\"",
+  "truth": 30101,
+  "medians": {
+   "plain": 13.2,
+   "A": 1255.2,
+   "C": 330.4,
+   "D": 334.7
+  },
+  "dbMedians": {
+   "plain": 13.2,
+   "A": 114.5,
+   "C": 330.3,
+   "D": 334.6
+  },
+  "meta": {
+   "plain": {
+    "app": 0,
+    "decrypts": 0,
+    "sql": 1
+   },
+   "A": {
+    "app": 30101,
+    "decrypts": 0,
+    "sql": 1
+   },
+   "C": {
+    "app": 0,
+    "decrypts": 0,
+    "sql": 1
+   },
+   "D": {
+    "app": 0,
+    "decrypts": 0,
+    "sql": 1
+   }
+  },
+  "failed": {}
+ },
+ {
+  "label": "count sub_mid | address contains \"세종대로\"",
+  "truth": 16574,
+  "medians": {
+   "plain": 14.9,
+   "A": 740.7,
+   "C": 199.3,
+   "D": 190
+  },
+  "dbMedians": {
+   "plain": 14.9,
+   "A": 114.6,
+   "C": 199.2,
+   "D": 190
+  },
+  "meta": {
+   "plain": {
+    "app": 0,
+    "decrypts": 0,
+    "sql": 1
+   },
+   "A": {
+    "app": 16574,
+    "decrypts": 0,
+    "sql": 1
+   },
+   "C": {
+    "app": 0,
+    "decrypts": 0,
+    "sql": 1
+   },
+   "D": {
+    "app": 0,
+    "decrypts": 0,
+    "sql": 1
+   }
+  },
+  "failed": {}
+ },
+ {
+  "label": "count sub_mid_space | address contains \"세종대로 25\"",
+  "truth": 213,
+  "medians": {
+   "plain": 1.1,
+   "A": 11.9,
+   "C": 1.8,
+   "D": 9.2
+  },
+  "dbMedians": {
+   "plain": 1.1,
+   "A": 2.5,
+   "C": 1.8,
+   "D": 9.2
+  },
+  "meta": {
+   "plain": {
+    "app": 0,
+    "decrypts": 0,
+    "sql": 1
+   },
+   "A": {
+    "app": 213,
+    "decrypts": 0,
+    "sql": 1
+   },
+   "C": {
+    "app": 0,
+    "decrypts": 0,
+    "sql": 1
+   },
+   "D": {
+    "app": 0,
+    "decrypts": 0,
+    "sql": 1
+   }
+  },
+  "failed": {}
+ },
+ {
+  "label": "count sub_rare | memo contains \"푸른달\"",
+  "truth": 101,
+  "medians": {
+   "plain": 18.5,
+   "A": 6,
+   "C": 1.1,
+   "D": 5.2
+  },
+  "dbMedians": {
+   "plain": 18.5,
+   "A": 1.2,
+   "C": 1.1,
+   "D": 5.2
+  },
+  "meta": {
+   "plain": {
+    "app": 0,
+    "decrypts": 0,
+    "sql": 1
+   },
+   "A": {
+    "app": 101,
+    "decrypts": 0,
+    "sql": 1
+   },
+   "C": {
+    "app": 0,
+    "decrypts": 0,
+    "sql": 1
+   },
+   "D": {
+    "app": 0,
+    "decrypts": 0,
+    "sql": 1
+   }
+  },
+  "failed": {}
+ },
+ {
+  "label": "count sub_long | memo contains \"상세 안내와 확인 내용 상세 안내와\"",
+  "truth": 2440,
+  "medians": {
+   "plain": 18.7,
+   "A": 142.7,
+   "C": 724.4,
+   "D": 795.4
+  },
+  "dbMedians": {
+   "plain": 18.7,
+   "A": 37.5,
+   "C": 57.9,
+   "D": 108.9
+  },
+  "meta": {
+   "plain": {
+    "app": 0,
+    "decrypts": 0,
+    "sql": 1
+   },
+   "A": {
+    "app": 2440,
+    "decrypts": 0,
+    "sql": 1
+   },
+   "C": {
+    "app": 4880,
+    "decrypts": 14640,
+    "sql": 2
+   },
+   "D": {
+    "app": 4880,
+    "decrypts": 14640,
+    "sql": 2
+   }
+  },
+  "failed": {}
+ },
+ {
+  "label": "count sub_name_suffix | name contains \"pshxt\"",
+  "truth": 1,
+  "medians": {
+   "plain": 0.5,
+   "A": 1.7,
+   "C": 0.5,
+   "D": 5
+  },
+  "dbMedians": {
+   "plain": 0.4,
+   "A": 0.7,
+   "C": 0.5,
+   "D": 5
+  },
+  "meta": {
+   "plain": {
+    "app": 0,
+    "decrypts": 0,
+    "sql": 1
+   },
+   "A": {
+    "app": 1,
+    "decrypts": 0,
+    "sql": 1
+   },
+   "C": {
+    "app": 0,
+    "decrypts": 0,
+    "sql": 1
+   },
+   "D": {
+    "app": 0,
+    "decrypts": 0,
+    "sql": 1
+   }
+  },
+  "failed": {}
+ },
+ {
+  "label": "count sub_zero | memo contains \"없는표식\"",
+  "truth": 0,
+  "medians": {
+   "plain": 22.2,
+   "A": 1.8,
+   "C": 0.6,
+   "D": 5.2
+  },
+  "dbMedians": {
+   "plain": 22.1,
+   "A": 0.9,
+   "C": 0.5,
+   "D": 5.2
+  },
+  "meta": {
+   "plain": {
+    "app": 0,
+    "decrypts": 0,
+    "sql": 1
+   },
+   "A": {
+    "app": 0,
+    "decrypts": 0,
+    "sql": 1
+   },
+   "C": {
+    "app": 0,
+    "decrypts": 0,
+    "sql": 1
+   },
+   "D": {
+    "app": 0,
+    "decrypts": 0,
+    "sql": 1
+   }
+  },
+  "failed": {}
+ },
+ {
+  "label": "count starts | address startsWith \"서울\"",
+  "truth": 16574,
+  "medians": {
+   "plain": 2.7,
+   "A": 719.4,
+   "C": 200.1,
+   "D": 192.8
+  },
+  "dbMedians": {
+   "plain": 2.7,
+   "A": 73.2,
+   "C": 200.1,
+   "D": 192.8
+  },
+  "meta": {
+   "plain": {
+    "app": 0,
+    "decrypts": 0,
+    "sql": 1
+   },
+   "A": {
+    "app": 16574,
+    "decrypts": 0,
+    "sql": 1
+   },
+   "C": {
+    "app": 0,
+    "decrypts": 0,
+    "sql": 1
+   },
+   "D": {
+    "app": 0,
+    "decrypts": 0,
+    "sql": 1
+   }
+  },
+  "failed": {}
+ },
+ {
+  "label": "count ends | email endsWith \"biz.test\"",
+  "truth": 26598,
+  "medians": {
+   "plain": 15.2,
+   "A": 1140.5,
+   "C": 296.9,
+   "D": 294.8
+  },
+  "dbMedians": {
+   "plain": 15.2,
+   "A": 153.6,
+   "C": 296.9,
+   "D": 294.7
+  },
+  "meta": {
+   "plain": {
+    "app": 0,
+    "decrypts": 0,
+    "sql": 1
+   },
+   "A": {
+    "app": 26598,
+    "decrypts": 0,
+    "sql": 1
+   },
+   "C": {
+    "app": 0,
+    "decrypts": 0,
+    "sql": 1
+   },
+   "D": {
+    "app": 0,
+    "decrypts": 0,
+    "sql": 1
+   }
+  },
+  "failed": {}
+ },
+ {
+  "label": "count and2 | (company = \"서울서비스 담당\" AND memo contains \"서비스\")",
+  "truth": 21176,
+  "medians": {
+   "plain": 10.1,
+   "A": 1691.7,
+   "C": 766,
+   "D": 308.5
+  },
+  "dbMedians": {
+   "plain": 10.1,
+   "A": 142.7,
+   "C": 765.9,
+   "D": 308.4
+  },
+  "meta": {
+   "plain": {
+    "app": 0,
+    "decrypts": 0,
+    "sql": 1
+   },
+   "A": {
+    "app": 21176,
+    "decrypts": 0,
+    "sql": 1
+   },
+   "C": {
+    "app": 0,
+    "decrypts": 0,
+    "sql": 1
+   },
+   "D": {
+    "app": 0,
+    "decrypts": 0,
+    "sql": 1
+   }
+  },
+  "failed": {}
+ },
+ {
+  "label": "count and4 | (company = \"서울서비스 담당\" AND address contains \"서울\" AND memo contains \"상담\" AND email contains \"service\")",
+  "truth": 62,
+  "medians": {
+   "plain": 9.4,
+   "A": 21.1,
+   "C": 1179.1,
+   "D": 9.8
+  },
+  "dbMedians": {
+   "plain": 9.4,
+   "A": 10.2,
+   "C": 1179,
+   "D": 9.7
+  },
+  "meta": {
+   "plain": {
+    "app": 0,
+    "decrypts": 0,
+    "sql": 1
+   },
+   "A": {
+    "app": 62,
+    "decrypts": 0,
+    "sql": 1
+   },
+   "C": {
+    "app": 0,
+    "decrypts": 0,
+    "sql": 1
+   },
+   "D": {
+    "app": 0,
+    "decrypts": 0,
+    "sql": 1
+   }
+  },
+  "failed": {}
+ },
+ {
+  "label": "count and6 | (name contains \"민서\" AND phone contains \"-5\" AND address contains \"서울\" AND memo contains \"서비스\" AND email contains \"test\" AND company = \"서울서비스 담당\")",
+  "truth": 624,
+  "medians": {
+   "plain": 9.5,
+   "A": 161.5,
+   "C": 2541.6,
+   "D": 48.5
+  },
+  "dbMedians": {
+   "plain": 9.4,
+   "A": 20.6,
+   "C": 2541.5,
+   "D": 48.4
+  },
+  "meta": {
+   "plain": {
+    "app": 0,
+    "decrypts": 0,
+    "sql": 1
+   },
+   "A": {
+    "app": 624,
+    "decrypts": 0,
+    "sql": 1
+   },
+   "C": {
+    "app": 0,
+    "decrypts": 0,
+    "sql": 1
+   },
+   "D": {
+    "app": 0,
+    "decrypts": 0,
+    "sql": 1
+   }
+  },
+  "failed": {}
+ },
+ {
+  "label": "count or2 | (company = \"서울서비스 담당\" OR memo contains \"푸른달\")",
+  "truth": 28400,
+  "medians": {
+   "plain": 18.5,
+   "A": 2110.7,
+   "C": 342.8,
+   "D": 357.6
+  },
+  "dbMedians": {
+   "plain": 18.4,
+   "A": 123.6,
+   "C": 342.8,
+   "D": 357.5
+  },
+  "meta": {
+   "plain": {
+    "app": 0,
+    "decrypts": 0,
+    "sql": 1
+   },
+   "A": {
+    "app": 28400,
+    "decrypts": 0,
+    "sql": 1
+   },
+   "C": {
+    "app": 0,
+    "decrypts": 0,
+    "sql": 1
+   },
+   "D": {
+    "app": 0,
+    "decrypts": 0,
+    "sql": 1
+   }
+  },
+  "failed": {}
+ },
+ {
+  "label": "count or3 | (phone = \"42-5748-1542\" OR phone = \"21-7100-5875\" OR name contains \"pshxt\")",
+  "truth": 2,
+  "medians": {
+   "plain": 0.5,
+   "A": 2.2,
+   "C": 0.7,
+   "D": 34.4
+  },
+  "dbMedians": {
+   "plain": 0.5,
+   "A": 0.8,
+   "C": 0.6,
+   "D": 34.3
+  },
+  "meta": {
+   "plain": {
+    "app": 0,
+    "decrypts": 0,
+    "sql": 1
+   },
+   "A": {
+    "app": 3,
+    "decrypts": 0,
+    "sql": 1
+   },
+   "C": {
+    "app": 0,
+    "decrypts": 0,
+    "sql": 1
+   },
+   "D": {
+    "app": 0,
+    "decrypts": 0,
+    "sql": 1
+   }
+  },
+  "failed": {}
+ },
+ {
+  "label": "count drain101 | memo contains \"푸른달\"",
+  "truth": 101,
+  "medians": {
+   "plain": 19.4,
+   "A": 6.5,
+   "C": 1.3,
+   "D": 5.7
+  },
+  "dbMedians": {
+   "plain": 19.3,
+   "A": 1.3,
+   "C": 1.2,
+   "D": 5.7
+  },
+  "meta": {
+   "plain": {
+    "app": 0,
+    "decrypts": 0,
+    "sql": 1
+   },
+   "A": {
+    "app": 101,
+    "decrypts": 0,
+    "sql": 1
+   },
+   "C": {
+    "app": 0,
+    "decrypts": 0,
+    "sql": 1
+   },
+   "D": {
+    "app": 0,
+    "decrypts": 0,
+    "sql": 1
+   }
+  },
+  "failed": {}
+ },
+ {
+  "label": "count word_boundary | memo contains \"서비스 상담\"",
+  "truth": 29843,
+  "medians": {
+   "plain": 18.5,
+   "A": 1362.2,
+   "C": 8620.1,
+   "D": 8588.8
+  },
+  "dbMedians": {
+   "plain": 18.5,
+   "A": 160.4,
+   "C": 524.1,
+   "D": 481.3
+  },
+  "meta": {
+   "plain": {
+    "app": 0,
+    "decrypts": 0,
+    "sql": 1
+   },
+   "A": {
+    "app": 29843,
+    "decrypts": 0,
+    "sql": 1
+   },
+   "C": {
+    "app": 59686,
+    "decrypts": 179058,
+    "sql": 2
+   },
+   "D": {
+    "app": 59686,
+    "decrypts": 179058,
+    "sql": 2
+   }
+  },
+  "failed": {}
+ },
+ {
+  "label": "count word_inside_longer | memo contains \"비스 상\"",
+  "truth": 29843,
+  "medians": {
+   "plain": 17.4,
+   "A": 1330.2,
+   "C": 8737.6,
+   "D": 8651.2
+  },
+  "dbMedians": {
+   "plain": 17.4,
+   "A": 114.5,
+   "C": 519.4,
+   "D": 478.5
+  },
+  "meta": {
+   "plain": {
+    "app": 0,
+    "decrypts": 0,
+    "sql": 1
+   },
+   "A": {
+    "app": 29843,
+    "decrypts": 0,
+    "sql": 1
+   },
+   "C": {
+    "app": 59686,
+    "decrypts": 179058,
+    "sql": 2
+   },
+   "D": {
+    "app": 59686,
+    "decrypts": 179058,
+    "sql": 2
+   }
+  },
+  "failed": {}
+ },
+ {
+  "label": "count sub_common_memo | memo contains \"서비스\"",
+  "truth": 40097,
+  "medians": {
+   "plain": 16.2,
+   "A": 1710,
+   "C": 428.3,
+   "D": 366.2
+  },
+  "dbMedians": {
+   "plain": 16.2,
+   "A": 134.6,
+   "C": 428.2,
+   "D": 366.2
+  },
+  "meta": {
+   "plain": {
+    "app": 0,
+    "decrypts": 0,
+    "sql": 1
+   },
+   "A": {
+    "app": 40097,
+    "decrypts": 0,
+    "sql": 1
+   },
+   "C": {
+    "app": 0,
+    "decrypts": 0,
+    "sql": 1
+   },
+   "D": {
+    "app": 0,
+    "decrypts": 0,
+    "sql": 1
+   }
+  },
+  "failed": {}
+ },
+ {
+  "label": "count or_and_mix | ((company = \"서울서비스 담당\" AND memo contains \"서비스\") OR memo contains \"푸른달\")",
+  "truth": 21277,
+  "medians": {
+   "plain": 19.9,
+   "A": 1705.6,
+   "C": 766.2,
+   "D": 355.8
+  },
+  "dbMedians": {
+   "plain": 19.9,
+   "A": 143.5,
+   "C": 766.2,
+   "D": 355.7
+  },
+  "meta": {
+   "plain": {
+    "app": 0,
+    "decrypts": 0,
+    "sql": 1
+   },
+   "A": {
+    "app": 21277,
+    "decrypts": 0,
+    "sql": 1
+   },
+   "C": {
+    "app": 0,
+    "decrypts": 0,
+    "sql": 1
+   },
+   "D": {
+    "app": 0,
+    "decrypts": 0,
+    "sql": 1
+   }
+  },
+  "failed": {}
+ },
+ {
+  "label": "count sub45 | memo contains \"상세안내와확인내용상세안내와확인내용상세안내와확인내용상세안내와확인내용상세안내와확인내용\"",
+  "truth": 0,
+  "medians": {
+   "plain": 18.4,
+   "A": 141.6,
+   "C": 847.5,
+   "D": 845.5
+  },
+  "dbMedians": {
+   "plain": 18.3,
+   "A": 36.6,
+   "C": 174.5,
+   "D": 167.2
+  },
+  "meta": {
+   "plain": {
+    "app": 0,
+    "decrypts": 0,
+    "sql": 1
+   },
+   "A": {
+    "app": 2440,
+    "decrypts": 0,
+    "sql": 1
+   },
+   "C": {
+    "app": 2440,
+    "decrypts": 14640,
+    "sql": 2
+   },
+   "D": {
+    "app": 2440,
+    "decrypts": 14640,
+    "sql": 2
+   }
+  },
+  "failed": {}
+ }
+]

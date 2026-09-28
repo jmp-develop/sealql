@@ -1,0 +1,18 @@
+{
+ "insert plain ms/row median": 0.28,
+ "insert D ms/row median": 3.96,
+ "insert C ms/row median": 11.43,
+ "update D 1 field ms median": 4.33,
+ "delete D ms median": 0.43,
+ "delete C ms median (tags removed with the row; counters untouched)": 8.18,
+ "8 writers plain rows/s": 14180,
+ "8 writers D rows/s": 335,
+ "8 writers C rows/s": 55,
+ "8 writers C deadlock retries": 0,
+ "countAfterWrites": {
+  "expectedDplusC": 4732,
+  "D": 2364,
+  "C": 2368,
+  "note": "expected counts D and C rows together; D and C each hold half"
+ }
+}

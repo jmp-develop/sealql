@@ -1,0 +1,1383 @@
+{
+  "started": "2026-09-28T14:17:57.763Z",
+  "source": "shared customers_plain ordered by source UUID, original IDs and values only",
+  "schema": "research_u",
+  "fixture": [
+    "b_w_plain",
+    "b_w_ct",
+    "b_w_tags"
+  ],
+  "warmups": 2,
+  "repetitions": 7,
+  "writeRows": {
+    "insert": 300,
+    "update": 100,
+    "delete": 100,
+    "concurrent8": 8000
+  },
+  "transactions": "one row per committed transaction; 8 writers each insert 1000 rows",
+  "cipher": "same shared AES-GCM format; shared AAD status must be considered separately",
+  "cases": [
+    {
+      "op": "insert",
+      "rows": 300,
+      "first": {
+        "plain": {
+          "totalMs": 88.47659999999996,
+          "preMs": 0.22289999999998145,
+          "dbMs": 85.99760000000128,
+          "dbWallMs": 85.99760000000128,
+          "betweenSqlMs": 2.049899999998729,
+          "postMs": 0.20619999999996708,
+          "sqlCalls": 300,
+          "rowsToApp": 0,
+          "openCount": 0,
+          "medianRowLatencyMs": 0.2662000000000262,
+          "wallMsPerRow": 0.29492199999999985,
+          "rowsPerSec": 3390.727039691852
+        },
+        "B": {
+          "totalMs": 7770.4569,
+          "preMs": 0.13010000000008404,
+          "dbMs": 689.9284000000389,
+          "dbWallMs": 689.9284000000283,
+          "betweenSqlMs": 7080.253699999971,
+          "postMs": 0.14470000000073924,
+          "sqlCalls": 1200,
+          "rowsToApp": 0,
+          "openCount": 0,
+          "medianRowLatencyMs": 25.403199999999742,
+          "wallMsPerRow": 25.901523,
+          "rowsPerSec": 38.6077683540076
+        }
+      },
+      "runs": {
+        "plain": [
+          {
+            "totalMs": 84.55589999999938,
+            "preMs": 0.036100000001169974,
+            "dbMs": 82.87969999999041,
+            "dbWallMs": 82.87969999999041,
+            "betweenSqlMs": 1.5614000000095984,
+            "postMs": 0.0786999999982072,
+            "sqlCalls": 300,
+            "rowsToApp": 0,
+            "openCount": 0,
+            "medianRowLatencyMs": 0.2510000000002037,
+            "wallMsPerRow": 0.28185299999999797,
+            "rowsPerSec": 3547.948753428231
+          },
+          {
+            "totalMs": 83.05509999999776,
+            "preMs": 0.04340000000229338,
+            "dbMs": 81.470599999986,
+            "dbWallMs": 81.470599999986,
+            "betweenSqlMs": 1.4646000000138883,
+            "postMs": 0.07649999999557622,
+            "sqlCalls": 300,
+            "rowsToApp": 0,
+            "openCount": 0,
+            "medianRowLatencyMs": 0.24510000000009313,
+            "wallMsPerRow": 0.27685033333332587,
+            "rowsPerSec": 3612.0599457469566
+          },
+          {
+            "totalMs": 80.35910000000149,
+            "preMs": 0.03440000000409782,
+            "dbMs": 78.86559999993187,
+            "dbWallMs": 78.86559999993187,
+            "betweenSqlMs": 1.3763000000690226,
+            "postMs": 0.0827999999964959,
+            "sqlCalls": 300,
+            "rowsToApp": 0,
+            "openCount": 0,
+            "medianRowLatencyMs": 0.2408999999970547,
+            "wallMsPerRow": 0.2678636666666716,
+            "rowsPerSec": 3733.24240814039
+          },
+          {
+            "totalMs": 82.99839999999676,
+            "preMs": 0.036999999996623956,
+            "dbMs": 81.29900000013004,
+            "dbWallMs": 81.29900000013004,
+            "betweenSqlMs": 1.5879999998724088,
+            "postMs": 0.07439999999769498,
+            "sqlCalls": 300,
+            "rowsToApp": 0,
+            "openCount": 0,
+            "medianRowLatencyMs": 0.24470000000292202,
+            "wallMsPerRow": 0.27666133333332255,
+            "rowsPerSec": 3614.527508964169
+          },
+          {
+            "totalMs": 79.83359999999811,
+            "preMs": 0.03830000000016298,
+            "dbMs": 78.40489999994315,
+            "dbWallMs": 78.40489999994315,
+            "betweenSqlMs": 1.319800000055693,
+            "postMs": 0.0705999999991036,
+            "sqlCalls": 300,
+            "rowsToApp": 0,
+            "openCount": 0,
+            "medianRowLatencyMs": 0.240300000004936,
+            "wallMsPerRow": 0.2661119999999937,
+            "rowsPerSec": 3757.8162578163465
+          },
+          {
+            "totalMs": 75.33150000000023,
+            "preMs": 0.034899999998742715,
+            "dbMs": 73.72440000000643,
+            "dbWallMs": 73.72440000000643,
+            "betweenSqlMs": 1.4888999999820953,
+            "postMs": 0.08330000001296867,
+            "sqlCalls": 300,
+            "rowsToApp": 0,
+            "openCount": 0,
+            "medianRowLatencyMs": 0.21899999999732245,
+            "wallMsPerRow": 0.2511050000000008,
+            "rowsPerSec": 3982.3978017164013
+          },
+          {
+            "totalMs": 72.4826999999932,
+            "preMs": 0.0684999999939464,
+            "dbMs": 70.91400000016438,
+            "dbWallMs": 70.91400000016438,
+            "betweenSqlMs": 1.388199999841163,
+            "postMs": 0.11199999999371357,
+            "sqlCalls": 300,
+            "rowsToApp": 0,
+            "openCount": 0,
+            "medianRowLatencyMs": 0.2128999999986263,
+            "wallMsPerRow": 0.24160899999997734,
+            "rowsPerSec": 4138.91866610968
+          }
+        ],
+        "B": [
+          {
+            "totalMs": 8255.1868,
+            "preMs": 0.03210000000035507,
+            "dbMs": 631.2592000000004,
+            "dbWallMs": 631.2592000000004,
+            "betweenSqlMs": 7623.709299999999,
+            "postMs": 0.18620000000009895,
+            "sqlCalls": 1200,
+            "rowsToApp": 0,
+            "openCount": 0,
+            "medianRowLatencyMs": 27.046700000002602,
+            "wallMsPerRow": 27.51728933333333,
+            "rowsPerSec": 36.340788799594456
+          },
+          {
+            "totalMs": 8239.141500000002,
+            "preMs": 0.029999999998835847,
+            "dbMs": 635.9146999999502,
+            "dbWallMs": 635.9146999999393,
+            "betweenSqlMs": 7603.066100000062,
+            "postMs": 0.13070000000152504,
+            "sqlCalls": 1200,
+            "rowsToApp": 0,
+            "openCount": 0,
+            "medianRowLatencyMs": 27.089200000002165,
+            "wallMsPerRow": 27.463805000000004,
+            "rowsPerSec": 36.41156059766663
+          },
+          {
+            "totalMs": 8150.628800000006,
+            "preMs": 0.027900000000954606,
+            "dbMs": 634.0110000000568,
+            "dbWallMs": 634.0110000000568,
+            "betweenSqlMs": 7516.459399999949,
+            "postMs": 0.1304999999993015,
+            "sqlCalls": 1200,
+            "rowsToApp": 0,
+            "openCount": 0,
+            "medianRowLatencyMs": 26.82789999999659,
+            "wallMsPerRow": 27.168762666666687,
+            "rowsPerSec": 36.8069761685135
+          },
+          {
+            "totalMs": 8495.666400000002,
+            "preMs": 0.0371000000013737,
+            "dbMs": 667.2243999999773,
+            "dbWallMs": 667.2243999999773,
+            "betweenSqlMs": 7828.240600000019,
+            "postMs": 0.1643000000040047,
+            "sqlCalls": 1200,
+            "rowsToApp": 0,
+            "openCount": 0,
+            "medianRowLatencyMs": 27.711999999999534,
+            "wallMsPerRow": 28.318888000000005,
+            "rowsPerSec": 35.31212101266122
+          },
+          {
+            "totalMs": 8746.809799999995,
+            "preMs": 0.035799999997834675,
+            "dbMs": 665.056599999858,
+            "dbWallMs": 665.056599999858,
+            "betweenSqlMs": 8081.5799000001425,
+            "postMs": 0.13749999999708962,
+            "sqlCalls": 1200,
+            "rowsToApp": 0,
+            "openCount": 0,
+            "medianRowLatencyMs": 28.84270000000106,
+            "wallMsPerRow": 29.15603266666665,
+            "rowsPerSec": 34.29821922045225
+          },
+          {
+            "totalMs": 8562.3099,
+            "preMs": 0.05099999999947613,
+            "dbMs": 628.357999999731,
+            "dbWallMs": 628.3579999997601,
+            "betweenSqlMs": 7933.768600000243,
+            "postMs": 0.13229999999748543,
+            "sqlCalls": 1200,
+            "rowsToApp": 0,
+            "openCount": 0,
+            "medianRowLatencyMs": 28.18210000000545,
+            "wallMsPerRow": 28.541033000000002,
+            "rowsPerSec": 35.03727422900215
+          },
+          {
+            "totalMs": 8604.510299999994,
+            "preMs": 0.0341000000044005,
+            "dbMs": 632.4514000001509,
+            "dbWallMs": 632.4514000001509,
+            "betweenSqlMs": 7971.878899999836,
+            "postMs": 0.1459000000031665,
+            "sqlCalls": 1200,
+            "rowsToApp": 0,
+            "openCount": 0,
+            "medianRowLatencyMs": 28.308499999999185,
+            "wallMsPerRow": 28.681700999999983,
+            "rowsPerSec": 34.86543563089235
+          }
+        ]
+      },
+      "checks": [
+        {
+          "round": -2,
+          "path": "plain",
+          "rows": 300,
+          "memo": 125,
+          "company": 83,
+          "allCipherValuesChecked": false
+        },
+        {
+          "round": -2,
+          "path": "B",
+          "rows": 300,
+          "memo": 125,
+          "company": 83,
+          "allCipherValuesChecked": true
+        },
+        {
+          "round": -1,
+          "path": "B",
+          "rows": 300,
+          "memo": 125,
+          "company": 83,
+          "allCipherValuesChecked": true
+        },
+        {
+          "round": -1,
+          "path": "plain",
+          "rows": 300,
+          "memo": 125,
+          "company": 83,
+          "allCipherValuesChecked": false
+        },
+        {
+          "round": 0,
+          "path": "plain",
+          "rows": 300,
+          "memo": 125,
+          "company": 83,
+          "allCipherValuesChecked": false
+        },
+        {
+          "round": 0,
+          "path": "B",
+          "rows": 300,
+          "memo": 125,
+          "company": 83,
+          "allCipherValuesChecked": true
+        },
+        {
+          "round": 1,
+          "path": "B",
+          "rows": 300,
+          "memo": 125,
+          "company": 83,
+          "allCipherValuesChecked": true
+        },
+        {
+          "round": 1,
+          "path": "plain",
+          "rows": 300,
+          "memo": 125,
+          "company": 83,
+          "allCipherValuesChecked": false
+        },
+        {
+          "round": 2,
+          "path": "plain",
+          "rows": 300,
+          "memo": 125,
+          "company": 83,
+          "allCipherValuesChecked": false
+        },
+        {
+          "round": 2,
+          "path": "B",
+          "rows": 300,
+          "memo": 125,
+          "company": 83,
+          "allCipherValuesChecked": true
+        },
+        {
+          "round": 3,
+          "path": "B",
+          "rows": 300,
+          "memo": 125,
+          "company": 83,
+          "allCipherValuesChecked": true
+        },
+        {
+          "round": 3,
+          "path": "plain",
+          "rows": 300,
+          "memo": 125,
+          "company": 83,
+          "allCipherValuesChecked": false
+        },
+        {
+          "round": 4,
+          "path": "plain",
+          "rows": 300,
+          "memo": 125,
+          "company": 83,
+          "allCipherValuesChecked": false
+        },
+        {
+          "round": 4,
+          "path": "B",
+          "rows": 300,
+          "memo": 125,
+          "company": 83,
+          "allCipherValuesChecked": true
+        },
+        {
+          "round": 5,
+          "path": "B",
+          "rows": 300,
+          "memo": 125,
+          "company": 83,
+          "allCipherValuesChecked": true
+        },
+        {
+          "round": 5,
+          "path": "plain",
+          "rows": 300,
+          "memo": 125,
+          "company": 83,
+          "allCipherValuesChecked": false
+        },
+        {
+          "round": 6,
+          "path": "plain",
+          "rows": 300,
+          "memo": 125,
+          "company": 83,
+          "allCipherValuesChecked": false
+        },
+        {
+          "round": 6,
+          "path": "B",
+          "rows": 300,
+          "memo": 125,
+          "company": 83,
+          "allCipherValuesChecked": true
+        }
+      ],
+      "failed": {},
+      "summary": {
+        "plain": {
+          "totalMs": 80.35910000000149,
+          "preMs": 0.036999999996623956,
+          "dbMs": 78.86559999993187,
+          "dbWallMs": 78.86559999993187,
+          "betweenSqlMs": 1.4646000000138883,
+          "postMs": 0.0786999999982072,
+          "sqlCalls": 300,
+          "rowsToApp": 0,
+          "openCount": 0,
+          "medianRowLatencyMs": 0.2408999999970547,
+          "wallMsPerRow": 0.2678636666666716,
+          "rowsPerSec": 3733.24240814039
+        },
+        "B": {
+          "totalMs": 8495.666400000002,
+          "preMs": 0.0341000000044005,
+          "dbMs": 634.0110000000568,
+          "dbWallMs": 634.0110000000568,
+          "betweenSqlMs": 7828.240600000019,
+          "postMs": 0.13749999999708962,
+          "sqlCalls": 1200,
+          "rowsToApp": 0,
+          "openCount": 0,
+          "medianRowLatencyMs": 27.711999999999534,
+          "wallMsPerRow": 28.318888000000005,
+          "rowsPerSec": 35.31212101266122
+        }
+      },
+      "ratios": {
+        "plain": 1,
+        "B": 105.72127363297803
+      },
+      "rowLatencyRatios": {
+        "plain": 1,
+        "B": 115.03528435175737
+      }
+    },
+    {
+      "op": "update",
+      "rows": 100,
+      "first": {
+        "plain": {
+          "totalMs": 33.174299999998766,
+          "preMs": 0.11920000000100117,
+          "dbMs": 32.63499999996566,
+          "dbWallMs": 32.63499999996566,
+          "betweenSqlMs": 0.3754000000335509,
+          "postMs": 0.04469999999855645,
+          "sqlCalls": 100,
+          "rowsToApp": 0,
+          "openCount": 0,
+          "medianRowLatencyMs": 0.29970000000321306,
+          "wallMsPerRow": 0.3317429999999877,
+          "rowsPerSec": 3014.381614683768
+        },
+        "B": {
+          "totalMs": 517.6144000000058,
+          "preMs": 0.015400000003864989,
+          "dbMs": 100.4124999998603,
+          "dbWallMs": 100.4124999998603,
+          "betweenSqlMs": 417.14590000013413,
+          "postMs": 0.04060000000754371,
+          "sqlCalls": 400,
+          "rowsToApp": 0,
+          "openCount": 0,
+          "medianRowLatencyMs": 4.500700000004144,
+          "wallMsPerRow": 5.1761440000000585,
+          "rowsPerSec": 193.1940069673465
+        }
+      },
+      "runs": {
+        "plain": [
+          {
+            "totalMs": 32.357399999993504,
+            "preMs": 0.021099999998114072,
+            "dbMs": 31.96709999999439,
+            "dbWallMs": 31.96709999999439,
+            "betweenSqlMs": 0.3271999999997206,
+            "postMs": 0.04200000000128057,
+            "sqlCalls": 100,
+            "rowsToApp": 0,
+            "openCount": 0,
+            "medianRowLatencyMs": 0.30319999999483116,
+            "wallMsPerRow": 0.323573999999935,
+            "rowsPerSec": 3090.4831661388143
+          },
+          {
+            "totalMs": 32.15610000000743,
+            "preMs": 0.022599999996600673,
+            "dbMs": 31.794899999978952,
+            "dbWallMs": 31.794899999978952,
+            "betweenSqlMs": 0.28490000002784654,
+            "postMs": 0.05370000000402797,
+            "sqlCalls": 100,
+            "rowsToApp": 0,
+            "openCount": 0,
+            "medianRowLatencyMs": 0.3013000000064494,
+            "wallMsPerRow": 0.32156100000007426,
+            "rowsPerSec": 3109.829861207575
+          },
+          {
+            "totalMs": 32.00920000000042,
+            "preMs": 0.019700000004377216,
+            "dbMs": 31.654100000072503,
+            "dbWallMs": 31.654100000072503,
+            "betweenSqlMs": 0.29019999993033707,
+            "postMs": 0.045199999993201345,
+            "sqlCalls": 100,
+            "rowsToApp": 0,
+            "openCount": 0,
+            "medianRowLatencyMs": 0.29970000000321306,
+            "wallMsPerRow": 0.3200920000000042,
+            "rowsPerSec": 3124.1018207265
+          },
+          {
+            "totalMs": 38.017599999991944,
+            "preMs": 0.02489999998942949,
+            "dbMs": 37.458300000056624,
+            "dbWallMs": 37.458300000056624,
+            "betweenSqlMs": 0.4796999999380205,
+            "postMs": 0.054700000007869676,
+            "sqlCalls": 100,
+            "rowsToApp": 0,
+            "openCount": 0,
+            "medianRowLatencyMs": 0.37440000000060536,
+            "wallMsPerRow": 0.38017599999991947,
+            "rowsPerSec": 2630.360675056321
+          },
+          {
+            "totalMs": 31.351900000008754,
+            "preMs": 0.022399999987101182,
+            "dbMs": 30.942200000106823,
+            "dbWallMs": 30.942200000106823,
+            "betweenSqlMs": 0.3398999999044463,
+            "postMs": 0.04740000001038425,
+            "sqlCalls": 100,
+            "rowsToApp": 0,
+            "openCount": 0,
+            "medianRowLatencyMs": 0.29839999999967404,
+            "wallMsPerRow": 0.31351900000008753,
+            "rowsPerSec": 3189.5993544242
+          },
+          {
+            "totalMs": 33.16099999999278,
+            "preMs": 0.0211999999883119,
+            "dbMs": 32.79409999997006,
+            "dbWallMs": 32.79409999997006,
+            "betweenSqlMs": 0.30250000004889444,
+            "postMs": 0.043199999985517934,
+            "sqlCalls": 100,
+            "rowsToApp": 0,
+            "openCount": 0,
+            "medianRowLatencyMs": 0.3078000000095926,
+            "wallMsPerRow": 0.3316099999999278,
+            "rowsPerSec": 3015.5906034203363
+          },
+          {
+            "totalMs": 32.14439999999013,
+            "preMs": 0.025599999993573874,
+            "dbMs": 31.77070000016829,
+            "dbWallMs": 31.77070000016829,
+            "betweenSqlMs": 0.3048999998427462,
+            "postMs": 0.043199999985517934,
+            "sqlCalls": 100,
+            "rowsToApp": 0,
+            "openCount": 0,
+            "medianRowLatencyMs": 0.3067000000155531,
+            "wallMsPerRow": 0.32144399999990125,
+            "rowsPerSec": 3110.9617849463893
+          }
+        ],
+        "B": [
+          {
+            "totalMs": 536.203199999989,
+            "preMs": 0.013899999990826473,
+            "dbMs": 101.82200000007288,
+            "dbWallMs": 101.82200000007288,
+            "betweenSqlMs": 434.31249999992724,
+            "postMs": 0.054799999998067506,
+            "sqlCalls": 400,
+            "rowsToApp": 0,
+            "openCount": 0,
+            "medianRowLatencyMs": 4.619800000000396,
+            "wallMsPerRow": 5.36203199999989,
+            "rowsPerSec": 186.49646253510247
+          },
+          {
+            "totalMs": 512.2550999999949,
+            "preMs": 0.012600000001839362,
+            "dbMs": 96.09450000007928,
+            "dbWallMs": 96.09450000007928,
+            "betweenSqlMs": 416.1052999999083,
+            "postMs": 0.042700000005424954,
+            "sqlCalls": 400,
+            "rowsToApp": 0,
+            "openCount": 0,
+            "medianRowLatencyMs": 4.45329999999376,
+            "wallMsPerRow": 5.122550999999948,
+            "rowsPerSec": 195.21523553401616
+          },
+          {
+            "totalMs": 519.3683000000019,
+            "preMs": 0.012199999997392297,
+            "dbMs": 103.45800000007148,
+            "dbWallMs": 103.45800000007148,
+            "betweenSqlMs": 415.8421999999264,
+            "postMs": 0.055900000006658956,
+            "sqlCalls": 400,
+            "rowsToApp": 0,
+            "openCount": 0,
+            "medianRowLatencyMs": 4.471599999989849,
+            "wallMsPerRow": 5.193683000000019,
+            "rowsPerSec": 192.54159331634148
+          },
+          {
+            "totalMs": 585.8078000000096,
+            "preMs": 0.015299999999115244,
+            "dbMs": 112.99920000022394,
+            "dbWallMs": 112.99920000022394,
+            "betweenSqlMs": 472.68989999979385,
+            "postMs": 0.10339999999268912,
+            "sqlCalls": 400,
+            "rowsToApp": 0,
+            "openCount": 0,
+            "medianRowLatencyMs": 5.15669999999227,
+            "wallMsPerRow": 5.858078000000096,
+            "rowsPerSec": 170.7044528939327
+          },
+          {
+            "totalMs": 562.4639999999781,
+            "preMs": 0.013199999986682087,
+            "dbMs": 99.35610000047018,
+            "dbWallMs": 99.35610000047018,
+            "betweenSqlMs": 463.0493999995233,
+            "postMs": 0.04529999999795109,
+            "sqlCalls": 400,
+            "rowsToApp": 0,
+            "openCount": 0,
+            "medianRowLatencyMs": 4.892699999996694,
+            "wallMsPerRow": 5.624639999999781,
+            "rowsPerSec": 177.78915628378687
+          },
+          {
+            "totalMs": 545.7154000000155,
+            "preMs": 0.012400000006891787,
+            "dbMs": 93.36740000013378,
+            "dbWallMs": 93.36740000013378,
+            "betweenSqlMs": 452.26129999986733,
+            "postMs": 0.07430000000749715,
+            "sqlCalls": 400,
+            "rowsToApp": 0,
+            "openCount": 0,
+            "medianRowLatencyMs": 4.699699999997392,
+            "wallMsPerRow": 5.4571540000001555,
+            "rowsPerSec": 183.24569913181332
+          },
+          {
+            "totalMs": 528.818499999994,
+            "preMs": 0.02830000000540167,
+            "dbMs": 89.41789999959292,
+            "dbWallMs": 89.41789999959292,
+            "betweenSqlMs": 439.31820000038715,
+            "postMs": 0.054100000008475035,
+            "sqlCalls": 400,
+            "rowsToApp": 0,
+            "openCount": 0,
+            "medianRowLatencyMs": 4.493300000001909,
+            "wallMsPerRow": 5.288184999999939,
+            "rowsPerSec": 189.10079734351416
+          }
+        ]
+      },
+      "checks": [
+        {
+          "round": -2,
+          "path": "plain",
+          "rows": 300,
+          "memo": 117,
+          "company": 83,
+          "allCipherValuesChecked": false
+        },
+        {
+          "round": -2,
+          "path": "B",
+          "rows": 300,
+          "memo": 117,
+          "company": 83,
+          "allCipherValuesChecked": true
+        },
+        {
+          "round": -1,
+          "path": "B",
+          "rows": 300,
+          "memo": 117,
+          "company": 83,
+          "allCipherValuesChecked": true
+        },
+        {
+          "round": -1,
+          "path": "plain",
+          "rows": 300,
+          "memo": 117,
+          "company": 83,
+          "allCipherValuesChecked": false
+        },
+        {
+          "round": 0,
+          "path": "plain",
+          "rows": 300,
+          "memo": 117,
+          "company": 83,
+          "allCipherValuesChecked": false
+        },
+        {
+          "round": 0,
+          "path": "B",
+          "rows": 300,
+          "memo": 117,
+          "company": 83,
+          "allCipherValuesChecked": true
+        },
+        {
+          "round": 1,
+          "path": "B",
+          "rows": 300,
+          "memo": 117,
+          "company": 83,
+          "allCipherValuesChecked": true
+        },
+        {
+          "round": 1,
+          "path": "plain",
+          "rows": 300,
+          "memo": 117,
+          "company": 83,
+          "allCipherValuesChecked": false
+        },
+        {
+          "round": 2,
+          "path": "plain",
+          "rows": 300,
+          "memo": 117,
+          "company": 83,
+          "allCipherValuesChecked": false
+        },
+        {
+          "round": 2,
+          "path": "B",
+          "rows": 300,
+          "memo": 117,
+          "company": 83,
+          "allCipherValuesChecked": true
+        },
+        {
+          "round": 3,
+          "path": "B",
+          "rows": 300,
+          "memo": 117,
+          "company": 83,
+          "allCipherValuesChecked": true
+        },
+        {
+          "round": 3,
+          "path": "plain",
+          "rows": 300,
+          "memo": 117,
+          "company": 83,
+          "allCipherValuesChecked": false
+        },
+        {
+          "round": 4,
+          "path": "plain",
+          "rows": 300,
+          "memo": 117,
+          "company": 83,
+          "allCipherValuesChecked": false
+        },
+        {
+          "round": 4,
+          "path": "B",
+          "rows": 300,
+          "memo": 117,
+          "company": 83,
+          "allCipherValuesChecked": true
+        },
+        {
+          "round": 5,
+          "path": "B",
+          "rows": 300,
+          "memo": 117,
+          "company": 83,
+          "allCipherValuesChecked": true
+        },
+        {
+          "round": 5,
+          "path": "plain",
+          "rows": 300,
+          "memo": 117,
+          "company": 83,
+          "allCipherValuesChecked": false
+        },
+        {
+          "round": 6,
+          "path": "plain",
+          "rows": 300,
+          "memo": 117,
+          "company": 83,
+          "allCipherValuesChecked": false
+        },
+        {
+          "round": 6,
+          "path": "B",
+          "rows": 300,
+          "memo": 117,
+          "company": 83,
+          "allCipherValuesChecked": true
+        }
+      ],
+      "failed": {},
+      "summary": {
+        "plain": {
+          "totalMs": 32.15610000000743,
+          "preMs": 0.022399999987101182,
+          "dbMs": 31.794899999978952,
+          "dbWallMs": 31.794899999978952,
+          "betweenSqlMs": 0.3048999998427462,
+          "postMs": 0.045199999993201345,
+          "sqlCalls": 100,
+          "rowsToApp": 0,
+          "openCount": 0,
+          "medianRowLatencyMs": 0.30319999999483116,
+          "wallMsPerRow": 0.32156100000007426,
+          "rowsPerSec": 3109.829861207575
+        },
+        "B": {
+          "totalMs": 536.203199999989,
+          "preMs": 0.013199999986682087,
+          "dbMs": 99.35610000047018,
+          "dbWallMs": 99.35610000047018,
+          "betweenSqlMs": 439.31820000038715,
+          "postMs": 0.054799999998067506,
+          "sqlCalls": 400,
+          "rowsToApp": 0,
+          "openCount": 0,
+          "medianRowLatencyMs": 4.619800000000396,
+          "wallMsPerRow": 5.36203199999989,
+          "rowsPerSec": 186.49646253510247
+        }
+      },
+      "ratios": {
+        "plain": 1,
+        "B": 16.675007230350236
+      },
+      "rowLatencyRatios": {
+        "plain": 1,
+        "B": 15.236807388123854
+      }
+    },
+    {
+      "op": "delete",
+      "rows": 100,
+      "first": {
+        "plain": {
+          "totalMs": 24.66120000000228,
+          "preMs": 0.12709999998332933,
+          "dbMs": 24.11779999989085,
+          "dbWallMs": 24.11779999989085,
+          "betweenSqlMs": 0.3700000001117587,
+          "postMs": 0.04630000001634471,
+          "sqlCalls": 100,
+          "rowsToApp": 0,
+          "openCount": 0,
+          "medianRowLatencyMs": 0.23439999998663552,
+          "wallMsPerRow": 0.2466120000000228,
+          "rowsPerSec": 4054.9527192509186
+        },
+        "B": {
+          "totalMs": 48.38790000000154,
+          "preMs": 0.03700000001117587,
+          "dbMs": 47.44820000010077,
+          "dbWallMs": 47.44820000010077,
+          "betweenSqlMs": 0.8577999999106396,
+          "postMs": 0.04489999997895211,
+          "sqlCalls": 400,
+          "rowsToApp": 0,
+          "openCount": 0,
+          "medianRowLatencyMs": 0.4602000000013504,
+          "wallMsPerRow": 0.4838790000000154,
+          "rowsPerSec": 2066.6323605694156
+        }
+      },
+      "runs": {
+        "plain": [
+          {
+            "totalMs": 21.730999999999767,
+            "preMs": 0.022499999991850927,
+            "dbMs": 21.423899999877904,
+            "dbWallMs": 21.423899999877904,
+            "betweenSqlMs": 0.2450000001117587,
+            "postMs": 0.03960000001825392,
+            "sqlCalls": 100,
+            "rowsToApp": 0,
+            "openCount": 0,
+            "medianRowLatencyMs": 0.20989999998710118,
+            "wallMsPerRow": 0.21730999999999767,
+            "rowsPerSec": 4601.721043670382
+          },
+          {
+            "totalMs": 24.01600000000326,
+            "preMs": 0.021000000007916242,
+            "dbMs": 23.663999999931548,
+            "dbWallMs": 23.663999999931548,
+            "betweenSqlMs": 0.2774000000790693,
+            "postMs": 0.05359999998472631,
+            "sqlCalls": 100,
+            "rowsToApp": 0,
+            "openCount": 0,
+            "medianRowLatencyMs": 0.21830000000772998,
+            "wallMsPerRow": 0.2401600000000326,
+            "rowsPerSec": 4163.89073950643
+          },
+          {
+            "totalMs": 23.2954000000027,
+            "preMs": 0.021399999997811392,
+            "dbMs": 22.924600000085775,
+            "dbWallMs": 22.924600000085775,
+            "betweenSqlMs": 0.30289999992237426,
+            "postMs": 0.04649999999674037,
+            "sqlCalls": 100,
+            "rowsToApp": 0,
+            "openCount": 0,
+            "medianRowLatencyMs": 0.21849999998812564,
+            "wallMsPerRow": 0.232954000000027,
+            "rowsPerSec": 4292.692978012329
+          },
+          {
+            "totalMs": 25.070699999982025,
+            "preMs": 0.027799999981652945,
+            "dbMs": 24.762499999982538,
+            "dbWallMs": 24.762499999982538,
+            "betweenSqlMs": 0.23530000002938323,
+            "postMs": 0.0450999999884516,
+            "sqlCalls": 100,
+            "rowsToApp": 0,
+            "openCount": 0,
+            "medianRowLatencyMs": 0.23519999999552965,
+            "wallMsPerRow": 0.25070699999982027,
+            "rowsPerSec": 3988.7199001253134
+          },
+          {
+            "totalMs": 23.54199999998673,
+            "preMs": 0.02059999998891726,
+            "dbMs": 23.275300000212155,
+            "dbWallMs": 23.275300000212155,
+            "betweenSqlMs": 0.20809999978519045,
+            "postMs": 0.03800000000046566,
+            "sqlCalls": 100,
+            "rowsToApp": 0,
+            "openCount": 0,
+            "medianRowLatencyMs": 0.23140000001876615,
+            "wallMsPerRow": 0.2354199999998673,
+            "rowsPerSec": 4247.727465808189
+          },
+          {
+            "totalMs": 21.649299999990035,
+            "preMs": 0.021399999997811392,
+            "dbMs": 21.35419999991427,
+            "dbWallMs": 21.35419999991427,
+            "betweenSqlMs": 0.2057000000786502,
+            "postMs": 0.06799999999930151,
+            "sqlCalls": 100,
+            "rowsToApp": 0,
+            "openCount": 0,
+            "medianRowLatencyMs": 0.20789999997941777,
+            "wallMsPerRow": 0.21649299999990035,
+            "rowsPerSec": 4619.0869912674325
+          },
+          {
+            "totalMs": 23.540600000007544,
+            "preMs": 0.020699999993667006,
+            "dbMs": 23.2636000001512,
+            "dbWallMs": 23.2636000001512,
+            "betweenSqlMs": 0.21039999986533076,
+            "postMs": 0.04589999999734573,
+            "sqlCalls": 100,
+            "rowsToApp": 0,
+            "openCount": 0,
+            "medianRowLatencyMs": 0.2318000000086613,
+            "wallMsPerRow": 0.23540600000007544,
+            "rowsPerSec": 4247.980085467998
+          }
+        ],
+        "B": [
+          {
+            "totalMs": 52.71970000001602,
+            "preMs": 0.03220000001601875,
+            "dbMs": 51.92579999990994,
+            "dbWallMs": 51.92579999990994,
+            "betweenSqlMs": 0.7165000000968575,
+            "postMs": 0.045199999993201345,
+            "sqlCalls": 400,
+            "rowsToApp": 0,
+            "openCount": 0,
+            "medianRowLatencyMs": 0.49760000000242144,
+            "wallMsPerRow": 0.5271970000001602,
+            "rowsPerSec": 1896.8241473295489
+          },
+          {
+            "totalMs": 51.38169999999809,
+            "preMs": 0.0328999999910593,
+            "dbMs": 50.46030000020983,
+            "dbWallMs": 50.46030000020983,
+            "betweenSqlMs": 0.8414999997767154,
+            "postMs": 0.0470000000204891,
+            "sqlCalls": 400,
+            "rowsToApp": 0,
+            "openCount": 0,
+            "medianRowLatencyMs": 0.47320000000763685,
+            "wallMsPerRow": 0.5138169999999809,
+            "rowsPerSec": 1946.218206092903
+          },
+          {
+            "totalMs": 52.427000000025146,
+            "preMs": 0.029300000023795292,
+            "dbMs": 51.67839999982971,
+            "dbWallMs": 51.67839999982971,
+            "betweenSqlMs": 0.6755000001576263,
+            "postMs": 0.043800000014016405,
+            "sqlCalls": 400,
+            "rowsToApp": 0,
+            "openCount": 0,
+            "medianRowLatencyMs": 0.5015999999886844,
+            "wallMsPerRow": 0.5242700000002515,
+            "rowsPerSec": 1907.4141186783916
+          },
+          {
+            "totalMs": 55.30830000000424,
+            "preMs": 0.03169999999227002,
+            "dbMs": 54.34390000041458,
+            "dbWallMs": 54.34390000041458,
+            "betweenSqlMs": 0.8813999996054918,
+            "postMs": 0.051299999991897494,
+            "sqlCalls": 400,
+            "rowsToApp": 0,
+            "openCount": 0,
+            "medianRowLatencyMs": 0.5390999999945052,
+            "wallMsPerRow": 0.5530830000000424,
+            "rowsPerSec": 1808.0468935040915
+          },
+          {
+            "totalMs": 53.33130000001984,
+            "preMs": 0.029600000008940697,
+            "dbMs": 52.43389999945066,
+            "dbWallMs": 52.43389999945066,
+            "betweenSqlMs": 0.8231000005616806,
+            "postMs": 0.04469999999855645,
+            "sqlCalls": 400,
+            "rowsToApp": 0,
+            "openCount": 0,
+            "medianRowLatencyMs": 0.4798000000009779,
+            "wallMsPerRow": 0.5333130000001983,
+            "rowsPerSec": 1875.0714870997483
+          },
+          {
+            "totalMs": 52.761599999998,
+            "preMs": 0.03640000001178123,
+            "dbMs": 51.952400000038324,
+            "dbWallMs": 51.952400000038324,
+            "betweenSqlMs": 0.7306999999564141,
+            "postMs": 0.0420999999914784,
+            "sqlCalls": 400,
+            "rowsToApp": 0,
+            "openCount": 0,
+            "medianRowLatencyMs": 0.5062000000034459,
+            "wallMsPerRow": 0.52761599999998,
+            "rowsPerSec": 1895.3178068899313
+          },
+          {
+            "totalMs": 47.475600000005215,
+            "preMs": 0.037299999996321276,
+            "dbMs": 46.72819999980857,
+            "dbWallMs": 46.72819999980857,
+            "betweenSqlMs": 0.6657000001869164,
+            "postMs": 0.044400000013411045,
+            "sqlCalls": 400,
+            "rowsToApp": 0,
+            "openCount": 0,
+            "medianRowLatencyMs": 0.4482000000134576,
+            "wallMsPerRow": 0.47475600000005214,
+            "rowsPerSec": 2106.345154142107
+          }
+        ]
+      },
+      "checks": [
+        {
+          "round": -2,
+          "path": "plain",
+          "rows": 200,
+          "memo": 80,
+          "company": 57,
+          "allCipherValuesChecked": false
+        },
+        {
+          "round": -2,
+          "path": "B",
+          "rows": 200,
+          "memo": 80,
+          "company": 57,
+          "allCipherValuesChecked": true
+        },
+        {
+          "round": -1,
+          "path": "B",
+          "rows": 200,
+          "memo": 80,
+          "company": 57,
+          "allCipherValuesChecked": true
+        },
+        {
+          "round": -1,
+          "path": "plain",
+          "rows": 200,
+          "memo": 80,
+          "company": 57,
+          "allCipherValuesChecked": false
+        },
+        {
+          "round": 0,
+          "path": "plain",
+          "rows": 200,
+          "memo": 80,
+          "company": 57,
+          "allCipherValuesChecked": false
+        },
+        {
+          "round": 0,
+          "path": "B",
+          "rows": 200,
+          "memo": 80,
+          "company": 57,
+          "allCipherValuesChecked": true
+        },
+        {
+          "round": 1,
+          "path": "B",
+          "rows": 200,
+          "memo": 80,
+          "company": 57,
+          "allCipherValuesChecked": true
+        },
+        {
+          "round": 1,
+          "path": "plain",
+          "rows": 200,
+          "memo": 80,
+          "company": 57,
+          "allCipherValuesChecked": false
+        },
+        {
+          "round": 2,
+          "path": "plain",
+          "rows": 200,
+          "memo": 80,
+          "company": 57,
+          "allCipherValuesChecked": false
+        },
+        {
+          "round": 2,
+          "path": "B",
+          "rows": 200,
+          "memo": 80,
+          "company": 57,
+          "allCipherValuesChecked": true
+        },
+        {
+          "round": 3,
+          "path": "B",
+          "rows": 200,
+          "memo": 80,
+          "company": 57,
+          "allCipherValuesChecked": true
+        },
+        {
+          "round": 3,
+          "path": "plain",
+          "rows": 200,
+          "memo": 80,
+          "company": 57,
+          "allCipherValuesChecked": false
+        },
+        {
+          "round": 4,
+          "path": "plain",
+          "rows": 200,
+          "memo": 80,
+          "company": 57,
+          "allCipherValuesChecked": false
+        },
+        {
+          "round": 4,
+          "path": "B",
+          "rows": 200,
+          "memo": 80,
+          "company": 57,
+          "allCipherValuesChecked": true
+        },
+        {
+          "round": 5,
+          "path": "B",
+          "rows": 200,
+          "memo": 80,
+          "company": 57,
+          "allCipherValuesChecked": true
+        },
+        {
+          "round": 5,
+          "path": "plain",
+          "rows": 200,
+          "memo": 80,
+          "company": 57,
+          "allCipherValuesChecked": false
+        },
+        {
+          "round": 6,
+          "path": "plain",
+          "rows": 200,
+          "memo": 80,
+          "company": 57,
+          "allCipherValuesChecked": false
+        },
+        {
+          "round": 6,
+          "path": "B",
+          "rows": 200,
+          "memo": 80,
+          "company": 57,
+          "allCipherValuesChecked": true
+        }
+      ],
+      "failed": {},
+      "summary": {
+        "plain": {
+          "totalMs": 23.540600000007544,
+          "preMs": 0.021399999997811392,
+          "dbMs": 23.2636000001512,
+          "dbWallMs": 23.2636000001512,
+          "betweenSqlMs": 0.23530000002938323,
+          "postMs": 0.04589999999734573,
+          "sqlCalls": 100,
+          "rowsToApp": 0,
+          "openCount": 0,
+          "medianRowLatencyMs": 0.21849999998812564,
+          "wallMsPerRow": 0.23540600000007544,
+          "rowsPerSec": 4247.980085467998
+        },
+        "B": {
+          "totalMs": 52.71970000001602,
+          "preMs": 0.03220000001601875,
+          "dbMs": 51.92579999990994,
+          "dbWallMs": 51.92579999990994,
+          "betweenSqlMs": 0.7306999999564141,
+          "postMs": 0.04469999999855645,
+          "sqlCalls": 400,
+          "rowsToApp": 0,
+          "openCount": 0,
+          "medianRowLatencyMs": 0.49760000000242144,
+          "wallMsPerRow": 0.5271970000001602,
+          "rowsPerSec": 1896.8241473295489
+        }
+      },
+      "ratios": {
+        "plain": 1,
+        "B": 2.2395223571191525
+      },
+      "rowLatencyRatios": {
+        "plain": 1,
+        "B": 2.2773455378922813
+      }
+    },
+    {
+      "op": "concurrent8",
+      "rows": 8000,
+      "first": {
+        "plain": {
+          "totalMs": 498.51740000001155,
+          "preMs": 6.847600000008242,
+          "dbMs": 3402.002700000361,
+          "dbWallMs": 488.37489999990794,
+          "betweenSqlMs": 1.3146000000997446,
+          "postMs": 1.9802999999956228,
+          "sqlCalls": 8000,
+          "rowsToApp": 0,
+          "openCount": 0,
+          "medianRowLatencyMs": 0.4009000000078231,
+          "wallMsPerRow": 0.06231467500000144,
+          "rowsPerSec": 16047.584296956966
+        },
+        "B": {
+          "totalMs": 209351.5836,
+          "preMs": 0.08539999998174608,
+          "dbMs": 212176.7664000031,
+          "dbWallMs": 140161.1208000008,
+          "betweenSqlMs": 69188.45329999924,
+          "postMs": 1.9241000000038184,
+          "sqlCalls": 32000,
+          "rowsToApp": 0,
+          "openCount": 0,
+          "medianRowLatencyMs": 208.1290999999619,
+          "wallMsPerRow": 26.168947950000003,
+          "rowsPerSec": 38.21322897315786
+        }
+      },
+      "runs": {
+        "plain": [
+          {
+            "totalMs": 462.7399999999907,
+            "preMs": 0.08289999992121011,
+            "dbMs": 3405.3914000088116,
+            "dbWallMs": 460.2269000004744,
+            "betweenSqlMs": 0.5120999995851889,
+            "postMs": 1.918100000009872,
+            "sqlCalls": 8000,
+            "rowsToApp": 0,
+            "openCount": 0,
+            "medianRowLatencyMs": 0.39690000005066395,
+            "wallMsPerRow": 0.05784249999999884,
+            "rowsPerSec": 17288.3260578298
+          }
+        ],
+        "B": []
+      },
+      "checks": [
+        {
+          "round": -2,
+          "path": "plain",
+          "rows": 8000,
+          "memo": 3219,
+          "company": 2311,
+          "allCipherValuesChecked": false
+        },
+        {
+          "round": -2,
+          "path": "B",
+          "rows": 8000,
+          "memo": 3219,
+          "company": 2311,
+          "allCipherValuesChecked": true
+        },
+        {
+          "round": -1,
+          "path": "B",
+          "rows": 8000,
+          "memo": 3219,
+          "company": 2311,
+          "allCipherValuesChecked": true
+        },
+        {
+          "round": -1,
+          "path": "plain",
+          "rows": 8000,
+          "memo": 3219,
+          "company": 2311,
+          "allCipherValuesChecked": false
+        },
+        {
+          "round": 0,
+          "path": "plain",
+          "rows": 8000,
+          "memo": 3219,
+          "company": 2311,
+          "allCipherValuesChecked": false
+        }
+      ],
+      "failed": {
+        "B": "AssertionError [ERR_ASSERTION]: coordinator lock handoff deadline; incomplete operation not measured\n    at deadline (bench\\research-unified\\b-write.ts:14:21)\n    at insert (bench\\research-unified\\b-write.ts:17:51)\n    at <anonymous> (bench\\research-unified\\b-write.ts:43:215)\n    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)\n    at async Promise.all (index 4)\n    at async <anonymous> (bench\\research-unified\\b-write.ts:43:29)\n    at async measured (bench\\research-unified\\b-runtime.ts:25:143)\n    at async <anonymous> (bench\\research-unified\\b-write.ts:42:15)"
+      }
+    }
+  ]
+}

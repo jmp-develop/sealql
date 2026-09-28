@@ -1,0 +1,28 @@
+{
+  "started": "2026-09-28T14:01:02.725Z",
+  "schema": "research_u",
+  "source": "shared normalized plaintext + actual native_verify_main product tokens",
+  "fields": {
+    "customers": [
+      "name",
+      "phone",
+      "address",
+      "memo",
+      "email",
+      "company"
+    ],
+    "tickets": [
+      "memo"
+    ]
+  },
+  "tables": {
+    "customers": {
+      "rows": 100000,
+      "resumedFrom": 39500,
+      "loadMs": 629985.6638999999,
+      "indexMs": 11110.716299999971
+    }
+  },
+  "scopeChange": "Coordinator 14:01Z: customers only; tickets and unified JOIN not measured, release lock by 14:30Z",
+  "finished": "2026-09-28T14:11:43.921Z"
+}

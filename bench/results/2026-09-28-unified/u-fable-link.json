@@ -1,0 +1,65 @@
+{
+  "datasets": [
+    {
+      "name": "nsmc-review",
+      "design": "A16",
+      "rows": 49701,
+      "distinctTokens": 64474,
+      "tokensSharedByExactlyTwoRows": 2699,
+      "linkPrecisionPct": 24.379,
+      "rowsLinkedToOneOtherPct": 9.537,
+      "rowsTrulyLinkedPct": 2.559
+    },
+    {
+      "name": "fixture-memo",
+      "design": "A16",
+      "rows": 50000,
+      "distinctTokens": 3475,
+      "tokensSharedByExactlyTwoRows": 22,
+      "linkPrecisionPct": 100,
+      "rowsLinkedToOneOtherPct": 0.052,
+      "rowsTrulyLinkedPct": 0.052
+    },
+    {
+      "name": "fixture-name",
+      "design": "A16",
+      "rows": 50000,
+      "distinctTokens": 3288,
+      "tokensSharedByExactlyTwoRows": 0,
+      "linkPrecisionPct": 0,
+      "rowsLinkedToOneOtherPct": 0,
+      "rowsTrulyLinkedPct": 0
+    },
+    {
+      "name": "nsmc-review",
+      "design": "D16",
+      "rows": 49701,
+      "distinctTokens": 65536,
+      "tokensSharedByExactlyTwoRows": 0,
+      "linkPrecisionPct": 0,
+      "rowsLinkedToOneOtherPct": 0,
+      "rowsTrulyLinkedPct": 0
+    },
+    {
+      "name": "fixture-memo",
+      "design": "D16",
+      "rows": 50000,
+      "distinctTokens": 65536,
+      "tokensSharedByExactlyTwoRows": 0,
+      "linkPrecisionPct": 0,
+      "rowsLinkedToOneOtherPct": 0,
+      "rowsTrulyLinkedPct": 0
+    },
+    {
+      "name": "fixture-name",
+      "design": "D16",
+      "rows": 50000,
+      "distinctTokens": 65536,
+      "tokensSharedByExactlyTwoRows": 18,
+      "linkPrecisionPct": 0,
+      "rowsLinkedToOneOtherPct": 0.072,
+      "rowsTrulyLinkedPct": 0
+    }
+  ],
+  "note": "Backup-only linkage through 16-bit tokens shared by exactly two rows; precision = share of such links where the two rows really share a label of that token."
+}

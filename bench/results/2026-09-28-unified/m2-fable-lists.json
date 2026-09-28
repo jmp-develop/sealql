@@ -1,0 +1,704 @@
+[
+ {
+  "label": "list exact_common limit 20",
+  "truth": 20,
+  "medians": {
+   "plain": 10.4,
+   "A": 7.4,
+   "C": 327.3,
+   "D": 337.5
+  },
+  "dbMedians": {
+   "plain": 10.3,
+   "A": 1.1,
+   "C": 322.7,
+   "D": 332.5
+  },
+  "meta": {
+   "plain": {
+    "app": 20,
+    "decrypts": 0,
+    "sql": 1
+   },
+   "A": {
+    "app": 27,
+    "decrypts": 0,
+    "sql": 1
+   },
+   "C": {
+    "app": 40,
+    "decrypts": 120,
+    "sql": 2
+   },
+   "D": {
+    "app": 40,
+    "decrypts": 120,
+    "sql": 2
+   }
+  },
+  "failed": {}
+ },
+ {
+  "label": "list exact_common limit 200",
+  "truth": 200,
+  "medians": {
+   "plain": 11.1,
+   "A": 51.4,
+   "C": 380.7,
+   "D": 389.5
+  },
+  "dbMedians": {
+   "plain": 11.1,
+   "A": 2.7,
+   "C": 331.9,
+   "D": 340.9
+  },
+  "meta": {
+   "plain": {
+    "app": 200,
+    "decrypts": 0,
+    "sql": 1
+   },
+   "A": {
+    "app": 200,
+    "decrypts": 0,
+    "sql": 1
+   },
+   "C": {
+    "app": 400,
+    "decrypts": 1200,
+    "sql": 2
+   },
+   "D": {
+    "app": 400,
+    "decrypts": 1200,
+    "sql": 2
+   }
+  },
+  "failed": {}
+ },
+ {
+  "label": "list exact_common limit all",
+  "truth": 28331,
+  "medians": {
+   "plain": 23.4,
+   "A": 5826.5,
+   "C": 8028.2,
+   "D": 8014.3
+  },
+  "dbMedians": {
+   "plain": 22.8,
+   "A": 190.8,
+   "C": 500.6,
+   "D": 492.4
+  },
+  "meta": {
+   "plain": {
+    "app": 28331,
+    "decrypts": 0,
+    "sql": 1
+   },
+   "A": {
+    "app": 28331,
+    "decrypts": 0,
+    "sql": 1
+   },
+   "C": {
+    "app": 56662,
+    "decrypts": 169986,
+    "sql": 2
+   },
+   "D": {
+    "app": 56662,
+    "decrypts": 169986,
+    "sql": 2
+   }
+  },
+  "failed": {}
+ },
+ {
+  "label": "list sub_rare limit 20",
+  "truth": 20,
+  "medians": {
+   "plain": 19.1,
+   "A": 6.6,
+   "C": 6.4,
+   "D": 10.5
+  },
+  "dbMedians": {
+   "plain": 19.1,
+   "A": 1.7,
+   "C": 1.5,
+   "D": 5.8
+  },
+  "meta": {
+   "plain": {
+    "app": 20,
+    "decrypts": 0,
+    "sql": 1
+   },
+   "A": {
+    "app": 27,
+    "decrypts": 0,
+    "sql": 1
+   },
+   "C": {
+    "app": 40,
+    "decrypts": 120,
+    "sql": 2
+   },
+   "D": {
+    "app": 40,
+    "decrypts": 120,
+    "sql": 2
+   }
+  },
+  "failed": {}
+ },
+ {
+  "label": "list sub_rare limit 200",
+  "truth": 101,
+  "medians": {
+   "plain": 18.6,
+   "A": 22.1,
+   "C": 28.2,
+   "D": 32.5
+  },
+  "dbMedians": {
+   "plain": 18.6,
+   "A": 2,
+   "C": 2.2,
+   "D": 6.5
+  },
+  "meta": {
+   "plain": {
+    "app": 101,
+    "decrypts": 0,
+    "sql": 1
+   },
+   "A": {
+    "app": 101,
+    "decrypts": 0,
+    "sql": 1
+   },
+   "C": {
+    "app": 202,
+    "decrypts": 606,
+    "sql": 2
+   },
+   "D": {
+    "app": 202,
+    "decrypts": 606,
+    "sql": 2
+   }
+  },
+  "failed": {}
+ },
+ {
+  "label": "list sub_rare limit all",
+  "truth": 101,
+  "medians": {
+   "plain": 18.5,
+   "A": 21,
+   "C": 27.7,
+   "D": 31.8
+  },
+  "dbMedians": {
+   "plain": 18.5,
+   "A": 1.3,
+   "C": 2.1,
+   "D": 6.5
+  },
+  "meta": {
+   "plain": {
+    "app": 101,
+    "decrypts": 0,
+    "sql": 1
+   },
+   "A": {
+    "app": 101,
+    "decrypts": 0,
+    "sql": 1
+   },
+   "C": {
+    "app": 202,
+    "decrypts": 606,
+    "sql": 2
+   },
+   "D": {
+    "app": 202,
+    "decrypts": 606,
+    "sql": 2
+   }
+  },
+  "failed": {}
+ },
+ {
+  "label": "list starts limit 20",
+  "truth": 20,
+  "medians": {
+   "plain": 9.1,
+   "A": 6.8,
+   "C": 203.2,
+   "D": 195.8
+  },
+  "dbMedians": {
+   "plain": 9,
+   "A": 1.4,
+   "C": 197.7,
+   "D": 190.4
+  },
+  "meta": {
+   "plain": {
+    "app": 20,
+    "decrypts": 0,
+    "sql": 1
+   },
+   "A": {
+    "app": 27,
+    "decrypts": 0,
+    "sql": 1
+   },
+   "C": {
+    "app": 40,
+    "decrypts": 120,
+    "sql": 2
+   },
+   "D": {
+    "app": 40,
+    "decrypts": 120,
+    "sql": 2
+   }
+  },
+  "failed": {}
+ },
+ {
+  "label": "list starts limit 200",
+  "truth": 200,
+  "medians": {
+   "plain": 9,
+   "A": 45.5,
+   "C": 250,
+   "D": 251.5
+  },
+  "dbMedians": {
+   "plain": 9,
+   "A": 5.1,
+   "C": 199.4,
+   "D": 197.6
+  },
+  "meta": {
+   "plain": {
+    "app": 200,
+    "decrypts": 0,
+    "sql": 1
+   },
+   "A": {
+    "app": 200,
+    "decrypts": 0,
+    "sql": 1
+   },
+   "C": {
+    "app": 400,
+    "decrypts": 1200,
+    "sql": 2
+   },
+   "D": {
+    "app": 400,
+    "decrypts": 1200,
+    "sql": 2
+   }
+  },
+  "failed": {}
+ },
+ {
+  "label": "list starts limit all",
+  "truth": 16574,
+  "medians": {
+   "plain": 17.1,
+   "A": 3403.3,
+   "C": 4554.5,
+   "D": 4579
+  },
+  "dbMedians": {
+   "plain": 16.8,
+   "A": 125,
+   "C": 305.7,
+   "D": 302
+  },
+  "meta": {
+   "plain": {
+    "app": 16574,
+    "decrypts": 0,
+    "sql": 1
+   },
+   "A": {
+    "app": 16574,
+    "decrypts": 0,
+    "sql": 1
+   },
+   "C": {
+    "app": 33148,
+    "decrypts": 99444,
+    "sql": 2
+   },
+   "D": {
+    "app": 33148,
+    "decrypts": 99444,
+    "sql": 2
+   }
+  },
+  "failed": {}
+ },
+ {
+  "label": "list and2 limit 20",
+  "truth": 20,
+  "medians": {
+   "plain": 12.3,
+   "A": 6.9,
+   "C": 754,
+   "D": 320.2
+  },
+  "dbMedians": {
+   "plain": 12.3,
+   "A": 1.6,
+   "C": 748.2,
+   "D": 314.9
+  },
+  "meta": {
+   "plain": {
+    "app": 20,
+    "decrypts": 0,
+    "sql": 1
+   },
+   "A": {
+    "app": 27,
+    "decrypts": 0,
+    "sql": 1
+   },
+   "C": {
+    "app": 40,
+    "decrypts": 120,
+    "sql": 2
+   },
+   "D": {
+    "app": 40,
+    "decrypts": 120,
+    "sql": 2
+   }
+  },
+  "failed": {}
+ },
+ {
+  "label": "list and2 limit 200",
+  "truth": 200,
+  "medians": {
+   "plain": 11.8,
+   "A": 49,
+   "C": 804.9,
+   "D": 361
+  },
+  "dbMedians": {
+   "plain": 11.7,
+   "A": 4.1,
+   "C": 753.2,
+   "D": 308.8
+  },
+  "meta": {
+   "plain": {
+    "app": 200,
+    "decrypts": 0,
+    "sql": 1
+   },
+   "A": {
+    "app": 200,
+    "decrypts": 0,
+    "sql": 1
+   },
+   "C": {
+    "app": 400,
+    "decrypts": 1200,
+    "sql": 2
+   },
+   "D": {
+    "app": 400,
+    "decrypts": 1200,
+    "sql": 2
+   }
+  },
+  "failed": {}
+ },
+ {
+  "label": "list and2 limit all",
+  "truth": 21176,
+  "medians": {
+   "plain": 22.1,
+   "A": 4463.9,
+   "C": 6317.3,
+   "D": 5824
+  },
+  "dbMedians": {
+   "plain": 21.7,
+   "A": 192.5,
+   "C": 889,
+   "D": 438.5
+  },
+  "meta": {
+   "plain": {
+    "app": 21176,
+    "decrypts": 0,
+    "sql": 1
+   },
+   "A": {
+    "app": 21176,
+    "decrypts": 0,
+    "sql": 1
+   },
+   "C": {
+    "app": 42352,
+    "decrypts": 127056,
+    "sql": 2
+   },
+   "D": {
+    "app": 42352,
+    "decrypts": 127056,
+    "sql": 2
+   }
+  },
+  "failed": {}
+ },
+ {
+  "label": "list or2 limit 20",
+  "truth": 20,
+  "medians": {
+   "plain": 20.6,
+   "A": 6.9,
+   "C": 338.8,
+   "D": 363
+  },
+  "dbMedians": {
+   "plain": 20.6,
+   "A": 1.5,
+   "C": 333.2,
+   "D": 357.9
+  },
+  "meta": {
+   "plain": {
+    "app": 20,
+    "decrypts": 0,
+    "sql": 1
+   },
+   "A": {
+    "app": 27,
+    "decrypts": 0,
+    "sql": 1
+   },
+   "C": {
+    "app": 40,
+    "decrypts": 120,
+    "sql": 2
+   },
+   "D": {
+    "app": 40,
+    "decrypts": 120,
+    "sql": 2
+   }
+  },
+  "failed": {}
+ },
+ {
+  "label": "list or2 limit 200",
+  "truth": 200,
+  "medians": {
+   "plain": 28.1,
+   "A": 44.2,
+   "C": 379.4,
+   "D": 401.1
+  },
+  "dbMedians": {
+   "plain": 28.1,
+   "A": 4,
+   "C": 329,
+   "D": 350.2
+  },
+  "meta": {
+   "plain": {
+    "app": 200,
+    "decrypts": 0,
+    "sql": 1
+   },
+   "A": {
+    "app": 200,
+    "decrypts": 0,
+    "sql": 1
+   },
+   "C": {
+    "app": 400,
+    "decrypts": 1200,
+    "sql": 2
+   },
+   "D": {
+    "app": 400,
+    "decrypts": 1200,
+    "sql": 2
+   }
+  },
+  "failed": {}
+ },
+ {
+  "label": "list or2 limit all",
+  "truth": 28400,
+  "medians": {
+   "plain": 38.4,
+   "A": 5843.5,
+   "C": 7757.7,
+   "D": 7786.3
+  },
+  "dbMedians": {
+   "plain": 37.7,
+   "A": 213.2,
+   "C": 494.8,
+   "D": 533.2
+  },
+  "meta": {
+   "plain": {
+    "app": 28400,
+    "decrypts": 0,
+    "sql": 1
+   },
+   "A": {
+    "app": 28400,
+    "decrypts": 0,
+    "sql": 1
+   },
+   "C": {
+    "app": 56800,
+    "decrypts": 170400,
+    "sql": 2
+   },
+   "D": {
+    "app": 56800,
+    "decrypts": 170400,
+    "sql": 2
+   }
+  },
+  "failed": {}
+ },
+ {
+  "label": "list and6 limit 20",
+  "truth": 20,
+  "medians": {
+   "plain": 9.5,
+   "A": 20.3,
+   "C": 2479.1,
+   "D": 54.2
+  },
+  "dbMedians": {
+   "plain": 9.5,
+   "A": 13.9,
+   "C": 2473.6,
+   "D": 49.1
+  },
+  "meta": {
+   "plain": {
+    "app": 20,
+    "decrypts": 0,
+    "sql": 1
+   },
+   "A": {
+    "app": 27,
+    "decrypts": 0,
+    "sql": 1
+   },
+   "C": {
+    "app": 40,
+    "decrypts": 120,
+    "sql": 2
+   },
+   "D": {
+    "app": 40,
+    "decrypts": 120,
+    "sql": 2
+   }
+  },
+  "failed": {}
+ },
+ {
+  "label": "list and6 limit 200",
+  "truth": 200,
+  "medians": {
+   "plain": 9.5,
+   "A": 62.3,
+   "C": 2569.5,
+   "D": 105.6
+  },
+  "dbMedians": {
+   "plain": 9.4,
+   "A": 17.3,
+   "C": 2515.4,
+   "D": 50.1
+  },
+  "meta": {
+   "plain": {
+    "app": 200,
+    "decrypts": 0,
+    "sql": 1
+   },
+   "A": {
+    "app": 200,
+    "decrypts": 0,
+    "sql": 1
+   },
+   "C": {
+    "app": 400,
+    "decrypts": 1200,
+    "sql": 2
+   },
+   "D": {
+    "app": 400,
+    "decrypts": 1200,
+    "sql": 2
+   }
+  },
+  "failed": {}
+ },
+ {
+  "label": "list and6 limit all",
+  "truth": 624,
+  "medians": {
+   "plain": 9.6,
+   "A": 157.5,
+   "C": 2644.4,
+   "D": 216.6
+  },
+  "dbMedians": {
+   "plain": 9.5,
+   "A": 21.8,
+   "C": 2488.1,
+   "D": 51.4
+  },
+  "meta": {
+   "plain": {
+    "app": 624,
+    "decrypts": 0,
+    "sql": 1
+   },
+   "A": {
+    "app": 624,
+    "decrypts": 0,
+    "sql": 1
+   },
+   "C": {
+    "app": 1248,
+    "decrypts": 3744,
+    "sql": 2
+   },
+   "D": {
+    "app": 1248,
+    "decrypts": 3744,
+    "sql": 2
+   }
+  },
+  "failed": {}
+ }
+]

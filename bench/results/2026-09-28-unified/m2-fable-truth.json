@@ -1,0 +1,156 @@
+[
+ {
+  "name": "exact_common",
+  "condition": "company = \"서울서비스 담당\"",
+  "respectWords": false,
+  "count": 28331
+ },
+ {
+  "name": "exact_mid",
+  "condition": "company = \"서울서비스 중앙지사\"",
+  "respectWords": false,
+  "count": 1770
+ },
+ {
+  "name": "exact_one",
+  "condition": "phone = \"42-5748-1542\"",
+  "respectWords": false,
+  "count": 1
+ },
+ {
+  "name": "exact_zero",
+  "condition": "phone = \"99-0000-0000\"",
+  "respectWords": false,
+  "count": 0
+ },
+ {
+  "name": "sub2_common",
+  "condition": "company contains \"서비\"",
+  "respectWords": false,
+  "count": 30101
+ },
+ {
+  "name": "sub_mid",
+  "condition": "address contains \"세종대로\"",
+  "respectWords": false,
+  "count": 16574
+ },
+ {
+  "name": "sub_mid_space",
+  "condition": "address contains \"세종대로 25\"",
+  "respectWords": false,
+  "count": 213
+ },
+ {
+  "name": "sub_rare",
+  "condition": "memo contains \"푸른달\"",
+  "respectWords": false,
+  "count": 101
+ },
+ {
+  "name": "sub_long",
+  "condition": "memo contains \"상세 안내와 확인 내용 상세 안내와\"",
+  "respectWords": false,
+  "count": 2440
+ },
+ {
+  "name": "sub_name_suffix",
+  "condition": "name contains \"pshxt\"",
+  "respectWords": false,
+  "count": 1
+ },
+ {
+  "name": "sub_zero",
+  "condition": "memo contains \"없는표식\"",
+  "respectWords": false,
+  "count": 0
+ },
+ {
+  "name": "starts",
+  "condition": "address startsWith \"서울\"",
+  "respectWords": false,
+  "count": 16574
+ },
+ {
+  "name": "ends",
+  "condition": "email endsWith \"biz.test\"",
+  "respectWords": false,
+  "count": 26598
+ },
+ {
+  "name": "and2",
+  "condition": "(company = \"서울서비스 담당\" AND memo contains \"서비스\")",
+  "respectWords": false,
+  "count": 21176
+ },
+ {
+  "name": "and4",
+  "condition": "(company = \"서울서비스 담당\" AND address contains \"서울\" AND memo contains \"상담\" AND email contains \"service\")",
+  "respectWords": false,
+  "count": 62
+ },
+ {
+  "name": "and6",
+  "condition": "(name contains \"민서\" AND phone contains \"-5\" AND address contains \"서울\" AND memo contains \"서비스\" AND email contains \"test\" AND company = \"서울서비스 담당\")",
+  "respectWords": false,
+  "count": 624
+ },
+ {
+  "name": "or2",
+  "condition": "(company = \"서울서비스 담당\" OR memo contains \"푸른달\")",
+  "respectWords": false,
+  "count": 28400
+ },
+ {
+  "name": "or3",
+  "condition": "(phone = \"42-5748-1542\" OR phone = \"21-7100-5875\" OR name contains \"pshxt\")",
+  "respectWords": false,
+  "count": 2
+ },
+ {
+  "name": "drain101",
+  "condition": "memo contains \"푸른달\"",
+  "respectWords": false,
+  "count": 101
+ },
+ {
+  "name": "word_boundary",
+  "condition": "memo contains \"서비스 상담\"",
+  "respectWords": true,
+  "count": 29843
+ },
+ {
+  "name": "word_inside_longer",
+  "condition": "memo contains \"비스 상\"",
+  "respectWords": true,
+  "count": 29843
+ },
+ {
+  "name": "sub_common_memo",
+  "condition": "memo contains \"서비스\"",
+  "respectWords": false,
+  "count": 40097
+ },
+ {
+  "name": "or_and_mix",
+  "condition": "((company = \"서울서비스 담당\" AND memo contains \"서비스\") OR memo contains \"푸른달\")",
+  "respectWords": false,
+  "count": 21277
+ },
+ {
+  "name": "sub45",
+  "condition": "memo contains \"상세안내와확인내용상세안내와확인내용상세안내와확인내용상세안내와확인내용상세안내와확인내용\"",
+  "respectWords": false,
+  "count": 0
+ },
+ {
+  "name": "join",
+  "condition": "tickets.memo contains \"서비스\" AND customers.company = \"서울서비스 담당\"",
+  "count": 21182
+ },
+ {
+  "name": "sum",
+  "condition": "sum(memo_len) where memo contains \"서비스\"",
+  "count": 516795
+ }
+]

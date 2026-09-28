@@ -1,0 +1,216 @@
+{
+  "knownPct": [
+    0.01,
+    0.1,
+    1,
+    5,
+    10
+  ],
+  "fields": [
+    {
+      "field": "company",
+      "rows": 100000,
+      "distinctValues": 16,
+      "width": {
+        "16": {
+          "1": {
+            "knownRows": 1000,
+            "correctPct": 100
+          },
+          "5": {
+            "knownRows": 5000,
+            "correctPct": 100
+          },
+          "10": {
+            "knownRows": 10000,
+            "correctPct": 100
+          },
+          "0.01": {
+            "knownRows": 10,
+            "correctPct": 66.623
+          },
+          "0.1": {
+            "knownRows": 100,
+            "correctPct": 98.265
+          }
+        },
+        "full": {
+          "1": {
+            "knownRows": 1000,
+            "correctPct": 100
+          },
+          "5": {
+            "knownRows": 5000,
+            "correctPct": 100
+          },
+          "10": {
+            "knownRows": 10000,
+            "correctPct": 100
+          },
+          "0.01": {
+            "knownRows": 10,
+            "correctPct": 66.623
+          },
+          "0.1": {
+            "knownRows": 100,
+            "correctPct": 98.265
+          }
+        }
+      }
+    },
+    {
+      "field": "address",
+      "rows": 100000,
+      "distinctValues": 5994,
+      "width": {
+        "16": {
+          "1": {
+            "knownRows": 1000,
+            "correctPct": 15.265
+          },
+          "5": {
+            "knownRows": 5000,
+            "correctPct": 56.269
+          },
+          "10": {
+            "knownRows": 10000,
+            "correctPct": 79.801
+          },
+          "0.01": {
+            "knownRows": 10,
+            "correctPct": 0.166
+          },
+          "0.1": {
+            "knownRows": 100,
+            "correctPct": 1.639
+          }
+        },
+        "full": {
+          "1": {
+            "knownRows": 1000,
+            "correctPct": 15.265
+          },
+          "5": {
+            "knownRows": 5000,
+            "correctPct": 56.978
+          },
+          "10": {
+            "knownRows": 10000,
+            "correctPct": 81.003
+          },
+          "0.01": {
+            "knownRows": 10,
+            "correctPct": 0.166
+          },
+          "0.1": {
+            "knownRows": 100,
+            "correctPct": 1.639
+          }
+        }
+      }
+    },
+    {
+      "field": "name",
+      "rows": 100000,
+      "distinctValues": 99989,
+      "width": {
+        "16": {
+          "1": {
+            "knownRows": 1000,
+            "correctPct": 0
+          },
+          "5": {
+            "knownRows": 5000,
+            "correctPct": 0
+          },
+          "10": {
+            "knownRows": 10000,
+            "correctPct": 0.001
+          },
+          "0.01": {
+            "knownRows": 10,
+            "correctPct": 0
+          },
+          "0.1": {
+            "knownRows": 100,
+            "correctPct": 0
+          }
+        },
+        "full": {
+          "1": {
+            "knownRows": 1000,
+            "correctPct": 0
+          },
+          "5": {
+            "knownRows": 5000,
+            "correctPct": 0
+          },
+          "10": {
+            "knownRows": 10000,
+            "correctPct": 0.001
+          },
+          "0.01": {
+            "knownRows": 10,
+            "correctPct": 0
+          },
+          "0.1": {
+            "knownRows": 100,
+            "correctPct": 0
+          }
+        }
+      }
+    },
+    {
+      "field": "email",
+      "rows": 100000,
+      "distinctValues": 100000,
+      "width": {
+        "16": {
+          "1": {
+            "knownRows": 1000,
+            "correctPct": 0
+          },
+          "5": {
+            "knownRows": 5000,
+            "correctPct": 0
+          },
+          "10": {
+            "knownRows": 10000,
+            "correctPct": 0
+          },
+          "0.01": {
+            "knownRows": 10,
+            "correctPct": 0
+          },
+          "0.1": {
+            "knownRows": 100,
+            "correctPct": 0
+          }
+        },
+        "full": {
+          "1": {
+            "knownRows": 1000,
+            "correctPct": 0
+          },
+          "5": {
+            "knownRows": 5000,
+            "correctPct": 0
+          },
+          "10": {
+            "knownRows": 10000,
+            "correctPct": 0
+          },
+          "0.01": {
+            "knownRows": 10,
+            "correctPct": 0
+          },
+          "0.1": {
+            "knownRows": 100,
+            "correctPct": 0
+          }
+        }
+      }
+    }
+  ],
+  "note": "16-bit exact tokens = A, B and D; full width = reference; C has no static equality class (0)."
+}

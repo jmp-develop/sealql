@@ -1,0 +1,393 @@
+{
+  "seed": 20260928,
+  "design": "D16",
+  "knownPct": [
+    0.01,
+    0.1,
+    1,
+    5,
+    10
+  ],
+  "datasets": [
+    {
+      "name": "nsmc-review",
+      "design": "D16",
+      "victimRows": 49701,
+      "referenceRows": 49745,
+      "meanLen": 28.2,
+      "tokensPerRow": 206.8,
+      "aux": {
+        "stage1": {
+          "decodedOccPct": 0.975,
+          "charCoveragePct": 12.709,
+          "run8Pct": 0.004,
+          "runFullPct": 0.024,
+          "unknownRows": 49701
+        },
+        "stage2": {
+          "decodedOccPct": 0.975,
+          "charCoveragePct": 12.709,
+          "run8Pct": 0.004,
+          "runFullPct": 0.024,
+          "unknownRows": 49701
+        }
+      },
+      "known": {
+        "1": {
+          "knownRows": 497,
+          "stage1": {
+            "decodedOccPct": 5.524,
+            "charCoveragePct": 56.687,
+            "run8Pct": 4.195,
+            "runFullPct": 0.835,
+            "unknownRows": 49204
+          },
+          "stage2": {
+            "decodedOccPct": 6.11,
+            "charCoveragePct": 57.007,
+            "run8Pct": 4.542,
+            "runFullPct": 0.864,
+            "unknownRows": 49204
+          },
+          "rounds": [
+            10427,
+            4737,
+            629,
+            0
+          ]
+        },
+        "5": {
+          "knownRows": 2485,
+          "stage1": {
+            "decodedOccPct": 9.917,
+            "charCoveragePct": 77.399,
+            "run8Pct": 30.405,
+            "runFullPct": 2.622,
+            "unknownRows": 47216
+          },
+          "stage2": {
+            "decodedOccPct": 9.917,
+            "charCoveragePct": 77.399,
+            "run8Pct": 30.405,
+            "runFullPct": 2.622,
+            "unknownRows": 47216
+          },
+          "rounds": []
+        },
+        "10": {
+          "knownRows": 4970,
+          "stage1": {
+            "decodedOccPct": 11.654,
+            "charCoveragePct": 82.925,
+            "run8Pct": 43.151,
+            "runFullPct": 3.796,
+            "unknownRows": 44731
+          },
+          "stage2": {
+            "decodedOccPct": 11.654,
+            "charCoveragePct": 82.925,
+            "run8Pct": 43.151,
+            "runFullPct": 3.796,
+            "unknownRows": 44731
+          },
+          "rounds": []
+        },
+        "0.01": {
+          "knownRows": 5,
+          "stage1": {
+            "decodedOccPct": 0.004,
+            "charCoveragePct": 0.065,
+            "run8Pct": 0,
+            "runFullPct": 0,
+            "unknownRows": 49696
+          },
+          "stage2": {
+            "decodedOccPct": 0.004,
+            "charCoveragePct": 0.065,
+            "run8Pct": 0,
+            "runFullPct": 0,
+            "unknownRows": 49696
+          },
+          "rounds": [
+            0
+          ]
+        },
+        "0.1": {
+          "knownRows": 50,
+          "stage1": {
+            "decodedOccPct": 1.42,
+            "charCoveragePct": 18.232,
+            "run8Pct": 0,
+            "runFullPct": 0.193,
+            "unknownRows": 49651
+          },
+          "stage2": {
+            "decodedOccPct": 1.502,
+            "charCoveragePct": 18.43,
+            "run8Pct": 0,
+            "runFullPct": 0.207,
+            "unknownRows": 49651
+          },
+          "rounds": [
+            2247,
+            402,
+            0
+          ]
+        }
+      }
+    },
+    {
+      "name": "fixture-memo",
+      "design": "D16",
+      "victimRows": 50000,
+      "referenceRows": 50000,
+      "meanLen": 14.8,
+      "tokensPerRow": 83.2,
+      "aux": {
+        "stage1": {
+          "decodedOccPct": 1.261,
+          "charCoveragePct": 19.842,
+          "run8Pct": 0.746,
+          "runFullPct": 0,
+          "unknownRows": 50000
+        },
+        "stage2": {
+          "decodedOccPct": 1.261,
+          "charCoveragePct": 19.842,
+          "run8Pct": 0.746,
+          "runFullPct": 0,
+          "unknownRows": 50000
+        }
+      },
+      "known": {
+        "1": {
+          "knownRows": 500,
+          "stage1": {
+            "decodedOccPct": 5.519,
+            "charCoveragePct": 42.811,
+            "run8Pct": 9.952,
+            "runFullPct": 0,
+            "unknownRows": 49500
+          },
+          "stage2": {
+            "decodedOccPct": 6.813,
+            "charCoveragePct": 42.816,
+            "run8Pct": 9.952,
+            "runFullPct": 0,
+            "unknownRows": 49500
+          },
+          "rounds": [
+            1828,
+            9,
+            0
+          ]
+        },
+        "5": {
+          "knownRows": 2500,
+          "stage1": {
+            "decodedOccPct": 9.754,
+            "charCoveragePct": 57.797,
+            "run8Pct": 19.832,
+            "runFullPct": 15.949,
+            "unknownRows": 47500
+          },
+          "stage2": {
+            "decodedOccPct": 9.754,
+            "charCoveragePct": 57.797,
+            "run8Pct": 19.832,
+            "runFullPct": 15.949,
+            "unknownRows": 47500
+          },
+          "rounds": []
+        },
+        "10": {
+          "knownRows": 5000,
+          "stage1": {
+            "decodedOccPct": 10.547,
+            "charCoveragePct": 57.959,
+            "run8Pct": 19.873,
+            "runFullPct": 16.542,
+            "unknownRows": 45000
+          },
+          "stage2": {
+            "decodedOccPct": 10.547,
+            "charCoveragePct": 57.959,
+            "run8Pct": 19.873,
+            "runFullPct": 16.542,
+            "unknownRows": 45000
+          },
+          "rounds": []
+        },
+        "0.01": {
+          "knownRows": 5,
+          "stage1": {
+            "decodedOccPct": 0,
+            "charCoveragePct": 0,
+            "run8Pct": 0,
+            "runFullPct": 0,
+            "unknownRows": 49995
+          },
+          "stage2": {
+            "decodedOccPct": 0,
+            "charCoveragePct": 0,
+            "run8Pct": 0,
+            "runFullPct": 0,
+            "unknownRows": 49995
+          },
+          "rounds": [
+            0
+          ]
+        },
+        "0.1": {
+          "knownRows": 50,
+          "stage1": {
+            "decodedOccPct": 1.049,
+            "charCoveragePct": 11.776,
+            "run8Pct": 0,
+            "runFullPct": 0,
+            "unknownRows": 49950
+          },
+          "stage2": {
+            "decodedOccPct": 1.05,
+            "charCoveragePct": 11.776,
+            "run8Pct": 0,
+            "runFullPct": 0,
+            "unknownRows": 49950
+          },
+          "rounds": [
+            27,
+            0
+          ]
+        }
+      }
+    },
+    {
+      "name": "fixture-name",
+      "design": "D16",
+      "victimRows": 50000,
+      "referenceRows": 50000,
+      "meanLen": 9.3,
+      "tokensPerRow": 39.7,
+      "aux": {
+        "stage1": {
+          "decodedOccPct": 1.14,
+          "charCoveragePct": 12.266,
+          "run8Pct": 0,
+          "runFullPct": 0,
+          "unknownRows": 50000
+        },
+        "stage2": {
+          "decodedOccPct": 1.14,
+          "charCoveragePct": 12.266,
+          "run8Pct": 0,
+          "runFullPct": 0,
+          "unknownRows": 50000
+        }
+      },
+      "known": {
+        "1": {
+          "knownRows": 500,
+          "stage1": {
+            "decodedOccPct": 7.646,
+            "charCoveragePct": 51.07,
+            "run8Pct": 2.586,
+            "runFullPct": 0,
+            "unknownRows": 49500
+          },
+          "stage2": {
+            "decodedOccPct": 9.211,
+            "charCoveragePct": 51.072,
+            "run8Pct": 2.592,
+            "runFullPct": 0,
+            "unknownRows": 49500
+          },
+          "rounds": [
+            1486,
+            8,
+            0
+          ]
+        },
+        "5": {
+          "knownRows": 2500,
+          "stage1": {
+            "decodedOccPct": 14.849,
+            "charCoveragePct": 73.509,
+            "run8Pct": 23.531,
+            "runFullPct": 14.392,
+            "unknownRows": 47500
+          },
+          "stage2": {
+            "decodedOccPct": 14.849,
+            "charCoveragePct": 73.509,
+            "run8Pct": 23.531,
+            "runFullPct": 14.392,
+            "unknownRows": 47500
+          },
+          "rounds": []
+        },
+        "10": {
+          "knownRows": 5000,
+          "stage1": {
+            "decodedOccPct": 16.212,
+            "charCoveragePct": 73.572,
+            "run8Pct": 23.604,
+            "runFullPct": 14.909,
+            "unknownRows": 45000
+          },
+          "stage2": {
+            "decodedOccPct": 16.212,
+            "charCoveragePct": 73.572,
+            "run8Pct": 23.604,
+            "runFullPct": 14.909,
+            "unknownRows": 45000
+          },
+          "rounds": []
+        },
+        "0.01": {
+          "knownRows": 5,
+          "stage1": {
+            "decodedOccPct": 0,
+            "charCoveragePct": 0,
+            "run8Pct": 0,
+            "runFullPct": 0,
+            "unknownRows": 49995
+          },
+          "stage2": {
+            "decodedOccPct": 0,
+            "charCoveragePct": 0,
+            "run8Pct": 0,
+            "runFullPct": 0,
+            "unknownRows": 49995
+          },
+          "rounds": [
+            0
+          ]
+        },
+        "0.1": {
+          "knownRows": 50,
+          "stage1": {
+            "decodedOccPct": 0.523,
+            "charCoveragePct": 4.421,
+            "run8Pct": 0,
+            "runFullPct": 0,
+            "unknownRows": 49950
+          },
+          "stage2": {
+            "decodedOccPct": 0.523,
+            "charCoveragePct": 4.421,
+            "run8Pct": 0,
+            "runFullPct": 0,
+            "unknownRows": 49950
+          },
+          "rounds": [
+            12,
+            0
+          ]
+        }
+      }
+    }
+  ],
+  "notes": [
+    "Backup-only attacker; stage 1 = starting clue (known rows: collision-aware count attack; or public corpus only: frequency ranking); stage 2 = consistency propagation (<= 1 % only). Only correct decodings count; run8/runFull assume the true character order (upper bound). 16-bit tokens: keyed truncated hash stand-in. One seed."
+  ]
+}
