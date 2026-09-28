@@ -1,0 +1,230 @@
+{
+  "started": "2026-09-28T22:55:45.734Z",
+  "protocol": "single observation; 8 dedicated writer connections x50 independent fixture IDs; per-row COMMIT",
+  "checks": [
+    {
+      "phase": "after400commits",
+      "rows": 600,
+      "fieldsChecked": 3600,
+      "counts": [
+        {
+          "node": {
+            "field": "company",
+            "op": "eq",
+            "value": "서울서비스 담당"
+          },
+          "plain": 170,
+          "final": 170
+        },
+        {
+          "node": {
+            "field": "memo",
+            "op": "contains",
+            "value": "서비스"
+          },
+          "plain": 241,
+          "final": 241
+        }
+      ],
+      "idsAndTagIdsMatch": true
+    },
+    {
+      "phase": "after10rollbacks",
+      "rows": 600,
+      "fieldsChecked": 3600,
+      "counts": [
+        {
+          "node": {
+            "field": "company",
+            "op": "eq",
+            "value": "서울서비스 담당"
+          },
+          "plain": 170,
+          "final": 170
+        },
+        {
+          "node": {
+            "field": "memo",
+            "op": "contains",
+            "value": "서비스"
+          },
+          "plain": 241,
+          "final": 241
+        }
+      ],
+      "idsAndTagIdsMatch": true
+    }
+  ],
+  "join": {
+    "status": "미측정",
+    "predicate": "tickets.memo contains 서비스 AND customers.company = 서울서비스 담당",
+    "tables": [
+      {
+        "table_name": "tickets_ct",
+        "columns": "{id,scope_id,customer_id,memo_ct}",
+        "rows": 100000
+      },
+      {
+        "table_name": "tickets_ctag",
+        "columns": "{tag8,id}"
+      },
+      {
+        "table_name": "tickets_d",
+        "columns": "{id,customer_id,nonce,cand,chk8}"
+      },
+      {
+        "table_name": "tickets_plain",
+        "columns": "{id,scope_id,customer_id,memo_norm}",
+        "rows": 100000
+      }
+    ],
+    "reason": "Need populated B candidate + exact memo verifier for tickets; plaintext-only join is not an encrypted final-path measurement."
+  },
+  "before": {
+    "pb_4_w_plain": 200,
+    "pb_4_w_final_ct": 200,
+    "pb_4_w_final_tags": 200
+  },
+  "beforeCheck": {
+    "rows": 200,
+    "fieldsChecked": 1200,
+    "counts": [
+      {
+        "node": {
+          "field": "company",
+          "op": "eq",
+          "value": "서울서비스 담당"
+        },
+        "plain": 57,
+        "final": 57
+      },
+      {
+        "node": {
+          "field": "memo",
+          "op": "contains",
+          "value": "서비스"
+        },
+        "plain": 80,
+        "final": 80
+      }
+    ],
+    "idsAndTagIdsMatch": true
+  },
+  "writerPids": [
+    3732,
+    74380,
+    64472,
+    82272,
+    72572,
+    24748,
+    72496,
+    86328
+  ],
+  "writers": [
+    {
+      "writer": 0,
+      "commits": 50,
+      "totalMs": 3207.003
+    },
+    {
+      "writer": 1,
+      "commits": 50,
+      "totalMs": 3177.9703
+    },
+    {
+      "writer": 2,
+      "commits": 50,
+      "totalMs": 3220.4905999999996
+    },
+    {
+      "writer": 3,
+      "commits": 50,
+      "totalMs": 3207.9069000000004
+    },
+    {
+      "writer": 4,
+      "commits": 50,
+      "totalMs": 3206.5688000000005
+    },
+    {
+      "writer": 5,
+      "commits": 50,
+      "totalMs": 3205.5235
+    },
+    {
+      "writer": 6,
+      "commits": 50,
+      "totalMs": 3199.4404999999997
+    },
+    {
+      "writer": 7,
+      "commits": 50,
+      "totalMs": 3171.9341000000004
+    }
+  ],
+  "concurrentSingleMs": 3221.2558,
+  "afterConcurrent": {
+    "pb_4_w_plain": 600,
+    "pb_4_w_final_ct": 600,
+    "pb_4_w_final_tags": 600
+  },
+  "rollbacks": [
+    {
+      "id": "10000000-0000-4000-8000-000000000259",
+      "stage": "after body, before tags",
+      "sqlstate": "22012"
+    },
+    {
+      "id": "10000000-0000-4000-8000-00000000025a",
+      "stage": "after body, before tags",
+      "sqlstate": "22012"
+    },
+    {
+      "id": "10000000-0000-4000-8000-00000000025b",
+      "stage": "after body, before tags",
+      "sqlstate": "22012"
+    },
+    {
+      "id": "10000000-0000-4000-8000-00000000025c",
+      "stage": "after body, before tags",
+      "sqlstate": "22012"
+    },
+    {
+      "id": "10000000-0000-4000-8000-00000000025d",
+      "stage": "after body, before tags",
+      "sqlstate": "22012"
+    },
+    {
+      "id": "10000000-0000-4000-8000-00000000025e",
+      "stage": "after body and tags, before plaintext reference",
+      "sqlstate": "22012"
+    },
+    {
+      "id": "10000000-0000-4000-8000-00000000025f",
+      "stage": "after body and tags, before plaintext reference",
+      "sqlstate": "22012"
+    },
+    {
+      "id": "10000000-0000-4000-8000-000000000260",
+      "stage": "after body and tags, before plaintext reference",
+      "sqlstate": "22012"
+    },
+    {
+      "id": "10000000-0000-4000-8000-000000000261",
+      "stage": "after body and tags, before plaintext reference",
+      "sqlstate": "22012"
+    },
+    {
+      "id": "10000000-0000-4000-8000-000000000262",
+      "stage": "after body and tags, before plaintext reference",
+      "sqlstate": "22012"
+    }
+  ],
+  "rollbackSingleMs": 95.71910000000025,
+  "afterRollback": {
+    "pb_4_w_plain": 600,
+    "pb_4_w_final_ct": 600,
+    "pb_4_w_final_tags": 600
+  },
+  "finished": "2026-09-28T22:55:50.019Z"
+}

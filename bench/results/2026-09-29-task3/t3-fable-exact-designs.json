@@ -1,0 +1,733 @@
+{
+  "victimRows": 50000,
+  "fields": [
+    {
+      "field": "company",
+      "distinctValues": 16,
+      "designs": [
+        {
+          "design": "B16",
+          "distinctTokensStored": 16,
+          "known": {
+            "1": {
+              "knownRows": 500,
+              "recoveredPct": 100,
+              "wrongPct": 0
+            },
+            "0.01": {
+              "knownRows": 5,
+              "recoveredPct": 47.14,
+              "wrongPct": 0
+            },
+            "0.1": {
+              "knownRows": 50,
+              "recoveredPct": 96.99,
+              "wrongPct": 0
+            }
+          },
+          "inserted": {
+            "K16_r1": {
+              "candidateValues": 16,
+              "rowsPerValue": 1,
+              "insertedRows": 16,
+              "recoveredPct": 100,
+              "wrongPct": 0
+            },
+            "K16_r3": {
+              "candidateValues": 16,
+              "rowsPerValue": 3,
+              "insertedRows": 48,
+              "recoveredPct": 100,
+              "wrongPct": 0
+            }
+          },
+          "frequency": {
+            "recoveredPct": 59.07,
+            "wrongPct": 40.93
+          }
+        },
+        {
+          "design": "coarse2",
+          "distinctTokensStored": 3,
+          "known": {
+            "1": {
+              "knownRows": 500,
+              "recoveredPct": 0,
+              "wrongPct": 0
+            },
+            "0.01": {
+              "knownRows": 5,
+              "recoveredPct": 0,
+              "wrongPct": 0
+            },
+            "0.1": {
+              "knownRows": 50,
+              "recoveredPct": 0,
+              "wrongPct": 0
+            }
+          },
+          "inserted": {
+            "K16_r1": {
+              "candidateValues": 16,
+              "rowsPerValue": 1,
+              "insertedRows": 16,
+              "recoveredPct": 0,
+              "wrongPct": 0
+            },
+            "K16_r3": {
+              "candidateValues": 16,
+              "rowsPerValue": 3,
+              "insertedRows": 48,
+              "recoveredPct": 0,
+              "wrongPct": 0
+            }
+          },
+          "frequency": {
+            "recoveredPct": 47.21,
+            "wrongPct": 52.79
+          }
+        },
+        {
+          "design": "coarse3",
+          "distinctTokensStored": 6,
+          "known": {
+            "1": {
+              "knownRows": 500,
+              "recoveredPct": 9.29,
+              "wrongPct": 0
+            },
+            "0.01": {
+              "knownRows": 5,
+              "recoveredPct": 18.72,
+              "wrongPct": 10.13
+            },
+            "0.1": {
+              "knownRows": 50,
+              "recoveredPct": 9.29,
+              "wrongPct": 0
+            }
+          },
+          "inserted": {
+            "K16_r1": {
+              "candidateValues": 16,
+              "rowsPerValue": 1,
+              "insertedRows": 16,
+              "recoveredPct": 9.3,
+              "wrongPct": 0
+            },
+            "K16_r3": {
+              "candidateValues": 16,
+              "rowsPerValue": 3,
+              "insertedRows": 48,
+              "recoveredPct": 9.3,
+              "wrongPct": 0
+            }
+          },
+          "frequency": {
+            "recoveredPct": 47.21,
+            "wrongPct": 52.79
+          }
+        },
+        {
+          "design": "coarse4",
+          "distinctTokensStored": 9,
+          "known": {
+            "1": {
+              "knownRows": 500,
+              "recoveredPct": 21.77,
+              "wrongPct": 0
+            },
+            "0.01": {
+              "knownRows": 5,
+              "recoveredPct": 9.5,
+              "wrongPct": 0
+            },
+            "0.1": {
+              "knownRows": 50,
+              "recoveredPct": 28.79,
+              "wrongPct": 0.61
+            }
+          },
+          "inserted": {
+            "K16_r1": {
+              "candidateValues": 16,
+              "rowsPerValue": 1,
+              "insertedRows": 16,
+              "recoveredPct": 21.75,
+              "wrongPct": 0
+            },
+            "K16_r3": {
+              "candidateValues": 16,
+              "rowsPerValue": 3,
+              "insertedRows": 48,
+              "recoveredPct": 21.75,
+              "wrongPct": 0
+            }
+          },
+          "frequency": {
+            "recoveredPct": 37.7,
+            "wrongPct": 62.3
+          }
+        },
+        {
+          "design": "contention4",
+          "distinctTokensStored": 64,
+          "known": {
+            "1": {
+              "knownRows": 500,
+              "recoveredPct": 98.12,
+              "wrongPct": 0
+            },
+            "0.01": {
+              "knownRows": 5,
+              "recoveredPct": 14.5,
+              "wrongPct": 0
+            },
+            "0.1": {
+              "knownRows": 50,
+              "recoveredPct": 73.28,
+              "wrongPct": 0
+            }
+          },
+          "inserted": {
+            "K16_r1": {
+              "candidateValues": 16,
+              "rowsPerValue": 1,
+              "insertedRows": 16,
+              "recoveredPct": 24.49,
+              "wrongPct": 0
+            },
+            "K16_r4": {
+              "candidateValues": 16,
+              "rowsPerValue": 4,
+              "insertedRows": 64,
+              "recoveredPct": 69.38,
+              "wrongPct": 0
+            },
+            "K16_r12": {
+              "candidateValues": 16,
+              "rowsPerValue": 12,
+              "insertedRows": 192,
+              "recoveredPct": 93.15,
+              "wrongPct": 0
+            }
+          },
+          "frequency": {
+            "recoveredPct": 38.07,
+            "wrongPct": 61.93
+          }
+        },
+        {
+          "design": "contention8",
+          "distinctTokensStored": 128,
+          "known": {
+            "1": {
+              "knownRows": 500,
+              "recoveredPct": 96.52,
+              "wrongPct": 0
+            },
+            "0.01": {
+              "knownRows": 5,
+              "recoveredPct": 8.2,
+              "wrongPct": 0
+            },
+            "0.1": {
+              "knownRows": 50,
+              "recoveredPct": 51.14,
+              "wrongPct": 0
+            }
+          },
+          "inserted": {
+            "K16_r1": {
+              "candidateValues": 16,
+              "rowsPerValue": 1,
+              "insertedRows": 16,
+              "recoveredPct": 12.27,
+              "wrongPct": 0
+            },
+            "K16_r8": {
+              "candidateValues": 16,
+              "rowsPerValue": 8,
+              "insertedRows": 128,
+              "recoveredPct": 59.34,
+              "wrongPct": 0
+            },
+            "K16_r24": {
+              "candidateValues": 16,
+              "rowsPerValue": 24,
+              "insertedRows": 384,
+              "recoveredPct": 96.31,
+              "wrongPct": 0
+            }
+          },
+          "frequency": {
+            "recoveredPct": 40.32,
+            "wrongPct": 59.68
+          }
+        }
+      ]
+    },
+    {
+      "field": "address",
+      "distinctValues": 5994,
+      "designs": [
+        {
+          "design": "B16",
+          "distinctTokensStored": 5745,
+          "known": {
+            "1": {
+              "knownRows": 500,
+              "recoveredPct": 7.99,
+              "wrongPct": 0.76
+            },
+            "0.01": {
+              "knownRows": 5,
+              "recoveredPct": 0.08,
+              "wrongPct": 0.01
+            },
+            "0.1": {
+              "knownRows": 50,
+              "recoveredPct": 0.77,
+              "wrongPct": 0.12
+            }
+          },
+          "inserted": {
+            "K100_r1": {
+              "candidateValues": 100,
+              "rowsPerValue": 1,
+              "insertedRows": 100,
+              "recoveredPct": 1.67,
+              "wrongPct": 0.15
+            },
+            "K100_r3": {
+              "candidateValues": 100,
+              "rowsPerValue": 3,
+              "insertedRows": 300,
+              "recoveredPct": 1.67,
+              "wrongPct": 0.15
+            },
+            "K1000_r1": {
+              "candidateValues": 1000,
+              "rowsPerValue": 1,
+              "insertedRows": 1000,
+              "recoveredPct": 16.52,
+              "wrongPct": 1.09
+            },
+            "K1000_r3": {
+              "candidateValues": 1000,
+              "rowsPerValue": 3,
+              "insertedRows": 3000,
+              "recoveredPct": 16.52,
+              "wrongPct": 1.09
+            },
+            "K5994_r1": {
+              "candidateValues": 5994,
+              "rowsPerValue": 1,
+              "insertedRows": 5992,
+              "recoveredPct": 91.75,
+              "wrongPct": 0
+            },
+            "K5994_r3": {
+              "candidateValues": 5994,
+              "rowsPerValue": 3,
+              "insertedRows": 17976,
+              "recoveredPct": 91.75,
+              "wrongPct": 0
+            }
+          },
+          "frequency": {
+            "recoveredPct": 0.02,
+            "wrongPct": 99.98
+          }
+        },
+        {
+          "design": "coarse2",
+          "distinctTokensStored": 4,
+          "known": {
+            "1": {
+              "knownRows": 500,
+              "recoveredPct": 0,
+              "wrongPct": 0
+            },
+            "0.01": {
+              "knownRows": 5,
+              "recoveredPct": 0.02,
+              "wrongPct": 24.89
+            },
+            "0.1": {
+              "knownRows": 50,
+              "recoveredPct": 0,
+              "wrongPct": 0
+            }
+          },
+          "inserted": {
+            "K100_r1": {
+              "candidateValues": 100,
+              "rowsPerValue": 1,
+              "insertedRows": 100,
+              "recoveredPct": 0,
+              "wrongPct": 0
+            },
+            "K100_r3": {
+              "candidateValues": 100,
+              "rowsPerValue": 3,
+              "insertedRows": 300,
+              "recoveredPct": 0,
+              "wrongPct": 0
+            },
+            "K1000_r1": {
+              "candidateValues": 1000,
+              "rowsPerValue": 1,
+              "insertedRows": 1000,
+              "recoveredPct": 0,
+              "wrongPct": 0
+            },
+            "K1000_r3": {
+              "candidateValues": 1000,
+              "rowsPerValue": 3,
+              "insertedRows": 3000,
+              "recoveredPct": 0,
+              "wrongPct": 0
+            },
+            "K5994_r1": {
+              "candidateValues": 5994,
+              "rowsPerValue": 1,
+              "insertedRows": 5992,
+              "recoveredPct": 0,
+              "wrongPct": 0
+            },
+            "K5994_r3": {
+              "candidateValues": 5994,
+              "rowsPerValue": 3,
+              "insertedRows": 17976,
+              "recoveredPct": 0,
+              "wrongPct": 0
+            }
+          },
+          "frequency": {
+            "recoveredPct": 0,
+            "wrongPct": 100
+          }
+        },
+        {
+          "design": "coarse3",
+          "distinctTokensStored": 8,
+          "known": {
+            "1": {
+              "knownRows": 500,
+              "recoveredPct": 0,
+              "wrongPct": 0
+            },
+            "0.01": {
+              "knownRows": 5,
+              "recoveredPct": 0.04,
+              "wrongPct": 37.18
+            },
+            "0.1": {
+              "knownRows": 50,
+              "recoveredPct": 0,
+              "wrongPct": 0
+            }
+          },
+          "inserted": {
+            "K100_r1": {
+              "candidateValues": 100,
+              "rowsPerValue": 1,
+              "insertedRows": 100,
+              "recoveredPct": 0,
+              "wrongPct": 0
+            },
+            "K100_r3": {
+              "candidateValues": 100,
+              "rowsPerValue": 3,
+              "insertedRows": 300,
+              "recoveredPct": 0,
+              "wrongPct": 0
+            },
+            "K1000_r1": {
+              "candidateValues": 1000,
+              "rowsPerValue": 1,
+              "insertedRows": 1000,
+              "recoveredPct": 0,
+              "wrongPct": 0
+            },
+            "K1000_r3": {
+              "candidateValues": 1000,
+              "rowsPerValue": 3,
+              "insertedRows": 3000,
+              "recoveredPct": 0,
+              "wrongPct": 0
+            },
+            "K5994_r1": {
+              "candidateValues": 5994,
+              "rowsPerValue": 1,
+              "insertedRows": 5992,
+              "recoveredPct": 0,
+              "wrongPct": 0
+            },
+            "K5994_r3": {
+              "candidateValues": 5994,
+              "rowsPerValue": 3,
+              "insertedRows": 17976,
+              "recoveredPct": 0,
+              "wrongPct": 0
+            }
+          },
+          "frequency": {
+            "recoveredPct": 0.03,
+            "wrongPct": 99.97
+          }
+        },
+        {
+          "design": "coarse4",
+          "distinctTokensStored": 16,
+          "known": {
+            "1": {
+              "knownRows": 500,
+              "recoveredPct": 0,
+              "wrongPct": 0
+            },
+            "0.01": {
+              "knownRows": 5,
+              "recoveredPct": 0.1,
+              "wrongPct": 32.06
+            },
+            "0.1": {
+              "knownRows": 50,
+              "recoveredPct": 0.02,
+              "wrongPct": 12.99
+            }
+          },
+          "inserted": {
+            "K100_r1": {
+              "candidateValues": 100,
+              "rowsPerValue": 1,
+              "insertedRows": 100,
+              "recoveredPct": 0,
+              "wrongPct": 0
+            },
+            "K100_r3": {
+              "candidateValues": 100,
+              "rowsPerValue": 3,
+              "insertedRows": 300,
+              "recoveredPct": 0,
+              "wrongPct": 0
+            },
+            "K1000_r1": {
+              "candidateValues": 1000,
+              "rowsPerValue": 1,
+              "insertedRows": 1000,
+              "recoveredPct": 0,
+              "wrongPct": 0
+            },
+            "K1000_r3": {
+              "candidateValues": 1000,
+              "rowsPerValue": 3,
+              "insertedRows": 3000,
+              "recoveredPct": 0,
+              "wrongPct": 0
+            },
+            "K5994_r1": {
+              "candidateValues": 5994,
+              "rowsPerValue": 1,
+              "insertedRows": 5992,
+              "recoveredPct": 0,
+              "wrongPct": 0
+            },
+            "K5994_r3": {
+              "candidateValues": 5994,
+              "rowsPerValue": 3,
+              "insertedRows": 17976,
+              "recoveredPct": 0,
+              "wrongPct": 0
+            }
+          },
+          "frequency": {
+            "recoveredPct": 0.03,
+            "wrongPct": 99.97
+          }
+        },
+        {
+          "design": "contention4",
+          "distinctTokensStored": 20173,
+          "known": {
+            "1": {
+              "knownRows": 500,
+              "recoveredPct": 2.15,
+              "wrongPct": 0.19
+            },
+            "0.01": {
+              "knownRows": 5,
+              "recoveredPct": 0.02,
+              "wrongPct": 0.01
+            },
+            "0.1": {
+              "knownRows": 50,
+              "recoveredPct": 0.23,
+              "wrongPct": 0.06
+            }
+          },
+          "inserted": {
+            "K100_r1": {
+              "candidateValues": 100,
+              "rowsPerValue": 1,
+              "insertedRows": 100,
+              "recoveredPct": 0.4,
+              "wrongPct": 0.05
+            },
+            "K100_r4": {
+              "candidateValues": 100,
+              "rowsPerValue": 4,
+              "insertedRows": 400,
+              "recoveredPct": 1.15,
+              "wrongPct": 0.13
+            },
+            "K100_r12": {
+              "candidateValues": 100,
+              "rowsPerValue": 12,
+              "insertedRows": 1200,
+              "recoveredPct": 1.64,
+              "wrongPct": 0.21
+            },
+            "K1000_r1": {
+              "candidateValues": 1000,
+              "rowsPerValue": 1,
+              "insertedRows": 1000,
+              "recoveredPct": 4.2,
+              "wrongPct": 0.29
+            },
+            "K1000_r4": {
+              "candidateValues": 1000,
+              "rowsPerValue": 4,
+              "insertedRows": 4000,
+              "recoveredPct": 11.39,
+              "wrongPct": 0.9
+            },
+            "K1000_r12": {
+              "candidateValues": 1000,
+              "rowsPerValue": 12,
+              "insertedRows": 12000,
+              "recoveredPct": 16.11,
+              "wrongPct": 1.22
+            },
+            "K5994_r1": {
+              "candidateValues": 5994,
+              "rowsPerValue": 1,
+              "insertedRows": 5992,
+              "recoveredPct": 24.3,
+              "wrongPct": 1.71
+            },
+            "K5994_r4": {
+              "candidateValues": 5994,
+              "rowsPerValue": 4,
+              "insertedRows": 23968,
+              "recoveredPct": 64.28,
+              "wrongPct": 1.69
+            },
+            "K5994_r12": {
+              "candidateValues": 5994,
+              "rowsPerValue": 12,
+              "insertedRows": 71904,
+              "recoveredPct": 88.82,
+              "wrongPct": 0.23
+            }
+          },
+          "frequency": {
+            "recoveredPct": 0.03,
+            "wrongPct": 99.97
+          }
+        },
+        {
+          "design": "contention8",
+          "distinctTokensStored": 30153,
+          "known": {
+            "1": {
+              "knownRows": 500,
+              "recoveredPct": 1.09,
+              "wrongPct": 0.09
+            },
+            "0.01": {
+              "knownRows": 5,
+              "recoveredPct": 0.01,
+              "wrongPct": 0
+            },
+            "0.1": {
+              "knownRows": 50,
+              "recoveredPct": 0.11,
+              "wrongPct": 0.02
+            }
+          },
+          "inserted": {
+            "K100_r1": {
+              "candidateValues": 100,
+              "rowsPerValue": 1,
+              "insertedRows": 100,
+              "recoveredPct": 0.22,
+              "wrongPct": 0.02
+            },
+            "K100_r8": {
+              "candidateValues": 100,
+              "rowsPerValue": 8,
+              "insertedRows": 800,
+              "recoveredPct": 1.05,
+              "wrongPct": 0.1
+            },
+            "K100_r24": {
+              "candidateValues": 100,
+              "rowsPerValue": 24,
+              "insertedRows": 2400,
+              "recoveredPct": 1.61,
+              "wrongPct": 0.15
+            },
+            "K1000_r1": {
+              "candidateValues": 1000,
+              "rowsPerValue": 1,
+              "insertedRows": 1000,
+              "recoveredPct": 2.13,
+              "wrongPct": 0.17
+            },
+            "K1000_r8": {
+              "candidateValues": 1000,
+              "rowsPerValue": 8,
+              "insertedRows": 8000,
+              "recoveredPct": 11,
+              "wrongPct": 0.88
+            },
+            "K1000_r24": {
+              "candidateValues": 1000,
+              "rowsPerValue": 24,
+              "insertedRows": 24000,
+              "recoveredPct": 15.95,
+              "wrongPct": 1.25
+            },
+            "K5994_r1": {
+              "candidateValues": 5994,
+              "rowsPerValue": 1,
+              "insertedRows": 5992,
+              "recoveredPct": 12.17,
+              "wrongPct": 0.94
+            },
+            "K5994_r8": {
+              "candidateValues": 5994,
+              "rowsPerValue": 8,
+              "insertedRows": 47936,
+              "recoveredPct": 62.17,
+              "wrongPct": 1.94
+            },
+            "K5994_r24": {
+              "candidateValues": 5994,
+              "rowsPerValue": 24,
+              "insertedRows": 143808,
+              "recoveredPct": 87.86,
+              "wrongPct": 0.3
+            }
+          },
+          "frequency": {
+            "recoveredPct": 0.01,
+            "wrongPct": 99.99
+          }
+        }
+      ]
+    }
+  ]
+}

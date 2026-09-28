@@ -1,0 +1,220 @@
+{
+  "coarse": [
+    {
+      "name": "coarse_company_zero",
+      "node": {
+        "field": "company",
+        "op": "eq",
+        "value": "없는회사0"
+      }
+    },
+    {
+      "name": "coarse_rare_and_memo",
+      "node": {
+        "all": [
+          {
+            "field": "company",
+            "op": "eq",
+            "value": "서울서비스 중앙지사"
+          },
+          {
+            "field": "memo",
+            "op": "contains",
+            "value": "서비스"
+          }
+        ]
+      }
+    },
+    {
+      "name": "coarse_zero_and_memo",
+      "node": {
+        "all": [
+          {
+            "field": "company",
+            "op": "eq",
+            "value": "없는회사0"
+          },
+          {
+            "field": "memo",
+            "op": "contains",
+            "value": "서비스"
+          }
+        ]
+      }
+    },
+    {
+      "name": "exact_common",
+      "node": {
+        "op": "eq",
+        "field": "company",
+        "value": "서울서비스 담당"
+      }
+    },
+    {
+      "name": "or2",
+      "node": {
+        "any": [
+          {
+            "op": "eq",
+            "field": "company",
+            "value": "서울서비스 담당"
+          },
+          {
+            "op": "contains",
+            "field": "memo",
+            "value": "푸른달"
+          }
+        ]
+      }
+    },
+    {
+      "name": "or4",
+      "node": {
+        "any": [
+          {
+            "op": "eq",
+            "field": "company",
+            "value": "서울서비스 담당"
+          },
+          {
+            "op": "contains",
+            "field": "memo",
+            "value": "푸른달"
+          },
+          {
+            "op": "eq",
+            "field": "phone",
+            "value": "42-5748-1542"
+          },
+          {
+            "op": "contains",
+            "field": "name",
+            "value": "pshxt"
+          }
+        ]
+      }
+    },
+    {
+      "name": "exact_mid",
+      "node": {
+        "op": "eq",
+        "field": "company",
+        "value": "서울서비스 중앙지사"
+      }
+    }
+  ],
+  "affix": [
+    {
+      "name": "starts",
+      "node": {
+        "op": "startsWith",
+        "field": "address",
+        "value": "서울"
+      }
+    },
+    {
+      "name": "ends",
+      "node": {
+        "op": "endsWith",
+        "field": "email",
+        "value": "biz.test"
+      }
+    },
+    {
+      "name": "affix_startsWith_name",
+      "node": {
+        "field": "name",
+        "op": "startsWith",
+        "value": "김민서"
+      }
+    },
+    {
+      "name": "affix_endsWith_name",
+      "node": {
+        "field": "name",
+        "op": "endsWith",
+        "value": "rjq"
+      }
+    },
+    {
+      "name": "affix_startsWith_phone",
+      "node": {
+        "field": "phone",
+        "op": "startsWith",
+        "value": "41-"
+      }
+    },
+    {
+      "name": "affix_endsWith_phone",
+      "node": {
+        "field": "phone",
+        "op": "endsWith",
+        "value": "813"
+      }
+    },
+    {
+      "name": "affix_startsWith_address",
+      "node": {
+        "field": "address",
+        "op": "startsWith",
+        "value": "대전유"
+      }
+    },
+    {
+      "name": "affix_endsWith_address",
+      "node": {
+        "field": "address",
+        "op": "endsWith",
+        "value": "1고객"
+      }
+    },
+    {
+      "name": "affix_startsWith_memo",
+      "node": {
+        "field": "memo",
+        "op": "startsWith",
+        "value": "희귀표"
+      }
+    },
+    {
+      "name": "affix_endsWith_memo",
+      "node": {
+        "field": "memo",
+        "op": "endsWith",
+        "value": "rjq"
+      }
+    },
+    {
+      "name": "affix_startsWith_email",
+      "node": {
+        "field": "email",
+        "op": "startsWith",
+        "value": "iae"
+      }
+    },
+    {
+      "name": "affix_endsWith_email",
+      "node": {
+        "field": "email",
+        "op": "endsWith",
+        "value": "est"
+      }
+    },
+    {
+      "name": "affix_startsWith_company",
+      "node": {
+        "field": "company",
+        "op": "startsWith",
+        "value": "서울서"
+      }
+    },
+    {
+      "name": "affix_endsWith_company",
+      "node": {
+        "field": "company",
+        "op": "endsWith",
+        "value": "앙지사"
+      }
+    }
+  ]
+}

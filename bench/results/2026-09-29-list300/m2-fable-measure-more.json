@@ -1,0 +1,2922 @@
+[
+ {
+  "case": "zero_and_common2",
+  "kind": "count",
+  "condition": "(company = \"서울서비스 담당\" AND company contains \"물류\")",
+  "structure": "AND 2",
+  "targetRows": 100000,
+  "scopeRows": 100000,
+  "matches": 0,
+  "results": 1,
+  "candidates": {
+   "B": 0,
+   "C": 0,
+   "D": 0
+  },
+  "wrong": {},
+  "paths": {
+   "plain": {
+    "total": 4.2,
+    "db": 4.2,
+    "pre": 0,
+    "between": 0,
+    "post": 0,
+    "sql": 1,
+    "appRows": 0,
+    "decrypts": 0,
+    "ratio": 1
+   },
+   "A": {
+    "total": 8.6,
+    "db": 7.3,
+    "pre": 1.2,
+    "between": 0,
+    "post": 0,
+    "sql": 1,
+    "appRows": 0,
+    "decrypts": 0,
+    "ratio": 2.05
+   },
+   "B": {
+    "total": 6.6,
+    "db": 6,
+    "pre": 0.6,
+    "between": 0,
+    "post": 0,
+    "sql": 1,
+    "appRows": 0,
+    "decrypts": 0,
+    "ratio": 1.57
+   },
+   "C": {
+    "total": 463.5,
+    "db": 463.4,
+    "pre": 0.1,
+    "between": 0,
+    "post": 0,
+    "sql": 1,
+    "appRows": 0,
+    "decrypts": 0,
+    "ratio": 110.36
+   },
+   "D": {
+    "total": 1.7,
+    "db": 1.6,
+    "pre": 0.1,
+    "between": 0,
+    "post": 0,
+    "sql": 1,
+    "appRows": 0,
+    "decrypts": 0,
+    "ratio": 0.4
+   }
+  }
+ },
+ {
+  "case": "zero_and_common2",
+  "kind": "list300",
+  "condition": "(company = \"서울서비스 담당\" AND company contains \"물류\")",
+  "structure": "AND 2",
+  "targetRows": 100000,
+  "scopeRows": 100000,
+  "matches": 0,
+  "results": 0,
+  "candidates": {
+   "B": 0,
+   "C": 0,
+   "D": 0
+  },
+  "wrong": {},
+  "paths": {
+   "plain": {
+    "total": 9.2,
+    "db": 9.1,
+    "pre": 0,
+    "between": 0,
+    "post": 0,
+    "sql": 1,
+    "appRows": 0,
+    "decrypts": 0,
+    "ratio": 1
+   },
+   "A": {
+    "total": 157.5,
+    "db": 155.6,
+    "pre": 1.8,
+    "between": 0,
+    "post": 0,
+    "sql": 1,
+    "appRows": 0,
+    "decrypts": 0,
+    "ratio": 17.12
+   },
+   "B": {
+    "total": 6.8,
+    "db": 6.3,
+    "pre": 0.5,
+    "between": 0,
+    "post": 0,
+    "sql": 1,
+    "appRows": 0,
+    "decrypts": 0,
+    "ratio": 0.74
+   },
+   "C": {
+    "total": 453.8,
+    "db": 453.7,
+    "pre": 0.1,
+    "between": 0,
+    "post": 0,
+    "sql": 1,
+    "appRows": 0,
+    "decrypts": 0,
+    "ratio": 49.33
+   },
+   "D": {
+    "total": 1.6,
+    "db": 1.5,
+    "pre": 0.1,
+    "between": 0,
+    "post": 0,
+    "sql": 1,
+    "appRows": 0,
+    "decrypts": 0,
+    "ratio": 0.17
+   }
+  }
+ },
+ {
+  "case": "zero_and_common3",
+  "kind": "count",
+  "condition": "(company = \"서울서비스 담당\" AND company contains \"물류\" AND memo contains \"서비스\")",
+  "structure": "AND 3",
+  "targetRows": 100000,
+  "scopeRows": 100000,
+  "matches": 0,
+  "results": 1,
+  "candidates": {
+   "B": 0,
+   "C": 0,
+   "D": 0
+  },
+  "wrong": {},
+  "paths": {
+   "plain": {
+    "total": 9.5,
+    "db": 9.5,
+    "pre": 0,
+    "between": 0,
+    "post": 0,
+    "sql": 1,
+    "appRows": 0,
+    "decrypts": 0,
+    "ratio": 1
+   },
+   "A": {
+    "total": 13.8,
+    "db": 12.5,
+    "pre": 1.4,
+    "between": 0,
+    "post": 0,
+    "sql": 1,
+    "appRows": 0,
+    "decrypts": 0,
+    "ratio": 1.45
+   },
+   "B": {
+    "total": 7.7,
+    "db": 7,
+    "pre": 0.7,
+    "between": 0,
+    "post": 0,
+    "sql": 1,
+    "appRows": 0,
+    "decrypts": 0,
+    "ratio": 0.81
+   },
+   "C": {
+    "total": 450.9,
+    "db": 450.8,
+    "pre": 0.1,
+    "between": 0,
+    "post": 0,
+    "sql": 1,
+    "appRows": 0,
+    "decrypts": 0,
+    "ratio": 47.46
+   },
+   "D": {
+    "total": 2.6,
+    "db": 2.5,
+    "pre": 0.1,
+    "between": 0,
+    "post": 0,
+    "sql": 1,
+    "appRows": 0,
+    "decrypts": 0,
+    "ratio": 0.27
+   }
+  }
+ },
+ {
+  "case": "zero_and_common3",
+  "kind": "list300",
+  "condition": "(company = \"서울서비스 담당\" AND company contains \"물류\" AND memo contains \"서비스\")",
+  "structure": "AND 3",
+  "targetRows": 100000,
+  "scopeRows": 100000,
+  "matches": 0,
+  "results": 0,
+  "candidates": {
+   "B": 0,
+   "C": 0,
+   "D": 0
+  },
+  "wrong": {},
+  "paths": {
+   "plain": {
+    "total": 9.6,
+    "db": 9.6,
+    "pre": 0,
+    "between": 0,
+    "post": 0,
+    "sql": 1,
+    "appRows": 0,
+    "decrypts": 0,
+    "ratio": 1
+   },
+   "A": {
+    "total": 15.2,
+    "db": 13.4,
+    "pre": 2,
+    "between": 0,
+    "post": 0,
+    "sql": 1,
+    "appRows": 0,
+    "decrypts": 0,
+    "ratio": 1.58
+   },
+   "B": {
+    "total": 7.7,
+    "db": 7,
+    "pre": 0.7,
+    "between": 0,
+    "post": 0,
+    "sql": 1,
+    "appRows": 0,
+    "decrypts": 0,
+    "ratio": 0.8
+   },
+   "C": {
+    "total": 442.5,
+    "db": 442.4,
+    "pre": 0.1,
+    "between": 0,
+    "post": 0,
+    "sql": 1,
+    "appRows": 0,
+    "decrypts": 0,
+    "ratio": 46.09
+   },
+   "D": {
+    "total": 2.7,
+    "db": 2.6,
+    "pre": 0.1,
+    "between": 0,
+    "post": 0,
+    "sql": 1,
+    "appRows": 0,
+    "decrypts": 0,
+    "ratio": 0.28
+   }
+  }
+ },
+ {
+  "case": "zero_fragment",
+  "kind": "count",
+  "condition": "memo contains \"상담서비스\"",
+  "structure": "1",
+  "targetRows": 100000,
+  "scopeRows": 100000,
+  "matches": 0,
+  "results": 1,
+  "candidates": {
+   "B": 0,
+   "C": 0,
+   "D": 60
+  },
+  "wrong": {},
+  "paths": {
+   "plain": {
+    "total": 20.6,
+    "db": 20.6,
+    "pre": 0,
+    "between": 0,
+    "post": 0,
+    "sql": 1,
+    "appRows": 0,
+    "decrypts": 0,
+    "ratio": 1
+   },
+   "A": {
+    "total": 1.7,
+    "db": 0.7,
+    "pre": 0.9,
+    "between": 0,
+    "post": 0,
+    "sql": 1,
+    "appRows": 0,
+    "decrypts": 0,
+    "ratio": 0.08
+   },
+   "B": {
+    "total": 1,
+    "db": 0.5,
+    "pre": 0.4,
+    "between": 0,
+    "post": 0,
+    "sql": 1,
+    "appRows": 0,
+    "decrypts": 0,
+    "ratio": 0.05
+   },
+   "C": {
+    "total": 0.4,
+    "db": 0.3,
+    "pre": 0,
+    "between": 0,
+    "post": 0,
+    "sql": 1,
+    "appRows": 0,
+    "decrypts": 0,
+    "ratio": 0.02
+   },
+   "D": {
+    "total": 0.8,
+    "db": 0.7,
+    "pre": 0,
+    "between": 0,
+    "post": 0,
+    "sql": 1,
+    "appRows": 0,
+    "decrypts": 0,
+    "ratio": 0.04
+   }
+  }
+ },
+ {
+  "case": "zero_fragment",
+  "kind": "list300",
+  "condition": "memo contains \"상담서비스\"",
+  "structure": "1",
+  "targetRows": 100000,
+  "scopeRows": 100000,
+  "matches": 0,
+  "results": 0,
+  "candidates": {
+   "B": 0,
+   "C": 0,
+   "D": 60
+  },
+  "wrong": {},
+  "paths": {
+   "plain": {
+    "total": 21.2,
+    "db": 21.2,
+    "pre": 0,
+    "between": 0,
+    "post": 0,
+    "sql": 1,
+    "appRows": 0,
+    "decrypts": 0,
+    "ratio": 1
+   },
+   "A": {
+    "total": 2.6,
+    "db": 1.4,
+    "pre": 1.2,
+    "between": 0,
+    "post": 0,
+    "sql": 1,
+    "appRows": 0,
+    "decrypts": 0,
+    "ratio": 0.12
+   },
+   "B": {
+    "total": 1.4,
+    "db": 1,
+    "pre": 0.4,
+    "between": 0,
+    "post": 0,
+    "sql": 1,
+    "appRows": 0,
+    "decrypts": 0,
+    "ratio": 0.07
+   },
+   "C": {
+    "total": 0.5,
+    "db": 0.5,
+    "pre": 0.1,
+    "between": 0,
+    "post": 0,
+    "sql": 1,
+    "appRows": 0,
+    "decrypts": 0,
+    "ratio": 0.02
+   },
+   "D": {
+    "total": 0.8,
+    "db": 0.8,
+    "pre": 0,
+    "between": 0,
+    "post": 0,
+    "sql": 1,
+    "appRows": 0,
+    "decrypts": 0,
+    "ratio": 0.04
+   }
+  }
+ },
+ {
+  "case": "zero_fragment_long",
+  "kind": "count",
+  "condition": "memo contains \"서비스상담서비스상담요청\"",
+  "structure": "1",
+  "targetRows": 100000,
+  "scopeRows": 100000,
+  "matches": 0,
+  "results": 1,
+  "candidates": {
+   "B": 0,
+   "C": 0,
+   "D": 40
+  },
+  "wrong": {},
+  "paths": {
+   "plain": {
+    "total": 21.2,
+    "db": 21.2,
+    "pre": 0,
+    "between": 0,
+    "post": 0,
+    "sql": 1,
+    "appRows": 0,
+    "decrypts": 0,
+    "ratio": 1
+   },
+   "A": {
+    "total": 2,
+    "db": 0.8,
+    "pre": 1.2,
+    "between": 0,
+    "post": 0,
+    "sql": 1,
+    "appRows": 0,
+    "decrypts": 0,
+    "ratio": 0.09
+   },
+   "B": {
+    "total": 2.3,
+    "db": 0.9,
+    "pre": 1.4,
+    "between": 0,
+    "post": 0,
+    "sql": 1,
+    "appRows": 0,
+    "decrypts": 0,
+    "ratio": 0.11
+   },
+   "C": {
+    "total": 0.4,
+    "db": 0.4,
+    "pre": 0,
+    "between": 0,
+    "post": 0,
+    "sql": 1,
+    "appRows": 0,
+    "decrypts": 0,
+    "ratio": 0.02
+   },
+   "D": {
+    "total": 0.6,
+    "db": 0.6,
+    "pre": 0,
+    "between": 0,
+    "post": 0,
+    "sql": 1,
+    "appRows": 0,
+    "decrypts": 0,
+    "ratio": 0.03
+   }
+  }
+ },
+ {
+  "case": "zero_fragment_long",
+  "kind": "list300",
+  "condition": "memo contains \"서비스상담서비스상담요청\"",
+  "structure": "1",
+  "targetRows": 100000,
+  "scopeRows": 100000,
+  "matches": 0,
+  "results": 0,
+  "candidates": {
+   "B": 0,
+   "C": 0,
+   "D": 40
+  },
+  "wrong": {},
+  "paths": {
+   "plain": {
+    "total": 21,
+    "db": 21,
+    "pre": 0,
+    "between": 0,
+    "post": 0,
+    "sql": 1,
+    "appRows": 0,
+    "decrypts": 0,
+    "ratio": 1
+   },
+   "A": {
+    "total": 2.9,
+    "db": 1.5,
+    "pre": 1.4,
+    "between": 0,
+    "post": 0,
+    "sql": 1,
+    "appRows": 0,
+    "decrypts": 0,
+    "ratio": 0.14
+   },
+   "B": {
+    "total": 2.3,
+    "db": 0.9,
+    "pre": 1.4,
+    "between": 0,
+    "post": 0,
+    "sql": 1,
+    "appRows": 0,
+    "decrypts": 0,
+    "ratio": 0.11
+   },
+   "C": {
+    "total": 0.4,
+    "db": 0.4,
+    "pre": 0,
+    "between": 0,
+    "post": 0,
+    "sql": 1,
+    "appRows": 0,
+    "decrypts": 0,
+    "ratio": 0.02
+   },
+   "D": {
+    "total": 0.7,
+    "db": 0.7,
+    "pre": 0,
+    "between": 0,
+    "post": 0,
+    "sql": 1,
+    "appRows": 0,
+    "decrypts": 0,
+    "ratio": 0.03
+   }
+  }
+ },
+ {
+  "case": "zero_or_all",
+  "kind": "count",
+  "condition": "(memo contains \"상담서비스\" OR name contains \"서비스상\" OR address contains \"담당서울\")",
+  "structure": "OR 3",
+  "targetRows": 100000,
+  "scopeRows": 100000,
+  "matches": 0,
+  "results": 1,
+  "candidates": {
+   "B": 0,
+   "C": 0,
+   "D": 173
+  },
+  "wrong": {},
+  "paths": {
+   "plain": {
+    "total": 35.2,
+    "db": 35.2,
+    "pre": 0,
+    "between": 0,
+    "post": 0,
+    "sql": 1,
+    "appRows": 0,
+    "decrypts": 0,
+    "ratio": 1
+   },
+   "A": {
+    "total": 2.4,
+    "db": 0.9,
+    "pre": 1.4,
+    "between": 0,
+    "post": 0,
+    "sql": 1,
+    "appRows": 0,
+    "decrypts": 0,
+    "ratio": 0.07
+   },
+   "B": {
+    "total": 1.7,
+    "db": 0.7,
+    "pre": 1,
+    "between": 0,
+    "post": 0,
+    "sql": 1,
+    "appRows": 0,
+    "decrypts": 0,
+    "ratio": 0.05
+   },
+   "C": {
+    "total": 0.8,
+    "db": 0.7,
+    "pre": 0.1,
+    "between": 0,
+    "post": 0,
+    "sql": 1,
+    "appRows": 0,
+    "decrypts": 0,
+    "ratio": 0.02
+   },
+   "D": {
+    "total": 2.3,
+    "db": 2.3,
+    "pre": 0.1,
+    "between": 0,
+    "post": 0,
+    "sql": 1,
+    "appRows": 0,
+    "decrypts": 0,
+    "ratio": 0.07
+   }
+  }
+ },
+ {
+  "case": "zero_or_all",
+  "kind": "list300",
+  "condition": "(memo contains \"상담서비스\" OR name contains \"서비스상\" OR address contains \"담당서울\")",
+  "structure": "OR 3",
+  "targetRows": 100000,
+  "scopeRows": 100000,
+  "matches": 0,
+  "results": 0,
+  "candidates": {
+   "B": 0,
+   "C": 0,
+   "D": 173
+  },
+  "wrong": {},
+  "paths": {
+   "plain": {
+    "total": 35.9,
+    "db": 35.9,
+    "pre": 0,
+    "between": 0,
+    "post": 0,
+    "sql": 1,
+    "appRows": 0,
+    "decrypts": 0,
+    "ratio": 1
+   },
+   "A": {
+    "total": 4.4,
+    "db": 2.4,
+    "pre": 2,
+    "between": 0,
+    "post": 0,
+    "sql": 1,
+    "appRows": 0,
+    "decrypts": 0,
+    "ratio": 0.12
+   },
+   "B": {
+    "total": 2.4,
+    "db": 1.4,
+    "pre": 1.2,
+    "between": 0,
+    "post": 0,
+    "sql": 1,
+    "appRows": 0,
+    "decrypts": 0,
+    "ratio": 0.07
+   },
+   "C": {
+    "total": 0.9,
+    "db": 0.8,
+    "pre": 0.1,
+    "between": 0,
+    "post": 0,
+    "sql": 1,
+    "appRows": 0,
+    "decrypts": 0,
+    "ratio": 0.03
+   },
+   "D": {
+    "total": 2.8,
+    "db": 2.7,
+    "pre": 0.1,
+    "between": 0,
+    "post": 0,
+    "sql": 1,
+    "appRows": 0,
+    "decrypts": 0,
+    "ratio": 0.08
+   }
+  }
+ },
+ {
+  "case": "exact_zero",
+  "kind": "count",
+  "condition": "phone = \"99-0000-0000\"",
+  "structure": "1",
+  "targetRows": 100000,
+  "scopeRows": 100000,
+  "matches": 0,
+  "results": 1,
+  "candidates": {
+   "B": 1,
+   "C": 0,
+   "D": 71
+  },
+  "wrong": {},
+  "paths": {
+   "plain": {
+    "total": 0.3,
+    "db": 0.3,
+    "pre": 0,
+    "between": 0,
+    "post": 0,
+    "sql": 1,
+    "appRows": 0,
+    "decrypts": 0,
+    "ratio": 1
+   },
+   "A": {
+    "total": 1.4,
+    "db": 0.5,
+    "pre": 0.6,
+    "between": 0,
+    "post": 0.3,
+    "sql": 1,
+    "appRows": 1,
+    "decrypts": 0,
+    "ratio": 4.67
+   },
+   "B": {
+    "total": 0.7,
+    "db": 0.5,
+    "pre": 0.3,
+    "between": 0,
+    "post": 0,
+    "sql": 1,
+    "appRows": 0,
+    "decrypts": 0,
+    "ratio": 2.33
+   },
+   "C": {
+    "total": 0.4,
+    "db": 0.3,
+    "pre": 0,
+    "between": 0,
+    "post": 0,
+    "sql": 1,
+    "appRows": 0,
+    "decrypts": 0,
+    "ratio": 1.33
+   },
+   "D": {
+    "total": 0.9,
+    "db": 0.9,
+    "pre": 0,
+    "between": 0,
+    "post": 0,
+    "sql": 1,
+    "appRows": 0,
+    "decrypts": 0,
+    "ratio": 3
+   }
+  }
+ },
+ {
+  "case": "exact_zero",
+  "kind": "list300",
+  "condition": "phone = \"99-0000-0000\"",
+  "structure": "1",
+  "targetRows": 100000,
+  "scopeRows": 100000,
+  "matches": 0,
+  "results": 0,
+  "candidates": {
+   "B": 1,
+   "C": 0,
+   "D": 71
+  },
+  "wrong": {},
+  "paths": {
+   "plain": {
+    "total": 0.3,
+    "db": 0.3,
+    "pre": 0,
+    "between": 0,
+    "post": 0,
+    "sql": 1,
+    "appRows": 0,
+    "decrypts": 0,
+    "ratio": 1
+   },
+   "A": {
+    "total": 1.3,
+    "db": 0.5,
+    "pre": 0.6,
+    "between": 0,
+    "post": 0.2,
+    "sql": 1,
+    "appRows": 1,
+    "decrypts": 0,
+    "ratio": 4.33
+   },
+   "B": {
+    "total": 0.8,
+    "db": 0.5,
+    "pre": 0.2,
+    "between": 0,
+    "post": 0,
+    "sql": 1,
+    "appRows": 0,
+    "decrypts": 0,
+    "ratio": 2.67
+   },
+   "C": {
+    "total": 0.4,
+    "db": 0.3,
+    "pre": 0,
+    "between": 0,
+    "post": 0,
+    "sql": 1,
+    "appRows": 0,
+    "decrypts": 0,
+    "ratio": 1.33
+   },
+   "D": {
+    "total": 0.9,
+    "db": 0.8,
+    "pre": 0,
+    "between": 0,
+    "post": 0,
+    "sql": 1,
+    "appRows": 0,
+    "decrypts": 0,
+    "ratio": 3
+   }
+  }
+ },
+ {
+  "case": "sub_zero",
+  "kind": "count",
+  "condition": "memo contains \"없는표식\"",
+  "structure": "1",
+  "targetRows": 100000,
+  "scopeRows": 100000,
+  "matches": 0,
+  "results": 1,
+  "candidates": {
+   "B": 0,
+   "C": 0,
+   "D": 51
+  },
+  "wrong": {},
+  "paths": {
+   "plain": {
+    "total": 20.5,
+    "db": 20.5,
+    "pre": 0,
+    "between": 0,
+    "post": 0,
+    "sql": 1,
+    "appRows": 0,
+    "decrypts": 0,
+    "ratio": 1
+   },
+   "A": {
+    "total": 1.5,
+    "db": 0.7,
+    "pre": 0.8,
+    "between": 0,
+    "post": 0,
+    "sql": 1,
+    "appRows": 0,
+    "decrypts": 0,
+    "ratio": 0.07
+   },
+   "B": {
+    "total": 0.7,
+    "db": 0.4,
+    "pre": 0.3,
+    "between": 0,
+    "post": 0,
+    "sql": 1,
+    "appRows": 0,
+    "decrypts": 0,
+    "ratio": 0.03
+   },
+   "C": {
+    "total": 0.3,
+    "db": 0.3,
+    "pre": 0,
+    "between": 0,
+    "post": 0,
+    "sql": 1,
+    "appRows": 0,
+    "decrypts": 0,
+    "ratio": 0.01
+   },
+   "D": {
+    "total": 0.7,
+    "db": 0.7,
+    "pre": 0,
+    "between": 0,
+    "post": 0,
+    "sql": 1,
+    "appRows": 0,
+    "decrypts": 0,
+    "ratio": 0.03
+   }
+  }
+ },
+ {
+  "case": "sub_zero",
+  "kind": "list300",
+  "condition": "memo contains \"없는표식\"",
+  "structure": "1",
+  "targetRows": 100000,
+  "scopeRows": 100000,
+  "matches": 0,
+  "results": 0,
+  "candidates": {
+   "B": 0,
+   "C": 0,
+   "D": 51
+  },
+  "wrong": {},
+  "paths": {
+   "plain": {
+    "total": 21,
+    "db": 21,
+    "pre": 0,
+    "between": 0,
+    "post": 0,
+    "sql": 1,
+    "appRows": 0,
+    "decrypts": 0,
+    "ratio": 1
+   },
+   "A": {
+    "total": 2.3,
+    "db": 1.2,
+    "pre": 1.1,
+    "between": 0,
+    "post": 0,
+    "sql": 1,
+    "appRows": 0,
+    "decrypts": 0,
+    "ratio": 0.11
+   },
+   "B": {
+    "total": 0.9,
+    "db": 0.6,
+    "pre": 0.3,
+    "between": 0,
+    "post": 0,
+    "sql": 1,
+    "appRows": 0,
+    "decrypts": 0,
+    "ratio": 0.04
+   },
+   "C": {
+    "total": 0.4,
+    "db": 0.3,
+    "pre": 0,
+    "between": 0,
+    "post": 0,
+    "sql": 1,
+    "appRows": 0,
+    "decrypts": 0,
+    "ratio": 0.02
+   },
+   "D": {
+    "total": 0.8,
+    "db": 0.7,
+    "pre": 0,
+    "between": 0,
+    "post": 0,
+    "sql": 1,
+    "appRows": 0,
+    "decrypts": 0,
+    "ratio": 0.04
+   }
+  }
+ },
+ {
+  "case": "or4",
+  "kind": "count",
+  "condition": "(company = \"서울서비스 담당\" OR memo contains \"푸른달\" OR phone = \"42-5748-1542\" OR name contains \"pshxt\")",
+  "structure": "OR 4",
+  "targetRows": 100000,
+  "scopeRows": 100000,
+  "matches": 28401,
+  "results": 1,
+  "candidates": {
+   "B": 28401,
+   "C": 28401,
+   "D": 28502
+  },
+  "wrong": {},
+  "paths": {
+   "plain": {
+    "total": 24.2,
+    "db": 24.1,
+    "pre": 0,
+    "between": 0,
+    "post": 0,
+    "sql": 1,
+    "appRows": 0,
+    "decrypts": 0,
+    "ratio": 1
+   },
+   "A": {
+    "total": 3786.1,
+    "db": 155.2,
+    "pre": 1.6,
+    "between": 0,
+    "post": 3629.3,
+    "sql": 1,
+    "appRows": 28401,
+    "decrypts": 0,
+    "ratio": 156.45
+   },
+   "B": {
+    "total": 84.8,
+    "db": 83.8,
+    "pre": 1,
+    "between": 0,
+    "post": 0,
+    "sql": 1,
+    "appRows": 0,
+    "decrypts": 0,
+    "ratio": 3.5
+   },
+   "C": {
+    "total": 335.6,
+    "db": 335.5,
+    "pre": 0.1,
+    "between": 0,
+    "post": 0,
+    "sql": 1,
+    "appRows": 0,
+    "decrypts": 0,
+    "ratio": 13.87
+   },
+   "D": {
+    "total": 82.6,
+    "db": 82.5,
+    "pre": 0.1,
+    "between": 0,
+    "post": 0,
+    "sql": 1,
+    "appRows": 0,
+    "decrypts": 0,
+    "ratio": 3.41
+   }
+  }
+ },
+ {
+  "case": "or4",
+  "kind": "list300",
+  "condition": "(company = \"서울서비스 담당\" OR memo contains \"푸른달\" OR phone = \"42-5748-1542\" OR name contains \"pshxt\")",
+  "structure": "OR 4",
+  "targetRows": 100000,
+  "scopeRows": 100000,
+  "matches": 28401,
+  "results": 300,
+  "candidates": {
+   "B": 28401,
+   "C": 28401,
+   "D": 28502
+  },
+  "wrong": {},
+  "paths": {
+   "plain": {
+    "total": 34,
+    "db": 34,
+    "pre": 0,
+    "between": 0,
+    "post": 0,
+    "sql": 1,
+    "appRows": 300,
+    "decrypts": 0,
+    "ratio": 1
+   },
+   "A": {
+    "total": 74,
+    "db": 12.2,
+    "pre": 1.7,
+    "between": 37.8,
+    "post": 19.9,
+    "sql": 2,
+    "appRows": 600,
+    "decrypts": 0,
+    "ratio": 2.18
+   },
+   "B": {
+    "total": 76.6,
+    "db": 6.4,
+    "pre": 1,
+    "between": 0,
+    "post": 68.7,
+    "sql": 1,
+    "appRows": 300,
+    "decrypts": 1800,
+    "ratio": 2.25
+   },
+   "C": {
+    "total": 408.4,
+    "db": 345.9,
+    "pre": 0.1,
+    "between": 0,
+    "post": 63.6,
+    "sql": 2,
+    "appRows": 600,
+    "decrypts": 1800,
+    "ratio": 12.01
+   },
+   "D": {
+    "total": 155.4,
+    "db": 85.6,
+    "pre": 0.1,
+    "between": 0,
+    "post": 69.4,
+    "sql": 2,
+    "appRows": 600,
+    "decrypts": 1800,
+    "ratio": 4.57
+   }
+  }
+ },
+ {
+  "case": "or5",
+  "kind": "count",
+  "condition": "(company = \"서울서비스 담당\" OR memo contains \"푸른달\" OR phone = \"42-5748-1542\" OR name contains \"pshxt\" OR address contains \"세종대로\")",
+  "structure": "OR 5",
+  "targetRows": 100000,
+  "scopeRows": 100000,
+  "matches": 40276,
+  "results": 1,
+  "candidates": {
+   "B": 40276,
+   "C": 40276,
+   "D": 40560
+  },
+  "wrong": {},
+  "paths": {
+   "plain": {
+    "total": 30.8,
+    "db": 30.8,
+    "pre": 0,
+    "between": 0,
+    "post": 0,
+    "sql": 1,
+    "appRows": 0,
+    "decrypts": 0,
+    "ratio": 1
+   },
+   "A": {
+    "total": 6847.1,
+    "db": 225.7,
+    "pre": 1.9,
+    "between": 0,
+    "post": 6617.8,
+    "sql": 1,
+    "appRows": 40276,
+    "decrypts": 0,
+    "ratio": 222.31
+   },
+   "B": {
+    "total": 208,
+    "db": 206.7,
+    "pre": 1.3,
+    "between": 0,
+    "post": 0,
+    "sql": 1,
+    "appRows": 0,
+    "decrypts": 0,
+    "ratio": 6.75
+   },
+   "C": {
+    "total": 538.9,
+    "db": 538.8,
+    "pre": 0.1,
+    "between": 0,
+    "post": 0,
+    "sql": 1,
+    "appRows": 0,
+    "decrypts": 0,
+    "ratio": 17.5
+   },
+   "D": {
+    "total": 172.7,
+    "db": 172.5,
+    "pre": 0.1,
+    "between": 0,
+    "post": 0,
+    "sql": 1,
+    "appRows": 0,
+    "decrypts": 0,
+    "ratio": 5.61
+   }
+  }
+ },
+ {
+  "case": "or5",
+  "kind": "list300",
+  "condition": "(company = \"서울서비스 담당\" OR memo contains \"푸른달\" OR phone = \"42-5748-1542\" OR name contains \"pshxt\" OR address contains \"세종대로\")",
+  "structure": "OR 5",
+  "targetRows": 100000,
+  "scopeRows": 100000,
+  "matches": 40276,
+  "results": 300,
+  "candidates": {
+   "B": 40276,
+   "C": 40276,
+   "D": 40560
+  },
+  "wrong": {},
+  "paths": {
+   "plain": {
+    "total": 38.9,
+    "db": 38.8,
+    "pre": 0,
+    "between": 0,
+    "post": 0,
+    "sql": 1,
+    "appRows": 300,
+    "decrypts": 0,
+    "ratio": 1
+   },
+   "A": {
+    "total": 73.6,
+    "db": 10.2,
+    "pre": 2.1,
+    "between": 40.7,
+    "post": 20.1,
+    "sql": 2,
+    "appRows": 600,
+    "decrypts": 0,
+    "ratio": 1.89
+   },
+   "B": {
+    "total": 72,
+    "db": 7.8,
+    "pre": 1.1,
+    "between": 0,
+    "post": 62.9,
+    "sql": 1,
+    "appRows": 300,
+    "decrypts": 1800,
+    "ratio": 1.85
+   },
+   "C": {
+    "total": 610.9,
+    "db": 540.8,
+    "pre": 0.1,
+    "between": 0,
+    "post": 67.4,
+    "sql": 2,
+    "appRows": 600,
+    "decrypts": 1800,
+    "ratio": 15.7
+   },
+   "D": {
+    "total": 246.4,
+    "db": 180.2,
+    "pre": 0.1,
+    "between": 0,
+    "post": 66.3,
+    "sql": 2,
+    "appRows": 600,
+    "decrypts": 1800,
+    "ratio": 6.33
+   }
+  }
+ },
+ {
+  "case": "or6",
+  "kind": "count",
+  "condition": "(company = \"서울서비스 담당\" OR memo contains \"푸른달\" OR phone = \"42-5748-1542\" OR name contains \"pshxt\" OR address contains \"세종대로\" OR email endsWith \"biz.test\")",
+  "structure": "OR 6",
+  "targetRows": 100000,
+  "scopeRows": 100000,
+  "matches": 59768,
+  "results": 1,
+  "candidates": {
+   "B": 59768,
+   "C": 59768,
+   "D": 60002
+  },
+  "wrong": {},
+  "paths": {
+   "plain": {
+    "total": 39.1,
+    "db": 39.1,
+    "pre": 0,
+    "between": 0,
+    "post": 0,
+    "sql": 1,
+    "appRows": 0,
+    "decrypts": 0,
+    "ratio": 1
+   },
+   "A": {
+    "total": 15190.9,
+    "db": 401.8,
+    "pre": 2.9,
+    "between": 0,
+    "post": 14799.4,
+    "sql": 1,
+    "appRows": 59768,
+    "decrypts": 0,
+    "ratio": 388.51
+   },
+   "B": {
+    "total": 458.6,
+    "db": 456.6,
+    "pre": 2.2,
+    "between": 0,
+    "post": 0,
+    "sql": 1,
+    "appRows": 0,
+    "decrypts": 0,
+    "ratio": 11.73
+   },
+   "C": {
+    "total": 853.2,
+    "db": 853,
+    "pre": 0.1,
+    "between": 0,
+    "post": 0,
+    "sql": 1,
+    "appRows": 0,
+    "decrypts": 0,
+    "ratio": 21.82
+   },
+   "D": {
+    "total": 374.3,
+    "db": 374.2,
+    "pre": 0.1,
+    "between": 0,
+    "post": 0,
+    "sql": 1,
+    "appRows": 0,
+    "decrypts": 0,
+    "ratio": 9.57
+   }
+  }
+ },
+ {
+  "case": "or6",
+  "kind": "list300",
+  "condition": "(company = \"서울서비스 담당\" OR memo contains \"푸른달\" OR phone = \"42-5748-1542\" OR name contains \"pshxt\" OR address contains \"세종대로\" OR email endsWith \"biz.test\")",
+  "structure": "OR 6",
+  "targetRows": 100000,
+  "scopeRows": 100000,
+  "matches": 59768,
+  "results": 300,
+  "candidates": {
+   "B": 59768,
+   "C": 59768,
+   "D": 60002
+  },
+  "wrong": {},
+  "paths": {
+   "plain": {
+    "total": 46.6,
+    "db": 46.6,
+    "pre": 0,
+    "between": 0,
+    "post": 0,
+    "sql": 1,
+    "appRows": 300,
+    "decrypts": 0,
+    "ratio": 1
+   },
+   "A": {
+    "total": 88.1,
+    "db": 10.4,
+    "pre": 3.2,
+    "between": 49.2,
+    "post": 25.5,
+    "sql": 2,
+    "appRows": 600,
+    "decrypts": 0,
+    "ratio": 1.89
+   },
+   "B": {
+    "total": 78.6,
+    "db": 10.1,
+    "pre": 1.7,
+    "between": 0,
+    "post": 66.1,
+    "sql": 1,
+    "appRows": 300,
+    "decrypts": 1800,
+    "ratio": 1.69
+   },
+   "C": {
+    "total": 968.5,
+    "db": 889.8,
+    "pre": 0.1,
+    "between": 0,
+    "post": 72.3,
+    "sql": 2,
+    "appRows": 600,
+    "decrypts": 1800,
+    "ratio": 20.78
+   },
+   "D": {
+    "total": 459.3,
+    "db": 392.7,
+    "pre": 0.1,
+    "between": 0,
+    "post": 65.8,
+    "sql": 2,
+    "appRows": 600,
+    "decrypts": 1800,
+    "ratio": 9.86
+   }
+  }
+ },
+ {
+  "case": "and2_or_and2",
+  "kind": "count",
+  "condition": "((company = \"서울서비스 담당\" AND memo contains \"서비스\") OR (address contains \"서울\" AND memo contains \"상담\"))",
+  "structure": "(AND 2) OR (AND 2)",
+  "targetRows": 100000,
+  "scopeRows": 100000,
+  "matches": 22846,
+  "results": 1,
+  "candidates": {
+   "B": 22846,
+   "C": 22846,
+   "D": 22855
+  },
+  "wrong": {},
+  "paths": {
+   "plain": {
+    "total": 25.8,
+    "db": 25.8,
+    "pre": 0,
+    "between": 0,
+    "post": 0,
+    "sql": 1,
+    "appRows": 0,
+    "decrypts": 0,
+    "ratio": 1
+   },
+   "A": {
+    "total": 3028.5,
+    "db": 163.2,
+    "pre": 1.6,
+    "between": 0,
+    "post": 2860.4,
+    "sql": 1,
+    "appRows": 22846,
+    "decrypts": 0,
+    "ratio": 117.38
+   },
+   "B": {
+    "total": 229.3,
+    "db": 228.3,
+    "pre": 0.9,
+    "between": 0,
+    "post": 0,
+    "sql": 1,
+    "appRows": 0,
+    "decrypts": 0,
+    "ratio": 8.89
+   },
+   "C": {
+    "total": 1360.7,
+    "db": 1360.6,
+    "pre": 0.1,
+    "between": 0,
+    "post": 0,
+    "sql": 1,
+    "appRows": 0,
+    "decrypts": 0,
+    "ratio": 52.74
+   },
+   "D": {
+    "total": 244.4,
+    "db": 244.3,
+    "pre": 0.1,
+    "between": 0,
+    "post": 0,
+    "sql": 1,
+    "appRows": 0,
+    "decrypts": 0,
+    "ratio": 9.47
+   }
+  }
+ },
+ {
+  "case": "and2_or_and2",
+  "kind": "list300",
+  "condition": "((company = \"서울서비스 담당\" AND memo contains \"서비스\") OR (address contains \"서울\" AND memo contains \"상담\"))",
+  "structure": "(AND 2) OR (AND 2)",
+  "targetRows": 100000,
+  "scopeRows": 100000,
+  "matches": 22846,
+  "results": 300,
+  "candidates": {
+   "B": 22846,
+   "C": 22846,
+   "D": 22855
+  },
+  "wrong": {},
+  "paths": {
+   "plain": {
+    "total": 35.3,
+    "db": 35.3,
+    "pre": 0,
+    "between": 0,
+    "post": 0,
+    "sql": 1,
+    "appRows": 300,
+    "decrypts": 0,
+    "ratio": 1
+   },
+   "A": {
+    "total": 88.3,
+    "db": 14.4,
+    "pre": 1.9,
+    "between": 50.3,
+    "post": 23.1,
+    "sql": 2,
+    "appRows": 600,
+    "decrypts": 0,
+    "ratio": 2.5
+   },
+   "B": {
+    "total": 167.5,
+    "db": 99.4,
+    "pre": 0.9,
+    "between": 0,
+    "post": 69.4,
+    "sql": 1,
+    "appRows": 300,
+    "decrypts": 1800,
+    "ratio": 4.75
+   },
+   "C": {
+    "total": 1439.9,
+    "db": 1373.4,
+    "pre": 0.1,
+    "between": 0,
+    "post": 63.9,
+    "sql": 2,
+    "appRows": 600,
+    "decrypts": 1800,
+    "ratio": 40.79
+   },
+   "D": {
+    "total": 311.7,
+    "db": 247.9,
+    "pre": 0.1,
+    "between": 0,
+    "post": 64.5,
+    "sql": 2,
+    "appRows": 600,
+    "decrypts": 1800,
+    "ratio": 8.83
+   }
+  }
+ },
+ {
+  "case": "or2_and_or2",
+  "kind": "count",
+  "condition": "((company = \"서울서비스 담당\" OR memo contains \"푸른달\") AND (address contains \"서울\" OR email contains \"service\"))",
+  "structure": "(OR 2) AND (OR 2)",
+  "targetRows": 100000,
+  "scopeRows": 100000,
+  "matches": 7373,
+  "results": 1,
+  "candidates": {
+   "B": 7373,
+   "C": 7373,
+   "D": 7514
+  },
+  "wrong": {},
+  "paths": {
+   "plain": {
+    "total": 21.7,
+    "db": 21.7,
+    "pre": 0,
+    "between": 0,
+    "post": 0,
+    "sql": 1,
+    "appRows": 0,
+    "decrypts": 0,
+    "ratio": 1
+   },
+   "A": {
+    "total": 1027.6,
+    "db": 70,
+    "pre": 1.7,
+    "between": 0,
+    "post": 948.3,
+    "sql": 1,
+    "appRows": 7373,
+    "decrypts": 0,
+    "ratio": 47.35
+   },
+   "B": {
+    "total": 110.2,
+    "db": 109,
+    "pre": 1.1,
+    "between": 0,
+    "post": 0,
+    "sql": 1,
+    "appRows": 0,
+    "decrypts": 0,
+    "ratio": 5.08
+   },
+   "C": {
+    "total": 835.1,
+    "db": 835,
+    "pre": 0.1,
+    "between": 0,
+    "post": 0,
+    "sql": 1,
+    "appRows": 0,
+    "decrypts": 0,
+    "ratio": 38.48
+   },
+   "D": {
+    "total": 116.4,
+    "db": 116.3,
+    "pre": 0.1,
+    "between": 0,
+    "post": 0,
+    "sql": 1,
+    "appRows": 0,
+    "decrypts": 0,
+    "ratio": 5.36
+   }
+  }
+ },
+ {
+  "case": "or2_and_or2",
+  "kind": "list300",
+  "condition": "((company = \"서울서비스 담당\" OR memo contains \"푸른달\") AND (address contains \"서울\" OR email contains \"service\"))",
+  "structure": "(OR 2) AND (OR 2)",
+  "targetRows": 100000,
+  "scopeRows": 100000,
+  "matches": 7373,
+  "results": 300,
+  "candidates": {
+   "B": 7373,
+   "C": 7373,
+   "D": 7514
+  },
+  "wrong": {},
+  "paths": {
+   "plain": {
+    "total": 23.5,
+    "db": 23.5,
+    "pre": 0,
+    "between": 0,
+    "post": 0,
+    "sql": 1,
+    "appRows": 300,
+    "decrypts": 0,
+    "ratio": 1
+   },
+   "A": {
+    "total": 94.2,
+    "db": 30.6,
+    "pre": 1.9,
+    "between": 41.1,
+    "post": 20.6,
+    "sql": 2,
+    "appRows": 600,
+    "decrypts": 0,
+    "ratio": 4.01
+   },
+   "B": {
+    "total": 108.1,
+    "db": 44.4,
+    "pre": 1,
+    "between": 0,
+    "post": 63.2,
+    "sql": 1,
+    "appRows": 300,
+    "decrypts": 1800,
+    "ratio": 4.6
+   },
+   "C": {
+    "total": 921.2,
+    "db": 853.7,
+    "pre": 0.1,
+    "between": 0,
+    "post": 68.7,
+    "sql": 2,
+    "appRows": 600,
+    "decrypts": 1800,
+    "ratio": 39.2
+   },
+   "D": {
+    "total": 189.8,
+    "db": 123.6,
+    "pre": 0.1,
+    "between": 0,
+    "post": 65.8,
+    "sql": 2,
+    "appRows": 600,
+    "decrypts": 1800,
+    "ratio": 8.08
+   }
+  }
+ },
+ {
+  "case": "and3_or_rare",
+  "kind": "count",
+  "condition": "((company = \"서울서비스 담당\" AND memo contains \"서비스\" AND address contains \"서울\") OR memo contains \"푸른달\")",
+  "structure": "(AND 3) OR (1)",
+  "targetRows": 100000,
+  "scopeRows": 100000,
+  "matches": 3629,
+  "results": 1,
+  "candidates": {
+   "B": 3629,
+   "C": 3629,
+   "D": 3678
+  },
+  "wrong": {},
+  "paths": {
+   "plain": {
+    "total": 21.9,
+    "db": 21.8,
+    "pre": 0,
+    "between": 0,
+    "post": 0,
+    "sql": 1,
+    "appRows": 0,
+    "decrypts": 0,
+    "ratio": 1
+   },
+   "A": {
+    "total": 434.5,
+    "db": 55.3,
+    "pre": 1.3,
+    "between": 0,
+    "post": 376.9,
+    "sql": 1,
+    "appRows": 3629,
+    "decrypts": 0,
+    "ratio": 19.84
+   },
+   "B": {
+    "total": 105.7,
+    "db": 104.8,
+    "pre": 0.8,
+    "between": 0,
+    "post": 0,
+    "sql": 1,
+    "appRows": 0,
+    "decrypts": 0,
+    "ratio": 4.83
+   },
+   "C": {
+    "total": 983.5,
+    "db": 983.4,
+    "pre": 0.1,
+    "between": 0,
+    "post": 0,
+    "sql": 1,
+    "appRows": 0,
+    "decrypts": 0,
+    "ratio": 44.91
+   },
+   "D": {
+    "total": 106.5,
+    "db": 106.4,
+    "pre": 0.1,
+    "between": 0,
+    "post": 0,
+    "sql": 1,
+    "appRows": 0,
+    "decrypts": 0,
+    "ratio": 4.86
+   }
+  }
+ },
+ {
+  "case": "and3_or_rare",
+  "kind": "list300",
+  "condition": "((company = \"서울서비스 담당\" AND memo contains \"서비스\" AND address contains \"서울\") OR memo contains \"푸른달\")",
+  "structure": "(AND 3) OR (1)",
+  "targetRows": 100000,
+  "scopeRows": 100000,
+  "matches": 3629,
+  "results": 300,
+  "candidates": {
+   "B": 3629,
+   "C": 3629,
+   "D": 3678
+  },
+  "wrong": {},
+  "paths": {
+   "plain": {
+    "total": 24.2,
+    "db": 24.2,
+    "pre": 0,
+    "between": 0,
+    "post": 0,
+    "sql": 1,
+    "appRows": 300,
+    "decrypts": 0,
+    "ratio": 1
+   },
+   "A": {
+    "total": 125.9,
+    "db": 63.5,
+    "pre": 1.6,
+    "between": 39.2,
+    "post": 20.1,
+    "sql": 2,
+    "appRows": 600,
+    "decrypts": 0,
+    "ratio": 5.2
+   },
+   "B": {
+    "total": 95.5,
+    "db": 31.5,
+    "pre": 0.8,
+    "between": 0,
+    "post": 64,
+    "sql": 1,
+    "appRows": 300,
+    "decrypts": 1800,
+    "ratio": 3.95
+   },
+   "C": {
+    "total": 1055.8,
+    "db": 987.4,
+    "pre": 0.1,
+    "between": 0,
+    "post": 65,
+    "sql": 2,
+    "appRows": 600,
+    "decrypts": 1800,
+    "ratio": 43.63
+   },
+   "D": {
+    "total": 182.1,
+    "db": 112.3,
+    "pre": 0.1,
+    "between": 0,
+    "post": 65,
+    "sql": 2,
+    "appRows": 600,
+    "decrypts": 1800,
+    "ratio": 7.52
+   }
+  }
+ },
+ {
+  "case": "nested3",
+  "kind": "count",
+  "condition": "(((company = \"서울서비스 담당\" AND memo contains \"서비스\") OR (address contains \"서울\" AND email contains \"test\")) AND (phone contains \"-5\" OR name contains \"민서\"))",
+  "structure": "((AND 2) OR (AND 2)) AND (OR 2)",
+  "targetRows": 100000,
+  "scopeRows": 100000,
+  "matches": 23177,
+  "results": 1,
+  "candidates": {
+   "B": 23177,
+   "C": 23177,
+   "D": 23194
+  },
+  "wrong": {},
+  "paths": {
+   "plain": {
+    "total": 27.1,
+    "db": 27,
+    "pre": 0,
+    "between": 0,
+    "post": 0,
+    "sql": 1,
+    "appRows": 0,
+    "decrypts": 0,
+    "ratio": 1
+   },
+   "A": {
+    "total": 4797.2,
+    "db": 193.9,
+    "pre": 2.1,
+    "between": 0,
+    "post": 4595,
+    "sql": 1,
+    "appRows": 23177,
+    "decrypts": 0,
+    "ratio": 177.02
+   },
+   "B": {
+    "total": 316.4,
+    "db": 314.6,
+    "pre": 1.7,
+    "between": 0,
+    "post": 0,
+    "sql": 1,
+    "appRows": 0,
+    "decrypts": 0,
+    "ratio": 11.68
+   },
+   "C": {
+    "total": 2558.2,
+    "db": 2558.1,
+    "pre": 0.1,
+    "between": 0,
+    "post": 0,
+    "sql": 1,
+    "appRows": 0,
+    "decrypts": 0,
+    "ratio": 94.4
+   },
+   "D": {
+    "total": 272.9,
+    "db": 272.8,
+    "pre": 0.1,
+    "between": 0,
+    "post": 0,
+    "sql": 1,
+    "appRows": 0,
+    "decrypts": 0,
+    "ratio": 10.07
+   }
+  }
+ },
+ {
+  "case": "nested3",
+  "kind": "list300",
+  "condition": "(((company = \"서울서비스 담당\" AND memo contains \"서비스\") OR (address contains \"서울\" AND email contains \"test\")) AND (phone contains \"-5\" OR name contains \"민서\"))",
+  "structure": "((AND 2) OR (AND 2)) AND (OR 2)",
+  "targetRows": 100000,
+  "scopeRows": 100000,
+  "matches": 23177,
+  "results": 300,
+  "candidates": {
+   "B": 23177,
+   "C": 23177,
+   "D": 23194
+  },
+  "wrong": {},
+  "paths": {
+   "plain": {
+    "total": 36.2,
+    "db": 36.1,
+    "pre": 0,
+    "between": 0,
+    "post": 0,
+    "sql": 1,
+    "appRows": 300,
+    "decrypts": 0,
+    "ratio": 1
+   },
+   "A": {
+    "total": 98.3,
+    "db": 16.8,
+    "pre": 2.6,
+    "between": 49.9,
+    "post": 26,
+    "sql": 2,
+    "appRows": 600,
+    "decrypts": 0,
+    "ratio": 2.72
+   },
+   "B": {
+    "total": 201.5,
+    "db": 124.7,
+    "pre": 1.2,
+    "between": 0,
+    "post": 69,
+    "sql": 1,
+    "appRows": 300,
+    "decrypts": 1800,
+    "ratio": 5.57
+   },
+   "C": {
+    "total": 2761.1,
+    "db": 2692.5,
+    "pre": 0.1,
+    "between": 0,
+    "post": 73.4,
+    "sql": 2,
+    "appRows": 600,
+    "decrypts": 1800,
+    "ratio": 76.27
+   },
+   "D": {
+    "total": 372.7,
+    "db": 304.3,
+    "pre": 0.1,
+    "between": 0,
+    "post": 69,
+    "sql": 2,
+    "appRows": 600,
+    "decrypts": 1800,
+    "ratio": 10.3
+   }
+  }
+ },
+ {
+  "case": "exact_mid",
+  "kind": "count",
+  "condition": "company = \"서울서비스 중앙지사\"",
+  "structure": "1",
+  "targetRows": 100000,
+  "scopeRows": 100000,
+  "matches": 1770,
+  "results": 1,
+  "candidates": {
+   "B": 1770,
+   "C": 1770,
+   "D": 1770
+  },
+  "wrong": {},
+  "paths": {
+   "plain": {
+    "total": 0.6,
+    "db": 0.5,
+    "pre": 0,
+    "between": 0,
+    "post": 0,
+    "sql": 1,
+    "appRows": 0,
+    "decrypts": 0,
+    "ratio": 1
+   },
+   "A": {
+    "total": 106.6,
+    "db": 24.2,
+    "pre": 0.8,
+    "between": 0,
+    "post": 81.9,
+    "sql": 1,
+    "appRows": 1770,
+    "decrypts": 0,
+    "ratio": 177.67
+   },
+   "B": {
+    "total": 6.3,
+    "db": 5.9,
+    "pre": 0.3,
+    "between": 0,
+    "post": 0,
+    "sql": 1,
+    "appRows": 0,
+    "decrypts": 0,
+    "ratio": 10.5
+   },
+   "C": {
+    "total": 10.1,
+    "db": 10.1,
+    "pre": 0.1,
+    "between": 0,
+    "post": 0,
+    "sql": 1,
+    "appRows": 0,
+    "decrypts": 0,
+    "ratio": 16.83
+   },
+   "D": {
+    "total": 10,
+    "db": 10,
+    "pre": 0.1,
+    "between": 0,
+    "post": 0,
+    "sql": 1,
+    "appRows": 0,
+    "decrypts": 0,
+    "ratio": 16.67
+   }
+  }
+ },
+ {
+  "case": "exact_mid",
+  "kind": "list300",
+  "condition": "company = \"서울서비스 중앙지사\"",
+  "structure": "1",
+  "targetRows": 100000,
+  "scopeRows": 100000,
+  "matches": 1770,
+  "results": 300,
+  "candidates": {
+   "B": 1770,
+   "C": 1770,
+   "D": 1770
+  },
+  "wrong": {},
+  "paths": {
+   "plain": {
+    "total": 3.5,
+    "db": 3.4,
+    "pre": 0,
+    "between": 0,
+    "post": 0,
+    "sql": 1,
+    "appRows": 300,
+    "decrypts": 0,
+    "ratio": 1
+   },
+   "A": {
+    "total": 88.6,
+    "db": 11.4,
+    "pre": 0.9,
+    "between": 48.9,
+    "post": 26.1,
+    "sql": 2,
+    "appRows": 600,
+    "decrypts": 0,
+    "ratio": 25.31
+   },
+   "B": {
+    "total": 78.5,
+    "db": 4.1,
+    "pre": 0.3,
+    "between": 0,
+    "post": 73.9,
+    "sql": 1,
+    "appRows": 300,
+    "decrypts": 1800,
+    "ratio": 22.43
+   },
+   "C": {
+    "total": 87.4,
+    "db": 14.6,
+    "pre": 0,
+    "between": 0,
+    "post": 72.2,
+    "sql": 2,
+    "appRows": 600,
+    "decrypts": 1800,
+    "ratio": 24.97
+   },
+   "D": {
+    "total": 84.4,
+    "db": 13.4,
+    "pre": 0.1,
+    "between": 0,
+    "post": 70.6,
+    "sql": 2,
+    "appRows": 600,
+    "decrypts": 1800,
+    "ratio": 24.11
+   }
+  }
+ },
+ {
+  "case": "exact_one",
+  "kind": "count",
+  "condition": "phone = \"42-5748-1542\"",
+  "structure": "1",
+  "targetRows": 100000,
+  "scopeRows": 100000,
+  "matches": 1,
+  "results": 1,
+  "candidates": {
+   "B": 1,
+   "C": 1,
+   "D": 66
+  },
+  "wrong": {},
+  "paths": {
+   "plain": {
+    "total": 0.3,
+    "db": 0.3,
+    "pre": 0,
+    "between": 0,
+    "post": 0,
+    "sql": 1,
+    "appRows": 0,
+    "decrypts": 0,
+    "ratio": 1
+   },
+   "A": {
+    "total": 1.6,
+    "db": 0.6,
+    "pre": 0.8,
+    "between": 0,
+    "post": 0.2,
+    "sql": 1,
+    "appRows": 1,
+    "decrypts": 0,
+    "ratio": 5.33
+   },
+   "B": {
+    "total": 0.7,
+    "db": 0.4,
+    "pre": 0.3,
+    "between": 0,
+    "post": 0,
+    "sql": 1,
+    "appRows": 0,
+    "decrypts": 0,
+    "ratio": 2.33
+   },
+   "C": {
+    "total": 0.6,
+    "db": 0.5,
+    "pre": 0,
+    "between": 0,
+    "post": 0,
+    "sql": 1,
+    "appRows": 0,
+    "decrypts": 0,
+    "ratio": 2
+   },
+   "D": {
+    "total": 0.9,
+    "db": 0.9,
+    "pre": 0,
+    "between": 0,
+    "post": 0,
+    "sql": 1,
+    "appRows": 0,
+    "decrypts": 0,
+    "ratio": 3
+   }
+  }
+ },
+ {
+  "case": "exact_one",
+  "kind": "list300",
+  "condition": "phone = \"42-5748-1542\"",
+  "structure": "1",
+  "targetRows": 100000,
+  "scopeRows": 100000,
+  "matches": 1,
+  "results": 1,
+  "candidates": {
+   "B": 1,
+   "C": 1,
+   "D": 66
+  },
+  "wrong": {},
+  "paths": {
+   "plain": {
+    "total": 0.3,
+    "db": 0.3,
+    "pre": 0,
+    "between": 0,
+    "post": 0,
+    "sql": 1,
+    "appRows": 1,
+    "decrypts": 0,
+    "ratio": 1
+   },
+   "A": {
+    "total": 1.4,
+    "db": 0.4,
+    "pre": 0.6,
+    "between": 0,
+    "post": 0.3,
+    "sql": 1,
+    "appRows": 1,
+    "decrypts": 0,
+    "ratio": 4.67
+   },
+   "B": {
+    "total": 1,
+    "db": 0.5,
+    "pre": 0.2,
+    "between": 0,
+    "post": 0.3,
+    "sql": 1,
+    "appRows": 1,
+    "decrypts": 6,
+    "ratio": 3.33
+   },
+   "C": {
+    "total": 0.9,
+    "db": 0.6,
+    "pre": 0,
+    "between": 0,
+    "post": 0.3,
+    "sql": 2,
+    "appRows": 2,
+    "decrypts": 6,
+    "ratio": 3
+   },
+   "D": {
+    "total": 1.3,
+    "db": 1.1,
+    "pre": 0,
+    "between": 0,
+    "post": 0.3,
+    "sql": 2,
+    "appRows": 2,
+    "decrypts": 6,
+    "ratio": 4.33
+   }
+  }
+ },
+ {
+  "case": "sub2_common",
+  "kind": "count",
+  "condition": "company contains \"서비\"",
+  "structure": "1",
+  "targetRows": 100000,
+  "scopeRows": 100000,
+  "matches": 30101,
+  "results": 1,
+  "candidates": {
+   "B": 30101,
+   "C": 30101,
+   "D": 30101
+  },
+  "wrong": {},
+  "paths": {
+   "plain": {
+    "total": 13.6,
+    "db": 13.6,
+    "pre": 0,
+    "between": 0,
+    "post": 0,
+    "sql": 1,
+    "appRows": 0,
+    "decrypts": 0,
+    "ratio": 1
+   },
+   "A": {
+    "total": 1221.9,
+    "db": 135.5,
+    "pre": 0.9,
+    "between": 0,
+    "post": 1094.5,
+    "sql": 1,
+    "appRows": 30101,
+    "decrypts": 0,
+    "ratio": 89.85
+   },
+   "B": {
+    "total": 93.4,
+    "db": 93,
+    "pre": 0.4,
+    "between": 0,
+    "post": 0,
+    "sql": 1,
+    "appRows": 0,
+    "decrypts": 0,
+    "ratio": 6.87
+   },
+   "C": {
+    "total": 351.5,
+    "db": 351.4,
+    "pre": 0.1,
+    "between": 0,
+    "post": 0,
+    "sql": 1,
+    "appRows": 0,
+    "decrypts": 0,
+    "ratio": 25.85
+   },
+   "D": {
+    "total": 91.1,
+    "db": 91,
+    "pre": 0.1,
+    "between": 0,
+    "post": 0,
+    "sql": 1,
+    "appRows": 0,
+    "decrypts": 0,
+    "ratio": 6.7
+   }
+  }
+ },
+ {
+  "case": "sub2_common",
+  "kind": "list300",
+  "condition": "company contains \"서비\"",
+  "structure": "1",
+  "targetRows": 100000,
+  "scopeRows": 100000,
+  "matches": 30101,
+  "results": 300,
+  "candidates": {
+   "B": 30101,
+   "C": 30101,
+   "D": 30101
+  },
+  "wrong": {},
+  "paths": {
+   "plain": {
+    "total": 30.2,
+    "db": 30.2,
+    "pre": 0,
+    "between": 0,
+    "post": 0,
+    "sql": 1,
+    "appRows": 300,
+    "decrypts": 0,
+    "ratio": 1
+   },
+   "A": {
+    "total": 66.4,
+    "db": 9.9,
+    "pre": 1,
+    "between": 37,
+    "post": 19,
+    "sql": 2,
+    "appRows": 600,
+    "decrypts": 0,
+    "ratio": 2.2
+   },
+   "B": {
+    "total": 71.6,
+    "db": 5.6,
+    "pre": 0.3,
+    "between": 0,
+    "post": 65.8,
+    "sql": 1,
+    "appRows": 300,
+    "decrypts": 1800,
+    "ratio": 2.37
+   },
+   "C": {
+    "total": 416.5,
+    "db": 349.2,
+    "pre": 0.1,
+    "between": 0,
+    "post": 69.7,
+    "sql": 2,
+    "appRows": 600,
+    "decrypts": 1800,
+    "ratio": 13.79
+   },
+   "D": {
+    "total": 166.5,
+    "db": 91.2,
+    "pre": 0.1,
+    "between": 0,
+    "post": 71.6,
+    "sql": 2,
+    "appRows": 600,
+    "decrypts": 1800,
+    "ratio": 5.51
+   }
+  }
+ },
+ {
+  "case": "sub_mid_space",
+  "kind": "count",
+  "condition": "address contains \"세종대로 25\"",
+  "structure": "1",
+  "targetRows": 100000,
+  "scopeRows": 100000,
+  "matches": 213,
+  "results": 1,
+  "candidates": {
+   "B": 213,
+   "C": 213,
+   "D": 213
+  },
+  "wrong": {},
+  "paths": {
+   "plain": {
+    "total": 1.5,
+    "db": 1.4,
+    "pre": 0,
+    "between": 0,
+    "post": 0,
+    "sql": 1,
+    "appRows": 0,
+    "decrypts": 0,
+    "ratio": 1
+   },
+   "A": {
+    "total": 11.8,
+    "db": 2.6,
+    "pre": 0.9,
+    "between": 0,
+    "post": 8.1,
+    "sql": 1,
+    "appRows": 213,
+    "decrypts": 0,
+    "ratio": 7.87
+   },
+   "B": {
+    "total": 15.8,
+    "db": 4.4,
+    "pre": 0.8,
+    "between": 0,
+    "post": 10.5,
+    "sql": 1,
+    "appRows": 213,
+    "decrypts": 213,
+    "ratio": 10.53
+   },
+   "C": {
+    "total": 14.8,
+    "db": 3.9,
+    "pre": 0,
+    "between": 0,
+    "post": 10.5,
+    "sql": 2,
+    "appRows": 426,
+    "decrypts": 213,
+    "ratio": 9.87
+   },
+   "D": {
+    "total": 14.8,
+    "db": 4.1,
+    "pre": 0,
+    "between": 0,
+    "post": 10.6,
+    "sql": 2,
+    "appRows": 426,
+    "decrypts": 213,
+    "ratio": 9.87
+   }
+  }
+ },
+ {
+  "case": "sub_mid_space",
+  "kind": "list300",
+  "condition": "address contains \"세종대로 25\"",
+  "structure": "1",
+  "targetRows": 100000,
+  "scopeRows": 100000,
+  "matches": 213,
+  "results": 213,
+  "candidates": {
+   "B": 213,
+   "C": 213,
+   "D": 213
+  },
+  "wrong": {},
+  "paths": {
+   "plain": {
+    "total": 2,
+    "db": 2,
+    "pre": 0,
+    "between": 0,
+    "post": 0,
+    "sql": 1,
+    "appRows": 213,
+    "decrypts": 0,
+    "ratio": 1
+   },
+   "A": {
+    "total": 48.4,
+    "db": 5.9,
+    "pre": 1.2,
+    "between": 37.9,
+    "post": 2.3,
+    "sql": 2,
+    "appRows": 213,
+    "decrypts": 0,
+    "ratio": 24.2
+   },
+   "B": {
+    "total": 56.8,
+    "db": 6,
+    "pre": 0.9,
+    "between": 9.4,
+    "post": 40.7,
+    "sql": 2,
+    "appRows": 426,
+    "decrypts": 1278,
+    "ratio": 28.4
+   },
+   "C": {
+    "total": 61.8,
+    "db": 5.8,
+    "pre": 0.1,
+    "between": 10.4,
+    "post": 45.5,
+    "sql": 3,
+    "appRows": 639,
+    "decrypts": 1491,
+    "ratio": 30.9
+   },
+   "D": {
+    "total": 63.2,
+    "db": 5.9,
+    "pre": 0.1,
+    "between": 10.4,
+    "post": 46.3,
+    "sql": 3,
+    "appRows": 639,
+    "decrypts": 1491,
+    "ratio": 31.6
+   }
+  }
+ },
+ {
+  "case": "sub_long",
+  "kind": "count",
+  "condition": "memo contains \"상세 안내와 확인 내용 상세 안내와\"",
+  "structure": "1",
+  "targetRows": 100000,
+  "scopeRows": 100000,
+  "matches": 2440,
+  "results": 1,
+  "candidates": {
+   "B": 2440,
+   "C": 2440,
+   "D": 2512
+  },
+  "wrong": {},
+  "paths": {
+   "plain": {
+    "total": 18.4,
+    "db": 18.4,
+    "pre": 0,
+    "between": 0,
+    "post": 0,
+    "sql": 1,
+    "appRows": 0,
+    "decrypts": 0,
+    "ratio": 1
+   },
+   "A": {
+    "total": 133.3,
+    "db": 36.4,
+    "pre": 1.4,
+    "between": 0,
+    "post": 95.6,
+    "sql": 1,
+    "appRows": 2440,
+    "decrypts": 0,
+    "ratio": 7.24
+   },
+   "B": {
+    "total": 311.2,
+    "db": 171.1,
+    "pre": 1.7,
+    "between": 126.6,
+    "post": 2.1,
+    "sql": 9,
+    "appRows": 2440,
+    "decrypts": 2440,
+    "ratio": 16.91
+   },
+   "C": {
+    "total": 170.2,
+    "db": 56.5,
+    "pre": 0,
+    "between": 0.1,
+    "post": 111.4,
+    "sql": 2,
+    "appRows": 4880,
+    "decrypts": 2440,
+    "ratio": 9.25
+   },
+   "D": {
+    "total": 216.1,
+    "db": 99.5,
+    "pre": 0,
+    "between": 0.1,
+    "post": 118.6,
+    "sql": 2,
+    "appRows": 4880,
+    "decrypts": 2440,
+    "ratio": 11.74
+   }
+  }
+ },
+ {
+  "case": "sub_long",
+  "kind": "list300",
+  "condition": "memo contains \"상세 안내와 확인 내용 상세 안내와\"",
+  "structure": "1",
+  "targetRows": 100000,
+  "scopeRows": 100000,
+  "matches": 2440,
+  "results": 300,
+  "candidates": {
+   "B": 2440,
+   "C": 2440,
+   "D": 2512
+  },
+  "wrong": {},
+  "paths": {
+   "plain": {
+    "total": 19.9,
+    "db": 19.9,
+    "pre": 0,
+    "between": 0,
+    "post": 0,
+    "sql": 1,
+    "appRows": 300,
+    "decrypts": 0,
+    "ratio": 1
+   },
+   "A": {
+    "total": 102.5,
+    "db": 37.8,
+    "pre": 1.7,
+    "between": 41.5,
+    "post": 20.6,
+    "sql": 2,
+    "appRows": 600,
+    "decrypts": 0,
+    "ratio": 5.15
+   },
+   "B": {
+    "total": 103.3,
+    "db": 28.6,
+    "pre": 1.7,
+    "between": 14.5,
+    "post": 55.6,
+    "sql": 2,
+    "appRows": 600,
+    "decrypts": 1800,
+    "ratio": 5.19
+   },
+   "C": {
+    "total": 254.4,
+    "db": 71.8,
+    "pre": 0.1,
+    "between": 119.5,
+    "post": 64,
+    "sql": 3,
+    "appRows": 5180,
+    "decrypts": 4240,
+    "ratio": 12.78
+   },
+   "D": {
+    "total": 278.8,
+    "db": 88.4,
+    "pre": 0.1,
+    "between": 119.5,
+    "post": 63.1,
+    "sql": 3,
+    "appRows": 5180,
+    "decrypts": 4240,
+    "ratio": 14.01
+   }
+  }
+ },
+ {
+  "case": "word_inside_longer",
+  "kind": "count",
+  "condition": "memo contains \"비스 상\" (띄어쓰기 포함, 정규화 부분 문자열 의미)",
+  "structure": "1",
+  "targetRows": 100000,
+  "scopeRows": 100000,
+  "matches": 29843,
+  "results": 1,
+  "candidates": {
+   "B": 29843,
+   "C": 29843,
+   "D": 29885
+  },
+  "wrong": {},
+  "paths": {
+   "plain": {
+    "total": 16.6,
+    "db": 16.6,
+    "pre": 0,
+    "between": 0,
+    "post": 0,
+    "sql": 1,
+    "appRows": 0,
+    "decrypts": 0,
+    "ratio": 1
+   },
+   "A": {
+    "total": 1199,
+    "db": 111.4,
+    "pre": 0.9,
+    "between": 0,
+    "post": 1078.3,
+    "sql": 1,
+    "appRows": 29843,
+    "decrypts": 0,
+    "ratio": 72.23
+   },
+   "B": {
+    "total": 5435.4,
+    "db": 3868.9,
+    "pre": 0.7,
+    "between": 1552.5,
+    "post": 7.3,
+    "sql": 100,
+    "appRows": 29843,
+    "decrypts": 29843,
+    "ratio": 327.43
+   },
+   "C": {
+    "total": 1909.7,
+    "db": 478.1,
+    "pre": 0,
+    "between": 0.8,
+    "post": 1432.8,
+    "sql": 2,
+    "appRows": 59686,
+    "decrypts": 29843,
+    "ratio": 115.04
+   },
+   "D": {
+    "total": 1808.9,
+    "db": 375.1,
+    "pre": 0,
+    "between": 0.7,
+    "post": 1422.4,
+    "sql": 2,
+    "appRows": 59686,
+    "decrypts": 29843,
+    "ratio": 108.97
+   }
+  }
+ },
+ {
+  "case": "word_inside_longer",
+  "kind": "list300",
+  "condition": "memo contains \"비스 상\" (띄어쓰기 포함, 정규화 부분 문자열 의미)",
+  "structure": "1",
+  "targetRows": 100000,
+  "scopeRows": 100000,
+  "matches": 29843,
+  "results": 300,
+  "candidates": {
+   "B": 29843,
+   "C": 29843,
+   "D": 29885
+  },
+  "wrong": {},
+  "paths": {
+   "plain": {
+    "total": 30.8,
+    "db": 30.8,
+    "pre": 0,
+    "between": 0,
+    "post": 0,
+    "sql": 1,
+    "appRows": 300,
+    "decrypts": 0,
+    "ratio": 1
+   },
+   "A": {
+    "total": 71.9,
+    "db": 10.2,
+    "pre": 1.2,
+    "between": 38.5,
+    "post": 20.2,
+    "sql": 2,
+    "appRows": 600,
+    "decrypts": 0,
+    "ratio": 2.33
+   },
+   "B": {
+    "total": 142.5,
+    "db": 71.5,
+    "pre": 0.7,
+    "between": 13,
+    "post": 57.1,
+    "sql": 2,
+    "appRows": 600,
+    "decrypts": 1800,
+    "ratio": 4.63
+   },
+   "C": {
+    "total": 1983.3,
+    "db": 493.8,
+    "pre": 0.1,
+    "between": 1421.3,
+    "post": 63.8,
+    "sql": 3,
+    "appRows": 59986,
+    "decrypts": 31643,
+    "ratio": 64.39
+   },
+   "D": {
+    "total": 1869.1,
+    "db": 383.1,
+    "pre": 0.1,
+    "between": 1424.8,
+    "post": 64.6,
+    "sql": 3,
+    "appRows": 59986,
+    "decrypts": 31643,
+    "ratio": 60.69
+   }
+  }
+ }
+]

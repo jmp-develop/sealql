@@ -1,0 +1,240 @@
+{
+  "rows": 20000,
+  "design": "positional stamps w=2 (queries decomposed into 2-gram keys) vs B (presence only)",
+  "attack": [
+    {
+      "dataset": "nsmc-review",
+      "rows": 19893,
+      "checkpoints": [
+        {
+          "queries": 100,
+          "keysObserved": 180,
+          "correctlyGuessedKeys": 5,
+          "correctPct": 2.78,
+          "positional_upperBound_charsKnown": {
+            "charCoveragePct": 20.19,
+            "run8Pct": 1.43,
+            "fullPct": 0.166,
+            "rowsWithAnyPct": 83.31
+          },
+          "positional_realistic_frequencyGuess": {
+            "charCoveragePct": 9.25,
+            "run8Pct": 0.27,
+            "fullPct": 0.055,
+            "rowsWithAnyPct": 63.99
+          },
+          "B_presenceOnly_realistic": {
+            "rowsWithCorrectlyGuessedPiecePct": 63.99,
+            "run8Pct": 0,
+            "fullPct": 0,
+            "note": "B/D/C reveal the row set per key but no position: correctly guessed pieces are known to be present, not where"
+          }
+        },
+        {
+          "queries": 1000,
+          "keysObserved": 1390,
+          "correctlyGuessedKeys": 16,
+          "correctPct": 1.15,
+          "positional_upperBound_charsKnown": {
+            "charCoveragePct": 52.27,
+            "run8Pct": 31,
+            "fullPct": 3.71,
+            "rowsWithAnyPct": 96.97
+          },
+          "positional_realistic_frequencyGuess": {
+            "charCoveragePct": 13.66,
+            "run8Pct": 0.44,
+            "fullPct": 0.126,
+            "rowsWithAnyPct": 75.87
+          },
+          "B_presenceOnly_realistic": {
+            "rowsWithCorrectlyGuessedPiecePct": 75.87,
+            "run8Pct": 0,
+            "fullPct": 0,
+            "note": "B/D/C reveal the row set per key but no position: correctly guessed pieces are known to be present, not where"
+          }
+        },
+        {
+          "queries": 10000,
+          "keysObserved": 7992,
+          "correctlyGuessedKeys": 24,
+          "correctPct": 0.3,
+          "positional_upperBound_charsKnown": {
+            "charCoveragePct": 83.86,
+            "run8Pct": 77.09,
+            "fullPct": 19.193,
+            "rowsWithAnyPct": 99.29
+          },
+          "positional_realistic_frequencyGuess": {
+            "charCoveragePct": 14.13,
+            "run8Pct": 0.47,
+            "fullPct": 0.121,
+            "rowsWithAnyPct": 76.05
+          },
+          "B_presenceOnly_realistic": {
+            "rowsWithCorrectlyGuessedPiecePct": 76.05,
+            "run8Pct": 0,
+            "fullPct": 0,
+            "note": "B/D/C reveal the row set per key but no position: correctly guessed pieces are known to be present, not where"
+          }
+        }
+      ]
+    },
+    {
+      "dataset": "fixture-memo",
+      "rows": 20000,
+      "checkpoints": [
+        {
+          "queries": 100,
+          "keysObserved": 109,
+          "correctlyGuessedKeys": 3,
+          "correctPct": 2.75,
+          "positional_upperBound_charsKnown": {
+            "charCoveragePct": 67.3,
+            "run8Pct": 36.98,
+            "fullPct": 0.025,
+            "rowsWithAnyPct": 99.92
+          },
+          "positional_realistic_frequencyGuess": {
+            "charCoveragePct": 6.8,
+            "run8Pct": 0,
+            "fullPct": 0,
+            "rowsWithAnyPct": 31.89
+          },
+          "B_presenceOnly_realistic": {
+            "rowsWithCorrectlyGuessedPiecePct": 31.89,
+            "run8Pct": 0,
+            "fullPct": 0,
+            "note": "B/D/C reveal the row set per key but no position: correctly guessed pieces are known to be present, not where"
+          }
+        },
+        {
+          "queries": 1000,
+          "keysObserved": 574,
+          "correctlyGuessedKeys": 5,
+          "correctPct": 0.87,
+          "positional_upperBound_charsKnown": {
+            "charCoveragePct": 84.26,
+            "run8Pct": 73.58,
+            "fullPct": 10.15,
+            "rowsWithAnyPct": 99.98
+          },
+          "positional_realistic_frequencyGuess": {
+            "charCoveragePct": 9.53,
+            "run8Pct": 0,
+            "fullPct": 0,
+            "rowsWithAnyPct": 32.09
+          },
+          "B_presenceOnly_realistic": {
+            "rowsWithCorrectlyGuessedPiecePct": 32.09,
+            "run8Pct": 0,
+            "fullPct": 0,
+            "note": "B/D/C reveal the row set per key but no position: correctly guessed pieces are known to be present, not where"
+          }
+        },
+        {
+          "queries": 10000,
+          "keysObserved": 1558,
+          "correctlyGuessedKeys": 7,
+          "correctPct": 0.45,
+          "positional_upperBound_charsKnown": {
+            "charCoveragePct": 99.82,
+            "run8Pct": 99.98,
+            "fullPct": 97.41,
+            "rowsWithAnyPct": 100
+          },
+          "positional_realistic_frequencyGuess": {
+            "charCoveragePct": 9.72,
+            "run8Pct": 0,
+            "fullPct": 0,
+            "rowsWithAnyPct": 33.1
+          },
+          "B_presenceOnly_realistic": {
+            "rowsWithCorrectlyGuessedPiecePct": 33.1,
+            "run8Pct": 0,
+            "fullPct": 0,
+            "note": "B/D/C reveal the row set per key but no position: correctly guessed pieces are known to be present, not where"
+          }
+        }
+      ]
+    },
+    {
+      "dataset": "fixture-address",
+      "rows": 20000,
+      "checkpoints": [
+        {
+          "queries": 100,
+          "keysObserved": 93,
+          "correctlyGuessedKeys": 2,
+          "correctPct": 2.15,
+          "positional_upperBound_charsKnown": {
+            "charCoveragePct": 89.16,
+            "run8Pct": 83.33,
+            "fullPct": 18.505,
+            "rowsWithAnyPct": 100
+          },
+          "positional_realistic_frequencyGuess": {
+            "charCoveragePct": 17.91,
+            "run8Pct": 0,
+            "fullPct": 0,
+            "rowsWithAnyPct": 100
+          },
+          "B_presenceOnly_realistic": {
+            "rowsWithCorrectlyGuessedPiecePct": 100,
+            "run8Pct": 0,
+            "fullPct": 0,
+            "note": "B/D/C reveal the row set per key but no position: correctly guessed pieces are known to be present, not where"
+          }
+        },
+        {
+          "queries": 1000,
+          "keysObserved": 177,
+          "correctlyGuessedKeys": 6,
+          "correctPct": 3.39,
+          "positional_upperBound_charsKnown": {
+            "charCoveragePct": 100,
+            "run8Pct": 100,
+            "fullPct": 100,
+            "rowsWithAnyPct": 100
+          },
+          "positional_realistic_frequencyGuess": {
+            "charCoveragePct": 19.15,
+            "run8Pct": 0,
+            "fullPct": 0,
+            "rowsWithAnyPct": 100
+          },
+          "B_presenceOnly_realistic": {
+            "rowsWithCorrectlyGuessedPiecePct": 100,
+            "run8Pct": 0,
+            "fullPct": 0,
+            "note": "B/D/C reveal the row set per key but no position: correctly guessed pieces are known to be present, not where"
+          }
+        },
+        {
+          "queries": 10000,
+          "keysObserved": 181,
+          "correctlyGuessedKeys": 5,
+          "correctPct": 2.76,
+          "positional_upperBound_charsKnown": {
+            "charCoveragePct": 100,
+            "run8Pct": 100,
+            "fullPct": 100,
+            "rowsWithAnyPct": 100
+          },
+          "positional_realistic_frequencyGuess": {
+            "charCoveragePct": 19.17,
+            "run8Pct": 0,
+            "fullPct": 0,
+            "rowsWithAnyPct": 100
+          },
+          "B_presenceOnly_realistic": {
+            "rowsWithCorrectlyGuessedPiecePct": 100,
+            "run8Pct": 0,
+            "fullPct": 0,
+            "note": "B/D/C reveal the row set per key but no position: correctly guessed pieces are known to be present, not where"
+          }
+        }
+      ]
+    }
+  ]
+}

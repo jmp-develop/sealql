@@ -1,0 +1,492 @@
+[
+  {
+    "name": "coarse_company_zero",
+    "node": {
+      "field": "company",
+      "op": "eq",
+      "value": "없는회사0"
+    },
+    "index": 1
+  },
+  {
+    "name": "coarse_rare_and_memo",
+    "node": {
+      "all": [
+        {
+          "field": "company",
+          "op": "eq",
+          "value": "서울서비스 중앙지사"
+        },
+        {
+          "field": "memo",
+          "op": "contains",
+          "value": "서비스"
+        }
+      ]
+    },
+    "index": 2
+  },
+  {
+    "name": "coarse_zero_and_memo",
+    "node": {
+      "all": [
+        {
+          "field": "company",
+          "op": "eq",
+          "value": "없는회사0"
+        },
+        {
+          "field": "memo",
+          "op": "contains",
+          "value": "서비스"
+        }
+      ]
+    },
+    "index": 3
+  },
+  {
+    "name": "exact_common",
+    "node": {
+      "op": "eq",
+      "field": "company",
+      "value": "서울서비스 담당"
+    },
+    "index": 4
+  },
+  {
+    "name": "and2",
+    "node": {
+      "all": [
+        {
+          "op": "eq",
+          "field": "company",
+          "value": "서울서비스 담당"
+        },
+        {
+          "op": "contains",
+          "field": "memo",
+          "value": "서비스"
+        }
+      ]
+    },
+    "index": 10
+  },
+  {
+    "name": "and4",
+    "node": {
+      "all": [
+        {
+          "op": "eq",
+          "field": "company",
+          "value": "서울서비스 담당"
+        },
+        {
+          "op": "contains",
+          "field": "address",
+          "value": "서울"
+        },
+        {
+          "op": "contains",
+          "field": "memo",
+          "value": "상담"
+        },
+        {
+          "op": "contains",
+          "field": "email",
+          "value": "service"
+        }
+      ]
+    },
+    "index": 11
+  },
+  {
+    "name": "and6",
+    "node": {
+      "all": [
+        {
+          "op": "contains",
+          "field": "name",
+          "value": "민서"
+        },
+        {
+          "op": "contains",
+          "field": "phone",
+          "value": "-5"
+        },
+        {
+          "op": "contains",
+          "field": "address",
+          "value": "서울"
+        },
+        {
+          "op": "contains",
+          "field": "memo",
+          "value": "서비스"
+        },
+        {
+          "op": "contains",
+          "field": "email",
+          "value": "test"
+        },
+        {
+          "op": "eq",
+          "field": "company",
+          "value": "서울서비스 담당"
+        }
+      ]
+    },
+    "index": 12
+  },
+  {
+    "name": "or2",
+    "node": {
+      "any": [
+        {
+          "op": "eq",
+          "field": "company",
+          "value": "서울서비스 담당"
+        },
+        {
+          "op": "contains",
+          "field": "memo",
+          "value": "푸른달"
+        }
+      ]
+    },
+    "index": 13
+  },
+  {
+    "name": "or_and_mix",
+    "node": {
+      "any": [
+        {
+          "all": [
+            {
+              "op": "eq",
+              "field": "company",
+              "value": "서울서비스 담당"
+            },
+            {
+              "op": "contains",
+              "field": "memo",
+              "value": "서비스"
+            }
+          ]
+        },
+        {
+          "op": "contains",
+          "field": "memo",
+          "value": "푸른달"
+        }
+      ]
+    },
+    "index": 15
+  },
+  {
+    "name": "zero_and_common2",
+    "node": {
+      "all": [
+        {
+          "op": "eq",
+          "field": "company",
+          "value": "서울서비스 담당"
+        },
+        {
+          "op": "contains",
+          "field": "company",
+          "value": "물류"
+        }
+      ]
+    },
+    "index": 18
+  },
+  {
+    "name": "zero_and_common3",
+    "node": {
+      "all": [
+        {
+          "op": "eq",
+          "field": "company",
+          "value": "서울서비스 담당"
+        },
+        {
+          "op": "contains",
+          "field": "company",
+          "value": "물류"
+        },
+        {
+          "op": "contains",
+          "field": "memo",
+          "value": "서비스"
+        }
+      ]
+    },
+    "index": 19
+  },
+  {
+    "name": "or4",
+    "node": {
+      "any": [
+        {
+          "op": "eq",
+          "field": "company",
+          "value": "서울서비스 담당"
+        },
+        {
+          "op": "contains",
+          "field": "memo",
+          "value": "푸른달"
+        },
+        {
+          "op": "eq",
+          "field": "phone",
+          "value": "42-5748-1542"
+        },
+        {
+          "op": "contains",
+          "field": "name",
+          "value": "pshxt"
+        }
+      ]
+    },
+    "index": 25
+  },
+  {
+    "name": "or5",
+    "node": {
+      "any": [
+        {
+          "op": "eq",
+          "field": "company",
+          "value": "서울서비스 담당"
+        },
+        {
+          "op": "contains",
+          "field": "memo",
+          "value": "푸른달"
+        },
+        {
+          "op": "eq",
+          "field": "phone",
+          "value": "42-5748-1542"
+        },
+        {
+          "op": "contains",
+          "field": "name",
+          "value": "pshxt"
+        },
+        {
+          "op": "contains",
+          "field": "address",
+          "value": "세종대로"
+        }
+      ]
+    },
+    "index": 26
+  },
+  {
+    "name": "or6",
+    "node": {
+      "any": [
+        {
+          "op": "eq",
+          "field": "company",
+          "value": "서울서비스 담당"
+        },
+        {
+          "op": "contains",
+          "field": "memo",
+          "value": "푸른달"
+        },
+        {
+          "op": "eq",
+          "field": "phone",
+          "value": "42-5748-1542"
+        },
+        {
+          "op": "contains",
+          "field": "name",
+          "value": "pshxt"
+        },
+        {
+          "op": "contains",
+          "field": "address",
+          "value": "세종대로"
+        },
+        {
+          "op": "endsWith",
+          "field": "email",
+          "value": "biz.test"
+        }
+      ]
+    },
+    "index": 27
+  },
+  {
+    "name": "and2_or_and2",
+    "node": {
+      "any": [
+        {
+          "all": [
+            {
+              "op": "eq",
+              "field": "company",
+              "value": "서울서비스 담당"
+            },
+            {
+              "op": "contains",
+              "field": "memo",
+              "value": "서비스"
+            }
+          ]
+        },
+        {
+          "all": [
+            {
+              "op": "contains",
+              "field": "address",
+              "value": "서울"
+            },
+            {
+              "op": "contains",
+              "field": "memo",
+              "value": "상담"
+            }
+          ]
+        }
+      ]
+    },
+    "index": 28
+  },
+  {
+    "name": "or2_and_or2",
+    "node": {
+      "all": [
+        {
+          "any": [
+            {
+              "op": "eq",
+              "field": "company",
+              "value": "서울서비스 담당"
+            },
+            {
+              "op": "contains",
+              "field": "memo",
+              "value": "푸른달"
+            }
+          ]
+        },
+        {
+          "any": [
+            {
+              "op": "contains",
+              "field": "address",
+              "value": "서울"
+            },
+            {
+              "op": "contains",
+              "field": "email",
+              "value": "service"
+            }
+          ]
+        }
+      ]
+    },
+    "index": 29
+  },
+  {
+    "name": "and3_or_rare",
+    "node": {
+      "any": [
+        {
+          "all": [
+            {
+              "op": "eq",
+              "field": "company",
+              "value": "서울서비스 담당"
+            },
+            {
+              "op": "contains",
+              "field": "memo",
+              "value": "서비스"
+            },
+            {
+              "op": "contains",
+              "field": "address",
+              "value": "서울"
+            }
+          ]
+        },
+        {
+          "op": "contains",
+          "field": "memo",
+          "value": "푸른달"
+        }
+      ]
+    },
+    "index": 30
+  },
+  {
+    "name": "nested3",
+    "node": {
+      "all": [
+        {
+          "any": [
+            {
+              "all": [
+                {
+                  "op": "eq",
+                  "field": "company",
+                  "value": "서울서비스 담당"
+                },
+                {
+                  "op": "contains",
+                  "field": "memo",
+                  "value": "서비스"
+                }
+              ]
+            },
+            {
+              "all": [
+                {
+                  "op": "contains",
+                  "field": "address",
+                  "value": "서울"
+                },
+                {
+                  "op": "contains",
+                  "field": "email",
+                  "value": "test"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "any": [
+            {
+              "op": "contains",
+              "field": "phone",
+              "value": "-5"
+            },
+            {
+              "op": "contains",
+              "field": "name",
+              "value": "민서"
+            }
+          ]
+        }
+      ]
+    },
+    "index": 31
+  },
+  {
+    "name": "exact_mid",
+    "node": {
+      "op": "eq",
+      "field": "company",
+      "value": "서울서비스 중앙지사"
+    },
+    "index": 32
+  }
+]

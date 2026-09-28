@@ -1,0 +1,191 @@
+{
+  "rows": 20000,
+  "exactness": [],
+  "capacity": [
+    {
+      "length": 15,
+      "B_stamps": 91,
+      "B_bytes": 728,
+      "w2_stamps_lengths2to2": 14,
+      "w2_bytes_with_position": 140,
+      "w2_stamps_wOnly": 14,
+      "w3_stamps_lengths2to3": 27,
+      "w3_bytes_with_position": 270,
+      "w3_stamps_wOnly": 13,
+      "w4_stamps_lengths2to4": 39,
+      "w4_bytes_with_position": 390,
+      "w4_stamps_wOnly": 12,
+      "w8_stamps_lengths2to8": 77,
+      "w8_bytes_with_position": 770,
+      "w8_stamps_wOnly": 8
+    },
+    {
+      "length": 28,
+      "B_stamps": 182,
+      "B_bytes": 1456,
+      "w2_stamps_lengths2to2": 27,
+      "w2_bytes_with_position": 270,
+      "w2_stamps_wOnly": 27,
+      "w3_stamps_lengths2to3": 53,
+      "w3_bytes_with_position": 530,
+      "w3_stamps_wOnly": 26,
+      "w4_stamps_lengths2to4": 78,
+      "w4_bytes_with_position": 780,
+      "w4_stamps_wOnly": 25,
+      "w8_stamps_lengths2to8": 168,
+      "w8_bytes_with_position": 1680,
+      "w8_stamps_wOnly": 21
+    },
+    {
+      "length": 500,
+      "B_stamps": 3486,
+      "B_bytes": 27888,
+      "w2_stamps_lengths2to2": 499,
+      "w2_bytes_with_position": 4990,
+      "w2_stamps_wOnly": 499,
+      "w3_stamps_lengths2to3": 997,
+      "w3_bytes_with_position": 9970,
+      "w3_stamps_wOnly": 498,
+      "w4_stamps_lengths2to4": 1494,
+      "w4_bytes_with_position": 14940,
+      "w4_stamps_wOnly": 497,
+      "w8_stamps_lengths2to8": 3472,
+      "w8_bytes_with_position": 34720,
+      "w8_stamps_wOnly": 493
+    },
+    {
+      "length": 1000,
+      "B_stamps": 6986,
+      "B_bytes": 55888,
+      "w2_stamps_lengths2to2": 999,
+      "w2_bytes_with_position": 9990,
+      "w2_stamps_wOnly": 999,
+      "w3_stamps_lengths2to3": 1997,
+      "w3_bytes_with_position": 19970,
+      "w3_stamps_wOnly": 998,
+      "w4_stamps_lengths2to4": 2994,
+      "w4_bytes_with_position": 29940,
+      "w4_stamps_wOnly": 997,
+      "w8_stamps_lengths2to8": 6972,
+      "w8_bytes_with_position": 69720,
+      "w8_stamps_wOnly": 993
+    }
+  ],
+  "attack": [
+    {
+      "dataset": "nsmc-review",
+      "rows": 19893,
+      "queryModel": "pieces drawn proportional to frequency in a disjoint reference half, lengths 2..4",
+      "checkpoints": [
+        {
+          "queries": 100,
+          "distinctQueried": 100,
+          "positional_charCoveragePct": 7.71,
+          "positional_run8Pct": 0.4,
+          "positional_fullPct": 0.065,
+          "rowsWithAnyQueriedPiecePct": 51.82,
+          "presenceOnly_run8Pct": 0,
+          "note": "presence-only designs (B, D, C, A±FP) reveal the set of rows containing each queried piece but no position: stitching is not possible; the positional design also reveals where."
+        },
+        {
+          "queries": 1000,
+          "distinctQueried": 965,
+          "positional_charCoveragePct": 30.45,
+          "positional_run8Pct": 7.92,
+          "positional_fullPct": 0.985,
+          "rowsWithAnyQueriedPiecePct": 91.28,
+          "presenceOnly_run8Pct": 0,
+          "note": "presence-only designs (B, D, C, A±FP) reveal the set of rows containing each queried piece but no position: stitching is not possible; the positional design also reveals where."
+        },
+        {
+          "queries": 10000,
+          "distinctQueried": 8507,
+          "positional_charCoveragePct": 66.28,
+          "positional_run8Pct": 54.84,
+          "positional_fullPct": 8.023,
+          "rowsWithAnyQueriedPiecePct": 98.37,
+          "presenceOnly_run8Pct": 0,
+          "note": "presence-only designs (B, D, C, A±FP) reveal the set of rows containing each queried piece but no position: stitching is not possible; the positional design also reveals where."
+        }
+      ]
+    },
+    {
+      "dataset": "fixture-memo",
+      "rows": 20000,
+      "queryModel": "pieces drawn proportional to frequency in a disjoint reference half, lengths 2..4",
+      "checkpoints": [
+        {
+          "queries": 100,
+          "distinctQueried": 88,
+          "positional_charCoveragePct": 63.65,
+          "positional_run8Pct": 34.27,
+          "positional_fullPct": 0.01,
+          "rowsWithAnyQueriedPiecePct": 99.9,
+          "presenceOnly_run8Pct": 0,
+          "note": "presence-only designs (B, D, C, A±FP) reveal the set of rows containing each queried piece but no position: stitching is not possible; the positional design also reveals where."
+        },
+        {
+          "queries": 1000,
+          "distinctQueried": 548,
+          "positional_charCoveragePct": 72.74,
+          "positional_run8Pct": 51.41,
+          "positional_fullPct": 0.435,
+          "rowsWithAnyQueriedPiecePct": 99.93,
+          "presenceOnly_run8Pct": 0,
+          "note": "presence-only designs (B, D, C, A±FP) reveal the set of rows containing each queried piece but no position: stitching is not possible; the positional design also reveals where."
+        },
+        {
+          "queries": 10000,
+          "distinctQueried": 3524,
+          "positional_charCoveragePct": 93.34,
+          "positional_run8Pct": 94.58,
+          "positional_fullPct": 40.885,
+          "rowsWithAnyQueriedPiecePct": 100,
+          "presenceOnly_run8Pct": 0,
+          "note": "presence-only designs (B, D, C, A±FP) reveal the set of rows containing each queried piece but no position: stitching is not possible; the positional design also reveals where."
+        }
+      ]
+    },
+    {
+      "dataset": "fixture-address",
+      "rows": 20000,
+      "queryModel": "pieces drawn proportional to frequency in a disjoint reference half, lengths 2..4",
+      "checkpoints": [
+        {
+          "queries": 100,
+          "distinctQueried": 88,
+          "positional_charCoveragePct": 84.72,
+          "positional_run8Pct": 75.36,
+          "positional_fullPct": 6.77,
+          "rowsWithAnyQueriedPiecePct": 100,
+          "presenceOnly_run8Pct": 0,
+          "note": "presence-only designs (B, D, C, A±FP) reveal the set of rows containing each queried piece but no position: stitching is not possible; the positional design also reveals where."
+        },
+        {
+          "queries": 1000,
+          "distinctQueried": 418,
+          "positional_charCoveragePct": 98.8,
+          "positional_run8Pct": 100,
+          "positional_fullPct": 83,
+          "rowsWithAnyQueriedPiecePct": 100,
+          "presenceOnly_run8Pct": 0,
+          "note": "presence-only designs (B, D, C, A±FP) reveal the set of rows containing each queried piece but no position: stitching is not possible; the positional design also reveals where."
+        },
+        {
+          "queries": 10000,
+          "distinctQueried": 1522,
+          "positional_charCoveragePct": 100,
+          "positional_run8Pct": 100,
+          "positional_fullPct": 100,
+          "rowsWithAnyQueriedPiecePct": 100,
+          "presenceOnly_run8Pct": 0,
+          "note": "presence-only designs (B, D, C, A±FP) reveal the set of rows containing each queried piece but no position: stitching is not possible; the positional design also reveals where."
+        }
+      ]
+    }
+  ],
+  "notes": [
+    "Backup-only: positional stamps are salted per (row, field) and carry no cross-row information; the retained 16-bit candidate tokens leak exactly as A/B (mission-1 and unified numbers apply). Known rows do not help the log attack (piece keys stay secret), so the positional attack is independent of the 0.01/0.1/1 % levels.",
+    "Stamps modeled as collision-free labels (64-bit sha256 truncation: per-check collision 2^-64)."
+  ]
+}

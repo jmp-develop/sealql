@@ -1,0 +1,50 @@
+// Merges out/m2-*.json into bench/results/2026-09-29-mongo2/{mongo2-measure.json, mongo2-tables.md}
+import fs from 'fs';
+const R = 'D:/Projects/Private/sealql/bench/results/2026-09-29-mongo2/';
+const load = JSON.parse(fs.readFileSync('out/m2-load.json', 'utf8')), m = JSON.parse(fs.readFileSync('out/m2-measure.json', 'utf8'));
+const PN = fs.existsSync('out/m2-plain-n.json') ? JSON.parse(fs.readFileSync('out/m2-plain-n.json', 'utf8')) : null;
+const combo = JSON.parse(fs.readFileSync('out/m2-combo.json', 'utf8')), lockLog = fs.readFileSync('out/m2-lock.log', 'utf8').trim();
+const { batches, ...loadSum } = load;
+fs.writeFileSync(R + 'mongo2-measure.json', JSON.stringify({ load: loadSum, loadBatches: batches, measure: m, comboCheck: combo, lockLog }, null, 1));
+const f = (x, d = 1) => x == null ? '-' : Number(x).toFixed(d), r = (a, b) => a == null || b == null ? '-' : (a / b).toFixed(1) + '×';
+const L = [];
+L.push('# MongoDB 8.2.12 Queryable Encryption 재측정 (mongo2)', '');
+L.push(`측정 ${m.at}. mongod 8.2.12 Community, 1노드 레플리카셋 rs0(127.0.0.1:27117), Node 드라이버 mongodb 7.6.0 + mongodb-client-encryption 7.2.1, 명시적 암호화(\`ClientEncryption.encrypt\` + \`bypassQueryAnalysis\`), contention 8, 기본 write concern. 데이터는 PostgreSQL \`research_u.customers_plain\`의 정규화 값(\`*_norm\`, id 순)을 읽기 전용으로 내보낸 것(\`bench/research-mongo2/export.ts\`). 문서 \`_id\` = id 순번(1부터). 모든 측정은 QE에 적재된 앞 N건과 평문의 \`_id ≤ N\` 같은 행에서 한다.`, '');
+L.push(`반복: 예열 ${m.warm}회 + 교차 ${m.runs}회 중앙값(ms). ${m.warm === 2 && m.runs === 7 ? '' : '**시간 부족으로 예열 1 + 3회로 줄였다.** '}QE 시간은 질의 페이로드 생성(클라이언트 암호화) 포함, 목록은 \`find().sort({_id:1}).limit(300)\` + 드라이버 자동 복호화 포함. 측정 잠금: 획득 ${m.lockAcquired}, 해제 ${m.lockReleased}, 대기 ${f(m.lockWaitMs / 1000)} s.`, '');
+L.push('## 표 1. 적재', '');
+L.push('| 항목 | 값 |', '|---|---|');
+L.push(`| QE 적재 N (시간 제한 내) | ${load.N} (마지막 _id ${load.qeMaxN}, countDocuments ${load.qeCount}) |`);
+L.push(`| QE docs/s | ${f(load.qeDocsPerSec)} (4개 연결 병렬, insertMany 500) |`);
+L.push(`| QE 벽시계 | ${f(load.qeWallMs / 1000)} s |`);
+L.push(`| 평문 100,000건 적재 | ${f(load.plainLoadMs / 1000, 2)} s = ${f(load.plainDocsPerSec, 0)} docs/s (연결 1개, insertMany 500 순차) + 단일 필드 인덱스 4개 ${f(load.plainIndexMs / 1000, 2)} s |`);
+L.push(`| 60 코드포인트 절단 (100,000건 중) | memo ${load.truncated.memo}건, address ${load.truncated.address}건 (평문·QE 모두 절단) |`);
+L.push(`| 시간 제한 | 지시는 22분, 마감 때문에 약 9.5분으로 줄임 (시작 ${load.at}, 새 배치 발행 정지 2026-09-28T20:40:00Z; 앞선 두 적재 시도는 셸 kill이 Volta node.exe를 못 죽여 서로 겹쳐서 ~20:30에 모두 중단하고 컬렉션을 지운 뒤 새로 적재, 진행 중 배치는 완료까지 기다림 → 앞 N건이 연속) |`);
+L.push(`| PostgreSQL 측정 겹침 | ${lockLog.replace(/\n/g, ' / ')} |`, '');
+L.push('## 표 2. 저장 공간 (collStats storageStats)', '');
+L.push('| 컬렉션 | count | size B | storageSize B | totalIndexSize B | size B/문서 | 평문 대비(논리) |', '|---|---|---|---|---|---|---|');
+const S = m.storage, pd = S.plain.size / S.plain.count;
+for (const [k, s] of Object.entries(S)) L.push(`| mongo2.${k} | ${s.count} | ${s.size} | ${s.storageSize} | ${s.totalIndexSize} | ${f(s.size / s.count)} | ${k === 'plain' ? '1×' : (s.size / s.count / pd).toFixed(1) + '× (자기 count 기준)'} |`);
+const qeAll = ['qe', 'enxcol_.qe.esc', 'enxcol_.qe.ecoc'].reduce((a, k) => a + S[k].size, 0) / S.qe.count;
+const qeDisk = ['qe', 'enxcol_.qe.esc', 'enxcol_.qe.ecoc'].reduce((a, k) => a + S[k].storageSize + S[k].totalIndexSize, 0) / S.qe.count, plDisk = (S.plain.storageSize + S.plain.totalIndexSize) / S.plain.count;
+L.push(`| **QE 합계(qe+esc+ecoc) / QE 문서** | ${S.qe.count} | - | - | - | ${f(qeAll, 0)} | **${(qeAll / pd).toFixed(1)}×** (디스크 storageSize+index: ${f(qeDisk, 0)} B/문서 대 평문 ${f(plDisk, 0)} = ${(qeDisk / plDisk).toFixed(1)}×) |`, '');
+L.push(`평문 컬렉션은 100,000건 전체(인덱스 company, phone, name, email)라 문서당 값으로 비교한다. ESC 문서 수 / QE 문서 = ${f(S['enxcol_.qe.esc'].count / S.qe.count)}.`, '');
+L.push('## 표 3. 질의별', '');
+L.push('| 조건 전문 | 실제 일치(평문 count, 앞 N건) | MongoDB 평문 count ms | MongoDB QE count ms (배) | MongoDB 평문 목록300 ms | MongoDB QE 목록300 ms (배) | 지원 여부/비고 | 태그 수(explain) | 평문 N건 복사본 count ms (QE 배) | 평문 N건 복사본 목록300 ms (QE 배) |', '|---|---|---|---|---|---|---|---|---|---|');
+const tagFor = { eq_company_1: m.explain.company, 'sub_memo_서비스': m.explain['memo_서비스'] };
+for (const c of m.cases) {
+  const t = tagFor[c.name]; const tag = t ? `${t.tags.join('/')} (count explain)` : '미수집';
+  if (!c.supported) { const pn0 = PN?.cases[c.name]; L.push(`| ${c.cond} | ${c.plainCount} | - | - | - | - | MongoDB 미지원: ${c.error} | - | ${pn0 ? f(pn0.countMs, 2) : '-'} | ${pn0 ? f(pn0.listMs, 2) : '-'} |`); continue; }
+  const pn = PN?.cases[c.name]; const ok = c.countEqual && c.listEqual ? `지원, count·목록 평문과 일치 (목록 ${c.listLen}행)` : `**불일치** count ${c.qeCount} 대 ${c.plainCount}, 목록 일치 ${c.listEqual}`;
+  L.push(`| ${c.cond} | ${c.plainCount} | ${f(c.plainCountMs, 2)} | ${f(c.qeCountMs, 2)} (${r(c.qeCountMs, c.plainCountMs)}) | ${f(c.plainListMs, 2)} | ${f(c.qeListMs, 2)} (${r(c.qeListMs, c.plainListMs)}) | ${ok} | ${tag} | ${pn ? f(pn.countMs, 2) + ' (' + r(c.qeCountMs, pn.countMs) + ')' : '미측정'} | ${pn ? f(pn.listMs, 2) + ' (' + r(c.qeListMs, pn.listMs) + ')' : '미측정'} |`);
+}
+L.push('| name / phone / email / company의 포함(contains) | - | - | - | - | - | MongoDB 미지원 (equality-only field) | - | - | - |');
+L.push(`| memo / address의 startsWith / endsWith | - | - | - | - | - | MongoDB 미지원 with this config: 서버가 한 필드에 substringPreview와 prefixPreview/suffixPreview 결합을 거부 ("${combo['substring+prefix']}"; 3종 결합은 "${combo['substring+prefix+suffix']}"; prefix+suffix 2종만은 ${combo['prefix+suffix']}) | - | - | - |`, '');
+L.push('질의 값은 저장 정규화와 같게 공백을 뺀 값을 쓴다(company "서울서비스 담당" → "서울서비스담당", "서울서비스 중앙지사" → "서울서비스중앙지사"). 평문 contains는 인덱스 없는 `$regex`(전체 스캔), 평문 exact는 단일 필드 인덱스. **"MongoDB 평문" 열은 100,000건 평문 컬렉션에 `_id ≤ N` 조건을 더한 값**이라 인덱스가 N 밖의 행까지 읽는다(예: company 인덱스 키 28,331개). 그래서 앞 N건만 복사한 `mongo2.plain_n`(같은 인덱스)에서 평문만 다시 잰 값을 마지막 두 열에 둔다(QE와 교차하지 않고 연속 측정, 같은 반복 횟수). ' + (PN ? '복사본 측정: ' + PN.lockAcquired + ' ~ ' + PN.lockReleased + ', count ' + PN.count : '복사본 측정 안 함') + '. memo는 60 코드포인트로 절단된 값 기준이라 PostgreSQL 전문 memo와 일치 수가 다를 수 있다(절단 memo 100,000건 중 ' + load.truncated.memo + '건).', '');
+L.push('## explain (executionStats, QE count)', '');
+L.push('| 질의 | 재작성된 `$in` 태그 수 | totalKeysExamined | totalDocsExamined | executionTimeMillis |', '|---|---|---|---|---|');
+for (const [k, e] of Object.entries(m.explain)) L.push(`| ${k === 'company' ? 'company = "서울서비스담당"' : 'memo ∋ "서비스"'} | ${e.tags.join('/')} | ${e.keysExamined} | ${e.docsExamined} | ${e.executionTimeMillis} |`);
+L.push('', '서버는 암호화 조건을 `__safeContent__: {$elemMatch: {$in: [태그...]}}`로 바꾼다. 태그 수는 그 값(또는 부분 문자열)을 가진 적재 문서 수와 같고, 일치 문서를 모두 읽는다.', '');
+L.push('스크립트: `bench/research-mongo2/` (export.ts, m2-lib.mjs, m2-load.mjs, m2-measure.mjs, m2-combo.mjs, m2-report.mjs, m2-continue.mjs; mongo 스크립트는 실험 디렉터리의 lib.mjs·node_modules로 실행).');
+L.push("", "측정 뒤 mongod는 켜 둔 채 `m2-continue.mjs`로 QE 적재를 100,000건까지 이어 간다(실험 디렉터리의 load-continue.log). 이 문서의 값은 모두 위 N건 기준이다.");
+fs.writeFileSync(R + 'mongo2-tables.md', L.join('\n') + '\n');
+console.log(L.join('\n'));

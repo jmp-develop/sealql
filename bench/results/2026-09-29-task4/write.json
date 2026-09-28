@@ -1,0 +1,2219 @@
+{
+  "started": "2026-09-28T22:24:28.932Z",
+  "paths": [
+    "plain",
+    "A",
+    "final"
+  ],
+  "warmups": 2,
+  "repeats": 7,
+  "firstSeparate": true,
+  "source": "same fixture IDs and normalized values; resets copy native ciphertext read-only",
+  "deleteA": "public API has no sealed.delete; Drizzle parent delete + FK cascade within transaction",
+  "transactions": "one row per committed transaction",
+  "cases": [
+    {
+      "op": "insert",
+      "rows": 300,
+      "first": {
+        "plain": {
+          "totalMs": 148.05680000000007,
+          "dbMs": 128.88330000000258,
+          "preMs": 0.275600000000054,
+          "postMs": 0.012200000000007094,
+          "betweenMs": 18.885699999997428,
+          "sqlCalls": 900,
+          "appRows": 0,
+          "medianRowMs": 0.45309999999994943,
+          "wallMsPerRow": 0.4935226666666669,
+          "rowsPerSecond": 2026.249385371019
+        },
+        "A": {
+          "totalMs": 2013.9618,
+          "dbMs": 337.9416999999962,
+          "preMs": 19.07319999999993,
+          "postMs": 0.018100000000231375,
+          "betweenMs": 1656.9288000000038,
+          "sqlCalls": 1200,
+          "appRows": 300,
+          "medianRowMs": 6.5733000000000175,
+          "wallMsPerRow": 6.7132060000000005,
+          "rowsPerSecond": 148.96012426849407
+        },
+        "final": {
+          "totalMs": 2761.2523000000006,
+          "dbMs": 369.6566999999932,
+          "preMs": 14.264100000000326,
+          "postMs": 0.012500000000727596,
+          "betweenMs": 2377.3190000000063,
+          "sqlCalls": 1200,
+          "appRows": 0,
+          "medianRowMs": 9.095100000000457,
+          "wallMsPerRow": 9.204174333333334,
+          "rowsPerSecond": 108.64635585817346
+        }
+      },
+      "runs": {
+        "plain": [
+          {
+            "totalMs": 123.92659999999887,
+            "dbMs": 114.74049999998351,
+            "preMs": 0.01599999999962165,
+            "postMs": 0.005100000000311411,
+            "betweenMs": 9.165000000015425,
+            "sqlCalls": 900,
+            "appRows": 0,
+            "medianRowMs": 0.37150000000110595,
+            "wallMsPerRow": 0.4130886666666629,
+            "rowsPerSecond": 2420.7877889008714
+          },
+          {
+            "totalMs": 172.26570000000356,
+            "dbMs": 157.79180000003544,
+            "preMs": 0.019100000001344597,
+            "postMs": 0.010300000001734588,
+            "betweenMs": 14.444499999965046,
+            "sqlCalls": 900,
+            "appRows": 0,
+            "medianRowMs": 0.5492000000012922,
+            "wallMsPerRow": 0.5742190000000119,
+            "rowsPerSecond": 1741.4958404371491
+          },
+          {
+            "totalMs": 144.79179999999906,
+            "dbMs": 134.15840000000753,
+            "preMs": 0.010600000001431908,
+            "postMs": 0.00999999999839929,
+            "betweenMs": 10.612799999991694,
+            "sqlCalls": 900,
+            "appRows": 0,
+            "medianRowMs": 0.4614000000001397,
+            "wallMsPerRow": 0.4826393333333302,
+            "rowsPerSecond": 2071.9405380691583
+          },
+          {
+            "totalMs": 119.45760000000155,
+            "dbMs": 111.11539999999877,
+            "preMs": 0.010200000000622822,
+            "postMs": 0.005099999998492422,
+            "betweenMs": 8.326900000003661,
+            "sqlCalls": 900,
+            "appRows": 0,
+            "medianRowMs": 0.35720000000219443,
+            "wallMsPerRow": 0.39819200000000515,
+            "rowsPerSecond": 2511.351307911729
+          },
+          {
+            "totalMs": 112.6906999999992,
+            "dbMs": 104.64150000004156,
+            "preMs": 0.012199999997392297,
+            "postMs": 0.005299999997077975,
+            "betweenMs": 8.031699999963166,
+            "sqlCalls": 900,
+            "appRows": 0,
+            "medianRowMs": 0.3382000000055996,
+            "wallMsPerRow": 0.375635666666664,
+            "rowsPerSecond": 2662.15401980822
+          },
+          {
+            "totalMs": 121.56519999999728,
+            "dbMs": 113.69269999998505,
+            "preMs": 0.011100000003352761,
+            "postMs": 0.00789999999688007,
+            "betweenMs": 7.853500000011991,
+            "sqlCalls": 900,
+            "appRows": 0,
+            "medianRowMs": 0.3790999999982887,
+            "wallMsPerRow": 0.40521733333332427,
+            "rowsPerSecond": 2467.8115118471956
+          },
+          {
+            "totalMs": 120.40799999999581,
+            "dbMs": 111.91910000005737,
+            "preMs": 0.013500000000931323,
+            "postMs": 0.005099999994854443,
+            "betweenMs": 8.470299999942654,
+            "sqlCalls": 900,
+            "appRows": 0,
+            "medianRowMs": 0.3713999999963562,
+            "wallMsPerRow": 0.401359999999986,
+            "rowsPerSecond": 2491.5288020730386
+          }
+        ],
+        "A": [
+          {
+            "totalMs": 1745.8958000000002,
+            "dbMs": 294.67919999994774,
+            "preMs": 5.559600000000501,
+            "postMs": 0.010500000000320142,
+            "betweenMs": 1445.6465000000517,
+            "sqlCalls": 1200,
+            "appRows": 300,
+            "medianRowMs": 5.739600000000792,
+            "wallMsPerRow": 5.819652666666667,
+            "rowsPerSecond": 171.83156062349195
+          },
+          {
+            "totalMs": 1771.2731999999996,
+            "dbMs": 297.1761999999653,
+            "preMs": 5.49369999999908,
+            "postMs": 0.009799999999813735,
+            "betweenMs": 1468.5935000000354,
+            "sqlCalls": 1200,
+            "appRows": 300,
+            "medianRowMs": 5.852900000001682,
+            "wallMsPerRow": 5.9042439999999985,
+            "rowsPerSecond": 169.36969407090902
+          },
+          {
+            "totalMs": 1871.5328999999983,
+            "dbMs": 337.8117000000093,
+            "preMs": 6.021699999997509,
+            "postMs": 0.008099999999103602,
+            "betweenMs": 1527.6913999999924,
+            "sqlCalls": 1200,
+            "appRows": 300,
+            "medianRowMs": 6.13839999999982,
+            "wallMsPerRow": 6.238442999999995,
+            "rowsPerSecond": 160.29640729265313
+          },
+          {
+            "totalMs": 1702.8538999999982,
+            "dbMs": 275.5798000000759,
+            "preMs": 5.132200000000012,
+            "postMs": 0.01629999999931897,
+            "betweenMs": 1422.125599999923,
+            "sqlCalls": 1200,
+            "appRows": 300,
+            "medianRowMs": 5.572799999998097,
+            "wallMsPerRow": 5.676179666666661,
+            "rowsPerSecond": 176.17483214502448
+          },
+          {
+            "totalMs": 1683.9055999999982,
+            "dbMs": 267.72350000021106,
+            "preMs": 5.330499999996391,
+            "postMs": 0.008099999999103602,
+            "betweenMs": 1410.8434999997917,
+            "sqlCalls": 1200,
+            "appRows": 300,
+            "medianRowMs": 5.509999999994761,
+            "wallMsPerRow": 5.613018666666661,
+            "rowsPerSecond": 178.1572553710851
+          },
+          {
+            "totalMs": 1780.4243999999962,
+            "dbMs": 301.1020000002318,
+            "preMs": 5.2972999999983585,
+            "postMs": 0.009200000000419095,
+            "betweenMs": 1474.0158999997657,
+            "sqlCalls": 1200,
+            "appRows": 300,
+            "medianRowMs": 5.775399999998626,
+            "wallMsPerRow": 5.9347479999999875,
+            "rowsPerSecond": 168.4991511012771
+          },
+          {
+            "totalMs": 1694.465999999993,
+            "dbMs": 276.9212000001644,
+            "preMs": 6.005699999994249,
+            "postMs": 0.017099999997299165,
+            "betweenMs": 1411.5219999998371,
+            "sqlCalls": 1200,
+            "appRows": 300,
+            "medianRowMs": 5.558600000003935,
+            "wallMsPerRow": 5.648219999999977,
+            "rowsPerSecond": 177.04692805875197
+          }
+        ],
+        "final": [
+          {
+            "totalMs": 2659.558799999999,
+            "dbMs": 354.0837999999785,
+            "preMs": 9.321799999997893,
+            "postMs": 0.007999999997991836,
+            "betweenMs": 2296.1452000000245,
+            "sqlCalls": 1200,
+            "appRows": 0,
+            "medianRowMs": 8.719700000001467,
+            "wallMsPerRow": 8.865195999999996,
+            "rowsPerSecond": 112.80066453127493
+          },
+          {
+            "totalMs": 2779.4543999999987,
+            "dbMs": 379.39099999995597,
+            "preMs": 9.412700000000768,
+            "postMs": 0.014400000000023283,
+            "betweenMs": 2390.636300000042,
+            "sqlCalls": 1200,
+            "appRows": 0,
+            "medianRowMs": 9.106100000000879,
+            "wallMsPerRow": 9.264847999999995,
+            "rowsPerSecond": 107.9348522501395
+          },
+          {
+            "totalMs": 2586.1093999999975,
+            "dbMs": 335.44380000002275,
+            "preMs": 9.27679999999964,
+            "postMs": 0.005099999998492422,
+            "betweenMs": 2241.3836999999767,
+            "sqlCalls": 1200,
+            "appRows": 0,
+            "medianRowMs": 8.497400000000198,
+            "wallMsPerRow": 8.620364666666658,
+            "rowsPerSecond": 116.00437321019764
+          },
+          {
+            "totalMs": 2721.7524999999987,
+            "dbMs": 368.03869999996823,
+            "preMs": 9.155099999999948,
+            "postMs": 0.005699999994249083,
+            "betweenMs": 2344.5530000000363,
+            "sqlCalls": 1200,
+            "appRows": 0,
+            "medianRowMs": 8.974700000006123,
+            "wallMsPerRow": 9.07250833333333,
+            "rowsPerSecond": 110.22310074115855
+          },
+          {
+            "totalMs": 2569.378300000004,
+            "dbMs": 328.15699999994104,
+            "preMs": 8.729299999999057,
+            "postMs": 0.008000000001629815,
+            "betweenMs": 2232.484000000062,
+            "sqlCalls": 1200,
+            "appRows": 0,
+            "medianRowMs": 8.470000000001164,
+            "wallMsPerRow": 8.564594333333346,
+            "rowsPerSecond": 116.75976246860945
+          },
+          {
+            "totalMs": 2558.0702999999994,
+            "dbMs": 315.84209999991435,
+            "preMs": 8.110399999997753,
+            "postMs": 0.006099999998696148,
+            "betweenMs": 2234.1117000000886,
+            "sqlCalls": 1200,
+            "appRows": 0,
+            "medianRowMs": 8.41189999999915,
+            "wallMsPerRow": 8.526900999999999,
+            "rowsPerSecond": 117.27590129168853
+          },
+          {
+            "totalMs": 2698.890599999999,
+            "dbMs": 364.2493000000395,
+            "preMs": 8.78360000000248,
+            "postMs": 0.010600000001431908,
+            "betweenMs": 2325.8470999999554,
+            "sqlCalls": 1200,
+            "appRows": 0,
+            "medianRowMs": 8.863799999999173,
+            "wallMsPerRow": 8.996301999999996,
+            "rowsPerSecond": 111.156784198663
+          }
+        ]
+      },
+      "summary": {
+        "plain": {
+          "totalMs": 121.56519999999728,
+          "dbMs": 113.69269999998505,
+          "preMs": 0.012199999997392297,
+          "postMs": 0.005299999997077975,
+          "betweenMs": 8.470299999942654,
+          "sqlCalls": 900,
+          "appRows": 0,
+          "medianRowMs": 0.37150000000110595,
+          "wallMsPerRow": 0.40521733333332427,
+          "rowsPerSecond": 2467.8115118471956,
+          "ratio": 1
+        },
+        "A": {
+          "totalMs": 1745.8958000000002,
+          "dbMs": 294.67919999994774,
+          "preMs": 5.49369999999908,
+          "postMs": 0.009799999999813735,
+          "betweenMs": 1445.6465000000517,
+          "sqlCalls": 1200,
+          "appRows": 300,
+          "medianRowMs": 5.739600000000792,
+          "wallMsPerRow": 5.819652666666667,
+          "rowsPerSecond": 171.83156062349195,
+          "ratio": 14.361805845752233
+        },
+        "final": {
+          "totalMs": 2659.558799999999,
+          "dbMs": 354.0837999999785,
+          "preMs": 9.155099999999948,
+          "postMs": 0.007999999997991836,
+          "betweenMs": 2296.1452000000245,
+          "sqlCalls": 1200,
+          "appRows": 0,
+          "medianRowMs": 8.719700000001467,
+          "wallMsPerRow": 8.865195999999996,
+          "rowsPerSecond": 112.80066453127493,
+          "ratio": 21.877632743581703
+        }
+      }
+    },
+    {
+      "op": "update",
+      "rows": 100,
+      "first": {
+        "plain": {
+          "totalMs": 41.63900000000285,
+          "dbMs": 39.823700000022654,
+          "preMs": 0.00900000000547152,
+          "postMs": 0.0051000000021304,
+          "betweenMs": 1.8011999999725958,
+          "sqlCalls": 300,
+          "appRows": 0,
+          "medianRowMs": 0.38079999999899883,
+          "wallMsPerRow": 0.4163900000000285,
+          "rowsPerSecond": 2401.5946588533143
+        },
+        "A": {
+          "totalMs": 213.13059999999678,
+          "dbMs": 89.39900000014313,
+          "preMs": 1.470099999998638,
+          "postMs": 0.006799999995564576,
+          "betweenMs": 122.25469999985944,
+          "sqlCalls": 400,
+          "appRows": 100,
+          "medianRowMs": 2.094700000001467,
+          "wallMsPerRow": 2.131305999999968,
+          "rowsPerSecond": 469.19588271229713
+        },
+        "final": {
+          "totalMs": 216.59500000000116,
+          "dbMs": 76.716000000044,
+          "preMs": 3.1008999999976368,
+          "postMs": 0.004700000004959293,
+          "betweenMs": 136.77339999995456,
+          "sqlCalls": 400,
+          "appRows": 0,
+          "medianRowMs": 1.9751999999934924,
+          "wallMsPerRow": 2.1659500000000116,
+          "rowsPerSecond": 461.69117477319173
+        }
+      },
+      "runs": {
+        "plain": [
+          {
+            "totalMs": 44.45650000000023,
+            "dbMs": 42.32059999994817,
+            "preMs": 0.005299999997077975,
+            "postMs": 0.005000000004656613,
+            "betweenMs": 2.1256000000503263,
+            "sqlCalls": 300,
+            "appRows": 0,
+            "medianRowMs": 0.42700000000331784,
+            "wallMsPerRow": 0.4445650000000023,
+            "rowsPerSecond": 2249.389853002361
+          },
+          {
+            "totalMs": 41.764900000001944,
+            "dbMs": 39.86720000000787,
+            "preMs": 0.0054000000018277206,
+            "postMs": 0.005900000003748573,
+            "betweenMs": 1.8863999999884982,
+            "sqlCalls": 300,
+            "appRows": 0,
+            "medianRowMs": 0.39359999999578577,
+            "wallMsPerRow": 0.4176490000000194,
+            "rowsPerSecond": 2394.3550684904153
+          },
+          {
+            "totalMs": 41.12299999999959,
+            "dbMs": 39.253799999904004,
+            "preMs": 0.004600000000209548,
+            "postMs": 0.0051000000021304,
+            "betweenMs": 1.8595000000932487,
+            "sqlCalls": 300,
+            "appRows": 0,
+            "medianRowMs": 0.3881000000037602,
+            "wallMsPerRow": 0.41122999999999593,
+            "rowsPerSecond": 2431.7292026360187
+          },
+          {
+            "totalMs": 43.79170000000158,
+            "dbMs": 41.63290000005509,
+            "preMs": 0.011900000004970934,
+            "postMs": 0.0051000000021304,
+            "betweenMs": 2.141799999939394,
+            "sqlCalls": 300,
+            "appRows": 0,
+            "medianRowMs": 0.4216999999989639,
+            "wallMsPerRow": 0.4379170000000158,
+            "rowsPerSecond": 2283.537748020661
+          },
+          {
+            "totalMs": 44.78989999999612,
+            "dbMs": 42.599299999914365,
+            "preMs": 0.005799999998998828,
+            "postMs": 0.00789999999688007,
+            "betweenMs": 2.1769000000858796,
+            "sqlCalls": 300,
+            "appRows": 0,
+            "medianRowMs": 0.42389999999431893,
+            "wallMsPerRow": 0.44789899999996124,
+            "rowsPerSecond": 2232.646199254936
+          },
+          {
+            "totalMs": 41.589899999999034,
+            "dbMs": 39.69689999997354,
+            "preMs": 0.0054000000018277206,
+            "postMs": 0.005199999999604188,
+            "betweenMs": 1.882400000024063,
+            "sqlCalls": 300,
+            "appRows": 0,
+            "medianRowMs": 0.39940000000206055,
+            "wallMsPerRow": 0.41589899999999036,
+            "rowsPerSecond": 2404.4299216877735
+          },
+          {
+            "totalMs": 47.62029999999504,
+            "dbMs": 45.34799999990355,
+            "preMs": 0.006099999998696148,
+            "postMs": 0.011299999998300336,
+            "betweenMs": 2.2549000000944943,
+            "sqlCalls": 300,
+            "appRows": 0,
+            "medianRowMs": 0.45410000000265427,
+            "wallMsPerRow": 0.4762029999999504,
+            "rowsPerSecond": 2099.9447714527296
+          }
+        ],
+        "A": [
+          {
+            "totalMs": 207.02209999999468,
+            "dbMs": 87.03259999991133,
+            "preMs": 0.9863999999943189,
+            "postMs": 0.01029999999445863,
+            "betweenMs": 118.99280000009458,
+            "sqlCalls": 400,
+            "appRows": 100,
+            "medianRowMs": 1.99210000000312,
+            "wallMsPerRow": 2.070220999999947,
+            "rowsPerSecond": 483.04021647931586
+          },
+          {
+            "totalMs": 220.31139999999868,
+            "dbMs": 95.8540000001376,
+            "preMs": 1.098999999994703,
+            "postMs": 0.007100000002537854,
+            "betweenMs": 123.35129999986384,
+            "sqlCalls": 400,
+            "appRows": 100,
+            "medianRowMs": 2.1074999999982538,
+            "wallMsPerRow": 2.203113999999987,
+            "rowsPerSecond": 453.9029755155684
+          },
+          {
+            "totalMs": 196.66459999999643,
+            "dbMs": 83.72569999989355,
+            "preMs": 0.9985999999989872,
+            "postMs": 0.006999999997788109,
+            "betweenMs": 111.9333000001061,
+            "sqlCalls": 400,
+            "appRows": 100,
+            "medianRowMs": 1.9515000000028522,
+            "wallMsPerRow": 1.9666459999999644,
+            "rowsPerSecond": 508.47991961950356
+          },
+          {
+            "totalMs": 187.32979999999952,
+            "dbMs": 78.37859999994544,
+            "preMs": 0.9763999999995576,
+            "postMs": 0.008300000001327135,
+            "betweenMs": 107.9665000000532,
+            "sqlCalls": 400,
+            "appRows": 100,
+            "medianRowMs": 1.8385999999954947,
+            "wallMsPerRow": 1.8732979999999952,
+            "rowsPerSecond": 533.817897632946
+          },
+          {
+            "totalMs": 230.36929999999847,
+            "dbMs": 100.95990000002348,
+            "preMs": 2.832399999999325,
+            "postMs": 0.006099999998696148,
+            "betweenMs": 126.57089999997697,
+            "sqlCalls": 400,
+            "appRows": 100,
+            "medianRowMs": 2.213499999998021,
+            "wallMsPerRow": 2.303692999999985,
+            "rowsPerSecond": 434.0856181791613
+          },
+          {
+            "totalMs": 185.94989999999962,
+            "dbMs": 75.23290000002453,
+            "preMs": 0.9498999999996158,
+            "postMs": 0.0063999999983934686,
+            "betweenMs": 109.76069999997708,
+            "sqlCalls": 400,
+            "appRows": 100,
+            "medianRowMs": 1.710399999996298,
+            "wallMsPerRow": 1.8594989999999962,
+            "rowsPerSecond": 537.7792620485421
+          },
+          {
+            "totalMs": 190.29260000000068,
+            "dbMs": 76.99729999995907,
+            "preMs": 0.9688000000023749,
+            "postMs": 0.005600000004051253,
+            "betweenMs": 112.32090000003518,
+            "sqlCalls": 400,
+            "appRows": 100,
+            "medianRowMs": 1.7877000000007683,
+            "wallMsPerRow": 1.9029260000000068,
+            "rowsPerSecond": 525.5065094491307
+          }
+        ],
+        "final": [
+          {
+            "totalMs": 272.10349999999744,
+            "dbMs": 109.43410000000586,
+            "preMs": 3.8280999999988126,
+            "postMs": 0.011199999993550591,
+            "betweenMs": 158.83009999999922,
+            "sqlCalls": 400,
+            "appRows": 0,
+            "medianRowMs": 2.564299999998184,
+            "wallMsPerRow": 2.7210349999999743,
+            "rowsPerSecond": 367.5072169229758
+          },
+          {
+            "totalMs": 249.03390000000218,
+            "dbMs": 95.89640000001964,
+            "preMs": 1.4544000000023516,
+            "postMs": 0.005199999999604188,
+            "betweenMs": 151.67789999998058,
+            "sqlCalls": 400,
+            "appRows": 0,
+            "medianRowMs": 2.376699999993434,
+            "wallMsPerRow": 2.490339000000022,
+            "rowsPerSecond": 401.55175660823335
+          },
+          {
+            "totalMs": 212.6452999999965,
+            "dbMs": 74.45720000004803,
+            "preMs": 3.278200000000652,
+            "postMs": 0.004899999999906868,
+            "betweenMs": 134.9049999999479,
+            "sqlCalls": 400,
+            "appRows": 0,
+            "medianRowMs": 1.914199999999255,
+            "wallMsPerRow": 2.126452999999965,
+            "rowsPerSecond": 470.2666835335728
+          },
+          {
+            "totalMs": 217.25240000000485,
+            "dbMs": 77.66549999997369,
+            "preMs": 3.4645999999993364,
+            "postMs": 0.004700000004959293,
+            "betweenMs": 136.11760000002687,
+            "sqlCalls": 400,
+            "appRows": 0,
+            "medianRowMs": 1.9858000000022002,
+            "wallMsPerRow": 2.1725240000000485,
+            "rowsPerSecond": 460.2941095242113
+          },
+          {
+            "totalMs": 260.62719999999536,
+            "dbMs": 104.84390000002895,
+            "preMs": 1.8108999999967637,
+            "postMs": 0.011200000000826549,
+            "betweenMs": 153.9611999999688,
+            "sqlCalls": 400,
+            "appRows": 0,
+            "medianRowMs": 2.4791999999943073,
+            "wallMsPerRow": 2.6062719999999535,
+            "rowsPerSecond": 383.68980674312496
+          },
+          {
+            "totalMs": 221.9262000000017,
+            "dbMs": 80.02880000002187,
+            "preMs": 1.428299999999581,
+            "postMs": 0.004899999999906868,
+            "betweenMs": 140.46419999998034,
+            "sqlCalls": 400,
+            "appRows": 0,
+            "medianRowMs": 2.049299999998766,
+            "wallMsPerRow": 2.219262000000017,
+            "rowsPerSecond": 450.6002445858093
+          },
+          {
+            "totalMs": 218.7135999999955,
+            "dbMs": 79.11689999992814,
+            "preMs": 1.4036999999952968,
+            "postMs": 0.005099999994854443,
+            "betweenMs": 138.1879000000772,
+            "sqlCalls": 400,
+            "appRows": 0,
+            "medianRowMs": 2.007100000002538,
+            "wallMsPerRow": 2.187135999999955,
+            "rowsPerSecond": 457.21893837421203
+          }
+        ]
+      },
+      "summary": {
+        "plain": {
+          "totalMs": 43.79170000000158,
+          "dbMs": 41.63290000005509,
+          "preMs": 0.0054000000018277206,
+          "postMs": 0.005199999999604188,
+          "betweenMs": 2.1256000000503263,
+          "sqlCalls": 300,
+          "appRows": 0,
+          "medianRowMs": 0.4216999999989639,
+          "wallMsPerRow": 0.4379170000000158,
+          "rowsPerSecond": 2283.537748020661,
+          "ratio": 1
+        },
+        "A": {
+          "totalMs": 196.66459999999643,
+          "dbMs": 83.72569999989355,
+          "preMs": 0.9863999999943189,
+          "postMs": 0.006999999997788109,
+          "betweenMs": 112.32090000003518,
+          "sqlCalls": 400,
+          "appRows": 100,
+          "medianRowMs": 1.9515000000028522,
+          "wallMsPerRow": 1.9666459999999644,
+          "rowsPerSecond": 508.47991961950356,
+          "ratio": 4.490910377993759
+        },
+        "final": {
+          "totalMs": 221.9262000000017,
+          "dbMs": 80.02880000002187,
+          "preMs": 1.8108999999967637,
+          "postMs": 0.005099999994854443,
+          "betweenMs": 140.46419999998034,
+          "sqlCalls": 400,
+          "appRows": 0,
+          "medianRowMs": 2.049299999998766,
+          "wallMsPerRow": 2.219262000000017,
+          "rowsPerSecond": 450.6002445858093,
+          "ratio": 5.067768549747867
+        }
+      }
+    },
+    {
+      "op": "delete",
+      "rows": 100,
+      "first": {
+        "plain": {
+          "totalMs": 33.97269999999844,
+          "dbMs": 32.13719999998284,
+          "preMs": 0.007099999995261896,
+          "postMs": 0.005499999999301508,
+          "betweenMs": 1.8229000000210362,
+          "sqlCalls": 300,
+          "appRows": 0,
+          "medianRowMs": 0.32549999999901047,
+          "wallMsPerRow": 0.3397269999999844,
+          "rowsPerSecond": 2943.5399600268624
+        },
+        "A": {
+          "totalMs": 39.01269999999931,
+          "dbMs": 33.56570000012289,
+          "preMs": 0.09719999999651918,
+          "postMs": 0.006000000001222361,
+          "betweenMs": 5.343799999878684,
+          "sqlCalls": 300,
+          "appRows": 0,
+          "medianRowMs": 0.36200000000098953,
+          "wallMsPerRow": 0.3901269999999931,
+          "rowsPerSecond": 2563.2678589280354
+        },
+        "final": {
+          "totalMs": 38.149499999999534,
+          "dbMs": 36.00099999988015,
+          "preMs": 0.011500000000523869,
+          "postMs": 0.0054000000018277206,
+          "betweenMs": 2.1316000001170323,
+          "sqlCalls": 300,
+          "appRows": 0,
+          "medianRowMs": 0.3418999999994412,
+          "wallMsPerRow": 0.38149499999999537,
+          "rowsPerSecond": 2621.266333765874
+        }
+      },
+      "runs": {
+        "plain": [
+          {
+            "totalMs": 34.55079999999725,
+            "dbMs": 32.691999999988184,
+            "preMs": 0.006600000000617001,
+            "postMs": 0.005599999996775296,
+            "betweenMs": 1.8466000000116765,
+            "sqlCalls": 300,
+            "appRows": 0,
+            "medianRowMs": 0.31850000000122236,
+            "wallMsPerRow": 0.3455079999999725,
+            "rowsPerSecond": 2894.2889889672006
+          },
+          {
+            "totalMs": 36.977099999996426,
+            "dbMs": 35.013199999964854,
+            "preMs": 0.006900000000314321,
+            "postMs": 0.005099999994854443,
+            "betweenMs": 1.951900000036403,
+            "sqlCalls": 300,
+            "appRows": 0,
+            "medianRowMs": 0.3429000000032829,
+            "wallMsPerRow": 0.36977099999996427,
+            "rowsPerSecond": 2704.376492478038
+          },
+          {
+            "totalMs": 34.61670000000595,
+            "dbMs": 32.92000000000553,
+            "preMs": 0.007799999999406282,
+            "postMs": 0.0062000000034458935,
+            "betweenMs": 1.682699999997567,
+            "sqlCalls": 300,
+            "appRows": 0,
+            "medianRowMs": 0.32999999999447027,
+            "wallMsPerRow": 0.3461670000000595,
+            "rowsPerSecond": 2888.779115282012
+          },
+          {
+            "totalMs": 38.47910000000411,
+            "dbMs": 36.46980000000622,
+            "preMs": 0.008699999998498242,
+            "postMs": 0.006600000000617001,
+            "betweenMs": 1.9939999999987776,
+            "sqlCalls": 300,
+            "appRows": 0,
+            "medianRowMs": 0.36569999999483116,
+            "wallMsPerRow": 0.3847910000000411,
+            "rowsPerSecond": 2598.813381809588
+          },
+          {
+            "totalMs": 38.04820000000473,
+            "dbMs": 36.056199999991804,
+            "preMs": 0.012100000007194467,
+            "postMs": 0.006500000003143214,
+            "betweenMs": 1.9734000000025844,
+            "sqlCalls": 300,
+            "appRows": 0,
+            "medianRowMs": 0.3462999999974272,
+            "wallMsPerRow": 0.3804820000000473,
+            "rowsPerSecond": 2628.245225792221
+          },
+          {
+            "totalMs": 35.4320000000007,
+            "dbMs": 33.611500000006345,
+            "preMs": 0.012599999994563404,
+            "postMs": 0.005800000006274786,
+            "betweenMs": 1.8020999999935157,
+            "sqlCalls": 300,
+            "appRows": 0,
+            "medianRowMs": 0.33039999999891734,
+            "wallMsPerRow": 0.35432000000000696,
+            "rowsPerSecond": 2822.307518627174
+          },
+          {
+            "totalMs": 34.67369999999937,
+            "dbMs": 32.94069999988278,
+            "preMs": 0.006999999997788109,
+            "postMs": 0.005900000003748573,
+            "betweenMs": 1.7201000001150533,
+            "sqlCalls": 300,
+            "appRows": 0,
+            "medianRowMs": 0.3247999999948661,
+            "wallMsPerRow": 0.3467369999999937,
+            "rowsPerSecond": 2884.0302592455323
+          }
+        ],
+        "A": [
+          {
+            "totalMs": 37.72389999999723,
+            "dbMs": 32.81560000009631,
+            "preMs": 0.04200000000128057,
+            "postMs": 0.003700000001117587,
+            "betweenMs": 4.862599999898521,
+            "sqlCalls": 300,
+            "appRows": 0,
+            "medianRowMs": 0.3548000000009779,
+            "wallMsPerRow": 0.3772389999999723,
+            "rowsPerSecond": 2650.8393882924975
+          },
+          {
+            "totalMs": 42.66619999999966,
+            "dbMs": 36.85150000009162,
+            "preMs": 0.0452000000004773,
+            "postMs": 0.005799999998998828,
+            "betweenMs": 5.763699999908567,
+            "sqlCalls": 300,
+            "appRows": 0,
+            "medianRowMs": 0.39970000000175787,
+            "wallMsPerRow": 0.4266619999999966,
+            "rowsPerSecond": 2343.7756350460268
+          },
+          {
+            "totalMs": 40.60649999999441,
+            "dbMs": 34.76029999995808,
+            "preMs": 0.047299999998358544,
+            "postMs": 0.005199999999604188,
+            "betweenMs": 5.7937000000383705,
+            "sqlCalls": 300,
+            "appRows": 0,
+            "medianRowMs": 0.38180000000284053,
+            "wallMsPerRow": 0.4060649999999441,
+            "rowsPerSecond": 2462.6599189788276
+          },
+          {
+            "totalMs": 39.19840000000113,
+            "dbMs": 33.74179999997432,
+            "preMs": 0.04579999999987194,
+            "postMs": 0.004300000000512227,
+            "betweenMs": 5.406500000026426,
+            "sqlCalls": 300,
+            "appRows": 0,
+            "medianRowMs": 0.3660999999992782,
+            "wallMsPerRow": 0.39198400000001127,
+            "rowsPerSecond": 2551.124535695261
+          },
+          {
+            "totalMs": 38.70850000000064,
+            "dbMs": 33.217099999965285,
+            "preMs": 0.06539999999949941,
+            "postMs": 0.004600000000209548,
+            "betweenMs": 5.421400000035646,
+            "sqlCalls": 300,
+            "appRows": 0,
+            "medianRowMs": 0.3609999999971478,
+            "wallMsPerRow": 0.3870850000000064,
+            "rowsPerSecond": 2583.411912112284
+          },
+          {
+            "totalMs": 48.89910000000236,
+            "dbMs": 42.03989999998157,
+            "preMs": 0.0503000000026077,
+            "postMs": 0.005300000004353933,
+            "betweenMs": 6.80360000001383,
+            "sqlCalls": 300,
+            "appRows": 0,
+            "medianRowMs": 0.4449000000022352,
+            "wallMsPerRow": 0.48899100000002366,
+            "rowsPerSecond": 2045.0274135923803
+          },
+          {
+            "totalMs": 38.8752999999997,
+            "dbMs": 33.41709999999148,
+            "preMs": 0.050899999994726386,
+            "postMs": 0.00480000000243308,
+            "betweenMs": 5.4025000000110595,
+            "sqlCalls": 300,
+            "appRows": 0,
+            "medianRowMs": 0.36450000000331784,
+            "wallMsPerRow": 0.38875299999999696,
+            "rowsPerSecond": 2572.3274161228537
+          }
+        ],
+        "final": [
+          {
+            "totalMs": 37.45810000000347,
+            "dbMs": 35.53489999996236,
+            "preMs": 0.010000000002037268,
+            "postMs": 0.005000000004656613,
+            "betweenMs": 1.9082000000344124,
+            "sqlCalls": 300,
+            "appRows": 0,
+            "medianRowMs": 0.33849999999802094,
+            "wallMsPerRow": 0.3745810000000347,
+            "rowsPerSecond": 2669.649555102654
+          },
+          {
+            "totalMs": 36.826099999998405,
+            "dbMs": 34.786700000018755,
+            "preMs": 0.011399999995774124,
+            "postMs": 0.007799999999406282,
+            "betweenMs": 2.02019999998447,
+            "sqlCalls": 300,
+            "appRows": 0,
+            "medianRowMs": 0.3401999999987311,
+            "wallMsPerRow": 0.3682609999999841,
+            "rowsPerSecond": 2715.465390035989
+          },
+          {
+            "totalMs": 37.596700000001874,
+            "dbMs": 35.58220000000438,
+            "preMs": 0.011599999997997656,
+            "postMs": 0.006800000002840534,
+            "betweenMs": 1.9960999999966589,
+            "sqlCalls": 300,
+            "appRows": 0,
+            "medianRowMs": 0.34279999999853317,
+            "wallMsPerRow": 0.37596700000001876,
+            "rowsPerSecond": 2659.807908672703
+          },
+          {
+            "totalMs": 34.02300000000105,
+            "dbMs": 32.45550000001094,
+            "preMs": 0.012800000004062895,
+            "postMs": 0.005700000001525041,
+            "betweenMs": 1.5489999999845168,
+            "sqlCalls": 300,
+            "appRows": 0,
+            "medianRowMs": 0.3202999999994063,
+            "wallMsPerRow": 0.34023000000001047,
+            "rowsPerSecond": 2939.1881962201132
+          },
+          {
+            "totalMs": 38.65149999999994,
+            "dbMs": 36.70329999999376,
+            "preMs": 0.00909999999566935,
+            "postMs": 0.010999999998603016,
+            "betweenMs": 1.9281000000119093,
+            "sqlCalls": 300,
+            "appRows": 0,
+            "medianRowMs": 0.3510999999998603,
+            "wallMsPerRow": 0.38651499999999944,
+            "rowsPerSecond": 2587.2217119646107
+          },
+          {
+            "totalMs": 34.44369999999617,
+            "dbMs": 32.89540000016859,
+            "preMs": 0.007299999997485429,
+            "postMs": 0.005799999998998828,
+            "betweenMs": 1.535199999831093,
+            "sqlCalls": 300,
+            "appRows": 0,
+            "medianRowMs": 0.33009999999922,
+            "wallMsPerRow": 0.3444369999999617,
+            "rowsPerSecond": 2903.2885549465104
+          },
+          {
+            "totalMs": 38.0512000000017,
+            "dbMs": 36.109300000003714,
+            "preMs": 0.012000000002444722,
+            "postMs": 0.008999999998195563,
+            "betweenMs": 1.9208999999973457,
+            "sqlCalls": 300,
+            "appRows": 0,
+            "medianRowMs": 0.3720000000030268,
+            "wallMsPerRow": 0.380512000000017,
+            "rowsPerSecond": 2628.0380119416873
+          }
+        ]
+      },
+      "summary": {
+        "plain": {
+          "totalMs": 35.4320000000007,
+          "dbMs": 33.611500000006345,
+          "preMs": 0.007799999999406282,
+          "postMs": 0.005900000003748573,
+          "betweenMs": 1.8466000000116765,
+          "sqlCalls": 300,
+          "appRows": 0,
+          "medianRowMs": 0.33039999999891734,
+          "wallMsPerRow": 0.35432000000000696,
+          "rowsPerSecond": 2822.307518627174,
+          "ratio": 1
+        },
+        "A": {
+          "totalMs": 39.19840000000113,
+          "dbMs": 33.74179999997432,
+          "preMs": 0.047299999998358544,
+          "postMs": 0.00480000000243308,
+          "betweenMs": 5.421400000035646,
+          "sqlCalls": 300,
+          "appRows": 0,
+          "medianRowMs": 0.3660999999992782,
+          "wallMsPerRow": 0.39198400000001127,
+          "rowsPerSecond": 2551.124535695261,
+          "ratio": 1.106299390381586
+        },
+        "final": {
+          "totalMs": 37.45810000000347,
+          "dbMs": 35.53489999996236,
+          "preMs": 0.011399999995774124,
+          "postMs": 0.006800000002840534,
+          "betweenMs": 1.9208999999973457,
+          "sqlCalls": 300,
+          "appRows": 0,
+          "medianRowMs": 0.3401999999987311,
+          "wallMsPerRow": 0.3745810000000347,
+          "rowsPerSecond": 2669.649555102654,
+          "ratio": 1.0571827726349834
+        }
+      }
+    }
+  ],
+  "checks": [
+    {
+      "op": "insert",
+      "round": -3,
+      "path": "plain",
+      "rows": 300,
+      "valuesChecked": 1800,
+      "counts": [
+        83,
+        125
+      ],
+      "tagRowsMatch": true,
+      "unmodifiedFieldsInvariant": false
+    },
+    {
+      "op": "insert",
+      "round": -3,
+      "path": "A",
+      "rows": 300,
+      "valuesChecked": 1800,
+      "counts": [
+        83,
+        125
+      ],
+      "tagRowsMatch": true,
+      "unmodifiedFieldsInvariant": false
+    },
+    {
+      "op": "insert",
+      "round": -3,
+      "path": "final",
+      "rows": 300,
+      "valuesChecked": 1800,
+      "counts": [
+        83,
+        125
+      ],
+      "tagRowsMatch": true,
+      "unmodifiedFieldsInvariant": false
+    },
+    {
+      "op": "insert",
+      "round": -2,
+      "path": "A",
+      "rows": 300,
+      "valuesChecked": 1800,
+      "counts": [
+        83,
+        125
+      ],
+      "tagRowsMatch": true,
+      "unmodifiedFieldsInvariant": false
+    },
+    {
+      "op": "insert",
+      "round": -2,
+      "path": "final",
+      "rows": 300,
+      "valuesChecked": 1800,
+      "counts": [
+        83,
+        125
+      ],
+      "tagRowsMatch": true,
+      "unmodifiedFieldsInvariant": false
+    },
+    {
+      "op": "insert",
+      "round": -2,
+      "path": "plain",
+      "rows": 300,
+      "valuesChecked": 1800,
+      "counts": [
+        83,
+        125
+      ],
+      "tagRowsMatch": true,
+      "unmodifiedFieldsInvariant": false
+    },
+    {
+      "op": "insert",
+      "round": -1,
+      "path": "final",
+      "rows": 300,
+      "valuesChecked": 1800,
+      "counts": [
+        83,
+        125
+      ],
+      "tagRowsMatch": true,
+      "unmodifiedFieldsInvariant": false
+    },
+    {
+      "op": "insert",
+      "round": -1,
+      "path": "plain",
+      "rows": 300,
+      "valuesChecked": 1800,
+      "counts": [
+        83,
+        125
+      ],
+      "tagRowsMatch": true,
+      "unmodifiedFieldsInvariant": false
+    },
+    {
+      "op": "insert",
+      "round": -1,
+      "path": "A",
+      "rows": 300,
+      "valuesChecked": 1800,
+      "counts": [
+        83,
+        125
+      ],
+      "tagRowsMatch": true,
+      "unmodifiedFieldsInvariant": false
+    },
+    {
+      "op": "insert",
+      "round": 0,
+      "path": "plain",
+      "rows": 300,
+      "valuesChecked": 1800,
+      "counts": [
+        83,
+        125
+      ],
+      "tagRowsMatch": true,
+      "unmodifiedFieldsInvariant": false
+    },
+    {
+      "op": "insert",
+      "round": 0,
+      "path": "A",
+      "rows": 300,
+      "valuesChecked": 1800,
+      "counts": [
+        83,
+        125
+      ],
+      "tagRowsMatch": true,
+      "unmodifiedFieldsInvariant": false
+    },
+    {
+      "op": "insert",
+      "round": 0,
+      "path": "final",
+      "rows": 300,
+      "valuesChecked": 1800,
+      "counts": [
+        83,
+        125
+      ],
+      "tagRowsMatch": true,
+      "unmodifiedFieldsInvariant": false
+    },
+    {
+      "op": "insert",
+      "round": 1,
+      "path": "A",
+      "rows": 300,
+      "valuesChecked": 1800,
+      "counts": [
+        83,
+        125
+      ],
+      "tagRowsMatch": true,
+      "unmodifiedFieldsInvariant": false
+    },
+    {
+      "op": "insert",
+      "round": 1,
+      "path": "final",
+      "rows": 300,
+      "valuesChecked": 1800,
+      "counts": [
+        83,
+        125
+      ],
+      "tagRowsMatch": true,
+      "unmodifiedFieldsInvariant": false
+    },
+    {
+      "op": "insert",
+      "round": 1,
+      "path": "plain",
+      "rows": 300,
+      "valuesChecked": 1800,
+      "counts": [
+        83,
+        125
+      ],
+      "tagRowsMatch": true,
+      "unmodifiedFieldsInvariant": false
+    },
+    {
+      "op": "insert",
+      "round": 2,
+      "path": "final",
+      "rows": 300,
+      "valuesChecked": 1800,
+      "counts": [
+        83,
+        125
+      ],
+      "tagRowsMatch": true,
+      "unmodifiedFieldsInvariant": false
+    },
+    {
+      "op": "insert",
+      "round": 2,
+      "path": "plain",
+      "rows": 300,
+      "valuesChecked": 1800,
+      "counts": [
+        83,
+        125
+      ],
+      "tagRowsMatch": true,
+      "unmodifiedFieldsInvariant": false
+    },
+    {
+      "op": "insert",
+      "round": 2,
+      "path": "A",
+      "rows": 300,
+      "valuesChecked": 1800,
+      "counts": [
+        83,
+        125
+      ],
+      "tagRowsMatch": true,
+      "unmodifiedFieldsInvariant": false
+    },
+    {
+      "op": "insert",
+      "round": 3,
+      "path": "plain",
+      "rows": 300,
+      "valuesChecked": 1800,
+      "counts": [
+        83,
+        125
+      ],
+      "tagRowsMatch": true,
+      "unmodifiedFieldsInvariant": false
+    },
+    {
+      "op": "insert",
+      "round": 3,
+      "path": "A",
+      "rows": 300,
+      "valuesChecked": 1800,
+      "counts": [
+        83,
+        125
+      ],
+      "tagRowsMatch": true,
+      "unmodifiedFieldsInvariant": false
+    },
+    {
+      "op": "insert",
+      "round": 3,
+      "path": "final",
+      "rows": 300,
+      "valuesChecked": 1800,
+      "counts": [
+        83,
+        125
+      ],
+      "tagRowsMatch": true,
+      "unmodifiedFieldsInvariant": false
+    },
+    {
+      "op": "insert",
+      "round": 4,
+      "path": "A",
+      "rows": 300,
+      "valuesChecked": 1800,
+      "counts": [
+        83,
+        125
+      ],
+      "tagRowsMatch": true,
+      "unmodifiedFieldsInvariant": false
+    },
+    {
+      "op": "insert",
+      "round": 4,
+      "path": "final",
+      "rows": 300,
+      "valuesChecked": 1800,
+      "counts": [
+        83,
+        125
+      ],
+      "tagRowsMatch": true,
+      "unmodifiedFieldsInvariant": false
+    },
+    {
+      "op": "insert",
+      "round": 4,
+      "path": "plain",
+      "rows": 300,
+      "valuesChecked": 1800,
+      "counts": [
+        83,
+        125
+      ],
+      "tagRowsMatch": true,
+      "unmodifiedFieldsInvariant": false
+    },
+    {
+      "op": "insert",
+      "round": 5,
+      "path": "final",
+      "rows": 300,
+      "valuesChecked": 1800,
+      "counts": [
+        83,
+        125
+      ],
+      "tagRowsMatch": true,
+      "unmodifiedFieldsInvariant": false
+    },
+    {
+      "op": "insert",
+      "round": 5,
+      "path": "plain",
+      "rows": 300,
+      "valuesChecked": 1800,
+      "counts": [
+        83,
+        125
+      ],
+      "tagRowsMatch": true,
+      "unmodifiedFieldsInvariant": false
+    },
+    {
+      "op": "insert",
+      "round": 5,
+      "path": "A",
+      "rows": 300,
+      "valuesChecked": 1800,
+      "counts": [
+        83,
+        125
+      ],
+      "tagRowsMatch": true,
+      "unmodifiedFieldsInvariant": false
+    },
+    {
+      "op": "insert",
+      "round": 6,
+      "path": "plain",
+      "rows": 300,
+      "valuesChecked": 1800,
+      "counts": [
+        83,
+        125
+      ],
+      "tagRowsMatch": true,
+      "unmodifiedFieldsInvariant": false
+    },
+    {
+      "op": "insert",
+      "round": 6,
+      "path": "A",
+      "rows": 300,
+      "valuesChecked": 1800,
+      "counts": [
+        83,
+        125
+      ],
+      "tagRowsMatch": true,
+      "unmodifiedFieldsInvariant": false
+    },
+    {
+      "op": "insert",
+      "round": 6,
+      "path": "final",
+      "rows": 300,
+      "valuesChecked": 1800,
+      "counts": [
+        83,
+        125
+      ],
+      "tagRowsMatch": true,
+      "unmodifiedFieldsInvariant": false
+    },
+    {
+      "op": "update",
+      "round": -3,
+      "path": "plain",
+      "rows": 300,
+      "valuesChecked": 1800,
+      "counts": [
+        83,
+        117
+      ],
+      "tagRowsMatch": true,
+      "unmodifiedFieldsInvariant": true
+    },
+    {
+      "op": "update",
+      "round": -3,
+      "path": "A",
+      "rows": 300,
+      "valuesChecked": 1800,
+      "counts": [
+        83,
+        117
+      ],
+      "tagRowsMatch": true,
+      "unmodifiedFieldsInvariant": true
+    },
+    {
+      "op": "update",
+      "round": -3,
+      "path": "final",
+      "rows": 300,
+      "valuesChecked": 1800,
+      "counts": [
+        83,
+        117
+      ],
+      "tagRowsMatch": true,
+      "unmodifiedFieldsInvariant": true
+    },
+    {
+      "op": "update",
+      "round": -2,
+      "path": "A",
+      "rows": 300,
+      "valuesChecked": 1800,
+      "counts": [
+        83,
+        117
+      ],
+      "tagRowsMatch": true,
+      "unmodifiedFieldsInvariant": true
+    },
+    {
+      "op": "update",
+      "round": -2,
+      "path": "final",
+      "rows": 300,
+      "valuesChecked": 1800,
+      "counts": [
+        83,
+        117
+      ],
+      "tagRowsMatch": true,
+      "unmodifiedFieldsInvariant": true
+    },
+    {
+      "op": "update",
+      "round": -2,
+      "path": "plain",
+      "rows": 300,
+      "valuesChecked": 1800,
+      "counts": [
+        83,
+        117
+      ],
+      "tagRowsMatch": true,
+      "unmodifiedFieldsInvariant": true
+    },
+    {
+      "op": "update",
+      "round": -1,
+      "path": "final",
+      "rows": 300,
+      "valuesChecked": 1800,
+      "counts": [
+        83,
+        117
+      ],
+      "tagRowsMatch": true,
+      "unmodifiedFieldsInvariant": true
+    },
+    {
+      "op": "update",
+      "round": -1,
+      "path": "plain",
+      "rows": 300,
+      "valuesChecked": 1800,
+      "counts": [
+        83,
+        117
+      ],
+      "tagRowsMatch": true,
+      "unmodifiedFieldsInvariant": true
+    },
+    {
+      "op": "update",
+      "round": -1,
+      "path": "A",
+      "rows": 300,
+      "valuesChecked": 1800,
+      "counts": [
+        83,
+        117
+      ],
+      "tagRowsMatch": true,
+      "unmodifiedFieldsInvariant": true
+    },
+    {
+      "op": "update",
+      "round": 0,
+      "path": "plain",
+      "rows": 300,
+      "valuesChecked": 1800,
+      "counts": [
+        83,
+        117
+      ],
+      "tagRowsMatch": true,
+      "unmodifiedFieldsInvariant": true
+    },
+    {
+      "op": "update",
+      "round": 0,
+      "path": "A",
+      "rows": 300,
+      "valuesChecked": 1800,
+      "counts": [
+        83,
+        117
+      ],
+      "tagRowsMatch": true,
+      "unmodifiedFieldsInvariant": true
+    },
+    {
+      "op": "update",
+      "round": 0,
+      "path": "final",
+      "rows": 300,
+      "valuesChecked": 1800,
+      "counts": [
+        83,
+        117
+      ],
+      "tagRowsMatch": true,
+      "unmodifiedFieldsInvariant": true
+    },
+    {
+      "op": "update",
+      "round": 1,
+      "path": "A",
+      "rows": 300,
+      "valuesChecked": 1800,
+      "counts": [
+        83,
+        117
+      ],
+      "tagRowsMatch": true,
+      "unmodifiedFieldsInvariant": true
+    },
+    {
+      "op": "update",
+      "round": 1,
+      "path": "final",
+      "rows": 300,
+      "valuesChecked": 1800,
+      "counts": [
+        83,
+        117
+      ],
+      "tagRowsMatch": true,
+      "unmodifiedFieldsInvariant": true
+    },
+    {
+      "op": "update",
+      "round": 1,
+      "path": "plain",
+      "rows": 300,
+      "valuesChecked": 1800,
+      "counts": [
+        83,
+        117
+      ],
+      "tagRowsMatch": true,
+      "unmodifiedFieldsInvariant": true
+    },
+    {
+      "op": "update",
+      "round": 2,
+      "path": "final",
+      "rows": 300,
+      "valuesChecked": 1800,
+      "counts": [
+        83,
+        117
+      ],
+      "tagRowsMatch": true,
+      "unmodifiedFieldsInvariant": true
+    },
+    {
+      "op": "update",
+      "round": 2,
+      "path": "plain",
+      "rows": 300,
+      "valuesChecked": 1800,
+      "counts": [
+        83,
+        117
+      ],
+      "tagRowsMatch": true,
+      "unmodifiedFieldsInvariant": true
+    },
+    {
+      "op": "update",
+      "round": 2,
+      "path": "A",
+      "rows": 300,
+      "valuesChecked": 1800,
+      "counts": [
+        83,
+        117
+      ],
+      "tagRowsMatch": true,
+      "unmodifiedFieldsInvariant": true
+    },
+    {
+      "op": "update",
+      "round": 3,
+      "path": "plain",
+      "rows": 300,
+      "valuesChecked": 1800,
+      "counts": [
+        83,
+        117
+      ],
+      "tagRowsMatch": true,
+      "unmodifiedFieldsInvariant": true
+    },
+    {
+      "op": "update",
+      "round": 3,
+      "path": "A",
+      "rows": 300,
+      "valuesChecked": 1800,
+      "counts": [
+        83,
+        117
+      ],
+      "tagRowsMatch": true,
+      "unmodifiedFieldsInvariant": true
+    },
+    {
+      "op": "update",
+      "round": 3,
+      "path": "final",
+      "rows": 300,
+      "valuesChecked": 1800,
+      "counts": [
+        83,
+        117
+      ],
+      "tagRowsMatch": true,
+      "unmodifiedFieldsInvariant": true
+    },
+    {
+      "op": "update",
+      "round": 4,
+      "path": "A",
+      "rows": 300,
+      "valuesChecked": 1800,
+      "counts": [
+        83,
+        117
+      ],
+      "tagRowsMatch": true,
+      "unmodifiedFieldsInvariant": true
+    },
+    {
+      "op": "update",
+      "round": 4,
+      "path": "final",
+      "rows": 300,
+      "valuesChecked": 1800,
+      "counts": [
+        83,
+        117
+      ],
+      "tagRowsMatch": true,
+      "unmodifiedFieldsInvariant": true
+    },
+    {
+      "op": "update",
+      "round": 4,
+      "path": "plain",
+      "rows": 300,
+      "valuesChecked": 1800,
+      "counts": [
+        83,
+        117
+      ],
+      "tagRowsMatch": true,
+      "unmodifiedFieldsInvariant": true
+    },
+    {
+      "op": "update",
+      "round": 5,
+      "path": "final",
+      "rows": 300,
+      "valuesChecked": 1800,
+      "counts": [
+        83,
+        117
+      ],
+      "tagRowsMatch": true,
+      "unmodifiedFieldsInvariant": true
+    },
+    {
+      "op": "update",
+      "round": 5,
+      "path": "plain",
+      "rows": 300,
+      "valuesChecked": 1800,
+      "counts": [
+        83,
+        117
+      ],
+      "tagRowsMatch": true,
+      "unmodifiedFieldsInvariant": true
+    },
+    {
+      "op": "update",
+      "round": 5,
+      "path": "A",
+      "rows": 300,
+      "valuesChecked": 1800,
+      "counts": [
+        83,
+        117
+      ],
+      "tagRowsMatch": true,
+      "unmodifiedFieldsInvariant": true
+    },
+    {
+      "op": "update",
+      "round": 6,
+      "path": "plain",
+      "rows": 300,
+      "valuesChecked": 1800,
+      "counts": [
+        83,
+        117
+      ],
+      "tagRowsMatch": true,
+      "unmodifiedFieldsInvariant": true
+    },
+    {
+      "op": "update",
+      "round": 6,
+      "path": "A",
+      "rows": 300,
+      "valuesChecked": 1800,
+      "counts": [
+        83,
+        117
+      ],
+      "tagRowsMatch": true,
+      "unmodifiedFieldsInvariant": true
+    },
+    {
+      "op": "update",
+      "round": 6,
+      "path": "final",
+      "rows": 300,
+      "valuesChecked": 1800,
+      "counts": [
+        83,
+        117
+      ],
+      "tagRowsMatch": true,
+      "unmodifiedFieldsInvariant": true
+    },
+    {
+      "op": "delete",
+      "round": -3,
+      "path": "plain",
+      "rows": 200,
+      "valuesChecked": 1200,
+      "counts": [
+        57,
+        80
+      ],
+      "tagRowsMatch": true,
+      "unmodifiedFieldsInvariant": false
+    },
+    {
+      "op": "delete",
+      "round": -3,
+      "path": "A",
+      "rows": 200,
+      "valuesChecked": 1200,
+      "counts": [
+        57,
+        80
+      ],
+      "tagRowsMatch": true,
+      "unmodifiedFieldsInvariant": false
+    },
+    {
+      "op": "delete",
+      "round": -3,
+      "path": "final",
+      "rows": 200,
+      "valuesChecked": 1200,
+      "counts": [
+        57,
+        80
+      ],
+      "tagRowsMatch": true,
+      "unmodifiedFieldsInvariant": false
+    },
+    {
+      "op": "delete",
+      "round": -2,
+      "path": "A",
+      "rows": 200,
+      "valuesChecked": 1200,
+      "counts": [
+        57,
+        80
+      ],
+      "tagRowsMatch": true,
+      "unmodifiedFieldsInvariant": false
+    },
+    {
+      "op": "delete",
+      "round": -2,
+      "path": "final",
+      "rows": 200,
+      "valuesChecked": 1200,
+      "counts": [
+        57,
+        80
+      ],
+      "tagRowsMatch": true,
+      "unmodifiedFieldsInvariant": false
+    },
+    {
+      "op": "delete",
+      "round": -2,
+      "path": "plain",
+      "rows": 200,
+      "valuesChecked": 1200,
+      "counts": [
+        57,
+        80
+      ],
+      "tagRowsMatch": true,
+      "unmodifiedFieldsInvariant": false
+    },
+    {
+      "op": "delete",
+      "round": -1,
+      "path": "final",
+      "rows": 200,
+      "valuesChecked": 1200,
+      "counts": [
+        57,
+        80
+      ],
+      "tagRowsMatch": true,
+      "unmodifiedFieldsInvariant": false
+    },
+    {
+      "op": "delete",
+      "round": -1,
+      "path": "plain",
+      "rows": 200,
+      "valuesChecked": 1200,
+      "counts": [
+        57,
+        80
+      ],
+      "tagRowsMatch": true,
+      "unmodifiedFieldsInvariant": false
+    },
+    {
+      "op": "delete",
+      "round": -1,
+      "path": "A",
+      "rows": 200,
+      "valuesChecked": 1200,
+      "counts": [
+        57,
+        80
+      ],
+      "tagRowsMatch": true,
+      "unmodifiedFieldsInvariant": false
+    },
+    {
+      "op": "delete",
+      "round": 0,
+      "path": "plain",
+      "rows": 200,
+      "valuesChecked": 1200,
+      "counts": [
+        57,
+        80
+      ],
+      "tagRowsMatch": true,
+      "unmodifiedFieldsInvariant": false
+    },
+    {
+      "op": "delete",
+      "round": 0,
+      "path": "A",
+      "rows": 200,
+      "valuesChecked": 1200,
+      "counts": [
+        57,
+        80
+      ],
+      "tagRowsMatch": true,
+      "unmodifiedFieldsInvariant": false
+    },
+    {
+      "op": "delete",
+      "round": 0,
+      "path": "final",
+      "rows": 200,
+      "valuesChecked": 1200,
+      "counts": [
+        57,
+        80
+      ],
+      "tagRowsMatch": true,
+      "unmodifiedFieldsInvariant": false
+    },
+    {
+      "op": "delete",
+      "round": 1,
+      "path": "A",
+      "rows": 200,
+      "valuesChecked": 1200,
+      "counts": [
+        57,
+        80
+      ],
+      "tagRowsMatch": true,
+      "unmodifiedFieldsInvariant": false
+    },
+    {
+      "op": "delete",
+      "round": 1,
+      "path": "final",
+      "rows": 200,
+      "valuesChecked": 1200,
+      "counts": [
+        57,
+        80
+      ],
+      "tagRowsMatch": true,
+      "unmodifiedFieldsInvariant": false
+    },
+    {
+      "op": "delete",
+      "round": 1,
+      "path": "plain",
+      "rows": 200,
+      "valuesChecked": 1200,
+      "counts": [
+        57,
+        80
+      ],
+      "tagRowsMatch": true,
+      "unmodifiedFieldsInvariant": false
+    },
+    {
+      "op": "delete",
+      "round": 2,
+      "path": "final",
+      "rows": 200,
+      "valuesChecked": 1200,
+      "counts": [
+        57,
+        80
+      ],
+      "tagRowsMatch": true,
+      "unmodifiedFieldsInvariant": false
+    },
+    {
+      "op": "delete",
+      "round": 2,
+      "path": "plain",
+      "rows": 200,
+      "valuesChecked": 1200,
+      "counts": [
+        57,
+        80
+      ],
+      "tagRowsMatch": true,
+      "unmodifiedFieldsInvariant": false
+    },
+    {
+      "op": "delete",
+      "round": 2,
+      "path": "A",
+      "rows": 200,
+      "valuesChecked": 1200,
+      "counts": [
+        57,
+        80
+      ],
+      "tagRowsMatch": true,
+      "unmodifiedFieldsInvariant": false
+    },
+    {
+      "op": "delete",
+      "round": 3,
+      "path": "plain",
+      "rows": 200,
+      "valuesChecked": 1200,
+      "counts": [
+        57,
+        80
+      ],
+      "tagRowsMatch": true,
+      "unmodifiedFieldsInvariant": false
+    },
+    {
+      "op": "delete",
+      "round": 3,
+      "path": "A",
+      "rows": 200,
+      "valuesChecked": 1200,
+      "counts": [
+        57,
+        80
+      ],
+      "tagRowsMatch": true,
+      "unmodifiedFieldsInvariant": false
+    },
+    {
+      "op": "delete",
+      "round": 3,
+      "path": "final",
+      "rows": 200,
+      "valuesChecked": 1200,
+      "counts": [
+        57,
+        80
+      ],
+      "tagRowsMatch": true,
+      "unmodifiedFieldsInvariant": false
+    },
+    {
+      "op": "delete",
+      "round": 4,
+      "path": "A",
+      "rows": 200,
+      "valuesChecked": 1200,
+      "counts": [
+        57,
+        80
+      ],
+      "tagRowsMatch": true,
+      "unmodifiedFieldsInvariant": false
+    },
+    {
+      "op": "delete",
+      "round": 4,
+      "path": "final",
+      "rows": 200,
+      "valuesChecked": 1200,
+      "counts": [
+        57,
+        80
+      ],
+      "tagRowsMatch": true,
+      "unmodifiedFieldsInvariant": false
+    },
+    {
+      "op": "delete",
+      "round": 4,
+      "path": "plain",
+      "rows": 200,
+      "valuesChecked": 1200,
+      "counts": [
+        57,
+        80
+      ],
+      "tagRowsMatch": true,
+      "unmodifiedFieldsInvariant": false
+    },
+    {
+      "op": "delete",
+      "round": 5,
+      "path": "final",
+      "rows": 200,
+      "valuesChecked": 1200,
+      "counts": [
+        57,
+        80
+      ],
+      "tagRowsMatch": true,
+      "unmodifiedFieldsInvariant": false
+    },
+    {
+      "op": "delete",
+      "round": 5,
+      "path": "plain",
+      "rows": 200,
+      "valuesChecked": 1200,
+      "counts": [
+        57,
+        80
+      ],
+      "tagRowsMatch": true,
+      "unmodifiedFieldsInvariant": false
+    },
+    {
+      "op": "delete",
+      "round": 5,
+      "path": "A",
+      "rows": 200,
+      "valuesChecked": 1200,
+      "counts": [
+        57,
+        80
+      ],
+      "tagRowsMatch": true,
+      "unmodifiedFieldsInvariant": false
+    },
+    {
+      "op": "delete",
+      "round": 6,
+      "path": "plain",
+      "rows": 200,
+      "valuesChecked": 1200,
+      "counts": [
+        57,
+        80
+      ],
+      "tagRowsMatch": true,
+      "unmodifiedFieldsInvariant": false
+    },
+    {
+      "op": "delete",
+      "round": 6,
+      "path": "A",
+      "rows": 200,
+      "valuesChecked": 1200,
+      "counts": [
+        57,
+        80
+      ],
+      "tagRowsMatch": true,
+      "unmodifiedFieldsInvariant": false
+    },
+    {
+      "op": "delete",
+      "round": 6,
+      "path": "final",
+      "rows": 200,
+      "valuesChecked": 1200,
+      "counts": [
+        57,
+        80
+      ],
+      "tagRowsMatch": true,
+      "unmodifiedFieldsInvariant": false
+    }
+  ],
+  "pid": 55152,
+  "finished": "2026-09-28T22:25:32.174Z"
+}

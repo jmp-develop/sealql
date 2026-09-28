@@ -1,0 +1,323 @@
+{
+  "at": "2026-09-28T22:22:52.883Z",
+  "tables": [
+    {
+      "schema": "research_u",
+      "table": "customers_plain",
+      "rows": 100000,
+      "scopeCount": 1,
+      "scopes": [
+        {
+          "scope_id": "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa",
+          "rows": 100000
+        }
+      ],
+      "sizes": {
+        "heap": "20054016",
+        "indexes": "50388992",
+        "total": "70483968"
+      },
+      "indexes": [
+        {
+          "indexname": "customers_plain_address_norm_idx",
+          "indexdef": "CREATE INDEX customers_plain_address_norm_idx ON research_u.customers_plain USING btree (address_norm)"
+        },
+        {
+          "indexname": "customers_plain_address_norm_idx1",
+          "indexdef": "CREATE INDEX customers_plain_address_norm_idx1 ON research_u.customers_plain USING gin (address_norm gin_trgm_ops)"
+        },
+        {
+          "indexname": "customers_plain_company_norm_idx",
+          "indexdef": "CREATE INDEX customers_plain_company_norm_idx ON research_u.customers_plain USING btree (company_norm)"
+        },
+        {
+          "indexname": "customers_plain_company_norm_idx1",
+          "indexdef": "CREATE INDEX customers_plain_company_norm_idx1 ON research_u.customers_plain USING gin (company_norm gin_trgm_ops)"
+        },
+        {
+          "indexname": "customers_plain_email_norm_idx",
+          "indexdef": "CREATE INDEX customers_plain_email_norm_idx ON research_u.customers_plain USING btree (email_norm)"
+        },
+        {
+          "indexname": "customers_plain_email_norm_idx1",
+          "indexdef": "CREATE INDEX customers_plain_email_norm_idx1 ON research_u.customers_plain USING gin (email_norm gin_trgm_ops)"
+        },
+        {
+          "indexname": "customers_plain_memo_norm_idx",
+          "indexdef": "CREATE INDEX customers_plain_memo_norm_idx ON research_u.customers_plain USING btree (memo_norm)"
+        },
+        {
+          "indexname": "customers_plain_memo_norm_idx1",
+          "indexdef": "CREATE INDEX customers_plain_memo_norm_idx1 ON research_u.customers_plain USING gin (memo_norm gin_trgm_ops)"
+        },
+        {
+          "indexname": "customers_plain_name_norm_idx",
+          "indexdef": "CREATE INDEX customers_plain_name_norm_idx ON research_u.customers_plain USING btree (name_norm)"
+        },
+        {
+          "indexname": "customers_plain_name_norm_idx1",
+          "indexdef": "CREATE INDEX customers_plain_name_norm_idx1 ON research_u.customers_plain USING gin (name_norm gin_trgm_ops)"
+        },
+        {
+          "indexname": "customers_plain_phone_norm_idx",
+          "indexdef": "CREATE INDEX customers_plain_phone_norm_idx ON research_u.customers_plain USING btree (phone_norm)"
+        },
+        {
+          "indexname": "customers_plain_phone_norm_idx1",
+          "indexdef": "CREATE INDEX customers_plain_phone_norm_idx1 ON research_u.customers_plain USING gin (phone_norm gin_trgm_ops)"
+        },
+        {
+          "indexname": "customers_plain_pkey",
+          "indexdef": "CREATE UNIQUE INDEX customers_plain_pkey ON research_u.customers_plain USING btree (id)"
+        }
+      ]
+    },
+    {
+      "schema": "native_verify_main",
+      "table": "customers",
+      "rows": 100000,
+      "scopeCount": 1,
+      "scopes": [
+        {
+          "scope_id": "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa",
+          "rows": 100000
+        }
+      ],
+      "sizes": {
+        "heap": "38920192",
+        "indexes": "3178496",
+        "total": "42147840"
+      },
+      "indexes": [
+        {
+          "indexname": "customers_pkey",
+          "indexdef": "CREATE UNIQUE INDEX customers_pkey ON native_verify_main.customers USING btree (id)"
+        }
+      ]
+    },
+    {
+      "schema": "native_verify_main",
+      "table": "customers_seal_index",
+      "rows": 100000,
+      "scopeCount": 1,
+      "scopes": [
+        {
+          "scope_id": "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa",
+          "rows": 100000
+        }
+      ],
+      "sizes": {
+        "heap": "204800000",
+        "indexes": "123977728",
+        "total": "328867840"
+      },
+      "indexes": [
+        {
+          "indexname": "customers_seal_index_scope_row_uq",
+          "indexdef": "CREATE UNIQUE INDEX customers_seal_index_scope_row_uq ON native_verify_main.customers_seal_index USING btree (scope_id, row_id)"
+        },
+        {
+          "indexname": "seal_411905c9deef5c59_bt",
+          "indexdef": "CREATE INDEX seal_411905c9deef5c59_bt ON native_verify_main.customers_seal_index USING btree (scope_id, (tokens_cd3096c7a3cd42c2[1]), row_id)"
+        },
+        {
+          "indexname": "seal_4c8e2d2bddde3451_bt",
+          "indexdef": "CREATE INDEX seal_4c8e2d2bddde3451_bt ON native_verify_main.customers_seal_index USING btree (scope_id, (tokens_a106c26102b707f0[1]), row_id)"
+        },
+        {
+          "indexname": "seal_62e346c0ef994072_bt",
+          "indexdef": "CREATE INDEX seal_62e346c0ef994072_bt ON native_verify_main.customers_seal_index USING btree (scope_id, (tokens_c44ae523cca61a0b[1]), row_id)"
+        },
+        {
+          "indexname": "seal_8fa11f16c3da1ad8_bt",
+          "indexdef": "CREATE INDEX seal_8fa11f16c3da1ad8_bt ON native_verify_main.customers_seal_index USING btree (scope_id, (tokens_1c32fdad5d1c8367[1]), row_id)"
+        },
+        {
+          "indexname": "seal_ae59b15a89e931d6_bt",
+          "indexdef": "CREATE INDEX seal_ae59b15a89e931d6_bt ON native_verify_main.customers_seal_index USING btree (scope_id, (tokens_c5133b3810f23103[1]), row_id)"
+        },
+        {
+          "indexname": "seal_dfa387787f59f02a_bt",
+          "indexdef": "CREATE INDEX seal_dfa387787f59f02a_bt ON native_verify_main.customers_seal_index USING btree (scope_id, (tokens_988d248ff4b71bf7[1]), row_id)"
+        },
+        {
+          "indexname": "seal_e66dc2708e915b65_gin",
+          "indexdef": "CREATE INDEX seal_e66dc2708e915b65_gin ON native_verify_main.customers_seal_index USING gin (tokens_792d75cf01821d67, tokens_1127994ab736baf4, tokens_ef1d32a52e2ce103, tokens_a639b11c8130dcf7, tokens_f289b89d86c7086a, tokens_7a1d2ba5ce2368fb)"
+        }
+      ]
+    },
+    {
+      "schema": "research_u",
+      "table": "b_customers_tags",
+      "rows": 100000,
+      "scopeCount": 1,
+      "scopes": [
+        {
+          "scope_id": "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa",
+          "rows": 100000
+        }
+      ],
+      "sizes": {
+        "heap": "204308480",
+        "indexes": "103030784",
+        "total": "708927488"
+      },
+      "indexes": [
+        {
+          "indexname": "b_customers_address_exact",
+          "indexdef": "CREATE INDEX b_customers_address_exact ON research_u.b_customers_tags USING btree (scope_id, (ce_address[1]), id)"
+        },
+        {
+          "indexname": "b_customers_company_exact",
+          "indexdef": "CREATE INDEX b_customers_company_exact ON research_u.b_customers_tags USING btree (scope_id, (ce_company[1]), id)"
+        },
+        {
+          "indexname": "b_customers_email_exact",
+          "indexdef": "CREATE INDEX b_customers_email_exact ON research_u.b_customers_tags USING btree (scope_id, (ce_email[1]), id)"
+        },
+        {
+          "indexname": "b_customers_gin",
+          "indexdef": "CREATE INDEX b_customers_gin ON research_u.b_customers_tags USING gin (cs_name, cs_phone, cs_address, cs_memo, cs_email, cs_company)"
+        },
+        {
+          "indexname": "b_customers_memo_exact",
+          "indexdef": "CREATE INDEX b_customers_memo_exact ON research_u.b_customers_tags USING btree (scope_id, (ce_memo[1]), id)"
+        },
+        {
+          "indexname": "b_customers_name_exact",
+          "indexdef": "CREATE INDEX b_customers_name_exact ON research_u.b_customers_tags USING btree (scope_id, (ce_name[1]), id)"
+        },
+        {
+          "indexname": "b_customers_phone_exact",
+          "indexdef": "CREATE INDEX b_customers_phone_exact ON research_u.b_customers_tags USING btree (scope_id, (ce_phone[1]), id)"
+        },
+        {
+          "indexname": "b_customers_scope_row",
+          "indexdef": "CREATE UNIQUE INDEX b_customers_scope_row ON research_u.b_customers_tags USING btree (scope_id, id)"
+        },
+        {
+          "indexname": "b_customers_tags_pkey",
+          "indexdef": "CREATE UNIQUE INDEX b_customers_tags_pkey ON research_u.b_customers_tags USING btree (id)"
+        }
+      ]
+    },
+    {
+      "schema": "research_u",
+      "table": "pb_4_improved",
+      "rows": 100000,
+      "scopeCount": 1,
+      "scopes": [
+        {
+          "scope_id": "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa",
+          "rows": 100000
+        }
+      ],
+      "sizes": {
+        "heap": "204800000",
+        "indexes": "102998016",
+        "total": "410886144"
+      },
+      "indexes": [
+        {
+          "indexname": "pb_4_improved_address_exact",
+          "indexdef": "CREATE INDEX pb_4_improved_address_exact ON research_u.pb_4_improved USING btree (scope_id, (ce_address[1]), id)"
+        },
+        {
+          "indexname": "pb_4_improved_company_exact",
+          "indexdef": "CREATE INDEX pb_4_improved_company_exact ON research_u.pb_4_improved USING btree (scope_id, (ce_company[1]), id)"
+        },
+        {
+          "indexname": "pb_4_improved_email_exact",
+          "indexdef": "CREATE INDEX pb_4_improved_email_exact ON research_u.pb_4_improved USING btree (scope_id, (ce_email[1]), id)"
+        },
+        {
+          "indexname": "pb_4_improved_gin",
+          "indexdef": "CREATE INDEX pb_4_improved_gin ON research_u.pb_4_improved USING gin (cs_name, cs_phone, cs_address, cs_memo, cs_email, cs_company)"
+        },
+        {
+          "indexname": "pb_4_improved_memo_exact",
+          "indexdef": "CREATE INDEX pb_4_improved_memo_exact ON research_u.pb_4_improved USING btree (scope_id, (ce_memo[1]), id)"
+        },
+        {
+          "indexname": "pb_4_improved_name_exact",
+          "indexdef": "CREATE INDEX pb_4_improved_name_exact ON research_u.pb_4_improved USING btree (scope_id, (ce_name[1]), id)"
+        },
+        {
+          "indexname": "pb_4_improved_phone_exact",
+          "indexdef": "CREATE INDEX pb_4_improved_phone_exact ON research_u.pb_4_improved USING btree (scope_id, (ce_phone[1]), id)"
+        },
+        {
+          "indexname": "pb_4_improved_pkey",
+          "indexdef": "CREATE UNIQUE INDEX pb_4_improved_pkey ON research_u.pb_4_improved USING btree (id)"
+        },
+        {
+          "indexname": "pb_4_improved_scope_row",
+          "indexdef": "CREATE UNIQUE INDEX pb_4_improved_scope_row ON research_u.pb_4_improved USING btree (scope_id, id)"
+        }
+      ]
+    },
+    {
+      "schema": "research_u",
+      "table": "pb_4_final",
+      "rows": 100000,
+      "scopeCount": 1,
+      "scopes": [
+        {
+          "scope_id": "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa",
+          "rows": 100000
+        }
+      ],
+      "sizes": {
+        "heap": "205266944",
+        "indexes": "102998016",
+        "total": "411582464"
+      },
+      "indexes": [
+        {
+          "indexname": "pb_4_final_address_exact",
+          "indexdef": "CREATE INDEX pb_4_final_address_exact ON research_u.pb_4_final USING btree (scope_id, (ce_address[1]), id)"
+        },
+        {
+          "indexname": "pb_4_final_company_exact",
+          "indexdef": "CREATE INDEX pb_4_final_company_exact ON research_u.pb_4_final USING btree (scope_id, (ce_company[1]), id)"
+        },
+        {
+          "indexname": "pb_4_final_email_exact",
+          "indexdef": "CREATE INDEX pb_4_final_email_exact ON research_u.pb_4_final USING btree (scope_id, (ce_email[1]), id)"
+        },
+        {
+          "indexname": "pb_4_final_gin",
+          "indexdef": "CREATE INDEX pb_4_final_gin ON research_u.pb_4_final USING gin (cs_name, cs_phone, cs_address, cs_memo, cs_email, cs_company)"
+        },
+        {
+          "indexname": "pb_4_final_memo_exact",
+          "indexdef": "CREATE INDEX pb_4_final_memo_exact ON research_u.pb_4_final USING btree (scope_id, (ce_memo[1]), id)"
+        },
+        {
+          "indexname": "pb_4_final_name_exact",
+          "indexdef": "CREATE INDEX pb_4_final_name_exact ON research_u.pb_4_final USING btree (scope_id, (ce_name[1]), id)"
+        },
+        {
+          "indexname": "pb_4_final_phone_exact",
+          "indexdef": "CREATE INDEX pb_4_final_phone_exact ON research_u.pb_4_final USING btree (scope_id, (ce_phone[1]), id)"
+        },
+        {
+          "indexname": "pb_4_final_pkey",
+          "indexdef": "CREATE UNIQUE INDEX pb_4_final_pkey ON research_u.pb_4_final USING btree (id)"
+        },
+        {
+          "indexname": "pb_4_final_scope_row",
+          "indexdef": "CREATE UNIQUE INDEX pb_4_final_scope_row ON research_u.pb_4_final USING btree (scope_id, id)"
+        }
+      ]
+    }
+  ],
+  "session": {
+    "pid": 42632,
+    "version": "PostgreSQL 18.4 on x86_64-windows, compiled by msvc-19.44.35227, 64-bit",
+    "lc_collate": "C",
+    "work_mem": "4MB",
+    "workers": "2"
+  },
+  "identityMismatch": 0
+}

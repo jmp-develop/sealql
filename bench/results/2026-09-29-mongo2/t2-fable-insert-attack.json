@@ -1,0 +1,139 @@
+{
+  "victimRows": 50000,
+  "referenceRows": 50000,
+  "exact": [
+    {
+      "field": "company",
+      "insertedRows": 16,
+      "distinctValuesInVictim": 16,
+      "recoveredPct": 100,
+      "wrongGuessPct": 0,
+      "mongoQE": 0,
+      "note": "B/A: rows whose 16-bit exact token equals an inserted value token; MongoDB QE: inserted document tags are unique (0)"
+    },
+    {
+      "field": "address",
+      "insertedRows": 10,
+      "distinctValuesInVictim": 5994,
+      "recoveredPct": 0.15,
+      "wrongGuessPct": 0.022,
+      "mongoQE": 0,
+      "note": "B/A: rows whose 16-bit exact token equals an inserted value token; MongoDB QE: inserted document tags are unique (0)"
+    },
+    {
+      "field": "address",
+      "insertedRows": 100,
+      "distinctValuesInVictim": 5994,
+      "recoveredPct": 1.67,
+      "wrongGuessPct": 0.122,
+      "mongoQE": 0,
+      "note": "B/A: rows whose 16-bit exact token equals an inserted value token; MongoDB QE: inserted document tags are unique (0)"
+    },
+    {
+      "field": "address",
+      "insertedRows": 1000,
+      "distinctValuesInVictim": 5994,
+      "recoveredPct": 16.7,
+      "wrongGuessPct": 1.206,
+      "mongoQE": 0,
+      "note": "B/A: rows whose 16-bit exact token equals an inserted value token; MongoDB QE: inserted document tags are unique (0)"
+    },
+    {
+      "field": "address",
+      "insertedRows": 5992,
+      "distinctValuesInVictim": 5994,
+      "recoveredPct": 95.29,
+      "wrongGuessPct": 4.666,
+      "mongoQE": 0,
+      "note": "B/A: rows whose 16-bit exact token equals an inserted value token; MongoDB QE: inserted document tags are unique (0)"
+    },
+    {
+      "field": "name",
+      "insertedRows": 100,
+      "distinctValuesInVictim": 49995,
+      "recoveredPct": 0,
+      "wrongGuessPct": 0.158,
+      "mongoQE": 0,
+      "note": "B/A: rows whose 16-bit exact token equals an inserted value token; MongoDB QE: inserted document tags are unique (0)"
+    },
+    {
+      "field": "name",
+      "insertedRows": 1000,
+      "distinctValuesInVictim": 49995,
+      "recoveredPct": 0,
+      "wrongGuessPct": 1.496,
+      "mongoQE": 0,
+      "note": "B/A: rows whose 16-bit exact token equals an inserted value token; MongoDB QE: inserted document tags are unique (0)"
+    },
+    {
+      "field": "phone",
+      "insertedRows": 100,
+      "distinctValuesInVictim": 50000,
+      "recoveredPct": 0,
+      "wrongGuessPct": 0.156,
+      "mongoQE": 0,
+      "note": "B/A: rows whose 16-bit exact token equals an inserted value token; MongoDB QE: inserted document tags are unique (0)"
+    },
+    {
+      "field": "phone",
+      "insertedRows": 1000,
+      "distinctValuesInVictim": 50000,
+      "recoveredPct": 0,
+      "wrongGuessPct": 1.498,
+      "mongoQE": 0,
+      "note": "B/A: rows whose 16-bit exact token equals an inserted value token; MongoDB QE: inserted document tags are unique (0)"
+    }
+  ],
+  "substring": [
+    {
+      "piece": "푸른달",
+      "insertedRows": 1,
+      "candidateRows": 51,
+      "trueRows": 51,
+      "allTrueRowsInVictim": 51,
+      "recoveredPct": 0.1,
+      "precisionPct": 100,
+      "mongoQE": 0
+    },
+    {
+      "piece": "서비스",
+      "insertedRows": 1,
+      "candidateRows": 20171,
+      "trueRows": 20171,
+      "allTrueRowsInVictim": 20171,
+      "recoveredPct": 40.34,
+      "precisionPct": 100,
+      "mongoQE": 0
+    },
+    {
+      "piece": "상담",
+      "insertedRows": 1,
+      "candidateRows": 15005,
+      "trueRows": 15005,
+      "allTrueRowsInVictim": 15005,
+      "recoveredPct": 30.01,
+      "precisionPct": 100,
+      "mongoQE": 0
+    },
+    {
+      "piece": "희귀표식",
+      "insertedRows": 1,
+      "candidateRows": 51,
+      "trueRows": 51,
+      "allTrueRowsInVictim": 51,
+      "recoveredPct": 0.1,
+      "precisionPct": 100,
+      "mongoQE": 0
+    },
+    {
+      "piece": "빠른회신",
+      "insertedRows": 1,
+      "candidateRows": 4886,
+      "trueRows": 4886,
+      "allTrueRowsInVictim": 4886,
+      "recoveredPct": 9.77,
+      "precisionPct": 100,
+      "mongoQE": 0
+    }
+  ]
+}

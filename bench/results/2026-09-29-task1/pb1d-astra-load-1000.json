@@ -1,0 +1,43 @@
+{
+  "length": 1000,
+  "rows": 1000,
+  "session": {
+    "pid": 12628,
+    "version": "PostgreSQL 18.4 on x86_64-windows, compiled by msvc-19.44.35227, 64-bit",
+    "work_mem": "4MB",
+    "started": "2026-09-28T20:25:31.313Z"
+  },
+  "sourceRows": 100000,
+  "source": "research_u.customers_plain derived from existing fixture",
+  "derivation": "row i starts at source index i*64 in ID order, concatenate normalized memo strings without separator and take first L Unicode codepoints",
+  "started": "2026-09-28T20:25:31.431Z",
+  "insertMs": {
+    "p2": 2372.0511000000406,
+    "p4": 4425.168000000034,
+    "o2": 2664.3922999999486,
+    "o4": 5593.825699999958
+  },
+  "hashingMs": {
+    "p2": 8156.580799999967,
+    "p4": 61559.482699999906,
+    "o2": 8083.673999999999,
+    "o4": 61609.4498999996
+  },
+  "tokensMs": 34249.61270000002,
+  "plainMs": 407.9988000000194,
+  "tableNames": [
+    "pb_1d_plain_1000",
+    "pb_1d_p2_1000",
+    "pb_1d_p4_1000",
+    "pb_1d_o2_1000",
+    "pb_1d_o4_1000"
+  ],
+  "wallMs": 189602.91210000002,
+  "indexMs": {
+    "pb_1d_plain_1000": 475.85249999997905,
+    "pb_1d_p2_1000": 519.9508999999962,
+    "pb_1d_p4_1000": 1019.5787000000128,
+    "pb_1d_o2_1000": 553.5333999999857,
+    "pb_1d_o4_1000": 1138.6375999999873
+  }
+}

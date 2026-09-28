@@ -1,0 +1,1038 @@
+{
+ "load": {
+  "at": "2026-09-28T20:30:26.916Z",
+  "rows": 100000,
+  "truncated": {
+   "memo": 234,
+   "address": 0
+  },
+  "nulls": {
+   "company_norm": 0,
+   "phone_norm": 0,
+   "name_norm": 0,
+   "email_norm": 0,
+   "memo_norm": 0,
+   "address_norm": 0
+  },
+  "plainLoadMs": 1715.6011000000003,
+  "plainIndexMs": 1381.3087999999998,
+  "encryptedFields": [
+   {
+    "path": "company",
+    "queryType": "equality",
+    "contention": 8
+   },
+   {
+    "path": "phone",
+    "queryType": "equality",
+    "contention": 8
+   },
+   {
+    "path": "name",
+    "queryType": "equality",
+    "contention": 8
+   },
+   {
+    "path": "email",
+    "queryType": "equality",
+    "contention": 8
+   },
+   {
+    "path": "memo",
+    "queryType": "substringPreview",
+    "strMaxLength": 60,
+    "strMinQueryLength": 2,
+    "strMaxQueryLength": 10,
+    "caseSensitive": true,
+    "diacriticSensitive": true,
+    "contention": 8
+   },
+   {
+    "path": "address",
+    "queryType": "substringPreview",
+    "strMaxLength": 60,
+    "strMinQueryLength": 2,
+    "strMaxQueryLength": 10,
+    "caseSensitive": true,
+    "diacriticSensitive": true,
+    "contention": 8
+   }
+  ],
+  "qeWallMs": 623818.0299,
+  "N": 23500,
+  "issued": 23500,
+  "qeDocsPerSec": 37.671242050774204,
+  "qeCount": 23500,
+  "qeMaxN": 23500,
+  "plainDocsPerSec": 58288.60799867754
+ },
+ "loadBatches": [
+  {
+   "from": 1000,
+   "done": 500,
+   "wallMs": 47505.8885
+  },
+  {
+   "from": 0,
+   "done": 1000,
+   "wallMs": 50068.2946
+  },
+  {
+   "from": 500,
+   "done": 1500,
+   "wallMs": 52710.1506
+  },
+  {
+   "from": 1500,
+   "done": 2000,
+   "wallMs": 55222.5956
+  },
+  {
+   "from": 2000,
+   "done": 2500,
+   "wallMs": 92703.6869
+  },
+  {
+   "from": 2500,
+   "done": 3000,
+   "wallMs": 93569.0419
+  },
+  {
+   "from": 3500,
+   "done": 3500,
+   "wallMs": 96308.33559999999
+  },
+  {
+   "from": 3000,
+   "done": 4000,
+   "wallMs": 96482.0079
+  },
+  {
+   "from": 4000,
+   "done": 4500,
+   "wallMs": 138115.97230000002
+  },
+  {
+   "from": 4500,
+   "done": 5000,
+   "wallMs": 143720.56600000002
+  },
+  {
+   "from": 5000,
+   "done": 5500,
+   "wallMs": 147872.4419
+  },
+  {
+   "from": 5500,
+   "done": 6000,
+   "wallMs": 152680.99250000002
+  },
+  {
+   "from": 6000,
+   "done": 6500,
+   "wallMs": 188322.746
+  },
+  {
+   "from": 6500,
+   "done": 7000,
+   "wallMs": 191724.1007
+  },
+  {
+   "from": 7000,
+   "done": 7500,
+   "wallMs": 194996.6899
+  },
+  {
+   "from": 7500,
+   "done": 8000,
+   "wallMs": 198871.6758
+  },
+  {
+   "from": 8000,
+   "done": 8500,
+   "wallMs": 235461.4436
+  },
+  {
+   "from": 8500,
+   "done": 9000,
+   "wallMs": 241335.17140000002
+  },
+  {
+   "from": 9000,
+   "done": 9500,
+   "wallMs": 245811.48150000002
+  },
+  {
+   "from": 9500,
+   "done": 10000,
+   "wallMs": 251774.4641
+  },
+  {
+   "from": 10000,
+   "done": 10500,
+   "wallMs": 285622.9805
+  },
+  {
+   "from": 10500,
+   "done": 11000,
+   "wallMs": 291193.5956
+  },
+  {
+   "from": 11000,
+   "done": 11500,
+   "wallMs": 294611.718
+  },
+  {
+   "from": 11500,
+   "done": 12000,
+   "wallMs": 300813.08890000003
+  },
+  {
+   "from": 12000,
+   "done": 12500,
+   "wallMs": 336604.706
+  },
+  {
+   "from": 12500,
+   "done": 13000,
+   "wallMs": 339902.0945
+  },
+  {
+   "from": 13000,
+   "done": 13500,
+   "wallMs": 345199.016
+  },
+  {
+   "from": 13500,
+   "done": 14000,
+   "wallMs": 353976.7098
+  },
+  {
+   "from": 14000,
+   "done": 14500,
+   "wallMs": 388449.93950000004
+  },
+  {
+   "from": 14500,
+   "done": 15000,
+   "wallMs": 390952.7871
+  },
+  {
+   "from": 15000,
+   "done": 15500,
+   "wallMs": 392841.2603
+  },
+  {
+   "from": 15500,
+   "done": 16000,
+   "wallMs": 401632.50310000003
+  },
+  {
+   "from": 16000,
+   "done": 16500,
+   "wallMs": 442569.2984
+  },
+  {
+   "from": 16500,
+   "done": 17000,
+   "wallMs": 446998.0207
+  },
+  {
+   "from": 17000,
+   "done": 17500,
+   "wallMs": 449427.7938
+  },
+  {
+   "from": 17500,
+   "done": 18000,
+   "wallMs": 458647.69310000003
+  },
+  {
+   "from": 18000,
+   "done": 18500,
+   "wallMs": 500447.6297
+  },
+  {
+   "from": 18500,
+   "done": 19000,
+   "wallMs": 505404.123
+  },
+  {
+   "from": 19000,
+   "done": 19500,
+   "wallMs": 506029.1936
+  },
+  {
+   "from": 19500,
+   "done": 20000,
+   "wallMs": 519136.8639
+  },
+  {
+   "from": 20000,
+   "done": 20500,
+   "wallMs": 560494.6894
+  },
+  {
+   "from": 21000,
+   "done": 21000,
+   "wallMs": 564544.5117
+  },
+  {
+   "from": 20500,
+   "done": 21500,
+   "wallMs": 567605.3205
+  },
+  {
+   "from": 21500,
+   "done": 22000,
+   "wallMs": 576470.2604
+  },
+  {
+   "from": 22000,
+   "done": 22500,
+   "wallMs": 620114.6978
+  },
+  {
+   "from": 22500,
+   "done": 23000,
+   "wallMs": 620933.1171
+  },
+  {
+   "from": 23000,
+   "done": 23500,
+   "wallMs": 623817.9518
+  }
+ ],
+ "measure": {
+  "at": "2026-09-28T20:40:55.070Z",
+  "N": 23500,
+  "warm": 1,
+  "runs": 3,
+  "cases": [
+   {
+    "name": "eq_company_1",
+    "cond": "company = \"서울서비스담당\"",
+    "plainCount": 6684,
+    "qeCount": 6684,
+    "listLen": 300,
+    "listEqual": true,
+    "countEqual": true,
+    "supported": true,
+    "plainCountMs": 37.305999999982305,
+    "qeCountMs": 66.11449999996694,
+    "plainListMs": 5.14159999997355,
+    "qeListMs": 281.3957999999984,
+    "raw": {
+     "pc": [
+      36.28120000002673,
+      37.68330000003334,
+      37.305999999982305
+     ],
+     "qc": [
+      66.0337999999756,
+      67.07909999997355,
+      66.11449999996694
+     ],
+     "pl": [
+      12.011199999949895,
+      5.14159999997355,
+      4.721399999980349
+     ],
+     "ql": [
+      303.7470999999787,
+      281.3957999999984,
+      231.36329999996815
+     ]
+    }
+   },
+   {
+    "name": "eq_company_2",
+    "cond": "company = \"서울서비스중앙지사\"",
+    "plainCount": 430,
+    "qeCount": 430,
+    "listLen": 300,
+    "listEqual": true,
+    "countEqual": true,
+    "supported": true,
+    "plainCountMs": 4.834499999997206,
+    "qeCountMs": 8.446500000020023,
+    "plainListMs": 12.714399999997113,
+    "qeListMs": 232.20669999998063,
+    "raw": {
+     "pc": [
+      4.834499999997206,
+      4.877199999988079,
+      4.496400000003632
+     ],
+     "qc": [
+      9.5960999999661,
+      8.36089999997057,
+      8.446500000020023
+     ],
+     "pl": [
+      12.714399999997113,
+      11.354600000020582,
+      13.088899999973364
+     ],
+     "ql": [
+      251.91049999999814,
+      232.20669999998063,
+      172.23540000000503
+     ]
+    }
+   },
+   {
+    "name": "eq_phone_1",
+    "cond": "phone = \"42-5748-1542\"",
+    "plainCount": 1,
+    "qeCount": 1,
+    "listLen": 1,
+    "listEqual": true,
+    "countEqual": true,
+    "supported": true,
+    "plainCountMs": 1.0755999999819323,
+    "qeCountMs": 2.8682999999728054,
+    "plainListMs": 0.8108000000356697,
+    "qeListMs": 3.29849999997532,
+    "raw": {
+     "pc": [
+      1.0755999999819323,
+      0.824300000036601,
+      1.2412999999942258
+     ],
+     "qc": [
+      3.074300000036601,
+      2.8682999999728054,
+      2.549200000008568
+     ],
+     "pl": [
+      0.8108000000356697,
+      0.8977999999769963,
+      0.7564999999594875
+     ],
+     "ql": [
+      3.1257999999797903,
+      3.29849999997532,
+      3.3589999999967404
+     ]
+    }
+   },
+   {
+    "name": "eq_phone_0",
+    "cond": "phone = \"99-0000-0000\"",
+    "plainCount": 0,
+    "qeCount": 0,
+    "listLen": 0,
+    "listEqual": true,
+    "countEqual": true,
+    "supported": true,
+    "plainCountMs": 1.0816000000340864,
+    "qeCountMs": 2.386999999987893,
+    "plainListMs": 0.7606999999843538,
+    "qeListMs": 2.3871999999973923,
+    "raw": {
+     "pc": [
+      0.9254000000073574,
+      1.0816000000340864,
+      1.1595999999553896
+     ],
+     "qc": [
+      2.386999999987893,
+      2.632500000006985,
+      2.265499999979511
+     ],
+     "pl": [
+      0.7606999999843538,
+      1.1094999999622814,
+      0.6058000000193715
+     ],
+     "ql": [
+      2.3871999999973923,
+      2.6480000000447035,
+      1.807100000034552
+     ]
+    }
+   },
+   {
+    "name": "sub_memo_서비스",
+    "cond": "memo ∋ \"서비스\"",
+    "plainCount": 9452,
+    "qeCount": 9452,
+    "listLen": 300,
+    "listEqual": true,
+    "countEqual": true,
+    "supported": true,
+    "plainCountMs": 39.49880000000121,
+    "qeCountMs": 344.1359999999986,
+    "plainListMs": 4.734299999952782,
+    "qeListMs": 238.78289999999106,
+    "raw": {
+     "pc": [
+      39.49880000000121,
+      40.634299999976065,
+      39.446599999966566
+     ],
+     "qc": [
+      344.6992999999784,
+      331.4340000000084,
+      344.1359999999986
+     ],
+     "pl": [
+      4.734299999952782,
+      4.396400000026915,
+      5.575100000016391
+     ],
+     "ql": [
+      252.28139999997802,
+      238.78289999999106,
+      209.26370000001043
+     ]
+    }
+   },
+   {
+    "name": "sub_memo_푸른달",
+    "cond": "memo ∋ \"푸른달\"",
+    "plainCount": 24,
+    "qeCount": 24,
+    "listLen": 24,
+    "listEqual": true,
+    "countEqual": true,
+    "supported": true,
+    "plainCountMs": 37.630600000033155,
+    "qeCountMs": 3.5521999999764375,
+    "plainListMs": 44.33389999996871,
+    "qeListMs": 24.26829999999609,
+    "raw": {
+     "pc": [
+      38.24670000001788,
+      37.630600000033155,
+      37.475399999995716
+     ],
+     "qc": [
+      3.7001999999629334,
+      3.3892000000341795,
+      3.5521999999764375
+     ],
+     "pl": [
+      44.54420000000391,
+      44.33389999996871,
+      43.98509999999078
+     ],
+     "ql": [
+      14.258199999982025,
+      24.34709999995539,
+      24.26829999999609
+     ]
+    }
+   },
+   {
+    "name": "sub_memo_없는표식",
+    "cond": "memo ∋ \"없는표식\"",
+    "plainCount": 0,
+    "qeCount": 0,
+    "listLen": 0,
+    "listEqual": true,
+    "countEqual": true,
+    "supported": true,
+    "plainCountMs": 38.44020000001183,
+    "qeCountMs": 2.133399999991525,
+    "plainListMs": 45.16009999997914,
+    "qeListMs": 2.4464000000152737,
+    "raw": {
+     "pc": [
+      38.44020000001183,
+      38.32280000002356,
+      39.227899999998044
+     ],
+     "qc": [
+      1.8016999999526888,
+      2.8253000000258908,
+      2.133399999991525
+     ],
+     "pl": [
+      44.679400000022724,
+      45.16009999997914,
+      45.18459999997867
+     ],
+     "ql": [
+      2.4258000000263564,
+      2.4540999999735504,
+      2.4464000000152737
+     ]
+    }
+   },
+   {
+    "name": "sub_memo_상담서비스",
+    "cond": "memo ∋ \"상담서비스\"",
+    "plainCount": 0,
+    "qeCount": 0,
+    "listLen": 0,
+    "listEqual": true,
+    "countEqual": true,
+    "supported": true,
+    "plainCountMs": 39.118900000001304,
+    "qeCountMs": 1.9769000000087544,
+    "plainListMs": 45.505800000042655,
+    "qeListMs": 2.5243999999947846,
+    "raw": {
+     "pc": [
+      39.11259999999311,
+      39.62639999995008,
+      39.118900000001304
+     ],
+     "qc": [
+      1.8289999999688007,
+      3.034400000004098,
+      1.9769000000087544
+     ],
+     "pl": [
+      45.505800000042655,
+      45.199199999973644,
+      45.99560000002384
+     ],
+     "ql": [
+      2.540500000002794,
+      2.5243999999947846,
+      2.4778999999980442
+     ]
+    }
+   },
+   {
+    "name": "sub_memo_서비스상담",
+    "cond": "memo ∋ \"서비스상담\"",
+    "plainCount": 7073,
+    "qeCount": 7073,
+    "listLen": 300,
+    "listEqual": true,
+    "countEqual": true,
+    "supported": true,
+    "plainCountMs": 42.38400000002002,
+    "qeCountMs": 182.71379999996861,
+    "plainListMs": 5.101000000024214,
+    "qeListMs": 269.2768999999971,
+    "raw": {
+     "pc": [
+      39.32889999996405,
+      42.38400000002002,
+      44.45260000001872
+     ],
+     "qc": [
+      163.57049999997253,
+      184.06570000003558,
+      182.71379999996861
+     ],
+     "pl": [
+      5.101000000024214,
+      4.806500000006054,
+      6.09330000000773
+     ],
+     "ql": [
+      269.2768999999971,
+      303.0243999999948,
+      259.0421999999671
+     ]
+    }
+   },
+   {
+    "name": "sub_memo_비스상",
+    "cond": "memo ∋ \"비스상\"",
+    "plainCount": 7073,
+    "qeCount": 7073,
+    "listLen": 300,
+    "listEqual": true,
+    "countEqual": true,
+    "supported": true,
+    "plainCountMs": 39.39319999999134,
+    "qeCountMs": 218.95880000002217,
+    "plainListMs": 6.192199999990407,
+    "qeListMs": 281.6269999999786,
+    "raw": {
+     "pc": [
+      41.08860000001732,
+      39.209200000041164,
+      39.39319999999134
+     ],
+     "qc": [
+      218.95880000002217,
+      206.9426000000094,
+      226.88349999999627
+     ],
+     "pl": [
+      6.192199999990407,
+      4.409899999969639,
+      6.350999999966007
+     ],
+     "ql": [
+      228.9242999999551,
+      281.6269999999786,
+      334.85249999997905
+     ]
+    }
+   },
+   {
+    "name": "sub_addr_세종대로",
+    "cond": "address ∋ \"세종대로\"",
+    "plainCount": 3833,
+    "qeCount": 3833,
+    "listLen": 300,
+    "listEqual": true,
+    "countEqual": true,
+    "supported": true,
+    "plainCountMs": 42.12030000000959,
+    "qeCountMs": 416.2666999999783,
+    "plainListMs": 10.419400000013411,
+    "qeListMs": 369.47000000003027,
+    "raw": {
+     "pc": [
+      42.65869999997085,
+      42.12030000000959,
+      40.47489999997197
+     ],
+     "qc": [
+      416.2666999999783,
+      417.98479999997653,
+      403.19699999998556
+     ],
+     "pl": [
+      11.067399999999907,
+      6.616700000013225,
+      10.419400000013411
+     ],
+     "ql": [
+      369.47000000003027,
+      354.3457000000053,
+      405.02939999999944
+     ]
+    }
+   },
+   {
+    "name": "sub_addr_세종대로25",
+    "cond": "address ∋ \"세종대로25\"",
+    "plainCount": 43,
+    "qeCount": 43,
+    "listLen": 43,
+    "listEqual": true,
+    "countEqual": true,
+    "supported": true,
+    "plainCountMs": 39.088799999968614,
+    "qeCountMs": 6.207400000013877,
+    "plainListMs": 45.90400000003865,
+    "qeListMs": 35.474400000006426,
+    "raw": {
+     "pc": [
+      39.088799999968614,
+      38.70689999999013,
+      39.18540000001667
+     ],
+     "qc": [
+      6.207400000013877,
+      6.564699999988079,
+      5.850399999995716
+     ],
+     "pl": [
+      45.66899999999441,
+      46.26150000002235,
+      45.90400000003865
+     ],
+     "ql": [
+      52.76819999999134,
+      25.401299999968614,
+      35.474400000006426
+     ]
+    }
+   },
+   {
+    "name": "sub_memo_14",
+    "cond": "memo ∋ \"상세안내와확인내용상세안내와\"",
+    "plainCount": 574,
+    "supported": false,
+    "error": "StrQuery: string value was longer than the maximum query length for this field after folding -- folded codepoint len: 14, max query len: 10"
+   },
+   {
+    "name": "sub_memo_45",
+    "cond": "memo ∋ \"상세안내와확인내용상세안내와확인내용상세안내와확인내용상세안내와확인내용상세안내와확인내용\"",
+    "plainCount": 0,
+    "supported": false,
+    "error": "StrQuery: string value was longer than the maximum query length for this field after folding -- folded codepoint len: 45, max query len: 10"
+   },
+   {
+    "name": "and2",
+    "cond": "(company = \"서울서비스담당\" AND memo ∋ \"서비스\")",
+    "plainCount": 4997,
+    "qeCount": 4997,
+    "listLen": 300,
+    "listEqual": true,
+    "countEqual": true,
+    "supported": true,
+    "plainCountMs": 44.64910000003874,
+    "qeCountMs": 603.7140999999829,
+    "plainListMs": 5.707699999969918,
+    "qeListMs": 315.34440000000177,
+    "raw": {
+     "pc": [
+      44.64910000003874,
+      44.61280000000261,
+      45.022800000035204
+     ],
+     "qc": [
+      606.665800000017,
+      592.5742999999784,
+      603.7140999999829
+     ],
+     "pl": [
+      10.723399999958929,
+      5.427300000039395,
+      5.707699999969918
+     ],
+     "ql": [
+      315.34440000000177,
+      330.9887999999919,
+      299.27860000001965
+     ]
+    }
+   },
+   {
+    "name": "or2",
+    "cond": "(company = \"서울서비스담당\" OR memo ∋ \"푸른달\")",
+    "plainCount": 6697,
+    "qeCount": 6697,
+    "listLen": 300,
+    "listEqual": true,
+    "countEqual": true,
+    "supported": true,
+    "plainCountMs": 38.473400000017136,
+    "qeCountMs": 79.62739999999758,
+    "plainListMs": 4.852899999998044,
+    "qeListMs": 313.2490000000107,
+    "raw": {
+     "pc": [
+      38.95110000000568,
+      38.473400000017136,
+      37.62989999999991
+     ],
+     "qc": [
+      81.97249999997439,
+      76.45870000001742,
+      79.62739999999758
+     ],
+     "pl": [
+      4.80039999994915,
+      4.852899999998044,
+      4.988899999996647
+     ],
+     "ql": [
+      363.08540000003995,
+      313.2490000000107,
+      226.39490000001388
+     ]
+    }
+   },
+   {
+    "name": "or_and",
+    "cond": "((company = \"서울서비스담당\" AND memo ∋ \"서비스\") OR memo ∋ \"푸른달\")",
+    "plainCount": 5021,
+    "qeCount": 5021,
+    "listLen": 300,
+    "listEqual": true,
+    "countEqual": true,
+    "supported": true,
+    "plainCountMs": 43.32579999999143,
+    "qeCountMs": 623.8404999999912,
+    "plainListMs": 10.911499999987427,
+    "qeListMs": 343.8869999999879,
+    "raw": {
+     "pc": [
+      43.32579999999143,
+      45.75270000001183,
+      42.96460000000661
+     ],
+     "qc": [
+      623.8404999999912,
+      633.686400000006,
+      610.7238000000361
+     ],
+     "pl": [
+      6.463199999998324,
+      11.190799999982119,
+      10.911499999987427
+     ],
+     "ql": [
+      343.96669999998994,
+      310.90480000001844,
+      343.8869999999879
+     ]
+    }
+   },
+   {
+    "name": "zero_and",
+    "cond": "(company = \"서울서비스담당\" AND address ∋ \"부산\")",
+    "plainCount": 1098,
+    "qeCount": 1098,
+    "listLen": 300,
+    "listEqual": true,
+    "countEqual": true,
+    "supported": true,
+    "plainCountMs": 46.08209999999963,
+    "qeCountMs": 1282.6065999999992,
+    "plainListMs": 16.53190000000177,
+    "qeListMs": 882.1750999999931,
+    "raw": {
+     "pc": [
+      46.08209999999963,
+      46.06630000000587,
+      49.103000000002794
+     ],
+     "qc": [
+      1292.9726000000373,
+      1282.6065999999992,
+      1243.6582000000053
+     ],
+     "pl": [
+      25.298400000028778,
+      15.883099999977276,
+      16.53190000000177
+     ],
+     "ql": [
+      907.8562999999849,
+      874.3420999999507,
+      882.1750999999931
+     ]
+    }
+   },
+   {
+    "name": "or4",
+    "cond": "(company = \"서울서비스담당\" OR memo ∋ \"푸른달\" OR phone = \"42-5748-1542\" OR address ∋ \"세종대로\")",
+    "plainCount": 9446,
+    "qeCount": 9446,
+    "listLen": 300,
+    "listEqual": true,
+    "countEqual": true,
+    "supported": true,
+    "plainCountMs": 51.070400000025984,
+    "qeCountMs": 1608.440100000007,
+    "plainListMs": 5.932399999990594,
+    "qeListMs": 975.1851000000024,
+    "raw": {
+     "pc": [
+      51.070400000025984,
+      52.414199999999255,
+      50.511699999973644
+     ],
+     "qc": [
+      1601.077900000033,
+      1608.440100000007,
+      1625.1014999999898
+     ],
+     "pl": [
+      6.430800000031013,
+      4.661300000036135,
+      5.932399999990594
+     ],
+     "ql": [
+      980.5175999999628,
+      953.0328000000445,
+      975.1851000000024
+     ]
+    }
+   },
+   {
+    "name": "nested",
+    "cond": "(((company = \"서울서비스담당\" AND memo ∋ \"서비스\") OR (address ∋ \"서울\" AND memo ∋ \"상담\")) AND (phone = \"42-5748-1542\" OR memo ∋ \"푸른달\"))",
+    "plainCount": 0,
+    "qeCount": 0,
+    "listLen": 0,
+    "listEqual": true,
+    "countEqual": true,
+    "supported": true,
+    "plainCountMs": 49.20590000000084,
+    "qeCountMs": 58.63959999999497,
+    "plainListMs": 57.03009999997448,
+    "qeListMs": 50.96709999995073,
+    "raw": {
+     "pc": [
+      49.20590000000084,
+      48.10009999998147,
+      49.32310000003781
+     ],
+     "qc": [
+      61.31739999999991,
+      57.77490000001853,
+      58.63959999999497
+     ],
+     "pl": [
+      56.29639999999199,
+      57.03009999997448,
+      61.66870000003837
+     ],
+     "ql": [
+      50.96709999995073,
+      50.94069999997737,
+      51.88809999998193
+     ]
+    }
+   }
+  ],
+  "explain": {
+   "company": {
+    "tags": [
+     6684,
+     6684,
+     null,
+     null,
+     null
+    ],
+    "keysExamined": 13366,
+    "docsExamined": 6684,
+    "executionTimeMillis": 107
+   },
+   "memo_서비스": {
+    "tags": [
+     9452,
+     9452,
+     null,
+     null,
+     null
+    ],
+    "keysExamined": 18899,
+    "docsExamined": 9452,
+    "executionTimeMillis": 307
+   }
+  },
+  "storage": {
+   "plain": {
+    "count": 100000,
+    "size": 25728270,
+    "storageSize": 10493952,
+    "totalIndexSize": 10293248
+   },
+   "qe": {
+    "count": 23500,
+    "size": 1700366728,
+    "storageSize": 1730433024,
+    "totalIndexSize": 1604677632
+   },
+   "enxcol_.qe.esc": {
+    "count": 12174342,
+    "size": 572194074,
+    "storageSize": 1181446144,
+    "totalIndexSize": 0
+   },
+   "enxcol_.qe.ecoc": {
+    "count": 12174342,
+    "size": 1298898014,
+    "storageSize": 420245504,
+    "totalIndexSize": 0
+   }
+  },
+  "lockAcquired": "2026-09-28T20:47:11.156Z",
+  "fallback": "lock acquired after 2026-09-28T20:44:00Z: warm 1 + 3 runs",
+  "lockWaitMs": 360227,
+  "lockReleased": "2026-09-28T20:47:56.616Z"
+ },
+ "comboCheck": {
+  "substring+prefix+suffix": "rejected: The number of query types for an encrypted field cannot exceed two",
+  "substring+prefix": "rejected: Multiple query types may only include the suffixPreview and prefixPreview query types",
+  "prefix+suffix": "accepted"
+ },
+ "lockLog": "lockBefore 2026-09-28T20:24:46Z: m1-astra-pb1d 46784 2026-09-28T20:23:53.548Z\nlockBefore2 2026-09-28T20:25:33Z: m1-astra-pb1d 51008 2026-09-28T20:25:31.311Z\nnote: first two load attempts (20:24:47 and 20:25:33 starts) overlapped and were killed at ~20:30; clean restart below\nlockBefore3 2026-09-28T20:30:26Z: m1-astra-pb1d 28168 2026-09-28T20:29:18.952Z\nlockAfterLoad 2026-09-28T20:40:54Z: m1-astra-pb1d 65948 2026-09-28T20:33:24.917Z"
+}

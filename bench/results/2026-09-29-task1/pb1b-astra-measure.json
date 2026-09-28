@@ -1,0 +1,4552 @@
+[
+  {
+    "name": "memo_common10",
+    "field": "memo",
+    "term": "upportcase",
+    "mode": "count",
+    "targetRows": 100000,
+    "limit": null,
+    "appDecrypts": 0,
+    "sqlCallsPerRun": 1,
+    "projection": [
+      "count"
+    ],
+    "lookup": "native array_position",
+    "session": {
+      "pid": 35692,
+      "version": "PostgreSQL 18.4 on x86_64-windows, compiled by msvc-19.44.35227, 64-bit",
+      "work_mem": "4MB"
+    },
+    "first": {
+      "plain": {
+        "dbMs": 7.9220000000000255,
+        "totalMs": 7.9623000000000275
+      },
+      "position2": {
+        "dbMs": 151.66809999999998,
+        "totalMs": 153.00959999999998
+      },
+      "position4": {
+        "dbMs": 127.5121999999999,
+        "totalMs": 128.3515000000001
+      },
+      "occurrence2": {
+        "dbMs": 386.05770000000007,
+        "totalMs": 387.0942
+      },
+      "occurrence4": {
+        "dbMs": 281.3659,
+        "totalMs": 282.22119999999995
+      }
+    },
+    "runs": {
+      "plain": [
+        {
+          "dbMs": 6.908599999999751,
+          "totalMs": 6.93119999999999
+        },
+        {
+          "dbMs": 7.528300000000854,
+          "totalMs": 7.54989999999998
+        },
+        {
+          "dbMs": 7.224799999999959,
+          "totalMs": 7.247199999999793
+        },
+        {
+          "dbMs": 7.302900000000591,
+          "totalMs": 7.3288000000002285
+        },
+        {
+          "dbMs": 7.136899999999514,
+          "totalMs": 7.1578000000008615
+        },
+        {
+          "dbMs": 7.565400000001318,
+          "totalMs": 7.587600000000748
+        },
+        {
+          "dbMs": 7.412800000000061,
+          "totalMs": 7.432699999999386
+        }
+      ],
+      "position2": [
+        {
+          "dbMs": 145.35989999999947,
+          "totalMs": 146.1796000000004
+        },
+        {
+          "dbMs": 150.16469999999936,
+          "totalMs": 151.0589
+        },
+        {
+          "dbMs": 146.60559999999987,
+          "totalMs": 147.5081
+        },
+        {
+          "dbMs": 148.23670000000038,
+          "totalMs": 149.4363000000003
+        },
+        {
+          "dbMs": 148.41159999999945,
+          "totalMs": 149.375399999999
+        },
+        {
+          "dbMs": 152.47180000000117,
+          "totalMs": 153.3812999999991
+        },
+        {
+          "dbMs": 148.931700000001,
+          "totalMs": 149.9426000000003
+        }
+      ],
+      "position4": [
+        {
+          "dbMs": 133.1891999999998,
+          "totalMs": 134.28909999999996
+        },
+        {
+          "dbMs": 134.98260000000028,
+          "totalMs": 136.21039999999994
+        },
+        {
+          "dbMs": 125.16709999999966,
+          "totalMs": 125.88569999999982
+        },
+        {
+          "dbMs": 125.75879999999961,
+          "totalMs": 126.46849999999995
+        },
+        {
+          "dbMs": 130.52909999999974,
+          "totalMs": 131.32200000000012
+        },
+        {
+          "dbMs": 129.0077999999994,
+          "totalMs": 129.91890000000058
+        },
+        {
+          "dbMs": 130.3224999999984,
+          "totalMs": 131.96399999999994
+        }
+      ],
+      "occurrence2": [
+        {
+          "dbMs": 390.03600000000006,
+          "totalMs": 390.7750000000001
+        },
+        {
+          "dbMs": 386.73070000000007,
+          "totalMs": 387.5618999999997
+        },
+        {
+          "dbMs": 397.16679999999997,
+          "totalMs": 397.90580000000045
+        },
+        {
+          "dbMs": 387.8775999999998,
+          "totalMs": 388.7519000000002
+        },
+        {
+          "dbMs": 393.96910000000025,
+          "totalMs": 394.70530000000053
+        },
+        {
+          "dbMs": 392.2412999999997,
+          "totalMs": 393.0155999999988
+        },
+        {
+          "dbMs": 396.5659999999989,
+          "totalMs": 397.35200000000077
+        }
+      ],
+      "occurrence4": [
+        {
+          "dbMs": 281.04150000000027,
+          "totalMs": 282.16679999999997
+        },
+        {
+          "dbMs": 285.73309999999947,
+          "totalMs": 286.4890000000005
+        },
+        {
+          "dbMs": 285.78330000000005,
+          "totalMs": 286.52859999999964
+        },
+        {
+          "dbMs": 285.7443999999996,
+          "totalMs": 286.4317000000001
+        },
+        {
+          "dbMs": 280.0018999999993,
+          "totalMs": 280.71939999999904
+        },
+        {
+          "dbMs": 285.6297000000013,
+          "totalMs": 286.42139999999927
+        },
+        {
+          "dbMs": 280.53329999999914,
+          "totalMs": 281.28120000000126
+        }
+      ]
+    },
+    "truth": 9944,
+    "resultRows": 1,
+    "candidates": {
+      "position2": 9944,
+      "position4": 9944,
+      "occurrence2": 9944,
+      "occurrence4": 9944
+    },
+    "order": [
+      {
+        "round": -3,
+        "paths": [
+          "plain",
+          "position2",
+          "position4",
+          "occurrence2",
+          "occurrence4"
+        ]
+      },
+      {
+        "round": -2,
+        "paths": [
+          "position2",
+          "position4",
+          "occurrence2",
+          "occurrence4",
+          "plain"
+        ]
+      },
+      {
+        "round": -1,
+        "paths": [
+          "position4",
+          "occurrence2",
+          "occurrence4",
+          "plain",
+          "position2"
+        ]
+      },
+      {
+        "round": 0,
+        "paths": [
+          "occurrence2",
+          "occurrence4",
+          "plain",
+          "position2",
+          "position4"
+        ]
+      },
+      {
+        "round": 1,
+        "paths": [
+          "occurrence4",
+          "plain",
+          "position2",
+          "position4",
+          "occurrence2"
+        ]
+      },
+      {
+        "round": 2,
+        "paths": [
+          "plain",
+          "position2",
+          "position4",
+          "occurrence2",
+          "occurrence4"
+        ]
+      },
+      {
+        "round": 3,
+        "paths": [
+          "position2",
+          "position4",
+          "occurrence2",
+          "occurrence4",
+          "plain"
+        ]
+      },
+      {
+        "round": 4,
+        "paths": [
+          "position4",
+          "occurrence2",
+          "occurrence4",
+          "plain",
+          "position2"
+        ]
+      },
+      {
+        "round": 5,
+        "paths": [
+          "occurrence2",
+          "occurrence4",
+          "plain",
+          "position2",
+          "position4"
+        ]
+      },
+      {
+        "round": 6,
+        "paths": [
+          "occurrence4",
+          "plain",
+          "position2",
+          "position4",
+          "occurrence2"
+        ]
+      }
+    ],
+    "medians": {
+      "plain": {
+        "dbMs": 7.302900000000591,
+        "totalMs": 7.3288000000002285
+      },
+      "position2": {
+        "dbMs": 148.41159999999945,
+        "totalMs": 149.4363000000003
+      },
+      "position4": {
+        "dbMs": 130.3224999999984,
+        "totalMs": 131.32200000000012
+      },
+      "occurrence2": {
+        "dbMs": 392.2412999999997,
+        "totalMs": 393.0155999999988
+      },
+      "occurrence4": {
+        "dbMs": 285.6297000000013,
+        "totalMs": 286.42139999999927
+      }
+    }
+  },
+  {
+    "name": "memo_common10",
+    "field": "memo",
+    "term": "upportcase",
+    "mode": "list",
+    "targetRows": 100000,
+    "limit": 300,
+    "appDecrypts": 0,
+    "sqlCallsPerRun": 1,
+    "projection": [
+      "id"
+    ],
+    "lookup": "native array_position",
+    "session": {
+      "pid": 35692,
+      "version": "PostgreSQL 18.4 on x86_64-windows, compiled by msvc-19.44.35227, 64-bit",
+      "work_mem": "4MB"
+    },
+    "first": {
+      "plain": {
+        "dbMs": 1.9627000000000407,
+        "totalMs": 2.0077000000001135
+      },
+      "position2": {
+        "dbMs": 35.73910000000069,
+        "totalMs": 36.50959999999941
+      },
+      "position4": {
+        "dbMs": 49.08100000000013,
+        "totalMs": 49.77320000000145
+      },
+      "occurrence2": {
+        "dbMs": 48.601700000001074,
+        "totalMs": 49.49579999999878
+      },
+      "occurrence4": {
+        "dbMs": 56.429299999999785,
+        "totalMs": 57.529099999999744
+      }
+    },
+    "runs": {
+      "plain": [
+        {
+          "dbMs": 1.831399999999121,
+          "totalMs": 1.8626000000003842
+        },
+        {
+          "dbMs": 1.5741000000016356,
+          "totalMs": 1.5982000000003609
+        },
+        {
+          "dbMs": 1.5992999999998574,
+          "totalMs": 1.6221000000005006
+        },
+        {
+          "dbMs": 1.6093000000000757,
+          "totalMs": 1.6344000000008236
+        },
+        {
+          "dbMs": 2.181800000000294,
+          "totalMs": 2.2150999999994383
+        },
+        {
+          "dbMs": 1.7723000000005413,
+          "totalMs": 1.8352000000013504
+        },
+        {
+          "dbMs": 1.6003000000000611,
+          "totalMs": 1.6270999999997002
+        }
+      ],
+      "position2": [
+        {
+          "dbMs": 33.85330000000067,
+          "totalMs": 34.602999999999156
+        },
+        {
+          "dbMs": 33.364700000000084,
+          "totalMs": 34.08020000000033
+        },
+        {
+          "dbMs": 33.763999999999214,
+          "totalMs": 34.78859999999986
+        },
+        {
+          "dbMs": 34.87870000000112,
+          "totalMs": 35.67740000000049
+        },
+        {
+          "dbMs": 34.230899999998655,
+          "totalMs": 35.09020000000055
+        },
+        {
+          "dbMs": 35.40190000000075,
+          "totalMs": 36.49330000000009
+        },
+        {
+          "dbMs": 34.22780000000057,
+          "totalMs": 34.959500000000844
+        }
+      ],
+      "position4": [
+        {
+          "dbMs": 48.779600000001665,
+          "totalMs": 49.52039999999943
+        },
+        {
+          "dbMs": 45.567699999999604,
+          "totalMs": 46.51839999999902
+        },
+        {
+          "dbMs": 46.641899999998714,
+          "totalMs": 47.36170000000129
+        },
+        {
+          "dbMs": 47.329399999998714,
+          "totalMs": 48.18999999999869
+        },
+        {
+          "dbMs": 49.4945000000007,
+          "totalMs": 50.261600000001636
+        },
+        {
+          "dbMs": 47.925499999999374,
+          "totalMs": 48.686100000000806
+        },
+        {
+          "dbMs": 49.17410000000018,
+          "totalMs": 49.99960000000101
+        }
+      ],
+      "occurrence2": [
+        {
+          "dbMs": 52.98800000000119,
+          "totalMs": 53.75489999999991
+        },
+        {
+          "dbMs": 47.812700000000405,
+          "totalMs": 48.59810000000107
+        },
+        {
+          "dbMs": 47.72400000000016,
+          "totalMs": 48.555200000000696
+        },
+        {
+          "dbMs": 48.66269999999895,
+          "totalMs": 49.57639999999992
+        },
+        {
+          "dbMs": 49.38160000000062,
+          "totalMs": 50.199500000000626
+        },
+        {
+          "dbMs": 47.9390999999996,
+          "totalMs": 48.73120000000017
+        },
+        {
+          "dbMs": 50.02590000000055,
+          "totalMs": 51.03179999999884
+        }
+      ],
+      "occurrence4": [
+        {
+          "dbMs": 54.907499999999345,
+          "totalMs": 55.634500000000116
+        },
+        {
+          "dbMs": 55.175499999999374,
+          "totalMs": 55.867400000001
+        },
+        {
+          "dbMs": 58.25849999999991,
+          "totalMs": 59.108400000000984
+        },
+        {
+          "dbMs": 55.805599999999686,
+          "totalMs": 56.68450000000121
+        },
+        {
+          "dbMs": 58.332399999999325,
+          "totalMs": 59.06550000000061
+        },
+        {
+          "dbMs": 56.09279999999853,
+          "totalMs": 56.820099999999
+        },
+        {
+          "dbMs": 54.71179999999913,
+          "totalMs": 55.53219999999965
+        }
+      ]
+    },
+    "truth": 9944,
+    "resultRows": 300,
+    "candidates": {
+      "position2": 9944,
+      "position4": 9944,
+      "occurrence2": 9944,
+      "occurrence4": 9944
+    },
+    "order": [
+      {
+        "round": -3,
+        "paths": [
+          "plain",
+          "position2",
+          "position4",
+          "occurrence2",
+          "occurrence4"
+        ]
+      },
+      {
+        "round": -2,
+        "paths": [
+          "position2",
+          "position4",
+          "occurrence2",
+          "occurrence4",
+          "plain"
+        ]
+      },
+      {
+        "round": -1,
+        "paths": [
+          "position4",
+          "occurrence2",
+          "occurrence4",
+          "plain",
+          "position2"
+        ]
+      },
+      {
+        "round": 0,
+        "paths": [
+          "occurrence2",
+          "occurrence4",
+          "plain",
+          "position2",
+          "position4"
+        ]
+      },
+      {
+        "round": 1,
+        "paths": [
+          "occurrence4",
+          "plain",
+          "position2",
+          "position4",
+          "occurrence2"
+        ]
+      },
+      {
+        "round": 2,
+        "paths": [
+          "plain",
+          "position2",
+          "position4",
+          "occurrence2",
+          "occurrence4"
+        ]
+      },
+      {
+        "round": 3,
+        "paths": [
+          "position2",
+          "position4",
+          "occurrence2",
+          "occurrence4",
+          "plain"
+        ]
+      },
+      {
+        "round": 4,
+        "paths": [
+          "position4",
+          "occurrence2",
+          "occurrence4",
+          "plain",
+          "position2"
+        ]
+      },
+      {
+        "round": 5,
+        "paths": [
+          "occurrence2",
+          "occurrence4",
+          "plain",
+          "position2",
+          "position4"
+        ]
+      },
+      {
+        "round": 6,
+        "paths": [
+          "occurrence4",
+          "plain",
+          "position2",
+          "position4",
+          "occurrence2"
+        ]
+      }
+    ],
+    "medians": {
+      "plain": {
+        "dbMs": 1.6093000000000757,
+        "totalMs": 1.6344000000008236
+      },
+      "position2": {
+        "dbMs": 34.22780000000057,
+        "totalMs": 34.959500000000844
+      },
+      "position4": {
+        "dbMs": 47.925499999999374,
+        "totalMs": 48.686100000000806
+      },
+      "occurrence2": {
+        "dbMs": 48.66269999999895,
+        "totalMs": 49.57639999999992
+      },
+      "occurrence4": {
+        "dbMs": 55.805599999999686,
+        "totalMs": 56.68450000000121
+      }
+    }
+  },
+  {
+    "name": "memo_rare10",
+    "field": "memo",
+    "term": "약서검토완료zzxl",
+    "mode": "count",
+    "targetRows": 100000,
+    "limit": null,
+    "appDecrypts": 0,
+    "sqlCallsPerRun": 1,
+    "projection": [
+      "count"
+    ],
+    "lookup": "native array_position",
+    "session": {
+      "pid": 35692,
+      "version": "PostgreSQL 18.4 on x86_64-windows, compiled by msvc-19.44.35227, 64-bit",
+      "work_mem": "4MB"
+    },
+    "first": {
+      "plain": {
+        "dbMs": 0.4187000000001717,
+        "totalMs": 0.4305000000003929
+      },
+      "position2": {
+        "dbMs": 1.3343999999997322,
+        "totalMs": 2.000899999999092
+      },
+      "position4": {
+        "dbMs": 1.4149999999990541,
+        "totalMs": 2.193199999999706
+      },
+      "occurrence2": {
+        "dbMs": 1.3263000000006286,
+        "totalMs": 2.037800000000061
+      },
+      "occurrence4": {
+        "dbMs": 1.2242000000005646,
+        "totalMs": 1.8654000000005908
+      }
+    },
+    "runs": {
+      "plain": [
+        {
+          "dbMs": 0.3129000000008091,
+          "totalMs": 0.32150000000001455
+        },
+        {
+          "dbMs": 0.513199999999415,
+          "totalMs": 0.5207999999984168
+        },
+        {
+          "dbMs": 0.38379999999961,
+          "totalMs": 0.3944999999985157
+        },
+        {
+          "dbMs": 0.30379999999968277,
+          "totalMs": 0.31270000000040454
+        },
+        {
+          "dbMs": 0.47589999999945576,
+          "totalMs": 0.49350000000049477
+        },
+        {
+          "dbMs": 0.30569999999897846,
+          "totalMs": 0.31679999999869324
+        },
+        {
+          "dbMs": 0.44609999999920547,
+          "totalMs": 0.45709999999962747
+        }
+      ],
+      "position2": [
+        {
+          "dbMs": 1.2790999999997439,
+          "totalMs": 1.9002000000000407
+        },
+        {
+          "dbMs": 1.474500000000262,
+          "totalMs": 2.2207999999991443
+        },
+        {
+          "dbMs": 1.3190000000013242,
+          "totalMs": 2.1041999999997643
+        },
+        {
+          "dbMs": 1.3235999999997148,
+          "totalMs": 1.9413000000004104
+        },
+        {
+          "dbMs": 1.3184999999994034,
+          "totalMs": 1.958599999999933
+        },
+        {
+          "dbMs": 1.3489000000008673,
+          "totalMs": 2.506999999999607
+        },
+        {
+          "dbMs": 1.476199999999153,
+          "totalMs": 2.1250999999992928
+        }
+      ],
+      "position4": [
+        {
+          "dbMs": 1.1597000000001572,
+          "totalMs": 1.7091999999993277
+        },
+        {
+          "dbMs": 1.2242999999998574,
+          "totalMs": 1.8027000000001863
+        },
+        {
+          "dbMs": 1.1622000000006665,
+          "totalMs": 1.692799999998897
+        },
+        {
+          "dbMs": 1.3598999999994703,
+          "totalMs": 1.9012000000002445
+        },
+        {
+          "dbMs": 1.2287999999989552,
+          "totalMs": 1.8091999999996915
+        },
+        {
+          "dbMs": 1.304599999999482,
+          "totalMs": 1.9029999999984284
+        },
+        {
+          "dbMs": 1.4301000000014028,
+          "totalMs": 2.0429999999996653
+        }
+      ],
+      "occurrence2": [
+        {
+          "dbMs": 1.3515000000006694,
+          "totalMs": 2.1184999999986758
+        },
+        {
+          "dbMs": 1.5283000000017637,
+          "totalMs": 2.1710999999995693
+        },
+        {
+          "dbMs": 1.2911000000003696,
+          "totalMs": 1.8950999999997293
+        },
+        {
+          "dbMs": 1.2194999999992433,
+          "totalMs": 1.9957999999987805
+        },
+        {
+          "dbMs": 1.6155000000017026,
+          "totalMs": 2.25039999999899
+        },
+        {
+          "dbMs": 1.5447000000003754,
+          "totalMs": 2.202400000000125
+        },
+        {
+          "dbMs": 1.7326999999986583,
+          "totalMs": 2.4082999999991443
+        }
+      ],
+      "occurrence4": [
+        {
+          "dbMs": 1.3937000000005355,
+          "totalMs": 2.12670000000071
+        },
+        {
+          "dbMs": 1.1270999999997002,
+          "totalMs": 1.6756999999997788
+        },
+        {
+          "dbMs": 1.2536999999992986,
+          "totalMs": 1.7813999999998487
+        },
+        {
+          "dbMs": 1.1352000000006228,
+          "totalMs": 2.004899999999907
+        },
+        {
+          "dbMs": 1.3162000000011176,
+          "totalMs": 2.043999999999869
+        },
+        {
+          "dbMs": 1.2767999999996391,
+          "totalMs": 2.0565000000005966
+        },
+        {
+          "dbMs": 1.5540000000000873,
+          "totalMs": 2.271099999999933
+        }
+      ]
+    },
+    "truth": 1,
+    "resultRows": 1,
+    "candidates": {
+      "position2": 1,
+      "position4": 1,
+      "occurrence2": 1,
+      "occurrence4": 1
+    },
+    "order": [
+      {
+        "round": -3,
+        "paths": [
+          "plain",
+          "position2",
+          "position4",
+          "occurrence2",
+          "occurrence4"
+        ]
+      },
+      {
+        "round": -2,
+        "paths": [
+          "position2",
+          "position4",
+          "occurrence2",
+          "occurrence4",
+          "plain"
+        ]
+      },
+      {
+        "round": -1,
+        "paths": [
+          "position4",
+          "occurrence2",
+          "occurrence4",
+          "plain",
+          "position2"
+        ]
+      },
+      {
+        "round": 0,
+        "paths": [
+          "occurrence2",
+          "occurrence4",
+          "plain",
+          "position2",
+          "position4"
+        ]
+      },
+      {
+        "round": 1,
+        "paths": [
+          "occurrence4",
+          "plain",
+          "position2",
+          "position4",
+          "occurrence2"
+        ]
+      },
+      {
+        "round": 2,
+        "paths": [
+          "plain",
+          "position2",
+          "position4",
+          "occurrence2",
+          "occurrence4"
+        ]
+      },
+      {
+        "round": 3,
+        "paths": [
+          "position2",
+          "position4",
+          "occurrence2",
+          "occurrence4",
+          "plain"
+        ]
+      },
+      {
+        "round": 4,
+        "paths": [
+          "position4",
+          "occurrence2",
+          "occurrence4",
+          "plain",
+          "position2"
+        ]
+      },
+      {
+        "round": 5,
+        "paths": [
+          "occurrence2",
+          "occurrence4",
+          "plain",
+          "position2",
+          "position4"
+        ]
+      },
+      {
+        "round": 6,
+        "paths": [
+          "occurrence4",
+          "plain",
+          "position2",
+          "position4",
+          "occurrence2"
+        ]
+      }
+    ],
+    "medians": {
+      "plain": {
+        "dbMs": 0.38379999999961,
+        "totalMs": 0.3944999999985157
+      },
+      "position2": {
+        "dbMs": 1.3235999999997148,
+        "totalMs": 2.1041999999997643
+      },
+      "position4": {
+        "dbMs": 1.2287999999989552,
+        "totalMs": 1.8091999999996915
+      },
+      "occurrence2": {
+        "dbMs": 1.5283000000017637,
+        "totalMs": 2.1710999999995693
+      },
+      "occurrence4": {
+        "dbMs": 1.2767999999996391,
+        "totalMs": 2.043999999999869
+      }
+    }
+  },
+  {
+    "name": "memo_rare10",
+    "field": "memo",
+    "term": "약서검토완료zzxl",
+    "mode": "list",
+    "targetRows": 100000,
+    "limit": 300,
+    "appDecrypts": 0,
+    "sqlCallsPerRun": 1,
+    "projection": [
+      "id"
+    ],
+    "lookup": "native array_position",
+    "session": {
+      "pid": 35692,
+      "version": "PostgreSQL 18.4 on x86_64-windows, compiled by msvc-19.44.35227, 64-bit",
+      "work_mem": "4MB"
+    },
+    "first": {
+      "plain": {
+        "dbMs": 0.42550000000119326,
+        "totalMs": 0.4518000000007305
+      },
+      "position2": {
+        "dbMs": 1.5135000000009313,
+        "totalMs": 2.354300000000876
+      },
+      "position4": {
+        "dbMs": 1.2849999999998545,
+        "totalMs": 1.9760000000005675
+      },
+      "occurrence2": {
+        "dbMs": 1.2631000000001222,
+        "totalMs": 1.906200000001263
+      },
+      "occurrence4": {
+        "dbMs": 1.6921000000002095,
+        "totalMs": 2.745500000000902
+      }
+    },
+    "runs": {
+      "plain": [
+        {
+          "dbMs": 0.27520000000004075,
+          "totalMs": 0.2834000000002561
+        },
+        {
+          "dbMs": 0.28659999999945285,
+          "totalMs": 0.29619999999886204
+        },
+        {
+          "dbMs": 0.35130000000026484,
+          "totalMs": 0.36679999999978463
+        },
+        {
+          "dbMs": 0.2809999999990396,
+          "totalMs": 0.2942000000002736
+        },
+        {
+          "dbMs": 0.2804000000014639,
+          "totalMs": 0.28870000000097207
+        },
+        {
+          "dbMs": 0.3624999999992724,
+          "totalMs": 0.37110000000029686
+        },
+        {
+          "dbMs": 0.3341000000000349,
+          "totalMs": 0.3422999999984313
+        }
+      ],
+      "position2": [
+        {
+          "dbMs": 1.29359999999906,
+          "totalMs": 1.9108999999989464
+        },
+        {
+          "dbMs": 1.4328000000004977,
+          "totalMs": 2.354400000000169
+        },
+        {
+          "dbMs": 1.2527000000009139,
+          "totalMs": 1.8757000000005064
+        },
+        {
+          "dbMs": 1.2515999999995984,
+          "totalMs": 2.0715000000000146
+        },
+        {
+          "dbMs": 1.3016000000006898,
+          "totalMs": 2.0841999999993277
+        },
+        {
+          "dbMs": 1.3598999999994703,
+          "totalMs": 2.0359000000007654
+        },
+        {
+          "dbMs": 1.3200999999990017,
+          "totalMs": 1.9711999999999534
+        }
+      ],
+      "position4": [
+        {
+          "dbMs": 1.2795999999998457,
+          "totalMs": 1.8544000000001688
+        },
+        {
+          "dbMs": 1.3641000000006898,
+          "totalMs": 1.9649000000008527
+        },
+        {
+          "dbMs": 1.2470000000012078,
+          "totalMs": 1.797099999999773
+        },
+        {
+          "dbMs": 1.138600000000224,
+          "totalMs": 1.6876999999985856
+        },
+        {
+          "dbMs": 1.1416000000008353,
+          "totalMs": 1.7107000000014523
+        },
+        {
+          "dbMs": 1.34729999999945,
+          "totalMs": 1.92909999999938
+        },
+        {
+          "dbMs": 1.279500000000553,
+          "totalMs": 2.021500000000742
+        }
+      ],
+      "occurrence2": [
+        {
+          "dbMs": 1.2133000000012544,
+          "totalMs": 1.8739000000005035
+        },
+        {
+          "dbMs": 1.260599999999613,
+          "totalMs": 1.9359000000004016
+        },
+        {
+          "dbMs": 1.1066999999984546,
+          "totalMs": 1.743399999999383
+        },
+        {
+          "dbMs": 1.2795999999998457,
+          "totalMs": 2.0056000000004133
+        },
+        {
+          "dbMs": 1.2021999999997206,
+          "totalMs": 1.796200000000681
+        },
+        {
+          "dbMs": 1.2740999999987253,
+          "totalMs": 1.8786999999992986
+        },
+        {
+          "dbMs": 1.2383000000008906,
+          "totalMs": 1.9860000000007858
+        }
+      ],
+      "occurrence4": [
+        {
+          "dbMs": 1.0946999999996478,
+          "totalMs": 1.6619000000009692
+        },
+        {
+          "dbMs": 1.157100000000355,
+          "totalMs": 1.7423999999991793
+        },
+        {
+          "dbMs": 0.9379000000008091,
+          "totalMs": 1.5082000000002154
+        },
+        {
+          "dbMs": 1.2508000000016182,
+          "totalMs": 1.8305999999993219
+        },
+        {
+          "dbMs": 1.1485000000011496,
+          "totalMs": 1.7531999999991967
+        },
+        {
+          "dbMs": 1.1347999999998137,
+          "totalMs": 1.6843000000008033
+        },
+        {
+          "dbMs": 1.137800000000425,
+          "totalMs": 1.6849999999994907
+        }
+      ]
+    },
+    "truth": 1,
+    "resultRows": 1,
+    "candidates": {
+      "position2": 1,
+      "position4": 1,
+      "occurrence2": 1,
+      "occurrence4": 1
+    },
+    "order": [
+      {
+        "round": -3,
+        "paths": [
+          "plain",
+          "position2",
+          "position4",
+          "occurrence2",
+          "occurrence4"
+        ]
+      },
+      {
+        "round": -2,
+        "paths": [
+          "position2",
+          "position4",
+          "occurrence2",
+          "occurrence4",
+          "plain"
+        ]
+      },
+      {
+        "round": -1,
+        "paths": [
+          "position4",
+          "occurrence2",
+          "occurrence4",
+          "plain",
+          "position2"
+        ]
+      },
+      {
+        "round": 0,
+        "paths": [
+          "occurrence2",
+          "occurrence4",
+          "plain",
+          "position2",
+          "position4"
+        ]
+      },
+      {
+        "round": 1,
+        "paths": [
+          "occurrence4",
+          "plain",
+          "position2",
+          "position4",
+          "occurrence2"
+        ]
+      },
+      {
+        "round": 2,
+        "paths": [
+          "plain",
+          "position2",
+          "position4",
+          "occurrence2",
+          "occurrence4"
+        ]
+      },
+      {
+        "round": 3,
+        "paths": [
+          "position2",
+          "position4",
+          "occurrence2",
+          "occurrence4",
+          "plain"
+        ]
+      },
+      {
+        "round": 4,
+        "paths": [
+          "position4",
+          "occurrence2",
+          "occurrence4",
+          "plain",
+          "position2"
+        ]
+      },
+      {
+        "round": 5,
+        "paths": [
+          "occurrence2",
+          "occurrence4",
+          "plain",
+          "position2",
+          "position4"
+        ]
+      },
+      {
+        "round": 6,
+        "paths": [
+          "occurrence4",
+          "plain",
+          "position2",
+          "position4",
+          "occurrence2"
+        ]
+      }
+    ],
+    "medians": {
+      "plain": {
+        "dbMs": 0.28659999999945285,
+        "totalMs": 0.29619999999886204
+      },
+      "position2": {
+        "dbMs": 1.3016000000006898,
+        "totalMs": 2.0359000000007654
+      },
+      "position4": {
+        "dbMs": 1.279500000000553,
+        "totalMs": 1.8544000000001688
+      },
+      "occurrence2": {
+        "dbMs": 1.2383000000008906,
+        "totalMs": 1.8786999999992986
+      },
+      "occurrence4": {
+        "dbMs": 1.137800000000425,
+        "totalMs": 1.6849999999994907
+      }
+    }
+  },
+  {
+    "name": "address_common10",
+    "field": "address",
+    "term": "okyochiyod",
+    "mode": "count",
+    "targetRows": 100000,
+    "limit": null,
+    "appDecrypts": 0,
+    "sqlCallsPerRun": 1,
+    "projection": [
+      "count"
+    ],
+    "lookup": "native array_position",
+    "session": {
+      "pid": 35692,
+      "version": "PostgreSQL 18.4 on x86_64-windows, compiled by msvc-19.44.35227, 64-bit",
+      "work_mem": "4MB"
+    },
+    "first": {
+      "plain": {
+        "dbMs": 9.463200000000143,
+        "totalMs": 9.487500000001091
+      },
+      "position2": {
+        "dbMs": 232.26950000000033,
+        "totalMs": 233.17189999999937
+      },
+      "position4": {
+        "dbMs": 183.3631000000005,
+        "totalMs": 184.0671000000002
+      },
+      "occurrence2": {
+        "dbMs": 697.6270000000004,
+        "totalMs": 698.5295999999998
+      },
+      "occurrence4": {
+        "dbMs": 432.65060000000085,
+        "totalMs": 433.4884999999995
+      }
+    },
+    "runs": {
+      "plain": [
+        {
+          "dbMs": 9.079900000000634,
+          "totalMs": 9.10150000000067
+        },
+        {
+          "dbMs": 10.026300000001356,
+          "totalMs": 10.048399999999674
+        },
+        {
+          "dbMs": 9.516299999999319,
+          "totalMs": 9.540799999998853
+        },
+        {
+          "dbMs": 9.935999999997875,
+          "totalMs": 9.95890000000145
+        },
+        {
+          "dbMs": 8.9416999999994,
+          "totalMs": 8.96440000000075
+        },
+        {
+          "dbMs": 9.205299999997806,
+          "totalMs": 9.226999999998952
+        },
+        {
+          "dbMs": 9.752000000000407,
+          "totalMs": 9.77390000000014
+        }
+      ],
+      "position2": [
+        {
+          "dbMs": 227.70460000000094,
+          "totalMs": 228.47719999999754
+        },
+        {
+          "dbMs": 234.78670000000056,
+          "totalMs": 235.58139999999912
+        },
+        {
+          "dbMs": 230.10069999999905,
+          "totalMs": 230.8726999999999
+        },
+        {
+          "dbMs": 230.9336000000003,
+          "totalMs": 231.6973999999973
+        },
+        {
+          "dbMs": 231.26380000000063,
+          "totalMs": 232.23669999999765
+        },
+        {
+          "dbMs": 228.97260000000097,
+          "totalMs": 229.74299999999857
+        },
+        {
+          "dbMs": 235.47320000000036,
+          "totalMs": 236.45260000000053
+        }
+      ],
+      "position4": [
+        {
+          "dbMs": 181.8185999999987,
+          "totalMs": 182.71029999999882
+        },
+        {
+          "dbMs": 187.001400000001,
+          "totalMs": 187.87740000000122
+        },
+        {
+          "dbMs": 189.1951999999983,
+          "totalMs": 189.93509999999878
+        },
+        {
+          "dbMs": 189.1880999999994,
+          "totalMs": 189.96830000000045
+        },
+        {
+          "dbMs": 184.35970000000088,
+          "totalMs": 185.1703000000016
+        },
+        {
+          "dbMs": 187.00239999999758,
+          "totalMs": 187.6939999999995
+        },
+        {
+          "dbMs": 181.69710000000123,
+          "totalMs": 182.3814999999995
+        }
+      ],
+      "occurrence2": [
+        {
+          "dbMs": 686.5119000000013,
+          "totalMs": 687.4742000000006
+        },
+        {
+          "dbMs": 671.5290000000023,
+          "totalMs": 672.8372999999992
+        },
+        {
+          "dbMs": 694.0738000000019,
+          "totalMs": 694.9635999999991
+        },
+        {
+          "dbMs": 686.5205999999998,
+          "totalMs": 687.5620999999992
+        },
+        {
+          "dbMs": 695.1226000000024,
+          "totalMs": 695.979800000001
+        },
+        {
+          "dbMs": 691.4919999999984,
+          "totalMs": 692.3584999999985
+        },
+        {
+          "dbMs": 676.7122000000018,
+          "totalMs": 677.4730000000018
+        }
+      ],
+      "occurrence4": [
+        {
+          "dbMs": 429.759399999999,
+          "totalMs": 430.6222999999991
+        },
+        {
+          "dbMs": 435.1127000000015,
+          "totalMs": 435.86179999999877
+        },
+        {
+          "dbMs": 430.0515000000014,
+          "totalMs": 430.82670000000144
+        },
+        {
+          "dbMs": 436.9976000000024,
+          "totalMs": 437.6980999999978
+        },
+        {
+          "dbMs": 433.8739999999998,
+          "totalMs": 434.82630000000063
+        },
+        {
+          "dbMs": 437.2057999999997,
+          "totalMs": 437.96919999999955
+        },
+        {
+          "dbMs": 438.4243999999999,
+          "totalMs": 439.1435999999994
+        }
+      ]
+    },
+    "truth": 16821,
+    "resultRows": 1,
+    "candidates": {
+      "position2": 16821,
+      "position4": 16821,
+      "occurrence2": 16821,
+      "occurrence4": 16821
+    },
+    "order": [
+      {
+        "round": -3,
+        "paths": [
+          "plain",
+          "position2",
+          "position4",
+          "occurrence2",
+          "occurrence4"
+        ]
+      },
+      {
+        "round": -2,
+        "paths": [
+          "position2",
+          "position4",
+          "occurrence2",
+          "occurrence4",
+          "plain"
+        ]
+      },
+      {
+        "round": -1,
+        "paths": [
+          "position4",
+          "occurrence2",
+          "occurrence4",
+          "plain",
+          "position2"
+        ]
+      },
+      {
+        "round": 0,
+        "paths": [
+          "occurrence2",
+          "occurrence4",
+          "plain",
+          "position2",
+          "position4"
+        ]
+      },
+      {
+        "round": 1,
+        "paths": [
+          "occurrence4",
+          "plain",
+          "position2",
+          "position4",
+          "occurrence2"
+        ]
+      },
+      {
+        "round": 2,
+        "paths": [
+          "plain",
+          "position2",
+          "position4",
+          "occurrence2",
+          "occurrence4"
+        ]
+      },
+      {
+        "round": 3,
+        "paths": [
+          "position2",
+          "position4",
+          "occurrence2",
+          "occurrence4",
+          "plain"
+        ]
+      },
+      {
+        "round": 4,
+        "paths": [
+          "position4",
+          "occurrence2",
+          "occurrence4",
+          "plain",
+          "position2"
+        ]
+      },
+      {
+        "round": 5,
+        "paths": [
+          "occurrence2",
+          "occurrence4",
+          "plain",
+          "position2",
+          "position4"
+        ]
+      },
+      {
+        "round": 6,
+        "paths": [
+          "occurrence4",
+          "plain",
+          "position2",
+          "position4",
+          "occurrence2"
+        ]
+      }
+    ],
+    "medians": {
+      "plain": {
+        "dbMs": 9.516299999999319,
+        "totalMs": 9.540799999998853
+      },
+      "position2": {
+        "dbMs": 230.9336000000003,
+        "totalMs": 231.6973999999973
+      },
+      "position4": {
+        "dbMs": 187.001400000001,
+        "totalMs": 187.6939999999995
+      },
+      "occurrence2": {
+        "dbMs": 686.5205999999998,
+        "totalMs": 687.5620999999992
+      },
+      "occurrence4": {
+        "dbMs": 435.1127000000015,
+        "totalMs": 435.86179999999877
+      }
+    }
+  },
+  {
+    "name": "address_common10",
+    "field": "address",
+    "term": "okyochiyod",
+    "mode": "list",
+    "targetRows": 100000,
+    "limit": 300,
+    "appDecrypts": 0,
+    "sqlCallsPerRun": 1,
+    "projection": [
+      "id"
+    ],
+    "lookup": "native array_position",
+    "session": {
+      "pid": 35692,
+      "version": "PostgreSQL 18.4 on x86_64-windows, compiled by msvc-19.44.35227, 64-bit",
+      "work_mem": "4MB"
+    },
+    "first": {
+      "plain": {
+        "dbMs": 1.218700000001263,
+        "totalMs": 1.2491999999983818
+      },
+      "position2": {
+        "dbMs": 40.96719999999914,
+        "totalMs": 42.046299999998155
+      },
+      "position4": {
+        "dbMs": 62.9349000000002,
+        "totalMs": 63.79330000000118
+      },
+      "occurrence2": {
+        "dbMs": 58.519499999998516,
+        "totalMs": 59.41149999999834
+      },
+      "occurrence4": {
+        "dbMs": 81.78640000000087,
+        "totalMs": 82.66879999999946
+      }
+    },
+    "runs": {
+      "plain": [
+        {
+          "dbMs": 1.1132999999972526,
+          "totalMs": 1.1421000000009371
+        },
+        {
+          "dbMs": 1.1054999999978463,
+          "totalMs": 1.1327999999994063
+        },
+        {
+          "dbMs": 1.1229000000021188,
+          "totalMs": 1.1473999999980151
+        },
+        {
+          "dbMs": 1.1775999999990745,
+          "totalMs": 1.2060999999994237
+        },
+        {
+          "dbMs": 1.2184999999990396,
+          "totalMs": 1.2533000000003085
+        },
+        {
+          "dbMs": 1.139500000001135,
+          "totalMs": 1.173399999999674
+        },
+        {
+          "dbMs": 1.1323000000011234,
+          "totalMs": 1.1579000000019732
+        }
+      ],
+      "position2": [
+        {
+          "dbMs": 39.651600000001054,
+          "totalMs": 40.419200000000274
+        },
+        {
+          "dbMs": 42.3086000000003,
+          "totalMs": 43.3080000000009
+        },
+        {
+          "dbMs": 41.23399999999674,
+          "totalMs": 42.02360000000044
+        },
+        {
+          "dbMs": 42.662899999999354,
+          "totalMs": 43.83530000000246
+        },
+        {
+          "dbMs": 39.85329999999885,
+          "totalMs": 40.67659999999887
+        },
+        {
+          "dbMs": 40.82809999999881,
+          "totalMs": 41.76050000000032
+        },
+        {
+          "dbMs": 40.72149999999965,
+          "totalMs": 41.49880000000121
+        }
+      ],
+      "position4": [
+        {
+          "dbMs": 59.90190000000075,
+          "totalMs": 60.620999999999185
+        },
+        {
+          "dbMs": 63.318599999998696,
+          "totalMs": 64.1297999999988
+        },
+        {
+          "dbMs": 61.671800000000076,
+          "totalMs": 62.438600000001315
+        },
+        {
+          "dbMs": 61.78979999999865,
+          "totalMs": 62.53089999999793
+        },
+        {
+          "dbMs": 63.476299999998446,
+          "totalMs": 64.20079999999871
+        },
+        {
+          "dbMs": 61.1237000000001,
+          "totalMs": 61.870200000001205
+        },
+        {
+          "dbMs": 61.18770000000222,
+          "totalMs": 61.88769999999931
+        }
+      ],
+      "occurrence2": [
+        {
+          "dbMs": 57.17919999999867,
+          "totalMs": 58.045899999997346
+        },
+        {
+          "dbMs": 59.86059999999998,
+          "totalMs": 60.936399999998685
+        },
+        {
+          "dbMs": 58.73440000000119,
+          "totalMs": 59.6247000000003
+        },
+        {
+          "dbMs": 59.991900000000896,
+          "totalMs": 60.88160000000062
+        },
+        {
+          "dbMs": 59.519100000001345,
+          "totalMs": 60.77070000000094
+        },
+        {
+          "dbMs": 58.315999999998894,
+          "totalMs": 59.0782999999974
+        },
+        {
+          "dbMs": 66.50310000000172,
+          "totalMs": 67.63929999999891
+        }
+      ],
+      "occurrence4": [
+        {
+          "dbMs": 71.60670000000027,
+          "totalMs": 72.38130000000092
+        },
+        {
+          "dbMs": 74.1807000000008,
+          "totalMs": 74.98330000000351
+        },
+        {
+          "dbMs": 74.9382000000005,
+          "totalMs": 75.7448000000004
+        },
+        {
+          "dbMs": 73.3318999999974,
+          "totalMs": 74.07440000000133
+        },
+        {
+          "dbMs": 72.79040000000168,
+          "totalMs": 73.70500000000175
+        },
+        {
+          "dbMs": 75.02850000000035,
+          "totalMs": 75.99129999999786
+        },
+        {
+          "dbMs": 73.67759999999907,
+          "totalMs": 74.36679999999978
+        }
+      ]
+    },
+    "truth": 16821,
+    "resultRows": 300,
+    "candidates": {
+      "position2": 16821,
+      "position4": 16821,
+      "occurrence2": 16821,
+      "occurrence4": 16821
+    },
+    "order": [
+      {
+        "round": -3,
+        "paths": [
+          "plain",
+          "position2",
+          "position4",
+          "occurrence2",
+          "occurrence4"
+        ]
+      },
+      {
+        "round": -2,
+        "paths": [
+          "position2",
+          "position4",
+          "occurrence2",
+          "occurrence4",
+          "plain"
+        ]
+      },
+      {
+        "round": -1,
+        "paths": [
+          "position4",
+          "occurrence2",
+          "occurrence4",
+          "plain",
+          "position2"
+        ]
+      },
+      {
+        "round": 0,
+        "paths": [
+          "occurrence2",
+          "occurrence4",
+          "plain",
+          "position2",
+          "position4"
+        ]
+      },
+      {
+        "round": 1,
+        "paths": [
+          "occurrence4",
+          "plain",
+          "position2",
+          "position4",
+          "occurrence2"
+        ]
+      },
+      {
+        "round": 2,
+        "paths": [
+          "plain",
+          "position2",
+          "position4",
+          "occurrence2",
+          "occurrence4"
+        ]
+      },
+      {
+        "round": 3,
+        "paths": [
+          "position2",
+          "position4",
+          "occurrence2",
+          "occurrence4",
+          "plain"
+        ]
+      },
+      {
+        "round": 4,
+        "paths": [
+          "position4",
+          "occurrence2",
+          "occurrence4",
+          "plain",
+          "position2"
+        ]
+      },
+      {
+        "round": 5,
+        "paths": [
+          "occurrence2",
+          "occurrence4",
+          "plain",
+          "position2",
+          "position4"
+        ]
+      },
+      {
+        "round": 6,
+        "paths": [
+          "occurrence4",
+          "plain",
+          "position2",
+          "position4",
+          "occurrence2"
+        ]
+      }
+    ],
+    "medians": {
+      "plain": {
+        "dbMs": 1.1323000000011234,
+        "totalMs": 1.1579000000019732
+      },
+      "position2": {
+        "dbMs": 40.82809999999881,
+        "totalMs": 41.76050000000032
+      },
+      "position4": {
+        "dbMs": 61.671800000000076,
+        "totalMs": 62.438600000001315
+      },
+      "occurrence2": {
+        "dbMs": 59.519100000001345,
+        "totalMs": 60.77070000000094
+      },
+      "occurrence4": {
+        "dbMs": 73.67759999999907,
+        "totalMs": 74.36679999999978
+      }
+    }
+  },
+  {
+    "name": "address_rare10",
+    "field": "address",
+    "term": "전유성구대학로752",
+    "mode": "count",
+    "targetRows": 100000,
+    "limit": null,
+    "appDecrypts": 0,
+    "sqlCallsPerRun": 1,
+    "projection": [
+      "count"
+    ],
+    "lookup": "native array_position",
+    "session": {
+      "pid": 35692,
+      "version": "PostgreSQL 18.4 on x86_64-windows, compiled by msvc-19.44.35227, 64-bit",
+      "work_mem": "4MB"
+    },
+    "first": {
+      "plain": {
+        "dbMs": 0.4985000000015134,
+        "totalMs": 0.5132999999987078
+      },
+      "position2": {
+        "dbMs": 2.614400000002206,
+        "totalMs": 3.369200000001001
+      },
+      "position4": {
+        "dbMs": 2.8999000000003434,
+        "totalMs": 3.8554999999978463
+      },
+      "occurrence2": {
+        "dbMs": 2.5641000000032363,
+        "totalMs": 3.264100000000326
+      },
+      "occurrence4": {
+        "dbMs": 2.6902999999983876,
+        "totalMs": 3.3475999999973283
+      }
+    },
+    "runs": {
+      "plain": [
+        {
+          "dbMs": 0.44680000000153086,
+          "totalMs": 0.4580000000023574
+        },
+        {
+          "dbMs": 0.4210000000020955,
+          "totalMs": 0.4315000000024156
+        },
+        {
+          "dbMs": 0.4796999999998661,
+          "totalMs": 0.48919999999998254
+        },
+        {
+          "dbMs": 0.43509999999878346,
+          "totalMs": 0.4477000000006228
+        },
+        {
+          "dbMs": 0.5989000000008673,
+          "totalMs": 0.6111999999993714
+        },
+        {
+          "dbMs": 0.4337000000014086,
+          "totalMs": 0.44540000000051805
+        },
+        {
+          "dbMs": 0.5139000000017404,
+          "totalMs": 0.5290999999997439
+        }
+      ],
+      "position2": [
+        {
+          "dbMs": 2.5120999999999185,
+          "totalMs": 3.238499999999476
+        },
+        {
+          "dbMs": 2.4733999999989464,
+          "totalMs": 3.1349999999983993
+        },
+        {
+          "dbMs": 2.59939999999915,
+          "totalMs": 3.279500000000553
+        },
+        {
+          "dbMs": 2.69550000000163,
+          "totalMs": 3.4328999999997905
+        },
+        {
+          "dbMs": 2.644399999997404,
+          "totalMs": 3.319999999999709
+        },
+        {
+          "dbMs": 2.507000000001426,
+          "totalMs": 3.192299999998795
+        },
+        {
+          "dbMs": 2.5270999999993364,
+          "totalMs": 3.224900000001071
+        }
+      ],
+      "position4": [
+        {
+          "dbMs": 2.565200000000914,
+          "totalMs": 3.4046999999991385
+        },
+        {
+          "dbMs": 2.6539000000011583,
+          "totalMs": 3.248599999998987
+        },
+        {
+          "dbMs": 2.504899999999907,
+          "totalMs": 3.106999999999971
+        },
+        {
+          "dbMs": 2.5368000000016764,
+          "totalMs": 3.2518999999992957
+        },
+        {
+          "dbMs": 2.3580000000001746,
+          "totalMs": 2.9717000000018743
+        },
+        {
+          "dbMs": 2.6775999999990745,
+          "totalMs": 3.302400000000489
+        },
+        {
+          "dbMs": 2.2528999999994994,
+          "totalMs": 2.9782000000013795
+        }
+      ],
+      "occurrence2": [
+        {
+          "dbMs": 2.525499999999738,
+          "totalMs": 3.2043999999987136
+        },
+        {
+          "dbMs": 2.521200000002864,
+          "totalMs": 3.3246999999973923
+        },
+        {
+          "dbMs": 2.686099999998987,
+          "totalMs": 3.7199000000000524
+        },
+        {
+          "dbMs": 2.52900000000227,
+          "totalMs": 3.2170999999980268
+        },
+        {
+          "dbMs": 2.46650000000227,
+          "totalMs": 3.349500000000262
+        },
+        {
+          "dbMs": 2.477199999997538,
+          "totalMs": 3.1705000000001746
+        },
+        {
+          "dbMs": 2.415000000000873,
+          "totalMs": 3.080500000000029
+        }
+      ],
+      "occurrence4": [
+        {
+          "dbMs": 2.372000000003027,
+          "totalMs": 2.966899999999441
+        },
+        {
+          "dbMs": 2.519899999999325,
+          "totalMs": 3.116600000001199
+        },
+        {
+          "dbMs": 2.439700000002631,
+          "totalMs": 3.0689999999995052
+        },
+        {
+          "dbMs": 2.502999999996973,
+          "totalMs": 3.1715000000003783
+        },
+        {
+          "dbMs": 2.5293000000019674,
+          "totalMs": 3.1173999999991793
+        },
+        {
+          "dbMs": 2.421599999997852,
+          "totalMs": 3.014999999999418
+        },
+        {
+          "dbMs": 2.7541000000019267,
+          "totalMs": 3.8866000000016356
+        }
+      ]
+    },
+    "truth": 5,
+    "resultRows": 1,
+    "candidates": {
+      "position2": 5,
+      "position4": 5,
+      "occurrence2": 5,
+      "occurrence4": 5
+    },
+    "order": [
+      {
+        "round": -3,
+        "paths": [
+          "plain",
+          "position2",
+          "position4",
+          "occurrence2",
+          "occurrence4"
+        ]
+      },
+      {
+        "round": -2,
+        "paths": [
+          "position2",
+          "position4",
+          "occurrence2",
+          "occurrence4",
+          "plain"
+        ]
+      },
+      {
+        "round": -1,
+        "paths": [
+          "position4",
+          "occurrence2",
+          "occurrence4",
+          "plain",
+          "position2"
+        ]
+      },
+      {
+        "round": 0,
+        "paths": [
+          "occurrence2",
+          "occurrence4",
+          "plain",
+          "position2",
+          "position4"
+        ]
+      },
+      {
+        "round": 1,
+        "paths": [
+          "occurrence4",
+          "plain",
+          "position2",
+          "position4",
+          "occurrence2"
+        ]
+      },
+      {
+        "round": 2,
+        "paths": [
+          "plain",
+          "position2",
+          "position4",
+          "occurrence2",
+          "occurrence4"
+        ]
+      },
+      {
+        "round": 3,
+        "paths": [
+          "position2",
+          "position4",
+          "occurrence2",
+          "occurrence4",
+          "plain"
+        ]
+      },
+      {
+        "round": 4,
+        "paths": [
+          "position4",
+          "occurrence2",
+          "occurrence4",
+          "plain",
+          "position2"
+        ]
+      },
+      {
+        "round": 5,
+        "paths": [
+          "occurrence2",
+          "occurrence4",
+          "plain",
+          "position2",
+          "position4"
+        ]
+      },
+      {
+        "round": 6,
+        "paths": [
+          "occurrence4",
+          "plain",
+          "position2",
+          "position4",
+          "occurrence2"
+        ]
+      }
+    ],
+    "medians": {
+      "plain": {
+        "dbMs": 0.44680000000153086,
+        "totalMs": 0.4580000000023574
+      },
+      "position2": {
+        "dbMs": 2.5270999999993364,
+        "totalMs": 3.238499999999476
+      },
+      "position4": {
+        "dbMs": 2.5368000000016764,
+        "totalMs": 3.248599999998987
+      },
+      "occurrence2": {
+        "dbMs": 2.521200000002864,
+        "totalMs": 3.2170999999980268
+      },
+      "occurrence4": {
+        "dbMs": 2.502999999996973,
+        "totalMs": 3.116600000001199
+      }
+    }
+  },
+  {
+    "name": "address_rare10",
+    "field": "address",
+    "term": "전유성구대학로752",
+    "mode": "list",
+    "targetRows": 100000,
+    "limit": 300,
+    "appDecrypts": 0,
+    "sqlCallsPerRun": 1,
+    "projection": [
+      "id"
+    ],
+    "lookup": "native array_position",
+    "session": {
+      "pid": 35692,
+      "version": "PostgreSQL 18.4 on x86_64-windows, compiled by msvc-19.44.35227, 64-bit",
+      "work_mem": "4MB"
+    },
+    "first": {
+      "plain": {
+        "dbMs": 0.4651999999987311,
+        "totalMs": 0.4765000000006694
+      },
+      "position2": {
+        "dbMs": 2.7330000000001746,
+        "totalMs": 3.505799999998999
+      },
+      "position4": {
+        "dbMs": 2.82300000000032,
+        "totalMs": 3.5843999999997322
+      },
+      "occurrence2": {
+        "dbMs": 2.655800000000454,
+        "totalMs": 3.40219999999681
+      },
+      "occurrence4": {
+        "dbMs": 2.568699999999808,
+        "totalMs": 3.316500000000815
+      }
+    },
+    "runs": {
+      "plain": [
+        {
+          "dbMs": 0.42849999999816646,
+          "totalMs": 0.4400999999998021
+        },
+        {
+          "dbMs": 0.6202000000012049,
+          "totalMs": 0.6307999999989988
+        },
+        {
+          "dbMs": 0.7559000000001106,
+          "totalMs": 0.7674000000006345
+        },
+        {
+          "dbMs": 0.388200000001234,
+          "totalMs": 0.3982999999971071
+        },
+        {
+          "dbMs": 0.596399999998539,
+          "totalMs": 0.6055999999989581
+        },
+        {
+          "dbMs": 0.41670000000158325,
+          "totalMs": 0.4285999999992782
+        },
+        {
+          "dbMs": 0.3919999999998254,
+          "totalMs": 0.40309999999954016
+        }
+      ],
+      "position2": [
+        {
+          "dbMs": 2.339700000000448,
+          "totalMs": 3.0600000000013097
+        },
+        {
+          "dbMs": 2.45679999999993,
+          "totalMs": 3.277699999998731
+        },
+        {
+          "dbMs": 2.4398000000001048,
+          "totalMs": 3.210800000000745
+        },
+        {
+          "dbMs": 2.5406000000002678,
+          "totalMs": 3.1890000000021246
+        },
+        {
+          "dbMs": 2.4927999999999884,
+          "totalMs": 3.2488999999986845
+        },
+        {
+          "dbMs": 2.2902999999969325,
+          "totalMs": 2.9747999999999593
+        },
+        {
+          "dbMs": 2.2881000000015774,
+          "totalMs": 2.945800000001327
+        }
+      ],
+      "position4": [
+        {
+          "dbMs": 2.3421999999991385,
+          "totalMs": 2.9320000000006985
+        },
+        {
+          "dbMs": 2.371900000001915,
+          "totalMs": 2.9882999999972526
+        },
+        {
+          "dbMs": 2.688799999999901,
+          "totalMs": 3.3316999999988184
+        },
+        {
+          "dbMs": 2.4236999999993714,
+          "totalMs": 3.1063999999969383
+        },
+        {
+          "dbMs": 2.331399999999121,
+          "totalMs": 2.928600000002916
+        },
+        {
+          "dbMs": 2.391300000002957,
+          "totalMs": 2.9778000000005704
+        },
+        {
+          "dbMs": 2.2133000000030734,
+          "totalMs": 2.801899999998568
+        }
+      ],
+      "occurrence2": [
+        {
+          "dbMs": 2.4758999999976368,
+          "totalMs": 3.4539000000004307
+        },
+        {
+          "dbMs": 2.5020999999978812,
+          "totalMs": 3.6545999999980268
+        },
+        {
+          "dbMs": 2.4447000000000116,
+          "totalMs": 3.2344999999986612
+        },
+        {
+          "dbMs": 2.3396000000029744,
+          "totalMs": 3.2034999999996217
+        },
+        {
+          "dbMs": 2.24829999999929,
+          "totalMs": 2.980599999998958
+        },
+        {
+          "dbMs": 2.831900000001042,
+          "totalMs": 3.5820999999996275
+        },
+        {
+          "dbMs": 2.1235000000015134,
+          "totalMs": 2.8888000000006286
+        }
+      ],
+      "occurrence4": [
+        {
+          "dbMs": 2.397899999999936,
+          "totalMs": 3.086200000001554
+        },
+        {
+          "dbMs": 2.4275999999990745,
+          "totalMs": 3.0221000000019558
+        },
+        {
+          "dbMs": 2.240799999999581,
+          "totalMs": 2.823100000001432
+        },
+        {
+          "dbMs": 2.208200000000943,
+          "totalMs": 2.8273000000008324
+        },
+        {
+          "dbMs": 2.3165999999982887,
+          "totalMs": 2.8832000000002154
+        },
+        {
+          "dbMs": 2.608800000001793,
+          "totalMs": 3.6244000000006054
+        },
+        {
+          "dbMs": 2.1269999999967695,
+          "totalMs": 2.835800000000745
+        }
+      ]
+    },
+    "truth": 5,
+    "resultRows": 5,
+    "candidates": {
+      "position2": 5,
+      "position4": 5,
+      "occurrence2": 5,
+      "occurrence4": 5
+    },
+    "order": [
+      {
+        "round": -3,
+        "paths": [
+          "plain",
+          "position2",
+          "position4",
+          "occurrence2",
+          "occurrence4"
+        ]
+      },
+      {
+        "round": -2,
+        "paths": [
+          "position2",
+          "position4",
+          "occurrence2",
+          "occurrence4",
+          "plain"
+        ]
+      },
+      {
+        "round": -1,
+        "paths": [
+          "position4",
+          "occurrence2",
+          "occurrence4",
+          "plain",
+          "position2"
+        ]
+      },
+      {
+        "round": 0,
+        "paths": [
+          "occurrence2",
+          "occurrence4",
+          "plain",
+          "position2",
+          "position4"
+        ]
+      },
+      {
+        "round": 1,
+        "paths": [
+          "occurrence4",
+          "plain",
+          "position2",
+          "position4",
+          "occurrence2"
+        ]
+      },
+      {
+        "round": 2,
+        "paths": [
+          "plain",
+          "position2",
+          "position4",
+          "occurrence2",
+          "occurrence4"
+        ]
+      },
+      {
+        "round": 3,
+        "paths": [
+          "position2",
+          "position4",
+          "occurrence2",
+          "occurrence4",
+          "plain"
+        ]
+      },
+      {
+        "round": 4,
+        "paths": [
+          "position4",
+          "occurrence2",
+          "occurrence4",
+          "plain",
+          "position2"
+        ]
+      },
+      {
+        "round": 5,
+        "paths": [
+          "occurrence2",
+          "occurrence4",
+          "plain",
+          "position2",
+          "position4"
+        ]
+      },
+      {
+        "round": 6,
+        "paths": [
+          "occurrence4",
+          "plain",
+          "position2",
+          "position4",
+          "occurrence2"
+        ]
+      }
+    ],
+    "medians": {
+      "plain": {
+        "dbMs": 0.42849999999816646,
+        "totalMs": 0.4400999999998021
+      },
+      "position2": {
+        "dbMs": 2.4398000000001048,
+        "totalMs": 3.1890000000021246
+      },
+      "position4": {
+        "dbMs": 2.371900000001915,
+        "totalMs": 2.9778000000005704
+      },
+      "occurrence2": {
+        "dbMs": 2.4447000000000116,
+        "totalMs": 3.2344999999986612
+      },
+      "occurrence4": {
+        "dbMs": 2.3165999999982887,
+        "totalMs": 2.8832000000002154
+      }
+    }
+  },
+  {
+    "name": "memo_repeat45",
+    "field": "memo",
+    "term": "상세안내와확인내용상세안내와확인내용상세안내와확인내용상세안내와확인내용상세안내와확인내용",
+    "mode": "count",
+    "targetRows": 100000,
+    "limit": null,
+    "appDecrypts": 0,
+    "sqlCallsPerRun": 1,
+    "projection": [
+      "count"
+    ],
+    "lookup": "native array_position",
+    "session": {
+      "pid": 35692,
+      "version": "PostgreSQL 18.4 on x86_64-windows, compiled by msvc-19.44.35227, 64-bit",
+      "work_mem": "4MB"
+    },
+    "first": {
+      "plain": {
+        "dbMs": 17.31369999999879,
+        "totalMs": 17.34730000000127
+      },
+      "position2": {
+        "dbMs": 48.87510000000111,
+        "totalMs": 50.62510000000111
+      },
+      "position4": {
+        "dbMs": 97.13980000000083,
+        "totalMs": 98.90909999999712
+      },
+      "occurrence2": {
+        "dbMs": 57.948599999999715,
+        "totalMs": 59.95119999999952
+      },
+      "occurrence4": {
+        "dbMs": 80.22769999999946,
+        "totalMs": 81.7510000000002
+      }
+    },
+    "runs": {
+      "plain": [
+        {
+          "dbMs": 17.70440000000235,
+          "totalMs": 17.728800000000774
+        },
+        {
+          "dbMs": 15.755600000000413,
+          "totalMs": 15.778599999997823
+        },
+        {
+          "dbMs": 17.35009999999602,
+          "totalMs": 17.37720000000263
+        },
+        {
+          "dbMs": 16.171299999994517,
+          "totalMs": 16.20049999999901
+        },
+        {
+          "dbMs": 16.637800000004063,
+          "totalMs": 16.661800000001676
+        },
+        {
+          "dbMs": 15.819900000002235,
+          "totalMs": 15.844000000004598
+        },
+        {
+          "dbMs": 15.487999999997555,
+          "totalMs": 15.51090000000113
+        }
+      ],
+      "position2": [
+        {
+          "dbMs": 48.62160000000222,
+          "totalMs": 50.52610000000277
+        },
+        {
+          "dbMs": 47.108400000000984,
+          "totalMs": 48.84200000000055
+        },
+        {
+          "dbMs": 50.72249999999622,
+          "totalMs": 52.52140000000509
+        },
+        {
+          "dbMs": 50.63260000000446,
+          "totalMs": 52.63169999999809
+        },
+        {
+          "dbMs": 46.83009999999922,
+          "totalMs": 48.73449999999866
+        },
+        {
+          "dbMs": 46.412100000001374,
+          "totalMs": 48.369699999995646
+        },
+        {
+          "dbMs": 47.338199999998324,
+          "totalMs": 49.2815000000046
+        }
+      ],
+      "position4": [
+        {
+          "dbMs": 92.65720000000147,
+          "totalMs": 94.02250000000276
+        },
+        {
+          "dbMs": 91.25460000000021,
+          "totalMs": 92.7619999999988
+        },
+        {
+          "dbMs": 94.32769999999437,
+          "totalMs": 95.93660000000091
+        },
+        {
+          "dbMs": 92.00119999999879,
+          "totalMs": 94.00100000000384
+        },
+        {
+          "dbMs": 89.2100999999966,
+          "totalMs": 90.78050000000076
+        },
+        {
+          "dbMs": 92.65959999999905,
+          "totalMs": 94.00620000000345
+        },
+        {
+          "dbMs": 91.94459999999526,
+          "totalMs": 93.31119999999646
+        }
+      ],
+      "occurrence2": [
+        {
+          "dbMs": 53.747699999999895,
+          "totalMs": 55.49120000000039
+        },
+        {
+          "dbMs": 56.78549999999814,
+          "totalMs": 58.77339999999822
+        },
+        {
+          "dbMs": 55.17960000000312,
+          "totalMs": 57.23120000000199
+        },
+        {
+          "dbMs": 57.129500000002736,
+          "totalMs": 59.041400000001886
+        },
+        {
+          "dbMs": 54.06399999999849,
+          "totalMs": 55.94389999999839
+        },
+        {
+          "dbMs": 52.88869999999588,
+          "totalMs": 54.90149999999994
+        },
+        {
+          "dbMs": 54.70339999999851,
+          "totalMs": 56.45969999999943
+        }
+      ],
+      "occurrence4": [
+        {
+          "dbMs": 73.41570000000138,
+          "totalMs": 74.9964
+        },
+        {
+          "dbMs": 73.42969999999696,
+          "totalMs": 75.21020000000135
+        },
+        {
+          "dbMs": 79.6623999999938,
+          "totalMs": 81.04529999999795
+        },
+        {
+          "dbMs": 76.27110000000539,
+          "totalMs": 77.7364000000016
+        },
+        {
+          "dbMs": 72.0576000000001,
+          "totalMs": 73.54110000000219
+        },
+        {
+          "dbMs": 71.79469999999856,
+          "totalMs": 73.1368999999977
+        },
+        {
+          "dbMs": 72.62569999999687,
+          "totalMs": 73.97750000000087
+        }
+      ]
+    },
+    "truth": 0,
+    "resultRows": 1,
+    "candidates": {
+      "position2": 2440,
+      "position4": 2440,
+      "occurrence2": 2440,
+      "occurrence4": 2440
+    },
+    "order": [
+      {
+        "round": -3,
+        "paths": [
+          "plain",
+          "position2",
+          "position4",
+          "occurrence2",
+          "occurrence4"
+        ]
+      },
+      {
+        "round": -2,
+        "paths": [
+          "position2",
+          "position4",
+          "occurrence2",
+          "occurrence4",
+          "plain"
+        ]
+      },
+      {
+        "round": -1,
+        "paths": [
+          "position4",
+          "occurrence2",
+          "occurrence4",
+          "plain",
+          "position2"
+        ]
+      },
+      {
+        "round": 0,
+        "paths": [
+          "occurrence2",
+          "occurrence4",
+          "plain",
+          "position2",
+          "position4"
+        ]
+      },
+      {
+        "round": 1,
+        "paths": [
+          "occurrence4",
+          "plain",
+          "position2",
+          "position4",
+          "occurrence2"
+        ]
+      },
+      {
+        "round": 2,
+        "paths": [
+          "plain",
+          "position2",
+          "position4",
+          "occurrence2",
+          "occurrence4"
+        ]
+      },
+      {
+        "round": 3,
+        "paths": [
+          "position2",
+          "position4",
+          "occurrence2",
+          "occurrence4",
+          "plain"
+        ]
+      },
+      {
+        "round": 4,
+        "paths": [
+          "position4",
+          "occurrence2",
+          "occurrence4",
+          "plain",
+          "position2"
+        ]
+      },
+      {
+        "round": 5,
+        "paths": [
+          "occurrence2",
+          "occurrence4",
+          "plain",
+          "position2",
+          "position4"
+        ]
+      },
+      {
+        "round": 6,
+        "paths": [
+          "occurrence4",
+          "plain",
+          "position2",
+          "position4",
+          "occurrence2"
+        ]
+      }
+    ],
+    "medians": {
+      "plain": {
+        "dbMs": 16.171299999994517,
+        "totalMs": 16.20049999999901
+      },
+      "position2": {
+        "dbMs": 47.338199999998324,
+        "totalMs": 49.2815000000046
+      },
+      "position4": {
+        "dbMs": 92.00119999999879,
+        "totalMs": 94.00100000000384
+      },
+      "occurrence2": {
+        "dbMs": 54.70339999999851,
+        "totalMs": 56.45969999999943
+      },
+      "occurrence4": {
+        "dbMs": 73.41570000000138,
+        "totalMs": 74.9964
+      }
+    }
+  },
+  {
+    "name": "memo_repeat45",
+    "field": "memo",
+    "term": "상세안내와확인내용상세안내와확인내용상세안내와확인내용상세안내와확인내용상세안내와확인내용",
+    "mode": "list",
+    "targetRows": 100000,
+    "limit": 300,
+    "appDecrypts": 0,
+    "sqlCallsPerRun": 1,
+    "projection": [
+      "id"
+    ],
+    "lookup": "native array_position",
+    "session": {
+      "pid": 35692,
+      "version": "PostgreSQL 18.4 on x86_64-windows, compiled by msvc-19.44.35227, 64-bit",
+      "work_mem": "4MB"
+    },
+    "first": {
+      "plain": {
+        "dbMs": 17.02629999999772,
+        "totalMs": 17.053500000001804
+      },
+      "position2": {
+        "dbMs": 50.26680000000488,
+        "totalMs": 52.16120000000228
+      },
+      "position4": {
+        "dbMs": 96.66939999999886,
+        "totalMs": 98.51180000000022
+      },
+      "occurrence2": {
+        "dbMs": 56.81749999999738,
+        "totalMs": 58.574399999997695
+      },
+      "occurrence4": {
+        "dbMs": 81.79100000000471,
+        "totalMs": 83.24219999999332
+      }
+    },
+    "runs": {
+      "plain": [
+        {
+          "dbMs": 16.516300000002957,
+          "totalMs": 16.544000000001688
+        },
+        {
+          "dbMs": 15.622699999999895,
+          "totalMs": 15.649100000002363
+        },
+        {
+          "dbMs": 18.18970000000263,
+          "totalMs": 18.21519999999873
+        },
+        {
+          "dbMs": 16.216099999997823,
+          "totalMs": 16.241900000000896
+        },
+        {
+          "dbMs": 15.924700000003213,
+          "totalMs": 15.954200000000128
+        },
+        {
+          "dbMs": 17.062599999997474,
+          "totalMs": 17.089399999997113
+        },
+        {
+          "dbMs": 15.859900000003108,
+          "totalMs": 15.886900000004971
+        }
+      ],
+      "position2": [
+        {
+          "dbMs": 48.17439999999624,
+          "totalMs": 50.06010000000242
+        },
+        {
+          "dbMs": 49.1163000000015,
+          "totalMs": 51.13869999999588
+        },
+        {
+          "dbMs": 50.5963000000047,
+          "totalMs": 52.39999999999418
+        },
+        {
+          "dbMs": 49.81450000000041,
+          "totalMs": 51.56330000000162
+        },
+        {
+          "dbMs": 48.978900000001886,
+          "totalMs": 51.1987999999983
+        },
+        {
+          "dbMs": 49.84270000000106,
+          "totalMs": 51.84240000000136
+        },
+        {
+          "dbMs": 49.732300000003306,
+          "totalMs": 52.02059999999619
+        }
+      ],
+      "position4": [
+        {
+          "dbMs": 94.22449999999662,
+          "totalMs": 95.58460000000196
+        },
+        {
+          "dbMs": 93.84629999999743,
+          "totalMs": 95.2135999999955
+        },
+        {
+          "dbMs": 92.58749999999418,
+          "totalMs": 94.13030000000435
+        },
+        {
+          "dbMs": 95.99969999999303,
+          "totalMs": 97.55049999999756
+        },
+        {
+          "dbMs": 92.87879999999859,
+          "totalMs": 94.56109999999899
+        },
+        {
+          "dbMs": 95.28420000000187,
+          "totalMs": 96.80980000000272
+        },
+        {
+          "dbMs": 91.73929999999382,
+          "totalMs": 93.1504999999961
+        }
+      ],
+      "occurrence2": [
+        {
+          "dbMs": 55.63619999999355,
+          "totalMs": 57.32340000000113
+        },
+        {
+          "dbMs": 60.01450000000477,
+          "totalMs": 62.164199999999255
+        },
+        {
+          "dbMs": 56.186399999998685,
+          "totalMs": 58.16189999999915
+        },
+        {
+          "dbMs": 59.57259999999951,
+          "totalMs": 61.37260000000242
+        },
+        {
+          "dbMs": 55.940199999997276,
+          "totalMs": 57.7986000000019
+        },
+        {
+          "dbMs": 56.10939999999391,
+          "totalMs": 58.14630000000034
+        },
+        {
+          "dbMs": 58.55529999999999,
+          "totalMs": 60.48380000000179
+        }
+      ],
+      "occurrence4": [
+        {
+          "dbMs": 76.01060000000143,
+          "totalMs": 77.80550000000221
+        },
+        {
+          "dbMs": 75.67210000000341,
+          "totalMs": 77.55999999999767
+        },
+        {
+          "dbMs": 84.72299999999814,
+          "totalMs": 86.08389999999781
+        },
+        {
+          "dbMs": 76.65780000000086,
+          "totalMs": 78.10349999999744
+        },
+        {
+          "dbMs": 76.20449999999983,
+          "totalMs": 77.69850000000588
+        },
+        {
+          "dbMs": 76.39449999999488,
+          "totalMs": 78.12140000000363
+        },
+        {
+          "dbMs": 76.79719999999361,
+          "totalMs": 78.2039999999979
+        }
+      ]
+    },
+    "truth": 0,
+    "resultRows": 0,
+    "candidates": {
+      "position2": 2440,
+      "position4": 2440,
+      "occurrence2": 2440,
+      "occurrence4": 2440
+    },
+    "order": [
+      {
+        "round": -3,
+        "paths": [
+          "plain",
+          "position2",
+          "position4",
+          "occurrence2",
+          "occurrence4"
+        ]
+      },
+      {
+        "round": -2,
+        "paths": [
+          "position2",
+          "position4",
+          "occurrence2",
+          "occurrence4",
+          "plain"
+        ]
+      },
+      {
+        "round": -1,
+        "paths": [
+          "position4",
+          "occurrence2",
+          "occurrence4",
+          "plain",
+          "position2"
+        ]
+      },
+      {
+        "round": 0,
+        "paths": [
+          "occurrence2",
+          "occurrence4",
+          "plain",
+          "position2",
+          "position4"
+        ]
+      },
+      {
+        "round": 1,
+        "paths": [
+          "occurrence4",
+          "plain",
+          "position2",
+          "position4",
+          "occurrence2"
+        ]
+      },
+      {
+        "round": 2,
+        "paths": [
+          "plain",
+          "position2",
+          "position4",
+          "occurrence2",
+          "occurrence4"
+        ]
+      },
+      {
+        "round": 3,
+        "paths": [
+          "position2",
+          "position4",
+          "occurrence2",
+          "occurrence4",
+          "plain"
+        ]
+      },
+      {
+        "round": 4,
+        "paths": [
+          "position4",
+          "occurrence2",
+          "occurrence4",
+          "plain",
+          "position2"
+        ]
+      },
+      {
+        "round": 5,
+        "paths": [
+          "occurrence2",
+          "occurrence4",
+          "plain",
+          "position2",
+          "position4"
+        ]
+      },
+      {
+        "round": 6,
+        "paths": [
+          "occurrence4",
+          "plain",
+          "position2",
+          "position4",
+          "occurrence2"
+        ]
+      }
+    ],
+    "medians": {
+      "plain": {
+        "dbMs": 16.216099999997823,
+        "totalMs": 16.241900000000896
+      },
+      "position2": {
+        "dbMs": 49.732300000003306,
+        "totalMs": 51.56330000000162
+      },
+      "position4": {
+        "dbMs": 93.84629999999743,
+        "totalMs": 95.2135999999955
+      },
+      "occurrence2": {
+        "dbMs": 56.186399999998685,
+        "totalMs": 58.16189999999915
+      },
+      "occurrence4": {
+        "dbMs": 76.39449999999488,
+        "totalMs": 78.10349999999744
+      }
+    }
+  },
+  {
+    "name": "memo_short2",
+    "field": "memo",
+    "term": "up",
+    "mode": "count",
+    "targetRows": 100000,
+    "limit": null,
+    "appDecrypts": 0,
+    "sqlCallsPerRun": 1,
+    "projection": [
+      "count"
+    ],
+    "lookup": "native array_position",
+    "session": {
+      "pid": 35692,
+      "version": "PostgreSQL 18.4 on x86_64-windows, compiled by msvc-19.44.35227, 64-bit",
+      "work_mem": "4MB"
+    },
+    "first": {
+      "plain": {
+        "dbMs": 13.347300000001269,
+        "totalMs": 13.371399999996356
+      },
+      "position2": {
+        "dbMs": 378.16999999999825,
+        "totalMs": 378.7531999999992
+      },
+      "position4": {
+        "dbMs": 414.60919999999896,
+        "totalMs": 415.0049999999974
+      },
+      "occurrence2": {
+        "dbMs": 102.03229999999894,
+        "totalMs": 102.39909999999509
+      },
+      "occurrence4": {
+        "dbMs": 120.34649999999965,
+        "totalMs": 120.68469999999797
+      }
+    },
+    "runs": {
+      "plain": [
+        {
+          "dbMs": 14.095900000000256,
+          "totalMs": 14.116600000001199
+        },
+        {
+          "dbMs": 13.11200000000099,
+          "totalMs": 13.13130000000092
+        },
+        {
+          "dbMs": 14.22269999999844,
+          "totalMs": 14.241500000003725
+        },
+        {
+          "dbMs": 14.531100000000151,
+          "totalMs": 14.554400000000896
+        },
+        {
+          "dbMs": 14.000899999999092,
+          "totalMs": 14.020700000000943
+        },
+        {
+          "dbMs": 12.776400000002468,
+          "totalMs": 12.796299999994517
+        },
+        {
+          "dbMs": 13.965400000000955,
+          "totalMs": 13.984600000003411
+        }
+      ],
+      "position2": [
+        {
+          "dbMs": 367.79129999999714,
+          "totalMs": 368.18960000000516
+        },
+        {
+          "dbMs": 383.4775000000009,
+          "totalMs": 383.9464999999982
+        },
+        {
+          "dbMs": 367.02320000000327,
+          "totalMs": 367.4290000000037
+        },
+        {
+          "dbMs": 371.01870000000054,
+          "totalMs": 371.54349999999977
+        },
+        {
+          "dbMs": 367.29269999999815,
+          "totalMs": 367.64130000000296
+        },
+        {
+          "dbMs": 363.1758999999947,
+          "totalMs": 363.68269999999757
+        },
+        {
+          "dbMs": 369.6820999999982,
+          "totalMs": 370.03319999999803
+        }
+      ],
+      "position4": [
+        {
+          "dbMs": 409.01610000000073,
+          "totalMs": 409.37830000000395
+        },
+        {
+          "dbMs": 421.99899999999616,
+          "totalMs": 422.41139999999723
+        },
+        {
+          "dbMs": 408.9279999999999,
+          "totalMs": 409.428899999999
+        },
+        {
+          "dbMs": 410.99319999999716,
+          "totalMs": 411.53259999999864
+        },
+        {
+          "dbMs": 416.76920000000246,
+          "totalMs": 417.1261000000013
+        },
+        {
+          "dbMs": 415.5967000000019,
+          "totalMs": 416.0777999999991
+        },
+        {
+          "dbMs": 407.6319999999978,
+          "totalMs": 408.1238999999987
+        }
+      ],
+      "occurrence2": [
+        {
+          "dbMs": 102.74519999999757,
+          "totalMs": 103.09200000000419
+        },
+        {
+          "dbMs": 102.68429999999353,
+          "totalMs": 103.05240000000049
+        },
+        {
+          "dbMs": 102.99209999999584,
+          "totalMs": 103.39380000000529
+        },
+        {
+          "dbMs": 100.78850000000239,
+          "totalMs": 101.181700000001
+        },
+        {
+          "dbMs": 103.87570000000414,
+          "totalMs": 104.23129999999946
+        },
+        {
+          "dbMs": 102.39219999999477,
+          "totalMs": 102.77330000000075
+        },
+        {
+          "dbMs": 104.068299999999,
+          "totalMs": 104.44590000000608
+        }
+      ],
+      "occurrence4": [
+        {
+          "dbMs": 121.08720000000176,
+          "totalMs": 121.4377999999997
+        },
+        {
+          "dbMs": 122.62569999999687,
+          "totalMs": 122.96570000000065
+        },
+        {
+          "dbMs": 120.36409999999887,
+          "totalMs": 120.72929999999906
+        },
+        {
+          "dbMs": 136.43770000000222,
+          "totalMs": 136.81319999999687
+        },
+        {
+          "dbMs": 120.86179999999877,
+          "totalMs": 121.2505999999994
+        },
+        {
+          "dbMs": 120.61929999999847,
+          "totalMs": 120.96289999999863
+        },
+        {
+          "dbMs": 123.24519999999757,
+          "totalMs": 123.7618999999977
+        }
+      ]
+    },
+    "truth": 20118,
+    "resultRows": 1,
+    "candidates": {
+      "position2": 20118,
+      "position4": 20118,
+      "occurrence2": 20118,
+      "occurrence4": 20118
+    },
+    "order": [
+      {
+        "round": -3,
+        "paths": [
+          "plain",
+          "position2",
+          "position4",
+          "occurrence2",
+          "occurrence4"
+        ]
+      },
+      {
+        "round": -2,
+        "paths": [
+          "position2",
+          "position4",
+          "occurrence2",
+          "occurrence4",
+          "plain"
+        ]
+      },
+      {
+        "round": -1,
+        "paths": [
+          "position4",
+          "occurrence2",
+          "occurrence4",
+          "plain",
+          "position2"
+        ]
+      },
+      {
+        "round": 0,
+        "paths": [
+          "occurrence2",
+          "occurrence4",
+          "plain",
+          "position2",
+          "position4"
+        ]
+      },
+      {
+        "round": 1,
+        "paths": [
+          "occurrence4",
+          "plain",
+          "position2",
+          "position4",
+          "occurrence2"
+        ]
+      },
+      {
+        "round": 2,
+        "paths": [
+          "plain",
+          "position2",
+          "position4",
+          "occurrence2",
+          "occurrence4"
+        ]
+      },
+      {
+        "round": 3,
+        "paths": [
+          "position2",
+          "position4",
+          "occurrence2",
+          "occurrence4",
+          "plain"
+        ]
+      },
+      {
+        "round": 4,
+        "paths": [
+          "position4",
+          "occurrence2",
+          "occurrence4",
+          "plain",
+          "position2"
+        ]
+      },
+      {
+        "round": 5,
+        "paths": [
+          "occurrence2",
+          "occurrence4",
+          "plain",
+          "position2",
+          "position4"
+        ]
+      },
+      {
+        "round": 6,
+        "paths": [
+          "occurrence4",
+          "plain",
+          "position2",
+          "position4",
+          "occurrence2"
+        ]
+      }
+    ],
+    "medians": {
+      "plain": {
+        "dbMs": 14.000899999999092,
+        "totalMs": 14.020700000000943
+      },
+      "position2": {
+        "dbMs": 367.79129999999714,
+        "totalMs": 368.18960000000516
+      },
+      "position4": {
+        "dbMs": 410.99319999999716,
+        "totalMs": 411.53259999999864
+      },
+      "occurrence2": {
+        "dbMs": 102.74519999999757,
+        "totalMs": 103.09200000000419
+      },
+      "occurrence4": {
+        "dbMs": 121.08720000000176,
+        "totalMs": 121.4377999999997
+      }
+    }
+  },
+  {
+    "name": "memo_short2",
+    "field": "memo",
+    "term": "up",
+    "mode": "list",
+    "targetRows": 100000,
+    "limit": 300,
+    "appDecrypts": 0,
+    "sqlCallsPerRun": 1,
+    "projection": [
+      "id"
+    ],
+    "lookup": "native array_position",
+    "session": {
+      "pid": 35692,
+      "version": "PostgreSQL 18.4 on x86_64-windows, compiled by msvc-19.44.35227, 64-bit",
+      "work_mem": "4MB"
+    },
+    "first": {
+      "plain": {
+        "dbMs": 1.2218999999968219,
+        "totalMs": 1.2482999999992899
+      },
+      "position2": {
+        "dbMs": 8.64879999999539,
+        "totalMs": 8.99489999999787
+      },
+      "position4": {
+        "dbMs": 9.620800000004238,
+        "totalMs": 10.407899999998335
+      },
+      "occurrence2": {
+        "dbMs": 6.052300000003015,
+        "totalMs": 6.387300000002142
+      },
+      "occurrence4": {
+        "dbMs": 7.520299999996496,
+        "totalMs": 7.842299999996612
+      }
+    },
+    "runs": {
+      "plain": [
+        {
+          "dbMs": 0.6858999999967637,
+          "totalMs": 0.7001000000018394
+        },
+        {
+          "dbMs": 0.8039999999964493,
+          "totalMs": 0.8228999999992084
+        },
+        {
+          "dbMs": 0.7088000000003376,
+          "totalMs": 0.7269000000014785
+        },
+        {
+          "dbMs": 0.7416999999986729,
+          "totalMs": 0.7558999999964726
+        },
+        {
+          "dbMs": 0.8558000000048196,
+          "totalMs": 0.8903000000063912
+        },
+        {
+          "dbMs": 0.74649999999383,
+          "totalMs": 0.7648999999946682
+        },
+        {
+          "dbMs": 0.7747000000017579,
+          "totalMs": 0.7841000000044005
+        }
+      ],
+      "position2": [
+        {
+          "dbMs": 6.6665999999968335,
+          "totalMs": 6.944199999998091
+        },
+        {
+          "dbMs": 7.05000000000291,
+          "totalMs": 7.4452000000019325
+        },
+        {
+          "dbMs": 6.611700000001292,
+          "totalMs": 7.002599999999802
+        },
+        {
+          "dbMs": 6.735399999997753,
+          "totalMs": 6.998500000001513
+        },
+        {
+          "dbMs": 6.813999999998487,
+          "totalMs": 7.173600000001898
+        },
+        {
+          "dbMs": 6.8125,
+          "totalMs": 7.121299999998882
+        },
+        {
+          "dbMs": 6.781300000002375,
+          "totalMs": 7.098000000005413
+        }
+      ],
+      "position4": [
+        {
+          "dbMs": 7.275099999998929,
+          "totalMs": 7.6560000000026776
+        },
+        {
+          "dbMs": 7.342700000001059,
+          "totalMs": 7.583199999993667
+        },
+        {
+          "dbMs": 7.284899999998743,
+          "totalMs": 7.643300000003364
+        },
+        {
+          "dbMs": 7.562099999995553,
+          "totalMs": 7.926399999996647
+        },
+        {
+          "dbMs": 7.525200000003679,
+          "totalMs": 7.78240000000369
+        },
+        {
+          "dbMs": 7.53689999999915,
+          "totalMs": 8.07730000000447
+        },
+        {
+          "dbMs": 7.487300000000687,
+          "totalMs": 7.789300000004005
+        }
+      ],
+      "occurrence2": [
+        {
+          "dbMs": 4.125,
+          "totalMs": 4.447199999995064
+        },
+        {
+          "dbMs": 4.1445999999996275,
+          "totalMs": 4.506099999998696
+        },
+        {
+          "dbMs": 4.463400000000547,
+          "totalMs": 4.897600000003877
+        },
+        {
+          "dbMs": 4.475899999997637,
+          "totalMs": 4.858899999999267
+        },
+        {
+          "dbMs": 4.27730000000156,
+          "totalMs": 4.539300000004005
+        },
+        {
+          "dbMs": 4.098500000000058,
+          "totalMs": 4.418600000004517
+        },
+        {
+          "dbMs": 4.191600000005565,
+          "totalMs": 4.646200000002864
+        }
+      ],
+      "occurrence4": [
+        {
+          "dbMs": 4.615399999995134,
+          "totalMs": 4.963400000000547
+        },
+        {
+          "dbMs": 4.737399999998161,
+          "totalMs": 5.121299999998882
+        },
+        {
+          "dbMs": 4.617900000004738,
+          "totalMs": 4.874199999998382
+        },
+        {
+          "dbMs": 4.773600000000442,
+          "totalMs": 5.492099999995844
+        },
+        {
+          "dbMs": 4.702600000004168,
+          "totalMs": 5.040899999999965
+        },
+        {
+          "dbMs": 4.66019999999844,
+          "totalMs": 4.917200000003504
+        },
+        {
+          "dbMs": 4.728499999997439,
+          "totalMs": 5.100200000000768
+        }
+      ]
+    },
+    "truth": 20118,
+    "resultRows": 300,
+    "candidates": {
+      "position2": 20118,
+      "position4": 20118,
+      "occurrence2": 20118,
+      "occurrence4": 20118
+    },
+    "order": [
+      {
+        "round": -3,
+        "paths": [
+          "plain",
+          "position2",
+          "position4",
+          "occurrence2",
+          "occurrence4"
+        ]
+      },
+      {
+        "round": -2,
+        "paths": [
+          "position2",
+          "position4",
+          "occurrence2",
+          "occurrence4",
+          "plain"
+        ]
+      },
+      {
+        "round": -1,
+        "paths": [
+          "position4",
+          "occurrence2",
+          "occurrence4",
+          "plain",
+          "position2"
+        ]
+      },
+      {
+        "round": 0,
+        "paths": [
+          "occurrence2",
+          "occurrence4",
+          "plain",
+          "position2",
+          "position4"
+        ]
+      },
+      {
+        "round": 1,
+        "paths": [
+          "occurrence4",
+          "plain",
+          "position2",
+          "position4",
+          "occurrence2"
+        ]
+      },
+      {
+        "round": 2,
+        "paths": [
+          "plain",
+          "position2",
+          "position4",
+          "occurrence2",
+          "occurrence4"
+        ]
+      },
+      {
+        "round": 3,
+        "paths": [
+          "position2",
+          "position4",
+          "occurrence2",
+          "occurrence4",
+          "plain"
+        ]
+      },
+      {
+        "round": 4,
+        "paths": [
+          "position4",
+          "occurrence2",
+          "occurrence4",
+          "plain",
+          "position2"
+        ]
+      },
+      {
+        "round": 5,
+        "paths": [
+          "occurrence2",
+          "occurrence4",
+          "plain",
+          "position2",
+          "position4"
+        ]
+      },
+      {
+        "round": 6,
+        "paths": [
+          "occurrence4",
+          "plain",
+          "position2",
+          "position4",
+          "occurrence2"
+        ]
+      }
+    ],
+    "medians": {
+      "plain": {
+        "dbMs": 0.74649999999383,
+        "totalMs": 0.7648999999946682
+      },
+      "position2": {
+        "dbMs": 6.781300000002375,
+        "totalMs": 7.098000000005413
+      },
+      "position4": {
+        "dbMs": 7.487300000000687,
+        "totalMs": 7.78240000000369
+      },
+      "occurrence2": {
+        "dbMs": 4.191600000005565,
+        "totalMs": 4.539300000004005
+      },
+      "occurrence4": {
+        "dbMs": 4.702600000004168,
+        "totalMs": 5.040899999999965
+      }
+    }
+  },
+  {
+    "name": "memo_short3",
+    "field": "memo",
+    "term": "upp",
+    "mode": "count",
+    "targetRows": 100000,
+    "limit": null,
+    "appDecrypts": 0,
+    "sqlCallsPerRun": 1,
+    "projection": [
+      "count"
+    ],
+    "lookup": "native array_position",
+    "session": {
+      "pid": 35692,
+      "version": "PostgreSQL 18.4 on x86_64-windows, compiled by msvc-19.44.35227, 64-bit",
+      "work_mem": "4MB"
+    },
+    "first": {
+      "plain": {
+        "dbMs": 6.61359999999695,
+        "totalMs": 6.6428000000014435
+      },
+      "position2": {
+        "dbMs": 105.66709999999875,
+        "totalMs": 106.11159999999654
+      },
+      "position4": {
+        "dbMs": 97.29630000000179,
+        "totalMs": 97.66909999999916
+      },
+      "occurrence2": {
+        "dbMs": 180.2514999999985,
+        "totalMs": 180.66369999999733
+      },
+      "occurrence4": {
+        "dbMs": 129.2086999999956,
+        "totalMs": 129.58039999999892
+      }
+    },
+    "runs": {
+      "plain": [
+        {
+          "dbMs": 5.678800000001502,
+          "totalMs": 5.696900000002643
+        },
+        {
+          "dbMs": 5.299700000003213,
+          "totalMs": 5.317399999999907
+        },
+        {
+          "dbMs": 5.848400000002584,
+          "totalMs": 5.8672999999980675
+        },
+        {
+          "dbMs": 6.060600000004342,
+          "totalMs": 6.079299999997602
+        },
+        {
+          "dbMs": 5.679699999993318,
+          "totalMs": 5.696700000000419
+        },
+        {
+          "dbMs": 6.236100000001898,
+          "totalMs": 6.255099999994854
+        },
+        {
+          "dbMs": 5.293699999994715,
+          "totalMs": 5.311500000003434
+        }
+      ],
+      "position2": [
+        {
+          "dbMs": 102.33499999999913,
+          "totalMs": 102.7468000000008
+        },
+        {
+          "dbMs": 102.72900000000664,
+          "totalMs": 103.175900000002
+        },
+        {
+          "dbMs": 115.22550000000047,
+          "totalMs": 115.66799999999785
+        },
+        {
+          "dbMs": 104.62320000000182,
+          "totalMs": 105.04200000000128
+        },
+        {
+          "dbMs": 106.3234999999986,
+          "totalMs": 106.76840000000084
+        },
+        {
+          "dbMs": 109.54679999999644,
+          "totalMs": 109.9739999999947
+        },
+        {
+          "dbMs": 103.16089999999531,
+          "totalMs": 103.62350000000151
+        }
+      ],
+      "position4": [
+        {
+          "dbMs": 95.46059999999852,
+          "totalMs": 95.84689999999682
+        },
+        {
+          "dbMs": 102.44210000000021,
+          "totalMs": 102.8101999999999
+        },
+        {
+          "dbMs": 97.9351999999999,
+          "totalMs": 98.34330000000045
+        },
+        {
+          "dbMs": 97.73569999999745,
+          "totalMs": 98.17309999999998
+        },
+        {
+          "dbMs": 97.85139999999956,
+          "totalMs": 98.21779999999853
+        },
+        {
+          "dbMs": 96.04769999999553,
+          "totalMs": 96.43070000000444
+        },
+        {
+          "dbMs": 95.86530000000494,
+          "totalMs": 96.25930000000517
+        }
+      ],
+      "occurrence2": [
+        {
+          "dbMs": 184.34210000000166,
+          "totalMs": 184.9181000000026
+        },
+        {
+          "dbMs": 186.34799999999814,
+          "totalMs": 186.90470000000641
+        },
+        {
+          "dbMs": 186.90099999999802,
+          "totalMs": 187.3237999999983
+        },
+        {
+          "dbMs": 181.7425000000003,
+          "totalMs": 182.14470000000438
+        },
+        {
+          "dbMs": 178.5469000000012,
+          "totalMs": 178.95279999999912
+        },
+        {
+          "dbMs": 180.7685000000056,
+          "totalMs": 181.34339999999793
+        },
+        {
+          "dbMs": 179.4971000000005,
+          "totalMs": 180.13519999999698
+        }
+      ],
+      "occurrence4": [
+        {
+          "dbMs": 125.77240000000165,
+          "totalMs": 126.14689999999973
+        },
+        {
+          "dbMs": 126.86509999999544,
+          "totalMs": 127.37370000000374
+        },
+        {
+          "dbMs": 129.75249999999505,
+          "totalMs": 130.1478999999963
+        },
+        {
+          "dbMs": 129.3053,
+          "totalMs": 129.88700000000244
+        },
+        {
+          "dbMs": 130.92559999999503,
+          "totalMs": 131.32970000000205
+        },
+        {
+          "dbMs": 129.6232999999993,
+          "totalMs": 130.01150000000052
+        },
+        {
+          "dbMs": 125.38699999999517,
+          "totalMs": 126.06980000000476
+        }
+      ]
+    },
+    "truth": 10240,
+    "resultRows": 1,
+    "candidates": {
+      "position2": 10240,
+      "position4": 10240,
+      "occurrence2": 10240,
+      "occurrence4": 10240
+    },
+    "order": [
+      {
+        "round": -3,
+        "paths": [
+          "plain",
+          "position2",
+          "position4",
+          "occurrence2",
+          "occurrence4"
+        ]
+      },
+      {
+        "round": -2,
+        "paths": [
+          "position2",
+          "position4",
+          "occurrence2",
+          "occurrence4",
+          "plain"
+        ]
+      },
+      {
+        "round": -1,
+        "paths": [
+          "position4",
+          "occurrence2",
+          "occurrence4",
+          "plain",
+          "position2"
+        ]
+      },
+      {
+        "round": 0,
+        "paths": [
+          "occurrence2",
+          "occurrence4",
+          "plain",
+          "position2",
+          "position4"
+        ]
+      },
+      {
+        "round": 1,
+        "paths": [
+          "occurrence4",
+          "plain",
+          "position2",
+          "position4",
+          "occurrence2"
+        ]
+      },
+      {
+        "round": 2,
+        "paths": [
+          "plain",
+          "position2",
+          "position4",
+          "occurrence2",
+          "occurrence4"
+        ]
+      },
+      {
+        "round": 3,
+        "paths": [
+          "position2",
+          "position4",
+          "occurrence2",
+          "occurrence4",
+          "plain"
+        ]
+      },
+      {
+        "round": 4,
+        "paths": [
+          "position4",
+          "occurrence2",
+          "occurrence4",
+          "plain",
+          "position2"
+        ]
+      },
+      {
+        "round": 5,
+        "paths": [
+          "occurrence2",
+          "occurrence4",
+          "plain",
+          "position2",
+          "position4"
+        ]
+      },
+      {
+        "round": 6,
+        "paths": [
+          "occurrence4",
+          "plain",
+          "position2",
+          "position4",
+          "occurrence2"
+        ]
+      }
+    ],
+    "medians": {
+      "plain": {
+        "dbMs": 5.679699999993318,
+        "totalMs": 5.696900000002643
+      },
+      "position2": {
+        "dbMs": 104.62320000000182,
+        "totalMs": 105.04200000000128
+      },
+      "position4": {
+        "dbMs": 97.73569999999745,
+        "totalMs": 98.17309999999998
+      },
+      "occurrence2": {
+        "dbMs": 181.7425000000003,
+        "totalMs": 182.14470000000438
+      },
+      "occurrence4": {
+        "dbMs": 129.3053,
+        "totalMs": 129.88700000000244
+      }
+    }
+  },
+  {
+    "name": "memo_short3",
+    "field": "memo",
+    "term": "upp",
+    "mode": "list",
+    "targetRows": 100000,
+    "limit": 300,
+    "appDecrypts": 0,
+    "sqlCallsPerRun": 1,
+    "projection": [
+      "id"
+    ],
+    "lookup": "native array_position",
+    "session": {
+      "pid": 35692,
+      "version": "PostgreSQL 18.4 on x86_64-windows, compiled by msvc-19.44.35227, 64-bit",
+      "work_mem": "4MB"
+    },
+    "first": {
+      "plain": {
+        "dbMs": 1.711699999999837,
+        "totalMs": 1.739900000000489
+      },
+      "position2": {
+        "dbMs": 31.54490000000078,
+        "totalMs": 32.2983000000022
+      },
+      "position4": {
+        "dbMs": 46.78559999999561,
+        "totalMs": 47.22239999999874
+      },
+      "occurrence2": {
+        "dbMs": 41.32259999999951,
+        "totalMs": 41.775000000001455
+      },
+      "occurrence4": {
+        "dbMs": 50.18279999999504,
+        "totalMs": 50.581899999997404
+      }
+    },
+    "runs": {
+      "plain": [
+        {
+          "dbMs": 1.4699000000036904,
+          "totalMs": 1.492500000000291
+        },
+        {
+          "dbMs": 1.7128000000011525,
+          "totalMs": 1.7384000000020023
+        },
+        {
+          "dbMs": 1.4134000000049127,
+          "totalMs": 1.4367000000056578
+        },
+        {
+          "dbMs": 1.385599999994156,
+          "totalMs": 1.4059000000052038
+        },
+        {
+          "dbMs": 1.3294999999998254,
+          "totalMs": 1.3495000000039
+        },
+        {
+          "dbMs": 1.4774000000033993,
+          "totalMs": 1.5006999999968684
+        },
+        {
+          "dbMs": 1.4565999999977066,
+          "totalMs": 1.4794000000038068
+        }
+      ],
+      "position2": [
+        {
+          "dbMs": 31.685199999999895,
+          "totalMs": 32.08439999999973
+        },
+        {
+          "dbMs": 31.163899999999558,
+          "totalMs": 31.56770000000688
+        },
+        {
+          "dbMs": 29.094499999999243,
+          "totalMs": 29.474099999999453
+        },
+        {
+          "dbMs": 29.89129999999568,
+          "totalMs": 30.29620000000432
+        },
+        {
+          "dbMs": 29.872999999999593,
+          "totalMs": 30.27390000000014
+        },
+        {
+          "dbMs": 29.770900000003166,
+          "totalMs": 30.177700000000186
+        },
+        {
+          "dbMs": 31.296799999996438,
+          "totalMs": 31.709899999994377
+        }
+      ],
+      "position4": [
+        {
+          "dbMs": 44.54009999999835,
+          "totalMs": 44.9375
+        },
+        {
+          "dbMs": 43.79009999999835,
+          "totalMs": 44.2899000000034
+        },
+        {
+          "dbMs": 43.501900000002934,
+          "totalMs": 43.94999999999709
+        },
+        {
+          "dbMs": 44.45880000000034,
+          "totalMs": 44.92639999999665
+        },
+        {
+          "dbMs": 43.81100000000151,
+          "totalMs": 44.18390000000363
+        },
+        {
+          "dbMs": 58.05240000000049,
+          "totalMs": 58.410400000000664
+        },
+        {
+          "dbMs": 44.66410000000178,
+          "totalMs": 45.16389999999956
+        }
+      ],
+      "occurrence2": [
+        {
+          "dbMs": 41.75050000000192,
+          "totalMs": 42.161400000004505
+        },
+        {
+          "dbMs": 39.03609999999753,
+          "totalMs": 39.5309999999954
+        },
+        {
+          "dbMs": 39.85829999999987,
+          "totalMs": 40.35469999999623
+        },
+        {
+          "dbMs": 39.8408000000054,
+          "totalMs": 40.33319999999367
+        },
+        {
+          "dbMs": 40.55689999999595,
+          "totalMs": 41.13940000000002
+        },
+        {
+          "dbMs": 39.72670000000653,
+          "totalMs": 40.15740000000369
+        },
+        {
+          "dbMs": 42.41070000000036,
+          "totalMs": 42.905600000005506
+        }
+      ],
+      "occurrence4": [
+        {
+          "dbMs": 50.2274000000034,
+          "totalMs": 50.63640000000305
+        },
+        {
+          "dbMs": 50.548500000004424,
+          "totalMs": 50.946600000002945
+        },
+        {
+          "dbMs": 46.388599999998405,
+          "totalMs": 46.753399999994144
+        },
+        {
+          "dbMs": 47.51609999999346,
+          "totalMs": 47.98889999999665
+        },
+        {
+          "dbMs": 52.258600000001024,
+          "totalMs": 52.667099999998754
+        },
+        {
+          "dbMs": 47.808399999994435,
+          "totalMs": 48.18270000000484
+        },
+        {
+          "dbMs": 48.62299999999959,
+          "totalMs": 49.19750000000204
+        }
+      ]
+    },
+    "truth": 10240,
+    "resultRows": 300,
+    "candidates": {
+      "position2": 10240,
+      "position4": 10240,
+      "occurrence2": 10240,
+      "occurrence4": 10240
+    },
+    "order": [
+      {
+        "round": -3,
+        "paths": [
+          "plain",
+          "position2",
+          "position4",
+          "occurrence2",
+          "occurrence4"
+        ]
+      },
+      {
+        "round": -2,
+        "paths": [
+          "position2",
+          "position4",
+          "occurrence2",
+          "occurrence4",
+          "plain"
+        ]
+      },
+      {
+        "round": -1,
+        "paths": [
+          "position4",
+          "occurrence2",
+          "occurrence4",
+          "plain",
+          "position2"
+        ]
+      },
+      {
+        "round": 0,
+        "paths": [
+          "occurrence2",
+          "occurrence4",
+          "plain",
+          "position2",
+          "position4"
+        ]
+      },
+      {
+        "round": 1,
+        "paths": [
+          "occurrence4",
+          "plain",
+          "position2",
+          "position4",
+          "occurrence2"
+        ]
+      },
+      {
+        "round": 2,
+        "paths": [
+          "plain",
+          "position2",
+          "position4",
+          "occurrence2",
+          "occurrence4"
+        ]
+      },
+      {
+        "round": 3,
+        "paths": [
+          "position2",
+          "position4",
+          "occurrence2",
+          "occurrence4",
+          "plain"
+        ]
+      },
+      {
+        "round": 4,
+        "paths": [
+          "position4",
+          "occurrence2",
+          "occurrence4",
+          "plain",
+          "position2"
+        ]
+      },
+      {
+        "round": 5,
+        "paths": [
+          "occurrence2",
+          "occurrence4",
+          "plain",
+          "position2",
+          "position4"
+        ]
+      },
+      {
+        "round": 6,
+        "paths": [
+          "occurrence4",
+          "plain",
+          "position2",
+          "position4",
+          "occurrence2"
+        ]
+      }
+    ],
+    "medians": {
+      "plain": {
+        "dbMs": 1.4565999999977066,
+        "totalMs": 1.4794000000038068
+      },
+      "position2": {
+        "dbMs": 29.89129999999568,
+        "totalMs": 30.29620000000432
+      },
+      "position4": {
+        "dbMs": 44.45880000000034,
+        "totalMs": 44.92639999999665
+      },
+      "occurrence2": {
+        "dbMs": 39.85829999999987,
+        "totalMs": 40.35469999999623
+      },
+      "occurrence4": {
+        "dbMs": 48.62299999999959,
+        "totalMs": 49.19750000000204
+      }
+    }
+  }
+]
