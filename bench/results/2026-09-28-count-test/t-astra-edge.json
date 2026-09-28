@@ -1,0 +1,133 @@
+{
+  "started": "2026-09-28T11:17:28.115Z",
+  "results": [
+    {
+      "name": "baseline",
+      "plain": 40097,
+      "A": 40097,
+      "product": 40097,
+      "pass": true
+    },
+    {
+      "name": "one-field-update",
+      "plain": 40098,
+      "A": 40098,
+      "product": 40098,
+      "pass": true
+    },
+    {
+      "name": "one-field-update-other-count",
+      "plain": 94117,
+      "A": 94117,
+      "product": 94117,
+      "pass": true
+    },
+    {
+      "name": "untouched-company-bytes",
+      "pass": true
+    },
+    {
+      "name": "delete-cascade",
+      "plain": 40097,
+      "A": 40097,
+      "product": 40097,
+      "cascade": {
+        "tags": 0,
+        "idx": 0
+      },
+      "pass": true
+    },
+    {
+      "name": "delete-rollback",
+      "plain": 40098,
+      "A": 40098,
+      "product": 40098,
+      "pass": true
+    },
+    {
+      "name": "after-eight-writers",
+      "plain": 40137,
+      "A": 40137,
+      "product": 40137,
+      "pass": true
+    },
+    {
+      "name": "after-eight-writers-company",
+      "plain": 94118,
+      "A": 94118,
+      "product": 94118,
+      "pass": true
+    },
+    {
+      "name": "explicit-rollback",
+      "before": {
+        "plain": 40137,
+        "A": 40137,
+        "product": 40137
+      },
+      "after": {
+        "plain": 40137,
+        "A": 40137,
+        "product": 40137
+      },
+      "pass": true
+    },
+    {
+      "name": "restored-100k",
+      "plain": 40097,
+      "A": 40097,
+      "product": 40097,
+      "pass": true
+    }
+  ],
+  "long": [
+    {
+      "term": "상세 안내와 확인 내용 상세 안내와",
+      "normalizedChars": 14,
+      "plain": 2440,
+      "A": 2440,
+      "product": 2440,
+      "DBExact": true
+    },
+    {
+      "term": "상세안내와확인내용상세안내와확인내용상세안내와확인내용상세안내와확인내용상세안내와확인내용",
+      "normalizedChars": 45,
+      "plain": 0,
+      "A": 2440,
+      "product": 0,
+      "DBExact": false
+    },
+    {
+      "term": "상세안내와확인내용상세안내와확인내용상세안내와확인내용상세안내와확인내용상세안내와확인내용상세안내와확인내용상세안내와확인내용상세안내와확인내용상세안내와확인내용상세안내와확인내용상세안내와확인내용상세안내와확인내용",
+      "normalizedChars": 108,
+      "plain": 0,
+      "A": 2440,
+      "product": 0,
+      "DBExact": false
+    }
+  ],
+  "failures": [],
+  "syntheticRows": 0,
+  "concurrency": {
+    "writers": 8,
+    "disjointUpdates": 80,
+    "sharedRowUpdates": 8,
+    "timingExcluded": true,
+    "sameSnapshotReads": 3,
+    "snapshots": [
+      {
+        "plain": 40098,
+        "A": 40098
+      },
+      {
+        "plain": 40098,
+        "A": 40098
+      },
+      {
+        "plain": 40129,
+        "A": 40129
+      }
+    ]
+  },
+  "finished": "2026-09-28T11:17:53.494Z"
+}

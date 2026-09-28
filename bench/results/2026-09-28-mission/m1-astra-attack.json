@@ -1,0 +1,1574 @@
+{
+  "conditions": {
+    "n": 2000,
+    "seed": 99,
+    "referenceDisjointRows": true,
+    "rawValueOverlapAllowed": true,
+    "noPerformanceTiming": true,
+    "baseline": "actual product profile and HMAC, verified first 10 rows",
+    "attacks": [
+      "known row incidence signature",
+      "positional known row alignment",
+      "disjoint reference frequency ranking",
+      "row-bound equality transfer"
+    ]
+  },
+  "datasets": [
+    {
+      "dataset": "fixture-memo",
+      "rows": 2000,
+      "referenceRows": 2000,
+      "seed": 99,
+      "normalizer": "legacy-text-v1",
+      "current": {
+        "frequency": {
+          "piecePct": 5.8853,
+          "adjacentPct": 9.3881
+        },
+        "known": [
+          {
+            "knownPct": 1,
+            "piecePct": 1.4482,
+            "adjacentPct": 1.4785,
+            "unknownAdjacent80Pct": 0
+          },
+          {
+            "knownPct": 5,
+            "piecePct": 9.0565,
+            "adjacentPct": 6.8316,
+            "unknownAdjacent80Pct": 0
+          },
+          {
+            "knownPct": 10,
+            "piecePct": 16.005,
+            "adjacentPct": 14.5699,
+            "unknownAdjacent80Pct": 0
+          }
+        ],
+        "uniqueLabels": 3466,
+        "storedTokens": 53721
+      },
+      "positional": {
+        "storedOccurrences": 27247,
+        "frequency": {
+          "adjacentPct": 4.0984,
+          "unknownAdjacent80Pct": 0,
+          "characterPct": 8.2812,
+          "fullNormalizedValuePct": 0
+        },
+        "known": [
+          {
+            "knownPct": 1,
+            "adjacentPct": 62.9523,
+            "unknownAdjacent80Pct": 4.798,
+            "characterPct": 65.8687,
+            "fullNormalizedValuePct": 0.2525
+          },
+          {
+            "knownPct": 5,
+            "adjacentPct": 73.0548,
+            "unknownAdjacent80Pct": 26.7895,
+            "characterPct": 81.2279,
+            "fullNormalizedValuePct": 6.5263
+          },
+          {
+            "knownPct": 10,
+            "adjacentPct": 80.6904,
+            "unknownAdjacent80Pct": 58.8889,
+            "characterPct": 89.3101,
+            "fullNormalizedValuePct": 24.3333
+          }
+        ]
+      },
+      "allSubstring": {
+        "storedTags": 229851,
+        "maxTagsPerRow": 1479,
+        "frequency": {
+          "adjacentPct": 1.4111,
+          "unknownAdjacent80Pct": 0,
+          "fullNormalizedValuePct": 0
+        },
+        "known": [
+          {
+            "knownPct": 1,
+            "adjacentPct": 1.4785,
+            "unknownAdjacent80Pct": 0,
+            "fullNormalizedValuePct": 0
+          },
+          {
+            "knownPct": 5,
+            "adjacentPct": 8.284,
+            "unknownAdjacent80Pct": 0,
+            "fullNormalizedValuePct": 0
+          },
+          {
+            "knownPct": 10,
+            "adjacentPct": 15.3912,
+            "unknownAdjacent80Pct": 0,
+            "fullNormalizedValuePct": 0
+          }
+        ]
+      },
+      "rowBound": {
+        "storedTags": 229851,
+        "crossRowCollisions": 0,
+        "known": [
+          {
+            "knownPct": 1,
+            "transferredKnownLabels": 0,
+            "unknownTokenRecoveryPct": 0
+          },
+          {
+            "knownPct": 5,
+            "transferredKnownLabels": 0,
+            "unknownTokenRecoveryPct": 0
+          },
+          {
+            "knownPct": 10,
+            "transferredKnownLabels": 0,
+            "unknownTokenRecoveryPct": 0
+          }
+        ],
+        "qualification": "0 is only this token equality transfer attack; unpadded lengths, query history and T2 are excluded, not a safety claim"
+      },
+      "correctness": [
+        {
+          "q": "서비스",
+          "truth": 812,
+          "currentCandidates": 812,
+          "currentFalsePositives": 0,
+          "positional": 812,
+          "allSubstring": 812,
+          "rowBound": 812
+        },
+        {
+          "q": "푸른달",
+          "truth": 3,
+          "currentCandidates": 3,
+          "currentFalsePositives": 0,
+          "positional": 3,
+          "allSubstring": 3,
+          "rowBound": 3
+        },
+        {
+          "q": "희귀",
+          "truth": 3,
+          "currentCandidates": 3,
+          "currentFalsePositives": 0,
+          "positional": 3,
+          "allSubstring": 3,
+          "rowBound": 3
+        },
+        {
+          "q": "희귀표",
+          "truth": 3,
+          "currentCandidates": 3,
+          "currentFalsePositives": 0,
+          "positional": 3,
+          "allSubstring": 3,
+          "rowBound": 3
+        },
+        {
+          "q": "희귀표식",
+          "truth": 3,
+          "currentCandidates": 3,
+          "currentFalsePositives": 0,
+          "positional": 3,
+          "allSubstring": 3,
+          "rowBound": 3
+        },
+        {
+          "q": "정기",
+          "truth": 626,
+          "currentCandidates": 626,
+          "currentFalsePositives": 0,
+          "positional": 626,
+          "allSubstring": 626,
+          "rowBound": 626
+        },
+        {
+          "q": "정기서",
+          "truth": 626,
+          "currentCandidates": 626,
+          "currentFalsePositives": 0,
+          "positional": 626,
+          "allSubstring": 626,
+          "rowBound": 626
+        },
+        {
+          "q": "정기서비",
+          "truth": 626,
+          "currentCandidates": 626,
+          "currentFalsePositives": 0,
+          "positional": 626,
+          "allSubstring": 626,
+          "rowBound": 626
+        },
+        {
+          "q": "빠른",
+          "truth": 182,
+          "currentCandidates": 182,
+          "currentFalsePositives": 0,
+          "positional": 182,
+          "allSubstring": 182,
+          "rowBound": 182
+        },
+        {
+          "q": "빠른회",
+          "truth": 182,
+          "currentCandidates": 182,
+          "currentFalsePositives": 0,
+          "positional": 182,
+          "allSubstring": 182,
+          "rowBound": 182
+        },
+        {
+          "q": "빠른회신",
+          "truth": 182,
+          "currentCandidates": 182,
+          "currentFalsePositives": 0,
+          "positional": 182,
+          "allSubstring": 182,
+          "rowBound": 182
+        },
+        {
+          "q": "계약",
+          "truth": 226,
+          "currentCandidates": 226,
+          "currentFalsePositives": 0,
+          "positional": 226,
+          "allSubstring": 226,
+          "rowBound": 226
+        },
+        {
+          "q": "계약서",
+          "truth": 226,
+          "currentCandidates": 226,
+          "currentFalsePositives": 0,
+          "positional": 226,
+          "allSubstring": 226,
+          "rowBound": 226
+        },
+        {
+          "q": "계약서검",
+          "truth": 226,
+          "currentCandidates": 226,
+          "currentFalsePositives": 0,
+          "positional": 226,
+          "allSubstring": 226,
+          "rowBound": 226
+        },
+        {
+          "q": "주소",
+          "truth": 209,
+          "currentCandidates": 209,
+          "currentFalsePositives": 0,
+          "positional": 209,
+          "allSubstring": 209,
+          "rowBound": 209
+        },
+        {
+          "q": "주소변",
+          "truth": 209,
+          "currentCandidates": 209,
+          "currentFalsePositives": 0,
+          "positional": 209,
+          "allSubstring": 209,
+          "rowBound": 209
+        },
+        {
+          "q": "주소변경",
+          "truth": 209,
+          "currentCandidates": 209,
+          "currentFalsePositives": 0,
+          "positional": 209,
+          "allSubstring": 209,
+          "rowBound": 209
+        },
+        {
+          "q": "서비",
+          "truth": 812,
+          "currentCandidates": 812,
+          "currentFalsePositives": 0,
+          "positional": 812,
+          "allSubstring": 812,
+          "rowBound": 812
+        },
+        {
+          "q": "서비스일",
+          "truth": 186,
+          "currentCandidates": 186,
+          "currentFalsePositives": 0,
+          "positional": 186,
+          "allSubstring": 186,
+          "rowBound": 186
+        },
+        {
+          "q": "su",
+          "truth": 200,
+          "currentCandidates": 200,
+          "currentFalsePositives": 0,
+          "positional": 200,
+          "allSubstring": 200,
+          "rowBound": 200
+        },
+        {
+          "q": "sup",
+          "truth": 195,
+          "currentCandidates": 195,
+          "currentFalsePositives": 0,
+          "positional": 195,
+          "allSubstring": 195,
+          "rowBound": 195
+        },
+        {
+          "q": "supp",
+          "truth": 195,
+          "currentCandidates": 195,
+          "currentFalsePositives": 0,
+          "positional": 195,
+          "allSubstring": 195,
+          "rowBound": 195
+        },
+        {
+          "q": "배송",
+          "truth": 207,
+          "currentCandidates": 207,
+          "currentFalsePositives": 0,
+          "positional": 207,
+          "allSubstring": 207,
+          "rowBound": 207
+        },
+        {
+          "q": "배송확",
+          "truth": 207,
+          "currentCandidates": 207,
+          "currentFalsePositives": 0,
+          "positional": 207,
+          "allSubstring": 207,
+          "rowBound": 207
+        },
+        {
+          "q": "배송확인",
+          "truth": 207,
+          "currentCandidates": 207,
+          "currentFalsePositives": 0,
+          "positional": 207,
+          "allSubstring": 207,
+          "rowBound": 207
+        }
+      ],
+      "sourceSha256": "9720ff689f062a3a5a4989f5468165ea305367898d2a5c72e266d1e783d903de"
+    },
+    {
+      "dataset": "nsmc-review",
+      "rows": 2000,
+      "referenceRows": 2000,
+      "seed": 99,
+      "normalizer": "legacy-text-v1",
+      "current": {
+        "frequency": {
+          "piecePct": 2.3971,
+          "adjacentPct": 3.1089
+        },
+        "known": [
+          {
+            "knownPct": 1,
+            "piecePct": 3.3697,
+            "adjacentPct": 4.7937,
+            "unknownAdjacent80Pct": 0
+          },
+          {
+            "knownPct": 5,
+            "piecePct": 11.1649,
+            "adjacentPct": 16.0216,
+            "unknownAdjacent80Pct": 0.3158
+          },
+          {
+            "knownPct": 10,
+            "piecePct": 16.8709,
+            "adjacentPct": 22.5848,
+            "unknownAdjacent80Pct": 0.7222
+          }
+        ],
+        "uniqueLabels": 43385,
+        "storedTokens": 104308
+      },
+      "positional": {
+        "storedOccurrences": 53297,
+        "frequency": {
+          "adjacentPct": 4.715,
+          "unknownAdjacent80Pct": 0,
+          "characterPct": 10.7366,
+          "fullNormalizedValuePct": 0.05
+        },
+        "known": [
+          {
+            "knownPct": 1,
+            "adjacentPct": 17.1611,
+            "unknownAdjacent80Pct": 0.7071,
+            "characterPct": 30.7532,
+            "fullNormalizedValuePct": 0.9596
+          },
+          {
+            "knownPct": 5,
+            "adjacentPct": 34.6444,
+            "unknownAdjacent80Pct": 3.2632,
+            "characterPct": 54.0799,
+            "fullNormalizedValuePct": 4.3684
+          },
+          {
+            "knownPct": 10,
+            "adjacentPct": 45.5625,
+            "unknownAdjacent80Pct": 6.2222,
+            "characterPct": 65.9501,
+            "fullNormalizedValuePct": 7.4444
+          }
+        ]
+      },
+      "allSubstring": {
+        "storedTags": 1228506,
+        "maxTagsPerRow": 8639,
+        "frequency": {
+          "adjacentPct": 4.3874,
+          "unknownAdjacent80Pct": 0.1,
+          "fullNormalizedValuePct": 0.05
+        },
+        "known": [
+          {
+            "knownPct": 1,
+            "adjacentPct": 5.1668,
+            "unknownAdjacent80Pct": 0,
+            "fullNormalizedValuePct": 0
+          },
+          {
+            "knownPct": 5,
+            "adjacentPct": 16.8352,
+            "unknownAdjacent80Pct": 0.4737,
+            "fullNormalizedValuePct": 0.2105
+          },
+          {
+            "knownPct": 10,
+            "adjacentPct": 24.2242,
+            "unknownAdjacent80Pct": 0.7222,
+            "fullNormalizedValuePct": 0.2778
+          }
+        ]
+      },
+      "rowBound": {
+        "storedTags": 1228506,
+        "crossRowCollisions": 0,
+        "known": [
+          {
+            "knownPct": 1,
+            "transferredKnownLabels": 0,
+            "unknownTokenRecoveryPct": 0
+          },
+          {
+            "knownPct": 5,
+            "transferredKnownLabels": 0,
+            "unknownTokenRecoveryPct": 0
+          },
+          {
+            "knownPct": 10,
+            "transferredKnownLabels": 0,
+            "unknownTokenRecoveryPct": 0
+          }
+        ],
+        "qualification": "0 is only this token equality transfer attack; unpadded lengths, query history and T2 are excluded, not a safety claim"
+      },
+      "correctness": [
+        {
+          "q": "서비스",
+          "truth": 0,
+          "currentCandidates": 0,
+          "currentFalsePositives": 0,
+          "positional": 0,
+          "allSubstring": 0,
+          "rowBound": 0
+        },
+        {
+          "q": "푸른달",
+          "truth": 0,
+          "currentCandidates": 0,
+          "currentFalsePositives": 0,
+          "positional": 0,
+          "allSubstring": 0,
+          "rowBound": 0
+        },
+        {
+          "q": "어릴",
+          "truth": 17,
+          "currentCandidates": 19,
+          "currentFalsePositives": 2,
+          "positional": 17,
+          "allSubstring": 17,
+          "rowBound": 17
+        },
+        {
+          "q": "어릴때",
+          "truth": 11,
+          "currentCandidates": 11,
+          "currentFalsePositives": 0,
+          "positional": 11,
+          "allSubstring": 11,
+          "rowBound": 11
+        },
+        {
+          "q": "어릴때보",
+          "truth": 2,
+          "currentCandidates": 2,
+          "currentFalsePositives": 0,
+          "positional": 2,
+          "allSubstring": 2,
+          "rowBound": 2
+        },
+        {
+          "q": "디자",
+          "truth": 1,
+          "currentCandidates": 37,
+          "currentFalsePositives": 36,
+          "positional": 1,
+          "allSubstring": 1,
+          "rowBound": 1
+        },
+        {
+          "q": "디자인",
+          "truth": 1,
+          "currentCandidates": 1,
+          "currentFalsePositives": 0,
+          "positional": 1,
+          "allSubstring": 1,
+          "rowBound": 1
+        },
+        {
+          "q": "디자인을",
+          "truth": 1,
+          "currentCandidates": 1,
+          "currentFalsePositives": 0,
+          "positional": 1,
+          "allSubstring": 1,
+          "rowBound": 1
+        },
+        {
+          "q": "폴리",
+          "truth": 3,
+          "currentCandidates": 3,
+          "currentFalsePositives": 0,
+          "positional": 3,
+          "allSubstring": 3,
+          "rowBound": 3
+        },
+        {
+          "q": "폴리스",
+          "truth": 2,
+          "currentCandidates": 2,
+          "currentFalsePositives": 0,
+          "positional": 2,
+          "allSubstring": 2,
+          "rowBound": 2
+        },
+        {
+          "q": "폴리스스",
+          "truth": 2,
+          "currentCandidates": 2,
+          "currentFalsePositives": 0,
+          "positional": 2,
+          "allSubstring": 2,
+          "rowBound": 2
+        },
+        {
+          "q": "와.",
+          "truth": 9,
+          "currentCandidates": 10,
+          "currentFalsePositives": 1,
+          "positional": 9,
+          "allSubstring": 9,
+          "rowBound": 9
+        },
+        {
+          "q": "와..",
+          "truth": 8,
+          "currentCandidates": 8,
+          "currentFalsePositives": 0,
+          "positional": 8,
+          "allSubstring": 8,
+          "rowBound": 8
+        },
+        {
+          "q": "와..연",
+          "truth": 2,
+          "currentCandidates": 2,
+          "currentFalsePositives": 0,
+          "positional": 2,
+          "allSubstring": 2,
+          "rowBound": 2
+        },
+        {
+          "q": "안개",
+          "truth": 2,
+          "currentCandidates": 2,
+          "currentFalsePositives": 0,
+          "positional": 2,
+          "allSubstring": 2,
+          "rowBound": 2
+        },
+        {
+          "q": "안개자",
+          "truth": 1,
+          "currentCandidates": 1,
+          "currentFalsePositives": 0,
+          "positional": 1,
+          "allSubstring": 1,
+          "rowBound": 1
+        },
+        {
+          "q": "안개자욱",
+          "truth": 1,
+          "currentCandidates": 1,
+          "currentFalsePositives": 0,
+          "positional": 1,
+          "allSubstring": 1,
+          "rowBound": 1
+        },
+        {
+          "q": "사랑",
+          "truth": 60,
+          "currentCandidates": 60,
+          "currentFalsePositives": 0,
+          "positional": 60,
+          "allSubstring": 60,
+          "rowBound": 60
+        },
+        {
+          "q": "사랑을",
+          "truth": 2,
+          "currentCandidates": 2,
+          "currentFalsePositives": 0,
+          "positional": 2,
+          "allSubstring": 2,
+          "rowBound": 2
+        },
+        {
+          "q": "사랑을해",
+          "truth": 2,
+          "currentCandidates": 2,
+          "currentFalsePositives": 0,
+          "positional": 2,
+          "allSubstring": 2,
+          "rowBound": 2
+        },
+        {
+          "q": "완전",
+          "truth": 44,
+          "currentCandidates": 44,
+          "currentFalsePositives": 0,
+          "positional": 44,
+          "allSubstring": 44,
+          "rowBound": 44
+        },
+        {
+          "q": "완전감",
+          "truth": 2,
+          "currentCandidates": 2,
+          "currentFalsePositives": 0,
+          "positional": 2,
+          "allSubstring": 2,
+          "rowBound": 2
+        },
+        {
+          "q": "완전감동",
+          "truth": 2,
+          "currentCandidates": 2,
+          "currentFalsePositives": 0,
+          "positional": 2,
+          "allSubstring": 2,
+          "rowBound": 2
+        },
+        {
+          "q": "개들",
+          "truth": 3,
+          "currentCandidates": 3,
+          "currentFalsePositives": 0,
+          "positional": 3,
+          "allSubstring": 3,
+          "rowBound": 3
+        },
+        {
+          "q": "개들의",
+          "truth": 1,
+          "currentCandidates": 1,
+          "currentFalsePositives": 0,
+          "positional": 1,
+          "allSubstring": 1,
+          "rowBound": 1
+        },
+        {
+          "q": "개들의전",
+          "truth": 1,
+          "currentCandidates": 1,
+          "currentFalsePositives": 0,
+          "positional": 1,
+          "allSubstring": 1,
+          "rowBound": 1
+        },
+        {
+          "q": "바보",
+          "truth": 5,
+          "currentCandidates": 6,
+          "currentFalsePositives": 1,
+          "positional": 5,
+          "allSubstring": 5,
+          "rowBound": 5
+        },
+        {
+          "q": "바보가",
+          "truth": 1,
+          "currentCandidates": 1,
+          "currentFalsePositives": 0,
+          "positional": 1,
+          "allSubstring": 1,
+          "rowBound": 1
+        },
+        {
+          "q": "바보가아",
+          "truth": 1,
+          "currentCandidates": 1,
+          "currentFalsePositives": 0,
+          "positional": 1,
+          "allSubstring": 1,
+          "rowBound": 1
+        },
+        {
+          "q": "내나",
+          "truth": 3,
+          "currentCandidates": 4,
+          "currentFalsePositives": 1,
+          "positional": 3,
+          "allSubstring": 3,
+          "rowBound": 3
+        },
+        {
+          "q": "내나이",
+          "truth": 1,
+          "currentCandidates": 1,
+          "currentFalsePositives": 0,
+          "positional": 1,
+          "allSubstring": 1,
+          "rowBound": 1
+        },
+        {
+          "q": "내나이와",
+          "truth": 1,
+          "currentCandidates": 1,
+          "currentFalsePositives": 0,
+          "positional": 1,
+          "allSubstring": 1,
+          "rowBound": 1
+        },
+        {
+          "q": "재밌",
+          "truth": 201,
+          "currentCandidates": 202,
+          "currentFalsePositives": 1,
+          "positional": 201,
+          "allSubstring": 201,
+          "rowBound": 201
+        },
+        {
+          "q": "재밌다",
+          "truth": 26,
+          "currentCandidates": 26,
+          "currentFalsePositives": 0,
+          "positional": 26,
+          "allSubstring": 26,
+          "rowBound": 26
+        },
+        {
+          "q": "고질",
+          "truth": 1,
+          "currentCandidates": 1,
+          "currentFalsePositives": 0,
+          "positional": 1,
+          "allSubstring": 1,
+          "rowBound": 1
+        },
+        {
+          "q": "고질라",
+          "truth": 1,
+          "currentCandidates": 1,
+          "currentFalsePositives": 0,
+          "positional": 1,
+          "allSubstring": 1,
+          "rowBound": 1
+        },
+        {
+          "q": "고질라니",
+          "truth": 1,
+          "currentCandidates": 1,
+          "currentFalsePositives": 0,
+          "positional": 1,
+          "allSubstring": 1,
+          "rowBound": 1
+        },
+        {
+          "q": "영화",
+          "truth": 622,
+          "currentCandidates": 622,
+          "currentFalsePositives": 0,
+          "positional": 622,
+          "allSubstring": 622,
+          "rowBound": 622
+        },
+        {
+          "q": "영화의",
+          "truth": 20,
+          "currentCandidates": 20,
+          "currentFalsePositives": 0,
+          "positional": 20,
+          "allSubstring": 20,
+          "rowBound": 20
+        },
+        {
+          "q": "영화의오",
+          "truth": 1,
+          "currentCandidates": 1,
+          "currentFalsePositives": 0,
+          "positional": 1,
+          "allSubstring": 1,
+          "rowBound": 1
+        },
+        {
+          "q": "3도",
+          "truth": 2,
+          "currentCandidates": 2,
+          "currentFalsePositives": 0,
+          "positional": 2,
+          "allSubstring": 2,
+          "rowBound": 2
+        },
+        {
+          "q": "3도반",
+          "truth": 1,
+          "currentCandidates": 1,
+          "currentFalsePositives": 0,
+          "positional": 1,
+          "allSubstring": 1,
+          "rowBound": 1
+        },
+        {
+          "q": "3도반전",
+          "truth": 1,
+          "currentCandidates": 1,
+          "currentFalsePositives": 0,
+          "positional": 1,
+          "allSubstring": 1,
+          "rowBound": 1
+        },
+        {
+          "q": "평점",
+          "truth": 58,
+          "currentCandidates": 59,
+          "currentFalsePositives": 1,
+          "positional": 58,
+          "allSubstring": 58,
+          "rowBound": 58
+        },
+        {
+          "q": "평점왜",
+          "truth": 2,
+          "currentCandidates": 2,
+          "currentFalsePositives": 0,
+          "positional": 2,
+          "allSubstring": 2,
+          "rowBound": 2
+        },
+        {
+          "q": "평점왜낮",
+          "truth": 1,
+          "currentCandidates": 1,
+          "currentFalsePositives": 0,
+          "positional": 1,
+          "allSubstring": 1,
+          "rowBound": 1
+        },
+        {
+          "q": "네고",
+          "truth": 1,
+          "currentCandidates": 2,
+          "currentFalsePositives": 1,
+          "positional": 1,
+          "allSubstring": 1,
+          "rowBound": 1
+        },
+        {
+          "q": "네고시",
+          "truth": 1,
+          "currentCandidates": 1,
+          "currentFalsePositives": 0,
+          "positional": 1,
+          "allSubstring": 1,
+          "rowBound": 1
+        },
+        {
+          "q": "네고시에",
+          "truth": 1,
+          "currentCandidates": 1,
+          "currentFalsePositives": 0,
+          "positional": 1,
+          "allSubstring": 1,
+          "rowBound": 1
+        },
+        {
+          "q": "단연",
+          "truth": 4,
+          "currentCandidates": 9,
+          "currentFalsePositives": 5,
+          "positional": 4,
+          "allSubstring": 4,
+          "rowBound": 4
+        },
+        {
+          "q": "단연최",
+          "truth": 2,
+          "currentCandidates": 2,
+          "currentFalsePositives": 0,
+          "positional": 2,
+          "allSubstring": 2,
+          "rowBound": 2
+        },
+        {
+          "q": "단연최고",
+          "truth": 2,
+          "currentCandidates": 2,
+          "currentFalsePositives": 0,
+          "positional": 2,
+          "allSubstring": 2,
+          "rowBound": 2
+        },
+        {
+          "q": "가면",
+          "truth": 4,
+          "currentCandidates": 5,
+          "currentFalsePositives": 1,
+          "positional": 4,
+          "allSubstring": 4,
+          "rowBound": 4
+        },
+        {
+          "q": "가면갈",
+          "truth": 2,
+          "currentCandidates": 2,
+          "currentFalsePositives": 0,
+          "positional": 2,
+          "allSubstring": 2,
+          "rowBound": 2
+        },
+        {
+          "q": "가면갈수",
+          "truth": 2,
+          "currentCandidates": 2,
+          "currentFalsePositives": 0,
+          "positional": 2,
+          "allSubstring": 2,
+          "rowBound": 2
+        },
+        {
+          "q": "어?",
+          "truth": 2,
+          "currentCandidates": 7,
+          "currentFalsePositives": 5,
+          "positional": 2,
+          "allSubstring": 2,
+          "rowBound": 2
+        },
+        {
+          "q": "어?생",
+          "truth": 1,
+          "currentCandidates": 1,
+          "currentFalsePositives": 0,
+          "positional": 1,
+          "allSubstring": 1,
+          "rowBound": 1
+        },
+        {
+          "q": "어?생각",
+          "truth": 1,
+          "currentCandidates": 1,
+          "currentFalsePositives": 0,
+          "positional": 1,
+          "allSubstring": 1,
+          "rowBound": 1
+        },
+        {
+          "q": "오랜",
+          "truth": 8,
+          "currentCandidates": 8,
+          "currentFalsePositives": 0,
+          "positional": 8,
+          "allSubstring": 8,
+          "rowBound": 8
+        },
+        {
+          "q": "오랜만",
+          "truth": 8,
+          "currentCandidates": 8,
+          "currentFalsePositives": 0,
+          "positional": 8,
+          "allSubstring": 8,
+          "rowBound": 8
+        },
+        {
+          "q": "오랜만에",
+          "truth": 7,
+          "currentCandidates": 7,
+          "currentFalsePositives": 0,
+          "positional": 7,
+          "allSubstring": 7,
+          "rowBound": 7
+        },
+        {
+          "q": "그런",
+          "truth": 21,
+          "currentCandidates": 21,
+          "currentFalsePositives": 0,
+          "positional": 21,
+          "allSubstring": 21,
+          "rowBound": 21
+        },
+        {
+          "q": "그런때",
+          "truth": 1,
+          "currentCandidates": 1,
+          "currentFalsePositives": 0,
+          "positional": 1,
+          "allSubstring": 1,
+          "rowBound": 1
+        },
+        {
+          "q": "그런때가",
+          "truth": 1,
+          "currentCandidates": 1,
+          "currentFalsePositives": 0,
+          "positional": 1,
+          "allSubstring": 1,
+          "rowBound": 1
+        },
+        {
+          "q": "마지",
+          "truth": 50,
+          "currentCandidates": 52,
+          "currentFalsePositives": 2,
+          "positional": 50,
+          "allSubstring": 50,
+          "rowBound": 50
+        },
+        {
+          "q": "마지막",
+          "truth": 50,
+          "currentCandidates": 50,
+          "currentFalsePositives": 0,
+          "positional": 50,
+          "allSubstring": 50,
+          "rowBound": 50
+        },
+        {
+          "q": "마지막씬",
+          "truth": 1,
+          "currentCandidates": 1,
+          "currentFalsePositives": 0,
+          "positional": 1,
+          "allSubstring": 1,
+          "rowBound": 1
+        },
+        {
+          "q": "강압",
+          "truth": 1,
+          "currentCandidates": 1,
+          "currentFalsePositives": 0,
+          "positional": 1,
+          "allSubstring": 1,
+          "rowBound": 1
+        },
+        {
+          "q": "강압적",
+          "truth": 1,
+          "currentCandidates": 1,
+          "currentFalsePositives": 0,
+          "positional": 1,
+          "allSubstring": 1,
+          "rowBound": 1
+        },
+        {
+          "q": "강압적용",
+          "truth": 1,
+          "currentCandidates": 1,
+          "currentFalsePositives": 0,
+          "positional": 1,
+          "allSubstring": 1,
+          "rowBound": 1
+        },
+        {
+          "q": "중세",
+          "truth": 1,
+          "currentCandidates": 1,
+          "currentFalsePositives": 0,
+          "positional": 1,
+          "allSubstring": 1,
+          "rowBound": 1
+        },
+        {
+          "q": "중세시",
+          "truth": 1,
+          "currentCandidates": 1,
+          "currentFalsePositives": 0,
+          "positional": 1,
+          "allSubstring": 1,
+          "rowBound": 1
+        },
+        {
+          "q": "중세시대",
+          "truth": 1,
+          "currentCandidates": 1,
+          "currentFalsePositives": 0,
+          "positional": 1,
+          "allSubstring": 1,
+          "rowBound": 1
+        },
+        {
+          "q": "7시",
+          "truth": 2,
+          "currentCandidates": 2,
+          "currentFalsePositives": 0,
+          "positional": 2,
+          "allSubstring": 2,
+          "rowBound": 2
+        },
+        {
+          "q": "7시간",
+          "truth": 1,
+          "currentCandidates": 1,
+          "currentFalsePositives": 0,
+          "positional": 1,
+          "allSubstring": 1,
+          "rowBound": 1
+        },
+        {
+          "q": "7시간짜",
+          "truth": 1,
+          "currentCandidates": 1,
+          "currentFalsePositives": 0,
+          "positional": 1,
+          "allSubstring": 1,
+          "rowBound": 1
+        },
+        {
+          "q": "사람",
+          "truth": 70,
+          "currentCandidates": 70,
+          "currentFalsePositives": 0,
+          "positional": 70,
+          "allSubstring": 70,
+          "rowBound": 70
+        },
+        {
+          "q": "사람이",
+          "truth": 20,
+          "currentCandidates": 20,
+          "currentFalsePositives": 0,
+          "positional": 20,
+          "allSubstring": 20,
+          "rowBound": 20
+        },
+        {
+          "q": "사람이어",
+          "truth": 1,
+          "currentCandidates": 1,
+          "currentFalsePositives": 0,
+          "positional": 1,
+          "allSubstring": 1,
+          "rowBound": 1
+        },
+        {
+          "q": "인간",
+          "truth": 19,
+          "currentCandidates": 19,
+          "currentFalsePositives": 0,
+          "positional": 19,
+          "allSubstring": 19,
+          "rowBound": 19
+        },
+        {
+          "q": "인간의",
+          "truth": 9,
+          "currentCandidates": 9,
+          "currentFalsePositives": 0,
+          "positional": 9,
+          "allSubstring": 9,
+          "rowBound": 9
+        },
+        {
+          "q": "인간의잠",
+          "truth": 1,
+          "currentCandidates": 1,
+          "currentFalsePositives": 0,
+          "positional": 1,
+          "allSubstring": 1,
+          "rowBound": 1
+        },
+        {
+          "q": "최고",
+          "truth": 160,
+          "currentCandidates": 161,
+          "currentFalsePositives": 1,
+          "positional": 160,
+          "allSubstring": 160,
+          "rowBound": 160
+        },
+        {
+          "q": "최고다",
+          "truth": 18,
+          "currentCandidates": 18,
+          "currentFalsePositives": 0,
+          "positional": 18,
+          "allSubstring": 18,
+          "rowBound": 18
+        },
+        {
+          "q": "최고다.",
+          "truth": 8,
+          "currentCandidates": 8,
+          "currentFalsePositives": 0,
+          "positional": 8,
+          "allSubstring": 8,
+          "rowBound": 8
+        },
+        {
+          "q": "실화",
+          "truth": 13,
+          "currentCandidates": 23,
+          "currentFalsePositives": 10,
+          "positional": 13,
+          "allSubstring": 13,
+          "rowBound": 13
+        },
+        {
+          "q": "실화여",
+          "truth": 1,
+          "currentCandidates": 1,
+          "currentFalsePositives": 0,
+          "positional": 1,
+          "allSubstring": 1,
+          "rowBound": 1
+        },
+        {
+          "q": "실화여서",
+          "truth": 1,
+          "currentCandidates": 1,
+          "currentFalsePositives": 0,
+          "positional": 1,
+          "allSubstring": 1,
+          "rowBound": 1
+        },
+        {
+          "q": "존그",
+          "truth": 1,
+          "currentCandidates": 3,
+          "currentFalsePositives": 2,
+          "positional": 1,
+          "allSubstring": 1,
+          "rowBound": 1
+        },
+        {
+          "q": "존그라",
+          "truth": 1,
+          "currentCandidates": 1,
+          "currentFalsePositives": 0,
+          "positional": 1,
+          "allSubstring": 1,
+          "rowBound": 1
+        },
+        {
+          "q": "존그라샴",
+          "truth": 1,
+          "currentCandidates": 1,
+          "currentFalsePositives": 0,
+          "positional": 1,
+          "allSubstring": 1,
+          "rowBound": 1
+        },
+        {
+          "q": "농아",
+          "truth": 1,
+          "currentCandidates": 1,
+          "currentFalsePositives": 0,
+          "positional": 1,
+          "allSubstring": 1,
+          "rowBound": 1
+        },
+        {
+          "q": "농아인",
+          "truth": 1,
+          "currentCandidates": 1,
+          "currentFalsePositives": 0,
+          "positional": 1,
+          "allSubstring": 1,
+          "rowBound": 1
+        },
+        {
+          "q": "농아인문",
+          "truth": 1,
+          "currentCandidates": 1,
+          "currentFalsePositives": 0,
+          "positional": 1,
+          "allSubstring": 1,
+          "rowBound": 1
+        },
+        {
+          "q": "이거",
+          "truth": 35,
+          "currentCandidates": 37,
+          "currentFalsePositives": 2,
+          "positional": 35,
+          "allSubstring": 35,
+          "rowBound": 35
+        },
+        {
+          "q": "이거어",
+          "truth": 1,
+          "currentCandidates": 1,
+          "currentFalsePositives": 0,
+          "positional": 1,
+          "allSubstring": 1,
+          "rowBound": 1
+        },
+        {
+          "q": "이거어렸",
+          "truth": 1,
+          "currentCandidates": 1,
+          "currentFalsePositives": 0,
+          "positional": 1,
+          "allSubstring": 1,
+          "rowBound": 1
+        },
+        {
+          "q": "친구",
+          "truth": 16,
+          "currentCandidates": 20,
+          "currentFalsePositives": 4,
+          "positional": 16,
+          "allSubstring": 16,
+          "rowBound": 16
+        },
+        {
+          "q": "친구의",
+          "truth": 2,
+          "currentCandidates": 2,
+          "currentFalsePositives": 0,
+          "positional": 2,
+          "allSubstring": 2,
+          "rowBound": 2
+        },
+        {
+          "q": "친구의우",
+          "truth": 1,
+          "currentCandidates": 1,
+          "currentFalsePositives": 0,
+          "positional": 1,
+          "allSubstring": 1,
+          "rowBound": 1
+        },
+        {
+          "q": "굿굿",
+          "truth": 4,
+          "currentCandidates": 4,
+          "currentFalsePositives": 0,
+          "positional": 4,
+          "allSubstring": 4,
+          "rowBound": 4
+        },
+        {
+          "q": "굿굿굿",
+          "truth": 2,
+          "currentCandidates": 2,
+          "currentFalsePositives": 0,
+          "positional": 2,
+          "allSubstring": 2,
+          "rowBound": 2
+        },
+        {
+          "q": "굿굿굿또",
+          "truth": 1,
+          "currentCandidates": 1,
+          "currentFalsePositives": 0,
+          "positional": 1,
+          "allSubstring": 1,
+          "rowBound": 1
+        },
+        {
+          "q": "아재",
+          "truth": 1,
+          "currentCandidates": 1,
+          "currentFalsePositives": 0,
+          "positional": 1,
+          "allSubstring": 1,
+          "rowBound": 1
+        },
+        {
+          "q": "아재미",
+          "truth": 1,
+          "currentCandidates": 1,
+          "currentFalsePositives": 0,
+          "positional": 1,
+          "allSubstring": 1,
+          "rowBound": 1
+        },
+        {
+          "q": "아재미있",
+          "truth": 1,
+          "currentCandidates": 1,
+          "currentFalsePositives": 0,
+          "positional": 1,
+          "allSubstring": 1,
+          "rowBound": 1
+        },
+        {
+          "q": "제이",
+          "truth": 2,
+          "currentCandidates": 2,
+          "currentFalsePositives": 0,
+          "positional": 2,
+          "allSubstring": 2,
+          "rowBound": 2
+        },
+        {
+          "q": "제이크",
+          "truth": 1,
+          "currentCandidates": 1,
+          "currentFalsePositives": 0,
+          "positional": 1,
+          "allSubstring": 1,
+          "rowBound": 1
+        },
+        {
+          "q": "제이크질",
+          "truth": 1,
+          "currentCandidates": 1,
+          "currentFalsePositives": 0,
+          "positional": 1,
+          "allSubstring": 1,
+          "rowBound": 1
+        },
+        {
+          "q": "보는",
+          "truth": 52,
+          "currentCandidates": 52,
+          "currentFalsePositives": 0,
+          "positional": 52,
+          "allSubstring": 52,
+          "rowBound": 52
+        },
+        {
+          "q": "보는내",
+          "truth": 13,
+          "currentCandidates": 13,
+          "currentFalsePositives": 0,
+          "positional": 13,
+          "allSubstring": 13,
+          "rowBound": 13
+        },
+        {
+          "q": "보는내내",
+          "truth": 11,
+          "currentCandidates": 11,
+          "currentFalsePositives": 0,
+          "positional": 11,
+          "allSubstring": 11,
+          "rowBound": 11
+        },
+        {
+          "q": "원표",
+          "truth": 1,
+          "currentCandidates": 4,
+          "currentFalsePositives": 3,
+          "positional": 1,
+          "allSubstring": 1,
+          "rowBound": 1
+        },
+        {
+          "q": "원표가",
+          "truth": 1,
+          "currentCandidates": 1,
+          "currentFalsePositives": 0,
+          "positional": 1,
+          "allSubstring": 1,
+          "rowBound": 1
+        },
+        {
+          "q": "원표가왜",
+          "truth": 1,
+          "currentCandidates": 1,
+          "currentFalsePositives": 0,
+          "positional": 1,
+          "allSubstring": 1,
+          "rowBound": 1
+        },
+        {
+          "q": "마치",
+          "truth": 4,
+          "currentCandidates": 4,
+          "currentFalsePositives": 0,
+          "positional": 4,
+          "allSubstring": 4,
+          "rowBound": 4
+        },
+        {
+          "q": "마치바",
+          "truth": 1,
+          "currentCandidates": 1,
+          "currentFalsePositives": 0,
+          "positional": 1,
+          "allSubstring": 1,
+          "rowBound": 1
+        },
+        {
+          "q": "마치바다",
+          "truth": 1,
+          "currentCandidates": 1,
+          "currentFalsePositives": 0,
+          "positional": 1,
+          "allSubstring": 1,
+          "rowBound": 1
+        },
+        {
+          "q": "정의",
+          "truth": 5,
+          "currentCandidates": 10,
+          "currentFalsePositives": 5,
+          "positional": 5,
+          "allSubstring": 5,
+          "rowBound": 5
+        },
+        {
+          "q": "정의를",
+          "truth": 1,
+          "currentCandidates": 1,
+          "currentFalsePositives": 0,
+          "positional": 1,
+          "allSubstring": 1,
+          "rowBound": 1
+        },
+        {
+          "q": "정의를세",
+          "truth": 1,
+          "currentCandidates": 1,
+          "currentFalsePositives": 0,
+          "positional": 1,
+          "allSubstring": 1,
+          "rowBound": 1
+        }
+      ],
+      "sourceSha256": "545ae7643dcec69e4086ccb91445292ce26769df819cfca878c0ce6f63b6645e"
+    }
+  ]
+}

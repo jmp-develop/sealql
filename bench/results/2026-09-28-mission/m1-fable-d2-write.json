@@ -1,0 +1,17 @@
+{
+  "startedAt": "2026-09-28T08:53:15.634Z",
+  "schema": "research_m1_fable_d2",
+  "K": 8,
+  "xminLink": {
+    "lastInsertedRow": "10000000-0000-4000-8000-00000000012c",
+    "escRowsSharingXmin": 449,
+    "escRowsTotal": 10472095,
+    "note": "esc rows sharing xmin with the last inserted row = its piece counters (static snapshot linkage)"
+  },
+  "insertRows": 300,
+  "insertMsMedian": 50.78,
+  "insertMsP90": 74.9,
+  "statementsPerInsert": 3,
+  "note": "sequential single-row inserts; hot-counter contention under concurrency not measured (MongoDB splits counters by a contention factor)",
+  "finishedAt": "2026-09-28T08:53:43.540Z"
+}

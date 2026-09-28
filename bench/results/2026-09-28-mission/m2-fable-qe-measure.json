@@ -1,0 +1,332 @@
+[
+ {
+  "case": "Q1 company=서울서비스담당",
+  "truth": 28331,
+  "chkCandidates": 28375,
+  "medians": {
+   "plain(idx)": 3.3,
+   "plain(src,wide,noidx)": 8.7,
+   "product(current, API)": 1771.4,
+   "det GIN 1sql": 30.6,
+   "occ GIN app-tags 2sql": 11665.2,
+   "occ Btree app-tags 2sql": 1424.2,
+   "occ GIN db-tags 1sql": 9221.1,
+   "occ Btree db-tags 1sql": 321.3,
+   "chk cand16+dbHMAC 1sql": 86.3
+  },
+  "first": {
+   "plain(idx)": 2.9,
+   "plain(src,wide,noidx)": 8.2,
+   "product(current, API)": 1373,
+   "det GIN 1sql": 29.6,
+   "occ GIN app-tags 2sql": 10319.3,
+   "occ Btree app-tags 2sql": 1437.8,
+   "occ GIN db-tags 1sql": 8982.1,
+   "occ Btree db-tags 1sql": 322.1,
+   "chk cand16+dbHMAC 1sql": 93.2
+  },
+  "failed": {},
+  "tags": {
+   "occ GIN app-tags 2sql": {
+    "tags": 28331,
+    "sql": 2,
+    "appGenMs": 996.7
+   },
+   "occ Btree app-tags 2sql": {
+    "tags": 28331,
+    "sql": 2,
+    "appGenMs": 1199.9
+   },
+   "occ GIN db-tags 1sql": {
+    "tags": 0,
+    "sql": 1,
+    "appGenMs": 0
+   },
+   "occ Btree db-tags 1sql": {
+    "tags": 0,
+    "sql": 1,
+    "appGenMs": 0
+   },
+   "chk cand16+dbHMAC 1sql": {
+    "tags": 0,
+    "sql": 1,
+    "appGenMs": 0
+   }
+  }
+ },
+ {
+  "case": "Q2 memo~서비스",
+  "truth": 40097,
+  "chkCandidates": 40115,
+  "medians": {
+   "plain(idx)": 15,
+   "plain(src,wide,noidx)": 35.9,
+   "product(current, API)": 1815,
+   "det GIN 1sql": 31.2,
+   "occ GIN app-tags 2sql": 17364.8,
+   "occ Btree app-tags 2sql": 1504.5,
+   "occ GIN db-tags 1sql": 12639.5,
+   "occ Btree db-tags 1sql": 316.6,
+   "chk cand16+dbHMAC 1sql": 91.9
+  },
+  "first": {
+   "plain(idx)": 14.9,
+   "plain(src,wide,noidx)": 46.5,
+   "product(current, API)": 2636.4,
+   "det GIN 1sql": 34,
+   "occ GIN app-tags 2sql": 25141.5,
+   "occ Btree app-tags 2sql": 1803.1,
+   "occ GIN db-tags 1sql": 24610.6,
+   "occ Btree db-tags 1sql": 399.8,
+   "chk cand16+dbHMAC 1sql": 98
+  },
+  "failed": {},
+  "tags": {
+   "occ GIN app-tags 2sql": {
+    "tags": 40097,
+    "sql": 2,
+    "appGenMs": 1421.2
+   },
+   "occ Btree app-tags 2sql": {
+    "tags": 40097,
+    "sql": 2,
+    "appGenMs": 1708.7
+   },
+   "occ GIN db-tags 1sql": {
+    "tags": 0,
+    "sql": 1,
+    "appGenMs": 0
+   },
+   "occ Btree db-tags 1sql": {
+    "tags": 0,
+    "sql": 1,
+    "appGenMs": 0
+   },
+   "chk cand16+dbHMAC 1sql": {
+    "tags": 0,
+    "sql": 1,
+    "appGenMs": 0
+   }
+  }
+ },
+ {
+  "case": "Q3 Q1 AND memo~서비스",
+  "truth": 21176,
+  "chkCandidates": 21189,
+  "medians": {
+   "plain(idx)": 8.2,
+   "plain(src,wide,noidx)": 89.5,
+   "product(current, API)": 1762.2,
+   "det GIN 1sql": 28.8,
+   "occ GIN app-tags 2sql": 17527,
+   "occ Btree app-tags 2sql": 2577.3,
+   "occ GIN db-tags 1sql": 15589.5,
+   "occ Btree db-tags 1sql": 1198.7,
+   "chk cand16+dbHMAC 1sql": 90.6
+  },
+  "first": {
+   "plain(idx)": 8.1,
+   "plain(src,wide,noidx)": 105.9,
+   "product(current, API)": 1859,
+   "det GIN 1sql": 30.4,
+   "occ GIN app-tags 2sql": 17297.7,
+   "occ Btree app-tags 2sql": 2584.1,
+   "occ GIN db-tags 1sql": 15741.6,
+   "occ Btree db-tags 1sql": 1245,
+   "chk cand16+dbHMAC 1sql": 91.4
+  },
+  "failed": {},
+  "tags": {
+   "occ GIN app-tags 2sql": {
+    "tags": 68428,
+    "sql": 2,
+    "appGenMs": 2031.3
+   },
+   "occ Btree app-tags 2sql": {
+    "tags": 68428,
+    "sql": 2,
+    "appGenMs": 2042
+   },
+   "occ GIN db-tags 1sql": {
+    "tags": 0,
+    "sql": 1,
+    "appGenMs": 0
+   },
+   "occ Btree db-tags 1sql": {
+    "tags": 0,
+    "sql": 1,
+    "appGenMs": 0
+   },
+   "chk cand16+dbHMAC 1sql": {
+    "tags": 0,
+    "sql": 1,
+    "appGenMs": 0
+   }
+  }
+ },
+ {
+  "case": "Q4 Q1 OR memo~푸른달",
+  "truth": 28400,
+  "chkCandidates": 28484,
+  "medians": {
+   "plain(idx)": 16.7,
+   "plain(src,wide,noidx)": 99.8,
+   "product(current, API)": 2846.2,
+   "det GIN 1sql": 30.2,
+   "occ GIN app-tags 2sql": 7489.6,
+   "occ Btree app-tags 2sql": 1242,
+   "occ GIN db-tags 1sql": 6659.7,
+   "occ Btree db-tags 1sql": 584.4,
+   "chk cand16+dbHMAC 1sql": 85.9
+  },
+  "first": {
+   "plain(idx)": 14.9,
+   "plain(src,wide,noidx)": 87.9,
+   "product(current, API)": 2239.3,
+   "det GIN 1sql": 25.8,
+   "occ GIN app-tags 2sql": 6572.7,
+   "occ Btree app-tags 2sql": 1104.1,
+   "occ GIN db-tags 1sql": 6554.5,
+   "occ Btree db-tags 1sql": 572.5,
+   "chk cand16+dbHMAC 1sql": 84.1
+  },
+  "failed": {},
+  "tags": {
+   "occ GIN app-tags 2sql": {
+    "tags": 28432,
+    "sql": 2,
+    "appGenMs": 888.5
+   },
+   "occ Btree app-tags 2sql": {
+    "tags": 28432,
+    "sql": 2,
+    "appGenMs": 838
+   },
+   "occ GIN db-tags 1sql": {
+    "tags": 0,
+    "sql": 1,
+    "appGenMs": 0
+   },
+   "occ Btree db-tags 1sql": {
+    "tags": 0,
+    "sql": 1,
+    "appGenMs": 0
+   },
+   "chk cand16+dbHMAC 1sql": {
+    "tags": 0,
+    "sql": 1,
+    "appGenMs": 0
+   }
+  }
+ },
+ {
+  "case": "Q5 company=한빛테크중앙지사 AND memo~서비스",
+  "truth": 152,
+  "chkCandidates": 174,
+  "medians": {
+   "plain(idx)": 2.1,
+   "plain(src,wide,noidx)": 6.2,
+   "product(current, API)": 23.7,
+   "det GIN 1sql": 2.2,
+   "occ GIN app-tags 2sql": 2747.4,
+   "occ Btree app-tags 2sql": 1543.9,
+   "occ GIN db-tags 1sql": 1653.5,
+   "occ Btree db-tags 1sql": 712.3,
+   "chk cand16+dbHMAC 1sql": 3.1
+  },
+  "first": {
+   "plain(idx)": 0.9,
+   "plain(src,wide,noidx)": 0.9,
+   "product(current, API)": 33.2,
+   "det GIN 1sql": 2.2,
+   "occ GIN app-tags 2sql": 2797.6,
+   "occ Btree app-tags 2sql": 1545.5,
+   "occ GIN db-tags 1sql": 1601.9,
+   "occ Btree db-tags 1sql": 709.6,
+   "chk cand16+dbHMAC 1sql": 3.1
+  },
+  "failed": {},
+  "tags": {
+   "occ GIN app-tags 2sql": {
+    "tags": 40671,
+    "sql": 2,
+    "appGenMs": 1220.5
+   },
+   "occ Btree app-tags 2sql": {
+    "tags": 40671,
+    "sql": 2,
+    "appGenMs": 1219.1
+   },
+   "occ GIN db-tags 1sql": {
+    "tags": 0,
+    "sql": 1,
+    "appGenMs": 0
+   },
+   "occ Btree db-tags 1sql": {
+    "tags": 0,
+    "sql": 1,
+    "appGenMs": 0
+   },
+   "chk cand16+dbHMAC 1sql": {
+    "tags": 0,
+    "sql": 1,
+    "appGenMs": 0
+   }
+  }
+ },
+ {
+  "case": "Q6 Q1 OR memo~서비스 (47k)",
+  "truth": 47252,
+  "chkCandidates": 47301,
+  "medians": {
+   "plain(idx)": 17.4,
+   "plain(src,wide,noidx)": 96.7,
+   "product(current, API)": 4006.7,
+   "det GIN 1sql": 71.6,
+   "occ GIN app-tags 2sql": 20381.5,
+   "occ Btree app-tags 2sql": 2875,
+   "occ GIN db-tags 1sql": 18982.8,
+   "occ Btree db-tags 1sql": 1210.6,
+   "chk cand16+dbHMAC 1sql": 132.5
+  },
+  "first": {
+   "plain(idx)": 15.2,
+   "plain(src,wide,noidx)": 97.1,
+   "product(current, API)": 3870.7,
+   "det GIN 1sql": 70.5,
+   "occ GIN app-tags 2sql": 21381.9,
+   "occ Btree app-tags 2sql": 2854.9,
+   "occ GIN db-tags 1sql": 18064,
+   "occ Btree db-tags 1sql": 1195.4,
+   "chk cand16+dbHMAC 1sql": 130.3
+  },
+  "failed": {},
+  "tags": {
+   "occ GIN app-tags 2sql": {
+    "tags": 68428,
+    "sql": 2,
+    "appGenMs": 2268.4
+   },
+   "occ Btree app-tags 2sql": {
+    "tags": 68428,
+    "sql": 2,
+    "appGenMs": 2295.7
+   },
+   "occ GIN db-tags 1sql": {
+    "tags": 0,
+    "sql": 1,
+    "appGenMs": 0
+   },
+   "occ Btree db-tags 1sql": {
+    "tags": 0,
+    "sql": 1,
+    "appGenMs": 0
+   },
+   "chk cand16+dbHMAC 1sql": {
+    "tags": 0,
+    "sql": 1,
+    "appGenMs": 0
+   }
+  }
+ }
+]

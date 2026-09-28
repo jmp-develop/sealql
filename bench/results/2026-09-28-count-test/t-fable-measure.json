@@ -1,0 +1,1029 @@
+{
+  "startedAt": "2026-09-28T10:45:58.761Z",
+  "env": "1억 속 회사 B (native_scale_100m, scope B 100,000 rows)",
+  "protocol": "warm 2, 7 interleaved rounds, medians; equality with plaintext asserted every run",
+  "count": [
+    {
+      "case": "exact_common",
+      "condition": "company = \"서울서비스 담당\"",
+      "targetRows": 100000,
+      "matches": 28331,
+      "candidates": 28331,
+      "paths": {
+        "plain": {
+          "totalMs": 10.2,
+          "preMs": 0,
+          "dbMs": 10.2,
+          "postMs": 0,
+          "sqlCalls": 1,
+          "value": 28331,
+          "rows": null
+        },
+        "product": {
+          "totalMs": 1380.1,
+          "preMs": -1,
+          "dbMs": -1,
+          "postMs": -1,
+          "sqlCalls": 1,
+          "value": 28331,
+          "rows": null
+        },
+        "A_scope": {
+          "totalMs": 400.4,
+          "preMs": 0.3,
+          "dbMs": 400.1,
+          "postMs": 0,
+          "sqlCalls": 1,
+          "value": 28331,
+          "rows": null
+        },
+        "A_noscope": {
+          "totalMs": 292.2,
+          "preMs": 0.3,
+          "dbMs": 291.9,
+          "postMs": 0,
+          "sqlCalls": 1,
+          "value": 28331,
+          "rows": null
+        }
+      }
+    },
+    {
+      "case": "sub_mid",
+      "condition": "address contains \"세종대로\"",
+      "targetRows": 100000,
+      "matches": 16574,
+      "candidates": 16574,
+      "paths": {
+        "plain": {
+          "totalMs": 53.7,
+          "preMs": 0,
+          "dbMs": 53.6,
+          "postMs": 0,
+          "sqlCalls": 1,
+          "value": 16574,
+          "rows": null
+        },
+        "product": {
+          "totalMs": 786.6,
+          "preMs": -1,
+          "dbMs": -1,
+          "postMs": -1,
+          "sqlCalls": 1,
+          "value": 16574,
+          "rows": null
+        },
+        "A_scope": {
+          "totalMs": 333.4,
+          "preMs": 0.4,
+          "dbMs": 333,
+          "postMs": 0,
+          "sqlCalls": 1,
+          "value": 16574,
+          "rows": null
+        },
+        "A_noscope": {
+          "totalMs": 333.4,
+          "preMs": 0.4,
+          "dbMs": 333,
+          "postMs": 0,
+          "sqlCalls": 1,
+          "value": 16574,
+          "rows": null
+        }
+      }
+    },
+    {
+      "case": "sub_rare",
+      "condition": "memo contains \"푸른달\"",
+      "targetRows": 100000,
+      "matches": 101,
+      "candidates": 101,
+      "paths": {
+        "plain": {
+          "totalMs": 54,
+          "preMs": 0,
+          "dbMs": 54,
+          "postMs": 0,
+          "sqlCalls": 1,
+          "value": 101,
+          "rows": null
+        },
+        "product": {
+          "totalMs": 6.7,
+          "preMs": -1,
+          "dbMs": -1,
+          "postMs": -1,
+          "sqlCalls": 1,
+          "value": 101,
+          "rows": null
+        },
+        "A_scope": {
+          "totalMs": 1.8,
+          "preMs": 0.3,
+          "dbMs": 1.6,
+          "postMs": 0,
+          "sqlCalls": 1,
+          "value": 101,
+          "rows": null
+        },
+        "A_noscope": {
+          "totalMs": 1.2,
+          "preMs": 0.2,
+          "dbMs": 1,
+          "postMs": 0,
+          "sqlCalls": 1,
+          "value": 101,
+          "rows": null
+        }
+      }
+    },
+    {
+      "case": "starts",
+      "condition": "address startsWith \"서울\"",
+      "targetRows": 100000,
+      "matches": 16574,
+      "candidates": 16574,
+      "paths": {
+        "plain": {
+          "totalMs": 10.9,
+          "preMs": 0,
+          "dbMs": 10.9,
+          "postMs": 0,
+          "sqlCalls": 1,
+          "value": 16574,
+          "rows": null
+        },
+        "product": {
+          "totalMs": 787.6,
+          "preMs": -1,
+          "dbMs": -1,
+          "postMs": -1,
+          "sqlCalls": 1,
+          "value": 16574,
+          "rows": null
+        },
+        "A_scope": {
+          "totalMs": 341.3,
+          "preMs": 0.3,
+          "dbMs": 341.1,
+          "postMs": 0,
+          "sqlCalls": 1,
+          "value": 16574,
+          "rows": null
+        },
+        "A_noscope": {
+          "totalMs": 346.7,
+          "preMs": 0.4,
+          "dbMs": 346.4,
+          "postMs": 0,
+          "sqlCalls": 1,
+          "value": 16574,
+          "rows": null
+        }
+      }
+    },
+    {
+      "case": "ends",
+      "condition": "email endsWith \"biz.test\"",
+      "targetRows": 100000,
+      "matches": 26598,
+      "candidates": 26598,
+      "paths": {
+        "plain": {
+          "totalMs": 63.7,
+          "preMs": 0,
+          "dbMs": 63.7,
+          "postMs": 0,
+          "sqlCalls": 1,
+          "value": 26598,
+          "rows": null
+        },
+        "product": {
+          "totalMs": 1225.5,
+          "preMs": -1,
+          "dbMs": -1,
+          "postMs": -1,
+          "sqlCalls": 1,
+          "value": 26598,
+          "rows": null
+        },
+        "A_scope": {
+          "totalMs": 543.2,
+          "preMs": 0.6,
+          "dbMs": 542.6,
+          "postMs": 0,
+          "sqlCalls": 1,
+          "value": 26598,
+          "rows": null
+        },
+        "A_noscope": {
+          "totalMs": 533.4,
+          "preMs": 0.6,
+          "dbMs": 532.5,
+          "postMs": 0,
+          "sqlCalls": 1,
+          "value": 26598,
+          "rows": null
+        }
+      }
+    },
+    {
+      "case": "and2",
+      "condition": "(company = \"서울서비스 담당\" AND memo contains \"서비스\")",
+      "targetRows": 100000,
+      "matches": 21176,
+      "candidates": 21176,
+      "paths": {
+        "plain": {
+          "totalMs": 12.4,
+          "preMs": 0,
+          "dbMs": 12.4,
+          "postMs": 0,
+          "sqlCalls": 1,
+          "value": 21176,
+          "rows": null
+        },
+        "product": {
+          "totalMs": 1830.8,
+          "preMs": -1,
+          "dbMs": -1,
+          "postMs": -1,
+          "sqlCalls": 1,
+          "value": 21176,
+          "rows": null
+        },
+        "A_scope": {
+          "totalMs": 429.1,
+          "preMs": 0.4,
+          "dbMs": 428.6,
+          "postMs": 0,
+          "sqlCalls": 1,
+          "value": 21176,
+          "rows": null
+        },
+        "A_noscope": {
+          "totalMs": 318.5,
+          "preMs": 0.5,
+          "dbMs": 317.9,
+          "postMs": 0,
+          "sqlCalls": 1,
+          "value": 21176,
+          "rows": null
+        }
+      }
+    },
+    {
+      "case": "and4",
+      "condition": "(company = \"서울서비스 담당\" AND address contains \"서울\" AND memo contains \"상담\" AND email contains \"service\")",
+      "targetRows": 100000,
+      "matches": 62,
+      "candidates": 62,
+      "paths": {
+        "plain": {
+          "totalMs": 12.4,
+          "preMs": 0,
+          "dbMs": 12.3,
+          "postMs": 0,
+          "sqlCalls": 1,
+          "value": 62,
+          "rows": null
+        },
+        "product": {
+          "totalMs": 170.4,
+          "preMs": -1,
+          "dbMs": -1,
+          "postMs": -1,
+          "sqlCalls": 1,
+          "value": 62,
+          "rows": null
+        },
+        "A_scope": {
+          "totalMs": 162.1,
+          "preMs": 0.7,
+          "dbMs": 161.4,
+          "postMs": 0,
+          "sqlCalls": 1,
+          "value": 62,
+          "rows": null
+        },
+        "A_noscope": {
+          "totalMs": 9.9,
+          "preMs": 0.8,
+          "dbMs": 9.1,
+          "postMs": 0,
+          "sqlCalls": 1,
+          "value": 62,
+          "rows": null
+        }
+      }
+    },
+    {
+      "case": "and6",
+      "condition": "(name contains \"민서\" AND phone contains \"-5\" AND address contains \"서울\" AND memo contains \"서비스\" AND email contains \"test\" AND company = \"서울서비스 담당\")",
+      "targetRows": 100000,
+      "matches": 624,
+      "candidates": 624,
+      "paths": {
+        "plain": {
+          "totalMs": 12.6,
+          "preMs": 0,
+          "dbMs": 12.6,
+          "postMs": 0,
+          "sqlCalls": 1,
+          "value": 624,
+          "rows": null
+        },
+        "product": {
+          "totalMs": 300.8,
+          "preMs": -1,
+          "dbMs": -1,
+          "postMs": -1,
+          "sqlCalls": 1,
+          "value": 624,
+          "rows": null
+        },
+        "A_scope": {
+          "totalMs": 181.5,
+          "preMs": 0.8,
+          "dbMs": 180.8,
+          "postMs": 0,
+          "sqlCalls": 1,
+          "value": 624,
+          "rows": null
+        },
+        "A_noscope": {
+          "totalMs": 27.4,
+          "preMs": 0.9,
+          "dbMs": 26.5,
+          "postMs": 0,
+          "sqlCalls": 1,
+          "value": 624,
+          "rows": null
+        }
+      }
+    },
+    {
+      "case": "or2",
+      "condition": "(company = \"서울서비스 담당\" OR memo contains \"푸른달\")",
+      "targetRows": 100000,
+      "matches": 28400,
+      "candidates": 28400,
+      "paths": {
+        "plain": {
+          "totalMs": 35.3,
+          "preMs": 0,
+          "dbMs": 35.3,
+          "postMs": 0,
+          "sqlCalls": 1,
+          "value": 28400,
+          "rows": null
+        },
+        "product": {
+          "totalMs": 2198.1,
+          "preMs": -1,
+          "dbMs": -1,
+          "postMs": -1,
+          "sqlCalls": 1,
+          "value": 28400,
+          "rows": null
+        },
+        "A_scope": {
+          "totalMs": 342.8,
+          "preMs": 0.4,
+          "dbMs": 342.3,
+          "postMs": 0,
+          "sqlCalls": 1,
+          "value": 28400,
+          "rows": null
+        },
+        "A_noscope": {
+          "totalMs": 454,
+          "preMs": 0.5,
+          "dbMs": 453.4,
+          "postMs": 0,
+          "sqlCalls": 1,
+          "value": 28400,
+          "rows": null
+        }
+      }
+    },
+    {
+      "case": "or3",
+      "condition": "(phone = \"42-5748-1542\" OR phone = \"21-7100-5875\" OR name contains \"pshxt\")",
+      "targetRows": 100000,
+      "matches": 2,
+      "candidates": 3,
+      "paths": {
+        "plain": {
+          "totalMs": 5.9,
+          "preMs": 0,
+          "dbMs": 5.9,
+          "postMs": 0,
+          "sqlCalls": 1,
+          "value": 2,
+          "rows": null
+        },
+        "product": {
+          "totalMs": 2.5,
+          "preMs": -1,
+          "dbMs": -1,
+          "postMs": -1,
+          "sqlCalls": 1,
+          "value": 2,
+          "rows": null
+        },
+        "A_scope": {
+          "totalMs": 1.7,
+          "preMs": 0.4,
+          "dbMs": 1.3,
+          "postMs": 0,
+          "sqlCalls": 1,
+          "value": 2,
+          "rows": null
+        },
+        "A_noscope": {
+          "totalMs": 34.2,
+          "preMs": 0.5,
+          "dbMs": 33.7,
+          "postMs": 0,
+          "sqlCalls": 1,
+          "value": 2,
+          "rows": null
+        }
+      }
+    }
+  ],
+  "find": [
+    {
+      "case": "exact_common",
+      "condition": "company = \"서울서비스 담당\"",
+      "limit": 20,
+      "targetRows": 100000,
+      "matches": 28331,
+      "paths": {
+        "plain": {
+          "totalMs": 18.3,
+          "preMs": 0,
+          "dbMs": 18.2,
+          "postMs": 0,
+          "sqlCalls": 1,
+          "value": 20,
+          "rows": 20
+        },
+        "product": {
+          "totalMs": 6.6,
+          "preMs": -1,
+          "dbMs": -1,
+          "postMs": -1,
+          "sqlCalls": -1,
+          "value": 20,
+          "rows": 20
+        },
+        "A_scope": {
+          "totalMs": 557,
+          "preMs": 0.2,
+          "dbMs": 552.2,
+          "postMs": 4.3,
+          "sqlCalls": 1,
+          "value": 20,
+          "rows": 20
+        }
+      }
+    },
+    {
+      "case": "exact_common",
+      "condition": "company = \"서울서비스 담당\"",
+      "limit": 200,
+      "targetRows": 100000,
+      "matches": 28331,
+      "paths": {
+        "plain": {
+          "totalMs": 18,
+          "preMs": 0,
+          "dbMs": 18,
+          "postMs": 0,
+          "sqlCalls": 1,
+          "value": 200,
+          "rows": 200
+        },
+        "product": {
+          "totalMs": 44.9,
+          "preMs": -1,
+          "dbMs": -1,
+          "postMs": -1,
+          "sqlCalls": -1,
+          "value": 200,
+          "rows": 200
+        },
+        "A_scope": {
+          "totalMs": 602.3,
+          "preMs": 0.2,
+          "dbMs": 560.3,
+          "postMs": 39.2,
+          "sqlCalls": 1,
+          "value": 200,
+          "rows": 200
+        }
+      }
+    },
+    {
+      "case": "exact_common",
+      "condition": "company = \"서울서비스 담당\"",
+      "limit": "all",
+      "targetRows": 100000,
+      "matches": 28331,
+      "paths": {
+        "plain": {
+          "totalMs": 83.2,
+          "preMs": 0,
+          "dbMs": 83.1,
+          "postMs": 0,
+          "sqlCalls": 1,
+          "value": 28331,
+          "rows": 28331
+        },
+        "product": {
+          "totalMs": 6028.1,
+          "preMs": -1,
+          "dbMs": -1,
+          "postMs": -1,
+          "sqlCalls": -1,
+          "value": 28331,
+          "rows": 28331
+        },
+        "A_scope": {
+          "totalMs": 6489.9,
+          "preMs": 0.4,
+          "dbMs": 725.9,
+          "postMs": 5734.7,
+          "sqlCalls": 1,
+          "value": 28331,
+          "rows": 28331
+        }
+      }
+    },
+    {
+      "case": "and2",
+      "condition": "(company = \"서울서비스 담당\" AND memo contains \"서비스\")",
+      "limit": 20,
+      "targetRows": 100000,
+      "matches": 21176,
+      "paths": {
+        "plain": {
+          "totalMs": 18.6,
+          "preMs": 0,
+          "dbMs": 18.5,
+          "postMs": 0,
+          "sqlCalls": 1,
+          "value": 20,
+          "rows": 20
+        },
+        "product": {
+          "totalMs": 7.3,
+          "preMs": -1,
+          "dbMs": -1,
+          "postMs": -1,
+          "sqlCalls": -1,
+          "value": 20,
+          "rows": 20
+        },
+        "A_scope": {
+          "totalMs": 575.9,
+          "preMs": 0.3,
+          "dbMs": 571.5,
+          "postMs": 3.9,
+          "sqlCalls": 1,
+          "value": 20,
+          "rows": 20
+        }
+      }
+    },
+    {
+      "case": "and2",
+      "condition": "(company = \"서울서비스 담당\" AND memo contains \"서비스\")",
+      "limit": 200,
+      "targetRows": 100000,
+      "matches": 21176,
+      "paths": {
+        "plain": {
+          "totalMs": 18.8,
+          "preMs": 0,
+          "dbMs": 18.8,
+          "postMs": 0,
+          "sqlCalls": 1,
+          "value": 200,
+          "rows": 200
+        },
+        "product": {
+          "totalMs": 48.4,
+          "preMs": -1,
+          "dbMs": -1,
+          "postMs": -1,
+          "sqlCalls": -1,
+          "value": 200,
+          "rows": 200
+        },
+        "A_scope": {
+          "totalMs": 601.4,
+          "preMs": 0.3,
+          "dbMs": 560.2,
+          "postMs": 40.4,
+          "sqlCalls": 1,
+          "value": 200,
+          "rows": 200
+        }
+      }
+    },
+    {
+      "case": "and2",
+      "condition": "(company = \"서울서비스 담당\" AND memo contains \"서비스\")",
+      "limit": "all",
+      "targetRows": 100000,
+      "matches": 21176,
+      "paths": {
+        "plain": {
+          "totalMs": 66.2,
+          "preMs": 0,
+          "dbMs": 66.1,
+          "postMs": 0,
+          "sqlCalls": 1,
+          "value": 21176,
+          "rows": 21176
+        },
+        "product": {
+          "totalMs": 4534.1,
+          "preMs": -1,
+          "dbMs": -1,
+          "postMs": -1,
+          "sqlCalls": -1,
+          "value": 21176,
+          "rows": 21176
+        },
+        "A_scope": {
+          "totalMs": 4920.9,
+          "preMs": 0.6,
+          "dbMs": 674.3,
+          "postMs": 4205.7,
+          "sqlCalls": 1,
+          "value": 21176,
+          "rows": 21176
+        }
+      }
+    },
+    {
+      "case": "or2",
+      "condition": "(company = \"서울서비스 담당\" OR memo contains \"푸른달\")",
+      "limit": 20,
+      "targetRows": 100000,
+      "matches": 28400,
+      "paths": {
+        "plain": {
+          "totalMs": 41.1,
+          "preMs": 0,
+          "dbMs": 41.1,
+          "postMs": 0,
+          "sqlCalls": 1,
+          "value": 20,
+          "rows": 20
+        },
+        "product": {
+          "totalMs": 7.1,
+          "preMs": -1,
+          "dbMs": -1,
+          "postMs": -1,
+          "sqlCalls": -1,
+          "value": 20,
+          "rows": 20
+        },
+        "A_scope": {
+          "totalMs": 511.1,
+          "preMs": 0.3,
+          "dbMs": 506.7,
+          "postMs": 3.9,
+          "sqlCalls": 1,
+          "value": 20,
+          "rows": 20
+        }
+      }
+    },
+    {
+      "case": "or2",
+      "condition": "(company = \"서울서비스 담당\" OR memo contains \"푸른달\")",
+      "limit": 200,
+      "targetRows": 100000,
+      "matches": 28400,
+      "paths": {
+        "plain": {
+          "totalMs": 40,
+          "preMs": 0,
+          "dbMs": 40,
+          "postMs": 0,
+          "sqlCalls": 1,
+          "value": 200,
+          "rows": 200
+        },
+        "product": {
+          "totalMs": 96.5,
+          "preMs": -1,
+          "dbMs": -1,
+          "postMs": -1,
+          "sqlCalls": -1,
+          "value": 200,
+          "rows": 200
+        },
+        "A_scope": {
+          "totalMs": 549.4,
+          "preMs": 0.5,
+          "dbMs": 511.8,
+          "postMs": 37.1,
+          "sqlCalls": 1,
+          "value": 200,
+          "rows": 200
+        }
+      }
+    },
+    {
+      "case": "or2",
+      "condition": "(company = \"서울서비스 담당\" OR memo contains \"푸른달\")",
+      "limit": "all",
+      "targetRows": 100000,
+      "matches": 28400,
+      "paths": {
+        "plain": {
+          "totalMs": 93.2,
+          "preMs": 0,
+          "dbMs": 93.2,
+          "postMs": 0,
+          "sqlCalls": 1,
+          "value": 28400,
+          "rows": 28400
+        },
+        "product": {
+          "totalMs": 6001,
+          "preMs": -1,
+          "dbMs": -1,
+          "postMs": -1,
+          "sqlCalls": -1,
+          "value": 28400,
+          "rows": 28400
+        },
+        "A_scope": {
+          "totalMs": 6319.9,
+          "preMs": 0.5,
+          "dbMs": 672.3,
+          "postMs": 5596.4,
+          "sqlCalls": 1,
+          "value": 28400,
+          "rows": 28400
+        }
+      }
+    }
+  ],
+  "sum": [
+    {
+      "case": "exact_common",
+      "condition": "SUM(char_length(memo_plain)) WHERE company = \"서울서비스 담당\"",
+      "premise": "fixture has no numeric column: plaintext derivative char_length(memo_plain) on customers_plain, filtered by the encrypted predicate",
+      "paths": {
+        "plain": {
+          "totalMs": 12,
+          "preMs": 0,
+          "dbMs": 11.9,
+          "postMs": 0,
+          "sqlCalls": 1,
+          "value": 485956,
+          "rows": null
+        },
+        "A_scope": {
+          "totalMs": 533.1,
+          "preMs": 0.3,
+          "dbMs": 532.8,
+          "postMs": 0,
+          "sqlCalls": 1,
+          "value": 485956,
+          "rows": null
+        }
+      }
+    },
+    {
+      "case": "and2",
+      "condition": "SUM(char_length(memo_plain)) WHERE (company = \"서울서비스 담당\" AND memo contains \"서비스\")",
+      "premise": "fixture has no numeric column: plaintext derivative char_length(memo_plain) on customers_plain, filtered by the encrypted predicate",
+      "paths": {
+        "plain": {
+          "totalMs": 14.7,
+          "preMs": 0,
+          "dbMs": 14.7,
+          "postMs": 0,
+          "sqlCalls": 1,
+          "value": 346152,
+          "rows": null
+        },
+        "A_scope": {
+          "totalMs": 531.1,
+          "preMs": 0.4,
+          "dbMs": 530.8,
+          "postMs": 0,
+          "sqlCalls": 1,
+          "value": 346152,
+          "rows": null
+        }
+      }
+    },
+    {
+      "case": "and6",
+      "condition": "SUM(char_length(memo_plain)) WHERE (name contains \"민서\" AND phone contains \"-5\" AND address contains \"서울\" AND memo contains \"서비스\" AND email contains \"test\" AND company = \"서울서비스 담당\")",
+      "premise": "fixture has no numeric column: plaintext derivative char_length(memo_plain) on customers_plain, filtered by the encrypted predicate",
+      "paths": {
+        "plain": {
+          "totalMs": 13.7,
+          "preMs": 0,
+          "dbMs": 13.7,
+          "postMs": 0,
+          "sqlCalls": 1,
+          "value": 10494,
+          "rows": null
+        },
+        "A_scope": {
+          "totalMs": 195.6,
+          "preMs": 0.8,
+          "dbMs": 194.9,
+          "postMs": 0,
+          "sqlCalls": 1,
+          "value": 10494,
+          "rows": null
+        }
+      }
+    },
+    {
+      "case": "or2",
+      "condition": "SUM(char_length(memo_plain)) WHERE (company = \"서울서비스 담당\" OR memo contains \"푸른달\")",
+      "premise": "fixture has no numeric column: plaintext derivative char_length(memo_plain) on customers_plain, filtered by the encrypted predicate",
+      "paths": {
+        "plain": {
+          "totalMs": 38.4,
+          "preMs": 0,
+          "dbMs": 38.4,
+          "postMs": 0,
+          "sqlCalls": 1,
+          "value": 487084,
+          "rows": null
+        },
+        "A_scope": {
+          "totalMs": 494.6,
+          "preMs": 0.4,
+          "dbMs": 494.2,
+          "postMs": 0,
+          "sqlCalls": 1,
+          "value": 487084,
+          "rows": null
+        }
+      }
+    }
+  ],
+  "explain": {
+    "exact_common/A_scope": [
+      "Aggregate  (cost=431.91..431.92 rows=1 width=8) (actual time=395.046..395.047 rows=1.00 loops=1)",
+      "  Buffers: shared hit=91882 read=43033",
+      "  ->  Nested Loop  (cost=0.98..431.90 rows=1 width=0) (actual time=0.092..392.906 rows=28331.00 loops=1)",
+      "        Buffers: shared hit=91882 read=43033",
+      "        ->  Index Scan using seal_4c8e2d2bddde3451_bt on customers_seal_index __seal_idx  (cost=0.57..85.01 rows=41 width=16) (actual time=0.051..146.539 rows=28331.00 loops=1)",
+      "              Index Cond: ((scope_id = 'bbbbbbbb-bbbb-4bbb-8bbb-bbbbbbbbbbbb'::uuid) AND (tokens_a106c26102b707f0[1] = '-5226838053294112768'::bigint))",
+      "              Index Searches: 1",
+      "              Buffers: shared read=21591",
+      "        ->  Index Scan using b_tags_pkey on b_tags t  (cost=0.42..8.46 rows=1 width=16) (actual time=0.008..0.008 rows=1.00 loops=28331)",
+      "              Index Cond: (row_id = __seal_idx.row_id)",
+      "              Filter: (jx_company = ((('x'::text || encode(substr(sha256(('\\xf33ba3750b3187fc86835ffa0625451fa3f3dc7844ef24f701d4e84bb2b6d17e'::bytea || salt_company)), 1, 8), 'hex'::text)))::bit(64))::bigint)",
+      "              Index Searches: 28331",
+      "              Buffers: shared hit=91882 read=21442",
+      "Planning:",
+      "  Buffers: shared hit=6 read=2",
+      "Planning Time: 0.297 ms",
+      "Execution Time: 395.074 ms"
+    ],
+    "exact_common/A_noscope": [
+      "Aggregate  (cost=30573.25..30573.26 rows=1 width=8) (actual time=337.122..346.038 rows=1.00 loops=1)",
+      "  Buffers: shared hit=572515 read=46565",
+      "  ->  Gather  (cost=1000.57..30573.25 rows=1 width=0) (actual time=0.598..344.131 rows=28331.00 loops=1)",
+      "        Workers Planned: 2",
+      "        Workers Launched: 2",
+      "        Buffers: shared hit=572515 read=46565",
+      "        ->  Nested Loop  (cost=0.57..29573.15 rows=1 width=0) (actual time=4.531..245.620 rows=9443.67 loops=3)",
+      "              Buffers: shared hit=572515 read=46565",
+      "              ->  Parallel Seq Scan on b_tags t  (cost=0.00..25883.33 rows=208 width=16) (actual time=0.203..81.388 rows=9443.67 loops=3)",
+      "                    Filter: (jx_company = ((('x'::text || encode(substr(sha256(('\\xf33ba3750b3187fc86835ffa0625451fa3f3dc7844ef24f701d4e84bb2b6d17e'::bytea || salt_company)), 1, 8), 'hex'::text)))::bit(64))::bigint)",
+      "                    Rows Removed by Filter: 23890",
+      "                    Buffers: shared hit=312 read=24113",
+      "              ->  Index Scan using customers_seal_index_scope_row_uq on customers_seal_index __seal_idx  (cost=0.57..17.73 rows=1 width=16) (actual time=0.016..0.017 rows=1.00 loops=28331)",
+      "                    Index Cond: (row_id = t.row_id)",
+      "                    Filter: (tokens_a106c26102b707f0[1] = '-5226838053294112768'::bigint)",
+      "                    Index Searches: 141552",
+      "                    Buffers: shared hit=572203 read=22452",
+      "Planning:",
+      "  Buffers: shared hit=6 read=2",
+      "Planning Time: 0.233 ms",
+      "Execution Time: 346.069 ms"
+    ],
+    "and2/A_scope": [
+      "Aggregate  (cost=94.36..94.37 rows=1 width=8) (actual time=432.873..432.874 rows=1.00 loops=1)",
+      "  Buffers: shared hit=66402 read=42349",
+      "  ->  Nested Loop  (cost=0.98..94.36 rows=1 width=0) (actual time=0.097..431.020 rows=21176.00 loops=1)",
+      "        Buffers: shared hit=66402 read=42349",
+      "        ->  Index Scan using seal_4c8e2d2bddde3451_bt on customers_seal_index __seal_idx  (cost=0.57..85.11 rows=1 width=16) (actual time=0.060..162.937 rows=21176.00 loops=1)",
+      "              Index Cond: ((scope_id = 'bbbbbbbb-bbbb-4bbb-8bbb-bbbbbbbbbbbb'::uuid) AND (tokens_a106c26102b707f0[1] = '-5226838053294112768'::bigint))",
+      "              Filter: (tokens_a639b11c8130dcf7 @> '{-5935322400194756608,-5935322399125209088,-5935322398919688192}'::bigint[])",
+      "              Rows Removed by Filter: 7155",
+      "              Index Searches: 1",
+      "              Buffers: shared hit=176 read=21415",
+      "        ->  Index Scan using b_tags_pkey on b_tags t  (cost=0.42..8.59 rows=1 width=16) (actual time=0.012..0.012 rows=1.00 loops=21176)",
+      "              Index Cond: (row_id = __seal_idx.row_id)",
+      "              Filter: ((jx_company = ((('x'::text || encode(substr(sha256(('\\xf33ba3750b3187fc86835ffa0625451fa3f3dc7844ef24f701d4e84bb2b6d17e'::bytea || salt_company)), 1, 8), 'hex'::text)))::bit(64))::bigint) AND (((('x'::text || encode(substr(sha256(('\\xcdf181ce0eb7a28e033d359d0991c5c5e7ab8222925c8f297c78dea9f684046d'::bytea || salt_memo)), 1, 8), 'hex'::text)))::bit(64))::bigint = ANY (jt_memo)))",
+      "              Index Searches: 21176",
+      "              Buffers: shared hit=66226 read=20934",
+      "Planning:",
+      "  Buffers: shared hit=6 read=3",
+      "Planning Time: 0.379 ms",
+      "Execution Time: 432.903 ms"
+    ],
+    "and2/A_noscope": [
+      "Aggregate  (cost=2791.12..2791.13 rows=1 width=8) (actual time=316.195..316.195 rows=1.00 loops=1)",
+      "  Buffers: shared hit=66636 read=43986",
+      "  ->  Nested Loop  (cost=2778.28..2791.12 rows=1 width=0) (actual time=8.109..314.358 rows=21176.00 loops=1)",
+      "        Buffers: shared hit=66636 read=43986",
+      "        ->  Bitmap Heap Scan on customers_seal_index __seal_idx  (cost=2777.86..2781.87 rows=1 width=16) (actual time=8.047..43.450 rows=21176.00 loops=1)",
+      "              Recheck Cond: (tokens_a639b11c8130dcf7 @> '{-5935322400194756608,-5935322399125209088,-5935322398919688192}'::bigint[])",
+      "              Filter: (tokens_a106c26102b707f0[1] = '-5226838053294112768'::bigint)",
+      "              Rows Removed by Filter: 18921",
+      "              Heap Blocks: exact=23401",
+      "              Buffers: shared hit=22 read=23440",
+      "              ->  Bitmap Index Scan on seal_e66dc2708e915b65_gin  (cost=0.00..2777.86 rows=1 width=0) (actual time=5.413..5.414 rows=40097.00 loops=1)",
+      "                    Index Cond: (tokens_a639b11c8130dcf7 @> '{-5935322400194756608,-5935322399125209088,-5935322398919688192}'::bigint[])",
+      "                    Index Searches: 1",
+      "                    Buffers: shared hit=22 read=39",
+      "        ->  Index Scan using b_tags_pkey on b_tags t  (cost=0.42..8.59 rows=1 width=16) (actual time=0.012..0.012 rows=1.00 loops=21176)",
+      "              Index Cond: (row_id = __seal_idx.row_id)",
+      "              Filter: ((jx_company = ((('x'::text || encode(substr(sha256(('\\xf33ba3750b3187fc86835ffa0625451fa3f3dc7844ef24f701d4e84bb2b6d17e'::bytea || salt_company)), 1, 8), 'hex'::text)))::bit(64))::bigint) AND (((('x'::text || encode(substr(sha256(('\\xcdf181ce0eb7a28e033d359d0991c5c5e7ab8222925c8f297c78dea9f684046d'::bytea || salt_memo)), 1, 8), 'hex'::text)))::bit(64))::bigint = ANY (jt_memo)))",
+      "              Index Searches: 21176",
+      "              Buffers: shared hit=66614 read=20546",
+      "Planning:",
+      "  Buffers: shared hit=7 read=2",
+      "Planning Time: 0.327 ms",
+      "Execution Time: 316.338 ms"
+    ],
+    "or2/A_scope": [
+      "Aggregate  (cost=3306.58..3306.59 rows=1 width=8) (actual time=346.344..346.346 rows=1.00 loops=1)",
+      "  Buffers: shared hit=92201 read=43085",
+      "  ->  Nested Loop  (cost=2783.27..3306.58 rows=1 width=0) (actual time=7.362..344.190 rows=28400.00 loops=1)",
+      "        Buffers: shared hit=92201 read=43085",
+      "        ->  Bitmap Heap Scan on customers_seal_index __seal_idx  (cost=2782.86..2947.42 rows=41 width=334) (actual time=7.262..37.127 rows=28400.00 loops=1)",
+      "              Recheck Cond: (((scope_id = 'bbbbbbbb-bbbb-4bbb-8bbb-bbbbbbbbbbbb'::uuid) AND (tokens_a106c26102b707f0[1] = '-5226838053294112768'::bigint)) OR (tokens_a639b11c8130dcf7 @> '{-5935322400300204032,-5935322399734169600,-5935322399596019712}'::bigint[]))",
+      "              Filter: (scope_id = 'bbbbbbbb-bbbb-4bbb-8bbb-bbbbbbbbbbbb'::uuid)",
+      "              Heap Blocks: exact=21237",
+      "              Buffers: shared hit=5 read=21609",
+      "              ->  BitmapOr  (cost=2782.86..2782.86 rows=41 width=0) (actual time=4.937..4.938 rows=0.00 loops=1)",
+      "                    Buffers: shared hit=5 read=372",
+      "                    ->  Bitmap Index Scan on seal_4c8e2d2bddde3451_bt  (cost=0.00..4.98 rows=41 width=0) (actual time=4.861..4.861 rows=28331.00 loops=1)",
+      "                          Index Cond: ((scope_id = 'bbbbbbbb-bbbb-4bbb-8bbb-bbbbbbbbbbbb'::uuid) AND (tokens_a106c26102b707f0[1] = '-5226838053294112768'::bigint))",
+      "                          Index Searches: 1",
+      "                          Buffers: shared read=367",
+      "                    ->  Bitmap Index Scan on seal_e66dc2708e915b65_gin  (cost=0.00..2777.86 rows=1 width=0) (actual time=0.075..0.075 rows=101.00 loops=1)",
+      "                          Index Cond: (tokens_a639b11c8130dcf7 @> '{-5935322400300204032,-5935322399734169600,-5935322399596019712}'::bigint[])",
+      "                          Index Searches: 1",
+      "                          Buffers: shared hit=5 read=5",
+      "        ->  Index Scan using b_tags_pkey on b_tags t  (cost=0.42..8.75 rows=1 width=459) (actual time=0.010..0.010 rows=1.00 loops=28400)",
+      "              Index Cond: (row_id = __seal_idx.row_id)",
+      "              Filter: (((jx_company = ((('x'::text || encode(substr(sha256(('\\xf33ba3750b3187fc86835ffa0625451fa3f3dc7844ef24f701d4e84bb2b6d17e'::bytea || salt_company)), 1, 8), 'hex'::text)))::bit(64))::bigint) OR (((('x'::text || encode(substr(sha256(('\\x542082b202714aeeaaf03638bd45302c31d8fdd0d9b921258b049d841a06fedd'::bytea || salt_memo)), 1, 8), 'hex'::text)))::bit(64))::bigint = ANY (jt_memo))) AND ((((__seal_idx.tokens_a106c26102b707f0)[1] = '-5226838053294112768'::bigint) AND (jx_company = ((('x'::text || encode(substr(sha256(('\\xf33ba3750b3187fc86835ffa0625451fa3f3dc7844ef24f701d4e84bb2b6d17e'::bytea || salt_company)), 1, 8), 'hex'::text)))::bit(64))::bigint)) OR ((__seal_idx.tokens_a639b11c8130dcf7 @> '{-5935322400300204032,-5935322399734169600,-5935322399596019712}'::bigint[]) AND (((('x'::text || encode(substr(sha256(('\\x542082b202714aeeaaf03638bd45302c31d8fdd0d9b921258b049d841a06fedd'::bytea || salt_memo)), 1, 8), 'hex'::text)))::bit(64))::bigint = ANY (jt_memo)))))",
+      "              Index Searches: 28400",
+      "              Buffers: shared hit=92196 read=21476",
+      "Planning:",
+      "  Buffers: shared hit=7 read=3",
+      "Planning Time: 0.596 ms",
+      "Execution Time: 346.481 ms"
+    ],
+    "or2/A_noscope": [
+      "Aggregate  (cost=71995.68..71995.69 rows=1 width=8) (actual time=441.263..452.738 rows=1.00 loops=1)",
+      "  Buffers: shared hit=649261 read=66465",
+      "  ->  Gather  (cost=1000.57..71995.68 rows=1 width=0) (actual time=0.644..450.733 rows=28400.00 loops=1)",
+      "        Workers Planned: 2",
+      "        Workers Launched: 2",
+      "        Buffers: shared hit=649261 read=66465",
+      "        ->  Nested Loop  (cost=0.57..70995.58 rows=1 width=0) (actual time=4.272..421.395 rows=9466.67 loops=3)",
+      "              Buffers: shared hit=649261 read=66465",
+      "              ->  Parallel Seq Scan on b_tags t  (cost=0.00..31300.00 rows=2235 width=459) (actual time=0.287..231.366 rows=9466.67 loops=3)",
+      "                    Filter: ((jx_company = ((('x'::text || encode(substr(sha256(('\\xf33ba3750b3187fc86835ffa0625451fa3f3dc7844ef24f701d4e84bb2b6d17e'::bytea || salt_company)), 1, 8), 'hex'::text)))::bit(64))::bigint) OR (((('x'::text || encode(substr(sha256(('\\x542082b202714aeeaaf03638bd45302c31d8fdd0d9b921258b049d841a06fedd'::bytea || salt_memo)), 1, 8), 'hex'::text)))::bit(64))::bigint = ANY (jt_memo)))",
+      "                    Rows Removed by Filter: 23867",
+      "                    Buffers: shared hit=75438 read=43990",
+      "              ->  Index Scan using customers_seal_index_scope_row_uq on customers_seal_index __seal_idx  (cost=0.57..17.75 rows=1 width=334) (actual time=0.018..0.020 rows=1.00 loops=28400)",
+      "                    Index Cond: (row_id = t.row_id)",
+      "                    Filter: (((tokens_a106c26102b707f0[1] = '-5226838053294112768'::bigint) OR (tokens_a639b11c8130dcf7 @> '{-5935322400300204032,-5935322399734169600,-5935322399596019712}'::bigint[])) AND (((tokens_a106c26102b707f0[1] = '-5226838053294112768'::bigint) AND (t.jx_company = ((('x'::text || encode(substr(sha256(('\\xf33ba3750b3187fc86835ffa0625451fa3f3dc7844ef24f701d4e84bb2b6d17e'::bytea || t.salt_company)), 1, 8), 'hex'::text)))::bit(64))::bigint)) OR ((tokens_a639b11c8130dcf7 @> '{-5935322400300204032,-5935322399734169600,-5935322399596019712}'::bigint[]) AND (((('x'::text || encode(substr(sha256(('\\x542082b202714aeeaaf03638bd45302c31d8fdd0d9b921258b049d841a06fedd'::bytea || t.salt_memo)), 1, 8), 'hex'::text)))::bit(64))::bigint = ANY (t.jt_memo)))))",
+      "                    Index Searches: 141896",
+      "                    Buffers: shared hit=573823 read=22475",
+      "Planning:",
+      "  Buffers: shared hit=8 read=2",
+      "Planning Time: 0.480 ms",
+      "Execution Time: 452.944 ms"
+    ]
+  },
+  "finishedAt": "2026-09-28T10:58:46.497Z"
+}

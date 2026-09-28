@@ -1,0 +1,213 @@
+{
+  "rowsPerBatch": 20,
+  "encryptedFields": 6,
+  "tagFields": 2,
+  "scope": "committed managed INSERT; preparatory DELETE outside measurement; BEGIN/savepoint/encryption/index/optional tags/COMMIT included",
+  "first": {
+    "product": {
+      "totalMs": 147.296399999992,
+      "preMs": 0.08349999994970858,
+      "dbMs": 8.671700000064448,
+      "betweenSqlMs": 138.53499999991618,
+      "postMs": 0.0062000000616535544,
+      "sqlCalls": 6,
+      "rowsToApp": 20,
+      "openCount": 0
+    },
+    "A": {
+      "totalMs": 216.43460000003688,
+      "preMs": 0.046199999982491136,
+      "dbMs": 8.28090000001248,
+      "betweenSqlMs": 208.09799999999814,
+      "postMs": 0.009500000043772161,
+      "sqlCalls": 7,
+      "rowsToApp": 20,
+      "openCount": 0
+    }
+  },
+  "runs": {
+    "product": [
+      {
+        "totalMs": 109.84889999998268,
+        "preMs": 0.022699999972246587,
+        "dbMs": 4.808199999853969,
+        "betweenSqlMs": 105.01250000018626,
+        "postMs": 0.005499999970197678,
+        "sqlCalls": 6,
+        "rowsToApp": 20,
+        "openCount": 0,
+        "msPerRow": 5.492444999999134
+      },
+      {
+        "totalMs": 107.67879999999423,
+        "preMs": 0.011399999959394336,
+        "dbMs": 4.61919999984093,
+        "betweenSqlMs": 103.04270000010729,
+        "postMs": 0.0055000000866129994,
+        "sqlCalls": 6,
+        "rowsToApp": 20,
+        "openCount": 0,
+        "msPerRow": 5.383939999999711
+      },
+      {
+        "totalMs": 103.07179999991786,
+        "preMs": 0.013899999903514981,
+        "dbMs": 4.656900000059977,
+        "betweenSqlMs": 98.39269999996759,
+        "postMs": 0.00829999998677522,
+        "sqlCalls": 6,
+        "rowsToApp": 20,
+        "openCount": 0,
+        "msPerRow": 5.1535899999958925
+      },
+      {
+        "totalMs": 108.83129999996163,
+        "preMs": 0.0118999999249354,
+        "dbMs": 4.716700000106357,
+        "betweenSqlMs": 104.09979999996722,
+        "postMs": 0.002899999963119626,
+        "sqlCalls": 6,
+        "rowsToApp": 20,
+        "openCount": 0,
+        "msPerRow": 5.441564999998081
+      },
+      {
+        "totalMs": 108.52799999993294,
+        "preMs": 0.02119999995920807,
+        "dbMs": 4.6497000000672415,
+        "betweenSqlMs": 103.84889999998268,
+        "postMs": 0.008199999923817813,
+        "sqlCalls": 6,
+        "rowsToApp": 20,
+        "openCount": 0,
+        "msPerRow": 5.426399999996647
+      },
+      {
+        "totalMs": 280.4835000000894,
+        "preMs": 0.011300000012852252,
+        "dbMs": 184.41909999982454,
+        "betweenSqlMs": 96.04520000016782,
+        "postMs": 0.00790000008419156,
+        "sqlCalls": 6,
+        "rowsToApp": 20,
+        "openCount": 0,
+        "msPerRow": 14.02417500000447
+      },
+      {
+        "totalMs": 109.33180000004359,
+        "preMs": 0.039299999945797026,
+        "dbMs": 5.1476000000257045,
+        "betweenSqlMs": 104.14030000008643,
+        "postMs": 0.004599999985657632,
+        "sqlCalls": 6,
+        "rowsToApp": 20,
+        "openCount": 0,
+        "msPerRow": 5.46659000000218
+      }
+    ],
+    "A": [
+      {
+        "totalMs": 191.83889999997336,
+        "preMs": 0.014899999951012433,
+        "dbMs": 7.751299999887124,
+        "betweenSqlMs": 184.06480000016745,
+        "postMs": 0.007899999967776239,
+        "sqlCalls": 7,
+        "rowsToApp": 20,
+        "openCount": 0,
+        "msPerRow": 9.591944999998669
+      },
+      {
+        "totalMs": 193.3866000000853,
+        "preMs": 0.013400000054389238,
+        "dbMs": 6.782500000088476,
+        "betweenSqlMs": 186.58239999995567,
+        "postMs": 0.00829999998677522,
+        "sqlCalls": 7,
+        "rowsToApp": 20,
+        "openCount": 0,
+        "msPerRow": 9.669330000004265
+      },
+      {
+        "totalMs": 199.11430000001565,
+        "preMs": 0.012600000016391277,
+        "dbMs": 6.823500000056811,
+        "betweenSqlMs": 192.26779999991413,
+        "postMs": 0.010400000028312206,
+        "sqlCalls": 7,
+        "rowsToApp": 20,
+        "openCount": 0,
+        "msPerRow": 9.955715000000783
+      },
+      {
+        "totalMs": 194.66119999997318,
+        "preMs": 0.020099999965168536,
+        "dbMs": 6.986000000149943,
+        "betweenSqlMs": 187.6518999998225,
+        "postMs": 0.0032000000355765224,
+        "sqlCalls": 7,
+        "rowsToApp": 20,
+        "openCount": 0,
+        "msPerRow": 9.733059999998659
+      },
+      {
+        "totalMs": 206.88240000000224,
+        "preMs": 0.04139999998733401,
+        "dbMs": 7.010800000047311,
+        "betweenSqlMs": 199.82629999995697,
+        "postMs": 0.0039000000106170774,
+        "sqlCalls": 7,
+        "rowsToApp": 20,
+        "openCount": 0,
+        "msPerRow": 10.344120000000112
+      },
+      {
+        "totalMs": 207.39980000001378,
+        "preMs": 0.011100000003352761,
+        "dbMs": 7.3416000000434,
+        "betweenSqlMs": 200.04349999991246,
+        "postMs": 0.003600000054575503,
+        "sqlCalls": 7,
+        "rowsToApp": 20,
+        "openCount": 0,
+        "msPerRow": 10.369990000000689
+      },
+      {
+        "totalMs": 203.99190000002272,
+        "preMs": 0.016300000017508864,
+        "dbMs": 6.374299999908544,
+        "betweenSqlMs": 197.5934000001289,
+        "postMs": 0.007899999967776239,
+        "sqlCalls": 7,
+        "rowsToApp": 20,
+        "openCount": 0,
+        "msPerRow": 10.199595000001136
+      }
+    ]
+  },
+  "summary": {
+    "product": {
+      "totalMs": 108.83129999996163,
+      "preMs": 0.013899999903514981,
+      "dbMs": 4.716700000106357,
+      "betweenSqlMs": 103.84889999998268,
+      "postMs": 0.0055000000866129994,
+      "sqlCalls": 6,
+      "rowsToApp": 20,
+      "openCount": 0,
+      "msPerRow": 5.441564999998081
+    },
+    "A": {
+      "totalMs": 199.11430000001565,
+      "preMs": 0.014899999951012433,
+      "dbMs": 6.986000000149943,
+      "betweenSqlMs": 192.26779999991413,
+      "postMs": 0.007899999967776239,
+      "sqlCalls": 7,
+      "rowsToApp": 20,
+      "openCount": 0,
+      "msPerRow": 9.955715000000783
+    }
+  },
+  "restoredRows": 100000
+}

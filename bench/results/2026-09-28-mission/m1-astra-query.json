@@ -1,0 +1,159 @@
+{
+  "scenario": "T4 observer sees exact result sets for top reference bigram queries; query labels hidden from attacker; known-row incidence matching",
+  "notMeasured": "actual workload distribution, adaptive injection, structural extension",
+  "seed": 99,
+  "results": [
+    {
+      "dataset": "fixture-memo",
+      "rows": 2000,
+      "scenarios": [
+        {
+          "queryBudget": 128,
+          "actualQueries": 128,
+          "known": [
+            {
+              "knownPct": 1,
+              "queryLabelRecoveryPct": 0.78125,
+              "queryGuesses": 1,
+              "correctQueryLabels": 1,
+              "unknownAdjacentRecoveryPct": 1.416232199828807,
+              "unknownAdjacent80Pct": 0
+            },
+            {
+              "knownPct": 5,
+              "queryLabelRecoveryPct": 13.28125,
+              "queryGuesses": 17,
+              "correctQueryLabels": 17,
+              "unknownAdjacentRecoveryPct": 7.32657200811359,
+              "unknownAdjacent80Pct": 0
+            },
+            {
+              "knownPct": 10,
+              "queryLabelRecoveryPct": 31.25,
+              "queryGuesses": 40,
+              "correctQueryLabels": 40,
+              "unknownAdjacentRecoveryPct": 12.756127817940712,
+              "unknownAdjacent80Pct": 0
+            }
+          ]
+        },
+        {
+          "queryBudget": 512,
+          "actualQueries": 512,
+          "known": [
+            {
+              "knownPct": 1,
+              "queryLabelRecoveryPct": 0.390625,
+              "queryGuesses": 2,
+              "correctQueryLabels": 2,
+              "unknownAdjacentRecoveryPct": 1.4551396778460821,
+              "unknownAdjacent80Pct": 0
+            },
+            {
+              "knownPct": 5,
+              "queryLabelRecoveryPct": 6.0546875,
+              "queryGuesses": 31,
+              "correctQueryLabels": 31,
+              "unknownAdjacentRecoveryPct": 7.707910750507099,
+              "unknownAdjacent80Pct": 0
+            },
+            {
+              "knownPct": 10,
+              "queryLabelRecoveryPct": 19.140625,
+              "queryGuesses": 98,
+              "correctQueryLabels": 98,
+              "unknownAdjacentRecoveryPct": 14.445822817299055,
+              "unknownAdjacent80Pct": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "dataset": "nsmc-review",
+      "rows": 2000,
+      "scenarios": [
+        {
+          "queryBudget": 128,
+          "actualQueries": 128,
+          "known": [
+            {
+              "knownPct": 1,
+              "queryLabelRecoveryPct": 10.9375,
+              "queryGuesses": 14,
+              "correctQueryLabels": 14,
+              "unknownAdjacentRecoveryPct": 5.626090619170829,
+              "unknownAdjacent80Pct": 0
+            },
+            {
+              "knownPct": 5,
+              "queryLabelRecoveryPct": 64.0625,
+              "queryGuesses": 82,
+              "correctQueryLabels": 82,
+              "unknownAdjacentRecoveryPct": 15.055978690639696,
+              "unknownAdjacent80Pct": 0.2631578947368421
+            },
+            {
+              "knownPct": 10,
+              "queryLabelRecoveryPct": 85.15625,
+              "queryGuesses": 109,
+              "correctQueryLabels": 109,
+              "unknownAdjacentRecoveryPct": 17.313347671509458,
+              "unknownAdjacent80Pct": 0.3888888888888889
+            }
+          ]
+        },
+        {
+          "queryBudget": 512,
+          "actualQueries": 512,
+          "known": [
+            {
+              "knownPct": 1,
+              "queryLabelRecoveryPct": 3.90625,
+              "queryGuesses": 20,
+              "correctQueryLabels": 20,
+              "unknownAdjacentRecoveryPct": 5.963054335399242,
+              "unknownAdjacent80Pct": 0.10101010101010101
+            },
+            {
+              "knownPct": 5,
+              "queryLabelRecoveryPct": 29.8828125,
+              "queryGuesses": 153,
+              "correctQueryLabels": 153,
+              "unknownAdjacentRecoveryPct": 18.348108378074667,
+              "unknownAdjacent80Pct": 0.8947368421052632
+            },
+            {
+              "knownPct": 10,
+              "queryLabelRecoveryPct": 56.25,
+              "queryGuesses": 288,
+              "correctQueryLabels": 288,
+              "unknownAdjacentRecoveryPct": 24.935258745555895,
+              "unknownAdjacent80Pct": 1.6111111111111112
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "t4MembershipDelta": [
+    {
+      "dataset": "fixture-memo",
+      "queries": 128,
+      "exactPositiveMemberships": 16806,
+      "currentCandidateMemberships": 16825,
+      "currentFalsePositiveMemberships": 19,
+      "removedMembershipPct": 0.11292719167904904,
+      "meaning": "exact DB predicate discloses which of these candidate memberships are false; this is not plaintext recovery rate"
+    },
+    {
+      "dataset": "nsmc-review",
+      "queries": 128,
+      "exactPositiveMemberships": 9475,
+      "currentCandidateMemberships": 9626,
+      "currentFalsePositiveMemberships": 151,
+      "removedMembershipPct": 1.568668190317889,
+      "meaning": "exact DB predicate discloses which of these candidate memberships are false; this is not plaintext recovery rate"
+    }
+  ]
+}

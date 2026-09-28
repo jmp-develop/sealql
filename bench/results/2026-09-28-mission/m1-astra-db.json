@@ -1,0 +1,1273 @@
+{
+  "conditions": {
+    "rows": 10000,
+    "node": "v24.18.0",
+    "source": "bench_realistic_100k.customers order by id first 10000",
+    "warmups": 2,
+    "repetitions": 7,
+    "order": "rotated each repetition",
+    "locale": {
+      "datcollate": "C"
+    },
+    "notProduction": true
+  },
+  "storedTags": 1171916,
+  "cases": [
+    {
+      "name": "and-common",
+      "company": "서울서비스 담당",
+      "term": "서비스",
+      "expected": 2134,
+      "summary": {
+        "plain": {
+          "totalMs": 1.501300000003539,
+          "sqlMs": 1.4616000000096392,
+          "sqlCalls": 1,
+          "candidateRowsToApp": 0,
+          "returnedSqlRows": 1,
+          "authenticatedFields": 0,
+          "count": 2134
+        },
+        "product": {
+          "totalMs": 237.91939999999886,
+          "sqlMs": 11.85099999999511,
+          "sqlCalls": 1,
+          "candidateRowsToApp": 2134,
+          "returnedSqlRows": 2134,
+          "authenticatedFields": 4268,
+          "count": 2134
+        },
+        "allSubstring": {
+          "totalMs": 2.4272000000055414,
+          "sqlMs": 2.4134000000049127,
+          "sqlCalls": 1,
+          "candidateRowsToApp": 0,
+          "returnedSqlRows": 1,
+          "authenticatedFields": 0,
+          "count": 2134
+        },
+        "rowBound": {
+          "totalMs": 20.349599999986822,
+          "sqlMs": 20.320699999996577,
+          "sqlCalls": 1,
+          "candidateRowsToApp": 0,
+          "returnedSqlRows": 1,
+          "authenticatedFields": 0,
+          "count": 2134
+        }
+      },
+      "runs": {
+        "plain": [
+          {
+            "totalMs": 1.8098000000027241,
+            "sqlMs": 1.7511999999987893,
+            "sqlCalls": 1,
+            "candidateRowsToApp": 0,
+            "returnedSqlRows": 1,
+            "authenticatedFields": 0,
+            "count": 2134
+          },
+          {
+            "totalMs": 1.6763999999966472,
+            "sqlMs": 1.6374000000068918,
+            "sqlCalls": 1,
+            "candidateRowsToApp": 0,
+            "returnedSqlRows": 1,
+            "authenticatedFields": 0,
+            "count": 2134
+          },
+          {
+            "totalMs": 1.325699999986682,
+            "sqlMs": 1.3001000000076601,
+            "sqlCalls": 1,
+            "candidateRowsToApp": 0,
+            "returnedSqlRows": 1,
+            "authenticatedFields": 0,
+            "count": 2134
+          },
+          {
+            "totalMs": 1.501300000003539,
+            "sqlMs": 1.4616000000096392,
+            "sqlCalls": 1,
+            "candidateRowsToApp": 0,
+            "returnedSqlRows": 1,
+            "authenticatedFields": 0,
+            "count": 2134
+          },
+          {
+            "totalMs": 1.323099999994156,
+            "sqlMs": 1.2949999999982538,
+            "sqlCalls": 1,
+            "candidateRowsToApp": 0,
+            "returnedSqlRows": 1,
+            "authenticatedFields": 0,
+            "count": 2134
+          },
+          {
+            "totalMs": 1.3592000000062399,
+            "sqlMs": 1.314299999998184,
+            "sqlCalls": 1,
+            "candidateRowsToApp": 0,
+            "returnedSqlRows": 1,
+            "authenticatedFields": 0,
+            "count": 2134
+          },
+          {
+            "totalMs": 1.6625999999960186,
+            "sqlMs": 1.6376999999920372,
+            "sqlCalls": 1,
+            "candidateRowsToApp": 0,
+            "returnedSqlRows": 1,
+            "authenticatedFields": 0,
+            "count": 2134
+          }
+        ],
+        "product": [
+          {
+            "totalMs": 248.71749999999884,
+            "sqlMs": 12.874599999995553,
+            "sqlCalls": 1,
+            "candidateRowsToApp": 2134,
+            "returnedSqlRows": 2134,
+            "authenticatedFields": 4268,
+            "count": 2134
+          },
+          {
+            "totalMs": 237.91939999999886,
+            "sqlMs": 12.495200000004843,
+            "sqlCalls": 1,
+            "candidateRowsToApp": 2134,
+            "returnedSqlRows": 2134,
+            "authenticatedFields": 4268,
+            "count": 2134
+          },
+          {
+            "totalMs": 229.60430000000633,
+            "sqlMs": 11.692899999994552,
+            "sqlCalls": 1,
+            "candidateRowsToApp": 2134,
+            "returnedSqlRows": 2134,
+            "authenticatedFields": 4268,
+            "count": 2134
+          },
+          {
+            "totalMs": 244.23159999999916,
+            "sqlMs": 11.705900000000838,
+            "sqlCalls": 1,
+            "candidateRowsToApp": 2134,
+            "returnedSqlRows": 2134,
+            "authenticatedFields": 4268,
+            "count": 2134
+          },
+          {
+            "totalMs": 253.98319999998785,
+            "sqlMs": 11.85099999999511,
+            "sqlCalls": 1,
+            "candidateRowsToApp": 2134,
+            "returnedSqlRows": 2134,
+            "authenticatedFields": 4268,
+            "count": 2134
+          },
+          {
+            "totalMs": 231.67900000000373,
+            "sqlMs": 12.978799999997136,
+            "sqlCalls": 1,
+            "candidateRowsToApp": 2134,
+            "returnedSqlRows": 2134,
+            "authenticatedFields": 4268,
+            "count": 2134
+          },
+          {
+            "totalMs": 224.34399999999732,
+            "sqlMs": 11.763399999996182,
+            "sqlCalls": 1,
+            "candidateRowsToApp": 2134,
+            "returnedSqlRows": 2134,
+            "authenticatedFields": 4268,
+            "count": 2134
+          }
+        ],
+        "allSubstring": [
+          {
+            "totalMs": 2.4272000000055414,
+            "sqlMs": 2.4134000000049127,
+            "sqlCalls": 1,
+            "candidateRowsToApp": 0,
+            "returnedSqlRows": 1,
+            "authenticatedFields": 0,
+            "count": 2134
+          },
+          {
+            "totalMs": 2.3289000000077067,
+            "sqlMs": 2.3166000000055647,
+            "sqlCalls": 1,
+            "candidateRowsToApp": 0,
+            "returnedSqlRows": 1,
+            "authenticatedFields": 0,
+            "count": 2134
+          },
+          {
+            "totalMs": 2.3457000000053085,
+            "sqlMs": 2.336699999999837,
+            "sqlCalls": 1,
+            "candidateRowsToApp": 0,
+            "returnedSqlRows": 1,
+            "authenticatedFields": 0,
+            "count": 2134
+          },
+          {
+            "totalMs": 2.4289000000135275,
+            "sqlMs": 2.41370000000461,
+            "sqlCalls": 1,
+            "candidateRowsToApp": 0,
+            "returnedSqlRows": 1,
+            "authenticatedFields": 0,
+            "count": 2134
+          },
+          {
+            "totalMs": 2.8386999999929685,
+            "sqlMs": 2.8223999999900116,
+            "sqlCalls": 1,
+            "candidateRowsToApp": 0,
+            "returnedSqlRows": 1,
+            "authenticatedFields": 0,
+            "count": 2134
+          },
+          {
+            "totalMs": 3.0570000000006985,
+            "sqlMs": 3.022099999987404,
+            "sqlCalls": 1,
+            "candidateRowsToApp": 0,
+            "returnedSqlRows": 1,
+            "authenticatedFields": 0,
+            "count": 2134
+          },
+          {
+            "totalMs": 2.009699999995064,
+            "sqlMs": 1.9967000000033295,
+            "sqlCalls": 1,
+            "candidateRowsToApp": 0,
+            "returnedSqlRows": 1,
+            "authenticatedFields": 0,
+            "count": 2134
+          }
+        ],
+        "rowBound": [
+          {
+            "totalMs": 20.838900000002468,
+            "sqlMs": 20.82170000000042,
+            "sqlCalls": 1,
+            "candidateRowsToApp": 0,
+            "returnedSqlRows": 1,
+            "authenticatedFields": 0,
+            "count": 2134
+          },
+          {
+            "totalMs": 19.164499999998952,
+            "sqlMs": 19.147199999992154,
+            "sqlCalls": 1,
+            "candidateRowsToApp": 0,
+            "returnedSqlRows": 1,
+            "authenticatedFields": 0,
+            "count": 2134
+          },
+          {
+            "totalMs": 19.038300000000163,
+            "sqlMs": 19.022199999992154,
+            "sqlCalls": 1,
+            "candidateRowsToApp": 0,
+            "returnedSqlRows": 1,
+            "authenticatedFields": 0,
+            "count": 2134
+          },
+          {
+            "totalMs": 20.673299999994924,
+            "sqlMs": 20.652800000010757,
+            "sqlCalls": 1,
+            "candidateRowsToApp": 0,
+            "returnedSqlRows": 1,
+            "authenticatedFields": 0,
+            "count": 2134
+          },
+          {
+            "totalMs": 22.036999999996624,
+            "sqlMs": 22.01829999999609,
+            "sqlCalls": 1,
+            "candidateRowsToApp": 0,
+            "returnedSqlRows": 1,
+            "authenticatedFields": 0,
+            "count": 2134
+          },
+          {
+            "totalMs": 19.11609999999928,
+            "sqlMs": 19.092499999998836,
+            "sqlCalls": 1,
+            "candidateRowsToApp": 0,
+            "returnedSqlRows": 1,
+            "authenticatedFields": 0,
+            "count": 2134
+          },
+          {
+            "totalMs": 20.349599999986822,
+            "sqlMs": 20.320699999996577,
+            "sqlCalls": 1,
+            "candidateRowsToApp": 0,
+            "returnedSqlRows": 1,
+            "authenticatedFields": 0,
+            "count": 2134
+          }
+        ]
+      }
+    },
+    {
+      "name": "contains-common",
+      "term": "서비스",
+      "expected": 4031,
+      "summary": {
+        "plain": {
+          "totalMs": 2.2842000000091502,
+          "sqlMs": 2.252599999992526,
+          "sqlCalls": 1,
+          "candidateRowsToApp": 0,
+          "returnedSqlRows": 1,
+          "authenticatedFields": 0,
+          "count": 4031
+        },
+        "product": {
+          "totalMs": 261.05199999999604,
+          "sqlMs": 14.478499999997439,
+          "sqlCalls": 1,
+          "candidateRowsToApp": 4031,
+          "returnedSqlRows": 4031,
+          "authenticatedFields": 4031,
+          "count": 4031
+        },
+        "allSubstring": {
+          "totalMs": 3.1255999999993946,
+          "sqlMs": 3.1123999999981606,
+          "sqlCalls": 1,
+          "candidateRowsToApp": 0,
+          "returnedSqlRows": 1,
+          "authenticatedFields": 0,
+          "count": 4031
+        },
+        "rowBound": {
+          "totalMs": 76.43090000000666,
+          "sqlMs": 76.37249999999767,
+          "sqlCalls": 1,
+          "candidateRowsToApp": 0,
+          "returnedSqlRows": 1,
+          "authenticatedFields": 0,
+          "count": 4031
+        }
+      },
+      "runs": {
+        "plain": [
+          {
+            "totalMs": 2.2534000000014203,
+            "sqlMs": 2.2256000000052154,
+            "sqlCalls": 1,
+            "candidateRowsToApp": 0,
+            "returnedSqlRows": 1,
+            "authenticatedFields": 0,
+            "count": 4031
+          },
+          {
+            "totalMs": 1.967399999994086,
+            "sqlMs": 1.9409000000014203,
+            "sqlCalls": 1,
+            "candidateRowsToApp": 0,
+            "returnedSqlRows": 1,
+            "authenticatedFields": 0,
+            "count": 4031
+          },
+          {
+            "totalMs": 2.5843000000022585,
+            "sqlMs": 2.558600000003935,
+            "sqlCalls": 1,
+            "candidateRowsToApp": 0,
+            "returnedSqlRows": 1,
+            "authenticatedFields": 0,
+            "count": 4031
+          },
+          {
+            "totalMs": 3.0817000000097323,
+            "sqlMs": 3.051900000005844,
+            "sqlCalls": 1,
+            "candidateRowsToApp": 0,
+            "returnedSqlRows": 1,
+            "authenticatedFields": 0,
+            "count": 4031
+          },
+          {
+            "totalMs": 2.7111000000004424,
+            "sqlMs": 2.674700000003213,
+            "sqlCalls": 1,
+            "candidateRowsToApp": 0,
+            "returnedSqlRows": 1,
+            "authenticatedFields": 0,
+            "count": 4031
+          },
+          {
+            "totalMs": 2.2842000000091502,
+            "sqlMs": 2.252599999992526,
+            "sqlCalls": 1,
+            "candidateRowsToApp": 0,
+            "returnedSqlRows": 1,
+            "authenticatedFields": 0,
+            "count": 4031
+          },
+          {
+            "totalMs": 2.090599999995902,
+            "sqlMs": 2.0684999999939464,
+            "sqlCalls": 1,
+            "candidateRowsToApp": 0,
+            "returnedSqlRows": 1,
+            "authenticatedFields": 0,
+            "count": 4031
+          }
+        ],
+        "product": [
+          {
+            "totalMs": 261.05199999999604,
+            "sqlMs": 14.509799999999814,
+            "sqlCalls": 1,
+            "candidateRowsToApp": 4031,
+            "returnedSqlRows": 4031,
+            "authenticatedFields": 4031,
+            "count": 4031
+          },
+          {
+            "totalMs": 230.0622999999905,
+            "sqlMs": 13.489600000000792,
+            "sqlCalls": 1,
+            "candidateRowsToApp": 4031,
+            "returnedSqlRows": 4031,
+            "authenticatedFields": 4031,
+            "count": 4031
+          },
+          {
+            "totalMs": 234.2398000000103,
+            "sqlMs": 14.478499999997439,
+            "sqlCalls": 1,
+            "candidateRowsToApp": 4031,
+            "returnedSqlRows": 4031,
+            "authenticatedFields": 4031,
+            "count": 4031
+          },
+          {
+            "totalMs": 245.2042000000074,
+            "sqlMs": 14.37949999999546,
+            "sqlCalls": 1,
+            "candidateRowsToApp": 4031,
+            "returnedSqlRows": 4031,
+            "authenticatedFields": 4031,
+            "count": 4031
+          },
+          {
+            "totalMs": 285.6802000000025,
+            "sqlMs": 15.052500000005239,
+            "sqlCalls": 1,
+            "candidateRowsToApp": 4031,
+            "returnedSqlRows": 4031,
+            "authenticatedFields": 4031,
+            "count": 4031
+          },
+          {
+            "totalMs": 281.4930000000022,
+            "sqlMs": 16.184500000003027,
+            "sqlCalls": 1,
+            "candidateRowsToApp": 4031,
+            "returnedSqlRows": 4031,
+            "authenticatedFields": 4031,
+            "count": 4031
+          },
+          {
+            "totalMs": 266.7302999999956,
+            "sqlMs": 13.84889999999723,
+            "sqlCalls": 1,
+            "candidateRowsToApp": 4031,
+            "returnedSqlRows": 4031,
+            "authenticatedFields": 4031,
+            "count": 4031
+          }
+        ],
+        "allSubstring": [
+          {
+            "totalMs": 3.8073999999905936,
+            "sqlMs": 3.7911000000021886,
+            "sqlCalls": 1,
+            "candidateRowsToApp": 0,
+            "returnedSqlRows": 1,
+            "authenticatedFields": 0,
+            "count": 4031
+          },
+          {
+            "totalMs": 2.7850000000034925,
+            "sqlMs": 2.7740000000048894,
+            "sqlCalls": 1,
+            "candidateRowsToApp": 0,
+            "returnedSqlRows": 1,
+            "authenticatedFields": 0,
+            "count": 4031
+          },
+          {
+            "totalMs": 2.3932999999960884,
+            "sqlMs": 2.3853999999992084,
+            "sqlCalls": 1,
+            "candidateRowsToApp": 0,
+            "returnedSqlRows": 1,
+            "authenticatedFields": 0,
+            "count": 4031
+          },
+          {
+            "totalMs": 3.480100000000675,
+            "sqlMs": 3.465199999991455,
+            "sqlCalls": 1,
+            "candidateRowsToApp": 0,
+            "returnedSqlRows": 1,
+            "authenticatedFields": 0,
+            "count": 4031
+          },
+          {
+            "totalMs": 3.9750000000058208,
+            "sqlMs": 3.9593000000022585,
+            "sqlCalls": 1,
+            "candidateRowsToApp": 0,
+            "returnedSqlRows": 1,
+            "authenticatedFields": 0,
+            "count": 4031
+          },
+          {
+            "totalMs": 3.1255999999993946,
+            "sqlMs": 3.1123999999981606,
+            "sqlCalls": 1,
+            "candidateRowsToApp": 0,
+            "returnedSqlRows": 1,
+            "authenticatedFields": 0,
+            "count": 4031
+          },
+          {
+            "totalMs": 2.63289999999688,
+            "sqlMs": 2.622399999992922,
+            "sqlCalls": 1,
+            "candidateRowsToApp": 0,
+            "returnedSqlRows": 1,
+            "authenticatedFields": 0,
+            "count": 4031
+          }
+        ],
+        "rowBound": [
+          {
+            "totalMs": 80.69190000000526,
+            "sqlMs": 80.6814000000013,
+            "sqlCalls": 1,
+            "candidateRowsToApp": 0,
+            "returnedSqlRows": 1,
+            "authenticatedFields": 0,
+            "count": 4031
+          },
+          {
+            "totalMs": 71.6759999999922,
+            "sqlMs": 71.66679999999178,
+            "sqlCalls": 1,
+            "candidateRowsToApp": 0,
+            "returnedSqlRows": 1,
+            "authenticatedFields": 0,
+            "count": 4031
+          },
+          {
+            "totalMs": 74.30769999999029,
+            "sqlMs": 74.2960999999923,
+            "sqlCalls": 1,
+            "candidateRowsToApp": 0,
+            "returnedSqlRows": 1,
+            "authenticatedFields": 0,
+            "count": 4031
+          },
+          {
+            "totalMs": 76.43090000000666,
+            "sqlMs": 76.37249999999767,
+            "sqlCalls": 1,
+            "candidateRowsToApp": 0,
+            "returnedSqlRows": 1,
+            "authenticatedFields": 0,
+            "count": 4031
+          },
+          {
+            "totalMs": 85.13240000000224,
+            "sqlMs": 85.11639999999898,
+            "sqlCalls": 1,
+            "candidateRowsToApp": 0,
+            "returnedSqlRows": 1,
+            "authenticatedFields": 0,
+            "count": 4031
+          },
+          {
+            "totalMs": 79.85470000001078,
+            "sqlMs": 79.83890000000247,
+            "sqlCalls": 1,
+            "candidateRowsToApp": 0,
+            "returnedSqlRows": 1,
+            "authenticatedFields": 0,
+            "count": 4031
+          },
+          {
+            "totalMs": 73.9204000000027,
+            "sqlMs": 73.91049999999814,
+            "sqlCalls": 1,
+            "candidateRowsToApp": 0,
+            "returnedSqlRows": 1,
+            "authenticatedFields": 0,
+            "count": 4031
+          }
+        ]
+      }
+    },
+    {
+      "name": "contains-rare",
+      "term": "푸른달",
+      "expected": 11,
+      "summary": {
+        "plain": {
+          "totalMs": 2.2657000000035623,
+          "sqlMs": 2.2413000000087777,
+          "sqlCalls": 1,
+          "candidateRowsToApp": 0,
+          "returnedSqlRows": 1,
+          "authenticatedFields": 0,
+          "count": 11
+        },
+        "product": {
+          "totalMs": 3.512799999996787,
+          "sqlMs": 1.4897999999957392,
+          "sqlCalls": 1,
+          "candidateRowsToApp": 11,
+          "returnedSqlRows": 11,
+          "authenticatedFields": 11,
+          "count": 11
+        },
+        "allSubstring": {
+          "totalMs": 0.5445999999938067,
+          "sqlMs": 0.539600000003702,
+          "sqlCalls": 1,
+          "candidateRowsToApp": 0,
+          "returnedSqlRows": 1,
+          "authenticatedFields": 0,
+          "count": 11
+        },
+        "rowBound": {
+          "totalMs": 80.58839999999327,
+          "sqlMs": 80.5789999999979,
+          "sqlCalls": 1,
+          "candidateRowsToApp": 0,
+          "returnedSqlRows": 1,
+          "authenticatedFields": 0,
+          "count": 11
+        }
+      },
+      "runs": {
+        "plain": [
+          {
+            "totalMs": 2.2657000000035623,
+            "sqlMs": 2.2413000000087777,
+            "sqlCalls": 1,
+            "candidateRowsToApp": 0,
+            "returnedSqlRows": 1,
+            "authenticatedFields": 0,
+            "count": 11
+          },
+          {
+            "totalMs": 2.7220999999990454,
+            "sqlMs": 2.6895000000076834,
+            "sqlCalls": 1,
+            "candidateRowsToApp": 0,
+            "returnedSqlRows": 1,
+            "authenticatedFields": 0,
+            "count": 11
+          },
+          {
+            "totalMs": 2.761899999997695,
+            "sqlMs": 2.73410000000149,
+            "sqlCalls": 1,
+            "candidateRowsToApp": 0,
+            "returnedSqlRows": 1,
+            "authenticatedFields": 0,
+            "count": 11
+          },
+          {
+            "totalMs": 2.7541999999957625,
+            "sqlMs": 2.7186000000074273,
+            "sqlCalls": 1,
+            "candidateRowsToApp": 0,
+            "returnedSqlRows": 1,
+            "authenticatedFields": 0,
+            "count": 11
+          },
+          {
+            "totalMs": 1.670799999992596,
+            "sqlMs": 1.6607999999978347,
+            "sqlCalls": 1,
+            "candidateRowsToApp": 0,
+            "returnedSqlRows": 1,
+            "authenticatedFields": 0,
+            "count": 11
+          },
+          {
+            "totalMs": 2.002999999996973,
+            "sqlMs": 1.9824999999982538,
+            "sqlCalls": 1,
+            "candidateRowsToApp": 0,
+            "returnedSqlRows": 1,
+            "authenticatedFields": 0,
+            "count": 11
+          },
+          {
+            "totalMs": 2.0420999999914784,
+            "sqlMs": 2.020699999993667,
+            "sqlCalls": 1,
+            "candidateRowsToApp": 0,
+            "returnedSqlRows": 1,
+            "authenticatedFields": 0,
+            "count": 11
+          }
+        ],
+        "product": [
+          {
+            "totalMs": 3.36260000000766,
+            "sqlMs": 1.4006999999983236,
+            "sqlCalls": 1,
+            "candidateRowsToApp": 11,
+            "returnedSqlRows": 11,
+            "authenticatedFields": 11,
+            "count": 11
+          },
+          {
+            "totalMs": 3.570000000006985,
+            "sqlMs": 1.5069000000075903,
+            "sqlCalls": 1,
+            "candidateRowsToApp": 11,
+            "returnedSqlRows": 11,
+            "authenticatedFields": 11,
+            "count": 11
+          },
+          {
+            "totalMs": 3.8619999999937136,
+            "sqlMs": 1.7560000000084983,
+            "sqlCalls": 1,
+            "candidateRowsToApp": 11,
+            "returnedSqlRows": 11,
+            "authenticatedFields": 11,
+            "count": 11
+          },
+          {
+            "totalMs": 3.312900000004447,
+            "sqlMs": 1.4897999999957392,
+            "sqlCalls": 1,
+            "candidateRowsToApp": 11,
+            "returnedSqlRows": 11,
+            "authenticatedFields": 11,
+            "count": 11
+          },
+          {
+            "totalMs": 3.6735999999946216,
+            "sqlMs": 1.8498000000108732,
+            "sqlCalls": 1,
+            "candidateRowsToApp": 11,
+            "returnedSqlRows": 11,
+            "authenticatedFields": 11,
+            "count": 11
+          },
+          {
+            "totalMs": 3.512799999996787,
+            "sqlMs": 1.3724999999976717,
+            "sqlCalls": 1,
+            "candidateRowsToApp": 11,
+            "returnedSqlRows": 11,
+            "authenticatedFields": 11,
+            "count": 11
+          },
+          {
+            "totalMs": 2.6548000000038883,
+            "sqlMs": 1.1202999999950407,
+            "sqlCalls": 1,
+            "candidateRowsToApp": 11,
+            "returnedSqlRows": 11,
+            "authenticatedFields": 11,
+            "count": 11
+          }
+        ],
+        "allSubstring": [
+          {
+            "totalMs": 0.486799999998766,
+            "sqlMs": 0.4793999999965308,
+            "sqlCalls": 1,
+            "candidateRowsToApp": 0,
+            "returnedSqlRows": 1,
+            "authenticatedFields": 0,
+            "count": 11
+          },
+          {
+            "totalMs": 0.583199999993667,
+            "sqlMs": 0.5762000000104308,
+            "sqlCalls": 1,
+            "candidateRowsToApp": 0,
+            "returnedSqlRows": 1,
+            "authenticatedFields": 0,
+            "count": 11
+          },
+          {
+            "totalMs": 0.5445999999938067,
+            "sqlMs": 0.539600000003702,
+            "sqlCalls": 1,
+            "candidateRowsToApp": 0,
+            "returnedSqlRows": 1,
+            "authenticatedFields": 0,
+            "count": 11
+          },
+          {
+            "totalMs": 0.3932000000058906,
+            "sqlMs": 0.3874999999970896,
+            "sqlCalls": 1,
+            "candidateRowsToApp": 0,
+            "returnedSqlRows": 1,
+            "authenticatedFields": 0,
+            "count": 11
+          },
+          {
+            "totalMs": 0.6379000000015367,
+            "sqlMs": 0.6294999999954598,
+            "sqlCalls": 1,
+            "candidateRowsToApp": 0,
+            "returnedSqlRows": 1,
+            "authenticatedFields": 0,
+            "count": 11
+          },
+          {
+            "totalMs": 0.6992999999929452,
+            "sqlMs": 0.6904999999969732,
+            "sqlCalls": 1,
+            "candidateRowsToApp": 0,
+            "returnedSqlRows": 1,
+            "authenticatedFields": 0,
+            "count": 11
+          },
+          {
+            "totalMs": 0.36210000001301523,
+            "sqlMs": 0.358299999992596,
+            "sqlCalls": 1,
+            "candidateRowsToApp": 0,
+            "returnedSqlRows": 1,
+            "authenticatedFields": 0,
+            "count": 11
+          }
+        ],
+        "rowBound": [
+          {
+            "totalMs": 78.65600000000268,
+            "sqlMs": 78.64479999999458,
+            "sqlCalls": 1,
+            "candidateRowsToApp": 0,
+            "returnedSqlRows": 1,
+            "authenticatedFields": 0,
+            "count": 11
+          },
+          {
+            "totalMs": 81.07059999999183,
+            "sqlMs": 81.05890000000363,
+            "sqlCalls": 1,
+            "candidateRowsToApp": 0,
+            "returnedSqlRows": 1,
+            "authenticatedFields": 0,
+            "count": 11
+          },
+          {
+            "totalMs": 85.0448000000033,
+            "sqlMs": 85.03639999999723,
+            "sqlCalls": 1,
+            "candidateRowsToApp": 0,
+            "returnedSqlRows": 1,
+            "authenticatedFields": 0,
+            "count": 11
+          },
+          {
+            "totalMs": 83.60860000000685,
+            "sqlMs": 83.59719999998924,
+            "sqlCalls": 1,
+            "candidateRowsToApp": 0,
+            "returnedSqlRows": 1,
+            "authenticatedFields": 0,
+            "count": 11
+          },
+          {
+            "totalMs": 79.71630000000005,
+            "sqlMs": 79.70380000000296,
+            "sqlCalls": 1,
+            "candidateRowsToApp": 0,
+            "returnedSqlRows": 1,
+            "authenticatedFields": 0,
+            "count": 11
+          },
+          {
+            "totalMs": 80.58839999999327,
+            "sqlMs": 80.5789999999979,
+            "sqlCalls": 1,
+            "candidateRowsToApp": 0,
+            "returnedSqlRows": 1,
+            "authenticatedFields": 0,
+            "count": 11
+          },
+          {
+            "totalMs": 79.72060000000056,
+            "sqlMs": 79.71179999999003,
+            "sqlCalls": 1,
+            "candidateRowsToApp": 0,
+            "returnedSqlRows": 1,
+            "authenticatedFields": 0,
+            "count": 11
+          }
+        ]
+      }
+    },
+    {
+      "name": "structural-zero",
+      "term": "지사담",
+      "expected": 0,
+      "summary": {
+        "plain": {
+          "totalMs": 2.462599999998929,
+          "sqlMs": 2.4390000000130385,
+          "sqlCalls": 1,
+          "candidateRowsToApp": 0,
+          "returnedSqlRows": 1,
+          "authenticatedFields": 0,
+          "count": 0
+        },
+        "product": {
+          "totalMs": 2.5069000000075903,
+          "sqlMs": 1.403100000010454,
+          "sqlCalls": 1,
+          "candidateRowsToApp": 0,
+          "returnedSqlRows": 0,
+          "authenticatedFields": 0,
+          "count": 0
+        },
+        "allSubstring": {
+          "totalMs": 0.5302999999985332,
+          "sqlMs": 0.5259000000078231,
+          "sqlCalls": 1,
+          "candidateRowsToApp": 0,
+          "returnedSqlRows": 1,
+          "authenticatedFields": 0,
+          "count": 0
+        },
+        "rowBound": {
+          "totalMs": 83.85869999999704,
+          "sqlMs": 83.85119999999006,
+          "sqlCalls": 1,
+          "candidateRowsToApp": 0,
+          "returnedSqlRows": 1,
+          "authenticatedFields": 0,
+          "count": 0
+        }
+      },
+      "runs": {
+        "plain": [
+          {
+            "totalMs": 2.6414999999979045,
+            "sqlMs": 2.5973999999987427,
+            "sqlCalls": 1,
+            "candidateRowsToApp": 0,
+            "returnedSqlRows": 1,
+            "authenticatedFields": 0,
+            "count": 0
+          },
+          {
+            "totalMs": 2.799800000007963,
+            "sqlMs": 2.7744999999995343,
+            "sqlCalls": 1,
+            "candidateRowsToApp": 0,
+            "returnedSqlRows": 1,
+            "authenticatedFields": 0,
+            "count": 0
+          },
+          {
+            "totalMs": 2.470499999995809,
+            "sqlMs": 2.4390000000130385,
+            "sqlCalls": 1,
+            "candidateRowsToApp": 0,
+            "returnedSqlRows": 1,
+            "authenticatedFields": 0,
+            "count": 0
+          },
+          {
+            "totalMs": 2.462599999998929,
+            "sqlMs": 2.4434000000037486,
+            "sqlCalls": 1,
+            "candidateRowsToApp": 0,
+            "returnedSqlRows": 1,
+            "authenticatedFields": 0,
+            "count": 0
+          },
+          {
+            "totalMs": 2.19539999999688,
+            "sqlMs": 2.1819000000105007,
+            "sqlCalls": 1,
+            "candidateRowsToApp": 0,
+            "returnedSqlRows": 1,
+            "authenticatedFields": 0,
+            "count": 0
+          },
+          {
+            "totalMs": 1.9952000000048429,
+            "sqlMs": 1.9759999999951106,
+            "sqlCalls": 1,
+            "candidateRowsToApp": 0,
+            "returnedSqlRows": 1,
+            "authenticatedFields": 0,
+            "count": 0
+          },
+          {
+            "totalMs": 2.397499999991851,
+            "sqlMs": 2.3738999999914085,
+            "sqlCalls": 1,
+            "candidateRowsToApp": 0,
+            "returnedSqlRows": 1,
+            "authenticatedFields": 0,
+            "count": 0
+          }
+        ],
+        "product": [
+          {
+            "totalMs": 2.4958999999944353,
+            "sqlMs": 1.4179000000003725,
+            "sqlCalls": 1,
+            "candidateRowsToApp": 0,
+            "returnedSqlRows": 0,
+            "authenticatedFields": 0,
+            "count": 0
+          },
+          {
+            "totalMs": 2.6101999999955297,
+            "sqlMs": 1.387799999996787,
+            "sqlCalls": 1,
+            "candidateRowsToApp": 0,
+            "returnedSqlRows": 0,
+            "authenticatedFields": 0,
+            "count": 0
+          },
+          {
+            "totalMs": 4.390599999998813,
+            "sqlMs": 2.9971000000077765,
+            "sqlCalls": 1,
+            "candidateRowsToApp": 0,
+            "returnedSqlRows": 0,
+            "authenticatedFields": 0,
+            "count": 0
+          },
+          {
+            "totalMs": 2.077900000003865,
+            "sqlMs": 1.196300000010524,
+            "sqlCalls": 1,
+            "candidateRowsToApp": 0,
+            "returnedSqlRows": 0,
+            "authenticatedFields": 0,
+            "count": 0
+          },
+          {
+            "totalMs": 2.052799999990384,
+            "sqlMs": 1.1287000000011176,
+            "sqlCalls": 1,
+            "candidateRowsToApp": 0,
+            "returnedSqlRows": 0,
+            "authenticatedFields": 0,
+            "count": 0
+          },
+          {
+            "totalMs": 2.5069000000075903,
+            "sqlMs": 1.403100000010454,
+            "sqlCalls": 1,
+            "candidateRowsToApp": 0,
+            "returnedSqlRows": 0,
+            "authenticatedFields": 0,
+            "count": 0
+          },
+          {
+            "totalMs": 2.5262000000075204,
+            "sqlMs": 1.471399999994901,
+            "sqlCalls": 1,
+            "candidateRowsToApp": 0,
+            "returnedSqlRows": 0,
+            "authenticatedFields": 0,
+            "count": 0
+          }
+        ],
+        "allSubstring": [
+          {
+            "totalMs": 0.5302999999985332,
+            "sqlMs": 0.5259000000078231,
+            "sqlCalls": 1,
+            "candidateRowsToApp": 0,
+            "returnedSqlRows": 1,
+            "authenticatedFields": 0,
+            "count": 0
+          },
+          {
+            "totalMs": 0.5892000000021653,
+            "sqlMs": 0.5826999999990221,
+            "sqlCalls": 1,
+            "candidateRowsToApp": 0,
+            "returnedSqlRows": 1,
+            "authenticatedFields": 0,
+            "count": 0
+          },
+          {
+            "totalMs": 0.6967000000004191,
+            "sqlMs": 0.690100000007078,
+            "sqlCalls": 1,
+            "candidateRowsToApp": 0,
+            "returnedSqlRows": 1,
+            "authenticatedFields": 0,
+            "count": 0
+          },
+          {
+            "totalMs": 0.3260000000009313,
+            "sqlMs": 0.32259999999951106,
+            "sqlCalls": 1,
+            "candidateRowsToApp": 0,
+            "returnedSqlRows": 1,
+            "authenticatedFields": 0,
+            "count": 0
+          },
+          {
+            "totalMs": 0.30290000000968575,
+            "sqlMs": 0.2995999999984633,
+            "sqlCalls": 1,
+            "candidateRowsToApp": 0,
+            "returnedSqlRows": 1,
+            "authenticatedFields": 0,
+            "count": 0
+          },
+          {
+            "totalMs": 0.6273999999975786,
+            "sqlMs": 0.6220999999932246,
+            "sqlCalls": 1,
+            "candidateRowsToApp": 0,
+            "returnedSqlRows": 1,
+            "authenticatedFields": 0,
+            "count": 0
+          },
+          {
+            "totalMs": 0.3794999999954598,
+            "sqlMs": 0.3755000000091968,
+            "sqlCalls": 1,
+            "candidateRowsToApp": 0,
+            "returnedSqlRows": 1,
+            "authenticatedFields": 0,
+            "count": 0
+          }
+        ],
+        "rowBound": [
+          {
+            "totalMs": 86.5905000000057,
+            "sqlMs": 86.58290000000852,
+            "sqlCalls": 1,
+            "candidateRowsToApp": 0,
+            "returnedSqlRows": 1,
+            "authenticatedFields": 0,
+            "count": 0
+          },
+          {
+            "totalMs": 84.86699999999837,
+            "sqlMs": 84.85740000000806,
+            "sqlCalls": 1,
+            "candidateRowsToApp": 0,
+            "returnedSqlRows": 1,
+            "authenticatedFields": 0,
+            "count": 0
+          },
+          {
+            "totalMs": 89.35510000000068,
+            "sqlMs": 89.34560000000056,
+            "sqlCalls": 1,
+            "candidateRowsToApp": 0,
+            "returnedSqlRows": 1,
+            "authenticatedFields": 0,
+            "count": 0
+          },
+          {
+            "totalMs": 83.45699999999488,
+            "sqlMs": 83.4487000000081,
+            "sqlCalls": 1,
+            "candidateRowsToApp": 0,
+            "returnedSqlRows": 1,
+            "authenticatedFields": 0,
+            "count": 0
+          },
+          {
+            "totalMs": 83.85869999999704,
+            "sqlMs": 83.85119999999006,
+            "sqlCalls": 1,
+            "candidateRowsToApp": 0,
+            "returnedSqlRows": 1,
+            "authenticatedFields": 0,
+            "count": 0
+          },
+          {
+            "totalMs": 79.24289999999746,
+            "sqlMs": 79.23589999999967,
+            "sqlCalls": 1,
+            "candidateRowsToApp": 0,
+            "returnedSqlRows": 1,
+            "authenticatedFields": 0,
+            "count": 0
+          },
+          {
+            "totalMs": 76.83009999999194,
+            "sqlMs": 76.82360000000335,
+            "sqlCalls": 1,
+            "candidateRowsToApp": 0,
+            "returnedSqlRows": 1,
+            "authenticatedFields": 0,
+            "count": 0
+          }
+        ]
+      }
+    }
+  ],
+  "storage": [
+    {
+      "relname": "customers",
+      "heap_bytes": "1785856",
+      "total_bytes": "2162688"
+    },
+    {
+      "relname": "customers_seal_index",
+      "heap_bytes": "3399680",
+      "total_bytes": "9404416"
+    },
+    {
+      "relname": "exact_tags",
+      "heap_bytes": "12206080",
+      "total_bytes": "67362816"
+    },
+    {
+      "relname": "plain",
+      "heap_bytes": "1646592",
+      "total_bytes": "1777664"
+    },
+    {
+      "relname": "row_tags",
+      "heap_bytes": "12206080",
+      "total_bytes": "27295744"
+    }
+  ],
+  "integrity": {
+    "proofImplemented": false,
+    "before": 4031,
+    "afterForgedTag": 4032,
+    "scalarInflationDetected": false,
+    "omissionDetected": false,
+    "rowBoundCompany": "deterministic exact company tags retained; row-bound protection applies to memo only"
+  }
+}

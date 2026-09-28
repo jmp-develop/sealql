@@ -1,0 +1,46 @@
+{
+ "single det ms/row median": 2.3,
+ "single chk ms/row median": 3.79,
+ "single occ cf0 ms/row median": 9.36,
+ "single occ cf8 ms/row median": 10.49,
+ "8 writers det rows/s": 331,
+ "8 writers det retries": {
+  "deadlock": 0,
+  "other": 0
+ },
+ "8 writers chk rows/s": 174,
+ "8 writers chk retries": {
+  "deadlock": 0,
+  "other": 0
+ },
+ "8 writers occ cf0 rows/s": 71,
+ "8 writers occ cf0 retries": {
+  "deadlock": 0,
+  "other": 0
+ },
+ "8 writers occ cf8 rows/s": 69,
+ "8 writers occ cf8 retries": {
+  "deadlock": 0,
+  "other": 0
+ },
+ "consistency": {
+  "afterConcurrentInserts": {
+   "expectedX": 4772,
+   "viaTagsX": 4772,
+   "expectedY": 92,
+   "viaTagsY": 92
+  },
+  "afterDelete1000": {
+   "deleted": 1000,
+   "expectedX": 3772,
+   "viaTagsX": 3772
+  },
+  "afterPartialUpdate500": {
+   "updated": 500,
+   "expectedX": 3272,
+   "viaTagsX": 3272,
+   "expectedY": 592,
+   "viaTagsY": 592
+  }
+ }
+}

@@ -1,0 +1,20 @@
+/** Pure memory counterexample, using the existing first ticket's actual memo; no DB connection. */
+import assert from 'node:assert/strict';
+import {createHmac,hash} from 'node:crypto';
+import {writeFileSync,mkdirSync} from 'node:fs';
+import {normalizeText,profiles,searchPieces,searchTokens} from '../../src/core/search-tokens.js';
+const scope='aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa',K=8;
+const value='희귀표식 푸른달 · 상세 안내와 확인 내용 상세 안내와 확인 내용 상세 안내와 확인 내용 상세 안내와 확인 내용 2ln71';
+const query='상세안내와확인내용'.repeat(12),norm=(x:string)=>normalizeText(x,'legacy-text-v1');
+const windows=(x:string)=>{const c=Array.from(norm(x));return new Set(Array.from({length:Math.max(0,c.length-K+1)},(_,i)=>c.slice(i,i+K).join('')));};
+const actual=norm(value).includes(norm(query)),stored=windows(value),wanted=windows(query),windowsPass=[...wanted].every(x=>stored.has(x));
+const salt=Buffer.alloc(16,1),kp=(x:string)=>createHmac('sha256',Buffer.alloc(32,3)).update([scope,'tickets','memo','g',x].join('\0')).digest(),tag=(x:string)=>hash('sha256',Buffer.concat([kp(x),salt]),'buffer').subarray(0,8).toString('hex');
+const tags=new Set([...stored].map(tag)),tagPass=[...wanted].every(x=>tags.has(tag(x)));
+const p=profiles('tickets','memo',{type:'text',search:{exact:true,substring:{wordBoundary:true,skipGrams:true}}}).find(x=>x.mode==='substring')!,ring={key:Buffer.alloc(32,93),keyScopeId:'global'};
+const productStored=new Set(await searchTokens(ring,scope,p,searchPieces(p,value))),productWanted=await searchTokens(ring,scope,p,searchPieces(p,query,'contains'));
+const candidatePass=productWanted.every(x=>productStored.has(x));assert.equal(actual,false);assert.equal(windowsPass,true);assert.equal(tagPass,true);assert.equal(candidatePass,true);
+const shorterQuery='상세안내와확인내용'.repeat(5),shorterTokens=await searchTokens(ring,scope,p,searchPieces(p,shorterQuery,'contains'));
+const shorter={query:shorterQuery,chars:Array.from(shorterQuery).length,plainContains:norm(value).includes(shorterQuery),product16BitCandidate:shorterTokens.every(x=>productStored.has(x)),A64BitTagVerification:[...windows(shorterQuery)].every(x=>tags.has(tag(x)))};
+assert(shorter.chars<Array.from(norm(value)).length);assert.equal(shorter.plainContains,false);assert.equal(shorter.product16BitCandidate,true);assert.equal(shorter.A64BitTagVerification,true);
+const result={source:'bench_realistic_100k.tickets, first ID; actual source value copied from read-only probe',value,query,sourceChars:Array.from(norm(value)).length,queryChars:Array.from(query).length,uniqueKWindows:wanted.size,plainContains:actual,product16BitCandidate:candidatePass,A64BitTagVerification:tagPass,shorterThanSource:shorter,DBExecuted:false,verdict:'K=8 window conjunction is not a general exact contains predicate; a source-length upper bound does not fix it'};
+mkdirSync('bench/results/2026-09-28-count-test',{recursive:true});writeFileSync('bench/results/2026-09-28-count-test/t-astra-memory.json',JSON.stringify(result,null,2)+'\n');console.log(JSON.stringify(result));

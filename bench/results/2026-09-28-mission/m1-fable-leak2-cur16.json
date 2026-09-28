@@ -1,0 +1,528 @@
+{
+  "seed": 20260928,
+  "generatedAt": "2026-09-28T08:32:39.972Z",
+  "knownPct": [
+    0.01,
+    0.1,
+    1,
+    5,
+    10
+  ],
+  "designs": [
+    "cur16",
+    "curFull",
+    "kgram4",
+    "kgram8"
+  ],
+  "datasets": [
+    {
+      "name": "nsmc-review",
+      "victimRows": 49701,
+      "referenceRows": 49745,
+      "meanLen": 28.2,
+      "results": [
+        {
+          "design": "cur16",
+          "tokensPerRow": 53.2,
+          "aux": {
+            "stage1": {
+              "decodedOccPct": 4.161,
+              "rows80Pct": 0,
+              "charCoveragePct": 12.31,
+              "run8Pct": 0,
+              "runFullPct": 0.107,
+              "unknownRows": 49701
+            },
+            "stage2": {
+              "decodedOccPct": 4.161,
+              "rows80Pct": 0,
+              "charCoveragePct": 12.31,
+              "run8Pct": 0,
+              "runFullPct": 0.107,
+              "unknownRows": 49701
+            },
+            "propagationRounds": [
+              0
+            ]
+          },
+          "known": {
+            "1": {
+              "knownRows": 497,
+              "stage1": {
+                "decodedOccPct": 31.612,
+                "rows80Pct": 1.874,
+                "charCoveragePct": 64.356,
+                "run8Pct": 4.786,
+                "runFullPct": 1.408,
+                "unknownRows": 49204
+              },
+              "stage2": {
+                "decodedOccPct": 40.711,
+                "rows80Pct": 3.644,
+                "charCoveragePct": 72.161,
+                "run8Pct": 20.206,
+                "runFullPct": 2.646,
+                "unknownRows": 49204
+              },
+              "propagationRounds": [
+                3359,
+                1108,
+                446,
+                81,
+                11,
+                2
+              ],
+              "stage1Decoded": 2529,
+              "stage2Decoded": 7536
+            },
+            "5": {
+              "knownRows": 2485,
+              "stage1": {
+                "decodedOccPct": 55.506,
+                "rows80Pct": 10.422,
+                "charCoveragePct": 85.417,
+                "run8Pct": 34.728,
+                "runFullPct": 3.592,
+                "unknownRows": 47216
+              },
+              "stage2": {
+                "decodedOccPct": 62.832,
+                "rows80Pct": 17.668,
+                "charCoveragePct": 88.851,
+                "run8Pct": 52.23,
+                "runFullPct": 6.199,
+                "unknownRows": 47216
+              },
+              "propagationRounds": [
+                7580,
+                1622,
+                347,
+                78,
+                8,
+                8
+              ],
+              "stage1Decoded": 12368,
+              "stage2Decoded": 22011
+            },
+            "10": {
+              "knownRows": 4970,
+              "stage1": {
+                "decodedOccPct": 63.641,
+                "rows80Pct": 18.198,
+                "charCoveragePct": 90.18,
+                "run8Pct": 46.97,
+                "runFullPct": 4.894,
+                "unknownRows": 44731
+              },
+              "stage2": {
+                "decodedOccPct": 68.696,
+                "rows80Pct": 26.845,
+                "charCoveragePct": 92.023,
+                "run8Pct": 59.23,
+                "runFullPct": 7.483,
+                "unknownRows": 44731
+              },
+              "propagationRounds": [
+                7900,
+                1250,
+                193,
+                29,
+                4,
+                0
+              ],
+              "stage1Decoded": 20654,
+              "stage2Decoded": 30030
+            },
+            "0.01": {
+              "knownRows": 5,
+              "stage1": {
+                "decodedOccPct": 0.017,
+                "rows80Pct": 0,
+                "charCoveragePct": 0.065,
+                "run8Pct": 0,
+                "runFullPct": 0,
+                "unknownRows": 49696
+              },
+              "stage2": {
+                "decodedOccPct": 0.017,
+                "rows80Pct": 0,
+                "charCoveragePct": 0.065,
+                "run8Pct": 0,
+                "runFullPct": 0,
+                "unknownRows": 49696
+              },
+              "propagationRounds": [
+                0
+              ],
+              "stage1Decoded": 1,
+              "stage2Decoded": 1
+            },
+            "0.1": {
+              "knownRows": 50,
+              "stage1": {
+                "decodedOccPct": 7.401,
+                "rows80Pct": 0.002,
+                "charCoveragePct": 20.893,
+                "run8Pct": 0,
+                "runFullPct": 0.179,
+                "unknownRows": 49651
+              },
+              "stage2": {
+                "decodedOccPct": 8.429,
+                "rows80Pct": 0.01,
+                "charCoveragePct": 22.228,
+                "run8Pct": 0.02,
+                "runFullPct": 0.3,
+                "unknownRows": 49651
+              },
+              "propagationRounds": [
+                552,
+                92,
+                74,
+                26,
+                0
+              ],
+              "stage1Decoded": 119,
+              "stage2Decoded": 863
+            }
+          },
+          "ms": 108529
+        }
+      ]
+    },
+    {
+      "name": "fixture-name",
+      "victimRows": 50000,
+      "referenceRows": 50000,
+      "meanLen": 9.3,
+      "results": [
+        {
+          "design": "cur16",
+          "tokensPerRow": 17.7,
+          "aux": {
+            "stage1": {
+              "decodedOccPct": 2.136,
+              "rows80Pct": 0,
+              "charCoveragePct": 8.077,
+              "run8Pct": 0,
+              "runFullPct": 0,
+              "unknownRows": 50000
+            },
+            "stage2": {
+              "decodedOccPct": 2.136,
+              "rows80Pct": 0,
+              "charCoveragePct": 8.077,
+              "run8Pct": 0,
+              "runFullPct": 0,
+              "unknownRows": 50000
+            },
+            "propagationRounds": [
+              0
+            ]
+          },
+          "known": {
+            "1": {
+              "knownRows": 500,
+              "stage1": {
+                "decodedOccPct": 41.973,
+                "rows80Pct": 0.404,
+                "charCoveragePct": 72.871,
+                "run8Pct": 9.279,
+                "runFullPct": 0.299,
+                "unknownRows": 49500
+              },
+              "stage2": {
+                "decodedOccPct": 60.519,
+                "rows80Pct": 12.966,
+                "charCoveragePct": 81.018,
+                "run8Pct": 19.515,
+                "runFullPct": 5.578,
+                "unknownRows": 49500
+              },
+              "propagationRounds": [
+                1115,
+                57,
+                0
+              ],
+              "stage1Decoded": 1341,
+              "stage2Decoded": 2513
+            },
+            "5": {
+              "knownRows": 2500,
+              "stage1": {
+                "decodedOccPct": 70.415,
+                "rows80Pct": 21.821,
+                "charCoveragePct": 82.77,
+                "run8Pct": 23.385,
+                "runFullPct": 13.067,
+                "unknownRows": 47500
+              },
+              "stage2": {
+                "decodedOccPct": 74.797,
+                "rows80Pct": 28.522,
+                "charCoveragePct": 82.843,
+                "run8Pct": 23.438,
+                "runFullPct": 13.554,
+                "unknownRows": 47500
+              },
+              "propagationRounds": [
+                452,
+                8,
+                0
+              ],
+              "stage1Decoded": 2824,
+              "stage2Decoded": 3284
+            },
+            "10": {
+              "knownRows": 5000,
+              "stage1": {
+                "decodedOccPct": 70.566,
+                "rows80Pct": 21.96,
+                "charCoveragePct": 82.78,
+                "run8Pct": 23.429,
+                "runFullPct": 13.658,
+                "unknownRows": 45000
+              },
+              "stage2": {
+                "decodedOccPct": 74.855,
+                "rows80Pct": 28.062,
+                "charCoveragePct": 82.839,
+                "run8Pct": 23.449,
+                "runFullPct": 13.782,
+                "unknownRows": 45000
+              },
+              "propagationRounds": [
+                444,
+                7,
+                0
+              ],
+              "stage1Decoded": 2832,
+              "stage2Decoded": 3283
+            },
+            "0.01": {
+              "knownRows": 5,
+              "stage1": {
+                "decodedOccPct": 0.156,
+                "rows80Pct": 0,
+                "charCoveragePct": 0.296,
+                "run8Pct": 0,
+                "runFullPct": 0,
+                "unknownRows": 49995
+              },
+              "stage2": {
+                "decodedOccPct": 0.156,
+                "rows80Pct": 0,
+                "charCoveragePct": 0.296,
+                "run8Pct": 0,
+                "runFullPct": 0,
+                "unknownRows": 49995
+              },
+              "propagationRounds": [
+                0
+              ],
+              "stage1Decoded": 1,
+              "stage2Decoded": 1
+            },
+            "0.1": {
+              "knownRows": 50,
+              "stage1": {
+                "decodedOccPct": 4.128,
+                "rows80Pct": 0,
+                "charCoveragePct": 11.201,
+                "run8Pct": 0,
+                "runFullPct": 0,
+                "unknownRows": 49950
+              },
+              "stage2": {
+                "decodedOccPct": 4.289,
+                "rows80Pct": 0,
+                "charCoveragePct": 11.664,
+                "run8Pct": 0,
+                "runFullPct": 0,
+                "unknownRows": 49950
+              },
+              "propagationRounds": [
+                38,
+                2,
+                0
+              ],
+              "stage1Decoded": 39,
+              "stage2Decoded": 79
+            }
+          },
+          "ms": 13288
+        }
+      ]
+    },
+    {
+      "name": "fixture-memo",
+      "victimRows": 50000,
+      "referenceRows": 50000,
+      "meanLen": 14.8,
+      "results": [
+        {
+          "design": "cur16",
+          "tokensPerRow": 27.2,
+          "aux": {
+            "stage1": {
+              "decodedOccPct": 0.471,
+              "rows80Pct": 0,
+              "charCoveragePct": 0.879,
+              "run8Pct": 0,
+              "runFullPct": 0,
+              "unknownRows": 50000
+            },
+            "stage2": {
+              "decodedOccPct": 0.471,
+              "rows80Pct": 0,
+              "charCoveragePct": 0.879,
+              "run8Pct": 0,
+              "runFullPct": 0,
+              "unknownRows": 50000
+            },
+            "propagationRounds": [
+              0
+            ]
+          },
+          "known": {
+            "1": {
+              "knownRows": 500,
+              "stage1": {
+                "decodedOccPct": 33.063,
+                "rows80Pct": 0,
+                "charCoveragePct": 56.305,
+                "run8Pct": 0,
+                "runFullPct": 0,
+                "unknownRows": 49500
+              },
+              "stage2": {
+                "decodedOccPct": 48.083,
+                "rows80Pct": 11.315,
+                "charCoveragePct": 61.621,
+                "run8Pct": 19.903,
+                "runFullPct": 0,
+                "unknownRows": 49500
+              },
+              "propagationRounds": [
+                1103,
+                98,
+                42,
+                3,
+                0
+              ],
+              "stage1Decoded": 1333,
+              "stage2Decoded": 2579
+            },
+            "5": {
+              "knownRows": 2500,
+              "stage1": {
+                "decodedOccPct": 56.411,
+                "rows80Pct": 19.434,
+                "charCoveragePct": 63.667,
+                "run8Pct": 19.895,
+                "runFullPct": 15.762,
+                "unknownRows": 47500
+              },
+              "stage2": {
+                "decodedOccPct": 59.398,
+                "rows80Pct": 19.434,
+                "charCoveragePct": 63.732,
+                "run8Pct": 19.895,
+                "runFullPct": 16.229,
+                "unknownRows": 47500
+              },
+              "propagationRounds": [
+                527,
+                58,
+                0
+              ],
+              "stage1Decoded": 2764,
+              "stage2Decoded": 3349
+            },
+            "10": {
+              "knownRows": 5000,
+              "stage1": {
+                "decodedOccPct": 56.556,
+                "rows80Pct": 19.431,
+                "charCoveragePct": 63.696,
+                "run8Pct": 19.896,
+                "runFullPct": 15.864,
+                "unknownRows": 45000
+              },
+              "stage2": {
+                "decodedOccPct": 59.511,
+                "rows80Pct": 19.431,
+                "charCoveragePct": 63.743,
+                "run8Pct": 19.896,
+                "runFullPct": 16.242,
+                "unknownRows": 45000
+              },
+              "propagationRounds": [
+                586,
+                5,
+                0
+              ],
+              "stage1Decoded": 2788,
+              "stage2Decoded": 3379
+            },
+            "0.01": {
+              "knownRows": 5,
+              "stage1": {
+                "decodedOccPct": 0,
+                "rows80Pct": 0,
+                "charCoveragePct": 0,
+                "run8Pct": 0,
+                "runFullPct": 0,
+                "unknownRows": 49995
+              },
+              "stage2": {
+                "decodedOccPct": 0,
+                "rows80Pct": 0,
+                "charCoveragePct": 0,
+                "run8Pct": 0,
+                "runFullPct": 0,
+                "unknownRows": 49995
+              },
+              "propagationRounds": [
+                0
+              ],
+              "stage1Decoded": 0,
+              "stage2Decoded": 0
+            },
+            "0.1": {
+              "knownRows": 50,
+              "stage1": {
+                "decodedOccPct": 4.596,
+                "rows80Pct": 0,
+                "charCoveragePct": 12.583,
+                "run8Pct": 0,
+                "runFullPct": 0,
+                "unknownRows": 49950
+              },
+              "stage2": {
+                "decodedOccPct": 5.533,
+                "rows80Pct": 0,
+                "charCoveragePct": 14.524,
+                "run8Pct": 0,
+                "runFullPct": 0,
+                "unknownRows": 49950
+              },
+              "propagationRounds": [
+                61,
+                35,
+                2,
+                0
+              ],
+              "stage1Decoded": 48,
+              "stage2Decoded": 146
+            }
+          },
+          "ms": 34352
+        }
+      ]
+    }
+  ],
+  "notes": [
+    "Snapshot-only attacker. Stage 1 = starting clue (known rows: count attack with collision-aware / nested-group rules; or public auxiliary corpus only: frequency ranking). Stage 2 = one mechanical propagation per design family iterated to a fixpoint (containment propagation for full-width K-grams; adjacent/skip consistency votes for current-style pieces). Only correct decodings are counted. run8/runFull assume the true character order (upper bound; near-tight for K-grams). 16-bit tokens: keyed truncated hash stand-in with the same collision structure. One seed."
+  ]
+}

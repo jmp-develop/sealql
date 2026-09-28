@@ -1,0 +1,364 @@
+{
+  "seed": 20260928,
+  "generatedAt": "2026-09-28T09:24:37.590Z",
+  "knownPct": [
+    0.01,
+    0.1,
+    1
+  ],
+  "designs": [
+    "cur16",
+    "curFull",
+    "kgram4",
+    "kgram8"
+  ],
+  "datasets": [
+    {
+      "name": "nsmc-review",
+      "victimRows": 49701,
+      "referenceRows": 49745,
+      "meanLen": 28.2,
+      "results": [
+        {
+          "design": "kgram8",
+          "tokensPerRow": 180.5,
+          "aux": {
+            "stage1": {
+              "decodedOccPct": 1.294,
+              "rows80Pct": 0,
+              "charCoveragePct": 13.585,
+              "run8Pct": 0.01,
+              "runFullPct": 0.139,
+              "unknownRows": 49701
+            },
+            "stage2": {
+              "decodedOccPct": 1.294,
+              "rows80Pct": 0,
+              "charCoveragePct": 13.585,
+              "run8Pct": 0.01,
+              "runFullPct": 0.139,
+              "unknownRows": 49701
+            },
+            "propagationRounds": [
+              0
+            ]
+          },
+          "known": {
+            "1": {
+              "knownRows": 497,
+              "stage1": {
+                "decodedOccPct": 9.804,
+                "rows80Pct": 0.4,
+                "charCoveragePct": 61.94,
+                "run8Pct": 16.82,
+                "runFullPct": 2.567,
+                "unknownRows": 49204
+              },
+              "stage2": {
+                "decodedOccPct": 11.503,
+                "rows80Pct": 0.402,
+                "charCoveragePct": 62.246,
+                "run8Pct": 17.212,
+                "runFullPct": 2.589,
+                "unknownRows": 49204
+              },
+              "propagationRounds": [
+                5496,
+                4771,
+                2371,
+                782,
+                175,
+                39
+              ],
+              "stage1Decoded": 1671,
+              "stage2Decoded": 15305
+            },
+            "0.01": {
+              "knownRows": 5,
+              "stage1": {
+                "decodedOccPct": 0.006,
+                "rows80Pct": 0,
+                "charCoveragePct": 0.07,
+                "run8Pct": 0,
+                "runFullPct": 0,
+                "unknownRows": 49696
+              },
+              "stage2": {
+                "decodedOccPct": 0.006,
+                "rows80Pct": 0,
+                "charCoveragePct": 0.07,
+                "run8Pct": 0,
+                "runFullPct": 0,
+                "unknownRows": 49696
+              },
+              "propagationRounds": [
+                0
+              ],
+              "stage1Decoded": 1,
+              "stage2Decoded": 1
+            },
+            "0.1": {
+              "knownRows": 50,
+              "stage1": {
+                "decodedOccPct": 2.108,
+                "rows80Pct": 0.01,
+                "charCoveragePct": 19.898,
+                "run8Pct": 0.042,
+                "runFullPct": 0.234,
+                "unknownRows": 49651
+              },
+              "stage2": {
+                "decodedOccPct": 2.23,
+                "rows80Pct": 0.01,
+                "charCoveragePct": 19.966,
+                "run8Pct": 0.048,
+                "runFullPct": 0.234,
+                "unknownRows": 49651
+              },
+              "propagationRounds": [
+                53,
+                40,
+                27,
+                10,
+                2,
+                1
+              ],
+              "stage1Decoded": 84,
+              "stage2Decoded": 217
+            }
+          },
+          "ms": 416993
+        }
+      ]
+    },
+    {
+      "name": "fixture-name",
+      "victimRows": 50000,
+      "referenceRows": 50000,
+      "meanLen": 9.3,
+      "results": [
+        {
+          "design": "kgram8",
+          "tokensPerRow": 51.4,
+          "aux": {
+            "stage1": {
+              "decodedOccPct": 0.379,
+              "rows80Pct": 0,
+              "charCoveragePct": 4.169,
+              "run8Pct": 0,
+              "runFullPct": 0,
+              "unknownRows": 50000
+            },
+            "stage2": {
+              "decodedOccPct": 0.379,
+              "rows80Pct": 0,
+              "charCoveragePct": 4.169,
+              "run8Pct": 0,
+              "runFullPct": 0,
+              "unknownRows": 50000
+            },
+            "propagationRounds": [
+              0
+            ]
+          },
+          "known": {
+            "1": {
+              "knownRows": 500,
+              "stage1": {
+                "decodedOccPct": 33.001,
+                "rows80Pct": 0,
+                "charCoveragePct": 82.276,
+                "run8Pct": 23.101,
+                "runFullPct": 2.584,
+                "unknownRows": 49500
+              },
+              "stage2": {
+                "decodedOccPct": 34.492,
+                "rows80Pct": 0,
+                "charCoveragePct": 82.298,
+                "run8Pct": 23.105,
+                "runFullPct": 2.626,
+                "unknownRows": 49500
+              },
+              "propagationRounds": [
+                7944,
+                394,
+                5,
+                0
+              ],
+              "stage1Decoded": 666,
+              "stage2Decoded": 9009
+            },
+            "0.01": {
+              "knownRows": 5,
+              "stage1": {
+                "decodedOccPct": 0,
+                "rows80Pct": 0,
+                "charCoveragePct": 0,
+                "run8Pct": 0,
+                "runFullPct": 0,
+                "unknownRows": 49995
+              },
+              "stage2": {
+                "decodedOccPct": 0,
+                "rows80Pct": 0,
+                "charCoveragePct": 0,
+                "run8Pct": 0,
+                "runFullPct": 0,
+                "unknownRows": 49995
+              },
+              "propagationRounds": [
+                0
+              ],
+              "stage1Decoded": 0,
+              "stage2Decoded": 0
+            },
+            "0.1": {
+              "knownRows": 50,
+              "stage1": {
+                "decodedOccPct": 25.32,
+                "rows80Pct": 0,
+                "charCoveragePct": 47.747,
+                "run8Pct": 16.204,
+                "runFullPct": 0,
+                "unknownRows": 49950
+              },
+              "stage2": {
+                "decodedOccPct": 25.33,
+                "rows80Pct": 0,
+                "charCoveragePct": 47.748,
+                "run8Pct": 16.204,
+                "runFullPct": 0,
+                "unknownRows": 49950
+              },
+              "propagationRounds": [
+                9,
+                3,
+                0
+              ],
+              "stage1Decoded": 16,
+              "stage2Decoded": 28
+            }
+          },
+          "ms": 137158
+        }
+      ]
+    },
+    {
+      "name": "fixture-memo",
+      "victimRows": 50000,
+      "referenceRows": 50000,
+      "meanLen": 14.8,
+      "results": [
+        {
+          "design": "kgram8",
+          "tokensPerRow": 85.6,
+          "aux": {
+            "stage1": {
+              "decodedOccPct": 1.387,
+              "rows80Pct": 0,
+              "charCoveragePct": 20.705,
+              "run8Pct": 2.004,
+              "runFullPct": 0,
+              "unknownRows": 50000
+            },
+            "stage2": {
+              "decodedOccPct": 1.387,
+              "rows80Pct": 0,
+              "charCoveragePct": 20.705,
+              "run8Pct": 2.004,
+              "runFullPct": 0,
+              "unknownRows": 50000
+            },
+            "propagationRounds": [
+              0
+            ]
+          },
+          "known": {
+            "1": {
+              "knownRows": 500,
+              "stage1": {
+                "decodedOccPct": 56.722,
+                "rows80Pct": 0.273,
+                "charCoveragePct": 85.366,
+                "run8Pct": 67.063,
+                "runFullPct": 2.727,
+                "unknownRows": 49500
+              },
+              "stage2": {
+                "decodedOccPct": 57.54,
+                "rows80Pct": 0.669,
+                "charCoveragePct": 85.383,
+                "run8Pct": 67.063,
+                "runFullPct": 2.76,
+                "unknownRows": 49500
+              },
+              "propagationRounds": [
+                7703,
+                87,
+                1,
+                0
+              ],
+              "stage1Decoded": 647,
+              "stage2Decoded": 8438
+            },
+            "0.01": {
+              "knownRows": 5,
+              "stage1": {
+                "decodedOccPct": 12.728,
+                "rows80Pct": 0,
+                "charCoveragePct": 19.095,
+                "run8Pct": 0,
+                "runFullPct": 0,
+                "unknownRows": 49995
+              },
+              "stage2": {
+                "decodedOccPct": 12.728,
+                "rows80Pct": 0,
+                "charCoveragePct": 19.095,
+                "run8Pct": 0,
+                "runFullPct": 0,
+                "unknownRows": 49995
+              },
+              "propagationRounds": [
+                0
+              ],
+              "stage1Decoded": 0,
+              "stage2Decoded": 0
+            },
+            "0.1": {
+              "knownRows": 50,
+              "stage1": {
+                "decodedOccPct": 45.209,
+                "rows80Pct": 0,
+                "charCoveragePct": 57.051,
+                "run8Pct": 31.283,
+                "runFullPct": 0,
+                "unknownRows": 49950
+              },
+              "stage2": {
+                "decodedOccPct": 45.215,
+                "rows80Pct": 0,
+                "charCoveragePct": 57.051,
+                "run8Pct": 31.283,
+                "runFullPct": 0,
+                "unknownRows": 49950
+              },
+              "propagationRounds": [
+                10,
+                2,
+                0
+              ],
+              "stage1Decoded": 17,
+              "stage2Decoded": 29
+            }
+          },
+          "ms": 1167306
+        }
+      ]
+    }
+  ],
+  "notes": [
+    "Snapshot-only attacker. Stage 1 = starting clue (known rows: count attack with collision-aware / nested-group rules; or public auxiliary corpus only: frequency ranking). Stage 2 = one mechanical propagation per design family iterated to a fixpoint (containment propagation for full-width K-grams; adjacent/skip consistency votes for current-style pieces). Only correct decodings are counted. run8/runFull assume the true character order (upper bound; near-tight for K-grams). 16-bit tokens: keyed truncated hash stand-in with the same collision structure. One seed."
+  ]
+}

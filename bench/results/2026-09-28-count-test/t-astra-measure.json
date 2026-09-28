@@ -1,0 +1,5698 @@
+{
+  "started": "2026-09-28T10:51:26.367Z",
+  "rowsPerTable": 100000,
+  "warmups": 2,
+  "repetitions": 7,
+  "tagBits": 64,
+  "K": 8,
+  "tagFields": [
+    "memo",
+    "company"
+  ],
+  "sum": "char_length(ticket.memo_plain), derived plaintext integer, not financial amount",
+  "cases": [
+    {
+      "name": "exact",
+      "tree": {
+        "field": "company",
+        "op": "eq",
+        "value": "서울서비스 담당"
+      },
+      "mode": "count",
+      "condition": "company eq \"서울서비스 담당\"",
+      "targetRows": 100000,
+      "actualMatches": 28331,
+      "resultRows": 1,
+      "resultValue": 28331,
+      "dbCandidates": 28331,
+      "first": {
+        "A": {
+          "totalMs": 197.7611999999499,
+          "preMs": 0.7741999999852851,
+          "dbMs": 196.89490000001388,
+          "betweenSqlMs": 0,
+          "postMs": 0.09209999995073304,
+          "sqlCalls": 1,
+          "rowsToApp": 1,
+          "openCount": 0
+        },
+        "product": {
+          "totalMs": 1192.4331999999704,
+          "preMs": 5.776599999982864,
+          "dbMs": 125.99550000001909,
+          "betweenSqlMs": 0,
+          "postMs": 1060.6610999999684,
+          "sqlCalls": 1,
+          "rowsToApp": 28331,
+          "openCount": 28331
+        },
+        "plain": {
+          "totalMs": 12.29490000003716,
+          "preMs": 0.14230000000679865,
+          "dbMs": 12.07819999998901,
+          "betweenSqlMs": 0,
+          "postMs": 0.07440000004135072,
+          "sqlCalls": 1,
+          "rowsToApp": 1,
+          "openCount": 0
+        }
+      },
+      "summary": {
+        "plain": {
+          "totalMs": 9.403600000019651,
+          "preMs": 0.08659999998053536,
+          "dbMs": 9.244999999995343,
+          "betweenSqlMs": 0,
+          "postMs": 0.06829999998444691,
+          "sqlCalls": 1,
+          "rowsToApp": 1,
+          "openCount": 0
+        },
+        "product": {
+          "totalMs": 1052.2714999999735,
+          "preMs": 1.1093999999575317,
+          "dbMs": 103.56160000001546,
+          "betweenSqlMs": 0,
+          "postMs": 946.297499999986,
+          "sqlCalls": 1,
+          "rowsToApp": 28331,
+          "openCount": 28331
+        },
+        "A": {
+          "totalMs": 191.48139999998966,
+          "preMs": 0.3715000000083819,
+          "dbMs": 191.07630000001518,
+          "betweenSqlMs": 0,
+          "postMs": 0.05790000001434237,
+          "sqlCalls": 1,
+          "rowsToApp": 1,
+          "openCount": 0
+        }
+      },
+      "runs": {
+        "plain": [
+          {
+            "totalMs": 9.072600000014063,
+            "preMs": 0.0940000000409782,
+            "dbMs": 8.920699999958742,
+            "betweenSqlMs": 0,
+            "postMs": 0.05790000001434237,
+            "sqlCalls": 1,
+            "rowsToApp": 1,
+            "openCount": 0
+          },
+          {
+            "totalMs": 11.754400000034366,
+            "preMs": 0.07490000000689179,
+            "dbMs": 11.610800000024028,
+            "betweenSqlMs": 0,
+            "postMs": 0.0687000000034459,
+            "sqlCalls": 1,
+            "rowsToApp": 1,
+            "openCount": 0
+          },
+          {
+            "totalMs": 9.318899999954738,
+            "preMs": 0.056699999957345426,
+            "dbMs": 9.18660000001546,
+            "betweenSqlMs": 0,
+            "postMs": 0.07559999998193234,
+            "sqlCalls": 1,
+            "rowsToApp": 1,
+            "openCount": 0
+          },
+          {
+            "totalMs": 11.488199999963399,
+            "preMs": 0.07559999998193234,
+            "dbMs": 11.34429999999702,
+            "betweenSqlMs": 0,
+            "postMs": 0.06829999998444691,
+            "sqlCalls": 1,
+            "rowsToApp": 1,
+            "openCount": 0
+          },
+          {
+            "totalMs": 8.70539999997709,
+            "preMs": 0.08659999998053536,
+            "dbMs": 8.571500000020023,
+            "betweenSqlMs": 0,
+            "postMs": 0.04729999997653067,
+            "sqlCalls": 1,
+            "rowsToApp": 1,
+            "openCount": 0
+          },
+          {
+            "totalMs": 11.76370000001043,
+            "preMs": 0.11770000000251457,
+            "dbMs": 11.574300000036601,
+            "betweenSqlMs": 0,
+            "postMs": 0.07169999997131526,
+            "sqlCalls": 1,
+            "rowsToApp": 1,
+            "openCount": 0
+          },
+          {
+            "totalMs": 9.403600000019651,
+            "preMs": 0.10640000004786998,
+            "dbMs": 9.244999999995343,
+            "betweenSqlMs": 0,
+            "postMs": 0.05219999997643754,
+            "sqlCalls": 1,
+            "rowsToApp": 1,
+            "openCount": 0
+          }
+        ],
+        "product": [
+          {
+            "totalMs": 1046.9221000000252,
+            "preMs": 1.071300000010524,
+            "dbMs": 98.13370000000577,
+            "betweenSqlMs": 0,
+            "postMs": 947.7171000000089,
+            "sqlCalls": 1,
+            "rowsToApp": 28331,
+            "openCount": 28331
+          },
+          {
+            "totalMs": 1035.6387000000104,
+            "preMs": 1.017600000021048,
+            "dbMs": 112.13549999997485,
+            "betweenSqlMs": 0,
+            "postMs": 922.4856000000145,
+            "sqlCalls": 1,
+            "rowsToApp": 28331,
+            "openCount": 28331
+          },
+          {
+            "totalMs": 1055.3813999999547,
+            "preMs": 1.3334000000031665,
+            "dbMs": 107.75049999996554,
+            "betweenSqlMs": 0,
+            "postMs": 946.297499999986,
+            "sqlCalls": 1,
+            "rowsToApp": 28331,
+            "openCount": 28331
+          },
+          {
+            "totalMs": 1052.2714999999735,
+            "preMs": 0.9927999999490567,
+            "dbMs": 109.68820000003325,
+            "betweenSqlMs": 0,
+            "postMs": 941.5904999999912,
+            "sqlCalls": 1,
+            "rowsToApp": 28331,
+            "openCount": 28331
+          },
+          {
+            "totalMs": 1056.4187000000384,
+            "preMs": 1.1867000000202097,
+            "dbMs": 98.29720000002999,
+            "betweenSqlMs": 0,
+            "postMs": 956.9347999999882,
+            "sqlCalls": 1,
+            "rowsToApp": 28331,
+            "openCount": 28331
+          },
+          {
+            "totalMs": 1078.7145000000019,
+            "preMs": 1.1093999999575317,
+            "dbMs": 103.56160000001546,
+            "betweenSqlMs": 0,
+            "postMs": 974.0435000000289,
+            "sqlCalls": 1,
+            "rowsToApp": 28331,
+            "openCount": 28331
+          },
+          {
+            "totalMs": 1039.0965000000433,
+            "preMs": 1.2872000000206754,
+            "dbMs": 98.81489999999758,
+            "betweenSqlMs": 0,
+            "postMs": 938.994400000025,
+            "sqlCalls": 1,
+            "rowsToApp": 28331,
+            "openCount": 28331
+          }
+        ],
+        "A": [
+          {
+            "totalMs": 193.27590000000782,
+            "preMs": 0.3550999999861233,
+            "dbMs": 192.85680000000866,
+            "betweenSqlMs": 0,
+            "postMs": 0.06400000001303852,
+            "sqlCalls": 1,
+            "rowsToApp": 1,
+            "openCount": 0
+          },
+          {
+            "totalMs": 186.86530000000494,
+            "preMs": 0.3777000000118278,
+            "dbMs": 186.421800000011,
+            "betweenSqlMs": 0,
+            "postMs": 0.0657999999821186,
+            "sqlCalls": 1,
+            "rowsToApp": 1,
+            "openCount": 0
+          },
+          {
+            "totalMs": 191.48139999998966,
+            "preMs": 0.3471999999601394,
+            "dbMs": 191.07630000001518,
+            "betweenSqlMs": 0,
+            "postMs": 0.05790000001434237,
+            "sqlCalls": 1,
+            "rowsToApp": 1,
+            "openCount": 0
+          },
+          {
+            "totalMs": 183.04820000001928,
+            "preMs": 0.4074999999720603,
+            "dbMs": 182.58480000001146,
+            "betweenSqlMs": 0,
+            "postMs": 0.05590000003576279,
+            "sqlCalls": 1,
+            "rowsToApp": 1,
+            "openCount": 0
+          },
+          {
+            "totalMs": 191.6148000000394,
+            "preMs": 0.36210000002756715,
+            "dbMs": 191.19780000002356,
+            "betweenSqlMs": 0,
+            "postMs": 0.054899999988265336,
+            "sqlCalls": 1,
+            "rowsToApp": 1,
+            "openCount": 0
+          },
+          {
+            "totalMs": 184.92220000003,
+            "preMs": 0.40990000002784654,
+            "dbMs": 184.4557999999961,
+            "betweenSqlMs": 0,
+            "postMs": 0.0565000000060536,
+            "sqlCalls": 1,
+            "rowsToApp": 1,
+            "openCount": 0
+          },
+          {
+            "totalMs": 193.95709999999963,
+            "preMs": 0.3715000000083819,
+            "dbMs": 193.52530000003753,
+            "betweenSqlMs": 0,
+            "postMs": 0.06029999995371327,
+            "sqlCalls": 1,
+            "rowsToApp": 1,
+            "openCount": 0
+          }
+        ]
+      }
+    },
+    {
+      "name": "contains2",
+      "tree": {
+        "field": "company",
+        "op": "contains",
+        "value": "서비"
+      },
+      "mode": "count",
+      "condition": "company contains \"서비\"",
+      "targetRows": 100000,
+      "actualMatches": 30101,
+      "resultRows": 1,
+      "resultValue": 30101,
+      "dbCandidates": 30101,
+      "first": {
+        "A": {
+          "totalMs": 207.7551000000094,
+          "preMs": 0.584900000016205,
+          "dbMs": 207.1062999999849,
+          "betweenSqlMs": 0,
+          "postMs": 0.06390000000828877,
+          "sqlCalls": 1,
+          "rowsToApp": 1,
+          "openCount": 0
+        },
+        "product": {
+          "totalMs": 1119.1107000000193,
+          "preMs": 1.3583000000216998,
+          "dbMs": 113.77539999998407,
+          "betweenSqlMs": 0,
+          "postMs": 1003.9770000000135,
+          "sqlCalls": 1,
+          "rowsToApp": 30101,
+          "openCount": 30101
+        },
+        "plain": {
+          "totalMs": 19.255599999974947,
+          "preMs": 0.07439999998314306,
+          "dbMs": 19.129400000034366,
+          "betweenSqlMs": 0,
+          "postMs": 0.05179999995743856,
+          "sqlCalls": 1,
+          "rowsToApp": 1,
+          "openCount": 0
+        }
+      },
+      "summary": {
+        "plain": {
+          "totalMs": 17.836200000019744,
+          "preMs": 0.042400000034831464,
+          "dbMs": 17.740099999995437,
+          "betweenSqlMs": 0,
+          "postMs": 0.053699999989476055,
+          "sqlCalls": 1,
+          "rowsToApp": 1,
+          "openCount": 0
+        },
+        "product": {
+          "totalMs": 1131.561400000006,
+          "preMs": 0.9402000000118278,
+          "dbMs": 114.96689999999944,
+          "betweenSqlMs": 0,
+          "postMs": 1015.0990999999922,
+          "sqlCalls": 1,
+          "rowsToApp": 30101,
+          "openCount": 30101
+        },
+        "A": {
+          "totalMs": 201.3000999999931,
+          "preMs": 0.36170000000856817,
+          "dbMs": 200.89100000000326,
+          "betweenSqlMs": 0,
+          "postMs": 0.05640000000130385,
+          "sqlCalls": 1,
+          "rowsToApp": 1,
+          "openCount": 0
+        }
+      },
+      "runs": {
+        "plain": [
+          {
+            "totalMs": 17.836200000019744,
+            "preMs": 0.042400000034831464,
+            "dbMs": 17.740099999995437,
+            "betweenSqlMs": 0,
+            "postMs": 0.053699999989476055,
+            "sqlCalls": 1,
+            "rowsToApp": 1,
+            "openCount": 0
+          },
+          {
+            "totalMs": 18.4833000000217,
+            "preMs": 0.06840000004740432,
+            "dbMs": 18.323099999979604,
+            "betweenSqlMs": 0,
+            "postMs": 0.09179999999469146,
+            "sqlCalls": 1,
+            "rowsToApp": 1,
+            "openCount": 0
+          },
+          {
+            "totalMs": 17.77929999999469,
+            "preMs": 0.0423999999766238,
+            "dbMs": 17.684899999992922,
+            "betweenSqlMs": 0,
+            "postMs": 0.05200000002514571,
+            "sqlCalls": 1,
+            "rowsToApp": 1,
+            "openCount": 0
+          },
+          {
+            "totalMs": 17.887699999962933,
+            "preMs": 0.06859999999869615,
+            "dbMs": 17.760299999965355,
+            "betweenSqlMs": 0,
+            "postMs": 0.05879999999888241,
+            "sqlCalls": 1,
+            "rowsToApp": 1,
+            "openCount": 0
+          },
+          {
+            "totalMs": 17.707500000018626,
+            "preMs": 0.04170000000158325,
+            "dbMs": 17.613200000021607,
+            "betweenSqlMs": 0,
+            "postMs": 0.05259999999543652,
+            "sqlCalls": 1,
+            "rowsToApp": 1,
+            "openCount": 0
+          },
+          {
+            "totalMs": 18.838500000012573,
+            "preMs": 0.055099999997764826,
+            "dbMs": 18.726199999975506,
+            "betweenSqlMs": 0,
+            "postMs": 0.05720000003930181,
+            "sqlCalls": 1,
+            "rowsToApp": 1,
+            "openCount": 0
+          },
+          {
+            "totalMs": 17.60730000003241,
+            "preMs": 0.04139999998733401,
+            "dbMs": 17.51530000002822,
+            "betweenSqlMs": 0,
+            "postMs": 0.05060000001685694,
+            "sqlCalls": 1,
+            "rowsToApp": 1,
+            "openCount": 0
+          }
+        ],
+        "product": [
+          {
+            "totalMs": 1116.0277999999817,
+            "preMs": 1.0044000000343658,
+            "dbMs": 117.21249999996508,
+            "betweenSqlMs": 0,
+            "postMs": 997.8108999999822,
+            "sqlCalls": 1,
+            "rowsToApp": 30101,
+            "openCount": 30101
+          },
+          {
+            "totalMs": 1127.1116000000038,
+            "preMs": 0.9145000000135042,
+            "dbMs": 121.61310000001686,
+            "betweenSqlMs": 0,
+            "postMs": 1004.5839999999735,
+            "sqlCalls": 1,
+            "rowsToApp": 30101,
+            "openCount": 30101
+          },
+          {
+            "totalMs": 1162.1805999999633,
+            "preMs": 0.9488999999593943,
+            "dbMs": 110.68820000003325,
+            "betweenSqlMs": 0,
+            "postMs": 1050.5434999999707,
+            "sqlCalls": 1,
+            "rowsToApp": 30101,
+            "openCount": 30101
+          },
+          {
+            "totalMs": 1139.5314999999828,
+            "preMs": 0.9402000000118278,
+            "dbMs": 123.49219999997877,
+            "betweenSqlMs": 0,
+            "postMs": 1015.0990999999922,
+            "sqlCalls": 1,
+            "rowsToApp": 30101,
+            "openCount": 30101
+          },
+          {
+            "totalMs": 1131.561400000006,
+            "preMs": 0.8276000000187196,
+            "dbMs": 110.14019999996526,
+            "betweenSqlMs": 0,
+            "postMs": 1020.593600000022,
+            "sqlCalls": 1,
+            "rowsToApp": 30101,
+            "openCount": 30101
+          },
+          {
+            "totalMs": 1127.0701999999583,
+            "preMs": 0.9808999999659136,
+            "dbMs": 113.17180000001099,
+            "betweenSqlMs": 0,
+            "postMs": 1012.9174999999814,
+            "sqlCalls": 1,
+            "rowsToApp": 30101,
+            "openCount": 30101
+          },
+          {
+            "totalMs": 1146.8079000000143,
+            "preMs": 0.8457000000053085,
+            "dbMs": 114.96689999999944,
+            "betweenSqlMs": 0,
+            "postMs": 1030.9953000000096,
+            "sqlCalls": 1,
+            "rowsToApp": 30101,
+            "openCount": 30101
+          }
+        ],
+        "A": [
+          {
+            "totalMs": 201.27569999999832,
+            "preMs": 0.3436000000219792,
+            "dbMs": 200.87280000001192,
+            "betweenSqlMs": 0,
+            "postMs": 0.05929999996442348,
+            "sqlCalls": 1,
+            "rowsToApp": 1,
+            "openCount": 0
+          },
+          {
+            "totalMs": 199.55359999998473,
+            "preMs": 0.3680999999633059,
+            "dbMs": 199.12160000001313,
+            "betweenSqlMs": 0,
+            "postMs": 0.06390000000828877,
+            "sqlCalls": 1,
+            "rowsToApp": 1,
+            "openCount": 0
+          },
+          {
+            "totalMs": 242.7788999999757,
+            "preMs": 0.36170000000856817,
+            "dbMs": 242.36139999999432,
+            "betweenSqlMs": 0,
+            "postMs": 0.05579999997280538,
+            "sqlCalls": 1,
+            "rowsToApp": 1,
+            "openCount": 0
+          },
+          {
+            "totalMs": 224.84050000004936,
+            "preMs": 0.3624000000418164,
+            "dbMs": 224.39929999999003,
+            "betweenSqlMs": 0,
+            "postMs": 0.07880000001750886,
+            "sqlCalls": 1,
+            "rowsToApp": 1,
+            "openCount": 0
+          },
+          {
+            "totalMs": 201.3000999999931,
+            "preMs": 0.35269999998854473,
+            "dbMs": 200.89100000000326,
+            "betweenSqlMs": 0,
+            "postMs": 0.05640000000130385,
+            "sqlCalls": 1,
+            "rowsToApp": 1,
+            "openCount": 0
+          },
+          {
+            "totalMs": 194.1762999999919,
+            "preMs": 0.34179999999469146,
+            "dbMs": 193.78190000000177,
+            "betweenSqlMs": 0,
+            "postMs": 0.05259999999543652,
+            "sqlCalls": 1,
+            "rowsToApp": 1,
+            "openCount": 0
+          },
+          {
+            "totalMs": 205.796399999992,
+            "preMs": 0.37069999997038394,
+            "dbMs": 205.37079999997513,
+            "betweenSqlMs": 0,
+            "postMs": 0.054900000046472996,
+            "sqlCalls": 1,
+            "rowsToApp": 1,
+            "openCount": 0
+          }
+        ]
+      }
+    },
+    {
+      "name": "contains",
+      "tree": {
+        "field": "memo",
+        "op": "contains",
+        "value": "서비스"
+      },
+      "mode": "count",
+      "condition": "memo contains \"서비스\"",
+      "targetRows": 100000,
+      "actualMatches": 40097,
+      "resultRows": 1,
+      "resultValue": 40097,
+      "dbCandidates": 40097,
+      "first": {
+        "A": {
+          "totalMs": 163.647799999977,
+          "preMs": 0.39130000001750886,
+          "dbMs": 163.20329999999376,
+          "betweenSqlMs": 0,
+          "postMs": 0.05319999996572733,
+          "sqlCalls": 1,
+          "rowsToApp": 1,
+          "openCount": 0
+        },
+        "product": {
+          "totalMs": 1563.6908999999869,
+          "preMs": 1.283899999980349,
+          "dbMs": 131.7850000000326,
+          "betweenSqlMs": 0,
+          "postMs": 1430.621999999974,
+          "sqlCalls": 1,
+          "rowsToApp": 40097,
+          "openCount": 40097
+        },
+        "plain": {
+          "totalMs": 18.70489999995334,
+          "preMs": 0.06699999998090789,
+          "dbMs": 18.582300000009127,
+          "betweenSqlMs": 0,
+          "postMs": 0.05559999996330589,
+          "sqlCalls": 1,
+          "rowsToApp": 1,
+          "openCount": 0
+        }
+      },
+      "summary": {
+        "plain": {
+          "totalMs": 19.307700000004843,
+          "preMs": 0.044999999983701855,
+          "dbMs": 19.209100000036415,
+          "betweenSqlMs": 0,
+          "postMs": 0.05359999998472631,
+          "sqlCalls": 1,
+          "rowsToApp": 1,
+          "openCount": 0
+        },
+        "product": {
+          "totalMs": 1520.846499999985,
+          "preMs": 1.0313000000314787,
+          "dbMs": 135.08950000000186,
+          "betweenSqlMs": 0,
+          "postMs": 1390.0687000000034,
+          "sqlCalls": 1,
+          "rowsToApp": 40097,
+          "openCount": 40097
+        },
+        "A": {
+          "totalMs": 175.05259999999544,
+          "preMs": 0.4110000000218861,
+          "dbMs": 174.5218000000459,
+          "betweenSqlMs": 0,
+          "postMs": 0.054300000017974526,
+          "sqlCalls": 1,
+          "rowsToApp": 1,
+          "openCount": 0
+        }
+      },
+      "runs": {
+        "plain": [
+          {
+            "totalMs": 21.597400000027847,
+            "preMs": 0.03980000002775341,
+            "dbMs": 21.50239999999758,
+            "betweenSqlMs": 0,
+            "postMs": 0.05520000000251457,
+            "sqlCalls": 1,
+            "rowsToApp": 1,
+            "openCount": 0
+          },
+          {
+            "totalMs": 18.944799999997485,
+            "preMs": 0.06650000001536682,
+            "dbMs": 18.81559999997262,
+            "betweenSqlMs": 0,
+            "postMs": 0.06270000000949949,
+            "sqlCalls": 1,
+            "rowsToApp": 1,
+            "openCount": 0
+          },
+          {
+            "totalMs": 19.307700000004843,
+            "preMs": 0.044999999983701855,
+            "dbMs": 19.209100000036415,
+            "betweenSqlMs": 0,
+            "postMs": 0.05359999998472631,
+            "sqlCalls": 1,
+            "rowsToApp": 1,
+            "openCount": 0
+          },
+          {
+            "totalMs": 18.599899999971967,
+            "preMs": 0.06609999999636784,
+            "dbMs": 18.48070000001462,
+            "betweenSqlMs": 0,
+            "postMs": 0.053099999960977584,
+            "sqlCalls": 1,
+            "rowsToApp": 1,
+            "openCount": 0
+          },
+          {
+            "totalMs": 18.349799999967217,
+            "preMs": 0.039299999945797026,
+            "dbMs": 18.258300000044983,
+            "betweenSqlMs": 0,
+            "postMs": 0.05219999997643754,
+            "sqlCalls": 1,
+            "rowsToApp": 1,
+            "openCount": 0
+          },
+          {
+            "totalMs": 20.116800000017975,
+            "preMs": 0.06750000000465661,
+            "dbMs": 19.987200000032317,
+            "betweenSqlMs": 0,
+            "postMs": 0.06209999998100102,
+            "sqlCalls": 1,
+            "rowsToApp": 1,
+            "openCount": 0
+          },
+          {
+            "totalMs": 20.318400000047404,
+            "preMs": 0.042000000015832484,
+            "dbMs": 20.223899999982677,
+            "betweenSqlMs": 0,
+            "postMs": 0.052500000048894435,
+            "sqlCalls": 1,
+            "rowsToApp": 1,
+            "openCount": 0
+          }
+        ],
+        "product": [
+          {
+            "totalMs": 1496.1790000000037,
+            "preMs": 1.118300000031013,
+            "dbMs": 139.30589999997756,
+            "betweenSqlMs": 0,
+            "postMs": 1355.7547999999952,
+            "sqlCalls": 1,
+            "rowsToApp": 40097,
+            "openCount": 40097
+          },
+          {
+            "totalMs": 1516.0078000000212,
+            "preMs": 1.0533000000286847,
+            "dbMs": 138.2224999999744,
+            "betweenSqlMs": 0,
+            "postMs": 1376.7320000000182,
+            "sqlCalls": 1,
+            "rowsToApp": 40097,
+            "openCount": 40097
+          },
+          {
+            "totalMs": 1489.161699999997,
+            "preMs": 0.9083000000100583,
+            "dbMs": 135.08950000000186,
+            "betweenSqlMs": 0,
+            "postMs": 1353.163899999985,
+            "sqlCalls": 1,
+            "rowsToApp": 40097,
+            "openCount": 40097
+          },
+          {
+            "totalMs": 1520.846499999985,
+            "preMs": 0.9884999999776483,
+            "dbMs": 129.789300000004,
+            "betweenSqlMs": 0,
+            "postMs": 1390.0687000000034,
+            "sqlCalls": 1,
+            "rowsToApp": 40097,
+            "openCount": 40097
+          },
+          {
+            "totalMs": 1549.541900000011,
+            "preMs": 0.9626999999745749,
+            "dbMs": 126.08900000003632,
+            "betweenSqlMs": 0,
+            "postMs": 1422.4902000000002,
+            "sqlCalls": 1,
+            "rowsToApp": 40097,
+            "openCount": 40097
+          },
+          {
+            "totalMs": 1582.8777000000118,
+            "preMs": 1.1475999999674968,
+            "dbMs": 178.63610000000335,
+            "betweenSqlMs": 0,
+            "postMs": 1403.094000000041,
+            "sqlCalls": 1,
+            "rowsToApp": 40097,
+            "openCount": 40097
+          },
+          {
+            "totalMs": 1531.5597999999882,
+            "preMs": 1.0313000000314787,
+            "dbMs": 132.09229999996023,
+            "betweenSqlMs": 0,
+            "postMs": 1398.4361999999965,
+            "sqlCalls": 1,
+            "rowsToApp": 40097,
+            "openCount": 40097
+          }
+        ],
+        "A": [
+          {
+            "totalMs": 180.58199999999488,
+            "preMs": 0.3971000000019558,
+            "dbMs": 180.13060000003316,
+            "betweenSqlMs": 0,
+            "postMs": 0.054299999959766865,
+            "sqlCalls": 1,
+            "rowsToApp": 1,
+            "openCount": 0
+          },
+          {
+            "totalMs": 176.7033999999985,
+            "preMs": 0.4245999999693595,
+            "dbMs": 176.22460000001593,
+            "betweenSqlMs": 0,
+            "postMs": 0.05420000001322478,
+            "sqlCalls": 1,
+            "rowsToApp": 1,
+            "openCount": 0
+          },
+          {
+            "totalMs": 170.80389999999898,
+            "preMs": 0.39830000000074506,
+            "dbMs": 170.35129999998026,
+            "betweenSqlMs": 0,
+            "postMs": 0.054300000017974526,
+            "sqlCalls": 1,
+            "rowsToApp": 1,
+            "openCount": 0
+          },
+          {
+            "totalMs": 165.33620000001974,
+            "preMs": 0.4110000000218861,
+            "dbMs": 164.87209999997867,
+            "betweenSqlMs": 0,
+            "postMs": 0.053100000019185245,
+            "sqlCalls": 1,
+            "rowsToApp": 1,
+            "openCount": 0
+          },
+          {
+            "totalMs": 175.05259999999544,
+            "preMs": 0.4539999999688007,
+            "dbMs": 174.5218000000459,
+            "betweenSqlMs": 0,
+            "postMs": 0.07679999998072162,
+            "sqlCalls": 1,
+            "rowsToApp": 1,
+            "openCount": 0
+          },
+          {
+            "totalMs": 180.34460000001127,
+            "preMs": 0.6089999999967404,
+            "dbMs": 179.67920000001322,
+            "betweenSqlMs": 0,
+            "postMs": 0.05640000000130385,
+            "sqlCalls": 1,
+            "rowsToApp": 1,
+            "openCount": 0
+          },
+          {
+            "totalMs": 163.9643999999971,
+            "preMs": 0.38280000002123415,
+            "dbMs": 163.52309999999125,
+            "betweenSqlMs": 0,
+            "postMs": 0.05849999998463318,
+            "sqlCalls": 1,
+            "rowsToApp": 1,
+            "openCount": 0
+          }
+        ]
+      }
+    },
+    {
+      "name": "rare",
+      "tree": {
+        "field": "memo",
+        "op": "contains",
+        "value": "푸른달"
+      },
+      "mode": "count",
+      "condition": "memo contains \"푸른달\"",
+      "targetRows": 100000,
+      "actualMatches": 101,
+      "resultRows": 1,
+      "resultValue": 101,
+      "dbCandidates": 101,
+      "first": {
+        "A": {
+          "totalMs": 1.8206000000354834,
+          "preMs": 0.2865000000456348,
+          "dbMs": 1.5186000000103377,
+          "betweenSqlMs": 0,
+          "postMs": 0.015499999979510903,
+          "sqlCalls": 1,
+          "rowsToApp": 1,
+          "openCount": 0
+        },
+        "product": {
+          "totalMs": 7.4918000000179745,
+          "preMs": 0.7347999999765307,
+          "dbMs": 2.7617000000318512,
+          "betweenSqlMs": 0,
+          "postMs": 3.9953000000095926,
+          "sqlCalls": 1,
+          "rowsToApp": 101,
+          "openCount": 101
+        },
+        "plain": {
+          "totalMs": 17.645499999984168,
+          "preMs": 0.04899999999906868,
+          "dbMs": 17.53589999995893,
+          "betweenSqlMs": 0,
+          "postMs": 0.060600000026170164,
+          "sqlCalls": 1,
+          "rowsToApp": 1,
+          "openCount": 0
+        }
+      },
+      "summary": {
+        "plain": {
+          "totalMs": 18.237300000037067,
+          "preMs": 0.041400000045541674,
+          "dbMs": 18.112200000032317,
+          "betweenSqlMs": 0,
+          "postMs": 0.05420000001322478,
+          "sqlCalls": 1,
+          "rowsToApp": 1,
+          "openCount": 0
+        },
+        "product": {
+          "totalMs": 5.5711000000010245,
+          "preMs": 0.9222000000299886,
+          "dbMs": 1.1128000000026077,
+          "betweenSqlMs": 0,
+          "postMs": 3.509500000043772,
+          "sqlCalls": 1,
+          "rowsToApp": 101,
+          "openCount": 101
+        },
+        "A": {
+          "totalMs": 1.4332999999751337,
+          "preMs": 0.27620000002207235,
+          "dbMs": 1.1331000000354834,
+          "betweenSqlMs": 0,
+          "postMs": 0.018099999986588955,
+          "sqlCalls": 1,
+          "rowsToApp": 1,
+          "openCount": 0
+        }
+      },
+      "runs": {
+        "plain": [
+          {
+            "totalMs": 18.237300000037067,
+            "preMs": 0.07209999999031425,
+            "dbMs": 18.112200000032317,
+            "betweenSqlMs": 0,
+            "postMs": 0.0530000000144355,
+            "sqlCalls": 1,
+            "rowsToApp": 1,
+            "openCount": 0
+          },
+          {
+            "totalMs": 19.174800000037067,
+            "preMs": 0.08300000004237518,
+            "dbMs": 19.03469999996014,
+            "betweenSqlMs": 0,
+            "postMs": 0.05710000003455207,
+            "sqlCalls": 1,
+            "rowsToApp": 1,
+            "openCount": 0
+          },
+          {
+            "totalMs": 18.57870000001276,
+            "preMs": 0.046399999991990626,
+            "dbMs": 18.474099999992177,
+            "betweenSqlMs": 0,
+            "postMs": 0.0582000000285916,
+            "sqlCalls": 1,
+            "rowsToApp": 1,
+            "openCount": 0
+          },
+          {
+            "totalMs": 17.338400000007823,
+            "preMs": 0.02929999999469146,
+            "dbMs": 17.255200000014156,
+            "betweenSqlMs": 0,
+            "postMs": 0.053899999998975545,
+            "sqlCalls": 1,
+            "rowsToApp": 1,
+            "openCount": 0
+          },
+          {
+            "totalMs": 18.119400000025053,
+            "preMs": 0.041400000045541674,
+            "dbMs": 18.023799999966286,
+            "betweenSqlMs": 0,
+            "postMs": 0.05420000001322478,
+            "sqlCalls": 1,
+            "rowsToApp": 1,
+            "openCount": 0
+          },
+          {
+            "totalMs": 17.534500000008848,
+            "preMs": 0.021799999987706542,
+            "dbMs": 17.457999999984168,
+            "betweenSqlMs": 0,
+            "postMs": 0.054700000036973506,
+            "sqlCalls": 1,
+            "rowsToApp": 1,
+            "openCount": 0
+          },
+          {
+            "totalMs": 18.427299999981187,
+            "preMs": 0.04019999998854473,
+            "dbMs": 18.335299999976996,
+            "betweenSqlMs": 0,
+            "postMs": 0.05180000001564622,
+            "sqlCalls": 1,
+            "rowsToApp": 1,
+            "openCount": 0
+          }
+        ],
+        "product": [
+          {
+            "totalMs": 5.527500000025611,
+            "preMs": 0.9222000000299886,
+            "dbMs": 1.1905999999726191,
+            "betweenSqlMs": 0,
+            "postMs": 3.4147000000230037,
+            "sqlCalls": 1,
+            "rowsToApp": 101,
+            "openCount": 101
+          },
+          {
+            "totalMs": 7,
+            "preMs": 0.6671000000205822,
+            "dbMs": 1.255799999984447,
+            "betweenSqlMs": 0,
+            "postMs": 5.077099999994971,
+            "sqlCalls": 1,
+            "rowsToApp": 101,
+            "openCount": 101
+          },
+          {
+            "totalMs": 5.935200000007171,
+            "preMs": 0.9601000000257045,
+            "dbMs": 1.309000000008382,
+            "betweenSqlMs": 0,
+            "postMs": 3.6660999999730848,
+            "sqlCalls": 1,
+            "rowsToApp": 101,
+            "openCount": 101
+          },
+          {
+            "totalMs": 5.414400000008754,
+            "preMs": 0.6296999999904074,
+            "dbMs": 0.9856000000145286,
+            "betweenSqlMs": 0,
+            "postMs": 3.7991000000038184,
+            "sqlCalls": 1,
+            "rowsToApp": 101,
+            "openCount": 101
+          },
+          {
+            "totalMs": 5.5711000000010245,
+            "preMs": 1.003499999991618,
+            "dbMs": 1.1079000000027008,
+            "betweenSqlMs": 0,
+            "postMs": 3.4597000000067055,
+            "sqlCalls": 1,
+            "rowsToApp": 101,
+            "openCount": 101
+          },
+          {
+            "totalMs": 4.865899999975227,
+            "preMs": 0.737699999997858,
+            "dbMs": 0.854300000006333,
+            "betweenSqlMs": 0,
+            "postMs": 3.273899999971036,
+            "sqlCalls": 1,
+            "rowsToApp": 101,
+            "openCount": 101
+          },
+          {
+            "totalMs": 5.636700000031851,
+            "preMs": 1.0143999999854714,
+            "dbMs": 1.1128000000026077,
+            "betweenSqlMs": 0,
+            "postMs": 3.509500000043772,
+            "sqlCalls": 1,
+            "rowsToApp": 101,
+            "openCount": 101
+          }
+        ],
+        "A": [
+          {
+            "totalMs": 1.434000000008382,
+            "preMs": 0.2714000000269152,
+            "dbMs": 1.1444999999948777,
+            "betweenSqlMs": 0,
+            "postMs": 0.018099999986588955,
+            "sqlCalls": 1,
+            "rowsToApp": 1,
+            "openCount": 0
+          },
+          {
+            "totalMs": 1.0938000000314787,
+            "preMs": 0.23190000001341105,
+            "dbMs": 0.8470000000088476,
+            "betweenSqlMs": 0,
+            "postMs": 0.014900000009220093,
+            "sqlCalls": 1,
+            "rowsToApp": 1,
+            "openCount": 0
+          },
+          {
+            "totalMs": 1.4624000000185333,
+            "preMs": 0.2887000000337139,
+            "dbMs": 1.1530999999959022,
+            "betweenSqlMs": 0,
+            "postMs": 0.02059999998891726,
+            "sqlCalls": 1,
+            "rowsToApp": 1,
+            "openCount": 0
+          },
+          {
+            "totalMs": 1.0965999999898486,
+            "preMs": 0.24310000002151355,
+            "dbMs": 0.8381999999983236,
+            "betweenSqlMs": 0,
+            "postMs": 0.015299999970011413,
+            "sqlCalls": 1,
+            "rowsToApp": 1,
+            "openCount": 0
+          },
+          {
+            "totalMs": 1.4332999999751337,
+            "preMs": 0.28089999995427206,
+            "dbMs": 1.1331000000354834,
+            "betweenSqlMs": 0,
+            "postMs": 0.019299999985378236,
+            "sqlCalls": 1,
+            "rowsToApp": 1,
+            "openCount": 0
+          },
+          {
+            "totalMs": 1.191400000010617,
+            "preMs": 0.27620000002207235,
+            "dbMs": 0.8975000000209548,
+            "betweenSqlMs": 0,
+            "postMs": 0.017699999967589974,
+            "sqlCalls": 1,
+            "rowsToApp": 1,
+            "openCount": 0
+          },
+          {
+            "totalMs": 1.6830000000190921,
+            "preMs": 0.33770000003278255,
+            "dbMs": 1.3242999999783933,
+            "betweenSqlMs": 0,
+            "postMs": 0.021000000007916242,
+            "sqlCalls": 1,
+            "rowsToApp": 1,
+            "openCount": 0
+          }
+        ]
+      }
+    },
+    {
+      "name": "zero",
+      "tree": {
+        "field": "memo",
+        "op": "contains",
+        "value": "없는표식"
+      },
+      "mode": "count",
+      "condition": "memo contains \"없는표식\"",
+      "targetRows": 100000,
+      "actualMatches": 0,
+      "resultRows": 1,
+      "resultValue": 0,
+      "dbCandidates": 0,
+      "first": {
+        "A": {
+          "totalMs": 0.8733999999822117,
+          "preMs": 0.3074999999953434,
+          "dbMs": 0.5512999999918975,
+          "betweenSqlMs": 0,
+          "postMs": 0.014599999994970858,
+          "sqlCalls": 1,
+          "rowsToApp": 1,
+          "openCount": 0
+        },
+        "product": {
+          "totalMs": 1.248299999977462,
+          "preMs": 0.7999999999883585,
+          "dbMs": 0.4275999999954365,
+          "betweenSqlMs": 0,
+          "postMs": 0.020699999993667006,
+          "sqlCalls": 1,
+          "rowsToApp": 0,
+          "openCount": 0
+        },
+        "plain": {
+          "totalMs": 20.372199999983422,
+          "preMs": 0.0181999999913387,
+          "dbMs": 20.29839999997057,
+          "betweenSqlMs": 0,
+          "postMs": 0.05560000002151355,
+          "sqlCalls": 1,
+          "rowsToApp": 1,
+          "openCount": 0
+        }
+      },
+      "summary": {
+        "plain": {
+          "totalMs": 23.994599999976344,
+          "preMs": 0.04009999998379499,
+          "dbMs": 23.90639999997802,
+          "betweenSqlMs": 0,
+          "postMs": 0.05700000002980232,
+          "sqlCalls": 1,
+          "rowsToApp": 1,
+          "openCount": 0
+        },
+        "product": {
+          "totalMs": 1.5496999999741092,
+          "preMs": 0.9021000000066124,
+          "dbMs": 0.6379999999771826,
+          "betweenSqlMs": 0,
+          "postMs": 0.023300000000745058,
+          "sqlCalls": 1,
+          "rowsToApp": 0,
+          "openCount": 0
+        },
+        "A": {
+          "totalMs": 0.7972000000299886,
+          "preMs": 0.3209000000497326,
+          "dbMs": 0.4614999999757856,
+          "betweenSqlMs": 0,
+          "postMs": 0.014800000004470348,
+          "sqlCalls": 1,
+          "rowsToApp": 1,
+          "openCount": 0
+        }
+      },
+      "runs": {
+        "plain": [
+          {
+            "totalMs": 21.36070000001928,
+            "preMs": 0.04009999998379499,
+            "dbMs": 21.25209999998333,
+            "betweenSqlMs": 0,
+            "postMs": 0.06850000005215406,
+            "sqlCalls": 1,
+            "rowsToApp": 1,
+            "openCount": 0
+          },
+          {
+            "totalMs": 20.795499999949243,
+            "preMs": 0.019699999946169555,
+            "dbMs": 20.7166000000434,
+            "betweenSqlMs": 0,
+            "postMs": 0.05919999995967373,
+            "sqlCalls": 1,
+            "rowsToApp": 1,
+            "openCount": 0
+          },
+          {
+            "totalMs": 21.456400000024587,
+            "preMs": 0.045800000021699816,
+            "dbMs": 21.353599999973085,
+            "betweenSqlMs": 0,
+            "postMs": 0.05700000002980232,
+            "sqlCalls": 1,
+            "rowsToApp": 1,
+            "openCount": 0
+          },
+          {
+            "totalMs": 27.054300000017975,
+            "preMs": 0.0268999999971129,
+            "dbMs": 26.971100000024308,
+            "betweenSqlMs": 0,
+            "postMs": 0.056299999996554106,
+            "sqlCalls": 1,
+            "rowsToApp": 1,
+            "openCount": 0
+          },
+          {
+            "totalMs": 24.3131000000285,
+            "preMs": 0.046000000031199306,
+            "dbMs": 24.210199999972247,
+            "betweenSqlMs": 0,
+            "postMs": 0.05690000002505258,
+            "sqlCalls": 1,
+            "rowsToApp": 1,
+            "openCount": 0
+          },
+          {
+            "totalMs": 23.994599999976344,
+            "preMs": 0.030900000012479722,
+            "dbMs": 23.90639999997802,
+            "betweenSqlMs": 0,
+            "postMs": 0.0572999999858439,
+            "sqlCalls": 1,
+            "rowsToApp": 1,
+            "openCount": 0
+          },
+          {
+            "totalMs": 25.395100000023376,
+            "preMs": 0.044999999983701855,
+            "dbMs": 25.29350000002887,
+            "betweenSqlMs": 0,
+            "postMs": 0.05660000001080334,
+            "sqlCalls": 1,
+            "rowsToApp": 1,
+            "openCount": 0
+          }
+        ],
+        "product": [
+          {
+            "totalMs": 1.5275000000256114,
+            "preMs": 0.8781000000308268,
+            "dbMs": 0.6288999999524094,
+            "betweenSqlMs": 0,
+            "postMs": 0.020500000042375177,
+            "sqlCalls": 1,
+            "rowsToApp": 0,
+            "openCount": 0
+          },
+          {
+            "totalMs": 1.5496999999741092,
+            "preMs": 0.7627999999676831,
+            "dbMs": 0.7667999999830499,
+            "betweenSqlMs": 0,
+            "postMs": 0.020100000023376197,
+            "sqlCalls": 1,
+            "rowsToApp": 0,
+            "openCount": 0
+          },
+          {
+            "totalMs": 1.5090999999665655,
+            "preMs": 0.9090999999898486,
+            "dbMs": 0.5817999999853782,
+            "betweenSqlMs": 0,
+            "postMs": 0.0181999999913387,
+            "sqlCalls": 1,
+            "rowsToApp": 0,
+            "openCount": 0
+          },
+          {
+            "totalMs": 1.6027999999932945,
+            "preMs": 1.0376999999862164,
+            "dbMs": 0.5366999999969266,
+            "betweenSqlMs": 0,
+            "postMs": 0.028400000010151416,
+            "sqlCalls": 1,
+            "rowsToApp": 0,
+            "openCount": 0
+          },
+          {
+            "totalMs": 1.8681000000215136,
+            "preMs": 1.1447000000043772,
+            "dbMs": 0.6860999999917112,
+            "betweenSqlMs": 0,
+            "postMs": 0.037300000025425106,
+            "sqlCalls": 1,
+            "rowsToApp": 0,
+            "openCount": 0
+          },
+          {
+            "totalMs": 1.5057000000379048,
+            "preMs": 0.8327000000281259,
+            "dbMs": 0.6462999999639578,
+            "betweenSqlMs": 0,
+            "postMs": 0.02670000004582107,
+            "sqlCalls": 1,
+            "rowsToApp": 0,
+            "openCount": 0
+          },
+          {
+            "totalMs": 1.56339999998454,
+            "preMs": 0.9021000000066124,
+            "dbMs": 0.6379999999771826,
+            "betweenSqlMs": 0,
+            "postMs": 0.023300000000745058,
+            "sqlCalls": 1,
+            "rowsToApp": 0,
+            "openCount": 0
+          }
+        ],
+        "A": [
+          {
+            "totalMs": 0.7972000000299886,
+            "preMs": 0.3209000000497326,
+            "dbMs": 0.4614999999757856,
+            "betweenSqlMs": 0,
+            "postMs": 0.014800000004470348,
+            "sqlCalls": 1,
+            "rowsToApp": 1,
+            "openCount": 0
+          },
+          {
+            "totalMs": 0.6879999999655411,
+            "preMs": 0.2789999999804422,
+            "dbMs": 0.39509999996516854,
+            "betweenSqlMs": 0,
+            "postMs": 0.013900000019930303,
+            "sqlCalls": 1,
+            "rowsToApp": 1,
+            "openCount": 0
+          },
+          {
+            "totalMs": 0.7574000000022352,
+            "preMs": 0.31959999998798594,
+            "dbMs": 0.42340000002877787,
+            "betweenSqlMs": 0,
+            "postMs": 0.014399999985471368,
+            "sqlCalls": 1,
+            "rowsToApp": 1,
+            "openCount": 0
+          },
+          {
+            "totalMs": 0.6749000000418164,
+            "preMs": 0.272800000035204,
+            "dbMs": 0.38829999999143183,
+            "betweenSqlMs": 0,
+            "postMs": 0.013800000015180558,
+            "sqlCalls": 1,
+            "rowsToApp": 1,
+            "openCount": 0
+          },
+          {
+            "totalMs": 0.9570999999996275,
+            "preMs": 0.4243000000133179,
+            "dbMs": 0.511400000017602,
+            "betweenSqlMs": 0,
+            "postMs": 0.02139999996870756,
+            "sqlCalls": 1,
+            "rowsToApp": 1,
+            "openCount": 0
+          },
+          {
+            "totalMs": 1.4328000000095926,
+            "preMs": 0.5549999999930151,
+            "dbMs": 0.8374000000185333,
+            "betweenSqlMs": 0,
+            "postMs": 0.04039999999804422,
+            "sqlCalls": 1,
+            "rowsToApp": 1,
+            "openCount": 0
+          },
+          {
+            "totalMs": 0.8148999999975786,
+            "preMs": 0.33329999999841675,
+            "dbMs": 0.46529999998165295,
+            "betweenSqlMs": 0,
+            "postMs": 0.016300000017508864,
+            "sqlCalls": 1,
+            "rowsToApp": 1,
+            "openCount": 0
+          }
+        ]
+      }
+    },
+    {
+      "name": "structuralZero",
+      "tree": {
+        "field": "company",
+        "op": "contains",
+        "value": "지사담"
+      },
+      "mode": "count",
+      "condition": "company contains \"지사담\"",
+      "targetRows": 100000,
+      "actualMatches": 0,
+      "resultRows": 1,
+      "resultValue": 0,
+      "dbCandidates": 0,
+      "first": {
+        "A": {
+          "totalMs": 0.9902000000001863,
+          "preMs": 0.34570000000530854,
+          "dbMs": 0.6270999999833293,
+          "betweenSqlMs": 0,
+          "postMs": 0.0174000000115484,
+          "sqlCalls": 1,
+          "rowsToApp": 1,
+          "openCount": 0
+        },
+        "product": {
+          "totalMs": 1.3029000000096858,
+          "preMs": 0.7498999999952503,
+          "dbMs": 0.5298000000184402,
+          "betweenSqlMs": 0,
+          "postMs": 0.023199999995995313,
+          "sqlCalls": 1,
+          "rowsToApp": 0,
+          "openCount": 0
+        },
+        "plain": {
+          "totalMs": 23.2550999999512,
+          "preMs": 0.022799999976996332,
+          "dbMs": 23.177499999990687,
+          "betweenSqlMs": 0,
+          "postMs": 0.05479999998351559,
+          "sqlCalls": 1,
+          "rowsToApp": 1,
+          "openCount": 0
+        }
+      },
+      "summary": {
+        "plain": {
+          "totalMs": 24.489200000010896,
+          "preMs": 0.03930000000400469,
+          "dbMs": 24.412200000020675,
+          "betweenSqlMs": 0,
+          "postMs": 0.05320000002393499,
+          "sqlCalls": 1,
+          "rowsToApp": 1,
+          "openCount": 0
+        },
+        "product": {
+          "totalMs": 1.3400999999721535,
+          "preMs": 0.7599999999511056,
+          "dbMs": 0.5610999999917112,
+          "betweenSqlMs": 0,
+          "postMs": 0.01939999999012798,
+          "sqlCalls": 1,
+          "rowsToApp": 0,
+          "openCount": 0
+        },
+        "A": {
+          "totalMs": 0.6842999999644235,
+          "preMs": 0.2592000000295229,
+          "dbMs": 0.4150000000372529,
+          "betweenSqlMs": 0,
+          "postMs": 0.014399999985471368,
+          "sqlCalls": 1,
+          "rowsToApp": 1,
+          "openCount": 0
+        }
+      },
+      "runs": {
+        "plain": [
+          {
+            "totalMs": 24.557900000014342,
+            "preMs": 0.03960000001825392,
+            "dbMs": 24.465700000000652,
+            "betweenSqlMs": 0,
+            "postMs": 0.05259999999543652,
+            "sqlCalls": 1,
+            "rowsToApp": 1,
+            "openCount": 0
+          },
+          {
+            "totalMs": 24.071400000015274,
+            "preMs": 0.0174000000115484,
+            "dbMs": 24,
+            "betweenSqlMs": 0,
+            "postMs": 0.05400000000372529,
+            "sqlCalls": 1,
+            "rowsToApp": 1,
+            "openCount": 0
+          },
+          {
+            "totalMs": 24.24610000004759,
+            "preMs": 0.03930000000400469,
+            "dbMs": 24.150400000042282,
+            "betweenSqlMs": 0,
+            "postMs": 0.05640000000130385,
+            "sqlCalls": 1,
+            "rowsToApp": 1,
+            "openCount": 0
+          },
+          {
+            "totalMs": 24.489200000010896,
+            "preMs": 0.020699999993667006,
+            "dbMs": 24.412200000020675,
+            "betweenSqlMs": 0,
+            "postMs": 0.056299999996554106,
+            "sqlCalls": 1,
+            "rowsToApp": 1,
+            "openCount": 0
+          },
+          {
+            "totalMs": 25.080000000016298,
+            "preMs": 0.043000000005122274,
+            "dbMs": 24.98499999998603,
+            "betweenSqlMs": 0,
+            "postMs": 0.05200000002514571,
+            "sqlCalls": 1,
+            "rowsToApp": 1,
+            "openCount": 0
+          },
+          {
+            "totalMs": 24.43880000000354,
+            "preMs": 0.017899999977089465,
+            "dbMs": 24.367700000002515,
+            "betweenSqlMs": 0,
+            "postMs": 0.05320000002393499,
+            "sqlCalls": 1,
+            "rowsToApp": 1,
+            "openCount": 0
+          },
+          {
+            "totalMs": 25.29610000003595,
+            "preMs": 0.04070000001229346,
+            "dbMs": 25.20260000001872,
+            "betweenSqlMs": 0,
+            "postMs": 0.05280000000493601,
+            "sqlCalls": 1,
+            "rowsToApp": 1,
+            "openCount": 0
+          }
+        ],
+        "product": [
+          {
+            "totalMs": 1.3760999999940395,
+            "preMs": 0.7828000000445172,
+            "dbMs": 0.5736999999498948,
+            "betweenSqlMs": 0,
+            "postMs": 0.01959999999962747,
+            "sqlCalls": 1,
+            "rowsToApp": 0,
+            "openCount": 0
+          },
+          {
+            "totalMs": 0.9365000000107102,
+            "preMs": 0.5479000000050291,
+            "dbMs": 0.3709999999846332,
+            "betweenSqlMs": 0,
+            "postMs": 0.01760000002104789,
+            "sqlCalls": 1,
+            "rowsToApp": 0,
+            "openCount": 0
+          },
+          {
+            "totalMs": 1.6093999999575317,
+            "preMs": 0.8326999999699183,
+            "dbMs": 0.7133000000030734,
+            "betweenSqlMs": 0,
+            "postMs": 0.06339999998454005,
+            "sqlCalls": 1,
+            "rowsToApp": 0,
+            "openCount": 0
+          },
+          {
+            "totalMs": 1.0855999999912456,
+            "preMs": 0.6084000000264496,
+            "dbMs": 0.4566999999806285,
+            "betweenSqlMs": 0,
+            "postMs": 0.020499999984167516,
+            "sqlCalls": 1,
+            "rowsToApp": 0,
+            "openCount": 0
+          },
+          {
+            "totalMs": 1.3400999999721535,
+            "preMs": 0.7599999999511056,
+            "dbMs": 0.5610999999917112,
+            "betweenSqlMs": 0,
+            "postMs": 0.01900000002933666,
+            "sqlCalls": 1,
+            "rowsToApp": 0,
+            "openCount": 0
+          },
+          {
+            "totalMs": 1.0152000000234693,
+            "preMs": 0.6269000000320375,
+            "dbMs": 0.37119999999413267,
+            "betweenSqlMs": 0,
+            "postMs": 0.017099999997299165,
+            "sqlCalls": 1,
+            "rowsToApp": 0,
+            "openCount": 0
+          },
+          {
+            "totalMs": 1.441400000010617,
+            "preMs": 0.8108000000356697,
+            "dbMs": 0.6111999999848194,
+            "betweenSqlMs": 0,
+            "postMs": 0.01939999999012798,
+            "sqlCalls": 1,
+            "rowsToApp": 0,
+            "openCount": 0
+          }
+        ],
+        "A": [
+          {
+            "totalMs": 0.7849000000278465,
+            "preMs": 0.3418999999994412,
+            "dbMs": 0.42860000004293397,
+            "betweenSqlMs": 0,
+            "postMs": 0.014399999985471368,
+            "sqlCalls": 1,
+            "rowsToApp": 1,
+            "openCount": 0
+          },
+          {
+            "totalMs": 0.6234999999869615,
+            "preMs": 0.21909999998752028,
+            "dbMs": 0.38809999998193234,
+            "betweenSqlMs": 0,
+            "postMs": 0.016300000017508864,
+            "sqlCalls": 1,
+            "rowsToApp": 1,
+            "openCount": 0
+          },
+          {
+            "totalMs": 0.8739000000059605,
+            "preMs": 0.3649999999906868,
+            "dbMs": 0.4918000000179745,
+            "betweenSqlMs": 0,
+            "postMs": 0.017099999997299165,
+            "sqlCalls": 1,
+            "rowsToApp": 1,
+            "openCount": 0
+          },
+          {
+            "totalMs": 0.7000999999581836,
+            "preMs": 0.2631999999866821,
+            "dbMs": 0.42249999998603016,
+            "betweenSqlMs": 0,
+            "postMs": 0.014399999985471368,
+            "sqlCalls": 1,
+            "rowsToApp": 1,
+            "openCount": 0
+          },
+          {
+            "totalMs": 0.6842999999644235,
+            "preMs": 0.2554999999701977,
+            "dbMs": 0.4150000000372529,
+            "betweenSqlMs": 0,
+            "postMs": 0.013799999956972897,
+            "sqlCalls": 1,
+            "rowsToApp": 1,
+            "openCount": 0
+          },
+          {
+            "totalMs": 0.6154000000096858,
+            "preMs": 0.22379999997792765,
+            "dbMs": 0.3775000000023283,
+            "betweenSqlMs": 0,
+            "postMs": 0.014100000029429793,
+            "sqlCalls": 1,
+            "rowsToApp": 1,
+            "openCount": 0
+          },
+          {
+            "totalMs": 0.6784000000334345,
+            "preMs": 0.2592000000295229,
+            "dbMs": 0.40529999998398125,
+            "betweenSqlMs": 0,
+            "postMs": 0.013900000019930303,
+            "sqlCalls": 1,
+            "rowsToApp": 1,
+            "openCount": 0
+          }
+        ]
+      }
+    },
+    {
+      "name": "starts",
+      "tree": {
+        "field": "company",
+        "op": "startsWith",
+        "value": "서울"
+      },
+      "mode": "count",
+      "condition": "company startsWith \"서울\"",
+      "targetRows": 100000,
+      "actualMatches": 30101,
+      "resultRows": 1,
+      "resultValue": 30101,
+      "dbCandidates": 30101,
+      "first": {
+        "A": {
+          "totalMs": 211.27130000002217,
+          "preMs": 0.4175000000395812,
+          "dbMs": 210.79699999996228,
+          "betweenSqlMs": 0,
+          "postMs": 0.05680000002030283,
+          "sqlCalls": 1,
+          "rowsToApp": 1,
+          "openCount": 0
+        },
+        "product": {
+          "totalMs": 1122.7926999999909,
+          "preMs": 0.8299000000115484,
+          "dbMs": 110.25579999998445,
+          "betweenSqlMs": 0,
+          "postMs": 1011.7069999999949,
+          "sqlCalls": 1,
+          "rowsToApp": 30101,
+          "openCount": 30101
+        },
+        "plain": {
+          "totalMs": 12.729099999996834,
+          "preMs": 0.056699999957345426,
+          "dbMs": 12.617700000002515,
+          "betweenSqlMs": 0,
+          "postMs": 0.054700000036973506,
+          "sqlCalls": 1,
+          "rowsToApp": 1,
+          "openCount": 0
+        }
+      },
+      "summary": {
+        "plain": {
+          "totalMs": 13.462999999988824,
+          "preMs": 0.046799999952781945,
+          "dbMs": 13.352700000046752,
+          "betweenSqlMs": 0,
+          "postMs": 0.06150000001071021,
+          "sqlCalls": 1,
+          "rowsToApp": 1,
+          "openCount": 0
+        },
+        "product": {
+          "totalMs": 1143.4476999999606,
+          "preMs": 0.9537000000127591,
+          "dbMs": 112.21319999999832,
+          "betweenSqlMs": 0,
+          "postMs": 1027.4725999999791,
+          "sqlCalls": 1,
+          "rowsToApp": 30101,
+          "openCount": 30101
+        },
+        "A": {
+          "totalMs": 214.81279999995604,
+          "preMs": 0.4235000000335276,
+          "dbMs": 214.33360000001267,
+          "betweenSqlMs": 0,
+          "postMs": 0.05749999999534339,
+          "sqlCalls": 1,
+          "rowsToApp": 1,
+          "openCount": 0
+        }
+      },
+      "runs": {
+        "plain": [
+          {
+            "totalMs": 13.462999999988824,
+            "preMs": 0.046799999952781945,
+            "dbMs": 13.352700000046752,
+            "betweenSqlMs": 0,
+            "postMs": 0.06349999998928979,
+            "sqlCalls": 1,
+            "rowsToApp": 1,
+            "openCount": 0
+          },
+          {
+            "totalMs": 13.567800000018906,
+            "preMs": 0.05830000003334135,
+            "dbMs": 13.447999999974854,
+            "betweenSqlMs": 0,
+            "postMs": 0.06150000001071021,
+            "sqlCalls": 1,
+            "rowsToApp": 1,
+            "openCount": 0
+          },
+          {
+            "totalMs": 13.4206000000122,
+            "preMs": 0.04149999999208376,
+            "dbMs": 13.323499999998603,
+            "betweenSqlMs": 0,
+            "postMs": 0.05560000002151355,
+            "sqlCalls": 1,
+            "rowsToApp": 1,
+            "openCount": 0
+          },
+          {
+            "totalMs": 13.790899999963585,
+            "preMs": 0.05479999998351559,
+            "dbMs": 13.679799999983516,
+            "betweenSqlMs": 0,
+            "postMs": 0.056299999996554106,
+            "sqlCalls": 1,
+            "rowsToApp": 1,
+            "openCount": 0
+          },
+          {
+            "totalMs": 13.26320000004489,
+            "preMs": 0.041800000006332994,
+            "dbMs": 13.164900000032503,
+            "betweenSqlMs": 0,
+            "postMs": 0.0565000000060536,
+            "sqlCalls": 1,
+            "rowsToApp": 1,
+            "openCount": 0
+          },
+          {
+            "totalMs": 13.889799999946263,
+            "preMs": 0.059999999997671694,
+            "dbMs": 13.76759999996284,
+            "betweenSqlMs": 0,
+            "postMs": 0.062199999985750765,
+            "sqlCalls": 1,
+            "rowsToApp": 1,
+            "openCount": 0
+          },
+          {
+            "totalMs": 13.434000000008382,
+            "preMs": 0.045199999993201345,
+            "dbMs": 13.312000000034459,
+            "betweenSqlMs": 0,
+            "postMs": 0.07679999998072162,
+            "sqlCalls": 1,
+            "rowsToApp": 1,
+            "openCount": 0
+          }
+        ],
+        "product": [
+          {
+            "totalMs": 1184.4419000000344,
+            "preMs": 1.1247000000439584,
+            "dbMs": 104.33220000000438,
+            "betweenSqlMs": 0,
+            "postMs": 1078.984999999986,
+            "sqlCalls": 1,
+            "rowsToApp": 30101,
+            "openCount": 30101
+          },
+          {
+            "totalMs": 1195.0356999999494,
+            "preMs": 1.1108999999705702,
+            "dbMs": 115.67320000001928,
+            "betweenSqlMs": 0,
+            "postMs": 1078.2515999999596,
+            "sqlCalls": 1,
+            "rowsToApp": 30101,
+            "openCount": 30101
+          },
+          {
+            "totalMs": 1121.036699999997,
+            "preMs": 0.8399999999674037,
+            "dbMs": 112.21319999999832,
+            "betweenSqlMs": 0,
+            "postMs": 1007.9835000000312,
+            "sqlCalls": 1,
+            "rowsToApp": 30101,
+            "openCount": 30101
+          },
+          {
+            "totalMs": 1130.8133999999845,
+            "preMs": 0.8575999999884516,
+            "dbMs": 102.48320000001695,
+            "betweenSqlMs": 0,
+            "postMs": 1027.4725999999791,
+            "sqlCalls": 1,
+            "rowsToApp": 30101,
+            "openCount": 30101
+          },
+          {
+            "totalMs": 1143.4476999999606,
+            "preMs": 0.855199999990873,
+            "dbMs": 115.3743999999715,
+            "betweenSqlMs": 0,
+            "postMs": 1027.2180999999982,
+            "sqlCalls": 1,
+            "rowsToApp": 30101,
+            "openCount": 30101
+          },
+          {
+            "totalMs": 1161.8340000000317,
+            "preMs": 0.9537000000127591,
+            "dbMs": 103.43719999998575,
+            "betweenSqlMs": 0,
+            "postMs": 1057.4431000000332,
+            "sqlCalls": 1,
+            "rowsToApp": 30101,
+            "openCount": 30101
+          },
+          {
+            "totalMs": 1123.5447000000277,
+            "preMs": 0.9667999999946915,
+            "dbMs": 118.95300000003772,
+            "betweenSqlMs": 0,
+            "postMs": 1003.6248999999953,
+            "sqlCalls": 1,
+            "rowsToApp": 30101,
+            "openCount": 30101
+          }
+        ],
+        "A": [
+          {
+            "totalMs": 237.27860000001965,
+            "preMs": 0.4235000000335276,
+            "dbMs": 236.79759999999078,
+            "betweenSqlMs": 0,
+            "postMs": 0.05749999999534339,
+            "sqlCalls": 1,
+            "rowsToApp": 1,
+            "openCount": 0
+          },
+          {
+            "totalMs": 221.77170000004116,
+            "preMs": 0.47940000001108274,
+            "dbMs": 221.22200000000885,
+            "betweenSqlMs": 0,
+            "postMs": 0.07030000002123415,
+            "sqlCalls": 1,
+            "rowsToApp": 1,
+            "openCount": 0
+          },
+          {
+            "totalMs": 236.86050000000978,
+            "preMs": 0.5094999999855645,
+            "dbMs": 236.29230000003008,
+            "betweenSqlMs": 0,
+            "postMs": 0.05869999999413267,
+            "sqlCalls": 1,
+            "rowsToApp": 1,
+            "openCount": 0
+          },
+          {
+            "totalMs": 214.81279999995604,
+            "preMs": 0.4233999999705702,
+            "dbMs": 214.33360000001267,
+            "betweenSqlMs": 0,
+            "postMs": 0.05579999997280538,
+            "sqlCalls": 1,
+            "rowsToApp": 1,
+            "openCount": 0
+          },
+          {
+            "totalMs": 211.9566000000341,
+            "preMs": 0.4721000000135973,
+            "dbMs": 211.43109999998705,
+            "betweenSqlMs": 0,
+            "postMs": 0.05340000003343448,
+            "sqlCalls": 1,
+            "rowsToApp": 1,
+            "openCount": 0
+          },
+          {
+            "totalMs": 203.45750000001863,
+            "preMs": 0.36790000001201406,
+            "dbMs": 203.03649999998743,
+            "betweenSqlMs": 0,
+            "postMs": 0.053100000019185245,
+            "sqlCalls": 1,
+            "rowsToApp": 1,
+            "openCount": 0
+          },
+          {
+            "totalMs": 205.96360000001732,
+            "preMs": 0.37959999998565763,
+            "dbMs": 205.52610000001732,
+            "betweenSqlMs": 0,
+            "postMs": 0.05790000001434237,
+            "sqlCalls": 1,
+            "rowsToApp": 1,
+            "openCount": 0
+          }
+        ]
+      }
+    },
+    {
+      "name": "ends",
+      "tree": {
+        "field": "company",
+        "op": "endsWith",
+        "value": "담당"
+      },
+      "mode": "count",
+      "condition": "company endsWith \"담당\"",
+      "targetRows": 100000,
+      "actualMatches": 94117,
+      "resultRows": 1,
+      "resultValue": 94117,
+      "dbCandidates": 94117,
+      "first": {
+        "A": {
+          "totalMs": 266.22279999998864,
+          "preMs": 0.5568999999668449,
+          "dbMs": 265.6122000000323,
+          "betweenSqlMs": 0,
+          "postMs": 0.053699999989476055,
+          "sqlCalls": 1,
+          "rowsToApp": 1,
+          "openCount": 0
+        },
+        "product": {
+          "totalMs": 3463.025100000028,
+          "preMs": 0.8874000000068918,
+          "dbMs": 214.94080000004033,
+          "betweenSqlMs": 0,
+          "postMs": 3247.196899999981,
+          "sqlCalls": 1,
+          "rowsToApp": 94117,
+          "openCount": 94117
+        },
+        "plain": {
+          "totalMs": 19.93809999997029,
+          "preMs": 0.053100000019185245,
+          "dbMs": 19.83169999998063,
+          "betweenSqlMs": 0,
+          "postMs": 0.053299999970477074,
+          "sqlCalls": 1,
+          "rowsToApp": 1,
+          "openCount": 0
+        }
+      },
+      "summary": {
+        "plain": {
+          "totalMs": 25.601200000033714,
+          "preMs": 0.047799999942071736,
+          "dbMs": 25.492399999988265,
+          "betweenSqlMs": 0,
+          "postMs": 0.05160000000614673,
+          "sqlCalls": 1,
+          "rowsToApp": 1,
+          "openCount": 0
+        },
+        "product": {
+          "totalMs": 3534.76800000004,
+          "preMs": 0.939600000041537,
+          "dbMs": 220.0405000000028,
+          "betweenSqlMs": 0,
+          "postMs": 3313.863699999987,
+          "sqlCalls": 1,
+          "rowsToApp": 94117,
+          "openCount": 94117
+        },
+        "A": {
+          "totalMs": 278.2220999998972,
+          "preMs": 0.37760000000707805,
+          "dbMs": 277.794399999897,
+          "betweenSqlMs": 0,
+          "postMs": 0.0503000000026077,
+          "sqlCalls": 1,
+          "rowsToApp": 1,
+          "openCount": 0
+        }
+      },
+      "runs": {
+        "plain": [
+          {
+            "totalMs": 19.820999999996275,
+            "preMs": 0.04039999999804422,
+            "dbMs": 19.71720000001369,
+            "betweenSqlMs": 0,
+            "postMs": 0.06339999998454005,
+            "sqlCalls": 1,
+            "rowsToApp": 1,
+            "openCount": 0
+          },
+          {
+            "totalMs": 26.513199999928474,
+            "preMs": 0.07349999994039536,
+            "dbMs": 26.38780000002589,
+            "betweenSqlMs": 0,
+            "postMs": 0.051899999962188303,
+            "sqlCalls": 1,
+            "rowsToApp": 1,
+            "openCount": 0
+          },
+          {
+            "totalMs": 27.385400000028312,
+            "preMs": 0.04209999996237457,
+            "dbMs": 27.29720000002999,
+            "betweenSqlMs": 0,
+            "postMs": 0.04610000003594905,
+            "sqlCalls": 1,
+            "rowsToApp": 1,
+            "openCount": 0
+          },
+          {
+            "totalMs": 25.601200000033714,
+            "preMs": 0.056899999966844916,
+            "dbMs": 25.492399999988265,
+            "betweenSqlMs": 0,
+            "postMs": 0.051900000078603625,
+            "sqlCalls": 1,
+            "rowsToApp": 1,
+            "openCount": 0
+          },
+          {
+            "totalMs": 27.198600000003353,
+            "preMs": 0.047799999942071736,
+            "dbMs": 27.099200000055134,
+            "betweenSqlMs": 0,
+            "postMs": 0.05160000000614673,
+            "sqlCalls": 1,
+            "rowsToApp": 1,
+            "openCount": 0
+          },
+          {
+            "totalMs": 20.395800000056624,
+            "preMs": 0.05850000004284084,
+            "dbMs": 20.288599999970756,
+            "betweenSqlMs": 0,
+            "postMs": 0.0487000000430271,
+            "sqlCalls": 1,
+            "rowsToApp": 1,
+            "openCount": 0
+          },
+          {
+            "totalMs": 23.67180000001099,
+            "preMs": 0.045999999972991645,
+            "dbMs": 23.57900000002701,
+            "betweenSqlMs": 0,
+            "postMs": 0.046800000010989606,
+            "sqlCalls": 1,
+            "rowsToApp": 1,
+            "openCount": 0
+          }
+        ],
+        "product": [
+          {
+            "totalMs": 3464.1912000000593,
+            "preMs": 0.907500000030268,
+            "dbMs": 185.6858999999822,
+            "betweenSqlMs": 0,
+            "postMs": 3277.597800000047,
+            "sqlCalls": 1,
+            "rowsToApp": 94117,
+            "openCount": 94117
+          },
+          {
+            "totalMs": 3534.76800000004,
+            "preMs": 0.8638000000501052,
+            "dbMs": 220.0405000000028,
+            "betweenSqlMs": 0,
+            "postMs": 3313.863699999987,
+            "sqlCalls": 1,
+            "rowsToApp": 94117,
+            "openCount": 94117
+          },
+          {
+            "totalMs": 3579.3566000000574,
+            "preMs": 1.047800000058487,
+            "dbMs": 229.19209999998566,
+            "betweenSqlMs": 0,
+            "postMs": 3349.116700000013,
+            "sqlCalls": 1,
+            "rowsToApp": 94117,
+            "openCount": 94117
+          },
+          {
+            "totalMs": 3557.9599999999627,
+            "preMs": 0.939600000041537,
+            "dbMs": 225.34049999993294,
+            "betweenSqlMs": 0,
+            "postMs": 3331.6798999999883,
+            "sqlCalls": 1,
+            "rowsToApp": 94117,
+            "openCount": 94117
+          },
+          {
+            "totalMs": 3552.6278000000166,
+            "preMs": 1.3395000000018626,
+            "dbMs": 229.44880000001285,
+            "betweenSqlMs": 0,
+            "postMs": 3321.839500000002,
+            "sqlCalls": 1,
+            "rowsToApp": 94117,
+            "openCount": 94117
+          },
+          {
+            "totalMs": 3431.100300000049,
+            "preMs": 0.9698000000789762,
+            "dbMs": 215.5205999999307,
+            "betweenSqlMs": 0,
+            "postMs": 3214.6099000000395,
+            "sqlCalls": 1,
+            "rowsToApp": 94117,
+            "openCount": 94117
+          },
+          {
+            "totalMs": 3470.110699999961,
+            "preMs": 0.8265999999130145,
+            "dbMs": 198.34539999999106,
+            "betweenSqlMs": 0,
+            "postMs": 3270.938700000057,
+            "sqlCalls": 1,
+            "rowsToApp": 94117,
+            "openCount": 94117
+          }
+        ],
+        "A": [
+          {
+            "totalMs": 304.8478999999352,
+            "preMs": 0.3975999999092892,
+            "dbMs": 304.3992000001017,
+            "betweenSqlMs": 0,
+            "postMs": 0.05109999992419034,
+            "sqlCalls": 1,
+            "rowsToApp": 1,
+            "openCount": 0
+          },
+          {
+            "totalMs": 269.80790000001434,
+            "preMs": 0.3770000000949949,
+            "dbMs": 269.3275999999605,
+            "betweenSqlMs": 0,
+            "postMs": 0.10329999995883554,
+            "sqlCalls": 1,
+            "rowsToApp": 1,
+            "openCount": 0
+          },
+          {
+            "totalMs": 278.0170999999391,
+            "preMs": 0.37589999998454005,
+            "dbMs": 277.59310000005644,
+            "betweenSqlMs": 0,
+            "postMs": 0.04809999989811331,
+            "sqlCalls": 1,
+            "rowsToApp": 1,
+            "openCount": 0
+          },
+          {
+            "totalMs": 273.09130000008736,
+            "preMs": 0.37760000000707805,
+            "dbMs": 272.66110000002664,
+            "betweenSqlMs": 0,
+            "postMs": 0.05260000005364418,
+            "sqlCalls": 1,
+            "rowsToApp": 1,
+            "openCount": 0
+          },
+          {
+            "totalMs": 278.2220999998972,
+            "preMs": 0.37739999999757856,
+            "dbMs": 277.794399999897,
+            "betweenSqlMs": 0,
+            "postMs": 0.0503000000026077,
+            "sqlCalls": 1,
+            "rowsToApp": 1,
+            "openCount": 0
+          },
+          {
+            "totalMs": 298.98100000002887,
+            "preMs": 0.3838000000687316,
+            "dbMs": 298.5477999999421,
+            "betweenSqlMs": 0,
+            "postMs": 0.04940000001806766,
+            "sqlCalls": 1,
+            "rowsToApp": 1,
+            "openCount": 0
+          },
+          {
+            "totalMs": 279.00679999997374,
+            "preMs": 0.4080000000540167,
+            "dbMs": 278.5514999999432,
+            "betweenSqlMs": 0,
+            "postMs": 0.04729999997653067,
+            "sqlCalls": 1,
+            "rowsToApp": 1,
+            "openCount": 0
+          }
+        ]
+      }
+    },
+    {
+      "name": "and2",
+      "tree": {
+        "all": [
+          {
+            "field": "company",
+            "op": "eq",
+            "value": "서울서비스 담당"
+          },
+          {
+            "field": "memo",
+            "op": "contains",
+            "value": "서비스"
+          }
+        ]
+      },
+      "mode": "count",
+      "condition": "(company eq \"서울서비스 담당\" AND memo contains \"서비스\")",
+      "targetRows": 100000,
+      "actualMatches": 21176,
+      "resultRows": 1,
+      "resultValue": 21176,
+      "dbCandidates": 21176,
+      "first": {
+        "A": {
+          "totalMs": 193.20280000008643,
+          "preMs": 0.646999999997206,
+          "dbMs": 192.50970000005327,
+          "betweenSqlMs": 0,
+          "postMs": 0.04610000003594905,
+          "sqlCalls": 1,
+          "rowsToApp": 1,
+          "openCount": 0
+        },
+        "product": {
+          "totalMs": 1577.5263999999734,
+          "preMs": 1.2809000000124797,
+          "dbMs": 154.03489999996964,
+          "betweenSqlMs": 0,
+          "postMs": 1422.2105999999912,
+          "sqlCalls": 1,
+          "rowsToApp": 21176,
+          "openCount": 42352
+        },
+        "plain": {
+          "totalMs": 13.294799999915995,
+          "preMs": 0.06019999994896352,
+          "dbMs": 13.18440000002738,
+          "betweenSqlMs": 0,
+          "postMs": 0.0501999999396503,
+          "sqlCalls": 1,
+          "rowsToApp": 1,
+          "openCount": 0
+        }
+      },
+      "summary": {
+        "plain": {
+          "totalMs": 13.178599999984726,
+          "preMs": 0.061199999996460974,
+          "dbMs": 13.068100000033155,
+          "betweenSqlMs": 0,
+          "postMs": 0.04929999995511025,
+          "sqlCalls": 1,
+          "rowsToApp": 1,
+          "openCount": 0
+        },
+        "product": {
+          "totalMs": 1543.2321999999695,
+          "preMs": 1.1737999999895692,
+          "dbMs": 130.79719999991357,
+          "betweenSqlMs": 0,
+          "postMs": 1407.4853000000585,
+          "sqlCalls": 1,
+          "rowsToApp": 21176,
+          "openCount": 42352
+        },
+        "A": {
+          "totalMs": 190.88789999997243,
+          "preMs": 0.49400000006426126,
+          "dbMs": 190.34840000001714,
+          "betweenSqlMs": 0,
+          "postMs": 0.04879999998956919,
+          "sqlCalls": 1,
+          "rowsToApp": 1,
+          "openCount": 0
+        }
+      },
+      "runs": {
+        "plain": [
+          {
+            "totalMs": 12.59270000003744,
+            "preMs": 0.05650000006426126,
+            "dbMs": 12.490600000019185,
+            "betweenSqlMs": 0,
+            "postMs": 0.045599999953992665,
+            "sqlCalls": 1,
+            "rowsToApp": 1,
+            "openCount": 0
+          },
+          {
+            "totalMs": 13.178599999984726,
+            "preMs": 0.061199999996460974,
+            "dbMs": 13.068100000033155,
+            "betweenSqlMs": 0,
+            "postMs": 0.04929999995511025,
+            "sqlCalls": 1,
+            "rowsToApp": 1,
+            "openCount": 0
+          },
+          {
+            "totalMs": 12.104099999996834,
+            "preMs": 0.052700000000186265,
+            "dbMs": 12.005300000077114,
+            "betweenSqlMs": 0,
+            "postMs": 0.04609999991953373,
+            "sqlCalls": 1,
+            "rowsToApp": 1,
+            "openCount": 0
+          },
+          {
+            "totalMs": 14.335399999981746,
+            "preMs": 0.06500000006053597,
+            "dbMs": 14.212500000023283,
+            "betweenSqlMs": 0,
+            "postMs": 0.057899999897927046,
+            "sqlCalls": 1,
+            "rowsToApp": 1,
+            "openCount": 0
+          },
+          {
+            "totalMs": 12.684500000090338,
+            "preMs": 0.05870000005234033,
+            "dbMs": 12.578899999964051,
+            "betweenSqlMs": 0,
+            "postMs": 0.04690000007394701,
+            "sqlCalls": 1,
+            "rowsToApp": 1,
+            "openCount": 0
+          },
+          {
+            "totalMs": 19.363600000040606,
+            "preMs": 0.07740000006742775,
+            "dbMs": 19.21510000003036,
+            "betweenSqlMs": 0,
+            "postMs": 0.0710999999428168,
+            "sqlCalls": 1,
+            "rowsToApp": 1,
+            "openCount": 0
+          },
+          {
+            "totalMs": 13.878700000001118,
+            "preMs": 0.06689999997615814,
+            "dbMs": 13.743499999982305,
+            "betweenSqlMs": 0,
+            "postMs": 0.06830000004265457,
+            "sqlCalls": 1,
+            "rowsToApp": 1,
+            "openCount": 0
+          }
+        ],
+        "product": [
+          {
+            "totalMs": 1541.7280000000028,
+            "preMs": 1.063800000003539,
+            "dbMs": 129.5474000000395,
+            "betweenSqlMs": 0,
+            "postMs": 1411.1167999999598,
+            "sqlCalls": 1,
+            "rowsToApp": 21176,
+            "openCount": 42352
+          },
+          {
+            "totalMs": 1543.2321999999695,
+            "preMs": 1.022400000016205,
+            "dbMs": 138.51959999999963,
+            "betweenSqlMs": 0,
+            "postMs": 1403.6901999999536,
+            "sqlCalls": 1,
+            "rowsToApp": 21176,
+            "openCount": 42352
+          },
+          {
+            "totalMs": 1519.9938000000548,
+            "preMs": 1.2020000000484288,
+            "dbMs": 116.5215999999782,
+            "betweenSqlMs": 0,
+            "postMs": 1402.2702000000281,
+            "sqlCalls": 1,
+            "rowsToApp": 21176,
+            "openCount": 42352
+          },
+          {
+            "totalMs": 1545.9118000000017,
+            "preMs": 1.0873999999603257,
+            "dbMs": 137.33909999998286,
+            "betweenSqlMs": 0,
+            "postMs": 1407.4853000000585,
+            "sqlCalls": 1,
+            "rowsToApp": 21176,
+            "openCount": 42352
+          },
+          {
+            "totalMs": 1555.2246999999043,
+            "preMs": 1.1737999999895692,
+            "dbMs": 130.79719999991357,
+            "betweenSqlMs": 0,
+            "postMs": 1423.2537000000011,
+            "sqlCalls": 1,
+            "rowsToApp": 21176,
+            "openCount": 42352
+          },
+          {
+            "totalMs": 1541.496999999974,
+            "preMs": 1.1809000000357628,
+            "dbMs": 141.84279999998398,
+            "betweenSqlMs": 0,
+            "postMs": 1398.4732999999542,
+            "sqlCalls": 1,
+            "rowsToApp": 21176,
+            "openCount": 42352
+          },
+          {
+            "totalMs": 1543.47080000001,
+            "preMs": 1.706800000043586,
+            "dbMs": 127.83779999997932,
+            "betweenSqlMs": 0,
+            "postMs": 1413.9261999999871,
+            "sqlCalls": 1,
+            "rowsToApp": 21176,
+            "openCount": 42352
+          }
+        ],
+        "A": [
+          {
+            "totalMs": 190.15769999998156,
+            "preMs": 0.6609000000171363,
+            "dbMs": 189.42779999994673,
+            "betweenSqlMs": 0,
+            "postMs": 0.06900000001769513,
+            "sqlCalls": 1,
+            "rowsToApp": 1,
+            "openCount": 0
+          },
+          {
+            "totalMs": 187.8525999999838,
+            "preMs": 0.5565000000642613,
+            "dbMs": 187.24949999991804,
+            "betweenSqlMs": 0,
+            "postMs": 0.046600000001490116,
+            "sqlCalls": 1,
+            "rowsToApp": 1,
+            "openCount": 0
+          },
+          {
+            "totalMs": 189.60760000010487,
+            "preMs": 0.49400000006426126,
+            "dbMs": 189.06609999993816,
+            "betweenSqlMs": 0,
+            "postMs": 0.04750000010244548,
+            "sqlCalls": 1,
+            "rowsToApp": 1,
+            "openCount": 0
+          },
+          {
+            "totalMs": 193.56200000003446,
+            "preMs": 0.4734999999636784,
+            "dbMs": 193.0397000000812,
+            "betweenSqlMs": 0,
+            "postMs": 0.04879999998956919,
+            "sqlCalls": 1,
+            "rowsToApp": 1,
+            "openCount": 0
+          },
+          {
+            "totalMs": 206.01950000005309,
+            "preMs": 0.4897000000346452,
+            "dbMs": 205.4825000000419,
+            "betweenSqlMs": 0,
+            "postMs": 0.04729999997653067,
+            "sqlCalls": 1,
+            "rowsToApp": 1,
+            "openCount": 0
+          },
+          {
+            "totalMs": 190.88789999997243,
+            "preMs": 0.48750000004656613,
+            "dbMs": 190.34840000001714,
+            "betweenSqlMs": 0,
+            "postMs": 0.05199999990873039,
+            "sqlCalls": 1,
+            "rowsToApp": 1,
+            "openCount": 0
+          },
+          {
+            "totalMs": 191.71829999994952,
+            "preMs": 0.5009999999310821,
+            "dbMs": 191.16520000004675,
+            "betweenSqlMs": 0,
+            "postMs": 0.052099999971687794,
+            "sqlCalls": 1,
+            "rowsToApp": 1,
+            "openCount": 0
+          }
+        ]
+      }
+    },
+    {
+      "name": "or2",
+      "tree": {
+        "any": [
+          {
+            "field": "company",
+            "op": "eq",
+            "value": "서울서비스 담당"
+          },
+          {
+            "field": "memo",
+            "op": "contains",
+            "value": "푸른달"
+          }
+        ]
+      },
+      "mode": "count",
+      "condition": "(company eq \"서울서비스 담당\" OR memo contains \"푸른달\")",
+      "targetRows": 100000,
+      "actualMatches": 28400,
+      "resultRows": 1,
+      "resultValue": 28400,
+      "dbCandidates": 28400,
+      "first": {
+        "A": {
+          "totalMs": 255.2382000000216,
+          "preMs": 0.6812999999383464,
+          "dbMs": 254.50679999997374,
+          "betweenSqlMs": 0,
+          "postMs": 0.050100000109523535,
+          "sqlCalls": 1,
+          "rowsToApp": 1,
+          "openCount": 0
+        },
+        "product": {
+          "totalMs": 1959.670999999973,
+          "preMs": 1.0755999999819323,
+          "dbMs": 119.23459999996703,
+          "betweenSqlMs": 0,
+          "postMs": 1839.360800000024,
+          "sqlCalls": 1,
+          "rowsToApp": 28400,
+          "openCount": 56800
+        },
+        "plain": {
+          "totalMs": 48.51490000006743,
+          "preMs": 0.06270000000949949,
+          "dbMs": 48.4028999999864,
+          "betweenSqlMs": 0,
+          "postMs": 0.049300000071525574,
+          "sqlCalls": 1,
+          "rowsToApp": 1,
+          "openCount": 0
+        }
+      },
+      "summary": {
+        "plain": {
+          "totalMs": 28.703499999945052,
+          "preMs": 0.06199999991804361,
+          "dbMs": 28.591299999970943,
+          "betweenSqlMs": 0,
+          "postMs": 0.0482999999076128,
+          "sqlCalls": 1,
+          "rowsToApp": 1,
+          "openCount": 0
+        },
+        "product": {
+          "totalMs": 1953.2515999999596,
+          "preMs": 1.0928999999305233,
+          "dbMs": 109.85160000005271,
+          "betweenSqlMs": 0,
+          "postMs": 1840.815500000026,
+          "sqlCalls": 1,
+          "rowsToApp": 28400,
+          "openCount": 56800
+        },
+        "A": {
+          "totalMs": 251.671800000011,
+          "preMs": 0.49060000001918525,
+          "dbMs": 251.05930000008084,
+          "betweenSqlMs": 0,
+          "postMs": 0.048199999961070716,
+          "sqlCalls": 1,
+          "rowsToApp": 1,
+          "openCount": 0
+        }
+      },
+      "runs": {
+        "plain": [
+          {
+            "totalMs": 28.570999999996275,
+            "preMs": 0.054499999969266355,
+            "dbMs": 28.469000000040978,
+            "betweenSqlMs": 0,
+            "postMs": 0.04749999998603016,
+            "sqlCalls": 1,
+            "rowsToApp": 1,
+            "openCount": 0
+          },
+          {
+            "totalMs": 29.768600000068545,
+            "preMs": 0.06590000004507601,
+            "dbMs": 29.65060000005178,
+            "betweenSqlMs": 0,
+            "postMs": 0.052099999971687794,
+            "sqlCalls": 1,
+            "rowsToApp": 1,
+            "openCount": 0
+          },
+          {
+            "totalMs": 29.08349999994971,
+            "preMs": 0.06270000000949949,
+            "dbMs": 28.935399999958463,
+            "betweenSqlMs": 0,
+            "postMs": 0.08539999998174608,
+            "sqlCalls": 1,
+            "rowsToApp": 1,
+            "openCount": 0
+          },
+          {
+            "totalMs": 28.415699999895878,
+            "preMs": 0.06199999991804361,
+            "dbMs": 28.30540000007022,
+            "betweenSqlMs": 0,
+            "postMs": 0.0482999999076128,
+            "sqlCalls": 1,
+            "rowsToApp": 1,
+            "openCount": 0
+          },
+          {
+            "totalMs": 28.145299999974668,
+            "preMs": 0.05289999989327043,
+            "dbMs": 28.04610000003595,
+            "betweenSqlMs": 0,
+            "postMs": 0.04630000004544854,
+            "sqlCalls": 1,
+            "rowsToApp": 1,
+            "openCount": 0
+          },
+          {
+            "totalMs": 28.703499999945052,
+            "preMs": 0.062000000034458935,
+            "dbMs": 28.591299999970943,
+            "betweenSqlMs": 0,
+            "postMs": 0.0501999999396503,
+            "sqlCalls": 1,
+            "rowsToApp": 1,
+            "openCount": 0
+          },
+          {
+            "totalMs": 29.487800000002608,
+            "preMs": 0.053499999921768904,
+            "dbMs": 29.38770000007935,
+            "betweenSqlMs": 0,
+            "postMs": 0.046600000001490116,
+            "sqlCalls": 1,
+            "rowsToApp": 1,
+            "openCount": 0
+          }
+        ],
+        "product": [
+          {
+            "totalMs": 1962.7260000000242,
+            "preMs": 1.0391000000527129,
+            "dbMs": 120.97569999995176,
+            "betweenSqlMs": 0,
+            "postMs": 1840.7112000000197,
+            "sqlCalls": 1,
+            "rowsToApp": 28400,
+            "openCount": 56800
+          },
+          {
+            "totalMs": 1965.2820000000065,
+            "preMs": 1.0942000000504777,
+            "dbMs": 123.37229999992996,
+            "betweenSqlMs": 0,
+            "postMs": 1840.815500000026,
+            "sqlCalls": 1,
+            "rowsToApp": 28400,
+            "openCount": 56800
+          },
+          {
+            "totalMs": 1911.7341000000015,
+            "preMs": 1.2395999999716878,
+            "dbMs": 108.43510000000242,
+            "betweenSqlMs": 0,
+            "postMs": 1802.0594000000274,
+            "sqlCalls": 1,
+            "rowsToApp": 28400,
+            "openCount": 56800
+          },
+          {
+            "totalMs": 1952.3547000000253,
+            "preMs": 1.248600000049919,
+            "dbMs": 109.27720000001136,
+            "betweenSqlMs": 0,
+            "postMs": 1841.828899999964,
+            "sqlCalls": 1,
+            "rowsToApp": 28400,
+            "openCount": 56800
+          },
+          {
+            "totalMs": 1933.5666999999667,
+            "preMs": 1.055599999963306,
+            "dbMs": 107.50459999998566,
+            "betweenSqlMs": 0,
+            "postMs": 1825.0065000000177,
+            "sqlCalls": 1,
+            "rowsToApp": 28400,
+            "openCount": 56800
+          },
+          {
+            "totalMs": 1953.2515999999596,
+            "preMs": 1.0928999999305233,
+            "dbMs": 110.44250000000466,
+            "betweenSqlMs": 0,
+            "postMs": 1841.7162000000244,
+            "sqlCalls": 1,
+            "rowsToApp": 28400,
+            "openCount": 56800
+          },
+          {
+            "totalMs": 1966.9723999999696,
+            "preMs": 1.058299999916926,
+            "dbMs": 109.85160000005271,
+            "betweenSqlMs": 0,
+            "postMs": 1856.0625,
+            "sqlCalls": 1,
+            "rowsToApp": 28400,
+            "openCount": 56800
+          }
+        ],
+        "A": [
+          {
+            "totalMs": 247.3176000000676,
+            "preMs": 0.45110000006388873,
+            "dbMs": 246.8127000000095,
+            "betweenSqlMs": 0,
+            "postMs": 0.0537999999942258,
+            "sqlCalls": 1,
+            "rowsToApp": 1,
+            "openCount": 0
+          },
+          {
+            "totalMs": 244.69650000007823,
+            "preMs": 0.5130000000353903,
+            "dbMs": 244.13390000001527,
+            "betweenSqlMs": 0,
+            "postMs": 0.04960000002756715,
+            "sqlCalls": 1,
+            "rowsToApp": 1,
+            "openCount": 0
+          },
+          {
+            "totalMs": 247.6596000000136,
+            "preMs": 0.47789999993983656,
+            "dbMs": 247.12979999999516,
+            "betweenSqlMs": 0,
+            "postMs": 0.051900000078603625,
+            "sqlCalls": 1,
+            "rowsToApp": 1,
+            "openCount": 0
+          },
+          {
+            "totalMs": 259.0568000000203,
+            "preMs": 0.49060000001918525,
+            "dbMs": 258.5193999999901,
+            "betweenSqlMs": 0,
+            "postMs": 0.046800000010989606,
+            "sqlCalls": 1,
+            "rowsToApp": 1,
+            "openCount": 0
+          },
+          {
+            "totalMs": 251.671800000011,
+            "preMs": 0.5662999999476597,
+            "dbMs": 251.05930000008084,
+            "betweenSqlMs": 0,
+            "postMs": 0.046199999982491136,
+            "sqlCalls": 1,
+            "rowsToApp": 1,
+            "openCount": 0
+          },
+          {
+            "totalMs": 256.6001000000397,
+            "preMs": 0.6534000000683591,
+            "dbMs": 255.89869999990333,
+            "betweenSqlMs": 0,
+            "postMs": 0.04800000006798655,
+            "sqlCalls": 1,
+            "rowsToApp": 1,
+            "openCount": 0
+          },
+          {
+            "totalMs": 252.78119999996852,
+            "preMs": 0.47169999999459833,
+            "dbMs": 252.26130000001285,
+            "betweenSqlMs": 0,
+            "postMs": 0.048199999961070716,
+            "sqlCalls": 1,
+            "rowsToApp": 1,
+            "openCount": 0
+          }
+        ]
+      }
+    },
+    {
+      "name": "nested",
+      "tree": {
+        "all": [
+          {
+            "any": [
+              {
+                "field": "company",
+                "op": "eq",
+                "value": "서울서비스 담당"
+              },
+              {
+                "field": "memo",
+                "op": "contains",
+                "value": "푸른달"
+              }
+            ]
+          },
+          {
+            "field": "memo",
+            "op": "contains",
+            "value": "서비스"
+          }
+        ]
+      },
+      "mode": "count",
+      "condition": "((company eq \"서울서비스 담당\" OR memo contains \"푸른달\") AND memo contains \"서비스\")",
+      "targetRows": 100000,
+      "actualMatches": 21176,
+      "resultRows": 1,
+      "resultValue": 21176,
+      "dbCandidates": 21176,
+      "first": {
+        "A": {
+          "totalMs": 152.9431999999797,
+          "preMs": 0.6652999999932945,
+          "dbMs": 152.23080000001937,
+          "betweenSqlMs": 0,
+          "postMs": 0.04709999996703118,
+          "sqlCalls": 1,
+          "rowsToApp": 1,
+          "openCount": 0
+        },
+        "product": {
+          "totalMs": 1550.5270000000019,
+          "preMs": 1.2613000000128523,
+          "dbMs": 124.0631000000285,
+          "betweenSqlMs": 0,
+          "postMs": 1425.2025999999605,
+          "sqlCalls": 1,
+          "rowsToApp": 21176,
+          "openCount": 42352
+        },
+        "plain": {
+          "totalMs": 30.076499999966472,
+          "preMs": 0.06519999995362014,
+          "dbMs": 29.955700000049546,
+          "betweenSqlMs": 0,
+          "postMs": 0.05559999996330589,
+          "sqlCalls": 1,
+          "rowsToApp": 1,
+          "openCount": 0
+        }
+      },
+      "summary": {
+        "plain": {
+          "totalMs": 28.86149999999907,
+          "preMs": 0.05939999991096556,
+          "dbMs": 28.746299999998882,
+          "betweenSqlMs": 0,
+          "postMs": 0.05100000009406358,
+          "sqlCalls": 1,
+          "rowsToApp": 1,
+          "openCount": 0
+        },
+        "product": {
+          "totalMs": 1537.8699999999953,
+          "preMs": 1.29480000003241,
+          "dbMs": 114.43779999995604,
+          "betweenSqlMs": 0,
+          "postMs": 1424.0101000000723,
+          "sqlCalls": 1,
+          "rowsToApp": 21176,
+          "openCount": 42352
+        },
+        "A": {
+          "totalMs": 159.23629999998957,
+          "preMs": 0.6230000000214204,
+          "dbMs": 158.19920000003185,
+          "betweenSqlMs": 0,
+          "postMs": 0.04899999999906868,
+          "sqlCalls": 1,
+          "rowsToApp": 1,
+          "openCount": 0
+        }
+      },
+      "runs": {
+        "plain": [
+          {
+            "totalMs": 28.722999999998137,
+            "preMs": 0.05939999991096556,
+            "dbMs": 28.610900000086986,
+            "betweenSqlMs": 0,
+            "postMs": 0.052700000000186265,
+            "sqlCalls": 1,
+            "rowsToApp": 1,
+            "openCount": 0
+          },
+          {
+            "totalMs": 28.86149999999907,
+            "preMs": 0.0679000000236556,
+            "dbMs": 28.746299999998882,
+            "betweenSqlMs": 0,
+            "postMs": 0.04729999997653067,
+            "sqlCalls": 1,
+            "rowsToApp": 1,
+            "openCount": 0
+          },
+          {
+            "totalMs": 27.64970000006724,
+            "preMs": 0.05770000000484288,
+            "dbMs": 27.534300000057556,
+            "betweenSqlMs": 0,
+            "postMs": 0.05770000000484288,
+            "sqlCalls": 1,
+            "rowsToApp": 1,
+            "openCount": 0
+          },
+          {
+            "totalMs": 30.412099999957718,
+            "preMs": 0.06479999993462116,
+            "dbMs": 30.294899999978952,
+            "betweenSqlMs": 0,
+            "postMs": 0.05240000004414469,
+            "sqlCalls": 1,
+            "rowsToApp": 1,
+            "openCount": 0
+          },
+          {
+            "totalMs": 29.115899999975227,
+            "preMs": 0.055500000016763806,
+            "dbMs": 29.011499999905936,
+            "betweenSqlMs": 0,
+            "postMs": 0.04890000005252659,
+            "sqlCalls": 1,
+            "rowsToApp": 1,
+            "openCount": 0
+          },
+          {
+            "totalMs": 28.85930000001099,
+            "preMs": 0.07189999998081475,
+            "dbMs": 28.73639999993611,
+            "betweenSqlMs": 0,
+            "postMs": 0.05100000009406358,
+            "sqlCalls": 1,
+            "rowsToApp": 1,
+            "openCount": 0
+          },
+          {
+            "totalMs": 127.30810000002384,
+            "preMs": 0.055500000016763806,
+            "dbMs": 127.20439999992959,
+            "betweenSqlMs": 0,
+            "postMs": 0.04820000007748604,
+            "sqlCalls": 1,
+            "rowsToApp": 1,
+            "openCount": 0
+          }
+        ],
+        "product": [
+          {
+            "totalMs": 1536.2953999999445,
+            "preMs": 1.2793999999994412,
+            "dbMs": 108.95880000002217,
+            "betweenSqlMs": 0,
+            "postMs": 1426.057199999923,
+            "sqlCalls": 1,
+            "rowsToApp": 21176,
+            "openCount": 42352
+          },
+          {
+            "totalMs": 1542.9920000000857,
+            "preMs": 1.29480000003241,
+            "dbMs": 127.30650000006426,
+            "betweenSqlMs": 0,
+            "postMs": 1414.390699999989,
+            "sqlCalls": 1,
+            "rowsToApp": 21176,
+            "openCount": 42352
+          },
+          {
+            "totalMs": 1537.8699999999953,
+            "preMs": 1.3372000000672415,
+            "dbMs": 109.81160000001546,
+            "betweenSqlMs": 0,
+            "postMs": 1426.7211999999126,
+            "sqlCalls": 1,
+            "rowsToApp": 21176,
+            "openCount": 42352
+          },
+          {
+            "totalMs": 1549.113100000075,
+            "preMs": 1.2831000000005588,
+            "dbMs": 123.81990000000224,
+            "betweenSqlMs": 0,
+            "postMs": 1424.0101000000723,
+            "sqlCalls": 1,
+            "rowsToApp": 21176,
+            "openCount": 42352
+          },
+          {
+            "totalMs": 1502.1609999999637,
+            "preMs": 1.1709000000264496,
+            "dbMs": 110.78959999990184,
+            "betweenSqlMs": 0,
+            "postMs": 1390.2005000000354,
+            "sqlCalls": 1,
+            "rowsToApp": 21176,
+            "openCount": 42352
+          },
+          {
+            "totalMs": 1566.5541000000667,
+            "preMs": 1.3048000000417233,
+            "dbMs": 124.1178999999538,
+            "betweenSqlMs": 0,
+            "postMs": 1441.1314000000712,
+            "sqlCalls": 1,
+            "rowsToApp": 21176,
+            "openCount": 42352
+          },
+          {
+            "totalMs": 1521.2910999999149,
+            "preMs": 1.3567999999504536,
+            "dbMs": 114.43779999995604,
+            "betweenSqlMs": 0,
+            "postMs": 1405.4965000000084,
+            "sqlCalls": 1,
+            "rowsToApp": 21176,
+            "openCount": 42352
+          }
+        ],
+        "A": [
+          {
+            "totalMs": 157.23969999991823,
+            "preMs": 0.5965999999316409,
+            "dbMs": 156.5912000000244,
+            "betweenSqlMs": 0,
+            "postMs": 0.051899999962188303,
+            "sqlCalls": 1,
+            "rowsToApp": 1,
+            "openCount": 0
+          },
+          {
+            "totalMs": 171.69559999997728,
+            "preMs": 0.6230000000214204,
+            "dbMs": 171.02500000002328,
+            "betweenSqlMs": 0,
+            "postMs": 0.047599999932572246,
+            "sqlCalls": 1,
+            "rowsToApp": 1,
+            "openCount": 0
+          },
+          {
+            "totalMs": 182.8570999999065,
+            "preMs": 0.5985999999102205,
+            "dbMs": 182.18599999998696,
+            "betweenSqlMs": 0,
+            "postMs": 0.07250000000931323,
+            "sqlCalls": 1,
+            "rowsToApp": 1,
+            "openCount": 0
+          },
+          {
+            "totalMs": 195.88410000002477,
+            "preMs": 0.6369999999878928,
+            "dbMs": 195.19920000003185,
+            "betweenSqlMs": 0,
+            "postMs": 0.04790000000502914,
+            "sqlCalls": 1,
+            "rowsToApp": 1,
+            "openCount": 0
+          },
+          {
+            "totalMs": 156.62609999999404,
+            "preMs": 0.5825000000186265,
+            "dbMs": 155.99619999993593,
+            "betweenSqlMs": 0,
+            "postMs": 0.04740000003948808,
+            "sqlCalls": 1,
+            "rowsToApp": 1,
+            "openCount": 0
+          },
+          {
+            "totalMs": 158.8752000000095,
+            "preMs": 0.6269999999785796,
+            "dbMs": 158.19920000003185,
+            "betweenSqlMs": 0,
+            "postMs": 0.04899999999906868,
+            "sqlCalls": 1,
+            "rowsToApp": 1,
+            "openCount": 0
+          },
+          {
+            "totalMs": 159.23629999998957,
+            "preMs": 1.083600000012666,
+            "dbMs": 158.0975000000326,
+            "betweenSqlMs": 0,
+            "postMs": 0.05519999994430691,
+            "sqlCalls": 1,
+            "rowsToApp": 1,
+            "openCount": 0
+          }
+        ]
+      }
+    },
+    {
+      "name": "find20",
+      "tree": {
+        "field": "memo",
+        "op": "contains",
+        "value": "서비스"
+      },
+      "mode": "find",
+      "limit": 20,
+      "condition": "memo contains \"서비스\"",
+      "targetRows": 100000,
+      "actualMatches": 40097,
+      "resultRows": 20,
+      "dbCandidates": 40097,
+      "first": {
+        "A": {
+          "totalMs": 12.816600000020117,
+          "preMs": 0.46670000010635704,
+          "dbMs": 1.5617999999085441,
+          "betweenSqlMs": 0,
+          "postMs": 10.788100000005215,
+          "sqlCalls": 1,
+          "rowsToApp": 20,
+          "openCount": 120
+        },
+        "product": {
+          "totalMs": 8.332400000072084,
+          "preMs": 1.474999999976717,
+          "dbMs": 1.5543000000761822,
+          "betweenSqlMs": 0,
+          "postMs": 5.303100000019185,
+          "sqlCalls": 1,
+          "rowsToApp": 27,
+          "openCount": 120
+        },
+        "plain": {
+          "totalMs": 0.7555999999167398,
+          "preMs": 0.04809999989811331,
+          "dbMs": 0.6875,
+          "betweenSqlMs": 0,
+          "postMs": 0.02000000001862645,
+          "sqlCalls": 1,
+          "rowsToApp": 20,
+          "openCount": 0
+        }
+      },
+      "summary": {
+        "plain": {
+          "totalMs": 0.35380000004079193,
+          "preMs": 0.020400000037625432,
+          "dbMs": 0.3144999999785796,
+          "betweenSqlMs": 0,
+          "postMs": 0.013700000010430813,
+          "sqlCalls": 1,
+          "rowsToApp": 20,
+          "openCount": 0
+        },
+        "product": {
+          "totalMs": 5.680599999963306,
+          "preMs": 0.9790000000502914,
+          "dbMs": 0.9690999999875203,
+          "betweenSqlMs": 0,
+          "postMs": 3.716899999999441,
+          "sqlCalls": 1,
+          "rowsToApp": 27,
+          "openCount": 120
+        },
+        "A": {
+          "totalMs": 4.847500000032596,
+          "preMs": 0.274500000057742,
+          "dbMs": 1.2183000000659376,
+          "betweenSqlMs": 0,
+          "postMs": 3.3356999999377877,
+          "sqlCalls": 1,
+          "rowsToApp": 20,
+          "openCount": 120
+        }
+      },
+      "runs": {
+        "plain": [
+          {
+            "totalMs": 0.476799999945797,
+            "preMs": 0.020400000037625432,
+            "dbMs": 0.4437999998917803,
+            "betweenSqlMs": 0,
+            "postMs": 0.012600000016391277,
+            "sqlCalls": 1,
+            "rowsToApp": 20,
+            "openCount": 0
+          },
+          {
+            "totalMs": 0.41570000001229346,
+            "preMs": 0.02630000002682209,
+            "dbMs": 0.37569999997504056,
+            "betweenSqlMs": 0,
+            "postMs": 0.013700000010430813,
+            "sqlCalls": 1,
+            "rowsToApp": 20,
+            "openCount": 0
+          },
+          {
+            "totalMs": 0.32050000003073364,
+            "preMs": 0.016700000036507845,
+            "dbMs": 0.2863999999826774,
+            "betweenSqlMs": 0,
+            "postMs": 0.0174000000115484,
+            "sqlCalls": 1,
+            "rowsToApp": 20,
+            "openCount": 0
+          },
+          {
+            "totalMs": 0.35380000004079193,
+            "preMs": 0.02549999998882413,
+            "dbMs": 0.3144999999785796,
+            "betweenSqlMs": 0,
+            "postMs": 0.013800000073388219,
+            "sqlCalls": 1,
+            "rowsToApp": 20,
+            "openCount": 0
+          },
+          {
+            "totalMs": 0.28720000002067536,
+            "preMs": 0.01699999999254942,
+            "dbMs": 0.2587000000057742,
+            "betweenSqlMs": 0,
+            "postMs": 0.011500000022351742,
+            "sqlCalls": 1,
+            "rowsToApp": 20,
+            "openCount": 0
+          },
+          {
+            "totalMs": 0.4949000000488013,
+            "preMs": 0.034899999969638884,
+            "dbMs": 0.4425000000046566,
+            "betweenSqlMs": 0,
+            "postMs": 0.017500000074505806,
+            "sqlCalls": 1,
+            "rowsToApp": 20,
+            "openCount": 0
+          },
+          {
+            "totalMs": 0.3072000000393018,
+            "preMs": 0.018999999971129,
+            "dbMs": 0.27620000008028,
+            "betweenSqlMs": 0,
+            "postMs": 0.011999999987892807,
+            "sqlCalls": 1,
+            "rowsToApp": 20,
+            "openCount": 0
+          }
+        ],
+        "product": [
+          {
+            "totalMs": 5.960599999991246,
+            "preMs": 1.2058999999426305,
+            "dbMs": 0.919400000013411,
+            "betweenSqlMs": 0,
+            "postMs": 3.835300000035204,
+            "sqlCalls": 1,
+            "rowsToApp": 27,
+            "openCount": 120
+          },
+          {
+            "totalMs": 5.814699999988079,
+            "preMs": 0.981000000028871,
+            "dbMs": 1.1542999999364838,
+            "betweenSqlMs": 0,
+            "postMs": 3.6794000000227243,
+            "sqlCalls": 1,
+            "rowsToApp": 27,
+            "openCount": 120
+          },
+          {
+            "totalMs": 5.440000000060536,
+            "preMs": 0.9106000000610948,
+            "dbMs": 0.8514999999897555,
+            "betweenSqlMs": 0,
+            "postMs": 3.6779000000096858,
+            "sqlCalls": 1,
+            "rowsToApp": 27,
+            "openCount": 120
+          },
+          {
+            "totalMs": 5.712599999969825,
+            "preMs": 0.9867000000085682,
+            "dbMs": 1.0559999999823049,
+            "betweenSqlMs": 0,
+            "postMs": 3.669899999978952,
+            "sqlCalls": 1,
+            "rowsToApp": 27,
+            "openCount": 120
+          },
+          {
+            "totalMs": 5.339799999957904,
+            "preMs": 0.8602999999420717,
+            "dbMs": 0.751700000022538,
+            "betweenSqlMs": 0,
+            "postMs": 3.7277999999932945,
+            "sqlCalls": 1,
+            "rowsToApp": 27,
+            "openCount": 120
+          },
+          {
+            "totalMs": 5.616800000076182,
+            "preMs": 0.9308000000892207,
+            "dbMs": 0.9690999999875203,
+            "betweenSqlMs": 0,
+            "postMs": 3.716899999999441,
+            "sqlCalls": 1,
+            "rowsToApp": 27,
+            "openCount": 120
+          },
+          {
+            "totalMs": 5.680599999963306,
+            "preMs": 0.9790000000502914,
+            "dbMs": 0.9786999999778345,
+            "betweenSqlMs": 0,
+            "postMs": 3.72289999993518,
+            "sqlCalls": 1,
+            "rowsToApp": 27,
+            "openCount": 120
+          }
+        ],
+        "A": [
+          {
+            "totalMs": 4.9570999999996275,
+            "preMs": 0.274500000057742,
+            "dbMs": 1.2983999999705702,
+            "betweenSqlMs": 0,
+            "postMs": 3.3841999999713153,
+            "sqlCalls": 1,
+            "rowsToApp": 20,
+            "openCount": 120
+          },
+          {
+            "totalMs": 4.847500000032596,
+            "preMs": 0.24800000002142042,
+            "dbMs": 1.240999999921769,
+            "betweenSqlMs": 0,
+            "postMs": 3.358500000089407,
+            "sqlCalls": 1,
+            "rowsToApp": 20,
+            "openCount": 120
+          },
+          {
+            "totalMs": 4.682000000029802,
+            "preMs": 0.27850000001490116,
+            "dbMs": 1.1001000000396743,
+            "betweenSqlMs": 0,
+            "postMs": 3.303399999975227,
+            "sqlCalls": 1,
+            "rowsToApp": 20,
+            "openCount": 120
+          },
+          {
+            "totalMs": 5.255099999951199,
+            "preMs": 0.2895999999018386,
+            "dbMs": 1.2183000000659376,
+            "betweenSqlMs": 0,
+            "postMs": 3.7471999999834225,
+            "sqlCalls": 1,
+            "rowsToApp": 20,
+            "openCount": 120
+          },
+          {
+            "totalMs": 4.863600000040606,
+            "preMs": 0.2818000001134351,
+            "dbMs": 1.246099999989383,
+            "betweenSqlMs": 0,
+            "postMs": 3.3356999999377877,
+            "sqlCalls": 1,
+            "rowsToApp": 20,
+            "openCount": 120
+          },
+          {
+            "totalMs": 4.487100000027567,
+            "preMs": 0.25,
+            "dbMs": 1.0306000000564381,
+            "betweenSqlMs": 0,
+            "postMs": 3.206499999971129,
+            "sqlCalls": 1,
+            "rowsToApp": 20,
+            "openCount": 120
+          },
+          {
+            "totalMs": 4.492300000041723,
+            "preMs": 0.2582999999867752,
+            "dbMs": 0.9266000000061467,
+            "betweenSqlMs": 0,
+            "postMs": 3.3074000000488013,
+            "sqlCalls": 1,
+            "rowsToApp": 20,
+            "openCount": 120
+          }
+        ]
+      }
+    },
+    {
+      "name": "find200",
+      "tree": {
+        "field": "memo",
+        "op": "contains",
+        "value": "서비스"
+      },
+      "mode": "find",
+      "limit": 200,
+      "condition": "memo contains \"서비스\"",
+      "targetRows": 100000,
+      "actualMatches": 40097,
+      "resultRows": 200,
+      "dbCandidates": 40097,
+      "first": {
+        "A": {
+          "totalMs": 107.31620000000112,
+          "preMs": 0.395299999974668,
+          "dbMs": 35.17619999998715,
+          "betweenSqlMs": 0,
+          "postMs": 71.7447000000393,
+          "sqlCalls": 1,
+          "rowsToApp": 200,
+          "openCount": 1200
+        },
+        "product": {
+          "totalMs": 40.442400000058115,
+          "preMs": 0.9575999999651685,
+          "dbMs": 2.794400000013411,
+          "betweenSqlMs": 0,
+          "postMs": 36.690400000079535,
+          "sqlCalls": 1,
+          "rowsToApp": 200,
+          "openCount": 1200
+        },
+        "plain": {
+          "totalMs": 1.1746000000275671,
+          "preMs": 0.07090000004973263,
+          "dbMs": 1.081400000024587,
+          "betweenSqlMs": 0,
+          "postMs": 0.022299999953247607,
+          "sqlCalls": 1,
+          "rowsToApp": 200,
+          "openCount": 0
+        }
+      },
+      "summary": {
+        "plain": {
+          "totalMs": 0.9227999999420717,
+          "preMs": 0.04279999993741512,
+          "dbMs": 0.8623999999836087,
+          "betweenSqlMs": 0,
+          "postMs": 0.01760000002104789,
+          "sqlCalls": 1,
+          "rowsToApp": 200,
+          "openCount": 0
+        },
+        "product": {
+          "totalMs": 40.902299999957904,
+          "preMs": 1.004300000029616,
+          "dbMs": 2.6930999999167398,
+          "betweenSqlMs": 0,
+          "postMs": 37.33409999997821,
+          "sqlCalls": 1,
+          "rowsToApp": 200,
+          "openCount": 1200
+        },
+        "A": {
+          "totalMs": 70.6931999999797,
+          "preMs": 0.35519999999087304,
+          "dbMs": 32.12710000004154,
+          "betweenSqlMs": 0,
+          "postMs": 37.11140000005253,
+          "sqlCalls": 1,
+          "rowsToApp": 200,
+          "openCount": 1200
+        }
+      },
+      "runs": {
+        "plain": [
+          {
+            "totalMs": 0.6966000000247732,
+            "preMs": 0.01919999998062849,
+            "dbMs": 0.6637000000337139,
+            "betweenSqlMs": 0,
+            "postMs": 0.013700000010430813,
+            "sqlCalls": 1,
+            "rowsToApp": 200,
+            "openCount": 0
+          },
+          {
+            "totalMs": 1.061100000049919,
+            "preMs": 0.07209999999031425,
+            "dbMs": 0.9598000000696629,
+            "betweenSqlMs": 0,
+            "postMs": 0.029199999989941716,
+            "sqlCalls": 1,
+            "rowsToApp": 200,
+            "openCount": 0
+          },
+          {
+            "totalMs": 0.7283000000752509,
+            "preMs": 0.034100000048056245,
+            "dbMs": 0.6800999999977648,
+            "betweenSqlMs": 0,
+            "postMs": 0.014100000029429793,
+            "sqlCalls": 1,
+            "rowsToApp": 200,
+            "openCount": 0
+          },
+          {
+            "totalMs": 1.0542000000132248,
+            "preMs": 0.0731000000378117,
+            "dbMs": 0.9505999999819323,
+            "betweenSqlMs": 0,
+            "postMs": 0.030499999993480742,
+            "sqlCalls": 1,
+            "rowsToApp": 200,
+            "openCount": 0
+          },
+          {
+            "totalMs": 0.9227999999420717,
+            "preMs": 0.04279999993741512,
+            "dbMs": 0.8623999999836087,
+            "betweenSqlMs": 0,
+            "postMs": 0.01760000002104789,
+            "sqlCalls": 1,
+            "rowsToApp": 200,
+            "openCount": 0
+          },
+          {
+            "totalMs": 1.086600000038743,
+            "preMs": 0.05260000005364418,
+            "dbMs": 1.0145999999949709,
+            "betweenSqlMs": 0,
+            "postMs": 0.01939999999012798,
+            "sqlCalls": 1,
+            "rowsToApp": 200,
+            "openCount": 0
+          },
+          {
+            "totalMs": 0.6441000000340864,
+            "preMs": 0.01959999999962747,
+            "dbMs": 0.6108000000240281,
+            "betweenSqlMs": 0,
+            "postMs": 0.013700000010430813,
+            "sqlCalls": 1,
+            "rowsToApp": 200,
+            "openCount": 0
+          }
+        ],
+        "product": [
+          {
+            "totalMs": 42.52090000000317,
+            "preMs": 0.9499000000068918,
+            "dbMs": 2.5929999999934807,
+            "betweenSqlMs": 0,
+            "postMs": 38.978000000002794,
+            "sqlCalls": 1,
+            "rowsToApp": 200,
+            "openCount": 1200
+          },
+          {
+            "totalMs": 42.21689999999944,
+            "preMs": 1.004300000029616,
+            "dbMs": 2.8501000000396743,
+            "betweenSqlMs": 0,
+            "postMs": 38.36249999993015,
+            "sqlCalls": 1,
+            "rowsToApp": 200,
+            "openCount": 1200
+          },
+          {
+            "totalMs": 38.430099999997765,
+            "preMs": 0.9497999999439344,
+            "dbMs": 2.4919999999692664,
+            "betweenSqlMs": 0,
+            "postMs": 34.988300000084564,
+            "sqlCalls": 1,
+            "rowsToApp": 200,
+            "openCount": 1200
+          },
+          {
+            "totalMs": 43.89049999997951,
+            "preMs": 1.0788000000175089,
+            "dbMs": 2.6930999999167398,
+            "betweenSqlMs": 0,
+            "postMs": 40.11860000004526,
+            "sqlCalls": 1,
+            "rowsToApp": 200,
+            "openCount": 1200
+          },
+          {
+            "totalMs": 40.902299999957904,
+            "preMs": 1.038399999961257,
+            "dbMs": 2.52980000001844,
+            "betweenSqlMs": 0,
+            "postMs": 37.33409999997821,
+            "sqlCalls": 1,
+            "rowsToApp": 200,
+            "openCount": 1200
+          },
+          {
+            "totalMs": 39.688300000038,
+            "preMs": 1.1780000000726432,
+            "dbMs": 2.89359999995213,
+            "betweenSqlMs": 0,
+            "postMs": 35.616700000013225,
+            "sqlCalls": 1,
+            "rowsToApp": 200,
+            "openCount": 1200
+          },
+          {
+            "totalMs": 40.252500000060536,
+            "preMs": 0.9435000000521541,
+            "dbMs": 2.741400000057183,
+            "betweenSqlMs": 0,
+            "postMs": 36.5675999999512,
+            "sqlCalls": 1,
+            "rowsToApp": 200,
+            "openCount": 1200
+          }
+        ],
+        "A": [
+          {
+            "totalMs": 68.15460000000894,
+            "preMs": 0.3484999999636784,
+            "dbMs": 32.02090000000317,
+            "betweenSqlMs": 0,
+            "postMs": 35.785200000042096,
+            "sqlCalls": 1,
+            "rowsToApp": 200,
+            "openCount": 1200
+          },
+          {
+            "totalMs": 92.4953000000678,
+            "preMs": 0.4113999999826774,
+            "dbMs": 57.32350000005681,
+            "betweenSqlMs": 0,
+            "postMs": 34.76040000002831,
+            "sqlCalls": 1,
+            "rowsToApp": 200,
+            "openCount": 1200
+          },
+          {
+            "totalMs": 69.93489999999292,
+            "preMs": 0.3214000000152737,
+            "dbMs": 32.50209999992512,
+            "betweenSqlMs": 0,
+            "postMs": 37.11140000005253,
+            "sqlCalls": 1,
+            "rowsToApp": 200,
+            "openCount": 1200
+          },
+          {
+            "totalMs": 70.35499999998137,
+            "preMs": 0.5396000000182539,
+            "dbMs": 32.12710000004154,
+            "betweenSqlMs": 0,
+            "postMs": 37.68829999992158,
+            "sqlCalls": 1,
+            "rowsToApp": 200,
+            "openCount": 1200
+          },
+          {
+            "totalMs": 70.85929999989457,
+            "preMs": 0.34279999998398125,
+            "dbMs": 33.739300000015646,
+            "betweenSqlMs": 0,
+            "postMs": 36.77719999989495,
+            "sqlCalls": 1,
+            "rowsToApp": 200,
+            "openCount": 1200
+          },
+          {
+            "totalMs": 71.08689999999478,
+            "preMs": 0.35519999999087304,
+            "dbMs": 31.945999999996275,
+            "betweenSqlMs": 0,
+            "postMs": 38.78570000000764,
+            "sqlCalls": 1,
+            "rowsToApp": 200,
+            "openCount": 1200
+          },
+          {
+            "totalMs": 70.6931999999797,
+            "preMs": 0.3591000000014901,
+            "dbMs": 31.396100000012666,
+            "betweenSqlMs": 0,
+            "postMs": 38.93799999996554,
+            "sqlCalls": 1,
+            "rowsToApp": 200,
+            "openCount": 1200
+          }
+        ]
+      }
+    },
+    {
+      "name": "findAllRare",
+      "tree": {
+        "field": "memo",
+        "op": "contains",
+        "value": "푸른달"
+      },
+      "mode": "find",
+      "condition": "memo contains \"푸른달\"",
+      "targetRows": 100000,
+      "actualMatches": 101,
+      "resultRows": 101,
+      "dbCandidates": 101,
+      "first": {
+        "A": {
+          "totalMs": 36.35840000002645,
+          "preMs": 0.3179000000236556,
+          "dbMs": 4.736200000043027,
+          "betweenSqlMs": 0,
+          "postMs": 31.304299999959767,
+          "sqlCalls": 1,
+          "rowsToApp": 101,
+          "openCount": 606
+        },
+        "product": {
+          "totalMs": 20.58289999992121,
+          "preMs": 0.832399999955669,
+          "dbMs": 1.6075000000419095,
+          "betweenSqlMs": 0,
+          "postMs": 18.14299999992363,
+          "sqlCalls": 1,
+          "rowsToApp": 101,
+          "openCount": 606
+        },
+        "plain": {
+          "totalMs": 22.78649999992922,
+          "preMs": 0.05709999997634441,
+          "dbMs": 22.687099999981,
+          "betweenSqlMs": 0,
+          "postMs": 0.04229999997187406,
+          "sqlCalls": 1,
+          "rowsToApp": 101,
+          "openCount": 0
+        }
+      },
+      "summary": {
+        "plain": {
+          "totalMs": 18.794599999906495,
+          "preMs": 0.0485999999800697,
+          "dbMs": 18.711100000073202,
+          "betweenSqlMs": 0,
+          "postMs": 0.03919999999925494,
+          "sqlCalls": 1,
+          "rowsToApp": 101,
+          "openCount": 0
+        },
+        "product": {
+          "totalMs": 19.885200000018813,
+          "preMs": 0.8022000000346452,
+          "dbMs": 1.379300000029616,
+          "betweenSqlMs": 0,
+          "postMs": 17.615800000028685,
+          "sqlCalls": 1,
+          "rowsToApp": 101,
+          "openCount": 606
+        },
+        "A": {
+          "totalMs": 20.684299999964423,
+          "preMs": 0.34490000002551824,
+          "dbMs": 2.390099999960512,
+          "betweenSqlMs": 0,
+          "postMs": 17.630400000023656,
+          "sqlCalls": 1,
+          "rowsToApp": 101,
+          "openCount": 606
+        }
+      },
+      "runs": {
+        "plain": [
+          {
+            "totalMs": 19.860500000067987,
+            "preMs": 0.04820000007748604,
+            "dbMs": 19.772099999943748,
+            "betweenSqlMs": 0,
+            "postMs": 0.04020000004675239,
+            "sqlCalls": 1,
+            "rowsToApp": 101,
+            "openCount": 0
+          },
+          {
+            "totalMs": 18.661700000055134,
+            "preMs": 0.0487000000430271,
+            "dbMs": 18.572700000018813,
+            "betweenSqlMs": 0,
+            "postMs": 0.04029999999329448,
+            "sqlCalls": 1,
+            "rowsToApp": 101,
+            "openCount": 0
+          },
+          {
+            "totalMs": 18.255000000004657,
+            "preMs": 0.04890000005252659,
+            "dbMs": 18.166899999952875,
+            "betweenSqlMs": 0,
+            "postMs": 0.03919999999925494,
+            "sqlCalls": 1,
+            "rowsToApp": 101,
+            "openCount": 0
+          },
+          {
+            "totalMs": 18.951099999947473,
+            "preMs": 0.04920000000856817,
+            "dbMs": 18.86269999993965,
+            "betweenSqlMs": 0,
+            "postMs": 0.03919999999925494,
+            "sqlCalls": 1,
+            "rowsToApp": 101,
+            "openCount": 0
+          },
+          {
+            "totalMs": 18.181299999938346,
+            "preMs": 0.0485999999800697,
+            "dbMs": 18.089799999957904,
+            "betweenSqlMs": 0,
+            "postMs": 0.04290000000037253,
+            "sqlCalls": 1,
+            "rowsToApp": 101,
+            "openCount": 0
+          },
+          {
+            "totalMs": 20.21440000005532,
+            "preMs": 0.04740000003948808,
+            "dbMs": 20.12789999996312,
+            "betweenSqlMs": 0,
+            "postMs": 0.03910000005271286,
+            "sqlCalls": 1,
+            "rowsToApp": 101,
+            "openCount": 0
+          },
+          {
+            "totalMs": 18.794599999906495,
+            "preMs": 0.045399999944493175,
+            "dbMs": 18.711100000073202,
+            "betweenSqlMs": 0,
+            "postMs": 0.038099999888800085,
+            "sqlCalls": 1,
+            "rowsToApp": 101,
+            "openCount": 0
+          }
+        ],
+        "product": [
+          {
+            "totalMs": 20.416300000040792,
+            "preMs": 0.9253000000026077,
+            "dbMs": 1.379300000029616,
+            "betweenSqlMs": 0,
+            "postMs": 18.111700000008568,
+            "sqlCalls": 1,
+            "rowsToApp": 101,
+            "openCount": 606
+          },
+          {
+            "totalMs": 19.864200000069104,
+            "preMs": 0.7187000000849366,
+            "dbMs": 1.5296999999554828,
+            "betweenSqlMs": 0,
+            "postMs": 17.615800000028685,
+            "sqlCalls": 1,
+            "rowsToApp": 101,
+            "openCount": 606
+          },
+          {
+            "totalMs": 19.52780000003986,
+            "preMs": 0.8022000000346452,
+            "dbMs": 1.24910000001546,
+            "betweenSqlMs": 0,
+            "postMs": 17.476499999989755,
+            "sqlCalls": 1,
+            "rowsToApp": 101,
+            "openCount": 606
+          },
+          {
+            "totalMs": 20.164100000052713,
+            "preMs": 0.7810000000754371,
+            "dbMs": 1.6243999999715015,
+            "betweenSqlMs": 0,
+            "postMs": 17.758700000005774,
+            "sqlCalls": 1,
+            "rowsToApp": 101,
+            "openCount": 606
+          },
+          {
+            "totalMs": 20.555999999982305,
+            "preMs": 0.8507000000681728,
+            "dbMs": 1.3436999999685213,
+            "betweenSqlMs": 0,
+            "postMs": 18.36159999994561,
+            "sqlCalls": 1,
+            "rowsToApp": 101,
+            "openCount": 606
+          },
+          {
+            "totalMs": 19.885200000018813,
+            "preMs": 0.7399000000441447,
+            "dbMs": 1.5775000000139698,
+            "betweenSqlMs": 0,
+            "postMs": 17.567799999960698,
+            "sqlCalls": 1,
+            "rowsToApp": 101,
+            "openCount": 606
+          },
+          {
+            "totalMs": 19.625,
+            "preMs": 0.8432000000029802,
+            "dbMs": 1.270299999974668,
+            "betweenSqlMs": 0,
+            "postMs": 17.51150000002235,
+            "sqlCalls": 1,
+            "rowsToApp": 101,
+            "openCount": 606
+          }
+        ],
+        "A": [
+          {
+            "totalMs": 20.976200000033714,
+            "preMs": 0.627500000060536,
+            "dbMs": 2.7182999999495223,
+            "betweenSqlMs": 0,
+            "postMs": 17.630400000023656,
+            "sqlCalls": 1,
+            "rowsToApp": 101,
+            "openCount": 606
+          },
+          {
+            "totalMs": 19.92399999999907,
+            "preMs": 0.34320000000298023,
+            "dbMs": 2.390099999960512,
+            "betweenSqlMs": 0,
+            "postMs": 17.190700000035577,
+            "sqlCalls": 1,
+            "rowsToApp": 101,
+            "openCount": 606
+          },
+          {
+            "totalMs": 19.975900000077672,
+            "preMs": 0.33400000003166497,
+            "dbMs": 2.291399999987334,
+            "betweenSqlMs": 0,
+            "postMs": 17.350500000058673,
+            "sqlCalls": 1,
+            "rowsToApp": 101,
+            "openCount": 606
+          },
+          {
+            "totalMs": 21.806400000001304,
+            "preMs": 0.34820000000763685,
+            "dbMs": 2.3950999999651685,
+            "betweenSqlMs": 0,
+            "postMs": 19.0631000000285,
+            "sqlCalls": 1,
+            "rowsToApp": 101,
+            "openCount": 606
+          },
+          {
+            "totalMs": 20.147100000060163,
+            "preMs": 0.355600000009872,
+            "dbMs": 2.259500000043772,
+            "betweenSqlMs": 0,
+            "postMs": 17.53200000000652,
+            "sqlCalls": 1,
+            "rowsToApp": 101,
+            "openCount": 606
+          },
+          {
+            "totalMs": 20.684299999964423,
+            "preMs": 0.34490000002551824,
+            "dbMs": 2.4880999999586493,
+            "betweenSqlMs": 0,
+            "postMs": 17.851299999980256,
+            "sqlCalls": 1,
+            "rowsToApp": 101,
+            "openCount": 606
+          },
+          {
+            "totalMs": 22.61880000005476,
+            "preMs": 0.31690000009257346,
+            "dbMs": 2.286199999973178,
+            "betweenSqlMs": 0,
+            "postMs": 20.01569999998901,
+            "sqlCalls": 1,
+            "rowsToApp": 101,
+            "openCount": 606
+          }
+        ]
+      }
+    },
+    {
+      "name": "findAllBroad",
+      "tree": {
+        "field": "memo",
+        "op": "contains",
+        "value": "서비스"
+      },
+      "mode": "find",
+      "condition": "memo contains \"서비스\"",
+      "targetRows": 100000,
+      "actualMatches": 40097,
+      "resultRows": 40097,
+      "dbCandidates": 40097,
+      "first": {
+        "A": {
+          "totalMs": 7891.916900000069,
+          "preMs": 0.4064000000944361,
+          "dbMs": 369.7835999999661,
+          "betweenSqlMs": 0,
+          "postMs": 7521.726900000009,
+          "sqlCalls": 1,
+          "rowsToApp": 40097,
+          "openCount": 240582
+        },
+        "product": {
+          "totalMs": 7917.563000000082,
+          "preMs": 0.9853000000584871,
+          "dbMs": 249.1642999999458,
+          "betweenSqlMs": 0,
+          "postMs": 7667.413400000078,
+          "sqlCalls": 1,
+          "rowsToApp": 40097,
+          "openCount": 240582
+        },
+        "plain": {
+          "totalMs": 107.88980000000447,
+          "preMs": 0.13379999995231628,
+          "dbMs": 107.68270000000484,
+          "betweenSqlMs": 0,
+          "postMs": 0.07330000004731119,
+          "sqlCalls": 1,
+          "rowsToApp": 40097,
+          "openCount": 0
+        }
+      },
+      "summary": {
+        "plain": {
+          "totalMs": 107.26890000002459,
+          "preMs": 0.0974000000860542,
+          "dbMs": 107.11689999990631,
+          "betweenSqlMs": 0,
+          "postMs": 0.04429999995045364,
+          "sqlCalls": 1,
+          "rowsToApp": 40097,
+          "openCount": 0
+        },
+        "product": {
+          "totalMs": 7840.284600000014,
+          "preMs": 1.0162000000709668,
+          "dbMs": 265.0119999999879,
+          "betweenSqlMs": 0,
+          "postMs": 7588.714799999958,
+          "sqlCalls": 1,
+          "rowsToApp": 40097,
+          "openCount": 240582
+        },
+        "A": {
+          "totalMs": 7991.046399999992,
+          "preMs": 4.65590000001248,
+          "dbMs": 359.76969999994617,
+          "betweenSqlMs": 0,
+          "postMs": 7612.278799999971,
+          "sqlCalls": 1,
+          "rowsToApp": 40097,
+          "openCount": 240582
+        }
+      },
+      "runs": {
+        "plain": [
+          {
+            "totalMs": 98.03689999994822,
+            "preMs": 0.0973000000230968,
+            "dbMs": 97.89529999997467,
+            "betweenSqlMs": 0,
+            "postMs": 0.04429999995045364,
+            "sqlCalls": 1,
+            "rowsToApp": 40097,
+            "openCount": 0
+          },
+          {
+            "totalMs": 107.26890000002459,
+            "preMs": 0.11030000005848706,
+            "dbMs": 107.11689999990631,
+            "betweenSqlMs": 0,
+            "postMs": 0.04170000005979091,
+            "sqlCalls": 1,
+            "rowsToApp": 40097,
+            "openCount": 0
+          },
+          {
+            "totalMs": 103.58689999999478,
+            "preMs": 0.0934999999590218,
+            "dbMs": 103.44700000004377,
+            "betweenSqlMs": 0,
+            "postMs": 0.046399999991990626,
+            "sqlCalls": 1,
+            "rowsToApp": 40097,
+            "openCount": 0
+          },
+          {
+            "totalMs": 108.66630000004079,
+            "preMs": 0.11710000003222376,
+            "dbMs": 108.50760000001173,
+            "betweenSqlMs": 0,
+            "postMs": 0.0415999999968335,
+            "sqlCalls": 1,
+            "rowsToApp": 40097,
+            "openCount": 0
+          },
+          {
+            "totalMs": 107.28390000003856,
+            "preMs": 0.0974000000860542,
+            "dbMs": 107.14379999996163,
+            "betweenSqlMs": 0,
+            "postMs": 0.04269999999087304,
+            "sqlCalls": 1,
+            "rowsToApp": 40097,
+            "openCount": 0
+          },
+          {
+            "totalMs": 105.92099999997299,
+            "preMs": 0.17629999993368983,
+            "dbMs": 105.69860000000335,
+            "betweenSqlMs": 0,
+            "postMs": 0.04610000003594905,
+            "sqlCalls": 1,
+            "rowsToApp": 40097,
+            "openCount": 0
+          },
+          {
+            "totalMs": 116.29709999996703,
+            "preMs": 0.08909999998286366,
+            "dbMs": 116.15090000000782,
+            "betweenSqlMs": 0,
+            "postMs": 0.05709999997634441,
+            "sqlCalls": 1,
+            "rowsToApp": 40097,
+            "openCount": 0
+          }
+        ],
+        "product": [
+          {
+            "totalMs": 8015.902700000093,
+            "preMs": 0.9613000000827014,
+            "dbMs": 265.0119999999879,
+            "betweenSqlMs": 0,
+            "postMs": 7749.929400000023,
+            "sqlCalls": 1,
+            "rowsToApp": 40097,
+            "openCount": 240582
+          },
+          {
+            "totalMs": 7884.065999999992,
+            "preMs": 7.619899999932386,
+            "dbMs": 245.91310000000522,
+            "betweenSqlMs": 0,
+            "postMs": 7630.533000000054,
+            "sqlCalls": 1,
+            "rowsToApp": 40097,
+            "openCount": 240582
+          },
+          {
+            "totalMs": 7759.775699999998,
+            "preMs": 1.021599999978207,
+            "dbMs": 275.126200000057,
+            "betweenSqlMs": 0,
+            "postMs": 7483.627899999963,
+            "sqlCalls": 1,
+            "rowsToApp": 40097,
+            "openCount": 240582
+          },
+          {
+            "totalMs": 7840.284600000014,
+            "preMs": 1.0162000000709668,
+            "dbMs": 250.55359999998473,
+            "betweenSqlMs": 0,
+            "postMs": 7588.714799999958,
+            "sqlCalls": 1,
+            "rowsToApp": 40097,
+            "openCount": 240582
+          },
+          {
+            "totalMs": 7719.719599999953,
+            "preMs": 0.937900000018999,
+            "dbMs": 271.81219999992754,
+            "betweenSqlMs": 0,
+            "postMs": 7446.9695000000065,
+            "sqlCalls": 1,
+            "rowsToApp": 40097,
+            "openCount": 240582
+          },
+          {
+            "totalMs": 7909.086799999932,
+            "preMs": 1.0302999999839813,
+            "dbMs": 281.24359999992885,
+            "betweenSqlMs": 0,
+            "postMs": 7626.812900000019,
+            "sqlCalls": 1,
+            "rowsToApp": 40097,
+            "openCount": 240582
+          },
+          {
+            "totalMs": 7672.592500000028,
+            "preMs": 0.9867000000085682,
+            "dbMs": 243.59820000000764,
+            "betweenSqlMs": 0,
+            "postMs": 7428.007600000012,
+            "sqlCalls": 1,
+            "rowsToApp": 40097,
+            "openCount": 240582
+          }
+        ],
+        "A": [
+          {
+            "totalMs": 8033.767300000065,
+            "preMs": 4.721699999994598,
+            "dbMs": 363.5542000000132,
+            "betweenSqlMs": 0,
+            "postMs": 7665.491400000057,
+            "sqlCalls": 1,
+            "rowsToApp": 40097,
+            "openCount": 240582
+          },
+          {
+            "totalMs": 7992.35679999995,
+            "preMs": 0.6069999999599531,
+            "dbMs": 369.3821000000462,
+            "betweenSqlMs": 0,
+            "postMs": 7622.367699999944,
+            "sqlCalls": 1,
+            "rowsToApp": 40097,
+            "openCount": 240582
+          },
+          {
+            "totalMs": 7849.627800000017,
+            "preMs": 0.5474999999860302,
+            "dbMs": 357.4664000000339,
+            "betweenSqlMs": 0,
+            "postMs": 7491.613899999997,
+            "sqlCalls": 1,
+            "rowsToApp": 40097,
+            "openCount": 240582
+          },
+          {
+            "totalMs": 8022.858899999992,
+            "preMs": 5.294899999978952,
+            "dbMs": 354.0969000000041,
+            "betweenSqlMs": 0,
+            "postMs": 7663.467100000009,
+            "sqlCalls": 1,
+            "rowsToApp": 40097,
+            "openCount": 240582
+          },
+          {
+            "totalMs": 7803.334200000041,
+            "preMs": 4.65590000001248,
+            "dbMs": 357.93740000005346,
+            "betweenSqlMs": 0,
+            "postMs": 7440.740899999975,
+            "sqlCalls": 1,
+            "rowsToApp": 40097,
+            "openCount": 240582
+          },
+          {
+            "totalMs": 7991.046399999992,
+            "preMs": 5.351699999999255,
+            "dbMs": 373.4159000000218,
+            "betweenSqlMs": 0,
+            "postMs": 7612.278799999971,
+            "sqlCalls": 1,
+            "rowsToApp": 40097,
+            "openCount": 240582
+          },
+          {
+            "totalMs": 7820.083600000013,
+            "preMs": 0.5901999999769032,
+            "dbMs": 359.76969999994617,
+            "betweenSqlMs": 0,
+            "postMs": 7459.72370000009,
+            "sqlCalls": 1,
+            "rowsToApp": 40097,
+            "openCount": 240582
+          }
+        ]
+      }
+    },
+    {
+      "name": "joinCount",
+      "tree": {
+        "field": "memo",
+        "op": "contains",
+        "value": "서비스"
+      },
+      "mode": "joinCount",
+      "condition": "ticket.memo contains \"서비스\" AND customer.company eq \"서울서비스 담당\"",
+      "targetRows": 100000,
+      "actualMatches": 21182,
+      "resultRows": 1,
+      "resultValue": 21182,
+      "dbCandidates": 21182,
+      "first": {
+        "A": {
+          "totalMs": 403.49890000000596,
+          "preMs": 0.6816000000108033,
+          "dbMs": 402.76780000003055,
+          "betweenSqlMs": 0,
+          "postMs": 0.04949999996460974,
+          "sqlCalls": 1,
+          "rowsToApp": 1,
+          "openCount": 0
+        },
+        "product": {
+          "totalMs": 2153.5006000000285,
+          "preMs": 2.597799999988638,
+          "dbMs": 287.36210000002757,
+          "betweenSqlMs": 0,
+          "postMs": 1863.5407000000123,
+          "sqlCalls": 1,
+          "rowsToApp": 21182,
+          "openCount": 42364
+        },
+        "plain": {
+          "totalMs": 40.9611000000732,
+          "preMs": 0.05420000001322478,
+          "dbMs": 40.85550000006333,
+          "betweenSqlMs": 0,
+          "postMs": 0.05139999999664724,
+          "sqlCalls": 1,
+          "rowsToApp": 1,
+          "openCount": 0
+        }
+      },
+      "summary": {
+        "plain": {
+          "totalMs": 36.635299999965355,
+          "preMs": 0.04910000006202608,
+          "dbMs": 36.51650000002701,
+          "betweenSqlMs": 0,
+          "postMs": 0.04589999991003424,
+          "sqlCalls": 1,
+          "rowsToApp": 1,
+          "openCount": 0
+        },
+        "product": {
+          "totalMs": 2133.7787000000244,
+          "preMs": 1.421500000054948,
+          "dbMs": 286.6875,
+          "betweenSqlMs": 0,
+          "postMs": 1852.71669999999,
+          "sqlCalls": 1,
+          "rowsToApp": 21182,
+          "openCount": 42364
+        },
+        "A": {
+          "totalMs": 407.20649999997113,
+          "preMs": 0.604300000006333,
+          "dbMs": 406.33380000002217,
+          "betweenSqlMs": 0,
+          "postMs": 0.04469999996945262,
+          "sqlCalls": 1,
+          "rowsToApp": 1,
+          "openCount": 0
+        }
+      },
+      "runs": {
+        "plain": [
+          {
+            "totalMs": 34.537000000011176,
+            "preMs": 0.0766000000294298,
+            "dbMs": 34.42130000004545,
+            "betweenSqlMs": 0,
+            "postMs": 0.039099999936297536,
+            "sqlCalls": 1,
+            "rowsToApp": 1,
+            "openCount": 0
+          },
+          {
+            "totalMs": 42.473400000017136,
+            "preMs": 0.04910000006202608,
+            "dbMs": 42.37820000003558,
+            "betweenSqlMs": 0,
+            "postMs": 0.04609999991953373,
+            "sqlCalls": 1,
+            "rowsToApp": 1,
+            "openCount": 0
+          },
+          {
+            "totalMs": 36.635299999965355,
+            "preMs": 0.04369999992195517,
+            "dbMs": 36.51650000002701,
+            "betweenSqlMs": 0,
+            "postMs": 0.07510000001639128,
+            "sqlCalls": 1,
+            "rowsToApp": 1,
+            "openCount": 0
+          },
+          {
+            "totalMs": 38.99269999994431,
+            "preMs": 0.06339999998454005,
+            "dbMs": 38.883799999952316,
+            "betweenSqlMs": 0,
+            "postMs": 0.04550000000745058,
+            "sqlCalls": 1,
+            "rowsToApp": 1,
+            "openCount": 0
+          },
+          {
+            "totalMs": 35.43579999997746,
+            "preMs": 0.0415999999968335,
+            "dbMs": 35.350399999995716,
+            "betweenSqlMs": 0,
+            "postMs": 0.043799999984912574,
+            "sqlCalls": 1,
+            "rowsToApp": 1,
+            "openCount": 0
+          },
+          {
+            "totalMs": 130.170599999954,
+            "preMs": 0.049399999901652336,
+            "dbMs": 130.07320000010077,
+            "betweenSqlMs": 0,
+            "postMs": 0.047999999951571226,
+            "sqlCalls": 1,
+            "rowsToApp": 1,
+            "openCount": 0
+          },
+          {
+            "totalMs": 36.073099999921396,
+            "preMs": 0.04139999998733401,
+            "dbMs": 35.98580000002403,
+            "betweenSqlMs": 0,
+            "postMs": 0.04589999991003424,
+            "sqlCalls": 1,
+            "rowsToApp": 1,
+            "openCount": 0
+          }
+        ],
+        "product": [
+          {
+            "totalMs": 2284.8887000000104,
+            "preMs": 1.3649000000441447,
+            "dbMs": 317.22340000001714,
+            "betweenSqlMs": 0,
+            "postMs": 1966.3003999999491,
+            "sqlCalls": 1,
+            "rowsToApp": 21182,
+            "openCount": 42364
+          },
+          {
+            "totalMs": 2145.1754000000656,
+            "preMs": 1.6308000000426546,
+            "dbMs": 286.6875,
+            "betweenSqlMs": 0,
+            "postMs": 1856.857100000023,
+            "sqlCalls": 1,
+            "rowsToApp": 21182,
+            "openCount": 42364
+          },
+          {
+            "totalMs": 2133.7787000000244,
+            "preMs": 1.8206999999238178,
+            "dbMs": 279.24130000011064,
+            "betweenSqlMs": 0,
+            "postMs": 1852.71669999999,
+            "sqlCalls": 1,
+            "rowsToApp": 21182,
+            "openCount": 42364
+          },
+          {
+            "totalMs": 2060.4730999999447,
+            "preMs": 1.272400000016205,
+            "dbMs": 286.47120000002906,
+            "betweenSqlMs": 0,
+            "postMs": 1772.7294999998994,
+            "sqlCalls": 1,
+            "rowsToApp": 21182,
+            "openCount": 42364
+          },
+          {
+            "totalMs": 2092.211499999976,
+            "preMs": 1.4465999999083579,
+            "dbMs": 291.5529000000097,
+            "betweenSqlMs": 0,
+            "postMs": 1799.2120000000577,
+            "sqlCalls": 1,
+            "rowsToApp": 21182,
+            "openCount": 42364
+          },
+          {
+            "totalMs": 2164.6341999999713,
+            "preMs": 1.421500000054948,
+            "dbMs": 271.5392999999458,
+            "betweenSqlMs": 0,
+            "postMs": 1891.6733999999706,
+            "sqlCalls": 1,
+            "rowsToApp": 21182,
+            "openCount": 42364
+          },
+          {
+            "totalMs": 2122.2237000000896,
+            "preMs": 1.3084000000962988,
+            "dbMs": 317.1332999999868,
+            "betweenSqlMs": 0,
+            "postMs": 1803.7820000000065,
+            "sqlCalls": 1,
+            "rowsToApp": 21182,
+            "openCount": 42364
+          }
+        ],
+        "A": [
+          {
+            "totalMs": 407.20649999997113,
+            "preMs": 0.8279999999795109,
+            "dbMs": 406.33380000002217,
+            "betweenSqlMs": 0,
+            "postMs": 0.04469999996945262,
+            "sqlCalls": 1,
+            "rowsToApp": 1,
+            "openCount": 0
+          },
+          {
+            "totalMs": 411.8829999999143,
+            "preMs": 0.661699999938719,
+            "dbMs": 411.1770999999717,
+            "betweenSqlMs": 0,
+            "postMs": 0.044200000003911555,
+            "sqlCalls": 1,
+            "rowsToApp": 1,
+            "openCount": 0
+          },
+          {
+            "totalMs": 401.60430000000633,
+            "preMs": 0.9925999999977648,
+            "dbMs": 400.56119999999646,
+            "betweenSqlMs": 0,
+            "postMs": 0.050500000012107193,
+            "sqlCalls": 1,
+            "rowsToApp": 1,
+            "openCount": 0
+          },
+          {
+            "totalMs": 407.76249999995343,
+            "preMs": 0.604300000006333,
+            "dbMs": 407.1139999999432,
+            "betweenSqlMs": 0,
+            "postMs": 0.044200000003911555,
+            "sqlCalls": 1,
+            "rowsToApp": 1,
+            "openCount": 0
+          },
+          {
+            "totalMs": 405.0592999999644,
+            "preMs": 0.5372000000206754,
+            "dbMs": 404.4769999999553,
+            "betweenSqlMs": 0,
+            "postMs": 0.0450999999884516,
+            "sqlCalls": 1,
+            "rowsToApp": 1,
+            "openCount": 0
+          },
+          {
+            "totalMs": 408.216599999927,
+            "preMs": 0.5533999999752268,
+            "dbMs": 407.6204999999609,
+            "betweenSqlMs": 0,
+            "postMs": 0.04269999999087304,
+            "sqlCalls": 1,
+            "rowsToApp": 1,
+            "openCount": 0
+          },
+          {
+            "totalMs": 392.3600999999326,
+            "preMs": 0.5230999999912456,
+            "dbMs": 391.78859999997076,
+            "betweenSqlMs": 0,
+            "postMs": 0.04839999997057021,
+            "sqlCalls": 1,
+            "rowsToApp": 1,
+            "openCount": 0
+          }
+        ]
+      }
+    },
+    {
+      "name": "join20",
+      "tree": {
+        "field": "memo",
+        "op": "contains",
+        "value": "서비스"
+      },
+      "mode": "joinFind",
+      "limit": 20,
+      "condition": "ticket.memo contains \"서비스\" AND customer.company eq \"서울서비스 담당\"",
+      "targetRows": 100000,
+      "actualMatches": 21182,
+      "resultRows": 20,
+      "dbCandidates": 21182,
+      "first": {
+        "A": {
+          "totalMs": 450.9462999999523,
+          "preMs": 0.7645000000484288,
+          "dbMs": 436.0091999999713,
+          "betweenSqlMs": 0,
+          "postMs": 14.172599999932572,
+          "sqlCalls": 1,
+          "rowsToApp": 20,
+          "openCount": 240
+        },
+        "product": {
+          "totalMs": 22.338400000007823,
+          "preMs": 1.5214999999152496,
+          "dbMs": 12.254500000039116,
+          "betweenSqlMs": 0,
+          "postMs": 8.562400000053458,
+          "sqlCalls": 1,
+          "rowsToApp": 27,
+          "openCount": 240
+        },
+        "plain": {
+          "totalMs": 1.0690000000176951,
+          "preMs": 0.054899999988265336,
+          "dbMs": 0.9965000000083819,
+          "betweenSqlMs": 0,
+          "postMs": 0.01760000002104789,
+          "sqlCalls": 1,
+          "rowsToApp": 20,
+          "openCount": 0
+        }
+      },
+      "summary": {
+        "plain": {
+          "totalMs": 0.7287000000942498,
+          "preMs": 0.04790000000502914,
+          "dbMs": 0.6546000000089407,
+          "betweenSqlMs": 0,
+          "postMs": 0.01919999998062849,
+          "sqlCalls": 1,
+          "rowsToApp": 20,
+          "openCount": 0
+        },
+        "product": {
+          "totalMs": 12.055499999900348,
+          "preMs": 1.318100000033155,
+          "dbMs": 2.1265000000130385,
+          "betweenSqlMs": 0,
+          "postMs": 7.714599999948405,
+          "sqlCalls": 1,
+          "rowsToApp": 27,
+          "openCount": 240
+        },
+        "A": {
+          "totalMs": 444.0858999999473,
+          "preMs": 0.47820000001229346,
+          "dbMs": 436.904899999965,
+          "betweenSqlMs": 0,
+          "postMs": 7.113299999968149,
+          "sqlCalls": 1,
+          "rowsToApp": 20,
+          "openCount": 240
+        }
+      },
+      "runs": {
+        "plain": [
+          {
+            "totalMs": 0.5376999999862164,
+            "preMs": 0.024699999950826168,
+            "dbMs": 0.5015000000130385,
+            "betweenSqlMs": 0,
+            "postMs": 0.011500000022351742,
+            "sqlCalls": 1,
+            "rowsToApp": 20,
+            "openCount": 0
+          },
+          {
+            "totalMs": 1.0688000000081956,
+            "preMs": 0.05799999996088445,
+            "dbMs": 0.9916000000666827,
+            "betweenSqlMs": 0,
+            "postMs": 0.01919999998062849,
+            "sqlCalls": 1,
+            "rowsToApp": 20,
+            "openCount": 0
+          },
+          {
+            "totalMs": 0.5344000000040978,
+            "preMs": 0.023600000073201954,
+            "dbMs": 0.4983999999240041,
+            "betweenSqlMs": 0,
+            "postMs": 0.012400000006891787,
+            "sqlCalls": 1,
+            "rowsToApp": 20,
+            "openCount": 0
+          },
+          {
+            "totalMs": 1.1071000000229105,
+            "preMs": 0.05280000006314367,
+            "dbMs": 1.0174999999580905,
+            "betweenSqlMs": 0,
+            "postMs": 0.03680000000167638,
+            "sqlCalls": 1,
+            "rowsToApp": 20,
+            "openCount": 0
+          },
+          {
+            "totalMs": 0.7287000000942498,
+            "preMs": 0.04790000000502914,
+            "dbMs": 0.6546000000089407,
+            "betweenSqlMs": 0,
+            "postMs": 0.026200000080280006,
+            "sqlCalls": 1,
+            "rowsToApp": 20,
+            "openCount": 0
+          },
+          {
+            "totalMs": 1.1537999999709427,
+            "preMs": 0.06389999995008111,
+            "dbMs": 1.060799999977462,
+            "betweenSqlMs": 0,
+            "postMs": 0.029100000043399632,
+            "sqlCalls": 1,
+            "rowsToApp": 20,
+            "openCount": 0
+          },
+          {
+            "totalMs": 0.6080999999539927,
+            "preMs": 0.04229999997187406,
+            "dbMs": 0.5528000000631437,
+            "betweenSqlMs": 0,
+            "postMs": 0.012999999918974936,
+            "sqlCalls": 1,
+            "rowsToApp": 20,
+            "openCount": 0
+          }
+        ],
+        "product": [
+          {
+            "totalMs": 10.79879999998957,
+            "preMs": 1.1977999999653548,
+            "dbMs": 1.9677000000374392,
+            "betweenSqlMs": 0,
+            "postMs": 7.633299999986775,
+            "sqlCalls": 1,
+            "rowsToApp": 27,
+            "openCount": 240
+          },
+          {
+            "totalMs": 12.754199999966659,
+            "preMs": 1.4381999999750406,
+            "dbMs": 2.990500000072643,
+            "betweenSqlMs": 0,
+            "postMs": 8.325499999918975,
+            "sqlCalls": 1,
+            "rowsToApp": 27,
+            "openCount": 240
+          },
+          {
+            "totalMs": 10.719199999934062,
+            "preMs": 1.188899999950081,
+            "dbMs": 1.7444000000832602,
+            "betweenSqlMs": 0,
+            "postMs": 7.785899999900721,
+            "sqlCalls": 1,
+            "rowsToApp": 27,
+            "openCount": 240
+          },
+          {
+            "totalMs": 12.055499999900348,
+            "preMs": 1.416499999933876,
+            "dbMs": 2.937999999965541,
+            "betweenSqlMs": 0,
+            "postMs": 7.701000000000931,
+            "sqlCalls": 1,
+            "rowsToApp": 27,
+            "openCount": 240
+          },
+          {
+            "totalMs": 10.486800000071526,
+            "preMs": 1.4764999999897555,
+            "dbMs": 1.8016000000061467,
+            "betweenSqlMs": 0,
+            "postMs": 7.208700000075623,
+            "sqlCalls": 1,
+            "rowsToApp": 27,
+            "openCount": 240
+          },
+          {
+            "totalMs": 12.353400000021793,
+            "preMs": 1.318100000033155,
+            "dbMs": 3.320700000040233,
+            "betweenSqlMs": 0,
+            "postMs": 7.714599999948405,
+            "sqlCalls": 1,
+            "rowsToApp": 27,
+            "openCount": 240
+          },
+          {
+            "totalMs": 13.185599999967963,
+            "preMs": 1.24820000003092,
+            "dbMs": 2.1265000000130385,
+            "betweenSqlMs": 0,
+            "postMs": 9.810899999924004,
+            "sqlCalls": 1,
+            "rowsToApp": 27,
+            "openCount": 240
+          }
+        ],
+        "A": [
+          {
+            "totalMs": 444.0858999999473,
+            "preMs": 0.47169999999459833,
+            "dbMs": 436.904899999965,
+            "betweenSqlMs": 0,
+            "postMs": 6.7092999999877065,
+            "sqlCalls": 1,
+            "rowsToApp": 20,
+            "openCount": 240
+          },
+          {
+            "totalMs": 442.6922000000486,
+            "preMs": 0.5097000000532717,
+            "dbMs": 435.09600000001956,
+            "betweenSqlMs": 0,
+            "postMs": 7.086499999975786,
+            "sqlCalls": 1,
+            "rowsToApp": 20,
+            "openCount": 240
+          },
+          {
+            "totalMs": 476.75820000004023,
+            "preMs": 0.4688000000314787,
+            "dbMs": 468.9871999999741,
+            "betweenSqlMs": 0,
+            "postMs": 7.302200000034645,
+            "sqlCalls": 1,
+            "rowsToApp": 20,
+            "openCount": 240
+          },
+          {
+            "totalMs": 447.0378999999957,
+            "preMs": 0.5076999999582767,
+            "dbMs": 439.4169000000693,
+            "betweenSqlMs": 0,
+            "postMs": 7.113299999968149,
+            "sqlCalls": 1,
+            "rowsToApp": 20,
+            "openCount": 240
+          },
+          {
+            "totalMs": 426.1618999999482,
+            "preMs": 0.4253999999491498,
+            "dbMs": 418.33640000002924,
+            "betweenSqlMs": 0,
+            "postMs": 7.400099999969825,
+            "sqlCalls": 1,
+            "rowsToApp": 20,
+            "openCount": 240
+          },
+          {
+            "totalMs": 478.30670000007376,
+            "preMs": 0.47820000001229346,
+            "dbMs": 470.33660000003874,
+            "betweenSqlMs": 0,
+            "postMs": 7.491900000022724,
+            "sqlCalls": 1,
+            "rowsToApp": 20,
+            "openCount": 240
+          },
+          {
+            "totalMs": 433.1609999999637,
+            "preMs": 0.4880999999586493,
+            "dbMs": 425.9629000000423,
+            "betweenSqlMs": 0,
+            "postMs": 6.709999999962747,
+            "sqlCalls": 1,
+            "rowsToApp": 20,
+            "openCount": 240
+          }
+        ]
+      }
+    },
+    {
+      "name": "sumTickets",
+      "tree": {
+        "field": "memo",
+        "op": "contains",
+        "value": "서비스"
+      },
+      "mode": "sum",
+      "table": "tickets",
+      "condition": "memo contains \"서비스\"",
+      "targetRows": 100000,
+      "actualMatches": 39939,
+      "resultRows": 1,
+      "resultValue": "651411",
+      "dbCandidates": 39939,
+      "first": {
+        "A": {
+          "totalMs": 201.91169999993872,
+          "preMs": 0.374599999981001,
+          "dbMs": 201.4819000000134,
+          "betweenSqlMs": 0,
+          "postMs": 0.05519999994430691,
+          "sqlCalls": 1,
+          "rowsToApp": 1,
+          "openCount": 0
+        },
+        "product": {
+          "totalMs": 1669.2902000000468,
+          "preMs": 1.004300000029616,
+          "dbMs": 262.17869999993127,
+          "betweenSqlMs": 1406.050900000031,
+          "postMs": 0.05630000005476177,
+          "sqlCalls": 2,
+          "rowsToApp": 39940,
+          "openCount": 39939
+        },
+        "plain": {
+          "totalMs": 30.700199999962933,
+          "preMs": 0.04029999999329448,
+          "dbMs": 30.605499999946915,
+          "betweenSqlMs": 0,
+          "postMs": 0.05440000002272427,
+          "sqlCalls": 1,
+          "rowsToApp": 1,
+          "openCount": 0
+        }
+      },
+      "summary": {
+        "plain": {
+          "totalMs": 30.100800000014715,
+          "preMs": 0.038499999907799065,
+          "dbMs": 30.01070000010077,
+          "betweenSqlMs": 0,
+          "postMs": 0.043999999994412065,
+          "sqlCalls": 1,
+          "rowsToApp": 1,
+          "openCount": 0
+        },
+        "product": {
+          "totalMs": 1624.122800000012,
+          "preMs": 0.8894000001018867,
+          "dbMs": 251.77460000000428,
+          "betweenSqlMs": 1373.6944000000367,
+          "postMs": 0.043200000072829425,
+          "sqlCalls": 2,
+          "rowsToApp": 39940,
+          "openCount": 39939
+        },
+        "A": {
+          "totalMs": 212.70819999999367,
+          "preMs": 0.4096999999601394,
+          "dbMs": 212.14540000003763,
+          "betweenSqlMs": 0,
+          "postMs": 0.04860000009648502,
+          "sqlCalls": 1,
+          "rowsToApp": 1,
+          "openCount": 0
+        }
+      },
+      "runs": {
+        "plain": [
+          {
+            "totalMs": 32.48889999999665,
+            "preMs": 0.037099999957717955,
+            "dbMs": 32.40780000004452,
+            "betweenSqlMs": 0,
+            "postMs": 0.043999999994412065,
+            "sqlCalls": 1,
+            "rowsToApp": 1,
+            "openCount": 0
+          },
+          {
+            "totalMs": 30.100800000014715,
+            "preMs": 0.0415999999968335,
+            "dbMs": 30.01070000010077,
+            "betweenSqlMs": 0,
+            "postMs": 0.04849999991711229,
+            "sqlCalls": 1,
+            "rowsToApp": 1,
+            "openCount": 0
+          },
+          {
+            "totalMs": 29.728699999977835,
+            "preMs": 0.034699999960139394,
+            "dbMs": 29.65120000008028,
+            "betweenSqlMs": 0,
+            "postMs": 0.04279999993741512,
+            "sqlCalls": 1,
+            "rowsToApp": 1,
+            "openCount": 0
+          },
+          {
+            "totalMs": 30.1921999999322,
+            "preMs": 0.038699999917298555,
+            "dbMs": 30.10840000002645,
+            "betweenSqlMs": 0,
+            "postMs": 0.0450999999884516,
+            "sqlCalls": 1,
+            "rowsToApp": 1,
+            "openCount": 0
+          },
+          {
+            "totalMs": 29.846199999912642,
+            "preMs": 0.03519999992568046,
+            "dbMs": 29.772800000035204,
+            "betweenSqlMs": 0,
+            "postMs": 0.03819999995175749,
+            "sqlCalls": 1,
+            "rowsToApp": 1,
+            "openCount": 0
+          },
+          {
+            "totalMs": 30.291899999952875,
+            "preMs": 0.038499999907799065,
+            "dbMs": 30.208100000047125,
+            "betweenSqlMs": 0,
+            "postMs": 0.04529999999795109,
+            "sqlCalls": 1,
+            "rowsToApp": 1,
+            "openCount": 0
+          },
+          {
+            "totalMs": 29.774499999941327,
+            "preMs": 0.03850000002421439,
+            "dbMs": 29.697999999974854,
+            "betweenSqlMs": 0,
+            "postMs": 0.037999999942258,
+            "sqlCalls": 1,
+            "rowsToApp": 1,
+            "openCount": 0
+          }
+        ],
+        "product": [
+          {
+            "totalMs": 1624.122800000012,
+            "preMs": 0.9721999999601394,
+            "dbMs": 251.77460000000428,
+            "betweenSqlMs": 1371.3301999999676,
+            "postMs": 0.04580000007990748,
+            "sqlCalls": 2,
+            "rowsToApp": 39940,
+            "openCount": 39939
+          },
+          {
+            "totalMs": 1622.5204999999842,
+            "preMs": 0.8740000000689179,
+            "dbMs": 247.90939999988768,
+            "betweenSqlMs": 1373.6944000000367,
+            "postMs": 0.04269999999087304,
+            "sqlCalls": 2,
+            "rowsToApp": 39940,
+            "openCount": 39939
+          },
+          {
+            "totalMs": 1630.3380999999354,
+            "preMs": 0.9939000000013039,
+            "dbMs": 269.2127999998629,
+            "betweenSqlMs": 1360.0864000000292,
+            "postMs": 0.045000000041909516,
+            "sqlCalls": 2,
+            "rowsToApp": 39940,
+            "openCount": 39939
+          },
+          {
+            "totalMs": 1635.8522000000812,
+            "preMs": 1.1166000000666827,
+            "dbMs": 248.46349999995437,
+            "betweenSqlMs": 1386.2303000000538,
+            "postMs": 0.041800000006332994,
+            "sqlCalls": 2,
+            "rowsToApp": 39940,
+            "openCount": 39939
+          },
+          {
+            "totalMs": 1621.8969999999972,
+            "preMs": 0.8894000001018867,
+            "dbMs": 246.92909999995027,
+            "betweenSqlMs": 1374.034400000004,
+            "postMs": 0.04409999994095415,
+            "sqlCalls": 2,
+            "rowsToApp": 39940,
+            "openCount": 39939
+          },
+          {
+            "totalMs": 1604.1103000000585,
+            "preMs": 0.8678999999538064,
+            "dbMs": 254.1058999999659,
+            "betweenSqlMs": 1349.093300000066,
+            "postMs": 0.043200000072829425,
+            "sqlCalls": 2,
+            "rowsToApp": 39940,
+            "openCount": 39939
+          },
+          {
+            "totalMs": 1643.1361000000034,
+            "preMs": 0.8689999999478459,
+            "dbMs": 258.4405999999726,
+            "betweenSqlMs": 1383.7854999999981,
+            "postMs": 0.041000000084750354,
+            "sqlCalls": 2,
+            "rowsToApp": 39940,
+            "openCount": 39939
+          }
+        ],
+        "A": [
+          {
+            "totalMs": 206.6549000000814,
+            "preMs": 0.4046000000089407,
+            "dbMs": 206.1981000000378,
+            "betweenSqlMs": 0,
+            "postMs": 0.0522000000346452,
+            "sqlCalls": 1,
+            "rowsToApp": 1,
+            "openCount": 0
+          },
+          {
+            "totalMs": 218.71830000006594,
+            "preMs": 0.4096999999601394,
+            "dbMs": 218.266500000027,
+            "betweenSqlMs": 0,
+            "postMs": 0.04210000007878989,
+            "sqlCalls": 1,
+            "rowsToApp": 1,
+            "openCount": 0
+          },
+          {
+            "totalMs": 212.70819999999367,
+            "preMs": 0.516399999964051,
+            "dbMs": 212.14540000003763,
+            "betweenSqlMs": 0,
+            "postMs": 0.046399999991990626,
+            "sqlCalls": 1,
+            "rowsToApp": 1,
+            "openCount": 0
+          },
+          {
+            "totalMs": 215.11980000010226,
+            "preMs": 0.39550000010058284,
+            "dbMs": 214.6756999999052,
+            "betweenSqlMs": 0,
+            "postMs": 0.04860000009648502,
+            "sqlCalls": 1,
+            "rowsToApp": 1,
+            "openCount": 0
+          },
+          {
+            "totalMs": 209.0439999999944,
+            "preMs": 0.4638000000268221,
+            "dbMs": 208.53040000004694,
+            "betweenSqlMs": 0,
+            "postMs": 0.04979999992065132,
+            "sqlCalls": 1,
+            "rowsToApp": 1,
+            "openCount": 0
+          },
+          {
+            "totalMs": 207.42790000000969,
+            "preMs": 0.3941999999806285,
+            "dbMs": 206.99210000003222,
+            "betweenSqlMs": 0,
+            "postMs": 0.0415999999968335,
+            "sqlCalls": 1,
+            "rowsToApp": 1,
+            "openCount": 0
+          },
+          {
+            "totalMs": 216.0121999999974,
+            "preMs": 0.6011999999172986,
+            "dbMs": 215.36210000002757,
+            "betweenSqlMs": 0,
+            "postMs": 0.04890000005252659,
+            "sqlCalls": 1,
+            "rowsToApp": 1,
+            "openCount": 0
+          }
+        ]
+      }
+    },
+    {
+      "name": "longReal",
+      "tree": {
+        "field": "memo",
+        "op": "contains",
+        "value": "상세 안내와 확인 내용 상세 안내와"
+      },
+      "mode": "count",
+      "condition": "memo contains \"상세 안내와 확인 내용 상세 안내와\"",
+      "targetRows": 100000,
+      "actualMatches": 2440,
+      "resultRows": 1,
+      "resultValue": 2440,
+      "dbCandidates": 2440,
+      "first": {
+        "A": {
+          "totalMs": 92.91169999993872,
+          "preMs": 0.9285999999847263,
+          "dbMs": 91.93869999994058,
+          "betweenSqlMs": 0,
+          "postMs": 0.044400000013411045,
+          "sqlCalls": 1,
+          "rowsToApp": 1,
+          "openCount": 0
+        },
+        "product": {
+          "totalMs": 126.40800000005402,
+          "preMs": 1.334400000050664,
+          "dbMs": 31.28759999992326,
+          "betweenSqlMs": 0,
+          "postMs": 93.7860000000801,
+          "sqlCalls": 1,
+          "rowsToApp": 2440,
+          "openCount": 2440
+        },
+        "plain": {
+          "totalMs": 21.85020000010263,
+          "preMs": 0.049700000090524554,
+          "dbMs": 21.75709999992978,
+          "betweenSqlMs": 0,
+          "postMs": 0.043400000082328916,
+          "sqlCalls": 1,
+          "rowsToApp": 1,
+          "openCount": 0
+        }
+      },
+      "summary": {
+        "plain": {
+          "totalMs": 22.32720000005793,
+          "preMs": 0.045000000041909516,
+          "dbMs": 22.240699999965727,
+          "betweenSqlMs": 0,
+          "postMs": 0.04189999995287508,
+          "sqlCalls": 1,
+          "rowsToApp": 1,
+          "openCount": 0
+        },
+        "product": {
+          "totalMs": 107.90419999998994,
+          "preMs": 1.247899999958463,
+          "dbMs": 12.780299999983981,
+          "betweenSqlMs": 0,
+          "postMs": 93.71149999997579,
+          "sqlCalls": 1,
+          "rowsToApp": 2440,
+          "openCount": 2440
+        },
+        "A": {
+          "totalMs": 70.9301999999443,
+          "preMs": 0.8893000000389293,
+          "dbMs": 69.98010000004433,
+          "betweenSqlMs": 0,
+          "postMs": 0.04130000004079193,
+          "sqlCalls": 1,
+          "rowsToApp": 1,
+          "openCount": 0
+        }
+      },
+      "runs": {
+        "plain": [
+          {
+            "totalMs": 19.28289999999106,
+            "preMs": 0.047399999923072755,
+            "dbMs": 19.193900000071153,
+            "betweenSqlMs": 0,
+            "postMs": 0.0415999999968335,
+            "sqlCalls": 1,
+            "rowsToApp": 1,
+            "openCount": 0
+          },
+          {
+            "totalMs": 23.34409999998752,
+            "preMs": 0.046800000010989606,
+            "dbMs": 23.254399999976158,
+            "betweenSqlMs": 0,
+            "postMs": 0.04290000000037253,
+            "sqlCalls": 1,
+            "rowsToApp": 1,
+            "openCount": 0
+          },
+          {
+            "totalMs": 22.32720000005793,
+            "preMs": 0.043600000091828406,
+            "dbMs": 22.240699999965727,
+            "betweenSqlMs": 0,
+            "postMs": 0.04290000000037253,
+            "sqlCalls": 1,
+            "rowsToApp": 1,
+            "openCount": 0
+          },
+          {
+            "totalMs": 22.315500000026077,
+            "preMs": 0.045000000041909516,
+            "dbMs": 22.230699999956414,
+            "betweenSqlMs": 0,
+            "postMs": 0.03980000002775341,
+            "sqlCalls": 1,
+            "rowsToApp": 1,
+            "openCount": 0
+          },
+          {
+            "totalMs": 23.479500000015832,
+            "preMs": 0.040600000065751374,
+            "dbMs": 23.396999999997206,
+            "betweenSqlMs": 0,
+            "postMs": 0.04189999995287508,
+            "sqlCalls": 1,
+            "rowsToApp": 1,
+            "openCount": 0
+          },
+          {
+            "totalMs": 21.590199999976903,
+            "preMs": 0.05790000001434237,
+            "dbMs": 21.488699999987148,
+            "betweenSqlMs": 0,
+            "postMs": 0.043599999975413084,
+            "sqlCalls": 1,
+            "rowsToApp": 1,
+            "openCount": 0
+          },
+          {
+            "totalMs": 23.525299999979325,
+            "preMs": 0.04209999996237457,
+            "dbMs": 23.441899999976158,
+            "betweenSqlMs": 0,
+            "postMs": 0.04130000004079193,
+            "sqlCalls": 1,
+            "rowsToApp": 1,
+            "openCount": 0
+          }
+        ],
+        "product": [
+          {
+            "totalMs": 111.8481000000611,
+            "preMs": 1.33870000008028,
+            "dbMs": 12.365699999965727,
+            "betweenSqlMs": 0,
+            "postMs": 98.14370000001509,
+            "sqlCalls": 1,
+            "rowsToApp": 2440,
+            "openCount": 2440
+          },
+          {
+            "totalMs": 115.54889999993611,
+            "preMs": 1.3214000000152737,
+            "dbMs": 12.780299999983981,
+            "betweenSqlMs": 0,
+            "postMs": 101.44719999993686,
+            "sqlCalls": 1,
+            "rowsToApp": 2440,
+            "openCount": 2440
+          },
+          {
+            "totalMs": 101.05370000004768,
+            "preMs": 1.247899999958463,
+            "dbMs": 12.770300000091083,
+            "betweenSqlMs": 0,
+            "postMs": 87.03549999999814,
+            "sqlCalls": 1,
+            "rowsToApp": 2440,
+            "openCount": 2440
+          },
+          {
+            "totalMs": 114.61539999989327,
+            "preMs": 1.206599999917671,
+            "dbMs": 12.789700000081211,
+            "betweenSqlMs": 0,
+            "postMs": 100.61909999989439,
+            "sqlCalls": 1,
+            "rowsToApp": 2440,
+            "openCount": 2440
+          },
+          {
+            "totalMs": 106.89939999999478,
+            "preMs": 1.45609999995213,
+            "dbMs": 12.584900000016205,
+            "betweenSqlMs": 0,
+            "postMs": 92.85840000002645,
+            "sqlCalls": 1,
+            "rowsToApp": 2440,
+            "openCount": 2440
+          },
+          {
+            "totalMs": 107.65690000005998,
+            "preMs": 1.1700000000419095,
+            "dbMs": 14.140600000042468,
+            "betweenSqlMs": 0,
+            "postMs": 92.3462999999756,
+            "sqlCalls": 1,
+            "rowsToApp": 2440,
+            "openCount": 2440
+          },
+          {
+            "totalMs": 107.90419999998994,
+            "preMs": 1.2273999999742955,
+            "dbMs": 12.96530000003986,
+            "betweenSqlMs": 0,
+            "postMs": 93.71149999997579,
+            "sqlCalls": 1,
+            "rowsToApp": 2440,
+            "openCount": 2440
+          }
+        ],
+        "A": [
+          {
+            "totalMs": 75.23130000010133,
+            "preMs": 0.7872000000206754,
+            "dbMs": 74.40379999997094,
+            "betweenSqlMs": 0,
+            "postMs": 0.0403000001097098,
+            "sqlCalls": 1,
+            "rowsToApp": 1,
+            "openCount": 0
+          },
+          {
+            "totalMs": 69.08799999998882,
+            "preMs": 0.8489000000990927,
+            "dbMs": 68.1976999999024,
+            "betweenSqlMs": 0,
+            "postMs": 0.04139999998733401,
+            "sqlCalls": 1,
+            "rowsToApp": 1,
+            "openCount": 0
+          },
+          {
+            "totalMs": 69.18480000004638,
+            "preMs": 0.8893000000389293,
+            "dbMs": 68.25430000002962,
+            "betweenSqlMs": 0,
+            "postMs": 0.04119999997783452,
+            "sqlCalls": 1,
+            "rowsToApp": 1,
+            "openCount": 0
+          },
+          {
+            "totalMs": 69.44609999994282,
+            "preMs": 0.9406999999191612,
+            "dbMs": 68.46409999998286,
+            "betweenSqlMs": 0,
+            "postMs": 0.04130000004079193,
+            "sqlCalls": 1,
+            "rowsToApp": 1,
+            "openCount": 0
+          },
+          {
+            "totalMs": 70.9301999999443,
+            "preMs": 0.9071999998996034,
+            "dbMs": 69.98010000004433,
+            "betweenSqlMs": 0,
+            "postMs": 0.04290000000037253,
+            "sqlCalls": 1,
+            "rowsToApp": 1,
+            "openCount": 0
+          },
+          {
+            "totalMs": 79.13540000002831,
+            "preMs": 0.9438000000081956,
+            "dbMs": 78.15120000008028,
+            "betweenSqlMs": 0,
+            "postMs": 0.04039999993983656,
+            "sqlCalls": 1,
+            "rowsToApp": 1,
+            "openCount": 0
+          },
+          {
+            "totalMs": 74.08810000005178,
+            "preMs": 0.8311000000685453,
+            "dbMs": 73.2155999999959,
+            "betweenSqlMs": 0,
+            "postMs": 0.04139999998733401,
+            "sqlCalls": 1,
+            "rowsToApp": 1,
+            "openCount": 0
+          }
+        ]
+      }
+    }
+  ],
+  "failures": [],
+  "locale": {
+    "datcollate": "C"
+  },
+  "finished": "2026-09-28T11:05:05.915Z"
+}

@@ -1,0 +1,2279 @@
+{
+  "seed": 20260928,
+  "generatedAt": "2026-09-28T07:42:29.366Z",
+  "designs": [
+    "cur16",
+    "curFull",
+    "kgram3",
+    "kgram4",
+    "kgram6",
+    "kgram8"
+  ],
+  "datasets": [
+    {
+      "name": "nsmc-review",
+      "victimRows": 49701,
+      "referenceRows": 49745,
+      "meanLen": 28.2,
+      "results": [
+        {
+          "design": "cur16",
+          "tokensPerRow": 53.2,
+          "distinctTokens": 64474,
+          "frequency": {
+            "decodedOccPct": 4.338,
+            "rows80Pct": 0,
+            "rows100Pct": 0,
+            "charCoveragePct": 12.796,
+            "run8Pct": 0,
+            "runFullPct": 0.111,
+            "phrase4Pct": 0,
+            "runMeanFracPct": 9.15
+          },
+          "known": {
+            "1": {
+              "decodedOccPct": 31.612,
+              "rows80Pct": 1.874,
+              "rows100Pct": 0.86,
+              "charCoveragePct": 64.356,
+              "run8Pct": 4.786,
+              "runFullPct": 1.408,
+              "phrase4Pct": 0,
+              "runMeanFracPct": 22.13
+            },
+            "5": {
+              "decodedOccPct": 55.506,
+              "rows80Pct": 10.422,
+              "rows100Pct": 2.808,
+              "charCoveragePct": 85.417,
+              "run8Pct": 34.728,
+              "runFullPct": 3.592,
+              "phrase4Pct": 0,
+              "runMeanFracPct": 33.69
+            },
+            "10": {
+              "decodedOccPct": 63.641,
+              "rows80Pct": 18.198,
+              "rows100Pct": 3.539,
+              "charCoveragePct": 90.18,
+              "run8Pct": 46.97,
+              "runFullPct": 4.894,
+              "phrase4Pct": 0,
+              "runMeanFracPct": 38.25
+            }
+          },
+          "knownExactRule": {
+            "1": {
+              "decodedOccPct": 25.088,
+              "rows80Pct": 0.6,
+              "rows100Pct": 0.195,
+              "charCoveragePct": 57.61,
+              "run8Pct": 0.9,
+              "runFullPct": 0.671,
+              "phrase4Pct": 0,
+              "runMeanFracPct": 18.08
+            },
+            "5": {
+              "decodedOccPct": 27.604,
+              "rows80Pct": 0.165,
+              "rows100Pct": 0.036,
+              "charCoveragePct": 64.963,
+              "run8Pct": 0.974,
+              "runFullPct": 0.515,
+              "phrase4Pct": 0,
+              "runMeanFracPct": 17.76
+            },
+            "10": {
+              "decodedOccPct": 20.679,
+              "rows80Pct": 0.009,
+              "rows100Pct": 0,
+              "charCoveragePct": 54.946,
+              "run8Pct": 0.04,
+              "runFullPct": 0.159,
+              "phrase4Pct": 0,
+              "runMeanFracPct": 14.12
+            }
+          },
+          "ms": 19659
+        },
+        {
+          "design": "curFull",
+          "tokensPerRow": 53.2,
+          "distinctTokens": 270278,
+          "frequency": {
+            "decodedOccPct": 5.019,
+            "rows80Pct": 0,
+            "rows100Pct": 0,
+            "charCoveragePct": 14.605,
+            "run8Pct": 0,
+            "runFullPct": 0.187,
+            "phrase4Pct": 0,
+            "runMeanFracPct": 9.84
+          },
+          "known": {
+            "1": {
+              "decodedOccPct": 36.686,
+              "rows80Pct": 3.798,
+              "rows100Pct": 1.492,
+              "charCoveragePct": 67.636,
+              "run8Pct": 13.745,
+              "runFullPct": 2.398,
+              "phrase4Pct": 0,
+              "runMeanFracPct": 26.33
+            },
+            "5": {
+              "decodedOccPct": 62.749,
+              "rows80Pct": 19.781,
+              "rows100Pct": 5.176,
+              "charCoveragePct": 88.495,
+              "run8Pct": 50.46,
+              "runFullPct": 6.536,
+              "phrase4Pct": 0,
+              "runMeanFracPct": 40.01
+            },
+            "10": {
+              "decodedOccPct": 72.574,
+              "rows80Pct": 37.337,
+              "rows100Pct": 7.704,
+              "charCoveragePct": 93.194,
+              "run8Pct": 63.768,
+              "runFullPct": 9.517,
+              "phrase4Pct": 0,
+              "runMeanFracPct": 46.74
+            }
+          },
+          "knownExactRule": {
+            "1": {
+              "decodedOccPct": 32.139,
+              "rows80Pct": 1.984,
+              "rows100Pct": 0.939,
+              "charCoveragePct": 65.059,
+              "run8Pct": 4.993,
+              "runFullPct": 1.441,
+              "phrase4Pct": 0,
+              "runMeanFracPct": 22.38
+            },
+            "5": {
+              "decodedOccPct": 58.831,
+              "rows80Pct": 13.29,
+              "rows100Pct": 3.584,
+              "charCoveragePct": 87.176,
+              "run8Pct": 40.372,
+              "runFullPct": 4.174,
+              "phrase4Pct": 0,
+              "runMeanFracPct": 35.64
+            },
+            "10": {
+              "decodedOccPct": 69.214,
+              "rows80Pct": 27.976,
+              "rows100Pct": 5.584,
+              "charCoveragePct": 92.327,
+              "run8Pct": 55.887,
+              "runFullPct": 6.34,
+              "phrase4Pct": 0,
+              "runMeanFracPct": 42.1
+            }
+          },
+          "ms": 17953
+        },
+        {
+          "design": "kgram3",
+          "tokensPerRow": 57.3,
+          "distinctTokens": 569630,
+          "frequency": {
+            "decodedOccPct": 4.948,
+            "rows80Pct": 0,
+            "rows100Pct": 0,
+            "charCoveragePct": 14.723,
+            "run8Pct": 0.01,
+            "runFullPct": 0.129,
+            "phrase4Pct": 0,
+            "runMeanFracPct": 10.95
+          },
+          "known": {
+            "1": {
+              "decodedOccPct": 31.155,
+              "rows80Pct": 1.955,
+              "rows100Pct": 0.565,
+              "charCoveragePct": 63.16,
+              "run8Pct": 16.856,
+              "runFullPct": 2.626,
+              "phrase4Pct": 0,
+              "runMeanFracPct": 27.27
+            },
+            "5": {
+              "decodedOccPct": 51.547,
+              "rows80Pct": 9.06,
+              "rows100Pct": 2.264,
+              "charCoveragePct": 84.13,
+              "run8Pct": 53.723,
+              "runFullPct": 7.877,
+              "phrase4Pct": 0,
+              "runMeanFracPct": 41.6
+            },
+            "10": {
+              "decodedOccPct": 59.976,
+              "rows80Pct": 15.803,
+              "rows100Pct": 3.517,
+              "charCoveragePct": 89.79,
+              "run8Pct": 66.325,
+              "runFullPct": 11.744,
+              "phrase4Pct": 0,
+              "runMeanFracPct": 48.82
+            }
+          },
+          "knownExactRule": {
+            "1": {
+              "decodedOccPct": 24.511,
+              "rows80Pct": 0.309,
+              "rows100Pct": 0.136,
+              "charCoveragePct": 59.337,
+              "run8Pct": 7.056,
+              "runFullPct": 1.347,
+              "phrase4Pct": 0,
+              "runMeanFracPct": 22.81
+            },
+            "5": {
+              "decodedOccPct": 43.621,
+              "rows80Pct": 3.065,
+              "rows100Pct": 0.705,
+              "charCoveragePct": 81.372,
+              "run8Pct": 40.658,
+              "runFullPct": 4.829,
+              "phrase4Pct": 0,
+              "runMeanFracPct": 35.83
+            },
+            "10": {
+              "decodedOccPct": 51.937,
+              "rows80Pct": 5.998,
+              "rows100Pct": 1.268,
+              "charCoveragePct": 87.75,
+              "run8Pct": 56.03,
+              "runFullPct": 7.433,
+              "phrase4Pct": 0,
+              "runMeanFracPct": 42.58
+            }
+          },
+          "ms": 36783
+        },
+        {
+          "design": "kgram4",
+          "tokensPerRow": 84.2,
+          "distinctTokens": 1338459,
+          "frequency": {
+            "decodedOccPct": 3.301,
+            "rows80Pct": 0,
+            "rows100Pct": 0,
+            "charCoveragePct": 14.246,
+            "run8Pct": 0.01,
+            "runFullPct": 0.129,
+            "phrase4Pct": 1.543,
+            "runMeanFracPct": 10.94
+          },
+          "known": {
+            "1": {
+              "decodedOccPct": 22.446,
+              "rows80Pct": 0.831,
+              "rows100Pct": 0.339,
+              "charCoveragePct": 63.233,
+              "run8Pct": 16.842,
+              "runFullPct": 2.605,
+              "phrase4Pct": 49.87,
+              "runMeanFracPct": 27.28
+            },
+            "5": {
+              "decodedOccPct": 39.023,
+              "rows80Pct": 4.121,
+              "rows100Pct": 1.18,
+              "charCoveragePct": 84.265,
+              "run8Pct": 53.774,
+              "runFullPct": 7.834,
+              "phrase4Pct": 76.965,
+              "runMeanFracPct": 41.63
+            },
+            "10": {
+              "decodedOccPct": 46.397,
+              "rows80Pct": 6.499,
+              "rows100Pct": 1.907,
+              "charCoveragePct": 89.956,
+              "run8Pct": 66.341,
+              "runFullPct": 11.735,
+              "phrase4Pct": 83.685,
+              "runMeanFracPct": 48.82
+            }
+          },
+          "knownExactRule": {
+            "1": {
+              "decodedOccPct": 16.697,
+              "rows80Pct": 0.134,
+              "rows100Pct": 0.128,
+              "charCoveragePct": 59.632,
+              "run8Pct": 5.554,
+              "runFullPct": 1.124,
+              "phrase4Pct": 29.394,
+              "runMeanFracPct": 22.08
+            },
+            "5": {
+              "decodedOccPct": 30.25,
+              "rows80Pct": 0.803,
+              "rows100Pct": 0.269,
+              "charCoveragePct": 81.533,
+              "run8Pct": 38.315,
+              "runFullPct": 4.306,
+              "phrase4Pct": 62.04,
+              "runMeanFracPct": 34.91
+            },
+            "10": {
+              "decodedOccPct": 36.408,
+              "rows80Pct": 1.388,
+              "rows100Pct": 0.505,
+              "charCoveragePct": 87.921,
+              "run8Pct": 53.963,
+              "runFullPct": 6.805,
+              "phrase4Pct": 71.78,
+              "runMeanFracPct": 41.42
+            }
+          },
+          "ms": 86094
+        },
+        {
+          "design": "kgram6",
+          "tokensPerRow": 135.2,
+          "distinctTokens": 3411971,
+          "frequency": {
+            "decodedOccPct": 2.063,
+            "rows80Pct": 0,
+            "rows100Pct": 0,
+            "charCoveragePct": 14.268,
+            "run8Pct": 0.01,
+            "runFullPct": 0.129,
+            "phrase4Pct": 1.877,
+            "runMeanFracPct": 10.93
+          },
+          "known": {
+            "1": {
+              "decodedOccPct": 14.144,
+              "rows80Pct": 0.435,
+              "rows100Pct": 0.323,
+              "charCoveragePct": 63.237,
+              "run8Pct": 16.824,
+              "runFullPct": 2.567,
+              "phrase4Pct": 48.762,
+              "runMeanFracPct": 27.21
+            },
+            "5": {
+              "decodedOccPct": 25.293,
+              "rows80Pct": 1.824,
+              "rows100Pct": 0.851,
+              "charCoveragePct": 84.354,
+              "run8Pct": 54.028,
+              "runFullPct": 7.841,
+              "phrase4Pct": 76.197,
+              "runMeanFracPct": 41.71
+            },
+            "10": {
+              "decodedOccPct": 30.565,
+              "rows80Pct": 2.689,
+              "rows100Pct": 1.234,
+              "charCoveragePct": 90.051,
+              "run8Pct": 66.544,
+              "runFullPct": 11.75,
+              "phrase4Pct": 82.989,
+              "runMeanFracPct": 48.91
+            }
+          },
+          "knownExactRule": {
+            "1": {
+              "decodedOccPct": 10.362,
+              "rows80Pct": 0.128,
+              "rows100Pct": 0.128,
+              "charCoveragePct": 59.599,
+              "run8Pct": 4.794,
+              "runFullPct": 0.955,
+              "phrase4Pct": 25.886,
+              "runMeanFracPct": 21.73
+            },
+            "5": {
+              "decodedOccPct": 18.742,
+              "rows80Pct": 0.417,
+              "rows100Pct": 0.258,
+              "charCoveragePct": 81.583,
+              "run8Pct": 35.687,
+              "runFullPct": 3.802,
+              "phrase4Pct": 56.127,
+              "runMeanFracPct": 33.94
+            },
+            "10": {
+              "decodedOccPct": 22.645,
+              "rows80Pct": 0.601,
+              "rows100Pct": 0.425,
+              "charCoveragePct": 87.963,
+              "run8Pct": 51.28,
+              "runFullPct": 5.868,
+              "phrase4Pct": 66.831,
+              "runMeanFracPct": 40.03
+            }
+          },
+          "ms": 264938
+        },
+        {
+          "design": "kgram8",
+          "tokensPerRow": 182.5,
+          "distinctTokens": 5653158,
+          "frequency": {
+            "decodedOccPct": 1.526,
+            "rows80Pct": 0,
+            "rows100Pct": 0,
+            "charCoveragePct": 14.267,
+            "run8Pct": 0.056,
+            "runFullPct": 0.135,
+            "phrase4Pct": 2.314,
+            "runMeanFracPct": 10.94
+          },
+          "known": {
+            "1": {
+              "decodedOccPct": 10.49,
+              "rows80Pct": 0.404,
+              "rows100Pct": 0.323,
+              "charCoveragePct": 63.237,
+              "run8Pct": 16.82,
+              "runFullPct": 2.567,
+              "phrase4Pct": 48.762,
+              "runMeanFracPct": 27.21
+            },
+            "5": {
+              "decodedOccPct": 18.815,
+              "rows80Pct": 1.478,
+              "rows100Pct": 0.841,
+              "charCoveragePct": 84.403,
+              "run8Pct": 54.219,
+              "runFullPct": 7.87,
+              "phrase4Pct": 76.197,
+              "runMeanFracPct": 41.78
+            },
+            "10": {
+              "decodedOccPct": 22.79,
+              "rows80Pct": 2.032,
+              "rows100Pct": 1.194,
+              "charCoveragePct": 90.1,
+              "run8Pct": 66.719,
+              "runFullPct": 11.802,
+              "phrase4Pct": 82.987,
+              "runMeanFracPct": 48.98
+            }
+          },
+          "knownExactRule": {
+            "1": {
+              "decodedOccPct": 7.679,
+              "rows80Pct": 0.128,
+              "rows100Pct": 0.128,
+              "charCoveragePct": 59.599,
+              "run8Pct": 4.772,
+              "runFullPct": 0.949,
+              "phrase4Pct": 25.85,
+              "runMeanFracPct": 21.73
+            },
+            "5": {
+              "decodedOccPct": 13.886,
+              "rows80Pct": 0.4,
+              "rows100Pct": 0.258,
+              "charCoveragePct": 81.61,
+              "run8Pct": 35.672,
+              "runFullPct": 3.776,
+              "phrase4Pct": 56.028,
+              "runMeanFracPct": 33.94
+            },
+            "10": {
+              "decodedOccPct": 16.776,
+              "rows80Pct": 0.579,
+              "rows100Pct": 0.425,
+              "charCoveragePct": 88.002,
+              "run8Pct": 51.177,
+              "runFullPct": 5.835,
+              "phrase4Pct": 66.766,
+              "runMeanFracPct": 39.99
+            }
+          },
+          "ms": 512402
+        }
+      ]
+    },
+    {
+      "name": "fixture-memo",
+      "victimRows": 50000,
+      "referenceRows": 50000,
+      "meanLen": 14.8,
+      "results": [
+        {
+          "design": "cur16",
+          "tokensPerRow": 27.2,
+          "distinctTokens": 3475,
+          "frequency": {
+            "decodedOccPct": 2.124,
+            "rows80Pct": 0,
+            "rows100Pct": 0,
+            "charCoveragePct": 6.957,
+            "run8Pct": 0,
+            "runFullPct": 0,
+            "phrase4Pct": 0,
+            "runMeanFracPct": 7.26
+          },
+          "known": {
+            "1": {
+              "decodedOccPct": 33.097,
+              "rows80Pct": 0,
+              "rows100Pct": 0,
+              "charCoveragePct": 55.683,
+              "run8Pct": 9.952,
+              "runFullPct": 0,
+              "phrase4Pct": 0,
+              "runMeanFracPct": 23.89
+            },
+            "5": {
+              "decodedOccPct": 56.41,
+              "rows80Pct": 19.366,
+              "rows100Pct": 7.185,
+              "charCoveragePct": 63.587,
+              "run8Pct": 19.832,
+              "runFullPct": 15.945,
+              "phrase4Pct": 0,
+              "runMeanFracPct": 51.01
+            },
+            "10": {
+              "decodedOccPct": 56.517,
+              "rows80Pct": 19.409,
+              "rows100Pct": 7.331,
+              "charCoveragePct": 63.639,
+              "run8Pct": 19.873,
+              "runFullPct": 15.94,
+              "phrase4Pct": 0,
+              "runMeanFracPct": 51.04
+            }
+          },
+          "knownExactRule": {
+            "1": {
+              "decodedOccPct": 32.215,
+              "rows80Pct": 0,
+              "rows100Pct": 0,
+              "charCoveragePct": 55.282,
+              "run8Pct": 9.952,
+              "runFullPct": 0,
+              "phrase4Pct": 0,
+              "runMeanFracPct": 23.67
+            },
+            "5": {
+              "decodedOccPct": 54.153,
+              "rows80Pct": 19.366,
+              "rows100Pct": 0,
+              "charCoveragePct": 63.376,
+              "run8Pct": 19.832,
+              "runFullPct": 0,
+              "phrase4Pct": 0,
+              "runMeanFracPct": 44.75
+            },
+            "10": {
+              "decodedOccPct": 54.236,
+              "rows80Pct": 19.409,
+              "rows100Pct": 0,
+              "charCoveragePct": 63.482,
+              "run8Pct": 19.873,
+              "runFullPct": 0,
+              "phrase4Pct": 0,
+              "runMeanFracPct": 44.77
+            }
+          },
+          "ms": 7810
+        },
+        {
+          "design": "curFull",
+          "tokensPerRow": 27.2,
+          "distinctTokens": 3588,
+          "frequency": {
+            "decodedOccPct": 18.681,
+            "rows80Pct": 0,
+            "rows100Pct": 0,
+            "charCoveragePct": 24.948,
+            "run8Pct": 3.006,
+            "runFullPct": 0,
+            "phrase4Pct": 0,
+            "runMeanFracPct": 24.33
+          },
+          "known": {
+            "1": {
+              "decodedOccPct": 82.552,
+              "rows80Pct": 58.485,
+              "rows100Pct": 0.416,
+              "charCoveragePct": 93.255,
+              "run8Pct": 70.396,
+              "runFullPct": 4.699,
+              "phrase4Pct": 0,
+              "runMeanFracPct": 70.54
+            },
+            "5": {
+              "decodedOccPct": 99.912,
+              "rows80Pct": 100,
+              "rows100Pct": 98.352,
+              "charCoveragePct": 96.163,
+              "run8Pct": 99.907,
+              "runFullPct": 96.082,
+              "phrase4Pct": 0,
+              "runMeanFracPct": 98.28
+            },
+            "10": {
+              "decodedOccPct": 99.985,
+              "rows80Pct": 100,
+              "rows100Pct": 99.84,
+              "charCoveragePct": 96.22,
+              "run8Pct": 99.911,
+              "runFullPct": 96.091,
+              "phrase4Pct": 0,
+              "runMeanFracPct": 98.29
+            }
+          },
+          "knownExactRule": {
+            "1": {
+              "decodedOccPct": 33.742,
+              "rows80Pct": 0,
+              "rows100Pct": 0,
+              "charCoveragePct": 55.844,
+              "run8Pct": 9.952,
+              "runFullPct": 0,
+              "phrase4Pct": 0,
+              "runMeanFracPct": 24.37
+            },
+            "5": {
+              "decodedOccPct": 57.772,
+              "rows80Pct": 19.366,
+              "rows100Pct": 19.288,
+              "charCoveragePct": 63.637,
+              "run8Pct": 19.832,
+              "runFullPct": 18.316,
+              "phrase4Pct": 0,
+              "runMeanFracPct": 52.55
+            },
+            "10": {
+              "decodedOccPct": 57.86,
+              "rows80Pct": 19.409,
+              "rows100Pct": 19.409,
+              "charCoveragePct": 63.743,
+              "run8Pct": 19.873,
+              "runFullPct": 18.351,
+              "phrase4Pct": 0,
+              "runMeanFracPct": 52.58
+            }
+          },
+          "ms": 4631
+        },
+        {
+          "design": "kgram3",
+          "tokensPerRow": 31.3,
+          "distinctTokens": 87355,
+          "frequency": {
+            "decodedOccPct": 17.475,
+            "rows80Pct": 0,
+            "rows100Pct": 0,
+            "charCoveragePct": 24.317,
+            "run8Pct": 2.528,
+            "runFullPct": 0,
+            "phrase4Pct": 0,
+            "runMeanFracPct": 23.93
+          },
+          "known": {
+            "1": {
+              "decodedOccPct": 71.237,
+              "rows80Pct": 14.051,
+              "rows100Pct": 0,
+              "charCoveragePct": 88.309,
+              "run8Pct": 68.653,
+              "runFullPct": 2.657,
+              "phrase4Pct": 0,
+              "runMeanFracPct": 68.96
+            },
+            "5": {
+              "decodedOccPct": 82.728,
+              "rows80Pct": 67.663,
+              "rows100Pct": 0.004,
+              "charCoveragePct": 96.002,
+              "run8Pct": 99.488,
+              "runFullPct": 92.943,
+              "phrase4Pct": 0,
+              "runMeanFracPct": 97.54
+            },
+            "10": {
+              "decodedOccPct": 84.657,
+              "rows80Pct": 93.953,
+              "rows100Pct": 0.007,
+              "charCoveragePct": 96.186,
+              "run8Pct": 99.907,
+              "runFullPct": 96.607,
+              "phrase4Pct": 0,
+              "runMeanFracPct": 98.4
+            }
+          },
+          "knownExactRule": {
+            "1": {
+              "decodedOccPct": 18.149,
+              "rows80Pct": 0,
+              "rows100Pct": 0,
+              "charCoveragePct": 46.361,
+              "run8Pct": 9.952,
+              "runFullPct": 0,
+              "phrase4Pct": 0,
+              "runMeanFracPct": 23.35
+            },
+            "5": {
+              "decodedOccPct": 32.195,
+              "rows80Pct": 0,
+              "rows100Pct": 0,
+              "charCoveragePct": 58.45,
+              "run8Pct": 19.832,
+              "runFullPct": 17.861,
+              "phrase4Pct": 0,
+              "runMeanFracPct": 52.48
+            },
+            "10": {
+              "decodedOccPct": 35.61,
+              "rows80Pct": 0,
+              "rows100Pct": 0,
+              "charCoveragePct": 59.078,
+              "run8Pct": 19.873,
+              "runFullPct": 18.702,
+              "phrase4Pct": 0,
+              "runMeanFracPct": 53.59
+            }
+          },
+          "ms": 11785
+        },
+        {
+          "design": "kgram4",
+          "tokensPerRow": 44.5,
+          "distinctTokens": 290533,
+          "frequency": {
+            "decodedOccPct": 16.21,
+            "rows80Pct": 0,
+            "rows100Pct": 0,
+            "charCoveragePct": 24.472,
+            "run8Pct": 2.494,
+            "runFullPct": 0,
+            "phrase4Pct": 31.74,
+            "runMeanFracPct": 23.98
+          },
+          "known": {
+            "1": {
+              "decodedOccPct": 67.366,
+              "rows80Pct": 6.305,
+              "rows100Pct": 0,
+              "charCoveragePct": 88.473,
+              "run8Pct": 68.653,
+              "runFullPct": 2.651,
+              "phrase4Pct": 99.903,
+              "runMeanFracPct": 69
+            },
+            "5": {
+              "decodedOccPct": 76.641,
+              "rows80Pct": 21.981,
+              "rows100Pct": 0.004,
+              "charCoveragePct": 96.235,
+              "run8Pct": 99.488,
+              "runFullPct": 92.893,
+              "phrase4Pct": 100,
+              "runMeanFracPct": 97.58
+            },
+            "10": {
+              "decodedOccPct": 78.182,
+              "rows80Pct": 23.649,
+              "rows100Pct": 0.007,
+              "charCoveragePct": 96.495,
+              "run8Pct": 99.907,
+              "runFullPct": 96.547,
+              "phrase4Pct": 100,
+              "runMeanFracPct": 98.44
+            }
+          },
+          "knownExactRule": {
+            "1": {
+              "decodedOccPct": 12.644,
+              "rows80Pct": 0,
+              "rows100Pct": 0,
+              "charCoveragePct": 46.35,
+              "run8Pct": 10.091,
+              "runFullPct": 0,
+              "phrase4Pct": 0.533,
+              "runMeanFracPct": 23.42
+            },
+            "5": {
+              "decodedOccPct": 22.059,
+              "rows80Pct": 0,
+              "rows100Pct": 0,
+              "charCoveragePct": 58.187,
+              "run8Pct": 19.832,
+              "runFullPct": 17.811,
+              "phrase4Pct": 4,
+              "runMeanFracPct": 52.15
+            },
+            "10": {
+              "decodedOccPct": 24.411,
+              "rows80Pct": 0,
+              "rows100Pct": 0,
+              "charCoveragePct": 58.296,
+              "run8Pct": 19.873,
+              "runFullPct": 18.649,
+              "phrase4Pct": 7.702,
+              "runMeanFracPct": 52.62
+            }
+          },
+          "ms": 21774
+        },
+        {
+          "design": "kgram6",
+          "tokensPerRow": 68,
+          "distinctTokens": 705368,
+          "frequency": {
+            "decodedOccPct": 14.572,
+            "rows80Pct": 0,
+            "rows100Pct": 0,
+            "charCoveragePct": 26.241,
+            "run8Pct": 2.45,
+            "runFullPct": 0,
+            "phrase4Pct": 32.042,
+            "runMeanFracPct": 24.11
+          },
+          "known": {
+            "1": {
+              "decodedOccPct": 62.364,
+              "rows80Pct": 2.721,
+              "rows100Pct": 0,
+              "charCoveragePct": 88.802,
+              "run8Pct": 68.653,
+              "runFullPct": 2.651,
+              "phrase4Pct": 99.903,
+              "runMeanFracPct": 69.08
+            },
+            "5": {
+              "decodedOccPct": 70.053,
+              "rows80Pct": 11.552,
+              "rows100Pct": 0.004,
+              "charCoveragePct": 96.703,
+              "run8Pct": 99.488,
+              "runFullPct": 92.891,
+              "phrase4Pct": 100,
+              "runMeanFracPct": 97.68
+            },
+            "10": {
+              "decodedOccPct": 71.361,
+              "rows80Pct": 14.273,
+              "rows100Pct": 0.007,
+              "charCoveragePct": 97.114,
+              "run8Pct": 99.907,
+              "runFullPct": 96.544,
+              "phrase4Pct": 100,
+              "runMeanFracPct": 98.53
+            }
+          },
+          "knownExactRule": {
+            "1": {
+              "decodedOccPct": 8.27,
+              "rows80Pct": 0,
+              "rows100Pct": 0,
+              "charCoveragePct": 46.35,
+              "run8Pct": 9.952,
+              "runFullPct": 0,
+              "phrase4Pct": 0,
+              "runMeanFracPct": 23.34
+            },
+            "5": {
+              "decodedOccPct": 14.384,
+              "rows80Pct": 0,
+              "rows100Pct": 0,
+              "charCoveragePct": 58.187,
+              "run8Pct": 19.832,
+              "runFullPct": 17.811,
+              "phrase4Pct": 0,
+              "runMeanFracPct": 52.15
+            },
+            "10": {
+              "decodedOccPct": 15.867,
+              "rows80Pct": 0,
+              "rows100Pct": 0,
+              "charCoveragePct": 58.295,
+              "run8Pct": 19.873,
+              "runFullPct": 18.649,
+              "phrase4Pct": 0,
+              "runMeanFracPct": 52.62
+            }
+          },
+          "ms": 47614
+        },
+        {
+          "design": "kgram8",
+          "tokensPerRow": 87.6,
+          "distinctTokens": 1122931,
+          "frequency": {
+            "decodedOccPct": 12.555,
+            "rows80Pct": 0,
+            "rows100Pct": 0,
+            "charCoveragePct": 26.524,
+            "run8Pct": 2.482,
+            "runFullPct": 0,
+            "phrase4Pct": 31.836,
+            "runMeanFracPct": 24.21
+          },
+          "known": {
+            "1": {
+              "decodedOccPct": 57.707,
+              "rows80Pct": 0.323,
+              "rows100Pct": 0,
+              "charCoveragePct": 89.133,
+              "run8Pct": 68.653,
+              "runFullPct": 2.651,
+              "phrase4Pct": 99.903,
+              "runMeanFracPct": 69.17
+            },
+            "5": {
+              "decodedOccPct": 65.146,
+              "rows80Pct": 10.916,
+              "rows100Pct": 0.004,
+              "charCoveragePct": 97.171,
+              "run8Pct": 99.488,
+              "runFullPct": 92.891,
+              "phrase4Pct": 100,
+              "runMeanFracPct": 97.77
+            },
+            "10": {
+              "decodedOccPct": 66.405,
+              "rows80Pct": 12.371,
+              "rows100Pct": 0.007,
+              "charCoveragePct": 97.734,
+              "run8Pct": 99.907,
+              "runFullPct": 96.544,
+              "phrase4Pct": 100,
+              "runMeanFracPct": 98.63
+            }
+          },
+          "knownExactRule": {
+            "1": {
+              "decodedOccPct": 6.422,
+              "rows80Pct": 0,
+              "rows100Pct": 0,
+              "charCoveragePct": 46.35,
+              "run8Pct": 9.952,
+              "runFullPct": 0,
+              "phrase4Pct": 0,
+              "runMeanFracPct": 23.34
+            },
+            "5": {
+              "decodedOccPct": 11.169,
+              "rows80Pct": 0,
+              "rows100Pct": 0,
+              "charCoveragePct": 58.187,
+              "run8Pct": 19.832,
+              "runFullPct": 17.811,
+              "phrase4Pct": 0,
+              "runMeanFracPct": 52.15
+            },
+            "10": {
+              "decodedOccPct": 12.32,
+              "rows80Pct": 0,
+              "rows100Pct": 0,
+              "charCoveragePct": 58.295,
+              "run8Pct": 19.873,
+              "runFullPct": 18.649,
+              "phrase4Pct": 0,
+              "runMeanFracPct": 52.62
+            }
+          },
+          "ms": 77285
+        }
+      ]
+    },
+    {
+      "name": "fixture-name",
+      "victimRows": 50000,
+      "referenceRows": 50000,
+      "meanLen": 9.3,
+      "results": [
+        {
+          "design": "cur16",
+          "tokensPerRow": 17.7,
+          "distinctTokens": 3288,
+          "frequency": {
+            "decodedOccPct": 0.888,
+            "rows80Pct": 0,
+            "rows100Pct": 0,
+            "charCoveragePct": 3.049,
+            "run8Pct": 0,
+            "runFullPct": 0,
+            "phrase4Pct": 0,
+            "runMeanFracPct": 1.64
+          },
+          "known": {
+            "1": {
+              "decodedOccPct": 41.963,
+              "rows80Pct": 0.192,
+              "rows100Pct": 0,
+              "charCoveragePct": 73.09,
+              "run8Pct": 3.218,
+              "runFullPct": 0,
+              "phrase4Pct": 0,
+              "runMeanFracPct": 35.16
+            },
+            "5": {
+              "decodedOccPct": 70.339,
+              "rows80Pct": 21.72,
+              "rows100Pct": 12.023,
+              "charCoveragePct": 82.754,
+              "run8Pct": 23.345,
+              "runFullPct": 13.434,
+              "phrase4Pct": 0,
+              "runMeanFracPct": 67.15
+            },
+            "10": {
+              "decodedOccPct": 70.503,
+              "rows80Pct": 21.896,
+              "rows100Pct": 12.391,
+              "charCoveragePct": 82.77,
+              "run8Pct": 23.418,
+              "runFullPct": 13.336,
+              "phrase4Pct": 0,
+              "runMeanFracPct": 67.1
+            }
+          },
+          "knownExactRule": {
+            "1": {
+              "decodedOccPct": 40.541,
+              "rows80Pct": 0.006,
+              "rows100Pct": 0,
+              "charCoveragePct": 72.392,
+              "run8Pct": 2.792,
+              "runFullPct": 0,
+              "phrase4Pct": 0,
+              "runMeanFracPct": 34.61
+            },
+            "5": {
+              "decodedOccPct": 68.103,
+              "rows80Pct": 19.891,
+              "rows100Pct": 4.244,
+              "charCoveragePct": 82.324,
+              "run8Pct": 22.907,
+              "runFullPct": 11.135,
+              "phrase4Pct": 0,
+              "runMeanFracPct": 64.67
+            },
+            "10": {
+              "decodedOccPct": 68.268,
+              "rows80Pct": 20.009,
+              "rows100Pct": 4.34,
+              "charCoveragePct": 82.373,
+              "run8Pct": 22.951,
+              "runFullPct": 11.202,
+              "phrase4Pct": 0,
+              "runMeanFracPct": 64.72
+            }
+          },
+          "ms": 3852
+        },
+        {
+          "design": "curFull",
+          "tokensPerRow": 17.7,
+          "distinctTokens": 3385,
+          "frequency": {
+            "decodedOccPct": 8.412,
+            "rows80Pct": 0,
+            "rows100Pct": 0,
+            "charCoveragePct": 14.936,
+            "run8Pct": 0,
+            "runFullPct": 0,
+            "phrase4Pct": 0,
+            "runMeanFracPct": 13.84
+          },
+          "known": {
+            "1": {
+              "decodedOccPct": 73.025,
+              "rows80Pct": 34.683,
+              "rows100Pct": 0.364,
+              "charCoveragePct": 95.958,
+              "run8Pct": 25.335,
+              "runFullPct": 4.796,
+              "phrase4Pct": 0,
+              "runMeanFracPct": 58.29
+            },
+            "5": {
+              "decodedOccPct": 99.802,
+              "rows80Pct": 100,
+              "rows100Pct": 96.733,
+              "charCoveragePct": 100,
+              "run8Pct": 99.278,
+              "runFullPct": 98.461,
+              "phrase4Pct": 0,
+              "runMeanFracPct": 99.63
+            },
+            "10": {
+              "decodedOccPct": 100,
+              "rows80Pct": 100,
+              "rows100Pct": 100,
+              "charCoveragePct": 100,
+              "run8Pct": 99.7,
+              "runFullPct": 98.94,
+              "phrase4Pct": 0,
+              "runMeanFracPct": 99.79
+            }
+          },
+          "knownExactRule": {
+            "1": {
+              "decodedOccPct": 42.413,
+              "rows80Pct": 0.216,
+              "rows100Pct": 0,
+              "charCoveragePct": 73.459,
+              "run8Pct": 3.281,
+              "runFullPct": 0,
+              "phrase4Pct": 0,
+              "runMeanFracPct": 35.45
+            },
+            "5": {
+              "decodedOccPct": 71.706,
+              "rows80Pct": 23.52,
+              "rows100Pct": 15.472,
+              "charCoveragePct": 82.819,
+              "run8Pct": 23.617,
+              "runFullPct": 15.295,
+              "phrase4Pct": 0,
+              "runMeanFracPct": 69.51
+            },
+            "10": {
+              "decodedOccPct": 71.903,
+              "rows80Pct": 23.722,
+              "rows100Pct": 15.884,
+              "charCoveragePct": 82.859,
+              "run8Pct": 23.649,
+              "runFullPct": 15.38,
+              "phrase4Pct": 0,
+              "runMeanFracPct": 69.58
+            }
+          },
+          "ms": 2192
+        },
+        {
+          "design": "kgram3",
+          "tokensPerRow": 21.7,
+          "distinctTokens": 87515,
+          "frequency": {
+            "decodedOccPct": 8.545,
+            "rows80Pct": 0,
+            "rows100Pct": 0,
+            "charCoveragePct": 11.945,
+            "run8Pct": 0,
+            "runFullPct": 0,
+            "phrase4Pct": 0,
+            "runMeanFracPct": 12.55
+          },
+          "known": {
+            "1": {
+              "decodedOccPct": 58.224,
+              "rows80Pct": 0.164,
+              "rows100Pct": 0,
+              "charCoveragePct": 87.915,
+              "run8Pct": 23.586,
+              "runFullPct": 2.709,
+              "phrase4Pct": 0,
+              "runMeanFracPct": 56.11
+            },
+            "5": {
+              "decodedOccPct": 75.149,
+              "rows80Pct": 17.423,
+              "rows100Pct": 0,
+              "charCoveragePct": 99.997,
+              "run8Pct": 97.474,
+              "runFullPct": 96.497,
+              "phrase4Pct": 0,
+              "runMeanFracPct": 98.89
+            },
+            "10": {
+              "decodedOccPct": 77.754,
+              "rows80Pct": 25.924,
+              "rows100Pct": 0,
+              "charCoveragePct": 99.998,
+              "run8Pct": 99.824,
+              "runFullPct": 99.351,
+              "phrase4Pct": 0,
+              "runMeanFracPct": 99.85
+            }
+          },
+          "knownExactRule": {
+            "1": {
+              "decodedOccPct": 18.832,
+              "rows80Pct": 0,
+              "rows100Pct": 0,
+              "charCoveragePct": 56.376,
+              "run8Pct": 2.57,
+              "runFullPct": 0,
+              "phrase4Pct": 0,
+              "runMeanFracPct": 32.56
+            },
+            "5": {
+              "decodedOccPct": 35.696,
+              "rows80Pct": 0,
+              "rows100Pct": 0,
+              "charCoveragePct": 74.123,
+              "run8Pct": 23.587,
+              "runFullPct": 15.103,
+              "phrase4Pct": 0,
+              "runMeanFracPct": 68.57
+            },
+            "10": {
+              "decodedOccPct": 40.046,
+              "rows80Pct": 0,
+              "rows100Pct": 0,
+              "charCoveragePct": 74.922,
+              "run8Pct": 23.676,
+              "runFullPct": 15.56,
+              "phrase4Pct": 0,
+              "runMeanFracPct": 69.9
+            }
+          },
+          "ms": 6751
+        },
+        {
+          "design": "kgram4",
+          "tokensPerRow": 30,
+          "distinctTokens": 292576,
+          "frequency": {
+            "decodedOccPct": 6.246,
+            "rows80Pct": 0,
+            "rows100Pct": 0,
+            "charCoveragePct": 12.014,
+            "run8Pct": 0,
+            "runFullPct": 0,
+            "phrase4Pct": 1.626,
+            "runMeanFracPct": 12.66
+          },
+          "known": {
+            "1": {
+              "decodedOccPct": 50.356,
+              "rows80Pct": 0.002,
+              "rows100Pct": 0,
+              "charCoveragePct": 87.908,
+              "run8Pct": 23.584,
+              "runFullPct": 2.705,
+              "phrase4Pct": 68.952,
+              "runMeanFracPct": 56.1
+            },
+            "5": {
+              "decodedOccPct": 65.433,
+              "rows80Pct": 0.379,
+              "rows100Pct": 0,
+              "charCoveragePct": 99.997,
+              "run8Pct": 97.469,
+              "runFullPct": 96.453,
+              "phrase4Pct": 99.185,
+              "runMeanFracPct": 98.88
+            },
+            "10": {
+              "decodedOccPct": 67.551,
+              "rows80Pct": 2.091,
+              "rows100Pct": 0,
+              "charCoveragePct": 99.998,
+              "run8Pct": 99.818,
+              "runFullPct": 99.307,
+              "phrase4Pct": 100,
+              "runMeanFracPct": 99.84
+            }
+          },
+          "knownExactRule": {
+            "1": {
+              "decodedOccPct": 13.436,
+              "rows80Pct": 0,
+              "rows100Pct": 0,
+              "charCoveragePct": 56.353,
+              "run8Pct": 2.499,
+              "runFullPct": 0,
+              "phrase4Pct": 0,
+              "runMeanFracPct": 32.37
+            },
+            "5": {
+              "decodedOccPct": 25.034,
+              "rows80Pct": 0,
+              "rows100Pct": 0,
+              "charCoveragePct": 73.738,
+              "run8Pct": 23.581,
+              "runFullPct": 15.078,
+              "phrase4Pct": 3.114,
+              "runMeanFracPct": 68.11
+            },
+            "10": {
+              "decodedOccPct": 28.108,
+              "rows80Pct": 0,
+              "rows100Pct": 0,
+              "charCoveragePct": 73.81,
+              "run8Pct": 23.671,
+              "runFullPct": 15.524,
+              "phrase4Pct": 6.398,
+              "runMeanFracPct": 68.6
+            }
+          },
+          "ms": 16926
+        },
+        {
+          "design": "kgram6",
+          "tokensPerRow": 43.7,
+          "distinctTokens": 743207,
+          "frequency": {
+            "decodedOccPct": 4.29,
+            "rows80Pct": 0,
+            "rows100Pct": 0,
+            "charCoveragePct": 12.033,
+            "run8Pct": 0,
+            "runFullPct": 0,
+            "phrase4Pct": 1.812,
+            "runMeanFracPct": 12.7
+          },
+          "known": {
+            "1": {
+              "decodedOccPct": 40.252,
+              "rows80Pct": 0,
+              "rows100Pct": 0,
+              "charCoveragePct": 87.908,
+              "run8Pct": 23.584,
+              "runFullPct": 2.705,
+              "phrase4Pct": 68.952,
+              "runMeanFracPct": 56.1
+            },
+            "5": {
+              "decodedOccPct": 51.803,
+              "rows80Pct": 0,
+              "rows100Pct": 0,
+              "charCoveragePct": 99.997,
+              "run8Pct": 97.469,
+              "runFullPct": 96.448,
+              "phrase4Pct": 99.185,
+              "runMeanFracPct": 98.88
+            },
+            "10": {
+              "decodedOccPct": 53.599,
+              "rows80Pct": 0.009,
+              "rows100Pct": 0,
+              "charCoveragePct": 99.998,
+              "run8Pct": 99.818,
+              "runFullPct": 99.3,
+              "phrase4Pct": 100,
+              "runMeanFracPct": 99.84
+            }
+          },
+          "knownExactRule": {
+            "1": {
+              "decodedOccPct": 9.228,
+              "rows80Pct": 0,
+              "rows100Pct": 0,
+              "charCoveragePct": 56.353,
+              "run8Pct": 2.499,
+              "runFullPct": 0,
+              "phrase4Pct": 0,
+              "runMeanFracPct": 32.37
+            },
+            "5": {
+              "decodedOccPct": 17.124,
+              "rows80Pct": 0,
+              "rows100Pct": 0,
+              "charCoveragePct": 73.738,
+              "run8Pct": 23.581,
+              "runFullPct": 15.078,
+              "phrase4Pct": 0,
+              "runMeanFracPct": 68.11
+            },
+            "10": {
+              "decodedOccPct": 19.158,
+              "rows80Pct": 0,
+              "rows100Pct": 0,
+              "charCoveragePct": 73.81,
+              "run8Pct": 23.671,
+              "runFullPct": 15.524,
+              "phrase4Pct": 0.013,
+              "runMeanFracPct": 68.6
+            }
+          },
+          "ms": 42802
+        },
+        {
+          "design": "kgram8",
+          "tokensPerRow": 53.4,
+          "distinctTokens": 1119237,
+          "frequency": {
+            "decodedOccPct": 3.806,
+            "rows80Pct": 0,
+            "rows100Pct": 0,
+            "charCoveragePct": 15.365,
+            "run8Pct": 0.006,
+            "runFullPct": 0,
+            "phrase4Pct": 1.698,
+            "runMeanFracPct": 14.54
+          },
+          "known": {
+            "1": {
+              "decodedOccPct": 35.598,
+              "rows80Pct": 0,
+              "rows100Pct": 0,
+              "charCoveragePct": 87.908,
+              "run8Pct": 23.584,
+              "runFullPct": 2.705,
+              "phrase4Pct": 68.952,
+              "runMeanFracPct": 56.1
+            },
+            "5": {
+              "decodedOccPct": 45.812,
+              "rows80Pct": 0,
+              "rows100Pct": 0,
+              "charCoveragePct": 99.997,
+              "run8Pct": 97.469,
+              "runFullPct": 96.448,
+              "phrase4Pct": 99.185,
+              "runMeanFracPct": 98.88
+            },
+            "10": {
+              "decodedOccPct": 47.308,
+              "rows80Pct": 0,
+              "rows100Pct": 0,
+              "charCoveragePct": 99.998,
+              "run8Pct": 99.818,
+              "runFullPct": 99.3,
+              "phrase4Pct": 100,
+              "runMeanFracPct": 99.84
+            }
+          },
+          "knownExactRule": {
+            "1": {
+              "decodedOccPct": 7.554,
+              "rows80Pct": 0,
+              "rows100Pct": 0,
+              "charCoveragePct": 56.353,
+              "run8Pct": 2.499,
+              "runFullPct": 0,
+              "phrase4Pct": 0,
+              "runMeanFracPct": 32.37
+            },
+            "5": {
+              "decodedOccPct": 14.017,
+              "rows80Pct": 0,
+              "rows100Pct": 0,
+              "charCoveragePct": 73.738,
+              "run8Pct": 23.581,
+              "runFullPct": 15.078,
+              "phrase4Pct": 0,
+              "runMeanFracPct": 68.11
+            },
+            "10": {
+              "decodedOccPct": 15.683,
+              "rows80Pct": 0,
+              "rows100Pct": 0,
+              "charCoveragePct": 73.81,
+              "run8Pct": 23.671,
+              "runFullPct": 15.524,
+              "phrase4Pct": 0.013,
+              "runMeanFracPct": 68.6
+            }
+          },
+          "ms": 66717
+        }
+      ]
+    },
+    {
+      "name": "fixture-address",
+      "victimRows": 50000,
+      "referenceRows": 50000,
+      "meanLen": 14.9,
+      "results": [
+        {
+          "design": "cur16",
+          "tokensPerRow": 28.6,
+          "distinctTokens": 409,
+          "frequency": {
+            "decodedOccPct": 1.708,
+            "rows80Pct": 0,
+            "rows100Pct": 0,
+            "charCoveragePct": 6.419,
+            "run8Pct": 0,
+            "runFullPct": 0,
+            "phrase4Pct": 0,
+            "runMeanFracPct": 3.32
+          },
+          "known": {
+            "1": {
+              "decodedOccPct": 24.7,
+              "rows80Pct": 0,
+              "rows100Pct": 0,
+              "charCoveragePct": 39.539,
+              "run8Pct": 0,
+              "runFullPct": 0,
+              "phrase4Pct": 0,
+              "runMeanFracPct": 28.59
+            },
+            "5": {
+              "decodedOccPct": 24.692,
+              "rows80Pct": 0,
+              "rows100Pct": 0,
+              "charCoveragePct": 39.53,
+              "run8Pct": 0,
+              "runFullPct": 0,
+              "phrase4Pct": 0,
+              "runMeanFracPct": 28.58
+            },
+            "10": {
+              "decodedOccPct": 24.699,
+              "rows80Pct": 0,
+              "rows100Pct": 0,
+              "charCoveragePct": 39.538,
+              "run8Pct": 0,
+              "runFullPct": 0,
+              "phrase4Pct": 0,
+              "runMeanFracPct": 28.59
+            }
+          },
+          "knownExactRule": {
+            "1": {
+              "decodedOccPct": 24.405,
+              "rows80Pct": 0,
+              "rows100Pct": 0,
+              "charCoveragePct": 39.532,
+              "run8Pct": 0,
+              "runFullPct": 0,
+              "phrase4Pct": 0,
+              "runMeanFracPct": 27.78
+            },
+            "5": {
+              "decodedOccPct": 24.398,
+              "rows80Pct": 0,
+              "rows100Pct": 0,
+              "charCoveragePct": 39.523,
+              "run8Pct": 0,
+              "runFullPct": 0,
+              "phrase4Pct": 0,
+              "runMeanFracPct": 27.77
+            },
+            "10": {
+              "decodedOccPct": 24.404,
+              "rows80Pct": 0,
+              "rows100Pct": 0,
+              "charCoveragePct": 39.531,
+              "run8Pct": 0,
+              "runFullPct": 0,
+              "phrase4Pct": 0,
+              "runMeanFracPct": 27.77
+            }
+          },
+          "ms": 5764
+        },
+        {
+          "design": "curFull",
+          "tokensPerRow": 28.6,
+          "distinctTokens": 413,
+          "frequency": {
+            "decodedOccPct": 10.179,
+            "rows80Pct": 0,
+            "rows100Pct": 0,
+            "charCoveragePct": 23.437,
+            "run8Pct": 0,
+            "runFullPct": 0,
+            "phrase4Pct": 0,
+            "runMeanFracPct": 14.5
+          },
+          "known": {
+            "1": {
+              "decodedOccPct": 100,
+              "rows80Pct": 100,
+              "rows100Pct": 100,
+              "charCoveragePct": 100,
+              "run8Pct": 100,
+              "runFullPct": 82.232,
+              "phrase4Pct": 0,
+              "runMeanFracPct": 91.9
+            },
+            "5": {
+              "decodedOccPct": 100,
+              "rows80Pct": 100,
+              "rows100Pct": 100,
+              "charCoveragePct": 100,
+              "run8Pct": 100,
+              "runFullPct": 82.156,
+              "phrase4Pct": 0,
+              "runMeanFracPct": 91.87
+            },
+            "10": {
+              "decodedOccPct": 100,
+              "rows80Pct": 100,
+              "rows100Pct": 100,
+              "charCoveragePct": 100,
+              "run8Pct": 100,
+              "runFullPct": 82.16,
+              "phrase4Pct": 0,
+              "runMeanFracPct": 91.87
+            }
+          },
+          "knownExactRule": {
+            "1": {
+              "decodedOccPct": 24.831,
+              "rows80Pct": 0,
+              "rows100Pct": 0,
+              "charCoveragePct": 39.545,
+              "run8Pct": 0,
+              "runFullPct": 0,
+              "phrase4Pct": 0,
+              "runMeanFracPct": 28.84
+            },
+            "5": {
+              "decodedOccPct": 24.824,
+              "rows80Pct": 0,
+              "rows100Pct": 0,
+              "charCoveragePct": 39.537,
+              "run8Pct": 0,
+              "runFullPct": 0,
+              "phrase4Pct": 0,
+              "runMeanFracPct": 28.83
+            },
+            "10": {
+              "decodedOccPct": 24.832,
+              "rows80Pct": 0,
+              "rows100Pct": 0,
+              "charCoveragePct": 39.544,
+              "run8Pct": 0,
+              "runFullPct": 0,
+              "phrase4Pct": 0,
+              "runMeanFracPct": 28.84
+            }
+          },
+          "ms": 3832
+        },
+        {
+          "design": "kgram3",
+          "tokensPerRow": 32.6,
+          "distinctTokens": 1512,
+          "frequency": {
+            "decodedOccPct": 12.91,
+            "rows80Pct": 0,
+            "rows100Pct": 0,
+            "charCoveragePct": 22.136,
+            "run8Pct": 0,
+            "runFullPct": 0,
+            "phrase4Pct": 0,
+            "runMeanFracPct": 15.81
+          },
+          "known": {
+            "1": {
+              "decodedOccPct": 97.558,
+              "rows80Pct": 100,
+              "rows100Pct": 37.356,
+              "charCoveragePct": 100,
+              "run8Pct": 100,
+              "runFullPct": 98.147,
+              "phrase4Pct": 0,
+              "runMeanFracPct": 99.55
+            },
+            "5": {
+              "decodedOccPct": 99.768,
+              "rows80Pct": 100,
+              "rows100Pct": 92.421,
+              "charCoveragePct": 100,
+              "run8Pct": 100,
+              "runFullPct": 100,
+              "phrase4Pct": 0,
+              "runMeanFracPct": 100
+            },
+            "10": {
+              "decodedOccPct": 99.976,
+              "rows80Pct": 100,
+              "rows100Pct": 99.216,
+              "charCoveragePct": 100,
+              "run8Pct": 100,
+              "runFullPct": 100,
+              "phrase4Pct": 0,
+              "runMeanFracPct": 100
+            }
+          },
+          "knownExactRule": {
+            "1": {
+              "decodedOccPct": 18.687,
+              "rows80Pct": 0,
+              "rows100Pct": 0,
+              "charCoveragePct": 38.209,
+              "run8Pct": 0,
+              "runFullPct": 0,
+              "phrase4Pct": 0,
+              "runMeanFracPct": 38.56
+            },
+            "5": {
+              "decodedOccPct": 21.003,
+              "rows80Pct": 0,
+              "rows100Pct": 0,
+              "charCoveragePct": 38.875,
+              "run8Pct": 0,
+              "runFullPct": 0,
+              "phrase4Pct": 0,
+              "runMeanFracPct": 39.47
+            },
+            "10": {
+              "decodedOccPct": 21.216,
+              "rows80Pct": 0,
+              "rows100Pct": 0,
+              "charCoveragePct": 38.933,
+              "run8Pct": 0,
+              "runFullPct": 0,
+              "phrase4Pct": 0,
+              "runMeanFracPct": 39.53
+            }
+          },
+          "ms": 6082
+        },
+        {
+          "design": "kgram4",
+          "tokensPerRow": 46.5,
+          "distinctTokens": 5225,
+          "frequency": {
+            "decodedOccPct": 9.055,
+            "rows80Pct": 0,
+            "rows100Pct": 0,
+            "charCoveragePct": 22.166,
+            "run8Pct": 0,
+            "runFullPct": 0,
+            "phrase4Pct": 1.206,
+            "runMeanFracPct": 15.83
+          },
+          "known": {
+            "1": {
+              "decodedOccPct": 92.799,
+              "rows80Pct": 99.931,
+              "rows100Pct": 12.725,
+              "charCoveragePct": 100,
+              "run8Pct": 100,
+              "runFullPct": 98.061,
+              "phrase4Pct": 100,
+              "runMeanFracPct": 99.53
+            },
+            "5": {
+              "decodedOccPct": 98.203,
+              "rows80Pct": 100,
+              "rows100Pct": 70.469,
+              "charCoveragePct": 100,
+              "run8Pct": 100,
+              "runFullPct": 100,
+              "phrase4Pct": 100,
+              "runMeanFracPct": 100
+            },
+            "10": {
+              "decodedOccPct": 99.416,
+              "rows80Pct": 100,
+              "rows100Pct": 90.327,
+              "charCoveragePct": 100,
+              "run8Pct": 100,
+              "runFullPct": 100,
+              "phrase4Pct": 100,
+              "runMeanFracPct": 100
+            }
+          },
+          "knownExactRule": {
+            "1": {
+              "decodedOccPct": 10.048,
+              "rows80Pct": 0,
+              "rows100Pct": 0,
+              "charCoveragePct": 30.85,
+              "run8Pct": 0,
+              "runFullPct": 0,
+              "phrase4Pct": 47.574,
+              "runMeanFracPct": 31.44
+            },
+            "5": {
+              "decodedOccPct": 13.303,
+              "rows80Pct": 0,
+              "rows100Pct": 0,
+              "charCoveragePct": 34.828,
+              "run8Pct": 0,
+              "runFullPct": 0,
+              "phrase4Pct": 96.899,
+              "runMeanFracPct": 35.54
+            },
+            "10": {
+              "decodedOccPct": 14.078,
+              "rows80Pct": 0,
+              "rows100Pct": 0,
+              "charCoveragePct": 35.454,
+              "run8Pct": 0,
+              "runFullPct": 0,
+              "phrase4Pct": 99.678,
+              "runMeanFracPct": 36.16
+            }
+          },
+          "ms": 9336
+        },
+        {
+          "design": "kgram6",
+          "tokensPerRow": 71.3,
+          "distinctTokens": 30647,
+          "frequency": {
+            "decodedOccPct": 5.939,
+            "rows80Pct": 0,
+            "rows100Pct": 0,
+            "charCoveragePct": 22.433,
+            "run8Pct": 0.004,
+            "runFullPct": 0,
+            "phrase4Pct": 1.3,
+            "runMeanFracPct": 15.92
+          },
+          "known": {
+            "1": {
+              "decodedOccPct": 82.753,
+              "rows80Pct": 63.844,
+              "rows100Pct": 7.828,
+              "charCoveragePct": 100,
+              "run8Pct": 100,
+              "runFullPct": 98.061,
+              "phrase4Pct": 100,
+              "runMeanFracPct": 99.53
+            },
+            "5": {
+              "decodedOccPct": 91.946,
+              "rows80Pct": 99.072,
+              "rows100Pct": 34.126,
+              "charCoveragePct": 100,
+              "run8Pct": 100,
+              "runFullPct": 100,
+              "phrase4Pct": 100,
+              "runMeanFracPct": 100
+            },
+            "10": {
+              "decodedOccPct": 95.975,
+              "rows80Pct": 100,
+              "rows100Pct": 57.018,
+              "charCoveragePct": 100,
+              "run8Pct": 100,
+              "runFullPct": 100,
+              "phrase4Pct": 100,
+              "runMeanFracPct": 100
+            }
+          },
+          "knownExactRule": {
+            "1": {
+              "decodedOccPct": 5.798,
+              "rows80Pct": 0,
+              "rows100Pct": 0,
+              "charCoveragePct": 27.64,
+              "run8Pct": 0,
+              "runFullPct": 0,
+              "phrase4Pct": 11.667,
+              "runMeanFracPct": 28.04
+            },
+            "5": {
+              "decodedOccPct": 6.741,
+              "rows80Pct": 0,
+              "rows100Pct": 0,
+              "charCoveragePct": 28.022,
+              "run8Pct": 0,
+              "runFullPct": 0,
+              "phrase4Pct": 32.842,
+              "runMeanFracPct": 28.59
+            },
+            "10": {
+              "decodedOccPct": 6.849,
+              "rows80Pct": 0,
+              "rows100Pct": 0,
+              "charCoveragePct": 28.555,
+              "run8Pct": 0,
+              "runFullPct": 0,
+              "phrase4Pct": 32.898,
+              "runMeanFracPct": 29.17
+            }
+          },
+          "ms": 21116
+        },
+        {
+          "design": "kgram8",
+          "tokensPerRow": 92.1,
+          "distinctTokens": 76853,
+          "frequency": {
+            "decodedOccPct": 4.578,
+            "rows80Pct": 0,
+            "rows100Pct": 0,
+            "charCoveragePct": 22.31,
+            "run8Pct": 0.018,
+            "runFullPct": 0,
+            "phrase4Pct": 1.672,
+            "runMeanFracPct": 15.97
+          },
+          "known": {
+            "1": {
+              "decodedOccPct": 77.223,
+              "rows80Pct": 17.711,
+              "rows100Pct": 7.828,
+              "charCoveragePct": 100,
+              "run8Pct": 100,
+              "runFullPct": 98.061,
+              "phrase4Pct": 100,
+              "runMeanFracPct": 99.53
+            },
+            "5": {
+              "decodedOccPct": 88.076,
+              "rows80Pct": 77.8,
+              "rows100Pct": 34.126,
+              "charCoveragePct": 100,
+              "run8Pct": 100,
+              "runFullPct": 100,
+              "phrase4Pct": 100,
+              "runMeanFracPct": 100
+            },
+            "10": {
+              "decodedOccPct": 93.242,
+              "rows80Pct": 95.411,
+              "rows100Pct": 57.018,
+              "charCoveragePct": 100,
+              "run8Pct": 100,
+              "runFullPct": 100,
+              "phrase4Pct": 100,
+              "runMeanFracPct": 100
+            }
+          },
+          "knownExactRule": {
+            "1": {
+              "decodedOccPct": 4.487,
+              "rows80Pct": 0,
+              "rows100Pct": 0,
+              "charCoveragePct": 27.618,
+              "run8Pct": 0,
+              "runFullPct": 0,
+              "phrase4Pct": 11.64,
+              "runMeanFracPct": 28.01
+            },
+            "5": {
+              "decodedOccPct": 5.175,
+              "rows80Pct": 0,
+              "rows100Pct": 0,
+              "charCoveragePct": 27.682,
+              "run8Pct": 0,
+              "runFullPct": 0,
+              "phrase4Pct": 32.842,
+              "runMeanFracPct": 28.23
+            },
+            "10": {
+              "decodedOccPct": 5.186,
+              "rows80Pct": 0,
+              "rows100Pct": 0,
+              "charCoveragePct": 27.69,
+              "run8Pct": 0,
+              "runFullPct": 0,
+              "phrase4Pct": 32.898,
+              "runMeanFracPct": 28.23
+            }
+          },
+          "ms": 36463
+        }
+      ]
+    }
+  ],
+  "exact": [
+    {
+      "field": "company",
+      "rows": 100000,
+      "distinctValues": 16,
+      "width": {
+        "16": {
+          "distinctTokens": 16,
+          "collisionBuckets": 0,
+          "known": {
+            "1": {
+              "unknown": 99000,
+              "recovered": 99000,
+              "correct": 99000,
+              "ambiguous": 0,
+              "correctPct": 100
+            },
+            "5": {
+              "unknown": 95000,
+              "recovered": 95000,
+              "correct": 95000,
+              "ambiguous": 0,
+              "correctPct": 100
+            },
+            "10": {
+              "unknown": 90000,
+              "recovered": 90000,
+              "correct": 90000,
+              "ambiguous": 0,
+              "correctPct": 100
+            }
+          }
+        },
+        "full": {
+          "distinctTokens": 16,
+          "collisionBuckets": 0,
+          "known": {
+            "1": {
+              "unknown": 99000,
+              "recovered": 99000,
+              "correct": 99000,
+              "ambiguous": 0,
+              "correctPct": 100
+            },
+            "5": {
+              "unknown": 95000,
+              "recovered": 95000,
+              "correct": 95000,
+              "ambiguous": 0,
+              "correctPct": 100
+            },
+            "10": {
+              "unknown": 90000,
+              "recovered": 90000,
+              "correct": 90000,
+              "ambiguous": 0,
+              "correctPct": 100
+            }
+          }
+        }
+      }
+    },
+    {
+      "field": "address",
+      "rows": 100000,
+      "distinctValues": 5994,
+      "width": {
+        "16": {
+          "distinctTokens": 5708,
+          "collisionBuckets": 277,
+          "known": {
+            "1": {
+              "unknown": 99000,
+              "recovered": 15403,
+              "correct": 15104,
+              "ambiguous": 36,
+              "correctPct": 15.257
+            },
+            "5": {
+              "unknown": 95000,
+              "recovered": 53887,
+              "correct": 53431,
+              "ambiguous": 557,
+              "correctPct": 56.243
+            },
+            "10": {
+              "unknown": 90000,
+              "recovered": 72823,
+              "correct": 72585,
+              "ambiguous": 1062,
+              "correctPct": 80.65
+            }
+          }
+        },
+        "full": {
+          "distinctTokens": 5994,
+          "collisionBuckets": 0,
+          "known": {
+            "1": {
+              "unknown": 99000,
+              "recovered": 15140,
+              "correct": 15140,
+              "ambiguous": 0,
+              "correctPct": 15.293
+            },
+            "5": {
+              "unknown": 95000,
+              "recovered": 53988,
+              "correct": 53988,
+              "ambiguous": 0,
+              "correctPct": 56.829
+            },
+            "10": {
+              "unknown": 90000,
+              "recovered": 73647,
+              "correct": 73647,
+              "ambiguous": 0,
+              "correctPct": 81.83
+            }
+          }
+        }
+      }
+    },
+    {
+      "field": "name",
+      "rows": 100000,
+      "distinctValues": 99989,
+      "width": {
+        "16": {
+          "distinctTokens": 51134,
+          "collisionBuckets": 29571,
+          "known": {
+            "1": {
+              "unknown": 99000,
+              "recovered": 942,
+              "correct": 1,
+              "ambiguous": 1,
+              "correctPct": 0.001
+            },
+            "5": {
+              "unknown": 95000,
+              "recovered": 4286,
+              "correct": 2,
+              "ambiguous": 110,
+              "correctPct": 0.002
+            },
+            "10": {
+              "unknown": 90000,
+              "recovered": 7651,
+              "correct": 3,
+              "ambiguous": 459,
+              "correctPct": 0.003
+            }
+          }
+        },
+        "full": {
+          "distinctTokens": 99989,
+          "collisionBuckets": 0,
+          "known": {
+            "1": {
+              "unknown": 99000,
+              "recovered": 1,
+              "correct": 1,
+              "ambiguous": 0,
+              "correctPct": 0.001
+            },
+            "5": {
+              "unknown": 95000,
+              "recovered": 2,
+              "correct": 2,
+              "ambiguous": 0,
+              "correctPct": 0.002
+            },
+            "10": {
+              "unknown": 90000,
+              "recovered": 3,
+              "correct": 3,
+              "ambiguous": 0,
+              "correctPct": 0.003
+            }
+          }
+        }
+      }
+    },
+    {
+      "field": "email",
+      "rows": 100000,
+      "distinctValues": 100000,
+      "width": {
+        "16": {
+          "distinctTokens": 51413,
+          "collisionBuckets": 29552,
+          "known": {
+            "1": {
+              "unknown": 99000,
+              "recovered": 314,
+              "correct": 0,
+              "ambiguous": 0,
+              "correctPct": 0
+            },
+            "5": {
+              "unknown": 95000,
+              "recovered": 1461,
+              "correct": 0,
+              "ambiguous": 9,
+              "correctPct": 0
+            },
+            "10": {
+              "unknown": 90000,
+              "recovered": 2749,
+              "correct": 0,
+              "ambiguous": 39,
+              "correctPct": 0
+            }
+          }
+        },
+        "full": {
+          "distinctTokens": 100000,
+          "collisionBuckets": 0,
+          "known": {
+            "1": {
+              "unknown": 99000,
+              "recovered": 0,
+              "correct": 0,
+              "ambiguous": 0,
+              "correctPct": 0
+            },
+            "5": {
+              "unknown": 95000,
+              "recovered": 0,
+              "correct": 0,
+              "ambiguous": 0,
+              "correctPct": 0
+            },
+            "10": {
+              "unknown": 90000,
+              "recovered": 0,
+              "correct": 0,
+              "ambiguous": 0,
+              "correctPct": 0
+            }
+          }
+        }
+      }
+    },
+    {
+      "field": "phone",
+      "rows": 100000,
+      "distinctValues": 100000,
+      "width": {
+        "16": {
+          "distinctTokens": 51144,
+          "collisionBuckets": 29598,
+          "known": {
+            "1": {
+              "unknown": 99000,
+              "recovered": 1461,
+              "correct": 0,
+              "ambiguous": 12,
+              "correctPct": 0
+            },
+            "5": {
+              "unknown": 95000,
+              "recovered": 6641,
+              "correct": 0,
+              "ambiguous": 273,
+              "correctPct": 0
+            },
+            "10": {
+              "unknown": 90000,
+              "recovered": 11921,
+              "correct": 0,
+              "ambiguous": 899,
+              "correctPct": 0
+            }
+          }
+        },
+        "full": {
+          "distinctTokens": 100000,
+          "collisionBuckets": 0,
+          "known": {
+            "1": {
+              "unknown": 99000,
+              "recovered": 0,
+              "correct": 0,
+              "ambiguous": 0,
+              "correctPct": 0
+            },
+            "5": {
+              "unknown": 95000,
+              "recovered": 0,
+              "correct": 0,
+              "ambiguous": 0,
+              "correctPct": 0
+            },
+            "10": {
+              "unknown": 90000,
+              "recovered": 0,
+              "correct": 0,
+              "ambiguous": 0,
+              "correctPct": 0
+            }
+          }
+        }
+      }
+    }
+  ],
+  "notes": [
+    "In-memory simulation. 16-bit tokens reproduce the collision structure of a keyed truncated hash (FNV-1a keyed, as bench/standard-review/known-row-attack.ts); full-width tokens are collision-free labels.",
+    "Attacks used (= lower bound): A1 known-row count attack (Cash et al. CCS 2015): known = collision-aware rule for truncated tokens (largest known-row set contained in the token set) plus nested-group rule for full-width tokens; knownExactRule = naive exact signature match (kept for comparison with earlier reports; biased in favour of truncated tokens). A2 frequency ranking (Naveed et al. CCS 2015) with a same-kind reference half and opaque tie-break. Not used: co-occurrence/IKK, substring-containment propagation, query observation, WAL.",
+    "run*/charCoverage/phrase4 are attacker UPPER bounds computed with the true character order (ordering ambiguity of bigram sets is ignored); for kgram designs with K>=3 the bound is close to tight because pieces carry order.",
+    "Fixture (template synthetic) over-represents low-vocabulary leakage; NSMC real reviews are the reference for natural text."
+  ]
+}

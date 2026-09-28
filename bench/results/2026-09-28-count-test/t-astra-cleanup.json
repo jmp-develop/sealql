@@ -1,0 +1,37 @@
+{
+  "finished": "2026-09-28T11:24:12.099Z",
+  "dropped": "research_t_astra",
+  "countsBeforeDrop": {
+    "customers": 100000,
+    "customers_plain": 100000,
+    "customers_tags": 100000,
+    "customers_seal_index": 100000,
+    "tickets": 100000,
+    "tickets_plain": 100000,
+    "tickets_tags": 100000,
+    "tickets_seal_index": 100000
+  },
+  "protectedTables": [
+    {
+      "table": "bench_realistic_100k.customers",
+      "oid": "bench_realistic_100k.customers"
+    },
+    {
+      "table": "bench_realistic_100k.tickets",
+      "oid": "bench_realistic_100k.tickets"
+    },
+    {
+      "table": "native_verify_main.customers",
+      "oid": "native_verify_main.customers"
+    },
+    {
+      "table": "native_verify_main.tickets",
+      "oid": "native_verify_main.tickets"
+    },
+    {
+      "table": "native_scale_100m.customers",
+      "oid": "native_scale_100m.customers"
+    }
+  ],
+  "existingSchemasReadOnly": true
+}

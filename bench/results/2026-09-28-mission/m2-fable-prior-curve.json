@@ -1,0 +1,411 @@
+{
+ "victim": 50000,
+ "aux": 50000,
+ "K": 10,
+ "layouts": {
+  "prod16": {
+   "distinctTokens": 64495,
+   "tokensPerDoc": 53.2,
+   "auxRankSeed": {
+    "top100accuracy": 0.28,
+    "top500accuracy": 0.074
+   },
+   "conditions": {
+    "aux-only": {
+     "knownRows": 0,
+     "seed": {
+      "tokensCorrectShare": 0.0529,
+      "rows80share": 0,
+      "rowsFullShare": 0
+     },
+     "propagated": {
+      "tokensCorrectShare": 0.0535,
+      "rows80share": 0.0013,
+      "rowsFullShare": 0.0013,
+      "rowsReconstructedShare": 0.0013,
+      "rounds": 2
+     }
+    },
+    "k=0.01%": {
+     "knownRows": 5,
+     "seed": {
+      "tokensCorrectShare": 0.0608,
+      "rows80share": 0.0005,
+      "rowsFullShare": 0
+     },
+     "propagated": {
+      "tokensCorrectShare": 0.0647,
+      "rows80share": 0.0022,
+      "rowsFullShare": 0.002,
+      "rowsReconstructedShare": 0.002,
+      "rounds": 2
+     }
+    },
+    "k=0.1%": {
+     "knownRows": 50,
+     "seed": {
+      "tokensCorrectShare": 0.2411,
+      "rows80share": 0.0126,
+      "rowsFullShare": 0.0045
+     },
+     "propagated": {
+      "tokensCorrectShare": 0.2502,
+      "rows80share": 0.0194,
+      "rowsFullShare": 0.0132,
+      "rowsReconstructedShare": 0.0133,
+      "rounds": 2
+     }
+    },
+    "k=1%": {
+     "knownRows": 500,
+     "seed": {
+      "tokensCorrectShare": 0.5002,
+      "rows80share": 0.0746,
+      "rowsFullShare": 0.0203
+     },
+     "propagated": {
+      "tokensCorrectShare": 0.5077,
+      "rows80share": 0.0882,
+      "rowsFullShare": 0.035,
+      "rowsReconstructedShare": 0.0368,
+      "rounds": 2
+     }
+    },
+    "k=10%": {
+     "knownRows": 5000,
+     "seed": {
+      "tokensCorrectShare": 0.667,
+      "rows80share": 0.2116,
+      "rowsFullShare": 0.0343
+     },
+     "propagated": {
+      "tokensCorrectShare": 0.6646,
+      "rows80share": 0.2171,
+      "rowsFullShare": 0.0493,
+      "rowsReconstructedShare": 0.0591,
+      "rounds": 2
+     }
+    },
+    "aux+k=0.1%": {
+     "knownRows": 50,
+     "seed": {
+      "tokensCorrectShare": 0.2424,
+      "rows80share": 0.0126,
+      "rowsFullShare": 0.0046
+     },
+     "propagated": {
+      "tokensCorrectShare": 0.2512,
+      "rows80share": 0.0194,
+      "rowsFullShare": 0.0132,
+      "rowsReconstructedShare": 0.0133,
+      "rounds": 2
+     }
+    }
+   },
+   "seconds": 114
+  },
+  "prod48": {
+   "distinctTokens": 271079,
+   "tokensPerDoc": 53.2,
+   "auxRankSeed": {
+    "top100accuracy": 0.29,
+    "top500accuracy": 0.086
+   },
+   "conditions": {
+    "aux-only": {
+     "knownRows": 0,
+     "seed": {
+      "tokensCorrectShare": 0.0532,
+      "rows80share": 0,
+      "rowsFullShare": 0
+     },
+     "propagated": {
+      "tokensCorrectShare": 0.0544,
+      "rows80share": 0.0013,
+      "rowsFullShare": 0.0013,
+      "rowsReconstructedShare": 0.0013,
+      "rounds": 2
+     }
+    },
+    "k=0.01%": {
+     "knownRows": 5,
+     "seed": {
+      "tokensCorrectShare": 0.0613,
+      "rows80share": 0.0005,
+      "rowsFullShare": 0
+     },
+     "propagated": {
+      "tokensCorrectShare": 0.0652,
+      "rows80share": 0.0022,
+      "rowsFullShare": 0.002,
+      "rowsReconstructedShare": 0.002,
+      "rounds": 2
+     }
+    },
+    "k=0.1%": {
+     "knownRows": 50,
+     "seed": {
+      "tokensCorrectShare": 0.2436,
+      "rows80share": 0.0127,
+      "rowsFullShare": 0.0046
+     },
+     "propagated": {
+      "tokensCorrectShare": 0.254,
+      "rows80share": 0.0205,
+      "rowsFullShare": 0.014,
+      "rowsReconstructedShare": 0.014,
+      "rounds": 2
+     }
+    },
+    "k=1%": {
+     "knownRows": 500,
+     "seed": {
+      "tokensCorrectShare": 0.5338,
+      "rows80share": 0.0989,
+      "rowsFullShare": 0.0288
+     },
+     "propagated": {
+      "tokensCorrectShare": 0.5489,
+      "rows80share": 0.1199,
+      "rowsFullShare": 0.0507,
+      "rowsReconstructedShare": 0.0507,
+      "rounds": 2
+     }
+    },
+    "k=10%": {
+     "knownRows": 5000,
+     "seed": {
+      "tokensCorrectShare": 0.8222,
+      "rows80share": 0.6668,
+      "rowsFullShare": 0.1211
+     },
+     "propagated": {
+      "tokensCorrectShare": 0.8369,
+      "rows80share": 0.7088,
+      "rowsFullShare": 0.2129,
+      "rowsReconstructedShare": 0.2129,
+      "rounds": 2
+     }
+    },
+    "aux+k=0.1%": {
+     "knownRows": 50,
+     "seed": {
+      "tokensCorrectShare": 0.2453,
+      "rows80share": 0.0129,
+      "rowsFullShare": 0.0047
+     },
+     "propagated": {
+      "tokensCorrectShare": 0.2551,
+      "rows80share": 0.0205,
+      "rowsFullShare": 0.014,
+      "rowsReconstructedShare": 0.014,
+      "rounds": 2
+     }
+    }
+   },
+   "seconds": 123
+  },
+  "sub16": {
+   "distinctTokens": 65536,
+   "tokensPerDoc": 206.8,
+   "auxRankSeed": {
+    "top100accuracy": 0.27,
+    "top500accuracy": 0.064
+   },
+   "conditions": {
+    "aux-only": {
+     "knownRows": 0,
+     "seed": {
+      "tokensCorrectShare": 0.011,
+      "rows80share": 0.0007,
+      "rowsFullShare": 0.0007
+     },
+     "propagated": {
+      "tokensCorrectShare": 0.0112,
+      "rows80share": 0.0008,
+      "rowsFullShare": 0.0008,
+      "rowsReconstructedShare": 0.0008,
+      "rounds": 2
+     }
+    },
+    "k=0.01%": {
+     "knownRows": 5,
+     "seed": {
+      "tokensCorrectShare": 0.0121,
+      "rows80share": 0.0014,
+      "rowsFullShare": 0.0014
+     },
+     "propagated": {
+      "tokensCorrectShare": 0.0129,
+      "rows80share": 0.002,
+      "rowsFullShare": 0.002,
+      "rowsReconstructedShare": 0.002,
+      "rounds": 2
+     }
+    },
+    "k=0.1%": {
+     "knownRows": 50,
+     "seed": {
+      "tokensCorrectShare": 0.0511,
+      "rows80share": 0.0062,
+      "rowsFullShare": 0.0052
+     },
+     "propagated": {
+      "tokensCorrectShare": 0.055,
+      "rows80share": 0.013,
+      "rowsFullShare": 0.0116,
+      "rowsReconstructedShare": 0.0128,
+      "rounds": 2
+     }
+    },
+    "k=1%": {
+     "knownRows": 500,
+     "seed": {
+      "tokensCorrectShare": 0.0922,
+      "rows80share": 0.0111,
+      "rowsFullShare": 0.0081
+     },
+     "propagated": {
+      "tokensCorrectShare": 0.0929,
+      "rows80share": 0.0213,
+      "rowsFullShare": 0.016,
+      "rowsReconstructedShare": 0.0203,
+      "rounds": 2
+     }
+    },
+    "k=10%": {
+     "knownRows": 5000,
+     "seed": {
+      "tokensCorrectShare": 0.0983,
+      "rows80share": 0.013,
+      "rowsFullShare": 0.0086
+     },
+     "propagated": {
+      "tokensCorrectShare": 0.0977,
+      "rows80share": 0.0213,
+      "rowsFullShare": 0.0148,
+      "rowsReconstructedShare": 0.0188,
+      "rounds": 2
+     }
+    },
+    "aux+k=0.1%": {
+     "knownRows": 50,
+     "seed": {
+      "tokensCorrectShare": 0.0512,
+      "rows80share": 0.0062,
+      "rowsFullShare": 0.0052
+     },
+     "propagated": {
+      "tokensCorrectShare": 0.0551,
+      "rows80share": 0.013,
+      "rowsFullShare": 0.0116,
+      "rowsReconstructedShare": 0.0128,
+      "rounds": 2
+     }
+    }
+   },
+   "seconds": 468
+  },
+  "sub48": {
+   "distinctTokens": 7222914,
+   "tokensPerDoc": 206.8,
+   "auxRankSeed": {
+    "top100accuracy": 0.28,
+    "top500accuracy": 0.07
+   },
+   "conditions": {
+    "aux-only": {
+     "knownRows": 0,
+     "seed": {
+      "tokensCorrectShare": 0.0114,
+      "rows80share": 0.0012,
+      "rowsFullShare": 0.0012
+     },
+     "propagated": {
+      "tokensCorrectShare": 0.0118,
+      "rows80share": 0.0013,
+      "rowsFullShare": 0.0013,
+      "rowsReconstructedShare": 0.0013,
+      "rounds": 2
+     }
+    },
+    "k=0.01%": {
+     "knownRows": 5,
+     "seed": {
+      "tokensCorrectShare": 0.0121,
+      "rows80share": 0.0014,
+      "rowsFullShare": 0.0014
+     },
+     "propagated": {
+      "tokensCorrectShare": 0.0129,
+      "rows80share": 0.002,
+      "rowsFullShare": 0.002,
+      "rowsReconstructedShare": 0.002,
+      "rounds": 2
+     }
+    },
+    "k=0.1%": {
+     "knownRows": 50,
+     "seed": {
+      "tokensCorrectShare": 0.0545,
+      "rows80share": 0.0067,
+      "rowsFullShare": 0.0059
+     },
+     "propagated": {
+      "tokensCorrectShare": 0.0604,
+      "rows80share": 0.0141,
+      "rowsFullShare": 0.014,
+      "rowsReconstructedShare": 0.014,
+      "rounds": 2
+     }
+    },
+    "k=1%": {
+     "knownRows": 500,
+     "seed": {
+      "tokensCorrectShare": 0.1285,
+      "rows80share": 0.02,
+      "rowsFullShare": 0.0163
+     },
+     "propagated": {
+      "tokensCorrectShare": 0.1451,
+      "rows80share": 0.0508,
+      "rowsFullShare": 0.0507,
+      "rowsReconstructedShare": 0.0507,
+      "rounds": 2
+     }
+    },
+    "k=10%": {
+     "knownRows": 5000,
+     "seed": {
+      "tokensCorrectShare": 0.2367,
+      "rows80share": 0.0441,
+      "rowsFullShare": 0.0344
+     },
+     "propagated": {
+      "tokensCorrectShare": 0.3,
+      "rows80share": 0.213,
+      "rowsFullShare": 0.2129,
+      "rowsReconstructedShare": 0.2129,
+      "rounds": 2
+     }
+    },
+    "aux+k=0.1%": {
+     "knownRows": 50,
+     "seed": {
+      "tokensCorrectShare": 0.0548,
+      "rows80share": 0.0067,
+      "rowsFullShare": 0.0059
+     },
+     "propagated": {
+      "tokensCorrectShare": 0.0607,
+      "rows80share": 0.0141,
+      "rowsFullShare": 0.014,
+      "rowsReconstructedShare": 0.014,
+      "rounds": 2
+     }
+    }
+   },
+   "seconds": 476
+  }
+ }
+}

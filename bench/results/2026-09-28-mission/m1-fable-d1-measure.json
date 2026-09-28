@@ -1,0 +1,1270 @@
+{
+  "startedAt": "2026-09-28T09:02:57.462Z",
+  "schema": "research_m1_fable_d1",
+  "K": 8,
+  "warm": 2,
+  "rounds": 7,
+  "cases": [
+    {
+      "name": "exact_common",
+      "plainCount": 28331,
+      "windows": 0,
+      "paths": {
+        "plain": {
+          "totalMs": 4.1,
+          "sqlMs": 4,
+          "verifyMs": 0,
+          "count": 28331,
+          "rows": 0,
+          "bytes": 0,
+          "hmacs": 0
+        },
+        "product": {
+          "totalMs": 1674.9,
+          "sqlMs": 0,
+          "verifyMs": 0,
+          "count": 28331,
+          "rows": 0,
+          "bytes": 0,
+          "hmacs": 0
+        },
+        "d1_64": {
+          "totalMs": 5.4,
+          "sqlMs": 5.3,
+          "verifyMs": 0,
+          "count": 28331,
+          "rows": 0,
+          "bytes": 0,
+          "hmacs": 0
+        },
+        "d1_128": {
+          "totalMs": 5.5,
+          "sqlMs": 5.4,
+          "verifyMs": 0,
+          "count": 28331,
+          "rows": 0,
+          "bytes": 0,
+          "hmacs": 0
+        },
+        "d1_proof_rows": {
+          "totalMs": 290.6,
+          "sqlMs": 69.3,
+          "verifyMs": 196.8,
+          "count": 28331,
+          "rows": 28331,
+          "bytes": 3907506,
+          "hmacs": 28331
+        },
+        "d3": {
+          "totalMs": 85.6,
+          "sqlMs": 85.5,
+          "verifyMs": 0,
+          "count": 28331,
+          "rows": 0,
+          "bytes": 0,
+          "hmacs": 0
+        },
+        "d3_proof": {
+          "totalMs": 304.6,
+          "sqlMs": 95.5,
+          "verifyMs": 183.2,
+          "count": 28331,
+          "rows": 28331,
+          "bytes": 3908035,
+          "hmacs": 28331
+        }
+      }
+    },
+    {
+      "name": "exact_mid",
+      "plainCount": 1770,
+      "windows": 0,
+      "paths": {
+        "plain": {
+          "totalMs": 0.9,
+          "sqlMs": 0.9,
+          "verifyMs": 0,
+          "count": 1770,
+          "rows": 0,
+          "bytes": 0,
+          "hmacs": 0
+        },
+        "product": {
+          "totalMs": 114.4,
+          "sqlMs": 0,
+          "verifyMs": 0,
+          "count": 1770,
+          "rows": 0,
+          "bytes": 0,
+          "hmacs": 0
+        },
+        "d1_64": {
+          "totalMs": 0.9,
+          "sqlMs": 0.9,
+          "verifyMs": 0,
+          "count": 1770,
+          "rows": 0,
+          "bytes": 0,
+          "hmacs": 0
+        },
+        "d1_128": {
+          "totalMs": 0.7,
+          "sqlMs": 0.7,
+          "verifyMs": 0,
+          "count": 1770,
+          "rows": 0,
+          "bytes": 0,
+          "hmacs": 0
+        },
+        "d1_proof_rows": {
+          "totalMs": 17,
+          "sqlMs": 3.2,
+          "verifyMs": 12.2,
+          "count": 1770,
+          "rows": 1770,
+          "bytes": 244172,
+          "hmacs": 1770
+        },
+        "d3": {
+          "totalMs": 7.8,
+          "sqlMs": 7.7,
+          "verifyMs": 0,
+          "count": 1770,
+          "rows": 0,
+          "bytes": 0,
+          "hmacs": 0
+        },
+        "d3_proof": {
+          "totalMs": 23.6,
+          "sqlMs": 13.3,
+          "verifyMs": 9.6,
+          "count": 1770,
+          "rows": 1770,
+          "bytes": 244210,
+          "hmacs": 1770
+        }
+      }
+    },
+    {
+      "name": "exact_one",
+      "plainCount": 1,
+      "windows": 0,
+      "paths": {
+        "plain": {
+          "totalMs": 0.3,
+          "sqlMs": 0.3,
+          "verifyMs": 0,
+          "count": 1,
+          "rows": 0,
+          "bytes": 0,
+          "hmacs": 0
+        },
+        "product": {
+          "totalMs": 1.3,
+          "sqlMs": 0,
+          "verifyMs": 0,
+          "count": 1,
+          "rows": 0,
+          "bytes": 0,
+          "hmacs": 0
+        },
+        "d1_64": {
+          "totalMs": 0.3,
+          "sqlMs": 0.3,
+          "verifyMs": 0,
+          "count": 1,
+          "rows": 0,
+          "bytes": 0,
+          "hmacs": 0
+        },
+        "d1_128": {
+          "totalMs": 0.3,
+          "sqlMs": 0.3,
+          "verifyMs": 0,
+          "count": 1,
+          "rows": 0,
+          "bytes": 0,
+          "hmacs": 0
+        },
+        "d1_proof_rows": {
+          "totalMs": 0.3,
+          "sqlMs": 0.3,
+          "verifyMs": 0,
+          "count": 1,
+          "rows": 1,
+          "bytes": 141,
+          "hmacs": 1
+        },
+        "d3": {
+          "totalMs": 0.4,
+          "sqlMs": 0.4,
+          "verifyMs": 0,
+          "count": 1,
+          "rows": 0,
+          "bytes": 0,
+          "hmacs": 0
+        },
+        "d3_proof": {
+          "totalMs": 0.4,
+          "sqlMs": 0.4,
+          "verifyMs": 0,
+          "count": 1,
+          "rows": 1,
+          "bytes": 139,
+          "hmacs": 1
+        }
+      }
+    },
+    {
+      "name": "exact_zero",
+      "plainCount": 0,
+      "windows": 0,
+      "paths": {
+        "plain": {
+          "totalMs": 0.3,
+          "sqlMs": 0.3,
+          "verifyMs": 0,
+          "count": 0,
+          "rows": 0,
+          "bytes": 0,
+          "hmacs": 0
+        },
+        "product": {
+          "totalMs": 1.5,
+          "sqlMs": 0,
+          "verifyMs": 0,
+          "count": 0,
+          "rows": 0,
+          "bytes": 0,
+          "hmacs": 0
+        },
+        "d1_64": {
+          "totalMs": 0.3,
+          "sqlMs": 0.3,
+          "verifyMs": 0,
+          "count": 0,
+          "rows": 0,
+          "bytes": 0,
+          "hmacs": 0
+        },
+        "d1_128": {
+          "totalMs": 0.3,
+          "sqlMs": 0.3,
+          "verifyMs": 0,
+          "count": 0,
+          "rows": 0,
+          "bytes": 0,
+          "hmacs": 0
+        },
+        "d1_proof_rows": {
+          "totalMs": 0.3,
+          "sqlMs": 0.3,
+          "verifyMs": 0,
+          "count": 0,
+          "rows": 0,
+          "bytes": 2,
+          "hmacs": 0
+        },
+        "d3": {
+          "totalMs": 0.4,
+          "sqlMs": 0.4,
+          "verifyMs": 0,
+          "count": 0,
+          "rows": 0,
+          "bytes": 0,
+          "hmacs": 0
+        },
+        "d3_proof": {
+          "totalMs": 0.4,
+          "sqlMs": 0.4,
+          "verifyMs": 0,
+          "count": 0,
+          "rows": 0,
+          "bytes": 2,
+          "hmacs": 0
+        }
+      }
+    },
+    {
+      "name": "sub2_common",
+      "plainCount": 30101,
+      "windows": 0,
+      "paths": {
+        "plain": {
+          "totalMs": 23.4,
+          "sqlMs": 23.4,
+          "verifyMs": 0,
+          "count": 30101,
+          "rows": 0,
+          "bytes": 0,
+          "hmacs": 0
+        },
+        "product": {
+          "totalMs": 1766.3,
+          "sqlMs": 0,
+          "verifyMs": 0,
+          "count": 30101,
+          "rows": 0,
+          "bytes": 0,
+          "hmacs": 0
+        },
+        "d1_64": {
+          "totalMs": 367.2,
+          "sqlMs": 367.2,
+          "verifyMs": 0,
+          "count": 30101,
+          "rows": 0,
+          "bytes": 0,
+          "hmacs": 0
+        },
+        "d1_128": {
+          "totalMs": 538,
+          "sqlMs": 537.9,
+          "verifyMs": 0,
+          "count": 30101,
+          "rows": 0,
+          "bytes": 0,
+          "hmacs": 0
+        },
+        "d1_proof_rows": {
+          "totalMs": 924.6,
+          "sqlMs": 691.6,
+          "verifyMs": 196.3,
+          "count": 30101,
+          "rows": 30101,
+          "bytes": 4212069,
+          "hmacs": 30101
+        },
+        "d3": {
+          "totalMs": 100.2,
+          "sqlMs": 100.1,
+          "verifyMs": 0,
+          "count": 30101,
+          "rows": 0,
+          "bytes": 0,
+          "hmacs": 0
+        },
+        "d3_proof": {
+          "totalMs": 399.4,
+          "sqlMs": 165,
+          "verifyMs": 200.2,
+          "count": 30101,
+          "rows": 30101,
+          "bytes": 4212653,
+          "hmacs": 30101
+        }
+      }
+    },
+    {
+      "name": "sub_mid",
+      "plainCount": 16574,
+      "windows": 0,
+      "paths": {
+        "plain": {
+          "totalMs": 28.9,
+          "sqlMs": 28.9,
+          "verifyMs": 0,
+          "count": 16574,
+          "rows": 0,
+          "bytes": 0,
+          "hmacs": 0
+        },
+        "product": {
+          "totalMs": 1113.8,
+          "sqlMs": 0,
+          "verifyMs": 0,
+          "count": 16574,
+          "rows": 0,
+          "bytes": 0,
+          "hmacs": 0
+        },
+        "d1_64": {
+          "totalMs": 42.6,
+          "sqlMs": 42.5,
+          "verifyMs": 0,
+          "count": 16574,
+          "rows": 0,
+          "bytes": 0,
+          "hmacs": 0
+        },
+        "d1_128": {
+          "totalMs": 38.7,
+          "sqlMs": 38.6,
+          "verifyMs": 0,
+          "count": 16574,
+          "rows": 0,
+          "bytes": 0,
+          "hmacs": 0
+        },
+        "d1_proof_rows": {
+          "totalMs": 621.7,
+          "sqlMs": 496.1,
+          "verifyMs": 102.9,
+          "count": 16574,
+          "rows": 16574,
+          "bytes": 2319490,
+          "hmacs": 16574
+        },
+        "d3": {
+          "totalMs": 379.5,
+          "sqlMs": 379.4,
+          "verifyMs": 0,
+          "count": 16574,
+          "rows": 0,
+          "bytes": 0,
+          "hmacs": 0
+        },
+        "d3_proof": {
+          "totalMs": 918,
+          "sqlMs": 797.8,
+          "verifyMs": 105.9,
+          "count": 16574,
+          "rows": 16574,
+          "bytes": 2319040,
+          "hmacs": 16574
+        }
+      }
+    },
+    {
+      "name": "sub_mid_space",
+      "plainCount": 213,
+      "windows": 0,
+      "paths": {
+        "plain": {
+          "totalMs": 1.9,
+          "sqlMs": 1.9,
+          "verifyMs": 0,
+          "count": 213,
+          "rows": 0,
+          "bytes": 0,
+          "hmacs": 0
+        },
+        "product": {
+          "totalMs": 17.7,
+          "sqlMs": 0,
+          "verifyMs": 0,
+          "count": 213,
+          "rows": 0,
+          "bytes": 0,
+          "hmacs": 0
+        },
+        "d1_64": {
+          "totalMs": 1,
+          "sqlMs": 1,
+          "verifyMs": 0,
+          "count": 213,
+          "rows": 0,
+          "bytes": 0,
+          "hmacs": 0
+        },
+        "d1_128": {
+          "totalMs": 0.7,
+          "sqlMs": 0.6,
+          "verifyMs": 0,
+          "count": 213,
+          "rows": 0,
+          "bytes": 0,
+          "hmacs": 0
+        },
+        "d1_proof_rows": {
+          "totalMs": 6.2,
+          "sqlMs": 4.7,
+          "verifyMs": 1.3,
+          "count": 213,
+          "rows": 213,
+          "bytes": 29809,
+          "hmacs": 213
+        },
+        "d3": {
+          "totalMs": 5.7,
+          "sqlMs": 5.6,
+          "verifyMs": 0,
+          "count": 213,
+          "rows": 0,
+          "bytes": 0,
+          "hmacs": 0
+        },
+        "d3_proof": {
+          "totalMs": 11.7,
+          "sqlMs": 10.1,
+          "verifyMs": 1.3,
+          "count": 213,
+          "rows": 213,
+          "bytes": 29792,
+          "hmacs": 213
+        }
+      }
+    },
+    {
+      "name": "sub_rare",
+      "plainCount": 101,
+      "windows": 0,
+      "paths": {
+        "plain": {
+          "totalMs": 20.2,
+          "sqlMs": 20.1,
+          "verifyMs": 0,
+          "count": 101,
+          "rows": 0,
+          "bytes": 0,
+          "hmacs": 0
+        },
+        "product": {
+          "totalMs": 8.9,
+          "sqlMs": 0,
+          "verifyMs": 0,
+          "count": 101,
+          "rows": 0,
+          "bytes": 0,
+          "hmacs": 0
+        },
+        "d1_64": {
+          "totalMs": 0.6,
+          "sqlMs": 0.6,
+          "verifyMs": 0,
+          "count": 101,
+          "rows": 0,
+          "bytes": 0,
+          "hmacs": 0
+        },
+        "d1_128": {
+          "totalMs": 0.4,
+          "sqlMs": 0.4,
+          "verifyMs": 0,
+          "count": 101,
+          "rows": 0,
+          "bytes": 0,
+          "hmacs": 0
+        },
+        "d1_proof_rows": {
+          "totalMs": 2.5,
+          "sqlMs": 1.6,
+          "verifyMs": 0.7,
+          "count": 101,
+          "rows": 101,
+          "bytes": 14145,
+          "hmacs": 101
+        },
+        "d3": {
+          "totalMs": 1.6,
+          "sqlMs": 1.5,
+          "verifyMs": 0,
+          "count": 101,
+          "rows": 0,
+          "bytes": 0,
+          "hmacs": 0
+        },
+        "d3_proof": {
+          "totalMs": 3.7,
+          "sqlMs": 2.8,
+          "verifyMs": 0.7,
+          "count": 101,
+          "rows": 101,
+          "bytes": 14155,
+          "hmacs": 101
+        }
+      }
+    },
+    {
+      "name": "sub_long",
+      "plainCount": 2440,
+      "windows": 7,
+      "paths": {
+        "plain": {
+          "totalMs": 30.7,
+          "sqlMs": 30.6,
+          "verifyMs": 0,
+          "count": 2440,
+          "rows": 0,
+          "bytes": 0,
+          "hmacs": 0
+        },
+        "product": {
+          "totalMs": 188.7,
+          "sqlMs": 0,
+          "verifyMs": 0,
+          "count": 2440,
+          "rows": 0,
+          "bytes": 0,
+          "hmacs": 0
+        },
+        "d1_64": {
+          "totalMs": 7.2,
+          "sqlMs": 7.1,
+          "verifyMs": 0,
+          "count": 2440,
+          "rows": 0,
+          "bytes": 0,
+          "hmacs": 0
+        },
+        "d1_128": {
+          "totalMs": 12.6,
+          "sqlMs": 12.5,
+          "verifyMs": 0,
+          "count": 2440,
+          "rows": 0,
+          "bytes": 0,
+          "hmacs": 0
+        },
+        "d1_proof_rows": {
+          "totalMs": 307.3,
+          "sqlMs": 207.7,
+          "verifyMs": 105.7,
+          "count": 2440,
+          "rows": 2440,
+          "bytes": 669186,
+          "hmacs": 17080
+        },
+        "d3": {
+          "totalMs": 198.9,
+          "sqlMs": 198.6,
+          "verifyMs": 0,
+          "count": 2440,
+          "rows": 0,
+          "bytes": 0,
+          "hmacs": 0
+        },
+        "d3_proof": {
+          "totalMs": 618,
+          "sqlMs": 501.9,
+          "verifyMs": 110.1,
+          "count": 2440,
+          "rows": 2440,
+          "bytes": 669176,
+          "hmacs": 17080
+        }
+      }
+    },
+    {
+      "name": "sub_name_suffix",
+      "plainCount": 1,
+      "windows": 0,
+      "paths": {
+        "plain": {
+          "totalMs": 0.4,
+          "sqlMs": 0.4,
+          "verifyMs": 0,
+          "count": 1,
+          "rows": 0,
+          "bytes": 0,
+          "hmacs": 0
+        },
+        "product": {
+          "totalMs": 2,
+          "sqlMs": 0,
+          "verifyMs": 0,
+          "count": 1,
+          "rows": 0,
+          "bytes": 0,
+          "hmacs": 0
+        },
+        "d1_64": {
+          "totalMs": 0.3,
+          "sqlMs": 0.3,
+          "verifyMs": 0,
+          "count": 1,
+          "rows": 0,
+          "bytes": 0,
+          "hmacs": 0
+        },
+        "d1_128": {
+          "totalMs": 0.3,
+          "sqlMs": 0.3,
+          "verifyMs": 0,
+          "count": 1,
+          "rows": 0,
+          "bytes": 0,
+          "hmacs": 0
+        },
+        "d1_proof_rows": {
+          "totalMs": 0.5,
+          "sqlMs": 0.4,
+          "verifyMs": 0,
+          "count": 1,
+          "rows": 1,
+          "bytes": 143,
+          "hmacs": 1
+        },
+        "d3": {
+          "totalMs": 1,
+          "sqlMs": 0.9,
+          "verifyMs": 0,
+          "count": 1,
+          "rows": 0,
+          "bytes": 0,
+          "hmacs": 0
+        },
+        "d3_proof": {
+          "totalMs": 1,
+          "sqlMs": 0.9,
+          "verifyMs": 0,
+          "count": 1,
+          "rows": 1,
+          "bytes": 141,
+          "hmacs": 1
+        }
+      }
+    },
+    {
+      "name": "sub_zero",
+      "plainCount": 0,
+      "windows": 0,
+      "paths": {
+        "plain": {
+          "totalMs": 30.6,
+          "sqlMs": 30.6,
+          "verifyMs": 0,
+          "count": 0,
+          "rows": 0,
+          "bytes": 0,
+          "hmacs": 0
+        },
+        "product": {
+          "totalMs": 1.7,
+          "sqlMs": 0,
+          "verifyMs": 0,
+          "count": 0,
+          "rows": 0,
+          "bytes": 0,
+          "hmacs": 0
+        },
+        "d1_64": {
+          "totalMs": 0.3,
+          "sqlMs": 0.3,
+          "verifyMs": 0,
+          "count": 0,
+          "rows": 0,
+          "bytes": 0,
+          "hmacs": 0
+        },
+        "d1_128": {
+          "totalMs": 0.3,
+          "sqlMs": 0.3,
+          "verifyMs": 0,
+          "count": 0,
+          "rows": 0,
+          "bytes": 0,
+          "hmacs": 0
+        },
+        "d1_proof_rows": {
+          "totalMs": 0.5,
+          "sqlMs": 0.5,
+          "verifyMs": 0,
+          "count": 0,
+          "rows": 0,
+          "bytes": 2,
+          "hmacs": 0
+        },
+        "d3": {
+          "totalMs": 1.1,
+          "sqlMs": 1,
+          "verifyMs": 0,
+          "count": 0,
+          "rows": 0,
+          "bytes": 0,
+          "hmacs": 0
+        },
+        "d3_proof": {
+          "totalMs": 1,
+          "sqlMs": 0.9,
+          "verifyMs": 0,
+          "count": 0,
+          "rows": 0,
+          "bytes": 2,
+          "hmacs": 0
+        }
+      }
+    },
+    {
+      "name": "starts",
+      "plainCount": 16574,
+      "windows": 0,
+      "paths": {
+        "plain": {
+          "totalMs": 5.2,
+          "sqlMs": 5.1,
+          "verifyMs": 0,
+          "count": 16574,
+          "rows": 0,
+          "bytes": 0,
+          "hmacs": 0
+        },
+        "product": {
+          "totalMs": 971.1,
+          "sqlMs": 0,
+          "verifyMs": 0,
+          "count": 16574,
+          "rows": 0,
+          "bytes": 0,
+          "hmacs": 0
+        },
+        "d1_64": {
+          "totalMs": 45.7,
+          "sqlMs": 45.6,
+          "verifyMs": 0,
+          "count": 16574,
+          "rows": 0,
+          "bytes": 0,
+          "hmacs": 0
+        },
+        "d1_128": {
+          "totalMs": 40.3,
+          "sqlMs": 40.2,
+          "verifyMs": 0,
+          "count": 16574,
+          "rows": 0,
+          "bytes": 0,
+          "hmacs": 0
+        },
+        "d1_proof_rows": {
+          "totalMs": 662.4,
+          "sqlMs": 532,
+          "verifyMs": 111.5,
+          "count": 16574,
+          "rows": 16574,
+          "bytes": 2319554,
+          "hmacs": 16574
+        },
+        "d3": {
+          "totalMs": 380.7,
+          "sqlMs": 380.7,
+          "verifyMs": 0,
+          "count": 16574,
+          "rows": 0,
+          "bytes": 0,
+          "hmacs": 0
+        },
+        "d3_proof": {
+          "totalMs": 921.6,
+          "sqlMs": 778,
+          "verifyMs": 110.5,
+          "count": 16574,
+          "rows": 16574,
+          "bytes": 2319098,
+          "hmacs": 16574
+        }
+      }
+    },
+    {
+      "name": "ends",
+      "plainCount": 26598,
+      "windows": 0,
+      "paths": {
+        "plain": {
+          "totalMs": 24.4,
+          "sqlMs": 24.4,
+          "verifyMs": 0,
+          "count": 26598,
+          "rows": 0,
+          "bytes": 0,
+          "hmacs": 0
+        },
+        "product": {
+          "totalMs": 1644.8,
+          "sqlMs": 0,
+          "verifyMs": 0,
+          "count": 26598,
+          "rows": 0,
+          "bytes": 0,
+          "hmacs": 0
+        },
+        "d1_64": {
+          "totalMs": 826.2,
+          "sqlMs": 826.1,
+          "verifyMs": 0,
+          "count": 26598,
+          "rows": 0,
+          "bytes": 0,
+          "hmacs": 0
+        },
+        "d1_128": {
+          "totalMs": 1409.3,
+          "sqlMs": 1409.2,
+          "verifyMs": 0,
+          "count": 26598,
+          "rows": 0,
+          "bytes": 0,
+          "hmacs": 0
+        },
+        "d1_proof_rows": {
+          "totalMs": 1895.8,
+          "sqlMs": 1728.3,
+          "verifyMs": 170.6,
+          "count": 26598,
+          "rows": 26598,
+          "bytes": 3722333,
+          "hmacs": 26598
+        },
+        "d3": {
+          "totalMs": 567.1,
+          "sqlMs": 566.9,
+          "verifyMs": 0,
+          "count": 26598,
+          "rows": 0,
+          "bytes": 0,
+          "hmacs": 0
+        },
+        "d3_proof": {
+          "totalMs": 1525.6,
+          "sqlMs": 1327.4,
+          "verifyMs": 170.8,
+          "count": 26598,
+          "rows": 26598,
+          "bytes": 3721932,
+          "hmacs": 26598
+        }
+      }
+    },
+    {
+      "name": "and2",
+      "plainCount": 21176,
+      "windows": 0,
+      "paths": {
+        "plain": {
+          "totalMs": 106.7,
+          "sqlMs": 106.7,
+          "verifyMs": 0,
+          "count": 21176,
+          "rows": 0,
+          "bytes": 0,
+          "hmacs": 0
+        },
+        "product": {
+          "totalMs": 2369.3,
+          "sqlMs": 0,
+          "verifyMs": 0,
+          "count": 21176,
+          "rows": 0,
+          "bytes": 0,
+          "hmacs": 0
+        },
+        "d1_64": {
+          "totalMs": 66.2,
+          "sqlMs": 66.2,
+          "verifyMs": 0,
+          "count": 21176,
+          "rows": 0,
+          "bytes": 0,
+          "hmacs": 0
+        },
+        "d1_128": {
+          "totalMs": 58.9,
+          "sqlMs": 58.8,
+          "verifyMs": 0,
+          "count": 21176,
+          "rows": 0,
+          "bytes": 0,
+          "hmacs": 0
+        },
+        "d1_proof_rows": {
+          "totalMs": 936.2,
+          "sqlMs": 615.7,
+          "verifyMs": 286.5,
+          "count": 21176,
+          "rows": 21176,
+          "bytes": 4825659,
+          "hmacs": 42352
+        },
+        "d3": {
+          "totalMs": 508.5,
+          "sqlMs": 508.4,
+          "verifyMs": 0,
+          "count": 21176,
+          "rows": 0,
+          "bytes": 0,
+          "hmacs": 0
+        },
+        "d3_proof": {
+          "totalMs": 1368.7,
+          "sqlMs": 1080.7,
+          "verifyMs": 266.1,
+          "count": 21176,
+          "rows": 21176,
+          "bytes": 4825650,
+          "hmacs": 42352
+        }
+      }
+    },
+    {
+      "name": "and4",
+      "plainCount": 62,
+      "windows": 0,
+      "paths": {
+        "plain": {
+          "totalMs": 129.2,
+          "sqlMs": 129.2,
+          "verifyMs": 0,
+          "count": 62,
+          "rows": 0,
+          "bytes": 0,
+          "hmacs": 0
+        },
+        "product": {
+          "totalMs": 26.3,
+          "sqlMs": 0,
+          "verifyMs": 0,
+          "count": 62,
+          "rows": 0,
+          "bytes": 0,
+          "hmacs": 0
+        },
+        "d1_64": {
+          "totalMs": 6.9,
+          "sqlMs": 6.8,
+          "verifyMs": 0,
+          "count": 62,
+          "rows": 0,
+          "bytes": 0,
+          "hmacs": 0
+        },
+        "d1_128": {
+          "totalMs": 7,
+          "sqlMs": 6.9,
+          "verifyMs": 0,
+          "count": 62,
+          "rows": 0,
+          "bytes": 0,
+          "hmacs": 0
+        },
+        "d1_proof_rows": {
+          "totalMs": 11.8,
+          "sqlMs": 10,
+          "verifyMs": 1.3,
+          "count": 62,
+          "rows": 62,
+          "bytes": 25249,
+          "hmacs": 248
+        },
+        "d3": {
+          "totalMs": 11.2,
+          "sqlMs": 11,
+          "verifyMs": 0,
+          "count": 62,
+          "rows": 0,
+          "bytes": 0,
+          "hmacs": 0
+        },
+        "d3_proof": {
+          "totalMs": 12.8,
+          "sqlMs": 11,
+          "verifyMs": 1.8,
+          "count": 62,
+          "rows": 62,
+          "bytes": 25299,
+          "hmacs": 248
+        }
+      }
+    },
+    {
+      "name": "and6",
+      "plainCount": 624,
+      "windows": 0,
+      "paths": {
+        "plain": {
+          "totalMs": 147.7,
+          "sqlMs": 147.6,
+          "verifyMs": 0,
+          "count": 624,
+          "rows": 0,
+          "bytes": 0,
+          "hmacs": 0
+        },
+        "product": {
+          "totalMs": 211.1,
+          "sqlMs": 0,
+          "verifyMs": 0,
+          "count": 624,
+          "rows": 0,
+          "bytes": 0,
+          "hmacs": 0
+        },
+        "d1_64": {
+          "totalMs": 8,
+          "sqlMs": 7.9,
+          "verifyMs": 0,
+          "count": 624,
+          "rows": 0,
+          "bytes": 0,
+          "hmacs": 0
+        },
+        "d1_128": {
+          "totalMs": 7.4,
+          "sqlMs": 7.3,
+          "verifyMs": 0,
+          "count": 624,
+          "rows": 0,
+          "bytes": 0,
+          "hmacs": 0
+        },
+        "d1_proof_rows": {
+          "totalMs": 67.1,
+          "sqlMs": 47.7,
+          "verifyMs": 17.7,
+          "count": 624,
+          "rows": 624,
+          "bytes": 366764,
+          "hmacs": 3744
+        },
+        "d3": {
+          "totalMs": 47.9,
+          "sqlMs": 47.6,
+          "verifyMs": 0,
+          "count": 624,
+          "rows": 0,
+          "bytes": 0,
+          "hmacs": 0
+        },
+        "d3_proof": {
+          "totalMs": 120.9,
+          "sqlMs": 94.1,
+          "verifyMs": 24.4,
+          "count": 624,
+          "rows": 624,
+          "bytes": 366737,
+          "hmacs": 3744
+        }
+      }
+    },
+    {
+      "name": "or2",
+      "plainCount": 28400,
+      "windows": 0,
+      "paths": {
+        "plain": {
+          "totalMs": 104.7,
+          "sqlMs": 104.6,
+          "verifyMs": 0,
+          "count": 28400,
+          "rows": 0,
+          "bytes": 0,
+          "hmacs": 0
+        },
+        "product": {
+          "totalMs": 3232.7,
+          "sqlMs": 0,
+          "verifyMs": 0,
+          "count": 28400,
+          "rows": 0,
+          "bytes": 0,
+          "hmacs": 0
+        },
+        "d1_64": {
+          "totalMs": 321.8,
+          "sqlMs": 321.7,
+          "verifyMs": 0,
+          "count": 28400,
+          "rows": 0,
+          "bytes": 0,
+          "hmacs": 0
+        },
+        "d1_128": {
+          "totalMs": 773,
+          "sqlMs": 772.9,
+          "verifyMs": 0,
+          "count": 28400,
+          "rows": 0,
+          "bytes": 0,
+          "hmacs": 0
+        },
+        "d1_proof_rows": {
+          "totalMs": 1550.3,
+          "sqlMs": 1291.2,
+          "verifyMs": 188.6,
+          "count": 28400,
+          "rows": 28400,
+          "bytes": 5922035,
+          "hmacs": 28432
+        },
+        "d3": {
+          "totalMs": 95.9,
+          "sqlMs": 95.8,
+          "verifyMs": 0,
+          "count": 28400,
+          "rows": 0,
+          "bytes": 0,
+          "hmacs": 0
+        },
+        "d3_proof": {
+          "totalMs": 382.7,
+          "sqlMs": 119.6,
+          "verifyMs": 221.3,
+          "count": 28400,
+          "rows": 28400,
+          "bytes": 5922194,
+          "hmacs": 28432
+        }
+      }
+    },
+    {
+      "name": "or3",
+      "plainCount": 2,
+      "windows": 0,
+      "paths": {
+        "plain": {
+          "totalMs": 0.4,
+          "sqlMs": 0.4,
+          "verifyMs": 0,
+          "count": 2,
+          "rows": 0,
+          "bytes": 0,
+          "hmacs": 0
+        },
+        "product": {
+          "totalMs": 2.7,
+          "sqlMs": 0,
+          "verifyMs": 0,
+          "count": 2,
+          "rows": 0,
+          "bytes": 0,
+          "hmacs": 0
+        },
+        "d1_64": {
+          "totalMs": 0.4,
+          "sqlMs": 0.4,
+          "verifyMs": 0,
+          "count": 2,
+          "rows": 0,
+          "bytes": 0,
+          "hmacs": 0
+        },
+        "d1_128": {
+          "totalMs": 0.4,
+          "sqlMs": 0.4,
+          "verifyMs": 0,
+          "count": 2,
+          "rows": 0,
+          "bytes": 0,
+          "hmacs": 0
+        },
+        "d1_proof_rows": {
+          "totalMs": 0.7,
+          "sqlMs": 0.6,
+          "verifyMs": 0,
+          "count": 2,
+          "rows": 2,
+          "bytes": 579,
+          "hmacs": 3
+        },
+        "d3": {
+          "totalMs": 1.1,
+          "sqlMs": 1,
+          "verifyMs": 0,
+          "count": 2,
+          "rows": 0,
+          "bytes": 0,
+          "hmacs": 0
+        },
+        "d3_proof": {
+          "totalMs": 1.3,
+          "sqlMs": 1.2,
+          "verifyMs": 0,
+          "count": 2,
+          "rows": 2,
+          "bytes": 575,
+          "hmacs": 3
+        }
+      }
+    }
+  ],
+  "finishedAt": "2026-09-28T09:08:12.619Z"
+}

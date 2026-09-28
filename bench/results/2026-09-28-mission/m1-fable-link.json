@@ -1,0 +1,128 @@
+{
+  "datasets": [
+    {
+      "name": "nsmc-review",
+      "rows": 49701,
+      "byLength": {
+        "2": {
+          "distinctPieces": 103916,
+          "rowsLinkedToExactlyOneOtherRowPct": 36.98,
+          "rowsWithPieceSharedBy2to11RowsPct": 79.07,
+          "rowsWithNoSharedPiecePct": 0.05
+        },
+        "3": {
+          "distinctPieces": 414752,
+          "rowsLinkedToExactlyOneOtherRowPct": 67.46,
+          "rowsWithPieceSharedBy2to11RowsPct": 90.98,
+          "rowsWithNoSharedPiecePct": 1.3
+        },
+        "4": {
+          "distinctPieces": 714210,
+          "rowsLinkedToExactlyOneOtherRowPct": 72.11,
+          "rowsWithPieceSharedBy2to11RowsPct": 90.66,
+          "rowsWithNoSharedPiecePct": 4.23
+        },
+        "6": {
+          "distinctPieces": 1009710,
+          "rowsLinkedToExactlyOneOtherRowPct": 54.41,
+          "rowsWithPieceSharedBy2to11RowsPct": 70.82,
+          "rowsWithNoSharedPiecePct": 26.31
+        },
+        "8": {
+          "distinctPieces": 1028202,
+          "rowsLinkedToExactlyOneOtherRowPct": 23.73,
+          "rowsWithPieceSharedBy2to11RowsPct": 31.73,
+          "rowsWithNoSharedPiecePct": 67.26
+        }
+      },
+      "cur16": {
+        "distinctTokens": 64445,
+        "rowsLinkedToExactlyOneOtherRowPct": 9.73,
+        "rowsWithTokenSharedBy2to11RowsPct": 73.62
+      }
+    },
+    {
+      "name": "fixture-memo",
+      "rows": 100000,
+      "byLength": {
+        "2": {
+          "distinctPieces": 1640,
+          "rowsLinkedToExactlyOneOtherRowPct": 0.01,
+          "rowsWithPieceSharedBy2to11RowsPct": 0.09,
+          "rowsWithNoSharedPiecePct": 0
+        },
+        "3": {
+          "distinctPieces": 55908,
+          "rowsLinkedToExactlyOneOtherRowPct": 3.82,
+          "rowsWithPieceSharedBy2to11RowsPct": 99.91,
+          "rowsWithNoSharedPiecePct": 0
+        },
+        "4": {
+          "distinctPieces": 284055,
+          "rowsLinkedToExactlyOneOtherRowPct": 39.71,
+          "rowsWithPieceSharedBy2to11RowsPct": 82.17,
+          "rowsWithNoSharedPiecePct": 0
+        },
+        "6": {
+          "distinctPieces": 297433,
+          "rowsLinkedToExactlyOneOtherRowPct": 22.72,
+          "rowsWithPieceSharedBy2to11RowsPct": 77.06,
+          "rowsWithNoSharedPiecePct": 0
+        },
+        "8": {
+          "distinctPieces": 297361,
+          "rowsLinkedToExactlyOneOtherRowPct": 22.72,
+          "rowsWithPieceSharedBy2to11RowsPct": 77.06,
+          "rowsWithNoSharedPiecePct": 0.02
+        }
+      },
+      "cur16": {
+        "distinctTokens": 3458,
+        "rowsLinkedToExactlyOneOtherRowPct": 0.03,
+        "rowsWithTokenSharedBy2to11RowsPct": 0.1
+      }
+    },
+    {
+      "name": "fixture-name",
+      "rows": 100000,
+      "byLength": {
+        "2": {
+          "distinctPieces": 1565,
+          "rowsLinkedToExactlyOneOtherRowPct": 0,
+          "rowsWithPieceSharedBy2to11RowsPct": 0,
+          "rowsWithNoSharedPiecePct": 0
+        },
+        "3": {
+          "distinctPieces": 55910,
+          "rowsLinkedToExactlyOneOtherRowPct": 3.41,
+          "rowsWithPieceSharedBy2to11RowsPct": 99.89,
+          "rowsWithNoSharedPiecePct": 0
+        },
+        "4": {
+          "distinctPieces": 285997,
+          "rowsLinkedToExactlyOneOtherRowPct": 38.92,
+          "rowsWithPieceSharedBy2to11RowsPct": 86.04,
+          "rowsWithNoSharedPiecePct": 0
+        },
+        "6": {
+          "distinctPieces": 292000,
+          "rowsLinkedToExactlyOneOtherRowPct": 20.46,
+          "rowsWithPieceSharedBy2to11RowsPct": 49.99,
+          "rowsWithNoSharedPiecePct": 48.99
+        },
+        "8": {
+          "distinctPieces": 157796,
+          "rowsLinkedToExactlyOneOtherRowPct": 3.81,
+          "rowsWithPieceSharedBy2to11RowsPct": 23.2,
+          "rowsWithNoSharedPiecePct": 76.01
+        }
+      },
+      "cur16": {
+        "distinctTokens": 3244,
+        "rowsLinkedToExactlyOneOtherRowPct": 0,
+        "rowsWithTokenSharedBy2to11RowsPct": 0
+      }
+    }
+  ],
+  "note": "T1 snapshot only, no known rows. A row \"linked to exactly one other row\" shares a full-width piece whose posting list has size 2; with 16-bit 2-char tokens the same event needs a token shared by exactly two rows."
+}

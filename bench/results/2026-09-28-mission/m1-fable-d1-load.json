@@ -1,0 +1,93 @@
+{
+  "startedAt": "2026-09-28T07:59:58.028Z",
+  "schema": "research_m1_fable_d1",
+  "K": 8,
+  "tokens": {
+    "perRow": 477.48466,
+    "perField": {
+      "name": 51.47194,
+      "phone": 69.55813,
+      "address": 90.099,
+      "memo": 85.59041,
+      "email": 130.50829,
+      "company": 50.25689
+    },
+    "prefilterPerRow": 153.0946,
+    "perRowK": {
+      "4": 235.575,
+      "6": 363.27
+    }
+  },
+  "encodeMsAll": 1085920,
+  "insertMsAllTables": 262664,
+  "indexBuildMs": {
+    "idx64": 51663,
+    "idx64t": 57917,
+    "idx128": 63771,
+    "j16": 16647
+  },
+  "indexTotalMs": 189998,
+  "sizes": [
+    {
+      "rel": "idx128",
+      "heap": "153231360",
+      "toast": "728342528",
+      "idx": "1089019904",
+      "total": "1970659328"
+    },
+    {
+      "rel": "idx64",
+      "heap": "198451200",
+      "toast": "258318336",
+      "idx": "925278208",
+      "total": "1382121472"
+    },
+    {
+      "rel": "idx64t",
+      "heap": "186728448",
+      "toast": "734314496",
+      "idx": "924114944",
+      "total": "1845231616"
+    },
+    {
+      "rel": "j16",
+      "heap": "204775424",
+      "toast": "817848320",
+      "idx": "92119040",
+      "total": "1114824704"
+    }
+  ],
+  "ginSizes": [
+    {
+      "indexrelname": "idx64_gin",
+      "bytes": "884760576"
+    },
+    {
+      "indexrelname": "idx64t_gin",
+      "bytes": "883597312"
+    },
+    {
+      "indexrelname": "idx128_gin",
+      "bytes": "1043243008"
+    },
+    {
+      "indexrelname": "j16_gin",
+      "bytes": "51568640"
+    }
+  ],
+  "productSizes": [
+    {
+      "rel": "customers",
+      "heap": "38920192",
+      "idx": "3178496",
+      "total": "42147840"
+    },
+    {
+      "rel": "customers_seal_index",
+      "heap": "204800000",
+      "idx": "123977728",
+      "total": "328867840"
+    }
+  ],
+  "finishedAt": "2026-09-28T08:25:37.311Z"
+}

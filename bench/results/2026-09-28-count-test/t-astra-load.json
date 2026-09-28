@@ -1,0 +1,71 @@
+{
+  "started": "2026-09-28T10:28:32.268Z",
+  "K": 8,
+  "tagBits": 64,
+  "tagFields": [
+    "memo",
+    "company"
+  ],
+  "sourceRows": 100000,
+  "customers": {
+    "loadMs": 560075.2197,
+    "encodeInsertMs": 529840.9311000003,
+    "tagMsPerRow": 5.298409311000003
+  },
+  "tickets": {
+    "loadMs": 558875.1130000001,
+    "encodeInsertMs": 529595.3438000015,
+    "tagMsPerRow": 5.295953438000016
+  },
+  "storage": [
+    {
+      "relname": "customers",
+      "heap": "38920192",
+      "indexes": "3178496",
+      "total": "42147840"
+    },
+    {
+      "relname": "customers_plain",
+      "heap": "34668544",
+      "indexes": "3907584",
+      "total": "38625280"
+    },
+    {
+      "relname": "customers_seal_index",
+      "heap": "204800000",
+      "indexes": "124076032",
+      "total": "328966144"
+    },
+    {
+      "relname": "customers_tags",
+      "heap": "125394944",
+      "indexes": "3178496",
+      "total": "134152192"
+    },
+    {
+      "relname": "tickets",
+      "heap": "40747008",
+      "indexes": "3178496",
+      "total": "43974656"
+    },
+    {
+      "relname": "tickets_plain",
+      "heap": "37167104",
+      "indexes": "3907584",
+      "total": "41123840"
+    },
+    {
+      "relname": "tickets_seal_index",
+      "heap": "204800000",
+      "indexes": "124149760",
+      "total": "329039872"
+    },
+    {
+      "relname": "tickets_tags",
+      "heap": "125468672",
+      "indexes": "3178496",
+      "total": "134234112"
+    }
+  ],
+  "finished": "2026-09-28T10:50:26.387Z"
+}

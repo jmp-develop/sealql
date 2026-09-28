@@ -1,0 +1,80 @@
+{
+  "kind": "corpus arithmetic; NOT MongoDB run, disk size, latency, or security measurement",
+  "input": ".local/ratings.txt",
+  "sha256": "7d1d8e66323eb5a64feb2e299178f58827d8302111c434195dfeef48506e1256",
+  "params": {
+    "minQueryLength": 2,
+    "maxQueryLength": 10,
+    "maxFieldLength": 60,
+    "caseSensitive": true,
+    "diacriticSensitive": true,
+    "prefix": false,
+    "suffix": false
+  },
+  "source": "https://github.com/mongodb/libmongocrypt/blob/3872fc2ad0d1c712d43aaa26eefb49da64e61a62/src/mc-text-search-str-encode.c",
+  "codepointLengths": {
+    "rows": 200000,
+    "sum": 7046410,
+    "mean": 35.23205,
+    "p50": 27,
+    "p95": 107,
+    "max": 146
+  },
+  "rejectedOver60": 27522,
+  "rejectedOver60Fraction": 0.13761,
+  "acceptedTagSlots": {
+    "rows": 172478,
+    "sum": 72232922,
+    "mean": 418.79498834633984,
+    "p50": 487,
+    "p95": 496,
+    "max": 496
+  },
+  "currentServerSourceScenario": {
+    "warning": "Current source constants, NOT a verified r9.0.0 release or MongoDB execution",
+    "source": "https://github.com/mongodb/mongo/blob/da457d58ef2415351ce6a2cc4a65c1bcedf8b725/src/mongo/crypto/fle_crypto.h#L1049",
+    "maxFieldLength": 50,
+    "minQueryLength": 2,
+    "maxQueryLength": 6,
+    "rejectedOver50": 34983,
+    "rejectedOver50Fraction": 0.174915,
+    "acceptedTagSlots": {
+      "rows": 165017,
+      "sum": 34607187,
+      "mean": 209.718919868862,
+      "p50": 236,
+      "p95": 236,
+      "max": 236
+    }
+  },
+  "derivedBytesNotDisk": {
+    "safeContentRawTags32Bytes": 2311453504,
+    "encryptedMetadata96Bytes": 6934360512,
+    "note": "Uncompressed fields only; excludes BSON, encrypted value, ESC/ECOC, indexes and WAL."
+  },
+  "hypotheticalAllLengthsNoPaddingOccurrenceSlots": {
+    "rows": 200000,
+    "sum": 208192868,
+    "mean": 1040.96434,
+    "p50": 352,
+    "p95": 5672,
+    "max": 10586
+  },
+  "examplesAnalyticalNotGeneratedData": [
+    {
+      "length": 60,
+      "substringSlots2to10": 495,
+      "allSubstringSlots2toN": 1770
+    },
+    {
+      "length": 100,
+      "substringSlots2to10": 855,
+      "allSubstringSlots2toN": 4950
+    },
+    {
+      "length": 1000,
+      "substringSlots2to10": 8955,
+      "allSubstringSlots2toN": 499500
+    }
+  ]
+}
