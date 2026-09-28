@@ -1,0 +1,43 @@
+{
+ "startedAt": "2026-09-28T00:36:17.808Z",
+ "schema": "research_count_x6",
+ "companionIndexes": [
+  "CREATE UNIQUE INDEX customers_seal_index_scope_row_uq ON native_verify_main.customers_seal_index USING btree (scope_id, row_id)",
+  "CREATE INDEX seal_dfa387787f59f02a_bt ON native_verify_main.customers_seal_index USING btree (scope_id, (tokens_988d248ff4b71bf7[1]), row_id)",
+  "CREATE INDEX seal_4c8e2d2bddde3451_bt ON native_verify_main.customers_seal_index USING btree (scope_id, (tokens_a106c26102b707f0[1]), row_id)",
+  "CREATE INDEX seal_ae59b15a89e931d6_bt ON native_verify_main.customers_seal_index USING btree (scope_id, (tokens_c5133b3810f23103[1]), row_id)",
+  "CREATE INDEX seal_8fa11f16c3da1ad8_bt ON native_verify_main.customers_seal_index USING btree (scope_id, (tokens_1c32fdad5d1c8367[1]), row_id)",
+  "CREATE INDEX seal_411905c9deef5c59_bt ON native_verify_main.customers_seal_index USING btree (scope_id, (tokens_cd3096c7a3cd42c2[1]), row_id)",
+  "CREATE INDEX seal_62e346c0ef994072_bt ON native_verify_main.customers_seal_index USING btree (scope_id, (tokens_c44ae523cca61a0b[1]), row_id)",
+  "CREATE INDEX seal_e66dc2708e915b65_gin ON native_verify_main.customers_seal_index USING gin (tokens_792d75cf01821d67, tokens_1127994ab736baf4, tokens_ef1d32a52e2ce103, tokens_a639b11c8130dcf7, tokens_f289b89d86c7086a, tokens_7a1d2ba5ce2368fb)"
+ ],
+ "openCheck": {
+  "rows": 1000,
+  "fields": 6000,
+  "equal": true
+ },
+ "sizes": [
+  {
+   "rel": "customers",
+   "heap": "55844864",
+   "toast": "8192",
+   "idx": "3178496",
+   "total": "59072512"
+  },
+  {
+   "rel": "customers_seal_index",
+   "heap": "205201408",
+   "toast": "8192",
+   "idx": "99819520",
+   "total": "305111040"
+  },
+  {
+   "rel": "customers_seal_index_ct",
+   "heap": "205037568",
+   "toast": "114688",
+   "idx": "99057664",
+   "total": "304291840"
+  }
+ ],
+ "finishedAt": "2026-09-28T00:36:48.204Z"
+}

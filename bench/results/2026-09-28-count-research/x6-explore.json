@@ -1,0 +1,35 @@
+{
+ "startedAt": "2026-09-28T00:55:45.085Z",
+ "or2": [
+  {
+   "label": "ct1 default",
+   "serverExecMs": 106.937,
+   "rows": 28400,
+   "nodes": "Seq Scan"
+  },
+  {
+   "label": "ct1 enable_seqscan=off (BitmapOr)",
+   "serverExecMs": 51.765,
+   "rows": 28400,
+   "nodes": "Bitmap Heap Scan > BitmapOr > Bitmap Index Scan(x6ct_idx_2) > Bitmap Index Scan(x6ct_idx_7)"
+  },
+  {
+   "label": "ct1 union all (A) + (B and not A)",
+   "serverExecMs": 143.736,
+   "rows": 28400,
+   "nodes": "Append > Seq Scan > Seq Scan"
+  }
+ ],
+ "compression": [
+  {
+   "t": "companion",
+   "compressed_cols": "533",
+   "avg_row_bytes": 1844
+  },
+  {
+   "t": "companion_ct",
+   "compressed_cols": "93093",
+   "avg_row_bytes": 1964
+  }
+ ]
+}

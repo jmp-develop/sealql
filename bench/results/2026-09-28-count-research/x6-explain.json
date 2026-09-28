@@ -1,0 +1,385 @@
+{
+ "startedAt": "2026-09-28T00:41:01.197Z",
+ "schema": "research_count_x6",
+ "method": "first + 2 warm-up + 7 rotated, medians of the 7; count asserted == plaintext every run",
+ "rows": [
+  {
+   "case": "and2",
+   "variant": "x4 (base, b64obj)",
+   "serverExecMs": 132.01,
+   "sharedHit": 79514,
+   "sharedRead": 24952,
+   "nodes": "Gather > Nested Loop > Bitmap Heap Scan(customers_seal_index) > BitmapAnd > Bitmap Index Scan(x6_idx_7) > Bitmap Index Scan(x6_idx_2) > Index Scan(customers_pkey)",
+   "sql": "select p.\"id\" as id,encode(p.\"company_ct\",'base64') as \"company\",encode(p.\"memo_ct\",'base64') as \"memo\" from \"research_count_x6\".\"customers\" p where p.\"scope_id\"=$1 and p.\"id\" in (select i.\"row_id\" from \"research_count_x6\".\"customers_seal_index\" i where i.\"scope_id\"=$1 and (((i.\"tokens_a106c26102b707f0\")[1]=$2::bigint) and (i.\"tokens_a639b11c8130dcf7\" @> $3::bigint[])))"
+  },
+  {
+   "case": "and2",
+   "variant": "in/b64arr",
+   "serverExecMs": 130.847,
+   "sharedHit": 79389,
+   "sharedRead": 25077,
+   "nodes": "Gather > Nested Loop > Bitmap Heap Scan(customers_seal_index) > BitmapAnd > Bitmap Index Scan(x6_idx_7) > Bitmap Index Scan(x6_idx_2) > Index Scan(customers_pkey)",
+   "sql": "select p.\"id\" as id,encode(p.\"company_ct\",'base64') as \"company\",encode(p.\"memo_ct\",'base64') as \"memo\" from \"research_count_x6\".\"customers\" p where p.\"scope_id\"=$1 and p.\"id\" in (select i.\"row_id\" from \"research_count_x6\".\"customers_seal_index\" i where i.\"scope_id\"=$1 and (((i.\"tokens_a106c26102b707f0\")[1]=$2::bigint) and (i.\"tokens_a639b11c8130dcf7\" @> $3::bigint[])))"
+  },
+  {
+   "case": "and2",
+   "variant": "in/hexarr",
+   "serverExecMs": 127.136,
+   "sharedHit": 79273,
+   "sharedRead": 25193,
+   "nodes": "Gather > Nested Loop > Bitmap Heap Scan(customers_seal_index) > BitmapAnd > Bitmap Index Scan(x6_idx_7) > Bitmap Index Scan(x6_idx_2) > Index Scan(customers_pkey)",
+   "sql": "select p.\"id\" as id,p.\"company_ct\" as \"company\",p.\"memo_ct\" as \"memo\" from \"research_count_x6\".\"customers\" p where p.\"scope_id\"=$1 and p.\"id\" in (select i.\"row_id\" from \"research_count_x6\".\"customers_seal_index\" i where i.\"scope_id\"=$1 and (((i.\"tokens_a106c26102b707f0\")[1]=$2::bigint) and (i.\"tokens_a639b11c8130dcf7\" @> $3::bigint[])))"
+  },
+  {
+   "case": "and2",
+   "variant": "in/bin",
+   "serverExecMs": 125.574,
+   "sharedHit": 79320,
+   "sharedRead": 25146,
+   "nodes": "Gather > Nested Loop > Bitmap Heap Scan(customers_seal_index) > BitmapAnd > Bitmap Index Scan(x6_idx_7) > Bitmap Index Scan(x6_idx_2) > Index Scan(customers_pkey)",
+   "sql": "select p.\"id\" as id,p.\"company_ct\" as \"company\",p.\"memo_ct\" as \"memo\" from \"research_count_x6\".\"customers\" p where p.\"scope_id\"=$1 and p.\"id\" in (select i.\"row_id\" from \"research_count_x6\".\"customers_seal_index\" i where i.\"scope_id\"=$1 and (((i.\"tokens_a106c26102b707f0\")[1]=$2::bigint) and (i.\"tokens_a639b11c8130dcf7\" @> $3::bigint[])))"
+  },
+  {
+   "case": "and2",
+   "variant": "in/pack64",
+   "serverExecMs": 129.397,
+   "sharedHit": 79337,
+   "sharedRead": 25129,
+   "nodes": "Gather > Nested Loop > Bitmap Heap Scan(customers_seal_index) > BitmapAnd > Bitmap Index Scan(x6_idx_7) > Bitmap Index Scan(x6_idx_2) > Index Scan(customers_pkey)",
+   "sql": "select encode(uuid_send(p.\"id\")||coalesce(int4send(octet_length(p.\"company_ct\"))||p.\"company_ct\", int4send(-1))||coalesce(int4send(octet_length(p.\"memo_ct\"))||p.\"memo_ct\", int4send(-1)),'base64') x from \"research_count_x6\".\"customers\" p where p.\"scope_id\"=$1 and p.\"id\" in (select i.\"row_id\" from \"research_count_x6\".\"customers_seal_index\" i where i.\"scope_id\"=$1 and (((i.\"tokens_a106c26102b707f0\")[1]=$2::bigint) and (i.\"tokens_a639b11c8130dcf7\" @> $3::bigint[])))"
+  },
+  {
+   "case": "and2",
+   "variant": "in/packhex",
+   "serverExecMs": 128.252,
+   "sharedHit": 79385,
+   "sharedRead": 25081,
+   "nodes": "Gather > Nested Loop > Bitmap Heap Scan(customers_seal_index) > BitmapAnd > Bitmap Index Scan(x6_idx_7) > Bitmap Index Scan(x6_idx_2) > Index Scan(customers_pkey)",
+   "sql": "select uuid_send(p.\"id\")||coalesce(int4send(octet_length(p.\"company_ct\"))||p.\"company_ct\", int4send(-1))||coalesce(int4send(octet_length(p.\"memo_ct\"))||p.\"memo_ct\", int4send(-1)) x from \"research_count_x6\".\"customers\" p where p.\"scope_id\"=$1 and p.\"id\" in (select i.\"row_id\" from \"research_count_x6\".\"customers_seal_index\" i where i.\"scope_id\"=$1 and (((i.\"tokens_a106c26102b707f0\")[1]=$2::bigint) and (i.\"tokens_a639b11c8130dcf7\" @> $3::bigint[])))"
+  },
+  {
+   "case": "and2",
+   "variant": "in/agghex",
+   "serverExecMs": 129.75,
+   "sharedHit": 79404,
+   "sharedRead": 25062,
+   "nodes": "Aggregate > Gather > Aggregate > Nested Loop > Bitmap Heap Scan(customers_seal_index) > BitmapAnd > Bitmap Index Scan(x6_idx_7) > Bitmap Index Scan(x6_idx_2) > Index Scan(customers_pkey)",
+   "sql": "select string_agg(uuid_send(p.\"id\")||coalesce(int4send(octet_length(p.\"company_ct\"))||p.\"company_ct\", int4send(-1))||coalesce(int4send(octet_length(p.\"memo_ct\"))||p.\"memo_ct\", int4send(-1)),''::bytea) x from \"research_count_x6\".\"customers\" p where p.\"scope_id\"=$1 and p.\"id\" in (select i.\"row_id\" from \"research_count_x6\".\"customers_seal_index\" i where i.\"scope_id\"=$1 and (((i.\"tokens_a106c26102b707f0\")[1]=$2::bigint) and (i.\"tokens_a639b11c8130dcf7\" @> $3::bigint[])))"
+  },
+  {
+   "case": "and2",
+   "variant": "in/agg64",
+   "serverExecMs": 140.079,
+   "sharedHit": 79401,
+   "sharedRead": 25065,
+   "nodes": "Aggregate > Gather > Aggregate > Nested Loop > Bitmap Heap Scan(customers_seal_index) > BitmapAnd > Bitmap Index Scan(x6_idx_7) > Bitmap Index Scan(x6_idx_2) > Index Scan(customers_pkey)",
+   "sql": "select encode(string_agg(uuid_send(p.\"id\")||coalesce(int4send(octet_length(p.\"company_ct\"))||p.\"company_ct\", int4send(-1))||coalesce(int4send(octet_length(p.\"memo_ct\"))||p.\"memo_ct\", int4send(-1)),''::bytea),'base64') x from \"research_count_x6\".\"customers\" p where p.\"scope_id\"=$1 and p.\"id\" in (select i.\"row_id\" from \"research_count_x6\".\"customers_seal_index\" i where i.\"scope_id\"=$1 and (((i.\"tokens_a106c26102b707f0\")[1]=$2::bigint) and (i.\"tokens_a639b11c8130dcf7\" @> $3::bigint[])))"
+  },
+  {
+   "case": "and2",
+   "variant": "in_ns/hexarr",
+   "serverExecMs": 89.757,
+   "sharedHit": 26,
+   "sharedRead": 26538,
+   "nodes": "Hash Join > Seq Scan(customers) > Hash > Bitmap Heap Scan(customers_seal_index) > BitmapAnd > Bitmap Index Scan(x6_idx_7) > Bitmap Index Scan(x6_idx_2)",
+   "sql": "select p.\"id\" as id,p.\"company_ct\" as \"company\",p.\"memo_ct\" as \"memo\" from \"research_count_x6\".\"customers\" p where p.\"scope_id\"=$1 and p.\"id\" in (select i.\"row_id\" from \"research_count_x6\".\"customers_seal_index\" i where (((i.\"tokens_a106c26102b707f0\")[1]=$2::bigint) and (i.\"tokens_a639b11c8130dcf7\" @> $3::bigint[])))"
+  },
+  {
+   "case": "and2",
+   "variant": "in_ns/agghex",
+   "serverExecMs": 103.72,
+   "sharedHit": 26,
+   "sharedRead": 26538,
+   "nodes": "Aggregate > Hash Join > Seq Scan(customers) > Hash > Bitmap Heap Scan(customers_seal_index) > BitmapAnd > Bitmap Index Scan(x6_idx_7) > Bitmap Index Scan(x6_idx_2)",
+   "sql": "select string_agg(uuid_send(p.\"id\")||coalesce(int4send(octet_length(p.\"company_ct\"))||p.\"company_ct\", int4send(-1))||coalesce(int4send(octet_length(p.\"memo_ct\"))||p.\"memo_ct\", int4send(-1)),''::bytea) x from \"research_count_x6\".\"customers\" p where p.\"scope_id\"=$1 and p.\"id\" in (select i.\"row_id\" from \"research_count_x6\".\"customers_seal_index\" i where (((i.\"tokens_a106c26102b707f0\")[1]=$2::bigint) and (i.\"tokens_a639b11c8130dcf7\" @> $3::bigint[])))"
+  },
+  {
+   "case": "and2",
+   "variant": "exists/hexarr",
+   "serverExecMs": 125.281,
+   "sharedHit": 79563,
+   "sharedRead": 24903,
+   "nodes": "Gather > Nested Loop > Bitmap Heap Scan(customers_seal_index) > BitmapAnd > Bitmap Index Scan(x6_idx_7) > Bitmap Index Scan(x6_idx_2) > Index Scan(customers_pkey)",
+   "sql": "select p.\"id\" as id,p.\"company_ct\" as \"company\",p.\"memo_ct\" as \"memo\" from \"research_count_x6\".\"customers\" p where p.\"scope_id\"=$1 and exists (select 1 from \"research_count_x6\".\"customers_seal_index\" i where i.\"row_id\"=p.\"id\" and i.\"scope_id\"=$1 and (((i.\"tokens_a106c26102b707f0\")[1]=$2::bigint) and (i.\"tokens_a639b11c8130dcf7\" @> $3::bigint[])))"
+  },
+  {
+   "case": "and2",
+   "variant": "exists/agghex",
+   "serverExecMs": 133.605,
+   "sharedHit": 79109,
+   "sharedRead": 25357,
+   "nodes": "Aggregate > Gather > Aggregate > Nested Loop > Bitmap Heap Scan(customers_seal_index) > BitmapAnd > Bitmap Index Scan(x6_idx_7) > Bitmap Index Scan(x6_idx_2) > Index Scan(customers_pkey)",
+   "sql": "select string_agg(uuid_send(p.\"id\")||coalesce(int4send(octet_length(p.\"company_ct\"))||p.\"company_ct\", int4send(-1))||coalesce(int4send(octet_length(p.\"memo_ct\"))||p.\"memo_ct\", int4send(-1)),''::bytea) x from \"research_count_x6\".\"customers\" p where p.\"scope_id\"=$1 and exists (select 1 from \"research_count_x6\".\"customers_seal_index\" i where i.\"row_id\"=p.\"id\" and i.\"scope_id\"=$1 and (((i.\"tokens_a106c26102b707f0\")[1]=$2::bigint) and (i.\"tokens_a639b11c8130dcf7\" @> $3::bigint[])))"
+  },
+  {
+   "case": "and2",
+   "variant": "exists_ns/hexarr",
+   "serverExecMs": 90.673,
+   "sharedHit": 26,
+   "sharedRead": 26538,
+   "nodes": "Hash Join > Seq Scan(customers) > Hash > Bitmap Heap Scan(customers_seal_index) > BitmapAnd > Bitmap Index Scan(x6_idx_7) > Bitmap Index Scan(x6_idx_2)",
+   "sql": "select p.\"id\" as id,p.\"company_ct\" as \"company\",p.\"memo_ct\" as \"memo\" from \"research_count_x6\".\"customers\" p where p.\"scope_id\"=$1 and exists (select 1 from \"research_count_x6\".\"customers_seal_index\" i where i.\"row_id\"=p.\"id\" and (((i.\"tokens_a106c26102b707f0\")[1]=$2::bigint) and (i.\"tokens_a639b11c8130dcf7\" @> $3::bigint[])))"
+  },
+  {
+   "case": "and2",
+   "variant": "exists_ns/agghex",
+   "serverExecMs": 99.492,
+   "sharedHit": 26,
+   "sharedRead": 26538,
+   "nodes": "Aggregate > Hash Join > Seq Scan(customers) > Hash > Bitmap Heap Scan(customers_seal_index) > BitmapAnd > Bitmap Index Scan(x6_idx_7) > Bitmap Index Scan(x6_idx_2)",
+   "sql": "select string_agg(uuid_send(p.\"id\")||coalesce(int4send(octet_length(p.\"company_ct\"))||p.\"company_ct\", int4send(-1))||coalesce(int4send(octet_length(p.\"memo_ct\"))||p.\"memo_ct\", int4send(-1)),''::bytea) x from \"research_count_x6\".\"customers\" p where p.\"scope_id\"=$1 and exists (select 1 from \"research_count_x6\".\"customers_seal_index\" i where i.\"row_id\"=p.\"id\" and (((i.\"tokens_a106c26102b707f0\")[1]=$2::bigint) and (i.\"tokens_a639b11c8130dcf7\" @> $3::bigint[])))"
+  },
+  {
+   "case": "and2",
+   "variant": "join/hexarr",
+   "serverExecMs": 120.412,
+   "sharedHit": 79564,
+   "sharedRead": 24902,
+   "nodes": "Gather > Nested Loop > Bitmap Heap Scan(customers_seal_index) > BitmapAnd > Bitmap Index Scan(x6_idx_7) > Bitmap Index Scan(x6_idx_2) > Index Scan(customers_pkey)",
+   "sql": "select p.\"id\" as id,p.\"company_ct\" as \"company\",p.\"memo_ct\" as \"memo\" from \"research_count_x6\".\"customers\" p join \"research_count_x6\".\"customers_seal_index\" i on i.\"scope_id\"=$1 and i.\"row_id\"=p.\"id\" where p.\"scope_id\"=$1 and (((i.\"tokens_a106c26102b707f0\")[1]=$2::bigint) and (i.\"tokens_a639b11c8130dcf7\" @> $3::bigint[]))"
+  },
+  {
+   "case": "and2",
+   "variant": "join/agghex",
+   "serverExecMs": 136.534,
+   "sharedHit": 79147,
+   "sharedRead": 25319,
+   "nodes": "Aggregate > Gather > Aggregate > Nested Loop > Bitmap Heap Scan(customers_seal_index) > BitmapAnd > Bitmap Index Scan(x6_idx_7) > Bitmap Index Scan(x6_idx_2) > Index Scan(customers_pkey)",
+   "sql": "select string_agg(uuid_send(p.\"id\")||coalesce(int4send(octet_length(p.\"company_ct\"))||p.\"company_ct\", int4send(-1))||coalesce(int4send(octet_length(p.\"memo_ct\"))||p.\"memo_ct\", int4send(-1)),''::bytea) x from \"research_count_x6\".\"customers\" p join \"research_count_x6\".\"customers_seal_index\" i on i.\"scope_id\"=$1 and i.\"row_id\"=p.\"id\" where p.\"scope_id\"=$1 and (((i.\"tokens_a106c26102b707f0\")[1]=$2::bigint) and (i.\"tokens_a639b11c8130dcf7\" @> $3::bigint[]))"
+  },
+  {
+   "case": "and2",
+   "variant": "join_ns/hexarr",
+   "serverExecMs": 125.029,
+   "sharedHit": 79095,
+   "sharedRead": 25378,
+   "nodes": "Gather > Nested Loop > Bitmap Heap Scan(customers_seal_index) > BitmapAnd > Bitmap Index Scan(x6_idx_7) > Bitmap Index Scan(x6_idx_2) > Index Scan(customers_pkey)",
+   "sql": "select p.\"id\" as id,p.\"company_ct\" as \"company\",p.\"memo_ct\" as \"memo\" from \"research_count_x6\".\"customers\" p join \"research_count_x6\".\"customers_seal_index\" i on i.\"row_id\"=p.\"id\" where p.\"scope_id\"=$1 and (((i.\"tokens_a106c26102b707f0\")[1]=$2::bigint) and (i.\"tokens_a639b11c8130dcf7\" @> $3::bigint[]))"
+  },
+  {
+   "case": "and2",
+   "variant": "join_ns/agghex",
+   "serverExecMs": 135.459,
+   "sharedHit": 79483,
+   "sharedRead": 24990,
+   "nodes": "Aggregate > Gather > Aggregate > Nested Loop > Bitmap Heap Scan(customers_seal_index) > BitmapAnd > Bitmap Index Scan(x6_idx_7) > Bitmap Index Scan(x6_idx_2) > Index Scan(customers_pkey)",
+   "sql": "select string_agg(uuid_send(p.\"id\")||coalesce(int4send(octet_length(p.\"company_ct\"))||p.\"company_ct\", int4send(-1))||coalesce(int4send(octet_length(p.\"memo_ct\"))||p.\"memo_ct\", int4send(-1)),''::bytea) x from \"research_count_x6\".\"customers\" p join \"research_count_x6\".\"customers_seal_index\" i on i.\"row_id\"=p.\"id\" where p.\"scope_id\"=$1 and (((i.\"tokens_a106c26102b707f0\")[1]=$2::bigint) and (i.\"tokens_a639b11c8130dcf7\" @> $3::bigint[]))"
+  },
+  {
+   "case": "and2",
+   "variant": "lateral/hexarr",
+   "serverExecMs": 127.161,
+   "sharedHit": 79534,
+   "sharedRead": 24917,
+   "nodes": "Nested Loop > Bitmap Heap Scan(customers_seal_index) > BitmapAnd > Bitmap Index Scan(x6_idx_7) > Bitmap Index Scan(x6_idx_2) > Index Scan(customers_pkey)",
+   "sql": "select p.\"id\" as id,p.\"company_ct\" as \"company\",p.\"memo_ct\" as \"memo\" from \"research_count_x6\".\"customers_seal_index\" i cross join lateral (select p.\"id\", p.\"company_ct\",p.\"memo_ct\" from \"research_count_x6\".\"customers\" p where p.\"id\"=i.\"row_id\" and p.\"scope_id\"=$1 offset 0) p where (((i.\"tokens_a106c26102b707f0\")[1]=$2::bigint) and (i.\"tokens_a639b11c8130dcf7\" @> $3::bigint[]))"
+  },
+  {
+   "case": "and2",
+   "variant": "lateral/agghex",
+   "serverExecMs": 148.09,
+   "sharedHit": 79075,
+   "sharedRead": 25376,
+   "nodes": "Aggregate > Nested Loop > Bitmap Heap Scan(customers_seal_index) > BitmapAnd > Bitmap Index Scan(x6_idx_7) > Bitmap Index Scan(x6_idx_2) > Index Scan(customers_pkey)",
+   "sql": "select string_agg(uuid_send(p.\"id\")||coalesce(int4send(octet_length(p.\"company_ct\"))||p.\"company_ct\", int4send(-1))||coalesce(int4send(octet_length(p.\"memo_ct\"))||p.\"memo_ct\", int4send(-1)),''::bytea) x from \"research_count_x6\".\"customers_seal_index\" i cross join lateral (select p.\"id\", p.\"company_ct\",p.\"memo_ct\" from \"research_count_x6\".\"customers\" p where p.\"id\"=i.\"row_id\" and p.\"scope_id\"=$1 offset 0) p where (((i.\"tokens_a106c26102b707f0\")[1]=$2::bigint) and (i.\"tokens_a639b11c8130dcf7\" @> $3::bigint[]))"
+  },
+  {
+   "case": "and2",
+   "variant": "ct1/hexarr",
+   "serverExecMs": 32.327,
+   "sharedHit": 16035,
+   "sharedRead": 0,
+   "nodes": "Bitmap Heap Scan(customers_seal_index_ct) > BitmapAnd > Bitmap Index Scan(x6ct_idx_7) > Bitmap Index Scan(x6ct_idx_2)",
+   "sql": "select i.\"row_id\" as id,i.\"company_ct\" as \"company\",i.\"memo_ct\" as \"memo\" from \"research_count_x6\".\"customers_seal_index_ct\" i where i.\"scope_id\"=$1 and (((i.\"tokens_a106c26102b707f0\")[1]=$2::bigint) and (i.\"tokens_a639b11c8130dcf7\" @> $3::bigint[]))"
+  },
+  {
+   "case": "and2",
+   "variant": "ct1/agghex",
+   "serverExecMs": 39.249,
+   "sharedHit": 16035,
+   "sharedRead": 0,
+   "nodes": "Aggregate > Bitmap Heap Scan(customers_seal_index_ct) > BitmapAnd > Bitmap Index Scan(x6ct_idx_7) > Bitmap Index Scan(x6ct_idx_2)",
+   "sql": "select string_agg(uuid_send(i.\"row_id\")||coalesce(int4send(octet_length(i.\"company_ct\"))||i.\"company_ct\", int4send(-1))||coalesce(int4send(octet_length(i.\"memo_ct\"))||i.\"memo_ct\", int4send(-1)),''::bytea) x from \"research_count_x6\".\"customers_seal_index_ct\" i where i.\"scope_id\"=$1 and (((i.\"tokens_a106c26102b707f0\")[1]=$2::bigint) and (i.\"tokens_a639b11c8130dcf7\" @> $3::bigint[]))"
+  },
+  {
+   "case": "and2",
+   "variant": "FLOOR ids only (not valid)",
+   "serverExecMs": 119.166,
+   "sharedHit": 79502,
+   "sharedRead": 24964,
+   "nodes": "Gather > Nested Loop > Bitmap Heap Scan(customers_seal_index) > BitmapAnd > Bitmap Index Scan(x6_idx_7) > Bitmap Index Scan(x6_idx_2) > Index Scan(customers_pkey)",
+   "sql": "select p.\"id\" from \"research_count_x6\".\"customers\" p where p.\"scope_id\"=$1 and p.\"id\" in (select i.\"row_id\" from \"research_count_x6\".\"customers_seal_index\" i where i.\"scope_id\"=$1 and (((i.\"tokens_a106c26102b707f0\")[1]=$2::bigint) and (i.\"tokens_a639b11c8130dcf7\" @> $3::bigint[])))"
+  },
+  {
+   "case": "and2",
+   "variant": "FLOOR ct1 ids only (not valid)",
+   "serverExecMs": 21.833,
+   "sharedHit": 16035,
+   "sharedRead": 0,
+   "nodes": "Bitmap Heap Scan(customers_seal_index_ct) > BitmapAnd > Bitmap Index Scan(x6ct_idx_7) > Bitmap Index Scan(x6ct_idx_2)",
+   "sql": "select i.\"row_id\" from \"research_count_x6\".\"customers_seal_index_ct\" i where i.\"scope_id\"=$1 and (((i.\"tokens_a106c26102b707f0\")[1]=$2::bigint) and (i.\"tokens_a639b11c8130dcf7\" @> $3::bigint[]))"
+  },
+  {
+   "case": "and2",
+   "variant": "FLOOR DB count(*) of candidates (not valid)",
+   "serverExecMs": 119.888,
+   "sharedHit": 79564,
+   "sharedRead": 24902,
+   "nodes": "Aggregate > Gather > Aggregate > Nested Loop > Bitmap Heap Scan(customers_seal_index) > BitmapAnd > Bitmap Index Scan(x6_idx_7) > Bitmap Index Scan(x6_idx_2) > Index Scan(customers_pkey)",
+   "sql": "select count(*)::int n from \"research_count_x6\".\"customers\" p where p.\"scope_id\"=$1 and p.\"id\" in (select i.\"row_id\" from \"research_count_x6\".\"customers_seal_index\" i where i.\"scope_id\"=$1 and (((i.\"tokens_a106c26102b707f0\")[1]=$2::bigint) and (i.\"tokens_a639b11c8130dcf7\" @> $3::bigint[])))"
+  },
+  {
+   "case": "or2",
+   "variant": "x4 (base, b64obj)",
+   "serverExecMs": 96.423,
+   "sharedHit": 15630,
+   "sharedRead": 16452,
+   "nodes": "Gather > Hash Join > Seq Scan(customers) > Hash > Seq Scan(customers_seal_index)",
+   "sql": "select p.\"id\" as id,encode(p.\"company_ct\",'base64') as \"company\",encode(p.\"memo_ct\",'base64') as \"memo\",coalesce(((i.\"tokens_a106c26102b707f0\")[1]=$3::bigint),false) as f0,coalesce((i.\"tokens_a639b11c8130dcf7\" @> $5::bigint[]),false) as f1 from \"research_count_x6\".\"customers\" p join \"research_count_x6\".\"customers_seal_index\" i on i.\"scope_id\"=$1 and i.\"row_id\"=p.\"id\" where p.\"scope_id\"=$1 and (((i.\"tokens_a106c26102b707f0\")[1]=$2::bigint) or (i.\"tokens_a639b11c8130dcf7\" @> $4::bigint[]))"
+  },
+  {
+   "case": "or2",
+   "variant": "join/b64arr",
+   "serverExecMs": 108.255,
+   "sharedHit": 15744,
+   "sharedRead": 16338,
+   "nodes": "Gather > Hash Join > Seq Scan(customers) > Hash > Seq Scan(customers_seal_index)",
+   "sql": "select p.\"id\" as id,encode(p.\"company_ct\",'base64') as \"company\",encode(p.\"memo_ct\",'base64') as \"memo\",coalesce(((i.\"tokens_a106c26102b707f0\")[1]=$3::bigint),false) as f0,coalesce((i.\"tokens_a639b11c8130dcf7\" @> $5::bigint[]),false) as f1 from \"research_count_x6\".\"customers\" p join \"research_count_x6\".\"customers_seal_index\" i on i.\"scope_id\"=$1 and i.\"row_id\"=p.\"id\" where p.\"scope_id\"=$1 and (((i.\"tokens_a106c26102b707f0\")[1]=$2::bigint) or (i.\"tokens_a639b11c8130dcf7\" @> $4::bigint[]))"
+  },
+  {
+   "case": "or2",
+   "variant": "join/hexarr",
+   "serverExecMs": 103.089,
+   "sharedHit": 15758,
+   "sharedRead": 16324,
+   "nodes": "Gather > Hash Join > Seq Scan(customers) > Hash > Seq Scan(customers_seal_index)",
+   "sql": "select p.\"id\" as id,p.\"company_ct\" as \"company\",p.\"memo_ct\" as \"memo\",coalesce(((i.\"tokens_a106c26102b707f0\")[1]=$3::bigint),false) as f0,coalesce((i.\"tokens_a639b11c8130dcf7\" @> $5::bigint[]),false) as f1 from \"research_count_x6\".\"customers\" p join \"research_count_x6\".\"customers_seal_index\" i on i.\"scope_id\"=$1 and i.\"row_id\"=p.\"id\" where p.\"scope_id\"=$1 and (((i.\"tokens_a106c26102b707f0\")[1]=$2::bigint) or (i.\"tokens_a639b11c8130dcf7\" @> $4::bigint[]))"
+  },
+  {
+   "case": "or2",
+   "variant": "join/bin",
+   "serverExecMs": 99.798,
+   "sharedHit": 15754,
+   "sharedRead": 16328,
+   "nodes": "Gather > Hash Join > Seq Scan(customers) > Hash > Seq Scan(customers_seal_index)",
+   "sql": "select p.\"id\" as id,p.\"company_ct\" as \"company\",p.\"memo_ct\" as \"memo\",coalesce(((i.\"tokens_a106c26102b707f0\")[1]=$3::bigint),false) as f0,coalesce((i.\"tokens_a639b11c8130dcf7\" @> $5::bigint[]),false) as f1 from \"research_count_x6\".\"customers\" p join \"research_count_x6\".\"customers_seal_index\" i on i.\"scope_id\"=$1 and i.\"row_id\"=p.\"id\" where p.\"scope_id\"=$1 and (((i.\"tokens_a106c26102b707f0\")[1]=$2::bigint) or (i.\"tokens_a639b11c8130dcf7\" @> $4::bigint[]))"
+  },
+  {
+   "case": "or2",
+   "variant": "join/pack64",
+   "serverExecMs": 111.804,
+   "sharedHit": 15765,
+   "sharedRead": 16317,
+   "nodes": "Gather > Hash Join > Seq Scan(customers) > Hash > Seq Scan(customers_seal_index)",
+   "sql": "select encode(uuid_send(p.\"id\")||set_byte('\\x00'::bytea,0,(coalesce(((i.\"tokens_a106c26102b707f0\")[1]=$3::bigint),false))::int)||set_byte('\\x00'::bytea,0,(coalesce((i.\"tokens_a639b11c8130dcf7\" @> $5::bigint[]),false))::int)||coalesce(int4send(octet_length(p.\"company_ct\"))||p.\"company_ct\", int4send(-1))||coalesce(int4send(octet_length(p.\"memo_ct\"))||p.\"memo_ct\", int4send(-1)),'base64') x from \"research_count_x6\".\"customers\" p join \"research_count_x6\".\"customers_seal_index\" i on i.\"scope_id\"=$1 and i.\"row_id\"=p.\"id\" where p.\"scope_id\"=$1 and (((i.\"tokens_a106c26102b707f0\")[1]=$2::bigint) or (i.\"tokens_a639b11c8130dcf7\" @> $4::bigint[]))"
+  },
+  {
+   "case": "or2",
+   "variant": "join/packhex",
+   "serverExecMs": 102.495,
+   "sharedHit": 15752,
+   "sharedRead": 16330,
+   "nodes": "Gather > Hash Join > Seq Scan(customers) > Hash > Seq Scan(customers_seal_index)",
+   "sql": "select uuid_send(p.\"id\")||set_byte('\\x00'::bytea,0,(coalesce(((i.\"tokens_a106c26102b707f0\")[1]=$3::bigint),false))::int)||set_byte('\\x00'::bytea,0,(coalesce((i.\"tokens_a639b11c8130dcf7\" @> $5::bigint[]),false))::int)||coalesce(int4send(octet_length(p.\"company_ct\"))||p.\"company_ct\", int4send(-1))||coalesce(int4send(octet_length(p.\"memo_ct\"))||p.\"memo_ct\", int4send(-1)) x from \"research_count_x6\".\"customers\" p join \"research_count_x6\".\"customers_seal_index\" i on i.\"scope_id\"=$1 and i.\"row_id\"=p.\"id\" where p.\"scope_id\"=$1 and (((i.\"tokens_a106c26102b707f0\")[1]=$2::bigint) or (i.\"tokens_a639b11c8130dcf7\" @> $4::bigint[]))"
+  },
+  {
+   "case": "or2",
+   "variant": "join/agghex",
+   "serverExecMs": 111.029,
+   "sharedHit": 15756,
+   "sharedRead": 16326,
+   "nodes": "Aggregate > Gather > Aggregate > Hash Join > Seq Scan(customers) > Hash > Seq Scan(customers_seal_index)",
+   "sql": "select string_agg(uuid_send(p.\"id\")||set_byte('\\x00'::bytea,0,(coalesce(((i.\"tokens_a106c26102b707f0\")[1]=$3::bigint),false))::int)||set_byte('\\x00'::bytea,0,(coalesce((i.\"tokens_a639b11c8130dcf7\" @> $5::bigint[]),false))::int)||coalesce(int4send(octet_length(p.\"company_ct\"))||p.\"company_ct\", int4send(-1))||coalesce(int4send(octet_length(p.\"memo_ct\"))||p.\"memo_ct\", int4send(-1)),''::bytea) x from \"research_count_x6\".\"customers\" p join \"research_count_x6\".\"customers_seal_index\" i on i.\"scope_id\"=$1 and i.\"row_id\"=p.\"id\" where p.\"scope_id\"=$1 and (((i.\"tokens_a106c26102b707f0\")[1]=$2::bigint) or (i.\"tokens_a639b11c8130dcf7\" @> $4::bigint[]))"
+  },
+  {
+   "case": "or2",
+   "variant": "join/agg64",
+   "serverExecMs": 118.615,
+   "sharedHit": 15742,
+   "sharedRead": 16340,
+   "nodes": "Aggregate > Gather > Aggregate > Hash Join > Seq Scan(customers) > Hash > Seq Scan(customers_seal_index)",
+   "sql": "select encode(string_agg(uuid_send(p.\"id\")||set_byte('\\x00'::bytea,0,(coalesce(((i.\"tokens_a106c26102b707f0\")[1]=$3::bigint),false))::int)||set_byte('\\x00'::bytea,0,(coalesce((i.\"tokens_a639b11c8130dcf7\" @> $5::bigint[]),false))::int)||coalesce(int4send(octet_length(p.\"company_ct\"))||p.\"company_ct\", int4send(-1))||coalesce(int4send(octet_length(p.\"memo_ct\"))||p.\"memo_ct\", int4send(-1)),''::bytea),'base64') x from \"research_count_x6\".\"customers\" p join \"research_count_x6\".\"customers_seal_index\" i on i.\"scope_id\"=$1 and i.\"row_id\"=p.\"id\" where p.\"scope_id\"=$1 and (((i.\"tokens_a106c26102b707f0\")[1]=$2::bigint) or (i.\"tokens_a639b11c8130dcf7\" @> $4::bigint[]))"
+  },
+  {
+   "case": "or2",
+   "variant": "join_ns/hexarr",
+   "serverExecMs": 93.009,
+   "sharedHit": 15771,
+   "sharedRead": 16311,
+   "nodes": "Gather > Hash Join > Seq Scan(customers) > Hash > Seq Scan(customers_seal_index)",
+   "sql": "select p.\"id\" as id,p.\"company_ct\" as \"company\",p.\"memo_ct\" as \"memo\",coalesce(((i.\"tokens_a106c26102b707f0\")[1]=$3::bigint),false) as f0,coalesce((i.\"tokens_a639b11c8130dcf7\" @> $5::bigint[]),false) as f1 from \"research_count_x6\".\"customers\" p join \"research_count_x6\".\"customers_seal_index\" i on i.\"row_id\"=p.\"id\" where p.\"scope_id\"=$1 and (((i.\"tokens_a106c26102b707f0\")[1]=$2::bigint) or (i.\"tokens_a639b11c8130dcf7\" @> $4::bigint[]))"
+  },
+  {
+   "case": "or2",
+   "variant": "join_ns/agghex",
+   "serverExecMs": 114.054,
+   "sharedHit": 15747,
+   "sharedRead": 16335,
+   "nodes": "Aggregate > Gather > Aggregate > Hash Join > Seq Scan(customers) > Hash > Seq Scan(customers_seal_index)",
+   "sql": "select string_agg(uuid_send(p.\"id\")||set_byte('\\x00'::bytea,0,(coalesce(((i.\"tokens_a106c26102b707f0\")[1]=$3::bigint),false))::int)||set_byte('\\x00'::bytea,0,(coalesce((i.\"tokens_a639b11c8130dcf7\" @> $5::bigint[]),false))::int)||coalesce(int4send(octet_length(p.\"company_ct\"))||p.\"company_ct\", int4send(-1))||coalesce(int4send(octet_length(p.\"memo_ct\"))||p.\"memo_ct\", int4send(-1)),''::bytea) x from \"research_count_x6\".\"customers\" p join \"research_count_x6\".\"customers_seal_index\" i on i.\"row_id\"=p.\"id\" where p.\"scope_id\"=$1 and (((i.\"tokens_a106c26102b707f0\")[1]=$2::bigint) or (i.\"tokens_a639b11c8130dcf7\" @> $4::bigint[]))"
+  },
+  {
+   "case": "or2",
+   "variant": "lateral/hexarr",
+   "serverExecMs": 135.832,
+   "sharedHit": 122335,
+   "sharedRead": 16314,
+   "nodes": "Nested Loop > Seq Scan(customers_seal_index) > Index Scan(customers_pkey)",
+   "sql": "select p.\"id\" as id,p.\"company_ct\" as \"company\",p.\"memo_ct\" as \"memo\",coalesce(((i.\"tokens_a106c26102b707f0\")[1]=$3::bigint),false) as f0,coalesce((i.\"tokens_a639b11c8130dcf7\" @> $5::bigint[]),false) as f1 from \"research_count_x6\".\"customers_seal_index\" i cross join lateral (select p.\"id\", p.\"company_ct\",p.\"memo_ct\" from \"research_count_x6\".\"customers\" p where p.\"id\"=i.\"row_id\" and p.\"scope_id\"=$1 offset 0) p where (((i.\"tokens_a106c26102b707f0\")[1]=$2::bigint) or (i.\"tokens_a639b11c8130dcf7\" @> $4::bigint[]))"
+  },
+  {
+   "case": "or2",
+   "variant": "lateral/agghex",
+   "serverExecMs": 157.964,
+   "sharedHit": 122436,
+   "sharedRead": 16213,
+   "nodes": "Aggregate > Nested Loop > Seq Scan(customers_seal_index) > Index Scan(customers_pkey)",
+   "sql": "select string_agg(uuid_send(p.\"id\")||set_byte('\\x00'::bytea,0,(coalesce(((i.\"tokens_a106c26102b707f0\")[1]=$3::bigint),false))::int)||set_byte('\\x00'::bytea,0,(coalesce((i.\"tokens_a639b11c8130dcf7\" @> $5::bigint[]),false))::int)||coalesce(int4send(octet_length(p.\"company_ct\"))||p.\"company_ct\", int4send(-1))||coalesce(int4send(octet_length(p.\"memo_ct\"))||p.\"memo_ct\", int4send(-1)),''::bytea) x from \"research_count_x6\".\"customers_seal_index\" i cross join lateral (select p.\"id\", p.\"company_ct\",p.\"memo_ct\" from \"research_count_x6\".\"customers\" p where p.\"id\"=i.\"row_id\" and p.\"scope_id\"=$1 offset 0) p where (((i.\"tokens_a106c26102b707f0\")[1]=$2::bigint) or (i.\"tokens_a639b11c8130dcf7\" @> $4::bigint[]))"
+  },
+  {
+   "case": "or2",
+   "variant": "ct1/hexarr",
+   "serverExecMs": 87.348,
+   "sharedHit": 661,
+   "sharedRead": 24668,
+   "nodes": "Seq Scan(customers_seal_index_ct)",
+   "sql": "select i.\"row_id\" as id,i.\"company_ct\" as \"company\",i.\"memo_ct\" as \"memo\",coalesce(((i.\"tokens_a106c26102b707f0\")[1]=$3::bigint),false) as f0,coalesce((i.\"tokens_a639b11c8130dcf7\" @> $5::bigint[]),false) as f1 from \"research_count_x6\".\"customers_seal_index_ct\" i where i.\"scope_id\"=$1 and (((i.\"tokens_a106c26102b707f0\")[1]=$2::bigint) or (i.\"tokens_a639b11c8130dcf7\" @> $4::bigint[]))"
+  },
+  {
+   "case": "or2",
+   "variant": "ct1/agghex",
+   "serverExecMs": 132.807,
+   "sharedHit": 2051,
+   "sharedRead": 23634,
+   "nodes": "Aggregate > Gather > Aggregate > Seq Scan(customers_seal_index_ct)",
+   "sql": "select string_agg(uuid_send(i.\"row_id\")||set_byte('\\x00'::bytea,0,(coalesce(((i.\"tokens_a106c26102b707f0\")[1]=$3::bigint),false))::int)||set_byte('\\x00'::bytea,0,(coalesce((i.\"tokens_a639b11c8130dcf7\" @> $5::bigint[]),false))::int)||coalesce(int4send(octet_length(i.\"company_ct\"))||i.\"company_ct\", int4send(-1))||coalesce(int4send(octet_length(i.\"memo_ct\"))||i.\"memo_ct\", int4send(-1)),''::bytea) x from \"research_count_x6\".\"customers_seal_index_ct\" i where i.\"scope_id\"=$1 and (((i.\"tokens_a106c26102b707f0\")[1]=$2::bigint) or (i.\"tokens_a639b11c8130dcf7\" @> $4::bigint[]))"
+  },
+  {
+   "case": "or2",
+   "variant": "FLOOR ids only (not valid)",
+   "serverExecMs": 124.02,
+   "sharedHit": 14133,
+   "sharedRead": 17733,
+   "nodes": "Hash Join > Seq Scan(customers_seal_index) > Hash > Seq Scan(customers)",
+   "sql": "select p.\"id\",coalesce(((i.\"tokens_a106c26102b707f0\")[1]=$3::bigint),false) as f0,coalesce((i.\"tokens_a639b11c8130dcf7\" @> $5::bigint[]),false) as f1 from \"research_count_x6\".\"customers\" p join \"research_count_x6\".\"customers_seal_index\" i on i.\"scope_id\"=$1 and i.\"row_id\"=p.\"id\" where p.\"scope_id\"=$1 and (((i.\"tokens_a106c26102b707f0\")[1]=$2::bigint) or (i.\"tokens_a639b11c8130dcf7\" @> $4::bigint[]))"
+  },
+  {
+   "case": "or2",
+   "variant": "FLOOR ct1 ids only (not valid)",
+   "serverExecMs": 82.699,
+   "sharedHit": 1890,
+   "sharedRead": 23439,
+   "nodes": "Seq Scan(customers_seal_index_ct)",
+   "sql": "select i.\"row_id\",coalesce(((i.\"tokens_a106c26102b707f0\")[1]=$3::bigint),false) as f0,coalesce((i.\"tokens_a639b11c8130dcf7\" @> $5::bigint[]),false) as f1 from \"research_count_x6\".\"customers_seal_index_ct\" i where i.\"scope_id\"=$1 and (((i.\"tokens_a106c26102b707f0\")[1]=$2::bigint) or (i.\"tokens_a639b11c8130dcf7\" @> $4::bigint[]))"
+  },
+  {
+   "case": "or2",
+   "variant": "FLOOR DB count(*) of candidates (not valid)",
+   "serverExecMs": 85.71,
+   "sharedHit": 14750,
+   "sharedRead": 17332,
+   "nodes": "Aggregate > Gather > Aggregate > Hash Join > Seq Scan(customers) > Hash > Seq Scan(customers_seal_index)",
+   "sql": "select count(*)::int n,bool_or(coalesce(((i.\"tokens_a106c26102b707f0\")[1]=$3::bigint),false)) as f0,bool_or(coalesce((i.\"tokens_a639b11c8130dcf7\" @> $5::bigint[]),false)) as f1 from \"research_count_x6\".\"customers\" p join \"research_count_x6\".\"customers_seal_index\" i on i.\"scope_id\"=$1 and i.\"row_id\"=p.\"id\" where p.\"scope_id\"=$1 and (((i.\"tokens_a106c26102b707f0\")[1]=$2::bigint) or (i.\"tokens_a639b11c8130dcf7\" @> $4::bigint[]))"
+  }
+ ]
+}
