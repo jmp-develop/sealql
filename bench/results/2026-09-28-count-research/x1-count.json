@@ -1,0 +1,5756 @@
+{
+ "startedAt": "2026-09-27T23:45:55.545Z",
+ "K": 64,
+ "variants": {
+  "P1": {
+   "fast": false,
+   "b64": false,
+   "stream": false,
+   "orderBy": true,
+   "scopeCol": true
+  },
+  "P2": {
+   "fast": true,
+   "b64": false,
+   "stream": false,
+   "orderBy": true,
+   "scopeCol": true
+  },
+  "P3": {
+   "fast": true,
+   "b64": true,
+   "stream": false,
+   "orderBy": false,
+   "scopeCol": false
+  },
+  "P4": {
+   "fast": true,
+   "b64": true,
+   "stream": true,
+   "orderBy": false,
+   "scopeCol": false
+  }
+ },
+ "rows": [
+  {
+   "case": "and2",
+   "condition": "(company = \"서울서비스 담당\" AND memo contains \"서비스\")",
+   "environment": "10만 단독",
+   "mode": "count",
+   "matches": 21176,
+   "plain": {
+    "totalMs": 90.554,
+    "preMs": 0.075,
+    "dbMs": 90.45,
+    "betweenSqlMs": 0,
+    "postMs": 0.056,
+    "sqlCalls": 1,
+    "candidateRows": 1,
+    "openCount": 0
+   },
+   "product": {
+    "totalMs": 1539.105,
+    "preMs": 1.424,
+    "dbMs": 124.074,
+    "betweenSqlMs": 0,
+    "postMs": 1416.198,
+    "sqlCalls": 1,
+    "candidateRows": 21176,
+    "openCount": 42352
+   },
+   "P1": {
+    "totalMs": 1505.56,
+    "preMs": 0.366,
+    "dbMs": 131.464,
+    "betweenSqlMs": 0,
+    "postMs": 1352.258,
+    "sqlCalls": 1,
+    "candidateRows": 21176,
+    "openCount": 42352
+   },
+   "P2": {
+    "totalMs": 1157.812,
+    "preMs": 0.383,
+    "dbMs": 125.882,
+    "betweenSqlMs": 0,
+    "postMs": 1031.375,
+    "sqlCalls": 1,
+    "candidateRows": 21176,
+    "openCount": 42352
+   },
+   "P3": {
+    "totalMs": 1144.551,
+    "preMs": 0.417,
+    "dbMs": 108.748,
+    "betweenSqlMs": 0,
+    "postMs": 1033.087,
+    "sqlCalls": 1,
+    "candidateRows": 21176,
+    "openCount": 42352
+   },
+   "P4": {
+    "totalMs": 1101.099,
+    "preMs": 0.398,
+    "dbMs": 120.857,
+    "betweenSqlMs": 0,
+    "postMs": 975.952,
+    "sqlCalls": 1,
+    "candidateRows": 21176,
+    "openCount": 42352,
+    "decryptsBeforeDbEnd": 1972
+   },
+   "first": {
+    "plain": {
+     "totalMs": 87.97019999999975,
+     "preMs": 0.10739999999987049,
+     "dbMs": 87.78679999999986,
+     "betweenSqlMs": 0,
+     "postMs": 0.07600000000002183,
+     "sqlCalls": 1,
+     "candidateRows": 1,
+     "openCount": 0
+    },
+    "product": {
+     "totalMs": 1643.4223000000002,
+     "preMs": 7.301500000000033,
+     "dbMs": 132.3708999999999,
+     "betweenSqlMs": 0,
+     "postMs": 1503.7499000000003,
+     "sqlCalls": 1,
+     "candidateRows": 21176,
+     "openCount": 42352
+    },
+    "P1": {
+     "totalMs": 1574.3471000000004,
+     "preMs": 0.5444999999999709,
+     "dbMs": 140.6908000000003,
+     "betweenSqlMs": 0,
+     "postMs": 1433.1118000000001,
+     "sqlCalls": 1,
+     "candidateRows": 21176,
+     "openCount": 42352
+    },
+    "P2": {
+     "totalMs": 1162.1714000000002,
+     "preMs": 0.49020000000018626,
+     "dbMs": 127.48629999999957,
+     "betweenSqlMs": 0,
+     "postMs": 1034.1949000000004,
+     "sqlCalls": 1,
+     "candidateRows": 21176,
+     "openCount": 42352
+    },
+    "P3": {
+     "totalMs": 1168.4719000000005,
+     "preMs": 0.5830000000005384,
+     "dbMs": 112.62129999999979,
+     "betweenSqlMs": 0,
+     "postMs": 1055.2676000000001,
+     "sqlCalls": 1,
+     "candidateRows": 21176,
+     "openCount": 42352
+    },
+    "P4": {
+     "totalMs": 1093.3346000000001,
+     "preMs": 0.5321999999996478,
+     "dbMs": 112.72320000000036,
+     "betweenSqlMs": 0,
+     "postMs": 980.0792000000001,
+     "sqlCalls": 1,
+     "candidateRows": 21176,
+     "openCount": 42352,
+     "decryptsBeforeDbEnd": 1783
+    }
+   },
+   "runs": {
+    "plain": [
+     {
+      "totalMs": 91.52130000000034,
+      "preMs": 0.15100000000165892,
+      "dbMs": 91.31919999999809,
+      "betweenSqlMs": 0,
+      "postMs": 0.0511000000005879,
+      "sqlCalls": 1,
+      "candidateRows": 1,
+      "openCount": 0
+     },
+     {
+      "totalMs": 86.90159999999742,
+      "preMs": 0.17009999999936554,
+      "dbMs": 86.67250000000058,
+      "betweenSqlMs": 0,
+      "postMs": 0.05899999999746797,
+      "sqlCalls": 1,
+      "candidateRows": 1,
+      "openCount": 0
+     },
+     {
+      "totalMs": 85.77449999999953,
+      "preMs": 0.17070000000239816,
+      "dbMs": 85.54879999999685,
+      "betweenSqlMs": 0,
+      "postMs": 0.05500000000029104,
+      "sqlCalls": 1,
+      "candidateRows": 1,
+      "openCount": 0
+     },
+     {
+      "totalMs": 102.51860000000306,
+      "preMs": 0.06580000000394648,
+      "dbMs": 102.38199999999779,
+      "betweenSqlMs": 0,
+      "postMs": 0.07080000000132713,
+      "sqlCalls": 1,
+      "candidateRows": 1,
+      "openCount": 0
+     },
+     {
+      "totalMs": 95.42190000000119,
+      "preMs": 0.07510000000183936,
+      "dbMs": 95.2844000000041,
+      "betweenSqlMs": 0,
+      "postMs": 0.062399999995250255,
+      "sqlCalls": 1,
+      "candidateRows": 1,
+      "openCount": 0
+     },
+     {
+      "totalMs": 88.35740000000078,
+      "preMs": 0.05610000000160653,
+      "dbMs": 88.24500000000262,
+      "betweenSqlMs": 0,
+      "postMs": 0.056299999996554106,
+      "sqlCalls": 1,
+      "candidateRows": 1,
+      "openCount": 0
+     },
+     {
+      "totalMs": 90.55389999999898,
+      "preMs": 0.05309999999735737,
+      "dbMs": 90.45040000000154,
+      "betweenSqlMs": 0,
+      "postMs": 0.05040000000008149,
+      "sqlCalls": 1,
+      "candidateRows": 1,
+      "openCount": 0
+     }
+    ],
+    "product": [
+     {
+      "totalMs": 1539.0306999999993,
+      "preMs": 1.4242000000012922,
+      "dbMs": 121.40880000000107,
+      "betweenSqlMs": 0,
+      "postMs": 1416.197699999997,
+      "sqlCalls": 1,
+      "candidateRows": 21176,
+      "openCount": 42352
+     },
+     {
+      "totalMs": 1547.7527999999984,
+      "preMs": 1.4269999999996799,
+      "dbMs": 139.30419999999867,
+      "betweenSqlMs": 0,
+      "postMs": 1407.0216,
+      "sqlCalls": 1,
+      "candidateRows": 21176,
+      "openCount": 42352
+     },
+     {
+      "totalMs": 1526.3606999999975,
+      "preMs": 1.4063999999998487,
+      "dbMs": 126.65389999999752,
+      "betweenSqlMs": 0,
+      "postMs": 1398.3004,
+      "sqlCalls": 1,
+      "candidateRows": 21176,
+      "openCount": 42352
+     },
+     {
+      "totalMs": 1555.7739000000001,
+      "preMs": 1.4706999999980326,
+      "dbMs": 124.20210000000225,
+      "betweenSqlMs": 0,
+      "postMs": 1430.1010999999999,
+      "sqlCalls": 1,
+      "candidateRows": 21176,
+      "openCount": 42352
+     },
+     {
+      "totalMs": 1548.8176000000021,
+      "preMs": 1.3145000000004075,
+      "dbMs": 121.08840000000055,
+      "betweenSqlMs": 0,
+      "postMs": 1426.4147000000012,
+      "sqlCalls": 1,
+      "candidateRows": 21176,
+      "openCount": 42352
+     },
+     {
+      "totalMs": 1537.8463000000047,
+      "preMs": 2.919000000001688,
+      "dbMs": 124.07360000000335,
+      "betweenSqlMs": 0,
+      "postMs": 1410.8536999999997,
+      "sqlCalls": 1,
+      "candidateRows": 21176,
+      "openCount": 42352
+     },
+     {
+      "totalMs": 1539.104999999996,
+      "preMs": 1.4184999999997672,
+      "dbMs": 117.9522999999972,
+      "betweenSqlMs": 0,
+      "postMs": 1419.734199999999,
+      "sqlCalls": 1,
+      "candidateRows": 21176,
+      "openCount": 42352
+     }
+    ],
+    "P1": [
+     {
+      "totalMs": 1512.6402999999991,
+      "preMs": 0.35239999999976135,
+      "dbMs": 131.46399999999994,
+      "betweenSqlMs": 0,
+      "postMs": 1380.8238999999994,
+      "sqlCalls": 1,
+      "candidateRows": 21176,
+      "openCount": 42352
+     },
+     {
+      "totalMs": 1505.5601000000024,
+      "preMs": 0.3661000000029162,
+      "dbMs": 142.34579999999914,
+      "betweenSqlMs": 0,
+      "postMs": 1362.8482000000004,
+      "sqlCalls": 1,
+      "candidateRows": 21176,
+      "openCount": 42352
+     },
+     {
+      "totalMs": 1513.3384000000005,
+      "preMs": 0.36499999999796273,
+      "dbMs": 160.71519999999873,
+      "betweenSqlMs": 0,
+      "postMs": 1352.2582000000039,
+      "sqlCalls": 1,
+      "candidateRows": 21176,
+      "openCount": 42352
+     },
+     {
+      "totalMs": 1508.5625,
+      "preMs": 0.3675999999977648,
+      "dbMs": 159.81930000000284,
+      "betweenSqlMs": 0,
+      "postMs": 1348.3755999999994,
+      "sqlCalls": 1,
+      "candidateRows": 21176,
+      "openCount": 42352
+     },
+     {
+      "totalMs": 1467.8584999999948,
+      "preMs": 0.3621999999959371,
+      "dbMs": 121.17150000000402,
+      "betweenSqlMs": 0,
+      "postMs": 1346.3247999999949,
+      "sqlCalls": 1,
+      "candidateRows": 21176,
+      "openCount": 42352
+     },
+     {
+      "totalMs": 1452.516300000003,
+      "preMs": 0.4414000000033411,
+      "dbMs": 125.767399999997,
+      "betweenSqlMs": 0,
+      "postMs": 1326.3075000000026,
+      "sqlCalls": 1,
+      "candidateRows": 21176,
+      "openCount": 42352
+     },
+     {
+      "totalMs": 1489.5347000000038,
+      "preMs": 0.4310000000114087,
+      "dbMs": 120.23679999999877,
+      "betweenSqlMs": 0,
+      "postMs": 1368.8668999999936,
+      "sqlCalls": 1,
+      "candidateRows": 21176,
+      "openCount": 42352
+     }
+    ],
+    "P2": [
+     {
+      "totalMs": 1155.4775000000009,
+      "preMs": 0.38580000000001746,
+      "dbMs": 129.9318999999996,
+      "betweenSqlMs": 0,
+      "postMs": 1025.1598000000013,
+      "sqlCalls": 1,
+      "candidateRows": 21176,
+      "openCount": 42352
+     },
+     {
+      "totalMs": 1157.811999999998,
+      "preMs": 0.5550999999977648,
+      "dbMs": 125.88230000000476,
+      "betweenSqlMs": 0,
+      "postMs": 1031.3745999999956,
+      "sqlCalls": 1,
+      "candidateRows": 21176,
+      "openCount": 42352
+     },
+     {
+      "totalMs": 1178.4117000000042,
+      "preMs": 0.3812000000034459,
+      "dbMs": 128.44200000000274,
+      "betweenSqlMs": 0,
+      "postMs": 1049.588499999998,
+      "sqlCalls": 1,
+      "candidateRows": 21176,
+      "openCount": 42352
+     },
+     {
+      "totalMs": 1209.7337000000043,
+      "preMs": 0.3616000000038184,
+      "dbMs": 163.5465999999942,
+      "betweenSqlMs": 0,
+      "postMs": 1045.8255000000063,
+      "sqlCalls": 1,
+      "candidateRows": 21176,
+      "openCount": 42352
+     },
+     {
+      "totalMs": 1151.1163000000015,
+      "preMs": 0.35300000000279397,
+      "dbMs": 119.40950000000157,
+      "betweenSqlMs": 0,
+      "postMs": 1031.3537999999971,
+      "sqlCalls": 1,
+      "candidateRows": 21176,
+      "openCount": 42352
+     },
+     {
+      "totalMs": 1150.1002000000008,
+      "preMs": 0.38259999999718275,
+      "dbMs": 121.87159999999858,
+      "betweenSqlMs": 0,
+      "postMs": 1027.846000000005,
+      "sqlCalls": 1,
+      "candidateRows": 21176,
+      "openCount": 42352
+     },
+     {
+      "totalMs": 1164.1245999999956,
+      "preMs": 0.38590000000112923,
+      "dbMs": 125.5205999999962,
+      "betweenSqlMs": 0,
+      "postMs": 1038.2180999999982,
+      "sqlCalls": 1,
+      "candidateRows": 21176,
+      "openCount": 42352
+     }
+    ],
+    "P3": [
+     {
+      "totalMs": 1154.6772999999994,
+      "preMs": 0.4326999999975669,
+      "dbMs": 109.97470000000249,
+      "betweenSqlMs": 0,
+      "postMs": 1044.2698999999993,
+      "sqlCalls": 1,
+      "candidateRows": 21176,
+      "openCount": 42352
+     },
+     {
+      "totalMs": 1144.550800000001,
+      "preMs": 0.4341999999996915,
+      "dbMs": 108.09130000000005,
+      "betweenSqlMs": 0,
+      "postMs": 1036.0253000000012,
+      "sqlCalls": 1,
+      "candidateRows": 21176,
+      "openCount": 42352
+     },
+     {
+      "totalMs": 1140.2068,
+      "preMs": 0.3701999999975669,
+      "dbMs": 107.69020000000455,
+      "betweenSqlMs": 0,
+      "postMs": 1032.1463999999978,
+      "sqlCalls": 1,
+      "candidateRows": 21176,
+      "openCount": 42352
+     },
+     {
+      "totalMs": 1141.1474999999991,
+      "preMs": 0.4341999999960535,
+      "dbMs": 110.45390000000043,
+      "betweenSqlMs": 0,
+      "postMs": 1030.2594000000026,
+      "sqlCalls": 1,
+      "candidateRows": 21176,
+      "openCount": 42352
+     },
+     {
+      "totalMs": 1137.5820999999996,
+      "preMs": 0.41709999999875436,
+      "dbMs": 107.71600000000035,
+      "betweenSqlMs": 0,
+      "postMs": 1029.4490000000005,
+      "sqlCalls": 1,
+      "candidateRows": 21176,
+      "openCount": 42352
+     },
+     {
+      "totalMs": 1165.7578999999969,
+      "preMs": 0.3741999999983818,
+      "dbMs": 108.74799999999959,
+      "betweenSqlMs": 0,
+      "postMs": 1056.635699999999,
+      "sqlCalls": 1,
+      "candidateRows": 21176,
+      "openCount": 42352
+     },
+     {
+      "totalMs": 1171.8102999999974,
+      "preMs": 0.3706999999994878,
+      "dbMs": 138.3524999999936,
+      "betweenSqlMs": 0,
+      "postMs": 1033.0871000000043,
+      "sqlCalls": 1,
+      "candidateRows": 21176,
+      "openCount": 42352
+     }
+    ],
+    "P4": [
+     {
+      "totalMs": 1108.9471000000012,
+      "preMs": 0.4187000000019907,
+      "dbMs": 111.4948000000004,
+      "betweenSqlMs": 0,
+      "postMs": 997.0335999999988,
+      "sqlCalls": 1,
+      "candidateRows": 21176,
+      "openCount": 42352,
+      "decryptsBeforeDbEnd": 1912
+     },
+     {
+      "totalMs": 1090.4307999999983,
+      "preMs": 0.3870999999999185,
+      "dbMs": 114.09169999999722,
+      "betweenSqlMs": 0,
+      "postMs": 975.9520000000011,
+      "sqlCalls": 1,
+      "candidateRows": 21176,
+      "openCount": 42352,
+      "decryptsBeforeDbEnd": 1784
+     },
+     {
+      "totalMs": 1114.1021000000037,
+      "preMs": 0.3723000000027241,
+      "dbMs": 141.80309999999736,
+      "betweenSqlMs": 0,
+      "postMs": 971.9267000000036,
+      "sqlCalls": 1,
+      "candidateRows": 21176,
+      "openCount": 42352,
+      "decryptsBeforeDbEnd": 3062
+     },
+     {
+      "totalMs": 1101.0990999999995,
+      "preMs": 0.5045000000027358,
+      "dbMs": 146.12229999999545,
+      "betweenSqlMs": 0,
+      "postMs": 954.4723000000013,
+      "sqlCalls": 1,
+      "candidateRows": 21176,
+      "openCount": 42352,
+      "decryptsBeforeDbEnd": 3190
+     },
+     {
+      "totalMs": 1107.1384999999937,
+      "preMs": 0.42369999999937136,
+      "dbMs": 120.85680000000139,
+      "betweenSqlMs": 0,
+      "postMs": 985.8579999999929,
+      "sqlCalls": 1,
+      "candidateRows": 21176,
+      "openCount": 42352,
+      "decryptsBeforeDbEnd": 1972
+     },
+     {
+      "totalMs": 1083.8690999999963,
+      "preMs": 0.3977000000013504,
+      "dbMs": 136.1582999999955,
+      "betweenSqlMs": 0,
+      "postMs": 947.3130999999994,
+      "sqlCalls": 1,
+      "candidateRows": 21176,
+      "openCount": 42352,
+      "decryptsBeforeDbEnd": 2805
+     },
+     {
+      "totalMs": 1100.374100000001,
+      "preMs": 0.3868000000002212,
+      "dbMs": 111.31900000000314,
+      "betweenSqlMs": 0,
+      "postMs": 988.6682999999975,
+      "sqlCalls": 1,
+      "candidateRows": 21176,
+      "openCount": 42352,
+      "decryptsBeforeDbEnd": 1848
+     }
+    ]
+   }
+  },
+  {
+   "case": "and4",
+   "condition": "(company = \"서울서비스 담당\" AND address contains \"서울\" AND memo contains \"상담\" AND email contains \"service\")",
+   "environment": "10만 단독",
+   "mode": "count",
+   "matches": 62,
+   "plain": {
+    "totalMs": 122.757,
+    "preMs": 0.044,
+    "dbMs": 122.637,
+    "betweenSqlMs": 0,
+    "postMs": 0.063,
+    "sqlCalls": 1,
+    "candidateRows": 1,
+    "openCount": 0
+   },
+   "product": {
+    "totalMs": 17.083,
+    "preMs": 1.755,
+    "dbMs": 6.283,
+    "betweenSqlMs": 0,
+    "postMs": 8.846,
+    "sqlCalls": 1,
+    "candidateRows": 62,
+    "openCount": 248
+   },
+   "P1": {
+    "totalMs": 14.408,
+    "preMs": 0.683,
+    "dbMs": 6.219,
+    "betweenSqlMs": 0,
+    "postMs": 7.648,
+    "sqlCalls": 1,
+    "candidateRows": 62,
+    "openCount": 248
+   },
+   "P2": {
+    "totalMs": 12.629,
+    "preMs": 0.601,
+    "dbMs": 6.244,
+    "betweenSqlMs": 0,
+    "postMs": 5.677,
+    "sqlCalls": 1,
+    "candidateRows": 62,
+    "openCount": 248
+   },
+   "P3": {
+    "totalMs": 12.675,
+    "preMs": 0.63,
+    "dbMs": 6.203,
+    "betweenSqlMs": 0,
+    "postMs": 5.776,
+    "sqlCalls": 1,
+    "candidateRows": 62,
+    "openCount": 248
+   },
+   "P4": {
+    "totalMs": 12.526,
+    "preMs": 0.63,
+    "dbMs": 7.329,
+    "betweenSqlMs": 0,
+    "postMs": 4.51,
+    "sqlCalls": 1,
+    "candidateRows": 62,
+    "openCount": 248,
+    "decryptsBeforeDbEnd": 62
+   },
+   "first": {
+    "plain": {
+     "totalMs": 120.77530000000843,
+     "preMs": 0.04460000000835862,
+     "dbMs": 120.67190000000119,
+     "betweenSqlMs": 0,
+     "postMs": 0.05879999999888241,
+     "sqlCalls": 1,
+     "candidateRows": 1,
+     "openCount": 0
+    },
+    "product": {
+     "totalMs": 32.99680000000808,
+     "preMs": 2.2397000000055414,
+     "dbMs": 9.704700000002049,
+     "betweenSqlMs": 0,
+     "postMs": 21.05240000000049,
+     "sqlCalls": 1,
+     "candidateRows": 62,
+     "openCount": 248
+    },
+    "P1": {
+     "totalMs": 22.31909999999334,
+     "preMs": 0.7679999999963911,
+     "dbMs": 6.346100000009756,
+     "betweenSqlMs": 0,
+     "postMs": 15.204999999987194,
+     "sqlCalls": 1,
+     "candidateRows": 62,
+     "openCount": 248
+    },
+    "P2": {
+     "totalMs": 12.669900000008056,
+     "preMs": 0.6169999999983702,
+     "dbMs": 6.339700000011362,
+     "betweenSqlMs": 0,
+     "postMs": 5.713199999998324,
+     "sqlCalls": 1,
+     "candidateRows": 62,
+     "openCount": 248
+    },
+    "P3": {
+     "totalMs": 13.109700000000885,
+     "preMs": 0.6304999999993015,
+     "dbMs": 6.291600000011385,
+     "betweenSqlMs": 0,
+     "postMs": 6.187599999990198,
+     "sqlCalls": 1,
+     "candidateRows": 62,
+     "openCount": 248
+    },
+    "P4": {
+     "totalMs": 12.390299999999115,
+     "preMs": 0.7219999999942956,
+     "dbMs": 6.987699999997858,
+     "betweenSqlMs": 0,
+     "postMs": 4.680600000006962,
+     "sqlCalls": 1,
+     "candidateRows": 62,
+     "openCount": 248,
+     "decryptsBeforeDbEnd": 62
+    }
+   },
+   "runs": {
+    "plain": [
+     {
+      "totalMs": 128.22030000000086,
+      "preMs": 0.0443000000086613,
+      "dbMs": 128.1094000000012,
+      "betweenSqlMs": 0,
+      "postMs": 0.06659999999101274,
+      "sqlCalls": 1,
+      "candidateRows": 1,
+      "openCount": 0
+     },
+     {
+      "totalMs": 122.75740000000224,
+      "preMs": 0.05000000000291038,
+      "dbMs": 122.63740000000689,
+      "betweenSqlMs": 0,
+      "postMs": 0.069999999992433,
+      "sqlCalls": 1,
+      "candidateRows": 1,
+      "openCount": 0
+     },
+     {
+      "totalMs": 121.56660000000556,
+      "preMs": 0.08110000001033768,
+      "dbMs": 121.42459999999846,
+      "betweenSqlMs": 0,
+      "postMs": 0.060899999996763654,
+      "sqlCalls": 1,
+      "candidateRows": 1,
+      "openCount": 0
+     },
+     {
+      "totalMs": 122.27419999999984,
+      "preMs": 0.035499999998137355,
+      "dbMs": 122.17029999999795,
+      "betweenSqlMs": 0,
+      "postMs": 0.06840000000374857,
+      "sqlCalls": 1,
+      "candidateRows": 1,
+      "openCount": 0
+     },
+     {
+      "totalMs": 120.38090000000375,
+      "preMs": 0.037899999995715916,
+      "dbMs": 120.28040000000328,
+      "betweenSqlMs": 0,
+      "postMs": 0.06260000000474975,
+      "sqlCalls": 1,
+      "candidateRows": 1,
+      "openCount": 0
+     },
+     {
+      "totalMs": 123.47969999999623,
+      "preMs": 0.03269999999611173,
+      "dbMs": 123.38420000000042,
+      "betweenSqlMs": 0,
+      "postMs": 0.06279999999969732,
+      "sqlCalls": 1,
+      "candidateRows": 1,
+      "openCount": 0
+     },
+     {
+      "totalMs": 129.95440000000235,
+      "preMs": 0.04640000000654254,
+      "dbMs": 129.84459999999672,
+      "betweenSqlMs": 0,
+      "postMs": 0.06339999999909196,
+      "sqlCalls": 1,
+      "candidateRows": 1,
+      "openCount": 0
+     }
+    ],
+    "product": [
+     {
+      "totalMs": 17.083399999988615,
+      "preMs": 1.8277999999991152,
+      "dbMs": 6.409299999999348,
+      "betweenSqlMs": 0,
+      "postMs": 8.846299999990151,
+      "sqlCalls": 1,
+      "candidateRows": 62,
+      "openCount": 248
+     },
+     {
+      "totalMs": 16.8298000000068,
+      "preMs": 1.9763999999995576,
+      "dbMs": 6.283000000010361,
+      "betweenSqlMs": 0,
+      "postMs": 8.57039999999688,
+      "sqlCalls": 1,
+      "candidateRows": 62,
+      "openCount": 248
+     },
+     {
+      "totalMs": 16.043399999995017,
+      "preMs": 1.5880999999935739,
+      "dbMs": 6.067399999999907,
+      "betweenSqlMs": 0,
+      "postMs": 8.387900000001537,
+      "sqlCalls": 1,
+      "candidateRows": 62,
+      "openCount": 248
+     },
+     {
+      "totalMs": 16.739099999991595,
+      "preMs": 1.753099999987171,
+      "dbMs": 6.244900000005146,
+      "betweenSqlMs": 0,
+      "postMs": 8.741099999999278,
+      "sqlCalls": 1,
+      "candidateRows": 62,
+      "openCount": 248
+     },
+     {
+      "totalMs": 18.00539999999455,
+      "preMs": 1.8206000000063796,
+      "dbMs": 6.5168999999878,
+      "betweenSqlMs": 0,
+      "postMs": 9.667900000000373,
+      "sqlCalls": 1,
+      "candidateRows": 62,
+      "openCount": 248
+     },
+     {
+      "totalMs": 17.08400000000256,
+      "preMs": 1.6784000000043306,
+      "dbMs": 6.252599999992526,
+      "betweenSqlMs": 0,
+      "postMs": 9.153000000005704,
+      "sqlCalls": 1,
+      "candidateRows": 62,
+      "openCount": 248
+     },
+     {
+      "totalMs": 17.125699999989592,
+      "preMs": 1.7546999999904074,
+      "dbMs": 6.450600000011036,
+      "betweenSqlMs": 0,
+      "postMs": 8.920399999988149,
+      "sqlCalls": 1,
+      "candidateRows": 62,
+      "openCount": 248
+     }
+    ],
+    "P1": [
+     {
+      "totalMs": 15.263200000001234,
+      "preMs": 0.7490000000107102,
+      "dbMs": 6.566200000001118,
+      "betweenSqlMs": 0,
+      "postMs": 7.947999999989406,
+      "sqlCalls": 1,
+      "candidateRows": 62,
+      "openCount": 248
+     },
+     {
+      "totalMs": 14.408100000000559,
+      "preMs": 0.6825000000098953,
+      "dbMs": 6.384500000000116,
+      "betweenSqlMs": 0,
+      "postMs": 7.341099999990547,
+      "sqlCalls": 1,
+      "candidateRows": 62,
+      "openCount": 248
+     },
+     {
+      "totalMs": 13.938399999999092,
+      "preMs": 0.5985000000073342,
+      "dbMs": 5.9733999999880325,
+      "betweenSqlMs": 0,
+      "postMs": 7.366500000003725,
+      "sqlCalls": 1,
+      "candidateRows": 62,
+      "openCount": 248
+     },
+     {
+      "totalMs": 14.287400000001071,
+      "preMs": 0.5969000000040978,
+      "dbMs": 6.042399999991176,
+      "betweenSqlMs": 0,
+      "postMs": 7.6481000000057975,
+      "sqlCalls": 1,
+      "candidateRows": 62,
+      "openCount": 248
+     },
+     {
+      "totalMs": 14.864500000010594,
+      "preMs": 0.6864000000059605,
+      "dbMs": 6.2185000000026776,
+      "betweenSqlMs": 0,
+      "postMs": 7.959600000001956,
+      "sqlCalls": 1,
+      "candidateRows": 62,
+      "openCount": 248
+     },
+     {
+      "totalMs": 14.218599999992875,
+      "preMs": 0.6833999999944353,
+      "dbMs": 6.44560000000638,
+      "betweenSqlMs": 0,
+      "postMs": 7.0895999999920605,
+      "sqlCalls": 1,
+      "candidateRows": 62,
+      "openCount": 248
+     },
+     {
+      "totalMs": 16.718999999997322,
+      "preMs": 0.6096999999863328,
+      "dbMs": 6.205900000000838,
+      "betweenSqlMs": 0,
+      "postMs": 9.903400000010151,
+      "sqlCalls": 1,
+      "candidateRows": 62,
+      "openCount": 248
+     }
+    ],
+    "P2": [
+     {
+      "totalMs": 12.745300000009593,
+      "preMs": 0.6387000000104308,
+      "dbMs": 6.35209999998915,
+      "betweenSqlMs": 0,
+      "postMs": 5.754500000010012,
+      "sqlCalls": 1,
+      "candidateRows": 62,
+      "openCount": 248
+     },
+     {
+      "totalMs": 12.520300000003772,
+      "preMs": 0.6010999999998603,
+      "dbMs": 6.244000000006054,
+      "betweenSqlMs": 0,
+      "postMs": 5.675199999997858,
+      "sqlCalls": 1,
+      "candidateRows": 62,
+      "openCount": 248
+     },
+     {
+      "totalMs": 12.24769999999262,
+      "preMs": 0.5797999999922467,
+      "dbMs": 5.990799999999581,
+      "betweenSqlMs": 0,
+      "postMs": 5.677100000000792,
+      "sqlCalls": 1,
+      "candidateRows": 62,
+      "openCount": 248
+     },
+     {
+      "totalMs": 14.55920000000333,
+      "preMs": 0.6254999999946449,
+      "dbMs": 6.227599999998347,
+      "betweenSqlMs": 0,
+      "postMs": 7.706100000010338,
+      "sqlCalls": 1,
+      "candidateRows": 62,
+      "openCount": 248
+     },
+     {
+      "totalMs": 12.628800000005867,
+      "preMs": 0.5837000000028638,
+      "dbMs": 6.386799999992945,
+      "betweenSqlMs": 0,
+      "postMs": 5.658300000010058,
+      "sqlCalls": 1,
+      "candidateRows": 62,
+      "openCount": 248
+     },
+     {
+      "totalMs": 12.129200000010314,
+      "preMs": 0.5716000000102213,
+      "dbMs": 5.988899999996647,
+      "betweenSqlMs": 0,
+      "postMs": 5.568700000003446,
+      "sqlCalls": 1,
+      "candidateRows": 62,
+      "openCount": 248
+     },
+     {
+      "totalMs": 13.4716000000044,
+      "preMs": 0.819999999992433,
+      "dbMs": 6.265300000013667,
+      "betweenSqlMs": 0,
+      "postMs": 6.3862999999983,
+      "sqlCalls": 1,
+      "candidateRows": 62,
+      "openCount": 248
+     }
+    ],
+    "P3": [
+     {
+      "totalMs": 15.715700000000652,
+      "preMs": 0.6648000000132015,
+      "dbMs": 6.218699999997625,
+      "betweenSqlMs": 0,
+      "postMs": 8.832199999989825,
+      "sqlCalls": 1,
+      "candidateRows": 62,
+      "openCount": 248
+     },
+     {
+      "totalMs": 13.234800000005635,
+      "preMs": 0.6989000000030501,
+      "dbMs": 6.556599999996251,
+      "betweenSqlMs": 0,
+      "postMs": 5.979300000006333,
+      "sqlCalls": 1,
+      "candidateRows": 62,
+      "openCount": 248
+     },
+     {
+      "totalMs": 12.675300000002608,
+      "preMs": 0.5835999999981141,
+      "dbMs": 6.331600000004983,
+      "betweenSqlMs": 0,
+      "postMs": 5.760099999999511,
+      "sqlCalls": 1,
+      "candidateRows": 62,
+      "openCount": 248
+     },
+     {
+      "totalMs": 12.713899999987916,
+      "preMs": 0.6298999999999069,
+      "dbMs": 6.202799999999115,
+      "betweenSqlMs": 0,
+      "postMs": 5.881199999988894,
+      "sqlCalls": 1,
+      "candidateRows": 62,
+      "openCount": 248
+     },
+     {
+      "totalMs": 12.184399999998277,
+      "preMs": 0.6055000000051223,
+      "dbMs": 5.992199999993318,
+      "betweenSqlMs": 0,
+      "postMs": 5.586699999999837,
+      "sqlCalls": 1,
+      "candidateRows": 62,
+      "openCount": 248
+     },
+     {
+      "totalMs": 12.139899999994668,
+      "preMs": 0.5688999999983935,
+      "dbMs": 5.811799999995856,
+      "betweenSqlMs": 0,
+      "postMs": 5.759200000000419,
+      "sqlCalls": 1,
+      "candidateRows": 62,
+      "openCount": 248
+     },
+     {
+      "totalMs": 12.627299999992829,
+      "preMs": 0.6652000000030966,
+      "dbMs": 6.1863999999914085,
+      "betweenSqlMs": 0,
+      "postMs": 5.775699999998324,
+      "sqlCalls": 1,
+      "candidateRows": 62,
+      "openCount": 248
+     }
+    ],
+    "P4": [
+     {
+      "totalMs": 13.221999999994296,
+      "preMs": 0.7105000000010477,
+      "dbMs": 7.811199999996461,
+      "betweenSqlMs": 0,
+      "postMs": 4.700299999996787,
+      "sqlCalls": 1,
+      "candidateRows": 62,
+      "openCount": 248,
+      "decryptsBeforeDbEnd": 62
+     },
+     {
+      "totalMs": 13.088099999993574,
+      "preMs": 0.7259999999951106,
+      "dbMs": 7.470499999995809,
+      "betweenSqlMs": 0,
+      "postMs": 4.891600000002654,
+      "sqlCalls": 1,
+      "candidateRows": 62,
+      "openCount": 248,
+      "decryptsBeforeDbEnd": 62
+     },
+     {
+      "totalMs": 12.441500000000815,
+      "preMs": 0.629800000009709,
+      "dbMs": 7.301800000001094,
+      "betweenSqlMs": 0,
+      "postMs": 4.509899999990012,
+      "sqlCalls": 1,
+      "candidateRows": 62,
+      "openCount": 248,
+      "decryptsBeforeDbEnd": 62
+     },
+     {
+      "totalMs": 12.618100000006962,
+      "preMs": 0.5963000000047032,
+      "dbMs": 7.511700000002747,
+      "betweenSqlMs": 0,
+      "postMs": 4.510099999999511,
+      "sqlCalls": 1,
+      "candidateRows": 62,
+      "openCount": 248,
+      "decryptsBeforeDbEnd": 62
+     },
+     {
+      "totalMs": 11.978100000007544,
+      "preMs": 0.5810000000055879,
+      "dbMs": 7.038499999995111,
+      "betweenSqlMs": 0,
+      "postMs": 4.358600000006845,
+      "sqlCalls": 1,
+      "candidateRows": 62,
+      "openCount": 248,
+      "decryptsBeforeDbEnd": 62
+     },
+     {
+      "totalMs": 11.837200000009034,
+      "preMs": 0.5991999999969266,
+      "dbMs": 6.938699999998789,
+      "betweenSqlMs": 0,
+      "postMs": 4.299300000013318,
+      "sqlCalls": 1,
+      "candidateRows": 62,
+      "openCount": 248,
+      "decryptsBeforeDbEnd": 62
+     },
+     {
+      "totalMs": 12.526400000002468,
+      "preMs": 0.6831000000092899,
+      "dbMs": 7.328699999998207,
+      "betweenSqlMs": 0,
+      "postMs": 4.514599999994971,
+      "sqlCalls": 1,
+      "candidateRows": 62,
+      "openCount": 248,
+      "decryptsBeforeDbEnd": 62
+     }
+    ]
+   }
+  },
+  {
+   "case": "and6",
+   "condition": "(name contains \"민서\" AND phone contains \"-5\" AND address contains \"서울\" AND memo contains \"서비스\" AND email contains \"test\" AND company = \"서울서비스 담당\")",
+   "environment": "10만 단독",
+   "mode": "count",
+   "matches": 624,
+   "plain": {
+    "totalMs": 124.795,
+    "preMs": 0.051,
+    "dbMs": 124.689,
+    "betweenSqlMs": 0,
+    "postMs": 0.062,
+    "sqlCalls": 1,
+    "candidateRows": 1,
+    "openCount": 0
+   },
+   "product": {
+    "totalMs": 138.279,
+    "preMs": 1.832,
+    "dbMs": 11.43,
+    "betweenSqlMs": 0,
+    "postMs": 125.029,
+    "sqlCalls": 1,
+    "candidateRows": 624,
+    "openCount": 3744
+   },
+   "P1": {
+    "totalMs": 131.447,
+    "preMs": 0.7,
+    "dbMs": 11.623,
+    "betweenSqlMs": 0,
+    "postMs": 118.797,
+    "sqlCalls": 1,
+    "candidateRows": 624,
+    "openCount": 3744
+   },
+   "P2": {
+    "totalMs": 100.803,
+    "preMs": 0.73,
+    "dbMs": 12.013,
+    "betweenSqlMs": 0,
+    "postMs": 87.85,
+    "sqlCalls": 1,
+    "candidateRows": 624,
+    "openCount": 3744
+   },
+   "P3": {
+    "totalMs": 101.222,
+    "preMs": 0.697,
+    "dbMs": 11.082,
+    "betweenSqlMs": 0,
+    "postMs": 89.344,
+    "sqlCalls": 1,
+    "candidateRows": 624,
+    "openCount": 3744
+   },
+   "P4": {
+    "totalMs": 96.924,
+    "preMs": 0.689,
+    "dbMs": 11.268,
+    "betweenSqlMs": 0,
+    "postMs": 85.206,
+    "sqlCalls": 1,
+    "candidateRows": 624,
+    "openCount": 3744,
+    "decryptsBeforeDbEnd": 64
+   },
+   "first": {
+    "plain": {
+     "totalMs": 129.75350000000617,
+     "preMs": 0.046300000001792796,
+     "dbMs": 129.58299999999872,
+     "betweenSqlMs": 0,
+     "postMs": 0.12420000000565778,
+     "sqlCalls": 1,
+     "candidateRows": 1,
+     "openCount": 0
+    },
+    "product": {
+     "totalMs": 217.0103999999992,
+     "preMs": 2.1687999999994645,
+     "dbMs": 20.43409999999858,
+     "betweenSqlMs": 0,
+     "postMs": 194.40750000000116,
+     "sqlCalls": 1,
+     "candidateRows": 624,
+     "openCount": 3744
+    },
+    "P1": {
+     "totalMs": 192.24890000000596,
+     "preMs": 0.6790000000037253,
+     "dbMs": 11.779699999999139,
+     "betweenSqlMs": 0,
+     "postMs": 179.7902000000031,
+     "sqlCalls": 1,
+     "candidateRows": 624,
+     "openCount": 3744
+    },
+    "P2": {
+     "totalMs": 99.57550000000629,
+     "preMs": 0.6836999999941327,
+     "dbMs": 11.789100000009057,
+     "betweenSqlMs": 0,
+     "postMs": 87.1027000000031,
+     "sqlCalls": 1,
+     "candidateRows": 624,
+     "openCount": 3744
+    },
+    "P3": {
+     "totalMs": 99.0621000000101,
+     "preMs": 0.7366000000038184,
+     "dbMs": 10.846000000005006,
+     "betweenSqlMs": 0,
+     "postMs": 87.47950000000128,
+     "sqlCalls": 1,
+     "candidateRows": 624,
+     "openCount": 3744
+    },
+    "P4": {
+     "totalMs": 94.27380000000994,
+     "preMs": 0.6984000000084052,
+     "dbMs": 11.214399999997113,
+     "betweenSqlMs": 0,
+     "postMs": 82.36100000000442,
+     "sqlCalls": 1,
+     "candidateRows": 624,
+     "openCount": 3744,
+     "decryptsBeforeDbEnd": 64
+    }
+   },
+   "runs": {
+    "plain": [
+     {
+      "totalMs": 124.97999999999593,
+      "preMs": 0.0522999999957392,
+      "dbMs": 124.86540000000969,
+      "betweenSqlMs": 0,
+      "postMs": 0.06229999999050051,
+      "sqlCalls": 1,
+      "candidateRows": 1,
+      "openCount": 0
+     },
+     {
+      "totalMs": 122.91909999999916,
+      "preMs": 0.04950000000826549,
+      "dbMs": 122.80319999999483,
+      "betweenSqlMs": 0,
+      "postMs": 0.06639999999606516,
+      "sqlCalls": 1,
+      "candidateRows": 1,
+      "openCount": 0
+     },
+     {
+      "totalMs": 126.76339999999618,
+      "preMs": 0.05000000000291038,
+      "dbMs": 126.65059999999357,
+      "betweenSqlMs": 0,
+      "postMs": 0.06279999999969732,
+      "sqlCalls": 1,
+      "candidateRows": 1,
+      "openCount": 0
+     },
+     {
+      "totalMs": 124.7954000000027,
+      "preMs": 0.049299999998766,
+      "dbMs": 124.68850000000384,
+      "betweenSqlMs": 0,
+      "postMs": 0.05760000000009313,
+      "sqlCalls": 1,
+      "candidateRows": 1,
+      "openCount": 0
+     },
+     {
+      "totalMs": 127.72379999999248,
+      "preMs": 0.06650000000081491,
+      "dbMs": 127.58469999999215,
+      "betweenSqlMs": 0,
+      "postMs": 0.07259999999951106,
+      "sqlCalls": 1,
+      "candidateRows": 1,
+      "openCount": 0
+     },
+     {
+      "totalMs": 120.4375,
+      "preMs": 0.05070000000705477,
+      "dbMs": 120.32970000000205,
+      "betweenSqlMs": 0,
+      "postMs": 0.05709999999089632,
+      "sqlCalls": 1,
+      "candidateRows": 1,
+      "openCount": 0
+     },
+     {
+      "totalMs": 123.04159999999683,
+      "preMs": 0.0575000000098953,
+      "dbMs": 122.92679999998654,
+      "betweenSqlMs": 0,
+      "postMs": 0.05730000000039581,
+      "sqlCalls": 1,
+      "candidateRows": 1,
+      "openCount": 0
+     }
+    ],
+    "product": [
+     {
+      "totalMs": 139.7892000000138,
+      "preMs": 1.8608000000094762,
+      "dbMs": 11.662100000001374,
+      "betweenSqlMs": 0,
+      "postMs": 126.26630000000296,
+      "sqlCalls": 1,
+      "candidateRows": 624,
+      "openCount": 3744
+     },
+     {
+      "totalMs": 138.27799999999115,
+      "preMs": 1.8315000000002328,
+      "dbMs": 11.41799999999057,
+      "betweenSqlMs": 0,
+      "postMs": 125.02850000000035,
+      "sqlCalls": 1,
+      "candidateRows": 624,
+      "openCount": 3744
+     },
+     {
+      "totalMs": 138.27889999999024,
+      "preMs": 2.0604000000021188,
+      "dbMs": 11.429999999993015,
+      "betweenSqlMs": 0,
+      "postMs": 124.78849999999511,
+      "sqlCalls": 1,
+      "candidateRows": 624,
+      "openCount": 3744
+     },
+     {
+      "totalMs": 137.6972999999998,
+      "preMs": 1.854299999991781,
+      "dbMs": 11.757400000002235,
+      "betweenSqlMs": 0,
+      "postMs": 124.0856000000058,
+      "sqlCalls": 1,
+      "candidateRows": 624,
+      "openCount": 3744
+     },
+     {
+      "totalMs": 134.43240000000515,
+      "preMs": 1.7669000000023516,
+      "dbMs": 11.292199999996228,
+      "betweenSqlMs": 0,
+      "postMs": 121.37330000000657,
+      "sqlCalls": 1,
+      "candidateRows": 624,
+      "openCount": 3744
+     },
+     {
+      "totalMs": 140.96829999999318,
+      "preMs": 1.8082999999896856,
+      "dbMs": 11.517600000006496,
+      "betweenSqlMs": 0,
+      "postMs": 127.642399999997,
+      "sqlCalls": 1,
+      "candidateRows": 624,
+      "openCount": 3744
+     },
+     {
+      "totalMs": 145.46989999999641,
+      "preMs": 1.7849999999889405,
+      "dbMs": 11.372300000002724,
+      "betweenSqlMs": 0,
+      "postMs": 132.31260000000475,
+      "sqlCalls": 1,
+      "candidateRows": 624,
+      "openCount": 3744
+     }
+    ],
+    "P1": [
+     {
+      "totalMs": 130.11549999999988,
+      "preMs": 0.6979999999894062,
+      "dbMs": 11.92949999999837,
+      "betweenSqlMs": 0,
+      "postMs": 117.48800000001211,
+      "sqlCalls": 1,
+      "candidateRows": 624,
+      "openCount": 3744
+     },
+     {
+      "totalMs": 124.97550000000047,
+      "preMs": 0.6411999999982072,
+      "dbMs": 11.350500000000466,
+      "betweenSqlMs": 0,
+      "postMs": 112.98380000000179,
+      "sqlCalls": 1,
+      "candidateRows": 624,
+      "openCount": 3744
+     },
+     {
+      "totalMs": 146.42789999999513,
+      "preMs": 0.6615999999921769,
+      "dbMs": 11.622600000002421,
+      "betweenSqlMs": 0,
+      "postMs": 134.14370000000054,
+      "sqlCalls": 1,
+      "candidateRows": 624,
+      "openCount": 3744
+     },
+     {
+      "totalMs": 124.10229999999865,
+      "preMs": 0.7706000000034692,
+      "dbMs": 11.610799999994924,
+      "betweenSqlMs": 0,
+      "postMs": 111.72090000000026,
+      "sqlCalls": 1,
+      "candidateRows": 624,
+      "openCount": 3744
+     },
+     {
+      "totalMs": 132.01260000000184,
+      "preMs": 0.6996999999973923,
+      "dbMs": 11.613400000002002,
+      "betweenSqlMs": 0,
+      "postMs": 119.69950000000244,
+      "sqlCalls": 1,
+      "candidateRows": 624,
+      "openCount": 3744
+     },
+     {
+      "totalMs": 131.44710000000487,
+      "preMs": 0.7855000000126893,
+      "dbMs": 11.864399999991292,
+      "betweenSqlMs": 0,
+      "postMs": 118.79720000000088,
+      "sqlCalls": 1,
+      "candidateRows": 624,
+      "openCount": 3744
+     },
+     {
+      "totalMs": 135.09640000000945,
+      "preMs": 0.979300000006333,
+      "dbMs": 12.361199999999371,
+      "betweenSqlMs": 0,
+      "postMs": 121.75590000000375,
+      "sqlCalls": 1,
+      "candidateRows": 624,
+      "openCount": 3744
+     }
+    ],
+    "P2": [
+     {
+      "totalMs": 104.53369999999995,
+      "preMs": 0.8527999999932945,
+      "dbMs": 12.315800000011222,
+      "betweenSqlMs": 0,
+      "postMs": 91.36509999999544,
+      "sqlCalls": 1,
+      "candidateRows": 624,
+      "openCount": 3744
+     },
+     {
+      "totalMs": 98.70620000000054,
+      "preMs": 0.6480000000010477,
+      "dbMs": 11.800499999997555,
+      "betweenSqlMs": 0,
+      "postMs": 86.25770000000193,
+      "sqlCalls": 1,
+      "candidateRows": 624,
+      "openCount": 3744
+     },
+     {
+      "totalMs": 100.80270000000019,
+      "preMs": 0.9689000000071246,
+      "dbMs": 11.983599999992293,
+      "betweenSqlMs": 0,
+      "postMs": 87.85020000000077,
+      "sqlCalls": 1,
+      "candidateRows": 624,
+      "openCount": 3744
+     },
+     {
+      "totalMs": 99.02180000000226,
+      "preMs": 0.7298000000009779,
+      "dbMs": 12.013200000001234,
+      "betweenSqlMs": 0,
+      "postMs": 86.27880000000005,
+      "sqlCalls": 1,
+      "candidateRows": 624,
+      "openCount": 3744
+     },
+     {
+      "totalMs": 104.09990000000107,
+      "preMs": 0.7174999999988358,
+      "dbMs": 12.648400000005495,
+      "betweenSqlMs": 0,
+      "postMs": 90.73399999999674,
+      "sqlCalls": 1,
+      "candidateRows": 624,
+      "openCount": 3744
+     },
+     {
+      "totalMs": 97.71560000001045,
+      "preMs": 0.8262000000104308,
+      "dbMs": 11.763800000000629,
+      "betweenSqlMs": 0,
+      "postMs": 85.1255999999994,
+      "sqlCalls": 1,
+      "candidateRows": 624,
+      "openCount": 3744
+     },
+     {
+      "totalMs": 102.78340000000026,
+      "preMs": 0.6828999999997905,
+      "dbMs": 12.239900000000489,
+      "betweenSqlMs": 0,
+      "postMs": 89.86059999999998,
+      "sqlCalls": 1,
+      "candidateRows": 624,
+      "openCount": 3744
+     }
+    ],
+    "P3": [
+     {
+      "totalMs": 97.45619999998598,
+      "preMs": 0.6931999999942491,
+      "dbMs": 10.632499999992433,
+      "betweenSqlMs": 0,
+      "postMs": 86.1304999999993,
+      "sqlCalls": 1,
+      "candidateRows": 624,
+      "openCount": 3744
+     },
+     {
+      "totalMs": 103.6414999999979,
+      "preMs": 0.7402999999903841,
+      "dbMs": 11.276000000012573,
+      "betweenSqlMs": 0,
+      "postMs": 91.62519999999495,
+      "sqlCalls": 1,
+      "candidateRows": 624,
+      "openCount": 3744
+     },
+     {
+      "totalMs": 103.71289999999863,
+      "preMs": 0.6947999999974854,
+      "dbMs": 11.235700000004726,
+      "betweenSqlMs": 0,
+      "postMs": 91.78239999999641,
+      "sqlCalls": 1,
+      "candidateRows": 624,
+      "openCount": 3744
+     },
+     {
+      "totalMs": 98.6869000000006,
+      "preMs": 0.6971000000048662,
+      "dbMs": 10.999599999995553,
+      "betweenSqlMs": 0,
+      "postMs": 86.99020000000019,
+      "sqlCalls": 1,
+      "candidateRows": 624,
+      "openCount": 3744
+     },
+     {
+      "totalMs": 102.65869999999995,
+      "preMs": 0.7004000000015367,
+      "dbMs": 11.30800000000454,
+      "betweenSqlMs": 0,
+      "postMs": 90.65029999999388,
+      "sqlCalls": 1,
+      "candidateRows": 624,
+      "openCount": 3744
+     },
+     {
+      "totalMs": 95.43020000000251,
+      "preMs": 0.6499000000039814,
+      "dbMs": 10.971099999995204,
+      "betweenSqlMs": 0,
+      "postMs": 83.80920000000333,
+      "sqlCalls": 1,
+      "candidateRows": 624,
+      "openCount": 3744
+     },
+     {
+      "totalMs": 101.222299999994,
+      "preMs": 0.796199999997043,
+      "dbMs": 11.08179999999993,
+      "betweenSqlMs": 0,
+      "postMs": 89.34429999999702,
+      "sqlCalls": 1,
+      "candidateRows": 624,
+      "openCount": 3744
+     }
+    ],
+    "P4": [
+     {
+      "totalMs": 100.02169999999751,
+      "preMs": 0.7252000000007683,
+      "dbMs": 11.724699999991572,
+      "betweenSqlMs": 0,
+      "postMs": 87.57180000000517,
+      "sqlCalls": 1,
+      "candidateRows": 624,
+      "openCount": 3744,
+      "decryptsBeforeDbEnd": 64
+     },
+     {
+      "totalMs": 100.73120000000927,
+      "preMs": 0.761899999997695,
+      "dbMs": 11.757600000011735,
+      "betweenSqlMs": 0,
+      "postMs": 88.21169999999984,
+      "sqlCalls": 1,
+      "candidateRows": 624,
+      "openCount": 3744,
+      "decryptsBeforeDbEnd": 64
+     },
+     {
+      "totalMs": 94.5460999999923,
+      "preMs": 0.6730999999999767,
+      "dbMs": 11.267800000001444,
+      "betweenSqlMs": 0,
+      "postMs": 82.60519999999087,
+      "sqlCalls": 1,
+      "candidateRows": 624,
+      "openCount": 3744,
+      "decryptsBeforeDbEnd": 64
+     },
+     {
+      "totalMs": 94.31160000000091,
+      "preMs": 0.6586999999999534,
+      "dbMs": 11.210900000005495,
+      "betweenSqlMs": 0,
+      "postMs": 82.44199999999546,
+      "sqlCalls": 1,
+      "candidateRows": 624,
+      "openCount": 3744,
+      "decryptsBeforeDbEnd": 64
+     },
+     {
+      "totalMs": 97.60700000000361,
+      "preMs": 0.6859000000113156,
+      "dbMs": 11.458099999988917,
+      "betweenSqlMs": 0,
+      "postMs": 85.46300000000338,
+      "sqlCalls": 1,
+      "candidateRows": 624,
+      "openCount": 3744,
+      "decryptsBeforeDbEnd": 64
+     },
+     {
+      "totalMs": 96.70290000000386,
+      "preMs": 0.6889999999984866,
+      "dbMs": 11.143299999996088,
+      "betweenSqlMs": 0,
+      "postMs": 84.87060000000929,
+      "sqlCalls": 1,
+      "candidateRows": 624,
+      "openCount": 3744,
+      "decryptsBeforeDbEnd": 64
+     },
+     {
+      "totalMs": 96.92449999999371,
+      "preMs": 0.6922000000049593,
+      "dbMs": 11.025899999993271,
+      "betweenSqlMs": 0,
+      "postMs": 85.20639999999548,
+      "sqlCalls": 1,
+      "candidateRows": 624,
+      "openCount": 3744,
+      "decryptsBeforeDbEnd": 64
+     }
+    ]
+   }
+  },
+  {
+   "case": "or2",
+   "condition": "(company = \"서울서비스 담당\" OR memo contains \"푸른달\")",
+   "environment": "10만 단독",
+   "mode": "count",
+   "matches": 28400,
+   "plain": {
+    "totalMs": 73.23,
+    "preMs": 0.057,
+    "dbMs": 73.119,
+    "betweenSqlMs": 0,
+    "postMs": 0.057,
+    "sqlCalls": 1,
+    "candidateRows": 1,
+    "openCount": 0
+   },
+   "product": {
+    "totalMs": 1964.791,
+    "preMs": 1.166,
+    "dbMs": 113.691,
+    "betweenSqlMs": 0,
+    "postMs": 1856.193,
+    "sqlCalls": 1,
+    "candidateRows": 28400,
+    "openCount": 56800
+   },
+   "P1": {
+    "totalMs": 1062.05,
+    "preMs": 0.48,
+    "dbMs": 132.015,
+    "betweenSqlMs": 0,
+    "postMs": 922.62,
+    "sqlCalls": 1,
+    "candidateRows": 28400,
+    "openCount": 28400
+   },
+   "P2": {
+    "totalMs": 855.66,
+    "preMs": 0.465,
+    "dbMs": 140.898,
+    "betweenSqlMs": 0,
+    "postMs": 715.977,
+    "sqlCalls": 1,
+    "candidateRows": 28400,
+    "openCount": 28400
+   },
+   "P3": {
+    "totalMs": 806.642,
+    "preMs": 0.364,
+    "dbMs": 98.296,
+    "betweenSqlMs": 0,
+    "postMs": 710.662,
+    "sqlCalls": 1,
+    "candidateRows": 28400,
+    "openCount": 28400
+   },
+   "P4": {
+    "totalMs": 808.799,
+    "preMs": 0.499,
+    "dbMs": 132.044,
+    "betweenSqlMs": 0,
+    "postMs": 679.832,
+    "sqlCalls": 1,
+    "candidateRows": 28400,
+    "openCount": 28400,
+    "decryptsBeforeDbEnd": 64
+   },
+   "first": {
+    "plain": {
+     "totalMs": 83.98010000000068,
+     "preMs": 0.04809999999997672,
+     "dbMs": 83.87240000000747,
+     "betweenSqlMs": 0,
+     "postMs": 0.05959999999322463,
+     "sqlCalls": 1,
+     "candidateRows": 1,
+     "openCount": 0
+    },
+    "product": {
+     "totalMs": 1979.7908000000025,
+     "preMs": 1.2256000000052154,
+     "dbMs": 122.4207999999926,
+     "betweenSqlMs": 0,
+     "postMs": 1856.1444000000047,
+     "sqlCalls": 1,
+     "candidateRows": 28400,
+     "openCount": 56800
+    },
+    "P1": {
+     "totalMs": 1076.5964999999997,
+     "preMs": 0.5864999999903375,
+     "dbMs": 143.2997000000032,
+     "betweenSqlMs": 0,
+     "postMs": 932.7103000000061,
+     "sqlCalls": 1,
+     "candidateRows": 28400,
+     "openCount": 28400
+    },
+    "P2": {
+     "totalMs": 824.8530000000028,
+     "preMs": 0.7293999999965308,
+     "dbMs": 138.29800000000978,
+     "betweenSqlMs": 0,
+     "postMs": 685.8255999999965,
+     "sqlCalls": 1,
+     "candidateRows": 28400,
+     "openCount": 28400
+    },
+    "P3": {
+     "totalMs": 826.7978000000003,
+     "preMs": 0.35050000000046566,
+     "dbMs": 103.70590000000084,
+     "betweenSqlMs": 0,
+     "postMs": 722.741399999999,
+     "sqlCalls": 1,
+     "candidateRows": 28400,
+     "openCount": 28400
+    },
+    "P4": {
+     "totalMs": 810.8698000000004,
+     "preMs": 0.40180000000691507,
+     "dbMs": 132.5213999999978,
+     "betweenSqlMs": 0,
+     "postMs": 677.9465999999957,
+     "sqlCalls": 1,
+     "candidateRows": 28400,
+     "openCount": 28400,
+     "decryptsBeforeDbEnd": 64
+    }
+   },
+   "runs": {
+    "plain": [
+     {
+      "totalMs": 73.22989999999118,
+      "preMs": 0.0522999999957392,
+      "dbMs": 73.1186999999918,
+      "betweenSqlMs": 0,
+      "postMs": 0.05890000000363216,
+      "sqlCalls": 1,
+      "candidateRows": 1,
+      "openCount": 0
+     },
+     {
+      "totalMs": 73.22550000000047,
+      "preMs": 0.052000000010593794,
+      "dbMs": 73.11249999998836,
+      "betweenSqlMs": 0,
+      "postMs": 0.0610000000015134,
+      "sqlCalls": 1,
+      "candidateRows": 1,
+      "openCount": 0
+     },
+     {
+      "totalMs": 72.18359999998938,
+      "preMs": 0.05739999999059364,
+      "dbMs": 72.06920000001264,
+      "betweenSqlMs": 0,
+      "postMs": 0.05699999998614658,
+      "sqlCalls": 1,
+      "candidateRows": 1,
+      "openCount": 0
+     },
+     {
+      "totalMs": 81.06339999999909,
+      "preMs": 0.054199999998672865,
+      "dbMs": 80.9542000000074,
+      "betweenSqlMs": 0,
+      "postMs": 0.05499999999301508,
+      "sqlCalls": 1,
+      "candidateRows": 1,
+      "openCount": 0
+     },
+     {
+      "totalMs": 71.20479999999225,
+      "preMs": 0.13360000000102445,
+      "dbMs": 71.02059999998892,
+      "betweenSqlMs": 0,
+      "postMs": 0.05060000000230502,
+      "sqlCalls": 1,
+      "candidateRows": 1,
+      "openCount": 0
+     },
+     {
+      "totalMs": 73.98739999999816,
+      "preMs": 0.06109999999171123,
+      "dbMs": 73.80980000000272,
+      "betweenSqlMs": 0,
+      "postMs": 0.11650000000372529,
+      "sqlCalls": 1,
+      "candidateRows": 1,
+      "openCount": 0
+     },
+     {
+      "totalMs": 85.58410000000731,
+      "preMs": 0.05830000000423752,
+      "dbMs": 85.46970000000147,
+      "betweenSqlMs": 0,
+      "postMs": 0.05610000000160653,
+      "sqlCalls": 1,
+      "candidateRows": 1,
+      "openCount": 0
+     }
+    ],
+    "product": [
+     {
+      "totalMs": 1961.7332000000024,
+      "preMs": 1.3402999999962049,
+      "dbMs": 117.58239999999932,
+      "betweenSqlMs": 0,
+      "postMs": 1842.8105000000069,
+      "sqlCalls": 1,
+      "candidateRows": 28400,
+      "openCount": 56800
+     },
+     {
+      "totalMs": 1983.6563999999926,
+      "preMs": 1.2458999999944353,
+      "dbMs": 113.33630000000994,
+      "betweenSqlMs": 0,
+      "postMs": 1869.0741999999882,
+      "sqlCalls": 1,
+      "candidateRows": 28400,
+      "openCount": 56800
+     },
+     {
+      "totalMs": 1964.7914000000019,
+      "preMs": 1.124100000000908,
+      "dbMs": 107.47430000000168,
+      "betweenSqlMs": 0,
+      "postMs": 1856.1929999999993,
+      "sqlCalls": 1,
+      "candidateRows": 28400,
+      "openCount": 56800
+     },
+     {
+      "totalMs": 1976.9550000000017,
+      "preMs": 1.1147999999957392,
+      "dbMs": 114.49370000000636,
+      "betweenSqlMs": 0,
+      "postMs": 1861.3464999999997,
+      "sqlCalls": 1,
+      "candidateRows": 28400,
+      "openCount": 56800
+     },
+     {
+      "totalMs": 1987.2817000000068,
+      "preMs": 1.1361000000033528,
+      "dbMs": 113.96959999999672,
+      "betweenSqlMs": 0,
+      "postMs": 1872.1760000000068,
+      "sqlCalls": 1,
+      "candidateRows": 28400,
+      "openCount": 56800
+     },
+     {
+      "totalMs": 1943.5540000000037,
+      "preMs": 1.1846000000077765,
+      "dbMs": 113.69119999998657,
+      "betweenSqlMs": 0,
+      "postMs": 1828.6782000000094,
+      "sqlCalls": 1,
+      "candidateRows": 28400,
+      "openCount": 56800
+     },
+     {
+      "totalMs": 1962.587400000004,
+      "preMs": 1.1658000000024913,
+      "dbMs": 113.6472000000067,
+      "betweenSqlMs": 0,
+      "postMs": 1847.7743999999948,
+      "sqlCalls": 1,
+      "candidateRows": 28400,
+      "openCount": 56800
+     }
+    ],
+    "P1": [
+     {
+      "totalMs": 1063.6071999999986,
+      "preMs": 0.4385000000038417,
+      "dbMs": 132.01549999999406,
+      "betweenSqlMs": 0,
+      "postMs": 931.1532000000007,
+      "sqlCalls": 1,
+      "candidateRows": 28400,
+      "openCount": 28400
+     },
+     {
+      "totalMs": 1062.0498999999982,
+      "preMs": 0.5078999999968801,
+      "dbMs": 138.08239999999932,
+      "betweenSqlMs": 0,
+      "postMs": 923.459600000002,
+      "sqlCalls": 1,
+      "candidateRows": 28400,
+      "openCount": 28400
+     },
+     {
+      "totalMs": 1054.6206999999995,
+      "preMs": 3.150500000003376,
+      "dbMs": 131.4085999999952,
+      "betweenSqlMs": 0,
+      "postMs": 920.0616000000009,
+      "sqlCalls": 1,
+      "candidateRows": 28400,
+      "openCount": 28400
+     },
+     {
+      "totalMs": 1062.2458999999944,
+      "preMs": 0.47999999999592546,
+      "dbMs": 134.74049999999988,
+      "betweenSqlMs": 0,
+      "postMs": 927.0253999999986,
+      "sqlCalls": 1,
+      "candidateRows": 28400,
+      "openCount": 28400
+     },
+     {
+      "totalMs": 1053.696100000001,
+      "preMs": 0.5009999999892898,
+      "dbMs": 130.57560000001104,
+      "betweenSqlMs": 0,
+      "postMs": 922.6195000000007,
+      "sqlCalls": 1,
+      "candidateRows": 28400,
+      "openCount": 28400
+     },
+     {
+      "totalMs": 1024.7695000000094,
+      "preMs": 0.47770000000309665,
+      "dbMs": 129.67889999999898,
+      "betweenSqlMs": 0,
+      "postMs": 894.6129000000074,
+      "sqlCalls": 1,
+      "candidateRows": 28400,
+      "openCount": 28400
+     },
+     {
+      "totalMs": 1063.5997999999963,
+      "preMs": 0.4593000000168104,
+      "dbMs": 145.24749999999767,
+      "betweenSqlMs": 0,
+      "postMs": 917.8929999999818,
+      "sqlCalls": 1,
+      "candidateRows": 28400,
+      "openCount": 28400
+     }
+    ],
+    "P2": [
+     {
+      "totalMs": 855.659599999999,
+      "preMs": 0.4651999999914551,
+      "dbMs": 136.23420000000624,
+      "betweenSqlMs": 0,
+      "postMs": 718.9602000000014,
+      "sqlCalls": 1,
+      "candidateRows": 28400,
+      "openCount": 28400
+     },
+     {
+      "totalMs": 854.3157999999967,
+      "preMs": 0.3142999999981839,
+      "dbMs": 128.05520000000251,
+      "betweenSqlMs": 0,
+      "postMs": 725.946299999996,
+      "sqlCalls": 1,
+      "candidateRows": 28400,
+      "openCount": 28400
+     },
+     {
+      "totalMs": 845.7633999999962,
+      "preMs": 0.34149999999499414,
+      "dbMs": 143.88490000000456,
+      "betweenSqlMs": 0,
+      "postMs": 701.5369999999966,
+      "sqlCalls": 1,
+      "candidateRows": 28400,
+      "openCount": 28400
+     },
+     {
+      "totalMs": 822.8090999999986,
+      "preMs": 0.4915000000037253,
+      "dbMs": 132.2344000000012,
+      "betweenSqlMs": 0,
+      "postMs": 690.0831999999937,
+      "sqlCalls": 1,
+      "candidateRows": 28400,
+      "openCount": 28400
+     },
+     {
+      "totalMs": 859.5911000000051,
+      "preMs": 0.31660000000556465,
+      "dbMs": 140.89830000000075,
+      "betweenSqlMs": 0,
+      "postMs": 718.3761999999988,
+      "sqlCalls": 1,
+      "candidateRows": 28400,
+      "openCount": 28400
+     },
+     {
+      "totalMs": 858.6119000000035,
+      "preMs": 0.48919999999634456,
+      "dbMs": 142.14590000000317,
+      "betweenSqlMs": 0,
+      "postMs": 715.976800000004,
+      "sqlCalls": 1,
+      "candidateRows": 28400,
+      "openCount": 28400
+     },
+     {
+      "totalMs": 859.9425999999949,
+      "preMs": 3.1303999999945518,
+      "dbMs": 141.67879999999423,
+      "betweenSqlMs": 0,
+      "postMs": 715.1334000000061,
+      "sqlCalls": 1,
+      "candidateRows": 28400,
+      "openCount": 28400
+     }
+    ],
+    "P3": [
+     {
+      "totalMs": 806.3408999999956,
+      "preMs": 0.3328999999939697,
+      "dbMs": 95.346000000005,
+      "betweenSqlMs": 0,
+      "postMs": 710.6619999999966,
+      "sqlCalls": 1,
+      "candidateRows": 28400,
+      "openCount": 28400
+     },
+     {
+      "totalMs": 806.6416999999929,
+      "preMs": 0.3392000000021653,
+      "dbMs": 93.73349999998754,
+      "betweenSqlMs": 0,
+      "postMs": 712.5690000000031,
+      "sqlCalls": 1,
+      "candidateRows": 28400,
+      "openCount": 28400
+     },
+     {
+      "totalMs": 796.5969999999943,
+      "preMs": 0.4478999999992084,
+      "dbMs": 92.829899999997,
+      "betweenSqlMs": 0,
+      "postMs": 703.3191999999981,
+      "sqlCalls": 1,
+      "candidateRows": 28400,
+      "openCount": 28400
+     },
+     {
+      "totalMs": 835.1844000000128,
+      "preMs": 0.36360000001150183,
+      "dbMs": 128.24709999999322,
+      "betweenSqlMs": 0,
+      "postMs": 706.5737000000081,
+      "sqlCalls": 1,
+      "candidateRows": 28400,
+      "openCount": 28400
+     },
+     {
+      "totalMs": 787.0172999999922,
+      "preMs": 0.48249999999825377,
+      "dbMs": 98.29610000000685,
+      "betweenSqlMs": 0,
+      "postMs": 688.2386999999871,
+      "sqlCalls": 1,
+      "candidateRows": 28400,
+      "openCount": 28400
+     },
+     {
+      "totalMs": 814.7687000000005,
+      "preMs": 0.43510000000242144,
+      "dbMs": 100.32219999999506,
+      "betweenSqlMs": 0,
+      "postMs": 714.011400000003,
+      "sqlCalls": 1,
+      "candidateRows": 28400,
+      "openCount": 28400
+     },
+     {
+      "totalMs": 828.2755000000034,
+      "preMs": 0.3470999999990454,
+      "dbMs": 100.12060000000929,
+      "betweenSqlMs": 0,
+      "postMs": 727.807799999995,
+      "sqlCalls": 1,
+      "candidateRows": 28400,
+      "openCount": 28400
+     }
+    ],
+    "P4": [
+     {
+      "totalMs": 808.7992000000086,
+      "preMs": 0.540900000007241,
+      "dbMs": 125.79690000000119,
+      "betweenSqlMs": 0,
+      "postMs": 682.4614000000001,
+      "sqlCalls": 1,
+      "candidateRows": 28400,
+      "openCount": 28400,
+      "decryptsBeforeDbEnd": 64
+     },
+     {
+      "totalMs": 814.7434000000067,
+      "preMs": 0.5651999999972759,
+      "dbMs": 134.34640000000945,
+      "betweenSqlMs": 0,
+      "postMs": 679.8317999999999,
+      "sqlCalls": 1,
+      "candidateRows": 28400,
+      "openCount": 28400,
+      "decryptsBeforeDbEnd": 64
+     },
+     {
+      "totalMs": 798.4694000000018,
+      "preMs": 0.5274999999965075,
+      "dbMs": 125.63539999999921,
+      "betweenSqlMs": 0,
+      "postMs": 672.306500000006,
+      "sqlCalls": 1,
+      "candidateRows": 28400,
+      "openCount": 28400,
+      "decryptsBeforeDbEnd": 64
+     },
+     {
+      "totalMs": 801.9339000000036,
+      "preMs": 0.36560000000463333,
+      "dbMs": 126.5104999999894,
+      "betweenSqlMs": 0,
+      "postMs": 675.0578000000096,
+      "sqlCalls": 1,
+      "candidateRows": 28400,
+      "openCount": 28400,
+      "decryptsBeforeDbEnd": 192
+     },
+     {
+      "totalMs": 858.9055999999982,
+      "preMs": 0.35619999999471474,
+      "dbMs": 146.46270000000368,
+      "betweenSqlMs": 0,
+      "postMs": 712.0866999999998,
+      "sqlCalls": 1,
+      "candidateRows": 28400,
+      "openCount": 28400,
+      "decryptsBeforeDbEnd": 445
+     },
+     {
+      "totalMs": 832.5993000000017,
+      "preMs": 0.34699999999429565,
+      "dbMs": 132.04379999999946,
+      "betweenSqlMs": 0,
+      "postMs": 700.2085000000079,
+      "sqlCalls": 1,
+      "candidateRows": 28400,
+      "openCount": 28400,
+      "decryptsBeforeDbEnd": 382
+     },
+     {
+      "totalMs": 808.563599999994,
+      "preMs": 0.498699999996461,
+      "dbMs": 139.76450000000477,
+      "betweenSqlMs": 0,
+      "postMs": 668.3003999999928,
+      "sqlCalls": 1,
+      "candidateRows": 28400,
+      "openCount": 28400,
+      "decryptsBeforeDbEnd": 64
+     }
+    ]
+   }
+  },
+  {
+   "case": "or3",
+   "condition": "(phone = \"42-5748-1542\" OR phone = \"21-7100-5875\" OR name contains \"pshxt\")",
+   "environment": "10만 단독",
+   "mode": "count",
+   "matches": 2,
+   "plain": {
+    "totalMs": 0.459,
+    "preMs": 0.025,
+    "dbMs": 0.412,
+    "betweenSqlMs": 0,
+    "postMs": 0.014,
+    "sqlCalls": 1,
+    "candidateRows": 1,
+    "openCount": 0
+   },
+   "product": {
+    "totalMs": 2.276,
+    "preMs": 1.185,
+    "dbMs": 0.808,
+    "betweenSqlMs": 0,
+    "postMs": 0.378,
+    "sqlCalls": 1,
+    "candidateRows": 3,
+    "openCount": 6
+   },
+   "P1": {
+    "totalMs": 1.279,
+    "preMs": 0.445,
+    "dbMs": 0.679,
+    "betweenSqlMs": 0,
+    "postMs": 0.163,
+    "sqlCalls": 1,
+    "candidateRows": 3,
+    "openCount": 3
+   },
+   "P2": {
+    "totalMs": 1.166,
+    "preMs": 0.413,
+    "dbMs": 0.615,
+    "betweenSqlMs": 0,
+    "postMs": 0.128,
+    "sqlCalls": 1,
+    "candidateRows": 3,
+    "openCount": 3
+   },
+   "P3": {
+    "totalMs": 1.263,
+    "preMs": 0.453,
+    "dbMs": 0.672,
+    "betweenSqlMs": 0,
+    "postMs": 0.14,
+    "sqlCalls": 1,
+    "candidateRows": 3,
+    "openCount": 3
+   },
+   "P4": {
+    "totalMs": 1.181,
+    "preMs": 0.419,
+    "dbMs": 0.694,
+    "betweenSqlMs": 0,
+    "postMs": 0.082,
+    "sqlCalls": 1,
+    "candidateRows": 3,
+    "openCount": 3,
+    "decryptsBeforeDbEnd": 1
+   },
+   "first": {
+    "plain": {
+     "totalMs": 0.5298999999940861,
+     "preMs": 0.02670000001671724,
+     "dbMs": 0.4842999999818858,
+     "betweenSqlMs": 0,
+     "postMs": 0.018899999995483086,
+     "sqlCalls": 1,
+     "candidateRows": 1,
+     "openCount": 0
+    },
+    "product": {
+     "totalMs": 2.7771999999822583,
+     "preMs": 1.4822999999742024,
+     "dbMs": 0.7688000000198372,
+     "betweenSqlMs": 0,
+     "postMs": 0.5260999999882188,
+     "sqlCalls": 1,
+     "candidateRows": 3,
+     "openCount": 6
+    },
+    "P1": {
+     "totalMs": 1.3422000000136904,
+     "preMs": 0.4269999999960419,
+     "dbMs": 0.7318000000086613,
+     "betweenSqlMs": 0,
+     "postMs": 0.18340000000898726,
+     "sqlCalls": 1,
+     "candidateRows": 3,
+     "openCount": 3
+    },
+    "P2": {
+     "totalMs": 1.6884999999892898,
+     "preMs": 0.4085999999952037,
+     "dbMs": 1.0376999999862164,
+     "betweenSqlMs": 0,
+     "postMs": 0.24220000000786968,
+     "sqlCalls": 1,
+     "candidateRows": 3,
+     "openCount": 3
+    },
+    "P3": {
+     "totalMs": 1.302899999980582,
+     "preMs": 0.47449999998207204,
+     "dbMs": 0.6995000000169966,
+     "betweenSqlMs": 0,
+     "postMs": 0.12889999998151325,
+     "sqlCalls": 1,
+     "candidateRows": 3,
+     "openCount": 3
+    },
+    "P4": {
+     "totalMs": 1.4913999999989755,
+     "preMs": 0.42770000000018626,
+     "dbMs": 0.9428999999945518,
+     "betweenSqlMs": 0,
+     "postMs": 0.12080000000423752,
+     "sqlCalls": 1,
+     "candidateRows": 3,
+     "openCount": 3,
+     "decryptsBeforeDbEnd": 1
+    }
+   },
+   "runs": {
+    "plain": [
+     {
+      "totalMs": 0.4896000000007916,
+      "preMs": 0.02590000000782311,
+      "dbMs": 0.45029999999678694,
+      "betweenSqlMs": 0,
+      "postMs": 0.013399999996181577,
+      "sqlCalls": 1,
+      "candidateRows": 1,
+      "openCount": 0
+     },
+     {
+      "totalMs": 0.4354999999923166,
+      "preMs": 0.024800000013783574,
+      "dbMs": 0.3974999999918509,
+      "betweenSqlMs": 0,
+      "postMs": 0.013199999986682087,
+      "sqlCalls": 1,
+      "candidateRows": 1,
+      "openCount": 0
+     },
+     {
+      "totalMs": 0.5593000000226311,
+      "preMs": 0.021999999997206032,
+      "dbMs": 0.4898000000102911,
+      "betweenSqlMs": 0,
+      "postMs": 0.04750000001513399,
+      "sqlCalls": 1,
+      "candidateRows": 1,
+      "openCount": 0
+     },
+     {
+      "totalMs": 0.559399999998277,
+      "preMs": 0.0443000000086613,
+      "dbMs": 0.4979999999923166,
+      "betweenSqlMs": 0,
+      "postMs": 0.017099999997299165,
+      "sqlCalls": 1,
+      "candidateRows": 1,
+      "openCount": 0
+     },
+     {
+      "totalMs": 0.4382000000041444,
+      "preMs": 0.0239000000001397,
+      "dbMs": 0.4005999999935739,
+      "betweenSqlMs": 0,
+      "postMs": 0.013700000010430813,
+      "sqlCalls": 1,
+      "candidateRows": 1,
+      "openCount": 0
+     },
+     {
+      "totalMs": 0.45850000000791624,
+      "preMs": 0.03250000000116415,
+      "dbMs": 0.41200000001117587,
+      "betweenSqlMs": 0,
+      "postMs": 0.013999999995576218,
+      "sqlCalls": 1,
+      "candidateRows": 1,
+      "openCount": 0
+     },
+     {
+      "totalMs": 0.4242999999842141,
+      "preMs": 0.024399999994784594,
+      "dbMs": 0.38709999999264255,
+      "betweenSqlMs": 0,
+      "postMs": 0.012799999996786937,
+      "sqlCalls": 1,
+      "candidateRows": 1,
+      "openCount": 0
+     }
+    ],
+    "product": [
+     {
+      "totalMs": 2.628599999996368,
+      "preMs": 1.1485000000102445,
+      "dbMs": 0.9755000000004657,
+      "betweenSqlMs": 0,
+      "postMs": 0.5045999999856576,
+      "sqlCalls": 1,
+      "candidateRows": 3,
+      "openCount": 6
+     },
+     {
+      "totalMs": 2.407100000011269,
+      "preMs": 1.1050000000104774,
+      "dbMs": 0.8727000000071712,
+      "betweenSqlMs": 0,
+      "postMs": 0.42939999999362044,
+      "sqlCalls": 1,
+      "candidateRows": 3,
+      "openCount": 6
+     },
+     {
+      "totalMs": 2.2599000000045635,
+      "preMs": 1.2014999999955762,
+      "dbMs": 0.6800999999977648,
+      "betweenSqlMs": 0,
+      "postMs": 0.37830000001122244,
+      "sqlCalls": 1,
+      "candidateRows": 3,
+      "openCount": 6
+     },
+     {
+      "totalMs": 2.715299999981653,
+      "preMs": 1.4149000000033993,
+      "dbMs": 0.9161999999778345,
+      "betweenSqlMs": 0,
+      "postMs": 0.3842000000004191,
+      "sqlCalls": 1,
+      "candidateRows": 3,
+      "openCount": 6
+     },
+     {
+      "totalMs": 2.212500000023283,
+      "preMs": 1.1850000000267755,
+      "dbMs": 0.7050999999919441,
+      "betweenSqlMs": 0,
+      "postMs": 0.3224000000045635,
+      "sqlCalls": 1,
+      "candidateRows": 3,
+      "openCount": 6
+     },
+     {
+      "totalMs": 2.2762999999977183,
+      "preMs": 1.25789999999688,
+      "dbMs": 0.6806999999971595,
+      "betweenSqlMs": 0,
+      "postMs": 0.3377000000036787,
+      "sqlCalls": 1,
+      "candidateRows": 3,
+      "openCount": 6
+     },
+     {
+      "totalMs": 2.247399999992922,
+      "preMs": 1.1189000000013039,
+      "dbMs": 0.8083999999798834,
+      "betweenSqlMs": 0,
+      "postMs": 0.32010000001173466,
+      "sqlCalls": 1,
+      "candidateRows": 3,
+      "openCount": 6
+     }
+    ],
+    "P1": [
+     {
+      "totalMs": 1.5775999999896158,
+      "preMs": 0.4576999999990221,
+      "dbMs": 0.8438000000023749,
+      "betweenSqlMs": 0,
+      "postMs": 0.27609999998821877,
+      "sqlCalls": 1,
+      "candidateRows": 3,
+      "openCount": 3
+     },
+     {
+      "totalMs": 1.360499999980675,
+      "preMs": 0.45009999998728745,
+      "dbMs": 0.7195000000065193,
+      "betweenSqlMs": 0,
+      "postMs": 0.19089999998686835,
+      "sqlCalls": 1,
+      "candidateRows": 3,
+      "openCount": 3
+     },
+     {
+      "totalMs": 1.2397999999811873,
+      "preMs": 0.4175999999861233,
+      "dbMs": 0.6590000000142027,
+      "betweenSqlMs": 0,
+      "postMs": 0.16319999998086132,
+      "sqlCalls": 1,
+      "candidateRows": 3,
+      "openCount": 3
+     },
+     {
+      "totalMs": 1.2791999999899417,
+      "preMs": 0.4452999999921303,
+      "dbMs": 0.6787999999942258,
+      "betweenSqlMs": 0,
+      "postMs": 0.1551000000035856,
+      "sqlCalls": 1,
+      "candidateRows": 3,
+      "openCount": 3
+     },
+     {
+      "totalMs": 1.1724000000103842,
+      "preMs": 0.4046000000089407,
+      "dbMs": 0.6179000000120141,
+      "betweenSqlMs": 0,
+      "postMs": 0.1498999999894295,
+      "sqlCalls": 1,
+      "candidateRows": 3,
+      "openCount": 3
+     },
+     {
+      "totalMs": 1.335800000000745,
+      "preMs": 0.40750000000116415,
+      "dbMs": 0.7076999999990221,
+      "betweenSqlMs": 0,
+      "postMs": 0.2206000000005588,
+      "sqlCalls": 1,
+      "candidateRows": 3,
+      "openCount": 3
+     },
+     {
+      "totalMs": 1.2484999999869615,
+      "preMs": 0.4927999999781605,
+      "dbMs": 0.6052000000199769,
+      "betweenSqlMs": 0,
+      "postMs": 0.15049999998882413,
+      "sqlCalls": 1,
+      "candidateRows": 3,
+      "openCount": 3
+     }
+    ],
+    "P2": [
+     {
+      "totalMs": 1.3299000000115484,
+      "preMs": 0.40740000002551824,
+      "dbMs": 0.7202999999863096,
+      "betweenSqlMs": 0,
+      "postMs": 0.2021999999997206,
+      "sqlCalls": 1,
+      "candidateRows": 3,
+      "openCount": 3
+     },
+     {
+      "totalMs": 1.120599999994738,
+      "preMs": 0.4131000000052154,
+      "dbMs": 0.5899999999965075,
+      "betweenSqlMs": 0,
+      "postMs": 0.11749999999301508,
+      "sqlCalls": 1,
+      "candidateRows": 3,
+      "openCount": 3
+     },
+     {
+      "totalMs": 1.166399999987334,
+      "preMs": 0.42770000000018626,
+      "dbMs": 0.6087999999872409,
+      "betweenSqlMs": 0,
+      "postMs": 0.12989999999990687,
+      "sqlCalls": 1,
+      "candidateRows": 3,
+      "openCount": 3
+     },
+     {
+      "totalMs": 1.368400000006659,
+      "preMs": 0.3977000000013504,
+      "dbMs": 0.8427000000083353,
+      "betweenSqlMs": 0,
+      "postMs": 0.1279999999969732,
+      "sqlCalls": 1,
+      "candidateRows": 3,
+      "openCount": 3
+     },
+     {
+      "totalMs": 1.0650000000023283,
+      "preMs": 0.3804999999993015,
+      "dbMs": 0.5709999999962747,
+      "betweenSqlMs": 0,
+      "postMs": 0.11350000000675209,
+      "sqlCalls": 1,
+      "candidateRows": 3,
+      "openCount": 3
+     },
+     {
+      "totalMs": 1.4402999999874737,
+      "preMs": 0.44339999998919666,
+      "dbMs": 0.8008000000263564,
+      "betweenSqlMs": 0,
+      "postMs": 0.19609999997192062,
+      "sqlCalls": 1,
+      "candidateRows": 3,
+      "openCount": 3
+     },
+     {
+      "totalMs": 1.1559000000124797,
+      "preMs": 0.4195999999938067,
+      "dbMs": 0.6154000000096858,
+      "betweenSqlMs": 0,
+      "postMs": 0.12090000000898726,
+      "sqlCalls": 1,
+      "candidateRows": 3,
+      "openCount": 3
+     }
+    ],
+    "P3": [
+     {
+      "totalMs": 1.5209999999788124,
+      "preMs": 0.5022999999928288,
+      "dbMs": 0.8524000000033993,
+      "betweenSqlMs": 0,
+      "postMs": 0.16629999998258427,
+      "sqlCalls": 1,
+      "candidateRows": 3,
+      "openCount": 3
+     },
+     {
+      "totalMs": 1.6640000000188593,
+      "preMs": 0.4559000000008382,
+      "dbMs": 0.9956000000238419,
+      "betweenSqlMs": 0,
+      "postMs": 0.21249999999417923,
+      "sqlCalls": 1,
+      "candidateRows": 3,
+      "openCount": 3
+     },
+     {
+      "totalMs": 1.6001999999862164,
+      "preMs": 0.42660000000614673,
+      "dbMs": 0.948499999998603,
+      "betweenSqlMs": 0,
+      "postMs": 0.22509999998146668,
+      "sqlCalls": 1,
+      "candidateRows": 3,
+      "openCount": 3
+     },
+     {
+      "totalMs": 1.2633000000205357,
+      "preMs": 0.4512000000104308,
+      "dbMs": 0.672099999996135,
+      "betweenSqlMs": 0,
+      "postMs": 0.14000000001396984,
+      "sqlCalls": 1,
+      "candidateRows": 3,
+      "openCount": 3
+     },
+     {
+      "totalMs": 1.2246000000159256,
+      "preMs": 0.4758000000147149,
+      "dbMs": 0.623699999996461,
+      "betweenSqlMs": 0,
+      "postMs": 0.12510000000474975,
+      "sqlCalls": 1,
+      "candidateRows": 3,
+      "openCount": 3
+     },
+     {
+      "totalMs": 1.219100000016624,
+      "preMs": 0.45279999999911524,
+      "dbMs": 0.6346000000194181,
+      "betweenSqlMs": 0,
+      "postMs": 0.1316999999980908,
+      "sqlCalls": 1,
+      "candidateRows": 3,
+      "openCount": 3
+     },
+     {
+      "totalMs": 1.0663999999815132,
+      "preMs": 0.3759999999892898,
+      "dbMs": 0.563800000003539,
+      "betweenSqlMs": 0,
+      "postMs": 0.12659999998868443,
+      "sqlCalls": 1,
+      "candidateRows": 3,
+      "openCount": 3
+     }
+    ],
+    "P4": [
+     {
+      "totalMs": 1.1809999999823049,
+      "preMs": 0.424799999978859,
+      "dbMs": 0.6730000000097789,
+      "betweenSqlMs": 0,
+      "postMs": 0.083199999993667,
+      "sqlCalls": 1,
+      "candidateRows": 3,
+      "openCount": 3,
+      "decryptsBeforeDbEnd": 1
+     },
+     {
+      "totalMs": 1.3850000000093132,
+      "preMs": 0.45530000000144355,
+      "dbMs": 0.8508000000147149,
+      "betweenSqlMs": 0,
+      "postMs": 0.07889999999315478,
+      "sqlCalls": 1,
+      "candidateRows": 3,
+      "openCount": 3,
+      "decryptsBeforeDbEnd": 1
+     },
+     {
+      "totalMs": 1.2890000000188593,
+      "preMs": 0.38730000000214204,
+      "dbMs": 0.8202999999921303,
+      "betweenSqlMs": 0,
+      "postMs": 0.08140000002458692,
+      "sqlCalls": 1,
+      "candidateRows": 3,
+      "openCount": 3,
+      "decryptsBeforeDbEnd": 1
+     },
+     {
+      "totalMs": 1.4772999999986496,
+      "preMs": 0.432200000010198,
+      "dbMs": 0.9438999999838416,
+      "betweenSqlMs": 0,
+      "postMs": 0.10120000000461005,
+      "sqlCalls": 1,
+      "candidateRows": 3,
+      "openCount": 3,
+      "decryptsBeforeDbEnd": 1
+     },
+     {
+      "totalMs": 1.1579000000201631,
+      "preMs": 0.38260000001173466,
+      "dbMs": 0.6937000000034459,
+      "betweenSqlMs": 0,
+      "postMs": 0.08160000000498258,
+      "sqlCalls": 1,
+      "candidateRows": 3,
+      "openCount": 3,
+      "decryptsBeforeDbEnd": 1
+     },
+     {
+      "totalMs": 1.1642999999749009,
+      "preMs": 0.41899999999441206,
+      "dbMs": 0.6549999999988358,
+      "betweenSqlMs": 0,
+      "postMs": 0.09029999998165295,
+      "sqlCalls": 1,
+      "candidateRows": 3,
+      "openCount": 3,
+      "decryptsBeforeDbEnd": 1
+     },
+     {
+      "totalMs": 1.073499999998603,
+      "preMs": 0.3906000000133645,
+      "dbMs": 0.6067000000039116,
+      "betweenSqlMs": 0,
+      "postMs": 0.07619999998132698,
+      "sqlCalls": 1,
+      "candidateRows": 3,
+      "openCount": 3,
+      "decryptsBeforeDbEnd": 1
+     }
+    ]
+   }
+  },
+  {
+   "case": "and2",
+   "condition": "(company = \"서울서비스 담당\" AND memo contains \"서비스\")",
+   "environment": "1억 속 회사 B",
+   "mode": "count",
+   "matches": 21176,
+   "plain": {
+    "totalMs": 40.773,
+    "preMs": 0.052,
+    "dbMs": 40.668,
+    "betweenSqlMs": 0,
+    "postMs": 0.054,
+    "sqlCalls": 1,
+    "candidateRows": 1,
+    "openCount": 0
+   },
+   "product": {
+    "totalMs": 1706.4,
+    "preMs": 1.233,
+    "dbMs": 266.469,
+    "betweenSqlMs": 0,
+    "postMs": 1434.735,
+    "sqlCalls": 1,
+    "candidateRows": 21176,
+    "openCount": 42352
+   },
+   "P1": {
+    "totalMs": 1626.909,
+    "preMs": 0.488,
+    "dbMs": 255.489,
+    "betweenSqlMs": 0,
+    "postMs": 1368.197,
+    "sqlCalls": 1,
+    "candidateRows": 21176,
+    "openCount": 42352
+   },
+   "P2": {
+    "totalMs": 1293.396,
+    "preMs": 0.47,
+    "dbMs": 250.876,
+    "betweenSqlMs": 0,
+    "postMs": 1043.313,
+    "sqlCalls": 1,
+    "candidateRows": 21176,
+    "openCount": 42352
+   },
+   "P3": {
+    "totalMs": 1294.8,
+    "preMs": 0.456,
+    "dbMs": 258.941,
+    "betweenSqlMs": 0,
+    "postMs": 1035.421,
+    "sqlCalls": 1,
+    "candidateRows": 21176,
+    "openCount": 42352
+   },
+   "P4": {
+    "totalMs": 1082.487,
+    "preMs": 0.454,
+    "dbMs": 272.057,
+    "betweenSqlMs": 0,
+    "postMs": 818.079,
+    "sqlCalls": 1,
+    "candidateRows": 21176,
+    "openCount": 42352,
+    "decryptsBeforeDbEnd": 8923
+   },
+   "first": {
+    "plain": {
+     "totalMs": 42.19609999997192,
+     "preMs": 0.05709999997634441,
+     "dbMs": 42.086100000014994,
+     "betweenSqlMs": 0,
+     "postMs": 0.052899999980581924,
+     "sqlCalls": 1,
+     "candidateRows": 1,
+     "openCount": 0
+    },
+    "product": {
+     "totalMs": 1718.3055999999924,
+     "preMs": 1.591599999985192,
+     "dbMs": 260.38200000001234,
+     "betweenSqlMs": 0,
+     "postMs": 1456.3319999999949,
+     "sqlCalls": 1,
+     "candidateRows": 21176,
+     "openCount": 42352
+    },
+    "P1": {
+     "totalMs": 1641.368300000002,
+     "preMs": 0.4459000000206288,
+     "dbMs": 250.80309999999008,
+     "betweenSqlMs": 0,
+     "postMs": 1390.1192999999912,
+     "sqlCalls": 1,
+     "candidateRows": 21176,
+     "openCount": 42352
+    },
+    "P2": {
+     "totalMs": 1279.7336999999825,
+     "preMs": 0.48799999998300336,
+     "dbMs": 251.23440000001574,
+     "betweenSqlMs": 0,
+     "postMs": 1028.0112999999837,
+     "sqlCalls": 1,
+     "candidateRows": 21176,
+     "openCount": 42352
+    },
+    "P3": {
+     "totalMs": 1302.9753999999957,
+     "preMs": 0.683500000013737,
+     "dbMs": 256.7741999999853,
+     "betweenSqlMs": 0,
+     "postMs": 1045.5176999999967,
+     "sqlCalls": 1,
+     "candidateRows": 21176,
+     "openCount": 42352
+    },
+    "P4": {
+     "totalMs": 1122.1504999999888,
+     "preMs": 0.32229999999981374,
+     "dbMs": 257.19370000000345,
+     "betweenSqlMs": 0,
+     "postMs": 864.6344999999856,
+     "sqlCalls": 1,
+     "candidateRows": 21176,
+     "openCount": 42352,
+     "decryptsBeforeDbEnd": 8159
+    }
+   },
+   "runs": {
+    "plain": [
+     {
+      "totalMs": 43.13450000001467,
+      "preMs": 0.051900000020395964,
+      "dbMs": 43.01879999999073,
+      "betweenSqlMs": 0,
+      "postMs": 0.06380000000353903,
+      "sqlCalls": 1,
+      "candidateRows": 1,
+      "openCount": 0
+     },
+     {
+      "totalMs": 40.16740000000573,
+      "preMs": 0.042799999995622784,
+      "dbMs": 40.07100000002538,
+      "betweenSqlMs": 0,
+      "postMs": 0.05359999998472631,
+      "sqlCalls": 1,
+      "candidateRows": 1,
+      "openCount": 0
+     },
+     {
+      "totalMs": 40.2947999999742,
+      "preMs": 0.052299999981187284,
+      "dbMs": 40.19180000000051,
+      "betweenSqlMs": 0,
+      "postMs": 0.05069999999250285,
+      "sqlCalls": 1,
+      "candidateRows": 1,
+      "openCount": 0
+     },
+     {
+      "totalMs": 40.969599999982165,
+      "preMs": 0.04170000000158325,
+      "dbMs": 40.869699999981094,
+      "betweenSqlMs": 0,
+      "postMs": 0.05819999999948777,
+      "sqlCalls": 1,
+      "candidateRows": 1,
+      "openCount": 0
+     },
+     {
+      "totalMs": 41.79800000000978,
+      "preMs": 0.06589999998686835,
+      "dbMs": 41.68319999999949,
+      "betweenSqlMs": 0,
+      "postMs": 0.04890000002342276,
+      "sqlCalls": 1,
+      "candidateRows": 1,
+      "openCount": 0
+     },
+     {
+      "totalMs": 40.772600000025705,
+      "preMs": 0.052500000019790605,
+      "dbMs": 40.66829999999027,
+      "betweenSqlMs": 0,
+      "postMs": 0.05180000001564622,
+      "sqlCalls": 1,
+      "candidateRows": 1,
+      "openCount": 0
+     },
+     {
+      "totalMs": 40.720000000001164,
+      "preMs": 0.08160000000498258,
+      "dbMs": 40.58400000000256,
+      "betweenSqlMs": 0,
+      "postMs": 0.05439999999362044,
+      "sqlCalls": 1,
+      "candidateRows": 1,
+      "openCount": 0
+     }
+    ],
+    "product": [
+     {
+      "totalMs": 1685.9548000000068,
+      "preMs": 1.2329000000027008,
+      "dbMs": 266.4686999999976,
+      "betweenSqlMs": 0,
+      "postMs": 1418.2532000000065,
+      "sqlCalls": 1,
+      "candidateRows": 21176,
+      "openCount": 42352
+     },
+     {
+      "totalMs": 1707.2834000000148,
+      "preMs": 1.16280000002007,
+      "dbMs": 271.3859999999986,
+      "betweenSqlMs": 0,
+      "postMs": 1434.7345999999961,
+      "sqlCalls": 1,
+      "candidateRows": 21176,
+      "openCount": 42352
+     },
+     {
+      "totalMs": 1706.400099999999,
+      "preMs": 1.0898999999917578,
+      "dbMs": 266.3665000000037,
+      "betweenSqlMs": 0,
+      "postMs": 1438.9437000000034,
+      "sqlCalls": 1,
+      "candidateRows": 21176,
+      "openCount": 42352
+     },
+     {
+      "totalMs": 1683.0482000000193,
+      "preMs": 1.3372000000090338,
+      "dbMs": 270.66219999999157,
+      "betweenSqlMs": 0,
+      "postMs": 1411.0488000000187,
+      "sqlCalls": 1,
+      "candidateRows": 21176,
+      "openCount": 42352
+     },
+     {
+      "totalMs": 1707.3358000000007,
+      "preMs": 1.0424000000057276,
+      "dbMs": 254.76350000000093,
+      "betweenSqlMs": 0,
+      "postMs": 1451.529899999994,
+      "sqlCalls": 1,
+      "candidateRows": 21176,
+      "openCount": 42352
+     },
+     {
+      "totalMs": 1696.7772000000114,
+      "preMs": 1.9012999999977183,
+      "dbMs": 266.4228000000003,
+      "betweenSqlMs": 0,
+      "postMs": 1428.4531000000134,
+      "sqlCalls": 1,
+      "candidateRows": 21176,
+      "openCount": 42352
+     },
+     {
+      "totalMs": 1729.3947000000044,
+      "preMs": 1.2498000000196043,
+      "dbMs": 273.8735999999917,
+      "betweenSqlMs": 0,
+      "postMs": 1454.271299999993,
+      "sqlCalls": 1,
+      "candidateRows": 21176,
+      "openCount": 42352
+     }
+    ],
+    "P1": [
+     {
+      "totalMs": 1613.2157999999763,
+      "preMs": 0.48519999999552965,
+      "dbMs": 254.3405999999959,
+      "betweenSqlMs": 0,
+      "postMs": 1358.3899999999849,
+      "sqlCalls": 1,
+      "candidateRows": 21176,
+      "openCount": 42352
+     },
+     {
+      "totalMs": 1628.951000000001,
+      "preMs": 0.4631999999983236,
+      "dbMs": 260.2905000000028,
+      "betweenSqlMs": 0,
+      "postMs": 1368.1972999999998,
+      "sqlCalls": 1,
+      "candidateRows": 21176,
+      "openCount": 42352
+     },
+     {
+      "totalMs": 1626.9085999999952,
+      "preMs": 0.4467000000004191,
+      "dbMs": 247.80869999999413,
+      "betweenSqlMs": 0,
+      "postMs": 1378.6532000000007,
+      "sqlCalls": 1,
+      "candidateRows": 21176,
+      "openCount": 42352
+     },
+     {
+      "totalMs": 1603.7603999999992,
+      "preMs": 0.5315000000118744,
+      "dbMs": 245.35519999999087,
+      "betweenSqlMs": 0,
+      "postMs": 1357.8736999999965,
+      "sqlCalls": 1,
+      "candidateRows": 21176,
+      "openCount": 42352
+     },
+     {
+      "totalMs": 1645.238799999992,
+      "preMs": 0.7484999999869615,
+      "dbMs": 272.7492000000202,
+      "betweenSqlMs": 0,
+      "postMs": 1371.7410999999847,
+      "sqlCalls": 1,
+      "candidateRows": 21176,
+      "openCount": 42352
+     },
+     {
+      "totalMs": 1617.4342000000179,
+      "preMs": 0.4882999999972526,
+      "dbMs": 271.8557000000146,
+      "betweenSqlMs": 0,
+      "postMs": 1345.090200000006,
+      "sqlCalls": 1,
+      "candidateRows": 21176,
+      "openCount": 42352
+     },
+     {
+      "totalMs": 1631.4992999999959,
+      "preMs": 0.4958000000042375,
+      "dbMs": 255.4893999999913,
+      "betweenSqlMs": 0,
+      "postMs": 1375.5141000000003,
+      "sqlCalls": 1,
+      "candidateRows": 21176,
+      "openCount": 42352
+     }
+    ],
+    "P2": [
+     {
+      "totalMs": 1302.5607999999775,
+      "preMs": 0.4591999999829568,
+      "dbMs": 253.2724000000162,
+      "betweenSqlMs": 0,
+      "postMs": 1048.8291999999783,
+      "sqlCalls": 1,
+      "candidateRows": 21176,
+      "openCount": 42352
+     },
+     {
+      "totalMs": 1263.3440000000119,
+      "preMs": 0.4843000000109896,
+      "dbMs": 250.7613999999885,
+      "betweenSqlMs": 0,
+      "postMs": 1012.0983000000124,
+      "sqlCalls": 1,
+      "candidateRows": 21176,
+      "openCount": 42352
+     },
+     {
+      "totalMs": 1284.9831000000122,
+      "preMs": 0.3102000000071712,
+      "dbMs": 250.8755999999994,
+      "betweenSqlMs": 0,
+      "postMs": 1033.7973000000056,
+      "sqlCalls": 1,
+      "candidateRows": 21176,
+      "openCount": 42352
+     },
+     {
+      "totalMs": 1292.8650999999954,
+      "preMs": 0.4614000000001397,
+      "dbMs": 245.89709999997285,
+      "betweenSqlMs": 0,
+      "postMs": 1046.5066000000224,
+      "sqlCalls": 1,
+      "candidateRows": 21176,
+      "openCount": 42352
+     },
+     {
+      "totalMs": 1298.5939000000071,
+      "preMs": 0.4974000000220258,
+      "dbMs": 247.2045999999973,
+      "betweenSqlMs": 0,
+      "postMs": 1050.8918999999878,
+      "sqlCalls": 1,
+      "candidateRows": 21176,
+      "openCount": 42352
+     },
+     {
+      "totalMs": 1293.3956999999937,
+      "preMs": 0.47000000000116415,
+      "dbMs": 254.19019999998272,
+      "betweenSqlMs": 0,
+      "postMs": 1038.7355000000098,
+      "sqlCalls": 1,
+      "candidateRows": 21176,
+      "openCount": 42352
+     },
+     {
+      "totalMs": 1298.2700999999943,
+      "preMs": 0.505299999989802,
+      "dbMs": 254.45209999999497,
+      "betweenSqlMs": 0,
+      "postMs": 1043.3127000000095,
+      "sqlCalls": 1,
+      "candidateRows": 21176,
+      "openCount": 42352
+     }
+    ],
+    "P3": [
+     {
+      "totalMs": 1341.7037999999884,
+      "preMs": 0.7697000000043772,
+      "dbMs": 278.0368999999773,
+      "betweenSqlMs": 0,
+      "postMs": 1062.8972000000067,
+      "sqlCalls": 1,
+      "candidateRows": 21176,
+      "openCount": 42352
+     },
+     {
+      "totalMs": 1285.5985999999975,
+      "preMs": 0.3356999999959953,
+      "dbMs": 251.3512000000046,
+      "betweenSqlMs": 0,
+      "postMs": 1033.911699999997,
+      "sqlCalls": 1,
+      "candidateRows": 21176,
+      "openCount": 42352
+     },
+     {
+      "totalMs": 1314.1924,
+      "preMs": 0.4561999999859836,
+      "dbMs": 271.66260000001057,
+      "betweenSqlMs": 0,
+      "postMs": 1042.0736000000034,
+      "sqlCalls": 1,
+      "candidateRows": 21176,
+      "openCount": 42352
+     },
+     {
+      "totalMs": 1294.7999999999884,
+      "preMs": 0.43769999998039566,
+      "dbMs": 258.940900000016,
+      "betweenSqlMs": 0,
+      "postMs": 1035.421399999992,
+      "sqlCalls": 1,
+      "candidateRows": 21176,
+      "openCount": 42352
+     },
+     {
+      "totalMs": 1279.6927999999898,
+      "preMs": 0.4866000000038184,
+      "dbMs": 252.8020999999717,
+      "betweenSqlMs": 0,
+      "postMs": 1026.4041000000143,
+      "sqlCalls": 1,
+      "candidateRows": 21176,
+      "openCount": 42352
+     },
+     {
+      "totalMs": 1283.6762000000163,
+      "preMs": 0.46919999999227,
+      "dbMs": 254.75220000001718,
+      "betweenSqlMs": 0,
+      "postMs": 1028.4548000000068,
+      "sqlCalls": 1,
+      "candidateRows": 21176,
+      "openCount": 42352
+     },
+     {
+      "totalMs": 1322.6835999999894,
+      "preMs": 0.3212000000057742,
+      "dbMs": 270.0366999999969,
+      "betweenSqlMs": 0,
+      "postMs": 1052.3256999999867,
+      "sqlCalls": 1,
+      "candidateRows": 21176,
+      "openCount": 42352
+     }
+    ],
+    "P4": [
+     {
+      "totalMs": 1065.7336000000068,
+      "preMs": 0.34619999999995343,
+      "dbMs": 270.1148000000103,
+      "betweenSqlMs": 0,
+      "postMs": 795.2725999999966,
+      "sqlCalls": 1,
+      "candidateRows": 21176,
+      "openCount": 42352,
+      "decryptsBeforeDbEnd": 8927
+     },
+     {
+      "totalMs": 1094.6337000000058,
+      "preMs": 0.484599999996135,
+      "dbMs": 276.0702000000165,
+      "betweenSqlMs": 0,
+      "postMs": 818.0788999999932,
+      "sqlCalls": 1,
+      "candidateRows": 21176,
+      "openCount": 42352,
+      "decryptsBeforeDbEnd": 8932
+     },
+     {
+      "totalMs": 1082.4866999999795,
+      "preMs": 0.535699999978533,
+      "dbMs": 274.266500000027,
+      "betweenSqlMs": 0,
+      "postMs": 807.6844999999739,
+      "sqlCalls": 1,
+      "candidateRows": 21176,
+      "openCount": 42352,
+      "decryptsBeforeDbEnd": 8985
+     },
+     {
+      "totalMs": 1073.0146999999997,
+      "preMs": 0.3309000000008382,
+      "dbMs": 247.87470000001485,
+      "betweenSqlMs": 0,
+      "postMs": 824.809099999984,
+      "sqlCalls": 1,
+      "candidateRows": 21176,
+      "openCount": 42352,
+      "decryptsBeforeDbEnd": 8214
+     },
+     {
+      "totalMs": 1099.0417000000016,
+      "preMs": 0.3329000000085216,
+      "dbMs": 272.05669999998645,
+      "betweenSqlMs": 0,
+      "postMs": 826.6521000000066,
+      "sqlCalls": 1,
+      "candidateRows": 21176,
+      "openCount": 42352,
+      "decryptsBeforeDbEnd": 8489
+     },
+     {
+      "totalMs": 1093.147800000006,
+      "preMs": 0.6897000000171829,
+      "dbMs": 272.80830000000424,
+      "betweenSqlMs": 0,
+      "postMs": 819.6497999999847,
+      "sqlCalls": 1,
+      "candidateRows": 21176,
+      "openCount": 42352,
+      "decryptsBeforeDbEnd": 8614
+     },
+     {
+      "totalMs": 1053.2190000000119,
+      "preMs": 0.4539000000222586,
+      "dbMs": 267.2145999999775,
+      "betweenSqlMs": 0,
+      "postMs": 785.5505000000121,
+      "sqlCalls": 1,
+      "candidateRows": 21176,
+      "openCount": 42352,
+      "decryptsBeforeDbEnd": 8923
+     }
+    ]
+   }
+  },
+  {
+   "case": "and4",
+   "condition": "(company = \"서울서비스 담당\" AND address contains \"서울\" AND memo contains \"상담\" AND email contains \"service\")",
+   "environment": "1억 속 회사 B",
+   "mode": "count",
+   "matches": 62,
+   "plain": {
+    "totalMs": 42.234,
+    "preMs": 0.042,
+    "dbMs": 42.139,
+    "betweenSqlMs": 0,
+    "postMs": 0.057,
+    "sqlCalls": 1,
+    "candidateRows": 1,
+    "openCount": 0
+   },
+   "product": {
+    "totalMs": 181.294,
+    "preMs": 1.666,
+    "dbMs": 169.02,
+    "betweenSqlMs": 0,
+    "postMs": 9.21,
+    "sqlCalls": 1,
+    "candidateRows": 62,
+    "openCount": 248
+   },
+   "P1": {
+    "totalMs": 174.63,
+    "preMs": 0.682,
+    "dbMs": 166.18,
+    "betweenSqlMs": 0,
+    "postMs": 7.713,
+    "sqlCalls": 1,
+    "candidateRows": 62,
+    "openCount": 248
+   },
+   "P2": {
+    "totalMs": 170.325,
+    "preMs": 0.595,
+    "dbMs": 163.895,
+    "betweenSqlMs": 0,
+    "postMs": 5.94,
+    "sqlCalls": 1,
+    "candidateRows": 62,
+    "openCount": 248
+   },
+   "P3": {
+    "totalMs": 169.307,
+    "preMs": 0.652,
+    "dbMs": 162.907,
+    "betweenSqlMs": 0,
+    "postMs": 5.934,
+    "sqlCalls": 1,
+    "candidateRows": 62,
+    "openCount": 248
+   },
+   "P4": {
+    "totalMs": 170.49,
+    "preMs": 0.624,
+    "dbMs": 168.087,
+    "betweenSqlMs": 0,
+    "postMs": 1.675,
+    "sqlCalls": 1,
+    "candidateRows": 62,
+    "openCount": 248,
+    "decryptsBeforeDbEnd": 191
+   },
+   "first": {
+    "plain": {
+     "totalMs": 41.357600000017555,
+     "preMs": 0.038100000005215406,
+     "dbMs": 41.26039999999921,
+     "betweenSqlMs": 0,
+     "postMs": 0.05910000001313165,
+     "sqlCalls": 1,
+     "candidateRows": 1,
+     "openCount": 0
+    },
+    "product": {
+     "totalMs": 190.23519999999553,
+     "preMs": 2.283399999985704,
+     "dbMs": 168.35090000001946,
+     "betweenSqlMs": 0,
+     "postMs": 19.60089999999036,
+     "sqlCalls": 1,
+     "candidateRows": 62,
+     "openCount": 248
+    },
+    "P1": {
+     "totalMs": 176.01900000000023,
+     "preMs": 0.6621999999915715,
+     "dbMs": 166.41300000000047,
+     "betweenSqlMs": 0,
+     "postMs": 8.943800000008196,
+     "sqlCalls": 1,
+     "candidateRows": 62,
+     "openCount": 248
+    },
+    "P2": {
+     "totalMs": 170.4367000000202,
+     "preMs": 0.544400000013411,
+     "dbMs": 161.6423000000068,
+     "betweenSqlMs": 0,
+     "postMs": 8.25,
+     "sqlCalls": 1,
+     "candidateRows": 62,
+     "openCount": 248
+    },
+    "P3": {
+     "totalMs": 166.34679999999935,
+     "preMs": 0.5854999999864958,
+     "dbMs": 159.8512000000046,
+     "betweenSqlMs": 0,
+     "postMs": 5.910100000008242,
+     "sqlCalls": 1,
+     "candidateRows": 62,
+     "openCount": 248
+    },
+    "P4": {
+     "totalMs": 163.24710000000778,
+     "preMs": 0.6138999999966472,
+     "dbMs": 161.04750000001513,
+     "betweenSqlMs": 0,
+     "postMs": 1.5856999999959953,
+     "sqlCalls": 1,
+     "candidateRows": 62,
+     "openCount": 248,
+     "decryptsBeforeDbEnd": 191
+    }
+   },
+   "runs": {
+    "plain": [
+     {
+      "totalMs": 42.234299999981886,
+      "preMs": 0.04029999999329448,
+      "dbMs": 42.138999999995576,
+      "betweenSqlMs": 0,
+      "postMs": 0.05499999999301508,
+      "sqlCalls": 1,
+      "candidateRows": 1,
+      "openCount": 0
+     },
+     {
+      "totalMs": 40.51270000002114,
+      "preMs": 0.042199999996228144,
+      "dbMs": 40.41370000000461,
+      "betweenSqlMs": 0,
+      "postMs": 0.05680000002030283,
+      "sqlCalls": 1,
+      "candidateRows": 1,
+      "openCount": 0
+     },
+     {
+      "totalMs": 43.89749999999185,
+      "preMs": 0.04810000001452863,
+      "dbMs": 43.783399999985704,
+      "betweenSqlMs": 0,
+      "postMs": 0.0659999999916181,
+      "sqlCalls": 1,
+      "candidateRows": 1,
+      "openCount": 0
+     },
+     {
+      "totalMs": 39.80730000001495,
+      "preMs": 0.0408000000170432,
+      "dbMs": 39.711799999990035,
+      "betweenSqlMs": 0,
+      "postMs": 0.054700000007869676,
+      "sqlCalls": 1,
+      "candidateRows": 1,
+      "openCount": 0
+     },
+     {
+      "totalMs": 47.5969000000041,
+      "preMs": 0.044599999993806705,
+      "dbMs": 47.49220000000787,
+      "betweenSqlMs": 0,
+      "postMs": 0.06010000000242144,
+      "sqlCalls": 1,
+      "candidateRows": 1,
+      "openCount": 0
+     },
+     {
+      "totalMs": 39.601800000004005,
+      "preMs": 0.043200000014621764,
+      "dbMs": 39.50379999997676,
+      "betweenSqlMs": 0,
+      "postMs": 0.05480000001261942,
+      "sqlCalls": 1,
+      "candidateRows": 1,
+      "openCount": 0
+     },
+     {
+      "totalMs": 45.66030000001774,
+      "preMs": 0.03979999999864958,
+      "dbMs": 45.55019999999786,
+      "betweenSqlMs": 0,
+      "postMs": 0.07030000002123415,
+      "sqlCalls": 1,
+      "candidateRows": 1,
+      "openCount": 0
+     }
+    ],
+    "product": [
+     {
+      "totalMs": 174.89929999999003,
+      "preMs": 1.4974999999976717,
+      "dbMs": 164.1918000000005,
+      "betweenSqlMs": 0,
+      "postMs": 9.209999999991851,
+      "sqlCalls": 1,
+      "candidateRows": 62,
+      "openCount": 248
+     },
+     {
+      "totalMs": 171.7785000000149,
+      "preMs": 1.5684000000183005,
+      "dbMs": 160.38899999999558,
+      "betweenSqlMs": 0,
+      "postMs": 9.821100000001024,
+      "sqlCalls": 1,
+      "candidateRows": 62,
+      "openCount": 248
+     },
+     {
+      "totalMs": 181.5679999999993,
+      "preMs": 1.5914999999804422,
+      "dbMs": 171.28609999999753,
+      "betweenSqlMs": 0,
+      "postMs": 8.690400000021327,
+      "sqlCalls": 1,
+      "candidateRows": 62,
+      "openCount": 248
+     },
+     {
+      "totalMs": 181.29380000001402,
+      "preMs": 1.748699999996461,
+      "dbMs": 169.01950000002398,
+      "betweenSqlMs": 0,
+      "postMs": 10.525599999993574,
+      "sqlCalls": 1,
+      "candidateRows": 62,
+      "openCount": 248
+     },
+     {
+      "totalMs": 184.99150000000373,
+      "preMs": 1.6661000000021886,
+      "dbMs": 175.07239999997546,
+      "betweenSqlMs": 0,
+      "postMs": 8.253000000026077,
+      "sqlCalls": 1,
+      "candidateRows": 62,
+      "openCount": 248
+     },
+     {
+      "totalMs": 174.1032000000123,
+      "preMs": 1.738100000016857,
+      "dbMs": 163.70040000000154,
+      "betweenSqlMs": 0,
+      "postMs": 8.6646999999939,
+      "sqlCalls": 1,
+      "candidateRows": 62,
+      "openCount": 248
+     },
+     {
+      "totalMs": 190.00239999999758,
+      "preMs": 1.731499999994412,
+      "dbMs": 178.90770000001066,
+      "betweenSqlMs": 0,
+      "postMs": 9.363199999992503,
+      "sqlCalls": 1,
+      "candidateRows": 62,
+      "openCount": 248
+     }
+    ],
+    "P1": [
+     {
+      "totalMs": 171.91130000000703,
+      "preMs": 0.7482000000018161,
+      "dbMs": 159.69550000000163,
+      "betweenSqlMs": 0,
+      "postMs": 11.467600000003586,
+      "sqlCalls": 1,
+      "candidateRows": 62,
+      "openCount": 248
+     },
+     {
+      "totalMs": 173.34330000000773,
+      "preMs": 0.6818999999959487,
+      "dbMs": 164.95829999999842,
+      "betweenSqlMs": 0,
+      "postMs": 7.7031000000133645,
+      "sqlCalls": 1,
+      "candidateRows": 62,
+      "openCount": 248
+     },
+     {
+      "totalMs": 171.5564000000013,
+      "preMs": 0.5648999999975786,
+      "dbMs": 163.23850000000675,
+      "betweenSqlMs": 0,
+      "postMs": 7.752999999996973,
+      "sqlCalls": 1,
+      "candidateRows": 62,
+      "openCount": 248
+     },
+     {
+      "totalMs": 180.57039999999688,
+      "preMs": 0.6953000000212342,
+      "dbMs": 172.16189999997732,
+      "betweenSqlMs": 0,
+      "postMs": 7.713199999998324,
+      "sqlCalls": 1,
+      "candidateRows": 62,
+      "openCount": 248
+     },
+     {
+      "totalMs": 174.6304999999993,
+      "preMs": 0.5518999999912921,
+      "dbMs": 166.17950000002747,
+      "betweenSqlMs": 0,
+      "postMs": 7.899099999980535,
+      "sqlCalls": 1,
+      "candidateRows": 62,
+      "openCount": 248
+     },
+     {
+      "totalMs": 181.51090000002296,
+      "preMs": 0.6944000000075903,
+      "dbMs": 173.29279999999562,
+      "betweenSqlMs": 0,
+      "postMs": 7.523700000019744,
+      "sqlCalls": 1,
+      "candidateRows": 62,
+      "openCount": 248
+     },
+     {
+      "totalMs": 179.0851000000257,
+      "preMs": 0.6110000000044238,
+      "dbMs": 170.84489999999641,
+      "betweenSqlMs": 0,
+      "postMs": 7.629200000024866,
+      "sqlCalls": 1,
+      "candidateRows": 62,
+      "openCount": 248
+     }
+    ],
+    "P2": [
+     {
+      "totalMs": 171.92129999998724,
+      "preMs": 0.612699999997858,
+      "dbMs": 165.27919999998994,
+      "betweenSqlMs": 0,
+      "postMs": 6.029399999999441,
+      "sqlCalls": 1,
+      "candidateRows": 62,
+      "openCount": 248
+     },
+     {
+      "totalMs": 177.7543000000005,
+      "preMs": 0.5766999999759719,
+      "dbMs": 171.23730000000796,
+      "betweenSqlMs": 0,
+      "postMs": 5.9403000000165775,
+      "sqlCalls": 1,
+      "candidateRows": 62,
+      "openCount": 248
+     },
+     {
+      "totalMs": 168.38649999999325,
+      "preMs": 0.6199999999953434,
+      "dbMs": 161.86999999999534,
+      "betweenSqlMs": 0,
+      "postMs": 5.896500000002561,
+      "sqlCalls": 1,
+      "candidateRows": 62,
+      "openCount": 248
+     },
+     {
+      "totalMs": 170.32540000000154,
+      "preMs": 0.5703999999968801,
+      "dbMs": 163.89530000000377,
+      "betweenSqlMs": 0,
+      "postMs": 5.859700000000885,
+      "sqlCalls": 1,
+      "candidateRows": 62,
+      "openCount": 248
+     },
+     {
+      "totalMs": 167.4489000000176,
+      "preMs": 0.5893999999971129,
+      "dbMs": 160.64870000001974,
+      "betweenSqlMs": 0,
+      "postMs": 6.210800000000745,
+      "sqlCalls": 1,
+      "candidateRows": 62,
+      "openCount": 248
+     },
+     {
+      "totalMs": 175.4305999999924,
+      "preMs": 0.5947999999916647,
+      "dbMs": 169.05439999999362,
+      "betweenSqlMs": 0,
+      "postMs": 5.781400000007125,
+      "sqlCalls": 1,
+      "candidateRows": 62,
+      "openCount": 248
+     },
+     {
+      "totalMs": 167.78200000000652,
+      "preMs": 0.631599999993341,
+      "dbMs": 160.2944000000134,
+      "betweenSqlMs": 0,
+      "postMs": 6.855999999999767,
+      "sqlCalls": 1,
+      "candidateRows": 62,
+      "openCount": 248
+     }
+    ],
+    "P3": [
+     {
+      "totalMs": 177.44539999999688,
+      "preMs": 0.6830000000190921,
+      "dbMs": 170.85249999997905,
+      "betweenSqlMs": 0,
+      "postMs": 5.909899999998743,
+      "sqlCalls": 1,
+      "candidateRows": 62,
+      "openCount": 248
+     },
+     {
+      "totalMs": 185.8874000000069,
+      "preMs": 5.194199999998091,
+      "dbMs": 175.10939999998664,
+      "betweenSqlMs": 0,
+      "postMs": 5.5838000000221655,
+      "sqlCalls": 1,
+      "candidateRows": 62,
+      "openCount": 248
+     },
+     {
+      "totalMs": 166.6143999999913,
+      "preMs": 0.6520000000018626,
+      "dbMs": 160.0280999999959,
+      "betweenSqlMs": 0,
+      "postMs": 5.934299999993527,
+      "sqlCalls": 1,
+      "candidateRows": 62,
+      "openCount": 248
+     },
+     {
+      "totalMs": 169.30650000000605,
+      "preMs": 0.5966000000189524,
+      "dbMs": 162.90659999998752,
+      "betweenSqlMs": 0,
+      "postMs": 5.803299999999581,
+      "sqlCalls": 1,
+      "candidateRows": 62,
+      "openCount": 248
+     },
+     {
+      "totalMs": 166.43979999999283,
+      "preMs": 0.5791000000026543,
+      "dbMs": 159.784799999994,
+      "betweenSqlMs": 0,
+      "postMs": 6.075899999996182,
+      "sqlCalls": 1,
+      "candidateRows": 62,
+      "openCount": 248
+     },
+     {
+      "totalMs": 175.28599999999278,
+      "preMs": 0.580500000010943,
+      "dbMs": 167.9380999999994,
+      "betweenSqlMs": 0,
+      "postMs": 6.767399999982445,
+      "sqlCalls": 1,
+      "candidateRows": 62,
+      "openCount": 248
+     },
+     {
+      "totalMs": 166.488400000002,
+      "preMs": 0.680900000006659,
+      "dbMs": 159.13690000001225,
+      "betweenSqlMs": 0,
+      "postMs": 6.6705999999830965,
+      "sqlCalls": 1,
+      "candidateRows": 62,
+      "openCount": 248
+     }
+    ],
+    "P4": [
+     {
+      "totalMs": 176.5282999999763,
+      "preMs": 0.6241999999911059,
+      "dbMs": 174.41010000000824,
+      "betweenSqlMs": 0,
+      "postMs": 1.4939999999769498,
+      "sqlCalls": 1,
+      "candidateRows": 62,
+      "openCount": 248,
+      "decryptsBeforeDbEnd": 191
+     },
+     {
+      "totalMs": 170.60959999999614,
+      "preMs": 0.8240999999979977,
+      "dbMs": 168.08660000000964,
+      "betweenSqlMs": 0,
+      "postMs": 1.6988999999884982,
+      "sqlCalls": 1,
+      "candidateRows": 62,
+      "openCount": 248,
+      "decryptsBeforeDbEnd": 191
+     },
+     {
+      "totalMs": 167.58090000000084,
+      "preMs": 0.5915000000095461,
+      "dbMs": 165.43799999999464,
+      "betweenSqlMs": 0,
+      "postMs": 1.5513999999966472,
+      "sqlCalls": 1,
+      "candidateRows": 62,
+      "openCount": 248,
+      "decryptsBeforeDbEnd": 191
+     },
+     {
+      "totalMs": 168.33320000002277,
+      "preMs": 0.5718000000051688,
+      "dbMs": 165.81830000001355,
+      "betweenSqlMs": 0,
+      "postMs": 1.9431000000040513,
+      "sqlCalls": 1,
+      "candidateRows": 62,
+      "openCount": 248,
+      "decryptsBeforeDbEnd": 191
+     },
+     {
+      "totalMs": 163.5506999999925,
+      "preMs": 0.578799999988405,
+      "dbMs": 161.29730000000563,
+      "betweenSqlMs": 0,
+      "postMs": 1.6745999999984633,
+      "sqlCalls": 1,
+      "candidateRows": 62,
+      "openCount": 248,
+      "decryptsBeforeDbEnd": 191
+     },
+     {
+      "totalMs": 171.83619999999064,
+      "preMs": 0.6858000000065658,
+      "dbMs": 169.43899999998393,
+      "betweenSqlMs": 0,
+      "postMs": 1.7114000000001397,
+      "sqlCalls": 1,
+      "candidateRows": 62,
+      "openCount": 248,
+      "decryptsBeforeDbEnd": 191
+     },
+     {
+      "totalMs": 170.4898000000103,
+      "preMs": 0.686199999996461,
+      "dbMs": 168.34720000001835,
+      "betweenSqlMs": 0,
+      "postMs": 1.456399999995483,
+      "sqlCalls": 1,
+      "candidateRows": 62,
+      "openCount": 248,
+      "decryptsBeforeDbEnd": 191
+     }
+    ]
+   }
+  },
+  {
+   "case": "and6",
+   "condition": "(name contains \"민서\" AND phone contains \"-5\" AND address contains \"서울\" AND memo contains \"서비스\" AND email contains \"test\" AND company = \"서울서비스 담당\")",
+   "environment": "1억 속 회사 B",
+   "mode": "count",
+   "matches": 624,
+   "plain": {
+    "totalMs": 41.497,
+    "preMs": 0.043,
+    "dbMs": 41.4,
+    "betweenSqlMs": 0,
+    "postMs": 0.052,
+    "sqlCalls": 1,
+    "candidateRows": 1,
+    "openCount": 0
+   },
+   "product": {
+    "totalMs": 311.347,
+    "preMs": 1.837,
+    "dbMs": 177.571,
+    "betweenSqlMs": 0,
+    "postMs": 129.985,
+    "sqlCalls": 1,
+    "candidateRows": 624,
+    "openCount": 3744
+   },
+   "P1": {
+    "totalMs": 295.201,
+    "preMs": 0.68,
+    "dbMs": 174.762,
+    "betweenSqlMs": 0,
+    "postMs": 118.543,
+    "sqlCalls": 1,
+    "candidateRows": 624,
+    "openCount": 3744
+   },
+   "P2": {
+    "totalMs": 267.106,
+    "preMs": 0.65,
+    "dbMs": 178.658,
+    "betweenSqlMs": 0,
+    "postMs": 88.051,
+    "sqlCalls": 1,
+    "candidateRows": 624,
+    "openCount": 3744
+   },
+   "P3": {
+    "totalMs": 269.441,
+    "preMs": 0.655,
+    "dbMs": 175.117,
+    "betweenSqlMs": 0,
+    "postMs": 89.687,
+    "sqlCalls": 1,
+    "candidateRows": 624,
+    "openCount": 3744
+   },
+   "P4": {
+    "totalMs": 181.833,
+    "preMs": 0.653,
+    "dbMs": 179.649,
+    "betweenSqlMs": 0,
+    "postMs": 1.636,
+    "sqlCalls": 1,
+    "candidateRows": 624,
+    "openCount": 3744,
+    "decryptsBeforeDbEnd": 3681
+   },
+   "first": {
+    "plain": {
+     "totalMs": 42.37260000000242,
+     "preMs": 0.042199999996228144,
+     "dbMs": 42.27740000002086,
+     "betweenSqlMs": 0,
+     "postMs": 0.05299999998533167,
+     "sqlCalls": 1,
+     "candidateRows": 1,
+     "openCount": 0
+    },
+    "product": {
+     "totalMs": 405.9464999999909,
+     "preMs": 1.9272000000055414,
+     "dbMs": 179.11599999997998,
+     "betweenSqlMs": 0,
+     "postMs": 224.9033000000054,
+     "sqlCalls": 1,
+     "candidateRows": 624,
+     "openCount": 3744
+    },
+    "P1": {
+     "totalMs": 317.6430999999866,
+     "preMs": 0.7347000000008848,
+     "dbMs": 183.05569999999716,
+     "betweenSqlMs": 0,
+     "postMs": 133.85269999998854,
+     "sqlCalls": 1,
+     "candidateRows": 624,
+     "openCount": 3744
+    },
+    "P2": {
+     "totalMs": 268.6792000000132,
+     "preMs": 0.5989999999874271,
+     "dbMs": 178.13770000002114,
+     "betweenSqlMs": 0,
+     "postMs": 89.94250000000466,
+     "sqlCalls": 1,
+     "candidateRows": 624,
+     "openCount": 3744
+    },
+    "P3": {
+     "totalMs": 267.1753000000026,
+     "preMs": 0.9324999999953434,
+     "dbMs": 179.74520000000484,
+     "betweenSqlMs": 0,
+     "postMs": 86.49760000000242,
+     "sqlCalls": 1,
+     "candidateRows": 624,
+     "openCount": 3744
+    },
+    "P4": {
+     "totalMs": 186.47669999999925,
+     "preMs": 0.6938000000081956,
+     "dbMs": 184.17679999998654,
+     "betweenSqlMs": 0,
+     "postMs": 1.606100000004517,
+     "sqlCalls": 1,
+     "candidateRows": 624,
+     "openCount": 3744,
+     "decryptsBeforeDbEnd": 3680
+    }
+   },
+   "runs": {
+    "plain": [
+     {
+      "totalMs": 40.91359999999986,
+      "preMs": 0.03919999999925494,
+      "dbMs": 40.821999999985565,
+      "betweenSqlMs": 0,
+      "postMs": 0.05240000001504086,
+      "sqlCalls": 1,
+      "candidateRows": 1,
+      "openCount": 0
+     },
+     {
+      "totalMs": 41.97969999999623,
+      "preMs": 0.042199999996228144,
+      "dbMs": 41.87919999999576,
+      "betweenSqlMs": 0,
+      "postMs": 0.05830000000423752,
+      "sqlCalls": 1,
+      "candidateRows": 1,
+      "openCount": 0
+     },
+     {
+      "totalMs": 41.497400000022026,
+      "preMs": 0.043800000014016405,
+      "dbMs": 41.39999999999418,
+      "betweenSqlMs": 0,
+      "postMs": 0.05360000001383014,
+      "sqlCalls": 1,
+      "candidateRows": 1,
+      "openCount": 0
+     },
+     {
+      "totalMs": 40.400699999998324,
+      "preMs": 0.04629999998724088,
+      "dbMs": 40.303200000023935,
+      "betweenSqlMs": 0,
+      "postMs": 0.05119999998714775,
+      "sqlCalls": 1,
+      "candidateRows": 1,
+      "openCount": 0
+     },
+     {
+      "totalMs": 40.538200000009965,
+      "preMs": 0.03900000001885928,
+      "dbMs": 40.446999999985565,
+      "betweenSqlMs": 0,
+      "postMs": 0.05220000000554137,
+      "sqlCalls": 1,
+      "candidateRows": 1,
+      "openCount": 0
+     },
+     {
+      "totalMs": 42.53489999999874,
+      "preMs": 0.046200000011594966,
+      "dbMs": 42.43619999999646,
+      "betweenSqlMs": 0,
+      "postMs": 0.052499999990686774,
+      "sqlCalls": 1,
+      "candidateRows": 1,
+      "openCount": 0
+     },
+     {
+      "totalMs": 44.68330000000424,
+      "preMs": 0.043399999995017424,
+      "dbMs": 44.58499999999185,
+      "betweenSqlMs": 0,
+      "postMs": 0.054900000017369166,
+      "sqlCalls": 1,
+      "candidateRows": 1,
+      "openCount": 0
+     }
+    ],
+    "product": [
+     {
+      "totalMs": 317.60249999997905,
+      "preMs": 1.8244999999878928,
+      "dbMs": 178.23259999998845,
+      "betweenSqlMs": 0,
+      "postMs": 137.5454000000027,
+      "sqlCalls": 1,
+      "candidateRows": 624,
+      "openCount": 3744
+     },
+     {
+      "totalMs": 306.9835000000021,
+      "preMs": 1.81339999998454,
+      "dbMs": 179.33310000001802,
+      "betweenSqlMs": 0,
+      "postMs": 125.83699999999953,
+      "sqlCalls": 1,
+      "candidateRows": 624,
+      "openCount": 3744
+     },
+     {
+      "totalMs": 304.95820000002277,
+      "preMs": 1.9134999999951106,
+      "dbMs": 177.57140000001527,
+      "betweenSqlMs": 0,
+      "postMs": 125.47330000001239,
+      "sqlCalls": 1,
+      "candidateRows": 624,
+      "openCount": 3744
+     },
+     {
+      "totalMs": 312.55160000000615,
+      "preMs": 1.8577000000223052,
+      "dbMs": 176.20530000000144,
+      "betweenSqlMs": 0,
+      "postMs": 134.4885999999824,
+      "sqlCalls": 1,
+      "candidateRows": 624,
+      "openCount": 3744
+     },
+     {
+      "totalMs": 311.347299999994,
+      "preMs": 1.7060999999812339,
+      "dbMs": 177.0527000000002,
+      "betweenSqlMs": 0,
+      "postMs": 132.58850000001257,
+      "sqlCalls": 1,
+      "candidateRows": 624,
+      "openCount": 3744
+     },
+     {
+      "totalMs": 303.5796000000264,
+      "preMs": 1.8374000000185333,
+      "dbMs": 173.0234000000055,
+      "betweenSqlMs": 0,
+      "postMs": 128.71880000000237,
+      "sqlCalls": 1,
+      "candidateRows": 624,
+      "openCount": 3744
+     },
+     {
+      "totalMs": 316.2926000000152,
+      "preMs": 2.025500000017928,
+      "dbMs": 184.28209999998217,
+      "betweenSqlMs": 0,
+      "postMs": 129.98500000001513,
+      "sqlCalls": 1,
+      "candidateRows": 624,
+      "openCount": 3744
+     }
+    ],
+    "P1": [
+     {
+      "totalMs": 290.45040000000154,
+      "preMs": 0.6804000000120141,
+      "dbMs": 172.73730000000796,
+      "betweenSqlMs": 0,
+      "postMs": 117.03269999998156,
+      "sqlCalls": 1,
+      "candidateRows": 624,
+      "openCount": 3744
+     },
+     {
+      "totalMs": 290.9956999999995,
+      "preMs": 0.6777999999758322,
+      "dbMs": 171.77500000002328,
+      "betweenSqlMs": 0,
+      "postMs": 118.54290000000037,
+      "sqlCalls": 1,
+      "candidateRows": 624,
+      "openCount": 3744
+     },
+     {
+      "totalMs": 297.71179999999003,
+      "preMs": 3.079700000002049,
+      "dbMs": 178.22490000000107,
+      "betweenSqlMs": 0,
+      "postMs": 116.40719999998691,
+      "sqlCalls": 1,
+      "candidateRows": 624,
+      "openCount": 3744
+     },
+     {
+      "totalMs": 295.2006999999867,
+      "preMs": 0.6039999999920838,
+      "dbMs": 174.76190000001225,
+      "betweenSqlMs": 0,
+      "postMs": 119.83479999998235,
+      "sqlCalls": 1,
+      "candidateRows": 624,
+      "openCount": 3744
+     },
+     {
+      "totalMs": 294.89220000000205,
+      "preMs": 0.6983999999938533,
+      "dbMs": 178.10469999999623,
+      "betweenSqlMs": 0,
+      "postMs": 116.08910000001197,
+      "sqlCalls": 1,
+      "candidateRows": 624,
+      "openCount": 3744
+     },
+     {
+      "totalMs": 301.6247999999905,
+      "preMs": 0.792699999990873,
+      "dbMs": 172.11559999999008,
+      "betweenSqlMs": 0,
+      "postMs": 128.71650000000955,
+      "sqlCalls": 1,
+      "candidateRows": 624,
+      "openCount": 3744
+     },
+     {
+      "totalMs": 299.4911999999895,
+      "preMs": 0.6761999999871477,
+      "dbMs": 178.79839999999967,
+      "betweenSqlMs": 0,
+      "postMs": 120.01660000000265,
+      "sqlCalls": 1,
+      "candidateRows": 624,
+      "openCount": 3744
+     }
+    ],
+    "P2": [
+     {
+      "totalMs": 267.05589999997756,
+      "preMs": 0.6504999999888241,
+      "dbMs": 181.04860000000917,
+      "betweenSqlMs": 0,
+      "postMs": 85.35679999997956,
+      "sqlCalls": 1,
+      "candidateRows": 624,
+      "openCount": 3744
+     },
+     {
+      "totalMs": 270.62349999998696,
+      "preMs": 0.9449000000022352,
+      "dbMs": 173.81539999999222,
+      "betweenSqlMs": 0,
+      "postMs": 95.8631999999925,
+      "sqlCalls": 1,
+      "candidateRows": 624,
+      "openCount": 3744
+     },
+     {
+      "totalMs": 263.45290000000386,
+      "preMs": 0.8448000000207685,
+      "dbMs": 174.5567999999912,
+      "betweenSqlMs": 0,
+      "postMs": 88.0512999999919,
+      "sqlCalls": 1,
+      "candidateRows": 624,
+      "openCount": 3744
+     },
+     {
+      "totalMs": 267.10639999998966,
+      "preMs": 0.6633999999903608,
+      "dbMs": 178.58540000001085,
+      "betweenSqlMs": 0,
+      "postMs": 87.85759999998845,
+      "sqlCalls": 1,
+      "candidateRows": 624,
+      "openCount": 3744
+     },
+     {
+      "totalMs": 265.0451999999932,
+      "preMs": 0.6328999999968801,
+      "dbMs": 178.6583999999857,
+      "betweenSqlMs": 0,
+      "postMs": 85.75390000001062,
+      "sqlCalls": 1,
+      "candidateRows": 624,
+      "openCount": 3744
+     },
+     {
+      "totalMs": 280.9469000000099,
+      "preMs": 0.633300000015879,
+      "dbMs": 190.29409999999916,
+      "betweenSqlMs": 0,
+      "postMs": 90.01949999999488,
+      "sqlCalls": 1,
+      "candidateRows": 624,
+      "openCount": 3744
+     },
+     {
+      "totalMs": 279.215200000006,
+      "preMs": 0.6203999999852385,
+      "dbMs": 179.3005000000121,
+      "betweenSqlMs": 0,
+      "postMs": 99.29430000000866,
+      "sqlCalls": 1,
+      "candidateRows": 624,
+      "openCount": 3744
+     }
+    ],
+    "P3": [
+     {
+      "totalMs": 273.72000000000116,
+      "preMs": 0.6401999999943655,
+      "dbMs": 184.54060000000754,
+      "betweenSqlMs": 0,
+      "postMs": 88.53919999999925,
+      "sqlCalls": 1,
+      "candidateRows": 624,
+      "openCount": 3744
+     },
+     {
+      "totalMs": 272.47909999999683,
+      "preMs": 0.6073000000033062,
+      "dbMs": 182.18480000001728,
+      "betweenSqlMs": 0,
+      "postMs": 89.68699999997625,
+      "sqlCalls": 1,
+      "candidateRows": 624,
+      "openCount": 3744
+     },
+     {
+      "totalMs": 260.65540000001783,
+      "preMs": 0.610899999999674,
+      "dbMs": 175.11680000001797,
+      "betweenSqlMs": 0,
+      "postMs": 84.92770000000019,
+      "sqlCalls": 1,
+      "candidateRows": 624,
+      "openCount": 3744
+     },
+     {
+      "totalMs": 266.5152999999991,
+      "preMs": 0.9159999999974389,
+      "dbMs": 170.9649999999965,
+      "betweenSqlMs": 0,
+      "postMs": 94.63430000000517,
+      "sqlCalls": 1,
+      "candidateRows": 624,
+      "openCount": 3744
+     },
+     {
+      "totalMs": 263.14830000000075,
+      "preMs": 0.654500000004191,
+      "dbMs": 173.2109000000055,
+      "betweenSqlMs": 0,
+      "postMs": 89.28289999999106,
+      "sqlCalls": 1,
+      "candidateRows": 624,
+      "openCount": 3744
+     },
+     {
+      "totalMs": 269.44130000000587,
+      "preMs": 0.6603000000177417,
+      "dbMs": 178.1074999999837,
+      "betweenSqlMs": 0,
+      "postMs": 90.67350000000442,
+      "sqlCalls": 1,
+      "candidateRows": 624,
+      "openCount": 3744
+     },
+     {
+      "totalMs": 275.0478000000003,
+      "preMs": 0.8442000000213739,
+      "dbMs": 175.06560000000172,
+      "betweenSqlMs": 0,
+      "postMs": 99.13799999997718,
+      "sqlCalls": 1,
+      "candidateRows": 624,
+      "openCount": 3744
+     }
+    ],
+    "P4": [
+     {
+      "totalMs": 179.78850000002421,
+      "preMs": 0.6426000000210479,
+      "dbMs": 177.5964999999851,
+      "betweenSqlMs": 0,
+      "postMs": 1.5494000000180677,
+      "sqlCalls": 1,
+      "candidateRows": 624,
+      "openCount": 3744,
+      "decryptsBeforeDbEnd": 3680
+     },
+     {
+      "totalMs": 183.27210000000196,
+      "preMs": 0.6532999999762978,
+      "dbMs": 180.97520000001532,
+      "betweenSqlMs": 0,
+      "postMs": 1.6436000000103377,
+      "sqlCalls": 1,
+      "candidateRows": 624,
+      "openCount": 3744,
+      "decryptsBeforeDbEnd": 3680
+     },
+     {
+      "totalMs": 180.0179000000062,
+      "preMs": 0.7195999999821652,
+      "dbMs": 177.57300000000396,
+      "betweenSqlMs": 0,
+      "postMs": 1.72530000002007,
+      "sqlCalls": 1,
+      "candidateRows": 624,
+      "openCount": 3744,
+      "decryptsBeforeDbEnd": 3681
+     },
+     {
+      "totalMs": 188.16010000000824,
+      "preMs": 0.6278000000165775,
+      "dbMs": 185.89629999999306,
+      "betweenSqlMs": 0,
+      "postMs": 1.635999999998603,
+      "sqlCalls": 1,
+      "candidateRows": 624,
+      "openCount": 3744,
+      "decryptsBeforeDbEnd": 3681
+     },
+     {
+      "totalMs": 176.56340000001364,
+      "preMs": 0.826600000000326,
+      "dbMs": 174.21809999999823,
+      "betweenSqlMs": 0,
+      "postMs": 1.5187000000150874,
+      "sqlCalls": 1,
+      "candidateRows": 624,
+      "openCount": 3744,
+      "decryptsBeforeDbEnd": 3681
+     },
+     {
+      "totalMs": 181.83250000001863,
+      "preMs": 0.648700000019744,
+      "dbMs": 179.64909999998054,
+      "betweenSqlMs": 0,
+      "postMs": 1.534700000018347,
+      "sqlCalls": 1,
+      "candidateRows": 624,
+      "openCount": 3744,
+      "decryptsBeforeDbEnd": 3695
+     },
+     {
+      "totalMs": 185.96469999998226,
+      "preMs": 0.807699999975739,
+      "dbMs": 183.44590000002063,
+      "betweenSqlMs": 0,
+      "postMs": 1.7110999999858905,
+      "sqlCalls": 1,
+      "candidateRows": 624,
+      "openCount": 3744,
+      "decryptsBeforeDbEnd": 3680
+     }
+    ]
+   }
+  },
+  {
+   "case": "or2",
+   "condition": "(company = \"서울서비스 담당\" OR memo contains \"푸른달\")",
+   "environment": "1억 속 회사 B",
+   "mode": "count",
+   "matches": 28400,
+   "plain": {
+    "totalMs": 61.35,
+    "preMs": 0.05,
+    "dbMs": 61.257,
+    "betweenSqlMs": 0,
+    "postMs": 0.047,
+    "sqlCalls": 1,
+    "candidateRows": 1,
+    "openCount": 0
+   },
+   "product": {
+    "totalMs": 2040.293,
+    "preMs": 1.186,
+    "dbMs": 166.949,
+    "betweenSqlMs": 0,
+    "postMs": 1859.161,
+    "sqlCalls": 1,
+    "candidateRows": 28400,
+    "openCount": 56800
+   },
+   "P1": {
+    "totalMs": 1122.93,
+    "preMs": 0.441,
+    "dbMs": 190.623,
+    "betweenSqlMs": 0,
+    "postMs": 933.427,
+    "sqlCalls": 1,
+    "candidateRows": 28400,
+    "openCount": 28400
+   },
+   "P2": {
+    "totalMs": 900.626,
+    "preMs": 0.498,
+    "dbMs": 191.857,
+    "betweenSqlMs": 0,
+    "postMs": 705.325,
+    "sqlCalls": 1,
+    "candidateRows": 28400,
+    "openCount": 28400
+   },
+   "P3": {
+    "totalMs": 872.362,
+    "preMs": 0.349,
+    "dbMs": 160.788,
+    "betweenSqlMs": 0,
+    "postMs": 709.409,
+    "sqlCalls": 1,
+    "candidateRows": 28400,
+    "openCount": 28400
+   },
+   "P4": {
+    "totalMs": 774.973,
+    "preMs": 0.446,
+    "dbMs": 169.69,
+    "betweenSqlMs": 0,
+    "postMs": 609.244,
+    "sqlCalls": 1,
+    "candidateRows": 28400,
+    "openCount": 28400,
+    "decryptsBeforeDbEnd": 3260
+   },
+   "first": {
+    "plain": {
+     "totalMs": 63.9377000000095,
+     "preMs": 0.05419999998412095,
+     "dbMs": 63.83230000000913,
+     "betweenSqlMs": 0,
+     "postMs": 0.05120000001625158,
+     "sqlCalls": 1,
+     "candidateRows": 1,
+     "openCount": 0
+    },
+    "product": {
+     "totalMs": 2064.3528000000224,
+     "preMs": 1.262300000002142,
+     "dbMs": 168.3761999999988,
+     "betweenSqlMs": 0,
+     "postMs": 1894.7143000000215,
+     "sqlCalls": 1,
+     "candidateRows": 28400,
+     "openCount": 56800
+    },
+    "P1": {
+     "totalMs": 1126.656399999978,
+     "preMs": 0.45949999999720603,
+     "dbMs": 188.25800000000163,
+     "betweenSqlMs": 0,
+     "postMs": 937.9388999999792,
+     "sqlCalls": 1,
+     "candidateRows": 28400,
+     "openCount": 28400
+    },
+    "P2": {
+     "totalMs": 897.0997000000207,
+     "preMs": 0.47840000002179295,
+     "dbMs": 195.00800000000163,
+     "betweenSqlMs": 0,
+     "postMs": 701.6132999999973,
+     "sqlCalls": 1,
+     "candidateRows": 28400,
+     "openCount": 28400
+    },
+    "P3": {
+     "totalMs": 884.2068999999901,
+     "preMs": 0.5915000000095461,
+     "dbMs": 169.33929999999236,
+     "betweenSqlMs": 0,
+     "postMs": 714.2760999999882,
+     "sqlCalls": 1,
+     "candidateRows": 28400,
+     "openCount": 28400
+    },
+    "P4": {
+     "totalMs": 758.9855999999854,
+     "preMs": 0.3416999999899417,
+     "dbMs": 165.3925000000163,
+     "betweenSqlMs": 0,
+     "postMs": 593.2513999999792,
+     "sqlCalls": 1,
+     "candidateRows": 28400,
+     "openCount": 28400,
+     "decryptsBeforeDbEnd": 3259
+    }
+   },
+   "runs": {
+    "plain": [
+     {
+      "totalMs": 61.35010000001057,
+      "preMs": 0.04910000000381842,
+      "dbMs": 61.25680000000284,
+      "betweenSqlMs": 0,
+      "postMs": 0.044200000003911555,
+      "sqlCalls": 1,
+      "candidateRows": 1,
+      "openCount": 0
+     },
+     {
+      "totalMs": 60.822099999990314,
+      "preMs": 0.05099999997764826,
+      "dbMs": 60.72410000002128,
+      "betweenSqlMs": 0,
+      "postMs": 0.046999999991385266,
+      "sqlCalls": 1,
+      "candidateRows": 1,
+      "openCount": 0
+     },
+     {
+      "totalMs": 63.258900000015274,
+      "preMs": 0.04709999999613501,
+      "dbMs": 63.16790000000037,
+      "betweenSqlMs": 0,
+      "postMs": 0.04390000001876615,
+      "sqlCalls": 1,
+      "candidateRows": 1,
+      "openCount": 0
+     },
+     {
+      "totalMs": 60.70209999999497,
+      "preMs": 0.04930000001331791,
+      "dbMs": 60.599600000015926,
+      "betweenSqlMs": 0,
+      "postMs": 0.05319999996572733,
+      "sqlCalls": 1,
+      "candidateRows": 1,
+      "openCount": 0
+     },
+     {
+      "totalMs": 64.65580000000773,
+      "preMs": 0.053499999979976565,
+      "dbMs": 64.55420000001322,
+      "betweenSqlMs": 0,
+      "postMs": 0.04810000001452863,
+      "sqlCalls": 1,
+      "candidateRows": 1,
+      "openCount": 0
+     },
+     {
+      "totalMs": 60.98790000000736,
+      "preMs": 0.050900000031106174,
+      "dbMs": 60.8923000000068,
+      "betweenSqlMs": 0,
+      "postMs": 0.04469999996945262,
+      "sqlCalls": 1,
+      "candidateRows": 1,
+      "openCount": 0
+     },
+     {
+      "totalMs": 63.31260000000475,
+      "preMs": 0.04999999998835847,
+      "dbMs": 63.213099999993574,
+      "betweenSqlMs": 0,
+      "postMs": 0.0495000000228174,
+      "sqlCalls": 1,
+      "candidateRows": 1,
+      "openCount": 0
+     }
+    ],
+    "product": [
+     {
+      "totalMs": 2040.293399999995,
+      "preMs": 1.1070999999938067,
+      "dbMs": 165.56620000000112,
+      "betweenSqlMs": 0,
+      "postMs": 1873.6201,
+      "sqlCalls": 1,
+      "candidateRows": 28400,
+      "openCount": 56800
+     },
+     {
+      "totalMs": 2015.688999999984,
+      "preMs": 1.2954000000027008,
+      "dbMs": 166.9488999999885,
+      "betweenSqlMs": 0,
+      "postMs": 1847.4446999999927,
+      "sqlCalls": 1,
+      "candidateRows": 28400,
+      "openCount": 56800
+     },
+     {
+      "totalMs": 2054.69160000002,
+      "preMs": 1.3821000000170898,
+      "dbMs": 165.20279999999912,
+      "betweenSqlMs": 0,
+      "postMs": 1888.106700000004,
+      "sqlCalls": 1,
+      "candidateRows": 28400,
+      "openCount": 56800
+     },
+     {
+      "totalMs": 2042.0035999999964,
+      "preMs": 1.1856999999727122,
+      "dbMs": 160.58860000001732,
+      "betweenSqlMs": 0,
+      "postMs": 1880.2293000000063,
+      "sqlCalls": 1,
+      "candidateRows": 28400,
+      "openCount": 56800
+     },
+     {
+      "totalMs": 2004.8490999999922,
+      "preMs": 1.1007000000099652,
+      "dbMs": 168.54749999998603,
+      "betweenSqlMs": 0,
+      "postMs": 1835.2008999999962,
+      "sqlCalls": 1,
+      "candidateRows": 28400,
+      "openCount": 56800
+     },
+     {
+      "totalMs": 2042.3632000000216,
+      "preMs": 1.097200000018347,
+      "dbMs": 182.10479999997187,
+      "betweenSqlMs": 0,
+      "postMs": 1859.1612000000314,
+      "sqlCalls": 1,
+      "candidateRows": 28400,
+      "openCount": 56800
+     },
+     {
+      "totalMs": 2036.9976000000024,
+      "preMs": 1.3104000000166707,
+      "dbMs": 180.55900000000838,
+      "betweenSqlMs": 0,
+      "postMs": 1855.1281999999774,
+      "sqlCalls": 1,
+      "candidateRows": 28400,
+      "openCount": 56800
+     }
+    ],
+    "P1": [
+     {
+      "totalMs": 1122.9297000000079,
+      "preMs": 0.44109999999636784,
+      "dbMs": 183.62720000001718,
+      "betweenSqlMs": 0,
+      "postMs": 938.8613999999943,
+      "sqlCalls": 1,
+      "candidateRows": 28400,
+      "openCount": 28400
+     },
+     {
+      "totalMs": 1153.0451999999932,
+      "preMs": 0.4837999999872409,
+      "dbMs": 206.43400000000838,
+      "betweenSqlMs": 0,
+      "postMs": 946.1273999999976,
+      "sqlCalls": 1,
+      "candidateRows": 28400,
+      "openCount": 28400
+     },
+     {
+      "totalMs": 1127.0057000000088,
+      "preMs": 0.4377999999851454,
+      "dbMs": 189.62300000002142,
+      "betweenSqlMs": 0,
+      "postMs": 936.9449000000022,
+      "sqlCalls": 1,
+      "candidateRows": 28400,
+      "openCount": 28400
+     },
+     {
+      "totalMs": 1116.2944000000134,
+      "preMs": 0.5176000000210479,
+      "dbMs": 197.67310000001453,
+      "betweenSqlMs": 0,
+      "postMs": 918.1036999999778,
+      "sqlCalls": 1,
+      "candidateRows": 28400,
+      "openCount": 28400
+     },
+     {
+      "totalMs": 1121.5557000000263,
+      "preMs": 0.4574000000138767,
+      "dbMs": 190.62280000001192,
+      "betweenSqlMs": 0,
+      "postMs": 930.4755000000005,
+      "sqlCalls": 1,
+      "candidateRows": 28400,
+      "openCount": 28400
+     },
+     {
+      "totalMs": 1131.1570000000065,
+      "preMs": 0.4096000000135973,
+      "dbMs": 203.1599999999744,
+      "betweenSqlMs": 0,
+      "postMs": 927.5874000000185,
+      "sqlCalls": 1,
+      "candidateRows": 28400,
+      "openCount": 28400
+     },
+     {
+      "totalMs": 1117.4304999999586,
+      "preMs": 0.4378999999607913,
+      "dbMs": 183.56599999999162,
+      "betweenSqlMs": 0,
+      "postMs": 933.4266000000061,
+      "sqlCalls": 1,
+      "candidateRows": 28400,
+      "openCount": 28400
+     }
+    ],
+    "P2": [
+     {
+      "totalMs": 899.0188000000198,
+      "preMs": 0.5327000000106636,
+      "dbMs": 191.8573000000033,
+      "betweenSqlMs": 0,
+      "postMs": 706.6288000000059,
+      "sqlCalls": 1,
+      "candidateRows": 28400,
+      "openCount": 28400
+     },
+     {
+      "totalMs": 900.7517999999982,
+      "preMs": 0.559899999992922,
+      "dbMs": 194.86660000000848,
+      "betweenSqlMs": 0,
+      "postMs": 705.3252999999968,
+      "sqlCalls": 1,
+      "candidateRows": 28400,
+      "openCount": 28400
+     },
+     {
+      "totalMs": 900.6255999999703,
+      "preMs": 0.3167999999714084,
+      "dbMs": 196.858899999992,
+      "betweenSqlMs": 0,
+      "postMs": 703.4499000000069,
+      "sqlCalls": 1,
+      "candidateRows": 28400,
+      "openCount": 28400
+     },
+     {
+      "totalMs": 906.2580999999773,
+      "preMs": 0.498299999977462,
+      "dbMs": 190.8463000000338,
+      "betweenSqlMs": 0,
+      "postMs": 714.913499999966,
+      "sqlCalls": 1,
+      "candidateRows": 28400,
+      "openCount": 28400
+     },
+     {
+      "totalMs": 886.0108000000473,
+      "preMs": 0.344600000011269,
+      "dbMs": 189.03429999999935,
+      "betweenSqlMs": 0,
+      "postMs": 696.6319000000367,
+      "sqlCalls": 1,
+      "candidateRows": 28400,
+      "openCount": 28400
+     },
+     {
+      "totalMs": 896.5017999999691,
+      "preMs": 0.4295999999740161,
+      "dbMs": 194.63829999999143,
+      "betweenSqlMs": 0,
+      "postMs": 701.4339000000036,
+      "sqlCalls": 1,
+      "candidateRows": 28400,
+      "openCount": 28400
+     },
+     {
+      "totalMs": 905.3206000000355,
+      "preMs": 0.5143000000389293,
+      "dbMs": 189.87659999995958,
+      "betweenSqlMs": 0,
+      "postMs": 714.929700000037,
+      "sqlCalls": 1,
+      "candidateRows": 28400,
+      "openCount": 28400
+     }
+    ],
+    "P3": [
+     {
+      "totalMs": 887.7919999999867,
+      "preMs": 0.34890000001178123,
+      "dbMs": 160.7884999999951,
+      "betweenSqlMs": 0,
+      "postMs": 726.6545999999798,
+      "sqlCalls": 1,
+      "candidateRows": 28400,
+      "openCount": 28400
+     },
+     {
+      "totalMs": 858.002999999997,
+      "preMs": 0.30160000000614673,
+      "dbMs": 156.31520000001183,
+      "betweenSqlMs": 0,
+      "postMs": 701.386199999979,
+      "sqlCalls": 1,
+      "candidateRows": 28400,
+      "openCount": 28400
+     },
+     {
+      "totalMs": 883.6906999999774,
+      "preMs": 0.46779999998398125,
+      "dbMs": 172.9819000000134,
+      "betweenSqlMs": 0,
+      "postMs": 710.24099999998,
+      "sqlCalls": 1,
+      "candidateRows": 28400,
+      "openCount": 28400
+     },
+     {
+      "totalMs": 863.0917999999947,
+      "preMs": 0.4820000000181608,
+      "dbMs": 165.77029999997467,
+      "betweenSqlMs": 0,
+      "postMs": 696.8395000000019,
+      "sqlCalls": 1,
+      "candidateRows": 28400,
+      "openCount": 28400
+     },
+     {
+      "totalMs": 872.3618000000133,
+      "preMs": 0.44689999998081475,
+      "dbMs": 165.50170000002254,
+      "betweenSqlMs": 0,
+      "postMs": 706.41320000001,
+      "sqlCalls": 1,
+      "candidateRows": 28400,
+      "openCount": 28400
+     },
+     {
+      "totalMs": 874.1856999999727,
+      "preMs": 0.32189999998081475,
+      "dbMs": 159.60070000000997,
+      "betweenSqlMs": 0,
+      "postMs": 714.2630999999819,
+      "sqlCalls": 1,
+      "candidateRows": 28400,
+      "openCount": 28400
+     },
+     {
+      "totalMs": 868.2208000000101,
+      "preMs": 0.3467999999993481,
+      "dbMs": 158.4652000000351,
+      "betweenSqlMs": 0,
+      "postMs": 709.4087999999756,
+      "sqlCalls": 1,
+      "candidateRows": 28400,
+      "openCount": 28400
+     }
+    ],
+    "P4": [
+     {
+      "totalMs": 747.6677999999956,
+      "preMs": 0.47070000000530854,
+      "dbMs": 166.17980000001262,
+      "betweenSqlMs": 0,
+      "postMs": 581.0172999999777,
+      "sqlCalls": 1,
+      "candidateRows": 28400,
+      "openCount": 28400,
+      "decryptsBeforeDbEnd": 3191
+     },
+     {
+      "totalMs": 786.9385000000184,
+      "preMs": 0.41070000000763685,
+      "dbMs": 177.28369999999995,
+      "betweenSqlMs": 0,
+      "postMs": 609.2441000000108,
+      "sqlCalls": 1,
+      "candidateRows": 28400,
+      "openCount": 28400,
+      "decryptsBeforeDbEnd": 3070
+     },
+     {
+      "totalMs": 762.0401000000129,
+      "preMs": 0.5516000000061467,
+      "dbMs": 171.54269999999087,
+      "betweenSqlMs": 0,
+      "postMs": 589.9458000000159,
+      "sqlCalls": 1,
+      "candidateRows": 28400,
+      "openCount": 28400,
+      "decryptsBeforeDbEnd": 3260
+     },
+     {
+      "totalMs": 790.3957999999984,
+      "preMs": 0.3523000000277534,
+      "dbMs": 166.55689999996684,
+      "betweenSqlMs": 0,
+      "postMs": 623.4866000000038,
+      "sqlCalls": 1,
+      "candidateRows": 28400,
+      "openCount": 28400,
+      "decryptsBeforeDbEnd": 3262
+     },
+     {
+      "totalMs": 774.9734000000171,
+      "preMs": 0.32689999998547137,
+      "dbMs": 160.30440000002272,
+      "betweenSqlMs": 0,
+      "postMs": 614.3421000000089,
+      "sqlCalls": 1,
+      "candidateRows": 28400,
+      "openCount": 28400,
+      "decryptsBeforeDbEnd": 3067
+     },
+     {
+      "totalMs": 765.4545000000508,
+      "preMs": 0.4862000000430271,
+      "dbMs": 174.41800000000512,
+      "betweenSqlMs": 0,
+      "postMs": 590.5503000000026,
+      "sqlCalls": 1,
+      "candidateRows": 28400,
+      "openCount": 28400,
+      "decryptsBeforeDbEnd": 3450
+     },
+     {
+      "totalMs": 791.1657000000123,
+      "preMs": 0.44639999995706603,
+      "dbMs": 169.68980000005104,
+      "betweenSqlMs": 0,
+      "postMs": 621.0295000000042,
+      "sqlCalls": 1,
+      "candidateRows": 28400,
+      "openCount": 28400,
+      "decryptsBeforeDbEnd": 3512
+     }
+    ]
+   }
+  },
+  {
+   "case": "or3",
+   "condition": "(phone = \"42-5748-1542\" OR phone = \"21-7100-5875\" OR name contains \"pshxt\")",
+   "environment": "1억 속 회사 B",
+   "mode": "count",
+   "matches": 2,
+   "plain": {
+    "totalMs": 5.775,
+    "preMs": 0.022,
+    "dbMs": 5.716,
+    "betweenSqlMs": 0,
+    "postMs": 0.033,
+    "sqlCalls": 1,
+    "candidateRows": 1,
+    "openCount": 0
+   },
+   "product": {
+    "totalMs": 2.319,
+    "preMs": 1.154,
+    "dbMs": 0.793,
+    "betweenSqlMs": 0,
+    "postMs": 0.316,
+    "sqlCalls": 1,
+    "candidateRows": 3,
+    "openCount": 6
+   },
+   "P1": {
+    "totalMs": 1.156,
+    "preMs": 0.396,
+    "dbMs": 0.605,
+    "betweenSqlMs": 0,
+    "postMs": 0.133,
+    "sqlCalls": 1,
+    "candidateRows": 3,
+    "openCount": 3
+   },
+   "P2": {
+    "totalMs": 1.061,
+    "preMs": 0.369,
+    "dbMs": 0.574,
+    "betweenSqlMs": 0,
+    "postMs": 0.114,
+    "sqlCalls": 1,
+    "candidateRows": 3,
+    "openCount": 3
+   },
+   "P3": {
+    "totalMs": 1.028,
+    "preMs": 0.352,
+    "dbMs": 0.55,
+    "betweenSqlMs": 0,
+    "postMs": 0.115,
+    "sqlCalls": 1,
+    "candidateRows": 3,
+    "openCount": 3
+   },
+   "P4": {
+    "totalMs": 1.101,
+    "preMs": 0.372,
+    "dbMs": 0.677,
+    "betweenSqlMs": 0,
+    "postMs": 0.052,
+    "sqlCalls": 1,
+    "candidateRows": 3,
+    "openCount": 3,
+    "decryptsBeforeDbEnd": 2
+   },
+   "first": {
+    "plain": {
+     "totalMs": 6.029399999999441,
+     "preMs": 0.02949999994598329,
+     "dbMs": 5.972700000042096,
+     "betweenSqlMs": 0,
+     "postMs": 0.027200000011362135,
+     "sqlCalls": 1,
+     "candidateRows": 1,
+     "openCount": 0
+    },
+    "product": {
+     "totalMs": 3.430999999982305,
+     "preMs": 1.9729999999981374,
+     "dbMs": 0.9442000000271946,
+     "betweenSqlMs": 0,
+     "postMs": 0.5137999999569729,
+     "sqlCalls": 1,
+     "candidateRows": 3,
+     "openCount": 6
+    },
+    "P1": {
+     "totalMs": 1.3300000000162981,
+     "preMs": 0.4235000000335276,
+     "dbMs": 0.7591999999713153,
+     "betweenSqlMs": 0,
+     "postMs": 0.14730000001145527,
+     "sqlCalls": 1,
+     "candidateRows": 3,
+     "openCount": 3
+    },
+    "P2": {
+     "totalMs": 1.0451999999932013,
+     "preMs": 0.3630000000121072,
+     "dbMs": 0.5762000000104308,
+     "betweenSqlMs": 0,
+     "postMs": 0.10599999997066334,
+     "sqlCalls": 1,
+     "candidateRows": 3,
+     "openCount": 3
+    },
+    "P3": {
+     "totalMs": 1.0136999999522232,
+     "preMs": 0.36139999999431893,
+     "dbMs": 0.5454000000027008,
+     "betweenSqlMs": 0,
+     "postMs": 0.10689999995520338,
+     "sqlCalls": 1,
+     "candidateRows": 3,
+     "openCount": 3
+    },
+    "P4": {
+     "totalMs": 1.090299999981653,
+     "preMs": 0.34879999997792765,
+     "dbMs": 0.6616999999969266,
+     "betweenSqlMs": 0,
+     "postMs": 0.07980000000679865,
+     "sqlCalls": 1,
+     "candidateRows": 3,
+     "openCount": 3,
+     "decryptsBeforeDbEnd": 2
+    }
+   },
+   "runs": {
+    "plain": [
+     {
+      "totalMs": 6.229600000020582,
+      "preMs": 0.0470000000204891,
+      "dbMs": 6.141999999992549,
+      "betweenSqlMs": 0,
+      "postMs": 0.04060000000754371,
+      "sqlCalls": 1,
+      "candidateRows": 1,
+      "openCount": 0
+     },
+     {
+      "totalMs": 6.103899999987334,
+      "preMs": 0.021699999982956797,
+      "dbMs": 6.039099999994505,
+      "betweenSqlMs": 0,
+      "postMs": 0.04310000000987202,
+      "sqlCalls": 1,
+      "candidateRows": 1,
+      "openCount": 0
+     },
+     {
+      "totalMs": 5.5442000000039116,
+      "preMs": 0.01959999999962747,
+      "dbMs": 5.508700000005774,
+      "betweenSqlMs": 0,
+      "postMs": 0.015899999998509884,
+      "sqlCalls": 1,
+      "candidateRows": 1,
+      "openCount": 0
+     },
+     {
+      "totalMs": 5.545799999963492,
+      "preMs": 0.021999999997206032,
+      "dbMs": 5.503199999977369,
+      "betweenSqlMs": 0,
+      "postMs": 0.02059999998891726,
+      "sqlCalls": 1,
+      "candidateRows": 1,
+      "openCount": 0
+     },
+     {
+      "totalMs": 5.687900000018999,
+      "preMs": 0.02079999999841675,
+      "dbMs": 5.648800000024494,
+      "betweenSqlMs": 0,
+      "postMs": 0.018299999996088445,
+      "sqlCalls": 1,
+      "candidateRows": 1,
+      "openCount": 0
+     },
+     {
+      "totalMs": 5.774600000004284,
+      "preMs": 0.02490000001853332,
+      "dbMs": 5.7163999999756925,
+      "betweenSqlMs": 0,
+      "postMs": 0.033300000010058284,
+      "sqlCalls": 1,
+      "candidateRows": 1,
+      "openCount": 0
+     },
+     {
+      "totalMs": 5.800500000012107,
+      "preMs": 0.01860000001033768,
+      "dbMs": 5.743499999982305,
+      "betweenSqlMs": 0,
+      "postMs": 0.03840000001946464,
+      "sqlCalls": 1,
+      "candidateRows": 1,
+      "openCount": 0
+     }
+    ],
+    "product": [
+     {
+      "totalMs": 2.3330999999889173,
+      "preMs": 1.2476000000024214,
+      "dbMs": 0.7692000000388362,
+      "betweenSqlMs": 0,
+      "postMs": 0.31629999994765967,
+      "sqlCalls": 1,
+      "candidateRows": 3,
+      "openCount": 6
+     },
+     {
+      "totalMs": 2.318700000003446,
+      "preMs": 1.2105999999912456,
+      "dbMs": 0.793500000028871,
+      "betweenSqlMs": 0,
+      "postMs": 0.3145999999833293,
+      "sqlCalls": 1,
+      "candidateRows": 3,
+      "openCount": 6
+     },
+     {
+      "totalMs": 2.456000000005588,
+      "preMs": 1.1540000000386499,
+      "dbMs": 0.9324999999953434,
+      "betweenSqlMs": 0,
+      "postMs": 0.36949999997159466,
+      "sqlCalls": 1,
+      "candidateRows": 3,
+      "openCount": 6
+     },
+     {
+      "totalMs": 2.03169999999227,
+      "preMs": 1.0819999999948777,
+      "dbMs": 0.6493999999947846,
+      "betweenSqlMs": 0,
+      "postMs": 0.3003000000026077,
+      "sqlCalls": 1,
+      "candidateRows": 3,
+      "openCount": 6
+     },
+     {
+      "totalMs": 2.2132999999448657,
+      "preMs": 1.0601999999489635,
+      "dbMs": 0.7927000000490807,
+      "betweenSqlMs": 0,
+      "postMs": 0.3603999999468215,
+      "sqlCalls": 1,
+      "candidateRows": 3,
+      "openCount": 6
+     },
+     {
+      "totalMs": 2.1516999999876134,
+      "preMs": 1.1378999999724329,
+      "dbMs": 0.7066999999806285,
+      "betweenSqlMs": 0,
+      "postMs": 0.30710000003455207,
+      "sqlCalls": 1,
+      "candidateRows": 3,
+      "openCount": 6
+     },
+     {
+      "totalMs": 2.4729999999981374,
+      "preMs": 1.2862000000313856,
+      "dbMs": 0.8253999999724329,
+      "betweenSqlMs": 0,
+      "postMs": 0.36139999999431893,
+      "sqlCalls": 1,
+      "candidateRows": 3,
+      "openCount": 6
+     }
+    ],
+    "P1": [
+     {
+      "totalMs": 1.070499999972526,
+      "preMs": 0.3604999999515712,
+      "dbMs": 0.5767000000341795,
+      "betweenSqlMs": 0,
+      "postMs": 0.13329999998677522,
+      "sqlCalls": 1,
+      "candidateRows": 3,
+      "openCount": 3
+     },
+     {
+      "totalMs": 1.1022000000230037,
+      "preMs": 0.3939000000245869,
+      "dbMs": 0.5768999999854714,
+      "betweenSqlMs": 0,
+      "postMs": 0.13140000001294538,
+      "sqlCalls": 1,
+      "candidateRows": 3,
+      "openCount": 3
+     },
+     {
+      "totalMs": 1.177399999985937,
+      "preMs": 0.39809999999124557,
+      "dbMs": 0.6398000000044703,
+      "betweenSqlMs": 0,
+      "postMs": 0.1394999999902211,
+      "sqlCalls": 1,
+      "candidateRows": 3,
+      "openCount": 3
+     },
+     {
+      "totalMs": 1.063800000003539,
+      "preMs": 0.3642000000108965,
+      "dbMs": 0.5667999999714084,
+      "betweenSqlMs": 0,
+      "postMs": 0.13280000002123415,
+      "sqlCalls": 1,
+      "candidateRows": 3,
+      "openCount": 3
+     },
+     {
+      "totalMs": 1.15580000000773,
+      "preMs": 0.39600000000791624,
+      "dbMs": 0.6265000000130385,
+      "betweenSqlMs": 0,
+      "postMs": 0.13329999998677522,
+      "sqlCalls": 1,
+      "candidateRows": 3,
+      "openCount": 3
+     },
+     {
+      "totalMs": 1.2494999999762513,
+      "preMs": 0.46179999999003485,
+      "dbMs": 0.6492999999900348,
+      "betweenSqlMs": 0,
+      "postMs": 0.13839999999618158,
+      "sqlCalls": 1,
+      "candidateRows": 3,
+      "openCount": 3
+     },
+     {
+      "totalMs": 1.1561000000219792,
+      "preMs": 0.41279999999096617,
+      "dbMs": 0.6050000000395812,
+      "betweenSqlMs": 0,
+      "postMs": 0.13829999999143183,
+      "sqlCalls": 1,
+      "candidateRows": 3,
+      "openCount": 3
+     }
+    ],
+    "P2": [
+     {
+      "totalMs": 1.1293999999761581,
+      "preMs": 0.38670000003185123,
+      "dbMs": 0.6287000000011176,
+      "betweenSqlMs": 0,
+      "postMs": 0.11399999994318932,
+      "sqlCalls": 1,
+      "candidateRows": 3,
+      "openCount": 3
+     },
+     {
+      "totalMs": 1.0243999999947846,
+      "preMs": 0.3374999999650754,
+      "dbMs": 0.5510000000358559,
+      "betweenSqlMs": 0,
+      "postMs": 0.13589999999385327,
+      "sqlCalls": 1,
+      "candidateRows": 3,
+      "openCount": 3
+     },
+     {
+      "totalMs": 1.3341999999829568,
+      "preMs": 0.3693999999668449,
+      "dbMs": 0.8559000000241213,
+      "betweenSqlMs": 0,
+      "postMs": 0.10889999999199063,
+      "sqlCalls": 1,
+      "candidateRows": 3,
+      "openCount": 3
+     },
+     {
+      "totalMs": 1.0605999999679625,
+      "preMs": 0.38809999998193234,
+      "dbMs": 0.5570000000298023,
+      "betweenSqlMs": 0,
+      "postMs": 0.11549999995622784,
+      "sqlCalls": 1,
+      "candidateRows": 3,
+      "openCount": 3
+     },
+     {
+      "totalMs": 1.0207999999984168,
+      "preMs": 0.34899999998742715,
+      "dbMs": 0.5665000000153668,
+      "betweenSqlMs": 0,
+      "postMs": 0.10529999999562278,
+      "sqlCalls": 1,
+      "candidateRows": 3,
+      "openCount": 3
+     },
+     {
+      "totalMs": 1.0370000000111759,
+      "preMs": 0.34649999998509884,
+      "dbMs": 0.5741000000271015,
+      "betweenSqlMs": 0,
+      "postMs": 0.11639999999897555,
+      "sqlCalls": 1,
+      "candidateRows": 3,
+      "openCount": 3
+     },
+     {
+      "totalMs": 1.0617999999667518,
+      "preMs": 0.3747999999905005,
+      "dbMs": 0.5763000000151806,
+      "betweenSqlMs": 0,
+      "postMs": 0.11069999996107072,
+      "sqlCalls": 1,
+      "candidateRows": 3,
+      "openCount": 3
+     }
+    ],
+    "P3": [
+     {
+      "totalMs": 1.0581000000238419,
+      "preMs": 0.35169999999925494,
+      "dbMs": 0.5914999999804422,
+      "betweenSqlMs": 0,
+      "postMs": 0.11490000004414469,
+      "sqlCalls": 1,
+      "candidateRows": 3,
+      "openCount": 3
+     },
+     {
+      "totalMs": 1.0434999999706633,
+      "preMs": 0.33870000002207235,
+      "dbMs": 0.5884999999543652,
+      "betweenSqlMs": 0,
+      "postMs": 0.1162999999942258,
+      "sqlCalls": 1,
+      "candidateRows": 3,
+      "openCount": 3
+     },
+     {
+      "totalMs": 0.9927000000025146,
+      "preMs": 0.33989999996265396,
+      "dbMs": 0.5486000000382774,
+      "betweenSqlMs": 0,
+      "postMs": 0.10420000000158325,
+      "sqlCalls": 1,
+      "candidateRows": 3,
+      "openCount": 3
+     },
+     {
+      "totalMs": 1.027799999981653,
+      "preMs": 0.37239999999292195,
+      "dbMs": 0.5459000000264496,
+      "betweenSqlMs": 0,
+      "postMs": 0.10949999996228144,
+      "sqlCalls": 1,
+      "candidateRows": 3,
+      "openCount": 3
+     },
+     {
+      "totalMs": 1.0042999999714084,
+      "preMs": 0.34669999999459833,
+      "dbMs": 0.5397000000230037,
+      "betweenSqlMs": 0,
+      "postMs": 0.1178999999538064,
+      "sqlCalls": 1,
+      "candidateRows": 3,
+      "openCount": 3
+     },
+     {
+      "totalMs": 1.0788000000175089,
+      "preMs": 0.3577999999979511,
+      "dbMs": 0.6063999999896623,
+      "betweenSqlMs": 0,
+      "postMs": 0.11460000002989545,
+      "sqlCalls": 1,
+      "candidateRows": 3,
+      "openCount": 3
+     },
+     {
+      "totalMs": 1.0132000000448897,
+      "preMs": 0.35760000004665926,
+      "dbMs": 0.5499999999883585,
+      "betweenSqlMs": 0,
+      "postMs": 0.10560000000987202,
+      "sqlCalls": 1,
+      "candidateRows": 3,
+      "openCount": 3
+     }
+    ],
+    "P4": [
+     {
+      "totalMs": 3.1930999999749474,
+      "preMs": 0.3837000000057742,
+      "dbMs": 0.7871999999624677,
+      "betweenSqlMs": 0,
+      "postMs": 2.0222000000067055,
+      "sqlCalls": 1,
+      "candidateRows": 3,
+      "openCount": 3,
+      "decryptsBeforeDbEnd": 2
+     },
+     {
+      "totalMs": 1.0324999999720603,
+      "preMs": 0.35399999999208376,
+      "dbMs": 0.6265000000130385,
+      "betweenSqlMs": 0,
+      "postMs": 0.05199999996693805,
+      "sqlCalls": 1,
+      "candidateRows": 3,
+      "openCount": 3,
+      "decryptsBeforeDbEnd": 2
+     },
+     {
+      "totalMs": 1.1005000000004657,
+      "preMs": 0.3719000000273809,
+      "dbMs": 0.6771999999764375,
+      "betweenSqlMs": 0,
+      "postMs": 0.05139999999664724,
+      "sqlCalls": 1,
+      "candidateRows": 3,
+      "openCount": 3,
+      "decryptsBeforeDbEnd": 2
+     },
+     {
+      "totalMs": 1.0500999999931082,
+      "preMs": 0.36170000000856817,
+      "dbMs": 0.6292000000248663,
+      "betweenSqlMs": 0,
+      "postMs": 0.05919999995967373,
+      "sqlCalls": 1,
+      "candidateRows": 3,
+      "openCount": 3,
+      "decryptsBeforeDbEnd": 2
+     },
+     {
+      "totalMs": 1.1201000000000931,
+      "preMs": 0.38430000003427267,
+      "dbMs": 0.684499999973923,
+      "betweenSqlMs": 0,
+      "postMs": 0.051299999991897494,
+      "sqlCalls": 1,
+      "candidateRows": 3,
+      "openCount": 3,
+      "decryptsBeforeDbEnd": 2
+     },
+     {
+      "totalMs": 1.1528999999864027,
+      "preMs": 0.37339999998221174,
+      "dbMs": 0.7229999999981374,
+      "betweenSqlMs": 0,
+      "postMs": 0.0565000000060536,
+      "sqlCalls": 1,
+      "candidateRows": 3,
+      "openCount": 3,
+      "decryptsBeforeDbEnd": 2
+     },
+     {
+      "totalMs": 1.02990000002319,
+      "preMs": 0.355600000009872,
+      "dbMs": 0.6243999999715015,
+      "betweenSqlMs": 0,
+      "postMs": 0.049900000041816384,
+      "sqlCalls": 1,
+      "candidateRows": 3,
+      "openCount": 3,
+      "decryptsBeforeDbEnd": 2
+     }
+    ]
+   }
+  }
+ ]
+}

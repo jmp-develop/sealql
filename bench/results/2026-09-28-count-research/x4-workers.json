@@ -1,0 +1,377 @@
+{
+ "startedAt": "2026-09-28T00:28:57.069Z",
+ "fields": 42352,
+ "avgPlainBytes": 27.083301851152246,
+ "workerdPrepare": {
+  "wall": 1878.9255000000003,
+  "fields": 42352,
+  "gcmBytes": 2375240,
+  "x4Bytes": 3498096,
+  "shardKeys": 512
+ },
+ "nodePrepare": {
+  "fields": 42352,
+  "gcmBytes": 2375240,
+  "x4Bytes": 3498096,
+  "shardKeys": 512
+ },
+ "noopWallMs": 3.665,
+ "results": {
+  "gcmDecryptPool64": {
+   "workerdMs": 346.04,
+   "workerdUsPerField": 8.171,
+   "workerdInPerfMs": 346,
+   "workerdInDateMs": 346,
+   "nodeMs": 805.61,
+   "nodeUsPerField": 19.022
+  },
+  "gcmDecryptAll": {
+   "workerdMs": 350.78,
+   "workerdUsPerField": 8.283,
+   "workerdInPerfMs": 352,
+   "workerdInDateMs": 352,
+   "nodeMs": 757.4,
+   "nodeUsPerField": 17.883
+  },
+  "jsHmacVerify": {
+   "workerdMs": 71.17,
+   "workerdUsPerField": 1.681,
+   "workerdInPerfMs": 72,
+   "workerdInDateMs": 72,
+   "nodeMs": 68.33,
+   "nodeUsPerField": 1.613
+  },
+  "cbcBatchDecrypt": {
+   "workerdMs": 13.95,
+   "workerdUsPerField": 0.329,
+   "workerdInPerfMs": 14,
+   "workerdInDateMs": 14,
+   "nodeMs": 7.93,
+   "nodeUsPerField": 0.187
+  },
+  "x4OpenBatch": {
+   "workerdMs": 107.76,
+   "workerdUsPerField": 2.544,
+   "workerdInPerfMs": 103,
+   "workerdInDateMs": 103,
+   "nodeMs": 99.01,
+   "nodeUsPerField": 2.338
+  }
+ },
+ "raw": {
+  "workerd": {
+   "noop": [
+    {
+     "wall": 2.9943999999995867,
+     "n": 0,
+     "inWorkerPerfMs": 0,
+     "inWorkerDateMs": 0
+    },
+    {
+     "wall": 3.664699999999357,
+     "n": 0,
+     "inWorkerPerfMs": 0,
+     "inWorkerDateMs": 0
+    },
+    {
+     "wall": 9.423999999999069,
+     "n": 0,
+     "inWorkerPerfMs": 0,
+     "inWorkerDateMs": 0
+    },
+    {
+     "wall": 4.147600000000239,
+     "n": 0,
+     "inWorkerPerfMs": 0,
+     "inWorkerDateMs": 0
+    },
+    {
+     "wall": 3.670299999997951,
+     "n": 0,
+     "inWorkerPerfMs": 0,
+     "inWorkerDateMs": 0
+    },
+    {
+     "wall": 3.1222000000016124,
+     "n": 0,
+     "inWorkerPerfMs": 0,
+     "inWorkerDateMs": 0
+    },
+    {
+     "wall": 3.3637000000016997,
+     "n": 0,
+     "inWorkerPerfMs": 0,
+     "inWorkerDateMs": 0
+    }
+   ],
+   "gcmDecryptPool64": [
+    {
+     "wall": 341.3670999999995,
+     "n": 42352,
+     "inWorkerPerfMs": 338,
+     "inWorkerDateMs": 338
+    },
+    {
+     "wall": 346.4298999999992,
+     "n": 42352,
+     "inWorkerPerfMs": 342,
+     "inWorkerDateMs": 342
+    },
+    {
+     "wall": 350.99129999999786,
+     "n": 42352,
+     "inWorkerPerfMs": 348,
+     "inWorkerDateMs": 348
+    },
+    {
+     "wall": 343.97019999999975,
+     "n": 42352,
+     "inWorkerPerfMs": 340,
+     "inWorkerDateMs": 340
+    },
+    {
+     "wall": 351.65270000000237,
+     "n": 42352,
+     "inWorkerPerfMs": 348,
+     "inWorkerDateMs": 348
+    },
+    {
+     "wall": 431.7779999999984,
+     "n": 42352,
+     "inWorkerPerfMs": 391,
+     "inWorkerDateMs": 391
+    },
+    {
+     "wall": 349.70700000000215,
+     "n": 42352,
+     "inWorkerPerfMs": 346,
+     "inWorkerDateMs": 346
+    }
+   ],
+   "gcmDecryptAll": [
+    {
+     "wall": 377.09580000000096,
+     "n": 42352,
+     "inWorkerPerfMs": 373,
+     "inWorkerDateMs": 373
+    },
+    {
+     "wall": 410.8631999999998,
+     "n": 42352,
+     "inWorkerPerfMs": 385,
+     "inWorkerDateMs": 385
+    },
+    {
+     "wall": 346.7660999999971,
+     "n": 42352,
+     "inWorkerPerfMs": 343,
+     "inWorkerDateMs": 343
+    },
+    {
+     "wall": 375.22469999999885,
+     "n": 42352,
+     "inWorkerPerfMs": 357,
+     "inWorkerDateMs": 357
+    },
+    {
+     "wall": 354.44880000000194,
+     "n": 42352,
+     "inWorkerPerfMs": 352,
+     "inWorkerDateMs": 352
+    },
+    {
+     "wall": 348.02289999999994,
+     "n": 42352,
+     "inWorkerPerfMs": 345,
+     "inWorkerDateMs": 345
+    },
+    {
+     "wall": 349.44750000000204,
+     "n": 42352,
+     "inWorkerPerfMs": 346,
+     "inWorkerDateMs": 346
+    }
+   ],
+   "jsHmacVerify": [
+    {
+     "wall": 73.48970000000008,
+     "n": 42352,
+     "inWorkerPerfMs": 71,
+     "inWorkerDateMs": 71
+    },
+    {
+     "wall": 83.11650000000009,
+     "n": 42352,
+     "inWorkerPerfMs": 80,
+     "inWorkerDateMs": 80
+    },
+    {
+     "wall": 73.45349999999962,
+     "n": 42352,
+     "inWorkerPerfMs": 70,
+     "inWorkerDateMs": 70
+    },
+    {
+     "wall": 76.42870000000039,
+     "n": 42352,
+     "inWorkerPerfMs": 73,
+     "inWorkerDateMs": 73
+    },
+    {
+     "wall": 78.93130000000019,
+     "n": 42352,
+     "inWorkerPerfMs": 76,
+     "inWorkerDateMs": 76
+    },
+    {
+     "wall": 74.83750000000146,
+     "n": 42352,
+     "inWorkerPerfMs": 72,
+     "inWorkerDateMs": 72
+    },
+    {
+     "wall": 73.46679999999833,
+     "n": 42352,
+     "inWorkerPerfMs": 70,
+     "inWorkerDateMs": 70
+    }
+   ],
+   "cbcBatchDecrypt": [
+    {
+     "wall": 19.180499999998574,
+     "n": 42352,
+     "inWorkerPerfMs": 16,
+     "inWorkerDateMs": 16
+    },
+    {
+     "wall": 17.96049999999923,
+     "n": 42352,
+     "inWorkerPerfMs": 15,
+     "inWorkerDateMs": 15
+    },
+    {
+     "wall": 23.360000000000582,
+     "n": 42352,
+     "inWorkerPerfMs": 14,
+     "inWorkerDateMs": 14
+    },
+    {
+     "wall": 17.310199999999895,
+     "n": 42352,
+     "inWorkerPerfMs": 14,
+     "inWorkerDateMs": 14
+    },
+    {
+     "wall": 17.560599999997066,
+     "n": 42352,
+     "inWorkerPerfMs": 14,
+     "inWorkerDateMs": 14
+    },
+    {
+     "wall": 17.617200000000594,
+     "n": 42352,
+     "inWorkerPerfMs": 14,
+     "inWorkerDateMs": 14
+    },
+    {
+     "wall": 17.352999999999156,
+     "n": 42352,
+     "inWorkerPerfMs": 14,
+     "inWorkerDateMs": 14
+    }
+   ],
+   "x4OpenBatch": [
+    {
+     "wall": 124.26239999999962,
+     "n": 42352,
+     "inWorkerPerfMs": 121,
+     "inWorkerDateMs": 121
+    },
+    {
+     "wall": 116.97949999999946,
+     "n": 42352,
+     "inWorkerPerfMs": 103,
+     "inWorkerDateMs": 103
+    },
+    {
+     "wall": 100.91809999999896,
+     "n": 42352,
+     "inWorkerPerfMs": 97,
+     "inWorkerDateMs": 97
+    },
+    {
+     "wall": 102.0044999999991,
+     "n": 42352,
+     "inWorkerPerfMs": 99,
+     "inWorkerDateMs": 99
+    },
+    {
+     "wall": 113.39470000000074,
+     "n": 42352,
+     "inWorkerPerfMs": 99,
+     "inWorkerDateMs": 99
+    },
+    {
+     "wall": 109.25019999999859,
+     "n": 42352,
+     "inWorkerPerfMs": 106,
+     "inWorkerDateMs": 106
+    },
+    {
+     "wall": 111.42580000000089,
+     "n": 42352,
+     "inWorkerPerfMs": 108,
+     "inWorkerDateMs": 108
+    }
+   ]
+  },
+  "node": {
+   "gcmDecryptPool64": [
+    800.7741000000005,
+    823.3652000000002,
+    820.2950999999994,
+    803.0894999999982,
+    805.6116000000002,
+    844.3783000000003,
+    796.3329999999987
+   ],
+   "gcmDecryptAll": [
+    783.2029999999995,
+    739.0070999999989,
+    757.3950000000004,
+    815.5383999999976,
+    808.6402999999991,
+    721.2914999999994,
+    743.5695999999989
+   ],
+   "jsHmacVerify": [
+    68.32789999999841,
+    68.3673000000017,
+    67.46600000000035,
+    68.96769999999742,
+    66.70500000000175,
+    72.44150000000081,
+    67.78389999999854
+   ],
+   "cbcBatchDecrypt": [
+    8.67870000000039,
+    6.786900000000969,
+    15.01810000000114,
+    7.933200000003126,
+    7.303500000001804,
+    8.130799999998999,
+    6.708300000002055
+   ],
+   "x4OpenBatch": [
+    94.58330000000024,
+    102.87580000000162,
+    99.85459999999875,
+    103.63999999999942,
+    92.94870000000083,
+    99.00720000000001,
+    98.15469999999914
+   ]
+  }
+ },
+ "finishedAt": "2026-09-28T00:29:27.675Z"
+}

@@ -1,0 +1,2041 @@
+{
+ "at": "2026-09-28T00:08:21.801Z",
+ "settings": [
+  {
+   "name": "autovacuum",
+   "setting": "on",
+   "unit": null
+  },
+  {
+   "name": "default_statistics_target",
+   "setting": "100",
+   "unit": null
+  },
+  {
+   "name": "effective_cache_size",
+   "setting": "524288",
+   "unit": "8kB"
+  },
+  {
+   "name": "effective_io_concurrency",
+   "setting": "16",
+   "unit": null
+  },
+  {
+   "name": "enable_bitmapscan",
+   "setting": "on",
+   "unit": null
+  },
+  {
+   "name": "gin_fuzzy_search_limit",
+   "setting": "0",
+   "unit": null
+  },
+  {
+   "name": "jit",
+   "setting": "on",
+   "unit": null
+  },
+  {
+   "name": "max_parallel_workers_per_gather",
+   "setting": "2",
+   "unit": null
+  },
+  {
+   "name": "random_page_cost",
+   "setting": "4",
+   "unit": null
+  },
+  {
+   "name": "seq_page_cost",
+   "setting": "1",
+   "unit": null
+  },
+  {
+   "name": "server_version",
+   "setting": "18.4",
+   "unit": null
+  },
+  {
+   "name": "shared_buffers",
+   "setting": "16384",
+   "unit": "8kB"
+  },
+  {
+   "name": "work_mem",
+   "setting": "4096",
+   "unit": "kB"
+  }
+ ],
+ "indexes": [
+  {
+   "schemaname": "native_scale_100m",
+   "tablename": "customers",
+   "indexname": "customers_pkey",
+   "indexdef": "CREATE UNIQUE INDEX customers_pkey ON native_scale_100m.customers USING btree (id)",
+   "bytes": "3157426176"
+  },
+  {
+   "schemaname": "native_scale_100m",
+   "tablename": "customers_plain",
+   "indexname": "customers_address_exact",
+   "indexdef": "CREATE INDEX customers_address_exact ON native_scale_100m.customers_plain USING btree (scope_id, address_norm, id)",
+   "bytes": "8961687552"
+  },
+  {
+   "schemaname": "native_scale_100m",
+   "tablename": "customers_plain",
+   "indexname": "customers_address_trgm",
+   "indexdef": "CREATE INDEX customers_address_trgm ON native_scale_100m.customers_plain USING gin (address_norm gin_trgm_ops)",
+   "bytes": "1466384384"
+  },
+  {
+   "schemaname": "native_scale_100m",
+   "tablename": "customers_plain",
+   "indexname": "customers_company_exact",
+   "indexdef": "CREATE INDEX customers_company_exact ON native_scale_100m.customers_plain USING btree (scope_id, company_norm, id)",
+   "bytes": "7720280064"
+  },
+  {
+   "schemaname": "native_scale_100m",
+   "tablename": "customers_plain",
+   "indexname": "customers_company_trgm",
+   "indexdef": "CREATE INDEX customers_company_trgm ON native_scale_100m.customers_plain USING gin (company_norm gin_trgm_ops)",
+   "bytes": "791379968"
+  },
+  {
+   "schemaname": "native_scale_100m",
+   "tablename": "customers_plain",
+   "indexname": "customers_email_exact",
+   "indexdef": "CREATE INDEX customers_email_exact ON native_scale_100m.customers_plain USING btree (scope_id, email_norm, id)",
+   "bytes": "7758446592"
+  },
+  {
+   "schemaname": "native_scale_100m",
+   "tablename": "customers_plain",
+   "indexname": "customers_email_trgm",
+   "indexdef": "CREATE INDEX customers_email_trgm ON native_scale_100m.customers_plain USING gin (email_norm gin_trgm_ops)",
+   "bytes": "4624801792"
+  },
+  {
+   "schemaname": "native_scale_100m",
+   "tablename": "customers_plain",
+   "indexname": "customers_memo_exact",
+   "indexdef": "CREATE INDEX customers_memo_exact ON native_scale_100m.customers_plain USING btree (scope_id, memo_norm, id)",
+   "bytes": "8507801600"
+  },
+  {
+   "schemaname": "native_scale_100m",
+   "tablename": "customers_plain",
+   "indexname": "customers_memo_trgm",
+   "indexdef": "CREATE INDEX customers_memo_trgm ON native_scale_100m.customers_plain USING gin (memo_norm gin_trgm_ops)",
+   "bytes": "2897272832"
+  },
+  {
+   "schemaname": "native_scale_100m",
+   "tablename": "customers_plain",
+   "indexname": "customers_name_exact",
+   "indexdef": "CREATE INDEX customers_name_exact ON native_scale_100m.customers_plain USING btree (scope_id, name_norm, id)",
+   "bytes": "6947471360"
+  },
+  {
+   "schemaname": "native_scale_100m",
+   "tablename": "customers_plain",
+   "indexname": "customers_name_trgm",
+   "indexdef": "CREATE INDEX customers_name_trgm ON native_scale_100m.customers_plain USING gin (name_norm gin_trgm_ops)",
+   "bytes": "2714771456"
+  },
+  {
+   "schemaname": "native_scale_100m",
+   "tablename": "customers_plain",
+   "indexname": "customers_phone_exact",
+   "indexdef": "CREATE INDEX customers_phone_exact ON native_scale_100m.customers_plain USING btree (scope_id, phone_norm, id)",
+   "bytes": "6794829824"
+  },
+  {
+   "schemaname": "native_scale_100m",
+   "tablename": "customers_plain",
+   "indexname": "customers_phone_trgm",
+   "indexdef": "CREATE INDEX customers_phone_trgm ON native_scale_100m.customers_plain USING gin (phone_norm gin_trgm_ops)",
+   "bytes": "2462711808"
+  },
+  {
+   "schemaname": "native_scale_100m",
+   "tablename": "customers_plain",
+   "indexname": "customers_plain_pkey",
+   "indexdef": "CREATE UNIQUE INDEX customers_plain_pkey ON native_scale_100m.customers_plain USING btree (id)",
+   "bytes": "3157426176"
+  },
+  {
+   "schemaname": "native_scale_100m",
+   "tablename": "customers_plain",
+   "indexname": "customers_scope_id_id_key",
+   "indexdef": "CREATE UNIQUE INDEX customers_scope_id_id_key ON native_scale_100m.customers_plain USING btree (scope_id, id)",
+   "bytes": "4973518848"
+  },
+  {
+   "schemaname": "native_scale_100m",
+   "tablename": "customers_seal_index",
+   "indexname": "customers_seal_index_scope_row_uq",
+   "indexdef": "CREATE UNIQUE INDEX customers_seal_index_scope_row_uq ON native_scale_100m.customers_seal_index USING btree (scope_id, row_id)",
+   "bytes": "4978491392"
+  },
+  {
+   "schemaname": "native_scale_100m",
+   "tablename": "customers_seal_index",
+   "indexname": "seal_411905c9deef5c59_bt",
+   "indexdef": "CREATE INDEX seal_411905c9deef5c59_bt ON native_scale_100m.customers_seal_index USING btree (scope_id, (tokens_cd3096c7a3cd42c2[1]), row_id)",
+   "bytes": "5912649728"
+  },
+  {
+   "schemaname": "native_scale_100m",
+   "tablename": "customers_seal_index",
+   "indexname": "seal_4c8e2d2bddde3451_bt",
+   "indexdef": "CREATE INDEX seal_4c8e2d2bddde3451_bt ON native_scale_100m.customers_seal_index USING btree (scope_id, (tokens_a106c26102b707f0[1]), row_id)",
+   "bytes": "5915271168"
+  },
+  {
+   "schemaname": "native_scale_100m",
+   "tablename": "customers_seal_index",
+   "indexname": "seal_62e346c0ef994072_bt",
+   "indexdef": "CREATE INDEX seal_62e346c0ef994072_bt ON native_scale_100m.customers_seal_index USING btree (scope_id, (tokens_c44ae523cca61a0b[1]), row_id)",
+   "bytes": "5912780800"
+  },
+  {
+   "schemaname": "native_scale_100m",
+   "tablename": "customers_seal_index",
+   "indexname": "seal_8fa11f16c3da1ad8_bt",
+   "indexdef": "CREATE INDEX seal_8fa11f16c3da1ad8_bt ON native_scale_100m.customers_seal_index USING btree (scope_id, (tokens_1c32fdad5d1c8367[1]), row_id)",
+   "bytes": "5912567808"
+  },
+  {
+   "schemaname": "native_scale_100m",
+   "tablename": "customers_seal_index",
+   "indexname": "seal_ae59b15a89e931d6_bt",
+   "indexdef": "CREATE INDEX seal_ae59b15a89e931d6_bt ON native_scale_100m.customers_seal_index USING btree (scope_id, (tokens_c5133b3810f23103[1]), row_id)",
+   "bytes": "5912879104"
+  },
+  {
+   "schemaname": "native_scale_100m",
+   "tablename": "customers_seal_index",
+   "indexname": "seal_dfa387787f59f02a_bt",
+   "indexdef": "CREATE INDEX seal_dfa387787f59f02a_bt ON native_scale_100m.customers_seal_index USING btree (scope_id, (tokens_988d248ff4b71bf7[1]), row_id)",
+   "bytes": "5912911872"
+  },
+  {
+   "schemaname": "native_scale_100m",
+   "tablename": "customers_seal_index",
+   "indexname": "seal_e66dc2708e915b65_gin",
+   "indexdef": "CREATE INDEX seal_e66dc2708e915b65_gin ON native_scale_100m.customers_seal_index USING gin (tokens_792d75cf01821d67, tokens_1127994ab736baf4, tokens_ef1d32a52e2ce103, tokens_a639b11c8130dcf7, tokens_f289b89d86c7086a, tokens_7a1d2ba5ce2368fb)",
+   "bytes": "39030677504"
+  },
+  {
+   "schemaname": "native_scale_100m",
+   "tablename": "progress",
+   "indexname": "progress_pkey",
+   "indexdef": "CREATE UNIQUE INDEX progress_pkey ON native_scale_100m.progress USING btree (copy_no)",
+   "bytes": "49152"
+  },
+  {
+   "schemaname": "native_verify_main",
+   "tablename": "attack_customers",
+   "indexname": "attack_customers_pkey",
+   "indexdef": "CREATE UNIQUE INDEX attack_customers_pkey ON native_verify_main.attack_customers USING btree (id)",
+   "bytes": "1277952"
+  },
+  {
+   "schemaname": "native_verify_main",
+   "tablename": "attack_customers_seal_index",
+   "indexname": "attack_customers_seal_index_scope_row_uq",
+   "indexdef": "CREATE UNIQUE INDEX attack_customers_seal_index_scope_row_uq ON native_verify_main.attack_customers_seal_index USING btree (scope_id, row_id)",
+   "bytes": "1630208"
+  },
+  {
+   "schemaname": "native_verify_main",
+   "tablename": "attack_customers_seal_index",
+   "indexname": "seal_74ed5b4e38e43191_bt",
+   "indexdef": "CREATE INDEX seal_74ed5b4e38e43191_bt ON native_verify_main.attack_customers_seal_index USING btree (scope_id, (tokens_1c32fdad5d1c8367[1]), row_id)",
+   "bytes": "2564096"
+  },
+  {
+   "schemaname": "native_verify_main",
+   "tablename": "attack_customers_seal_index",
+   "indexname": "seal_f1f96ac9d5d0c762_gin",
+   "indexdef": "CREATE INDEX seal_f1f96ac9d5d0c762_gin ON native_verify_main.attack_customers_seal_index USING gin (tokens_a639b11c8130dcf7)",
+   "bytes": "8003584"
+  },
+  {
+   "schemaname": "native_verify_main",
+   "tablename": "customers",
+   "indexname": "customers_pkey",
+   "indexdef": "CREATE UNIQUE INDEX customers_pkey ON native_verify_main.customers USING btree (id)",
+   "bytes": "3178496"
+  },
+  {
+   "schemaname": "native_verify_main",
+   "tablename": "customers_seal_index",
+   "indexname": "customers_seal_index_scope_row_uq",
+   "indexdef": "CREATE UNIQUE INDEX customers_seal_index_scope_row_uq ON native_verify_main.customers_seal_index USING btree (scope_id, row_id)",
+   "bytes": "4997120"
+  },
+  {
+   "schemaname": "native_verify_main",
+   "tablename": "customers_seal_index",
+   "indexname": "seal_411905c9deef5c59_bt",
+   "indexdef": "CREATE INDEX seal_411905c9deef5c59_bt ON native_verify_main.customers_seal_index USING btree (scope_id, (tokens_cd3096c7a3cd42c2[1]), row_id)",
+   "bytes": "7946240"
+  },
+  {
+   "schemaname": "native_verify_main",
+   "tablename": "customers_seal_index",
+   "indexname": "seal_4c8e2d2bddde3451_bt",
+   "indexdef": "CREATE INDEX seal_4c8e2d2bddde3451_bt ON native_verify_main.customers_seal_index USING btree (scope_id, (tokens_a106c26102b707f0[1]), row_id)",
+   "bytes": "10469376"
+  },
+  {
+   "schemaname": "native_verify_main",
+   "tablename": "customers_seal_index",
+   "indexname": "seal_62e346c0ef994072_bt",
+   "indexdef": "CREATE INDEX seal_62e346c0ef994072_bt ON native_verify_main.customers_seal_index USING btree (scope_id, (tokens_c44ae523cca61a0b[1]), row_id)",
+   "bytes": "7790592"
+  },
+  {
+   "schemaname": "native_verify_main",
+   "tablename": "customers_seal_index",
+   "indexname": "seal_8fa11f16c3da1ad8_bt",
+   "indexdef": "CREATE INDEX seal_8fa11f16c3da1ad8_bt ON native_verify_main.customers_seal_index USING btree (scope_id, (tokens_1c32fdad5d1c8367[1]), row_id)",
+   "bytes": "7766016"
+  },
+  {
+   "schemaname": "native_verify_main",
+   "tablename": "customers_seal_index",
+   "indexname": "seal_ae59b15a89e931d6_bt",
+   "indexdef": "CREATE INDEX seal_ae59b15a89e931d6_bt ON native_verify_main.customers_seal_index USING btree (scope_id, (tokens_c5133b3810f23103[1]), row_id)",
+   "bytes": "8085504"
+  },
+  {
+   "schemaname": "native_verify_main",
+   "tablename": "customers_seal_index",
+   "indexname": "seal_dfa387787f59f02a_bt",
+   "indexdef": "CREATE INDEX seal_dfa387787f59f02a_bt ON native_verify_main.customers_seal_index USING btree (scope_id, (tokens_988d248ff4b71bf7[1]), row_id)",
+   "bytes": "7815168"
+  },
+  {
+   "schemaname": "native_verify_main",
+   "tablename": "customers_seal_index",
+   "indexname": "seal_e66dc2708e915b65_gin",
+   "indexdef": "CREATE INDEX seal_e66dc2708e915b65_gin ON native_verify_main.customers_seal_index USING gin (tokens_792d75cf01821d67, tokens_1127994ab736baf4, tokens_ef1d32a52e2ce103, tokens_a639b11c8130dcf7, tokens_f289b89d86c7086a, tokens_7a1d2ba5ce2368fb)",
+   "bytes": "69066752"
+  },
+  {
+   "schemaname": "native_verify_main",
+   "tablename": "customers_write",
+   "indexname": "customers_write_pkey",
+   "indexdef": "CREATE UNIQUE INDEX customers_write_pkey ON native_verify_main.customers_write USING btree (id)",
+   "bytes": "8192"
+  },
+  {
+   "schemaname": "native_verify_main",
+   "tablename": "customers_write_plain",
+   "indexname": "customers_write_plain_address_bt",
+   "indexdef": "CREATE INDEX customers_write_plain_address_bt ON native_verify_main.customers_write_plain USING btree (address_norm)",
+   "bytes": "8192"
+  },
+  {
+   "schemaname": "native_verify_main",
+   "tablename": "customers_write_plain",
+   "indexname": "customers_write_plain_company_bt",
+   "indexdef": "CREATE INDEX customers_write_plain_company_bt ON native_verify_main.customers_write_plain USING btree (company_norm)",
+   "bytes": "8192"
+  },
+  {
+   "schemaname": "native_verify_main",
+   "tablename": "customers_write_plain",
+   "indexname": "customers_write_plain_email_bt",
+   "indexdef": "CREATE INDEX customers_write_plain_email_bt ON native_verify_main.customers_write_plain USING btree (email_norm)",
+   "bytes": "8192"
+  },
+  {
+   "schemaname": "native_verify_main",
+   "tablename": "customers_write_plain",
+   "indexname": "customers_write_plain_memo_bt",
+   "indexdef": "CREATE INDEX customers_write_plain_memo_bt ON native_verify_main.customers_write_plain USING btree (memo_norm)",
+   "bytes": "8192"
+  },
+  {
+   "schemaname": "native_verify_main",
+   "tablename": "customers_write_plain",
+   "indexname": "customers_write_plain_name_bt",
+   "indexdef": "CREATE INDEX customers_write_plain_name_bt ON native_verify_main.customers_write_plain USING btree (name_norm)",
+   "bytes": "8192"
+  },
+  {
+   "schemaname": "native_verify_main",
+   "tablename": "customers_write_plain",
+   "indexname": "customers_write_plain_phone_bt",
+   "indexdef": "CREATE INDEX customers_write_plain_phone_bt ON native_verify_main.customers_write_plain USING btree (phone_norm)",
+   "bytes": "8192"
+  },
+  {
+   "schemaname": "native_verify_main",
+   "tablename": "customers_write_plain",
+   "indexname": "customers_write_plain_pkey",
+   "indexdef": "CREATE UNIQUE INDEX customers_write_plain_pkey ON native_verify_main.customers_write_plain USING btree (id)",
+   "bytes": "8192"
+  },
+  {
+   "schemaname": "native_verify_main",
+   "tablename": "customers_write_seal_index",
+   "indexname": "customers_write_seal_index_scope_row_uq",
+   "indexdef": "CREATE UNIQUE INDEX customers_write_seal_index_scope_row_uq ON native_verify_main.customers_write_seal_index USING btree (scope_id, row_id)",
+   "bytes": "8192"
+  },
+  {
+   "schemaname": "native_verify_main",
+   "tablename": "customers_write_seal_index",
+   "indexname": "seal_12524e2880d206f2_bt",
+   "indexdef": "CREATE INDEX seal_12524e2880d206f2_bt ON native_verify_main.customers_write_seal_index USING btree (scope_id, (tokens_988d248ff4b71bf7[1]), row_id)",
+   "bytes": "8192"
+  },
+  {
+   "schemaname": "native_verify_main",
+   "tablename": "customers_write_seal_index",
+   "indexname": "seal_203fd971496d9c0d_gin",
+   "indexdef": "CREATE INDEX seal_203fd971496d9c0d_gin ON native_verify_main.customers_write_seal_index USING gin (tokens_792d75cf01821d67, tokens_1127994ab736baf4, tokens_ef1d32a52e2ce103, tokens_a639b11c8130dcf7, tokens_f289b89d86c7086a, tokens_7a1d2ba5ce2368fb)",
+   "bytes": "16384"
+  },
+  {
+   "schemaname": "native_verify_main",
+   "tablename": "customers_write_seal_index",
+   "indexname": "seal_69a13e171fab6daa_bt",
+   "indexdef": "CREATE INDEX seal_69a13e171fab6daa_bt ON native_verify_main.customers_write_seal_index USING btree (scope_id, (tokens_c44ae523cca61a0b[1]), row_id)",
+   "bytes": "8192"
+  },
+  {
+   "schemaname": "native_verify_main",
+   "tablename": "customers_write_seal_index",
+   "indexname": "seal_741cbcaad1f317e0_bt",
+   "indexdef": "CREATE INDEX seal_741cbcaad1f317e0_bt ON native_verify_main.customers_write_seal_index USING btree (scope_id, (tokens_1c32fdad5d1c8367[1]), row_id)",
+   "bytes": "8192"
+  },
+  {
+   "schemaname": "native_verify_main",
+   "tablename": "customers_write_seal_index",
+   "indexname": "seal_804ed6c68b5d0fb1_bt",
+   "indexdef": "CREATE INDEX seal_804ed6c68b5d0fb1_bt ON native_verify_main.customers_write_seal_index USING btree (scope_id, (tokens_cd3096c7a3cd42c2[1]), row_id)",
+   "bytes": "8192"
+  },
+  {
+   "schemaname": "native_verify_main",
+   "tablename": "customers_write_seal_index",
+   "indexname": "seal_89ceb3ee7540e10e_bt",
+   "indexdef": "CREATE INDEX seal_89ceb3ee7540e10e_bt ON native_verify_main.customers_write_seal_index USING btree (scope_id, (tokens_c5133b3810f23103[1]), row_id)",
+   "bytes": "8192"
+  },
+  {
+   "schemaname": "native_verify_main",
+   "tablename": "customers_write_seal_index",
+   "indexname": "seal_9779fb38b44e0759_bt",
+   "indexdef": "CREATE INDEX seal_9779fb38b44e0759_bt ON native_verify_main.customers_write_seal_index USING btree (scope_id, (tokens_a106c26102b707f0[1]), row_id)",
+   "bytes": "8192"
+  },
+  {
+   "schemaname": "native_verify_main",
+   "tablename": "ordinary",
+   "indexname": "ordinary_pkey",
+   "indexdef": "CREATE UNIQUE INDEX ordinary_pkey ON native_verify_main.ordinary USING btree (id)",
+   "bytes": "16384"
+  },
+  {
+   "schemaname": "native_verify_main",
+   "tablename": "probe",
+   "indexname": "probe_pkey",
+   "indexdef": "CREATE UNIQUE INDEX probe_pkey ON native_verify_main.probe USING btree (id)",
+   "bytes": "16384"
+  },
+  {
+   "schemaname": "native_verify_main",
+   "tablename": "probe_seal_index",
+   "indexname": "probe_seal_index_scope_row_uq",
+   "indexdef": "CREATE UNIQUE INDEX probe_seal_index_scope_row_uq ON native_verify_main.probe_seal_index USING btree (scope_id, row_id)",
+   "bytes": "16384"
+  },
+  {
+   "schemaname": "native_verify_main",
+   "tablename": "probe_seal_index",
+   "indexname": "seal_72b3722a0f7bc15c_gin",
+   "indexdef": "CREATE INDEX seal_72b3722a0f7bc15c_gin ON native_verify_main.probe_seal_index USING gin (tokens_a639b11c8130dcf7, tokens_f289b89d86c7086a)",
+   "bytes": "73728"
+  },
+  {
+   "schemaname": "native_verify_main",
+   "tablename": "probe_seal_index",
+   "indexname": "seal_90cfa69e9c102cbe_bt",
+   "indexdef": "CREATE INDEX seal_90cfa69e9c102cbe_bt ON native_verify_main.probe_seal_index USING btree (scope_id, (tokens_cd3096c7a3cd42c2[1]), row_id)",
+   "bytes": "16384"
+  },
+  {
+   "schemaname": "native_verify_main",
+   "tablename": "probe_seal_index",
+   "indexname": "seal_f14fe76bbbf8eb0b_bt",
+   "indexdef": "CREATE INDEX seal_f14fe76bbbf8eb0b_bt ON native_verify_main.probe_seal_index USING btree (scope_id, (tokens_1c32fdad5d1c8367[1]), row_id)",
+   "bytes": "16384"
+  },
+  {
+   "schemaname": "native_verify_main",
+   "tablename": "tickets",
+   "indexname": "tickets_pkey",
+   "indexdef": "CREATE UNIQUE INDEX tickets_pkey ON native_verify_main.tickets USING btree (id)",
+   "bytes": "3178496"
+  },
+  {
+   "schemaname": "native_verify_main",
+   "tablename": "tickets_seal_index",
+   "indexname": "seal_53ce40b80492aefd_bt",
+   "indexdef": "CREATE INDEX seal_53ce40b80492aefd_bt ON native_verify_main.tickets_seal_index USING btree (scope_id, (tokens_cd3096c7a3cd42c2[1]), row_id)",
+   "bytes": "7897088"
+  },
+  {
+   "schemaname": "native_verify_main",
+   "tablename": "tickets_seal_index",
+   "indexname": "seal_7f51feabdb63a09d_bt",
+   "indexdef": "CREATE INDEX seal_7f51feabdb63a09d_bt ON native_verify_main.tickets_seal_index USING btree (scope_id, (tokens_a106c26102b707f0[1]), row_id)",
+   "bytes": "10117120"
+  },
+  {
+   "schemaname": "native_verify_main",
+   "tablename": "tickets_seal_index",
+   "indexname": "seal_9952f8e4eab66682_bt",
+   "indexdef": "CREATE INDEX seal_9952f8e4eab66682_bt ON native_verify_main.tickets_seal_index USING btree (scope_id, (tokens_c5133b3810f23103[1]), row_id)",
+   "bytes": "7839744"
+  },
+  {
+   "schemaname": "native_verify_main",
+   "tablename": "tickets_seal_index",
+   "indexname": "seal_9ea14343af89a576_bt",
+   "indexdef": "CREATE INDEX seal_9ea14343af89a576_bt ON native_verify_main.tickets_seal_index USING btree (scope_id, (tokens_988d248ff4b71bf7[1]), row_id)",
+   "bytes": "7823360"
+  },
+  {
+   "schemaname": "native_verify_main",
+   "tablename": "tickets_seal_index",
+   "indexname": "seal_a90bb0476fa81bbe_bt",
+   "indexdef": "CREATE INDEX seal_a90bb0476fa81bbe_bt ON native_verify_main.tickets_seal_index USING btree (scope_id, (tokens_c44ae523cca61a0b[1]), row_id)",
+   "bytes": "7962624"
+  },
+  {
+   "schemaname": "native_verify_main",
+   "tablename": "tickets_seal_index",
+   "indexname": "seal_b3b7462e8d688f14_bt",
+   "indexdef": "CREATE INDEX seal_b3b7462e8d688f14_bt ON native_verify_main.tickets_seal_index USING btree (scope_id, (tokens_1c32fdad5d1c8367[1]), row_id)",
+   "bytes": "7823360"
+  },
+  {
+   "schemaname": "native_verify_main",
+   "tablename": "tickets_seal_index",
+   "indexname": "seal_d64a6460690f6fd1_gin",
+   "indexdef": "CREATE INDEX seal_d64a6460690f6fd1_gin ON native_verify_main.tickets_seal_index USING gin (tokens_792d75cf01821d67, tokens_1127994ab736baf4, tokens_ef1d32a52e2ce103, tokens_a639b11c8130dcf7, tokens_f289b89d86c7086a, tokens_7a1d2ba5ce2368fb)",
+   "bytes": "69459968"
+  },
+  {
+   "schemaname": "native_verify_main",
+   "tablename": "tickets_seal_index",
+   "indexname": "tickets_seal_index_scope_row_uq",
+   "indexdef": "CREATE UNIQUE INDEX tickets_seal_index_scope_row_uq ON native_verify_main.tickets_seal_index USING btree (scope_id, row_id)",
+   "bytes": "4997120"
+  }
+ ],
+ "tables": [
+  {
+   "nspname": "native_scale_100m",
+   "relname": "customers",
+   "reltuples": "99993736",
+   "relpages": 4756133,
+   "bytes": "38962241536",
+   "reloptions": null
+  },
+  {
+   "nspname": "native_scale_100m",
+   "relname": "customers_plain",
+   "reltuples": "99985416",
+   "relpages": 4211792,
+   "bytes": "34503000064",
+   "reloptions": null
+  },
+  {
+   "nspname": "native_scale_100m",
+   "relname": "customers_seal_index",
+   "reltuples": "100004920",
+   "relpages": 25025004,
+   "bytes": "205004832768",
+   "reloptions": null
+  },
+  {
+   "nspname": "native_scale_100m",
+   "relname": "progress",
+   "reltuples": "1000",
+   "relpages": 17,
+   "bytes": "139264",
+   "reloptions": null
+  },
+  {
+   "nspname": "native_verify_main",
+   "relname": "attack_customers",
+   "reltuples": "39998",
+   "relpages": 545,
+   "bytes": "4464640",
+   "reloptions": null
+  },
+  {
+   "nspname": "native_verify_main",
+   "relname": "attack_customers_seal_index",
+   "reltuples": "39978",
+   "relpages": 1908,
+   "bytes": "15630336",
+   "reloptions": null
+  },
+  {
+   "nspname": "native_verify_main",
+   "relname": "customers",
+   "reltuples": "100000",
+   "relpages": 4751,
+   "bytes": "38920192",
+   "reloptions": null
+  },
+  {
+   "nspname": "native_verify_main",
+   "relname": "customers_seal_index",
+   "reltuples": "100000",
+   "relpages": 25000,
+   "bytes": "204800000",
+   "reloptions": null
+  },
+  {
+   "nspname": "native_verify_main",
+   "relname": "customers_write",
+   "reltuples": "0",
+   "relpages": 0,
+   "bytes": "0",
+   "reloptions": null
+  },
+  {
+   "nspname": "native_verify_main",
+   "relname": "customers_write_plain",
+   "reltuples": "0",
+   "relpages": 0,
+   "bytes": "0",
+   "reloptions": null
+  },
+  {
+   "nspname": "native_verify_main",
+   "relname": "customers_write_seal_index",
+   "reltuples": "0",
+   "relpages": 0,
+   "bytes": "0",
+   "reloptions": null
+  },
+  {
+   "nspname": "native_verify_main",
+   "relname": "ordinary",
+   "reltuples": "-1",
+   "relpages": 0,
+   "bytes": "8192",
+   "reloptions": null
+  },
+  {
+   "nspname": "native_verify_main",
+   "relname": "probe",
+   "reltuples": "-1",
+   "relpages": 0,
+   "bytes": "8192",
+   "reloptions": null
+  },
+  {
+   "nspname": "native_verify_main",
+   "relname": "probe_seal_index",
+   "reltuples": "-1",
+   "relpages": 0,
+   "bytes": "8192",
+   "reloptions": null
+  },
+  {
+   "nspname": "native_verify_main",
+   "relname": "tickets",
+   "reltuples": "100000",
+   "relpages": 4974,
+   "bytes": "40747008",
+   "reloptions": null
+  },
+  {
+   "nspname": "native_verify_main",
+   "relname": "tickets_seal_index",
+   "reltuples": "100000",
+   "relpages": 25000,
+   "bytes": "204800000",
+   "reloptions": null
+  }
+ ],
+ "statAll": [
+  {
+   "schemaname": "native_scale_100m",
+   "relname": "customers",
+   "n_live_tup": "99993733",
+   "n_dead_tup": "100196",
+   "last_analyze": "2026-09-27T19:49:14.541Z",
+   "last_autoanalyze": "2026-09-27T14:21:28.076Z",
+   "last_vacuum": "2026-09-27T16:22:56.965Z",
+   "last_autovacuum": "2026-09-27T14:11:20.463Z",
+   "n_mod_since_analyze": "0"
+  },
+  {
+   "schemaname": "native_scale_100m",
+   "relname": "customers_plain",
+   "n_live_tup": "99985415",
+   "n_dead_tup": "96310",
+   "last_analyze": "2026-09-27T20:00:06.244Z",
+   "last_autoanalyze": "2026-09-27T14:13:36.190Z",
+   "last_vacuum": "2026-09-27T16:30:26.991Z",
+   "last_autovacuum": "2026-09-27T14:12:22.567Z",
+   "n_mod_since_analyze": "0"
+  },
+  {
+   "schemaname": "native_scale_100m",
+   "relname": "customers_seal_index",
+   "n_live_tup": "100004921",
+   "n_dead_tup": "95095",
+   "last_analyze": "2026-09-27T19:49:45.835Z",
+   "last_autoanalyze": "2026-09-27T13:50:51.166Z",
+   "last_vacuum": null,
+   "last_autovacuum": "2026-09-27T13:42:24.072Z",
+   "n_mod_since_analyze": "0"
+  },
+  {
+   "schemaname": "native_scale_100m",
+   "relname": "progress",
+   "n_live_tup": "1000",
+   "n_dead_tup": "0",
+   "last_analyze": null,
+   "last_autoanalyze": "2026-09-27T14:56:52.018Z",
+   "last_vacuum": null,
+   "last_autovacuum": null,
+   "n_mod_since_analyze": "0"
+  },
+  {
+   "schemaname": "native_verify_main",
+   "relname": "attack_customers",
+   "n_live_tup": "39998",
+   "n_dead_tup": "0",
+   "last_analyze": "2026-09-27T13:02:29.127Z",
+   "last_autoanalyze": "2026-09-27T13:01:58.556Z",
+   "last_vacuum": null,
+   "last_autovacuum": "2026-09-27T13:02:58.677Z",
+   "n_mod_since_analyze": "1000"
+  },
+  {
+   "schemaname": "native_verify_main",
+   "relname": "attack_customers_seal_index",
+   "n_live_tup": "39978",
+   "n_dead_tup": "0",
+   "last_analyze": "2026-09-27T13:02:29.258Z",
+   "last_autoanalyze": "2026-09-27T13:01:59.300Z",
+   "last_vacuum": null,
+   "last_autovacuum": "2026-09-27T13:02:59.563Z",
+   "n_mod_since_analyze": "1000"
+  },
+  {
+   "schemaname": "native_verify_main",
+   "relname": "customers",
+   "n_live_tup": "100000",
+   "n_dead_tup": "0",
+   "last_analyze": "2026-09-27T12:39:31.347Z",
+   "last_autoanalyze": "2026-09-27T12:14:58.198Z",
+   "last_vacuum": "2026-09-27T12:39:31.250Z",
+   "last_autovacuum": "2026-09-27T12:15:58.971Z",
+   "n_mod_since_analyze": "0"
+  },
+  {
+   "schemaname": "native_verify_main",
+   "relname": "customers_seal_index",
+   "n_live_tup": "100000",
+   "n_dead_tup": "0",
+   "last_analyze": "2026-09-27T12:39:35.121Z",
+   "last_autoanalyze": "2026-09-27T12:15:12.119Z",
+   "last_vacuum": "2026-09-27T12:39:31.596Z",
+   "last_autovacuum": "2026-09-27T12:15:04.619Z",
+   "n_mod_since_analyze": "0"
+  },
+  {
+   "schemaname": "native_verify_main",
+   "relname": "customers_write",
+   "n_live_tup": "0",
+   "n_dead_tup": "0",
+   "last_analyze": null,
+   "last_autoanalyze": "2026-09-27T12:44:58.090Z",
+   "last_vacuum": null,
+   "last_autovacuum": "2026-09-27T12:43:58.116Z",
+   "n_mod_since_analyze": "0"
+  },
+  {
+   "schemaname": "native_verify_main",
+   "relname": "customers_write_plain",
+   "n_live_tup": "0",
+   "n_dead_tup": "0",
+   "last_analyze": null,
+   "last_autoanalyze": "2026-09-27T12:44:58.092Z",
+   "last_vacuum": null,
+   "last_autovacuum": "2026-09-27T12:32:58.045Z",
+   "n_mod_since_analyze": "0"
+  },
+  {
+   "schemaname": "native_verify_main",
+   "relname": "customers_write_seal_index",
+   "n_live_tup": "0",
+   "n_dead_tup": "0",
+   "last_analyze": null,
+   "last_autoanalyze": "2026-09-27T12:44:58.091Z",
+   "last_vacuum": null,
+   "last_autovacuum": "2026-09-27T12:43:58.131Z",
+   "n_mod_since_analyze": "0"
+  },
+  {
+   "schemaname": "native_verify_main",
+   "relname": "ordinary",
+   "n_live_tup": "1",
+   "n_dead_tup": "17",
+   "last_analyze": null,
+   "last_autoanalyze": null,
+   "last_vacuum": null,
+   "last_autovacuum": null,
+   "n_mod_since_analyze": "18"
+  },
+  {
+   "schemaname": "native_verify_main",
+   "relname": "probe",
+   "n_live_tup": "0",
+   "n_dead_tup": "15",
+   "last_analyze": null,
+   "last_autoanalyze": null,
+   "last_vacuum": null,
+   "last_autovacuum": null,
+   "n_mod_since_analyze": "40"
+  },
+  {
+   "schemaname": "native_verify_main",
+   "relname": "probe_seal_index",
+   "n_live_tup": "0",
+   "n_dead_tup": "27",
+   "last_analyze": null,
+   "last_autoanalyze": null,
+   "last_vacuum": null,
+   "last_autovacuum": null,
+   "n_mod_since_analyze": "30"
+  },
+  {
+   "schemaname": "native_verify_main",
+   "relname": "tickets",
+   "n_live_tup": "100000",
+   "n_dead_tup": "0",
+   "last_analyze": "2026-09-27T12:25:37.359Z",
+   "last_autoanalyze": "2026-09-27T12:24:58.678Z",
+   "last_vacuum": null,
+   "last_autovacuum": "2026-09-27T12:23:58.270Z",
+   "n_mod_since_analyze": "0"
+  },
+  {
+   "schemaname": "native_verify_main",
+   "relname": "tickets_seal_index",
+   "n_live_tup": "100000",
+   "n_dead_tup": "0",
+   "last_analyze": "2026-09-27T12:25:40.825Z",
+   "last_autoanalyze": "2026-09-27T12:25:06.493Z",
+   "last_vacuum": null,
+   "last_autovacuum": "2026-09-27T12:24:04.644Z",
+   "n_mod_since_analyze": "0"
+  }
+ ],
+ "stats": [
+  {
+   "schemaname": "native_scale_100m",
+   "tablename": "customers",
+   "attname": "address_ct",
+   "null_frac": 0,
+   "n_distinct": -1,
+   "correlation": 0.0008147308,
+   "mcv_n": null,
+   "mcf5": null,
+   "mce_n": null,
+   "mcef5": null,
+   "hist_n": "101"
+  },
+  {
+   "schemaname": "native_scale_100m",
+   "tablename": "customers",
+   "attname": "company_ct",
+   "null_frac": 0,
+   "n_distinct": -1,
+   "correlation": -0.0023292003,
+   "mcv_n": null,
+   "mcf5": null,
+   "mce_n": null,
+   "mcef5": null,
+   "hist_n": "101"
+  },
+  {
+   "schemaname": "native_scale_100m",
+   "tablename": "customers",
+   "attname": "email_ct",
+   "null_frac": 0,
+   "n_distinct": -1,
+   "correlation": -0.010858476,
+   "mcv_n": null,
+   "mcf5": null,
+   "mce_n": null,
+   "mcef5": null,
+   "hist_n": "101"
+  },
+  {
+   "schemaname": "native_scale_100m",
+   "tablename": "customers",
+   "attname": "id",
+   "null_frac": 0,
+   "n_distinct": -1,
+   "correlation": 0.24454479,
+   "mcv_n": null,
+   "mcf5": null,
+   "mce_n": null,
+   "mcef5": null,
+   "hist_n": "101"
+  },
+  {
+   "schemaname": "native_scale_100m",
+   "tablename": "customers",
+   "attname": "memo_ct",
+   "null_frac": 0,
+   "n_distinct": -1,
+   "correlation": 0.0090165725,
+   "mcv_n": null,
+   "mcf5": null,
+   "mce_n": null,
+   "mcef5": null,
+   "hist_n": "101"
+  },
+  {
+   "schemaname": "native_scale_100m",
+   "tablename": "customers",
+   "attname": "name_ct",
+   "null_frac": 0,
+   "n_distinct": -1,
+   "correlation": -0.00029034202,
+   "mcv_n": null,
+   "mcf5": null,
+   "mce_n": null,
+   "mcef5": null,
+   "hist_n": "101"
+  },
+  {
+   "schemaname": "native_scale_100m",
+   "tablename": "customers",
+   "attname": "phone_ct",
+   "null_frac": 0,
+   "n_distinct": -1,
+   "correlation": 0.00035323028,
+   "mcv_n": null,
+   "mcf5": null,
+   "mce_n": null,
+   "mcef5": null,
+   "hist_n": "101"
+  },
+  {
+   "schemaname": "native_scale_100m",
+   "tablename": "customers",
+   "attname": "scope_id",
+   "null_frac": 0,
+   "n_distinct": 2,
+   "correlation": 1,
+   "mcv_n": 2,
+   "mcf5": [
+    0.9995,
+    0.0005
+   ],
+   "mce_n": null,
+   "mcef5": null,
+   "hist_n": "0"
+  },
+  {
+   "schemaname": "native_scale_100m",
+   "tablename": "customers_seal_index",
+   "attname": "row_id",
+   "null_frac": 0,
+   "n_distinct": -1,
+   "correlation": 0.25047112,
+   "mcv_n": null,
+   "mcf5": null,
+   "mce_n": null,
+   "mcef5": null,
+   "hist_n": "101"
+  },
+  {
+   "schemaname": "native_scale_100m",
+   "tablename": "customers_seal_index",
+   "attname": "scope_id",
+   "null_frac": 0,
+   "n_distinct": 2,
+   "correlation": 1,
+   "mcv_n": 2,
+   "mcf5": [
+    0.99886,
+    0.00114
+   ],
+   "mce_n": null,
+   "mcef5": null,
+   "hist_n": "0"
+  },
+  {
+   "schemaname": "native_scale_100m",
+   "tablename": "customers_seal_index",
+   "attname": "tokens_1127994ab736baf4",
+   "null_frac": 0,
+   "n_distinct": 31,
+   "correlation": 0.13821769,
+   "mcv_n": 24,
+   "mcf5": [
+    0.28316334,
+    0.09526,
+    0.09494,
+    0.09453667,
+    0.09435666
+   ],
+   "mce_n": 207,
+   "mcef5": [
+    0.00037,
+    0.00018333334,
+    0.00037,
+    0.0011033333,
+    0.0011033333
+   ],
+   "hist_n": "7"
+  },
+  {
+   "schemaname": "native_scale_100m",
+   "tablename": "customers_seal_index",
+   "attname": "tokens_1c32fdad5d1c8367",
+   "null_frac": 0,
+   "n_distinct": 51191,
+   "correlation": 0.0011495239,
+   "mcv_n": 100,
+   "mcf5": [
+    0.000113333335,
+    0.000113333335,
+    0.00010666667,
+    0.00009666667,
+    0.00009666667
+   ],
+   "mce_n": 501,
+   "mcef5": [
+    0.00007666666,
+    0.00006333333,
+    0.00006666667,
+    0.00008,
+    0.00006666667
+   ],
+   "hist_n": "101"
+  },
+  {
+   "schemaname": "native_scale_100m",
+   "tablename": "customers_seal_index",
+   "attname": "tokens_792d75cf01821d67",
+   "null_frac": 0,
+   "n_distinct": 6337,
+   "correlation": -0.0041217925,
+   "mcv_n": 1000,
+   "mcf5": [
+    0.00035333334,
+    0.00034666667,
+    0.00034666667,
+    0.00033,
+    0.00033
+   ],
+   "mce_n": 466,
+   "mcef5": [
+    0.00076333334,
+    0.00114,
+    0.00037666666,
+    0.00076333334,
+    0.00040666666
+   ],
+   "hist_n": "1001"
+  },
+  {
+   "schemaname": "native_scale_100m",
+   "tablename": "customers_seal_index",
+   "attname": "tokens_7a1d2ba5ce2368fb",
+   "null_frac": 0,
+   "n_distinct": 100394,
+   "correlation": -0.0022048482,
+   "mcv_n": 102,
+   "mcf5": [
+    0.000053333333,
+    0.000043333333,
+    0.00004,
+    0.00004,
+    0.00004
+   ],
+   "mce_n": 317,
+   "mcef5": [
+    0.00021666667,
+    0.00019,
+    0.00020666666,
+    0.00025333333,
+    0.00021
+   ],
+   "hist_n": "1001"
+  },
+  {
+   "schemaname": "native_scale_100m",
+   "tablename": "customers_seal_index",
+   "attname": "tokens_988d248ff4b71bf7",
+   "null_frac": 0,
+   "n_distinct": 6089,
+   "correlation": -0.004355011,
+   "mcv_n": 100,
+   "mcf5": [
+    0.0006866667,
+    0.00057333335,
+    0.00052666664,
+    0.00051,
+    0.00049
+   ],
+   "mce_n": 1000,
+   "mcef5": [
+    0.00025333333,
+    0.00021666667,
+    0.00027333334,
+    0.00023333334,
+    0.00023666666
+   ],
+   "hist_n": "101"
+  },
+  {
+   "schemaname": "native_scale_100m",
+   "tablename": "customers_seal_index",
+   "attname": "tokens_a106c26102b707f0",
+   "null_frac": 0,
+   "n_distinct": 31,
+   "correlation": 0.13859038,
+   "mcv_n": 24,
+   "mcf5": [
+    0.28316334,
+    0.09526,
+    0.09494,
+    0.09453667,
+    0.09435666
+   ],
+   "mce_n": 24,
+   "mcef5": [
+    0.00010333333,
+    0.00009,
+    0.00009666667,
+    0.00012333333,
+    0.00011
+   ],
+   "hist_n": "7"
+  },
+  {
+   "schemaname": "native_scale_100m",
+   "tablename": "customers_seal_index",
+   "attname": "tokens_a639b11c8130dcf7",
+   "null_frac": 0,
+   "n_distinct": 100380,
+   "correlation": -0.004778122,
+   "mcv_n": 105,
+   "mcf5": [
+    0.000053333333,
+    0.000043333333,
+    0.000043333333,
+    0.000043333333,
+    0.00004
+   ],
+   "mce_n": 3549,
+   "mcef5": [
+    0.00051,
+    0.00036,
+    0.00036,
+    0.00051,
+    0.00036
+   ],
+   "hist_n": "1001"
+  },
+  {
+   "schemaname": "native_scale_100m",
+   "tablename": "customers_seal_index",
+   "attname": "tokens_c44ae523cca61a0b",
+   "null_frac": 0,
+   "n_distinct": 51203,
+   "correlation": 0.0036701607,
+   "mcv_n": 100,
+   "mcf5": [
+    0.00011,
+    0.00011,
+    0.00010666667,
+    0.00010666667,
+    0.0001
+   ],
+   "mce_n": 462,
+   "mcef5": [
+    0.00006333333,
+    0.00006666667,
+    0.00006666667,
+    0.00007,
+    0.00006333333
+   ],
+   "hist_n": "101"
+  },
+  {
+   "schemaname": "native_scale_100m",
+   "tablename": "customers_seal_index",
+   "attname": "tokens_c5133b3810f23103",
+   "null_frac": 0,
+   "n_distinct": 51167,
+   "correlation": 0.0054110084,
+   "mcv_n": 100,
+   "mcf5": [
+    0.00011666667,
+    0.00011666667,
+    0.00011,
+    0.00010666667,
+    0.00010666667
+   ],
+   "mce_n": 455,
+   "mcef5": [
+    0.00007,
+    0.00006666667,
+    0.00007,
+    0.000073333336,
+    0.00006333333
+   ],
+   "hist_n": "101"
+  },
+  {
+   "schemaname": "native_scale_100m",
+   "tablename": "customers_seal_index",
+   "attname": "tokens_cd3096c7a3cd42c2",
+   "null_frac": 0,
+   "n_distinct": 51213,
+   "correlation": 0.002120611,
+   "mcv_n": 100,
+   "mcf5": [
+    0.00011,
+    0.00010666667,
+    0.00010333333,
+    0.0001,
+    0.0001
+   ],
+   "mce_n": 459,
+   "mcef5": [
+    0.00006666667,
+    0.00006333333,
+    0.000073333336,
+    0.00006333333,
+    0.000073333336
+   ],
+   "hist_n": "101"
+  },
+  {
+   "schemaname": "native_scale_100m",
+   "tablename": "customers_seal_index",
+   "attname": "tokens_ef1d32a52e2ce103",
+   "null_frac": 0,
+   "n_distinct": 100394,
+   "correlation": 0.0033225496,
+   "mcv_n": 102,
+   "mcf5": [
+    0.000053333333,
+    0.000043333333,
+    0.00004,
+    0.00004,
+    0.00004
+   ],
+   "mce_n": 2876,
+   "mcef5": [
+    0.0045066667,
+    0.00326,
+    0.01757,
+    0.00452,
+    0.01066
+   ],
+   "hist_n": "1001"
+  },
+  {
+   "schemaname": "native_scale_100m",
+   "tablename": "customers_seal_index",
+   "attname": "tokens_f289b89d86c7086a",
+   "null_frac": 0,
+   "n_distinct": 100382,
+   "correlation": -0.0030225306,
+   "mcv_n": 104,
+   "mcf5": [
+    0.000053333333,
+    0.000043333333,
+    0.000043333333,
+    0.00004,
+    0.00004
+   ],
+   "mce_n": 3404,
+   "mcef5": [
+    0.00032666666,
+    0.00032666666,
+    0.00014333334,
+    0.00020666666,
+    0.00032666666
+   ],
+   "hist_n": "1001"
+  },
+  {
+   "schemaname": "native_verify_main",
+   "tablename": "customers",
+   "attname": "address_ct",
+   "null_frac": 0,
+   "n_distinct": -1,
+   "correlation": 0.02152442,
+   "mcv_n": null,
+   "mcf5": null,
+   "mce_n": null,
+   "mcef5": null,
+   "hist_n": "101"
+  },
+  {
+   "schemaname": "native_verify_main",
+   "tablename": "customers",
+   "attname": "company_ct",
+   "null_frac": 0,
+   "n_distinct": -1,
+   "correlation": -0.000039340845,
+   "mcv_n": null,
+   "mcf5": null,
+   "mce_n": null,
+   "mcef5": null,
+   "hist_n": "101"
+  },
+  {
+   "schemaname": "native_verify_main",
+   "tablename": "customers",
+   "attname": "email_ct",
+   "null_frac": 0,
+   "n_distinct": -1,
+   "correlation": -0.0020842776,
+   "mcv_n": null,
+   "mcf5": null,
+   "mce_n": null,
+   "mcef5": null,
+   "hist_n": "101"
+  },
+  {
+   "schemaname": "native_verify_main",
+   "tablename": "customers",
+   "attname": "id",
+   "null_frac": 0,
+   "n_distinct": -1,
+   "correlation": 0.9999996,
+   "mcv_n": null,
+   "mcf5": null,
+   "mce_n": null,
+   "mcef5": null,
+   "hist_n": "101"
+  },
+  {
+   "schemaname": "native_verify_main",
+   "tablename": "customers",
+   "attname": "memo_ct",
+   "null_frac": 0,
+   "n_distinct": -1,
+   "correlation": 0.011467533,
+   "mcv_n": null,
+   "mcf5": null,
+   "mce_n": null,
+   "mcef5": null,
+   "hist_n": "101"
+  },
+  {
+   "schemaname": "native_verify_main",
+   "tablename": "customers",
+   "attname": "name_ct",
+   "null_frac": 0,
+   "n_distinct": -1,
+   "correlation": 0.0025830977,
+   "mcv_n": null,
+   "mcf5": null,
+   "mce_n": null,
+   "mcef5": null,
+   "hist_n": "101"
+  },
+  {
+   "schemaname": "native_verify_main",
+   "tablename": "customers",
+   "attname": "phone_ct",
+   "null_frac": 0,
+   "n_distinct": -1,
+   "correlation": 0.0071639125,
+   "mcv_n": null,
+   "mcf5": null,
+   "mce_n": null,
+   "mcef5": null,
+   "hist_n": "101"
+  },
+  {
+   "schemaname": "native_verify_main",
+   "tablename": "customers",
+   "attname": "scope_id",
+   "null_frac": 0,
+   "n_distinct": 1,
+   "correlation": 1,
+   "mcv_n": 1,
+   "mcf5": [
+    1
+   ],
+   "mce_n": null,
+   "mcef5": null,
+   "hist_n": "0"
+  },
+  {
+   "schemaname": "native_verify_main",
+   "tablename": "customers_seal_index",
+   "attname": "row_id",
+   "null_frac": 0,
+   "n_distinct": -1,
+   "correlation": 1,
+   "mcv_n": null,
+   "mcf5": null,
+   "mce_n": null,
+   "mcef5": null,
+   "hist_n": "101"
+  },
+  {
+   "schemaname": "native_verify_main",
+   "tablename": "customers_seal_index",
+   "attname": "scope_id",
+   "null_frac": 0,
+   "n_distinct": 1,
+   "correlation": 1,
+   "mcv_n": 1,
+   "mcf5": [
+    1
+   ],
+   "mce_n": null,
+   "mcef5": null,
+   "hist_n": "0"
+  },
+  {
+   "schemaname": "native_verify_main",
+   "tablename": "customers_seal_index",
+   "attname": "tokens_1127994ab736baf4",
+   "null_frac": 0,
+   "n_distinct": 16,
+   "correlation": 0.14380082,
+   "mcv_n": 16,
+   "mcf5": [
+    0.28331,
+    0.0953,
+    0.09472,
+    0.09416,
+    0.09415
+   ],
+   "mce_n": 184,
+   "mcef5": [
+    0.09972,
+    0.10019,
+    0.09972,
+    0.00575,
+    0.10019
+   ],
+   "hist_n": "0"
+  },
+  {
+   "schemaname": "native_verify_main",
+   "tablename": "customers_seal_index",
+   "attname": "tokens_1c32fdad5d1c8367",
+   "null_frac": 0,
+   "n_distinct": -0.51326,
+   "correlation": 0.00056072086,
+   "mcv_n": 100,
+   "mcf5": [
+    0.00008,
+    0.00008,
+    0.00008,
+    0.00008,
+    0.00008
+   ],
+   "mce_n": 60,
+   "mcef5": [
+    0.00008,
+    0.00007,
+    0.00007,
+    0.00008,
+    0.00007
+   ],
+   "hist_n": "101"
+  },
+  {
+   "schemaname": "native_verify_main",
+   "tablename": "customers_seal_index",
+   "attname": "tokens_792d75cf01821d67",
+   "null_frac": 0,
+   "n_distinct": 5994,
+   "correlation": 0.004288028,
+   "mcv_n": 1000,
+   "mcf5": [
+    0.00033,
+    0.00032,
+    0.00032,
+    0.00031,
+    0.00031
+   ],
+   "mce_n": 458,
+   "mcef5": [
+    0.16821,
+    0.0986,
+    0.01065,
+    0.01993,
+    0.16572
+   ],
+   "hist_n": "1001"
+  },
+  {
+   "schemaname": "native_verify_main",
+   "tablename": "customers_seal_index",
+   "attname": "tokens_7a1d2ba5ce2368fb",
+   "null_frac": 0,
+   "n_distinct": -1,
+   "correlation": -0.00008180623,
+   "mcv_n": null,
+   "mcf5": null,
+   "mce_n": 275,
+   "mcef5": [
+    0.05798,
+    0.05976,
+    0.07158,
+    0.18957,
+    0.05906
+   ],
+   "hist_n": "1001"
+  },
+  {
+   "schemaname": "native_verify_main",
+   "tablename": "customers_seal_index",
+   "attname": "tokens_988d248ff4b71bf7",
+   "null_frac": 0,
+   "n_distinct": 5746,
+   "correlation": -0.0060486356,
+   "mcv_n": 100,
+   "mcf5": [
+    0.00065,
+    0.00055,
+    0.00052,
+    0.0005,
+    0.00048
+   ],
+   "mce_n": 1000,
+   "mcef5": [
+    0.00023,
+    0.00026,
+    0.00025,
+    0.00025,
+    0.00025
+   ],
+   "hist_n": "101"
+  },
+  {
+   "schemaname": "native_verify_main",
+   "tablename": "customers_seal_index",
+   "attname": "tokens_a106c26102b707f0",
+   "null_frac": 0,
+   "n_distinct": 16,
+   "correlation": 0.1429918,
+   "mcv_n": 16,
+   "mcf5": [
+    0.28331,
+    0.0953,
+    0.09472,
+    0.09416,
+    0.09415
+   ],
+   "mce_n": 16,
+   "mcef5": [
+    0.09472,
+    0.0056,
+    0.00575,
+    0.09412,
+    0.09415
+   ],
+   "hist_n": "0"
+  },
+  {
+   "schemaname": "native_verify_main",
+   "tablename": "customers_seal_index",
+   "attname": "tokens_a639b11c8130dcf7",
+   "null_frac": 0,
+   "n_distinct": -0.99986,
+   "correlation": -0.0006856128,
+   "mcv_n": 14,
+   "mcf5": [
+    0.00002,
+    0.00002,
+    0.00002,
+    0.00002,
+    0.00002
+   ],
+   "mce_n": 3531,
+   "mcef5": [
+    0.00223,
+    0.1015,
+    0.00275,
+    0.00238,
+    0.00299
+   ],
+   "hist_n": "1001"
+  },
+  {
+   "schemaname": "native_verify_main",
+   "tablename": "customers_seal_index",
+   "attname": "tokens_c44ae523cca61a0b",
+   "null_frac": 0,
+   "n_distinct": -0.51315,
+   "correlation": -0.004775281,
+   "mcv_n": 100,
+   "mcf5": [
+    0.00009,
+    0.00009,
+    0.00009,
+    0.00009,
+    0.00008
+   ],
+   "mce_n": 68,
+   "mcef5": [
+    0.00007,
+    0.00008,
+    0.00007,
+    0.00007,
+    0.00007
+   ],
+   "hist_n": "101"
+  },
+  {
+   "schemaname": "native_verify_main",
+   "tablename": "customers_seal_index",
+   "attname": "tokens_c5133b3810f23103",
+   "null_frac": 0,
+   "n_distinct": -0.51341,
+   "correlation": 0.0028825614,
+   "mcv_n": 100,
+   "mcf5": [
+    0.0001,
+    0.00009,
+    0.00009,
+    0.00009,
+    0.00008
+   ],
+   "mce_n": 75,
+   "mcef5": [
+    0.00007,
+    0.00008,
+    0.00009,
+    0.00007,
+    0.00007
+   ],
+   "hist_n": "101"
+  },
+  {
+   "schemaname": "native_verify_main",
+   "tablename": "customers_seal_index",
+   "attname": "tokens_cd3096c7a3cd42c2",
+   "null_frac": 0,
+   "n_distinct": -0.51331,
+   "correlation": -0.00012401356,
+   "mcv_n": 100,
+   "mcf5": [
+    0.00009,
+    0.00008,
+    0.00008,
+    0.00008,
+    0.00008
+   ],
+   "mce_n": 66,
+   "mcef5": [
+    0.00007,
+    0.00007,
+    0.00007,
+    0.00007,
+    0.00007
+   ],
+   "hist_n": "101"
+  },
+  {
+   "schemaname": "native_verify_main",
+   "tablename": "customers_seal_index",
+   "attname": "tokens_ef1d32a52e2ce103",
+   "null_frac": 0,
+   "n_distinct": -1,
+   "correlation": -0.0640932,
+   "mcv_n": null,
+   "mcf5": null,
+   "mce_n": 2833,
+   "mcef5": [
+    0.00445,
+    0.00333,
+    0.01757,
+    0.00467,
+    0.01102
+   ],
+   "hist_n": "1001"
+  },
+  {
+   "schemaname": "native_verify_main",
+   "tablename": "customers_seal_index",
+   "attname": "tokens_f289b89d86c7086a",
+   "null_frac": 0,
+   "n_distinct": -0.99989,
+   "correlation": 0.0032490597,
+   "mcv_n": 11,
+   "mcf5": [
+    0.00002,
+    0.00002,
+    0.00002,
+    0.00002,
+    0.00002
+   ],
+   "mce_n": 3396,
+   "mcef5": [
+    0.00226,
+    0.00764,
+    0.00284,
+    0.00232,
+    0.00234
+   ],
+   "hist_n": "1001"
+  }
+ ],
+ "attStatTarget": [
+  {
+   "nspname": "native_scale_100m",
+   "relname": "customers_seal_index",
+   "attname": "scope_id",
+   "attstattarget": null
+  },
+  {
+   "nspname": "native_scale_100m",
+   "relname": "customers_seal_index",
+   "attname": "row_id",
+   "attstattarget": null
+  },
+  {
+   "nspname": "native_scale_100m",
+   "relname": "customers_seal_index",
+   "attname": "tokens_988d248ff4b71bf7",
+   "attstattarget": null
+  },
+  {
+   "nspname": "native_scale_100m",
+   "relname": "customers_seal_index",
+   "attname": "tokens_792d75cf01821d67",
+   "attstattarget": 1000
+  },
+  {
+   "nspname": "native_scale_100m",
+   "relname": "customers_seal_index",
+   "attname": "tokens_a106c26102b707f0",
+   "attstattarget": null
+  },
+  {
+   "nspname": "native_scale_100m",
+   "relname": "customers_seal_index",
+   "attname": "tokens_1127994ab736baf4",
+   "attstattarget": 1000
+  },
+  {
+   "nspname": "native_scale_100m",
+   "relname": "customers_seal_index",
+   "attname": "tokens_c5133b3810f23103",
+   "attstattarget": null
+  },
+  {
+   "nspname": "native_scale_100m",
+   "relname": "customers_seal_index",
+   "attname": "tokens_ef1d32a52e2ce103",
+   "attstattarget": 1000
+  },
+  {
+   "nspname": "native_scale_100m",
+   "relname": "customers_seal_index",
+   "attname": "tokens_1c32fdad5d1c8367",
+   "attstattarget": null
+  },
+  {
+   "nspname": "native_scale_100m",
+   "relname": "customers_seal_index",
+   "attname": "tokens_a639b11c8130dcf7",
+   "attstattarget": 1000
+  },
+  {
+   "nspname": "native_scale_100m",
+   "relname": "customers_seal_index",
+   "attname": "tokens_cd3096c7a3cd42c2",
+   "attstattarget": null
+  },
+  {
+   "nspname": "native_scale_100m",
+   "relname": "customers_seal_index",
+   "attname": "tokens_f289b89d86c7086a",
+   "attstattarget": 1000
+  },
+  {
+   "nspname": "native_scale_100m",
+   "relname": "customers_seal_index",
+   "attname": "tokens_c44ae523cca61a0b",
+   "attstattarget": null
+  },
+  {
+   "nspname": "native_scale_100m",
+   "relname": "customers_seal_index",
+   "attname": "tokens_7a1d2ba5ce2368fb",
+   "attstattarget": 1000
+  },
+  {
+   "nspname": "native_verify_main",
+   "relname": "customers_seal_index",
+   "attname": "scope_id",
+   "attstattarget": null
+  },
+  {
+   "nspname": "native_verify_main",
+   "relname": "customers_seal_index",
+   "attname": "row_id",
+   "attstattarget": null
+  },
+  {
+   "nspname": "native_verify_main",
+   "relname": "customers_seal_index",
+   "attname": "tokens_988d248ff4b71bf7",
+   "attstattarget": null
+  },
+  {
+   "nspname": "native_verify_main",
+   "relname": "customers_seal_index",
+   "attname": "tokens_792d75cf01821d67",
+   "attstattarget": 1000
+  },
+  {
+   "nspname": "native_verify_main",
+   "relname": "customers_seal_index",
+   "attname": "tokens_a106c26102b707f0",
+   "attstattarget": null
+  },
+  {
+   "nspname": "native_verify_main",
+   "relname": "customers_seal_index",
+   "attname": "tokens_1127994ab736baf4",
+   "attstattarget": 1000
+  },
+  {
+   "nspname": "native_verify_main",
+   "relname": "customers_seal_index",
+   "attname": "tokens_c5133b3810f23103",
+   "attstattarget": null
+  },
+  {
+   "nspname": "native_verify_main",
+   "relname": "customers_seal_index",
+   "attname": "tokens_ef1d32a52e2ce103",
+   "attstattarget": 1000
+  },
+  {
+   "nspname": "native_verify_main",
+   "relname": "customers_seal_index",
+   "attname": "tokens_1c32fdad5d1c8367",
+   "attstattarget": null
+  },
+  {
+   "nspname": "native_verify_main",
+   "relname": "customers_seal_index",
+   "attname": "tokens_a639b11c8130dcf7",
+   "attstattarget": 1000
+  },
+  {
+   "nspname": "native_verify_main",
+   "relname": "customers_seal_index",
+   "attname": "tokens_cd3096c7a3cd42c2",
+   "attstattarget": null
+  },
+  {
+   "nspname": "native_verify_main",
+   "relname": "customers_seal_index",
+   "attname": "tokens_f289b89d86c7086a",
+   "attstattarget": 1000
+  },
+  {
+   "nspname": "native_verify_main",
+   "relname": "customers_seal_index",
+   "attname": "tokens_c44ae523cca61a0b",
+   "attstattarget": null
+  },
+  {
+   "nspname": "native_verify_main",
+   "relname": "customers_seal_index",
+   "attname": "tokens_7a1d2ba5ce2368fb",
+   "attstattarget": 1000
+  }
+ ],
+ "gin": [
+  {
+   "index": "native_scale_100m.customers_address_trgm",
+   "version": 2,
+   "pending_pages": 463,
+   "pending_tuples": "23136"
+  },
+  {
+   "index": "native_scale_100m.customers_company_trgm",
+   "version": 2,
+   "pending_pages": 390,
+   "pending_tuples": "27478"
+  },
+  {
+   "index": "native_scale_100m.customers_email_trgm",
+   "version": 2,
+   "pending_pages": 276,
+   "pending_tuples": "4952"
+  },
+  {
+   "index": "native_scale_100m.customers_memo_trgm",
+   "version": 2,
+   "pending_pages": 282,
+   "pending_tuples": "12031"
+  },
+  {
+   "index": "native_scale_100m.customers_name_trgm",
+   "version": 2,
+   "pending_pages": 439,
+   "pending_tuples": "22035"
+  },
+  {
+   "index": "native_scale_100m.customers_phone_trgm",
+   "version": 2,
+   "pending_pages": 52,
+   "pending_tuples": "1640"
+  },
+  {
+   "index": "native_scale_100m.seal_e66dc2708e915b65_gin",
+   "version": 2,
+   "pending_pages": 0,
+   "pending_tuples": "0"
+  },
+  {
+   "index": "native_verify_main.seal_f1f96ac9d5d0c762_gin",
+   "version": 2,
+   "pending_pages": 0,
+   "pending_tuples": "0"
+  },
+  {
+   "index": "native_verify_main.seal_e66dc2708e915b65_gin",
+   "version": 2,
+   "pending_pages": 0,
+   "pending_tuples": "0"
+  },
+  {
+   "index": "native_verify_main.seal_203fd971496d9c0d_gin",
+   "version": 2,
+   "pending_pages": 0,
+   "pending_tuples": "0"
+  },
+  {
+   "index": "native_verify_main.seal_72b3722a0f7bc15c_gin",
+   "version": 2,
+   "pending_pages": 7,
+   "pending_tuples": "26"
+  },
+  {
+   "index": "native_verify_main.seal_d64a6460690f6fd1_gin",
+   "version": 2,
+   "pending_pages": 335,
+   "pending_tuples": "335"
+  }
+ ],
+ "activity": [
+  {
+   "pid": 31396,
+   "backend_type": "client backend",
+   "state": "active",
+   "query": "select pid, backend_type, state, left(query,120) query from pg_stat_activity where backend_type<>'client backend' or que"
+  },
+  {
+   "pid": 32624,
+   "backend_type": "autovacuum launcher",
+   "state": null,
+   "query": ""
+  },
+  {
+   "pid": 19428,
+   "backend_type": "autovacuum worker",
+   "state": "active",
+   "query": "autovacuum: VACUUM native_scale_100m.customers_seal_index"
+  },
+  {
+   "pid": 81712,
+   "backend_type": "logical replication launcher",
+   "state": null,
+   "query": ""
+  },
+  {
+   "pid": 15184,
+   "backend_type": "io worker",
+   "state": null,
+   "query": ""
+  },
+  {
+   "pid": 8944,
+   "backend_type": "io worker",
+   "state": null,
+   "query": ""
+  },
+  {
+   "pid": 70644,
+   "backend_type": "checkpointer",
+   "state": null,
+   "query": ""
+  },
+  {
+   "pid": 46896,
+   "backend_type": "background writer",
+   "state": null,
+   "query": ""
+  },
+  {
+   "pid": 48132,
+   "backend_type": "walwriter",
+   "state": null,
+   "query": ""
+  },
+  {
+   "pid": 34100,
+   "backend_type": "io worker",
+   "state": null,
+   "query": ""
+  }
+ ],
+ "progressVacuum": [
+  {
+   "pid": 19428,
+   "datid": 5,
+   "datname": "postgres",
+   "relid": 1660999,
+   "phase": "scanning heap",
+   "heap_blks_total": "25025004",
+   "heap_blks_scanned": "23498856",
+   "heap_blks_vacuumed": "0",
+   "index_vacuum_count": "0",
+   "max_dead_tuple_bytes": "67108864",
+   "dead_tuple_bytes": "0",
+   "num_dead_item_ids": "0",
+   "indexes_total": "0",
+   "indexes_processed": "0",
+   "delay_time": 0
+  }
+ ]
+}

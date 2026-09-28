@@ -1,0 +1,204 @@
+{
+ "startedAt": "2026-09-28T00:29:37.601Z",
+ "nRandom": 100000,
+ "nist": [
+  {
+   "name": "empty",
+   "bytes": 0,
+   "pass": true
+  },
+  {
+   "name": "abc (1 block)",
+   "bytes": 3,
+   "pass": true
+  },
+  {
+   "name": "448-bit (2 blocks)",
+   "bytes": 56,
+   "pass": true
+  },
+  {
+   "name": "896-bit (3 blocks)",
+   "bytes": 112,
+   "pass": true
+  },
+  {
+   "name": "1,000,000 x a",
+   "bytes": 1000000,
+   "pass": true
+  }
+ ],
+ "rfc4231": [
+  {
+   "tc": 1,
+   "pass": true
+  },
+  {
+   "tc": 2,
+   "pass": true
+  },
+  {
+   "tc": 3,
+   "pass": true
+  },
+  {
+   "tc": 4,
+   "pass": true
+  },
+  {
+   "tc": 5,
+   "pass": true
+  },
+  {
+   "tc": 6,
+   "pass": true
+  },
+  {
+   "tc": 7,
+   "pass": true
+  }
+ ],
+ "sha256VsOpenSSL": {
+  "cases": 100000,
+  "maxLen": 3320,
+  "pass": true,
+  "ms": 1242.5375
+ },
+ "hmacVsWebCrypto": {
+  "cases": 100000,
+  "keyLen": "1-200",
+  "msgLen": "0-2000 (+block edges)",
+  "pass": true,
+  "ms": 4183.8418
+ },
+ "prefixTagVsWebCrypto": {
+  "cases": 100000,
+  "pass": true,
+  "ms": 2931.511999999999,
+  "note": "random field, scope 0-120 ASCII or UUID, rowId UUID or 0-100 ASCII, body 32-512 B"
+ },
+ "batchVsSingleCbc": {
+  "items": 20000,
+  "pass": true,
+  "sizes": {
+   "min": 65,
+   "max": 273
+  }
+ },
+ "propertiesMemory": {
+  "envelopes": 2000,
+  "control": "good batch of 500 opens to the original values",
+  "results": {
+   "random bit flip (any byte incl. header/IV/C/tag)": {
+    "tried": 16000,
+    "rejected": 16000
+   },
+   "header byte changed": {
+    "tried": 2000,
+    "rejected": 2000
+   },
+   "truncate tail 1 B": {
+    "tried": 2000,
+    "rejected": 2000
+   },
+   "truncate tail 15 B": {
+    "tried": 2000,
+    "rejected": 2000
+   },
+   "truncate tail 16 B": {
+    "tried": 2000,
+    "rejected": 2000
+   },
+   "truncate tail 32 B": {
+    "tried": 2000,
+    "rejected": 2000
+   },
+   "truncate tail 33 B": {
+    "tried": 2000,
+    "rejected": 2000
+   },
+   "truncate tail 48 B": {
+    "tried": 2000,
+    "rejected": 2000
+   },
+   "truncate: drop first C block": {
+    "tried": 2000,
+    "rejected": 2000
+   },
+   "extend: duplicate a C block": {
+    "tried": 2000,
+    "rejected": 2000
+   },
+   "reorder: swap first two C blocks": {
+    "tried": 1808,
+    "rejected": 1808
+   },
+   "IV transplant from other envelope": {
+    "tried": 2000,
+    "rejected": 2000
+   },
+   "cross-row (other rowId, same field)": {
+    "tried": 2000,
+    "rejected": 2000
+   },
+   "cross-field (other field AAD)": {
+    "tried": 2000,
+    "rejected": 2000
+   },
+   "cross-scope (other scope AAD)": {
+    "tried": 2000,
+    "rejected": 2000
+   },
+   "tag transplant from other envelope": {
+    "tried": 2000,
+    "rejected": 2000
+   },
+   "mixed batch: 1 tampered of 500": {
+    "tried": 50,
+    "rejected": 50
+   },
+   "X3 layout case: 2 items shortened 8 B each": {
+    "tried": 1,
+    "rejected": 1
+   },
+   "malformed length 0": {
+    "tried": 1,
+    "rejected": 1
+   },
+   "malformed length 20": {
+    "tried": 1,
+    "rejected": 1
+   },
+   "malformed length 48": {
+    "tried": 1,
+    "rejected": 1
+   },
+   "malformed length 64": {
+    "tried": 1,
+    "rejected": 1
+   },
+   "malformed length 66": {
+    "tried": 1,
+    "rejected": 1
+   },
+   "malformed length 68": {
+    "tried": 1,
+    "rejected": 1
+   },
+   "non-Uint8Array envelope": {
+    "tried": 1,
+    "rejected": 1
+   }
+  }
+ },
+ "constantTime": {
+  "method": "tagDiff XOR-accumulates all 8 words with no branch on data; openBatch throws only after ALL tags of the batch are computed",
+  "usPerTagMean": {
+   "equal": 1.9035,
+   "firstByteDiff": 1.8688,
+   "lastByteDiff": 1.9138
+  },
+  "unused": 81
+ },
+ "finishedAt": "2026-09-28T00:29:53.669Z"
+}

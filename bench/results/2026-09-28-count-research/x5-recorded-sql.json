@@ -1,0 +1,574 @@
+{
+ "and2|10만 단독|findMany 20": [
+  {
+   "sql": "select \"id\", \"scope_id\", \"name_ct\", \"phone_ct\", \"address_ct\", \"memo_ct\", \"email_ct\", \"company_ct\" from \"native_verify_main\".\"customers\" where (\"native_verify_main\".\"customers\".\"scope_id\" = $1 and \"customers\".\"id\" in (\n    with sample as materialized (\n      select \"row_id\",\"tokens_a106c26102b707f0\",\"tokens_a639b11c8130dcf7\" from \"native_verify_main\".\"customers_seal_index\" as \"c\"\n      where \"c\".\"scope_id\"=$2 order by \"c\".\"row_id\" limit 256\n    ), quick as materialized (\n      select \"c\".\"row_id\" from sample as \"c\" where ((\"c\".\"tokens_a106c26102b707f0\")[1]=$3::bigint and \"c\".\"tokens_a639b11c8130dcf7\" @> $4::bigint[]) order by \"c\".\"row_id\" limit $5\n    ), fallback as materialized (\n      select \"c\".\"row_id\" from \"native_verify_main\".\"customers_seal_index\" as \"c\"\n      where \"c\".\"scope_id\"=$6 and ((\"c\".\"tokens_a106c26102b707f0\")[1]=$7::bigint and \"c\".\"tokens_a639b11c8130dcf7\" @> $8::bigint[])\n        and (select count(*) from quick)<$9\n      order by \"c\".\"row_id\" limit $10\n    )\n    select row_id from quick where (select count(*) from quick)=$11\n    union all select row_id from fallback\n  )) order by \"native_verify_main\".\"customers\".\"id\" asc limit $12",
+   "params": [
+    "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa",
+    "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa",
+    "1689062081162575872",
+    "{-2098416977109319680,-2098416976992862208,-2098416976693886976}",
+    27,
+    "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa",
+    "1689062081162575872",
+    "{-2098416977109319680,-2098416976992862208,-2098416976693886976}",
+    27,
+    27,
+    27,
+    27
+   ]
+  }
+ ],
+ "and4|10만 단독|findMany 20": [
+  {
+   "sql": "select \"id\", \"scope_id\", \"name_ct\", \"phone_ct\", \"address_ct\", \"memo_ct\", \"email_ct\", \"company_ct\" from \"native_verify_main\".\"customers\" where (\"native_verify_main\".\"customers\".\"scope_id\" = $1 and \"customers\".\"id\" in (\n    with sample as materialized (\n      select \"row_id\",\"tokens_a106c26102b707f0\",\"tokens_792d75cf01821d67\",\"tokens_a639b11c8130dcf7\",\"tokens_ef1d32a52e2ce103\" from \"native_verify_main\".\"customers_seal_index\" as \"c\"\n      where \"c\".\"scope_id\"=$2 order by \"c\".\"row_id\" limit 256\n    ), quick as materialized (\n      select \"c\".\"row_id\" from sample as \"c\" where ((\"c\".\"tokens_a106c26102b707f0\")[1]=$3::bigint and \"c\".\"tokens_792d75cf01821d67\" @> $4::bigint[] and \"c\".\"tokens_a639b11c8130dcf7\" @> $5::bigint[] and \"c\".\"tokens_ef1d32a52e2ce103\" @> $6::bigint[]) order by \"c\".\"row_id\" limit $7\n    ), fallback as materialized (\n      select \"c\".\"row_id\" from \"native_verify_main\".\"customers_seal_index\" as \"c\"\n      where \"c\".\"scope_id\"=$8 and ((\"c\".\"tokens_a106c26102b707f0\")[1]=$9::bigint and \"c\".\"tokens_792d75cf01821d67\" @> $10::bigint[] and \"c\".\"tokens_a639b11c8130dcf7\" @> $11::bigint[] and \"c\".\"tokens_ef1d32a52e2ce103\" @> $12::bigint[])\n        and (select count(*) from quick)<$13\n      order by \"c\".\"row_id\" limit $14\n    )\n    select row_id from quick where (select count(*) from quick)=$15\n    union all select row_id from fallback\n  )) order by \"native_verify_main\".\"customers\".\"id\" asc limit $16",
+   "params": [
+    "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa",
+    "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa",
+    "1689062081162575872",
+    "{1449583542540107776}",
+    "{-2098416978920472576}",
+    "{-7797306713888129024,-7797306713855688704,-7797306713509003264,-7797306713451921408,-7797306713380356096,-7797306712409440256,-7797306712373985280,-7797306712368480256,-7797306710802890752,-7797306710766518272,-7797306710715072512}",
+    27,
+    "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa",
+    "1689062081162575872",
+    "{1449583542540107776}",
+    "{-2098416978920472576}",
+    "{-7797306713888129024,-7797306713855688704,-7797306713509003264,-7797306713451921408,-7797306713380356096,-7797306712409440256,-7797306712373985280,-7797306712368480256,-7797306710802890752,-7797306710766518272,-7797306710715072512}",
+    27,
+    27,
+    27,
+    27
+   ]
+  }
+ ],
+ "and6|10만 단독|findMany 20": [
+  {
+   "sql": "select \"id\", \"scope_id\", \"name_ct\", \"phone_ct\", \"address_ct\", \"memo_ct\", \"email_ct\", \"company_ct\" from \"native_verify_main\".\"customers\" where (\"native_verify_main\".\"customers\".\"scope_id\" = $1 and \"customers\".\"id\" in (\n    with sample as materialized (\n      select \"row_id\",\"tokens_f289b89d86c7086a\",\"tokens_7a1d2ba5ce2368fb\",\"tokens_792d75cf01821d67\",\"tokens_a639b11c8130dcf7\",\"tokens_ef1d32a52e2ce103\",\"tokens_a106c26102b707f0\" from \"native_verify_main\".\"customers_seal_index\" as \"c\"\n      where \"c\".\"scope_id\"=$2 order by \"c\".\"row_id\" limit 256\n    ), quick as materialized (\n      select \"c\".\"row_id\" from sample as \"c\" where (\"c\".\"tokens_f289b89d86c7086a\" @> $3::bigint[] and \"c\".\"tokens_7a1d2ba5ce2368fb\" @> $4::bigint[] and \"c\".\"tokens_792d75cf01821d67\" @> $5::bigint[] and \"c\".\"tokens_a639b11c8130dcf7\" @> $6::bigint[] and \"c\".\"tokens_ef1d32a52e2ce103\" @> $7::bigint[] and (\"c\".\"tokens_a106c26102b707f0\")[1]=$8::bigint) order by \"c\".\"row_id\" limit $9\n    ), fallback as materialized (\n      select \"c\".\"row_id\" from \"native_verify_main\".\"customers_seal_index\" as \"c\"\n      where \"c\".\"scope_id\"=$10 and (\"c\".\"tokens_f289b89d86c7086a\" @> $11::bigint[] and \"c\".\"tokens_7a1d2ba5ce2368fb\" @> $12::bigint[] and \"c\".\"tokens_792d75cf01821d67\" @> $13::bigint[] and \"c\".\"tokens_a639b11c8130dcf7\" @> $14::bigint[] and \"c\".\"tokens_ef1d32a52e2ce103\" @> $15::bigint[] and (\"c\".\"tokens_a106c26102b707f0\")[1]=$16::bigint)\n        and (select count(*) from quick)<$17\n      order by \"c\".\"row_id\" limit $18\n    )\n    select row_id from quick where (select count(*) from quick)=$19\n    union all select row_id from fallback\n  )) order by \"native_verify_main\".\"customers\".\"id\" asc limit $20",
+   "params": [
+    "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa",
+    "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa",
+    "{-2610543645175644160}",
+    "{338712390265536512}",
+    "{1449583542540107776}",
+    "{-2098416977109319680,-2098416976992862208,-2098416976693886976}",
+    "{-7797306714043842560,-7797306713645187072,-7797306711613177856,-7797306710720184320,-7797306710242361344}",
+    "1689062081162575872",
+    27,
+    "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa",
+    "{-2610543645175644160}",
+    "{338712390265536512}",
+    "{1449583542540107776}",
+    "{-2098416977109319680,-2098416976992862208,-2098416976693886976}",
+    "{-7797306714043842560,-7797306713645187072,-7797306711613177856,-7797306710720184320,-7797306710242361344}",
+    "1689062081162575872",
+    27,
+    27,
+    27,
+    27
+   ]
+  }
+ ],
+ "and2|10만 단독|findMany 200": [
+  {
+   "sql": "select \"id\", \"scope_id\", \"name_ct\", \"phone_ct\", \"address_ct\", \"memo_ct\", \"email_ct\", \"company_ct\" from \"native_verify_main\".\"customers\" where (\"native_verify_main\".\"customers\".\"scope_id\" = $1 and \"customers\".\"id\" in (select \"__seal_idx\".\"row_id\" from \"native_verify_main\".\"customers_seal_index\" as \"__seal_idx\" where \"__seal_idx\".\"scope_id\"=$2 and (((\"__seal_idx\".\"tokens_a106c26102b707f0\")[1]=$3::bigint) and (\"__seal_idx\".\"tokens_a639b11c8130dcf7\" @> $4::bigint[])))) order by \"native_verify_main\".\"customers\".\"id\" asc limit $5",
+   "params": [
+    "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa",
+    "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa",
+    "1689062081162575872",
+    "{-2098416977109319680,-2098416976992862208,-2098416976693886976}",
+    252
+   ]
+  }
+ ],
+ "and4|10만 단독|findMany 200": [
+  {
+   "sql": "select \"id\", \"scope_id\", \"name_ct\", \"phone_ct\", \"address_ct\", \"memo_ct\", \"email_ct\", \"company_ct\" from \"native_verify_main\".\"customers\" where (\"native_verify_main\".\"customers\".\"scope_id\" = $1 and \"customers\".\"id\" in (select \"__seal_idx\".\"row_id\" from \"native_verify_main\".\"customers_seal_index\" as \"__seal_idx\" where \"__seal_idx\".\"scope_id\"=$2 and (((\"__seal_idx\".\"tokens_a106c26102b707f0\")[1]=$3::bigint) and (\"__seal_idx\".\"tokens_792d75cf01821d67\" @> $4::bigint[]) and (\"__seal_idx\".\"tokens_a639b11c8130dcf7\" @> $5::bigint[]) and (\"__seal_idx\".\"tokens_ef1d32a52e2ce103\" @> $6::bigint[])))) order by \"native_verify_main\".\"customers\".\"id\" asc limit $7",
+   "params": [
+    "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa",
+    "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa",
+    "1689062081162575872",
+    "{1449583542540107776}",
+    "{-2098416978920472576}",
+    "{-7797306713888129024,-7797306713855688704,-7797306713509003264,-7797306713451921408,-7797306713380356096,-7797306712409440256,-7797306712373985280,-7797306712368480256,-7797306710802890752,-7797306710766518272,-7797306710715072512}",
+    252
+   ]
+  }
+ ],
+ "and6|10만 단독|findMany 200": [
+  {
+   "sql": "select \"id\", \"scope_id\", \"name_ct\", \"phone_ct\", \"address_ct\", \"memo_ct\", \"email_ct\", \"company_ct\" from \"native_verify_main\".\"customers\" where (\"native_verify_main\".\"customers\".\"scope_id\" = $1 and \"customers\".\"id\" in (select \"__seal_idx\".\"row_id\" from \"native_verify_main\".\"customers_seal_index\" as \"__seal_idx\" where \"__seal_idx\".\"scope_id\"=$2 and ((\"__seal_idx\".\"tokens_f289b89d86c7086a\" @> $3::bigint[]) and (\"__seal_idx\".\"tokens_7a1d2ba5ce2368fb\" @> $4::bigint[]) and (\"__seal_idx\".\"tokens_792d75cf01821d67\" @> $5::bigint[]) and (\"__seal_idx\".\"tokens_a639b11c8130dcf7\" @> $6::bigint[]) and (\"__seal_idx\".\"tokens_ef1d32a52e2ce103\" @> $7::bigint[]) and ((\"__seal_idx\".\"tokens_a106c26102b707f0\")[1]=$8::bigint)))) order by \"native_verify_main\".\"customers\".\"id\" asc limit $9",
+   "params": [
+    "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa",
+    "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa",
+    "{-2610543645175644160}",
+    "{338712390265536512}",
+    "{1449583542540107776}",
+    "{-2098416977109319680,-2098416976992862208,-2098416976693886976}",
+    "{-7797306714043842560,-7797306713645187072,-7797306711613177856,-7797306710720184320,-7797306710242361344}",
+    "1689062081162575872",
+    252
+   ]
+  }
+ ],
+ "and2|10만 단독|findMany 전부": [
+  {
+   "sql": "select \"id\", \"scope_id\", \"name_ct\", \"phone_ct\", \"address_ct\", \"memo_ct\", \"email_ct\", \"company_ct\" from \"native_verify_main\".\"customers\" where (\"native_verify_main\".\"customers\".\"scope_id\" = $1 and \"customers\".\"id\" in (select \"__seal_idx\".\"row_id\" from \"native_verify_main\".\"customers_seal_index\" as \"__seal_idx\" where \"__seal_idx\".\"scope_id\"=$2 and (((\"__seal_idx\".\"tokens_a106c26102b707f0\")[1]=$3::bigint) and (\"__seal_idx\".\"tokens_a639b11c8130dcf7\" @> $4::bigint[])))) order by \"native_verify_main\".\"customers\".\"id\" asc",
+   "params": [
+    "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa",
+    "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa",
+    "1689062081162575872",
+    "{-2098416977109319680,-2098416976992862208,-2098416976693886976}"
+   ]
+  }
+ ],
+ "and4|10만 단독|findMany 전부": [
+  {
+   "sql": "select \"id\", \"scope_id\", \"name_ct\", \"phone_ct\", \"address_ct\", \"memo_ct\", \"email_ct\", \"company_ct\" from \"native_verify_main\".\"customers\" where (\"native_verify_main\".\"customers\".\"scope_id\" = $1 and \"customers\".\"id\" in (select \"__seal_idx\".\"row_id\" from \"native_verify_main\".\"customers_seal_index\" as \"__seal_idx\" where \"__seal_idx\".\"scope_id\"=$2 and (((\"__seal_idx\".\"tokens_a106c26102b707f0\")[1]=$3::bigint) and (\"__seal_idx\".\"tokens_792d75cf01821d67\" @> $4::bigint[]) and (\"__seal_idx\".\"tokens_a639b11c8130dcf7\" @> $5::bigint[]) and (\"__seal_idx\".\"tokens_ef1d32a52e2ce103\" @> $6::bigint[])))) order by \"native_verify_main\".\"customers\".\"id\" asc",
+   "params": [
+    "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa",
+    "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa",
+    "1689062081162575872",
+    "{1449583542540107776}",
+    "{-2098416978920472576}",
+    "{-7797306713888129024,-7797306713855688704,-7797306713509003264,-7797306713451921408,-7797306713380356096,-7797306712409440256,-7797306712373985280,-7797306712368480256,-7797306710802890752,-7797306710766518272,-7797306710715072512}"
+   ]
+  }
+ ],
+ "and6|10만 단독|findMany 전부": [
+  {
+   "sql": "select \"id\", \"scope_id\", \"name_ct\", \"phone_ct\", \"address_ct\", \"memo_ct\", \"email_ct\", \"company_ct\" from \"native_verify_main\".\"customers\" where (\"native_verify_main\".\"customers\".\"scope_id\" = $1 and \"customers\".\"id\" in (select \"__seal_idx\".\"row_id\" from \"native_verify_main\".\"customers_seal_index\" as \"__seal_idx\" where \"__seal_idx\".\"scope_id\"=$2 and ((\"__seal_idx\".\"tokens_f289b89d86c7086a\" @> $3::bigint[]) and (\"__seal_idx\".\"tokens_7a1d2ba5ce2368fb\" @> $4::bigint[]) and (\"__seal_idx\".\"tokens_792d75cf01821d67\" @> $5::bigint[]) and (\"__seal_idx\".\"tokens_a639b11c8130dcf7\" @> $6::bigint[]) and (\"__seal_idx\".\"tokens_ef1d32a52e2ce103\" @> $7::bigint[]) and ((\"__seal_idx\".\"tokens_a106c26102b707f0\")[1]=$8::bigint)))) order by \"native_verify_main\".\"customers\".\"id\" asc",
+   "params": [
+    "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa",
+    "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa",
+    "{-2610543645175644160}",
+    "{338712390265536512}",
+    "{1449583542540107776}",
+    "{-2098416977109319680,-2098416976992862208,-2098416976693886976}",
+    "{-7797306714043842560,-7797306713645187072,-7797306711613177856,-7797306710720184320,-7797306710242361344}",
+    "1689062081162575872"
+   ]
+  }
+ ],
+ "and2|10만 단독|count": [
+  {
+   "sql": "select \"id\", \"scope_id\", \"company_ct\", \"memo_ct\" from \"native_verify_main\".\"customers\" where (\"native_verify_main\".\"customers\".\"scope_id\" = $1 and \"customers\".\"id\" in (select \"__seal_idx\".\"row_id\" from \"native_verify_main\".\"customers_seal_index\" as \"__seal_idx\" where \"__seal_idx\".\"scope_id\"=$2 and (((\"__seal_idx\".\"tokens_a106c26102b707f0\")[1]=$3::bigint) and (\"__seal_idx\".\"tokens_a639b11c8130dcf7\" @> $4::bigint[])))) order by \"native_verify_main\".\"customers\".\"id\" asc",
+   "params": [
+    "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa",
+    "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa",
+    "1689062081162575872",
+    "{-2098416977109319680,-2098416976992862208,-2098416976693886976}"
+   ]
+  }
+ ],
+ "and4|10만 단독|count": [
+  {
+   "sql": "select \"id\", \"scope_id\", \"company_ct\", \"address_ct\", \"memo_ct\", \"email_ct\" from \"native_verify_main\".\"customers\" where (\"native_verify_main\".\"customers\".\"scope_id\" = $1 and \"customers\".\"id\" in (select \"__seal_idx\".\"row_id\" from \"native_verify_main\".\"customers_seal_index\" as \"__seal_idx\" where \"__seal_idx\".\"scope_id\"=$2 and (((\"__seal_idx\".\"tokens_a106c26102b707f0\")[1]=$3::bigint) and (\"__seal_idx\".\"tokens_792d75cf01821d67\" @> $4::bigint[]) and (\"__seal_idx\".\"tokens_a639b11c8130dcf7\" @> $5::bigint[]) and (\"__seal_idx\".\"tokens_ef1d32a52e2ce103\" @> $6::bigint[])))) order by \"native_verify_main\".\"customers\".\"id\" asc",
+   "params": [
+    "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa",
+    "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa",
+    "1689062081162575872",
+    "{1449583542540107776}",
+    "{-2098416978920472576}",
+    "{-7797306713888129024,-7797306713855688704,-7797306713509003264,-7797306713451921408,-7797306713380356096,-7797306712409440256,-7797306712373985280,-7797306712368480256,-7797306710802890752,-7797306710766518272,-7797306710715072512}"
+   ]
+  }
+ ],
+ "and6|10만 단독|count": [
+  {
+   "sql": "select \"id\", \"scope_id\", \"name_ct\", \"phone_ct\", \"address_ct\", \"memo_ct\", \"email_ct\", \"company_ct\" from \"native_verify_main\".\"customers\" where (\"native_verify_main\".\"customers\".\"scope_id\" = $1 and \"customers\".\"id\" in (select \"__seal_idx\".\"row_id\" from \"native_verify_main\".\"customers_seal_index\" as \"__seal_idx\" where \"__seal_idx\".\"scope_id\"=$2 and ((\"__seal_idx\".\"tokens_f289b89d86c7086a\" @> $3::bigint[]) and (\"__seal_idx\".\"tokens_7a1d2ba5ce2368fb\" @> $4::bigint[]) and (\"__seal_idx\".\"tokens_792d75cf01821d67\" @> $5::bigint[]) and (\"__seal_idx\".\"tokens_a639b11c8130dcf7\" @> $6::bigint[]) and (\"__seal_idx\".\"tokens_ef1d32a52e2ce103\" @> $7::bigint[]) and ((\"__seal_idx\".\"tokens_a106c26102b707f0\")[1]=$8::bigint)))) order by \"native_verify_main\".\"customers\".\"id\" asc",
+   "params": [
+    "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa",
+    "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa",
+    "{-2610543645175644160}",
+    "{338712390265536512}",
+    "{1449583542540107776}",
+    "{-2098416977109319680,-2098416976992862208,-2098416976693886976}",
+    "{-7797306714043842560,-7797306713645187072,-7797306711613177856,-7797306710720184320,-7797306710242361344}",
+    "1689062081162575872"
+   ]
+  }
+ ],
+ "and2|1억 속 회사 B|findMany 20": [
+  {
+   "sql": "select \"id\", \"scope_id\", \"name_ct\", \"phone_ct\", \"address_ct\", \"memo_ct\", \"email_ct\", \"company_ct\" from \"native_scale_100m\".\"customers\" where (\"native_scale_100m\".\"customers\".\"scope_id\" = $1 and \"customers\".\"id\" in (\n    with sample as materialized (\n      select \"row_id\",\"tokens_a106c26102b707f0\",\"tokens_a639b11c8130dcf7\" from \"native_scale_100m\".\"customers_seal_index\" as \"c\"\n      where \"c\".\"scope_id\"=$2 order by \"c\".\"row_id\" limit 256\n    ), quick as materialized (\n      select \"c\".\"row_id\" from sample as \"c\" where ((\"c\".\"tokens_a106c26102b707f0\")[1]=$3::bigint and \"c\".\"tokens_a639b11c8130dcf7\" @> $4::bigint[]) order by \"c\".\"row_id\" limit $5\n    ), fallback as materialized (\n      select \"c\".\"row_id\" from \"native_scale_100m\".\"customers_seal_index\" as \"c\"\n      where \"c\".\"scope_id\"=$6 and ((\"c\".\"tokens_a106c26102b707f0\")[1]=$7::bigint and \"c\".\"tokens_a639b11c8130dcf7\" @> $8::bigint[])\n        and (select count(*) from quick)<$9\n      order by \"c\".\"row_id\" limit $10\n    )\n    select row_id from quick where (select count(*) from quick)=$11\n    union all select row_id from fallback\n  )) order by \"native_scale_100m\".\"customers\".\"id\" asc limit $12",
+   "params": [
+    "bbbbbbbb-bbbb-4bbb-8bbb-bbbbbbbbbbbb",
+    "bbbbbbbb-bbbb-4bbb-8bbb-bbbbbbbbbbbb",
+    "-5226838053294112768",
+    "{-5935322400194756608,-5935322399125209088,-5935322398919688192}",
+    27,
+    "bbbbbbbb-bbbb-4bbb-8bbb-bbbbbbbbbbbb",
+    "-5226838053294112768",
+    "{-5935322400194756608,-5935322399125209088,-5935322398919688192}",
+    27,
+    27,
+    27,
+    27
+   ]
+  }
+ ],
+ "and4|1억 속 회사 B|findMany 20": [
+  {
+   "sql": "select \"id\", \"scope_id\", \"name_ct\", \"phone_ct\", \"address_ct\", \"memo_ct\", \"email_ct\", \"company_ct\" from \"native_scale_100m\".\"customers\" where (\"native_scale_100m\".\"customers\".\"scope_id\" = $1 and \"customers\".\"id\" in (\n    with sample as materialized (\n      select \"row_id\",\"tokens_a106c26102b707f0\",\"tokens_792d75cf01821d67\",\"tokens_a639b11c8130dcf7\",\"tokens_ef1d32a52e2ce103\" from \"native_scale_100m\".\"customers_seal_index\" as \"c\"\n      where \"c\".\"scope_id\"=$2 order by \"c\".\"row_id\" limit 256\n    ), quick as materialized (\n      select \"c\".\"row_id\" from sample as \"c\" where ((\"c\".\"tokens_a106c26102b707f0\")[1]=$3::bigint and \"c\".\"tokens_792d75cf01821d67\" @> $4::bigint[] and \"c\".\"tokens_a639b11c8130dcf7\" @> $5::bigint[] and \"c\".\"tokens_ef1d32a52e2ce103\" @> $6::bigint[]) order by \"c\".\"row_id\" limit $7\n    ), fallback as materialized (\n      select \"c\".\"row_id\" from \"native_scale_100m\".\"customers_seal_index\" as \"c\"\n      where \"c\".\"scope_id\"=$8 and ((\"c\".\"tokens_a106c26102b707f0\")[1]=$9::bigint and \"c\".\"tokens_792d75cf01821d67\" @> $10::bigint[] and \"c\".\"tokens_a639b11c8130dcf7\" @> $11::bigint[] and \"c\".\"tokens_ef1d32a52e2ce103\" @> $12::bigint[])\n        and (select count(*) from quick)<$13\n      order by \"c\".\"row_id\" limit $14\n    )\n    select row_id from quick where (select count(*) from quick)=$15\n    union all select row_id from fallback\n  )) order by \"native_scale_100m\".\"customers\".\"id\" asc limit $16",
+   "params": [
+    "bbbbbbbb-bbbb-4bbb-8bbb-bbbbbbbbbbbb",
+    "bbbbbbbb-bbbb-4bbb-8bbb-bbbbbbbbbbbb",
+    "-5226838053294112768",
+    "{-1892214540657557504}",
+    "{-5935322399464488960}",
+    "{-5345530069321515008,-5345530068696301568,-5345530068606976000,-5345530068501004288,-5345530068484358144,-5345530067962888192,-5345530067935166464,-5345530067793346560,-5345530066661670912,-5345530066644631552,-5345530066386944000}",
+    27,
+    "bbbbbbbb-bbbb-4bbb-8bbb-bbbbbbbbbbbb",
+    "-5226838053294112768",
+    "{-1892214540657557504}",
+    "{-5935322399464488960}",
+    "{-5345530069321515008,-5345530068696301568,-5345530068606976000,-5345530068501004288,-5345530068484358144,-5345530067962888192,-5345530067935166464,-5345530067793346560,-5345530066661670912,-5345530066644631552,-5345530066386944000}",
+    27,
+    27,
+    27,
+    27
+   ]
+  }
+ ],
+ "and6|1억 속 회사 B|findMany 20": [
+  {
+   "sql": "select \"id\", \"scope_id\", \"name_ct\", \"phone_ct\", \"address_ct\", \"memo_ct\", \"email_ct\", \"company_ct\" from \"native_scale_100m\".\"customers\" where (\"native_scale_100m\".\"customers\".\"scope_id\" = $1 and \"customers\".\"id\" in (\n    with sample as materialized (\n      select \"row_id\",\"tokens_f289b89d86c7086a\",\"tokens_7a1d2ba5ce2368fb\",\"tokens_792d75cf01821d67\",\"tokens_a639b11c8130dcf7\",\"tokens_ef1d32a52e2ce103\",\"tokens_a106c26102b707f0\" from \"native_scale_100m\".\"customers_seal_index\" as \"c\"\n      where \"c\".\"scope_id\"=$2 order by \"c\".\"row_id\" limit 256\n    ), quick as materialized (\n      select \"c\".\"row_id\" from sample as \"c\" where (\"c\".\"tokens_f289b89d86c7086a\" @> $3::bigint[] and \"c\".\"tokens_7a1d2ba5ce2368fb\" @> $4::bigint[] and \"c\".\"tokens_792d75cf01821d67\" @> $5::bigint[] and \"c\".\"tokens_a639b11c8130dcf7\" @> $6::bigint[] and \"c\".\"tokens_ef1d32a52e2ce103\" @> $7::bigint[] and (\"c\".\"tokens_a106c26102b707f0\")[1]=$8::bigint) order by \"c\".\"row_id\" limit $9\n    ), fallback as materialized (\n      select \"c\".\"row_id\" from \"native_scale_100m\".\"customers_seal_index\" as \"c\"\n      where \"c\".\"scope_id\"=$10 and (\"c\".\"tokens_f289b89d86c7086a\" @> $11::bigint[] and \"c\".\"tokens_7a1d2ba5ce2368fb\" @> $12::bigint[] and \"c\".\"tokens_792d75cf01821d67\" @> $13::bigint[] and \"c\".\"tokens_a639b11c8130dcf7\" @> $14::bigint[] and \"c\".\"tokens_ef1d32a52e2ce103\" @> $15::bigint[] and (\"c\".\"tokens_a106c26102b707f0\")[1]=$16::bigint)\n        and (select count(*) from quick)<$17\n      order by \"c\".\"row_id\" limit $18\n    )\n    select row_id from quick where (select count(*) from quick)=$19\n    union all select row_id from fallback\n  )) order by \"native_scale_100m\".\"customers\".\"id\" asc limit $20",
+   "params": [
+    "bbbbbbbb-bbbb-4bbb-8bbb-bbbbbbbbbbbb",
+    "bbbbbbbb-bbbb-4bbb-8bbb-bbbbbbbbbbbb",
+    "{-5059701682368217088}",
+    "{-1129999691530371072}",
+    "{-1892214540657557504}",
+    "{-5935322400194756608,-5935322399125209088,-5935322398919688192}",
+    "{-5345530070450176000,-5345530069432795136,-5345530069075558400,-5345530069039906816,-5345530067854032896}",
+    "-5226838053294112768",
+    27,
+    "bbbbbbbb-bbbb-4bbb-8bbb-bbbbbbbbbbbb",
+    "{-5059701682368217088}",
+    "{-1129999691530371072}",
+    "{-1892214540657557504}",
+    "{-5935322400194756608,-5935322399125209088,-5935322398919688192}",
+    "{-5345530070450176000,-5345530069432795136,-5345530069075558400,-5345530069039906816,-5345530067854032896}",
+    "-5226838053294112768",
+    27,
+    27,
+    27,
+    27
+   ]
+  }
+ ],
+ "and2|1억 속 회사 B|findMany 200": [
+  {
+   "sql": "select \"id\", \"scope_id\", \"name_ct\", \"phone_ct\", \"address_ct\", \"memo_ct\", \"email_ct\", \"company_ct\" from \"native_scale_100m\".\"customers\" where (\"native_scale_100m\".\"customers\".\"scope_id\" = $1 and \"customers\".\"id\" in (select \"__seal_idx\".\"row_id\" from \"native_scale_100m\".\"customers_seal_index\" as \"__seal_idx\" where \"__seal_idx\".\"scope_id\"=$2 and (((\"__seal_idx\".\"tokens_a106c26102b707f0\")[1]=$3::bigint) and (\"__seal_idx\".\"tokens_a639b11c8130dcf7\" @> $4::bigint[])))) order by \"native_scale_100m\".\"customers\".\"id\" asc limit $5",
+   "params": [
+    "bbbbbbbb-bbbb-4bbb-8bbb-bbbbbbbbbbbb",
+    "bbbbbbbb-bbbb-4bbb-8bbb-bbbbbbbbbbbb",
+    "-5226838053294112768",
+    "{-5935322400194756608,-5935322399125209088,-5935322398919688192}",
+    252
+   ]
+  }
+ ],
+ "and4|1억 속 회사 B|findMany 200": [
+  {
+   "sql": "select \"id\", \"scope_id\", \"name_ct\", \"phone_ct\", \"address_ct\", \"memo_ct\", \"email_ct\", \"company_ct\" from \"native_scale_100m\".\"customers\" where (\"native_scale_100m\".\"customers\".\"scope_id\" = $1 and \"customers\".\"id\" in (select \"__seal_idx\".\"row_id\" from \"native_scale_100m\".\"customers_seal_index\" as \"__seal_idx\" where \"__seal_idx\".\"scope_id\"=$2 and (((\"__seal_idx\".\"tokens_a106c26102b707f0\")[1]=$3::bigint) and (\"__seal_idx\".\"tokens_792d75cf01821d67\" @> $4::bigint[]) and (\"__seal_idx\".\"tokens_a639b11c8130dcf7\" @> $5::bigint[]) and (\"__seal_idx\".\"tokens_ef1d32a52e2ce103\" @> $6::bigint[])))) order by \"native_scale_100m\".\"customers\".\"id\" asc limit $7",
+   "params": [
+    "bbbbbbbb-bbbb-4bbb-8bbb-bbbbbbbbbbbb",
+    "bbbbbbbb-bbbb-4bbb-8bbb-bbbbbbbbbbbb",
+    "-5226838053294112768",
+    "{-1892214540657557504}",
+    "{-5935322399464488960}",
+    "{-5345530069321515008,-5345530068696301568,-5345530068606976000,-5345530068501004288,-5345530068484358144,-5345530067962888192,-5345530067935166464,-5345530067793346560,-5345530066661670912,-5345530066644631552,-5345530066386944000}",
+    252
+   ]
+  }
+ ],
+ "and6|1억 속 회사 B|findMany 200": [
+  {
+   "sql": "select \"id\", \"scope_id\", \"name_ct\", \"phone_ct\", \"address_ct\", \"memo_ct\", \"email_ct\", \"company_ct\" from \"native_scale_100m\".\"customers\" where (\"native_scale_100m\".\"customers\".\"scope_id\" = $1 and \"customers\".\"id\" in (select \"__seal_idx\".\"row_id\" from \"native_scale_100m\".\"customers_seal_index\" as \"__seal_idx\" where \"__seal_idx\".\"scope_id\"=$2 and ((\"__seal_idx\".\"tokens_f289b89d86c7086a\" @> $3::bigint[]) and (\"__seal_idx\".\"tokens_7a1d2ba5ce2368fb\" @> $4::bigint[]) and (\"__seal_idx\".\"tokens_792d75cf01821d67\" @> $5::bigint[]) and (\"__seal_idx\".\"tokens_a639b11c8130dcf7\" @> $6::bigint[]) and (\"__seal_idx\".\"tokens_ef1d32a52e2ce103\" @> $7::bigint[]) and ((\"__seal_idx\".\"tokens_a106c26102b707f0\")[1]=$8::bigint)))) order by \"native_scale_100m\".\"customers\".\"id\" asc limit $9",
+   "params": [
+    "bbbbbbbb-bbbb-4bbb-8bbb-bbbbbbbbbbbb",
+    "bbbbbbbb-bbbb-4bbb-8bbb-bbbbbbbbbbbb",
+    "{-5059701682368217088}",
+    "{-1129999691530371072}",
+    "{-1892214540657557504}",
+    "{-5935322400194756608,-5935322399125209088,-5935322398919688192}",
+    "{-5345530070450176000,-5345530069432795136,-5345530069075558400,-5345530069039906816,-5345530067854032896}",
+    "-5226838053294112768",
+    252
+   ]
+  }
+ ],
+ "and2|1억 속 회사 B|findMany 전부": [
+  {
+   "sql": "select \"id\", \"scope_id\", \"name_ct\", \"phone_ct\", \"address_ct\", \"memo_ct\", \"email_ct\", \"company_ct\" from \"native_scale_100m\".\"customers\" where (\"native_scale_100m\".\"customers\".\"scope_id\" = $1 and \"customers\".\"id\" in (select \"__seal_idx\".\"row_id\" from \"native_scale_100m\".\"customers_seal_index\" as \"__seal_idx\" where \"__seal_idx\".\"scope_id\"=$2 and (((\"__seal_idx\".\"tokens_a106c26102b707f0\")[1]=$3::bigint) and (\"__seal_idx\".\"tokens_a639b11c8130dcf7\" @> $4::bigint[])))) order by \"native_scale_100m\".\"customers\".\"id\" asc",
+   "params": [
+    "bbbbbbbb-bbbb-4bbb-8bbb-bbbbbbbbbbbb",
+    "bbbbbbbb-bbbb-4bbb-8bbb-bbbbbbbbbbbb",
+    "-5226838053294112768",
+    "{-5935322400194756608,-5935322399125209088,-5935322398919688192}"
+   ]
+  }
+ ],
+ "and4|1억 속 회사 B|findMany 전부": [
+  {
+   "sql": "select \"id\", \"scope_id\", \"name_ct\", \"phone_ct\", \"address_ct\", \"memo_ct\", \"email_ct\", \"company_ct\" from \"native_scale_100m\".\"customers\" where (\"native_scale_100m\".\"customers\".\"scope_id\" = $1 and \"customers\".\"id\" in (select \"__seal_idx\".\"row_id\" from \"native_scale_100m\".\"customers_seal_index\" as \"__seal_idx\" where \"__seal_idx\".\"scope_id\"=$2 and (((\"__seal_idx\".\"tokens_a106c26102b707f0\")[1]=$3::bigint) and (\"__seal_idx\".\"tokens_792d75cf01821d67\" @> $4::bigint[]) and (\"__seal_idx\".\"tokens_a639b11c8130dcf7\" @> $5::bigint[]) and (\"__seal_idx\".\"tokens_ef1d32a52e2ce103\" @> $6::bigint[])))) order by \"native_scale_100m\".\"customers\".\"id\" asc",
+   "params": [
+    "bbbbbbbb-bbbb-4bbb-8bbb-bbbbbbbbbbbb",
+    "bbbbbbbb-bbbb-4bbb-8bbb-bbbbbbbbbbbb",
+    "-5226838053294112768",
+    "{-1892214540657557504}",
+    "{-5935322399464488960}",
+    "{-5345530069321515008,-5345530068696301568,-5345530068606976000,-5345530068501004288,-5345530068484358144,-5345530067962888192,-5345530067935166464,-5345530067793346560,-5345530066661670912,-5345530066644631552,-5345530066386944000}"
+   ]
+  }
+ ],
+ "and6|1억 속 회사 B|findMany 전부": [
+  {
+   "sql": "select \"id\", \"scope_id\", \"name_ct\", \"phone_ct\", \"address_ct\", \"memo_ct\", \"email_ct\", \"company_ct\" from \"native_scale_100m\".\"customers\" where (\"native_scale_100m\".\"customers\".\"scope_id\" = $1 and \"customers\".\"id\" in (select \"__seal_idx\".\"row_id\" from \"native_scale_100m\".\"customers_seal_index\" as \"__seal_idx\" where \"__seal_idx\".\"scope_id\"=$2 and ((\"__seal_idx\".\"tokens_f289b89d86c7086a\" @> $3::bigint[]) and (\"__seal_idx\".\"tokens_7a1d2ba5ce2368fb\" @> $4::bigint[]) and (\"__seal_idx\".\"tokens_792d75cf01821d67\" @> $5::bigint[]) and (\"__seal_idx\".\"tokens_a639b11c8130dcf7\" @> $6::bigint[]) and (\"__seal_idx\".\"tokens_ef1d32a52e2ce103\" @> $7::bigint[]) and ((\"__seal_idx\".\"tokens_a106c26102b707f0\")[1]=$8::bigint)))) order by \"native_scale_100m\".\"customers\".\"id\" asc",
+   "params": [
+    "bbbbbbbb-bbbb-4bbb-8bbb-bbbbbbbbbbbb",
+    "bbbbbbbb-bbbb-4bbb-8bbb-bbbbbbbbbbbb",
+    "{-5059701682368217088}",
+    "{-1129999691530371072}",
+    "{-1892214540657557504}",
+    "{-5935322400194756608,-5935322399125209088,-5935322398919688192}",
+    "{-5345530070450176000,-5345530069432795136,-5345530069075558400,-5345530069039906816,-5345530067854032896}",
+    "-5226838053294112768"
+   ]
+  }
+ ],
+ "and2|1억 속 회사 B|count": [
+  {
+   "sql": "select \"id\", \"scope_id\", \"company_ct\", \"memo_ct\" from \"native_scale_100m\".\"customers\" where (\"native_scale_100m\".\"customers\".\"scope_id\" = $1 and \"customers\".\"id\" in (select \"__seal_idx\".\"row_id\" from \"native_scale_100m\".\"customers_seal_index\" as \"__seal_idx\" where \"__seal_idx\".\"scope_id\"=$2 and (((\"__seal_idx\".\"tokens_a106c26102b707f0\")[1]=$3::bigint) and (\"__seal_idx\".\"tokens_a639b11c8130dcf7\" @> $4::bigint[])))) order by \"native_scale_100m\".\"customers\".\"id\" asc",
+   "params": [
+    "bbbbbbbb-bbbb-4bbb-8bbb-bbbbbbbbbbbb",
+    "bbbbbbbb-bbbb-4bbb-8bbb-bbbbbbbbbbbb",
+    "-5226838053294112768",
+    "{-5935322400194756608,-5935322399125209088,-5935322398919688192}"
+   ]
+  }
+ ],
+ "and4|1억 속 회사 B|count": [
+  {
+   "sql": "select \"id\", \"scope_id\", \"company_ct\", \"address_ct\", \"memo_ct\", \"email_ct\" from \"native_scale_100m\".\"customers\" where (\"native_scale_100m\".\"customers\".\"scope_id\" = $1 and \"customers\".\"id\" in (select \"__seal_idx\".\"row_id\" from \"native_scale_100m\".\"customers_seal_index\" as \"__seal_idx\" where \"__seal_idx\".\"scope_id\"=$2 and (((\"__seal_idx\".\"tokens_a106c26102b707f0\")[1]=$3::bigint) and (\"__seal_idx\".\"tokens_792d75cf01821d67\" @> $4::bigint[]) and (\"__seal_idx\".\"tokens_a639b11c8130dcf7\" @> $5::bigint[]) and (\"__seal_idx\".\"tokens_ef1d32a52e2ce103\" @> $6::bigint[])))) order by \"native_scale_100m\".\"customers\".\"id\" asc",
+   "params": [
+    "bbbbbbbb-bbbb-4bbb-8bbb-bbbbbbbbbbbb",
+    "bbbbbbbb-bbbb-4bbb-8bbb-bbbbbbbbbbbb",
+    "-5226838053294112768",
+    "{-1892214540657557504}",
+    "{-5935322399464488960}",
+    "{-5345530069321515008,-5345530068696301568,-5345530068606976000,-5345530068501004288,-5345530068484358144,-5345530067962888192,-5345530067935166464,-5345530067793346560,-5345530066661670912,-5345530066644631552,-5345530066386944000}"
+   ]
+  }
+ ],
+ "and6|1억 속 회사 B|count": [
+  {
+   "sql": "select \"id\", \"scope_id\", \"name_ct\", \"phone_ct\", \"address_ct\", \"memo_ct\", \"email_ct\", \"company_ct\" from \"native_scale_100m\".\"customers\" where (\"native_scale_100m\".\"customers\".\"scope_id\" = $1 and \"customers\".\"id\" in (select \"__seal_idx\".\"row_id\" from \"native_scale_100m\".\"customers_seal_index\" as \"__seal_idx\" where \"__seal_idx\".\"scope_id\"=$2 and ((\"__seal_idx\".\"tokens_f289b89d86c7086a\" @> $3::bigint[]) and (\"__seal_idx\".\"tokens_7a1d2ba5ce2368fb\" @> $4::bigint[]) and (\"__seal_idx\".\"tokens_792d75cf01821d67\" @> $5::bigint[]) and (\"__seal_idx\".\"tokens_a639b11c8130dcf7\" @> $6::bigint[]) and (\"__seal_idx\".\"tokens_ef1d32a52e2ce103\" @> $7::bigint[]) and ((\"__seal_idx\".\"tokens_a106c26102b707f0\")[1]=$8::bigint)))) order by \"native_scale_100m\".\"customers\".\"id\" asc",
+   "params": [
+    "bbbbbbbb-bbbb-4bbb-8bbb-bbbbbbbbbbbb",
+    "bbbbbbbb-bbbb-4bbb-8bbb-bbbbbbbbbbbb",
+    "{-5059701682368217088}",
+    "{-1129999691530371072}",
+    "{-1892214540657557504}",
+    "{-5935322400194756608,-5935322399125209088,-5935322398919688192}",
+    "{-5345530070450176000,-5345530069432795136,-5345530069075558400,-5345530069039906816,-5345530067854032896}",
+    "-5226838053294112768"
+   ]
+  }
+ ],
+ "exact_common|10만 단독|findMany 20": [
+  {
+   "sql": "select \"id\", \"scope_id\", \"name_ct\", \"phone_ct\", \"address_ct\", \"memo_ct\", \"email_ct\", \"company_ct\" from \"native_verify_main\".\"customers\" where (\"native_verify_main\".\"customers\".\"scope_id\" = $1 and \"customers\".\"id\" in (select \"__seal_idx\".\"row_id\" from \"native_verify_main\".\"customers_seal_index\" as \"__seal_idx\" where \"__seal_idx\".\"scope_id\"=$2 and ((\"__seal_idx\".\"tokens_a106c26102b707f0\")[1]=$3::bigint))) order by \"native_verify_main\".\"customers\".\"id\" asc limit $4",
+   "params": [
+    "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa",
+    "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa",
+    "1689062081162575872",
+    27
+   ]
+  }
+ ],
+ "exact_one|10만 단독|findMany 20": [
+  {
+   "sql": "select \"id\", \"scope_id\", \"name_ct\", \"phone_ct\", \"address_ct\", \"memo_ct\", \"email_ct\", \"company_ct\" from \"native_verify_main\".\"customers\" where (\"native_verify_main\".\"customers\".\"scope_id\" = $1 and \"customers\".\"id\" in (select \"__seal_idx\".\"row_id\" from \"native_verify_main\".\"customers_seal_index\" as \"__seal_idx\" where \"__seal_idx\".\"scope_id\"=$2 and ((\"__seal_idx\".\"tokens_c44ae523cca61a0b\")[1]=$3::bigint))) order by \"native_verify_main\".\"customers\".\"id\" asc limit $4",
+   "params": [
+    "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa",
+    "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa",
+    "-4238894465840250880",
+    27
+   ]
+  }
+ ],
+ "sub_mid|10만 단독|findMany 20": [
+  {
+   "sql": "select \"id\", \"scope_id\", \"name_ct\", \"phone_ct\", \"address_ct\", \"memo_ct\", \"email_ct\", \"company_ct\" from \"native_verify_main\".\"customers\" where (\"native_verify_main\".\"customers\".\"scope_id\" = $1 and \"customers\".\"id\" in (\n    with sample as materialized (\n      select \"row_id\",\"tokens_792d75cf01821d67\" from \"native_verify_main\".\"customers_seal_index\" as \"c\"\n      where \"c\".\"scope_id\"=$2 order by \"c\".\"row_id\" limit 256\n    ), quick as materialized (\n      select \"c\".\"row_id\" from sample as \"c\" where \"c\".\"tokens_792d75cf01821d67\" @> $3::bigint[] order by \"c\".\"row_id\" limit $4\n    ), fallback as materialized (\n      select \"c\".\"row_id\" from \"native_verify_main\".\"customers_seal_index\" as \"c\"\n      where \"c\".\"scope_id\"=$5 and \"c\".\"tokens_792d75cf01821d67\" @> $6::bigint[]\n        and (select count(*) from quick)<$7\n      order by \"c\".\"row_id\" limit $8\n    )\n    select row_id from quick where (select count(*) from quick)=$9\n    union all select row_id from fallback\n  )) order by \"native_verify_main\".\"customers\".\"id\" asc limit $10",
+   "params": [
+    "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa",
+    "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa",
+    "{1449583542193618944,1449583542249717760,1449583542341992448,1449583543560830976,1449583545677643776}",
+    27,
+    "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa",
+    "{1449583542193618944,1449583542249717760,1449583542341992448,1449583543560830976,1449583545677643776}",
+    27,
+    27,
+    27,
+    27
+   ]
+  }
+ ],
+ "or3|10만 단독|findMany 20": [
+  {
+   "sql": "select \"id\", \"scope_id\", \"name_ct\", \"phone_ct\", \"address_ct\", \"memo_ct\", \"email_ct\", \"company_ct\" from \"native_verify_main\".\"customers\" where (\"native_verify_main\".\"customers\".\"scope_id\" = $1 and \"customers\".\"id\" in (\n    with sample as materialized (\n      select \"row_id\",\"tokens_c44ae523cca61a0b\",\"tokens_f289b89d86c7086a\" from \"native_verify_main\".\"customers_seal_index\" as \"c\"\n      where \"c\".\"scope_id\"=$2 order by \"c\".\"row_id\" limit 256\n    ), quick as materialized (\n      select \"c\".\"row_id\" from sample as \"c\" where ((\"c\".\"tokens_c44ae523cca61a0b\")[1]=$3::bigint or (\"c\".\"tokens_c44ae523cca61a0b\")[1]=$4::bigint or \"c\".\"tokens_f289b89d86c7086a\" @> $5::bigint[]) order by \"c\".\"row_id\" limit $6\n    ), fallback as materialized (\n      select \"c\".\"row_id\" from \"native_verify_main\".\"customers_seal_index\" as \"c\"\n      where \"c\".\"scope_id\"=$7 and ((\"c\".\"tokens_c44ae523cca61a0b\")[1]=$8::bigint or (\"c\".\"tokens_c44ae523cca61a0b\")[1]=$9::bigint or \"c\".\"tokens_f289b89d86c7086a\" @> $10::bigint[])\n        and (select count(*) from quick)<$11\n      order by \"c\".\"row_id\" limit $12\n    )\n    select row_id from quick where (select count(*) from quick)=$13\n    union all select row_id from fallback\n  )) order by \"native_verify_main\".\"customers\".\"id\" asc limit $14",
+   "params": [
+    "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa",
+    "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa",
+    "-4238894465840250880",
+    "-4238894463216779264",
+    "{-2610543648237092864,-2610543646394351616,-2610543646170808320,-2610543645672472576,-2610543645118103552,-2610543644841541632,-2610543644831711232}",
+    27,
+    "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa",
+    "-4238894465840250880",
+    "-4238894463216779264",
+    "{-2610543648237092864,-2610543646394351616,-2610543646170808320,-2610543645672472576,-2610543645118103552,-2610543644841541632,-2610543644831711232}",
+    27,
+    27,
+    27,
+    27
+   ]
+  }
+ ],
+ "or3|10만 단독|findMany 200": [
+  {
+   "sql": "select \"id\", \"scope_id\", \"name_ct\", \"phone_ct\", \"address_ct\", \"memo_ct\", \"email_ct\", \"company_ct\" from \"native_verify_main\".\"customers\" where (\"native_verify_main\".\"customers\".\"scope_id\" = $1 and \"customers\".\"id\" in (select \"__seal_idx\".\"row_id\" from \"native_verify_main\".\"customers_seal_index\" as \"__seal_idx\" where \"__seal_idx\".\"scope_id\"=$2 and (((\"__seal_idx\".\"tokens_c44ae523cca61a0b\")[1]=$3::bigint) or ((\"__seal_idx\".\"tokens_c44ae523cca61a0b\")[1]=$4::bigint) or (\"__seal_idx\".\"tokens_f289b89d86c7086a\" @> $5::bigint[])))) order by \"native_verify_main\".\"customers\".\"id\" asc limit $6",
+   "params": [
+    "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa",
+    "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa",
+    "-4238894465840250880",
+    "-4238894463216779264",
+    "{-2610543648237092864,-2610543646394351616,-2610543646170808320,-2610543645672472576,-2610543645118103552,-2610543644841541632,-2610543644831711232}",
+    252
+   ]
+  }
+ ],
+ "or3|10만 단독|findMany 전부": [
+  {
+   "sql": "select \"id\", \"scope_id\", \"name_ct\", \"phone_ct\", \"address_ct\", \"memo_ct\", \"email_ct\", \"company_ct\" from \"native_verify_main\".\"customers\" where (\"native_verify_main\".\"customers\".\"scope_id\" = $1 and \"customers\".\"id\" in (select \"__seal_idx\".\"row_id\" from \"native_verify_main\".\"customers_seal_index\" as \"__seal_idx\" where \"__seal_idx\".\"scope_id\"=$2 and (((\"__seal_idx\".\"tokens_c44ae523cca61a0b\")[1]=$3::bigint) or ((\"__seal_idx\".\"tokens_c44ae523cca61a0b\")[1]=$4::bigint) or (\"__seal_idx\".\"tokens_f289b89d86c7086a\" @> $5::bigint[])))) order by \"native_verify_main\".\"customers\".\"id\" asc",
+   "params": [
+    "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa",
+    "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa",
+    "-4238894465840250880",
+    "-4238894463216779264",
+    "{-2610543648237092864,-2610543646394351616,-2610543646170808320,-2610543645672472576,-2610543645118103552,-2610543644841541632,-2610543644831711232}"
+   ]
+  }
+ ],
+ "or3|10만 단독|count": [
+  {
+   "sql": "select \"id\", \"scope_id\", \"phone_ct\", \"name_ct\" from \"native_verify_main\".\"customers\" where (\"native_verify_main\".\"customers\".\"scope_id\" = $1 and \"customers\".\"id\" in (select \"__seal_idx\".\"row_id\" from \"native_verify_main\".\"customers_seal_index\" as \"__seal_idx\" where \"__seal_idx\".\"scope_id\"=$2 and (((\"__seal_idx\".\"tokens_c44ae523cca61a0b\")[1]=$3::bigint) or ((\"__seal_idx\".\"tokens_c44ae523cca61a0b\")[1]=$4::bigint) or (\"__seal_idx\".\"tokens_f289b89d86c7086a\" @> $5::bigint[])))) order by \"native_verify_main\".\"customers\".\"id\" asc",
+   "params": [
+    "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa",
+    "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa",
+    "-4238894465840250880",
+    "-4238894463216779264",
+    "{-2610543648237092864,-2610543646394351616,-2610543646170808320,-2610543645672472576,-2610543645118103552,-2610543644841541632,-2610543644831711232}"
+   ]
+  }
+ ],
+ "exact_common|1억 속 회사 B|findMany 20": [
+  {
+   "sql": "select \"id\", \"scope_id\", \"name_ct\", \"phone_ct\", \"address_ct\", \"memo_ct\", \"email_ct\", \"company_ct\" from \"native_scale_100m\".\"customers\" where (\"native_scale_100m\".\"customers\".\"scope_id\" = $1 and \"customers\".\"id\" in (select \"__seal_idx\".\"row_id\" from \"native_scale_100m\".\"customers_seal_index\" as \"__seal_idx\" where \"__seal_idx\".\"scope_id\"=$2 and ((\"__seal_idx\".\"tokens_a106c26102b707f0\")[1]=$3::bigint))) order by \"native_scale_100m\".\"customers\".\"id\" asc limit $4",
+   "params": [
+    "bbbbbbbb-bbbb-4bbb-8bbb-bbbbbbbbbbbb",
+    "bbbbbbbb-bbbb-4bbb-8bbb-bbbbbbbbbbbb",
+    "-5226838053294112768",
+    27
+   ]
+  }
+ ],
+ "exact_one|1억 속 회사 B|findMany 20": [
+  {
+   "sql": "select \"id\", \"scope_id\", \"name_ct\", \"phone_ct\", \"address_ct\", \"memo_ct\", \"email_ct\", \"company_ct\" from \"native_scale_100m\".\"customers\" where (\"native_scale_100m\".\"customers\".\"scope_id\" = $1 and \"customers\".\"id\" in (select \"__seal_idx\".\"row_id\" from \"native_scale_100m\".\"customers_seal_index\" as \"__seal_idx\" where \"__seal_idx\".\"scope_id\"=$2 and ((\"__seal_idx\".\"tokens_c44ae523cca61a0b\")[1]=$3::bigint))) order by \"native_scale_100m\".\"customers\".\"id\" asc limit $4",
+   "params": [
+    "bbbbbbbb-bbbb-4bbb-8bbb-bbbbbbbbbbbb",
+    "bbbbbbbb-bbbb-4bbb-8bbb-bbbbbbbbbbbb",
+    "-2608413896174469120",
+    27
+   ]
+  }
+ ],
+ "sub_mid|1억 속 회사 B|findMany 20": [
+  {
+   "sql": "select \"id\", \"scope_id\", \"name_ct\", \"phone_ct\", \"address_ct\", \"memo_ct\", \"email_ct\", \"company_ct\" from \"native_scale_100m\".\"customers\" where (\"native_scale_100m\".\"customers\".\"scope_id\" = $1 and \"customers\".\"id\" in (\n    with sample as materialized (\n      select \"row_id\",\"tokens_792d75cf01821d67\" from \"native_scale_100m\".\"customers_seal_index\" as \"c\"\n      where \"c\".\"scope_id\"=$2 order by \"c\".\"row_id\" limit 256\n    ), quick as materialized (\n      select \"c\".\"row_id\" from sample as \"c\" where \"c\".\"tokens_792d75cf01821d67\" @> $3::bigint[] order by \"c\".\"row_id\" limit $4\n    ), fallback as materialized (\n      select \"c\".\"row_id\" from \"native_scale_100m\".\"customers_seal_index\" as \"c\"\n      where \"c\".\"scope_id\"=$5 and \"c\".\"tokens_792d75cf01821d67\" @> $6::bigint[]\n        and (select count(*) from quick)<$7\n      order by \"c\".\"row_id\" limit $8\n    )\n    select row_id from quick where (select count(*) from quick)=$9\n    union all select row_id from fallback\n  )) order by \"native_scale_100m\".\"customers\".\"id\" asc limit $10",
+   "params": [
+    "bbbbbbbb-bbbb-4bbb-8bbb-bbbbbbbbbbbb",
+    "bbbbbbbb-bbbb-4bbb-8bbb-bbbbbbbbbbbb",
+    "{-1892214541118013440,-1892214541052215296,-1892214540785287168,-1892214540253724672,-1892214539001987072}",
+    27,
+    "bbbbbbbb-bbbb-4bbb-8bbb-bbbbbbbbbbbb",
+    "{-1892214541118013440,-1892214541052215296,-1892214540785287168,-1892214540253724672,-1892214539001987072}",
+    27,
+    27,
+    27,
+    27
+   ]
+  }
+ ],
+ "or3|1억 속 회사 B|findMany 20": [
+  {
+   "sql": "select \"id\", \"scope_id\", \"name_ct\", \"phone_ct\", \"address_ct\", \"memo_ct\", \"email_ct\", \"company_ct\" from \"native_scale_100m\".\"customers\" where (\"native_scale_100m\".\"customers\".\"scope_id\" = $1 and \"customers\".\"id\" in (\n    with sample as materialized (\n      select \"row_id\",\"tokens_c44ae523cca61a0b\",\"tokens_f289b89d86c7086a\" from \"native_scale_100m\".\"customers_seal_index\" as \"c\"\n      where \"c\".\"scope_id\"=$2 order by \"c\".\"row_id\" limit 256\n    ), quick as materialized (\n      select \"c\".\"row_id\" from sample as \"c\" where ((\"c\".\"tokens_c44ae523cca61a0b\")[1]=$3::bigint or (\"c\".\"tokens_c44ae523cca61a0b\")[1]=$4::bigint or \"c\".\"tokens_f289b89d86c7086a\" @> $5::bigint[]) order by \"c\".\"row_id\" limit $6\n    ), fallback as materialized (\n      select \"c\".\"row_id\" from \"native_scale_100m\".\"customers_seal_index\" as \"c\"\n      where \"c\".\"scope_id\"=$7 and ((\"c\".\"tokens_c44ae523cca61a0b\")[1]=$8::bigint or (\"c\".\"tokens_c44ae523cca61a0b\")[1]=$9::bigint or \"c\".\"tokens_f289b89d86c7086a\" @> $10::bigint[])\n        and (select count(*) from quick)<$11\n      order by \"c\".\"row_id\" limit $12\n    )\n    select row_id from quick where (select count(*) from quick)=$13\n    union all select row_id from fallback\n  )) order by \"native_scale_100m\".\"customers\".\"id\" asc limit $14",
+   "params": [
+    "bbbbbbbb-bbbb-4bbb-8bbb-bbbbbbbbbbbb",
+    "bbbbbbbb-bbbb-4bbb-8bbb-bbbbbbbbbbbb",
+    "-2608413896174469120",
+    "-2608413897757818880",
+    "{-5059701684391641088,-5059701682798657536,-5059701682578718720,-5059701682352095232,-5059701682085036032,-5059701682008424448,-5059701681488920576}",
+    27,
+    "bbbbbbbb-bbbb-4bbb-8bbb-bbbbbbbbbbbb",
+    "-2608413896174469120",
+    "-2608413897757818880",
+    "{-5059701684391641088,-5059701682798657536,-5059701682578718720,-5059701682352095232,-5059701682085036032,-5059701682008424448,-5059701681488920576}",
+    27,
+    27,
+    27,
+    27
+   ]
+  }
+ ],
+ "or3|1억 속 회사 B|findMany 200": [
+  {
+   "sql": "select \"id\", \"scope_id\", \"name_ct\", \"phone_ct\", \"address_ct\", \"memo_ct\", \"email_ct\", \"company_ct\" from \"native_scale_100m\".\"customers\" where (\"native_scale_100m\".\"customers\".\"scope_id\" = $1 and \"customers\".\"id\" in (select \"__seal_idx\".\"row_id\" from \"native_scale_100m\".\"customers_seal_index\" as \"__seal_idx\" where \"__seal_idx\".\"scope_id\"=$2 and (((\"__seal_idx\".\"tokens_c44ae523cca61a0b\")[1]=$3::bigint) or ((\"__seal_idx\".\"tokens_c44ae523cca61a0b\")[1]=$4::bigint) or (\"__seal_idx\".\"tokens_f289b89d86c7086a\" @> $5::bigint[])))) order by \"native_scale_100m\".\"customers\".\"id\" asc limit $6",
+   "params": [
+    "bbbbbbbb-bbbb-4bbb-8bbb-bbbbbbbbbbbb",
+    "bbbbbbbb-bbbb-4bbb-8bbb-bbbbbbbbbbbb",
+    "-2608413896174469120",
+    "-2608413897757818880",
+    "{-5059701684391641088,-5059701682798657536,-5059701682578718720,-5059701682352095232,-5059701682085036032,-5059701682008424448,-5059701681488920576}",
+    252
+   ]
+  }
+ ],
+ "or3|1억 속 회사 B|count": [
+  {
+   "sql": "select \"id\", \"scope_id\", \"phone_ct\", \"name_ct\" from \"native_scale_100m\".\"customers\" where (\"native_scale_100m\".\"customers\".\"scope_id\" = $1 and \"customers\".\"id\" in (select \"__seal_idx\".\"row_id\" from \"native_scale_100m\".\"customers_seal_index\" as \"__seal_idx\" where \"__seal_idx\".\"scope_id\"=$2 and (((\"__seal_idx\".\"tokens_c44ae523cca61a0b\")[1]=$3::bigint) or ((\"__seal_idx\".\"tokens_c44ae523cca61a0b\")[1]=$4::bigint) or (\"__seal_idx\".\"tokens_f289b89d86c7086a\" @> $5::bigint[])))) order by \"native_scale_100m\".\"customers\".\"id\" asc",
+   "params": [
+    "bbbbbbbb-bbbb-4bbb-8bbb-bbbbbbbbbbbb",
+    "bbbbbbbb-bbbb-4bbb-8bbb-bbbbbbbbbbbb",
+    "-2608413896174469120",
+    "-2608413897757818880",
+    "{-5059701684391641088,-5059701682798657536,-5059701682578718720,-5059701682352095232,-5059701682085036032,-5059701682008424448,-5059701681488920576}"
+   ]
+  }
+ ],
+ "or3|1억 속 회사 B|findMany 전부": [
+  {
+   "sql": "select \"id\", \"scope_id\", \"name_ct\", \"phone_ct\", \"address_ct\", \"memo_ct\", \"email_ct\", \"company_ct\" from \"native_scale_100m\".\"customers\" where (\"native_scale_100m\".\"customers\".\"scope_id\" = $1 and \"customers\".\"id\" in (select \"__seal_idx\".\"row_id\" from \"native_scale_100m\".\"customers_seal_index\" as \"__seal_idx\" where \"__seal_idx\".\"scope_id\"=$2 and (((\"__seal_idx\".\"tokens_c44ae523cca61a0b\")[1]=$3::bigint) or ((\"__seal_idx\".\"tokens_c44ae523cca61a0b\")[1]=$4::bigint) or (\"__seal_idx\".\"tokens_f289b89d86c7086a\" @> $5::bigint[])))) order by \"native_scale_100m\".\"customers\".\"id\" asc",
+   "params": [
+    "bbbbbbbb-bbbb-4bbb-8bbb-bbbbbbbbbbbb",
+    "bbbbbbbb-bbbb-4bbb-8bbb-bbbbbbbbbbbb",
+    "-2608413896174469120",
+    "-2608413897757818880",
+    "{-5059701684391641088,-5059701682798657536,-5059701682578718720,-5059701682352095232,-5059701682085036032,-5059701682008424448,-5059701681488920576}"
+   ]
+  }
+ ]
+}

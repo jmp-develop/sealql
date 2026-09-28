@@ -1,0 +1,728 @@
+[
+ {
+  "env": "10만 단독",
+  "case": "exact_one",
+  "variant": "as-is",
+  "autovacuumWorkers": 1,
+  "rows": 1,
+  "execMs": [
+   0.128,
+   0.018,
+   0.032
+  ],
+  "sql": "select \"id\",\"scope_id\" from \"native_verify_main\".\"customers\" where (\"native_verify_main\".\"customers\".\"scope_id\" = $1 and \"customers\".\"id\" in (select \"__seal_idx\".\"row_id\" from \"native_verify_main\".\"customers_seal_index\" as \"__seal_idx\" where \"__seal_idx\".\"scope_id\"=$2 and ((\"__seal_idx\".\"tokens_c44ae523cca61a0b\")[1]=$3::bigint))) order by \"native_verify_main\".\"customers\".\"id\" asc",
+  "params": [
+   "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa",
+   "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa",
+   "-4238894465840250880"
+  ],
+  "text4": "Nested Loop  (cost=0.83..27.08 rows=2 width=32) (actual time=0.007..0.008 rows=1.00 loops=1)\n  Buffers: shared hit=8\n  ->  Index Scan using seal_62e346c0ef994072_bt on customers_seal_index __seal_idx  (cost=0.42..10.21 rows=2 width=16) (actual time=0.004..0.004 rows=1.00 loops=1)\n        Index Cond: ((scope_id = 'aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa'::uuid) AND (tokens_c44ae523cca61a0b[1] = '-4238894465840250880'::bigint))\n        Index Searches: 1\n        Buffers: shared hit=4\n  ->  Index Scan using customers_pkey on customers  (cost=0.42..8.44 rows=1 width=32) (actual time=0.002..0.002 rows=1.00 loops=1)\n        Index Cond: (id = __seal_idx.row_id)\n        Filter: (scope_id = 'aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa'::uuid)\n        Index Searches: 1\n        Buffers: shared hit=4\nPlanning:\n  Buffers: shared hit=8\nPlanning Time: 0.168 ms\nExecution Time: 0.018 ms"
+ },
+ {
+  "env": "10만 단독",
+  "case": "exact_one",
+  "variant": "exact-as-filter",
+  "autovacuumWorkers": 1,
+  "rows": 1,
+  "execMs": [
+   0.02,
+   0.022,
+   0.017
+  ],
+  "sql": "select \"id\",\"scope_id\" from \"native_verify_main\".\"customers\" where (\"native_verify_main\".\"customers\".\"scope_id\" = $1 and \"customers\".\"id\" in (select \"__seal_idx\".\"row_id\" from \"native_verify_main\".\"customers_seal_index\" as \"__seal_idx\" where \"__seal_idx\".\"scope_id\"=$2 and ((\"__seal_idx\".\"tokens_c44ae523cca61a0b\")[1]=$3::bigint))) order by \"native_verify_main\".\"customers\".\"id\" asc",
+  "params": [
+   "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa",
+   "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa",
+   "-4238894465840250880"
+  ],
+  "text4": "Nested Loop  (cost=0.83..27.08 rows=2 width=32) (actual time=0.007..0.008 rows=1.00 loops=1)\n  Buffers: shared hit=8\n  ->  Index Scan using seal_62e346c0ef994072_bt on customers_seal_index __seal_idx  (cost=0.42..10.21 rows=2 width=16) (actual time=0.004..0.004 rows=1.00 loops=1)\n        Index Cond: ((scope_id = 'aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa'::uuid) AND (tokens_c44ae523cca61a0b[1] = '-4238894465840250880'::bigint))\n        Index Searches: 1\n        Buffers: shared hit=4\n  ->  Index Scan using customers_pkey on customers  (cost=0.42..8.44 rows=1 width=32) (actual time=0.002..0.003 rows=1.00 loops=1)\n        Index Cond: (id = __seal_idx.row_id)\n        Filter: (scope_id = 'aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa'::uuid)\n        Index Searches: 1\n        Buffers: shared hit=4\nPlanning:\n  Buffers: shared hit=8\nPlanning Time: 0.168 ms\nExecution Time: 0.017 ms"
+ },
+ {
+  "env": "10만 단독",
+  "case": "exact_one",
+  "variant": "no-inner-scope",
+  "autovacuumWorkers": 1,
+  "rows": 1,
+  "execMs": [
+   0.577,
+   0.031,
+   0.026
+  ],
+  "sql": "select \"id\",\"scope_id\" from \"native_verify_main\".\"customers\" where (\"native_verify_main\".\"customers\".\"scope_id\" = $1 and \"customers\".\"id\" in (select \"__seal_idx\".\"row_id\" from \"native_verify_main\".\"customers_seal_index\" as \"__seal_idx\" where $2::uuid is not null and ((\"__seal_idx\".\"tokens_c44ae523cca61a0b\")[1]=$3::bigint))) order by \"native_verify_main\".\"customers\".\"id\" asc",
+  "params": [
+   "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa",
+   "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa",
+   "-4238894465840250880"
+  ],
+  "text4": "Sort  (cost=31.53..31.53 rows=2 width=32) (actual time=0.014..0.014 rows=1.00 loops=1)\n  Sort Key: customers.id\n  Sort Method: quicksort  Memory: 25kB\n  Buffers: shared hit=14\n  ->  Nested Loop  (cost=15.05..31.52 rows=2 width=32) (actual time=0.012..0.012 rows=1.00 loops=1)\n        Buffers: shared hit=14\n        ->  Unique  (cost=14.63..14.64 rows=2 width=16) (actual time=0.009..0.009 rows=1.00 loops=1)\n              Buffers: shared hit=10\n              ->  Sort  (cost=14.63..14.64 rows=2 width=16) (actual time=0.009..0.009 rows=1.00 loops=1)\n                    Sort Key: __seal_idx.row_id\n                    Sort Method: quicksort  Memory: 25kB\n                    Buffers: shared hit=10\n                    ->  Index Scan using seal_62e346c0ef994072_bt on customers_seal_index __seal_idx  (cost=0.42..14.62 rows=2 width=16) (actual time=0.006..0.008 rows=1.00 loops=1)\n                          Index Cond: (tokens_c44ae523cca61a0b[1] = '-4238894465840250880'::bigint)\n                          Index Searches: 3\n                          Buffers: shared hit=10\n        ->  Index Scan using customers_pkey on customers  (cost=0.42..8.44 rows=1 width=32) (actual time=0.002..0.002 rows=1.00 loops=1)\n              Index Cond: (id = __seal_idx.row_id)\n              Filter: (scope_id = 'aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa'::uuid)\n              Index Searches: 1\n              Buffers: shared hit=4\nPlanning:\n  Buffers: shared hit=8\nPlanning Time: 0.143 ms\nExecution Time: 0.026 ms"
+ },
+ {
+  "env": "10만 단독",
+  "case": "exact_common",
+  "variant": "as-is",
+  "autovacuumWorkers": 1,
+  "rows": 28331,
+  "execMs": [
+   89.967,
+   88.339,
+   84.849
+  ],
+  "sql": "select \"id\",\"scope_id\" from \"native_verify_main\".\"customers\" where (\"native_verify_main\".\"customers\".\"scope_id\" = $1 and \"customers\".\"id\" in (select \"__seal_idx\".\"row_id\" from \"native_verify_main\".\"customers_seal_index\" as \"__seal_idx\" where \"__seal_idx\".\"scope_id\"=$2 and ((\"__seal_idx\".\"tokens_a106c26102b707f0\")[1]=$3::bigint))) order by \"native_verify_main\".\"customers\".\"id\" asc",
+  "params": [
+   "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa",
+   "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa",
+   "1689062081162575872"
+  ],
+  "text4": "Sort  (cost=35212.74..35283.57 rows=28331 width=32) (actual time=83.924..84.816 rows=28331.00 loops=1)\n  Sort Key: customers.id\n  Sort Method: quicksort  Memory: 2097kB\n  Buffers: shared hit=566 read=29185\n  ->  Hash Join  (cost=26854.14..33117.65 rows=28331 width=32) (actual time=55.786..79.704 rows=28331.00 loops=1)\n        Hash Cond: (customers.id = __seal_idx.row_id)\n        Buffers: shared hit=566 read=29185\n        ->  Seq Scan on customers  (cost=0.00..6001.00 rows=100000 width=32) (actual time=0.061..11.632 rows=100000.00 loops=1)\n              Filter: (scope_id = 'aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa'::uuid)\n              Buffers: shared hit=283 read=4468\n        ->  Hash  (cost=26500.00..26500.00 rows=28331 width=16) (actual time=55.648..55.648 rows=28331.00 loops=1)\n              Buckets: 32768  Batches: 1  Memory Usage: 1585kB\n              Buffers: shared hit=283 read=24717\n              ->  Seq Scan on customers_seal_index __seal_idx  (cost=0.00..26500.00 rows=28331 width=16) (actual time=0.077..50.862 rows=28331.00 loops=1)\n                    Filter: ((scope_id = 'aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa'::uuid) AND (tokens_a106c26102b707f0[1] = '1689062081162575872'::bigint))\n                    Rows Removed by Filter: 71669\n                    Buffers: shared hit=283 read=24717\nPlanning:\n  Buffers: shared hit=8\nPlanning Time: 0.277 ms\nExecution Time: 86.055 ms"
+ },
+ {
+  "env": "10만 단독",
+  "case": "exact_common",
+  "variant": "exact-as-filter",
+  "autovacuumWorkers": 1,
+  "rows": 28331,
+  "execMs": [
+   82.352,
+   85.777,
+   91.259
+  ],
+  "sql": "select \"id\",\"scope_id\" from \"native_verify_main\".\"customers\" where (\"native_verify_main\".\"customers\".\"scope_id\" = $1 and \"customers\".\"id\" in (select \"__seal_idx\".\"row_id\" from \"native_verify_main\".\"customers_seal_index\" as \"__seal_idx\" where \"__seal_idx\".\"scope_id\"=$2 and ((\"__seal_idx\".\"tokens_a106c26102b707f0\")[1]=$3::bigint))) order by \"native_verify_main\".\"customers\".\"id\" asc",
+  "params": [
+   "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa",
+   "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa",
+   "1689062081162575872"
+  ],
+  "text4": "Sort  (cost=35212.74..35283.57 rows=28331 width=32) (actual time=84.558..85.505 rows=28331.00 loops=1)\n  Sort Key: customers.id\n  Sort Method: quicksort  Memory: 2097kB\n  Buffers: shared hit=1318 read=28433\n  ->  Hash Join  (cost=26854.14..33117.65 rows=28331 width=32) (actual time=55.301..80.043 rows=28331.00 loops=1)\n        Hash Cond: (customers.id = __seal_idx.row_id)\n        Buffers: shared hit=1318 read=28433\n        ->  Seq Scan on customers  (cost=0.00..6001.00 rows=100000 width=32) (actual time=0.084..12.335 rows=100000.00 loops=1)\n              Filter: (scope_id = 'aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa'::uuid)\n              Buffers: shared hit=659 read=4092\n        ->  Hash  (cost=26500.00..26500.00 rows=28331 width=16) (actual time=55.048..55.049 rows=28331.00 loops=1)\n              Buckets: 32768  Batches: 1  Memory Usage: 1585kB\n              Buffers: shared hit=659 read=24341\n              ->  Seq Scan on customers_seal_index __seal_idx  (cost=0.00..26500.00 rows=28331 width=16) (actual time=0.106..50.304 rows=28331.00 loops=1)\n                    Filter: ((scope_id = 'aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa'::uuid) AND (tokens_a106c26102b707f0[1] = '1689062081162575872'::bigint))\n                    Rows Removed by Filter: 71669\n                    Buffers: shared hit=659 read=24341\nPlanning:\n  Buffers: shared hit=8\nPlanning Time: 0.282 ms\nExecution Time: 86.782 ms"
+ },
+ {
+  "env": "10만 단독",
+  "case": "exact_common",
+  "variant": "no-inner-scope",
+  "autovacuumWorkers": 1,
+  "rows": 28331,
+  "execMs": [
+   85.312,
+   83.911,
+   82.573
+  ],
+  "sql": "select \"id\",\"scope_id\" from \"native_verify_main\".\"customers\" where (\"native_verify_main\".\"customers\".\"scope_id\" = $1 and \"customers\".\"id\" in (select \"__seal_idx\".\"row_id\" from \"native_verify_main\".\"customers_seal_index\" as \"__seal_idx\" where $2::uuid is not null and ((\"__seal_idx\".\"tokens_a106c26102b707f0\")[1]=$3::bigint))) order by \"native_verify_main\".\"customers\".\"id\" asc",
+  "params": [
+   "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa",
+   "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa",
+   "1689062081162575872"
+  ],
+  "text4": "Sort  (cost=35277.91..35348.74 rows=28331 width=32) (actual time=92.203..93.151 rows=28331.00 loops=1)\n  Sort Key: customers.id\n  Sort Method: quicksort  Memory: 2097kB\n  Buffers: shared hit=2070 read=27681\n  ->  Hash Semi Join  (cost=26604.14..33182.82 rows=28331 width=32) (actual time=60.456..88.091 rows=28331.00 loops=1)\n        Hash Cond: (customers.id = __seal_idx.row_id)\n        Buffers: shared hit=2070 read=27681\n        ->  Seq Scan on customers  (cost=0.00..6001.00 rows=100000 width=32) (actual time=0.071..14.757 rows=100000.00 loops=1)\n              Filter: (scope_id = 'aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa'::uuid)\n              Buffers: shared hit=1035 read=3716\n        ->  Hash  (cost=26250.00..26250.00 rows=28331 width=16) (actual time=60.312..60.313 rows=28331.00 loops=1)\n              Buckets: 32768  Batches: 1  Memory Usage: 1585kB\n              Buffers: shared hit=1035 read=23965\n              ->  Seq Scan on customers_seal_index __seal_idx  (cost=0.00..26250.00 rows=28331 width=16) (actual time=0.084..55.320 rows=28331.00 loops=1)\n                    Filter: (tokens_a106c26102b707f0[1] = '1689062081162575872'::bigint)\n                    Rows Removed by Filter: 71669\n                    Buffers: shared hit=1035 read=23965\nPlanning:\n  Buffers: shared hit=8\nPlanning Time: 0.227 ms\nExecution Time: 94.424 ms"
+ },
+ {
+  "env": "10만 단독",
+  "case": "phone= AND memo 서비스",
+  "variant": "as-is",
+  "autovacuumWorkers": 1,
+  "rows": 0,
+  "execMs": [
+   0.03,
+   0.017,
+   0.016
+  ],
+  "sql": "select \"id\",\"scope_id\" from \"native_verify_main\".\"customers\" where (\"native_verify_main\".\"customers\".\"scope_id\" = $1 and \"customers\".\"id\" in (select \"__seal_idx\".\"row_id\" from \"native_verify_main\".\"customers_seal_index\" as \"__seal_idx\" where \"__seal_idx\".\"scope_id\"=$2 and (((\"__seal_idx\".\"tokens_c44ae523cca61a0b\")[1]=$3::bigint) and (\"__seal_idx\".\"tokens_a639b11c8130dcf7\" @> $4::bigint[])))) order by \"native_verify_main\".\"customers\".\"id\" asc",
+  "params": [
+   "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa",
+   "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa",
+   "-4238894465840250880",
+   "{-2098416977109319680,-2098416976992862208,-2098416976693886976}"
+  ],
+  "text4": "Nested Loop  (cost=0.83..18.65 rows=1 width=32) (actual time=0.006..0.006 rows=0.00 loops=1)\n  Buffers: shared hit=4\n  ->  Index Scan using seal_62e346c0ef994072_bt on customers_seal_index __seal_idx  (cost=0.42..10.21 rows=1 width=16) (actual time=0.005..0.005 rows=0.00 loops=1)\n        Index Cond: ((scope_id = 'aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa'::uuid) AND (tokens_c44ae523cca61a0b[1] = '-4238894465840250880'::bigint))\n        Filter: (tokens_a639b11c8130dcf7 @> '{-2098416977109319680,-2098416976992862208,-2098416976693886976}'::bigint[])\n        Rows Removed by Filter: 1\n        Index Searches: 1\n        Buffers: shared hit=4\n  ->  Index Scan using customers_pkey on customers  (cost=0.42..8.44 rows=1 width=32) (never executed)\n        Index Cond: (id = __seal_idx.row_id)\n        Filter: (scope_id = 'aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa'::uuid)\n        Index Searches: 0\nPlanning:\n  Buffers: shared hit=9\nPlanning Time: 0.231 ms\nExecution Time: 0.016 ms"
+ },
+ {
+  "env": "10만 단독",
+  "case": "phone= AND memo 서비스",
+  "variant": "exact-as-filter",
+  "autovacuumWorkers": 1,
+  "rows": 0,
+  "execMs": [
+   79.38,
+   71.628,
+   69.077
+  ],
+  "sql": "select \"id\",\"scope_id\" from \"native_verify_main\".\"customers\" where (\"native_verify_main\".\"customers\".\"scope_id\" = $1 and \"customers\".\"id\" in (select \"__seal_idx\".\"row_id\" from \"native_verify_main\".\"customers_seal_index\" as \"__seal_idx\" where \"__seal_idx\".\"scope_id\"=$2 and (((\"__seal_idx\".\"tokens_c44ae523cca61a0b\")[1]+0=$3::bigint) and (\"__seal_idx\".\"tokens_a639b11c8130dcf7\" @> $4::bigint[])))) order by \"native_verify_main\".\"customers\".\"id\" asc",
+  "params": [
+   "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa",
+   "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa",
+   "-4238894465840250880",
+   "{-2098416977109319680,-2098416976992862208,-2098416976693886976}"
+  ],
+  "text4": "Sort  (cost=15134.41..15134.49 rows=32 width=32) (actual time=68.192..68.193 rows=0.00 loops=1)\n  Sort Key: customers.id\n  Sort Method: quicksort  Memory: 25kB\n  Buffers: shared hit=21 read=23438 written=39\n  ->  Nested Loop  (cost=83.88..15133.61 rows=32 width=32) (actual time=68.185..68.186 rows=0.00 loops=1)\n        Buffers: shared hit=21 read=23438 written=39\n        ->  Bitmap Heap Scan on customers_seal_index __seal_idx  (cost=83.46..14867.61 rows=32 width=16) (actual time=68.184..68.184 rows=0.00 loops=1)\n              Recheck Cond: (tokens_a639b11c8130dcf7 @> '{-2098416977109319680,-2098416976992862208,-2098416976693886976}'::bigint[])\n              Filter: ((scope_id = 'aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa'::uuid) AND ((tokens_c44ae523cca61a0b[1] + 0) = '-4238894465840250880'::bigint))\n              Rows Removed by Filter: 40097\n              Heap Blocks: exact=23401\n              Buffers: shared hit=21 read=23438 written=39\n              ->  Bitmap Index Scan on seal_e66dc2708e915b65_gin  (cost=0.00..83.45 rows=6447 width=0) (actual time=5.579..5.579 rows=40097.00 loops=1)\n                    Index Cond: (tokens_a639b11c8130dcf7 @> '{-2098416977109319680,-2098416976992862208,-2098416976693886976}'::bigint[])\n                    Index Searches: 1\n                    Buffers: shared hit=21 read=37\n        ->  Index Scan using customers_pkey on customers  (cost=0.42..8.31 rows=1 width=32) (never executed)\n              Index Cond: (id = __seal_idx.row_id)\n              Filter: (scope_id = 'aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa'::uuid)\n              Index Searches: 0\nPlanning:\n  Buffers: shared hit=2 read=7\nPlanning Time: 0.420 ms\nExecution Time: 68.402 ms"
+ },
+ {
+  "env": "10만 단독",
+  "case": "phone= AND memo 서비스",
+  "variant": "no-inner-scope",
+  "autovacuumWorkers": 1,
+  "rows": 0,
+  "execMs": [
+   0.124,
+   0.027,
+   0.025
+  ],
+  "sql": "select \"id\",\"scope_id\" from \"native_verify_main\".\"customers\" where (\"native_verify_main\".\"customers\".\"scope_id\" = $1 and \"customers\".\"id\" in (select \"__seal_idx\".\"row_id\" from \"native_verify_main\".\"customers_seal_index\" as \"__seal_idx\" where $2::uuid is not null and (((\"__seal_idx\".\"tokens_c44ae523cca61a0b\")[1]=$3::bigint) and (\"__seal_idx\".\"tokens_a639b11c8130dcf7\" @> $4::bigint[])))) order by \"native_verify_main\".\"customers\".\"id\" asc",
+  "params": [
+   "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa",
+   "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa",
+   "-4238894465840250880",
+   "{-2098416977109319680,-2098416976992862208,-2098416976693886976}"
+  ],
+  "text4": "Sort  (cost=23.09..23.09 rows=1 width=32) (actual time=0.010..0.011 rows=0.00 loops=1)\n  Sort Key: customers.id\n  Sort Method: quicksort  Memory: 25kB\n  Buffers: shared hit=10\n  ->  Nested Loop  (cost=15.05..23.08 rows=1 width=32) (actual time=0.009..0.009 rows=0.00 loops=1)\n        Buffers: shared hit=10\n        ->  HashAggregate  (cost=14.63..14.64 rows=1 width=16) (actual time=0.009..0.009 rows=0.00 loops=1)\n              Group Key: __seal_idx.row_id\n              Batches: 1  Memory Usage: 32kB\n              Buffers: shared hit=10\n              ->  Index Scan using seal_62e346c0ef994072_bt on customers_seal_index __seal_idx  (cost=0.42..14.63 rows=1 width=16) (actual time=0.009..0.009 rows=0.00 loops=1)\n                    Index Cond: (tokens_c44ae523cca61a0b[1] = '-4238894465840250880'::bigint)\n                    Filter: (tokens_a639b11c8130dcf7 @> '{-2098416977109319680,-2098416976992862208,-2098416976693886976}'::bigint[])\n                    Rows Removed by Filter: 1\n                    Index Searches: 3\n                    Buffers: shared hit=10\n        ->  Index Scan using customers_pkey on customers  (cost=0.42..8.44 rows=1 width=32) (never executed)\n              Index Cond: (id = __seal_idx.row_id)\n              Filter: (scope_id = 'aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa'::uuid)\n              Index Searches: 0\nPlanning:\n  Buffers: shared hit=9\nPlanning Time: 0.211 ms\nExecution Time: 0.025 ms"
+ },
+ {
+  "env": "10만 단독",
+  "case": "or3",
+  "variant": "as-is",
+  "autovacuumWorkers": 1,
+  "rows": 3,
+  "execMs": [
+   0.326,
+   0.133,
+   0.113
+  ],
+  "sql": "select \"id\", \"scope_id\", \"phone_ct\", \"name_ct\" from \"native_verify_main\".\"customers\" where (\"native_verify_main\".\"customers\".\"scope_id\" = $1 and \"customers\".\"id\" in (select \"__seal_idx\".\"row_id\" from \"native_verify_main\".\"customers_seal_index\" as \"__seal_idx\" where \"__seal_idx\".\"scope_id\"=$2 and (((\"__seal_idx\".\"tokens_c44ae523cca61a0b\")[1]=$3::bigint) or ((\"__seal_idx\".\"tokens_c44ae523cca61a0b\")[1]=$4::bigint) or (\"__seal_idx\".\"tokens_f289b89d86c7086a\" @> $5::bigint[])))) order by \"native_verify_main\".\"customers\".\"id\" asc",
+  "params": [
+   "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa",
+   "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa",
+   "-4238894465840250880",
+   "-4238894463216779264",
+   "{-2610543648237092864,-2610543646394351616,-2610543646170808320,-2610543645672472576,-2610543645118103552,-2610543644841541632,-2610543644831711232}"
+  ],
+  "text4": "Sort  (cost=165.73..165.74 rows=4 width=119) (actual time=0.095..0.096 rows=3.00 loops=1)\n  Sort Key: customers.id\n  Sort Method: quicksort  Memory: 25kB\n  Buffers: shared hit=42\n  ->  Nested Loop  (cost=116.43..165.69 rows=4 width=119) (actual time=0.084..0.091 rows=3.00 loops=1)\n        Buffers: shared hit=42\n        ->  Bitmap Heap Scan on customers_seal_index __seal_idx  (cost=116.01..131.94 rows=4 width=16) (actual time=0.080..0.082 rows=3.00 loops=1)\n              Recheck Cond: (((scope_id = 'aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa'::uuid) AND ((tokens_c44ae523cca61a0b[1] = '-4238894465840250880'::bigint) OR (tokens_c44ae523cca61a0b[1] = '-4238894463216779264'::bigint))) OR (tokens_f289b89d86c7086a @> '{-2610543648237092864,-2610543646394351616,-2610543646170808320,-2610543645672472576,-2610543645118103552,-2610543644841541632,-2610543644831711232}'::bigint[]))\n              Filter: ((scope_id = 'aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa'::uuid) AND ((tokens_c44ae523cca61a0b[1] = '-4238894465840250880'::bigint) OR (tokens_c44ae523cca61a0b[1] = '-4238894463216779264'::bigint) OR (tokens_f289b89d86c7086a @> '{-2610543648237092864,-2610543646394351616,-2610543646170808320,-2610543645672472576,-2610543645118103552,-2610543644841541632,-2610543644831711232}'::bigint[])))\n              Heap Blocks: exact=2\n              Buffers: shared hit=30\n              ->  BitmapOr  (cost=116.01..116.01 rows=4 width=0) (actual time=0.070..0.070 rows=0.00 loops=1)\n                    Buffers: shared hit=28\n                    ->  Bitmap Index Scan on seal_62e346c0ef994072_bt  (cost=0.00..8.88 rows=4 width=0) (actual time=0.010..0.010 rows=3.00 loops=1)\n                          Index Cond: ((scope_id = 'aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa'::uuid) AND (tokens_c44ae523cca61a0b[1] = ANY ('{-4238894465840250880,-4238894463216779264}'::bigint[])))\n                          Index Searches: 2\n                          Buffers: shared hit=6\n                    ->  Bitmap Index Scan on seal_e66dc2708e915b65_gin  (cost=0.00..107.13 rows=1 width=0) (actual time=0.059..0.059 rows=1.00 loops=1)\n                          Index Cond: (tokens_f289b89d86c7086a @> '{-2610543648237092864,-2610543646394351616,-2610543646170808320,-2610543645672472576,-2610543645118103552,-2610543644841541632,-2610543644831711232}'::bigint[])\n                          Index Searches: 1\n                          Buffers: shared hit=22\n        ->  Index Scan using customers_pkey on customers  (cost=0.42..8.44 rows=1 width=119) (actual time=0.002..0.002 rows=1.00 loops=3)\n              Index Cond: (id = __seal_idx.row_id)\n              Filter: (scope_id = 'aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa'::uuid)\n              Index Searches: 3\n              Buffers: shared hit=12\nPlanning:\n  Buffers: shared hit=9\nPlanning Time: 0.326 ms\nExecution Time: 0.123 ms"
+ },
+ {
+  "env": "10만 단독",
+  "case": "or3",
+  "variant": "exact-as-filter",
+  "autovacuumWorkers": 1,
+  "rows": 3,
+  "execMs": [
+   131.922,
+   61.082,
+   69.069
+  ],
+  "sql": "select \"id\", \"scope_id\", \"phone_ct\", \"name_ct\" from \"native_verify_main\".\"customers\" where (\"native_verify_main\".\"customers\".\"scope_id\" = $1 and \"customers\".\"id\" in (select \"__seal_idx\".\"row_id\" from \"native_verify_main\".\"customers_seal_index\" as \"__seal_idx\" where \"__seal_idx\".\"scope_id\"=$2 and (((\"__seal_idx\".\"tokens_c44ae523cca61a0b\")[1]+0=$3::bigint) or ((\"__seal_idx\".\"tokens_c44ae523cca61a0b\")[1]+0=$4::bigint) or (\"__seal_idx\".\"tokens_f289b89d86c7086a\" @> $5::bigint[])))) order by \"native_verify_main\".\"customers\".\"id\" asc",
+  "params": [
+   "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa",
+   "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa",
+   "-4238894465840250880",
+   "-4238894463216779264",
+   "{-2610543648237092864,-2610543646394351616,-2610543646170808320,-2610543645672472576,-2610543645118103552,-2610543644841541632,-2610543644831711232}"
+  ],
+  "text4": "Gather Merge  (cost=29395.98..29512.22 rows=998 width=119) (actual time=57.299..65.288 rows=3.00 loops=1)\n  Workers Planned: 2\n  Workers Launched: 2\n  Buffers: shared hit=16097 read=9186 written=38\n  ->  Sort  (cost=28395.96..28397.00 rows=416 width=119) (actual time=43.831..43.832 rows=1.00 loops=3)\n        Sort Key: customers.id\n        Sort Method: quicksort  Memory: 25kB\n        Buffers: shared hit=16097 read=9186 written=38\n        Worker 0:  Sort Method: quicksort  Memory: 25kB\n        Worker 1:  Sort Method: quicksort  Memory: 25kB\n        ->  Nested Loop  (cost=0.42..28377.86 rows=416 width=119) (actual time=30.835..43.776 rows=1.00 loops=3)\n              Buffers: shared hit=16083 read=9186 written=38\n              ->  Parallel Seq Scan on customers_seal_index __seal_idx  (cost=0.00..26041.67 rows=416 width=16) (actual time=30.781..43.721 rows=1.00 loops=3)\n                    Filter: ((scope_id = 'aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa'::uuid) AND (((tokens_c44ae523cca61a0b[1] + 0) = '-4238894465840250880'::bigint) OR ((tokens_c44ae523cca61a0b[1] + 0) = '-4238894463216779264'::bigint) OR (tokens_f289b89d86c7086a @> '{-2610543648237092864,-2610543646394351616,-2610543646170808320,-2610543645672472576,-2610543645118103552,-2610543644841541632,-2610543644831711232}'::bigint[])))\n                    Rows Removed by Filter: 33332\n                    Buffers: shared hit=16071 read=9185 written=38\n              ->  Index Scan using customers_pkey on customers  (cost=0.42..5.62 rows=1 width=119) (actual time=0.050..0.050 rows=1.00 loops=3)\n                    Index Cond: (id = __seal_idx.row_id)\n                    Filter: (scope_id = 'aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa'::uuid)\n                    Index Searches: 3\n                    Buffers: shared hit=12 read=1\nPlanning:\n  Buffers: shared hit=8\nPlanning Time: 0.343 ms\nExecution Time: 65.329 ms"
+ },
+ {
+  "env": "10만 단독",
+  "case": "or3",
+  "variant": "no-inner-scope",
+  "autovacuumWorkers": 1,
+  "rows": 3,
+  "execMs": [
+   0.155,
+   0.109,
+   0.153
+  ],
+  "sql": "select \"id\", \"scope_id\", \"phone_ct\", \"name_ct\" from \"native_verify_main\".\"customers\" where (\"native_verify_main\".\"customers\".\"scope_id\" = $1 and \"customers\".\"id\" in (select \"__seal_idx\".\"row_id\" from \"native_verify_main\".\"customers_seal_index\" as \"__seal_idx\" where $2::uuid is not null and (((\"__seal_idx\".\"tokens_c44ae523cca61a0b\")[1]=$3::bigint) or ((\"__seal_idx\".\"tokens_c44ae523cca61a0b\")[1]=$4::bigint) or (\"__seal_idx\".\"tokens_f289b89d86c7086a\" @> $5::bigint[])))) order by \"native_verify_main\".\"customers\".\"id\" asc",
+  "params": [
+   "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa",
+   "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa",
+   "-4238894465840250880",
+   "-4238894463216779264",
+   "{-2610543648237092864,-2610543646394351616,-2610543646170808320,-2610543645672472576,-2610543645118103552,-2610543644841541632,-2610543644831711232}"
+  ],
+  "text4": "Sort  (cost=174.59..174.60 rows=4 width=119) (actual time=0.088..0.088 rows=3.00 loops=1)\n  Sort Key: customers.id\n  Sort Method: quicksort  Memory: 25kB\n  Buffers: shared hit=48\n  ->  Nested Loop  (cost=141.18..174.55 rows=4 width=119) (actual time=0.081..0.086 rows=3.00 loops=1)\n        Buffers: shared hit=48\n        ->  HashAggregate  (cost=140.76..140.80 rows=4 width=16) (actual time=0.078..0.079 rows=3.00 loops=1)\n              Group Key: __seal_idx.row_id\n              Batches: 1  Memory Usage: 32kB\n              Buffers: shared hit=36\n              ->  Bitmap Heap Scan on customers_seal_index __seal_idx  (cost=124.83..140.75 rows=4 width=16) (actual time=0.074..0.076 rows=3.00 loops=1)\n                    Recheck Cond: (((tokens_c44ae523cca61a0b[1] = '-4238894465840250880'::bigint) OR (tokens_c44ae523cca61a0b[1] = '-4238894463216779264'::bigint)) OR (tokens_f289b89d86c7086a @> '{-2610543648237092864,-2610543646394351616,-2610543646170808320,-2610543645672472576,-2610543645118103552,-2610543644841541632,-2610543644831711232}'::bigint[]))\n                    Filter: ((tokens_c44ae523cca61a0b[1] = '-4238894465840250880'::bigint) OR (tokens_c44ae523cca61a0b[1] = '-4238894463216779264'::bigint) OR (tokens_f289b89d86c7086a @> '{-2610543648237092864,-2610543646394351616,-2610543646170808320,-2610543645672472576,-2610543645118103552,-2610543644841541632,-2610543644831711232}'::bigint[]))\n                    Heap Blocks: exact=2\n                    Buffers: shared hit=36\n                    ->  BitmapOr  (cost=124.83..124.83 rows=4 width=0) (actual time=0.067..0.067 rows=0.00 loops=1)\n                          Buffers: shared hit=34\n                          ->  Bitmap Index Scan on seal_62e346c0ef994072_bt  (cost=0.00..17.70 rows=4 width=0) (actual time=0.009..0.009 rows=3.00 loops=1)\n                                Index Cond: (tokens_c44ae523cca61a0b[1] = ANY ('{-4238894465840250880,-4238894463216779264}'::bigint[]))\n                                Index Searches: 4\n                                Buffers: shared hit=12\n                          ->  Bitmap Index Scan on seal_e66dc2708e915b65_gin  (cost=0.00..107.13 rows=1 width=0) (actual time=0.057..0.058 rows=1.00 loops=1)\n                                Index Cond: (tokens_f289b89d86c7086a @> '{-2610543648237092864,-2610543646394351616,-2610543646170808320,-2610543645672472576,-2610543645118103552,-2610543644841541632,-2610543644831711232}'::bigint[])\n                                Index Searches: 1\n                                Buffers: shared hit=22\n        ->  Index Scan using customers_pkey on customers  (cost=0.42..8.44 rows=1 width=119) (actual time=0.002..0.002 rows=1.00 loops=3)\n              Index Cond: (id = __seal_idx.row_id)\n              Filter: (scope_id = 'aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa'::uuid)\n              Index Searches: 3\n              Buffers: shared hit=12\nPlanning:\n  Buffers: shared hit=9\nPlanning Time: 0.236 ms\nExecution Time: 0.111 ms"
+ },
+ {
+  "env": "10만 단독",
+  "case": "and4",
+  "variant": "as-is",
+  "autovacuumWorkers": 1,
+  "rows": 62,
+  "execMs": [
+   9.321,
+   5.601,
+   5.277
+  ],
+  "sql": "select \"id\", \"scope_id\", \"company_ct\", \"address_ct\", \"memo_ct\", \"email_ct\" from \"native_verify_main\".\"customers\" where (\"native_verify_main\".\"customers\".\"scope_id\" = $1 and \"customers\".\"id\" in (select \"__seal_idx\".\"row_id\" from \"native_verify_main\".\"customers_seal_index\" as \"__seal_idx\" where \"__seal_idx\".\"scope_id\"=$2 and (((\"__seal_idx\".\"tokens_a106c26102b707f0\")[1]=$3::bigint) and (\"__seal_idx\".\"tokens_792d75cf01821d67\" @> $4::bigint[]) and (\"__seal_idx\".\"tokens_a639b11c8130dcf7\" @> $5::bigint[]) and (\"__seal_idx\".\"tokens_ef1d32a52e2ce103\" @> $6::bigint[])))) order by \"native_verify_main\".\"customers\".\"id\" asc",
+  "params": [
+   "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa",
+   "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa",
+   "1689062081162575872",
+   "{1449583542540107776}",
+   "{-2098416978920472576}",
+   "{-7797306713888129024,-7797306713855688704,-7797306713509003264,-7797306713451921408,-7797306713380356096,-7797306712409440256,-7797306712373985280,-7797306712368480256,-7797306710802890752,-7797306710766518272,-7797306710715072512}"
+  ],
+  "text4": "Sort  (cost=213.85..213.86 rows=1 width=257) (actual time=5.335..5.338 rows=62.00 loops=1)\n  Sort Key: customers.id\n  Sort Method: quicksort  Memory: 42kB\n  Buffers: shared hit=1038\n  ->  Nested Loop  (cost=201.80..213.84 rows=1 width=257) (actual time=4.653..5.314 rows=62.00 loops=1)\n        Buffers: shared hit=1038\n        ->  Bitmap Heap Scan on customers_seal_index __seal_idx  (cost=201.38..205.41 rows=1 width=16) (actual time=4.637..5.119 rows=62.00 loops=1)\n              Recheck Cond: ((tokens_792d75cf01821d67 @> '{1449583542540107776}'::bigint[]) AND (tokens_ef1d32a52e2ce103 @> '{-7797306713888129024,-7797306713855688704,-7797306713509003264,-7797306713451921408,-7797306713380356096,-7797306712409440256,-7797306712373985280,-7797306712368480256,-7797306710802890752,-7797306710766518272,-7797306710715072512}'::bigint[]) AND (tokens_a639b11c8130dcf7 @> '{-2098416978920472576}'::bigint[]))\n              Filter: ((scope_id = 'aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa'::uuid) AND (tokens_a106c26102b707f0[1] = '1689062081162575872'::bigint))\n              Rows Removed by Filter: 492\n              Heap Blocks: exact=551\n              Buffers: shared hit=790\n              ->  Bitmap Index Scan on seal_e66dc2708e915b65_gin  (cost=0.00..201.38 rows=1 width=0) (actual time=4.567..4.568 rows=554.00 loops=1)\n                    Index Cond: ((tokens_792d75cf01821d67 @> '{1449583542540107776}'::bigint[]) AND (tokens_ef1d32a52e2ce103 @> '{-7797306713888129024,-7797306713855688704,-7797306713509003264,-7797306713451921408,-7797306713380356096,-7797306712409440256,-7797306712373985280,-7797306712368480256,-7797306710802890752,-7797306710766518272,-7797306710715072512}'::bigint[]) AND (tokens_a639b11c8130dcf7 @> '{-2098416978920472576}'::bigint[]))\n                    Index Searches: 1\n                    Buffers: shared hit=239\n        ->  Index Scan using customers_pkey on customers  (cost=0.42..8.44 rows=1 width=257) (actual time=0.003..0.003 rows=1.00 loops=62)\n              Index Cond: (id = __seal_idx.row_id)\n              Filter: (scope_id = 'aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa'::uuid)\n              Index Searches: 62\n              Buffers: shared hit=248\nPlanning:\n  Buffers: shared hit=9\nPlanning Time: 0.410 ms\nExecution Time: 5.447 ms"
+ },
+ {
+  "env": "10만 단독",
+  "case": "and4",
+  "variant": "exact-as-filter",
+  "autovacuumWorkers": 1,
+  "rows": 62,
+  "execMs": [
+   5.424,
+   5.37,
+   5.468
+  ],
+  "sql": "select \"id\", \"scope_id\", \"company_ct\", \"address_ct\", \"memo_ct\", \"email_ct\" from \"native_verify_main\".\"customers\" where (\"native_verify_main\".\"customers\".\"scope_id\" = $1 and \"customers\".\"id\" in (select \"__seal_idx\".\"row_id\" from \"native_verify_main\".\"customers_seal_index\" as \"__seal_idx\" where \"__seal_idx\".\"scope_id\"=$2 and (((\"__seal_idx\".\"tokens_a106c26102b707f0\")[1]+0=$3::bigint) and (\"__seal_idx\".\"tokens_792d75cf01821d67\" @> $4::bigint[]) and (\"__seal_idx\".\"tokens_a639b11c8130dcf7\" @> $5::bigint[]) and (\"__seal_idx\".\"tokens_ef1d32a52e2ce103\" @> $6::bigint[])))) order by \"native_verify_main\".\"customers\".\"id\" asc",
+  "params": [
+   "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa",
+   "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa",
+   "1689062081162575872",
+   "{1449583542540107776}",
+   "{-2098416978920472576}",
+   "{-7797306713888129024,-7797306713855688704,-7797306713509003264,-7797306713451921408,-7797306713380356096,-7797306712409440256,-7797306712373985280,-7797306712368480256,-7797306710802890752,-7797306710766518272,-7797306710715072512}"
+  ],
+  "text4": "Sort  (cost=213.86..213.86 rows=1 width=257) (actual time=5.308..5.311 rows=62.00 loops=1)\n  Sort Key: customers.id\n  Sort Method: quicksort  Memory: 42kB\n  Buffers: shared hit=1038\n  ->  Nested Loop  (cost=201.80..213.85 rows=1 width=257) (actual time=4.724..5.289 rows=62.00 loops=1)\n        Buffers: shared hit=1038\n        ->  Bitmap Heap Scan on customers_seal_index __seal_idx  (cost=201.38..205.41 rows=1 width=16) (actual time=4.712..5.121 rows=62.00 loops=1)\n              Recheck Cond: ((tokens_792d75cf01821d67 @> '{1449583542540107776}'::bigint[]) AND (tokens_ef1d32a52e2ce103 @> '{-7797306713888129024,-7797306713855688704,-7797306713509003264,-7797306713451921408,-7797306713380356096,-7797306712409440256,-7797306712373985280,-7797306712368480256,-7797306710802890752,-7797306710766518272,-7797306710715072512}'::bigint[]) AND (tokens_a639b11c8130dcf7 @> '{-2098416978920472576}'::bigint[]))\n              Filter: ((scope_id = 'aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa'::uuid) AND ((tokens_a106c26102b707f0[1] + 0) = '1689062081162575872'::bigint))\n              Rows Removed by Filter: 492\n              Heap Blocks: exact=551\n              Buffers: shared hit=790\n              ->  Bitmap Index Scan on seal_e66dc2708e915b65_gin  (cost=0.00..201.38 rows=1 width=0) (actual time=4.643..4.643 rows=554.00 loops=1)\n                    Index Cond: ((tokens_792d75cf01821d67 @> '{1449583542540107776}'::bigint[]) AND (tokens_ef1d32a52e2ce103 @> '{-7797306713888129024,-7797306713855688704,-7797306713509003264,-7797306713451921408,-7797306713380356096,-7797306712409440256,-7797306712373985280,-7797306712368480256,-7797306710802890752,-7797306710766518272,-7797306710715072512}'::bigint[]) AND (tokens_a639b11c8130dcf7 @> '{-2098416978920472576}'::bigint[]))\n                    Index Searches: 1\n                    Buffers: shared hit=239\n        ->  Index Scan using customers_pkey on customers  (cost=0.42..8.44 rows=1 width=257) (actual time=0.002..0.002 rows=1.00 loops=62)\n              Index Cond: (id = __seal_idx.row_id)\n              Filter: (scope_id = 'aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa'::uuid)\n              Index Searches: 62\n              Buffers: shared hit=248\nPlanning:\n  Buffers: shared hit=9\nPlanning Time: 0.433 ms\nExecution Time: 5.404 ms"
+ },
+ {
+  "env": "10만 단독",
+  "case": "and4",
+  "variant": "no-inner-scope",
+  "autovacuumWorkers": 1,
+  "rows": 62,
+  "execMs": [
+   5.488,
+   5.49,
+   5.562
+  ],
+  "sql": "select \"id\", \"scope_id\", \"company_ct\", \"address_ct\", \"memo_ct\", \"email_ct\" from \"native_verify_main\".\"customers\" where (\"native_verify_main\".\"customers\".\"scope_id\" = $1 and \"customers\".\"id\" in (select \"__seal_idx\".\"row_id\" from \"native_verify_main\".\"customers_seal_index\" as \"__seal_idx\" where $2::uuid is not null and (((\"__seal_idx\".\"tokens_a106c26102b707f0\")[1]=$3::bigint) and (\"__seal_idx\".\"tokens_792d75cf01821d67\" @> $4::bigint[]) and (\"__seal_idx\".\"tokens_a639b11c8130dcf7\" @> $5::bigint[]) and (\"__seal_idx\".\"tokens_ef1d32a52e2ce103\" @> $6::bigint[])))) order by \"native_verify_main\".\"customers\".\"id\" asc",
+  "params": [
+   "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa",
+   "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa",
+   "1689062081162575872",
+   "{1449583542540107776}",
+   "{-2098416978920472576}",
+   "{-7797306713888129024,-7797306713855688704,-7797306713509003264,-7797306713451921408,-7797306713380356096,-7797306712409440256,-7797306712373985280,-7797306712368480256,-7797306710802890752,-7797306710766518272,-7797306710715072512}"
+  ],
+  "text4": "Sort  (cost=213.86..213.87 rows=1 width=257) (actual time=5.432..5.435 rows=62.00 loops=1)\n  Sort Key: customers.id\n  Sort Method: quicksort  Memory: 42kB\n  Buffers: shared hit=1038\n  ->  Nested Loop  (cost=205.82..213.85 rows=1 width=257) (actual time=5.164..5.407 rows=62.00 loops=1)\n        Buffers: shared hit=1038\n        ->  HashAggregate  (cost=205.41..205.42 rows=1 width=16) (actual time=5.149..5.156 rows=62.00 loops=1)\n              Group Key: __seal_idx.row_id\n              Batches: 1  Memory Usage: 32kB\n              Buffers: shared hit=790\n              ->  Bitmap Heap Scan on customers_seal_index __seal_idx  (cost=201.38..205.40 rows=1 width=16) (actual time=4.651..5.130 rows=62.00 loops=1)\n                    Recheck Cond: ((tokens_792d75cf01821d67 @> '{1449583542540107776}'::bigint[]) AND (tokens_ef1d32a52e2ce103 @> '{-7797306713888129024,-7797306713855688704,-7797306713509003264,-7797306713451921408,-7797306713380356096,-7797306712409440256,-7797306712373985280,-7797306712368480256,-7797306710802890752,-7797306710766518272,-7797306710715072512}'::bigint[]) AND (tokens_a639b11c8130dcf7 @> '{-2098416978920472576}'::bigint[]))\n                    Filter: (tokens_a106c26102b707f0[1] = '1689062081162575872'::bigint)\n                    Rows Removed by Filter: 492\n                    Heap Blocks: exact=551\n                    Buffers: shared hit=790\n                    ->  Bitmap Index Scan on seal_e66dc2708e915b65_gin  (cost=0.00..201.38 rows=1 width=0) (actual time=4.582..4.582 rows=554.00 loops=1)\n                          Index Cond: ((tokens_792d75cf01821d67 @> '{1449583542540107776}'::bigint[]) AND (tokens_ef1d32a52e2ce103 @> '{-7797306713888129024,-7797306713855688704,-7797306713509003264,-7797306713451921408,-7797306713380356096,-7797306712409440256,-7797306712373985280,-7797306712368480256,-7797306710802890752,-7797306710766518272,-7797306710715072512}'::bigint[]) AND (tokens_a639b11c8130dcf7 @> '{-2098416978920472576}'::bigint[]))\n                          Index Searches: 1\n                          Buffers: shared hit=239\n        ->  Index Scan using customers_pkey on customers  (cost=0.42..8.44 rows=1 width=257) (actual time=0.004..0.004 rows=1.00 loops=62)\n              Index Cond: (id = __seal_idx.row_id)\n              Filter: (scope_id = 'aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa'::uuid)\n              Index Searches: 62\n              Buffers: shared hit=248\nPlanning:\n  Buffers: shared hit=9\nPlanning Time: 0.401 ms\nExecution Time: 5.527 ms"
+ },
+ {
+  "env": "10만 단독",
+  "case": "and2",
+  "variant": "as-is",
+  "autovacuumWorkers": 1,
+  "rows": 21176,
+  "execMs": [
+   127.304,
+   94.972,
+   96.008
+  ],
+  "sql": "select \"id\", \"scope_id\", \"company_ct\", \"memo_ct\" from \"native_verify_main\".\"customers\" where (\"native_verify_main\".\"customers\".\"scope_id\" = $1 and \"customers\".\"id\" in (select \"__seal_idx\".\"row_id\" from \"native_verify_main\".\"customers_seal_index\" as \"__seal_idx\" where \"__seal_idx\".\"scope_id\"=$2 and (((\"__seal_idx\".\"tokens_a106c26102b707f0\")[1]=$3::bigint) and (\"__seal_idx\".\"tokens_a639b11c8130dcf7\" @> $4::bigint[])))) order by \"native_verify_main\".\"customers\".\"id\" asc",
+  "params": [
+   "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa",
+   "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa",
+   "1689062081162575872",
+   "{-2098416977109319680,-2098416976992862208,-2098416976693886976}"
+  ],
+  "text4": "Gather Merge  (cost=13524.91..13733.02 rows=1826 width=143) (actual time=81.745..95.472 rows=21176.00 loops=1)\n  Workers Planned: 1\n  Workers Launched: 1\n  Buffers: shared hit=84564 read=20075 written=47\n  ->  Sort  (cost=12524.90..12527.59 rows=1074 width=143) (actual time=71.098..71.514 rows=10588.00 loops=2)\n        Sort Key: customers.id\n        Sort Method: quicksort  Memory: 2491kB\n        Buffers: shared hit=84564 read=20075 written=47\n        Worker 0:  Sort Method: quicksort  Memory: 1464kB\n        ->  Nested Loop  (cost=1820.76..12470.83 rows=1074 width=143) (actual time=7.608..68.295 rows=10588.00 loops=2)\n              Buffers: shared hit=84558 read=20074 written=47\n              ->  Parallel Bitmap Heap Scan on customers_seal_index __seal_idx  (cost=1820.34..7483.81 rows=1074 width=16) (actual time=7.547..39.868 rows=10588.00 loops=2)\n                    Recheck Cond: ((tokens_a639b11c8130dcf7 @> '{-2098416977109319680,-2098416976992862208,-2098416976693886976}'::bigint[]) AND (scope_id = 'aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa'::uuid) AND (tokens_a106c26102b707f0[1] = '1689062081162575872'::bigint))\n                    Heap Blocks: exact=12143\n                    Buffers: shared hit=38 read=19889 written=47\n                    Worker 0:  Heap Blocks: exact=7340\n                    ->  BitmapAnd  (cost=1820.34..1820.34 rows=1826 width=0) (actual time=12.577..12.578 rows=0.00 loops=1)\n                          Buffers: shared hit=20 read=403\n                          ->  Bitmap Index Scan on seal_e66dc2708e915b65_gin  (cost=0.00..83.45 rows=6447 width=0) (actual time=6.699..6.699 rows=40097.00 loops=1)\n                                Index Cond: (tokens_a639b11c8130dcf7 @> '{-2098416977109319680,-2098416976992862208,-2098416976693886976}'::bigint[])\n                                Index Searches: 1\n                                Buffers: shared hit=20 read=38\n                          ->  Bitmap Index Scan on seal_4c8e2d2bddde3451_bt  (cost=0.00..1735.73 rows=28331 width=0) (actual time=5.218..5.219 rows=28331.00 loops=1)\n                                Index Cond: ((scope_id = 'aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa'::uuid) AND (tokens_a106c26102b707f0[1] = '1689062081162575872'::bigint))\n                                Index Searches: 1\n                                Buffers: shared read=365\n              ->  Index Scan using customers_pkey on customers  (cost=0.42..4.64 rows=1 width=143) (actual time=0.002..0.002 rows=1.00 loops=21176)\n                    Index Cond: (id = __seal_idx.row_id)\n                    Filter: (scope_id = 'aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa'::uuid)\n                    Index Searches: 21176\n                    Buffers: shared hit=84520 read=185\nPlanning:\n  Buffers: shared hit=7 read=2\nPlanning Time: 0.380 ms\nExecution Time: 96.338 ms"
+ },
+ {
+  "env": "10만 단독",
+  "case": "and2",
+  "variant": "exact-as-filter",
+  "autovacuumWorkers": 1,
+  "rows": 21176,
+  "execMs": [
+   98.572,
+   112.115,
+   106.907
+  ],
+  "sql": "select \"id\", \"scope_id\", \"company_ct\", \"memo_ct\" from \"native_verify_main\".\"customers\" where (\"native_verify_main\".\"customers\".\"scope_id\" = $1 and \"customers\".\"id\" in (select \"__seal_idx\".\"row_id\" from \"native_verify_main\".\"customers_seal_index\" as \"__seal_idx\" where \"__seal_idx\".\"scope_id\"=$2 and (((\"__seal_idx\".\"tokens_a106c26102b707f0\")[1]+0=$3::bigint) and (\"__seal_idx\".\"tokens_a639b11c8130dcf7\" @> $4::bigint[])))) order by \"native_verify_main\".\"customers\".\"id\" asc",
+  "params": [
+   "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa",
+   "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa",
+   "1689062081162575872",
+   "{-2098416977109319680,-2098416976992862208,-2098416976693886976}"
+  ],
+  "text4": "Sort  (cost=15134.41..15134.49 rows=32 width=143) (actual time=102.150..102.797 rows=21176.00 loops=1)\n  Sort Key: customers.id\n  Sort Method: quicksort  Memory: 3904kB\n  Buffers: shared hit=84235 read=23928 written=56\n  ->  Nested Loop  (cost=83.88..15133.61 rows=32 width=143) (actual time=8.396..97.073 rows=21176.00 loops=1)\n        Buffers: shared hit=84235 read=23928 written=56\n        ->  Bitmap Heap Scan on customers_seal_index __seal_idx  (cost=83.46..14867.61 rows=32 width=16) (actual time=8.380..50.464 rows=21176.00 loops=1)\n              Recheck Cond: (tokens_a639b11c8130dcf7 @> '{-2098416977109319680,-2098416976992862208,-2098416976693886976}'::bigint[])\n              Filter: ((scope_id = 'aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa'::uuid) AND ((tokens_a106c26102b707f0[1] + 0) = '1689062081162575872'::bigint))\n              Rows Removed by Filter: 18921\n              Heap Blocks: exact=23401\n              Buffers: shared hit=19 read=23440 written=55\n              ->  Bitmap Index Scan on seal_e66dc2708e915b65_gin  (cost=0.00..83.45 rows=6447 width=0) (actual time=5.712..5.712 rows=40097.00 loops=1)\n                    Index Cond: (tokens_a639b11c8130dcf7 @> '{-2098416977109319680,-2098416976992862208,-2098416976693886976}'::bigint[])\n                    Index Searches: 1\n                    Buffers: shared hit=19 read=39\n        ->  Index Scan using customers_pkey on customers  (cost=0.42..8.31 rows=1 width=143) (actual time=0.002..0.002 rows=1.00 loops=21176)\n              Index Cond: (id = __seal_idx.row_id)\n              Filter: (scope_id = 'aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa'::uuid)\n              Index Searches: 21176\n              Buffers: shared hit=84216 read=488 written=1\nPlanning:\n  Buffers: shared hit=7 read=2\nPlanning Time: 0.352 ms\nExecution Time: 103.878 ms"
+ },
+ {
+  "env": "10만 단독",
+  "case": "and2",
+  "variant": "no-inner-scope",
+  "autovacuumWorkers": 1,
+  "rows": 21176,
+  "execMs": [
+   104.339,
+   105.419,
+   108.92
+  ],
+  "sql": "select \"id\", \"scope_id\", \"company_ct\", \"memo_ct\" from \"native_verify_main\".\"customers\" where (\"native_verify_main\".\"customers\".\"scope_id\" = $1 and \"customers\".\"id\" in (select \"__seal_idx\".\"row_id\" from \"native_verify_main\".\"customers_seal_index\" as \"__seal_idx\" where $2::uuid is not null and (((\"__seal_idx\".\"tokens_a106c26102b707f0\")[1]=$3::bigint) and (\"__seal_idx\".\"tokens_a639b11c8130dcf7\" @> $4::bigint[])))) order by \"native_verify_main\".\"customers\".\"id\" asc",
+  "params": [
+   "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa",
+   "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa",
+   "1689062081162575872",
+   "{-2098416977109319680,-2098416976992862208,-2098416976693886976}"
+  ],
+  "text4": "Sort  (cost=13651.54..13656.11 rows=1826 width=143) (actual time=102.935..103.621 rows=21176.00 loops=1)\n  Sort Key: customers.id\n  Sort Method: quicksort  Memory: 3904kB\n  Buffers: shared hit=26 read=24638 written=49\n  ->  Hash Semi Join  (cost=7268.81..13552.62 rows=1826 width=143) (actual time=69.102..98.769 rows=21176.00 loops=1)\n        Hash Cond: (customers.id = __seal_idx.row_id)\n        Buffers: shared hit=26 read=24638 written=49\n        ->  Seq Scan on customers  (cost=0.00..6001.00 rows=100000 width=143) (actual time=0.010..15.102 rows=100000.00 loops=1)\n              Filter: (scope_id = 'aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa'::uuid)\n              Buffers: shared hit=2 read=4749\n        ->  Hash  (cost=7245.98..7245.98 rows=1826 width=16) (actual time=69.084..69.086 rows=21176.00 loops=1)\n              Buckets: 32768 (originally 2048)  Batches: 1 (originally 1)  Memory Usage: 1249kB\n              Buffers: shared hit=24 read=19889 written=49\n              ->  Bitmap Heap Scan on customers_seal_index __seal_idx  (cost=1573.92..7245.98 rows=1826 width=16) (actual time=14.252..64.940 rows=21176.00 loops=1)\n                    Recheck Cond: ((tokens_a639b11c8130dcf7 @> '{-2098416977109319680,-2098416976992862208,-2098416976693886976}'::bigint[]) AND (tokens_a106c26102b707f0[1] = '1689062081162575872'::bigint))\n                    Heap Blocks: exact=19483\n                    Buffers: shared hit=24 read=19889 written=49\n                    ->  BitmapAnd  (cost=1573.92..1573.92 rows=1826 width=0) (actual time=11.879..11.880 rows=0.00 loops=1)\n                          Buffers: shared hit=24 read=406\n                          ->  Bitmap Index Scan on seal_e66dc2708e915b65_gin  (cost=0.00..83.45 rows=6447 width=0) (actual time=5.747..5.747 rows=40097.00 loops=1)\n                                Index Cond: (tokens_a639b11c8130dcf7 @> '{-2098416977109319680,-2098416976992862208,-2098416976693886976}'::bigint[])\n                                Index Searches: 1\n                                Buffers: shared hit=21 read=37\n                          ->  Bitmap Index Scan on seal_4c8e2d2bddde3451_bt  (cost=0.00..1489.31 rows=28331 width=0) (actual time=5.456..5.456 rows=28331.00 loops=1)\n                                Index Cond: (tokens_a106c26102b707f0[1] = '1689062081162575872'::bigint)\n                                Index Searches: 3\n                                Buffers: shared hit=3 read=369\nPlanning:\n  Buffers: shared hit=5 read=4\nPlanning Time: 0.340 ms\nExecution Time: 104.976 ms"
+ },
+ {
+  "env": "1억 속 회사 B",
+  "case": "exact_one",
+  "variant": "as-is",
+  "autovacuumWorkers": 1,
+  "rows": 2,
+  "execMs": [
+   0.168,
+   0.04,
+   0.022
+  ],
+  "sql": "select \"id\",\"scope_id\" from \"native_scale_100m\".\"customers\" where (\"native_scale_100m\".\"customers\".\"scope_id\" = $1 and \"customers\".\"id\" in (select \"__seal_idx\".\"row_id\" from \"native_scale_100m\".\"customers_seal_index\" as \"__seal_idx\" where \"__seal_idx\".\"scope_id\"=$2 and ((\"__seal_idx\".\"tokens_c44ae523cca61a0b\")[1]=$3::bigint))) order by \"native_scale_100m\".\"customers\".\"id\" asc",
+  "params": [
+   "bbbbbbbb-bbbb-4bbb-8bbb-bbbbbbbbbbbb",
+   "bbbbbbbb-bbbb-4bbb-8bbb-bbbbbbbbbbbb",
+   "-2608413896174469120"
+  ],
+  "text4": "Nested Loop  (cost=1.14..27.53 rows=1 width=32) (actual time=0.016..0.021 rows=2.00 loops=1)\n  Buffers: shared hit=16\n  ->  Index Scan using seal_62e346c0ef994072_bt on customers_seal_index __seal_idx  (cost=0.57..10.36 rows=2 width=16) (actual time=0.008..0.010 rows=2.00 loops=1)\n        Index Cond: ((scope_id = 'bbbbbbbb-bbbb-4bbb-8bbb-bbbbbbbbbbbb'::uuid) AND (tokens_c44ae523cca61a0b[1] = '-2608413896174469120'::bigint))\n        Index Searches: 1\n        Buffers: shared hit=6\n  ->  Index Scan using customers_pkey on customers  (cost=0.57..8.59 rows=1 width=32) (actual time=0.005..0.005 rows=1.00 loops=2)\n        Index Cond: (id = __seal_idx.row_id)\n        Filter: (scope_id = 'bbbbbbbb-bbbb-4bbb-8bbb-bbbbbbbbbbbb'::uuid)\n        Index Searches: 2\n        Buffers: shared hit=10\nPlanning:\n  Buffers: shared hit=11\nPlanning Time: 0.246 ms\nExecution Time: 0.036 ms"
+ },
+ {
+  "env": "1억 속 회사 B",
+  "case": "exact_one",
+  "variant": "exact-as-filter",
+  "autovacuumWorkers": 1,
+  "rows": 2,
+  "execMs": [
+   0.027,
+   0.021,
+   0.041
+  ],
+  "sql": "select \"id\",\"scope_id\" from \"native_scale_100m\".\"customers\" where (\"native_scale_100m\".\"customers\".\"scope_id\" = $1 and \"customers\".\"id\" in (select \"__seal_idx\".\"row_id\" from \"native_scale_100m\".\"customers_seal_index\" as \"__seal_idx\" where \"__seal_idx\".\"scope_id\"=$2 and ((\"__seal_idx\".\"tokens_c44ae523cca61a0b\")[1]=$3::bigint))) order by \"native_scale_100m\".\"customers\".\"id\" asc",
+  "params": [
+   "bbbbbbbb-bbbb-4bbb-8bbb-bbbbbbbbbbbb",
+   "bbbbbbbb-bbbb-4bbb-8bbb-bbbbbbbbbbbb",
+   "-2608413896174469120"
+  ],
+  "text4": "Nested Loop  (cost=1.14..27.53 rows=1 width=32) (actual time=0.009..0.012 rows=2.00 loops=1)\n  Buffers: shared hit=16\n  ->  Index Scan using seal_62e346c0ef994072_bt on customers_seal_index __seal_idx  (cost=0.57..10.36 rows=2 width=16) (actual time=0.005..0.006 rows=2.00 loops=1)\n        Index Cond: ((scope_id = 'bbbbbbbb-bbbb-4bbb-8bbb-bbbbbbbbbbbb'::uuid) AND (tokens_c44ae523cca61a0b[1] = '-2608413896174469120'::bigint))\n        Index Searches: 1\n        Buffers: shared hit=6\n  ->  Index Scan using customers_pkey on customers  (cost=0.57..8.59 rows=1 width=32) (actual time=0.003..0.003 rows=1.00 loops=2)\n        Index Cond: (id = __seal_idx.row_id)\n        Filter: (scope_id = 'bbbbbbbb-bbbb-4bbb-8bbb-bbbbbbbbbbbb'::uuid)\n        Index Searches: 2\n        Buffers: shared hit=10\nPlanning:\n  Buffers: shared hit=11\nPlanning Time: 0.206 ms\nExecution Time: 0.025 ms"
+ },
+ {
+  "env": "1억 속 회사 B",
+  "case": "exact_one",
+  "variant": "no-inner-scope",
+  "autovacuumWorkers": 1,
+  "rows": 2,
+  "execMs": [
+   0.892,
+   0.045,
+   0.08
+  ],
+  "sql": "select \"id\",\"scope_id\" from \"native_scale_100m\".\"customers\" where (\"native_scale_100m\".\"customers\".\"scope_id\" = $1 and \"customers\".\"id\" in (select \"__seal_idx\".\"row_id\" from \"native_scale_100m\".\"customers_seal_index\" as \"__seal_idx\" where $2::uuid is not null and ((\"__seal_idx\".\"tokens_c44ae523cca61a0b\")[1]=$3::bigint))) order by \"native_scale_100m\".\"customers\".\"id\" asc",
+  "params": [
+   "bbbbbbbb-bbbb-4bbb-8bbb-bbbbbbbbbbbb",
+   "bbbbbbbb-bbbb-4bbb-8bbb-bbbbbbbbbbbb",
+   "-2608413896174469120"
+  ],
+  "text4": "Sort  (cost=20444.69..20444.70 rows=1 width=32) (actual time=0.025..0.026 rows=2.00 loops=1)\n  Sort Key: customers.id\n  Sort Method: quicksort  Memory: 25kB\n  Buffers: shared hit=28\n  ->  Nested Loop  (cost=3772.90..20444.68 rows=1 width=32) (actual time=0.018..0.024 rows=2.00 loops=1)\n        Buffers: shared hit=28\n        ->  HashAggregate  (cost=3772.34..3791.74 rows=1941 width=16) (actual time=0.015..0.018 rows=2.00 loops=1)\n              Group Key: __seal_idx.row_id\n              Batches: 1  Memory Usage: 97kB\n              Buffers: shared hit=18\n              ->  Index Scan using seal_62e346c0ef994072_bt on customers_seal_index __seal_idx  (cost=0.57..3767.48 rows=1941 width=16) (actual time=0.009..0.011 rows=2.00 loops=1)\n                    Index Cond: (tokens_c44ae523cca61a0b[1] = '-2608413896174469120'::bigint)\n                    Index Searches: 4\n                    Buffers: shared hit=18\n        ->  Index Scan using customers_pkey on customers  (cost=0.57..8.58 rows=1 width=32) (actual time=0.002..0.002 rows=1.00 loops=2)\n              Index Cond: (id = __seal_idx.row_id)\n              Filter: (scope_id = 'bbbbbbbb-bbbb-4bbb-8bbb-bbbbbbbbbbbb'::uuid)\n              Index Searches: 2\n              Buffers: shared hit=10\nPlanning:\n  Buffers: shared hit=11\nPlanning Time: 0.223 ms\nExecution Time: 0.046 ms"
+ },
+ {
+  "env": "1억 속 회사 B",
+  "case": "exact_common",
+  "variant": "as-is",
+  "autovacuumWorkers": 1,
+  "rows": 28331,
+  "execMs": [
+   279.844,
+   228.112,
+   228.944
+  ],
+  "sql": "select \"id\",\"scope_id\" from \"native_scale_100m\".\"customers\" where (\"native_scale_100m\".\"customers\".\"scope_id\" = $1 and \"customers\".\"id\" in (select \"__seal_idx\".\"row_id\" from \"native_scale_100m\".\"customers_seal_index\" as \"__seal_idx\" where \"__seal_idx\".\"scope_id\"=$2 and ((\"__seal_idx\".\"tokens_a106c26102b707f0\")[1]=$3::bigint))) order by \"native_scale_100m\".\"customers\".\"id\" asc",
+  "params": [
+   "bbbbbbbb-bbbb-4bbb-8bbb-bbbbbbbbbbbb",
+   "bbbbbbbb-bbbb-4bbb-8bbb-bbbbbbbbbbbb",
+   "-5226838053294112768"
+  ],
+  "text4": "Nested Loop  (cost=1.14..437.10 rows=1 width=32) (actual time=0.073..229.481 rows=28331.00 loops=1)\n  Buffers: shared hit=151539 read=22519 written=90\n  ->  Index Scan using seal_4c8e2d2bddde3451_bt on customers_seal_index __seal_idx  (cost=0.57..85.01 rows=41 width=16) (actual time=0.057..158.391 rows=28331.00 loops=1)\n        Index Cond: ((scope_id = 'bbbbbbbb-bbbb-4bbb-8bbb-bbbbbbbbbbbb'::uuid) AND (tokens_a106c26102b707f0[1] = '-5226838053294112768'::bigint))\n        Index Searches: 1\n        Buffers: shared read=21591 written=84\n  ->  Index Scan using customers_pkey on customers  (cost=0.57..8.59 rows=1 width=32) (actual time=0.002..0.002 rows=1.00 loops=28331)\n        Index Cond: (id = __seal_idx.row_id)\n        Filter: (scope_id = 'bbbbbbbb-bbbb-4bbb-8bbb-bbbbbbbbbbbb'::uuid)\n        Index Searches: 28331\n        Buffers: shared hit=146133 read=928 written=6\nPlanning:\n  Buffers: shared hit=6 read=5\nPlanning Time: 0.323 ms\nExecution Time: 230.729 ms"
+ },
+ {
+  "env": "1억 속 회사 B",
+  "case": "exact_common",
+  "variant": "exact-as-filter",
+  "autovacuumWorkers": 1,
+  "rows": 28331,
+  "execMs": [
+   224.671,
+   228.595,
+   227.711
+  ],
+  "sql": "select \"id\",\"scope_id\" from \"native_scale_100m\".\"customers\" where (\"native_scale_100m\".\"customers\".\"scope_id\" = $1 and \"customers\".\"id\" in (select \"__seal_idx\".\"row_id\" from \"native_scale_100m\".\"customers_seal_index\" as \"__seal_idx\" where \"__seal_idx\".\"scope_id\"=$2 and ((\"__seal_idx\".\"tokens_a106c26102b707f0\")[1]=$3::bigint))) order by \"native_scale_100m\".\"customers\".\"id\" asc",
+  "params": [
+   "bbbbbbbb-bbbb-4bbb-8bbb-bbbbbbbbbbbb",
+   "bbbbbbbb-bbbb-4bbb-8bbb-bbbbbbbbbbbb",
+   "-5226838053294112768"
+  ],
+  "text4": "Nested Loop  (cost=1.14..437.10 rows=1 width=32) (actual time=0.057..230.256 rows=28331.00 loops=1)\n  Buffers: shared hit=151672 read=22386 written=108\n  ->  Index Scan using seal_4c8e2d2bddde3451_bt on customers_seal_index __seal_idx  (cost=0.57..85.01 rows=41 width=16) (actual time=0.051..160.531 rows=28331.00 loops=1)\n        Index Cond: ((scope_id = 'bbbbbbbb-bbbb-4bbb-8bbb-bbbbbbbbbbbb'::uuid) AND (tokens_a106c26102b707f0[1] = '-5226838053294112768'::bigint))\n        Index Searches: 1\n        Buffers: shared read=21591 written=104\n  ->  Index Scan using customers_pkey on customers  (cost=0.57..8.59 rows=1 width=32) (actual time=0.002..0.002 rows=1.00 loops=28331)\n        Index Cond: (id = __seal_idx.row_id)\n        Filter: (scope_id = 'bbbbbbbb-bbbb-4bbb-8bbb-bbbbbbbbbbbb'::uuid)\n        Index Searches: 28331\n        Buffers: shared hit=146266 read=795 written=4\nPlanning:\n  Buffers: shared hit=6 read=5\nPlanning Time: 0.289 ms\nExecution Time: 231.363 ms"
+ },
+ {
+  "env": "1억 속 회사 B",
+  "case": "exact_common",
+  "variant": "no-inner-scope",
+  "autovacuumWorkers": 1,
+  "rows": 28331,
+  "execMs": [
+   288.721,
+   250.756,
+   267.274
+  ],
+  "sql": "select \"id\",\"scope_id\" from \"native_scale_100m\".\"customers\" where (\"native_scale_100m\".\"customers\".\"scope_id\" = $1 and \"customers\".\"id\" in (select \"__seal_idx\".\"row_id\" from \"native_scale_100m\".\"customers_seal_index\" as \"__seal_idx\" where $2::uuid is not null and ((\"__seal_idx\".\"tokens_a106c26102b707f0\")[1]=$3::bigint))) order by \"native_scale_100m\".\"customers\".\"id\" asc",
+  "params": [
+   "bbbbbbbb-bbbb-4bbb-8bbb-bbbbbbbbbbbb",
+   "bbbbbbbb-bbbb-4bbb-8bbb-bbbbbbbbbbbb",
+   "-5226838053294112768"
+  ],
+  "text4": "Sort  (cost=376498.19..376498.23 rows=18 width=32) (actual time=270.805..271.738 rows=28331.00 loops=1)\n  Sort Key: customers.id\n  Sort Method: quicksort  Memory: 2097kB\n  Buffers: shared hit=151286 read=22785 written=108\n  ->  Nested Loop  (cost=69795.88..376497.81 rows=18 width=32) (actual time=166.647..261.929 rows=28331.00 loops=1)\n        Buffers: shared hit=151286 read=22785 written=108\n        ->  HashAggregate  (cost=69795.31..70155.33 rows=36002 width=16) (actual time=166.625..171.569 rows=28331.00 loops=1)\n              Group Key: __seal_idx.row_id\n              Batches: 1  Memory Usage: 2073kB\n              Buffers: shared hit=6 read=21598 written=104\n              ->  Index Scan using seal_4c8e2d2bddde3451_bt on customers_seal_index __seal_idx  (cost=0.57..69705.31 rows=36002 width=16) (actual time=0.092..157.043 rows=28331.00 loops=1)\n                    Index Cond: (tokens_a106c26102b707f0[1] = '-5226838053294112768'::bigint)\n                    Index Searches: 4\n                    Buffers: shared hit=6 read=21598 written=104\n        ->  Index Scan using customers_pkey on customers  (cost=0.57..8.51 rows=1 width=32) (actual time=0.003..0.003 rows=1.00 loops=28331)\n              Index Cond: (id = __seal_idx.row_id)\n              Filter: (scope_id = 'bbbbbbbb-bbbb-4bbb-8bbb-bbbbbbbbbbbb'::uuid)\n              Index Searches: 28331\n              Buffers: shared hit=145874 read=1187 written=4\nPlanning:\n  Buffers: shared hit=6 read=5\nPlanning Time: 0.333 ms\nExecution Time: 273.182 ms"
+ },
+ {
+  "env": "1억 속 회사 B",
+  "case": "phone= AND memo 서비스",
+  "variant": "as-is",
+  "autovacuumWorkers": 1,
+  "rows": 0,
+  "execMs": [
+   0.074,
+   0.017,
+   0.016
+  ],
+  "sql": "select \"id\",\"scope_id\" from \"native_scale_100m\".\"customers\" where (\"native_scale_100m\".\"customers\".\"scope_id\" = $1 and \"customers\".\"id\" in (select \"__seal_idx\".\"row_id\" from \"native_scale_100m\".\"customers_seal_index\" as \"__seal_idx\" where \"__seal_idx\".\"scope_id\"=$2 and (((\"__seal_idx\".\"tokens_c44ae523cca61a0b\")[1]=$3::bigint) and (\"__seal_idx\".\"tokens_a639b11c8130dcf7\" @> $4::bigint[])))) order by \"native_scale_100m\".\"customers\".\"id\" asc",
+  "params": [
+   "bbbbbbbb-bbbb-4bbb-8bbb-bbbbbbbbbbbb",
+   "bbbbbbbb-bbbb-4bbb-8bbb-bbbbbbbbbbbb",
+   "-2608413896174469120",
+   "{-5935322400194756608,-5935322399125209088,-5935322398919688192}"
+  ],
+  "text4": "Nested Loop  (cost=1.14..18.95 rows=1 width=32) (actual time=0.007..0.007 rows=0.00 loops=1)\n  Buffers: shared hit=6\n  ->  Index Scan using seal_62e346c0ef994072_bt on customers_seal_index __seal_idx  (cost=0.57..10.36 rows=1 width=16) (actual time=0.007..0.007 rows=0.00 loops=1)\n        Index Cond: ((scope_id = 'bbbbbbbb-bbbb-4bbb-8bbb-bbbbbbbbbbbb'::uuid) AND (tokens_c44ae523cca61a0b[1] = '-2608413896174469120'::bigint))\n        Filter: (tokens_a639b11c8130dcf7 @> '{-5935322400194756608,-5935322399125209088,-5935322398919688192}'::bigint[])\n        Rows Removed by Filter: 2\n        Index Searches: 1\n        Buffers: shared hit=6\n  ->  Index Scan using customers_pkey on customers  (cost=0.57..8.59 rows=1 width=32) (never executed)\n        Index Cond: (id = __seal_idx.row_id)\n        Filter: (scope_id = 'bbbbbbbb-bbbb-4bbb-8bbb-bbbbbbbbbbbb'::uuid)\n        Index Searches: 0\nPlanning:\n  Buffers: shared hit=12\nPlanning Time: 0.244 ms\nExecution Time: 0.018 ms"
+ },
+ {
+  "env": "1억 속 회사 B",
+  "case": "phone= AND memo 서비스",
+  "variant": "exact-as-filter",
+  "autovacuumWorkers": 1,
+  "rows": 0,
+  "execMs": [
+   67.599,
+   62.589,
+   64.341
+  ],
+  "sql": "select \"id\",\"scope_id\" from \"native_scale_100m\".\"customers\" where (\"native_scale_100m\".\"customers\".\"scope_id\" = $1 and \"customers\".\"id\" in (select \"__seal_idx\".\"row_id\" from \"native_scale_100m\".\"customers_seal_index\" as \"__seal_idx\" where \"__seal_idx\".\"scope_id\"=$2 and (((\"__seal_idx\".\"tokens_c44ae523cca61a0b\")[1]+0=$3::bigint) and (\"__seal_idx\".\"tokens_a639b11c8130dcf7\" @> $4::bigint[])))) order by \"native_scale_100m\".\"customers\".\"id\" asc",
+  "params": [
+   "bbbbbbbb-bbbb-4bbb-8bbb-bbbbbbbbbbbb",
+   "bbbbbbbb-bbbb-4bbb-8bbb-bbbbbbbbbbbb",
+   "-2608413896174469120",
+   "{-5935322400194756608,-5935322399125209088,-5935322398919688192}"
+  ],
+  "text4": "Sort  (cost=5504.34..5504.34 rows=1 width=32) (actual time=64.813..64.814 rows=0.00 loops=1)\n  Sort Key: customers.id\n  Sort Method: quicksort  Memory: 25kB\n  Buffers: shared hit=25 read=23437 written=48\n  ->  Nested Loop  (cost=5492.29..5504.33 rows=1 width=32) (actual time=64.809..64.810 rows=0.00 loops=1)\n        Buffers: shared hit=25 read=23437 written=48\n        ->  Bitmap Heap Scan on customers_seal_index __seal_idx  (cost=5491.72..5495.74 rows=1 width=16) (actual time=64.808..64.808 rows=0.00 loops=1)\n              Recheck Cond: (tokens_a639b11c8130dcf7 @> '{-5935322400194756608,-5935322399125209088,-5935322398919688192}'::bigint[])\n              Filter: ((scope_id = 'bbbbbbbb-bbbb-4bbb-8bbb-bbbbbbbbbbbb'::uuid) AND ((tokens_c44ae523cca61a0b[1] + 0) = '-2608413896174469120'::bigint))\n              Rows Removed by Filter: 40097\n              Heap Blocks: exact=23401\n              Buffers: shared hit=25 read=23437 written=48\n              ->  Bitmap Index Scan on seal_e66dc2708e915b65_gin  (cost=0.00..5491.72 rows=1 width=0) (actual time=6.173..6.173 rows=40097.00 loops=1)\n                    Index Cond: (tokens_a639b11c8130dcf7 @> '{-5935322400194756608,-5935322399125209088,-5935322398919688192}'::bigint[])\n                    Index Searches: 1\n                    Buffers: shared hit=25 read=36\n        ->  Index Scan using customers_pkey on customers  (cost=0.57..8.59 rows=1 width=32) (never executed)\n              Index Cond: (id = __seal_idx.row_id)\n              Filter: (scope_id = 'bbbbbbbb-bbbb-4bbb-8bbb-bbbbbbbbbbbb'::uuid)\n              Index Searches: 0\nPlanning:\n  Buffers: shared hit=2 read=10\nPlanning Time: 0.445 ms\nExecution Time: 65.003 ms"
+ },
+ {
+  "env": "1억 속 회사 B",
+  "case": "phone= AND memo 서비스",
+  "variant": "no-inner-scope",
+  "autovacuumWorkers": 1,
+  "rows": 0,
+  "execMs": [
+   0.148,
+   0.054,
+   0.04
+  ],
+  "sql": "select \"id\",\"scope_id\" from \"native_scale_100m\".\"customers\" where (\"native_scale_100m\".\"customers\".\"scope_id\" = $1 and \"customers\".\"id\" in (select \"__seal_idx\".\"row_id\" from \"native_scale_100m\".\"customers_seal_index\" as \"__seal_idx\" where $2::uuid is not null and (((\"__seal_idx\".\"tokens_c44ae523cca61a0b\")[1]=$3::bigint) and (\"__seal_idx\".\"tokens_a639b11c8130dcf7\" @> $4::bigint[])))) order by \"native_scale_100m\".\"customers\".\"id\" asc",
+  "params": [
+   "bbbbbbbb-bbbb-4bbb-8bbb-bbbbbbbbbbbb",
+   "bbbbbbbb-bbbb-4bbb-8bbb-bbbbbbbbbbbb",
+   "-2608413896174469120",
+   "{-5935322400194756608,-5935322399125209088,-5935322398919688192}"
+  ],
+  "text4": "Sort  (cost=3780.95..3780.95 rows=1 width=32) (actual time=0.028..0.028 rows=0.00 loops=1)\n  Sort Key: customers.id\n  Sort Method: quicksort  Memory: 25kB\n  Buffers: shared hit=18\n  ->  Nested Loop  (cost=3772.91..3780.94 rows=1 width=32) (actual time=0.024..0.025 rows=0.00 loops=1)\n        Buffers: shared hit=18\n        ->  HashAggregate  (cost=3772.34..3772.35 rows=1 width=16) (actual time=0.024..0.024 rows=0.00 loops=1)\n              Group Key: __seal_idx.row_id\n              Batches: 1  Memory Usage: 32kB\n              Buffers: shared hit=18\n              ->  Index Scan using seal_62e346c0ef994072_bt on customers_seal_index __seal_idx  (cost=0.57..3772.34 rows=1 width=16) (actual time=0.023..0.023 rows=0.00 loops=1)\n                    Index Cond: (tokens_c44ae523cca61a0b[1] = '-2608413896174469120'::bigint)\n                    Filter: (tokens_a639b11c8130dcf7 @> '{-5935322400194756608,-5935322399125209088,-5935322398919688192}'::bigint[])\n                    Rows Removed by Filter: 2\n                    Index Searches: 4\n                    Buffers: shared hit=18\n        ->  Index Scan using customers_pkey on customers  (cost=0.57..8.59 rows=1 width=32) (never executed)\n              Index Cond: (id = __seal_idx.row_id)\n              Filter: (scope_id = 'bbbbbbbb-bbbb-4bbb-8bbb-bbbbbbbbbbbb'::uuid)\n              Index Searches: 0\nPlanning:\n  Buffers: shared hit=12\nPlanning Time: 0.323 ms\nExecution Time: 0.054 ms"
+ },
+ {
+  "env": "1억 속 회사 B",
+  "case": "or3",
+  "variant": "as-is",
+  "autovacuumWorkers": 1,
+  "rows": 3,
+  "execMs": [
+   0.285,
+   0.095,
+   0.13
+  ],
+  "sql": "select \"id\", \"scope_id\", \"phone_ct\", \"name_ct\" from \"native_scale_100m\".\"customers\" where (\"native_scale_100m\".\"customers\".\"scope_id\" = $1 and \"customers\".\"id\" in (select \"__seal_idx\".\"row_id\" from \"native_scale_100m\".\"customers_seal_index\" as \"__seal_idx\" where \"__seal_idx\".\"scope_id\"=$2 and (((\"__seal_idx\".\"tokens_c44ae523cca61a0b\")[1]=$3::bigint) or ((\"__seal_idx\".\"tokens_c44ae523cca61a0b\")[1]=$4::bigint) or (\"__seal_idx\".\"tokens_f289b89d86c7086a\" @> $5::bigint[])))) order by \"native_scale_100m\".\"customers\".\"id\" asc",
+  "params": [
+   "bbbbbbbb-bbbb-4bbb-8bbb-bbbbbbbbbbbb",
+   "bbbbbbbb-bbbb-4bbb-8bbb-bbbbbbbbbbbb",
+   "-2608413896174469120",
+   "-2608413897757818880",
+   "{-5059701684391641088,-5059701682798657536,-5059701682578718720,-5059701682352095232,-5059701682085036032,-5059701682008424448,-5059701681488920576}"
+  ],
+  "text4": "Sort  (cost=12866.75..12866.75 rows=1 width=119) (actual time=0.082..0.083 rows=3.00 loops=1)\n  Sort Key: customers.id\n  Sort Method: quicksort  Memory: 25kB\n  Buffers: shared hit=47\n  ->  Nested Loop  (cost=12816.88..12866.74 rows=1 width=119) (actual time=0.073..0.079 rows=3.00 loops=1)\n        Buffers: shared hit=47\n        ->  Bitmap Heap Scan on customers_seal_index __seal_idx  (cost=12816.31..12832.38 rows=4 width=16) (actual time=0.069..0.070 rows=3.00 loops=1)\n              Recheck Cond: (((scope_id = 'bbbbbbbb-bbbb-4bbb-8bbb-bbbbbbbbbbbb'::uuid) AND ((tokens_c44ae523cca61a0b[1] = '-2608413896174469120'::bigint) OR (tokens_c44ae523cca61a0b[1] = '-2608413897757818880'::bigint))) OR (tokens_f289b89d86c7086a @> '{-5059701684391641088,-5059701682798657536,-5059701682578718720,-5059701682352095232,-5059701682085036032,-5059701682008424448,-5059701681488920576}'::bigint[]))\n              Filter: ((scope_id = 'bbbbbbbb-bbbb-4bbb-8bbb-bbbbbbbbbbbb'::uuid) AND ((tokens_c44ae523cca61a0b[1] = '-2608413896174469120'::bigint) OR (tokens_c44ae523cca61a0b[1] = '-2608413897757818880'::bigint) OR (tokens_f289b89d86c7086a @> '{-5059701684391641088,-5059701682798657536,-5059701682578718720,-5059701682352095232,-5059701682085036032,-5059701682008424448,-5059701681488920576}'::bigint[])))\n              Heap Blocks: exact=2\n              Buffers: shared hit=32\n              ->  BitmapOr  (cost=12816.31..12816.31 rows=4 width=0) (actual time=0.061..0.062 rows=0.00 loops=1)\n                    Buffers: shared hit=30\n                    ->  Bitmap Index Scan on seal_62e346c0ef994072_bt  (cost=0.00..9.17 rows=4 width=0) (actual time=0.008..0.008 rows=3.00 loops=1)\n                          Index Cond: ((scope_id = 'bbbbbbbb-bbbb-4bbb-8bbb-bbbbbbbbbbbb'::uuid) AND (tokens_c44ae523cca61a0b[1] = ANY ('{-2608413896174469120,-2608413897757818880}'::bigint[])))\n                          Index Searches: 2\n                          Buffers: shared hit=8\n                    ->  Bitmap Index Scan on seal_e66dc2708e915b65_gin  (cost=0.00..12807.13 rows=1 width=0) (actual time=0.053..0.053 rows=1.00 loops=1)\n                          Index Cond: (tokens_f289b89d86c7086a @> '{-5059701684391641088,-5059701682798657536,-5059701682578718720,-5059701682352095232,-5059701682085036032,-5059701682008424448,-5059701681488920576}'::bigint[])\n                          Index Searches: 1\n                          Buffers: shared hit=22\n        ->  Index Scan using customers_pkey on customers  (cost=0.57..8.59 rows=1 width=119) (actual time=0.002..0.002 rows=1.00 loops=3)\n              Index Cond: (id = __seal_idx.row_id)\n              Filter: (scope_id = 'bbbbbbbb-bbbb-4bbb-8bbb-bbbbbbbbbbbb'::uuid)\n              Index Searches: 3\n              Buffers: shared hit=15\nPlanning:\n  Buffers: shared hit=12\nPlanning Time: 0.287 ms\nExecution Time: 0.106 ms"
+ },
+ {
+  "env": "1억 속 회사 B",
+  "case": "or3",
+  "variant": "exact-as-filter",
+  "autovacuumWorkers": 1,
+  "rows": 3,
+  "execMs": [
+   190.802,
+   193.896,
+   189.437
+  ],
+  "sql": "select \"id\", \"scope_id\", \"phone_ct\", \"name_ct\" from \"native_scale_100m\".\"customers\" where (\"native_scale_100m\".\"customers\".\"scope_id\" = $1 and \"customers\".\"id\" in (select \"__seal_idx\".\"row_id\" from \"native_scale_100m\".\"customers_seal_index\" as \"__seal_idx\" where \"__seal_idx\".\"scope_id\"=$2 and (((\"__seal_idx\".\"tokens_c44ae523cca61a0b\")[1]+0=$3::bigint) or ((\"__seal_idx\".\"tokens_c44ae523cca61a0b\")[1]+0=$4::bigint) or (\"__seal_idx\".\"tokens_f289b89d86c7086a\" @> $5::bigint[])))) order by \"native_scale_100m\".\"customers\".\"id\" asc",
+  "params": [
+   "bbbbbbbb-bbbb-4bbb-8bbb-bbbbbbbbbbbb",
+   "bbbbbbbb-bbbb-4bbb-8bbb-bbbbbbbbbbbb",
+   "-2608413896174469120",
+   "-2608413897757818880",
+   "{-5059701684391641088,-5059701682798657536,-5059701682578718720,-5059701682352095232,-5059701682085036032,-5059701682008424448,-5059701681488920576}"
+  ],
+  "text4": "Gather Merge  (cost=1001.16..224871.87 rows=1 width=119) (actual time=167.392..179.529 rows=3.00 loops=1)\n  Workers Planned: 2\n  Workers Launched: 2\n  Buffers: shared hit=629 read=25530 written=59\n  ->  Nested Loop  (cost=1.14..223871.73 rows=1 width=119) (actual time=99.291..101.972 rows=1.00 loops=3)\n        Buffers: shared hit=629 read=25530 written=59\n        ->  Parallel Index Scan using customers_seal_index_scope_row_uq on customers_seal_index __seal_idx  (cost=0.57..219802.92 rows=474 width=16) (actual time=98.846..101.512 rows=1.00 loops=3)\n              Index Cond: (scope_id = 'bbbbbbbb-bbbb-4bbb-8bbb-bbbbbbbbbbbb'::uuid)\n              Filter: (((tokens_c44ae523cca61a0b[1] + 0) = '-2608413896174469120'::bigint) OR ((tokens_c44ae523cca61a0b[1] + 0) = '-2608413897757818880'::bigint) OR (tokens_f289b89d86c7086a @> '{-5059701684391641088,-5059701682798657536,-5059701682578718720,-5059701682352095232,-5059701682085036032,-5059701682008424448,-5059701681488920576}'::bigint[]))\n              Rows Removed by Filter: 33332\n              Index Searches: 1\n              Buffers: shared hit=619 read=25524 written=59\n        ->  Index Scan using customers_pkey on customers  (cost=0.57..8.58 rows=1 width=119) (actual time=0.453..0.453 rows=1.00 loops=3)\n              Index Cond: (id = __seal_idx.row_id)\n              Filter: (scope_id = 'bbbbbbbb-bbbb-4bbb-8bbb-bbbbbbbbbbbb'::uuid)\n              Index Searches: 3\n              Buffers: shared hit=10 read=6\nPlanning:\n  Buffers: shared hit=4 read=7\nPlanning Time: 0.389 ms\nExecution Time: 179.561 ms"
+ },
+ {
+  "env": "1억 속 회사 B",
+  "case": "or3",
+  "variant": "no-inner-scope",
+  "autovacuumWorkers": 1,
+  "rows": 3,
+  "execMs": [
+   0.34,
+   0.117,
+   0.118
+  ],
+  "sql": "select \"id\", \"scope_id\", \"phone_ct\", \"name_ct\" from \"native_scale_100m\".\"customers\" where (\"native_scale_100m\".\"customers\".\"scope_id\" = $1 and \"customers\".\"id\" in (select \"__seal_idx\".\"row_id\" from \"native_scale_100m\".\"customers_seal_index\" as \"__seal_idx\" where $2::uuid is not null and (((\"__seal_idx\".\"tokens_c44ae523cca61a0b\")[1]=$3::bigint) or ((\"__seal_idx\".\"tokens_c44ae523cca61a0b\")[1]=$4::bigint) or (\"__seal_idx\".\"tokens_f289b89d86c7086a\" @> $5::bigint[])))) order by \"native_scale_100m\".\"customers\".\"id\" asc",
+  "params": [
+   "bbbbbbbb-bbbb-4bbb-8bbb-bbbbbbbbbbbb",
+   "bbbbbbbb-bbbb-4bbb-8bbb-bbbbbbbbbbbb",
+   "-2608413896174469120",
+   "-2608413897757818880",
+   "{-5059701684391641088,-5059701682798657536,-5059701682578718720,-5059701682352095232,-5059701682085036032,-5059701682008424448,-5059701681488920576}"
+  ],
+  "text4": "Sort  (cost=61718.84..61718.85 rows=2 width=119) (actual time=0.111..0.112 rows=3.00 loops=1)\n  Sort Key: customers.id\n  Sort Method: quicksort  Memory: 25kB\n  Buffers: shared hit=59\n  ->  Nested Loop  (cost=28422.75..61718.83 rows=2 width=119) (actual time=0.093..0.108 rows=3.00 loops=1)\n        Buffers: shared hit=59\n        ->  HashAggregate  (cost=28422.18..28461.00 rows=3882 width=16) (actual time=0.088..0.098 rows=3.00 loops=1)\n              Group Key: __seal_idx.row_id\n              Batches: 1  Memory Usage: 161kB\n              Buffers: shared hit=44\n              ->  Bitmap Heap Scan on customers_seal_index __seal_idx  (cost=12961.59..28412.48 rows=3882 width=16) (actual time=0.084..0.086 rows=3.00 loops=1)\n                    Recheck Cond: (((tokens_c44ae523cca61a0b[1] = '-2608413896174469120'::bigint) OR (tokens_c44ae523cca61a0b[1] = '-2608413897757818880'::bigint)) OR (tokens_f289b89d86c7086a @> '{-5059701684391641088,-5059701682798657536,-5059701682578718720,-5059701682352095232,-5059701682085036032,-5059701682008424448,-5059701681488920576}'::bigint[]))\n                    Filter: ((tokens_c44ae523cca61a0b[1] = '-2608413896174469120'::bigint) OR (tokens_c44ae523cca61a0b[1] = '-2608413897757818880'::bigint) OR (tokens_f289b89d86c7086a @> '{-5059701684391641088,-5059701682798657536,-5059701682578718720,-5059701682352095232,-5059701682085036032,-5059701682008424448,-5059701681488920576}'::bigint[]))\n                    Heap Blocks: exact=2\n                    Buffers: shared hit=44\n                    ->  BitmapOr  (cost=12961.59..12961.59 rows=3882 width=0) (actual time=0.076..0.076 rows=0.00 loops=1)\n                          Buffers: shared hit=42\n                          ->  Bitmap Index Scan on seal_62e346c0ef994072_bt  (cost=0.00..152.52 rows=3882 width=0) (actual time=0.016..0.017 rows=3.00 loops=1)\n                                Index Cond: (tokens_c44ae523cca61a0b[1] = ANY ('{-2608413896174469120,-2608413897757818880}'::bigint[]))\n                                Index Searches: 5\n                                Buffers: shared hit=20\n                          ->  Bitmap Index Scan on seal_e66dc2708e915b65_gin  (cost=0.00..12807.13 rows=1 width=0) (actual time=0.059..0.059 rows=1.00 loops=1)\n                                Index Cond: (tokens_f289b89d86c7086a @> '{-5059701684391641088,-5059701682798657536,-5059701682578718720,-5059701682352095232,-5059701682085036032,-5059701682008424448,-5059701681488920576}'::bigint[])\n                                Index Searches: 1\n                                Buffers: shared hit=22\n        ->  Index Scan using customers_pkey on customers  (cost=0.57..8.57 rows=1 width=119) (actual time=0.003..0.003 rows=1.00 loops=3)\n              Index Cond: (id = __seal_idx.row_id)\n              Filter: (scope_id = 'bbbbbbbb-bbbb-4bbb-8bbb-bbbbbbbbbbbb'::uuid)\n              Index Searches: 3\n              Buffers: shared hit=15\nPlanning:\n  Buffers: shared hit=12\nPlanning Time: 0.238 ms\nExecution Time: 0.138 ms"
+ },
+ {
+  "env": "1억 속 회사 B",
+  "case": "and4",
+  "variant": "as-is",
+  "autovacuumWorkers": 1,
+  "rows": 62,
+  "execMs": [
+   165.615,
+   165.167,
+   163.84
+  ],
+  "sql": "select \"id\", \"scope_id\", \"company_ct\", \"address_ct\", \"memo_ct\", \"email_ct\" from \"native_scale_100m\".\"customers\" where (\"native_scale_100m\".\"customers\".\"scope_id\" = $1 and \"customers\".\"id\" in (select \"__seal_idx\".\"row_id\" from \"native_scale_100m\".\"customers_seal_index\" as \"__seal_idx\" where \"__seal_idx\".\"scope_id\"=$2 and (((\"__seal_idx\".\"tokens_a106c26102b707f0\")[1]=$3::bigint) and (\"__seal_idx\".\"tokens_792d75cf01821d67\" @> $4::bigint[]) and (\"__seal_idx\".\"tokens_a639b11c8130dcf7\" @> $5::bigint[]) and (\"__seal_idx\".\"tokens_ef1d32a52e2ce103\" @> $6::bigint[])))) order by \"native_scale_100m\".\"customers\".\"id\" asc",
+  "params": [
+   "bbbbbbbb-bbbb-4bbb-8bbb-bbbbbbbbbbbb",
+   "bbbbbbbb-bbbb-4bbb-8bbb-bbbbbbbbbbbb",
+   "-5226838053294112768",
+   "{-1892214540657557504}",
+   "{-5935322399464488960}",
+   "{-5345530069321515008,-5345530068696301568,-5345530068606976000,-5345530068501004288,-5345530068484358144,-5345530067962888192,-5345530067935166464,-5345530067793346560,-5345530066661670912,-5345530066644631552,-5345530066386944000}"
+  ],
+  "text4": "Nested Loop  (cost=1.14..93.91 rows=1 width=257) (actual time=2.785..166.229 rows=62.00 loops=1)\n  Buffers: shared hit=202 read=21712 written=73\n  ->  Index Scan using seal_4c8e2d2bddde3451_bt on customers_seal_index __seal_idx  (cost=0.57..85.32 rows=1 width=16) (actual time=2.774..164.486 rows=62.00 loops=1)\n        Index Cond: ((scope_id = 'bbbbbbbb-bbbb-4bbb-8bbb-bbbbbbbbbbbb'::uuid) AND (tokens_a106c26102b707f0[1] = '-5226838053294112768'::bigint))\n        Filter: ((tokens_792d75cf01821d67 @> '{-1892214540657557504}'::bigint[]) AND (tokens_a639b11c8130dcf7 @> '{-5935322399464488960}'::bigint[]) AND (tokens_ef1d32a52e2ce103 @> '{-5345530069321515008,-5345530068696301568,-5345530068606976000,-5345530068501004288,-5345530068484358144,-5345530067962888192,-5345530067935166464,-5345530067793346560,-5345530066661670912,-5345530066644631552,-5345530066386944000}'::bigint[]))\n        Rows Removed by Filter: 28269\n        Index Searches: 1\n        Buffers: shared read=21591 written=73\n  ->  Index Scan using customers_pkey on customers  (cost=0.57..8.59 rows=1 width=257) (actual time=0.026..0.026 rows=1.00 loops=62)\n        Index Cond: (id = __seal_idx.row_id)\n        Filter: (scope_id = 'bbbbbbbb-bbbb-4bbb-8bbb-bbbbbbbbbbbb'::uuid)\n        Index Searches: 62\n        Buffers: shared hit=196 read=121\nPlanning:\n  Buffers: shared hit=4 read=8\nPlanning Time: 0.487 ms\nExecution Time: 166.264 ms"
+ },
+ {
+  "env": "1억 속 회사 B",
+  "case": "and4",
+  "variant": "exact-as-filter",
+  "autovacuumWorkers": 1,
+  "rows": 62,
+  "execMs": [
+   7.523,
+   5.346,
+   4.956
+  ],
+  "sql": "select \"id\", \"scope_id\", \"company_ct\", \"address_ct\", \"memo_ct\", \"email_ct\" from \"native_scale_100m\".\"customers\" where (\"native_scale_100m\".\"customers\".\"scope_id\" = $1 and \"customers\".\"id\" in (select \"__seal_idx\".\"row_id\" from \"native_scale_100m\".\"customers_seal_index\" as \"__seal_idx\" where \"__seal_idx\".\"scope_id\"=$2 and (((\"__seal_idx\".\"tokens_a106c26102b707f0\")[1]+0=$3::bigint) and (\"__seal_idx\".\"tokens_792d75cf01821d67\" @> $4::bigint[]) and (\"__seal_idx\".\"tokens_a639b11c8130dcf7\" @> $5::bigint[]) and (\"__seal_idx\".\"tokens_ef1d32a52e2ce103\" @> $6::bigint[])))) order by \"native_scale_100m\".\"customers\".\"id\" asc",
+  "params": [
+   "bbbbbbbb-bbbb-4bbb-8bbb-bbbbbbbbbbbb",
+   "bbbbbbbb-bbbb-4bbb-8bbb-bbbbbbbbbbbb",
+   "-5226838053294112768",
+   "{-1892214540657557504}",
+   "{-5935322399464488960}",
+   "{-5345530069321515008,-5345530068696301568,-5345530068606976000,-5345530068501004288,-5345530068484358144,-5345530067962888192,-5345530067935166464,-5345530067793346560,-5345530066661670912,-5345530066644631552,-5345530066386944000}"
+  ],
+  "text4": "Sort  (cost=23795.01..23795.01 rows=1 width=257) (actual time=5.435..5.438 rows=62.00 loops=1)\n  Sort Key: customers.id\n  Sort Method: quicksort  Memory: 42kB\n  Buffers: shared hit=1115\n  ->  Nested Loop  (cost=23782.95..23795.00 rows=1 width=257) (actual time=4.671..5.415 rows=62.00 loops=1)\n        Buffers: shared hit=1115\n        ->  Bitmap Heap Scan on customers_seal_index __seal_idx  (cost=23782.38..23786.41 rows=1 width=16) (actual time=4.651..5.167 rows=62.00 loops=1)\n              Recheck Cond: ((tokens_792d75cf01821d67 @> '{-1892214540657557504}'::bigint[]) AND (tokens_ef1d32a52e2ce103 @> '{-5345530069321515008,-5345530068696301568,-5345530068606976000,-5345530068501004288,-5345530068484358144,-5345530067962888192,-5345530067935166464,-5345530067793346560,-5345530066661670912,-5345530066644631552,-5345530066386944000}'::bigint[]) AND (tokens_a639b11c8130dcf7 @> '{-5935322399464488960}'::bigint[]))\n              Filter: ((scope_id = 'bbbbbbbb-bbbb-4bbb-8bbb-bbbbbbbbbbbb'::uuid) AND ((tokens_a106c26102b707f0[1] + 0) = '-5226838053294112768'::bigint))\n              Rows Removed by Filter: 492\n              Heap Blocks: exact=551\n              Buffers: shared hit=792\n              ->  Bitmap Index Scan on seal_e66dc2708e915b65_gin  (cost=0.00..23782.38 rows=1 width=0) (actual time=4.577..4.577 rows=554.00 loops=1)\n                    Index Cond: ((tokens_792d75cf01821d67 @> '{-1892214540657557504}'::bigint[]) AND (tokens_ef1d32a52e2ce103 @> '{-5345530069321515008,-5345530068696301568,-5345530068606976000,-5345530068501004288,-5345530068484358144,-5345530067962888192,-5345530067935166464,-5345530067793346560,-5345530066661670912,-5345530066644631552,-5345530066386944000}'::bigint[]) AND (tokens_a639b11c8130dcf7 @> '{-5935322399464488960}'::bigint[]))\n                    Index Searches: 1\n                    Buffers: shared hit=241\n        ->  Index Scan using customers_pkey on customers  (cost=0.57..8.59 rows=1 width=257) (actual time=0.003..0.003 rows=1.00 loops=62)\n              Index Cond: (id = __seal_idx.row_id)\n              Filter: (scope_id = 'bbbbbbbb-bbbb-4bbb-8bbb-bbbbbbbbbbbb'::uuid)\n              Index Searches: 62\n              Buffers: shared hit=317\nPlanning:\n  Buffers: shared hit=12\nPlanning Time: 0.327 ms\nExecution Time: 5.559 ms"
+ },
+ {
+  "env": "1억 속 회사 B",
+  "case": "and4",
+  "variant": "no-inner-scope",
+  "autovacuumWorkers": 1,
+  "rows": 62,
+  "execMs": [
+   5.181,
+   4.819,
+   5.226
+  ],
+  "sql": "select \"id\", \"scope_id\", \"company_ct\", \"address_ct\", \"memo_ct\", \"email_ct\" from \"native_scale_100m\".\"customers\" where (\"native_scale_100m\".\"customers\".\"scope_id\" = $1 and \"customers\".\"id\" in (select \"__seal_idx\".\"row_id\" from \"native_scale_100m\".\"customers_seal_index\" as \"__seal_idx\" where $2::uuid is not null and (((\"__seal_idx\".\"tokens_a106c26102b707f0\")[1]=$3::bigint) and (\"__seal_idx\".\"tokens_792d75cf01821d67\" @> $4::bigint[]) and (\"__seal_idx\".\"tokens_a639b11c8130dcf7\" @> $5::bigint[]) and (\"__seal_idx\".\"tokens_ef1d32a52e2ce103\" @> $6::bigint[])))) order by \"native_scale_100m\".\"customers\".\"id\" asc",
+  "params": [
+   "bbbbbbbb-bbbb-4bbb-8bbb-bbbbbbbbbbbb",
+   "bbbbbbbb-bbbb-4bbb-8bbb-bbbbbbbbbbbb",
+   "-5226838053294112768",
+   "{-1892214540657557504}",
+   "{-5935322399464488960}",
+   "{-5345530069321515008,-5345530068696301568,-5345530068606976000,-5345530068501004288,-5345530068484358144,-5345530067962888192,-5345530067935166464,-5345530067793346560,-5345530066661670912,-5345530066644631552,-5345530066386944000}"
+  ],
+  "text4": "Sort  (cost=23795.01..23795.02 rows=1 width=257) (actual time=4.964..4.967 rows=62.00 loops=1)\n  Sort Key: customers.id\n  Sort Method: quicksort  Memory: 42kB\n  Buffers: shared hit=1116\n  ->  Nested Loop  (cost=23786.97..23795.00 rows=1 width=257) (actual time=4.780..4.942 rows=62.00 loops=1)\n        Buffers: shared hit=1116\n        ->  HashAggregate  (cost=23786.41..23786.42 rows=1 width=16) (actual time=4.773..4.781 rows=62.00 loops=1)\n              Group Key: __seal_idx.row_id\n              Batches: 1  Memory Usage: 32kB\n              Buffers: shared hit=792\n              ->  Bitmap Heap Scan on customers_seal_index __seal_idx  (cost=23782.38..23786.40 rows=1 width=16) (actual time=4.449..4.759 rows=62.00 loops=1)\n                    Recheck Cond: ((tokens_792d75cf01821d67 @> '{-1892214540657557504}'::bigint[]) AND (tokens_ef1d32a52e2ce103 @> '{-5345530069321515008,-5345530068696301568,-5345530068606976000,-5345530068501004288,-5345530068484358144,-5345530067962888192,-5345530067935166464,-5345530067793346560,-5345530066661670912,-5345530066644631552,-5345530066386944000}'::bigint[]) AND (tokens_a639b11c8130dcf7 @> '{-5935322399464488960}'::bigint[]))\n                    Filter: (tokens_a106c26102b707f0[1] = '-5226838053294112768'::bigint)\n                    Rows Removed by Filter: 492\n                    Heap Blocks: exact=551\n                    Buffers: shared hit=792\n                    ->  Bitmap Index Scan on seal_e66dc2708e915b65_gin  (cost=0.00..23782.38 rows=1 width=0) (actual time=4.397..4.397 rows=554.00 loops=1)\n                          Index Cond: ((tokens_792d75cf01821d67 @> '{-1892214540657557504}'::bigint[]) AND (tokens_ef1d32a52e2ce103 @> '{-5345530069321515008,-5345530068696301568,-5345530068606976000,-5345530068501004288,-5345530068484358144,-5345530067962888192,-5345530067935166464,-5345530067793346560,-5345530066661670912,-5345530066644631552,-5345530066386944000}'::bigint[]) AND (tokens_a639b11c8130dcf7 @> '{-5935322399464488960}'::bigint[]))\n                          Index Searches: 1\n                          Buffers: shared hit=241\n        ->  Index Scan using customers_pkey on customers  (cost=0.57..8.59 rows=1 width=257) (actual time=0.002..0.002 rows=1.00 loops=62)\n              Index Cond: (id = __seal_idx.row_id)\n              Filter: (scope_id = 'bbbbbbbb-bbbb-4bbb-8bbb-bbbbbbbbbbbb'::uuid)\n              Index Searches: 62\n              Buffers: shared hit=317\nPlanning:\n  Buffers: shared hit=12\nPlanning Time: 0.322 ms\nExecution Time: 5.056 ms"
+ },
+ {
+  "env": "1억 속 회사 B",
+  "case": "and2",
+  "variant": "as-is",
+  "autovacuumWorkers": 1,
+  "rows": 21176,
+  "execMs": [
+   257.917,
+   220.177,
+   235.727
+  ],
+  "sql": "select \"id\", \"scope_id\", \"company_ct\", \"memo_ct\" from \"native_scale_100m\".\"customers\" where (\"native_scale_100m\".\"customers\".\"scope_id\" = $1 and \"customers\".\"id\" in (select \"__seal_idx\".\"row_id\" from \"native_scale_100m\".\"customers_seal_index\" as \"__seal_idx\" where \"__seal_idx\".\"scope_id\"=$2 and (((\"__seal_idx\".\"tokens_a106c26102b707f0\")[1]=$3::bigint) and (\"__seal_idx\".\"tokens_a639b11c8130dcf7\" @> $4::bigint[])))) order by \"native_scale_100m\".\"customers\".\"id\" asc",
+  "params": [
+   "bbbbbbbb-bbbb-4bbb-8bbb-bbbbbbbbbbbb",
+   "bbbbbbbb-bbbb-4bbb-8bbb-bbbbbbbbbbbb",
+   "-5226838053294112768",
+   "{-5935322400194756608,-5935322399125209088,-5935322398919688192}"
+  ],
+  "text4": "Nested Loop  (cost=1.14..93.70 rows=1 width=143) (actual time=0.071..230.988 rows=21176.00 loops=1)\n  Buffers: shared hit=111798 read=23705 written=104\n  ->  Index Scan using seal_4c8e2d2bddde3451_bt on customers_seal_index __seal_idx  (cost=0.57..85.11 rows=1 width=16) (actual time=0.056..166.658 rows=21176.00 loops=1)\n        Index Cond: ((scope_id = 'bbbbbbbb-bbbb-4bbb-8bbb-bbbbbbbbbbbb'::uuid) AND (tokens_a106c26102b707f0[1] = '-5226838053294112768'::bigint))\n        Filter: (tokens_a639b11c8130dcf7 @> '{-5935322400194756608,-5935322399125209088,-5935322398919688192}'::bigint[])\n        Rows Removed by Filter: 7155\n        Index Searches: 1\n        Buffers: shared read=21591 written=96\n  ->  Index Scan using customers_pkey on customers  (cost=0.57..8.59 rows=1 width=143) (actual time=0.003..0.003 rows=1.00 loops=21176)\n        Index Cond: (id = __seal_idx.row_id)\n        Filter: (scope_id = 'bbbbbbbb-bbbb-4bbb-8bbb-bbbbbbbbbbbb'::uuid)\n        Index Searches: 21176\n        Buffers: shared hit=107782 read=2114 written=8\nPlanning:\n  Buffers: shared hit=6 read=6\nPlanning Time: 0.380 ms\nExecution Time: 231.879 ms"
+ },
+ {
+  "env": "1억 속 회사 B",
+  "case": "and2",
+  "variant": "exact-as-filter",
+  "autovacuumWorkers": 1,
+  "rows": 21176,
+  "execMs": [
+   124.509,
+   133.966,
+   127.815
+  ],
+  "sql": "select \"id\", \"scope_id\", \"company_ct\", \"memo_ct\" from \"native_scale_100m\".\"customers\" where (\"native_scale_100m\".\"customers\".\"scope_id\" = $1 and \"customers\".\"id\" in (select \"__seal_idx\".\"row_id\" from \"native_scale_100m\".\"customers_seal_index\" as \"__seal_idx\" where \"__seal_idx\".\"scope_id\"=$2 and (((\"__seal_idx\".\"tokens_a106c26102b707f0\")[1]+0=$3::bigint) and (\"__seal_idx\".\"tokens_a639b11c8130dcf7\" @> $4::bigint[])))) order by \"native_scale_100m\".\"customers\".\"id\" asc",
+  "params": [
+   "bbbbbbbb-bbbb-4bbb-8bbb-bbbbbbbbbbbb",
+   "bbbbbbbb-bbbb-4bbb-8bbb-bbbbbbbbbbbb",
+   "-5226838053294112768",
+   "{-5935322400194756608,-5935322399125209088,-5935322398919688192}"
+  ],
+  "text4": "Sort  (cost=5504.34..5504.34 rows=1 width=143) (actual time=134.437..135.104 rows=21176.00 loops=1)\n  Sort Key: customers.id\n  Sort Method: quicksort  Memory: 3904kB\n  Buffers: shared hit=110845 read=26529 written=81\n  ->  Nested Loop  (cost=5492.29..5504.33 rows=1 width=143) (actual time=9.578..128.977 rows=21176.00 loops=1)\n        Buffers: shared hit=110845 read=26529 written=81\n        ->  Bitmap Heap Scan on customers_seal_index __seal_idx  (cost=5491.72..5495.74 rows=1 width=16) (actual time=9.531..48.880 rows=21176.00 loops=1)\n              Recheck Cond: (tokens_a639b11c8130dcf7 @> '{-5935322400194756608,-5935322399125209088,-5935322398919688192}'::bigint[])\n              Filter: ((scope_id = 'bbbbbbbb-bbbb-4bbb-8bbb-bbbbbbbbbbbb'::uuid) AND ((tokens_a106c26102b707f0[1] + 0) = '-5226838053294112768'::bigint))\n              Rows Removed by Filter: 18921\n              Heap Blocks: exact=23401\n              Buffers: shared hit=24 read=23438 written=76\n              ->  Bitmap Index Scan on seal_e66dc2708e915b65_gin  (cost=0.00..5491.72 rows=1 width=0) (actual time=6.728..6.728 rows=40097.00 loops=1)\n                    Index Cond: (tokens_a639b11c8130dcf7 @> '{-5935322400194756608,-5935322399125209088,-5935322398919688192}'::bigint[])\n                    Index Searches: 1\n                    Buffers: shared hit=24 read=37\n        ->  Index Scan using customers_pkey on customers  (cost=0.57..8.59 rows=1 width=143) (actual time=0.003..0.003 rows=1.00 loops=21176)\n              Index Cond: (id = __seal_idx.row_id)\n              Filter: (scope_id = 'bbbbbbbb-bbbb-4bbb-8bbb-bbbbbbbbbbbb'::uuid)\n              Index Searches: 21176\n              Buffers: shared hit=106805 read=3091 written=5\nPlanning:\n  Buffers: shared hit=6 read=6\nPlanning Time: 0.448 ms\nExecution Time: 136.309 ms"
+ },
+ {
+  "env": "1억 속 회사 B",
+  "case": "and2",
+  "variant": "no-inner-scope",
+  "autovacuumWorkers": 1,
+  "rows": 21176,
+  "execMs": [
+   182.122,
+   158.249,
+   179.737
+  ],
+  "sql": "select \"id\", \"scope_id\", \"company_ct\", \"memo_ct\" from \"native_scale_100m\".\"customers\" where (\"native_scale_100m\".\"customers\".\"scope_id\" = $1 and \"customers\".\"id\" in (select \"__seal_idx\".\"row_id\" from \"native_scale_100m\".\"customers_seal_index\" as \"__seal_idx\" where $2::uuid is not null and (((\"__seal_idx\".\"tokens_a106c26102b707f0\")[1]=$3::bigint) and (\"__seal_idx\".\"tokens_a639b11c8130dcf7\" @> $4::bigint[])))) order by \"native_scale_100m\".\"customers\".\"id\" asc",
+  "params": [
+   "bbbbbbbb-bbbb-4bbb-8bbb-bbbbbbbbbbbb",
+   "bbbbbbbb-bbbb-4bbb-8bbb-bbbbbbbbbbbb",
+   "-5226838053294112768",
+   "{-5935322400194756608,-5935322399125209088,-5935322398919688192}"
+  ],
+  "text4": "Sort  (cost=5504.34..5504.35 rows=1 width=143) (actual time=176.443..177.144 rows=21176.00 loops=1)\n  Sort Key: customers.id\n  Sort Method: quicksort  Memory: 3904kB\n  Buffers: shared hit=110229 read=27145 written=102\n  ->  Nested Loop  (cost=5496.30..5504.33 rows=1 width=143) (actual time=67.856..167.775 rows=21176.00 loops=1)\n        Buffers: shared hit=110229 read=27145 written=102\n        ->  HashAggregate  (cost=5495.74..5495.75 rows=1 width=16) (actual time=67.812..71.577 rows=21176.00 loops=1)\n              Group Key: __seal_idx.row_id\n              Batches: 1  Memory Usage: 1329kB\n              Buffers: shared hit=24 read=23438 written=98\n              ->  Bitmap Heap Scan on customers_seal_index __seal_idx  (cost=5491.72..5495.73 rows=1 width=16) (actual time=8.671..60.960 rows=21176.00 loops=1)\n                    Recheck Cond: (tokens_a639b11c8130dcf7 @> '{-5935322400194756608,-5935322399125209088,-5935322398919688192}'::bigint[])\n                    Filter: (tokens_a106c26102b707f0[1] = '-5226838053294112768'::bigint)\n                    Rows Removed by Filter: 18921\n                    Heap Blocks: exact=23401\n                    Buffers: shared hit=24 read=23438 written=98\n                    ->  Bitmap Index Scan on seal_e66dc2708e915b65_gin  (cost=0.00..5491.72 rows=1 width=0) (actual time=5.964..5.964 rows=40097.00 loops=1)\n                          Index Cond: (tokens_a639b11c8130dcf7 @> '{-5935322400194756608,-5935322399125209088,-5935322398919688192}'::bigint[])\n                          Index Searches: 1\n                          Buffers: shared hit=24 read=37\n        ->  Index Scan using customers_pkey on customers  (cost=0.57..8.59 rows=1 width=143) (actual time=0.004..0.004 rows=1.00 loops=21176)\n              Index Cond: (id = __seal_idx.row_id)\n              Filter: (scope_id = 'bbbbbbbb-bbbb-4bbb-8bbb-bbbbbbbbbbbb'::uuid)\n              Index Searches: 21176\n              Buffers: shared hit=106189 read=3707 written=4\nPlanning:\n  Buffers: shared hit=6 read=6\nPlanning Time: 0.407 ms\nExecution Time: 178.461 ms"
+ }
+]

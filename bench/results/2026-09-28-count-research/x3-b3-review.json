@@ -1,0 +1,46 @@
+{
+ "rows": 21176,
+ "fields": 42352,
+ "b3Attacks": {
+  "headerByteChangedTo3": "ACCEPTED (header not authenticated, not checked)",
+  "misaligned1Byte": "OperationError: The operation failed for an operation-specific reason",
+  "misaligned8x2CollectMode": "item2=AUTHENTICATION_FAILED; item3=AUTHENTICATION_FAILED; item4=AUTHENTICATION_FAILED; item5=AUTHENTICATION_FAILED",
+  "misaligned8x2ThrowMode": "AUTHENTICATION_FAILED",
+  "len20": "OperationError: The operation failed for an operation-specific reason",
+  "len0": "RangeError: offset is out of bounds",
+  "blockSwapCrossField": "AUTHENTICATION_FAILED",
+  "ivFromOtherRow": "AUTHENTICATION_FAILED",
+  "blockExtension": "AUTHENTICATION_FAILED",
+  "batchEqualsReference": "ok (3888 envelopes)",
+  "bitFlipsAccepted": "0/128 (byte 0 excluded, see headerByte)"
+ },
+ "jsHmacDifferential": "ok: 301 lengths equal to WebCrypto HMAC-SHA-256",
+ "costMs": {
+  "gcmField": 1323.355,
+  "gcmRow": 644.97,
+  "cbcHmacWC": 369.637,
+  "cbcHmacJS": 210.141,
+  "cbcHmacJS_chunks4000": 203.91,
+  "b3": 109.166
+ },
+ "usPerField": {
+  "gcmField": 31.247,
+  "gcmRow": 15.229,
+  "cbcHmacWC": 8.728,
+  "cbcHmacJS": 4.962,
+  "cbcHmacJS_chunks4000": 4.815,
+  "b3": 2.578
+ },
+ "callsPerCount": {
+  "gcmField": 42352,
+  "gcmRow": 21176,
+  "cbcHmacWC": 42353,
+  "cbcHmacJS": 1,
+  "b3": 3
+ },
+ "env": {
+  "node": "v24.18.0",
+  "platform": "win32",
+  "note": "in-memory, no DB; median of 7 after 2 warmups; raw WebCrypto, no Sealer glue"
+ }
+}

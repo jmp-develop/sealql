@@ -1,0 +1,773 @@
+{
+ "note": "EXPLAIN ANALYZE server execution time; firstMs = first run in session order, warmMedianMs = median of later 3 runs; not the docs/measurement.md 2+7 protocol",
+ "rows": [
+  {
+   "key": "and4|10만 단독|count",
+   "variant": "as-is",
+   "firstMs": 10.13,
+   "warmMedianMs": 5.25,
+   "topEstRows": 1,
+   "topActualRows": 62,
+   "topCost": 213.86,
+   "companionHit": 790,
+   "companionRead": 0,
+   "autovacuumWorkers": 1
+  },
+  {
+   "key": "and4|1억 속 회사 B|count",
+   "variant": "as-is",
+   "firstMs": 205.31,
+   "warmMedianMs": 166.75,
+   "topEstRows": 1,
+   "topActualRows": 62,
+   "topCost": 93.91,
+   "companionHit": 0,
+   "companionRead": 21591,
+   "autovacuumWorkers": 1
+  },
+  {
+   "key": "and6|10만 단독|count",
+   "variant": "as-is",
+   "firstMs": 19.83,
+   "warmMedianMs": 9.75,
+   "topEstRows": 16,
+   "topActualRows": 624,
+   "topCost": 528.46,
+   "companionHit": 1040,
+   "companionRead": 0,
+   "autovacuumWorkers": 1
+  },
+  {
+   "key": "and6|1억 속 회사 B|count",
+   "variant": "as-is",
+   "firstMs": 186.29,
+   "warmMedianMs": 181.49,
+   "topEstRows": 1,
+   "topActualRows": 624,
+   "topCost": 94.11,
+   "companionHit": 0,
+   "companionRead": 21591,
+   "autovacuumWorkers": 1
+  },
+  {
+   "key": "and4|10만 단독|findMany 200",
+   "variant": "as-is",
+   "firstMs": 9.14,
+   "warmMedianMs": 5.1,
+   "topEstRows": 1,
+   "topActualRows": 62,
+   "topCost": 213.86,
+   "companionHit": 790,
+   "companionRead": 0,
+   "autovacuumWorkers": 1
+  },
+  {
+   "key": "and4|1억 속 회사 B|findMany 200",
+   "variant": "as-is",
+   "firstMs": 163.96,
+   "warmMedianMs": 168.19,
+   "topEstRows": 1,
+   "topActualRows": 62,
+   "topCost": 93.91,
+   "companionHit": 0,
+   "companionRead": 21591,
+   "autovacuumWorkers": 1
+  },
+  {
+   "key": "and2|10만 단독|count",
+   "variant": "as-is",
+   "firstMs": 141.07,
+   "warmMedianMs": 97.46,
+   "topEstRows": 1826,
+   "topActualRows": 21176,
+   "topCost": 13733.02,
+   "companionHit": 39,
+   "companionRead": 19888,
+   "autovacuumWorkers": 1
+  },
+  {
+   "key": "and2|1억 속 회사 B|count",
+   "variant": "as-is",
+   "firstMs": 264.33,
+   "warmMedianMs": 230.76,
+   "topEstRows": 1,
+   "topActualRows": 21176,
+   "topCost": 93.7,
+   "companionHit": 0,
+   "companionRead": 21591,
+   "autovacuumWorkers": 1
+  },
+  {
+   "key": "and4|10만 단독|count",
+   "variant": "bitmap-only",
+   "firstMs": 10.63,
+   "warmMedianMs": 6.41,
+   "topEstRows": 1,
+   "topActualRows": 62,
+   "topCost": 213.86,
+   "companionHit": 790,
+   "companionRead": 0,
+   "autovacuumWorkers": 1
+  },
+  {
+   "key": "and4|1억 속 회사 B|count",
+   "variant": "bitmap-only",
+   "firstMs": 64.58,
+   "warmMedianMs": 64.31,
+   "topEstRows": 1,
+   "topActualRows": 62,
+   "topCost": 178.35,
+   "companionHit": 0,
+   "companionRead": 21591,
+   "autovacuumWorkers": 1
+  },
+  {
+   "key": "and6|10만 단독|count",
+   "variant": "bitmap-only",
+   "firstMs": 28.25,
+   "warmMedianMs": 10.21,
+   "topEstRows": 16,
+   "topActualRows": 624,
+   "topCost": 528.5,
+   "companionHit": 1040,
+   "companionRead": 0,
+   "autovacuumWorkers": 1
+  },
+  {
+   "key": "and6|1억 속 회사 B|count",
+   "variant": "bitmap-only",
+   "firstMs": 91.14,
+   "warmMedianMs": 81.99,
+   "topEstRows": 1,
+   "topActualRows": 624,
+   "topCost": 178.55,
+   "companionHit": 0,
+   "companionRead": 21591,
+   "autovacuumWorkers": 1
+  },
+  {
+   "key": "and4|10만 단독|findMany 200",
+   "variant": "bitmap-only",
+   "firstMs": 10.45,
+   "warmMedianMs": 5.58,
+   "topEstRows": 1,
+   "topActualRows": 62,
+   "topCost": 213.86,
+   "companionHit": 790,
+   "companionRead": 0,
+   "autovacuumWorkers": 1
+  },
+  {
+   "key": "and4|1억 속 회사 B|findMany 200",
+   "variant": "bitmap-only",
+   "firstMs": 62.74,
+   "warmMedianMs": 61,
+   "topEstRows": 1,
+   "topActualRows": 62,
+   "topCost": 178.35,
+   "companionHit": 0,
+   "companionRead": 21591,
+   "autovacuumWorkers": 1
+  },
+  {
+   "key": "and2|10만 단독|count",
+   "variant": "bitmap-only",
+   "firstMs": 89.33,
+   "warmMedianMs": 88.89,
+   "topEstRows": 1826,
+   "topActualRows": 21176,
+   "topCost": 13886.79,
+   "companionHit": 21,
+   "companionRead": 19885,
+   "autovacuumWorkers": 1
+  },
+  {
+   "key": "and2|1억 속 회사 B|count",
+   "variant": "bitmap-only",
+   "firstMs": 265.75,
+   "warmMedianMs": 196.69,
+   "topEstRows": 1,
+   "topActualRows": 21176,
+   "topCost": 178.14,
+   "companionHit": 0,
+   "companionRead": 21591,
+   "autovacuumWorkers": 1
+  },
+  {
+   "key": "and4|10만 단독|count",
+   "variant": "exact-as-filter",
+   "firstMs": 9.73,
+   "warmMedianMs": 5.56,
+   "topEstRows": 1,
+   "topActualRows": 62,
+   "topCost": 213.86,
+   "companionHit": 790,
+   "companionRead": 0,
+   "autovacuumWorkers": 1
+  },
+  {
+   "key": "and4|1억 속 회사 B|count",
+   "variant": "exact-as-filter",
+   "firstMs": 8.4,
+   "warmMedianMs": 5.67,
+   "topEstRows": 1,
+   "topActualRows": 62,
+   "topCost": 23795.01,
+   "companionHit": 792,
+   "companionRead": 0,
+   "autovacuumWorkers": 1
+  },
+  {
+   "key": "and6|10만 단독|count",
+   "variant": "exact-as-filter",
+   "firstMs": 18.09,
+   "warmMedianMs": 8.75,
+   "topEstRows": 1,
+   "topActualRows": 624,
+   "topCost": 401.69,
+   "companionHit": 1040,
+   "companionRead": 0,
+   "autovacuumWorkers": 1
+  },
+  {
+   "key": "and6|1억 속 회사 B|count",
+   "variant": "exact-as-filter",
+   "firstMs": 26.36,
+   "warmMedianMs": 9.28,
+   "topEstRows": 1,
+   "topActualRows": 624,
+   "topCost": 20135.29,
+   "companionHit": 1033,
+   "companionRead": 0,
+   "autovacuumWorkers": 1
+  },
+  {
+   "key": "and4|10만 단독|findMany 200",
+   "variant": "exact-as-filter",
+   "firstMs": 5.23,
+   "warmMedianMs": 5.06,
+   "topEstRows": 1,
+   "topActualRows": 62,
+   "topCost": 213.86,
+   "companionHit": 790,
+   "companionRead": 0,
+   "autovacuumWorkers": 1
+  },
+  {
+   "key": "and4|1억 속 회사 B|findMany 200",
+   "variant": "exact-as-filter",
+   "firstMs": 5.26,
+   "warmMedianMs": 5.12,
+   "topEstRows": 1,
+   "topActualRows": 62,
+   "topCost": 23795.01,
+   "companionHit": 792,
+   "companionRead": 0,
+   "autovacuumWorkers": 1
+  },
+  {
+   "key": "and2|10만 단독|count",
+   "variant": "exact-as-filter",
+   "firstMs": 120.23,
+   "warmMedianMs": 98.49,
+   "topEstRows": 32,
+   "topActualRows": 21176,
+   "topCost": 15134.49,
+   "companionHit": 19,
+   "companionRead": 23440,
+   "autovacuumWorkers": 1
+  },
+  {
+   "key": "and2|1억 속 회사 B|count",
+   "variant": "exact-as-filter",
+   "firstMs": 145.96,
+   "warmMedianMs": 115.92,
+   "topEstRows": 1,
+   "topActualRows": 21176,
+   "topCost": 5504.34,
+   "companionHit": 24,
+   "companionRead": 23438,
+   "autovacuumWorkers": 1
+  },
+  {
+   "key": "and4|10만 단독|count",
+   "variant": "no-inner-scope",
+   "firstMs": 10.88,
+   "warmMedianMs": 5.32,
+   "topEstRows": 1,
+   "topActualRows": 62,
+   "topCost": 213.87,
+   "companionHit": 790,
+   "companionRead": 0,
+   "autovacuumWorkers": 1
+  },
+  {
+   "key": "and4|1억 속 회사 B|count",
+   "variant": "no-inner-scope",
+   "firstMs": 8.7,
+   "warmMedianMs": 5.47,
+   "topEstRows": 1,
+   "topActualRows": 62,
+   "topCost": 23795.02,
+   "companionHit": 792,
+   "companionRead": 0,
+   "autovacuumWorkers": 1
+  },
+  {
+   "key": "and6|10만 단독|count",
+   "variant": "no-inner-scope",
+   "firstMs": 20.54,
+   "warmMedianMs": 9.33,
+   "topEstRows": 16,
+   "topActualRows": 624,
+   "topCost": 528.52,
+   "companionHit": 1040,
+   "companionRead": 0,
+   "autovacuumWorkers": 1
+  },
+  {
+   "key": "and6|1억 속 회사 B|count",
+   "variant": "no-inner-scope",
+   "firstMs": 14.44,
+   "warmMedianMs": 9.57,
+   "topEstRows": 1,
+   "topActualRows": 624,
+   "topCost": 20135.3,
+   "companionHit": 1033,
+   "companionRead": 0,
+   "autovacuumWorkers": 1
+  },
+  {
+   "key": "and4|10만 단독|findMany 200",
+   "variant": "no-inner-scope",
+   "firstMs": 5.19,
+   "warmMedianMs": 5.22,
+   "topEstRows": 1,
+   "topActualRows": 62,
+   "topCost": 213.87,
+   "companionHit": 790,
+   "companionRead": 0,
+   "autovacuumWorkers": 1
+  },
+  {
+   "key": "and4|1억 속 회사 B|findMany 200",
+   "variant": "no-inner-scope",
+   "firstMs": 5.4,
+   "warmMedianMs": 5.38,
+   "topEstRows": 1,
+   "topActualRows": 62,
+   "topCost": 23795.02,
+   "companionHit": 792,
+   "companionRead": 0,
+   "autovacuumWorkers": 1
+  },
+  {
+   "key": "and2|10만 단독|count",
+   "variant": "no-inner-scope",
+   "firstMs": 94.44,
+   "warmMedianMs": 91.47,
+   "topEstRows": 1826,
+   "topActualRows": 21176,
+   "topCost": 13656.11,
+   "companionHit": 235,
+   "companionRead": 19678,
+   "autovacuumWorkers": 1
+  },
+  {
+   "key": "and2|1억 속 회사 B|count",
+   "variant": "no-inner-scope",
+   "firstMs": 199.57,
+   "warmMedianMs": 166.71,
+   "topEstRows": 1,
+   "topActualRows": 21176,
+   "topCost": 5504.35,
+   "companionHit": 24,
+   "companionRead": 23438,
+   "autovacuumWorkers": 1
+  },
+  {
+   "key": "and4|10만 단독|count",
+   "variant": "force-btree",
+   "firstMs": 243.7,
+   "warmMedianMs": 167.42,
+   "topEstRows": 1,
+   "topActualRows": 62,
+   "topCost": 37874.58,
+   "companionHit": 0,
+   "companionRead": 21589,
+   "autovacuumWorkers": 1
+  },
+  {
+   "key": "and4|1억 속 회사 B|count",
+   "variant": "force-btree",
+   "firstMs": 165.04,
+   "warmMedianMs": 166.23,
+   "topEstRows": 1,
+   "topActualRows": 62,
+   "topCost": 93.91,
+   "companionHit": 0,
+   "companionRead": 21591,
+   "autovacuumWorkers": 1
+  },
+  {
+   "key": "and6|10만 단독|count",
+   "variant": "force-btree",
+   "firstMs": 168.44,
+   "warmMedianMs": 176.94,
+   "topEstRows": 16,
+   "topActualRows": 624,
+   "topCost": 38142.8,
+   "companionHit": 0,
+   "companionRead": 21589,
+   "autovacuumWorkers": 1
+  },
+  {
+   "key": "and6|1억 속 회사 B|count",
+   "variant": "force-btree",
+   "firstMs": 174.39,
+   "warmMedianMs": 175.7,
+   "topEstRows": 1,
+   "topActualRows": 624,
+   "topCost": 94.11,
+   "companionHit": 0,
+   "companionRead": 21591,
+   "autovacuumWorkers": 1
+  },
+  {
+   "key": "and4|10만 단독|findMany 200",
+   "variant": "force-btree",
+   "firstMs": 165.25,
+   "warmMedianMs": 159.94,
+   "topEstRows": 1,
+   "topActualRows": 62,
+   "topCost": 37874.58,
+   "companionHit": 0,
+   "companionRead": 21589,
+   "autovacuumWorkers": 1
+  },
+  {
+   "key": "and4|1억 속 회사 B|findMany 200",
+   "variant": "force-btree",
+   "firstMs": 165.97,
+   "warmMedianMs": 164.64,
+   "topEstRows": 1,
+   "topActualRows": 62,
+   "topCost": 93.91,
+   "companionHit": 0,
+   "companionRead": 21591,
+   "autovacuumWorkers": 1
+  },
+  {
+   "key": "and2|10만 단독|count",
+   "variant": "force-btree",
+   "firstMs": 189.39,
+   "warmMedianMs": 175.01,
+   "topEstRows": 1826,
+   "topActualRows": 21176,
+   "topCost": 42262.34,
+   "companionHit": 332,
+   "companionRead": 21601,
+   "autovacuumWorkers": 1
+  },
+  {
+   "key": "and2|1억 속 회사 B|count",
+   "variant": "force-btree",
+   "firstMs": 257.89,
+   "warmMedianMs": 225.08,
+   "topEstRows": 1,
+   "topActualRows": 21176,
+   "topCost": 93.7,
+   "companionHit": 0,
+   "companionRead": 21591,
+   "autovacuumWorkers": 1
+  },
+  {
+   "key": "exact_one|10만 단독|count-shape",
+   "variant": "as-is",
+   "firstMs": 0.13,
+   "warmMedianMs": 0.02,
+   "topActualRows": 1,
+   "autovacuumWorkers": 1
+  },
+  {
+   "key": "exact_one|10만 단독|count-shape",
+   "variant": "exact-as-filter",
+   "firstMs": 0.02,
+   "warmMedianMs": 0.02,
+   "topActualRows": 1,
+   "autovacuumWorkers": 1
+  },
+  {
+   "key": "exact_one|10만 단독|count-shape",
+   "variant": "no-inner-scope",
+   "firstMs": 0.58,
+   "warmMedianMs": 0.03,
+   "topActualRows": 1,
+   "autovacuumWorkers": 1
+  },
+  {
+   "key": "exact_common|10만 단독|count-shape",
+   "variant": "as-is",
+   "firstMs": 89.97,
+   "warmMedianMs": 86.06,
+   "topActualRows": 28331,
+   "autovacuumWorkers": 1
+  },
+  {
+   "key": "exact_common|10만 단독|count-shape",
+   "variant": "exact-as-filter",
+   "firstMs": 82.35,
+   "warmMedianMs": 86.78,
+   "topActualRows": 28331,
+   "autovacuumWorkers": 1
+  },
+  {
+   "key": "exact_common|10만 단독|count-shape",
+   "variant": "no-inner-scope",
+   "firstMs": 85.31,
+   "warmMedianMs": 83.91,
+   "topActualRows": 28331,
+   "autovacuumWorkers": 1
+  },
+  {
+   "key": "phone= AND memo 서비스|10만 단독|count-shape",
+   "variant": "as-is",
+   "firstMs": 0.03,
+   "warmMedianMs": 0.02,
+   "topActualRows": 0,
+   "autovacuumWorkers": 1
+  },
+  {
+   "key": "phone= AND memo 서비스|10만 단독|count-shape",
+   "variant": "exact-as-filter",
+   "firstMs": 79.38,
+   "warmMedianMs": 69.08,
+   "topActualRows": 0,
+   "autovacuumWorkers": 1
+  },
+  {
+   "key": "phone= AND memo 서비스|10만 단독|count-shape",
+   "variant": "no-inner-scope",
+   "firstMs": 0.12,
+   "warmMedianMs": 0.03,
+   "topActualRows": 0,
+   "autovacuumWorkers": 1
+  },
+  {
+   "key": "or3|10만 단독|count-shape",
+   "variant": "as-is",
+   "firstMs": 0.33,
+   "warmMedianMs": 0.12,
+   "topActualRows": 3,
+   "autovacuumWorkers": 1
+  },
+  {
+   "key": "or3|10만 단독|count-shape",
+   "variant": "exact-as-filter",
+   "firstMs": 131.92,
+   "warmMedianMs": 65.33,
+   "topActualRows": 3,
+   "autovacuumWorkers": 1
+  },
+  {
+   "key": "or3|10만 단독|count-shape",
+   "variant": "no-inner-scope",
+   "firstMs": 0.15,
+   "warmMedianMs": 0.11,
+   "topActualRows": 3,
+   "autovacuumWorkers": 1
+  },
+  {
+   "key": "and4|10만 단독|count-shape",
+   "variant": "as-is",
+   "firstMs": 9.32,
+   "warmMedianMs": 5.45,
+   "topActualRows": 62,
+   "autovacuumWorkers": 1
+  },
+  {
+   "key": "and4|10만 단독|count-shape",
+   "variant": "exact-as-filter",
+   "firstMs": 5.42,
+   "warmMedianMs": 5.4,
+   "topActualRows": 62,
+   "autovacuumWorkers": 1
+  },
+  {
+   "key": "and4|10만 단독|count-shape",
+   "variant": "no-inner-scope",
+   "firstMs": 5.49,
+   "warmMedianMs": 5.53,
+   "topActualRows": 62,
+   "autovacuumWorkers": 1
+  },
+  {
+   "key": "and2|10만 단독|count-shape",
+   "variant": "as-is",
+   "firstMs": 127.3,
+   "warmMedianMs": 96.01,
+   "topActualRows": 21176,
+   "autovacuumWorkers": 1
+  },
+  {
+   "key": "and2|10만 단독|count-shape",
+   "variant": "exact-as-filter",
+   "firstMs": 98.57,
+   "warmMedianMs": 106.91,
+   "topActualRows": 21176,
+   "autovacuumWorkers": 1
+  },
+  {
+   "key": "and2|10만 단독|count-shape",
+   "variant": "no-inner-scope",
+   "firstMs": 104.34,
+   "warmMedianMs": 105.42,
+   "topActualRows": 21176,
+   "autovacuumWorkers": 1
+  },
+  {
+   "key": "exact_one|1억 속 회사 B|count-shape",
+   "variant": "as-is",
+   "firstMs": 0.17,
+   "warmMedianMs": 0.04,
+   "topActualRows": 2,
+   "autovacuumWorkers": 1
+  },
+  {
+   "key": "exact_one|1억 속 회사 B|count-shape",
+   "variant": "exact-as-filter",
+   "firstMs": 0.03,
+   "warmMedianMs": 0.03,
+   "topActualRows": 2,
+   "autovacuumWorkers": 1
+  },
+  {
+   "key": "exact_one|1억 속 회사 B|count-shape",
+   "variant": "no-inner-scope",
+   "firstMs": 0.89,
+   "warmMedianMs": 0.05,
+   "topActualRows": 2,
+   "autovacuumWorkers": 1
+  },
+  {
+   "key": "exact_common|1억 속 회사 B|count-shape",
+   "variant": "as-is",
+   "firstMs": 279.84,
+   "warmMedianMs": 228.94,
+   "topActualRows": 28331,
+   "autovacuumWorkers": 1
+  },
+  {
+   "key": "exact_common|1억 속 회사 B|count-shape",
+   "variant": "exact-as-filter",
+   "firstMs": 224.67,
+   "warmMedianMs": 228.59,
+   "topActualRows": 28331,
+   "autovacuumWorkers": 1
+  },
+  {
+   "key": "exact_common|1억 속 회사 B|count-shape",
+   "variant": "no-inner-scope",
+   "firstMs": 288.72,
+   "warmMedianMs": 267.27,
+   "topActualRows": 28331,
+   "autovacuumWorkers": 1
+  },
+  {
+   "key": "phone= AND memo 서비스|1억 속 회사 B|count-shape",
+   "variant": "as-is",
+   "firstMs": 0.07,
+   "warmMedianMs": 0.02,
+   "topActualRows": 0,
+   "autovacuumWorkers": 1
+  },
+  {
+   "key": "phone= AND memo 서비스|1억 속 회사 B|count-shape",
+   "variant": "exact-as-filter",
+   "firstMs": 67.6,
+   "warmMedianMs": 64.34,
+   "topActualRows": 0,
+   "autovacuumWorkers": 1
+  },
+  {
+   "key": "phone= AND memo 서비스|1억 속 회사 B|count-shape",
+   "variant": "no-inner-scope",
+   "firstMs": 0.15,
+   "warmMedianMs": 0.05,
+   "topActualRows": 0,
+   "autovacuumWorkers": 1
+  },
+  {
+   "key": "or3|1억 속 회사 B|count-shape",
+   "variant": "as-is",
+   "firstMs": 0.28,
+   "warmMedianMs": 0.11,
+   "topActualRows": 3,
+   "autovacuumWorkers": 1
+  },
+  {
+   "key": "or3|1억 속 회사 B|count-shape",
+   "variant": "exact-as-filter",
+   "firstMs": 190.8,
+   "warmMedianMs": 189.44,
+   "topActualRows": 3,
+   "autovacuumWorkers": 1
+  },
+  {
+   "key": "or3|1억 속 회사 B|count-shape",
+   "variant": "no-inner-scope",
+   "firstMs": 0.34,
+   "warmMedianMs": 0.12,
+   "topActualRows": 3,
+   "autovacuumWorkers": 1
+  },
+  {
+   "key": "and4|1억 속 회사 B|count-shape",
+   "variant": "as-is",
+   "firstMs": 165.62,
+   "warmMedianMs": 165.17,
+   "topActualRows": 62,
+   "autovacuumWorkers": 1
+  },
+  {
+   "key": "and4|1억 속 회사 B|count-shape",
+   "variant": "exact-as-filter",
+   "firstMs": 7.52,
+   "warmMedianMs": 5.35,
+   "topActualRows": 62,
+   "autovacuumWorkers": 1
+  },
+  {
+   "key": "and4|1억 속 회사 B|count-shape",
+   "variant": "no-inner-scope",
+   "firstMs": 5.18,
+   "warmMedianMs": 5.06,
+   "topActualRows": 62,
+   "autovacuumWorkers": 1
+  },
+  {
+   "key": "and2|1억 속 회사 B|count-shape",
+   "variant": "as-is",
+   "firstMs": 257.92,
+   "warmMedianMs": 231.88,
+   "topActualRows": 21176,
+   "autovacuumWorkers": 1
+  },
+  {
+   "key": "and2|1억 속 회사 B|count-shape",
+   "variant": "exact-as-filter",
+   "firstMs": 124.51,
+   "warmMedianMs": 133.97,
+   "topActualRows": 21176,
+   "autovacuumWorkers": 1
+  },
+  {
+   "key": "and2|1억 속 회사 B|count-shape",
+   "variant": "no-inner-scope",
+   "firstMs": 182.12,
+   "warmMedianMs": 178.46,
+   "topActualRows": 21176,
+   "autovacuumWorkers": 1
+  }
+ ]
+}

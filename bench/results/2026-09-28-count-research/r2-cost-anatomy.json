@@ -1,0 +1,84 @@
+{
+ "rows": 21176,
+ "fields": 42352,
+ "avgCipherBytes": {
+  "company": 51,
+  "memo": 61.16660370230449
+ },
+ "noopAsyncPool64": 0.074,
+ "copyAndShape": 0.045,
+ "rawGcm": {
+  "pool1": 32.566,
+  "pool4": 17.157,
+  "pool8": 16.91,
+  "pool16": 16.722,
+  "pool64": 16.44,
+  "pool256": 16.455,
+  "pool1024": 17.059,
+  "allAtOnce": 15.466,
+  "windows64Barrier": 16.04
+ },
+ "sealerOpen": {
+  "pool1": 44.719,
+  "pool8": 27.569,
+  "pool64": 26.854,
+  "pool256": 27.437,
+  "allAtOnce": 24.098,
+  "productWindows": 24.527
+ },
+ "decodeField": 1.211,
+ "textDecoderOnly": 0.308,
+ "verifyCompanyEq": 0.99,
+ "verifyMemoContains": 1.335,
+ "hmacPerCall": {
+  "pool1": 18.452,
+  "pool64": 6.719,
+  "pool1024": 6.734
+ },
+ "batchAesInv": {
+  "n1": {
+   "totalMs": 0.035,
+   "nsPerBlock": 34700
+  },
+  "n64": {
+   "totalMs": 0.044,
+   "nsPerBlock": 684.4
+  },
+  "n1024": {
+   "totalMs": 0.063,
+   "nsPerBlock": 61.3
+  },
+  "n21176": {
+   "totalMs": 0.474,
+   "nsPerBlock": 22.4
+  },
+  "n42352": {
+   "totalMs": 0.849,
+   "nsPerBlock": 20.1
+  },
+  "n423520": {
+   "totalMs": 12.624,
+   "nsPerBlock": 29.8
+  }
+ },
+ "B1_eqTagVerify": {
+  "totalMs": 56.191,
+  "usPerRow": 2.654
+ },
+ "B3": {
+  "avgEnvelopeBytes": {
+   "company": 65,
+   "memo": 68.19153758972422
+  },
+  "openBatchAllMs": 480.404,
+  "usPerField": 11.343,
+  "countIncludingVerifyMs": 533.08,
+  "chunk4000FieldsMs": 446.89
+ },
+ "currentCountEquivalentMs": 1111.22,
+ "env": {
+  "node": "v24.18.0",
+  "platform": "win32",
+  "note": "in-memory, no DB/driver; median of 7 after 2 warmups; µs values are wall per field unless stated"
+ }
+}

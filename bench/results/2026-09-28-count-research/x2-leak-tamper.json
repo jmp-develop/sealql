@@ -1,0 +1,405 @@
+{
+ "startedAt": "2026-09-27T23:32:09.831Z",
+ "leak": [
+  {
+   "case": "and2",
+   "condition": "(company = \"서울서비스 담당\" AND memo contains \"서비스\")",
+   "candidates": 21176,
+   "matches": 21176,
+   "r1": null,
+   "leaves": [
+    {
+     "leaf": "company = \"서울서비스 담당\"",
+     "candidates": 28331,
+     "matches": 28331,
+     "r1Covered": true,
+     "r1Exact": 28331,
+     "newlyRevealedIfCovered": 0
+    },
+    {
+     "leaf": "memo contains \"서비스\"",
+     "candidates": 40097,
+     "matches": 40097,
+     "r1Covered": false,
+     "r1Exact": null,
+     "newlyRevealedIfCovered": 0
+    }
+   ]
+  },
+  {
+   "case": "and4",
+   "condition": "(company = \"서울서비스 담당\" AND address contains \"서울\" AND memo contains \"상담\" AND email contains \"service\")",
+   "candidates": 62,
+   "matches": 62,
+   "r1": null,
+   "leaves": [
+    {
+     "leaf": "company = \"서울서비스 담당\"",
+     "candidates": 28331,
+     "matches": 28331,
+     "r1Covered": true,
+     "r1Exact": 28331,
+     "newlyRevealedIfCovered": 0
+    },
+    {
+     "leaf": "address contains \"서울\"",
+     "candidates": 16574,
+     "matches": 16574,
+     "r1Covered": false,
+     "r1Exact": null,
+     "newlyRevealedIfCovered": 0
+    },
+    {
+     "leaf": "memo contains \"상담\"",
+     "candidates": 29843,
+     "matches": 29843,
+     "r1Covered": false,
+     "r1Exact": null,
+     "newlyRevealedIfCovered": 0
+    },
+    {
+     "leaf": "email contains \"service\"",
+     "candidates": 26759,
+     "matches": 26759,
+     "r1Covered": false,
+     "r1Exact": null,
+     "newlyRevealedIfCovered": 0
+    }
+   ]
+  },
+  {
+   "case": "and6",
+   "condition": "(name contains \"민서\" AND phone contains \"-5\" AND address contains \"서울\" AND memo contains \"서비스\" AND email contains \"test\" AND company = \"서울서비스 담당\")",
+   "candidates": 624,
+   "matches": 624,
+   "r1": null,
+   "leaves": [
+    {
+     "leaf": "name contains \"민서\"",
+     "candidates": 28023,
+     "matches": 28023,
+     "r1Covered": true,
+     "r1Exact": 28023,
+     "newlyRevealedIfCovered": 0
+    },
+    {
+     "leaf": "phone contains \"-5\"",
+     "candidates": 18998,
+     "matches": 18998,
+     "r1Covered": true,
+     "r1Exact": 18998,
+     "newlyRevealedIfCovered": 0
+    },
+    {
+     "leaf": "address contains \"서울\"",
+     "candidates": 16574,
+     "matches": 16574,
+     "r1Covered": false,
+     "r1Exact": null,
+     "newlyRevealedIfCovered": 0
+    },
+    {
+     "leaf": "memo contains \"서비스\"",
+     "candidates": 40097,
+     "matches": 40097,
+     "r1Covered": false,
+     "r1Exact": null,
+     "newlyRevealedIfCovered": 0
+    },
+    {
+     "leaf": "email contains \"test\"",
+     "candidates": 100000,
+     "matches": 100000,
+     "r1Covered": false,
+     "r1Exact": null,
+     "newlyRevealedIfCovered": 0
+    },
+    {
+     "leaf": "company = \"서울서비스 담당\"",
+     "candidates": 28331,
+     "matches": 28331,
+     "r1Covered": true,
+     "r1Exact": 28331,
+     "newlyRevealedIfCovered": 0
+    }
+   ]
+  },
+  {
+   "case": "or2",
+   "condition": "(company = \"서울서비스 담당\" OR memo contains \"푸른달\")",
+   "candidates": 28400,
+   "matches": 28400,
+   "r1": null,
+   "leaves": [
+    {
+     "leaf": "company = \"서울서비스 담당\"",
+     "candidates": 28331,
+     "matches": 28331,
+     "r1Covered": true,
+     "r1Exact": 28331,
+     "newlyRevealedIfCovered": 0
+    },
+    {
+     "leaf": "memo contains \"푸른달\"",
+     "candidates": 101,
+     "matches": 101,
+     "r1Covered": false,
+     "r1Exact": null,
+     "newlyRevealedIfCovered": 0
+    }
+   ]
+  },
+  {
+   "case": "or3",
+   "condition": "(phone = \"42-5748-1542\" OR phone = \"21-7100-5875\" OR name contains \"pshxt\")",
+   "candidates": 3,
+   "matches": 2,
+   "r1": 2,
+   "leaves": [
+    {
+     "leaf": "phone = \"42-5748-1542\"",
+     "candidates": 1,
+     "matches": 1,
+     "r1Covered": true,
+     "r1Exact": 1,
+     "newlyRevealedIfCovered": 0
+    },
+    {
+     "leaf": "phone = \"21-7100-5875\"",
+     "candidates": 2,
+     "matches": 1,
+     "r1Covered": true,
+     "r1Exact": 1,
+     "newlyRevealedIfCovered": 1
+    },
+    {
+     "leaf": "name contains \"pshxt\"",
+     "candidates": 1,
+     "matches": 1,
+     "r1Covered": true,
+     "r1Exact": 1,
+     "newlyRevealedIfCovered": 0
+    }
+   ]
+  },
+  {
+   "case": "exact_common",
+   "condition": "company = \"서울서비스 담당\"",
+   "candidates": 28331,
+   "matches": 28331,
+   "r1": 28331,
+   "leaves": [
+    {
+     "leaf": "company = \"서울서비스 담당\"",
+     "candidates": 28331,
+     "matches": 28331,
+     "r1Covered": true,
+     "r1Exact": 28331,
+     "newlyRevealedIfCovered": 0
+    }
+   ]
+  },
+  {
+   "case": "exact_mid",
+   "condition": "company = \"서울서비스 중앙지사\"",
+   "candidates": 1770,
+   "matches": 1770,
+   "r1": 1770,
+   "leaves": [
+    {
+     "leaf": "company = \"서울서비스 중앙지사\"",
+     "candidates": 1770,
+     "matches": 1770,
+     "r1Covered": true,
+     "r1Exact": 1770,
+     "newlyRevealedIfCovered": 0
+    }
+   ]
+  },
+  {
+   "case": "exact_one",
+   "condition": "phone = \"42-5748-1542\"",
+   "candidates": 1,
+   "matches": 1,
+   "r1": 1,
+   "leaves": [
+    {
+     "leaf": "phone = \"42-5748-1542\"",
+     "candidates": 1,
+     "matches": 1,
+     "r1Covered": true,
+     "r1Exact": 1,
+     "newlyRevealedIfCovered": 0
+    }
+   ]
+  },
+  {
+   "case": "exact_zero",
+   "condition": "phone = \"99-0000-0000\"",
+   "candidates": 1,
+   "matches": 0,
+   "r1": 0,
+   "leaves": [
+    {
+     "leaf": "phone = \"99-0000-0000\"",
+     "candidates": 1,
+     "matches": 0,
+     "r1Covered": true,
+     "r1Exact": 0,
+     "newlyRevealedIfCovered": 1
+    }
+   ]
+  },
+  {
+   "case": "sub_name_suffix",
+   "condition": "name contains \"pshxt\"",
+   "candidates": 1,
+   "matches": 1,
+   "r1": 1,
+   "leaves": [
+    {
+     "leaf": "name contains \"pshxt\"",
+     "candidates": 1,
+     "matches": 1,
+     "r1Covered": true,
+     "r1Exact": 1,
+     "newlyRevealedIfCovered": 0
+    }
+   ]
+  }
+ ],
+ "tamper": [
+  {
+   "format": "cbch",
+   "name": "control (no change)",
+   "rowsChanged": 1,
+   "outcome": "count=21176"
+  },
+  {
+   "format": "cbch",
+   "name": "header byte changed",
+   "rowsChanged": 1,
+   "outcome": "rejected: AUTHENTICATION_FAILED"
+  },
+  {
+   "format": "cbch",
+   "name": "bit flip in ciphertext block",
+   "rowsChanged": 1,
+   "outcome": "rejected: AUTHENTICATION_FAILED"
+  },
+  {
+   "format": "cbch",
+   "name": "bit flip in IV",
+   "rowsChanged": 1,
+   "outcome": "rejected: AUTHENTICATION_FAILED"
+  },
+  {
+   "format": "cbch",
+   "name": "bit flip in tag",
+   "rowsChanged": 1,
+   "outcome": "rejected: AUTHENTICATION_FAILED"
+  },
+  {
+   "format": "cbch",
+   "name": "row swap (memo A<->B)",
+   "rowsChanged": 2,
+   "outcome": "rejected: AUTHENTICATION_FAILED"
+  },
+  {
+   "format": "cbch",
+   "name": "field swap (company_ct := memo_ct, same row)",
+   "rowsChanged": 1,
+   "outcome": "rejected: AUTHENTICATION_FAILED"
+  },
+  {
+   "format": "cbch",
+   "name": "truncate: drop last 16 bytes",
+   "rowsChanged": 1,
+   "outcome": "rejected: AUTHENTICATION_FAILED"
+  },
+  {
+   "format": "cbch",
+   "name": "truncate: drop first ciphertext block",
+   "rowsChanged": 1,
+   "outcome": "rejected: AUTHENTICATION_FAILED"
+  },
+  {
+   "format": "cbch",
+   "name": "truncate: drop 1 byte (unaligned)",
+   "rowsChanged": 1,
+   "outcome": "rejected: AUTHENTICATION_FAILED"
+  },
+  {
+   "format": "cbch",
+   "name": "omission: parent row moved to another scope (not detectable)",
+   "rowsChanged": 1,
+   "outcome": "count=21175"
+  },
+  {
+   "format": "b3 (rejected by review; reference only)",
+   "name": "control (no change)",
+   "rowsChanged": 1,
+   "outcome": "count=21176"
+  },
+  {
+   "format": "b3 (rejected by review; reference only)",
+   "name": "header byte changed",
+   "rowsChanged": 1,
+   "outcome": "rejected: AUTHENTICATION_FAILED"
+  },
+  {
+   "format": "b3 (rejected by review; reference only)",
+   "name": "bit flip in ciphertext block",
+   "rowsChanged": 1,
+   "outcome": "rejected: AUTHENTICATION_FAILED"
+  },
+  {
+   "format": "b3 (rejected by review; reference only)",
+   "name": "bit flip in IV",
+   "rowsChanged": 1,
+   "outcome": "rejected: AUTHENTICATION_FAILED"
+  },
+  {
+   "format": "b3 (rejected by review; reference only)",
+   "name": "bit flip in tag",
+   "rowsChanged": 1,
+   "outcome": "rejected: AUTHENTICATION_FAILED"
+  },
+  {
+   "format": "b3 (rejected by review; reference only)",
+   "name": "row swap (memo A<->B)",
+   "rowsChanged": 2,
+   "outcome": "rejected: AUTHENTICATION_FAILED"
+  },
+  {
+   "format": "b3 (rejected by review; reference only)",
+   "name": "field swap (company_ct := memo_ct, same row)",
+   "rowsChanged": 1,
+   "outcome": "rejected: AUTHENTICATION_FAILED"
+  },
+  {
+   "format": "b3 (rejected by review; reference only)",
+   "name": "truncate: drop last 16 bytes",
+   "rowsChanged": 1,
+   "outcome": "rejected: AUTHENTICATION_FAILED"
+  },
+  {
+   "format": "b3 (rejected by review; reference only)",
+   "name": "truncate: drop first ciphertext block",
+   "rowsChanged": 1,
+   "outcome": "rejected: AUTHENTICATION_FAILED"
+  },
+  {
+   "format": "b3 (rejected by review; reference only)",
+   "name": "truncate: drop 1 byte (unaligned)",
+   "rowsChanged": 1,
+   "outcome": "rejected: AUTHENTICATION_FAILED"
+  },
+  {
+   "format": "b3 (rejected by review; reference only)",
+   "name": "omission: parent row moved to another scope (not detectable)",
+   "rowsChanged": 1,
+   "outcome": "count=21175"
+  }
+ ]
+}
