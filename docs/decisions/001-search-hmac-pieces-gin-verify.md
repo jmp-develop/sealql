@@ -35,7 +35,7 @@
 |---|---|
 | 순서 보존 암호(ORE/OPE) | 순서가 새어 추론 공격 대상이 된다(Naveed–Kamara–Wright CCS'15). 범위 검색이 필요하면 나중에 구간 토큰으로 따로 검토한다([009](009-scope-and-non-goals.md)) |
 | 모든 부분 문자열 저장 | 저장 79배, 삽입 20배(제3자 측정). 필드 길이 제한 |
-| 보안 하드웨어(TEE), 동형암호(HE), PIR·ORAM | PostgreSQL에서 불가하거나 너무 느리다. FHE 부분 검색은 1M 글자에서 질의 1회 약 5분 |
+| 보안 하드웨어(TEE), 동형암호(HE), PIR·ORAM | PostgreSQL에서 불가하거나 너무 느리다. FHE 문자열 검색은 1,000자 텍스트·최대 50자 질의 1회 약 5분(Bonte·Iliashenko, ePrint 2020/931) |
 | V2 암호화 posting page | 운영 쓰기가 불가능하고 단일 anchor 실패 사례가 있다([011](011-rejected-research-lines.md)) |
 | 키 없는 해시(`SHA-256("강남")`) | 조각 종류가 수백만 개뿐이라 사전 대입으로 즉시 복원된다. 라이브러리는 키 없는 해시 경로를 제공하지 않는다 |
 | 2–4글자 n-gram 토큰 | 이름·메모·이메일에서 희귀 토큰 보유 행이 0%(2글자) → 100%(2–4글자)로 폭증 ([token-leakage.json](../../bench/results/standard-review-2026-09-26/token-leakage.json)) |

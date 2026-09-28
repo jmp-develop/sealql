@@ -1,0 +1,641 @@
+{
+  "method": "Correctness-only; product HMAC functions; no SQL writes, no performance timing, no measurement lock needed",
+  "source": {
+    "fixtureRows": 2000,
+    "corpusRows": 5000,
+    "corpusSha256": "7d1d8e66323eb5a64feb2e299178f58827d8302111c434195dfeef48506e1256",
+    "corpusRange": "first 5000 nonempty reviews"
+  },
+  "structural": {
+    "a": "aabba",
+    "b": "abbaa",
+    "length": 5,
+    "query": "aabba",
+    "aTruth": true,
+    "bTruth": false,
+    "sameRawPieceSet": true,
+    "sameAllProductTokens": true,
+    "sameUtf8Length": true,
+    "allTokenCount": 10,
+    "queryTokenCount": 6,
+    "protectionsIncluded": [
+      "adjacent",
+      "skip",
+      "start",
+      "end",
+      "word-start",
+      "word-end"
+    ]
+  },
+  "combinedWitness": {
+    "a": "aaaaaaababaabbbb",
+    "b": "aaaaaabaabbbbaab",
+    "length": 16,
+    "exactToken": "-9043219960389697536",
+    "allSubstringTokens": [
+      "-1182291654236635136",
+      "-1182291653951750144",
+      "-1182291653629378560",
+      "-1182291652922376192",
+      "-1182291652235231232",
+      "-1182291652047208448",
+      "-1182291651992420352",
+      "-1182291651503128576",
+      "-1182291651319758848",
+      "-1182291651142221824",
+      "-1182291650971107328",
+      "-1182291650962063360"
+    ]
+  },
+  "boundedDomain": {
+    "alphabet": "ab",
+    "exactLength": 8,
+    "query": "aba",
+    "domainSize": 256,
+    "classes": 60,
+    "positiveCandidates": 181,
+    "certainTrue": 82,
+    "certainFalse": 0,
+    "ambiguous": 99,
+    "caveat": "Requires exhaustive enforced domain and authentic index binding; does not establish current product DB trust"
+  },
+  "exactCollision": null,
+  "integrity": {
+    "ciphertextTagBitFlipped": true,
+    "tokenCluesUnchanged": true,
+    "currentSealerRejected": true
+  },
+  "corpus": [
+    {
+      "query": "영화",
+      "op": "contains",
+      "truth": 1509,
+      "untruncatedCandidates": 1509,
+      "candidates": 1510,
+      "hashOnlyFalsePositives": 1,
+      "structuralFalsePositives": 0,
+      "falseExample": "완전; 쵝오 쵝오입니다... 완전 좋아요"
+    },
+    {
+      "query": "영화",
+      "op": "startsWith",
+      "truth": 75,
+      "untruncatedCandidates": 77,
+      "candidates": 77,
+      "hashOnlyFalsePositives": 0,
+      "structuralFalsePositives": 2,
+      "falseExample": "영국의 배경이 너무 아름다운 영화로 기억될 것 같아요"
+    },
+    {
+      "query": "영화",
+      "op": "endsWith",
+      "truth": 198,
+      "untruncatedCandidates": 199,
+      "candidates": 294,
+      "hashOnlyFalsePositives": 95,
+      "structuralFalsePositives": 1,
+      "falseExample": "너무 슬프네요. 왜 이제 알게된 영화였는지."
+    },
+    {
+      "query": "..",
+      "op": "contains",
+      "truth": 1213,
+      "untruncatedCandidates": 1213,
+      "candidates": 1213,
+      "hashOnlyFalsePositives": 0,
+      "structuralFalsePositives": 0
+    },
+    {
+      "query": "..",
+      "op": "startsWith",
+      "truth": 5,
+      "untruncatedCandidates": 5,
+      "candidates": 5,
+      "hashOnlyFalsePositives": 0,
+      "structuralFalsePositives": 0
+    },
+    {
+      "query": "..",
+      "op": "endsWith",
+      "truth": 523,
+      "untruncatedCandidates": 644,
+      "candidates": 645,
+      "hashOnlyFalsePositives": 1,
+      "structuralFalsePositives": 121,
+      "falseExample": "폴리스스토리 시리즈는 1부터 뉴까지 버릴께 하나도 없음.. 최고."
+    },
+    {
+      "query": "다.",
+      "op": "contains",
+      "truth": 1090,
+      "untruncatedCandidates": 1090,
+      "candidates": 1095,
+      "hashOnlyFalsePositives": 5,
+      "structuralFalsePositives": 0,
+      "falseExample": "강추! ㅎㅎ 전체의 틀 속에 옴니버스식으로 이야기가 진행되는게 이야기도 뭔가 코믹하면서도 생각하게 되는..ㅎㅎ 무엇보다 색감이 너무 이뻐서 감탄!! 이런 영화 또 없나요"
+    },
+    {
+      "query": "다.",
+      "op": "startsWith",
+      "truth": 0,
+      "untruncatedCandidates": 14,
+      "candidates": 17,
+      "hashOnlyFalsePositives": 3,
+      "structuralFalsePositives": 14,
+      "falseExample": "초반엔 황당한 설정이다 싶어 몰입이 힘들었지만 점차 이건 판타지가 아니라 우리의 근미래에 현실이 될지도 모르는 언론탄압에 대한 진지한 은유라는 생각이 들었다. 남자주인공 오카다 준이치는 예상보다 훨씬 좋았다. 별 기"
+    },
+    {
+      "query": "다.",
+      "op": "endsWith",
+      "truth": 497,
+      "untruncatedCandidates": 743,
+      "candidates": 744,
+      "hashOnlyFalsePositives": 1,
+      "structuralFalsePositives": 246,
+      "falseExample": "내 나이와 같은 영화를 지금 본 나는 감동적이다..하지만 훗날 다시보면대사하나하나 그 감정을완벽하게 이해할것만 같다..."
+    },
+    {
+      "query": "재밌",
+      "op": "contains",
+      "truth": 519,
+      "untruncatedCandidates": 519,
+      "candidates": 520,
+      "hashOnlyFalsePositives": 1,
+      "structuralFalsePositives": 0,
+      "falseExample": "개독교를 잘보여주고 잇다 유럽의.마녀사냥과 다르게 미국은 아주 그냥 종교 전체 전국적으로 마녀사냥한다 .지금까지도"
+    },
+    {
+      "query": "재밌",
+      "op": "startsWith",
+      "truth": 106,
+      "untruncatedCandidates": 108,
+      "candidates": 108,
+      "hashOnlyFalsePositives": 0,
+      "structuralFalsePositives": 2,
+      "falseExample": "재밋네요 달팽이가 빨라서 더 재밌었어요"
+    },
+    {
+      "query": "재밌",
+      "op": "endsWith",
+      "truth": 0,
+      "untruncatedCandidates": 0,
+      "candidates": 2,
+      "hashOnlyFalsePositives": 2,
+      "structuralFalsePositives": 0,
+      "falseExample": "난 재밌게봣는데..vudwjaqhrh shffoTs[p//"
+    },
+    {
+      "query": "니다",
+      "op": "contains",
+      "truth": 505,
+      "untruncatedCandidates": 505,
+      "candidates": 505,
+      "hashOnlyFalsePositives": 0,
+      "structuralFalsePositives": 0
+    },
+    {
+      "query": "니다",
+      "op": "startsWith",
+      "truth": 0,
+      "untruncatedCandidates": 0,
+      "candidates": 0,
+      "hashOnlyFalsePositives": 0,
+      "structuralFalsePositives": 0
+    },
+    {
+      "query": "니다",
+      "op": "endsWith",
+      "truth": 107,
+      "untruncatedCandidates": 110,
+      "candidates": 110,
+      "hashOnlyFalsePositives": 0,
+      "structuralFalsePositives": 3,
+      "falseExample": "애들이보는 영화는 아니다 전쟁이 남긴 상처 치유는 무엇인가 생각해본다"
+    },
+    {
+      "query": "정말",
+      "op": "contains",
+      "truth": 429,
+      "untruncatedCandidates": 429,
+      "candidates": 430,
+      "hashOnlyFalsePositives": 1,
+      "structuralFalsePositives": 0,
+      "falseExample": "사람이든 뭐든 겉모습만 보고 판단하지 않고 마음을 먼저 보게 되었습니다"
+    },
+    {
+      "query": "정말",
+      "op": "startsWith",
+      "truth": 149,
+      "untruncatedCandidates": 150,
+      "candidates": 150,
+      "hashOnlyFalsePositives": 0,
+      "structuralFalsePositives": 1,
+      "falseExample": "정해진 길은 없으니 현재에 충실하며 살아라. 굉장히 당연한 말을 정말 뼈저리게 느끼게해주는 영화."
+    },
+    {
+      "query": "정말",
+      "op": "endsWith",
+      "truth": 1,
+      "untruncatedCandidates": 1,
+      "candidates": 1,
+      "hashOnlyFalsePositives": 0,
+      "structuralFalsePositives": 0
+    },
+    {
+      "query": "는데",
+      "op": "contains",
+      "truth": 405,
+      "untruncatedCandidates": 405,
+      "candidates": 409,
+      "hashOnlyFalsePositives": 4,
+      "structuralFalsePositives": 0,
+      "falseExample": "굉장한기대를가지고봤음에도불구하고 전혀실망이없었다. 2시간에가까운영화인데도 지루하지않고 미소가 떠나지않는영화였다. 저런인생을살고싶다라는생각이 정말 강하게 남는 영화다"
+    },
+    {
+      "query": "는데",
+      "op": "startsWith",
+      "truth": 0,
+      "untruncatedCandidates": 0,
+      "candidates": 0,
+      "hashOnlyFalsePositives": 0,
+      "structuralFalsePositives": 0
+    },
+    {
+      "query": "는데",
+      "op": "endsWith",
+      "truth": 18,
+      "untruncatedCandidates": 21,
+      "candidates": 21,
+      "hashOnlyFalsePositives": 0,
+      "structuralFalsePositives": 3,
+      "falseExample": "재밌나요? 더빙을 보는데 ㅠ자막이더좋긴한데"
+    },
+    {
+      "query": "너무",
+      "op": "contains",
+      "truth": 385,
+      "untruncatedCandidates": 385,
+      "candidates": 385,
+      "hashOnlyFalsePositives": 0,
+      "structuralFalsePositives": 0
+    },
+    {
+      "query": "너무",
+      "op": "startsWith",
+      "truth": 81,
+      "untruncatedCandidates": 81,
+      "candidates": 81,
+      "hashOnlyFalsePositives": 0,
+      "structuralFalsePositives": 0
+    },
+    {
+      "query": "너무",
+      "op": "endsWith",
+      "truth": 0,
+      "untruncatedCandidates": 0,
+      "candidates": 0,
+      "hashOnlyFalsePositives": 0,
+      "structuralFalsePositives": 0
+    },
+    {
+      "query": "최고",
+      "op": "contains",
+      "truth": 384,
+      "untruncatedCandidates": 384,
+      "candidates": 387,
+      "hashOnlyFalsePositives": 3,
+      "structuralFalsePositives": 0,
+      "falseExample": "왜 알콜중독에 빠졌을까 의문이 들정도로 겉보기엔 안정적인데..그녀는 채울수없는 공허함과 외로움으로 마음의 아픔을 술로써 의지했던것같다..자신도 그런자신이 왜 그러는지 이유를 모르기때문에 괴로웠을것이다..그런 그녀를 "
+    },
+    {
+      "query": "최고",
+      "op": "startsWith",
+      "truth": 82,
+      "untruncatedCandidates": 84,
+      "candidates": 84,
+      "hashOnlyFalsePositives": 0,
+      "structuralFalsePositives": 2,
+      "falseExample": "최양일 감독의 최고작은 아니지만 상당한 내공을 보여주는 작품. 어둡고 차갑다"
+    },
+    {
+      "query": "최고",
+      "op": "endsWith",
+      "truth": 28,
+      "untruncatedCandidates": 28,
+      "candidates": 28,
+      "hashOnlyFalsePositives": 0,
+      "structuralFalsePositives": 0
+    },
+    {
+      "query": "네요",
+      "op": "contains",
+      "truth": 358,
+      "untruncatedCandidates": 358,
+      "candidates": 359,
+      "hashOnlyFalsePositives": 1,
+      "structuralFalsePositives": 0,
+      "falseExample": "존 그라샴 작품이라면 한번쯤은 볼가치가 있지"
+    },
+    {
+      "query": "네요",
+      "op": "startsWith",
+      "truth": 0,
+      "untruncatedCandidates": 0,
+      "candidates": 0,
+      "hashOnlyFalsePositives": 0,
+      "structuralFalsePositives": 0
+    },
+    {
+      "query": "네요",
+      "op": "endsWith",
+      "truth": 76,
+      "untruncatedCandidates": 87,
+      "candidates": 87,
+      "hashOnlyFalsePositives": 0,
+      "structuralFalsePositives": 11,
+      "falseExample": "너무너무재밌게보고있어요! 중간부터 본방사수했지만 스토리가 탄탄하고 흥미진진해서 1화부터 다찾아서 봤네요 배우들 연기도 어디하나빠지는데가없네요 요새는 수백향만챙겨봐요"
+    },
+    {
+      "query": "...",
+      "op": "contains",
+      "truth": 628,
+      "untruncatedCandidates": 633,
+      "candidates": 633,
+      "hashOnlyFalsePositives": 0,
+      "structuralFalsePositives": 5,
+      "falseExample": "14년이 지난 지금 호빗3편을 모두 보고 다시 원정대를 보고 있습니다. 와.. 진짜 엄청나게 압축된 줄거리에 다시한번 감동과 재미를 선사하는군요. 사실 그 당시엔 무진장 지루하고 이해안가는 이름과 전쟁 이야기들때문에"
+    },
+    {
+      "query": "...",
+      "op": "startsWith",
+      "truth": 3,
+      "untruncatedCandidates": 3,
+      "candidates": 3,
+      "hashOnlyFalsePositives": 0,
+      "structuralFalsePositives": 0
+    },
+    {
+      "query": "...",
+      "op": "endsWith",
+      "truth": 258,
+      "untruncatedCandidates": 357,
+      "candidates": 357,
+      "hashOnlyFalsePositives": 0,
+      "structuralFalsePositives": 99,
+      "falseExample": "마음을 파고든다.... 볼 수록 빠져드는 영화.."
+    },
+    {
+      "query": "는영화",
+      "op": "contains",
+      "truth": 294,
+      "untruncatedCandidates": 294,
+      "candidates": 294,
+      "hashOnlyFalsePositives": 0,
+      "structuralFalsePositives": 0
+    },
+    {
+      "query": "는영화",
+      "op": "startsWith",
+      "truth": 0,
+      "untruncatedCandidates": 0,
+      "candidates": 0,
+      "hashOnlyFalsePositives": 0,
+      "structuralFalsePositives": 0
+    },
+    {
+      "query": "는영화",
+      "op": "endsWith",
+      "truth": 58,
+      "untruncatedCandidates": 59,
+      "candidates": 70,
+      "hashOnlyFalsePositives": 11,
+      "structuralFalsePositives": 1,
+      "falseExample": "이 영화를 보지 않았다면 지금 당장 보도록 합시다. !!!! 정말 가득 차있는 영화 같네요. 1초도 눈을 뗄 수 없습니다. 우리는 이러한 다큐로 인해 감동을 한다는 생각이 듦. 현실을 직시할수 있는 영화네요."
+    },
+    {
+      "query": "니다.",
+      "op": "contains",
+      "truth": 289,
+      "untruncatedCandidates": 289,
+      "candidates": 289,
+      "hashOnlyFalsePositives": 0,
+      "structuralFalsePositives": 0
+    },
+    {
+      "query": "니다.",
+      "op": "startsWith",
+      "truth": 0,
+      "untruncatedCandidates": 0,
+      "candidates": 0,
+      "hashOnlyFalsePositives": 0,
+      "structuralFalsePositives": 0
+    },
+    {
+      "query": "니다.",
+      "op": "endsWith",
+      "truth": 137,
+      "untruncatedCandidates": 188,
+      "candidates": 188,
+      "hashOnlyFalsePositives": 0,
+      "structuralFalsePositives": 51,
+      "falseExample": "뮤지컬 역대 1위가 괜히 된게 아니었군요. 이건 정말이지 대부,바람과함께 사라지다 레벨의 영화입니다. 3명의 주인공은 마치 뮤지컬계의 마잭,마돈나,엘비스급의 춤과 노래실력을 보여줌."
+    },
+    {
+      "query": "습니다",
+      "op": "contains",
+      "truth": 245,
+      "untruncatedCandidates": 245,
+      "candidates": 245,
+      "hashOnlyFalsePositives": 0,
+      "structuralFalsePositives": 0
+    },
+    {
+      "query": "습니다",
+      "op": "startsWith",
+      "truth": 0,
+      "untruncatedCandidates": 0,
+      "candidates": 0,
+      "hashOnlyFalsePositives": 0,
+      "structuralFalsePositives": 0
+    },
+    {
+      "query": "습니다",
+      "op": "endsWith",
+      "truth": 44,
+      "untruncatedCandidates": 53,
+      "candidates": 53,
+      "hashOnlyFalsePositives": 0,
+      "structuralFalsePositives": 9,
+      "falseExample": "이선균 이성민씨 연기에 소름 돋을 정도였습니다. 이선균씨 1화 마지막 장면보고 이 드라마는 꼭 본방사수해서 봐야지 했는데 끝까지 잘되고 좋은 평가를 받으면서 종영되어 기쁩니다"
+    },
+    {
+      "query": "영화.",
+      "op": "contains",
+      "truth": 245,
+      "untruncatedCandidates": 245,
+      "candidates": 245,
+      "hashOnlyFalsePositives": 0,
+      "structuralFalsePositives": 0
+    },
+    {
+      "query": "영화.",
+      "op": "startsWith",
+      "truth": 0,
+      "untruncatedCandidates": 0,
+      "candidates": 0,
+      "hashOnlyFalsePositives": 0,
+      "structuralFalsePositives": 0
+    },
+    {
+      "query": "영화.",
+      "op": "endsWith",
+      "truth": 57,
+      "untruncatedCandidates": 162,
+      "candidates": 162,
+      "hashOnlyFalsePositives": 0,
+      "structuralFalsePositives": 105,
+      "falseExample": "상당히 훌륭한 영화..."
+    },
+    {
+      "query": "다..",
+      "op": "contains",
+      "truth": 241,
+      "untruncatedCandidates": 246,
+      "candidates": 246,
+      "hashOnlyFalsePositives": 0,
+      "structuralFalsePositives": 5,
+      "falseExample": "게이도 평범한사람이다. 이드라마를통해서깨닭게되서다행..."
+    },
+    {
+      "query": "다..",
+      "op": "startsWith",
+      "truth": 0,
+      "untruncatedCandidates": 4,
+      "candidates": 6,
+      "hashOnlyFalsePositives": 2,
+      "structuralFalsePositives": 4,
+      "falseExample": "다들 보지도 않으시고 1점 던지신건 아닌... 배배꼬였네요 다들..방금 직접 보고 왔습니다. 정말 재밌네요 시간 가는 줄 몰랐습니다."
+    },
+    {
+      "query": "다..",
+      "op": "endsWith",
+      "truth": 53,
+      "untruncatedCandidates": 141,
+      "candidates": 142,
+      "hashOnlyFalsePositives": 1,
+      "structuralFalsePositives": 88,
+      "falseExample": "내 나이와 같은 영화를 지금 본 나는 감동적이다..하지만 훗날 다시보면대사하나하나 그 감정을완벽하게 이해할것만 같다..."
+    },
+    {
+      "query": "재미있",
+      "op": "contains",
+      "truth": 217,
+      "untruncatedCandidates": 217,
+      "candidates": 217,
+      "hashOnlyFalsePositives": 0,
+      "structuralFalsePositives": 0
+    },
+    {
+      "query": "재미있",
+      "op": "startsWith",
+      "truth": 36,
+      "untruncatedCandidates": 37,
+      "candidates": 37,
+      "hashOnlyFalsePositives": 0,
+      "structuralFalsePositives": 1,
+      "falseExample": "재밌었어용~~ㅎㅎ쪼꼼 아쉬운 부분이 있긴 했지만 재미있었습니당~"
+    },
+    {
+      "query": "재미있",
+      "op": "endsWith",
+      "truth": 0,
+      "untruncatedCandidates": 0,
+      "candidates": 0,
+      "hashOnlyFalsePositives": 0,
+      "structuralFalsePositives": 0
+    },
+    {
+      "query": "이영화",
+      "op": "contains",
+      "truth": 204,
+      "untruncatedCandidates": 204,
+      "candidates": 204,
+      "hashOnlyFalsePositives": 0,
+      "structuralFalsePositives": 0
+    },
+    {
+      "query": "이영화",
+      "op": "startsWith",
+      "truth": 67,
+      "untruncatedCandidates": 70,
+      "candidates": 70,
+      "hashOnlyFalsePositives": 0,
+      "structuralFalsePositives": 3,
+      "falseExample": "이준이 영화를 살렸다.. 마지막쪽에 가서는 좀 집중하긴 어려웠지만 이준이 잘 끌고갔음"
+    },
+    {
+      "query": "이영화",
+      "op": "endsWith",
+      "truth": 3,
+      "untruncatedCandidates": 8,
+      "candidates": 26,
+      "hashOnlyFalsePositives": 18,
+      "structuralFalsePositives": 5,
+      "falseExample": "남성동성애자의 고민을 알수 있어 좋았습니다.이 사회의 성적소수자이고 편견없이 사랑으로 감싸주고 포용해주어야할 이성애자와 동등한 인간이라는 생각을 이 영화를 통해 알게되네요.게이의 아픔이 좀 울컥하네요."
+    },
+    {
+      "query": "드라마",
+      "op": "contains",
+      "truth": 166,
+      "untruncatedCandidates": 166,
+      "candidates": 166,
+      "hashOnlyFalsePositives": 0,
+      "structuralFalsePositives": 0
+    },
+    {
+      "query": "드라마",
+      "op": "startsWith",
+      "truth": 5,
+      "untruncatedCandidates": 5,
+      "candidates": 5,
+      "hashOnlyFalsePositives": 0,
+      "structuralFalsePositives": 0
+    },
+    {
+      "query": "드라마",
+      "op": "endsWith",
+      "truth": 16,
+      "untruncatedCandidates": 16,
+      "candidates": 16,
+      "hashOnlyFalsePositives": 0,
+      "structuralFalsePositives": 0
+    },
+    {
+      "query": "최고의",
+      "op": "contains",
+      "truth": 149,
+      "untruncatedCandidates": 149,
+      "candidates": 149,
+      "hashOnlyFalsePositives": 0,
+      "structuralFalsePositives": 0
+    },
+    {
+      "query": "최고의",
+      "op": "startsWith",
+      "truth": 39,
+      "untruncatedCandidates": 39,
+      "candidates": 39,
+      "hashOnlyFalsePositives": 0,
+      "structuralFalsePositives": 0
+    },
+    {
+      "query": "최고의",
+      "op": "endsWith",
+      "truth": 0,
+      "untruncatedCandidates": 0,
+      "candidates": 0,
+      "hashOnlyFalsePositives": 0,
+      "structuralFalsePositives": 0
+    }
+  ]
+}

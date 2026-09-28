@@ -1,0 +1,20 @@
+{
+  "n": 20000,
+  "rounds": 3,
+  "node": "v24.18.0",
+  "unit": "us per operation, median of rounds",
+  "results": {
+    "webcrypto gcm decrypt 60B sequential": 34.83,
+    "webcrypto gcm decrypt 60B concurrency 8": 18.12,
+    "webcrypto gcm decrypt 60B concurrency 64": 17.63,
+    "node:crypto gcm decrypt 60B sync": 31.92,
+    "webcrypto gcm decrypt 600B sequential": 35.01,
+    "webcrypto gcm decrypt 600B concurrency 8": 18.26,
+    "webcrypto gcm decrypt 600B concurrency 64": 16.78,
+    "node:crypto gcm decrypt 600B sync": 32.43,
+    "webcrypto hmac-sha384 48B sequential": 24.25,
+    "webcrypto hmac-sha384 48B concurrency 64": 7.87,
+    "node:crypto hmac-sha384 48B sync": 31.75
+  },
+  "note": "In-process micro-benchmark; excludes SQL, network, and row assembly. Product path uses WebCrypto (Node 22 and Workers)."
+}

@@ -1,0 +1,177 @@
+{
+  "rows": 100000,
+  "distinctPieceLabels": 373147,
+  "queriesPerCase": 300,
+  "seed": 20260928,
+  "cases": [
+    {
+      "op": "contains",
+      "length": 2,
+      "queries": 300,
+      "trueTotal": 349200,
+      "candInf": 349200,
+      "cand16": 372403,
+      "fpQueriesInf": 0,
+      "fpQueries16": 299,
+      "ratioInfMedian": 1,
+      "ratio16Median": 1.169291338582677,
+      "structuralShare": 0
+    },
+    {
+      "op": "contains",
+      "length": 3,
+      "queries": 300,
+      "trueTotal": 85434,
+      "candInf": 85669,
+      "cand16": 85693,
+      "fpQueriesInf": 18,
+      "fpQueries16": 22,
+      "ratioInfMedian": 1,
+      "ratio16Median": 1,
+      "structuralShare": 0.9073359073359073
+    },
+    {
+      "op": "contains",
+      "length": 4,
+      "queries": 300,
+      "trueTotal": 25884,
+      "candInf": 38463,
+      "cand16": 38471,
+      "fpQueriesInf": 44,
+      "fpQueries16": 44,
+      "ratioInfMedian": 1,
+      "ratio16Median": 1,
+      "structuralShare": 0.9993644236116628
+    },
+    {
+      "op": "contains",
+      "length": 5,
+      "queries": 300,
+      "trueTotal": 6568,
+      "candInf": 9109,
+      "cand16": 9109,
+      "fpQueriesInf": 34,
+      "fpQueries16": 34,
+      "ratioInfMedian": 1,
+      "ratio16Median": 1,
+      "structuralShare": 1
+    },
+    {
+      "op": "contains",
+      "length": 6,
+      "queries": 300,
+      "trueTotal": 2942,
+      "candInf": 4310,
+      "cand16": 4314,
+      "fpQueriesInf": 24,
+      "fpQueries16": 25,
+      "ratioInfMedian": 1,
+      "ratio16Median": 1,
+      "structuralShare": 0.9970845481049563
+    },
+    {
+      "op": "endsWith",
+      "length": 3,
+      "queries": 300,
+      "trueTotal": 34367,
+      "candInf": 53911,
+      "cand16": 53998,
+      "fpQueriesInf": 182,
+      "fpQueries16": 186,
+      "ratioInfMedian": 1.125,
+      "ratio16Median": 1.1311475409836065,
+      "structuralShare": 0.9955682339157456
+    },
+    {
+      "op": "startsWith",
+      "length": 3,
+      "queries": 300,
+      "trueTotal": 13737,
+      "candInf": 14509,
+      "cand16": 14569,
+      "fpQueriesInf": 114,
+      "fpQueries16": 117,
+      "ratioInfMedian": 1,
+      "ratio16Median": 1,
+      "structuralShare": 0.9278846153846154
+    },
+    {
+      "op": "contains",
+      "length": 8,
+      "queries": 300,
+      "trueTotal": 692,
+      "candInf": 3641,
+      "cand16": 3645,
+      "fpQueriesInf": 6,
+      "fpQueries16": 6,
+      "ratioInfMedian": 1,
+      "ratio16Median": 1,
+      "structuralShare": 0.9986454453098544
+    }
+  ],
+  "eqSetEquality": {
+    "pieceSetGroups": 97351,
+    "groupsWithDistinctValues": 90,
+    "ofWhichSameLengthPairExists": 0,
+    "examples": [
+      [
+        "ㅎㅎㅎㅎㅎㅎㅎㅎ",
+        "ㅎㅎㅎㅎ",
+        "ㅎㅎㅎ"
+      ],
+      [
+        "goodgoodgoodgoodgoodgoodgood",
+        "goodgoodgood",
+        "goodgoodgoodgood"
+      ],
+      [
+        "좋다....",
+        "좋다..."
+      ],
+      [
+        "슬프다...",
+        "슬프다........."
+      ],
+      [
+        "최고!!!!!!!!!!!!!!!!",
+        "최고!!!",
+        "최고!!!!!!!!!!!!!!!!!!"
+      ],
+      [
+        "좋아좋아",
+        "좋아좋아좋아",
+        "좋아좋아좋아좋아좋아좋아"
+      ],
+      [
+        "...",
+        ".......",
+        ".........."
+      ],
+      [
+        "하하하",
+        "하하하하하하하하하하하하하하하하"
+      ]
+    ]
+  },
+  "counterexamples": [
+    {
+      "v1": "abXcabYcabXc",
+      "v2": "abYcabXcabYc",
+      "q": "XcabX",
+      "sameLength": true,
+      "samePieceSet": true,
+      "qPiecesInV1": true,
+      "v1ContainsQ": false
+    },
+    {
+      "v1": "가나다라가나마라가나다라",
+      "v2": "가나마라가나다라가나마라",
+      "q": "다라가나다",
+      "sameLength": true,
+      "samePieceSet": true,
+      "qPiecesInV1": true,
+      "v1ContainsQ": false
+    }
+  ],
+  "note": "In-memory NSMC simulation; 16-bit tokens are HMAC-SHA-384 truncations with a random key (product width, no scope prefix). candInf uses collision-free piece labels, so candInf - true is purely structural."
+}
