@@ -1,0 +1,196 @@
+{
+  "reviewedOn": "2026-09-29",
+  "sealqlCommit": "7c14bda",
+  "method": "Official documentation and primary research review; no external-product execution or new attack experiment.",
+  "sources": [
+    {
+      "id": "C1",
+      "title": "CipherStash EQL: Core concepts",
+      "url": "https://cipherstash.com/docs/reference/eql/core-concepts",
+      "sourceType": "official-documentation",
+      "versionContext": "3.0.4",
+      "reviewedSections": "Index-term keys",
+      "accessedOn": "2026-09-29"
+    },
+    {
+      "id": "C2",
+      "title": "CipherStash EQL: Text",
+      "url": "https://cipherstash.com/docs/reference/eql/text",
+      "sourceType": "official-documentation",
+      "versionContext": "3.0.4",
+      "reviewedSections": "Fuzzy match; blockers",
+      "accessedOn": "2026-09-29"
+    },
+    {
+      "id": "C3",
+      "title": "CipherStash EQL: Grouping and aggregates",
+      "url": "https://cipherstash.com/docs/reference/eql/grouping-and-aggregates",
+      "sourceType": "official-documentation",
+      "versionContext": "3.0.4",
+      "reviewedSections": "COUNT; grouping",
+      "accessedOn": "2026-09-29"
+    },
+    {
+      "id": "C4",
+      "title": "CipherStash: Searchable encryption",
+      "url": "https://cipherstash.com/docs/concepts/searchable-encryption",
+      "sourceType": "official-documentation",
+      "versionContext": "2026-08-31 page update",
+      "reviewedSections": "Searchable metadata",
+      "accessedOn": "2026-09-29"
+    },
+    {
+      "id": "W1",
+      "title": "AWS: Searchable encryption",
+      "url": "https://docs.aws.amazon.com/database-encryption-sdk/latest/devguide/searchable-encryption.html",
+      "sourceType": "official-documentation",
+      "versionContext": "latest at retrieval",
+      "reviewedSections": "Security considerations; filtering",
+      "accessedOn": "2026-09-29"
+    },
+    {
+      "id": "W2",
+      "title": "AWS: Beacons",
+      "url": "https://docs.aws.amazon.com/database-encryption-sdk/latest/devguide/beacons.html",
+      "sourceType": "official-documentation",
+      "versionContext": "latest at retrieval",
+      "reviewedSections": "Partitions; virtual fields",
+      "accessedOn": "2026-09-29"
+    },
+    {
+      "id": "W3",
+      "title": "AWS: Using beacons",
+      "url": "https://docs.aws.amazon.com/database-encryption-sdk/latest/devguide/using-beacons.html",
+      "sourceType": "official-documentation",
+      "versionContext": "latest at retrieval",
+      "reviewedSections": "Compound beacon query rules",
+      "accessedOn": "2026-09-29"
+    },
+    {
+      "id": "M1",
+      "title": "MongoDB: Queryable Encryption Features",
+      "url": "https://www.mongodb.com/docs/manual/core/queryable-encryption/features/",
+      "sourceType": "official-documentation",
+      "versionContext": "manual marked 8.3",
+      "reviewedSections": "Security comparison; warning",
+      "accessedOn": "2026-09-29"
+    },
+    {
+      "id": "M2",
+      "title": "An Overview of Queryable Encryption",
+      "url": "https://cdn.bfldr.com/2URK6TO/as/64kp46t53v34xw37gkngbrg/An_Overview_of_Queryable_Encryption",
+      "sourceType": "vendor-design-whitepaper",
+      "versionContext": "2024-09-30",
+      "reviewedSections": "Sections 6, 7, 9.3",
+      "accessedOn": "2026-09-29"
+    },
+    {
+      "id": "M3",
+      "title": "MongoDB: Encrypt and Query Data",
+      "url": "https://www.mongodb.com/docs/manual/core/queryable-encryption/fundamentals/encrypt-and-query/",
+      "sourceType": "official-documentation",
+      "versionContext": "8.2 Public Preview notice in current manual",
+      "reviewedSections": "Substring configuration; warnings",
+      "accessedOn": "2026-09-29"
+    },
+    {
+      "id": "M4",
+      "title": "MongoDB: $encStrContains",
+      "url": "https://www.mongodb.com/docs/v8.2/reference/operator/aggregation/encStrContains/",
+      "sourceType": "official-documentation",
+      "versionContext": "8.2",
+      "reviewedSections": "Behavior; aggregation example",
+      "accessedOn": "2026-09-29"
+    },
+    {
+      "id": "M5",
+      "title": "MongoDB: Supported Operations",
+      "url": "https://www.mongodb.com/docs/manual/core/queryable-encryption/reference/supported-operations/",
+      "sourceType": "official-documentation",
+      "versionContext": "current manual",
+      "reviewedSections": "Commands; aggregation stages",
+      "accessedOn": "2026-09-29"
+    },
+    {
+      "id": "A1",
+      "title": "Acra: Searchable encryption",
+      "url": "https://docs.cossacklabs.com/acra/security-controls/searchable-encryption/",
+      "sourceType": "official-documentation",
+      "versionContext": "EE prefix since 0.94; current docs",
+      "reviewedSections": "Query rewrite; prefix; limitations",
+      "accessedOn": "2026-09-29"
+    },
+    {
+      "id": "I1",
+      "title": "IronCore: Cloaked Search Security FAQ",
+      "url": "https://ironcorelabs.com/docs/cloaked-search/faq/",
+      "sourceType": "official-documentation",
+      "versionContext": "current at retrieval",
+      "reviewedSections": "Leakage and mitigation",
+      "accessedOn": "2026-09-29"
+    },
+    {
+      "id": "I2",
+      "title": "IronCore: N-gram token filter",
+      "url": "https://ironcorelabs.com/docs/cloaked-search/configuration/token-filters/ngram/",
+      "sourceType": "official-documentation",
+      "versionContext": "current at retrieval",
+      "reviewedSections": "Configuration",
+      "accessedOn": "2026-09-29"
+    },
+    {
+      "id": "I3",
+      "title": "IronCore: Edge N-gram token filter",
+      "url": "https://ironcorelabs.com/docs/cloaked-search/configuration/token-filters/edge-ngram/",
+      "sourceType": "official-documentation",
+      "versionContext": "current at retrieval",
+      "reviewedSections": "Configuration",
+      "accessedOn": "2026-09-29"
+    },
+    {
+      "id": "I4",
+      "title": "IronCore: Reverse token filter",
+      "url": "https://ironcorelabs.com/docs/cloaked-search/configuration/token-filters/reverse/",
+      "sourceType": "official-documentation",
+      "versionContext": "current at retrieval",
+      "reviewedSections": "Suffix configuration",
+      "accessedOn": "2026-09-29"
+    },
+    {
+      "id": "S1",
+      "title": "CipherSweet: Security",
+      "url": "https://ciphersweet.paragonie.com/security",
+      "sourceType": "official-documentation",
+      "versionContext": "current at retrieval",
+      "reviewedSections": "Threat model; blind indexes",
+      "accessedOn": "2026-09-29"
+    },
+    {
+      "id": "S2",
+      "title": "CipherSweet: FAQ",
+      "url": "https://ciphersweet.paragonie.com/faq",
+      "sourceType": "official-documentation",
+      "versionContext": "current at retrieval",
+      "reviewedSections": "False positives; application filtering",
+      "accessedOn": "2026-09-29"
+    },
+    {
+      "id": "T1",
+      "title": "Microsoft: Always Encrypted with secure enclaves",
+      "url": "https://learn.microsoft.com/en-us/sql/relational-databases/security/encryption/always-encrypted-enclaves?view=sql-server-ver17",
+      "sourceType": "official-documentation",
+      "versionContext": "SQL Server v17 view",
+      "reviewedSections": "Confidential queries; indexes; limitations",
+      "accessedOn": "2026-09-29"
+    },
+    {
+      "id": "P1",
+      "title": "Security Analysis of MongoDB Queryable Encryption",
+      "url": "https://www.usenix.org/conference/usenixsecurity23/presentation/gui",
+      "sourceType": "peer-reviewed-primary-research",
+      "versionContext": "USENIX Security 2023",
+      "reviewedSections": "2022 QE analysis; historical scope",
+      "accessedOn": "2026-09-29"
+    }
+  ]
+}
