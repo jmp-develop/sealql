@@ -1,0 +1,14 @@
+import type {Pool} from 'pg';
+import {schema,scope,quote,cloneId,assert,save,locked,status} from './common.js';
+export async function cloneMillion(pool:Pool,progress:any){await locked(async()=>{
+ const started=performance.now();progress.phase='sql-clone';save('progress',progress);status('SQL복제 시작','공개API10만 기준 측정 완료; 부모·검색표·평문을 새 결정적ID로9회 복제하며 도장·salt·토큰을 보존합니다.');
+ await pool.query(`create table ${schema}.base_ids(id uuid primary key)`);await pool.query(`insert into ${schema}.base_ids select id from ${schema}.customers`);
+ const indexes=(await pool.query(`select c.relname indexname,pg_get_indexdef(c.oid) indexdef from pg_index i join pg_class c on c.oid=i.indexrelid join pg_namespace n on n.oid=c.relnamespace where n.nspname=$1 and not i.indisunique and not i.indisprimary order by c.relname`,[schema])).rows;save('clone-indexes',indexes);
+ for(const idx of indexes)await pool.query(`drop index ${quote(schema)}.${quote(idx.indexname)}`);
+ for(const table of ['customers','customers_seal_index','customers_plain']){const id=table==='customers_seal_index'?'row_id':'id',columns=(await pool.query('select attname from pg_attribute where attrelid=$1::regclass and attnum>0 and not attisdropped order by attnum',[schema+'.'+table])).rows.map(r=>r.attname);await pool.query(`insert into ${schema}.${table}(${columns.map(quote).join(',')}) select ${columns.map(c=>c===id?cloneId('b.'+quote(id),'g.rep'):'b.'+quote(c)).join(',')} from ${schema}.${table} b join ${schema}.base_ids ids on ids.id=b.${quote(id)} cross join generate_series(1,9) g(rep)`);progress.clonedTable=table;progress.cloneElapsedMs=performance.now()-started;save('progress',progress);console.log(JSON.stringify({cloned:table,elapsedMs:progress.cloneElapsedMs}));
+  const other=columns.filter(c=>c!==id),equal=other.map(c=>'c.'+quote(c)).join(','),base=other.map(c=>'b.'+quote(c)).join(',');assert.equal((await pool.query(`select count(*)::int n from (select id from ${schema}.base_ids order by id limit 100) ids join ${schema}.${table} b on b.${quote(id)}=ids.id cross join generate_series(1,9) g(rep) join ${schema}.${table} c on c.${quote(id)}=${cloneId('ids.id','g.rep')} where row(${equal}) is distinct from row(${base})`)).rows[0].n,0);
+ }
+ for(const idx of indexes)await pool.query(idx.indexdef);
+ for(const table of ['customers','customers_seal_index','customers_plain']){await pool.query(`vacuum analyze ${schema}.${table}`);assert.equal((await pool.query(`select count(*)::int n from ${schema}.${table} where scope_id=$1`,[scope])).rows[0].n,1000000);}
+ progress.cloneElapsedMs=performance.now()-started;progress.cloneComplete=true;progress.phase='million-count';save('progress',progress);status('100만 복제·VACUUM 완료',`3개 표 각100만행, 표마다900개 파생행의 모든 비ID 값 일치 검증 완료; 복제·색인·VACUUM ${Math.round(progress.cloneElapsedMs/1000)}초, 이제100만 count 측정입니다.`);
+ });}

@@ -1,0 +1,78 @@
+[
+  {
+    "indexname": "customers_plain_address_norm_idx",
+    "indexdef": "CREATE INDEX customers_plain_address_norm_idx ON test_scale_count_million_v_astra.customers_plain USING btree (address_norm)"
+  },
+  {
+    "indexname": "customers_plain_address_norm_idx1",
+    "indexdef": "CREATE INDEX customers_plain_address_norm_idx1 ON test_scale_count_million_v_astra.customers_plain USING gin (address_norm gin_trgm_ops)"
+  },
+  {
+    "indexname": "customers_plain_company_norm_idx",
+    "indexdef": "CREATE INDEX customers_plain_company_norm_idx ON test_scale_count_million_v_astra.customers_plain USING btree (company_norm)"
+  },
+  {
+    "indexname": "customers_plain_company_norm_idx1",
+    "indexdef": "CREATE INDEX customers_plain_company_norm_idx1 ON test_scale_count_million_v_astra.customers_plain USING gin (company_norm gin_trgm_ops)"
+  },
+  {
+    "indexname": "customers_plain_email_norm_idx",
+    "indexdef": "CREATE INDEX customers_plain_email_norm_idx ON test_scale_count_million_v_astra.customers_plain USING btree (email_norm)"
+  },
+  {
+    "indexname": "customers_plain_email_norm_idx1",
+    "indexdef": "CREATE INDEX customers_plain_email_norm_idx1 ON test_scale_count_million_v_astra.customers_plain USING gin (email_norm gin_trgm_ops)"
+  },
+  {
+    "indexname": "customers_plain_memo_norm_idx",
+    "indexdef": "CREATE INDEX customers_plain_memo_norm_idx ON test_scale_count_million_v_astra.customers_plain USING btree (memo_norm)"
+  },
+  {
+    "indexname": "customers_plain_memo_norm_idx1",
+    "indexdef": "CREATE INDEX customers_plain_memo_norm_idx1 ON test_scale_count_million_v_astra.customers_plain USING gin (memo_norm gin_trgm_ops)"
+  },
+  {
+    "indexname": "customers_plain_name_norm_idx",
+    "indexdef": "CREATE INDEX customers_plain_name_norm_idx ON test_scale_count_million_v_astra.customers_plain USING btree (name_norm)"
+  },
+  {
+    "indexname": "customers_plain_name_norm_idx1",
+    "indexdef": "CREATE INDEX customers_plain_name_norm_idx1 ON test_scale_count_million_v_astra.customers_plain USING gin (name_norm gin_trgm_ops)"
+  },
+  {
+    "indexname": "customers_plain_phone_norm_idx",
+    "indexdef": "CREATE INDEX customers_plain_phone_norm_idx ON test_scale_count_million_v_astra.customers_plain USING btree (phone_norm)"
+  },
+  {
+    "indexname": "customers_plain_phone_norm_idx1",
+    "indexdef": "CREATE INDEX customers_plain_phone_norm_idx1 ON test_scale_count_million_v_astra.customers_plain USING gin (phone_norm gin_trgm_ops)"
+  },
+  {
+    "indexname": "seal_411905c9deef5c59_bt",
+    "indexdef": "CREATE INDEX seal_411905c9deef5c59_bt ON test_scale_count_million_v_astra.customers_seal_index USING btree (scope_id, (tokens_cd3096c7a3cd42c2[1]), row_id, eq_salt_cd3096c7a3cd42c2, eq_stamp_cd3096c7a3cd42c2, tokens_cd3096c7a3cd42c2)"
+  },
+  {
+    "indexname": "seal_4c8e2d2bddde3451_bt",
+    "indexdef": "CREATE INDEX seal_4c8e2d2bddde3451_bt ON test_scale_count_million_v_astra.customers_seal_index USING btree (scope_id, (tokens_a106c26102b707f0[1]), row_id, eq_salt_a106c26102b707f0, eq_stamp_a106c26102b707f0, tokens_a106c26102b707f0)"
+  },
+  {
+    "indexname": "seal_62e346c0ef994072_bt",
+    "indexdef": "CREATE INDEX seal_62e346c0ef994072_bt ON test_scale_count_million_v_astra.customers_seal_index USING btree (scope_id, (tokens_c44ae523cca61a0b[1]), row_id, eq_salt_c44ae523cca61a0b, eq_stamp_c44ae523cca61a0b, tokens_c44ae523cca61a0b)"
+  },
+  {
+    "indexname": "seal_8fa11f16c3da1ad8_bt",
+    "indexdef": "CREATE INDEX seal_8fa11f16c3da1ad8_bt ON test_scale_count_million_v_astra.customers_seal_index USING btree (scope_id, (tokens_1c32fdad5d1c8367[1]), row_id, eq_salt_1c32fdad5d1c8367, eq_stamp_1c32fdad5d1c8367, tokens_1c32fdad5d1c8367)"
+  },
+  {
+    "indexname": "seal_ae59b15a89e931d6_bt",
+    "indexdef": "CREATE INDEX seal_ae59b15a89e931d6_bt ON test_scale_count_million_v_astra.customers_seal_index USING btree (scope_id, (tokens_c5133b3810f23103[1]), row_id, eq_salt_c5133b3810f23103, eq_stamp_c5133b3810f23103, tokens_c5133b3810f23103)"
+  },
+  {
+    "indexname": "seal_dfa387787f59f02a_bt",
+    "indexdef": "CREATE INDEX seal_dfa387787f59f02a_bt ON test_scale_count_million_v_astra.customers_seal_index USING btree (scope_id, (tokens_988d248ff4b71bf7[1]), row_id, eq_salt_988d248ff4b71bf7, eq_stamp_988d248ff4b71bf7, tokens_988d248ff4b71bf7)"
+  },
+  {
+    "indexname": "seal_e66dc2708e915b65_gin",
+    "indexdef": "CREATE INDEX seal_e66dc2708e915b65_gin ON test_scale_count_million_v_astra.customers_seal_index USING gin (tokens_792d75cf01821d67, tokens_1127994ab736baf4, tokens_ef1d32a52e2ce103, tokens_a639b11c8130dcf7, tokens_f289b89d86c7086a, tokens_7a1d2ba5ce2368fb)"
+  }
+]
