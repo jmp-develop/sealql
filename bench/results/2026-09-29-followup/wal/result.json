@@ -1,0 +1,1628 @@
+{
+  "started": "2026-09-29T12:13:00.091Z",
+  "schema": "test_followup_wal_astra",
+  "sourceRows": 64,
+  "insertedRows": 32,
+  "phases": [
+    {
+      "name": "insert32",
+      "start": "109/8C1B7E0",
+      "end": "109/8C5C500",
+      "ownRecords": 448,
+      "descriptions": {
+        "INSERT+INIT off: 1": 13,
+        "INSERT off: 2": 13,
+        "INSERT off: 3": 12,
+        "INSERT off: 4": 2,
+        "INSERT off: 5": 2,
+        "INSERT off: 6": 2,
+        "INSERT off: 7": 2,
+        "INSERT off: 8": 2,
+        "INSERT off: 9": 2,
+        "INSERT off: 10": 2,
+        "INSERT off: 11": 2,
+        "INSERT off: 12": 1,
+        "INSERT off: 13": 1,
+        "INSERT off: 14": 1,
+        "INSERT off: 15": 1,
+        "INSERT off: 16": 1,
+        "INSERT off: 17": 1,
+        "INSERT off: 18": 1,
+        "INSERT off: 19": 1,
+        "INSERT off: 20": 1,
+        "INSERT off: 21": 1,
+        "FPI_FOR_HINT ": 2,
+        "LOCK xmax: 1017431": 32,
+        "NEWROOT level: 0": 9,
+        "INSERT_LEAF off: 1": 27,
+        "INSERT_LEAF off: 2": 24,
+        "INSERT_LEAF off: 3": 15,
+        "INSERT_LEAF off: 4": 15,
+        "INSERT_LEAF off: 5": 11,
+        "INSERT_LEAF off: 6": 17,
+        "INSERT_LEAF off: 7": 18,
+        "INSERT_LEAF off: 8": 12,
+        "INSERT_LEAF off: 9": 11,
+        "INSERT_LEAF off: 10": 13,
+        "INSERT_LEAF off: 11": 9,
+        "INSERT_LEAF off: 12": 9,
+        "INSERT_LEAF off: 13": 10,
+        "INSERT_LEAF off: 14": 10,
+        "INSERT_LEAF off: 15": 7,
+        "INSERT_LEAF off: 16": 9,
+        "INSERT_LEAF off: 17": 5,
+        "INSERT_LEAF off: 18": 4,
+        "INSERT_LEAF off: 19": 4,
+        "INSERT_LEAF off: 20": 4,
+        "INSERT_LEAF off: 21": 8,
+        "INSERT_LEAF off: 22": 3,
+        "INSERT_LEAF off: 23": 6,
+        "INSERT_LEAF off: 24": 4,
+        "INSERT_LEAF off: 25": 5,
+        "INSERT_LEAF off: 26": 6,
+        "INSERT_LEAF off: 27": 5,
+        "INSERT_LEAF off: 28": 4,
+        "INSERT_LEAF off: 29": 4,
+        "INSERT_LEAF off: 30": 3,
+        "INSERT_LEAF off: 31": 3,
+        "INSERT_LEAF off: 32": 3,
+        "INSERT_LISTPAGE ": 21,
+        "UPDATE_META_PAGE ": 32
+      },
+      "rawPlaintextHits": 0,
+      "queryKeyHits": 0,
+      "phaseOnlyEvidence": {
+        "ciphertext": {
+          "tested": 192,
+          "rawHits": 192,
+          "withPglzHits": 192
+        },
+        "ciphertextBodyAndTag": {
+          "tested": 192,
+          "rawHits": 192,
+          "withPglzHits": 192
+        },
+        "tokenArray": {
+          "tested": 384,
+          "rawHits": 192,
+          "withPglzHits": 384
+        },
+        "salt": {
+          "tested": 384,
+          "rawHits": 384,
+          "withPglzHits": 384
+        },
+        "exactStamp": {
+          "tested": 192,
+          "rawHits": 192,
+          "withPglzHits": 192
+        },
+        "stampArray": {
+          "tested": 192,
+          "rawHits": 192,
+          "withPglzHits": 192
+        },
+        "offsetArray": {
+          "tested": 192,
+          "rawHits": 173,
+          "withPglzHits": 192
+        }
+      }
+    },
+    {
+      "name": "fullpage_rewrite",
+      "start": "109/8C5C500",
+      "end": "109/8C9C7E8",
+      "ownRecords": 14,
+      "descriptions": {
+        "FPI ": 14
+      },
+      "rawPlaintextHits": 0,
+      "queryKeyHits": 0,
+      "phaseOnlyEvidence": {
+        "ciphertext": {
+          "tested": 192,
+          "rawHits": 192,
+          "withPglzHits": 192
+        },
+        "ciphertextBodyAndTag": {
+          "tested": 192,
+          "rawHits": 192,
+          "withPglzHits": 192
+        },
+        "tokenArray": {
+          "tested": 384,
+          "rawHits": 192,
+          "withPglzHits": 384
+        },
+        "salt": {
+          "tested": 384,
+          "rawHits": 384,
+          "withPglzHits": 384
+        },
+        "exactStamp": {
+          "tested": 192,
+          "rawHits": 192,
+          "withPglzHits": 192
+        },
+        "stampArray": {
+          "tested": 192,
+          "rawHits": 192,
+          "withPglzHits": 192
+        },
+        "offsetArray": {
+          "tested": 192,
+          "rawHits": 173,
+          "withPglzHits": 192
+        }
+      }
+    },
+    {
+      "name": "update8",
+      "start": "109/8C9C7E8",
+      "end": "109/8CABAA0",
+      "ownRecords": 128,
+      "descriptions": {
+        "LOCK xmax: 1017434": 3,
+        "UPDATE old_xmax: 1017434": 2,
+        "PRUNE_ON_ACCESS snapshotConflictHorizon: 1017434": 2,
+        "HOT_UPDATE old_xmax: 1017435": 1,
+        "PRUNE_ON_ACCESS snapshotConflictHorizon: 1017435": 2,
+        "HOT_UPDATE old_xmax: 1017436": 1,
+        "PRUNE_ON_ACCESS snapshotConflictHorizon: 1017436": 2,
+        "HOT_UPDATE old_xmax: 1017437": 1,
+        "PRUNE_ON_ACCESS snapshotConflictHorizon: 1017437": 2,
+        "HOT_UPDATE old_xmax: 1017438": 1,
+        "PRUNE_ON_ACCESS snapshotConflictHorizon: 1017438": 1,
+        "HOT_UPDATE old_xmax: 1017439": 1,
+        "PRUNE_ON_ACCESS snapshotConflictHorizon: 1017439": 2,
+        "HOT_UPDATE old_xmax: 1017440": 1,
+        "PRUNE_ON_ACCESS snapshotConflictHorizon: 1017440": 2,
+        "HOT_UPDATE old_xmax: 1017441": 1,
+        "PRUNE_ON_ACCESS snapshotConflictHorizon: 1017441": 2,
+        "INSERT_LEAF off: 2": 5,
+        "LOCK xmax: 1017435": 2,
+        "UPDATE old_xmax: 1017435": 1,
+        "LOCK xmax: 1017436": 2,
+        "UPDATE old_xmax: 1017436": 1,
+        "LOCK xmax: 1017437": 2,
+        "FPI_FOR_HINT ": 1,
+        "UPDATE+INIT old_xmax: 1017437": 1,
+        "LOCK xmax: 1017438": 2,
+        "UPDATE old_xmax: 1017438": 1,
+        "LOCK xmax: 1017439": 2,
+        "UPDATE old_xmax: 1017439": 1,
+        "LOCK xmax: 1017440": 2,
+        "UPDATE old_xmax: 1017440": 1,
+        "LOCK xmax: 1017441": 2,
+        "UPDATE old_xmax: 1017441": 1,
+        "INSERT_LEAF off: 4": 5,
+        "INSERT_LEAF off: 6": 3,
+        "INSERT_LEAF off: 8": 4,
+        "INSERT_LEAF off: 10": 2,
+        "INSERT_LEAF off: 12": 2,
+        "INSERT_LEAF off: 14": 4,
+        "INSERT_LEAF off: 16": 3,
+        "INSERT_LEAF off: 26": 3,
+        "INSERT_LEAF off: 9": 2,
+        "INSERT_LEAF off: 25": 3,
+        "INSERT_LEAF off: 13": 1,
+        "INSERT_LEAF off: 24": 3,
+        "INSERT_LEAF off: 5": 2,
+        "INSERT_LEAF off: 7": 1,
+        "INSERT_LEAF off: 17": 2,
+        "INSERT_LEAF off: 22": 2,
+        "INSERT_LEAF off: 27": 1,
+        "INSERT_LEAF off: 21": 2,
+        "INSERT_LEAF off: 18": 1,
+        "INSERT_LEAF off: 32": 1,
+        "INSERT_LEAF off: 15": 1,
+        "INSERT_LEAF off: 19": 1,
+        "INSERT_LEAF off: 3": 1,
+        "INSERT_LEAF off: 36": 1,
+        "INSERT_LEAF off: 23": 1,
+        "INSERT_LEAF off: 34": 1,
+        "INSERT_LEAF off: 31": 2,
+        "INSERT_LEAF off: 30": 2,
+        "INSERT_LEAF off: 37": 1,
+        "INSERT_LEAF off: 20": 1,
+        "INSERT_LEAF off: 11": 1,
+        "INSERT_LISTPAGE ": 6,
+        "UPDATE_META_PAGE ": 8
+      },
+      "rawPlaintextHits": 0,
+      "queryKeyHits": 0,
+      "phaseOnlyEvidence": {
+        "ciphertext": {
+          "tested": 8,
+          "rawHits": 4,
+          "withPglzHits": 4
+        },
+        "ciphertextBodyAndTag": {
+          "tested": 8,
+          "rawHits": 7,
+          "withPglzHits": 7
+        },
+        "tokenArray": {
+          "tested": 16,
+          "rawHits": 8,
+          "withPglzHits": 16
+        },
+        "salt": {
+          "tested": 16,
+          "rawHits": 16,
+          "withPglzHits": 16
+        },
+        "exactStamp": {
+          "tested": 8,
+          "rawHits": 8,
+          "withPglzHits": 8
+        },
+        "stampArray": {
+          "tested": 8,
+          "rawHits": 8,
+          "withPglzHits": 8
+        },
+        "offsetArray": {
+          "tested": 8,
+          "rawHits": 6,
+          "withPglzHits": 6
+        }
+      }
+    },
+    {
+      "name": "delete8",
+      "start": "109/8CABAA0",
+      "end": "109/8CABFD0",
+      "ownRecords": 18,
+      "descriptions": {
+        "DELETE xmax: 1017442": 2,
+        "PRUNE_ON_ACCESS snapshotConflictHorizon: 1017442": 1,
+        "DELETE xmax: 1017443": 2,
+        "DELETE xmax: 1017444": 2,
+        "DELETE xmax: 1017445": 2,
+        "DELETE xmax: 1017446": 2,
+        "DELETE xmax: 1017447": 2,
+        "DELETE xmax: 1017448": 2,
+        "DELETE xmax: 1017449": 2,
+        "PRUNE_ON_ACCESS snapshotConflictHorizon: 1017449": 1
+      },
+      "rawPlaintextHits": 0,
+      "queryKeyHits": 0,
+      "phaseOnlyEvidence": {
+        "ciphertext": {
+          "tested": 48,
+          "rawHits": 0,
+          "withPglzHits": 0
+        },
+        "ciphertextBodyAndTag": {
+          "tested": 48,
+          "rawHits": 0,
+          "withPglzHits": 0
+        },
+        "tokenArray": {
+          "tested": 96,
+          "rawHits": 0,
+          "withPglzHits": 0
+        },
+        "salt": {
+          "tested": 96,
+          "rawHits": 0,
+          "withPglzHits": 0
+        },
+        "exactStamp": {
+          "tested": 48,
+          "rawHits": 0,
+          "withPglzHits": 0
+        },
+        "stampArray": {
+          "tested": 48,
+          "rawHits": 0,
+          "withPglzHits": 0
+        },
+        "offsetArray": {
+          "tested": 48,
+          "rawHits": 0,
+          "withPglzHits": 0
+        }
+      }
+    },
+    {
+      "name": "rollback4",
+      "start": "109/8CABFD0",
+      "end": "109/8CB3B80",
+      "ownRecords": 55,
+      "descriptions": {
+        "INSERT off: 13": 1,
+        "INSERT off: 14": 1,
+        "INSERT off: 15": 1,
+        "INSERT off: 16": 1,
+        "LOCK xmax: 1017451": 4,
+        "INSERT_LEAF off: 34": 2,
+        "INSERT_LEAF off: 35": 1,
+        "INSERT_LEAF off: 36": 1,
+        "INSERT_LEAF off: 37": 1,
+        "INSERT+INIT off: 1": 2,
+        "INSERT off: 2": 1,
+        "INSERT off: 3": 1,
+        "INSERT_LEAF off: 41": 3,
+        "INSERT_LEAF off: 42": 2,
+        "INSERT_LEAF off: 43": 2,
+        "INSERT_LEAF off: 44": 2,
+        "INSERT_LEAF off: 12": 1,
+        "INSERT_LEAF off: 27": 1,
+        "INSERT_LEAF off: 25": 3,
+        "INSERT_LEAF off: 19": 2,
+        "INSERT_LEAF off: 20": 1,
+        "INSERT_LEAF off: 21": 1,
+        "INSERT_LEAF off: 28": 2,
+        "INSERT_LEAF off: 29": 1,
+        "INSERT_LEAF off: 39": 1,
+        "INSERT_LEAF off: 17": 2,
+        "INSERT_LEAF off: 1": 1,
+        "INSERT_LEAF off: 22": 2,
+        "INSERT_LEAF off: 24": 1,
+        "INSERT_LEAF off: 32": 1,
+        "INSERT_LEAF off: 3": 1,
+        "INSERT_LEAF off: 8": 1,
+        "INSERT_LISTPAGE ": 3,
+        "UPDATE_META_PAGE ": 4
+      },
+      "rawPlaintextHits": 0,
+      "queryKeyHits": 0,
+      "phaseOnlyEvidence": {
+        "ciphertext": {
+          "tested": 24,
+          "rawHits": 24,
+          "withPglzHits": 24
+        },
+        "ciphertextBodyAndTag": {
+          "tested": 24,
+          "rawHits": 24,
+          "withPglzHits": 24
+        },
+        "tokenArray": {
+          "tested": 48,
+          "rawHits": 24,
+          "withPglzHits": 48
+        },
+        "salt": {
+          "tested": 48,
+          "rawHits": 48,
+          "withPglzHits": 48
+        },
+        "exactStamp": {
+          "tested": 24,
+          "rawHits": 24,
+          "withPglzHits": 24
+        },
+        "stampArray": {
+          "tested": 24,
+          "rawHits": 24,
+          "withPglzHits": 24
+        },
+        "offsetArray": {
+          "tested": 24,
+          "rawHits": 21,
+          "withPglzHits": 24
+        }
+      }
+    },
+    {
+      "name": "select_count_search",
+      "start": "109/8CB3B80",
+      "end": "109/8CB3B80",
+      "ownRecords": 0,
+      "descriptions": {},
+      "rawPlaintextHits": 0,
+      "queryKeyHits": 0
+    },
+    {
+      "name": "plaintext_positive_control",
+      "start": "109/8CB6580",
+      "end": "109/8CB6680",
+      "ownRecords": 1,
+      "descriptions": {
+        "INSERT+INIT off: 1": 1
+      },
+      "rawPlaintextHits": 1,
+      "queryKeyHits": 0
+    }
+  ],
+  "relations": [
+    {
+      "relname": "customers",
+      "relkind": "r",
+      "node": "18698073",
+      "spc": "1663",
+      "db": "5",
+      "key": "1663/5/18698073"
+    },
+    {
+      "relname": "pg_toast_18698073",
+      "relkind": "t",
+      "node": "18698084",
+      "spc": "1663",
+      "db": "5",
+      "key": "1663/5/18698084"
+    },
+    {
+      "relname": "pg_toast_18698073_index",
+      "relkind": "i",
+      "node": "18698085",
+      "spc": "1663",
+      "db": "5",
+      "key": "1663/5/18698085"
+    },
+    {
+      "relname": "customers_pkey",
+      "relkind": "i",
+      "node": "18698086",
+      "spc": "1663",
+      "db": "5",
+      "key": "1663/5/18698086"
+    },
+    {
+      "relname": "customers_seal_index",
+      "relkind": "r",
+      "node": "18698088",
+      "spc": "1663",
+      "db": "5",
+      "key": "1663/5/18698088"
+    },
+    {
+      "relname": "pg_toast_18698088",
+      "relkind": "t",
+      "node": "18698111",
+      "spc": "1663",
+      "db": "5",
+      "key": "1663/5/18698111"
+    },
+    {
+      "relname": "pg_toast_18698088_index",
+      "relkind": "i",
+      "node": "18698112",
+      "spc": "1663",
+      "db": "5",
+      "key": "1663/5/18698112"
+    },
+    {
+      "relname": "customers_seal_index_scope_row_uq",
+      "relkind": "i",
+      "node": "18698118",
+      "spc": "1663",
+      "db": "5",
+      "key": "1663/5/18698118"
+    },
+    {
+      "relname": "customers_seal_index_row_uq",
+      "relkind": "i",
+      "node": "18698119",
+      "spc": "1663",
+      "db": "5",
+      "key": "1663/5/18698119"
+    },
+    {
+      "relname": "seal_dfa387787f59f02a_bt",
+      "relkind": "i",
+      "node": "18698120",
+      "spc": "1663",
+      "db": "5",
+      "key": "1663/5/18698120"
+    },
+    {
+      "relname": "seal_4c8e2d2bddde3451_bt",
+      "relkind": "i",
+      "node": "18698121",
+      "spc": "1663",
+      "db": "5",
+      "key": "1663/5/18698121"
+    },
+    {
+      "relname": "seal_ae59b15a89e931d6_bt",
+      "relkind": "i",
+      "node": "18698122",
+      "spc": "1663",
+      "db": "5",
+      "key": "1663/5/18698122"
+    },
+    {
+      "relname": "seal_8fa11f16c3da1ad8_bt",
+      "relkind": "i",
+      "node": "18698123",
+      "spc": "1663",
+      "db": "5",
+      "key": "1663/5/18698123"
+    },
+    {
+      "relname": "seal_411905c9deef5c59_bt",
+      "relkind": "i",
+      "node": "18698124",
+      "spc": "1663",
+      "db": "5",
+      "key": "1663/5/18698124"
+    },
+    {
+      "relname": "seal_62e346c0ef994072_bt",
+      "relkind": "i",
+      "node": "18698125",
+      "spc": "1663",
+      "db": "5",
+      "key": "1663/5/18698125"
+    },
+    {
+      "relname": "seal_e66dc2708e915b65_gin",
+      "relkind": "i",
+      "node": "18698126",
+      "spc": "1663",
+      "db": "5",
+      "key": "1663/5/18698126"
+    },
+    {
+      "relname": "customers",
+      "relkind": "r",
+      "node": "18698130",
+      "spc": "1663",
+      "db": "5",
+      "key": "1663/5/18698130"
+    },
+    {
+      "relname": "pg_toast_18698073",
+      "relkind": "t",
+      "node": "18698133",
+      "spc": "1663",
+      "db": "5",
+      "key": "1663/5/18698133"
+    },
+    {
+      "relname": "pg_toast_18698073_index",
+      "relkind": "i",
+      "node": "18698134",
+      "spc": "1663",
+      "db": "5",
+      "key": "1663/5/18698134"
+    },
+    {
+      "relname": "customers_pkey",
+      "relkind": "i",
+      "node": "18698135",
+      "spc": "1663",
+      "db": "5",
+      "key": "1663/5/18698135"
+    },
+    {
+      "relname": "customers_seal_index",
+      "relkind": "r",
+      "node": "18698136",
+      "spc": "1663",
+      "db": "5",
+      "key": "1663/5/18698136"
+    },
+    {
+      "relname": "pg_toast_18698088",
+      "relkind": "t",
+      "node": "18698139",
+      "spc": "1663",
+      "db": "5",
+      "key": "1663/5/18698139"
+    },
+    {
+      "relname": "pg_toast_18698088_index",
+      "relkind": "i",
+      "node": "18698140",
+      "spc": "1663",
+      "db": "5",
+      "key": "1663/5/18698140"
+    },
+    {
+      "relname": "customers_seal_index_scope_row_uq",
+      "relkind": "i",
+      "node": "18698141",
+      "spc": "1663",
+      "db": "5",
+      "key": "1663/5/18698141"
+    },
+    {
+      "relname": "customers_seal_index_row_uq",
+      "relkind": "i",
+      "node": "18698142",
+      "spc": "1663",
+      "db": "5",
+      "key": "1663/5/18698142"
+    },
+    {
+      "relname": "seal_dfa387787f59f02a_bt",
+      "relkind": "i",
+      "node": "18698143",
+      "spc": "1663",
+      "db": "5",
+      "key": "1663/5/18698143"
+    },
+    {
+      "relname": "seal_4c8e2d2bddde3451_bt",
+      "relkind": "i",
+      "node": "18698144",
+      "spc": "1663",
+      "db": "5",
+      "key": "1663/5/18698144"
+    },
+    {
+      "relname": "seal_ae59b15a89e931d6_bt",
+      "relkind": "i",
+      "node": "18698145",
+      "spc": "1663",
+      "db": "5",
+      "key": "1663/5/18698145"
+    },
+    {
+      "relname": "seal_8fa11f16c3da1ad8_bt",
+      "relkind": "i",
+      "node": "18698146",
+      "spc": "1663",
+      "db": "5",
+      "key": "1663/5/18698146"
+    },
+    {
+      "relname": "seal_411905c9deef5c59_bt",
+      "relkind": "i",
+      "node": "18698147",
+      "spc": "1663",
+      "db": "5",
+      "key": "1663/5/18698147"
+    },
+    {
+      "relname": "seal_62e346c0ef994072_bt",
+      "relkind": "i",
+      "node": "18698148",
+      "spc": "1663",
+      "db": "5",
+      "key": "1663/5/18698148"
+    },
+    {
+      "relname": "seal_e66dc2708e915b65_gin",
+      "relkind": "i",
+      "node": "18698149",
+      "spc": "1663",
+      "db": "5",
+      "key": "1663/5/18698149"
+    },
+    {
+      "relname": "plain_control",
+      "relkind": "r",
+      "node": "18698150",
+      "spc": "1663",
+      "db": "5",
+      "key": "1663/5/18698150"
+    },
+    {
+      "relname": "pg_toast_18698150",
+      "relkind": "t",
+      "node": "18698153",
+      "spc": "1663",
+      "db": "5",
+      "key": "1663/5/18698153"
+    },
+    {
+      "relname": "pg_toast_18698150_index",
+      "relkind": "i",
+      "node": "18698154",
+      "spc": "1663",
+      "db": "5",
+      "key": "1663/5/18698154"
+    }
+  ],
+  "snapshots": {
+    "initial": {
+      "rows": 32,
+      "evidence": {
+        "ciphertext": {
+          "tested": 192,
+          "recordHits": 192,
+          "imageHits": 192,
+          "recordOrPglzHits": 192,
+          "imageOrPglzHits": 192
+        },
+        "ciphertextBodyAndTag": {
+          "tested": 192,
+          "recordHits": 192,
+          "imageHits": 192,
+          "recordOrPglzHits": 192,
+          "imageOrPglzHits": 192
+        },
+        "tokenArray": {
+          "tested": 384,
+          "recordHits": 192,
+          "imageHits": 192,
+          "recordOrPglzHits": 384,
+          "imageOrPglzHits": 384
+        },
+        "salt": {
+          "tested": 384,
+          "recordHits": 384,
+          "imageHits": 384,
+          "recordOrPglzHits": 384,
+          "imageOrPglzHits": 384
+        },
+        "exactStamp": {
+          "tested": 192,
+          "recordHits": 192,
+          "imageHits": 192,
+          "recordOrPglzHits": 192,
+          "imageOrPglzHits": 192
+        },
+        "stampArray": {
+          "tested": 192,
+          "recordHits": 192,
+          "imageHits": 192,
+          "recordOrPglzHits": 192,
+          "imageOrPglzHits": 192
+        },
+        "offsetArray": {
+          "tested": 192,
+          "recordHits": 173,
+          "imageHits": 173,
+          "recordOrPglzHits": 192,
+          "imageOrPglzHits": 192
+        }
+      }
+    },
+    "afterRewrite": {
+      "rows": 32,
+      "evidence": {
+        "ciphertext": {
+          "tested": 192,
+          "recordHits": 192,
+          "imageHits": 192,
+          "recordOrPglzHits": 192,
+          "imageOrPglzHits": 192
+        },
+        "ciphertextBodyAndTag": {
+          "tested": 192,
+          "recordHits": 192,
+          "imageHits": 192,
+          "recordOrPglzHits": 192,
+          "imageOrPglzHits": 192
+        },
+        "tokenArray": {
+          "tested": 384,
+          "recordHits": 192,
+          "imageHits": 192,
+          "recordOrPglzHits": 384,
+          "imageOrPglzHits": 384
+        },
+        "salt": {
+          "tested": 384,
+          "recordHits": 384,
+          "imageHits": 384,
+          "recordOrPglzHits": 384,
+          "imageOrPglzHits": 384
+        },
+        "exactStamp": {
+          "tested": 192,
+          "recordHits": 192,
+          "imageHits": 192,
+          "recordOrPglzHits": 192,
+          "imageOrPglzHits": 192
+        },
+        "stampArray": {
+          "tested": 192,
+          "recordHits": 192,
+          "imageHits": 192,
+          "recordOrPglzHits": 192,
+          "imageOrPglzHits": 192
+        },
+        "offsetArray": {
+          "tested": 192,
+          "recordHits": 173,
+          "imageHits": 173,
+          "recordOrPglzHits": 192,
+          "imageOrPglzHits": 192
+        }
+      }
+    },
+    "afterUpdate": {
+      "rows": 32,
+      "evidence": {
+        "ciphertext": {
+          "tested": 192,
+          "recordHits": 188,
+          "imageHits": 184,
+          "recordOrPglzHits": 188,
+          "imageOrPglzHits": 184
+        },
+        "ciphertextBodyAndTag": {
+          "tested": 192,
+          "recordHits": 191,
+          "imageHits": 184,
+          "recordOrPglzHits": 191,
+          "imageOrPglzHits": 184
+        },
+        "tokenArray": {
+          "tested": 384,
+          "recordHits": 192,
+          "imageHits": 184,
+          "recordOrPglzHits": 384,
+          "imageOrPglzHits": 368
+        },
+        "salt": {
+          "tested": 384,
+          "recordHits": 384,
+          "imageHits": 368,
+          "recordOrPglzHits": 384,
+          "imageOrPglzHits": 368
+        },
+        "exactStamp": {
+          "tested": 192,
+          "recordHits": 192,
+          "imageHits": 184,
+          "recordOrPglzHits": 192,
+          "imageOrPglzHits": 184
+        },
+        "stampArray": {
+          "tested": 192,
+          "recordHits": 192,
+          "imageHits": 184,
+          "recordOrPglzHits": 192,
+          "imageOrPglzHits": 184
+        },
+        "offsetArray": {
+          "tested": 192,
+          "recordHits": 171,
+          "imageHits": 165,
+          "recordOrPglzHits": 190,
+          "imageOrPglzHits": 184
+        }
+      }
+    },
+    "afterDelete": {
+      "rows": 24,
+      "evidence": {
+        "ciphertext": {
+          "tested": 144,
+          "recordHits": 140,
+          "imageHits": 136,
+          "recordOrPglzHits": 140,
+          "imageOrPglzHits": 136
+        },
+        "ciphertextBodyAndTag": {
+          "tested": 144,
+          "recordHits": 143,
+          "imageHits": 136,
+          "recordOrPglzHits": 143,
+          "imageOrPglzHits": 136
+        },
+        "tokenArray": {
+          "tested": 288,
+          "recordHits": 144,
+          "imageHits": 136,
+          "recordOrPglzHits": 288,
+          "imageOrPglzHits": 272
+        },
+        "salt": {
+          "tested": 288,
+          "recordHits": 288,
+          "imageHits": 272,
+          "recordOrPglzHits": 288,
+          "imageOrPglzHits": 272
+        },
+        "exactStamp": {
+          "tested": 144,
+          "recordHits": 144,
+          "imageHits": 136,
+          "recordOrPglzHits": 144,
+          "imageOrPglzHits": 136
+        },
+        "stampArray": {
+          "tested": 144,
+          "recordHits": 144,
+          "imageHits": 136,
+          "recordOrPglzHits": 144,
+          "imageOrPglzHits": 136
+        },
+        "offsetArray": {
+          "tested": 144,
+          "recordHits": 129,
+          "imageHits": 123,
+          "recordOrPglzHits": 142,
+          "imageOrPglzHits": 136
+        }
+      }
+    },
+    "insideRollback": {
+      "rows": 28,
+      "evidence": {
+        "ciphertext": {
+          "tested": 168,
+          "recordHits": 164,
+          "imageHits": 136,
+          "recordOrPglzHits": 164,
+          "imageOrPglzHits": 136
+        },
+        "ciphertextBodyAndTag": {
+          "tested": 168,
+          "recordHits": 167,
+          "imageHits": 136,
+          "recordOrPglzHits": 167,
+          "imageOrPglzHits": 136
+        },
+        "tokenArray": {
+          "tested": 336,
+          "recordHits": 168,
+          "imageHits": 140,
+          "recordOrPglzHits": 336,
+          "imageOrPglzHits": 280
+        },
+        "salt": {
+          "tested": 336,
+          "recordHits": 336,
+          "imageHits": 272,
+          "recordOrPglzHits": 336,
+          "imageOrPglzHits": 272
+        },
+        "exactStamp": {
+          "tested": 168,
+          "recordHits": 168,
+          "imageHits": 136,
+          "recordOrPglzHits": 168,
+          "imageOrPglzHits": 136
+        },
+        "stampArray": {
+          "tested": 168,
+          "recordHits": 168,
+          "imageHits": 136,
+          "recordOrPglzHits": 168,
+          "imageOrPglzHits": 136
+        },
+        "offsetArray": {
+          "tested": 168,
+          "recordHits": 150,
+          "imageHits": 123,
+          "recordOrPglzHits": 166,
+          "imageOrPglzHits": 136
+        }
+      }
+    },
+    "afterRollback": {
+      "rows": 24,
+      "evidence": {
+        "ciphertext": {
+          "tested": 144,
+          "recordHits": 140,
+          "imageHits": 136,
+          "recordOrPglzHits": 140,
+          "imageOrPglzHits": 136
+        },
+        "ciphertextBodyAndTag": {
+          "tested": 144,
+          "recordHits": 143,
+          "imageHits": 136,
+          "recordOrPglzHits": 143,
+          "imageOrPglzHits": 136
+        },
+        "tokenArray": {
+          "tested": 288,
+          "recordHits": 144,
+          "imageHits": 136,
+          "recordOrPglzHits": 288,
+          "imageOrPglzHits": 272
+        },
+        "salt": {
+          "tested": 288,
+          "recordHits": 288,
+          "imageHits": 272,
+          "recordOrPglzHits": 288,
+          "imageOrPglzHits": 272
+        },
+        "exactStamp": {
+          "tested": 144,
+          "recordHits": 144,
+          "imageHits": 136,
+          "recordOrPglzHits": 144,
+          "imageOrPglzHits": 136
+        },
+        "stampArray": {
+          "tested": 144,
+          "recordHits": 144,
+          "imageHits": 136,
+          "recordOrPglzHits": 144,
+          "imageOrPglzHits": 136
+        },
+        "offsetArray": {
+          "tested": 144,
+          "recordHits": 129,
+          "imageHits": 123,
+          "recordOrPglzHits": 142,
+          "imageOrPglzHits": 136
+        }
+      }
+    },
+    "deletedPrior": {
+      "rows": 8,
+      "evidence": {
+        "ciphertext": {
+          "tested": 48,
+          "recordHits": 48,
+          "imageHits": 48,
+          "recordOrPglzHits": 48,
+          "imageOrPglzHits": 48
+        },
+        "ciphertextBodyAndTag": {
+          "tested": 48,
+          "recordHits": 48,
+          "imageHits": 48,
+          "recordOrPglzHits": 48,
+          "imageOrPglzHits": 48
+        },
+        "tokenArray": {
+          "tested": 96,
+          "recordHits": 48,
+          "imageHits": 48,
+          "recordOrPglzHits": 96,
+          "imageOrPglzHits": 96
+        },
+        "salt": {
+          "tested": 96,
+          "recordHits": 96,
+          "imageHits": 96,
+          "recordOrPglzHits": 96,
+          "imageOrPglzHits": 96
+        },
+        "exactStamp": {
+          "tested": 48,
+          "recordHits": 48,
+          "imageHits": 48,
+          "recordOrPglzHits": 48,
+          "imageOrPglzHits": 48
+        },
+        "stampArray": {
+          "tested": 48,
+          "recordHits": 48,
+          "imageHits": 48,
+          "recordOrPglzHits": 48,
+          "imageOrPglzHits": 48
+        },
+        "offsetArray": {
+          "tested": 48,
+          "recordHits": 42,
+          "imageHits": 42,
+          "recordOrPglzHits": 48,
+          "imageOrPglzHits": 48
+        }
+      }
+    },
+    "abortedOnly": {
+      "rows": 4,
+      "evidence": {
+        "ciphertext": {
+          "tested": 24,
+          "recordHits": 24,
+          "imageHits": 0,
+          "recordOrPglzHits": 24,
+          "imageOrPglzHits": 0
+        },
+        "ciphertextBodyAndTag": {
+          "tested": 24,
+          "recordHits": 24,
+          "imageHits": 0,
+          "recordOrPglzHits": 24,
+          "imageOrPglzHits": 0
+        },
+        "tokenArray": {
+          "tested": 48,
+          "recordHits": 24,
+          "imageHits": 4,
+          "recordOrPglzHits": 48,
+          "imageOrPglzHits": 8
+        },
+        "salt": {
+          "tested": 48,
+          "recordHits": 48,
+          "imageHits": 0,
+          "recordOrPglzHits": 48,
+          "imageOrPglzHits": 0
+        },
+        "exactStamp": {
+          "tested": 24,
+          "recordHits": 24,
+          "imageHits": 0,
+          "recordOrPglzHits": 24,
+          "imageOrPglzHits": 0
+        },
+        "stampArray": {
+          "tested": 24,
+          "recordHits": 24,
+          "imageHits": 0,
+          "recordOrPglzHits": 24,
+          "imageOrPglzHits": 0
+        },
+        "offsetArray": {
+          "tested": 24,
+          "recordHits": 21,
+          "imageHits": 0,
+          "recordOrPglzHits": 24,
+          "imageOrPglzHits": 0
+        }
+      }
+    },
+    "updatedBefore": {
+      "rows": 8,
+      "evidence": {
+        "ciphertext": {
+          "tested": 8,
+          "recordHits": 8,
+          "imageHits": 8,
+          "recordOrPglzHits": 8,
+          "imageOrPglzHits": 8
+        },
+        "ciphertextBodyAndTag": {
+          "tested": 8,
+          "recordHits": 8,
+          "imageHits": 8,
+          "recordOrPglzHits": 8,
+          "imageOrPglzHits": 8
+        },
+        "tokenArray": {
+          "tested": 16,
+          "recordHits": 8,
+          "imageHits": 8,
+          "recordOrPglzHits": 16,
+          "imageOrPglzHits": 16
+        },
+        "salt": {
+          "tested": 16,
+          "recordHits": 16,
+          "imageHits": 16,
+          "recordOrPglzHits": 16,
+          "imageOrPglzHits": 16
+        },
+        "exactStamp": {
+          "tested": 8,
+          "recordHits": 8,
+          "imageHits": 8,
+          "recordOrPglzHits": 8,
+          "imageOrPglzHits": 8
+        },
+        "stampArray": {
+          "tested": 8,
+          "recordHits": 8,
+          "imageHits": 8,
+          "recordOrPglzHits": 8,
+          "imageOrPglzHits": 8
+        },
+        "offsetArray": {
+          "tested": 8,
+          "recordHits": 8,
+          "imageHits": 8,
+          "recordOrPglzHits": 8,
+          "imageOrPglzHits": 8
+        }
+      }
+    },
+    "updatedAfter": {
+      "rows": 8,
+      "evidence": {
+        "ciphertext": {
+          "tested": 8,
+          "recordHits": 4,
+          "imageHits": 0,
+          "recordOrPglzHits": 4,
+          "imageOrPglzHits": 0
+        },
+        "ciphertextBodyAndTag": {
+          "tested": 8,
+          "recordHits": 7,
+          "imageHits": 0,
+          "recordOrPglzHits": 7,
+          "imageOrPglzHits": 0
+        },
+        "tokenArray": {
+          "tested": 16,
+          "recordHits": 8,
+          "imageHits": 0,
+          "recordOrPglzHits": 16,
+          "imageOrPglzHits": 0
+        },
+        "salt": {
+          "tested": 16,
+          "recordHits": 16,
+          "imageHits": 0,
+          "recordOrPglzHits": 16,
+          "imageOrPglzHits": 0
+        },
+        "exactStamp": {
+          "tested": 8,
+          "recordHits": 8,
+          "imageHits": 0,
+          "recordOrPglzHits": 8,
+          "imageOrPglzHits": 0
+        },
+        "stampArray": {
+          "tested": 8,
+          "recordHits": 8,
+          "imageHits": 0,
+          "recordOrPglzHits": 8,
+          "imageOrPglzHits": 0
+        },
+        "offsetArray": {
+          "tested": 8,
+          "recordHits": 6,
+          "imageHits": 0,
+          "recordOrPglzHits": 6,
+          "imageOrPglzHits": 0
+        }
+      }
+    }
+  },
+  "complete": true,
+  "commit": "e3eb11585276db1201217938235b9aecb4bc5794",
+  "settings": [
+    {
+      "name": "data_checksums",
+      "setting": "on",
+      "unit": null
+    },
+    {
+      "name": "full_page_writes",
+      "setting": "on",
+      "unit": null
+    },
+    {
+      "name": "log_min_duration_statement",
+      "setting": "-1",
+      "unit": "ms"
+    },
+    {
+      "name": "log_statement",
+      "setting": "none",
+      "unit": null
+    },
+    {
+      "name": "server_version",
+      "setting": "18.4",
+      "unit": null
+    },
+    {
+      "name": "synchronous_commit",
+      "setting": "on",
+      "unit": null
+    },
+    {
+      "name": "wal_compression",
+      "setting": "off",
+      "unit": null
+    },
+    {
+      "name": "wal_level",
+      "setting": "replica",
+      "unit": null
+    },
+    {
+      "name": "wal_log_hints",
+      "setting": "off",
+      "unit": null
+    },
+    {
+      "name": "wal_segment_size",
+      "setting": "16777216",
+      "unit": "B"
+    }
+  ],
+  "waldumpVersion": "pg_waldump (PostgreSQL) 18.4",
+  "rollbackXid": "1017450",
+  "queryChecks": {
+    "count": 8,
+    "likeCount": 4,
+    "listRows": 8,
+    "openedFields": 48,
+    "sqlCalls": 3
+  },
+  "capture": {
+    "start": "109/8C1B7E0",
+    "protectedEnd": "109/8CB3B80",
+    "end": "109/8CB6680",
+    "globalSpanIncludesOtherWriters": true
+  },
+  "fullpageImages": [
+    {
+      "name": "00000001-00000109-08C1DFC0.1663.5.18698073.2_fsm",
+      "bytes": 8192,
+      "sha256": "6f13e3ea82b335018dc04046675f4f1f620d5bb6b9954989f112a6ba207dfe76"
+    },
+    {
+      "name": "00000001-00000109-08C27180.1663.5.18698088.2_fsm",
+      "bytes": 8192,
+      "sha256": "f0cd2c4a3b8fffde0088fef557ca537443c26883923c9f3a66308dbf200d0fbc"
+    },
+    {
+      "name": "00000001-00000109-08C601A0.1663.5.18698130.0_main",
+      "bytes": 8192,
+      "sha256": "aaa72037762a0a14cada8c7716d667bf0f850af9946259c3809fe49fb7e52e82"
+    },
+    {
+      "name": "00000001-00000109-08C601A0.1663.5.18698130.1_main",
+      "bytes": 8192,
+      "sha256": "b28814f7bb48f31e5e67ee3344088f007ca41de3f1b67140f9aea3eef319f0d2"
+    },
+    {
+      "name": "00000001-00000109-08C5FD78.1663.5.18698134.0_main",
+      "bytes": 8192,
+      "sha256": "f2f07f9e22fc643f4de9003e6ae7f3dd245438fef435a9a808960b71ba19603c"
+    },
+    {
+      "name": "00000001-00000109-08C63AE8.1663.5.18698135.0_main",
+      "bytes": 8192,
+      "sha256": "4a76217423bd160b78c6ceb834fcf5ad27ce8b6e51f7d3219cd101fd1cbd5305"
+    },
+    {
+      "name": "00000001-00000109-08C63AE8.1663.5.18698135.1_main",
+      "bytes": 8192,
+      "sha256": "0a6628ebe5af010a44b57beb81fc14abd8caa1b66cb505345f03f16e3f7baff2"
+    },
+    {
+      "name": "00000001-00000109-08C6B2F0.1663.5.18698136.0_main",
+      "bytes": 8192,
+      "sha256": "ea63066394ad4880394593de0d12b3967c7143b88c87322abdb812220e998e8f"
+    },
+    {
+      "name": "00000001-00000109-08C6B2F0.1663.5.18698136.10_main",
+      "bytes": 8192,
+      "sha256": "4e7b1314249f54c4ddf28b283b272825a71a0b97df6dc803b7cfa787f5403a93"
+    },
+    {
+      "name": "00000001-00000109-08C6B2F0.1663.5.18698136.1_main",
+      "bytes": 8192,
+      "sha256": "0c75532f85712b74edbef47373ba590c55a6ce81358bf9d4b97de2008b5132f5"
+    },
+    {
+      "name": "00000001-00000109-08C6B2F0.1663.5.18698136.2_main",
+      "bytes": 8192,
+      "sha256": "38b49194c5e0159783a38b95e0af424528b9616d3c7c13563508e5850ba06d72"
+    },
+    {
+      "name": "00000001-00000109-08C6B2F0.1663.5.18698136.3_main",
+      "bytes": 8192,
+      "sha256": "bebb72a8e78f45d17d3e6f3091f747ce52f6bd9cf07e26bfc475346d16cfc7c6"
+    },
+    {
+      "name": "00000001-00000109-08C6B2F0.1663.5.18698136.4_main",
+      "bytes": 8192,
+      "sha256": "7d5efaa4fd5e7a76c2a56ca9d1ef6b99405172edc67d39b873ab1e8abe448686"
+    },
+    {
+      "name": "00000001-00000109-08C6B2F0.1663.5.18698136.5_main",
+      "bytes": 8192,
+      "sha256": "a82465ec26cc69558f26c6cc4ab0df5ab52eed8e6b5107c8771d3f6f99246a07"
+    },
+    {
+      "name": "00000001-00000109-08C6B2F0.1663.5.18698136.6_main",
+      "bytes": 8192,
+      "sha256": "1e59890ca5b647ea9b93dd49689994ab80b7284f97c6ad0b5f93e3f18991db7e"
+    },
+    {
+      "name": "00000001-00000109-08C6B2F0.1663.5.18698136.7_main",
+      "bytes": 8192,
+      "sha256": "6842a2ff6f90ed2cdb801b60fe759947f750a6d1d41ce2552319aba27fb1f439"
+    },
+    {
+      "name": "00000001-00000109-08C6B2F0.1663.5.18698136.8_main",
+      "bytes": 8192,
+      "sha256": "36b34247641fbe9ca2e80ca84267633420b7017bf156503b0c78c62ce248d154"
+    },
+    {
+      "name": "00000001-00000109-08C6B2F0.1663.5.18698136.9_main",
+      "bytes": 8192,
+      "sha256": "00f08c57b6085a6c226a048313d94400c8aaa6f61f624dd9b779044ec8d7449a"
+    },
+    {
+      "name": "00000001-00000109-08CA1700.1663.5.18698136.2_fsm",
+      "bytes": 8192,
+      "sha256": "32964915041b97bece2f70e369250d53689abf9738d18b6fbf0bd02be1b022fe"
+    },
+    {
+      "name": "00000001-00000109-08C6AEE0.1663.5.18698140.0_main",
+      "bytes": 8192,
+      "sha256": "f2f07f9e22fc643f4de9003e6ae7f3dd245438fef435a9a808960b71ba19603c"
+    },
+    {
+      "name": "00000001-00000109-08C7EEF8.1663.5.18698141.0_main",
+      "bytes": 8192,
+      "sha256": "4a76217423bd160b78c6ceb834fcf5ad27ce8b6e51f7d3219cd101fd1cbd5305"
+    },
+    {
+      "name": "00000001-00000109-08C7EEF8.1663.5.18698141.1_main",
+      "bytes": 8192,
+      "sha256": "39d5285c5a7fea114ec26bd7e7ed6e8a10c87a5322b7946bf74af9d062b5bde7"
+    },
+    {
+      "name": "00000001-00000109-08C7F7D8.1663.5.18698142.0_main",
+      "bytes": 8192,
+      "sha256": "4a76217423bd160b78c6ceb834fcf5ad27ce8b6e51f7d3219cd101fd1cbd5305"
+    },
+    {
+      "name": "00000001-00000109-08C7F7D8.1663.5.18698142.1_main",
+      "bytes": 8192,
+      "sha256": "1fd4d27ebaa44b0c70fdf455acfa5c9496498c40f65cfdc68339d9cd141c7407"
+    },
+    {
+      "name": "00000001-00000109-08C7FEB8.1663.5.18698143.0_main",
+      "bytes": 8192,
+      "sha256": "b92a1d44ff14317a897e993e7212defe4c009f53c933f996306ed9de3b4d451e"
+    },
+    {
+      "name": "00000001-00000109-08C7FEB8.1663.5.18698143.1_main",
+      "bytes": 8192,
+      "sha256": "19a88c42531092dc1394072ec7955727d447cd216ea1ef88c745eb4149543f3b"
+    },
+    {
+      "name": "00000001-00000109-08C810B0.1663.5.18698144.0_main",
+      "bytes": 8192,
+      "sha256": "b92a1d44ff14317a897e993e7212defe4c009f53c933f996306ed9de3b4d451e"
+    },
+    {
+      "name": "00000001-00000109-08C810B0.1663.5.18698144.1_main",
+      "bytes": 8192,
+      "sha256": "0db3a0a008c0a8dc1d4ac5cb8033069761243ae62c24106d10142cd99b299c1f"
+    },
+    {
+      "name": "00000001-00000109-08C822A8.1663.5.18698145.0_main",
+      "bytes": 8192,
+      "sha256": "b92a1d44ff14317a897e993e7212defe4c009f53c933f996306ed9de3b4d451e"
+    },
+    {
+      "name": "00000001-00000109-08C822A8.1663.5.18698145.1_main",
+      "bytes": 8192,
+      "sha256": "b63842e3e82278898a24c3defd88634e89116ff5e86cdd57376182685e4d2789"
+    },
+    {
+      "name": "00000001-00000109-08C83488.1663.5.18698146.0_main",
+      "bytes": 8192,
+      "sha256": "b92a1d44ff14317a897e993e7212defe4c009f53c933f996306ed9de3b4d451e"
+    },
+    {
+      "name": "00000001-00000109-08C83488.1663.5.18698146.1_main",
+      "bytes": 8192,
+      "sha256": "36480b47adcaa539ef176df215903b0d7c067fb36455d6fe516d10888352ae8b"
+    },
+    {
+      "name": "00000001-00000109-08C84680.1663.5.18698147.0_main",
+      "bytes": 8192,
+      "sha256": "b92a1d44ff14317a897e993e7212defe4c009f53c933f996306ed9de3b4d451e"
+    },
+    {
+      "name": "00000001-00000109-08C84680.1663.5.18698147.1_main",
+      "bytes": 8192,
+      "sha256": "cf3f80712c98782a0cc2f6458543059b159508af45bb33f95e2ae858715c8450"
+    },
+    {
+      "name": "00000001-00000109-08C85860.1663.5.18698148.0_main",
+      "bytes": 8192,
+      "sha256": "b92a1d44ff14317a897e993e7212defe4c009f53c933f996306ed9de3b4d451e"
+    },
+    {
+      "name": "00000001-00000109-08C85860.1663.5.18698148.1_main",
+      "bytes": 8192,
+      "sha256": "aef266ec3552e16692b1902f0d5228a54e4887e12aeffcd4b6988d0721d1e9ad"
+    },
+    {
+      "name": "00000001-00000109-08C86A58.1663.5.18698149.0_main",
+      "bytes": 8192,
+      "sha256": "08fe3fe7b79cedd836724f82847658e8203d672ad2cada814bea140434dfeca8"
+    },
+    {
+      "name": "00000001-00000109-08C86A58.1663.5.18698149.10_main",
+      "bytes": 8192,
+      "sha256": "b4361a66ce7e2e2b54b5efa587504fa520492b925f150fc291ba8d97fa534b53"
+    },
+    {
+      "name": "00000001-00000109-08C86A58.1663.5.18698149.11_main",
+      "bytes": 8192,
+      "sha256": "aebb99009c2593ee791ab8b200077adaf136d39dd417cd156fb7fffb810a5f7f"
+    },
+    {
+      "name": "00000001-00000109-08C86A58.1663.5.18698149.12_main",
+      "bytes": 8192,
+      "sha256": "4bcd1dafd595cf2795d47424dd6936ab3248d98552c0059fe795f55727188ae4"
+    },
+    {
+      "name": "00000001-00000109-08C86A58.1663.5.18698149.13_main",
+      "bytes": 8192,
+      "sha256": "a76193a7b6fb528a5e300534b0d2f38d6d9662ac34d71627cbbeb0e5d052e6bb"
+    },
+    {
+      "name": "00000001-00000109-08C86A58.1663.5.18698149.14_main",
+      "bytes": 8192,
+      "sha256": "da2760c6142995c921e9973e19da948a4beb8628ec1778a5f88f19309b7428ed"
+    },
+    {
+      "name": "00000001-00000109-08C86A58.1663.5.18698149.15_main",
+      "bytes": 8192,
+      "sha256": "b3248179696b521895becfd9e0000eac4ac12b007ed6e8a8ddca2c687a55b0d8"
+    },
+    {
+      "name": "00000001-00000109-08C86A58.1663.5.18698149.16_main",
+      "bytes": 8192,
+      "sha256": "54228c0d9062f8a143a8292f84f5bae6eafb2dfbd52cdd80d34fc3eb3eb6f8e0"
+    },
+    {
+      "name": "00000001-00000109-08C86A58.1663.5.18698149.17_main",
+      "bytes": 8192,
+      "sha256": "0d3af372c51bec186343f6dc5d5eba7c3b4e0f973cc2fb9263c32bf72d07b4b5"
+    },
+    {
+      "name": "00000001-00000109-08C86A58.1663.5.18698149.18_main",
+      "bytes": 8192,
+      "sha256": "4585e37ad71ca92cff7c4d1804e929a2d274efa76cc136a667797fd64fa89efd"
+    },
+    {
+      "name": "00000001-00000109-08C86A58.1663.5.18698149.19_main",
+      "bytes": 8192,
+      "sha256": "edc0328611fbfe749db68674b45cb64d16d0fdc623e7c4037de6000772312ca4"
+    },
+    {
+      "name": "00000001-00000109-08C86A58.1663.5.18698149.1_main",
+      "bytes": 8192,
+      "sha256": "c575eea57150fa86d0b48e3891c460af1970f870348574b463f917cdad184278"
+    },
+    {
+      "name": "00000001-00000109-08C86A58.1663.5.18698149.2_main",
+      "bytes": 8192,
+      "sha256": "efdcb683ab221eabdf2f68cb67f7180ef1a1c01acb87f2c651a2064ed4a7edf4"
+    },
+    {
+      "name": "00000001-00000109-08C86A58.1663.5.18698149.3_main",
+      "bytes": 8192,
+      "sha256": "0503197a50ad8a11c83ca3f0ed666f8a1e9d9f2ef445b460a0d8255bf3886960"
+    },
+    {
+      "name": "00000001-00000109-08C86A58.1663.5.18698149.4_main",
+      "bytes": 8192,
+      "sha256": "fb40f1d7ab5ac490269b0d9cbdd3b2acdac380c483dc03db397d9a3b7282cfa9"
+    },
+    {
+      "name": "00000001-00000109-08C86A58.1663.5.18698149.5_main",
+      "bytes": 8192,
+      "sha256": "da134b984025cfcf4c0e7b28ed696d6b30518528155d17607cc3fbde4632d60b"
+    },
+    {
+      "name": "00000001-00000109-08C86A58.1663.5.18698149.6_main",
+      "bytes": 8192,
+      "sha256": "0215082c8ef490eebb8a405439980191e86fe7d890baa443d890d7a234055413"
+    },
+    {
+      "name": "00000001-00000109-08C86A58.1663.5.18698149.7_main",
+      "bytes": 8192,
+      "sha256": "0d1e9541a8c6fabcfdbe23b2dc75a6b047dd7584b6c48781a94519cd5fadff5a"
+    },
+    {
+      "name": "00000001-00000109-08C86A58.1663.5.18698149.8_main",
+      "bytes": 8192,
+      "sha256": "30260c0a1db4718531596fd418a348478767d2ba7375cbc1a03613eeee620299"
+    },
+    {
+      "name": "00000001-00000109-08C86A58.1663.5.18698149.9_main",
+      "bytes": 8192,
+      "sha256": "3e3b2f2763ddbc4d2b1909d8ae303a242ee64efac404c87d2fa7319b537cd3d8"
+    },
+    {
+      "name": "00000001-00000109-08CB5CF8.1663.5.18698154.0_main",
+      "bytes": 8192,
+      "sha256": "f2f07f9e22fc643f4de9003e6ae7f3dd245438fef435a9a808960b71ba19603c"
+    }
+  ],
+  "pglzDecoded": {
+    "recordCandidates": 480,
+    "imageCandidates": 211
+  },
+  "negativeChecks": {
+    "plaintextNeedles": 334,
+    "plaintextRecordHits": 0,
+    "plaintextImageHits": 0,
+    "queryKeys": 4,
+    "queryKeyRecordHits": 0,
+    "queryKeyImageHits": 0
+  },
+  "ownRecords": 665,
+  "method": "pg_waldump relation filters, copied flushed capture prefix, reconstruct each record across WAL page headers, and uncompressed --save-fullpage images; byte-needle presence is not full PITR replay",
+  "schemaDeleted": true,
+  "finished": "2026-09-29T12:13:06.307Z"
+}

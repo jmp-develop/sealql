@@ -1,0 +1,72 @@
+rmgr: XLOG        len (rec/tot):     62/ 12254, tx:    1017432, lsn: 109/08C601A0, prev 109/08C60170, desc: FPI
+	blkref #0: rel 1663/5/18698130 fork main blk 0 (FPW); hole: offset: 108, length: 124
+	blkref #1: rel 1663/5/18698130 fork main blk 1 (FPW); hole: offset: 68, length: 4068
+rmgr: Heap        len (rec/tot):     54/    54, tx:    1017434, lsn: 109/08C9C7E8, prev 109/08C9ADE0, desc: LOCK xmax: 1017434, off: 1, infobits: [LOCK_ONLY, EXCL_LOCK], flags: 0x00
+	blkref #0: rel 1663/5/18698130 fork main blk 0
+rmgr: Heap        len (rec/tot):    423/   423, tx:    1017434, lsn: 109/08C9C820, prev 109/08C9C7E8, desc: UPDATE old_xmax: 1017434, old_off: 1, old_infobits: [], flags: 0x00, new_xmax: 0, new_off: 12
+	blkref #0: rel 1663/5/18698130 fork main blk 1
+	blkref #1: rel 1663/5/18698130 fork main blk 0
+rmgr: Heap2       len (rec/tot):     56/    56, tx:          0, lsn: 109/08C9E5F0, prev 109/08C9E5C8, desc: PRUNE_ON_ACCESS snapshotConflictHorizon: 1017434, isCatalogRel: F, nplans: 0, nredirected: 0, ndead: 1, nunused: 0, dead: [1]
+	blkref #0: rel 1663/5/18698130 fork main blk 0
+rmgr: Heap        len (rec/tot):    127/   127, tx:    1017435, lsn: 109/08C9E628, prev 109/08C9E5F0, desc: HOT_UPDATE old_xmax: 1017435, old_off: 2, old_infobits: [], flags: 0x60, new_xmax: 0, new_off: 22
+	blkref #0: rel 1663/5/18698130 fork main blk 0
+rmgr: Heap2       len (rec/tot):     58/    58, tx:          0, lsn: 109/08C9FD00, prev 109/08C9FCD8, desc: PRUNE_ON_ACCESS snapshotConflictHorizon: 1017435, isCatalogRel: F, nplans: 0, nredirected: 1, ndead: 0, nunused: 0, redirected: [2->22]
+	blkref #0: rel 1663/5/18698130 fork main blk 0
+rmgr: Heap        len (rec/tot):    126/   126, tx:    1017436, lsn: 109/08C9FD40, prev 109/08C9FD00, desc: HOT_UPDATE old_xmax: 1017436, old_off: 3, old_infobits: [], flags: 0x60, new_xmax: 0, new_off: 23
+	blkref #0: rel 1663/5/18698130 fork main blk 0
+rmgr: Heap2       len (rec/tot):     58/    58, tx:          0, lsn: 109/08CA15D0, prev 109/08CA15A8, desc: PRUNE_ON_ACCESS snapshotConflictHorizon: 1017436, isCatalogRel: F, nplans: 0, nredirected: 1, ndead: 0, nunused: 0, redirected: [3->23]
+	blkref #0: rel 1663/5/18698130 fork main blk 0
+rmgr: Heap        len (rec/tot):    127/   127, tx:    1017437, lsn: 109/08CA1610, prev 109/08CA15D0, desc: HOT_UPDATE old_xmax: 1017437, old_off: 4, old_infobits: [], flags: 0x60, new_xmax: 0, new_off: 24
+	blkref #0: rel 1663/5/18698130 fork main blk 0
+rmgr: Heap2       len (rec/tot):     58/    58, tx:          0, lsn: 109/08CA52C8, prev 109/08CA52A0, desc: PRUNE_ON_ACCESS snapshotConflictHorizon: 1017437, isCatalogRel: F, nplans: 0, nredirected: 1, ndead: 0, nunused: 0, redirected: [4->24]
+	blkref #0: rel 1663/5/18698130 fork main blk 0
+rmgr: Heap        len (rec/tot):    127/   127, tx:    1017438, lsn: 109/08CA5308, prev 109/08CA52C8, desc: HOT_UPDATE old_xmax: 1017438, old_off: 5, old_infobits: [], flags: 0x60, new_xmax: 0, new_off: 25
+	blkref #0: rel 1663/5/18698130 fork main blk 0
+rmgr: Heap2       len (rec/tot):     58/    58, tx:          0, lsn: 109/08CA6758, prev 109/08CA6730, desc: PRUNE_ON_ACCESS snapshotConflictHorizon: 1017438, isCatalogRel: F, nplans: 0, nredirected: 1, ndead: 0, nunused: 0, redirected: [5->25]
+	blkref #0: rel 1663/5/18698130 fork main blk 0
+rmgr: Heap        len (rec/tot):    132/   132, tx:    1017439, lsn: 109/08CA6798, prev 109/08CA6758, desc: HOT_UPDATE old_xmax: 1017439, old_off: 6, old_infobits: [], flags: 0x60, new_xmax: 0, new_off: 26
+	blkref #0: rel 1663/5/18698130 fork main blk 0
+rmgr: Heap2       len (rec/tot):     58/    58, tx:          0, lsn: 109/08CA8468, prev 109/08CA8440, desc: PRUNE_ON_ACCESS snapshotConflictHorizon: 1017439, isCatalogRel: F, nplans: 0, nredirected: 1, ndead: 0, nunused: 0, redirected: [6->26]
+	blkref #0: rel 1663/5/18698130 fork main blk 0
+rmgr: Heap        len (rec/tot):    126/   126, tx:    1017440, lsn: 109/08CA84A8, prev 109/08CA8468, desc: HOT_UPDATE old_xmax: 1017440, old_off: 7, old_infobits: [], flags: 0x60, new_xmax: 0, new_off: 27
+	blkref #0: rel 1663/5/18698130 fork main blk 0
+rmgr: Heap2       len (rec/tot):     58/    58, tx:          0, lsn: 109/08CAA248, prev 109/08CAA220, desc: PRUNE_ON_ACCESS snapshotConflictHorizon: 1017440, isCatalogRel: F, nplans: 0, nredirected: 1, ndead: 0, nunused: 0, redirected: [7->27]
+	blkref #0: rel 1663/5/18698130 fork main blk 0
+rmgr: Heap        len (rec/tot):    126/   126, tx:    1017441, lsn: 109/08CAA288, prev 109/08CAA248, desc: HOT_UPDATE old_xmax: 1017441, old_off: 8, old_infobits: [], flags: 0x60, new_xmax: 0, new_off: 28
+	blkref #0: rel 1663/5/18698130 fork main blk 0
+rmgr: Heap2       len (rec/tot):     58/    58, tx:          0, lsn: 109/08CAB9B0, prev 109/08CAB988, desc: PRUNE_ON_ACCESS snapshotConflictHorizon: 1017441, isCatalogRel: F, nplans: 0, nredirected: 1, ndead: 0, nunused: 0, redirected: [8->28]
+	blkref #0: rel 1663/5/18698130 fork main blk 0
+rmgr: Heap        len (rec/tot):     54/    54, tx:    1017442, lsn: 109/08CABAA0, prev 109/08CABA68, desc: DELETE xmax: 1017442, off: 9, infobits: [KEYS_UPDATED], flags: 0x00
+	blkref #0: rel 1663/5/18698130 fork main blk 0
+rmgr: Heap2       len (rec/tot):     56/    56, tx:          0, lsn: 109/08CABB38, prev 109/08CABB10, desc: PRUNE_ON_ACCESS snapshotConflictHorizon: 1017442, isCatalogRel: F, nplans: 0, nredirected: 0, ndead: 1, nunused: 0, dead: [9]
+	blkref #0: rel 1663/5/18698130 fork main blk 0
+rmgr: Heap        len (rec/tot):     54/    54, tx:    1017443, lsn: 109/08CABB70, prev 109/08CABB38, desc: DELETE xmax: 1017443, off: 10, infobits: [KEYS_UPDATED], flags: 0x00
+	blkref #0: rel 1663/5/18698130 fork main blk 0
+rmgr: Heap        len (rec/tot):     54/    54, tx:    1017444, lsn: 109/08CABC08, prev 109/08CABBE0, desc: DELETE xmax: 1017444, off: 11, infobits: [KEYS_UPDATED], flags: 0x00
+	blkref #0: rel 1663/5/18698130 fork main blk 0
+rmgr: Heap        len (rec/tot):     54/    54, tx:    1017445, lsn: 109/08CABCA0, prev 109/08CABC78, desc: DELETE xmax: 1017445, off: 12, infobits: [KEYS_UPDATED], flags: 0x00
+	blkref #0: rel 1663/5/18698130 fork main blk 0
+rmgr: Heap        len (rec/tot):     54/    54, tx:    1017446, lsn: 109/08CABD38, prev 109/08CABD10, desc: DELETE xmax: 1017446, off: 13, infobits: [KEYS_UPDATED], flags: 0x00
+	blkref #0: rel 1663/5/18698130 fork main blk 0
+rmgr: Heap        len (rec/tot):     54/    54, tx:    1017447, lsn: 109/08CABDD0, prev 109/08CABDA8, desc: DELETE xmax: 1017447, off: 14, infobits: [KEYS_UPDATED], flags: 0x00
+	blkref #0: rel 1663/5/18698130 fork main blk 0
+rmgr: Heap        len (rec/tot):     54/    54, tx:    1017448, lsn: 109/08CABE68, prev 109/08CABE40, desc: DELETE xmax: 1017448, off: 15, infobits: [KEYS_UPDATED], flags: 0x00
+	blkref #0: rel 1663/5/18698130 fork main blk 0
+rmgr: Heap        len (rec/tot):     54/    54, tx:    1017449, lsn: 109/08CABF00, prev 109/08CABED8, desc: DELETE xmax: 1017449, off: 16, infobits: [KEYS_UPDATED], flags: 0x00
+	blkref #0: rel 1663/5/18698130 fork main blk 0
+rmgr: Heap        len (rec/tot):    392/   392, tx:    1017451, lsn: 109/08CABFD0, prev 109/08CABF98, desc: INSERT off: 13, flags: 0x00
+	blkref #0: rel 1663/5/18698130 fork main blk 1
+rmgr: Heap        len (rec/tot):    388/   388, tx:    1017451, lsn: 109/08CAC1B8, prev 109/08CAC170, desc: INSERT off: 14, flags: 0x00
+	blkref #0: rel 1663/5/18698130 fork main blk 1
+rmgr: Heap        len (rec/tot):    393/   393, tx:    1017451, lsn: 109/08CAC388, prev 109/08CAC340, desc: INSERT off: 15, flags: 0x00
+	blkref #0: rel 1663/5/18698130 fork main blk 1
+rmgr: Heap        len (rec/tot):    411/   411, tx:    1017451, lsn: 109/08CAC560, prev 109/08CAC518, desc: INSERT off: 16, flags: 0x00
+	blkref #0: rel 1663/5/18698130 fork main blk 1
+rmgr: Heap        len (rec/tot):     54/    54, tx:    1017451, lsn: 109/08CB3A70, prev 109/08CB39E0, desc: LOCK xmax: 1017451, off: 13, infobits: [LOCK_ONLY, KEYSHR_LOCK], flags: 0x00
+	blkref #0: rel 1663/5/18698130 fork main blk 1
+rmgr: Heap        len (rec/tot):     54/    54, tx:    1017451, lsn: 109/08CB3AA8, prev 109/08CB3A70, desc: LOCK xmax: 1017451, off: 14, infobits: [LOCK_ONLY, KEYSHR_LOCK], flags: 0x00
+	blkref #0: rel 1663/5/18698130 fork main blk 1
+rmgr: Heap        len (rec/tot):     54/    54, tx:    1017451, lsn: 109/08CB3AE0, prev 109/08CB3AA8, desc: LOCK xmax: 1017451, off: 15, infobits: [LOCK_ONLY, KEYSHR_LOCK], flags: 0x00
+	blkref #0: rel 1663/5/18698130 fork main blk 1
+rmgr: Heap        len (rec/tot):     54/    54, tx:    1017451, lsn: 109/08CB3B18, prev 109/08CB3AE0, desc: LOCK xmax: 1017451, off: 16, infobits: [LOCK_ONLY, KEYSHR_LOCK], flags: 0x00
+	blkref #0: rel 1663/5/18698130 fork main blk 1
