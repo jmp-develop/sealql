@@ -1,0 +1,889 @@
+{
+  "snapshot": {
+    "version": "7",
+    "dialect": "postgresql",
+    "tables": {
+      "test_p1_verify.customers": {
+        "name": "customers",
+        "schema": "test_p1_verify",
+        "columns": {
+          "id": {
+            "name": "id",
+            "type": "uuid",
+            "primaryKey": true,
+            "notNull": true
+          },
+          "scope_id": {
+            "name": "scope_id",
+            "type": "uuid",
+            "primaryKey": false,
+            "notNull": true
+          },
+          "name_ct": {
+            "name": "name_ct",
+            "type": "bytea",
+            "primaryKey": false,
+            "notNull": true
+          },
+          "phone_ct": {
+            "name": "phone_ct",
+            "type": "bytea",
+            "primaryKey": false,
+            "notNull": true
+          },
+          "address_ct": {
+            "name": "address_ct",
+            "type": "bytea",
+            "primaryKey": false,
+            "notNull": true
+          },
+          "memo_ct": {
+            "name": "memo_ct",
+            "type": "bytea",
+            "primaryKey": false,
+            "notNull": true
+          },
+          "email_ct": {
+            "name": "email_ct",
+            "type": "bytea",
+            "primaryKey": false,
+            "notNull": true
+          },
+          "company_ct": {
+            "name": "company_ct",
+            "type": "bytea",
+            "primaryKey": false,
+            "notNull": true
+          }
+        },
+        "indexes": {},
+        "foreignKeys": {},
+        "compositePrimaryKeys": {},
+        "uniqueConstraints": {},
+        "policies": {},
+        "checkConstraints": {},
+        "isRLSEnabled": false
+      },
+      "test_p1_verify.customers_seal_index": {
+        "name": "customers_seal_index",
+        "schema": "test_p1_verify",
+        "columns": {
+          "scope_id": {
+            "name": "scope_id",
+            "type": "uuid",
+            "primaryKey": false,
+            "notNull": true
+          },
+          "row_id": {
+            "name": "row_id",
+            "type": "uuid",
+            "primaryKey": false,
+            "notNull": true
+          },
+          "tokens_988d248ff4b71bf7": {
+            "name": "tokens_988d248ff4b71bf7",
+            "type": "bigint[]",
+            "primaryKey": false,
+            "notNull": false
+          },
+          "eq_salt_988d248ff4b71bf7": {
+            "name": "eq_salt_988d248ff4b71bf7",
+            "type": "bytea",
+            "primaryKey": false,
+            "notNull": false
+          },
+          "eq_stamp_988d248ff4b71bf7": {
+            "name": "eq_stamp_988d248ff4b71bf7",
+            "type": "bigint",
+            "primaryKey": false,
+            "notNull": false
+          },
+          "tokens_792d75cf01821d67": {
+            "name": "tokens_792d75cf01821d67",
+            "type": "bigint[]",
+            "primaryKey": false,
+            "notNull": false
+          },
+          "pos_salt_792d75cf01821d67": {
+            "name": "pos_salt_792d75cf01821d67",
+            "type": "bytea",
+            "primaryKey": false,
+            "notNull": false
+          },
+          "pos_len_792d75cf01821d67": {
+            "name": "pos_len_792d75cf01821d67",
+            "type": "integer",
+            "primaryKey": false,
+            "notNull": false
+          },
+          "pos_stamps_792d75cf01821d67": {
+            "name": "pos_stamps_792d75cf01821d67",
+            "type": "bigint[]",
+            "primaryKey": false,
+            "notNull": false
+          },
+          "pos_offsets_792d75cf01821d67": {
+            "name": "pos_offsets_792d75cf01821d67",
+            "type": "integer[]",
+            "primaryKey": false,
+            "notNull": false
+          },
+          "tokens_a106c26102b707f0": {
+            "name": "tokens_a106c26102b707f0",
+            "type": "bigint[]",
+            "primaryKey": false,
+            "notNull": false
+          },
+          "eq_salt_a106c26102b707f0": {
+            "name": "eq_salt_a106c26102b707f0",
+            "type": "bytea",
+            "primaryKey": false,
+            "notNull": false
+          },
+          "eq_stamp_a106c26102b707f0": {
+            "name": "eq_stamp_a106c26102b707f0",
+            "type": "bigint",
+            "primaryKey": false,
+            "notNull": false
+          },
+          "tokens_1127994ab736baf4": {
+            "name": "tokens_1127994ab736baf4",
+            "type": "bigint[]",
+            "primaryKey": false,
+            "notNull": false
+          },
+          "pos_salt_1127994ab736baf4": {
+            "name": "pos_salt_1127994ab736baf4",
+            "type": "bytea",
+            "primaryKey": false,
+            "notNull": false
+          },
+          "pos_len_1127994ab736baf4": {
+            "name": "pos_len_1127994ab736baf4",
+            "type": "integer",
+            "primaryKey": false,
+            "notNull": false
+          },
+          "pos_stamps_1127994ab736baf4": {
+            "name": "pos_stamps_1127994ab736baf4",
+            "type": "bigint[]",
+            "primaryKey": false,
+            "notNull": false
+          },
+          "pos_offsets_1127994ab736baf4": {
+            "name": "pos_offsets_1127994ab736baf4",
+            "type": "integer[]",
+            "primaryKey": false,
+            "notNull": false
+          },
+          "tokens_c5133b3810f23103": {
+            "name": "tokens_c5133b3810f23103",
+            "type": "bigint[]",
+            "primaryKey": false,
+            "notNull": false
+          },
+          "eq_salt_c5133b3810f23103": {
+            "name": "eq_salt_c5133b3810f23103",
+            "type": "bytea",
+            "primaryKey": false,
+            "notNull": false
+          },
+          "eq_stamp_c5133b3810f23103": {
+            "name": "eq_stamp_c5133b3810f23103",
+            "type": "bigint",
+            "primaryKey": false,
+            "notNull": false
+          },
+          "tokens_ef1d32a52e2ce103": {
+            "name": "tokens_ef1d32a52e2ce103",
+            "type": "bigint[]",
+            "primaryKey": false,
+            "notNull": false
+          },
+          "pos_salt_ef1d32a52e2ce103": {
+            "name": "pos_salt_ef1d32a52e2ce103",
+            "type": "bytea",
+            "primaryKey": false,
+            "notNull": false
+          },
+          "pos_len_ef1d32a52e2ce103": {
+            "name": "pos_len_ef1d32a52e2ce103",
+            "type": "integer",
+            "primaryKey": false,
+            "notNull": false
+          },
+          "pos_stamps_ef1d32a52e2ce103": {
+            "name": "pos_stamps_ef1d32a52e2ce103",
+            "type": "bigint[]",
+            "primaryKey": false,
+            "notNull": false
+          },
+          "pos_offsets_ef1d32a52e2ce103": {
+            "name": "pos_offsets_ef1d32a52e2ce103",
+            "type": "integer[]",
+            "primaryKey": false,
+            "notNull": false
+          },
+          "tokens_1c32fdad5d1c8367": {
+            "name": "tokens_1c32fdad5d1c8367",
+            "type": "bigint[]",
+            "primaryKey": false,
+            "notNull": false
+          },
+          "eq_salt_1c32fdad5d1c8367": {
+            "name": "eq_salt_1c32fdad5d1c8367",
+            "type": "bytea",
+            "primaryKey": false,
+            "notNull": false
+          },
+          "eq_stamp_1c32fdad5d1c8367": {
+            "name": "eq_stamp_1c32fdad5d1c8367",
+            "type": "bigint",
+            "primaryKey": false,
+            "notNull": false
+          },
+          "tokens_a639b11c8130dcf7": {
+            "name": "tokens_a639b11c8130dcf7",
+            "type": "bigint[]",
+            "primaryKey": false,
+            "notNull": false
+          },
+          "pos_salt_a639b11c8130dcf7": {
+            "name": "pos_salt_a639b11c8130dcf7",
+            "type": "bytea",
+            "primaryKey": false,
+            "notNull": false
+          },
+          "pos_len_a639b11c8130dcf7": {
+            "name": "pos_len_a639b11c8130dcf7",
+            "type": "integer",
+            "primaryKey": false,
+            "notNull": false
+          },
+          "pos_stamps_a639b11c8130dcf7": {
+            "name": "pos_stamps_a639b11c8130dcf7",
+            "type": "bigint[]",
+            "primaryKey": false,
+            "notNull": false
+          },
+          "pos_offsets_a639b11c8130dcf7": {
+            "name": "pos_offsets_a639b11c8130dcf7",
+            "type": "integer[]",
+            "primaryKey": false,
+            "notNull": false
+          },
+          "tokens_cd3096c7a3cd42c2": {
+            "name": "tokens_cd3096c7a3cd42c2",
+            "type": "bigint[]",
+            "primaryKey": false,
+            "notNull": false
+          },
+          "eq_salt_cd3096c7a3cd42c2": {
+            "name": "eq_salt_cd3096c7a3cd42c2",
+            "type": "bytea",
+            "primaryKey": false,
+            "notNull": false
+          },
+          "eq_stamp_cd3096c7a3cd42c2": {
+            "name": "eq_stamp_cd3096c7a3cd42c2",
+            "type": "bigint",
+            "primaryKey": false,
+            "notNull": false
+          },
+          "tokens_f289b89d86c7086a": {
+            "name": "tokens_f289b89d86c7086a",
+            "type": "bigint[]",
+            "primaryKey": false,
+            "notNull": false
+          },
+          "pos_salt_f289b89d86c7086a": {
+            "name": "pos_salt_f289b89d86c7086a",
+            "type": "bytea",
+            "primaryKey": false,
+            "notNull": false
+          },
+          "pos_len_f289b89d86c7086a": {
+            "name": "pos_len_f289b89d86c7086a",
+            "type": "integer",
+            "primaryKey": false,
+            "notNull": false
+          },
+          "pos_stamps_f289b89d86c7086a": {
+            "name": "pos_stamps_f289b89d86c7086a",
+            "type": "bigint[]",
+            "primaryKey": false,
+            "notNull": false
+          },
+          "pos_offsets_f289b89d86c7086a": {
+            "name": "pos_offsets_f289b89d86c7086a",
+            "type": "integer[]",
+            "primaryKey": false,
+            "notNull": false
+          },
+          "tokens_c44ae523cca61a0b": {
+            "name": "tokens_c44ae523cca61a0b",
+            "type": "bigint[]",
+            "primaryKey": false,
+            "notNull": false
+          },
+          "eq_salt_c44ae523cca61a0b": {
+            "name": "eq_salt_c44ae523cca61a0b",
+            "type": "bytea",
+            "primaryKey": false,
+            "notNull": false
+          },
+          "eq_stamp_c44ae523cca61a0b": {
+            "name": "eq_stamp_c44ae523cca61a0b",
+            "type": "bigint",
+            "primaryKey": false,
+            "notNull": false
+          },
+          "tokens_7a1d2ba5ce2368fb": {
+            "name": "tokens_7a1d2ba5ce2368fb",
+            "type": "bigint[]",
+            "primaryKey": false,
+            "notNull": false
+          },
+          "pos_salt_7a1d2ba5ce2368fb": {
+            "name": "pos_salt_7a1d2ba5ce2368fb",
+            "type": "bytea",
+            "primaryKey": false,
+            "notNull": false
+          },
+          "pos_len_7a1d2ba5ce2368fb": {
+            "name": "pos_len_7a1d2ba5ce2368fb",
+            "type": "integer",
+            "primaryKey": false,
+            "notNull": false
+          },
+          "pos_stamps_7a1d2ba5ce2368fb": {
+            "name": "pos_stamps_7a1d2ba5ce2368fb",
+            "type": "bigint[]",
+            "primaryKey": false,
+            "notNull": false
+          },
+          "pos_offsets_7a1d2ba5ce2368fb": {
+            "name": "pos_offsets_7a1d2ba5ce2368fb",
+            "type": "integer[]",
+            "primaryKey": false,
+            "notNull": false
+          }
+        },
+        "indexes": {
+          "customers_seal_index_scope_row_uq": {
+            "name": "customers_seal_index_scope_row_uq",
+            "columns": [
+              {
+                "expression": "scope_id",
+                "isExpression": false,
+                "asc": true,
+                "nulls": "last"
+              },
+              {
+                "expression": "row_id",
+                "isExpression": false,
+                "asc": true,
+                "nulls": "last"
+              }
+            ],
+            "isUnique": true,
+            "concurrently": false,
+            "method": "btree",
+            "with": {}
+          },
+          "customers_seal_index_row_uq": {
+            "name": "customers_seal_index_row_uq",
+            "columns": [
+              {
+                "expression": "row_id",
+                "isExpression": false,
+                "asc": true,
+                "nulls": "last"
+              }
+            ],
+            "isUnique": true,
+            "concurrently": false,
+            "method": "btree",
+            "with": {}
+          },
+          "seal_dfa387787f59f02a_bt": {
+            "name": "seal_dfa387787f59f02a_bt",
+            "columns": [
+              {
+                "expression": "scope_id",
+                "asc": true,
+                "isExpression": true,
+                "nulls": "last"
+              },
+              {
+                "expression": "(tokens_988d248ff4b71bf7[1])",
+                "asc": true,
+                "isExpression": true,
+                "nulls": "last"
+              },
+              {
+                "expression": "row_id",
+                "asc": true,
+                "isExpression": true,
+                "nulls": "last"
+              },
+              {
+                "expression": "eq_salt_988d248ff4b71bf7",
+                "asc": true,
+                "isExpression": true,
+                "nulls": "last"
+              },
+              {
+                "expression": "eq_stamp_988d248ff4b71bf7",
+                "asc": true,
+                "isExpression": true,
+                "nulls": "last"
+              },
+              {
+                "expression": "tokens_988d248ff4b71bf7",
+                "asc": true,
+                "isExpression": true,
+                "nulls": "last"
+              }
+            ],
+            "isUnique": false,
+            "concurrently": false,
+            "method": "btree",
+            "with": {}
+          },
+          "seal_4c8e2d2bddde3451_bt": {
+            "name": "seal_4c8e2d2bddde3451_bt",
+            "columns": [
+              {
+                "expression": "scope_id",
+                "asc": true,
+                "isExpression": true,
+                "nulls": "last"
+              },
+              {
+                "expression": "(tokens_a106c26102b707f0[1])",
+                "asc": true,
+                "isExpression": true,
+                "nulls": "last"
+              },
+              {
+                "expression": "row_id",
+                "asc": true,
+                "isExpression": true,
+                "nulls": "last"
+              },
+              {
+                "expression": "eq_salt_a106c26102b707f0",
+                "asc": true,
+                "isExpression": true,
+                "nulls": "last"
+              },
+              {
+                "expression": "eq_stamp_a106c26102b707f0",
+                "asc": true,
+                "isExpression": true,
+                "nulls": "last"
+              },
+              {
+                "expression": "tokens_a106c26102b707f0",
+                "asc": true,
+                "isExpression": true,
+                "nulls": "last"
+              }
+            ],
+            "isUnique": false,
+            "concurrently": false,
+            "method": "btree",
+            "with": {}
+          },
+          "seal_ae59b15a89e931d6_bt": {
+            "name": "seal_ae59b15a89e931d6_bt",
+            "columns": [
+              {
+                "expression": "scope_id",
+                "asc": true,
+                "isExpression": true,
+                "nulls": "last"
+              },
+              {
+                "expression": "(tokens_c5133b3810f23103[1])",
+                "asc": true,
+                "isExpression": true,
+                "nulls": "last"
+              },
+              {
+                "expression": "row_id",
+                "asc": true,
+                "isExpression": true,
+                "nulls": "last"
+              },
+              {
+                "expression": "eq_salt_c5133b3810f23103",
+                "asc": true,
+                "isExpression": true,
+                "nulls": "last"
+              },
+              {
+                "expression": "eq_stamp_c5133b3810f23103",
+                "asc": true,
+                "isExpression": true,
+                "nulls": "last"
+              },
+              {
+                "expression": "tokens_c5133b3810f23103",
+                "asc": true,
+                "isExpression": true,
+                "nulls": "last"
+              }
+            ],
+            "isUnique": false,
+            "concurrently": false,
+            "method": "btree",
+            "with": {}
+          },
+          "seal_8fa11f16c3da1ad8_bt": {
+            "name": "seal_8fa11f16c3da1ad8_bt",
+            "columns": [
+              {
+                "expression": "scope_id",
+                "asc": true,
+                "isExpression": true,
+                "nulls": "last"
+              },
+              {
+                "expression": "(tokens_1c32fdad5d1c8367[1])",
+                "asc": true,
+                "isExpression": true,
+                "nulls": "last"
+              },
+              {
+                "expression": "row_id",
+                "asc": true,
+                "isExpression": true,
+                "nulls": "last"
+              },
+              {
+                "expression": "eq_salt_1c32fdad5d1c8367",
+                "asc": true,
+                "isExpression": true,
+                "nulls": "last"
+              },
+              {
+                "expression": "eq_stamp_1c32fdad5d1c8367",
+                "asc": true,
+                "isExpression": true,
+                "nulls": "last"
+              },
+              {
+                "expression": "tokens_1c32fdad5d1c8367",
+                "asc": true,
+                "isExpression": true,
+                "nulls": "last"
+              }
+            ],
+            "isUnique": false,
+            "concurrently": false,
+            "method": "btree",
+            "with": {}
+          },
+          "seal_411905c9deef5c59_bt": {
+            "name": "seal_411905c9deef5c59_bt",
+            "columns": [
+              {
+                "expression": "scope_id",
+                "asc": true,
+                "isExpression": true,
+                "nulls": "last"
+              },
+              {
+                "expression": "(tokens_cd3096c7a3cd42c2[1])",
+                "asc": true,
+                "isExpression": true,
+                "nulls": "last"
+              },
+              {
+                "expression": "row_id",
+                "asc": true,
+                "isExpression": true,
+                "nulls": "last"
+              },
+              {
+                "expression": "eq_salt_cd3096c7a3cd42c2",
+                "asc": true,
+                "isExpression": true,
+                "nulls": "last"
+              },
+              {
+                "expression": "eq_stamp_cd3096c7a3cd42c2",
+                "asc": true,
+                "isExpression": true,
+                "nulls": "last"
+              },
+              {
+                "expression": "tokens_cd3096c7a3cd42c2",
+                "asc": true,
+                "isExpression": true,
+                "nulls": "last"
+              }
+            ],
+            "isUnique": false,
+            "concurrently": false,
+            "method": "btree",
+            "with": {}
+          },
+          "seal_62e346c0ef994072_bt": {
+            "name": "seal_62e346c0ef994072_bt",
+            "columns": [
+              {
+                "expression": "scope_id",
+                "asc": true,
+                "isExpression": true,
+                "nulls": "last"
+              },
+              {
+                "expression": "(tokens_c44ae523cca61a0b[1])",
+                "asc": true,
+                "isExpression": true,
+                "nulls": "last"
+              },
+              {
+                "expression": "row_id",
+                "asc": true,
+                "isExpression": true,
+                "nulls": "last"
+              },
+              {
+                "expression": "eq_salt_c44ae523cca61a0b",
+                "asc": true,
+                "isExpression": true,
+                "nulls": "last"
+              },
+              {
+                "expression": "eq_stamp_c44ae523cca61a0b",
+                "asc": true,
+                "isExpression": true,
+                "nulls": "last"
+              },
+              {
+                "expression": "tokens_c44ae523cca61a0b",
+                "asc": true,
+                "isExpression": true,
+                "nulls": "last"
+              }
+            ],
+            "isUnique": false,
+            "concurrently": false,
+            "method": "btree",
+            "with": {}
+          },
+          "seal_e66dc2708e915b65_gin": {
+            "name": "seal_e66dc2708e915b65_gin",
+            "columns": [
+              {
+                "expression": "tokens_792d75cf01821d67",
+                "isExpression": false,
+                "asc": true,
+                "nulls": "last"
+              },
+              {
+                "expression": "tokens_1127994ab736baf4",
+                "isExpression": false,
+                "asc": true,
+                "nulls": "last"
+              },
+              {
+                "expression": "tokens_ef1d32a52e2ce103",
+                "isExpression": false,
+                "asc": true,
+                "nulls": "last"
+              },
+              {
+                "expression": "tokens_a639b11c8130dcf7",
+                "isExpression": false,
+                "asc": true,
+                "nulls": "last"
+              },
+              {
+                "expression": "tokens_f289b89d86c7086a",
+                "isExpression": false,
+                "asc": true,
+                "nulls": "last"
+              },
+              {
+                "expression": "tokens_7a1d2ba5ce2368fb",
+                "isExpression": false,
+                "asc": true,
+                "nulls": "last"
+              }
+            ],
+            "isUnique": false,
+            "concurrently": false,
+            "method": "gin",
+            "with": {}
+          }
+        },
+        "foreignKeys": {
+          "customers_seal_index_row_id_customers_id_fk": {
+            "name": "customers_seal_index_row_id_customers_id_fk",
+            "tableFrom": "customers_seal_index",
+            "tableTo": "customers",
+            "schemaTo": "test_p1_verify",
+            "columnsFrom": [
+              "row_id"
+            ],
+            "columnsTo": [
+              "id"
+            ],
+            "onDelete": "cascade",
+            "onUpdate": "no action"
+          }
+        },
+        "compositePrimaryKeys": {},
+        "uniqueConstraints": {},
+        "policies": {},
+        "checkConstraints": {
+          "seal_dfa387787f59f02a_one_ck": {
+            "name": "seal_dfa387787f59f02a_one_ck",
+            "value": "\"test_p1_verify\".\"customers_seal_index\".\"tokens_988d248ff4b71bf7\" is null or\n        (cardinality(\"test_p1_verify\".\"customers_seal_index\".\"tokens_988d248ff4b71bf7\") = 1 and array_ndims(\"test_p1_verify\".\"customers_seal_index\".\"tokens_988d248ff4b71bf7\") = 1)"
+          },
+          "seal_4c8e2d2bddde3451_one_ck": {
+            "name": "seal_4c8e2d2bddde3451_one_ck",
+            "value": "\"test_p1_verify\".\"customers_seal_index\".\"tokens_a106c26102b707f0\" is null or\n        (cardinality(\"test_p1_verify\".\"customers_seal_index\".\"tokens_a106c26102b707f0\") = 1 and array_ndims(\"test_p1_verify\".\"customers_seal_index\".\"tokens_a106c26102b707f0\") = 1)"
+          },
+          "seal_ae59b15a89e931d6_one_ck": {
+            "name": "seal_ae59b15a89e931d6_one_ck",
+            "value": "\"test_p1_verify\".\"customers_seal_index\".\"tokens_c5133b3810f23103\" is null or\n        (cardinality(\"test_p1_verify\".\"customers_seal_index\".\"tokens_c5133b3810f23103\") = 1 and array_ndims(\"test_p1_verify\".\"customers_seal_index\".\"tokens_c5133b3810f23103\") = 1)"
+          },
+          "seal_8fa11f16c3da1ad8_one_ck": {
+            "name": "seal_8fa11f16c3da1ad8_one_ck",
+            "value": "\"test_p1_verify\".\"customers_seal_index\".\"tokens_1c32fdad5d1c8367\" is null or\n        (cardinality(\"test_p1_verify\".\"customers_seal_index\".\"tokens_1c32fdad5d1c8367\") = 1 and array_ndims(\"test_p1_verify\".\"customers_seal_index\".\"tokens_1c32fdad5d1c8367\") = 1)"
+          },
+          "seal_411905c9deef5c59_one_ck": {
+            "name": "seal_411905c9deef5c59_one_ck",
+            "value": "\"test_p1_verify\".\"customers_seal_index\".\"tokens_cd3096c7a3cd42c2\" is null or\n        (cardinality(\"test_p1_verify\".\"customers_seal_index\".\"tokens_cd3096c7a3cd42c2\") = 1 and array_ndims(\"test_p1_verify\".\"customers_seal_index\".\"tokens_cd3096c7a3cd42c2\") = 1)"
+          },
+          "seal_62e346c0ef994072_one_ck": {
+            "name": "seal_62e346c0ef994072_one_ck",
+            "value": "\"test_p1_verify\".\"customers_seal_index\".\"tokens_c44ae523cca61a0b\" is null or\n        (cardinality(\"test_p1_verify\".\"customers_seal_index\".\"tokens_c44ae523cca61a0b\") = 1 and array_ndims(\"test_p1_verify\".\"customers_seal_index\".\"tokens_c44ae523cca61a0b\") = 1)"
+          },
+          "seal_8087f389ab6d07a2_ck": {
+            "name": "seal_8087f389ab6d07a2_ck",
+            "value": "(\"test_p1_verify\".\"customers_seal_index\".\"eq_salt_988d248ff4b71bf7\" is null and \"test_p1_verify\".\"customers_seal_index\".\"eq_stamp_988d248ff4b71bf7\" is null) or\n          (\"test_p1_verify\".\"customers_seal_index\".\"eq_salt_988d248ff4b71bf7\" is not null and \"test_p1_verify\".\"customers_seal_index\".\"eq_stamp_988d248ff4b71bf7\" is not null and octet_length(\"test_p1_verify\".\"customers_seal_index\".\"eq_salt_988d248ff4b71bf7\") = 16 )"
+          },
+          "seal_3e959b5ee3a10b8e_ck": {
+            "name": "seal_3e959b5ee3a10b8e_ck",
+            "value": "(\"test_p1_verify\".\"customers_seal_index\".\"pos_salt_792d75cf01821d67\" is null and \"test_p1_verify\".\"customers_seal_index\".\"pos_len_792d75cf01821d67\" is null and \"test_p1_verify\".\"customers_seal_index\".\"pos_stamps_792d75cf01821d67\" is null and \"test_p1_verify\".\"customers_seal_index\".\"pos_offsets_792d75cf01821d67\" is null) or\n          (\"test_p1_verify\".\"customers_seal_index\".\"pos_salt_792d75cf01821d67\" is not null and \"test_p1_verify\".\"customers_seal_index\".\"pos_len_792d75cf01821d67\" is not null and \"test_p1_verify\".\"customers_seal_index\".\"pos_stamps_792d75cf01821d67\" is not null and \"test_p1_verify\".\"customers_seal_index\".\"pos_offsets_792d75cf01821d67\" is not null and octet_length(\"test_p1_verify\".\"customers_seal_index\".\"pos_salt_792d75cf01821d67\") = 16 and \"test_p1_verify\".\"customers_seal_index\".\"pos_len_792d75cf01821d67\" >= 0\n          and cardinality(\"test_p1_verify\".\"customers_seal_index\".\"pos_stamps_792d75cf01821d67\") = cardinality(\"test_p1_verify\".\"customers_seal_index\".\"pos_offsets_792d75cf01821d67\"))"
+          },
+          "seal_e7939aee6e139cf8_ck": {
+            "name": "seal_e7939aee6e139cf8_ck",
+            "value": "(\"test_p1_verify\".\"customers_seal_index\".\"eq_salt_a106c26102b707f0\" is null and \"test_p1_verify\".\"customers_seal_index\".\"eq_stamp_a106c26102b707f0\" is null) or\n          (\"test_p1_verify\".\"customers_seal_index\".\"eq_salt_a106c26102b707f0\" is not null and \"test_p1_verify\".\"customers_seal_index\".\"eq_stamp_a106c26102b707f0\" is not null and octet_length(\"test_p1_verify\".\"customers_seal_index\".\"eq_salt_a106c26102b707f0\") = 16 )"
+          },
+          "seal_3a4c44ea79bb2b5b_ck": {
+            "name": "seal_3a4c44ea79bb2b5b_ck",
+            "value": "(\"test_p1_verify\".\"customers_seal_index\".\"pos_salt_1127994ab736baf4\" is null and \"test_p1_verify\".\"customers_seal_index\".\"pos_len_1127994ab736baf4\" is null and \"test_p1_verify\".\"customers_seal_index\".\"pos_stamps_1127994ab736baf4\" is null and \"test_p1_verify\".\"customers_seal_index\".\"pos_offsets_1127994ab736baf4\" is null) or\n          (\"test_p1_verify\".\"customers_seal_index\".\"pos_salt_1127994ab736baf4\" is not null and \"test_p1_verify\".\"customers_seal_index\".\"pos_len_1127994ab736baf4\" is not null and \"test_p1_verify\".\"customers_seal_index\".\"pos_stamps_1127994ab736baf4\" is not null and \"test_p1_verify\".\"customers_seal_index\".\"pos_offsets_1127994ab736baf4\" is not null and octet_length(\"test_p1_verify\".\"customers_seal_index\".\"pos_salt_1127994ab736baf4\") = 16 and \"test_p1_verify\".\"customers_seal_index\".\"pos_len_1127994ab736baf4\" >= 0\n          and cardinality(\"test_p1_verify\".\"customers_seal_index\".\"pos_stamps_1127994ab736baf4\") = cardinality(\"test_p1_verify\".\"customers_seal_index\".\"pos_offsets_1127994ab736baf4\"))"
+          },
+          "seal_a342f7266d485434_ck": {
+            "name": "seal_a342f7266d485434_ck",
+            "value": "(\"test_p1_verify\".\"customers_seal_index\".\"eq_salt_c5133b3810f23103\" is null and \"test_p1_verify\".\"customers_seal_index\".\"eq_stamp_c5133b3810f23103\" is null) or\n          (\"test_p1_verify\".\"customers_seal_index\".\"eq_salt_c5133b3810f23103\" is not null and \"test_p1_verify\".\"customers_seal_index\".\"eq_stamp_c5133b3810f23103\" is not null and octet_length(\"test_p1_verify\".\"customers_seal_index\".\"eq_salt_c5133b3810f23103\") = 16 )"
+          },
+          "seal_29be74eeee1fbd9e_ck": {
+            "name": "seal_29be74eeee1fbd9e_ck",
+            "value": "(\"test_p1_verify\".\"customers_seal_index\".\"pos_salt_ef1d32a52e2ce103\" is null and \"test_p1_verify\".\"customers_seal_index\".\"pos_len_ef1d32a52e2ce103\" is null and \"test_p1_verify\".\"customers_seal_index\".\"pos_stamps_ef1d32a52e2ce103\" is null and \"test_p1_verify\".\"customers_seal_index\".\"pos_offsets_ef1d32a52e2ce103\" is null) or\n          (\"test_p1_verify\".\"customers_seal_index\".\"pos_salt_ef1d32a52e2ce103\" is not null and \"test_p1_verify\".\"customers_seal_index\".\"pos_len_ef1d32a52e2ce103\" is not null and \"test_p1_verify\".\"customers_seal_index\".\"pos_stamps_ef1d32a52e2ce103\" is not null and \"test_p1_verify\".\"customers_seal_index\".\"pos_offsets_ef1d32a52e2ce103\" is not null and octet_length(\"test_p1_verify\".\"customers_seal_index\".\"pos_salt_ef1d32a52e2ce103\") = 16 and \"test_p1_verify\".\"customers_seal_index\".\"pos_len_ef1d32a52e2ce103\" >= 0\n          and cardinality(\"test_p1_verify\".\"customers_seal_index\".\"pos_stamps_ef1d32a52e2ce103\") = cardinality(\"test_p1_verify\".\"customers_seal_index\".\"pos_offsets_ef1d32a52e2ce103\"))"
+          },
+          "seal_5854a3c438983f97_ck": {
+            "name": "seal_5854a3c438983f97_ck",
+            "value": "(\"test_p1_verify\".\"customers_seal_index\".\"eq_salt_1c32fdad5d1c8367\" is null and \"test_p1_verify\".\"customers_seal_index\".\"eq_stamp_1c32fdad5d1c8367\" is null) or\n          (\"test_p1_verify\".\"customers_seal_index\".\"eq_salt_1c32fdad5d1c8367\" is not null and \"test_p1_verify\".\"customers_seal_index\".\"eq_stamp_1c32fdad5d1c8367\" is not null and octet_length(\"test_p1_verify\".\"customers_seal_index\".\"eq_salt_1c32fdad5d1c8367\") = 16 )"
+          },
+          "seal_2d4368a47b9a1d16_ck": {
+            "name": "seal_2d4368a47b9a1d16_ck",
+            "value": "(\"test_p1_verify\".\"customers_seal_index\".\"pos_salt_a639b11c8130dcf7\" is null and \"test_p1_verify\".\"customers_seal_index\".\"pos_len_a639b11c8130dcf7\" is null and \"test_p1_verify\".\"customers_seal_index\".\"pos_stamps_a639b11c8130dcf7\" is null and \"test_p1_verify\".\"customers_seal_index\".\"pos_offsets_a639b11c8130dcf7\" is null) or\n          (\"test_p1_verify\".\"customers_seal_index\".\"pos_salt_a639b11c8130dcf7\" is not null and \"test_p1_verify\".\"customers_seal_index\".\"pos_len_a639b11c8130dcf7\" is not null and \"test_p1_verify\".\"customers_seal_index\".\"pos_stamps_a639b11c8130dcf7\" is not null and \"test_p1_verify\".\"customers_seal_index\".\"pos_offsets_a639b11c8130dcf7\" is not null and octet_length(\"test_p1_verify\".\"customers_seal_index\".\"pos_salt_a639b11c8130dcf7\") = 16 and \"test_p1_verify\".\"customers_seal_index\".\"pos_len_a639b11c8130dcf7\" >= 0\n          and cardinality(\"test_p1_verify\".\"customers_seal_index\".\"pos_stamps_a639b11c8130dcf7\") = cardinality(\"test_p1_verify\".\"customers_seal_index\".\"pos_offsets_a639b11c8130dcf7\"))"
+          },
+          "seal_baf0c757d4087c63_ck": {
+            "name": "seal_baf0c757d4087c63_ck",
+            "value": "(\"test_p1_verify\".\"customers_seal_index\".\"eq_salt_cd3096c7a3cd42c2\" is null and \"test_p1_verify\".\"customers_seal_index\".\"eq_stamp_cd3096c7a3cd42c2\" is null) or\n          (\"test_p1_verify\".\"customers_seal_index\".\"eq_salt_cd3096c7a3cd42c2\" is not null and \"test_p1_verify\".\"customers_seal_index\".\"eq_stamp_cd3096c7a3cd42c2\" is not null and octet_length(\"test_p1_verify\".\"customers_seal_index\".\"eq_salt_cd3096c7a3cd42c2\") = 16 )"
+          },
+          "seal_8609fff396d1e5e3_ck": {
+            "name": "seal_8609fff396d1e5e3_ck",
+            "value": "(\"test_p1_verify\".\"customers_seal_index\".\"pos_salt_f289b89d86c7086a\" is null and \"test_p1_verify\".\"customers_seal_index\".\"pos_len_f289b89d86c7086a\" is null and \"test_p1_verify\".\"customers_seal_index\".\"pos_stamps_f289b89d86c7086a\" is null and \"test_p1_verify\".\"customers_seal_index\".\"pos_offsets_f289b89d86c7086a\" is null) or\n          (\"test_p1_verify\".\"customers_seal_index\".\"pos_salt_f289b89d86c7086a\" is not null and \"test_p1_verify\".\"customers_seal_index\".\"pos_len_f289b89d86c7086a\" is not null and \"test_p1_verify\".\"customers_seal_index\".\"pos_stamps_f289b89d86c7086a\" is not null and \"test_p1_verify\".\"customers_seal_index\".\"pos_offsets_f289b89d86c7086a\" is not null and octet_length(\"test_p1_verify\".\"customers_seal_index\".\"pos_salt_f289b89d86c7086a\") = 16 and \"test_p1_verify\".\"customers_seal_index\".\"pos_len_f289b89d86c7086a\" >= 0\n          and cardinality(\"test_p1_verify\".\"customers_seal_index\".\"pos_stamps_f289b89d86c7086a\") = cardinality(\"test_p1_verify\".\"customers_seal_index\".\"pos_offsets_f289b89d86c7086a\"))"
+          },
+          "seal_ba07838904f4779e_ck": {
+            "name": "seal_ba07838904f4779e_ck",
+            "value": "(\"test_p1_verify\".\"customers_seal_index\".\"eq_salt_c44ae523cca61a0b\" is null and \"test_p1_verify\".\"customers_seal_index\".\"eq_stamp_c44ae523cca61a0b\" is null) or\n          (\"test_p1_verify\".\"customers_seal_index\".\"eq_salt_c44ae523cca61a0b\" is not null and \"test_p1_verify\".\"customers_seal_index\".\"eq_stamp_c44ae523cca61a0b\" is not null and octet_length(\"test_p1_verify\".\"customers_seal_index\".\"eq_salt_c44ae523cca61a0b\") = 16 )"
+          },
+          "seal_e3491d1167b1bb38_ck": {
+            "name": "seal_e3491d1167b1bb38_ck",
+            "value": "(\"test_p1_verify\".\"customers_seal_index\".\"pos_salt_7a1d2ba5ce2368fb\" is null and \"test_p1_verify\".\"customers_seal_index\".\"pos_len_7a1d2ba5ce2368fb\" is null and \"test_p1_verify\".\"customers_seal_index\".\"pos_stamps_7a1d2ba5ce2368fb\" is null and \"test_p1_verify\".\"customers_seal_index\".\"pos_offsets_7a1d2ba5ce2368fb\" is null) or\n          (\"test_p1_verify\".\"customers_seal_index\".\"pos_salt_7a1d2ba5ce2368fb\" is not null and \"test_p1_verify\".\"customers_seal_index\".\"pos_len_7a1d2ba5ce2368fb\" is not null and \"test_p1_verify\".\"customers_seal_index\".\"pos_stamps_7a1d2ba5ce2368fb\" is not null and \"test_p1_verify\".\"customers_seal_index\".\"pos_offsets_7a1d2ba5ce2368fb\" is not null and octet_length(\"test_p1_verify\".\"customers_seal_index\".\"pos_salt_7a1d2ba5ce2368fb\") = 16 and \"test_p1_verify\".\"customers_seal_index\".\"pos_len_7a1d2ba5ce2368fb\" >= 0\n          and cardinality(\"test_p1_verify\".\"customers_seal_index\".\"pos_stamps_7a1d2ba5ce2368fb\") = cardinality(\"test_p1_verify\".\"customers_seal_index\".\"pos_offsets_7a1d2ba5ce2368fb\"))"
+          }
+        },
+        "isRLSEnabled": false
+      }
+    },
+    "enums": {},
+    "schemas": {},
+    "sequences": {},
+    "roles": {},
+    "policies": {},
+    "views": {},
+    "_meta": {
+      "schemas": {},
+      "tables": {},
+      "columns": {}
+    },
+    "id": "c77276d1-9544-4e60-949a-218c44bd7785",
+    "prevId": "00000000-0000-0000-0000-000000000000"
+  },
+  "migration": [
+    "CREATE TABLE \"test_p1_verify\".\"customers\" (\n\t\"id\" uuid PRIMARY KEY NOT NULL,\n\t\"scope_id\" uuid NOT NULL,\n\t\"name_ct\" \"bytea\" NOT NULL,\n\t\"phone_ct\" \"bytea\" NOT NULL,\n\t\"address_ct\" \"bytea\" NOT NULL,\n\t\"memo_ct\" \"bytea\" NOT NULL,\n\t\"email_ct\" \"bytea\" NOT NULL,\n\t\"company_ct\" \"bytea\" NOT NULL\n);\n",
+    "CREATE TABLE \"test_p1_verify\".\"customers_seal_index\" (\n\t\"scope_id\" uuid NOT NULL,\n\t\"row_id\" uuid NOT NULL,\n\t\"tokens_988d248ff4b71bf7\" bigint[],\n\t\"eq_salt_988d248ff4b71bf7\" \"bytea\",\n\t\"eq_stamp_988d248ff4b71bf7\" bigint,\n\t\"tokens_792d75cf01821d67\" bigint[],\n\t\"pos_salt_792d75cf01821d67\" \"bytea\",\n\t\"pos_len_792d75cf01821d67\" integer,\n\t\"pos_stamps_792d75cf01821d67\" bigint[],\n\t\"pos_offsets_792d75cf01821d67\" integer[],\n\t\"tokens_a106c26102b707f0\" bigint[],\n\t\"eq_salt_a106c26102b707f0\" \"bytea\",\n\t\"eq_stamp_a106c26102b707f0\" bigint,\n\t\"tokens_1127994ab736baf4\" bigint[],\n\t\"pos_salt_1127994ab736baf4\" \"bytea\",\n\t\"pos_len_1127994ab736baf4\" integer,\n\t\"pos_stamps_1127994ab736baf4\" bigint[],\n\t\"pos_offsets_1127994ab736baf4\" integer[],\n\t\"tokens_c5133b3810f23103\" bigint[],\n\t\"eq_salt_c5133b3810f23103\" \"bytea\",\n\t\"eq_stamp_c5133b3810f23103\" bigint,\n\t\"tokens_ef1d32a52e2ce103\" bigint[],\n\t\"pos_salt_ef1d32a52e2ce103\" \"bytea\",\n\t\"pos_len_ef1d32a52e2ce103\" integer,\n\t\"pos_stamps_ef1d32a52e2ce103\" bigint[],\n\t\"pos_offsets_ef1d32a52e2ce103\" integer[],\n\t\"tokens_1c32fdad5d1c8367\" bigint[],\n\t\"eq_salt_1c32fdad5d1c8367\" \"bytea\",\n\t\"eq_stamp_1c32fdad5d1c8367\" bigint,\n\t\"tokens_a639b11c8130dcf7\" bigint[],\n\t\"pos_salt_a639b11c8130dcf7\" \"bytea\",\n\t\"pos_len_a639b11c8130dcf7\" integer,\n\t\"pos_stamps_a639b11c8130dcf7\" bigint[],\n\t\"pos_offsets_a639b11c8130dcf7\" integer[],\n\t\"tokens_cd3096c7a3cd42c2\" bigint[],\n\t\"eq_salt_cd3096c7a3cd42c2\" \"bytea\",\n\t\"eq_stamp_cd3096c7a3cd42c2\" bigint,\n\t\"tokens_f289b89d86c7086a\" bigint[],\n\t\"pos_salt_f289b89d86c7086a\" \"bytea\",\n\t\"pos_len_f289b89d86c7086a\" integer,\n\t\"pos_stamps_f289b89d86c7086a\" bigint[],\n\t\"pos_offsets_f289b89d86c7086a\" integer[],\n\t\"tokens_c44ae523cca61a0b\" bigint[],\n\t\"eq_salt_c44ae523cca61a0b\" \"bytea\",\n\t\"eq_stamp_c44ae523cca61a0b\" bigint,\n\t\"tokens_7a1d2ba5ce2368fb\" bigint[],\n\t\"pos_salt_7a1d2ba5ce2368fb\" \"bytea\",\n\t\"pos_len_7a1d2ba5ce2368fb\" integer,\n\t\"pos_stamps_7a1d2ba5ce2368fb\" bigint[],\n\t\"pos_offsets_7a1d2ba5ce2368fb\" integer[],\n\tCONSTRAINT \"seal_dfa387787f59f02a_one_ck\" CHECK (\"test_p1_verify\".\"customers_seal_index\".\"tokens_988d248ff4b71bf7\" is null or\n        (cardinality(\"test_p1_verify\".\"customers_seal_index\".\"tokens_988d248ff4b71bf7\") = 1 and array_ndims(\"test_p1_verify\".\"customers_seal_index\".\"tokens_988d248ff4b71bf7\") = 1)),\n\tCONSTRAINT \"seal_4c8e2d2bddde3451_one_ck\" CHECK (\"test_p1_verify\".\"customers_seal_index\".\"tokens_a106c26102b707f0\" is null or\n        (cardinality(\"test_p1_verify\".\"customers_seal_index\".\"tokens_a106c26102b707f0\") = 1 and array_ndims(\"test_p1_verify\".\"customers_seal_index\".\"tokens_a106c26102b707f0\") = 1)),\n\tCONSTRAINT \"seal_ae59b15a89e931d6_one_ck\" CHECK (\"test_p1_verify\".\"customers_seal_index\".\"tokens_c5133b3810f23103\" is null or\n        (cardinality(\"test_p1_verify\".\"customers_seal_index\".\"tokens_c5133b3810f23103\") = 1 and array_ndims(\"test_p1_verify\".\"customers_seal_index\".\"tokens_c5133b3810f23103\") = 1)),\n\tCONSTRAINT \"seal_8fa11f16c3da1ad8_one_ck\" CHECK (\"test_p1_verify\".\"customers_seal_index\".\"tokens_1c32fdad5d1c8367\" is null or\n        (cardinality(\"test_p1_verify\".\"customers_seal_index\".\"tokens_1c32fdad5d1c8367\") = 1 and array_ndims(\"test_p1_verify\".\"customers_seal_index\".\"tokens_1c32fdad5d1c8367\") = 1)),\n\tCONSTRAINT \"seal_411905c9deef5c59_one_ck\" CHECK (\"test_p1_verify\".\"customers_seal_index\".\"tokens_cd3096c7a3cd42c2\" is null or\n        (cardinality(\"test_p1_verify\".\"customers_seal_index\".\"tokens_cd3096c7a3cd42c2\") = 1 and array_ndims(\"test_p1_verify\".\"customers_seal_index\".\"tokens_cd3096c7a3cd42c2\") = 1)),\n\tCONSTRAINT \"seal_62e346c0ef994072_one_ck\" CHECK (\"test_p1_verify\".\"customers_seal_index\".\"tokens_c44ae523cca61a0b\" is null or\n        (cardinality(\"test_p1_verify\".\"customers_seal_index\".\"tokens_c44ae523cca61a0b\") = 1 and array_ndims(\"test_p1_verify\".\"customers_seal_index\".\"tokens_c44ae523cca61a0b\") = 1)),\n\tCONSTRAINT \"seal_8087f389ab6d07a2_ck\" CHECK ((\"test_p1_verify\".\"customers_seal_index\".\"eq_salt_988d248ff4b71bf7\" is null and \"test_p1_verify\".\"customers_seal_index\".\"eq_stamp_988d248ff4b71bf7\" is null) or\n          (\"test_p1_verify\".\"customers_seal_index\".\"eq_salt_988d248ff4b71bf7\" is not null and \"test_p1_verify\".\"customers_seal_index\".\"eq_stamp_988d248ff4b71bf7\" is not null and octet_length(\"test_p1_verify\".\"customers_seal_index\".\"eq_salt_988d248ff4b71bf7\") = 16 )),\n\tCONSTRAINT \"seal_3e959b5ee3a10b8e_ck\" CHECK ((\"test_p1_verify\".\"customers_seal_index\".\"pos_salt_792d75cf01821d67\" is null and \"test_p1_verify\".\"customers_seal_index\".\"pos_len_792d75cf01821d67\" is null and \"test_p1_verify\".\"customers_seal_index\".\"pos_stamps_792d75cf01821d67\" is null and \"test_p1_verify\".\"customers_seal_index\".\"pos_offsets_792d75cf01821d67\" is null) or\n          (\"test_p1_verify\".\"customers_seal_index\".\"pos_salt_792d75cf01821d67\" is not null and \"test_p1_verify\".\"customers_seal_index\".\"pos_len_792d75cf01821d67\" is not null and \"test_p1_verify\".\"customers_seal_index\".\"pos_stamps_792d75cf01821d67\" is not null and \"test_p1_verify\".\"customers_seal_index\".\"pos_offsets_792d75cf01821d67\" is not null and octet_length(\"test_p1_verify\".\"customers_seal_index\".\"pos_salt_792d75cf01821d67\") = 16 and \"test_p1_verify\".\"customers_seal_index\".\"pos_len_792d75cf01821d67\" >= 0\n          and cardinality(\"test_p1_verify\".\"customers_seal_index\".\"pos_stamps_792d75cf01821d67\") = cardinality(\"test_p1_verify\".\"customers_seal_index\".\"pos_offsets_792d75cf01821d67\"))),\n\tCONSTRAINT \"seal_e7939aee6e139cf8_ck\" CHECK ((\"test_p1_verify\".\"customers_seal_index\".\"eq_salt_a106c26102b707f0\" is null and \"test_p1_verify\".\"customers_seal_index\".\"eq_stamp_a106c26102b707f0\" is null) or\n          (\"test_p1_verify\".\"customers_seal_index\".\"eq_salt_a106c26102b707f0\" is not null and \"test_p1_verify\".\"customers_seal_index\".\"eq_stamp_a106c26102b707f0\" is not null and octet_length(\"test_p1_verify\".\"customers_seal_index\".\"eq_salt_a106c26102b707f0\") = 16 )),\n\tCONSTRAINT \"seal_3a4c44ea79bb2b5b_ck\" CHECK ((\"test_p1_verify\".\"customers_seal_index\".\"pos_salt_1127994ab736baf4\" is null and \"test_p1_verify\".\"customers_seal_index\".\"pos_len_1127994ab736baf4\" is null and \"test_p1_verify\".\"customers_seal_index\".\"pos_stamps_1127994ab736baf4\" is null and \"test_p1_verify\".\"customers_seal_index\".\"pos_offsets_1127994ab736baf4\" is null) or\n          (\"test_p1_verify\".\"customers_seal_index\".\"pos_salt_1127994ab736baf4\" is not null and \"test_p1_verify\".\"customers_seal_index\".\"pos_len_1127994ab736baf4\" is not null and \"test_p1_verify\".\"customers_seal_index\".\"pos_stamps_1127994ab736baf4\" is not null and \"test_p1_verify\".\"customers_seal_index\".\"pos_offsets_1127994ab736baf4\" is not null and octet_length(\"test_p1_verify\".\"customers_seal_index\".\"pos_salt_1127994ab736baf4\") = 16 and \"test_p1_verify\".\"customers_seal_index\".\"pos_len_1127994ab736baf4\" >= 0\n          and cardinality(\"test_p1_verify\".\"customers_seal_index\".\"pos_stamps_1127994ab736baf4\") = cardinality(\"test_p1_verify\".\"customers_seal_index\".\"pos_offsets_1127994ab736baf4\"))),\n\tCONSTRAINT \"seal_a342f7266d485434_ck\" CHECK ((\"test_p1_verify\".\"customers_seal_index\".\"eq_salt_c5133b3810f23103\" is null and \"test_p1_verify\".\"customers_seal_index\".\"eq_stamp_c5133b3810f23103\" is null) or\n          (\"test_p1_verify\".\"customers_seal_index\".\"eq_salt_c5133b3810f23103\" is not null and \"test_p1_verify\".\"customers_seal_index\".\"eq_stamp_c5133b3810f23103\" is not null and octet_length(\"test_p1_verify\".\"customers_seal_index\".\"eq_salt_c5133b3810f23103\") = 16 )),\n\tCONSTRAINT \"seal_29be74eeee1fbd9e_ck\" CHECK ((\"test_p1_verify\".\"customers_seal_index\".\"pos_salt_ef1d32a52e2ce103\" is null and \"test_p1_verify\".\"customers_seal_index\".\"pos_len_ef1d32a52e2ce103\" is null and \"test_p1_verify\".\"customers_seal_index\".\"pos_stamps_ef1d32a52e2ce103\" is null and \"test_p1_verify\".\"customers_seal_index\".\"pos_offsets_ef1d32a52e2ce103\" is null) or\n          (\"test_p1_verify\".\"customers_seal_index\".\"pos_salt_ef1d32a52e2ce103\" is not null and \"test_p1_verify\".\"customers_seal_index\".\"pos_len_ef1d32a52e2ce103\" is not null and \"test_p1_verify\".\"customers_seal_index\".\"pos_stamps_ef1d32a52e2ce103\" is not null and \"test_p1_verify\".\"customers_seal_index\".\"pos_offsets_ef1d32a52e2ce103\" is not null and octet_length(\"test_p1_verify\".\"customers_seal_index\".\"pos_salt_ef1d32a52e2ce103\") = 16 and \"test_p1_verify\".\"customers_seal_index\".\"pos_len_ef1d32a52e2ce103\" >= 0\n          and cardinality(\"test_p1_verify\".\"customers_seal_index\".\"pos_stamps_ef1d32a52e2ce103\") = cardinality(\"test_p1_verify\".\"customers_seal_index\".\"pos_offsets_ef1d32a52e2ce103\"))),\n\tCONSTRAINT \"seal_5854a3c438983f97_ck\" CHECK ((\"test_p1_verify\".\"customers_seal_index\".\"eq_salt_1c32fdad5d1c8367\" is null and \"test_p1_verify\".\"customers_seal_index\".\"eq_stamp_1c32fdad5d1c8367\" is null) or\n          (\"test_p1_verify\".\"customers_seal_index\".\"eq_salt_1c32fdad5d1c8367\" is not null and \"test_p1_verify\".\"customers_seal_index\".\"eq_stamp_1c32fdad5d1c8367\" is not null and octet_length(\"test_p1_verify\".\"customers_seal_index\".\"eq_salt_1c32fdad5d1c8367\") = 16 )),\n\tCONSTRAINT \"seal_2d4368a47b9a1d16_ck\" CHECK ((\"test_p1_verify\".\"customers_seal_index\".\"pos_salt_a639b11c8130dcf7\" is null and \"test_p1_verify\".\"customers_seal_index\".\"pos_len_a639b11c8130dcf7\" is null and \"test_p1_verify\".\"customers_seal_index\".\"pos_stamps_a639b11c8130dcf7\" is null and \"test_p1_verify\".\"customers_seal_index\".\"pos_offsets_a639b11c8130dcf7\" is null) or\n          (\"test_p1_verify\".\"customers_seal_index\".\"pos_salt_a639b11c8130dcf7\" is not null and \"test_p1_verify\".\"customers_seal_index\".\"pos_len_a639b11c8130dcf7\" is not null and \"test_p1_verify\".\"customers_seal_index\".\"pos_stamps_a639b11c8130dcf7\" is not null and \"test_p1_verify\".\"customers_seal_index\".\"pos_offsets_a639b11c8130dcf7\" is not null and octet_length(\"test_p1_verify\".\"customers_seal_index\".\"pos_salt_a639b11c8130dcf7\") = 16 and \"test_p1_verify\".\"customers_seal_index\".\"pos_len_a639b11c8130dcf7\" >= 0\n          and cardinality(\"test_p1_verify\".\"customers_seal_index\".\"pos_stamps_a639b11c8130dcf7\") = cardinality(\"test_p1_verify\".\"customers_seal_index\".\"pos_offsets_a639b11c8130dcf7\"))),\n\tCONSTRAINT \"seal_baf0c757d4087c63_ck\" CHECK ((\"test_p1_verify\".\"customers_seal_index\".\"eq_salt_cd3096c7a3cd42c2\" is null and \"test_p1_verify\".\"customers_seal_index\".\"eq_stamp_cd3096c7a3cd42c2\" is null) or\n          (\"test_p1_verify\".\"customers_seal_index\".\"eq_salt_cd3096c7a3cd42c2\" is not null and \"test_p1_verify\".\"customers_seal_index\".\"eq_stamp_cd3096c7a3cd42c2\" is not null and octet_length(\"test_p1_verify\".\"customers_seal_index\".\"eq_salt_cd3096c7a3cd42c2\") = 16 )),\n\tCONSTRAINT \"seal_8609fff396d1e5e3_ck\" CHECK ((\"test_p1_verify\".\"customers_seal_index\".\"pos_salt_f289b89d86c7086a\" is null and \"test_p1_verify\".\"customers_seal_index\".\"pos_len_f289b89d86c7086a\" is null and \"test_p1_verify\".\"customers_seal_index\".\"pos_stamps_f289b89d86c7086a\" is null and \"test_p1_verify\".\"customers_seal_index\".\"pos_offsets_f289b89d86c7086a\" is null) or\n          (\"test_p1_verify\".\"customers_seal_index\".\"pos_salt_f289b89d86c7086a\" is not null and \"test_p1_verify\".\"customers_seal_index\".\"pos_len_f289b89d86c7086a\" is not null and \"test_p1_verify\".\"customers_seal_index\".\"pos_stamps_f289b89d86c7086a\" is not null and \"test_p1_verify\".\"customers_seal_index\".\"pos_offsets_f289b89d86c7086a\" is not null and octet_length(\"test_p1_verify\".\"customers_seal_index\".\"pos_salt_f289b89d86c7086a\") = 16 and \"test_p1_verify\".\"customers_seal_index\".\"pos_len_f289b89d86c7086a\" >= 0\n          and cardinality(\"test_p1_verify\".\"customers_seal_index\".\"pos_stamps_f289b89d86c7086a\") = cardinality(\"test_p1_verify\".\"customers_seal_index\".\"pos_offsets_f289b89d86c7086a\"))),\n\tCONSTRAINT \"seal_ba07838904f4779e_ck\" CHECK ((\"test_p1_verify\".\"customers_seal_index\".\"eq_salt_c44ae523cca61a0b\" is null and \"test_p1_verify\".\"customers_seal_index\".\"eq_stamp_c44ae523cca61a0b\" is null) or\n          (\"test_p1_verify\".\"customers_seal_index\".\"eq_salt_c44ae523cca61a0b\" is not null and \"test_p1_verify\".\"customers_seal_index\".\"eq_stamp_c44ae523cca61a0b\" is not null and octet_length(\"test_p1_verify\".\"customers_seal_index\".\"eq_salt_c44ae523cca61a0b\") = 16 )),\n\tCONSTRAINT \"seal_e3491d1167b1bb38_ck\" CHECK ((\"test_p1_verify\".\"customers_seal_index\".\"pos_salt_7a1d2ba5ce2368fb\" is null and \"test_p1_verify\".\"customers_seal_index\".\"pos_len_7a1d2ba5ce2368fb\" is null and \"test_p1_verify\".\"customers_seal_index\".\"pos_stamps_7a1d2ba5ce2368fb\" is null and \"test_p1_verify\".\"customers_seal_index\".\"pos_offsets_7a1d2ba5ce2368fb\" is null) or\n          (\"test_p1_verify\".\"customers_seal_index\".\"pos_salt_7a1d2ba5ce2368fb\" is not null and \"test_p1_verify\".\"customers_seal_index\".\"pos_len_7a1d2ba5ce2368fb\" is not null and \"test_p1_verify\".\"customers_seal_index\".\"pos_stamps_7a1d2ba5ce2368fb\" is not null and \"test_p1_verify\".\"customers_seal_index\".\"pos_offsets_7a1d2ba5ce2368fb\" is not null and octet_length(\"test_p1_verify\".\"customers_seal_index\".\"pos_salt_7a1d2ba5ce2368fb\") = 16 and \"test_p1_verify\".\"customers_seal_index\".\"pos_len_7a1d2ba5ce2368fb\" >= 0\n          and cardinality(\"test_p1_verify\".\"customers_seal_index\".\"pos_stamps_7a1d2ba5ce2368fb\") = cardinality(\"test_p1_verify\".\"customers_seal_index\".\"pos_offsets_7a1d2ba5ce2368fb\")))\n);\n",
+    "ALTER TABLE \"test_p1_verify\".\"customers_seal_index\" ADD CONSTRAINT \"customers_seal_index_row_id_customers_id_fk\" FOREIGN KEY (\"row_id\") REFERENCES \"test_p1_verify\".\"customers\"(\"id\") ON DELETE cascade ON UPDATE no action;",
+    "CREATE UNIQUE INDEX \"customers_seal_index_scope_row_uq\" ON \"test_p1_verify\".\"customers_seal_index\" USING btree (\"scope_id\",\"row_id\");",
+    "CREATE UNIQUE INDEX \"customers_seal_index_row_uq\" ON \"test_p1_verify\".\"customers_seal_index\" USING btree (\"row_id\");",
+    "CREATE INDEX \"seal_dfa387787f59f02a_bt\" ON \"test_p1_verify\".\"customers_seal_index\" USING btree (scope_id,(tokens_988d248ff4b71bf7[1]),row_id,eq_salt_988d248ff4b71bf7,eq_stamp_988d248ff4b71bf7,tokens_988d248ff4b71bf7);",
+    "CREATE INDEX \"seal_4c8e2d2bddde3451_bt\" ON \"test_p1_verify\".\"customers_seal_index\" USING btree (scope_id,(tokens_a106c26102b707f0[1]),row_id,eq_salt_a106c26102b707f0,eq_stamp_a106c26102b707f0,tokens_a106c26102b707f0);",
+    "CREATE INDEX \"seal_ae59b15a89e931d6_bt\" ON \"test_p1_verify\".\"customers_seal_index\" USING btree (scope_id,(tokens_c5133b3810f23103[1]),row_id,eq_salt_c5133b3810f23103,eq_stamp_c5133b3810f23103,tokens_c5133b3810f23103);",
+    "CREATE INDEX \"seal_8fa11f16c3da1ad8_bt\" ON \"test_p1_verify\".\"customers_seal_index\" USING btree (scope_id,(tokens_1c32fdad5d1c8367[1]),row_id,eq_salt_1c32fdad5d1c8367,eq_stamp_1c32fdad5d1c8367,tokens_1c32fdad5d1c8367);",
+    "CREATE INDEX \"seal_411905c9deef5c59_bt\" ON \"test_p1_verify\".\"customers_seal_index\" USING btree (scope_id,(tokens_cd3096c7a3cd42c2[1]),row_id,eq_salt_cd3096c7a3cd42c2,eq_stamp_cd3096c7a3cd42c2,tokens_cd3096c7a3cd42c2);",
+    "CREATE INDEX \"seal_62e346c0ef994072_bt\" ON \"test_p1_verify\".\"customers_seal_index\" USING btree (scope_id,(tokens_c44ae523cca61a0b[1]),row_id,eq_salt_c44ae523cca61a0b,eq_stamp_c44ae523cca61a0b,tokens_c44ae523cca61a0b);",
+    "CREATE INDEX \"seal_e66dc2708e915b65_gin\" ON \"test_p1_verify\".\"customers_seal_index\" USING gin (\"tokens_792d75cf01821d67\",\"tokens_1127994ab736baf4\",\"tokens_ef1d32a52e2ce103\",\"tokens_a639b11c8130dcf7\",\"tokens_f289b89d86c7086a\",\"tokens_7a1d2ba5ce2368fb\");"
+  ],
+  "extra": [
+    "create or replace function \"test_p1_verify\".sealql_match_positions(ks bytea[], offs integer[], qlen integer, n integer, salt bytea, stamps bigint[], positions integer[], affix integer) returns boolean language plpgsql cost 1900 immutable strict parallel safe security invoker set search_path = pg_catalog as $seal$\n\ndeclare wi integer; p integer; target integer; wanted bigint; ok boolean; first_ordinal integer := 1;\n  ordinal integer; got_p integer; windows integer := cardinality(ks); stamp_count integer := cardinality(stamps);\n  ordinals integer[]; latest integer[]; lo integer; hi integer; mid integer; found integer;\nbegin\n  if n<qlen then return false; end if;\n  for first_ordinal in 1..n loop\n    wanted := (('x'||encode(substr(sha256(ks[1]||salt||int4send(first_ordinal)),1,8),'hex'))::bit(64)::bigint);\n    \n    -- Native search avoids interpreter overhead on small arrays; large arrays\n    -- use binary search, so long repeated values never rescan an entire proof.\n    if stamp_count<=128 then found := array_position(stamps,wanted);\n    else lo := 1; hi := stamp_count; found := null;\n    while lo <= hi loop\n      mid := lo + (hi-lo)/2;\n      if stamps[mid] = wanted then found := mid; exit;\n      elsif stamps[mid] < wanted then lo := mid+1; else hi := mid-1; end if;\n    end loop; end if;\n    if found is null then return false; end if;\n    p := positions[found];\n    if p>n-qlen or (affix=1 and p>0) then return false; end if;\n    if affix=2 and p<n-qlen then continue; end if;\n    ok := true;\n    if windows>1 then for wi in 2..windows loop\n      target := p+offs[wi];\n      got_p := latest[wi];\n      if got_p is null or got_p < target then\n        for ordinal in coalesce(ordinals[wi],1)..n loop\n          wanted := (('x'||encode(substr(sha256(ks[wi]||salt||int4send(ordinal)),1,8),'hex'))::bit(64)::bigint);\n          \n    -- Native search avoids interpreter overhead on small arrays; large arrays\n    -- use binary search, so long repeated values never rescan an entire proof.\n    if stamp_count<=128 then found := array_position(stamps,wanted);\n    else lo := 1; hi := stamp_count; found := null;\n    while lo <= hi loop\n      mid := lo + (hi-lo)/2;\n      if stamps[mid] = wanted then found := mid; exit;\n      elsif stamps[mid] < wanted then lo := mid+1; else hi := mid-1; end if;\n    end loop; end if;\n          if found is null then return false; end if;\n          got_p := positions[found];\n          if got_p>=target then\n            if ordinals is not null then ordinals[wi] := ordinal+1; latest[wi] := got_p; end if;\n            exit;\n          end if;\n        end loop;\n      end if;\n      if got_p<>target then ok := false; exit; end if;\n    end loop; end if;\n    if ok then return true; end if;\n    -- Most rows finish at the first occurrence. Allocate reusable cursors only\n    -- when another candidate must be tried; subsequent windows advance once.\n    if ordinals is null then ordinals := array_fill(1,array[windows]); latest := array_fill(-1,array[windows]); end if;\n  end loop;\n  return false;\nend\n$seal$",
+    "create or replace function \"test_p1_verify\".sealql_find_positions(ks bytea[], offs integer[], qlen integer, n integer, salt bytea, stamps bigint[], positions integer[], minp integer, maxp integer) returns integer language plpgsql cost 1900 immutable strict parallel safe security invoker set search_path = pg_catalog as $seal$\n\ndeclare wi integer; p integer; target integer; wanted bigint; ok boolean; first_ordinal integer := 1;\n  ordinal integer; got_p integer; windows integer := cardinality(ks); stamp_count integer := cardinality(stamps);\n  ordinals integer[]; latest integer[]; lo integer; hi integer; mid integer; found integer;\nbegin\n  if n<qlen or minp>maxp then return null; end if;\n  for first_ordinal in 1..n loop\n    wanted := (('x'||encode(substr(sha256(ks[1]||salt||int4send(first_ordinal)),1,8),'hex'))::bit(64)::bigint);\n    \n    -- Native search avoids interpreter overhead on small arrays; large arrays\n    -- use binary search, so long repeated values never rescan an entire proof.\n    if stamp_count<=128 then found := array_position(stamps,wanted);\n    else lo := 1; hi := stamp_count; found := null;\n    while lo <= hi loop\n      mid := lo + (hi-lo)/2;\n      if stamps[mid] = wanted then found := mid; exit;\n      elsif stamps[mid] < wanted then lo := mid+1; else hi := mid-1; end if;\n    end loop; end if;\n    if found is null then return null; end if;\n    p := positions[found]-offs[1];\n    if p>n-qlen or p>maxp then return null; end if;\n    if p<minp then continue; end if;\n    ok := true;\n    if windows>1 then for wi in 2..windows loop\n      target := p+offs[wi];\n      got_p := latest[wi];\n      if got_p is null or got_p < target then\n        for ordinal in coalesce(ordinals[wi],1)..n loop\n          wanted := (('x'||encode(substr(sha256(ks[wi]||salt||int4send(ordinal)),1,8),'hex'))::bit(64)::bigint);\n          \n    -- Native search avoids interpreter overhead on small arrays; large arrays\n    -- use binary search, so long repeated values never rescan an entire proof.\n    if stamp_count<=128 then found := array_position(stamps,wanted);\n    else lo := 1; hi := stamp_count; found := null;\n    while lo <= hi loop\n      mid := lo + (hi-lo)/2;\n      if stamps[mid] = wanted then found := mid; exit;\n      elsif stamps[mid] < wanted then lo := mid+1; else hi := mid-1; end if;\n    end loop; end if;\n          if found is null then return null; end if;\n          got_p := positions[found];\n          if got_p>=target then\n            if ordinals is not null then ordinals[wi] := ordinal+1; latest[wi] := got_p; end if;\n            exit;\n          end if;\n        end loop;\n      end if;\n      if got_p<>target then ok := false; exit; end if;\n    end loop; end if;\n    if ok then return p; end if;\n    -- Most rows finish at the first occurrence. Allocate reusable cursors only\n    -- when another candidate must be tried; subsequent windows advance once.\n    if ordinals is null then ordinals := array_fill(1,array[windows]); latest := array_fill(-1,array[windows]); end if;\n  end loop;\n  return null;\nend\n$seal$",
+    "create or replace function \"test_p1_verify\".sealql_match_like(ks bytea[], pattern integer[], n integer, salt bytea, stamps bigint[], positions integer[]) returns boolean language plpgsql cost 100 immutable strict parallel safe security invoker set search_path = pg_catalog as $seal$\n\ndeclare cursor integer := 1; size integer := cardinality(pattern); next_p integer := 0;\n  qlen integer; part_len integer; windows integer; i integer; gap boolean := false;\n  segment_keys bytea[]; offs integer[]; minp integer; maxp integer; p integer;\nbegin\n  -- A % separates fixed-width segments. The earliest match of each segment\n  -- leaves every later match available; only the final anchored segment must\n  -- end at n. Underscores add width without creating an observed piece key.\n  while cursor<=size loop\n    if pattern[cursor]=-1 then\n      gap := true; cursor := cursor+1;\n      if cursor>size then return next_p<=n; end if;\n    end if;\n    qlen := 0; segment_keys := '{}'; offs := '{}';\n    while cursor<=size and pattern[cursor]<>-1 loop\n      part_len := pattern[cursor]; cursor := cursor+1;\n      if part_len=-2 then qlen := qlen+1;\n      else\n        windows := pattern[cursor]; cursor := cursor+1;\n        for i in 1..windows loop\n          segment_keys := array_append(segment_keys,ks[pattern[cursor]]);\n          offs := array_append(offs,qlen+pattern[cursor+1]); cursor := cursor+2;\n        end loop;\n        qlen := qlen+part_len;\n      end if;\n    end loop;\n    if qlen>n-next_p then return false; end if;\n    if cursor>size then\n      minp := n-qlen; maxp := minp;\n      if not gap and minp<>next_p then return false; end if;\n    elsif gap then minp := next_p; maxp := n-qlen;\n    else minp := next_p; maxp := next_p;\n    end if;\n    if cardinality(segment_keys)=0 then p := minp;\n    else p := \"test_p1_verify\".sealql_find_positions(segment_keys,offs,qlen,n,salt,stamps,positions,minp,maxp);\n    end if;\n    if p is null then return false; end if;\n    next_p := p+qlen; gap := false;\n  end loop;\n  return next_p=n;\nend\n$seal$",
+    "drop function if exists \"test_p1_verify\".sealql_piece_positions(bytea,bytea,bigint[],integer[],integer)",
+    "drop function if exists \"test_p1_verify\".sealql_run_positions(integer[],integer[],integer[],integer[],integer[],integer,integer)",
+    "drop function if exists \"test_p1_verify\".sealql_match_like(bytea[],integer[],integer[],integer,bytea,bigint[],integer[],bytea,bigint[],integer[])",
+    "drop function if exists \"test_p1_verify\".sealql_match_like(bytea[],integer[],jsonb,integer,bytea,bigint[],integer[],bytea,bigint[],integer[])",
+    "drop function if exists \"test_p1_verify\".sealql_run_positions(jsonb,integer[],integer[],integer,integer)",
+    "alter table \"test_p1_verify\".\"customers_seal_index\" alter column \"tokens_792d75cf01821d67\" set statistics 1000",
+    "alter table \"test_p1_verify\".\"customers_seal_index\" alter column \"tokens_1127994ab736baf4\" set statistics 1000",
+    "alter table \"test_p1_verify\".\"customers_seal_index\" alter column \"tokens_ef1d32a52e2ce103\" set statistics 1000",
+    "alter table \"test_p1_verify\".\"customers_seal_index\" alter column \"tokens_a639b11c8130dcf7\" set statistics 1000",
+    "alter table \"test_p1_verify\".\"customers_seal_index\" alter column \"tokens_f289b89d86c7086a\" set statistics 1000",
+    "alter table \"test_p1_verify\".\"customers_seal_index\" alter column \"tokens_7a1d2ba5ce2368fb\" set statistics 1000",
+    "alter table \"test_p1_verify\".\"customers_seal_index\" alter column \"tokens_988d248ff4b71bf7\" set storage main",
+    "alter table \"test_p1_verify\".\"customers_seal_index\" alter column \"tokens_792d75cf01821d67\" set storage main",
+    "alter table \"test_p1_verify\".\"customers_seal_index\" alter column \"pos_stamps_792d75cf01821d67\" set storage main",
+    "alter table \"test_p1_verify\".\"customers_seal_index\" alter column \"pos_offsets_792d75cf01821d67\" set storage main",
+    "alter table \"test_p1_verify\".\"customers_seal_index\" alter column \"tokens_a106c26102b707f0\" set storage main",
+    "alter table \"test_p1_verify\".\"customers_seal_index\" alter column \"tokens_1127994ab736baf4\" set storage main",
+    "alter table \"test_p1_verify\".\"customers_seal_index\" alter column \"pos_stamps_1127994ab736baf4\" set storage main",
+    "alter table \"test_p1_verify\".\"customers_seal_index\" alter column \"pos_offsets_1127994ab736baf4\" set storage main",
+    "alter table \"test_p1_verify\".\"customers_seal_index\" alter column \"tokens_c5133b3810f23103\" set storage main",
+    "alter table \"test_p1_verify\".\"customers_seal_index\" alter column \"tokens_ef1d32a52e2ce103\" set storage main",
+    "alter table \"test_p1_verify\".\"customers_seal_index\" alter column \"pos_stamps_ef1d32a52e2ce103\" set storage main",
+    "alter table \"test_p1_verify\".\"customers_seal_index\" alter column \"pos_offsets_ef1d32a52e2ce103\" set storage main",
+    "alter table \"test_p1_verify\".\"customers_seal_index\" alter column \"tokens_1c32fdad5d1c8367\" set storage main",
+    "alter table \"test_p1_verify\".\"customers_seal_index\" alter column \"tokens_a639b11c8130dcf7\" set storage main",
+    "alter table \"test_p1_verify\".\"customers_seal_index\" alter column \"pos_stamps_a639b11c8130dcf7\" set storage main",
+    "alter table \"test_p1_verify\".\"customers_seal_index\" alter column \"pos_offsets_a639b11c8130dcf7\" set storage main",
+    "alter table \"test_p1_verify\".\"customers_seal_index\" alter column \"tokens_cd3096c7a3cd42c2\" set storage main",
+    "alter table \"test_p1_verify\".\"customers_seal_index\" alter column \"tokens_f289b89d86c7086a\" set storage main",
+    "alter table \"test_p1_verify\".\"customers_seal_index\" alter column \"pos_stamps_f289b89d86c7086a\" set storage main",
+    "alter table \"test_p1_verify\".\"customers_seal_index\" alter column \"pos_offsets_f289b89d86c7086a\" set storage main",
+    "alter table \"test_p1_verify\".\"customers_seal_index\" alter column \"tokens_c44ae523cca61a0b\" set storage main",
+    "alter table \"test_p1_verify\".\"customers_seal_index\" alter column \"tokens_7a1d2ba5ce2368fb\" set storage main",
+    "alter table \"test_p1_verify\".\"customers_seal_index\" alter column \"pos_stamps_7a1d2ba5ce2368fb\" set storage main",
+    "alter table \"test_p1_verify\".\"customers_seal_index\" alter column \"pos_offsets_7a1d2ba5ce2368fb\" set storage main"
+  ]
+}

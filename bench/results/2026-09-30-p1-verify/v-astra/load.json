@@ -1,0 +1,35 @@
+{
+  "started": "2026-09-29T16:01:27.000Z",
+  "commit": "d943eb49295e5227da17b8c10574170357dddebc",
+  "schema": "test_p1_verify",
+  "scope": "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa",
+  "loaded": 100000,
+  "complete": true,
+  "errors": [],
+  "method": "Public sealed.insert; four concurrent batches of 500 original fixture rows; ingestion duration is progress only, not an isolated performance benchmark.",
+  "fixture": "bench_realistic_100k.customers",
+  "fields": [
+    "name",
+    "phone",
+    "address",
+    "memo",
+    "email",
+    "company"
+  ],
+  "configuration": {
+    "keyByte": 93,
+    "exactCompanyBits": 2,
+    "otherExactBits": 16,
+    "substring": true,
+    "wordBoundary": false
+  },
+  "cleanupOwner": "v-astra/coordinator after P1 three-path verification; retain schema while implementation is pending",
+  "sourceHash": "4db88c4680eefac5d8d79366a77e4a5380481d9e79db12ab20fec89fc88ce2b7",
+  "elapsedMs": 915156.3981,
+  "tableCounts": {
+    "customers": 100000,
+    "customers_seal_index": 100000
+  },
+  "rawRoundtripFields": 600,
+  "finished": "2026-09-29T16:16:53.963Z"
+}
