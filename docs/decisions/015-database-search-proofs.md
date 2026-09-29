@@ -2,7 +2,7 @@
 
 상태: 채택, 2026-09-29. [001](001-search-hmac-pieces-gin-verify.md)의 앱 재확인, [006](006-query-engine.md)의 후보 복호화·증가 배치, [014](014-unbounded-query-work.md)의 후보 예산을 대체한다. [012](012-drizzle-companion-and-column-options.md)·[013](013-drizzle-native-api-implemented.md)의 공개 Drizzle 통합은 유지한다.
 
-구현 보완: [017](017-search-proof-review.md)의 전진 위치 탐색·LIKE 정수 배열과 검토 결과를 함께 적용한다.
+구현 보완: [017](017-search-proof-review.md)의 전진 위치 탐색·LIKE 정수 배열과 검토 결과, [018](018-identity-order-page-plans.md)의 ID순 일반 페이지 계획을 함께 적용한다.
 
 검토 뒤 선택한 트레이드오프(긴 값은 함수 호출당 1행, 대표 질의는 같은 10만 행; 예열 2회·교차 7회, SQL 왕복 중앙값):
 

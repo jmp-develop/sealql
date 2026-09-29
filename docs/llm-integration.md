@@ -81,7 +81,7 @@ Searchable text folds NFC, full-width ASCII, ASCII case, and whitespace accordin
 
 Drizzle's `eq` on a sealed column raises `SEAL_REQUIRED`; `like`/`ilike` can silently return zero; `orderBy(asc(sealedColumn))` can silently sort ciphertext into a meaningless order. Never use ordinary Drizzle predicates or ordering on encrypted columns. String conversion or JSON serialization of an unopened encrypted handle raises `SEAL_REQUIRED`; do not log such handles.
 
-Limited pages fetch final DB matches in finite batches. The small-page path tests a 256-row prefix with the final predicate before LIMIT; fallback also judges before LIMIT. There is no candidate growth/retry engine. Custom JOIN callbacks still apply the supplied flags/keysets; these carry only keyset/cursor positions (or a constant position marker), not predicate results. Date/timestamp positions use DateStyle-independent database text.
+Limited pages fetch final DB matches in finite batches. Default ID ordering and explicit ascending ID ordering use identical SQL. A prefix of four times the requested final batch (minimum 256) is an internal probe constant; when it has too few matches, the full fallback runs. Both paths apply the final predicate before LIMIT, so this probe never limits results or total work. There is no candidate growth/retry engine. Custom JOIN callbacks still apply the supplied flags/keysets; these carry only keyset/cursor positions (or a constant position marker), not predicate results. Date/timestamp positions use DateStyle-independent database text.
 
 ## Migrations and searchable field changes
 

@@ -34,3 +34,4 @@
 | [015](015-database-search-proofs.md) | DB 도장 판정, 스칼라 count, 선택 칸만 복호화 (001·006·014 일부 대체) |
 | [017](017-search-proof-review.md) | 전진 위치 탐색·LIKE 정수 배열·검토 비용 및 회귀 시험 |
 | [016](016-coarse-exact-bits.md) | 저카디널리티 exact의 명시적 2비트 허용 (004 일부 대체) |
+| [018](018-identity-order-page-plans.md) | ID 정렬 표현 통일과 연산자에 독립적인 페이지 quick/fallback |
