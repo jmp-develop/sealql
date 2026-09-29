@@ -10,6 +10,7 @@ import { canonical, utf8 } from '../src/core/bytes.js';
 import { createSealed } from '../src/adapters/drizzle/v0.45/index.js';
 import { Sealed, registrationOf } from '../src/adapters/drizzle/v0.45/native.js';
 import { assertDisposable } from './disposable.js';
+import { installProofColumns } from './proof-schema.js';
 import { databaseError } from '../src/core/errors.js';
 
 test('open rejects pending queries and database wrapping sanitizes cause', async () => {
@@ -120,6 +121,8 @@ test('native managed writes and opens stay atomic', async () => {
     await pool.query(`create table "${schemaName}".people_seal_index (scope_id uuid not null,row_id uuid not null,"${exact}" bigint[],"${substring}" bigint[],unique(scope_id,row_id),foreign key(row_id) references "${schemaName}".people(id) on delete cascade)`);
     await pool.query(`create table "${schemaName}".orders (id uuid primary key,scope_id uuid not null,customer_id uuid not null,label_ct bytea not null)`);
     await pool.query(`create table "${schemaName}".orders_seal_index (scope_id uuid not null,row_id uuid not null,"${orderExact}" bigint[],unique(scope_id,row_id),foreign key(row_id) references "${schemaName}".orders(id) on delete cascade)`);
+    await installProofColumns(pool, peopleSeal);
+    await installProofColumns(pool, ordersSeal);
     const db = drizzle(pool);
     const first = fixture[0], second = fixture[1], third = fixture[2];
     const derivedTime = (id: string) => new Date(Number.parseInt(id.slice(0, 8), 16) * 1000 + Number.parseInt(id.slice(9, 12), 16) % 1000);
@@ -314,7 +317,12 @@ test('native managed writes and opens stay atomic', async () => {
     }
     assert.deepEqual(joinedIds, [second.id, third.id, ...extraOrderIds].sort());
     assert.equal(new Set(joinedIds).size, joinedIds.length);
+    const proofBefore = (await pool.query(`select * from "${schemaName}".people_seal_index where row_id=$1`, [first.id])).rows[0];
     await sealed.update(db, peopleSeal, { id: first.id, scopeId: first.scope_id }, { memo: second.memo_plain });
+    const proofAfter = (await pool.query(`select * from "${schemaName}".people_seal_index where row_id=$1`, [first.id])).rows[0];
+    assert.deepEqual(proofAfter[profiles['name/exact'].exact!.salt], proofBefore[profiles['name/exact'].exact!.salt]);
+    assert.equal(proofAfter[profiles['name/exact'].exact!.stamp], proofBefore[profiles['name/exact'].exact!.stamp]);
+    assert.notDeepEqual(proofAfter[profiles['memo/substring'].positions!.salt], proofBefore[profiles['memo/substring'].positions!.salt]);
     const afterUpdate = await sealed.open(await db.select().from(people));
     assert.equal(afterUpdate[0].name, first.name_plain);
     assert.equal(afterUpdate[0].memo, second.memo_plain);
@@ -456,6 +464,7 @@ test('text row IDs follow the database collation and keep index-backed keysets',
     await pool.query(`create table "${schemaName}".rows (id text collate "und-x-icu" primary key,scope_id uuid not null,name_ct bytea not null)`);
     await pool.query(`create table "${schemaName}".rows_seal_index (scope_id uuid not null,row_id text collate "und-x-icu" not null,
       "${exact}" bigint[],unique(scope_id,row_id),foreign key(row_id) references "${schemaName}".rows(id) on delete cascade)`);
+    await installProofColumns(pool, seal);
     const logged: { query: string; params: unknown[] }[] = [];
     const db = drizzle(pool, { logger: { logQuery(query, params) { logged.push({ query, params }); } } });
     const prefixes = ['Z', 'a', '가', '!'];

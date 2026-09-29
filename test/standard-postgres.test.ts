@@ -10,6 +10,7 @@ import { registrationOf } from '../src/adapters/drizzle/v0.45/native.js';
 import { companionIndexName } from '../src/core/companion-layout.js';
 import { canonical } from '../src/core/bytes.js';
 import { assertDisposable } from './disposable.js';
+import { installProofColumns } from './proof-schema.js';
 
 const source = 'bench_realistic_100k';
 const norm = (value: string) => normalizeText(value, 'legacy-text-v1');
@@ -43,6 +44,7 @@ async function setup(caseName: string, count: number) {
       await pool.query(`create index "${companionIndexName('memo_seal_index', profileId)}_bt" on "${schemaName}".memo_seal_index(scope_id,(("${profile.tokens}")[1]),row_id)`);
     const substring = Object.values(profiles).filter(profile => profile.mode === 'substring');
     await pool.query(`create index "${companionIndexName('memo_seal_index', 'substring')}_gin" on "${schemaName}".memo_seal_index using gin(${substring.map(profile => `"${profile.tokens}"`).join(',')})`);
+    await installProofColumns(pool, seal);
     const logs: string[] = [], logEntries: { query: string; params: unknown[] }[] = [];
     const db = drizzle(pool, { logger: { logQuery(query, params) { logs.push(query); logEntries.push({ query, params }); } } });
     for (let start = 0; start < rows.length; start += 500) await sealed.insert(db, seal, rows.slice(start, start + 500).map(row => ({

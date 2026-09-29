@@ -20,7 +20,11 @@ export function companionProfiles(definition: SealedModelDefinition): NonNullabl
       const tokens = `tokens_${tag}`;
       ensure(!names.has(tokens), 'INVALID_SCHEMA');
       names.add(tokens);
-      result[profile.indexId] = { tokens, mode: profile.mode, protection: 'standard' };
+      const positions = (prefix: string) => ({ salt: `${prefix}_salt_${tag}`, length: `${prefix}_len_${tag}`,
+        stamps: `${prefix}_stamps_${tag}`, offsets: `${prefix}_offsets_${tag}` });
+      result[profile.indexId] = { tokens, mode: profile.mode, protection: 'standard',
+        ...(profile.mode === 'exact' ? { exact: { salt: `eq_salt_${tag}`, stamp: `eq_stamp_${tag}` } }
+          : { positions: positions('pos'), singles: positions('single'), ...(profile.wordBoundary ? { words: positions('word') } : {}) }) };
     }
   }
   return Object.fromEntries(Object.entries(result).sort(([a], [b]) => a.localeCompare(b)));

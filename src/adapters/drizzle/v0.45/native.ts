@@ -1,6 +1,6 @@
 import { getTableColumns, getTableName, is, sql, type InferInsertModel, type InferSelectModel } from 'drizzle-orm';
 import {
-  bigint, customType, foreignKey, getTableConfig, index, pgSchema, pgTable, text, uniqueIndex,
+  bigint, check, customType, foreignKey, getTableConfig, index, integer, pgSchema, pgTable, text, uniqueIndex,
   uuid, PgCustomColumn, type PgColumn, type PgTable,
 } from 'drizzle-orm/pg-core';
 import { unhex } from '../../../core/bytes.js';
@@ -156,10 +156,36 @@ function register<T extends PgTable, R extends UuidOrTextKeys<T>, S extends Uuid
     scopeId: (scopeColumn ? mirrorKey('scope_id', scopeType) : text('scope_id').default('_')).notNull(),
     rowId: mirrorKey('row_id', rowType).notNull(),
   };
-  for (const profile of Object.values(profiles)) companionColumns[profile.tokens] = bigint(profile.tokens, { mode: 'bigint' }).array();
+  const bytea = customType<{ data: Uint8Array; driverData: Uint8Array }>({ dataType: () => 'bytea',
+    toDriver: value => value, fromDriver: value => typeof value === 'string' ? unhex((value as string).replace(/^\\x/, '')) : new Uint8Array(value) });
+  for (const profile of Object.values(profiles)) {
+    companionColumns[profile.tokens] = bigint(profile.tokens, { mode: 'bigint' }).array();
+    if (profile.exact) {
+      companionColumns[profile.exact.salt] = bytea(profile.exact.salt);
+      companionColumns[profile.exact.stamp] = bigint(profile.exact.stamp, { mode: 'bigint' });
+    }
+    for (const group of [profile.positions, profile.words, profile.singles]) if (group) {
+      companionColumns[group.salt] = bytea(group.salt);
+      companionColumns[group.length] = integer(group.length);
+      companionColumns[group.stamps] = bigint(group.stamps, { mode: 'bigint' }).array();
+      companionColumns[group.offsets] = integer(group.offsets).array();
+    }
+  }
   const substring = Object.values(profiles).filter(profile => profile.mode === 'substring');
   const tableFactory: typeof pgTable = (tableConfig.schema ? pgSchema(tableConfig.schema).table : pgTable) as typeof pgTable;
   const companion = tableFactory(indexName, companionColumns, (t: any) => [
+    ...Object.values(profiles).flatMap(profile => {
+      const groups = [profile.exact, profile.positions, profile.words, profile.singles].filter(group => !!group);
+      return groups.map(group => {
+        const names = Object.values(group!);
+        const allNull = sql.join(names.map(name => sql`${t[name]} is null`), sql.raw(' and '));
+        const allPresent = sql.join(names.map(name => sql`${t[name]} is not null`), sql.raw(' and '));
+        const shape = 'stamps' in group! ? sql`and ${t[group.length]} >= 0
+          and cardinality(${t[group.stamps]}) = cardinality(${t[group.offsets]})` : sql``;
+        return check(`${companionIndexName(indexName, group!.salt)}_ck`, sql`(${allNull}) or
+          (${allPresent} and octet_length(${t[group!.salt]}) = 16 ${shape})`);
+      });
+    }),
     // drizzle-kit 0.31 reads composite PK columns out of order on push; the same unique B-tree stays stable.
     uniqueIndex(`${indexName}_scope_row_uq`).on(t.scopeId, t.rowId),
     rowUnique

@@ -8,6 +8,7 @@ import { createSealer } from '../src/index.js';
 import { createSealed } from '../src/adapters/drizzle/v0.45/index.js';
 import { registrationOf } from '../src/adapters/drizzle/v0.45/native.js';
 import { assertDisposable } from './disposable.js';
+import { installProofColumns } from './proof-schema.js';
 
 test('scope-free nullable index rows disappear when every token is null', async () => {
   const pool = new Pool({ host: '127.0.0.1', port: 56439, user: 'sealql_test', database: 'postgres' });
@@ -27,6 +28,7 @@ test('scope-free nullable index rows disappear when every token is null', async 
     await pool.query(`create table "${name}".rows (id uuid primary key,optional_ct bytea)`);
     await pool.query(`create table "${name}".rows_seal_index (scope_id text collate "C" not null default '_',row_id uuid not null,
       "${token}" bigint[],unique(scope_id,row_id),foreign key(row_id) references "${name}".rows(id) on delete cascade)`);
+    await installProofColumns(pool, seal);
     const db = drizzle(pool);
     await sealed.insert(db, seal, { id: fixture.id });
     assert.equal((await sealed.open(await db.select().from(rows)))[0].optional, null);
@@ -63,6 +65,7 @@ test('composite parent key uses scope and row foreign key', async () => {
     await pool.query(`create table "${name}".rows (id uuid not null,scope_id uuid not null,name_ct bytea not null,primary key(scope_id,id))`);
     await pool.query(`create table "${name}".rows_seal_index (scope_id uuid not null,row_id uuid not null,
       "${token}" bigint[],unique(scope_id,row_id),foreign key(scope_id,row_id) references "${name}".rows(scope_id,id) on delete cascade)`);
+    await installProofColumns(pool, seal);
     const db = drizzle(pool), scopeA = fixture[0].scope_id, scopeB = fixture[1].id, id = fixture[0].id;
     await sealed.insert(db, seal, [
       { id, scopeId: scopeA, name: fixture[0].name_plain },
