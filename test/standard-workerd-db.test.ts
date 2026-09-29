@@ -4,12 +4,14 @@ import {build} from 'esbuild';
 import {Miniflare} from 'miniflare';
 import {Pool} from 'pg';
 import {drizzle} from 'drizzle-orm/node-postgres';
+import postgres from 'postgres';
+import {drizzle as postgresDrizzle} from 'drizzle-orm/postgres-js';
 import {getTableColumns} from 'drizzle-orm';
 import {getTableConfig,PgDialect} from 'drizzle-orm/pg-core';
 import {assertDisposable} from './disposable.js';
 import {driverFlow,driverSchema} from './r9-driver-flow.js';
 
-test('Node pg and local workerd pg execute the complete public DB flow',async()=>{
+test('Node pg, postgres-js and local workerd pg execute the complete public DB flow',async()=>{
   const pool=new Pool({host:'127.0.0.1',port:56439,user:'sealql_test',database:'postgres'});
   const schema=`test_r9_driver_${process.pid}`;let created=false,mf:Miniflare|undefined;
   try {
@@ -25,6 +27,11 @@ test('Node pg and local workerd pg execute the complete public DB flow',async()=
     for(const check of config.checks)await pool.query(`alter table ${schema}.rows_seal_index add constraint "${check.name}" check (${dialect.sqlToQuery(check.value).sql})`);
     for(const sql of sealed.extraMigrationSql(seal))await pool.query(sql);
     const nodeResult=await driverFlow(drizzle(pool),schema,fixture);assert.equal(nodeResult.ok,true);console.log('Node pg flow',JSON.stringify(nodeResult));
+    const client=postgres({host:'127.0.0.1',port:56439,username:'sealql_test',database:'postgres',max:1});
+    try {
+      const result=await driverFlow(postgresDrizzle(client),schema,fixture);
+      assert.equal(result.ok,true);console.log('postgres-js flow',JSON.stringify(result));
+    } finally {await client.end();}
     const modules=['events','util','util/types','stream','crypto','dns','path','fs','net','tls','string_decoder','buffer','assert','url'];
     const banner=modules.map((name,i)=>`import * as n${i} from 'node:${name}';`).join('\n')+'\n'+
       `const require=(name)=>({${modules.map((name,i)=>`['${name}']:n${i},['node:${name}']:n${i}`).join(',')}})[name]??(()=>{throw Error('unsupported require '+name)})();`;
