@@ -1,0 +1,97 @@
+{
+  "protocol": "Two warmups, seven alternating rounds; same current product, same 16 rows and six values, one transaction per row. Aggregate physical change, not an isolated index-only estimate.",
+  "summary": [
+    {
+      "schema": "test_r9_performance",
+      "rowsPerRound": 16,
+      "runs": [
+        {
+          "totalMs": 293.39580000000024,
+          "sqlMs": 45.21680000000015,
+          "sqlRequests": 64
+        },
+        {
+          "totalMs": 303.3766999999998,
+          "sqlMs": 46.636299999999665,
+          "sqlRequests": 64
+        },
+        {
+          "totalMs": 290.7107000000001,
+          "sqlMs": 46.24009999999953,
+          "sqlRequests": 64
+        },
+        {
+          "totalMs": 293.3185999999996,
+          "sqlMs": 44.05989999999474,
+          "sqlRequests": 64
+        },
+        {
+          "totalMs": 288.54699999999957,
+          "sqlMs": 43.22150000000056,
+          "sqlRequests": 64
+        },
+        {
+          "totalMs": 293.0435000000007,
+          "sqlMs": 42.94169999999849,
+          "sqlRequests": 64
+        },
+        {
+          "totalMs": 289.60319999999956,
+          "sqlMs": 42.61819999999989,
+          "sqlRequests": 64
+        }
+      ],
+      "medians": {
+        "totalMs": 293.0435000000007,
+        "sqlMs": 44.05989999999474,
+        "sqlRequests": 64
+      }
+    },
+    {
+      "schema": "test_r9_performance_main",
+      "rowsPerRound": 16,
+      "runs": [
+        {
+          "totalMs": 322.70920000000024,
+          "sqlMs": 55.48559999999861,
+          "sqlRequests": 64
+        },
+        {
+          "totalMs": 305.9729000000002,
+          "sqlMs": 51.81680000000051,
+          "sqlRequests": 64
+        },
+        {
+          "totalMs": 307.00310000000036,
+          "sqlMs": 53.58969999999863,
+          "sqlRequests": 64
+        },
+        {
+          "totalMs": 301.2669999999998,
+          "sqlMs": 47.786199999998644,
+          "sqlRequests": 64
+        },
+        {
+          "totalMs": 297.7494000000006,
+          "sqlMs": 51.54449999999997,
+          "sqlRequests": 64
+        },
+        {
+          "totalMs": 303.3341999999993,
+          "sqlMs": 45.313600000001315,
+          "sqlRequests": 64
+        },
+        {
+          "totalMs": 287.03819999999996,
+          "sqlMs": 44.355899999997746,
+          "sqlRequests": 64
+        }
+      ],
+      "medians": {
+        "totalMs": 303.3341999999993,
+        "sqlMs": 51.54449999999997,
+        "sqlRequests": 64
+      }
+    }
+  ]
+}

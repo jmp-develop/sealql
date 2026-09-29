@@ -1,0 +1,1230 @@
+[
+  {
+    "name": "exact_common",
+    "mode": "count",
+    "executionMs": {
+      "with": [
+        57.729,
+        59.921,
+        60.46
+      ],
+      "without": [
+        57.147,
+        60.366,
+        58.212
+      ]
+    },
+    "plans": {
+      "with": [
+        {
+          "node": "Aggregate"
+        },
+        {
+          "node": "Gather"
+        },
+        {
+          "node": "Aggregate"
+        },
+        {
+          "node": "Hash Join"
+        },
+        {
+          "node": "Seq Scan"
+        },
+        {
+          "node": "Hash"
+        },
+        {
+          "node": "Index Only Scan",
+          "index": "r9_tail_a106c26102b707f0"
+        }
+      ],
+      "without": [
+        {
+          "node": "Aggregate"
+        },
+        {
+          "node": "Gather"
+        },
+        {
+          "node": "Aggregate"
+        },
+        {
+          "node": "Hash Join"
+        },
+        {
+          "node": "Seq Scan"
+        },
+        {
+          "node": "Hash"
+        },
+        {
+          "node": "Index Only Scan",
+          "index": "r9_tail_a106c26102b707f0"
+        }
+      ]
+    }
+  },
+  {
+    "name": "exact_common",
+    "mode": "list",
+    "executionMs": {
+      "with": [
+        1.204,
+        1.103,
+        1.096
+      ],
+      "without": [
+        1.766,
+        1.464,
+        1.484
+      ]
+    },
+    "plans": {
+      "with": [
+        {
+          "node": "Limit"
+        },
+        {
+          "node": "Merge Join"
+        },
+        {
+          "node": "Index Scan",
+          "index": "customers_pkey"
+        },
+        {
+          "node": "Index Only Scan",
+          "index": "r9_tail_a106c26102b707f0"
+        }
+      ],
+      "without": [
+        {
+          "node": "Limit"
+        },
+        {
+          "node": "Merge Join"
+        },
+        {
+          "node": "Index Scan",
+          "index": "customers_pkey"
+        },
+        {
+          "node": "Index Scan",
+          "index": "r9_row_id_uq"
+        }
+      ]
+    }
+  },
+  {
+    "name": "sub_common_memo",
+    "mode": "count",
+    "executionMs": {
+      "with": [
+        248.966,
+        260.07,
+        250.177
+      ],
+      "without": [
+        258.136,
+        251.72,
+        258.317
+      ]
+    },
+    "plans": {
+      "with": [
+        {
+          "node": "Aggregate"
+        },
+        {
+          "node": "Gather"
+        },
+        {
+          "node": "Aggregate"
+        },
+        {
+          "node": "Nested Loop"
+        },
+        {
+          "node": "Bitmap Heap Scan"
+        },
+        {
+          "node": "Bitmap Index Scan",
+          "index": "r9_sub_gin"
+        },
+        {
+          "node": "Index Scan",
+          "index": "customers_pkey"
+        }
+      ],
+      "without": [
+        {
+          "node": "Aggregate"
+        },
+        {
+          "node": "Gather"
+        },
+        {
+          "node": "Aggregate"
+        },
+        {
+          "node": "Nested Loop"
+        },
+        {
+          "node": "Bitmap Heap Scan"
+        },
+        {
+          "node": "Bitmap Index Scan",
+          "index": "r9_sub_gin"
+        },
+        {
+          "node": "Index Scan",
+          "index": "customers_pkey"
+        }
+      ]
+    }
+  },
+  {
+    "name": "sub_common_memo",
+    "mode": "list",
+    "executionMs": {
+      "with": [
+        126.359,
+        120.568,
+        118.12
+      ],
+      "without": [
+        124.909,
+        119.659,
+        132.525
+      ]
+    },
+    "plans": {
+      "with": [
+        {
+          "node": "Limit"
+        },
+        {
+          "node": "Sort"
+        },
+        {
+          "node": "Nested Loop"
+        },
+        {
+          "node": "Aggregate"
+        },
+        {
+          "node": "CTE Scan"
+        },
+        {
+          "node": "Limit"
+        },
+        {
+          "node": "Subquery Scan"
+        },
+        {
+          "node": "Sort"
+        },
+        {
+          "node": "Bitmap Heap Scan"
+        },
+        {
+          "node": "Bitmap Index Scan",
+          "index": "r9_sub_gin"
+        },
+        {
+          "node": "Index Scan",
+          "index": "customers_pkey"
+        }
+      ],
+      "without": [
+        {
+          "node": "Limit"
+        },
+        {
+          "node": "Sort"
+        },
+        {
+          "node": "Nested Loop"
+        },
+        {
+          "node": "Aggregate"
+        },
+        {
+          "node": "CTE Scan"
+        },
+        {
+          "node": "Limit"
+        },
+        {
+          "node": "Subquery Scan"
+        },
+        {
+          "node": "Sort"
+        },
+        {
+          "node": "Bitmap Heap Scan"
+        },
+        {
+          "node": "Bitmap Index Scan",
+          "index": "r9_sub_gin"
+        },
+        {
+          "node": "Index Scan",
+          "index": "customers_pkey"
+        }
+      ]
+    }
+  },
+  {
+    "name": "starts",
+    "mode": "count",
+    "executionMs": {
+      "with": [
+        124.404,
+        119.99,
+        126.252
+      ],
+      "without": [
+        119.959,
+        125.743,
+        124.714
+      ]
+    },
+    "plans": {
+      "with": [
+        {
+          "node": "Aggregate"
+        },
+        {
+          "node": "Gather"
+        },
+        {
+          "node": "Aggregate"
+        },
+        {
+          "node": "Nested Loop"
+        },
+        {
+          "node": "Bitmap Heap Scan"
+        },
+        {
+          "node": "Bitmap Index Scan",
+          "index": "r9_sub_gin"
+        },
+        {
+          "node": "Index Scan",
+          "index": "customers_pkey"
+        }
+      ],
+      "without": [
+        {
+          "node": "Aggregate"
+        },
+        {
+          "node": "Gather"
+        },
+        {
+          "node": "Aggregate"
+        },
+        {
+          "node": "Nested Loop"
+        },
+        {
+          "node": "Bitmap Heap Scan"
+        },
+        {
+          "node": "Bitmap Index Scan",
+          "index": "r9_sub_gin"
+        },
+        {
+          "node": "Index Scan",
+          "index": "customers_pkey"
+        }
+      ]
+    }
+  },
+  {
+    "name": "starts",
+    "mode": "list",
+    "executionMs": {
+      "with": [
+        35.389,
+        31.398,
+        32.182
+      ],
+      "without": [
+        31.125,
+        31.407,
+        31.524
+      ]
+    },
+    "plans": {
+      "with": [
+        {
+          "node": "Limit"
+        },
+        {
+          "node": "Sort"
+        },
+        {
+          "node": "Nested Loop"
+        },
+        {
+          "node": "Aggregate"
+        },
+        {
+          "node": "CTE Scan"
+        },
+        {
+          "node": "Limit"
+        },
+        {
+          "node": "Subquery Scan"
+        },
+        {
+          "node": "Sort"
+        },
+        {
+          "node": "Bitmap Heap Scan"
+        },
+        {
+          "node": "Bitmap Index Scan",
+          "index": "r9_sub_gin"
+        },
+        {
+          "node": "Index Scan",
+          "index": "customers_pkey"
+        }
+      ],
+      "without": [
+        {
+          "node": "Limit"
+        },
+        {
+          "node": "Sort"
+        },
+        {
+          "node": "Nested Loop"
+        },
+        {
+          "node": "Aggregate"
+        },
+        {
+          "node": "CTE Scan"
+        },
+        {
+          "node": "Limit"
+        },
+        {
+          "node": "Subquery Scan"
+        },
+        {
+          "node": "Sort"
+        },
+        {
+          "node": "Bitmap Heap Scan"
+        },
+        {
+          "node": "Bitmap Index Scan",
+          "index": "r9_sub_gin"
+        },
+        {
+          "node": "Index Scan",
+          "index": "customers_pkey"
+        }
+      ]
+    }
+  },
+  {
+    "name": "ends",
+    "mode": "count",
+    "executionMs": {
+      "with": [
+        503.812,
+        501.897,
+        502.124
+      ],
+      "without": [
+        499.526,
+        486.179,
+        495.141
+      ]
+    },
+    "plans": {
+      "with": [
+        {
+          "node": "Aggregate"
+        },
+        {
+          "node": "Nested Loop"
+        },
+        {
+          "node": "Bitmap Heap Scan"
+        },
+        {
+          "node": "Bitmap Index Scan",
+          "index": "r9_sub_gin"
+        },
+        {
+          "node": "Index Scan",
+          "index": "customers_pkey"
+        }
+      ],
+      "without": [
+        {
+          "node": "Aggregate"
+        },
+        {
+          "node": "Nested Loop"
+        },
+        {
+          "node": "Bitmap Heap Scan"
+        },
+        {
+          "node": "Bitmap Index Scan",
+          "index": "r9_sub_gin"
+        },
+        {
+          "node": "Index Scan",
+          "index": "customers_pkey"
+        }
+      ]
+    }
+  },
+  {
+    "name": "ends",
+    "mode": "list",
+    "executionMs": {
+      "with": [
+        100.412,
+        114.348,
+        109.659
+      ],
+      "without": [
+        102.555,
+        109.628,
+        111.523
+      ]
+    },
+    "plans": {
+      "with": [
+        {
+          "node": "Limit"
+        },
+        {
+          "node": "Sort"
+        },
+        {
+          "node": "Nested Loop"
+        },
+        {
+          "node": "Aggregate"
+        },
+        {
+          "node": "CTE Scan"
+        },
+        {
+          "node": "Limit"
+        },
+        {
+          "node": "Subquery Scan"
+        },
+        {
+          "node": "Sort"
+        },
+        {
+          "node": "Bitmap Heap Scan"
+        },
+        {
+          "node": "Bitmap Index Scan",
+          "index": "r9_sub_gin"
+        },
+        {
+          "node": "Index Scan",
+          "index": "customers_pkey"
+        }
+      ],
+      "without": [
+        {
+          "node": "Limit"
+        },
+        {
+          "node": "Sort"
+        },
+        {
+          "node": "Nested Loop"
+        },
+        {
+          "node": "Aggregate"
+        },
+        {
+          "node": "CTE Scan"
+        },
+        {
+          "node": "Limit"
+        },
+        {
+          "node": "Subquery Scan"
+        },
+        {
+          "node": "Sort"
+        },
+        {
+          "node": "Bitmap Heap Scan"
+        },
+        {
+          "node": "Bitmap Index Scan",
+          "index": "r9_sub_gin"
+        },
+        {
+          "node": "Index Scan",
+          "index": "customers_pkey"
+        }
+      ]
+    }
+  },
+  {
+    "name": "and2",
+    "mode": "count",
+    "executionMs": {
+      "with": [
+        254.016,
+        230.582,
+        225.408
+      ],
+      "without": [
+        267.224,
+        234.366,
+        226.695
+      ]
+    },
+    "plans": {
+      "with": [
+        {
+          "node": "Aggregate"
+        },
+        {
+          "node": "Gather"
+        },
+        {
+          "node": "Aggregate"
+        },
+        {
+          "node": "Nested Loop"
+        },
+        {
+          "node": "Bitmap Heap Scan"
+        },
+        {
+          "node": "BitmapAnd"
+        },
+        {
+          "node": "Bitmap Index Scan",
+          "index": "r9_sub_gin"
+        },
+        {
+          "node": "Bitmap Index Scan",
+          "index": "r9_tail_a106c26102b707f0"
+        },
+        {
+          "node": "Index Scan",
+          "index": "customers_pkey"
+        }
+      ],
+      "without": [
+        {
+          "node": "Aggregate"
+        },
+        {
+          "node": "Gather"
+        },
+        {
+          "node": "Aggregate"
+        },
+        {
+          "node": "Nested Loop"
+        },
+        {
+          "node": "Bitmap Heap Scan"
+        },
+        {
+          "node": "BitmapAnd"
+        },
+        {
+          "node": "Bitmap Index Scan",
+          "index": "r9_sub_gin"
+        },
+        {
+          "node": "Bitmap Index Scan",
+          "index": "r9_tail_a106c26102b707f0"
+        },
+        {
+          "node": "Index Scan",
+          "index": "customers_pkey"
+        }
+      ]
+    }
+  },
+  {
+    "name": "and2",
+    "mode": "list",
+    "executionMs": {
+      "with": [
+        105.904,
+        109.171,
+        108.838
+      ],
+      "without": [
+        108.358,
+        103.291,
+        117.378
+      ]
+    },
+    "plans": {
+      "with": [
+        {
+          "node": "Limit"
+        },
+        {
+          "node": "Sort"
+        },
+        {
+          "node": "Nested Loop"
+        },
+        {
+          "node": "Aggregate"
+        },
+        {
+          "node": "CTE Scan"
+        },
+        {
+          "node": "Limit"
+        },
+        {
+          "node": "Subquery Scan"
+        },
+        {
+          "node": "Sort"
+        },
+        {
+          "node": "Bitmap Heap Scan"
+        },
+        {
+          "node": "BitmapAnd"
+        },
+        {
+          "node": "Bitmap Index Scan",
+          "index": "r9_sub_gin"
+        },
+        {
+          "node": "Bitmap Index Scan",
+          "index": "r9_tail_a106c26102b707f0"
+        },
+        {
+          "node": "Index Scan",
+          "index": "customers_pkey"
+        }
+      ],
+      "without": [
+        {
+          "node": "Limit"
+        },
+        {
+          "node": "Sort"
+        },
+        {
+          "node": "Nested Loop"
+        },
+        {
+          "node": "Aggregate"
+        },
+        {
+          "node": "CTE Scan"
+        },
+        {
+          "node": "Limit"
+        },
+        {
+          "node": "Subquery Scan"
+        },
+        {
+          "node": "Sort"
+        },
+        {
+          "node": "Bitmap Heap Scan"
+        },
+        {
+          "node": "BitmapAnd"
+        },
+        {
+          "node": "Bitmap Index Scan",
+          "index": "r9_sub_gin"
+        },
+        {
+          "node": "Bitmap Index Scan",
+          "index": "r9_tail_a106c26102b707f0"
+        },
+        {
+          "node": "Index Scan",
+          "index": "customers_pkey"
+        }
+      ]
+    }
+  },
+  {
+    "name": "and6",
+    "mode": "count",
+    "executionMs": {
+      "with": [
+        27.8,
+        27.57,
+        27.443
+      ],
+      "without": [
+        27.888,
+        27.815,
+        27.193
+      ]
+    },
+    "plans": {
+      "with": [
+        {
+          "node": "Aggregate"
+        },
+        {
+          "node": "Nested Loop"
+        },
+        {
+          "node": "Bitmap Heap Scan"
+        },
+        {
+          "node": "Bitmap Index Scan",
+          "index": "r9_sub_gin"
+        },
+        {
+          "node": "Index Scan",
+          "index": "customers_pkey"
+        }
+      ],
+      "without": [
+        {
+          "node": "Aggregate"
+        },
+        {
+          "node": "Nested Loop"
+        },
+        {
+          "node": "Bitmap Heap Scan"
+        },
+        {
+          "node": "Bitmap Index Scan",
+          "index": "r9_sub_gin"
+        },
+        {
+          "node": "Index Scan",
+          "index": "customers_pkey"
+        }
+      ]
+    }
+  },
+  {
+    "name": "and6",
+    "mode": "list",
+    "executionMs": {
+      "with": [
+        18.715,
+        18.78,
+        18.511
+      ],
+      "without": [
+        19.055,
+        19.231,
+        18.649
+      ]
+    },
+    "plans": {
+      "with": [
+        {
+          "node": "Limit"
+        },
+        {
+          "node": "Sort"
+        },
+        {
+          "node": "Nested Loop"
+        },
+        {
+          "node": "Aggregate"
+        },
+        {
+          "node": "CTE Scan"
+        },
+        {
+          "node": "Limit"
+        },
+        {
+          "node": "Subquery Scan"
+        },
+        {
+          "node": "Sort"
+        },
+        {
+          "node": "Bitmap Heap Scan"
+        },
+        {
+          "node": "Bitmap Index Scan",
+          "index": "r9_sub_gin"
+        },
+        {
+          "node": "Index Scan",
+          "index": "customers_pkey"
+        }
+      ],
+      "without": [
+        {
+          "node": "Limit"
+        },
+        {
+          "node": "Sort"
+        },
+        {
+          "node": "Nested Loop"
+        },
+        {
+          "node": "Aggregate"
+        },
+        {
+          "node": "CTE Scan"
+        },
+        {
+          "node": "Limit"
+        },
+        {
+          "node": "Subquery Scan"
+        },
+        {
+          "node": "Sort"
+        },
+        {
+          "node": "Bitmap Heap Scan"
+        },
+        {
+          "node": "Bitmap Index Scan",
+          "index": "r9_sub_gin"
+        },
+        {
+          "node": "Index Scan",
+          "index": "customers_pkey"
+        }
+      ]
+    }
+  },
+  {
+    "name": "or2",
+    "mode": "count",
+    "executionMs": {
+      "with": [
+        141.941,
+        159.244,
+        159.878
+      ],
+      "without": [
+        157.255,
+        157.587,
+        164.333
+      ]
+    },
+    "plans": {
+      "with": [
+        {
+          "node": "Aggregate"
+        },
+        {
+          "node": "Gather"
+        },
+        {
+          "node": "Aggregate"
+        },
+        {
+          "node": "Hash Join"
+        },
+        {
+          "node": "Seq Scan"
+        },
+        {
+          "node": "Hash"
+        },
+        {
+          "node": "Bitmap Heap Scan"
+        },
+        {
+          "node": "BitmapOr"
+        },
+        {
+          "node": "Bitmap Index Scan",
+          "index": "r9_tail_a106c26102b707f0"
+        },
+        {
+          "node": "Bitmap Index Scan",
+          "index": "r9_sub_gin"
+        }
+      ],
+      "without": [
+        {
+          "node": "Aggregate"
+        },
+        {
+          "node": "Gather"
+        },
+        {
+          "node": "Aggregate"
+        },
+        {
+          "node": "Hash Join"
+        },
+        {
+          "node": "Seq Scan"
+        },
+        {
+          "node": "Hash"
+        },
+        {
+          "node": "Bitmap Heap Scan"
+        },
+        {
+          "node": "BitmapOr"
+        },
+        {
+          "node": "Bitmap Index Scan",
+          "index": "r9_tail_a106c26102b707f0"
+        },
+        {
+          "node": "Bitmap Index Scan",
+          "index": "r9_sub_gin"
+        }
+      ]
+    }
+  },
+  {
+    "name": "or2",
+    "mode": "list",
+    "executionMs": {
+      "with": [
+        3.362,
+        3.291,
+        3.095
+      ],
+      "without": [
+        3.121,
+        3.065,
+        3.08
+      ]
+    },
+    "plans": {
+      "with": [
+        {
+          "node": "Limit"
+        },
+        {
+          "node": "Sort"
+        },
+        {
+          "node": "Nested Loop"
+        },
+        {
+          "node": "Aggregate"
+        },
+        {
+          "node": "CTE Scan"
+        },
+        {
+          "node": "Limit"
+        },
+        {
+          "node": "Index Scan",
+          "index": "r9_row_id_uq"
+        },
+        {
+          "node": "Index Scan",
+          "index": "customers_pkey"
+        }
+      ],
+      "without": [
+        {
+          "node": "Limit"
+        },
+        {
+          "node": "Sort"
+        },
+        {
+          "node": "Nested Loop"
+        },
+        {
+          "node": "Aggregate"
+        },
+        {
+          "node": "CTE Scan"
+        },
+        {
+          "node": "Limit"
+        },
+        {
+          "node": "Index Scan",
+          "index": "r9_row_id_uq"
+        },
+        {
+          "node": "Index Scan",
+          "index": "customers_pkey"
+        }
+      ]
+    }
+  },
+  {
+    "name": "sub45",
+    "mode": "count",
+    "executionMs": {
+      "with": [
+        17.16,
+        16.269,
+        16.074
+      ],
+      "without": [
+        17.06,
+        16.442,
+        16.232
+      ]
+    },
+    "plans": {
+      "with": [
+        {
+          "node": "Aggregate"
+        },
+        {
+          "node": "Nested Loop"
+        },
+        {
+          "node": "Bitmap Heap Scan"
+        },
+        {
+          "node": "Bitmap Index Scan",
+          "index": "r9_sub_gin"
+        },
+        {
+          "node": "Index Scan",
+          "index": "customers_pkey"
+        }
+      ],
+      "without": [
+        {
+          "node": "Aggregate"
+        },
+        {
+          "node": "Nested Loop"
+        },
+        {
+          "node": "Bitmap Heap Scan"
+        },
+        {
+          "node": "Bitmap Index Scan",
+          "index": "r9_sub_gin"
+        },
+        {
+          "node": "Index Scan",
+          "index": "customers_pkey"
+        }
+      ]
+    }
+  },
+  {
+    "name": "sub45",
+    "mode": "list",
+    "executionMs": {
+      "with": [
+        22.192,
+        22.13,
+        21.987
+      ],
+      "without": [
+        21.684,
+        21.954,
+        21.148
+      ]
+    },
+    "plans": {
+      "with": [
+        {
+          "node": "Limit"
+        },
+        {
+          "node": "Sort"
+        },
+        {
+          "node": "Nested Loop"
+        },
+        {
+          "node": "Aggregate"
+        },
+        {
+          "node": "CTE Scan"
+        },
+        {
+          "node": "Limit"
+        },
+        {
+          "node": "Subquery Scan"
+        },
+        {
+          "node": "Sort"
+        },
+        {
+          "node": "Bitmap Heap Scan"
+        },
+        {
+          "node": "Bitmap Index Scan",
+          "index": "r9_sub_gin"
+        },
+        {
+          "node": "Index Scan",
+          "index": "customers_pkey"
+        }
+      ],
+      "without": [
+        {
+          "node": "Limit"
+        },
+        {
+          "node": "Sort"
+        },
+        {
+          "node": "Nested Loop"
+        },
+        {
+          "node": "Aggregate"
+        },
+        {
+          "node": "CTE Scan"
+        },
+        {
+          "node": "Limit"
+        },
+        {
+          "node": "Subquery Scan"
+        },
+        {
+          "node": "Sort"
+        },
+        {
+          "node": "Bitmap Heap Scan"
+        },
+        {
+          "node": "Bitmap Index Scan",
+          "index": "r9_sub_gin"
+        },
+        {
+          "node": "Index Scan",
+          "index": "customers_pkey"
+        }
+      ]
+    }
+  }
+]

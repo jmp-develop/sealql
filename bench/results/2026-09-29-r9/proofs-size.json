@@ -1,0 +1,245 @@
+{
+  "at": "2026-09-29T01:29:48.850Z",
+  "rows": 100000,
+  "perStream": [
+    {
+      "name": "address/exact:tokens",
+      "bytes": 2900000,
+      "bytesPerRow": 29
+    },
+    {
+      "name": "address/exact:exact",
+      "bytes": 2500000,
+      "bytesPerRow": 25
+    },
+    {
+      "name": "address/substring:tokens",
+      "bytes": 15921782,
+      "bytesPerRow": 159.21782
+    },
+    {
+      "name": "address/substring:compact",
+      "bytes": 23121351,
+      "bytesPerRow": 231.21351
+    },
+    {
+      "name": "address/substring:words",
+      "bytes": 22775896,
+      "bytesPerRow": 227.75896
+    },
+    {
+      "name": "address/substring:single",
+      "bytes": 23975896,
+      "bytesPerRow": 239.75896
+    },
+    {
+      "name": "company/exact:tokens",
+      "bytes": 2900000,
+      "bytesPerRow": 29
+    },
+    {
+      "name": "company/exact:exact",
+      "bytes": 2500000,
+      "bytesPerRow": 25
+    },
+    {
+      "name": "company/substring:tokens",
+      "bytes": 11294906,
+      "bytesPerRow": 112.94906
+    },
+    {
+      "name": "company/substring:compact",
+      "bytes": 16230661,
+      "bytesPerRow": 162.30661
+    },
+    {
+      "name": "company/substring:words",
+      "bytes": 15860901,
+      "bytesPerRow": 158.60901
+    },
+    {
+      "name": "company/substring:single",
+      "bytes": 17169418,
+      "bytesPerRow": 171.69418
+    },
+    {
+      "name": "email/exact:tokens",
+      "bytes": 2900000,
+      "bytesPerRow": 29
+    },
+    {
+      "name": "email/exact:exact",
+      "bytes": 2500000,
+      "bytesPerRow": 25
+    },
+    {
+      "name": "email/substring:tokens",
+      "bytes": 20367793,
+      "bytesPerRow": 203.67793
+    },
+    {
+      "name": "email/substring:compact",
+      "bytes": 30188292,
+      "bytesPerRow": 301.88292
+    },
+    {
+      "name": "email/substring:words",
+      "bytes": 29688292,
+      "bytesPerRow": 296.88292
+    },
+    {
+      "name": "email/substring:single",
+      "bytes": 30888292,
+      "bytesPerRow": 308.88292
+    },
+    {
+      "name": "memo/exact:tokens",
+      "bytes": 2900000,
+      "bytesPerRow": 29
+    },
+    {
+      "name": "memo/exact:exact",
+      "bytes": 2500000,
+      "bytesPerRow": 25
+    },
+    {
+      "name": "memo/substring:tokens",
+      "bytes": 15280171,
+      "bytesPerRow": 152.80171
+    },
+    {
+      "name": "memo/substring:compact",
+      "bytes": 22921992,
+      "bytesPerRow": 229.21992
+    },
+    {
+      "name": "memo/substring:words",
+      "bytes": 22649104,
+      "bytesPerRow": 226.49104
+    },
+    {
+      "name": "memo/substring:single",
+      "bytes": 23849104,
+      "bytesPerRow": 238.49104
+    },
+    {
+      "name": "name/exact:tokens",
+      "bytes": 2900000,
+      "bytesPerRow": 29
+    },
+    {
+      "name": "name/exact:exact",
+      "bytes": 2500000,
+      "bytesPerRow": 25
+    },
+    {
+      "name": "name/substring:tokens",
+      "bytes": 11328582,
+      "bytesPerRow": 113.28582
+    },
+    {
+      "name": "name/substring:compact",
+      "bytes": 16232826,
+      "bytesPerRow": 162.32826
+    },
+    {
+      "name": "name/substring:words",
+      "bytes": 15951664,
+      "bytesPerRow": 159.51664
+    },
+    {
+      "name": "name/substring:single",
+      "bytes": 17325616,
+      "bytesPerRow": 173.25616
+    },
+    {
+      "name": "phone/exact:tokens",
+      "bytes": 2900000,
+      "bytesPerRow": 29
+    },
+    {
+      "name": "phone/exact:exact",
+      "bytes": 2500000,
+      "bytesPerRow": 25
+    },
+    {
+      "name": "phone/substring:tokens",
+      "bytes": 13257806,
+      "bytesPerRow": 132.57806
+    },
+    {
+      "name": "phone/substring:compact",
+      "bytes": 19500000,
+      "bytesPerRow": 195
+    },
+    {
+      "name": "phone/substring:words",
+      "bytes": 19300000,
+      "bytesPerRow": 193
+    },
+    {
+      "name": "phone/substring:single",
+      "bytes": 20500000,
+      "bytesPerRow": 205
+    }
+  ],
+  "tables": [
+    {
+      "relation": "test_r9_performance.customers_seal_index",
+      "rows": 100000,
+      "heap": "204947456",
+      "indexes": "97468416",
+      "total": "876552192",
+      "totalBytesPerRow": 8765.52192
+    },
+    {
+      "relation": "test_r9_performance_main.customers_seal_index",
+      "rows": 100000,
+      "heap": "409600000",
+      "indexes": "145244160",
+      "total": "988463104",
+      "totalBytesPerRow": 9884.63104
+    },
+    {
+      "relation": "research_u.pb_4_final",
+      "rows": 100000,
+      "heap": "205266944",
+      "indexes": "102998016",
+      "total": "411582464",
+      "totalBytesPerRow": 4115.82464
+    }
+  ],
+  "attacks": [
+    {
+      "corpus": "fixture",
+      "rows": 250,
+      "entries": 11342,
+      "withinDuplicate": 0,
+      "crossDuplicate": 0,
+      "permutationFailure": 0,
+      "observedKeyRecoveredPositions": 797,
+      "observedKeyMismatch": 0,
+      "visibleNormalizedSpaces": 868,
+      "uniqueLengthPairs": 3,
+      "limit": "Equality and position-set checks do not prove secrecy; lengths and normalized space counts remain visible, and observed piece keys recover occurrences."
+    },
+    {
+      "corpus": "public-review-memory-only",
+      "rows": 250,
+      "entries": 22743,
+      "withinDuplicate": 0,
+      "crossDuplicate": 0,
+      "permutationFailure": 0,
+      "observedKeyRecoveredPositions": 906,
+      "observedKeyMismatch": 0,
+      "visibleNormalizedSpaces": 1640,
+      "uniqueLengthPairs": 116,
+      "limit": "Equality and position-set checks do not prove secrecy; lengths and normalized space counts remain visible, and observed piece keys recover occurrences."
+    }
+  ],
+  "limits": [
+    "No full dictionary/co-occurrence/WAL attack rerun; prior token leakage remains.",
+    "No hosted service security claim.",
+    "Column sizes exclude tuple/index overhead and can reflect compression; table totals include TOAST/indexes."
+  ]
+}

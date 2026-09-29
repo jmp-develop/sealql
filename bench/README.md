@@ -2,6 +2,8 @@
 
 측정·공격 시뮬레이션 스크립트와 결과(`results/`)다. 공통 규칙은 [docs/measurement.md](../docs/measurement.md)와 [docs/attack-simulation.md](../docs/attack-simulation.md)에 있다. 결과는 로컬 일회용 DB의 관찰이며 운영 보장·보안 인증이 아니다.
 
+현재 DB 도장 판정 구현의 측정은 [R9 보고](results/2026-09-29-r9/report-ko.md)와 [스크립트](r9/)에 있다. 정렬/무작위 물리 순서의 제품·연구·평문 교차 측정, 후보 수, words/single 누출·용량, 쓰기 비용과 드라이버 흐름을 기록한다. 이전 결과는 해당 시점 구현의 증거로 보존한다.
+
 ## 일회용 DB 규칙
 
 - `127.0.0.1:56439`, 사용자 `sealql_test`, 데이터 디렉터리 `.local/pg-test`만 쓴다. 기동: `pg_ctl -D .local/pg-test -o "-h 127.0.0.1 -p 56439" -l .local/pg-test.log start -w -t 60`.

@@ -1,0 +1,92 @@
+R9 final gate output excerpts (paths and npm progress omitted)
+
+$ rtk npm run build
+> node scripts/clean-dist.mjs && tsc -p tsconfig.json
+exit 0
+
+$ rtk npm run check
+> tsc -p tsconfig.check.json --noEmit
+exit 0
+
+$ rtk npm test
+> node --import tsx --test test/*.test.ts
+✔ large JSON and deep nesting have no library size or depth cap (36.0557ms)
+✔ search expression accepts more than eight leaves and nested groups (0.2904ms)
+✔ normalization folds NFC, full-width ASCII, and ASCII case (0.4253ms)
+✔ ciphertext binds row and field, rejects tampering, and uses multiple shards (19.971ms)
+✔ cached field context preserves versionless AAD bytes and opens independent ciphertext (4.1451ms)
+✔ cursor key cache keeps independent root keys isolated (2.9932ms)
+✔ fixed global and model keys are copied at construction (2.1426ms)
+✔ field and token profile keys are shared across tenants without retaining scope prefixes (29.3771ms)
+✔ marked pieces are distinct from literal punctuation (0.6932ms)
+✔ substring skip grams default on and only explicit false disables them (1.0461ms)
+✔ word-respecting search uses only internal boundaries (0.6072ms)
+✔ exact bits allow 32 while substring tokens remain 16 (2.3055ms)
+✔ open rejects pending queries and database wrapping sanitizes cause (8.5828ms)
+✔ transactionless drivers report UNSUPPORTED_DRIVER before any callback work (18.0989ms)
+✔ text position validation wraps SQL errors and checks cancellation before SQL (5.7251ms)
+✔ native managed writes and opens stay atomic (1989.492ms)
+✔ text row IDs follow the database collation and keep index-backed keysets (402.8895ms)
+✔ package schema generates, migrates, and pushes twice without drift (3762.7544ms)
+✔ scope-free nullable index rows disappear when every token is null (125.6623ms)
+✔ composite parent key uses scope and row foreign key (75.6884ms)
+✔ native registration builds same-schema companion without loading a key (17.2886ms)
+✔ native CRUD, verified pages, OR semi-join and bounded count (563.9078ms)
+✔ large searchable fields and public open have no implicit size or row budget (13865.0168ms)
+✔ insert splits above the PostgreSQL parameter limit within one transaction (99330.0291ms)
+✔ false token candidates are rejected in the DB without opening condition fields (1397.7691ms)
+✔ multicolumn GIN preserves writes, cursor search and exact count (150.079ms)
+✔ reindex accepts a caller batch above the old maximum (17710.1601ms)
+✔ count returns one scalar without selecting or decrypting row values (10692.3043ms)
+✔ microsecond timestamp keysets resume under another DateStyle (117.6424ms)
+✔ findMany returns a thousand-level JSON field with a result byte budget (73.7958ms)
+✔ DB proofs match plaintext across operators, types, nulls, mutations and JOIN projections (955.4733ms)
+✔ stamp derivation and signed big endian digest match independent crypto (12.1085ms)
+✔ position proofs retain occurrences, stream domains, Unicode and empty values (7.0044ms)
+✔ two-bit exact profiles are explicit; the population recommendation stays unchanged (1.2644ms)
+Node pg flow {"ok":true,"insert":1,"count":1,"update":1,"reindex":1,"search":1,"substring":1,"afterDelete":0}
+workerd pg flow {"ok":true,"insert":1,"count":1,"update":1,"reindex":1,"search":1,"substring":1,"afterDelete":0}
+✔ Node pg and local workerd pg execute the complete public DB flow (654.658ms)
+✔ v3 envelope crosses local workerd and Node WebCrypto (323.0616ms)
+ℹ tests 36
+ℹ suites 0
+ℹ pass 36
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 144783.1572
+exit 0
+
+$ rtk proxy node --import tsx --test test/standard-count-contract.test.ts
+✔ scalar count rejects unsafe integers, removed budgets, and cancellation without decryption (3.8347ms)
+ℹ tests 1
+ℹ pass 1
+ℹ fail 0
+ℹ duration_ms 665.2115
+exit 0
+
+$ rtk proxy node --import tsx .local/r9-postgres-flow.ts
+{"ok":true,"insert":1,"count":1,"update":1,"reindex":1,"search":1,"substring":1,"afterDelete":0}
+exit 0
+
+$ rtk npm run docs:check
+> node scripts/docs-check.mjs
+Documentation entry, links, decisions, plans, exports, and shared example references PASS
+exit 0
+
+$ rtk npm run test:install
+> node scripts/install-smoke.mjs
+> npm run build
+> node scripts/clean-dist.mjs && tsc -p tsconfig.json
+sealql-0.1.0-experimental.0.tgz
+Ignored 70 upstream drizzle-orm declaration diagnostics
+Ignored 70 upstream drizzle-orm declaration diagnostics
+2 tables
+kit_smoke_note 2 columns 0 indexes 0 fks
+kit_smoke_note_seal_index 5 columns 3 indexes 1 fks
+Installed standard consumer compiles with drizzle-orm 0.45.3
+Ignored 70 upstream drizzle-orm declaration diagnostics
+Ignored 70 upstream drizzle-orm declaration diagnostics
+Installed standard consumer compiles with drizzle-orm 0.45.2
+exit 0

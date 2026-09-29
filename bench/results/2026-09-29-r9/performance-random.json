@@ -1,0 +1,3338 @@
+{
+  "layout": "random",
+  "metadata": {
+    "pid": 34956,
+    "version": "PostgreSQL 18.4 on x86_64-windows, compiled by msvc-19.44.35227, 64-bit",
+    "locale": "C",
+    "work_mem": "4MB",
+    "parallel_workers": "2"
+  },
+  "correlation": [
+    {
+      "tablename": "customers",
+      "attname": "id",
+      "correlation": 0.00952455
+    },
+    {
+      "tablename": "customers_seal_index",
+      "attname": "row_id",
+      "correlation": 0.0017857809
+    }
+  ],
+  "protocol": "First measured call, two warmups, seven alternating rounds; same IDs and normalized six-field projection asserted every call. Protected reference layout is unchanged.",
+  "rows": [
+    {
+      "name": "exact_common",
+      "condition": "company = \"서울서비스 담당\"",
+      "mode": "count",
+      "returned": 1,
+      "first": {
+        "plain": {
+          "totalMs": 7.72829999999999,
+          "sqlMs": 7.604000000000042,
+          "sqlRequests": 1,
+          "appRows": 1,
+          "opens": 0
+        },
+        "research": {
+          "totalMs": 87.56450000000007,
+          "sqlMs": 83.76970000000006,
+          "sqlRequests": 1,
+          "appRows": 1,
+          "opens": 0
+        },
+        "product": {
+          "totalMs": 72.6694,
+          "sqlMs": 66.70330000000001,
+          "sqlRequests": 1,
+          "appRows": 1,
+          "opens": 0
+        }
+      },
+      "runs": {
+        "plain": [
+          {
+            "totalMs": 8.379500000000007,
+            "sqlMs": 8.286499999999933,
+            "sqlRequests": 1,
+            "appRows": 1,
+            "opens": 0
+          },
+          {
+            "totalMs": 8.943899999999985,
+            "sqlMs": 8.85290000000009,
+            "sqlRequests": 1,
+            "appRows": 1,
+            "opens": 0
+          },
+          {
+            "totalMs": 8.399499999999989,
+            "sqlMs": 8.304100000000062,
+            "sqlRequests": 1,
+            "appRows": 1,
+            "opens": 0
+          },
+          {
+            "totalMs": 8.134199999999964,
+            "sqlMs": 8.042300000000068,
+            "sqlRequests": 1,
+            "appRows": 1,
+            "opens": 0
+          },
+          {
+            "totalMs": 8.207499999999982,
+            "sqlMs": 8.122700000000123,
+            "sqlRequests": 1,
+            "appRows": 1,
+            "opens": 0
+          },
+          {
+            "totalMs": 7.756600000000162,
+            "sqlMs": 7.6831999999999425,
+            "sqlRequests": 1,
+            "appRows": 1,
+            "opens": 0
+          },
+          {
+            "totalMs": 7.94439999999986,
+            "sqlMs": 7.867799999999988,
+            "sqlRequests": 1,
+            "appRows": 1,
+            "opens": 0
+          }
+        ],
+        "research": [
+          {
+            "totalMs": 84.03689999999983,
+            "sqlMs": 83.52549999999997,
+            "sqlRequests": 1,
+            "appRows": 1,
+            "opens": 0
+          },
+          {
+            "totalMs": 85.48530000000005,
+            "sqlMs": 85.05719999999997,
+            "sqlRequests": 1,
+            "appRows": 1,
+            "opens": 0
+          },
+          {
+            "totalMs": 83.92059999999992,
+            "sqlMs": 83.47919999999999,
+            "sqlRequests": 1,
+            "appRows": 1,
+            "opens": 0
+          },
+          {
+            "totalMs": 83.18170000000009,
+            "sqlMs": 82.7799,
+            "sqlRequests": 1,
+            "appRows": 1,
+            "opens": 0
+          },
+          {
+            "totalMs": 82.58560000000011,
+            "sqlMs": 82.0927999999999,
+            "sqlRequests": 1,
+            "appRows": 1,
+            "opens": 0
+          },
+          {
+            "totalMs": 80.88940000000002,
+            "sqlMs": 80.48020000000042,
+            "sqlRequests": 1,
+            "appRows": 1,
+            "opens": 0
+          },
+          {
+            "totalMs": 82.24089999999978,
+            "sqlMs": 81.68470000000025,
+            "sqlRequests": 1,
+            "appRows": 1,
+            "opens": 0
+          }
+        ],
+        "product": [
+          {
+            "totalMs": 64.00119999999993,
+            "sqlMs": 62.92190000000005,
+            "sqlRequests": 1,
+            "appRows": 1,
+            "opens": 0
+          },
+          {
+            "totalMs": 64.37099999999987,
+            "sqlMs": 63.12560000000008,
+            "sqlRequests": 1,
+            "appRows": 1,
+            "opens": 0
+          },
+          {
+            "totalMs": 135.16730000000007,
+            "sqlMs": 134.1051,
+            "sqlRequests": 1,
+            "appRows": 1,
+            "opens": 0
+          },
+          {
+            "totalMs": 62.67530000000011,
+            "sqlMs": 61.69360000000006,
+            "sqlRequests": 1,
+            "appRows": 1,
+            "opens": 0
+          },
+          {
+            "totalMs": 61.87350000000015,
+            "sqlMs": 60.93010000000004,
+            "sqlRequests": 1,
+            "appRows": 1,
+            "opens": 0
+          },
+          {
+            "totalMs": 62.29130000000032,
+            "sqlMs": 61.016999999999825,
+            "sqlRequests": 1,
+            "appRows": 1,
+            "opens": 0
+          },
+          {
+            "totalMs": 61.52520000000004,
+            "sqlMs": 60.49839999999995,
+            "sqlRequests": 1,
+            "appRows": 1,
+            "opens": 0
+          }
+        ]
+      },
+      "summary": {
+        "plain": {
+          "totalMs": 8.207499999999982,
+          "sqlMs": 8.122700000000123,
+          "sqlRequests": 1,
+          "appRows": 1,
+          "opens": 0
+        },
+        "research": {
+          "totalMs": 83.18170000000009,
+          "sqlMs": 82.7799,
+          "sqlRequests": 1,
+          "appRows": 1,
+          "opens": 0
+        },
+        "product": {
+          "totalMs": 62.67530000000011,
+          "sqlMs": 61.69360000000006,
+          "sqlRequests": 1,
+          "appRows": 1,
+          "opens": 0
+        }
+      }
+    },
+    {
+      "name": "exact_common",
+      "condition": "company = \"서울서비스 담당\"",
+      "mode": "list",
+      "returned": 300,
+      "first": {
+        "plain": {
+          "totalMs": 1.2867000000001099,
+          "sqlMs": 1.2487999999998465,
+          "sqlRequests": 1,
+          "appRows": 300,
+          "opens": 0
+        },
+        "research": {
+          "totalMs": 203.30330000000004,
+          "sqlMs": 5.598000000000411,
+          "sqlRequests": 1,
+          "appRows": 300,
+          "opens": 1800
+        },
+        "product": {
+          "totalMs": 95.06190000000015,
+          "sqlMs": 9.232699999999568,
+          "sqlRequests": 1,
+          "appRows": 300,
+          "opens": 1800
+        }
+      },
+      "runs": {
+        "plain": [
+          {
+            "totalMs": 1.295799999999872,
+            "sqlMs": 1.2226999999998043,
+            "sqlRequests": 1,
+            "appRows": 300,
+            "opens": 0
+          },
+          {
+            "totalMs": 1.2436000000002423,
+            "sqlMs": 1.1873000000000502,
+            "sqlRequests": 1,
+            "appRows": 300,
+            "opens": 0
+          },
+          {
+            "totalMs": 1.2354999999997744,
+            "sqlMs": 1.1787999999996828,
+            "sqlRequests": 1,
+            "appRows": 300,
+            "opens": 0
+          },
+          {
+            "totalMs": 3.540399999999863,
+            "sqlMs": 3.4465000000000146,
+            "sqlRequests": 1,
+            "appRows": 300,
+            "opens": 0
+          },
+          {
+            "totalMs": 1.2341000000001259,
+            "sqlMs": 1.1731999999997242,
+            "sqlRequests": 1,
+            "appRows": 300,
+            "opens": 0
+          },
+          {
+            "totalMs": 1.3618999999998778,
+            "sqlMs": 1.3009000000001834,
+            "sqlRequests": 1,
+            "appRows": 300,
+            "opens": 0
+          },
+          {
+            "totalMs": 1.3027000000001863,
+            "sqlMs": 1.2303999999999178,
+            "sqlRequests": 1,
+            "appRows": 300,
+            "opens": 0
+          }
+        ],
+        "research": [
+          {
+            "totalMs": 80.83960000000025,
+            "sqlMs": 3.7869000000000597,
+            "sqlRequests": 1,
+            "appRows": 300,
+            "opens": 1800
+          },
+          {
+            "totalMs": 75.90740000000005,
+            "sqlMs": 3.8040000000000873,
+            "sqlRequests": 1,
+            "appRows": 300,
+            "opens": 1800
+          },
+          {
+            "totalMs": 73.18709999999965,
+            "sqlMs": 3.6808999999998377,
+            "sqlRequests": 1,
+            "appRows": 300,
+            "opens": 1800
+          },
+          {
+            "totalMs": 93.15909999999985,
+            "sqlMs": 7.867000000000189,
+            "sqlRequests": 1,
+            "appRows": 300,
+            "opens": 1800
+          },
+          {
+            "totalMs": 77.24369999999999,
+            "sqlMs": 3.9139000000000124,
+            "sqlRequests": 1,
+            "appRows": 300,
+            "opens": 1800
+          },
+          {
+            "totalMs": 73.26519999999982,
+            "sqlMs": 3.922900000000027,
+            "sqlRequests": 1,
+            "appRows": 300,
+            "opens": 1800
+          },
+          {
+            "totalMs": 78.14730000000009,
+            "sqlMs": 3.672700000000077,
+            "sqlRequests": 1,
+            "appRows": 300,
+            "opens": 1800
+          }
+        ],
+        "product": [
+          {
+            "totalMs": 66.04120000000012,
+            "sqlMs": 3.439600000000155,
+            "sqlRequests": 1,
+            "appRows": 300,
+            "opens": 1800
+          },
+          {
+            "totalMs": 62.05069999999978,
+            "sqlMs": 3.531199999999899,
+            "sqlRequests": 1,
+            "appRows": 300,
+            "opens": 1800
+          },
+          {
+            "totalMs": 61.50649999999996,
+            "sqlMs": 5.1228000000000975,
+            "sqlRequests": 1,
+            "appRows": 300,
+            "opens": 1800
+          },
+          {
+            "totalMs": 65.9666000000002,
+            "sqlMs": 3.3240999999998166,
+            "sqlRequests": 1,
+            "appRows": 300,
+            "opens": 1800
+          },
+          {
+            "totalMs": 66.75070000000005,
+            "sqlMs": 3.651100000000042,
+            "sqlRequests": 1,
+            "appRows": 300,
+            "opens": 1800
+          },
+          {
+            "totalMs": 67.95040000000017,
+            "sqlMs": 3.2581999999997606,
+            "sqlRequests": 1,
+            "appRows": 300,
+            "opens": 1800
+          },
+          {
+            "totalMs": 65.7464,
+            "sqlMs": 3.3834999999999127,
+            "sqlRequests": 1,
+            "appRows": 300,
+            "opens": 1800
+          }
+        ]
+      },
+      "summary": {
+        "plain": {
+          "totalMs": 1.295799999999872,
+          "sqlMs": 1.2226999999998043,
+          "sqlRequests": 1,
+          "appRows": 300,
+          "opens": 0
+        },
+        "research": {
+          "totalMs": 77.24369999999999,
+          "sqlMs": 3.8040000000000873,
+          "sqlRequests": 1,
+          "appRows": 300,
+          "opens": 1800
+        },
+        "product": {
+          "totalMs": 65.9666000000002,
+          "sqlMs": 3.439600000000155,
+          "sqlRequests": 1,
+          "appRows": 300,
+          "opens": 1800
+        }
+      }
+    },
+    {
+      "name": "sub_common_memo",
+      "condition": "memo contains \"서비스\"",
+      "mode": "count",
+      "returned": 1,
+      "first": {
+        "plain": {
+          "totalMs": 21.08050000000003,
+          "sqlMs": 21.01650000000018,
+          "sqlRequests": 1,
+          "appRows": 1,
+          "opens": 0
+        },
+        "research": {
+          "totalMs": 394.91460000000006,
+          "sqlMs": 394.0153999999998,
+          "sqlRequests": 1,
+          "appRows": 1,
+          "opens": 0
+        },
+        "product": {
+          "totalMs": 276.3150999999998,
+          "sqlMs": 274.4223000000002,
+          "sqlRequests": 1,
+          "appRows": 1,
+          "opens": 0
+        }
+      },
+      "runs": {
+        "plain": [
+          {
+            "totalMs": 18.24000000000069,
+            "sqlMs": 18.17119999999977,
+            "sqlRequests": 1,
+            "appRows": 1,
+            "opens": 0
+          },
+          {
+            "totalMs": 17.62209999999959,
+            "sqlMs": 17.556799999999384,
+            "sqlRequests": 1,
+            "appRows": 1,
+            "opens": 0
+          },
+          {
+            "totalMs": 18.187700000000405,
+            "sqlMs": 18.119399999999587,
+            "sqlRequests": 1,
+            "appRows": 1,
+            "opens": 0
+          },
+          {
+            "totalMs": 16.09979999999996,
+            "sqlMs": 16.02849999999944,
+            "sqlRequests": 1,
+            "appRows": 1,
+            "opens": 0
+          },
+          {
+            "totalMs": 16.35030000000006,
+            "sqlMs": 16.280399999999645,
+            "sqlRequests": 1,
+            "appRows": 1,
+            "opens": 0
+          },
+          {
+            "totalMs": 16.978100000000268,
+            "sqlMs": 16.910399999998845,
+            "sqlRequests": 1,
+            "appRows": 1,
+            "opens": 0
+          },
+          {
+            "totalMs": 17.33690000000024,
+            "sqlMs": 17.25669999999991,
+            "sqlRequests": 1,
+            "appRows": 1,
+            "opens": 0
+          }
+        ],
+        "research": [
+          {
+            "totalMs": 351.3179,
+            "sqlMs": 350.66939999999977,
+            "sqlRequests": 1,
+            "appRows": 1,
+            "opens": 0
+          },
+          {
+            "totalMs": 360.28620000000046,
+            "sqlMs": 359.7979000000005,
+            "sqlRequests": 1,
+            "appRows": 1,
+            "opens": 0
+          },
+          {
+            "totalMs": 350.6713,
+            "sqlMs": 350.22710000000006,
+            "sqlRequests": 1,
+            "appRows": 1,
+            "opens": 0
+          },
+          {
+            "totalMs": 346.3654999999999,
+            "sqlMs": 345.90380000000005,
+            "sqlRequests": 1,
+            "appRows": 1,
+            "opens": 0
+          },
+          {
+            "totalMs": 362.8643000000011,
+            "sqlMs": 362.4241999999995,
+            "sqlRequests": 1,
+            "appRows": 1,
+            "opens": 0
+          },
+          {
+            "totalMs": 354.15869999999995,
+            "sqlMs": 353.6925999999985,
+            "sqlRequests": 1,
+            "appRows": 1,
+            "opens": 0
+          },
+          {
+            "totalMs": 368.64919999999984,
+            "sqlMs": 368.1864000000005,
+            "sqlRequests": 1,
+            "appRows": 1,
+            "opens": 0
+          }
+        ],
+        "product": [
+          {
+            "totalMs": 298.576,
+            "sqlMs": 297.5187999999998,
+            "sqlRequests": 1,
+            "appRows": 1,
+            "opens": 0
+          },
+          {
+            "totalMs": 273.08739999999943,
+            "sqlMs": 271.9880999999996,
+            "sqlRequests": 1,
+            "appRows": 1,
+            "opens": 0
+          },
+          {
+            "totalMs": 265.4175000000005,
+            "sqlMs": 264.1368000000002,
+            "sqlRequests": 1,
+            "appRows": 1,
+            "opens": 0
+          },
+          {
+            "totalMs": 276.2375000000011,
+            "sqlMs": 275.15980000000127,
+            "sqlRequests": 1,
+            "appRows": 1,
+            "opens": 0
+          },
+          {
+            "totalMs": 282.53690000000097,
+            "sqlMs": 281.5012999999999,
+            "sqlRequests": 1,
+            "appRows": 1,
+            "opens": 0
+          },
+          {
+            "totalMs": 260.5496000000003,
+            "sqlMs": 259.40509999999995,
+            "sqlRequests": 1,
+            "appRows": 1,
+            "opens": 0
+          },
+          {
+            "totalMs": 292.71799999999894,
+            "sqlMs": 291.71309999999903,
+            "sqlRequests": 1,
+            "appRows": 1,
+            "opens": 0
+          }
+        ]
+      },
+      "summary": {
+        "plain": {
+          "totalMs": 17.33690000000024,
+          "sqlMs": 17.25669999999991,
+          "sqlRequests": 1,
+          "appRows": 1,
+          "opens": 0
+        },
+        "research": {
+          "totalMs": 354.15869999999995,
+          "sqlMs": 353.6925999999985,
+          "sqlRequests": 1,
+          "appRows": 1,
+          "opens": 0
+        },
+        "product": {
+          "totalMs": 276.2375000000011,
+          "sqlMs": 275.15980000000127,
+          "sqlRequests": 1,
+          "appRows": 1,
+          "opens": 0
+        }
+      }
+    },
+    {
+      "name": "sub_common_memo",
+      "condition": "memo contains \"서비스\"",
+      "mode": "list",
+      "returned": 300,
+      "first": {
+        "plain": {
+          "totalMs": 1.1763000000009924,
+          "sqlMs": 1.1182000000007974,
+          "sqlRequests": 1,
+          "appRows": 300,
+          "opens": 0
+        },
+        "research": {
+          "totalMs": 188.0007999999998,
+          "sqlMs": 102.56590000000142,
+          "sqlRequests": 1,
+          "appRows": 300,
+          "opens": 1800
+        },
+        "product": {
+          "totalMs": 210.67720000000008,
+          "sqlMs": 134.16880000000128,
+          "sqlRequests": 1,
+          "appRows": 300,
+          "opens": 1800
+        }
+      },
+      "runs": {
+        "plain": [
+          {
+            "totalMs": 1.5609999999996944,
+            "sqlMs": 1.4751999999989494,
+            "sqlRequests": 1,
+            "appRows": 300,
+            "opens": 0
+          },
+          {
+            "totalMs": 1.3180000000011205,
+            "sqlMs": 1.260099999999511,
+            "sqlRequests": 1,
+            "appRows": 300,
+            "opens": 0
+          },
+          {
+            "totalMs": 1.3554999999996653,
+            "sqlMs": 1.2889000000013766,
+            "sqlRequests": 1,
+            "appRows": 300,
+            "opens": 0
+          },
+          {
+            "totalMs": 3.2160000000003492,
+            "sqlMs": 3.1293000000005122,
+            "sqlRequests": 1,
+            "appRows": 300,
+            "opens": 0
+          },
+          {
+            "totalMs": 1.347700000000259,
+            "sqlMs": 1.2932000000000698,
+            "sqlRequests": 1,
+            "appRows": 300,
+            "opens": 0
+          },
+          {
+            "totalMs": 1.2960999999995693,
+            "sqlMs": 1.241600000001199,
+            "sqlRequests": 1,
+            "appRows": 300,
+            "opens": 0
+          },
+          {
+            "totalMs": 1.3364000000001397,
+            "sqlMs": 1.270699999999124,
+            "sqlRequests": 1,
+            "appRows": 300,
+            "opens": 0
+          }
+        ],
+        "research": [
+          {
+            "totalMs": 169.09150000000045,
+            "sqlMs": 96.13349999999991,
+            "sqlRequests": 1,
+            "appRows": 300,
+            "opens": 1800
+          },
+          {
+            "totalMs": 169.9952000000012,
+            "sqlMs": 97.09510000000046,
+            "sqlRequests": 1,
+            "appRows": 300,
+            "opens": 1800
+          },
+          {
+            "totalMs": 154.4354000000003,
+            "sqlMs": 91.47220000000016,
+            "sqlRequests": 1,
+            "appRows": 300,
+            "opens": 1800
+          },
+          {
+            "totalMs": 151.98070000000007,
+            "sqlMs": 88.84109999999964,
+            "sqlRequests": 1,
+            "appRows": 300,
+            "opens": 1800
+          },
+          {
+            "totalMs": 161.03600000000006,
+            "sqlMs": 94.97129999999925,
+            "sqlRequests": 1,
+            "appRows": 300,
+            "opens": 1800
+          },
+          {
+            "totalMs": 213.79140000000007,
+            "sqlMs": 144.77779999999984,
+            "sqlRequests": 1,
+            "appRows": 300,
+            "opens": 1800
+          },
+          {
+            "totalMs": 152.91289999999935,
+            "sqlMs": 89.84000000000015,
+            "sqlRequests": 1,
+            "appRows": 300,
+            "opens": 1800
+          }
+        ],
+        "product": [
+          {
+            "totalMs": 206.83339999999953,
+            "sqlMs": 140.75450000000092,
+            "sqlRequests": 1,
+            "appRows": 300,
+            "opens": 1800
+          },
+          {
+            "totalMs": 194.82400000000052,
+            "sqlMs": 133.83489999999983,
+            "sqlRequests": 1,
+            "appRows": 300,
+            "opens": 1800
+          },
+          {
+            "totalMs": 195.27580000000125,
+            "sqlMs": 134.6828999999998,
+            "sqlRequests": 1,
+            "appRows": 300,
+            "opens": 1800
+          },
+          {
+            "totalMs": 190.98220000000038,
+            "sqlMs": 125.14050000000134,
+            "sqlRequests": 1,
+            "appRows": 300,
+            "opens": 1800
+          },
+          {
+            "totalMs": 208.66820000000007,
+            "sqlMs": 131.3698000000004,
+            "sqlRequests": 1,
+            "appRows": 300,
+            "opens": 1800
+          },
+          {
+            "totalMs": 197.29219999999987,
+            "sqlMs": 134.1296000000002,
+            "sqlRequests": 1,
+            "appRows": 300,
+            "opens": 1800
+          },
+          {
+            "totalMs": 186.13709999999992,
+            "sqlMs": 122.56500000000051,
+            "sqlRequests": 1,
+            "appRows": 300,
+            "opens": 1800
+          }
+        ]
+      },
+      "summary": {
+        "plain": {
+          "totalMs": 1.347700000000259,
+          "sqlMs": 1.2889000000013766,
+          "sqlRequests": 1,
+          "appRows": 300,
+          "opens": 0
+        },
+        "research": {
+          "totalMs": 161.03600000000006,
+          "sqlMs": 94.97129999999925,
+          "sqlRequests": 1,
+          "appRows": 300,
+          "opens": 1800
+        },
+        "product": {
+          "totalMs": 195.27580000000125,
+          "sqlMs": 133.83489999999983,
+          "sqlRequests": 1,
+          "appRows": 300,
+          "opens": 1800
+        }
+      }
+    },
+    {
+      "name": "starts",
+      "condition": "address startsWith \"서울\"",
+      "mode": "count",
+      "returned": 1,
+      "first": {
+        "plain": {
+          "totalMs": 5.963600000000952,
+          "sqlMs": 5.915499999999156,
+          "sqlRequests": 1,
+          "appRows": 1,
+          "opens": 0
+        },
+        "research": {
+          "totalMs": 97.54280000000108,
+          "sqlMs": 96.91599999999926,
+          "sqlRequests": 1,
+          "appRows": 1,
+          "opens": 0
+        },
+        "product": {
+          "totalMs": 165.44779999999992,
+          "sqlMs": 164.15009999999893,
+          "sqlRequests": 1,
+          "appRows": 1,
+          "opens": 0
+        }
+      },
+      "runs": {
+        "plain": [
+          {
+            "totalMs": 7.816999999999098,
+            "sqlMs": 7.664099999999962,
+            "sqlRequests": 1,
+            "appRows": 1,
+            "opens": 0
+          },
+          {
+            "totalMs": 8.619200000001001,
+            "sqlMs": 8.545500000000175,
+            "sqlRequests": 1,
+            "appRows": 1,
+            "opens": 0
+          },
+          {
+            "totalMs": 8.836300000000847,
+            "sqlMs": 8.765900000000329,
+            "sqlRequests": 1,
+            "appRows": 1,
+            "opens": 0
+          },
+          {
+            "totalMs": 7.738199999999779,
+            "sqlMs": 7.660600000001068,
+            "sqlRequests": 1,
+            "appRows": 1,
+            "opens": 0
+          },
+          {
+            "totalMs": 8.467599999999948,
+            "sqlMs": 8.398599999998623,
+            "sqlRequests": 1,
+            "appRows": 1,
+            "opens": 0
+          },
+          {
+            "totalMs": 8.496499999997468,
+            "sqlMs": 8.42529999999897,
+            "sqlRequests": 1,
+            "appRows": 1,
+            "opens": 0
+          },
+          {
+            "totalMs": 8.168599999997241,
+            "sqlMs": 8.096799999999348,
+            "sqlRequests": 1,
+            "appRows": 1,
+            "opens": 0
+          }
+        ],
+        "research": [
+          {
+            "totalMs": 100.91749999999956,
+            "sqlMs": 100.45839999999953,
+            "sqlRequests": 1,
+            "appRows": 1,
+            "opens": 0
+          },
+          {
+            "totalMs": 99.59270000000106,
+            "sqlMs": 99.19470000000001,
+            "sqlRequests": 1,
+            "appRows": 1,
+            "opens": 0
+          },
+          {
+            "totalMs": 97.51310000000012,
+            "sqlMs": 97.11009999999987,
+            "sqlRequests": 1,
+            "appRows": 1,
+            "opens": 0
+          },
+          {
+            "totalMs": 96.60400000000118,
+            "sqlMs": 96.17200000000048,
+            "sqlRequests": 1,
+            "appRows": 1,
+            "opens": 0
+          },
+          {
+            "totalMs": 105.19440000000031,
+            "sqlMs": 104.79210000000057,
+            "sqlRequests": 1,
+            "appRows": 1,
+            "opens": 0
+          },
+          {
+            "totalMs": 100.53679999999804,
+            "sqlMs": 100.09679999999935,
+            "sqlRequests": 1,
+            "appRows": 1,
+            "opens": 0
+          },
+          {
+            "totalMs": 103.23720000000321,
+            "sqlMs": 102.83970000000045,
+            "sqlRequests": 1,
+            "appRows": 1,
+            "opens": 0
+          }
+        ],
+        "product": [
+          {
+            "totalMs": 171.80299999999988,
+            "sqlMs": 170.83079999999973,
+            "sqlRequests": 1,
+            "appRows": 1,
+            "opens": 0
+          },
+          {
+            "totalMs": 139.72640000000138,
+            "sqlMs": 138.7494000000006,
+            "sqlRequests": 1,
+            "appRows": 1,
+            "opens": 0
+          },
+          {
+            "totalMs": 130.75690000000031,
+            "sqlMs": 129.8212999999996,
+            "sqlRequests": 1,
+            "appRows": 1,
+            "opens": 0
+          },
+          {
+            "totalMs": 158.34949999999844,
+            "sqlMs": 157.48270000000048,
+            "sqlRequests": 1,
+            "appRows": 1,
+            "opens": 0
+          },
+          {
+            "totalMs": 142.2556000000004,
+            "sqlMs": 141.33729999999923,
+            "sqlRequests": 1,
+            "appRows": 1,
+            "opens": 0
+          },
+          {
+            "totalMs": 133.89199999999983,
+            "sqlMs": 132.91450000000077,
+            "sqlRequests": 1,
+            "appRows": 1,
+            "opens": 0
+          },
+          {
+            "totalMs": 173.0725999999995,
+            "sqlMs": 171.99289999999746,
+            "sqlRequests": 1,
+            "appRows": 1,
+            "opens": 0
+          }
+        ]
+      },
+      "summary": {
+        "plain": {
+          "totalMs": 8.467599999999948,
+          "sqlMs": 8.398599999998623,
+          "sqlRequests": 1,
+          "appRows": 1,
+          "opens": 0
+        },
+        "research": {
+          "totalMs": 100.53679999999804,
+          "sqlMs": 100.09679999999935,
+          "sqlRequests": 1,
+          "appRows": 1,
+          "opens": 0
+        },
+        "product": {
+          "totalMs": 142.2556000000004,
+          "sqlMs": 141.33729999999923,
+          "sqlRequests": 1,
+          "appRows": 1,
+          "opens": 0
+        }
+      }
+    },
+    {
+      "name": "starts",
+      "condition": "address startsWith \"서울\"",
+      "mode": "list",
+      "returned": 300,
+      "first": {
+        "plain": {
+          "totalMs": 1.075300000000425,
+          "sqlMs": 1.0522999999993772,
+          "sqlRequests": 1,
+          "appRows": 300,
+          "opens": 0
+        },
+        "research": {
+          "totalMs": 146.6264999999985,
+          "sqlMs": 58.16280000000188,
+          "sqlRequests": 1,
+          "appRows": 300,
+          "opens": 1800
+        },
+        "product": {
+          "totalMs": 129.53190000000177,
+          "sqlMs": 66.36349999999948,
+          "sqlRequests": 1,
+          "appRows": 300,
+          "opens": 1800
+        }
+      },
+      "runs": {
+        "plain": [
+          {
+            "totalMs": 1.3905000000013388,
+            "sqlMs": 1.318200000001525,
+            "sqlRequests": 1,
+            "appRows": 300,
+            "opens": 0
+          },
+          {
+            "totalMs": 1.5803000000014435,
+            "sqlMs": 1.5224999999991269,
+            "sqlRequests": 1,
+            "appRows": 300,
+            "opens": 0
+          },
+          {
+            "totalMs": 1.5994000000027881,
+            "sqlMs": 1.5389999999970314,
+            "sqlRequests": 1,
+            "appRows": 300,
+            "opens": 0
+          },
+          {
+            "totalMs": 3.0169000000023516,
+            "sqlMs": 2.930100000001403,
+            "sqlRequests": 1,
+            "appRows": 300,
+            "opens": 0
+          },
+          {
+            "totalMs": 1.5443999999988591,
+            "sqlMs": 1.490799999999581,
+            "sqlRequests": 1,
+            "appRows": 300,
+            "opens": 0
+          },
+          {
+            "totalMs": 1.2409000000006927,
+            "sqlMs": 1.1886999999987893,
+            "sqlRequests": 1,
+            "appRows": 300,
+            "opens": 0
+          },
+          {
+            "totalMs": 1.273300000000745,
+            "sqlMs": 1.2122999999992317,
+            "sqlRequests": 1,
+            "appRows": 300,
+            "opens": 0
+          }
+        ],
+        "research": [
+          {
+            "totalMs": 110.56240000000253,
+            "sqlMs": 39.77470000000176,
+            "sqlRequests": 1,
+            "appRows": 300,
+            "opens": 1800
+          },
+          {
+            "totalMs": 124.46130000000267,
+            "sqlMs": 54.69159999999829,
+            "sqlRequests": 1,
+            "appRows": 300,
+            "opens": 1800
+          },
+          {
+            "totalMs": 121.38550000000032,
+            "sqlMs": 58.02240000000165,
+            "sqlRequests": 1,
+            "appRows": 300,
+            "opens": 1800
+          },
+          {
+            "totalMs": 100.97780000000057,
+            "sqlMs": 37.773800000002666,
+            "sqlRequests": 1,
+            "appRows": 300,
+            "opens": 1800
+          },
+          {
+            "totalMs": 118.52880000000005,
+            "sqlMs": 53.99930000000313,
+            "sqlRequests": 1,
+            "appRows": 300,
+            "opens": 1800
+          },
+          {
+            "totalMs": 121.6739000000016,
+            "sqlMs": 54.206099999999424,
+            "sqlRequests": 1,
+            "appRows": 300,
+            "opens": 1800
+          },
+          {
+            "totalMs": 101.63140000000203,
+            "sqlMs": 37.72250000000349,
+            "sqlRequests": 1,
+            "appRows": 300,
+            "opens": 1800
+          }
+        ],
+        "product": [
+          {
+            "totalMs": 135.59570000000167,
+            "sqlMs": 71.7577999999994,
+            "sqlRequests": 1,
+            "appRows": 300,
+            "opens": 1800
+          },
+          {
+            "totalMs": 130.45409999999902,
+            "sqlMs": 67.42189999999755,
+            "sqlRequests": 1,
+            "appRows": 300,
+            "opens": 1800
+          },
+          {
+            "totalMs": 97.17719999999827,
+            "sqlMs": 35.10490000000209,
+            "sqlRequests": 1,
+            "appRows": 300,
+            "opens": 1800
+          },
+          {
+            "totalMs": 132.73999999999796,
+            "sqlMs": 67.8711000000003,
+            "sqlRequests": 1,
+            "appRows": 300,
+            "opens": 1800
+          },
+          {
+            "totalMs": 144.23949999999968,
+            "sqlMs": 67.8582000000024,
+            "sqlRequests": 1,
+            "appRows": 300,
+            "opens": 1800
+          },
+          {
+            "totalMs": 96.65620000000126,
+            "sqlMs": 35.04619999999704,
+            "sqlRequests": 1,
+            "appRows": 300,
+            "opens": 1800
+          },
+          {
+            "totalMs": 132.05259999999907,
+            "sqlMs": 66.98430000000008,
+            "sqlRequests": 1,
+            "appRows": 300,
+            "opens": 1800
+          }
+        ]
+      },
+      "summary": {
+        "plain": {
+          "totalMs": 1.5443999999988591,
+          "sqlMs": 1.490799999999581,
+          "sqlRequests": 1,
+          "appRows": 300,
+          "opens": 0
+        },
+        "research": {
+          "totalMs": 118.52880000000005,
+          "sqlMs": 53.99930000000313,
+          "sqlRequests": 1,
+          "appRows": 300,
+          "opens": 1800
+        },
+        "product": {
+          "totalMs": 132.05259999999907,
+          "sqlMs": 67.42189999999755,
+          "sqlRequests": 1,
+          "appRows": 300,
+          "opens": 1800
+        }
+      }
+    },
+    {
+      "name": "ends",
+      "condition": "email endsWith \"biz.test\"",
+      "mode": "count",
+      "returned": 1,
+      "first": {
+        "plain": {
+          "totalMs": 15.703000000001339,
+          "sqlMs": 15.632200000000012,
+          "sqlRequests": 1,
+          "appRows": 1,
+          "opens": 0
+        },
+        "research": {
+          "totalMs": 558.8343999999997,
+          "sqlMs": 557.7999999999993,
+          "sqlRequests": 1,
+          "appRows": 1,
+          "opens": 0
+        },
+        "product": {
+          "totalMs": 563.1992999999966,
+          "sqlMs": 560.9567999999999,
+          "sqlRequests": 1,
+          "appRows": 1,
+          "opens": 0
+        }
+      },
+      "runs": {
+        "plain": [
+          {
+            "totalMs": 15.504799999998795,
+            "sqlMs": 15.428100000000995,
+            "sqlRequests": 1,
+            "appRows": 1,
+            "opens": 0
+          },
+          {
+            "totalMs": 16.781300000002375,
+            "sqlMs": 16.70509999999922,
+            "sqlRequests": 1,
+            "appRows": 1,
+            "opens": 0
+          },
+          {
+            "totalMs": 18.0099999999984,
+            "sqlMs": 17.934300000000803,
+            "sqlRequests": 1,
+            "appRows": 1,
+            "opens": 0
+          },
+          {
+            "totalMs": 17.13130000000092,
+            "sqlMs": 17.05580000000191,
+            "sqlRequests": 1,
+            "appRows": 1,
+            "opens": 0
+          },
+          {
+            "totalMs": 16.45980000000054,
+            "sqlMs": 16.38090000000011,
+            "sqlRequests": 1,
+            "appRows": 1,
+            "opens": 0
+          },
+          {
+            "totalMs": 15.795200000000477,
+            "sqlMs": 15.709600000001956,
+            "sqlRequests": 1,
+            "appRows": 1,
+            "opens": 0
+          },
+          {
+            "totalMs": 16.325000000000728,
+            "sqlMs": 16.24909999999727,
+            "sqlRequests": 1,
+            "appRows": 1,
+            "opens": 0
+          }
+        ],
+        "research": [
+          {
+            "totalMs": 539.9735000000001,
+            "sqlMs": 539.2268000000004,
+            "sqlRequests": 1,
+            "appRows": 1,
+            "opens": 0
+          },
+          {
+            "totalMs": 576.4946999999993,
+            "sqlMs": 575.5591999999997,
+            "sqlRequests": 1,
+            "appRows": 1,
+            "opens": 0
+          },
+          {
+            "totalMs": 600.1689000000006,
+            "sqlMs": 599.2821000000004,
+            "sqlRequests": 1,
+            "appRows": 1,
+            "opens": 0
+          },
+          {
+            "totalMs": 564.3385000000017,
+            "sqlMs": 563.5401999999995,
+            "sqlRequests": 1,
+            "appRows": 1,
+            "opens": 0
+          },
+          {
+            "totalMs": 601.1033000000025,
+            "sqlMs": 600.3796000000002,
+            "sqlRequests": 1,
+            "appRows": 1,
+            "opens": 0
+          },
+          {
+            "totalMs": 556.424500000001,
+            "sqlMs": 555.0408000000025,
+            "sqlRequests": 1,
+            "appRows": 1,
+            "opens": 0
+          },
+          {
+            "totalMs": 539.0561000000016,
+            "sqlMs": 538.2932000000001,
+            "sqlRequests": 1,
+            "appRows": 1,
+            "opens": 0
+          }
+        ],
+        "product": [
+          {
+            "totalMs": 553.4566999999988,
+            "sqlMs": 551.8701000000001,
+            "sqlRequests": 1,
+            "appRows": 1,
+            "opens": 0
+          },
+          {
+            "totalMs": 582.2599999999984,
+            "sqlMs": 580.8717999999972,
+            "sqlRequests": 1,
+            "appRows": 1,
+            "opens": 0
+          },
+          {
+            "totalMs": 549.3489000000009,
+            "sqlMs": 547.7178999999996,
+            "sqlRequests": 1,
+            "appRows": 1,
+            "opens": 0
+          },
+          {
+            "totalMs": 593.3322999999982,
+            "sqlMs": 591.9344999999994,
+            "sqlRequests": 1,
+            "appRows": 1,
+            "opens": 0
+          },
+          {
+            "totalMs": 550.6189999999988,
+            "sqlMs": 548.7563000000009,
+            "sqlRequests": 1,
+            "appRows": 1,
+            "opens": 0
+          },
+          {
+            "totalMs": 526.4459999999999,
+            "sqlMs": 524.501400000001,
+            "sqlRequests": 1,
+            "appRows": 1,
+            "opens": 0
+          },
+          {
+            "totalMs": 578.7266999999993,
+            "sqlMs": 577.1478999999999,
+            "sqlRequests": 1,
+            "appRows": 1,
+            "opens": 0
+          }
+        ]
+      },
+      "summary": {
+        "plain": {
+          "totalMs": 16.45980000000054,
+          "sqlMs": 16.38090000000011,
+          "sqlRequests": 1,
+          "appRows": 1,
+          "opens": 0
+        },
+        "research": {
+          "totalMs": 564.3385000000017,
+          "sqlMs": 563.5401999999995,
+          "sqlRequests": 1,
+          "appRows": 1,
+          "opens": 0
+        },
+        "product": {
+          "totalMs": 553.4566999999988,
+          "sqlMs": 551.8701000000001,
+          "sqlRequests": 1,
+          "appRows": 1,
+          "opens": 0
+        }
+      }
+    },
+    {
+      "name": "ends",
+      "condition": "email endsWith \"biz.test\"",
+      "mode": "list",
+      "returned": 300,
+      "first": {
+        "plain": {
+          "totalMs": 1.2259000000012747,
+          "sqlMs": 1.1851999999998952,
+          "sqlRequests": 1,
+          "appRows": 300,
+          "opens": 0
+        },
+        "research": {
+          "totalMs": 180.04069999999774,
+          "sqlMs": 91.51829999999973,
+          "sqlRequests": 1,
+          "appRows": 300,
+          "opens": 1800
+        },
+        "product": {
+          "totalMs": 191.77419999999984,
+          "sqlMs": 119.73559999999998,
+          "sqlRequests": 1,
+          "appRows": 300,
+          "opens": 1800
+        }
+      },
+      "runs": {
+        "plain": [
+          {
+            "totalMs": 1.4951000000000931,
+            "sqlMs": 1.4118000000016764,
+            "sqlRequests": 1,
+            "appRows": 300,
+            "opens": 0
+          },
+          {
+            "totalMs": 1.3738000000012107,
+            "sqlMs": 1.3161999999974796,
+            "sqlRequests": 1,
+            "appRows": 300,
+            "opens": 0
+          },
+          {
+            "totalMs": 1.5380999999979394,
+            "sqlMs": 1.4545999999972992,
+            "sqlRequests": 1,
+            "appRows": 300,
+            "opens": 0
+          },
+          {
+            "totalMs": 1.357799999997951,
+            "sqlMs": 1.279900000001362,
+            "sqlRequests": 1,
+            "appRows": 300,
+            "opens": 0
+          },
+          {
+            "totalMs": 1.4539999999979045,
+            "sqlMs": 1.3852999999944586,
+            "sqlRequests": 1,
+            "appRows": 300,
+            "opens": 0
+          },
+          {
+            "totalMs": 1.4674999999988358,
+            "sqlMs": 1.404900000001362,
+            "sqlRequests": 1,
+            "appRows": 300,
+            "opens": 0
+          },
+          {
+            "totalMs": 1.350800000000163,
+            "sqlMs": 1.2873000000035972,
+            "sqlRequests": 1,
+            "appRows": 300,
+            "opens": 0
+          }
+        ],
+        "research": [
+          {
+            "totalMs": 173.38609999999971,
+            "sqlMs": 98.70470000000205,
+            "sqlRequests": 1,
+            "appRows": 300,
+            "opens": 1800
+          },
+          {
+            "totalMs": 168.6123000000007,
+            "sqlMs": 93.47780000000057,
+            "sqlRequests": 1,
+            "appRows": 300,
+            "opens": 1800
+          },
+          {
+            "totalMs": 162.43710000000283,
+            "sqlMs": 85.68380000000252,
+            "sqlRequests": 1,
+            "appRows": 300,
+            "opens": 1800
+          },
+          {
+            "totalMs": 155.1258999999991,
+            "sqlMs": 86.60499999999593,
+            "sqlRequests": 1,
+            "appRows": 300,
+            "opens": 1800
+          },
+          {
+            "totalMs": 160.6455999999962,
+            "sqlMs": 87.94219999999768,
+            "sqlRequests": 1,
+            "appRows": 300,
+            "opens": 1800
+          },
+          {
+            "totalMs": 154.2624999999971,
+            "sqlMs": 87.35190000000148,
+            "sqlRequests": 1,
+            "appRows": 300,
+            "opens": 1800
+          },
+          {
+            "totalMs": 154.7971000000034,
+            "sqlMs": 83.91220000000612,
+            "sqlRequests": 1,
+            "appRows": 300,
+            "opens": 1800
+          }
+        ],
+        "product": [
+          {
+            "totalMs": 205.72790000000168,
+            "sqlMs": 132.35060000000158,
+            "sqlRequests": 1,
+            "appRows": 300,
+            "opens": 1800
+          },
+          {
+            "totalMs": 192.2494000000006,
+            "sqlMs": 122.20809999999983,
+            "sqlRequests": 1,
+            "appRows": 300,
+            "opens": 1800
+          },
+          {
+            "totalMs": 192.68799999999828,
+            "sqlMs": 127.03759999999966,
+            "sqlRequests": 1,
+            "appRows": 300,
+            "opens": 1800
+          },
+          {
+            "totalMs": 184.03800000000047,
+            "sqlMs": 117.20339999999851,
+            "sqlRequests": 1,
+            "appRows": 300,
+            "opens": 1800
+          },
+          {
+            "totalMs": 183.38090000000375,
+            "sqlMs": 121.72110000000248,
+            "sqlRequests": 1,
+            "appRows": 300,
+            "opens": 1800
+          },
+          {
+            "totalMs": 185.2039999999979,
+            "sqlMs": 122.42399999999907,
+            "sqlRequests": 1,
+            "appRows": 300,
+            "opens": 1800
+          },
+          {
+            "totalMs": 174.11059999999998,
+            "sqlMs": 114.50749999999971,
+            "sqlRequests": 1,
+            "appRows": 300,
+            "opens": 1800
+          }
+        ]
+      },
+      "summary": {
+        "plain": {
+          "totalMs": 1.4539999999979045,
+          "sqlMs": 1.3852999999944586,
+          "sqlRequests": 1,
+          "appRows": 300,
+          "opens": 0
+        },
+        "research": {
+          "totalMs": 160.6455999999962,
+          "sqlMs": 87.35190000000148,
+          "sqlRequests": 1,
+          "appRows": 300,
+          "opens": 1800
+        },
+        "product": {
+          "totalMs": 185.2039999999979,
+          "sqlMs": 122.20809999999983,
+          "sqlRequests": 1,
+          "appRows": 300,
+          "opens": 1800
+        }
+      }
+    },
+    {
+      "name": "and2",
+      "condition": "(company = \"서울서비스 담당\" AND memo contains \"서비스\")",
+      "mode": "count",
+      "returned": 1,
+      "first": {
+        "plain": {
+          "totalMs": 9.429100000001199,
+          "sqlMs": 9.350200000000768,
+          "sqlRequests": 1,
+          "appRows": 1,
+          "opens": 0
+        },
+        "research": {
+          "totalMs": 263.91479999999865,
+          "sqlMs": 262.9029999999984,
+          "sqlRequests": 1,
+          "appRows": 1,
+          "opens": 0
+        },
+        "product": {
+          "totalMs": 268.5904999999984,
+          "sqlMs": 267.1065000000017,
+          "sqlRequests": 1,
+          "appRows": 1,
+          "opens": 0
+        }
+      },
+      "runs": {
+        "plain": [
+          {
+            "totalMs": 9.731299999999464,
+            "sqlMs": 9.645400000001246,
+            "sqlRequests": 1,
+            "appRows": 1,
+            "opens": 0
+          },
+          {
+            "totalMs": 14.207099999999627,
+            "sqlMs": 14.10109999999986,
+            "sqlRequests": 1,
+            "appRows": 1,
+            "opens": 0
+          },
+          {
+            "totalMs": 10.702299999997194,
+            "sqlMs": 10.621899999998277,
+            "sqlRequests": 1,
+            "appRows": 1,
+            "opens": 0
+          },
+          {
+            "totalMs": 10.273000000001048,
+            "sqlMs": 10.191500000000815,
+            "sqlRequests": 1,
+            "appRows": 1,
+            "opens": 0
+          },
+          {
+            "totalMs": 11.25279999999475,
+            "sqlMs": 11.124600000002829,
+            "sqlRequests": 1,
+            "appRows": 1,
+            "opens": 0
+          },
+          {
+            "totalMs": 10.523800000002666,
+            "sqlMs": 10.441200000001118,
+            "sqlRequests": 1,
+            "appRows": 1,
+            "opens": 0
+          },
+          {
+            "totalMs": 9.386500000000524,
+            "sqlMs": 9.304300000003423,
+            "sqlRequests": 1,
+            "appRows": 1,
+            "opens": 0
+          }
+        ],
+        "research": [
+          {
+            "totalMs": 247.05950000000303,
+            "sqlMs": 246.4398000000001,
+            "sqlRequests": 1,
+            "appRows": 1,
+            "opens": 0
+          },
+          {
+            "totalMs": 274.78080000000045,
+            "sqlMs": 274.16859999999724,
+            "sqlRequests": 1,
+            "appRows": 1,
+            "opens": 0
+          },
+          {
+            "totalMs": 258.5011999999988,
+            "sqlMs": 257.64949999999953,
+            "sqlRequests": 1,
+            "appRows": 1,
+            "opens": 0
+          },
+          {
+            "totalMs": 258.55509999999776,
+            "sqlMs": 257.81529999999475,
+            "sqlRequests": 1,
+            "appRows": 1,
+            "opens": 0
+          },
+          {
+            "totalMs": 259.0243999999948,
+            "sqlMs": 258.20410000000265,
+            "sqlRequests": 1,
+            "appRows": 1,
+            "opens": 0
+          },
+          {
+            "totalMs": 259.34419999999955,
+            "sqlMs": 258.6767999999938,
+            "sqlRequests": 1,
+            "appRows": 1,
+            "opens": 0
+          },
+          {
+            "totalMs": 254.58489999999438,
+            "sqlMs": 253.93180000000575,
+            "sqlRequests": 1,
+            "appRows": 1,
+            "opens": 0
+          }
+        ],
+        "product": [
+          {
+            "totalMs": 259.4595000000045,
+            "sqlMs": 258.1244999999981,
+            "sqlRequests": 1,
+            "appRows": 1,
+            "opens": 0
+          },
+          {
+            "totalMs": 279.2920000000013,
+            "sqlMs": 277.7306000000026,
+            "sqlRequests": 1,
+            "appRows": 1,
+            "opens": 0
+          },
+          {
+            "totalMs": 247.66889999999694,
+            "sqlMs": 246.08169999999518,
+            "sqlRequests": 1,
+            "appRows": 1,
+            "opens": 0
+          },
+          {
+            "totalMs": 264.7916000000041,
+            "sqlMs": 263.340200000006,
+            "sqlRequests": 1,
+            "appRows": 1,
+            "opens": 0
+          },
+          {
+            "totalMs": 258.1065000000017,
+            "sqlMs": 256.6947,
+            "sqlRequests": 1,
+            "appRows": 1,
+            "opens": 0
+          },
+          {
+            "totalMs": 235.02230000000418,
+            "sqlMs": 233.70150000000285,
+            "sqlRequests": 1,
+            "appRows": 1,
+            "opens": 0
+          },
+          {
+            "totalMs": 259.675900000002,
+            "sqlMs": 258.1631000000052,
+            "sqlRequests": 1,
+            "appRows": 1,
+            "opens": 0
+          }
+        ]
+      },
+      "summary": {
+        "plain": {
+          "totalMs": 10.523800000002666,
+          "sqlMs": 10.441200000001118,
+          "sqlRequests": 1,
+          "appRows": 1,
+          "opens": 0
+        },
+        "research": {
+          "totalMs": 258.55509999999776,
+          "sqlMs": 257.81529999999475,
+          "sqlRequests": 1,
+          "appRows": 1,
+          "opens": 0
+        },
+        "product": {
+          "totalMs": 259.4595000000045,
+          "sqlMs": 258.1244999999981,
+          "sqlRequests": 1,
+          "appRows": 1,
+          "opens": 0
+        }
+      }
+    },
+    {
+      "name": "and2",
+      "condition": "(company = \"서울서비스 담당\" AND memo contains \"서비스\")",
+      "mode": "list",
+      "returned": 300,
+      "first": {
+        "plain": {
+          "totalMs": 1.1215999999985797,
+          "sqlMs": 1.0940999999947962,
+          "sqlRequests": 1,
+          "appRows": 300,
+          "opens": 0
+        },
+        "research": {
+          "totalMs": 157.931700000001,
+          "sqlMs": 89.17309999999998,
+          "sqlRequests": 1,
+          "appRows": 300,
+          "opens": 1800
+        },
+        "product": {
+          "totalMs": 178.2896000000037,
+          "sqlMs": 110.58599999999569,
+          "sqlRequests": 1,
+          "appRows": 300,
+          "opens": 1800
+        }
+      },
+      "runs": {
+        "plain": [
+          {
+            "totalMs": 1.6471999999994296,
+            "sqlMs": 1.569599999995262,
+            "sqlRequests": 1,
+            "appRows": 300,
+            "opens": 0
+          },
+          {
+            "totalMs": 1.556299999996554,
+            "sqlMs": 1.5009999999965657,
+            "sqlRequests": 1,
+            "appRows": 300,
+            "opens": 0
+          },
+          {
+            "totalMs": 1.7048999999969965,
+            "sqlMs": 1.6088999999992666,
+            "sqlRequests": 1,
+            "appRows": 300,
+            "opens": 0
+          },
+          {
+            "totalMs": 1.5371999999988475,
+            "sqlMs": 1.4660000000003492,
+            "sqlRequests": 1,
+            "appRows": 300,
+            "opens": 0
+          },
+          {
+            "totalMs": 1.454200000000128,
+            "sqlMs": 1.391300000002957,
+            "sqlRequests": 1,
+            "appRows": 300,
+            "opens": 0
+          },
+          {
+            "totalMs": 1.5856999999959953,
+            "sqlMs": 1.5113999999957741,
+            "sqlRequests": 1,
+            "appRows": 300,
+            "opens": 0
+          },
+          {
+            "totalMs": 1.5025000000023283,
+            "sqlMs": 1.4279999999998836,
+            "sqlRequests": 1,
+            "appRows": 300,
+            "opens": 0
+          }
+        ],
+        "research": [
+          {
+            "totalMs": 158.9475999999995,
+            "sqlMs": 87.54950000000099,
+            "sqlRequests": 1,
+            "appRows": 300,
+            "opens": 1800
+          },
+          {
+            "totalMs": 158.28019999999378,
+            "sqlMs": 86.42530000000261,
+            "sqlRequests": 1,
+            "appRows": 300,
+            "opens": 1800
+          },
+          {
+            "totalMs": 159.79339999999502,
+            "sqlMs": 92.04690000000119,
+            "sqlRequests": 1,
+            "appRows": 300,
+            "opens": 1800
+          },
+          {
+            "totalMs": 156.88160000000062,
+            "sqlMs": 88.74459999999817,
+            "sqlRequests": 1,
+            "appRows": 300,
+            "opens": 1800
+          },
+          {
+            "totalMs": 149.19610000000102,
+            "sqlMs": 85.6923999999999,
+            "sqlRequests": 1,
+            "appRows": 300,
+            "opens": 1800
+          },
+          {
+            "totalMs": 156.2251999999935,
+            "sqlMs": 86.12809999999445,
+            "sqlRequests": 1,
+            "appRows": 300,
+            "opens": 1800
+          },
+          {
+            "totalMs": 152.06300000000192,
+            "sqlMs": 85.56239999999525,
+            "sqlRequests": 1,
+            "appRows": 300,
+            "opens": 1800
+          }
+        ],
+        "product": [
+          {
+            "totalMs": 166.18959999999788,
+            "sqlMs": 104.61620000000403,
+            "sqlRequests": 1,
+            "appRows": 300,
+            "opens": 1800
+          },
+          {
+            "totalMs": 173.99640000000363,
+            "sqlMs": 113.95700000000215,
+            "sqlRequests": 1,
+            "appRows": 300,
+            "opens": 1800
+          },
+          {
+            "totalMs": 172.0054999999993,
+            "sqlMs": 103.61259999999311,
+            "sqlRequests": 1,
+            "appRows": 300,
+            "opens": 1800
+          },
+          {
+            "totalMs": 168.549500000001,
+            "sqlMs": 104.11179999999877,
+            "sqlRequests": 1,
+            "appRows": 300,
+            "opens": 1800
+          },
+          {
+            "totalMs": 166.0396999999939,
+            "sqlMs": 103.63089999999647,
+            "sqlRequests": 1,
+            "appRows": 300,
+            "opens": 1800
+          },
+          {
+            "totalMs": 166.87220000000525,
+            "sqlMs": 106.95449999999983,
+            "sqlRequests": 1,
+            "appRows": 300,
+            "opens": 1800
+          },
+          {
+            "totalMs": 168.7650999999969,
+            "sqlMs": 104.844600000004,
+            "sqlRequests": 1,
+            "appRows": 300,
+            "opens": 1800
+          }
+        ]
+      },
+      "summary": {
+        "plain": {
+          "totalMs": 1.556299999996554,
+          "sqlMs": 1.5009999999965657,
+          "sqlRequests": 1,
+          "appRows": 300,
+          "opens": 0
+        },
+        "research": {
+          "totalMs": 156.88160000000062,
+          "sqlMs": 86.42530000000261,
+          "sqlRequests": 1,
+          "appRows": 300,
+          "opens": 1800
+        },
+        "product": {
+          "totalMs": 168.549500000001,
+          "sqlMs": 104.61620000000403,
+          "sqlRequests": 1,
+          "appRows": 300,
+          "opens": 1800
+        }
+      }
+    },
+    {
+      "name": "and6",
+      "condition": "(name contains \"민서\" AND phone contains \"-5\" AND address contains \"서울\" AND memo contains \"서비스\" AND email contains \"test\" AND company = \"서울서비스 담당\")",
+      "mode": "count",
+      "returned": 1,
+      "first": {
+        "plain": {
+          "totalMs": 7.115599999997357,
+          "sqlMs": 7.049599999998463,
+          "sqlRequests": 1,
+          "appRows": 1,
+          "opens": 0
+        },
+        "research": {
+          "totalMs": 43.758600000001024,
+          "sqlMs": 41.20610000000306,
+          "sqlRequests": 1,
+          "appRows": 1,
+          "opens": 0
+        },
+        "product": {
+          "totalMs": 44.72339999999531,
+          "sqlMs": 41.35750000000553,
+          "sqlRequests": 1,
+          "appRows": 1,
+          "opens": 0
+        }
+      },
+      "runs": {
+        "plain": [
+          {
+            "totalMs": 7.302100000000792,
+            "sqlMs": 7.224800000003597,
+            "sqlRequests": 1,
+            "appRows": 1,
+            "opens": 0
+          },
+          {
+            "totalMs": 6.951600000000326,
+            "sqlMs": 6.8902000000016415,
+            "sqlRequests": 1,
+            "appRows": 1,
+            "opens": 0
+          },
+          {
+            "totalMs": 7.240200000000186,
+            "sqlMs": 7.154099999999744,
+            "sqlRequests": 1,
+            "appRows": 1,
+            "opens": 0
+          },
+          {
+            "totalMs": 7.208100000003469,
+            "sqlMs": 7.139499999997497,
+            "sqlRequests": 1,
+            "appRows": 1,
+            "opens": 0
+          },
+          {
+            "totalMs": 7.811999999998079,
+            "sqlMs": 7.737600000000384,
+            "sqlRequests": 1,
+            "appRows": 1,
+            "opens": 0
+          },
+          {
+            "totalMs": 7.036199999995006,
+            "sqlMs": 6.966800000001967,
+            "sqlRequests": 1,
+            "appRows": 1,
+            "opens": 0
+          },
+          {
+            "totalMs": 7.289599999996426,
+            "sqlMs": 7.210099999996601,
+            "sqlRequests": 1,
+            "appRows": 1,
+            "opens": 0
+          }
+        ],
+        "research": [
+          {
+            "totalMs": 27.910600000002887,
+            "sqlMs": 26.445700000003853,
+            "sqlRequests": 1,
+            "appRows": 1,
+            "opens": 0
+          },
+          {
+            "totalMs": 28.025399999998626,
+            "sqlMs": 26.77850000000035,
+            "sqlRequests": 1,
+            "appRows": 1,
+            "opens": 0
+          },
+          {
+            "totalMs": 28.297399999995832,
+            "sqlMs": 26.623500000001513,
+            "sqlRequests": 1,
+            "appRows": 1,
+            "opens": 0
+          },
+          {
+            "totalMs": 27.62199999999575,
+            "sqlMs": 26.224600000001374,
+            "sqlRequests": 1,
+            "appRows": 1,
+            "opens": 0
+          },
+          {
+            "totalMs": 29.85109999999986,
+            "sqlMs": 28.485399999997753,
+            "sqlRequests": 1,
+            "appRows": 1,
+            "opens": 0
+          },
+          {
+            "totalMs": 28.124799999997776,
+            "sqlMs": 26.666199999999662,
+            "sqlRequests": 1,
+            "appRows": 1,
+            "opens": 0
+          },
+          {
+            "totalMs": 28.49029999999766,
+            "sqlMs": 27.158400000000256,
+            "sqlRequests": 1,
+            "appRows": 1,
+            "opens": 0
+          }
+        ],
+        "product": [
+          {
+            "totalMs": 31.458299999998417,
+            "sqlMs": 28.968999999997322,
+            "sqlRequests": 1,
+            "appRows": 1,
+            "opens": 0
+          },
+          {
+            "totalMs": 31.72830000000249,
+            "sqlMs": 29.2670999999973,
+            "sqlRequests": 1,
+            "appRows": 1,
+            "opens": 0
+          },
+          {
+            "totalMs": 31.771899999999732,
+            "sqlMs": 29.384900000004563,
+            "sqlRequests": 1,
+            "appRows": 1,
+            "opens": 0
+          },
+          {
+            "totalMs": 32.16790000000037,
+            "sqlMs": 29.169499999996333,
+            "sqlRequests": 1,
+            "appRows": 1,
+            "opens": 0
+          },
+          {
+            "totalMs": 35.20539999999892,
+            "sqlMs": 32.72030000000086,
+            "sqlRequests": 1,
+            "appRows": 1,
+            "opens": 0
+          },
+          {
+            "totalMs": 31.69680000000517,
+            "sqlMs": 29.209500000004482,
+            "sqlRequests": 1,
+            "appRows": 1,
+            "opens": 0
+          },
+          {
+            "totalMs": 32.98609999999462,
+            "sqlMs": 30.408400000000256,
+            "sqlRequests": 1,
+            "appRows": 1,
+            "opens": 0
+          }
+        ]
+      },
+      "summary": {
+        "plain": {
+          "totalMs": 7.240200000000186,
+          "sqlMs": 7.154099999999744,
+          "sqlRequests": 1,
+          "appRows": 1,
+          "opens": 0
+        },
+        "research": {
+          "totalMs": 28.124799999997776,
+          "sqlMs": 26.666199999999662,
+          "sqlRequests": 1,
+          "appRows": 1,
+          "opens": 0
+        },
+        "product": {
+          "totalMs": 31.771899999999732,
+          "sqlMs": 29.2670999999973,
+          "sqlRequests": 1,
+          "appRows": 1,
+          "opens": 0
+        }
+      }
+    },
+    {
+      "name": "and6",
+      "condition": "(name contains \"민서\" AND phone contains \"-5\" AND address contains \"서울\" AND memo contains \"서비스\" AND email contains \"test\" AND company = \"서울서비스 담당\")",
+      "mode": "list",
+      "returned": 300,
+      "first": {
+        "plain": {
+          "totalMs": 8.127300000000105,
+          "sqlMs": 8.062299999997776,
+          "sqlRequests": 1,
+          "appRows": 300,
+          "opens": 0
+        },
+        "research": {
+          "totalMs": 99.14010000000417,
+          "sqlMs": 26.621299999998882,
+          "sqlRequests": 1,
+          "appRows": 300,
+          "opens": 1800
+        },
+        "product": {
+          "totalMs": 92.31690000000526,
+          "sqlMs": 21.962200000001758,
+          "sqlRequests": 1,
+          "appRows": 300,
+          "opens": 1800
+        }
+      },
+      "runs": {
+        "plain": [
+          {
+            "totalMs": 8.556599999996251,
+            "sqlMs": 8.441299999998591,
+            "sqlRequests": 1,
+            "appRows": 300,
+            "opens": 0
+          },
+          {
+            "totalMs": 9.183700000001409,
+            "sqlMs": 9.101399999999558,
+            "sqlRequests": 1,
+            "appRows": 300,
+            "opens": 0
+          },
+          {
+            "totalMs": 8.887799999996787,
+            "sqlMs": 8.819299999995565,
+            "sqlRequests": 1,
+            "appRows": 300,
+            "opens": 0
+          },
+          {
+            "totalMs": 8.726199999997334,
+            "sqlMs": 8.641999999999825,
+            "sqlRequests": 1,
+            "appRows": 300,
+            "opens": 0
+          },
+          {
+            "totalMs": 8.53820000000269,
+            "sqlMs": 8.468000000000757,
+            "sqlRequests": 1,
+            "appRows": 300,
+            "opens": 0
+          },
+          {
+            "totalMs": 9.144200000002456,
+            "sqlMs": 9.06260000000475,
+            "sqlRequests": 1,
+            "appRows": 300,
+            "opens": 0
+          },
+          {
+            "totalMs": 8.566699999995762,
+            "sqlMs": 8.42269999999553,
+            "sqlRequests": 1,
+            "appRows": 300,
+            "opens": 0
+          }
+        ],
+        "research": [
+          {
+            "totalMs": 92.67710000000079,
+            "sqlMs": 22.47230000000127,
+            "sqlRequests": 1,
+            "appRows": 300,
+            "opens": 1800
+          },
+          {
+            "totalMs": 89.19479999999749,
+            "sqlMs": 22.830300000001444,
+            "sqlRequests": 1,
+            "appRows": 300,
+            "opens": 1800
+          },
+          {
+            "totalMs": 94.58419999999751,
+            "sqlMs": 25.71940000000177,
+            "sqlRequests": 1,
+            "appRows": 300,
+            "opens": 1800
+          },
+          {
+            "totalMs": 94.61750000000029,
+            "sqlMs": 21.699699999997392,
+            "sqlRequests": 1,
+            "appRows": 300,
+            "opens": 1800
+          },
+          {
+            "totalMs": 93.81429999999818,
+            "sqlMs": 24.12619999999879,
+            "sqlRequests": 1,
+            "appRows": 300,
+            "opens": 1800
+          },
+          {
+            "totalMs": 99.2754999999961,
+            "sqlMs": 22.54609999999957,
+            "sqlRequests": 1,
+            "appRows": 300,
+            "opens": 1800
+          },
+          {
+            "totalMs": 103.71639999999752,
+            "sqlMs": 22.03229999999894,
+            "sqlRequests": 1,
+            "appRows": 300,
+            "opens": 1800
+          }
+        ],
+        "product": [
+          {
+            "totalMs": 86.69860000000335,
+            "sqlMs": 22.115600000004633,
+            "sqlRequests": 1,
+            "appRows": 300,
+            "opens": 1800
+          },
+          {
+            "totalMs": 93.06519999999728,
+            "sqlMs": 22.338999999999942,
+            "sqlRequests": 1,
+            "appRows": 300,
+            "opens": 1800
+          },
+          {
+            "totalMs": 87.7065999999977,
+            "sqlMs": 21.474699999998847,
+            "sqlRequests": 1,
+            "appRows": 300,
+            "opens": 1800
+          },
+          {
+            "totalMs": 86.8868999999977,
+            "sqlMs": 23.022799999998824,
+            "sqlRequests": 1,
+            "appRows": 300,
+            "opens": 1800
+          },
+          {
+            "totalMs": 85.17329999999492,
+            "sqlMs": 23.082000000002154,
+            "sqlRequests": 1,
+            "appRows": 300,
+            "opens": 1800
+          },
+          {
+            "totalMs": 94.69449999999779,
+            "sqlMs": 22.468300000000454,
+            "sqlRequests": 1,
+            "appRows": 300,
+            "opens": 1800
+          },
+          {
+            "totalMs": 89.31139999999868,
+            "sqlMs": 22.75250000000233,
+            "sqlRequests": 1,
+            "appRows": 300,
+            "opens": 1800
+          }
+        ]
+      },
+      "summary": {
+        "plain": {
+          "totalMs": 8.726199999997334,
+          "sqlMs": 8.641999999999825,
+          "sqlRequests": 1,
+          "appRows": 300,
+          "opens": 0
+        },
+        "research": {
+          "totalMs": 94.58419999999751,
+          "sqlMs": 22.54609999999957,
+          "sqlRequests": 1,
+          "appRows": 300,
+          "opens": 1800
+        },
+        "product": {
+          "totalMs": 87.7065999999977,
+          "sqlMs": 22.468300000000454,
+          "sqlRequests": 1,
+          "appRows": 300,
+          "opens": 1800
+        }
+      }
+    },
+    {
+      "name": "or2",
+      "condition": "(company = \"서울서비스 담당\" OR memo contains \"푸른달\")",
+      "mode": "count",
+      "returned": 1,
+      "first": {
+        "plain": {
+          "totalMs": 23.582200000004377,
+          "sqlMs": 23.49790000000212,
+          "sqlRequests": 1,
+          "appRows": 1,
+          "opens": 0
+        },
+        "research": {
+          "totalMs": 135.98790000000008,
+          "sqlMs": 135.2893999999942,
+          "sqlRequests": 1,
+          "appRows": 1,
+          "opens": 0
+        },
+        "product": {
+          "totalMs": 140.73110000000452,
+          "sqlMs": 139.51119999999355,
+          "sqlRequests": 1,
+          "appRows": 1,
+          "opens": 0
+        }
+      },
+      "runs": {
+        "plain": [
+          {
+            "totalMs": 17.91019999999844,
+            "sqlMs": 17.823499999998603,
+            "sqlRequests": 1,
+            "appRows": 1,
+            "opens": 0
+          },
+          {
+            "totalMs": 18.558699999994133,
+            "sqlMs": 18.417600000000675,
+            "sqlRequests": 1,
+            "appRows": 1,
+            "opens": 0
+          },
+          {
+            "totalMs": 18.24659999999858,
+            "sqlMs": 18.165600000000268,
+            "sqlRequests": 1,
+            "appRows": 1,
+            "opens": 0
+          },
+          {
+            "totalMs": 18.23790000000008,
+            "sqlMs": 18.154099999999744,
+            "sqlRequests": 1,
+            "appRows": 1,
+            "opens": 0
+          },
+          {
+            "totalMs": 17.895199999999022,
+            "sqlMs": 17.808499999999185,
+            "sqlRequests": 1,
+            "appRows": 1,
+            "opens": 0
+          },
+          {
+            "totalMs": 17.99330000000191,
+            "sqlMs": 17.914600000003702,
+            "sqlRequests": 1,
+            "appRows": 1,
+            "opens": 0
+          },
+          {
+            "totalMs": 17.80750000000262,
+            "sqlMs": 17.725800000000163,
+            "sqlRequests": 1,
+            "appRows": 1,
+            "opens": 0
+          }
+        ],
+        "research": [
+          {
+            "totalMs": 131.3718000000008,
+            "sqlMs": 130.7589999999982,
+            "sqlRequests": 1,
+            "appRows": 1,
+            "opens": 0
+          },
+          {
+            "totalMs": 136.8125,
+            "sqlMs": 136.21459999999934,
+            "sqlRequests": 1,
+            "appRows": 1,
+            "opens": 0
+          },
+          {
+            "totalMs": 131.29780000000028,
+            "sqlMs": 130.37449999999808,
+            "sqlRequests": 1,
+            "appRows": 1,
+            "opens": 0
+          },
+          {
+            "totalMs": 131.79129999999714,
+            "sqlMs": 131.1742000000013,
+            "sqlRequests": 1,
+            "appRows": 1,
+            "opens": 0
+          },
+          {
+            "totalMs": 132.5847999999969,
+            "sqlMs": 131.99209999999584,
+            "sqlRequests": 1,
+            "appRows": 1,
+            "opens": 0
+          },
+          {
+            "totalMs": 132.48859999999695,
+            "sqlMs": 131.8845999999976,
+            "sqlRequests": 1,
+            "appRows": 1,
+            "opens": 0
+          },
+          {
+            "totalMs": 127.84219999999914,
+            "sqlMs": 127.23730000000069,
+            "sqlRequests": 1,
+            "appRows": 1,
+            "opens": 0
+          }
+        ],
+        "product": [
+          {
+            "totalMs": 144.6287999999986,
+            "sqlMs": 143.47009999999864,
+            "sqlRequests": 1,
+            "appRows": 1,
+            "opens": 0
+          },
+          {
+            "totalMs": 165.45010000000184,
+            "sqlMs": 164.12340000000404,
+            "sqlRequests": 1,
+            "appRows": 1,
+            "opens": 0
+          },
+          {
+            "totalMs": 137.8318999999974,
+            "sqlMs": 136.65260000000126,
+            "sqlRequests": 1,
+            "appRows": 1,
+            "opens": 0
+          },
+          {
+            "totalMs": 149.03399999999965,
+            "sqlMs": 147.90380000000005,
+            "sqlRequests": 1,
+            "appRows": 1,
+            "opens": 0
+          },
+          {
+            "totalMs": 141.49229999999807,
+            "sqlMs": 140.3940999999977,
+            "sqlRequests": 1,
+            "appRows": 1,
+            "opens": 0
+          },
+          {
+            "totalMs": 148.34530000000086,
+            "sqlMs": 147.0390999999945,
+            "sqlRequests": 1,
+            "appRows": 1,
+            "opens": 0
+          },
+          {
+            "totalMs": 151.10499999999593,
+            "sqlMs": 149.96669999999722,
+            "sqlRequests": 1,
+            "appRows": 1,
+            "opens": 0
+          }
+        ]
+      },
+      "summary": {
+        "plain": {
+          "totalMs": 17.99330000000191,
+          "sqlMs": 17.914600000003702,
+          "sqlRequests": 1,
+          "appRows": 1,
+          "opens": 0
+        },
+        "research": {
+          "totalMs": 131.79129999999714,
+          "sqlMs": 131.1742000000013,
+          "sqlRequests": 1,
+          "appRows": 1,
+          "opens": 0
+        },
+        "product": {
+          "totalMs": 148.34530000000086,
+          "sqlMs": 147.0390999999945,
+          "sqlRequests": 1,
+          "appRows": 1,
+          "opens": 0
+        }
+      }
+    },
+    {
+      "name": "or2",
+      "condition": "(company = \"서울서비스 담당\" OR memo contains \"푸른달\")",
+      "mode": "list",
+      "returned": 300,
+      "first": {
+        "plain": {
+          "totalMs": 1.0718000000051688,
+          "sqlMs": 1.0472000000008848,
+          "sqlRequests": 1,
+          "appRows": 300,
+          "opens": 0
+        },
+        "research": {
+          "totalMs": 77.3755999999994,
+          "sqlMs": 9.970700000005309,
+          "sqlRequests": 1,
+          "appRows": 300,
+          "opens": 1800
+        },
+        "product": {
+          "totalMs": 93.95320000000356,
+          "sqlMs": 14.429900000002817,
+          "sqlRequests": 1,
+          "appRows": 300,
+          "opens": 1800
+        }
+      },
+      "runs": {
+        "plain": [
+          {
+            "totalMs": 1.3306999999986147,
+            "sqlMs": 1.2528999999994994,
+            "sqlRequests": 1,
+            "appRows": 300,
+            "opens": 0
+          },
+          {
+            "totalMs": 1.268499999998312,
+            "sqlMs": 1.2093999999997322,
+            "sqlRequests": 1,
+            "appRows": 300,
+            "opens": 0
+          },
+          {
+            "totalMs": 1.3580999999976484,
+            "sqlMs": 1.2900000000008731,
+            "sqlRequests": 1,
+            "appRows": 300,
+            "opens": 0
+          },
+          {
+            "totalMs": 1.277699999998731,
+            "sqlMs": 1.2065999999977066,
+            "sqlRequests": 1,
+            "appRows": 300,
+            "opens": 0
+          },
+          {
+            "totalMs": 1.230600000002596,
+            "sqlMs": 1.1748000000006869,
+            "sqlRequests": 1,
+            "appRows": 300,
+            "opens": 0
+          },
+          {
+            "totalMs": 1.3286000000007334,
+            "sqlMs": 1.245999999999185,
+            "sqlRequests": 1,
+            "appRows": 300,
+            "opens": 0
+          },
+          {
+            "totalMs": 3.2747999999992317,
+            "sqlMs": 3.177400000000489,
+            "sqlRequests": 1,
+            "appRows": 300,
+            "opens": 0
+          }
+        ],
+        "research": [
+          {
+            "totalMs": 73.72219999999652,
+            "sqlMs": 6.000299999999697,
+            "sqlRequests": 1,
+            "appRows": 300,
+            "opens": 1800
+          },
+          {
+            "totalMs": 69.24139999999898,
+            "sqlMs": 6.04309999999532,
+            "sqlRequests": 1,
+            "appRows": 300,
+            "opens": 1800
+          },
+          {
+            "totalMs": 72.03110000000015,
+            "sqlMs": 6.411099999997532,
+            "sqlRequests": 1,
+            "appRows": 300,
+            "opens": 1800
+          },
+          {
+            "totalMs": 75.71539999999368,
+            "sqlMs": 5.606500000001688,
+            "sqlRequests": 1,
+            "appRows": 300,
+            "opens": 1800
+          },
+          {
+            "totalMs": 75.42220000000088,
+            "sqlMs": 6.016700000000128,
+            "sqlRequests": 1,
+            "appRows": 300,
+            "opens": 1800
+          },
+          {
+            "totalMs": 72.55890000000363,
+            "sqlMs": 6.274499999999534,
+            "sqlRequests": 1,
+            "appRows": 300,
+            "opens": 1800
+          },
+          {
+            "totalMs": 71.13290000000416,
+            "sqlMs": 6.004300000000512,
+            "sqlRequests": 1,
+            "appRows": 300,
+            "opens": 1800
+          }
+        ],
+        "product": [
+          {
+            "totalMs": 69.92719999999827,
+            "sqlMs": 5.758500000003551,
+            "sqlRequests": 1,
+            "appRows": 300,
+            "opens": 1800
+          },
+          {
+            "totalMs": 67.0228999999963,
+            "sqlMs": 5.0931000000055064,
+            "sqlRequests": 1,
+            "appRows": 300,
+            "opens": 1800
+          },
+          {
+            "totalMs": 64.25480000000243,
+            "sqlMs": 4.704300000004878,
+            "sqlRequests": 1,
+            "appRows": 300,
+            "opens": 1800
+          },
+          {
+            "totalMs": 64.13190000000031,
+            "sqlMs": 5.047800000000279,
+            "sqlRequests": 1,
+            "appRows": 300,
+            "opens": 1800
+          },
+          {
+            "totalMs": 63.942699999999604,
+            "sqlMs": 5.3379999999961,
+            "sqlRequests": 1,
+            "appRows": 300,
+            "opens": 1800
+          },
+          {
+            "totalMs": 67.46439999999711,
+            "sqlMs": 5.3804999999993015,
+            "sqlRequests": 1,
+            "appRows": 300,
+            "opens": 1800
+          },
+          {
+            "totalMs": 82.14530000000377,
+            "sqlMs": 5.0296999999991385,
+            "sqlRequests": 1,
+            "appRows": 300,
+            "opens": 1800
+          }
+        ]
+      },
+      "summary": {
+        "plain": {
+          "totalMs": 1.3286000000007334,
+          "sqlMs": 1.245999999999185,
+          "sqlRequests": 1,
+          "appRows": 300,
+          "opens": 0
+        },
+        "research": {
+          "totalMs": 72.55890000000363,
+          "sqlMs": 6.016700000000128,
+          "sqlRequests": 1,
+          "appRows": 300,
+          "opens": 1800
+        },
+        "product": {
+          "totalMs": 67.0228999999963,
+          "sqlMs": 5.0931000000055064,
+          "sqlRequests": 1,
+          "appRows": 300,
+          "opens": 1800
+        }
+      }
+    },
+    {
+      "name": "sub45",
+      "condition": "memo contains \"상세안내와확인내용상세안내와확인내용상세안내와확인내용상세안내와확인내용상세안내와확인내용\"",
+      "mode": "count",
+      "returned": 1,
+      "first": {
+        "plain": {
+          "totalMs": 21.881299999993644,
+          "sqlMs": 21.798399999999674,
+          "sqlRequests": 1,
+          "appRows": 1,
+          "opens": 0
+        },
+        "research": {
+          "totalMs": 76.32020000000193,
+          "sqlMs": 74.31629999999859,
+          "sqlRequests": 1,
+          "appRows": 1,
+          "opens": 0
+        },
+        "product": {
+          "totalMs": 25.39929999999731,
+          "sqlMs": 22.914800000005926,
+          "sqlRequests": 1,
+          "appRows": 1,
+          "opens": 0
+        }
+      },
+      "runs": {
+        "plain": [
+          {
+            "totalMs": 21.832000000002154,
+            "sqlMs": 21.757700000001932,
+            "sqlRequests": 1,
+            "appRows": 1,
+            "opens": 0
+          },
+          {
+            "totalMs": 21.70130000000063,
+            "sqlMs": 21.629799999995157,
+            "sqlRequests": 1,
+            "appRows": 1,
+            "opens": 0
+          },
+          {
+            "totalMs": 21.764499999997497,
+            "sqlMs": 21.6875,
+            "sqlRequests": 1,
+            "appRows": 1,
+            "opens": 0
+          },
+          {
+            "totalMs": 21.841200000002573,
+            "sqlMs": 21.76430000000255,
+            "sqlRequests": 1,
+            "appRows": 1,
+            "opens": 0
+          },
+          {
+            "totalMs": 21.052999999999884,
+            "sqlMs": 20.980500000005122,
+            "sqlRequests": 1,
+            "appRows": 1,
+            "opens": 0
+          },
+          {
+            "totalMs": 21.55840000000171,
+            "sqlMs": 21.487999999997555,
+            "sqlRequests": 1,
+            "appRows": 1,
+            "opens": 0
+          },
+          {
+            "totalMs": 21.090700000000652,
+            "sqlMs": 21.013099999996484,
+            "sqlRequests": 1,
+            "appRows": 1,
+            "opens": 0
+          }
+        ],
+        "research": [
+          {
+            "totalMs": 33.506099999998696,
+            "sqlMs": 31.83759999999893,
+            "sqlRequests": 1,
+            "appRows": 1,
+            "opens": 0
+          },
+          {
+            "totalMs": 34.10239999999612,
+            "sqlMs": 32.4629999999961,
+            "sqlRequests": 1,
+            "appRows": 1,
+            "opens": 0
+          },
+          {
+            "totalMs": 35.20219999999972,
+            "sqlMs": 33.4600999999966,
+            "sqlRequests": 1,
+            "appRows": 1,
+            "opens": 0
+          },
+          {
+            "totalMs": 34.164700000001176,
+            "sqlMs": 32.38810000000376,
+            "sqlRequests": 1,
+            "appRows": 1,
+            "opens": 0
+          },
+          {
+            "totalMs": 33.636599999998,
+            "sqlMs": 31.8321999999971,
+            "sqlRequests": 1,
+            "appRows": 1,
+            "opens": 0
+          },
+          {
+            "totalMs": 33.15320000000065,
+            "sqlMs": 31.48019999999815,
+            "sqlRequests": 1,
+            "appRows": 1,
+            "opens": 0
+          },
+          {
+            "totalMs": 33.26659999999538,
+            "sqlMs": 31.36309999999503,
+            "sqlRequests": 1,
+            "appRows": 1,
+            "opens": 0
+          }
+        ],
+        "product": [
+          {
+            "totalMs": 19.750200000002224,
+            "sqlMs": 17.56489999999758,
+            "sqlRequests": 1,
+            "appRows": 1,
+            "opens": 0
+          },
+          {
+            "totalMs": 20.094899999996414,
+            "sqlMs": 17.51799999999639,
+            "sqlRequests": 1,
+            "appRows": 1,
+            "opens": 0
+          },
+          {
+            "totalMs": 19.75,
+            "sqlMs": 17.66309999999794,
+            "sqlRequests": 1,
+            "appRows": 1,
+            "opens": 0
+          },
+          {
+            "totalMs": 19.972600000000966,
+            "sqlMs": 17.688900000001013,
+            "sqlRequests": 1,
+            "appRows": 1,
+            "opens": 0
+          },
+          {
+            "totalMs": 19.80159999999887,
+            "sqlMs": 17.561500000003434,
+            "sqlRequests": 1,
+            "appRows": 1,
+            "opens": 0
+          },
+          {
+            "totalMs": 18.953499999995984,
+            "sqlMs": 16.92559999999503,
+            "sqlRequests": 1,
+            "appRows": 1,
+            "opens": 0
+          },
+          {
+            "totalMs": 19.821499999998196,
+            "sqlMs": 17.052899999995134,
+            "sqlRequests": 1,
+            "appRows": 1,
+            "opens": 0
+          }
+        ]
+      },
+      "summary": {
+        "plain": {
+          "totalMs": 21.70130000000063,
+          "sqlMs": 21.629799999995157,
+          "sqlRequests": 1,
+          "appRows": 1,
+          "opens": 0
+        },
+        "research": {
+          "totalMs": 33.636599999998,
+          "sqlMs": 31.83759999999893,
+          "sqlRequests": 1,
+          "appRows": 1,
+          "opens": 0
+        },
+        "product": {
+          "totalMs": 19.80159999999887,
+          "sqlMs": 17.561500000003434,
+          "sqlRequests": 1,
+          "appRows": 1,
+          "opens": 0
+        }
+      }
+    },
+    {
+      "name": "sub45",
+      "condition": "memo contains \"상세안내와확인내용상세안내와확인내용상세안내와확인내용상세안내와확인내용상세안내와확인내용\"",
+      "mode": "list",
+      "returned": 0,
+      "first": {
+        "plain": {
+          "totalMs": 20.955800000003364,
+          "sqlMs": 20.86229999999341,
+          "sqlRequests": 1,
+          "appRows": 0,
+          "opens": 0
+        },
+        "research": {
+          "totalMs": 47.20610000000306,
+          "sqlMs": 45.36439999999857,
+          "sqlRequests": 1,
+          "appRows": 0,
+          "opens": 0
+        },
+        "product": {
+          "totalMs": 26.874199999998382,
+          "sqlMs": 24.1221000000005,
+          "sqlRequests": 1,
+          "appRows": 0,
+          "opens": 0
+        }
+      },
+      "runs": {
+        "plain": [
+          {
+            "totalMs": 21.005300000004354,
+            "sqlMs": 20.935600000004342,
+            "sqlRequests": 1,
+            "appRows": 0,
+            "opens": 0
+          },
+          {
+            "totalMs": 22.15429999999469,
+            "sqlMs": 22.082699999999022,
+            "sqlRequests": 1,
+            "appRows": 0,
+            "opens": 0
+          },
+          {
+            "totalMs": 22.0882000000056,
+            "sqlMs": 22.014400000000023,
+            "sqlRequests": 1,
+            "appRows": 0,
+            "opens": 0
+          },
+          {
+            "totalMs": 23.98619999999937,
+            "sqlMs": 23.917700000005425,
+            "sqlRequests": 1,
+            "appRows": 0,
+            "opens": 0
+          },
+          {
+            "totalMs": 21.48909999999887,
+            "sqlMs": 21.41859999999724,
+            "sqlRequests": 1,
+            "appRows": 0,
+            "opens": 0
+          },
+          {
+            "totalMs": 21.603200000005018,
+            "sqlMs": 21.533900000002177,
+            "sqlRequests": 1,
+            "appRows": 0,
+            "opens": 0
+          },
+          {
+            "totalMs": 21.711199999997916,
+            "sqlMs": 21.640699999996286,
+            "sqlRequests": 1,
+            "appRows": 0,
+            "opens": 0
+          }
+        ],
+        "research": [
+          {
+            "totalMs": 47.84109999999782,
+            "sqlMs": 45.945299999999406,
+            "sqlRequests": 1,
+            "appRows": 0,
+            "opens": 0
+          },
+          {
+            "totalMs": 48.61570000000211,
+            "sqlMs": 46.88170000000537,
+            "sqlRequests": 1,
+            "appRows": 0,
+            "opens": 0
+          },
+          {
+            "totalMs": 50.576099999998405,
+            "sqlMs": 48.80579999999463,
+            "sqlRequests": 1,
+            "appRows": 0,
+            "opens": 0
+          },
+          {
+            "totalMs": 48.89119999999821,
+            "sqlMs": 46.963700000000244,
+            "sqlRequests": 1,
+            "appRows": 0,
+            "opens": 0
+          },
+          {
+            "totalMs": 47.531800000004296,
+            "sqlMs": 45.84469999999419,
+            "sqlRequests": 1,
+            "appRows": 0,
+            "opens": 0
+          },
+          {
+            "totalMs": 49.4377999999997,
+            "sqlMs": 47.51039999999921,
+            "sqlRequests": 1,
+            "appRows": 0,
+            "opens": 0
+          },
+          {
+            "totalMs": 49.07600000000093,
+            "sqlMs": 47.23599999999715,
+            "sqlRequests": 1,
+            "appRows": 0,
+            "opens": 0
+          }
+        ],
+        "product": [
+          {
+            "totalMs": 28.156199999997625,
+            "sqlMs": 25.319200000005367,
+            "sqlRequests": 1,
+            "appRows": 0,
+            "opens": 0
+          },
+          {
+            "totalMs": 26.488499999999476,
+            "sqlMs": 23.830900000000838,
+            "sqlRequests": 1,
+            "appRows": 0,
+            "opens": 0
+          },
+          {
+            "totalMs": 28.941100000003644,
+            "sqlMs": 25.946799999997893,
+            "sqlRequests": 1,
+            "appRows": 0,
+            "opens": 0
+          },
+          {
+            "totalMs": 26.13039999999455,
+            "sqlMs": 23.591599999999744,
+            "sqlRequests": 1,
+            "appRows": 0,
+            "opens": 0
+          },
+          {
+            "totalMs": 26.1987999999983,
+            "sqlMs": 23.68869999999879,
+            "sqlRequests": 1,
+            "appRows": 0,
+            "opens": 0
+          },
+          {
+            "totalMs": 26.310700000001816,
+            "sqlMs": 23.872800000004645,
+            "sqlRequests": 1,
+            "appRows": 0,
+            "opens": 0
+          },
+          {
+            "totalMs": 27.015199999994365,
+            "sqlMs": 24.16939999999886,
+            "sqlRequests": 1,
+            "appRows": 0,
+            "opens": 0
+          }
+        ]
+      },
+      "summary": {
+        "plain": {
+          "totalMs": 21.711199999997916,
+          "sqlMs": 21.640699999996286,
+          "sqlRequests": 1,
+          "appRows": 0,
+          "opens": 0
+        },
+        "research": {
+          "totalMs": 48.89119999999821,
+          "sqlMs": 46.963700000000244,
+          "sqlRequests": 1,
+          "appRows": 0,
+          "opens": 0
+        },
+        "product": {
+          "totalMs": 26.488499999999476,
+          "sqlMs": 23.872800000004645,
+          "sqlRequests": 1,
+          "appRows": 0,
+          "opens": 0
+        }
+      }
+    }
+  ],
+  "at": "2026-09-29T01:39:28.341Z"
+}
