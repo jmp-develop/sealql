@@ -1,0 +1,8210 @@
+{
+  "started": "2026-09-29T12:02:39.527Z",
+  "complete": true,
+  "rows": 100000,
+  "field": "phone",
+  "otherFields": "Unchanged 16 bits",
+  "fixtureDigest": "d0a5d00b378ba559b436e82ac66b390ae8fe8045aa89721badc72746f370d61b",
+  "attack": [
+    {
+      "bits": 16,
+      "strategy": "whole-values",
+      "n": 10,
+      "correct": 0,
+      "total": 1000,
+      "pct": 0
+    },
+    {
+      "bits": 16,
+      "strategy": "whole-values",
+      "n": 100,
+      "correct": 944,
+      "total": 1000,
+      "pct": 94.39999999999999
+    },
+    {
+      "bits": 16,
+      "strategy": "whole-values",
+      "n": 1000,
+      "correct": 951,
+      "total": 1000,
+      "pct": 95.1
+    },
+    {
+      "bits": 16,
+      "strategy": "packed-pieces",
+      "n": 10,
+      "correct": 2,
+      "total": 1000,
+      "pct": 0.2
+    },
+    {
+      "bits": 16,
+      "strategy": "packed-pieces",
+      "n": 100,
+      "correct": 959,
+      "total": 1000,
+      "pct": 95.89999999999999
+    },
+    {
+      "bits": 16,
+      "strategy": "packed-pieces",
+      "n": 1000,
+      "correct": 959,
+      "total": 1000,
+      "pct": 95.89999999999999
+    },
+    {
+      "bits": 12,
+      "strategy": "whole-values",
+      "n": 10,
+      "correct": 0,
+      "total": 1000,
+      "pct": 0
+    },
+    {
+      "bits": 12,
+      "strategy": "whole-values",
+      "n": 100,
+      "correct": 508,
+      "total": 1000,
+      "pct": 50.8
+    },
+    {
+      "bits": 12,
+      "strategy": "whole-values",
+      "n": 1000,
+      "correct": 512,
+      "total": 1000,
+      "pct": 51.2
+    },
+    {
+      "bits": 12,
+      "strategy": "packed-pieces",
+      "n": 10,
+      "correct": 2,
+      "total": 1000,
+      "pct": 0.2
+    },
+    {
+      "bits": 12,
+      "strategy": "packed-pieces",
+      "n": 100,
+      "correct": 515,
+      "total": 1000,
+      "pct": 51.5
+    },
+    {
+      "bits": 12,
+      "strategy": "packed-pieces",
+      "n": 1000,
+      "correct": 515,
+      "total": 1000,
+      "pct": 51.5
+    }
+  ],
+  "selection": [
+    {
+      "width": 2,
+      "distinct": 120,
+      "minFrequency": 5485,
+      "rareAvailable": 0,
+      "rareSampled": 0
+    },
+    {
+      "width": 3,
+      "distinct": 1300,
+      "minFrequency": 340,
+      "rareAvailable": 0,
+      "rareSampled": 0
+    },
+    {
+      "width": 4,
+      "distinct": 14000,
+      "minFrequency": 6,
+      "rareAvailable": 121,
+      "rareSampled": 121
+    }
+  ],
+  "search": [
+    {
+      "term": "99",
+      "width": 2,
+      "matches": 5485,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 5485,
+      "factor": 1
+    },
+    {
+      "term": "00",
+      "width": 2,
+      "matches": 5512,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 5512,
+      "factor": 1
+    },
+    {
+      "term": "07",
+      "width": 2,
+      "matches": 5730,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 5730,
+      "factor": 1
+    },
+    {
+      "term": "94",
+      "width": 2,
+      "matches": 5776,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 5776,
+      "factor": 1
+    },
+    {
+      "term": "02",
+      "width": 2,
+      "matches": 5827,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 5827,
+      "factor": 1
+    },
+    {
+      "term": "96",
+      "width": 2,
+      "matches": 5827,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 5827,
+      "factor": 1
+    },
+    {
+      "term": "03",
+      "width": 2,
+      "matches": 5831,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 5831,
+      "factor": 1
+    },
+    {
+      "term": "05",
+      "width": 2,
+      "matches": 5864,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 5864,
+      "factor": 1
+    },
+    {
+      "term": "92",
+      "width": 2,
+      "matches": 5871,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 5871,
+      "factor": 1
+    },
+    {
+      "term": "08",
+      "width": 2,
+      "matches": 5878,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 5878,
+      "factor": 1
+    },
+    {
+      "term": "98",
+      "width": 2,
+      "matches": 5879,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 5879,
+      "factor": 1
+    },
+    {
+      "term": "06",
+      "width": 2,
+      "matches": 5881,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 5881,
+      "factor": 1
+    },
+    {
+      "term": "97",
+      "width": 2,
+      "matches": 5883,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 5883,
+      "factor": 1
+    },
+    {
+      "term": "90",
+      "width": 2,
+      "matches": 5899,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 5899,
+      "factor": 1
+    },
+    {
+      "term": "93",
+      "width": 2,
+      "matches": 5902,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 5902,
+      "factor": 1
+    },
+    {
+      "term": "95",
+      "width": 2,
+      "matches": 5918,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 5918,
+      "factor": 1
+    },
+    {
+      "term": "09",
+      "width": 2,
+      "matches": 5933,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 5933,
+      "factor": 1
+    },
+    {
+      "term": "01",
+      "width": 2,
+      "matches": 5960,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 5960,
+      "factor": 1
+    },
+    {
+      "term": "91",
+      "width": 2,
+      "matches": 5969,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 5969,
+      "factor": 1
+    },
+    {
+      "term": "04",
+      "width": 2,
+      "matches": 6010,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 6010,
+      "factor": 1
+    },
+    {
+      "term": "77",
+      "width": 2,
+      "matches": 6643,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 6643,
+      "factor": 1
+    },
+    {
+      "term": "55",
+      "width": 2,
+      "matches": 6662,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 6662,
+      "factor": 1
+    },
+    {
+      "term": "44",
+      "width": 2,
+      "matches": 6669,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 6669,
+      "factor": 1
+    },
+    {
+      "term": "33",
+      "width": 2,
+      "matches": 6736,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 6736,
+      "factor": 1
+    },
+    {
+      "term": "11",
+      "width": 2,
+      "matches": 6739,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 6739,
+      "factor": 1
+    },
+    {
+      "term": "66",
+      "width": 2,
+      "matches": 6753,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 6753,
+      "factor": 1
+    },
+    {
+      "term": "88",
+      "width": 2,
+      "matches": 6772,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 6772,
+      "factor": 1
+    },
+    {
+      "term": "38",
+      "width": 2,
+      "matches": 6894,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 6894,
+      "factor": 1
+    },
+    {
+      "term": "22",
+      "width": 2,
+      "matches": 6904,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 6904,
+      "factor": 1
+    },
+    {
+      "term": "67",
+      "width": 2,
+      "matches": 6904,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 6904,
+      "factor": 1
+    },
+    {
+      "term": "53",
+      "width": 2,
+      "matches": 6905,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 6905,
+      "factor": 1
+    },
+    {
+      "term": "78",
+      "width": 2,
+      "matches": 6912,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 6912,
+      "factor": 1
+    },
+    {
+      "term": "17",
+      "width": 2,
+      "matches": 6931,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 6931,
+      "factor": 1
+    },
+    {
+      "term": "50",
+      "width": 2,
+      "matches": 6942,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 6942,
+      "factor": 1
+    },
+    {
+      "term": "64",
+      "width": 2,
+      "matches": 6948,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 6948,
+      "factor": 1
+    },
+    {
+      "term": "49",
+      "width": 2,
+      "matches": 6958,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 6958,
+      "factor": 1
+    },
+    {
+      "term": "79",
+      "width": 2,
+      "matches": 6965,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 6965,
+      "factor": 1
+    },
+    {
+      "term": "41",
+      "width": 2,
+      "matches": 6968,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 6968,
+      "factor": 1
+    },
+    {
+      "term": "10",
+      "width": 2,
+      "matches": 6980,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 6980,
+      "factor": 1
+    },
+    {
+      "term": "61",
+      "width": 2,
+      "matches": 7000,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 7000,
+      "factor": 1
+    },
+    {
+      "term": "74",
+      "width": 2,
+      "matches": 7002,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 7002,
+      "factor": 1
+    },
+    {
+      "term": "39",
+      "width": 2,
+      "matches": 7004,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 7004,
+      "factor": 1
+    },
+    {
+      "term": "63",
+      "width": 2,
+      "matches": 7011,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 7011,
+      "factor": 1
+    },
+    {
+      "term": "86",
+      "width": 2,
+      "matches": 7015,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 7015,
+      "factor": 1
+    },
+    {
+      "term": "26",
+      "width": 2,
+      "matches": 7020,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 7020,
+      "factor": 1
+    },
+    {
+      "term": "47",
+      "width": 2,
+      "matches": 7020,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 7020,
+      "factor": 1
+    },
+    {
+      "term": "15",
+      "width": 2,
+      "matches": 7022,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 7022,
+      "factor": 1
+    },
+    {
+      "term": "69",
+      "width": 2,
+      "matches": 7029,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 7029,
+      "factor": 1
+    },
+    {
+      "term": "72",
+      "width": 2,
+      "matches": 7029,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 7029,
+      "factor": 1
+    },
+    {
+      "term": "62",
+      "width": 2,
+      "matches": 7031,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 7031,
+      "factor": 1
+    },
+    {
+      "term": "23",
+      "width": 2,
+      "matches": 7034,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 7034,
+      "factor": 1
+    },
+    {
+      "term": "32",
+      "width": 2,
+      "matches": 7036,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 7036,
+      "factor": 1
+    },
+    {
+      "term": "82",
+      "width": 2,
+      "matches": 7037,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 7037,
+      "factor": 1
+    },
+    {
+      "term": "19",
+      "width": 2,
+      "matches": 7038,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 7038,
+      "factor": 1
+    },
+    {
+      "term": "21",
+      "width": 2,
+      "matches": 7039,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 7039,
+      "factor": 1
+    },
+    {
+      "term": "51",
+      "width": 2,
+      "matches": 7040,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 7040,
+      "factor": 1
+    },
+    {
+      "term": "30",
+      "width": 2,
+      "matches": 7050,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 7050,
+      "factor": 1
+    },
+    {
+      "term": "36",
+      "width": 2,
+      "matches": 7050,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 7050,
+      "factor": 1
+    },
+    {
+      "term": "80",
+      "width": 2,
+      "matches": 7050,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 7050,
+      "factor": 1
+    },
+    {
+      "term": "89",
+      "width": 2,
+      "matches": 7054,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 7054,
+      "factor": 1
+    },
+    {
+      "term": "25",
+      "width": 2,
+      "matches": 7056,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 7056,
+      "factor": 1
+    },
+    {
+      "term": "18",
+      "width": 2,
+      "matches": 7059,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 7059,
+      "factor": 1
+    },
+    {
+      "term": "35",
+      "width": 2,
+      "matches": 7059,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 7059,
+      "factor": 1
+    },
+    {
+      "term": "76",
+      "width": 2,
+      "matches": 7060,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 7060,
+      "factor": 1
+    },
+    {
+      "term": "28",
+      "width": 2,
+      "matches": 7064,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 7064,
+      "factor": 1
+    },
+    {
+      "term": "29",
+      "width": 2,
+      "matches": 7065,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 7065,
+      "factor": 1
+    },
+    {
+      "term": "70",
+      "width": 2,
+      "matches": 7067,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 7067,
+      "factor": 1
+    },
+    {
+      "term": "16",
+      "width": 2,
+      "matches": 7075,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 7075,
+      "factor": 1
+    },
+    {
+      "term": "58",
+      "width": 2,
+      "matches": 7079,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 7079,
+      "factor": 1
+    },
+    {
+      "term": "45",
+      "width": 2,
+      "matches": 7084,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 7084,
+      "factor": 1
+    },
+    {
+      "term": "54",
+      "width": 2,
+      "matches": 7084,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 7084,
+      "factor": 1
+    },
+    {
+      "term": "59",
+      "width": 2,
+      "matches": 7086,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 7086,
+      "factor": 1
+    },
+    {
+      "term": "73",
+      "width": 2,
+      "matches": 7086,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 7086,
+      "factor": 1
+    },
+    {
+      "term": "71",
+      "width": 2,
+      "matches": 7094,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 7094,
+      "factor": 1
+    },
+    {
+      "term": "12",
+      "width": 2,
+      "matches": 7101,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 7101,
+      "factor": 1
+    },
+    {
+      "term": "42",
+      "width": 2,
+      "matches": 7101,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 7101,
+      "factor": 1
+    },
+    {
+      "term": "81",
+      "width": 2,
+      "matches": 7105,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 7105,
+      "factor": 1
+    },
+    {
+      "term": "46",
+      "width": 2,
+      "matches": 7106,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 7106,
+      "factor": 1
+    },
+    {
+      "term": "40",
+      "width": 2,
+      "matches": 7110,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 7110,
+      "factor": 1
+    },
+    {
+      "term": "27",
+      "width": 2,
+      "matches": 7114,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 7114,
+      "factor": 1
+    },
+    {
+      "term": "87",
+      "width": 2,
+      "matches": 7114,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 7114,
+      "factor": 1
+    },
+    {
+      "term": "20",
+      "width": 2,
+      "matches": 7117,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 7117,
+      "factor": 1
+    },
+    {
+      "term": "65",
+      "width": 2,
+      "matches": 7117,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 7117,
+      "factor": 1
+    },
+    {
+      "term": "68",
+      "width": 2,
+      "matches": 7123,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 7123,
+      "factor": 1
+    },
+    {
+      "term": "85",
+      "width": 2,
+      "matches": 7127,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 7127,
+      "factor": 1
+    },
+    {
+      "term": "14",
+      "width": 2,
+      "matches": 7128,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 7128,
+      "factor": 1
+    },
+    {
+      "term": "75",
+      "width": 2,
+      "matches": 7133,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 7133,
+      "factor": 1
+    },
+    {
+      "term": "60",
+      "width": 2,
+      "matches": 7136,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 7136,
+      "factor": 1
+    },
+    {
+      "term": "83",
+      "width": 2,
+      "matches": 7141,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 7141,
+      "factor": 1
+    },
+    {
+      "term": "31",
+      "width": 2,
+      "matches": 7144,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 7144,
+      "factor": 1
+    },
+    {
+      "term": "24",
+      "width": 2,
+      "matches": 7147,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 7147,
+      "factor": 1
+    },
+    {
+      "term": "56",
+      "width": 2,
+      "matches": 7150,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 7150,
+      "factor": 1
+    },
+    {
+      "term": "43",
+      "width": 2,
+      "matches": 7158,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 7158,
+      "factor": 1
+    },
+    {
+      "term": "52",
+      "width": 2,
+      "matches": 7160,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 7160,
+      "factor": 1
+    },
+    {
+      "term": "57",
+      "width": 2,
+      "matches": 7179,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 7179,
+      "factor": 1
+    },
+    {
+      "term": "34",
+      "width": 2,
+      "matches": 7182,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 7182,
+      "factor": 1
+    },
+    {
+      "term": "84",
+      "width": 2,
+      "matches": 7195,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 7195,
+      "factor": 1
+    },
+    {
+      "term": "37",
+      "width": 2,
+      "matches": 7257,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 7257,
+      "factor": 1
+    },
+    {
+      "term": "48",
+      "width": 2,
+      "matches": 7288,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 7288,
+      "factor": 1
+    },
+    {
+      "term": "13",
+      "width": 2,
+      "matches": 7300,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 7300,
+      "factor": 1
+    },
+    {
+      "term": "-7",
+      "width": 2,
+      "matches": 18820,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 18820,
+      "factor": 1
+    },
+    {
+      "term": "7-",
+      "width": 2,
+      "matches": 18826,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 18826,
+      "factor": 1
+    },
+    {
+      "term": "2-",
+      "width": 2,
+      "matches": 18903,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 18903,
+      "factor": 1
+    },
+    {
+      "term": "0-",
+      "width": 2,
+      "matches": 18914,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 18914,
+      "factor": 1
+    },
+    {
+      "term": "8-",
+      "width": 2,
+      "matches": 18914,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 18914,
+      "factor": 1
+    },
+    {
+      "term": "-6",
+      "width": 2,
+      "matches": 18925,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 18925,
+      "factor": 1
+    },
+    {
+      "term": "-0",
+      "width": 2,
+      "matches": 18939,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 18939,
+      "factor": 1
+    },
+    {
+      "term": "9-",
+      "width": 2,
+      "matches": 18943,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 18943,
+      "factor": 1
+    },
+    {
+      "term": "-1",
+      "width": 2,
+      "matches": 18957,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 18957,
+      "factor": 1
+    },
+    {
+      "term": "-5",
+      "width": 2,
+      "matches": 18998,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 18998,
+      "factor": 1
+    },
+    {
+      "term": "1-",
+      "width": 2,
+      "matches": 19029,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 19029,
+      "factor": 1
+    },
+    {
+      "term": "-4",
+      "width": 2,
+      "matches": 19032,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 19032,
+      "factor": 1
+    },
+    {
+      "term": "4-",
+      "width": 2,
+      "matches": 19040,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 19040,
+      "factor": 1
+    },
+    {
+      "term": "6-",
+      "width": 2,
+      "matches": 19059,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 19059,
+      "factor": 1
+    },
+    {
+      "term": "-8",
+      "width": 2,
+      "matches": 19090,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 19090,
+      "factor": 1
+    },
+    {
+      "term": "-2",
+      "width": 2,
+      "matches": 19110,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 19110,
+      "factor": 1
+    },
+    {
+      "term": "-9",
+      "width": 2,
+      "matches": 19126,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 19126,
+      "factor": 1
+    },
+    {
+      "term": "-3",
+      "width": 2,
+      "matches": 19133,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 19133,
+      "factor": 1
+    },
+    {
+      "term": "3-",
+      "width": 2,
+      "matches": 19151,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 19151,
+      "factor": 1
+    },
+    {
+      "term": "5-",
+      "width": 2,
+      "matches": 19155,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 19155,
+      "factor": 1
+    },
+    {
+      "term": "738",
+      "width": 3,
+      "matches": 340,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 345,
+      "factor": 1.0147058823529411
+    },
+    {
+      "term": "002",
+      "width": 3,
+      "matches": 346,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 366,
+      "factor": 1.0578034682080926
+    },
+    {
+      "term": "496",
+      "width": 3,
+      "matches": 346,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 350,
+      "factor": 1.0115606936416186
+    },
+    {
+      "term": "502",
+      "width": 3,
+      "matches": 346,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 349,
+      "factor": 1.0086705202312138
+    },
+    {
+      "term": "555",
+      "width": 3,
+      "matches": 347,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 1188,
+      "factor": 3.4236311239193085
+    },
+    {
+      "term": "742",
+      "width": 3,
+      "matches": 347,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 353,
+      "factor": 1.0172910662824208
+    },
+    {
+      "term": "799",
+      "width": 3,
+      "matches": 347,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 367,
+      "factor": 1.057636887608069
+    },
+    {
+      "term": "092",
+      "width": 3,
+      "matches": 348,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 352,
+      "factor": 1.0114942528735633
+    },
+    {
+      "term": "081",
+      "width": 3,
+      "matches": 349,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 356,
+      "factor": 1.0200573065902578
+    },
+    {
+      "term": "649",
+      "width": 3,
+      "matches": 350,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 359,
+      "factor": 1.0257142857142858
+    },
+    {
+      "term": "268",
+      "width": 3,
+      "matches": 351,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 359,
+      "factor": 1.0227920227920229
+    },
+    {
+      "term": "546",
+      "width": 3,
+      "matches": 351,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 354,
+      "factor": 1.0085470085470085
+    },
+    {
+      "term": "508",
+      "width": 3,
+      "matches": 352,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 356,
+      "factor": 1.0113636363636365
+    },
+    {
+      "term": "583",
+      "width": 3,
+      "matches": 352,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 364,
+      "factor": 1.0340909090909092
+    },
+    {
+      "term": "638",
+      "width": 3,
+      "matches": 352,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 356,
+      "factor": 1.0113636363636365
+    },
+    {
+      "term": "049",
+      "width": 3,
+      "matches": 354,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 358,
+      "factor": 1.0112994350282485
+    },
+    {
+      "term": "238",
+      "width": 3,
+      "matches": 355,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 360,
+      "factor": 1.0140845070422535
+    },
+    {
+      "term": "450",
+      "width": 3,
+      "matches": 355,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 360,
+      "factor": 1.0140845070422535
+    },
+    {
+      "term": "755",
+      "width": 3,
+      "matches": 355,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 387,
+      "factor": 1.0901408450704226
+    },
+    {
+      "term": "692",
+      "width": 3,
+      "matches": 357,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 366,
+      "factor": 1.0252100840336134
+    },
+    {
+      "term": "943",
+      "width": 3,
+      "matches": 357,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 360,
+      "factor": 1.0084033613445378
+    },
+    {
+      "term": "410",
+      "width": 3,
+      "matches": 359,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 363,
+      "factor": 1.011142061281337
+    },
+    {
+      "term": "778",
+      "width": 3,
+      "matches": 359,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 395,
+      "factor": 1.1002785515320335
+    },
+    {
+      "term": "784",
+      "width": 3,
+      "matches": 359,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 364,
+      "factor": 1.0139275766016713
+    },
+    {
+      "term": "827",
+      "width": 3,
+      "matches": 359,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 368,
+      "factor": 1.0250696378830084
+    },
+    {
+      "term": "899",
+      "width": 3,
+      "matches": 359,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 389,
+      "factor": 1.083565459610028
+    },
+    {
+      "term": "940",
+      "width": 3,
+      "matches": 359,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 365,
+      "factor": 1.0167130919220055
+    },
+    {
+      "term": "038",
+      "width": 3,
+      "matches": 360,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 368,
+      "factor": 1.0222222222222221
+    },
+    {
+      "term": "106",
+      "width": 3,
+      "matches": 360,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 365,
+      "factor": 1.0138888888888888
+    },
+    {
+      "term": "159",
+      "width": 3,
+      "matches": 360,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 364,
+      "factor": 1.011111111111111
+    },
+    {
+      "term": "477",
+      "width": 3,
+      "matches": 360,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 385,
+      "factor": 1.0694444444444444
+    },
+    {
+      "term": "539",
+      "width": 3,
+      "matches": 360,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 366,
+      "factor": 1.0166666666666666
+    },
+    {
+      "term": "027",
+      "width": 3,
+      "matches": 361,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 367,
+      "factor": 1.0166204986149585
+    },
+    {
+      "term": "211",
+      "width": 3,
+      "matches": 361,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 391,
+      "factor": 1.0831024930747923
+    },
+    {
+      "term": "594",
+      "width": 3,
+      "matches": 361,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 365,
+      "factor": 1.0110803324099722
+    },
+    {
+      "term": "777",
+      "width": 3,
+      "matches": 361,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 1155,
+      "factor": 3.1994459833795013
+    },
+    {
+      "term": "910",
+      "width": 3,
+      "matches": 361,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 363,
+      "factor": 1.005540166204986
+    },
+    {
+      "term": "197",
+      "width": 3,
+      "matches": 362,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 369,
+      "factor": 1.0193370165745856
+    },
+    {
+      "term": "276",
+      "width": 3,
+      "matches": 362,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 365,
+      "factor": 1.0082872928176796
+    },
+    {
+      "term": "282",
+      "width": 3,
+      "matches": 362,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 411,
+      "factor": 1.1353591160220995
+    },
+    {
+      "term": "380",
+      "width": 3,
+      "matches": 362,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 366,
+      "factor": 1.011049723756906
+    },
+    {
+      "term": "641",
+      "width": 3,
+      "matches": 362,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 368,
+      "factor": 1.0165745856353592
+    },
+    {
+      "term": "960",
+      "width": 3,
+      "matches": 362,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 368,
+      "factor": 1.0165745856353592
+    },
+    {
+      "term": "071",
+      "width": 3,
+      "matches": 363,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 364,
+      "factor": 1.002754820936639
+    },
+    {
+      "term": "386",
+      "width": 3,
+      "matches": 363,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 367,
+      "factor": 1.0110192837465564
+    },
+    {
+      "term": "810",
+      "width": 3,
+      "matches": 363,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 366,
+      "factor": 1.0082644628099173
+    },
+    {
+      "term": "111",
+      "width": 3,
+      "matches": 364,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 1185,
+      "factor": 3.2554945054945055
+    },
+    {
+      "term": "298",
+      "width": 3,
+      "matches": 364,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 368,
+      "factor": 1.010989010989011
+    },
+    {
+      "term": "444",
+      "width": 3,
+      "matches": 364,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 1151,
+      "factor": 3.162087912087912
+    },
+    {
+      "term": "999",
+      "width": 3,
+      "matches": 364,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 1032,
+      "factor": 2.8351648351648353
+    },
+    {
+      "term": "307",
+      "width": 3,
+      "matches": 365,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 368,
+      "factor": 1.0082191780821919
+    },
+    {
+      "term": "554",
+      "width": 3,
+      "matches": 365,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 405,
+      "factor": 1.1095890410958904
+    },
+    {
+      "term": "992",
+      "width": 3,
+      "matches": 365,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 383,
+      "factor": 1.0493150684931507
+    },
+    {
+      "term": "030",
+      "width": 3,
+      "matches": 366,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 413,
+      "factor": 1.1284153005464481
+    },
+    {
+      "term": "082",
+      "width": 3,
+      "matches": 366,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 368,
+      "factor": 1.005464480874317
+    },
+    {
+      "term": "230",
+      "width": 3,
+      "matches": 366,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 372,
+      "factor": 1.0163934426229508
+    },
+    {
+      "term": "511",
+      "width": 3,
+      "matches": 366,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 404,
+      "factor": 1.1038251366120218
+    },
+    {
+      "term": "724",
+      "width": 3,
+      "matches": 366,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 378,
+      "factor": 1.0327868852459017
+    },
+    {
+      "term": "932",
+      "width": 3,
+      "matches": 366,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 367,
+      "factor": 1.0027322404371584
+    },
+    {
+      "term": "449",
+      "width": 3,
+      "matches": 367,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 404,
+      "factor": 1.1008174386920981
+    },
+    {
+      "term": "062",
+      "width": 3,
+      "matches": 368,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 370,
+      "factor": 1.0054347826086956
+    },
+    {
+      "term": "145",
+      "width": 3,
+      "matches": 368,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 372,
+      "factor": 1.0108695652173914
+    },
+    {
+      "term": "263",
+      "width": 3,
+      "matches": 368,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 376,
+      "factor": 1.0217391304347827
+    },
+    {
+      "term": "364",
+      "width": 3,
+      "matches": 368,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 377,
+      "factor": 1.0244565217391304
+    },
+    {
+      "term": "390",
+      "width": 3,
+      "matches": 368,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 370,
+      "factor": 1.0054347826086956
+    },
+    {
+      "term": "461",
+      "width": 3,
+      "matches": 368,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 374,
+      "factor": 1.016304347826087
+    },
+    {
+      "term": "764",
+      "width": 3,
+      "matches": 368,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 374,
+      "factor": 1.016304347826087
+    },
+    {
+      "term": "103",
+      "width": 3,
+      "matches": 369,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 371,
+      "factor": 1.005420054200542
+    },
+    {
+      "term": "161",
+      "width": 3,
+      "matches": 369,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 427,
+      "factor": 1.1571815718157181
+    },
+    {
+      "term": "538",
+      "width": 3,
+      "matches": 369,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 375,
+      "factor": 1.016260162601626
+    },
+    {
+      "term": "577",
+      "width": 3,
+      "matches": 369,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 405,
+      "factor": 1.0975609756097562
+    },
+    {
+      "term": "653",
+      "width": 3,
+      "matches": 369,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 373,
+      "factor": 1.010840108401084
+    },
+    {
+      "term": "662",
+      "width": 3,
+      "matches": 369,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 397,
+      "factor": 1.075880758807588
+    },
+    {
+      "term": "947",
+      "width": 3,
+      "matches": 369,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 373,
+      "factor": 1.010840108401084
+    },
+    {
+      "term": "065",
+      "width": 3,
+      "matches": 370,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 375,
+      "factor": 1.0135135135135136
+    },
+    {
+      "term": "073",
+      "width": 3,
+      "matches": 370,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 375,
+      "factor": 1.0135135135135136
+    },
+    {
+      "term": "078",
+      "width": 3,
+      "matches": 370,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 376,
+      "factor": 1.0162162162162163
+    },
+    {
+      "term": "105",
+      "width": 3,
+      "matches": 370,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 373,
+      "factor": 1.008108108108108
+    },
+    {
+      "term": "135",
+      "width": 3,
+      "matches": 370,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 374,
+      "factor": 1.0108108108108107
+    },
+    {
+      "term": "140",
+      "width": 3,
+      "matches": 370,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 377,
+      "factor": 1.018918918918919
+    },
+    {
+      "term": "407",
+      "width": 3,
+      "matches": 370,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 379,
+      "factor": 1.0243243243243243
+    },
+    {
+      "term": "495",
+      "width": 3,
+      "matches": 370,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 378,
+      "factor": 1.0216216216216216
+    },
+    {
+      "term": "708",
+      "width": 3,
+      "matches": 370,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 375,
+      "factor": 1.0135135135135136
+    },
+    {
+      "term": "720",
+      "width": 3,
+      "matches": 370,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 372,
+      "factor": 1.0054054054054054
+    },
+    {
+      "term": "787",
+      "width": 3,
+      "matches": 370,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 417,
+      "factor": 1.127027027027027
+    },
+    {
+      "term": "841",
+      "width": 3,
+      "matches": 370,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 376,
+      "factor": 1.0162162162162163
+    },
+    {
+      "term": "261",
+      "width": 3,
+      "matches": 371,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 373,
+      "factor": 1.005390835579515
+    },
+    {
+      "term": "271",
+      "width": 3,
+      "matches": 371,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 377,
+      "factor": 1.0161725067385445
+    },
+    {
+      "term": "598",
+      "width": 3,
+      "matches": 371,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 374,
+      "factor": 1.0080862533692723
+    },
+    {
+      "term": "673",
+      "width": 3,
+      "matches": 371,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 376,
+      "factor": 1.013477088948787
+    },
+    {
+      "term": "415",
+      "width": 3,
+      "matches": 372,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 381,
+      "factor": 1.0241935483870968
+    },
+    {
+      "term": "439",
+      "width": 3,
+      "matches": 372,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 379,
+      "factor": 1.0188172043010753
+    },
+    {
+      "term": "471",
+      "width": 3,
+      "matches": 372,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 380,
+      "factor": 1.021505376344086
+    },
+    {
+      "term": "607",
+      "width": 3,
+      "matches": 372,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 377,
+      "factor": 1.0134408602150538
+    },
+    {
+      "term": "621",
+      "width": 3,
+      "matches": 372,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 374,
+      "factor": 1.0053763440860215
+    },
+    {
+      "term": "629",
+      "width": 3,
+      "matches": 372,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 378,
+      "factor": 1.0161290322580645
+    },
+    {
+      "term": "672",
+      "width": 3,
+      "matches": 372,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 381,
+      "factor": 1.0241935483870968
+    },
+    {
+      "term": "785",
+      "width": 3,
+      "matches": 372,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 381,
+      "factor": 1.0241935483870968
+    },
+    {
+      "term": "793",
+      "width": 3,
+      "matches": 372,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 377,
+      "factor": 1.0134408602150538
+    },
+    {
+      "term": "929",
+      "width": 3,
+      "matches": 372,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 419,
+      "factor": 1.1263440860215055
+    },
+    {
+      "term": "985",
+      "width": 3,
+      "matches": 372,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 375,
+      "factor": 1.0080645161290323
+    },
+    {
+      "term": "277",
+      "width": 3,
+      "matches": 373,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 410,
+      "factor": 1.0991957104557641
+    },
+    {
+      "term": "303",
+      "width": 3,
+      "matches": 373,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 409,
+      "factor": 1.096514745308311
+    },
+    {
+      "term": "332",
+      "width": 3,
+      "matches": 373,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 399,
+      "factor": 1.0697050938337802
+    },
+    {
+      "term": "341",
+      "width": 3,
+      "matches": 373,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 381,
+      "factor": 1.0214477211796247
+    },
+    {
+      "term": "366",
+      "width": 3,
+      "matches": 373,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 407,
+      "factor": 1.0911528150134049
+    },
+    {
+      "term": "475",
+      "width": 3,
+      "matches": 373,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 379,
+      "factor": 1.0160857908847185
+    },
+    {
+      "term": "768",
+      "width": 3,
+      "matches": 373,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 385,
+      "factor": 1.032171581769437
+    },
+    {
+      "term": "499",
+      "width": 3,
+      "matches": 374,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 388,
+      "factor": 1.0374331550802138
+    },
+    {
+      "term": "866",
+      "width": 3,
+      "matches": 374,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 400,
+      "factor": 1.0695187165775402
+    },
+    {
+      "term": "874",
+      "width": 3,
+      "matches": 374,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 379,
+      "factor": 1.0133689839572193
+    },
+    {
+      "term": "878",
+      "width": 3,
+      "matches": 374,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 423,
+      "factor": 1.1310160427807487
+    },
+    {
+      "term": "158",
+      "width": 3,
+      "matches": 375,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 380,
+      "factor": 1.0133333333333334
+    },
+    {
+      "term": "212",
+      "width": 3,
+      "matches": 375,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 427,
+      "factor": 1.1386666666666667
+    },
+    {
+      "term": "311",
+      "width": 3,
+      "matches": 375,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 405,
+      "factor": 1.08
+    },
+    {
+      "term": "374",
+      "width": 3,
+      "matches": 375,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 381,
+      "factor": 1.016
+    },
+    {
+      "term": "676",
+      "width": 3,
+      "matches": 375,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 441,
+      "factor": 1.176
+    },
+    {
+      "term": "876",
+      "width": 3,
+      "matches": 375,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 379,
+      "factor": 1.0106666666666666
+    },
+    {
+      "term": "072",
+      "width": 3,
+      "matches": 376,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 384,
+      "factor": 1.0212765957446808
+    },
+    {
+      "term": "173",
+      "width": 3,
+      "matches": 376,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 383,
+      "factor": 1.0186170212765957
+    },
+    {
+      "term": "188",
+      "width": 3,
+      "matches": 376,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 423,
+      "factor": 1.125
+    },
+    {
+      "term": "207",
+      "width": 3,
+      "matches": 376,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 383,
+      "factor": 1.0186170212765957
+    },
+    {
+      "term": "249",
+      "width": 3,
+      "matches": 376,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 380,
+      "factor": 1.0106382978723405
+    },
+    {
+      "term": "329",
+      "width": 3,
+      "matches": 376,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 381,
+      "factor": 1.0132978723404256
+    },
+    {
+      "term": "544",
+      "width": 3,
+      "matches": 376,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 412,
+      "factor": 1.0957446808510638
+    },
+    {
+      "term": "612",
+      "width": 3,
+      "matches": 376,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 383,
+      "factor": 1.0186170212765957
+    },
+    {
+      "term": "613",
+      "width": 3,
+      "matches": 376,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 381,
+      "factor": 1.0132978723404256
+    },
+    {
+      "term": "614",
+      "width": 3,
+      "matches": 376,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 382,
+      "factor": 1.0159574468085106
+    },
+    {
+      "term": "737",
+      "width": 3,
+      "matches": 376,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 439,
+      "factor": 1.1675531914893618
+    },
+    {
+      "term": "769",
+      "width": 3,
+      "matches": 376,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 381,
+      "factor": 1.0132978723404256
+    },
+    {
+      "term": "079",
+      "width": 3,
+      "matches": 377,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 382,
+      "factor": 1.013262599469496
+    },
+    {
+      "term": "156",
+      "width": 3,
+      "matches": 377,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 384,
+      "factor": 1.0185676392572944
+    },
+    {
+      "term": "210",
+      "width": 3,
+      "matches": 377,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 383,
+      "factor": 1.0159151193633953
+    },
+    {
+      "term": "253",
+      "width": 3,
+      "matches": 377,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 384,
+      "factor": 1.0185676392572944
+    },
+    {
+      "term": "325",
+      "width": 3,
+      "matches": 377,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 389,
+      "factor": 1.0318302387267904
+    },
+    {
+      "term": "358",
+      "width": 3,
+      "matches": 377,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 381,
+      "factor": 1.0106100795755968
+    },
+    {
+      "term": "678",
+      "width": 3,
+      "matches": 377,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 384,
+      "factor": 1.0185676392572944
+    },
+    {
+      "term": "745",
+      "width": 3,
+      "matches": 377,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 383,
+      "factor": 1.0159151193633953
+    },
+    {
+      "term": "786",
+      "width": 3,
+      "matches": 377,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 383,
+      "factor": 1.0159151193633953
+    },
+    {
+      "term": "794",
+      "width": 3,
+      "matches": 377,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 379,
+      "factor": 1.0053050397877985
+    },
+    {
+      "term": "839",
+      "width": 3,
+      "matches": 377,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 383,
+      "factor": 1.0159151193633953
+    },
+    {
+      "term": "930",
+      "width": 3,
+      "matches": 377,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 380,
+      "factor": 1.0079575596816976
+    },
+    {
+      "term": "164",
+      "width": 3,
+      "matches": 378,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 385,
+      "factor": 1.0185185185185186
+    },
+    {
+      "term": "235",
+      "width": 3,
+      "matches": 378,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 385,
+      "factor": 1.0185185185185186
+    },
+    {
+      "term": "247",
+      "width": 3,
+      "matches": 378,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 389,
+      "factor": 1.029100529100529
+    },
+    {
+      "term": "526",
+      "width": 3,
+      "matches": 378,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 383,
+      "factor": 1.0132275132275133
+    },
+    {
+      "term": "528",
+      "width": 3,
+      "matches": 378,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 383,
+      "factor": 1.0132275132275133
+    },
+    {
+      "term": "550",
+      "width": 3,
+      "matches": 378,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 414,
+      "factor": 1.0952380952380953
+    },
+    {
+      "term": "620",
+      "width": 3,
+      "matches": 378,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 391,
+      "factor": 1.0343915343915344
+    },
+    {
+      "term": "814",
+      "width": 3,
+      "matches": 378,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 386,
+      "factor": 1.0211640211640212
+    },
+    {
+      "term": "905",
+      "width": 3,
+      "matches": 378,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 379,
+      "factor": 1.0026455026455026
+    },
+    {
+      "term": "917",
+      "width": 3,
+      "matches": 378,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 380,
+      "factor": 1.0052910052910053
+    },
+    {
+      "term": "036",
+      "width": 3,
+      "matches": 379,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 383,
+      "factor": 1.0105540897097625
+    },
+    {
+      "term": "069",
+      "width": 3,
+      "matches": 379,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 387,
+      "factor": 1.0211081794195251
+    },
+    {
+      "term": "150",
+      "width": 3,
+      "matches": 379,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 386,
+      "factor": 1.0184696569920844
+    },
+    {
+      "term": "334",
+      "width": 3,
+      "matches": 379,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 412,
+      "factor": 1.087071240105541
+    },
+    {
+      "term": "387",
+      "width": 3,
+      "matches": 379,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 382,
+      "factor": 1.007915567282322
+    },
+    {
+      "term": "412",
+      "width": 3,
+      "matches": 379,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 386,
+      "factor": 1.0184696569920844
+    },
+    {
+      "term": "463",
+      "width": 3,
+      "matches": 379,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 386,
+      "factor": 1.0184696569920844
+    },
+    {
+      "term": "478",
+      "width": 3,
+      "matches": 379,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 385,
+      "factor": 1.0158311345646438
+    },
+    {
+      "term": "541",
+      "width": 3,
+      "matches": 379,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 385,
+      "factor": 1.0158311345646438
+    },
+    {
+      "term": "618",
+      "width": 3,
+      "matches": 379,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 384,
+      "factor": 1.0131926121372032
+    },
+    {
+      "term": "667",
+      "width": 3,
+      "matches": 379,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 407,
+      "factor": 1.0738786279683377
+    },
+    {
+      "term": "868",
+      "width": 3,
+      "matches": 379,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 437,
+      "factor": 1.1530343007915567
+    },
+    {
+      "term": "000",
+      "width": 3,
+      "matches": 380,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 1042,
+      "factor": 2.7421052631578946
+    },
+    {
+      "term": "165",
+      "width": 3,
+      "matches": 380,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 387,
+      "factor": 1.018421052631579
+    },
+    {
+      "term": "351",
+      "width": 3,
+      "matches": 380,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 384,
+      "factor": 1.0105263157894737
+    },
+    {
+      "term": "389",
+      "width": 3,
+      "matches": 380,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 386,
+      "factor": 1.0157894736842106
+    },
+    {
+      "term": "404",
+      "width": 3,
+      "matches": 380,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 421,
+      "factor": 1.1078947368421053
+    },
+    {
+      "term": "428",
+      "width": 3,
+      "matches": 380,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 391,
+      "factor": 1.0289473684210526
+    },
+    {
+      "term": "532",
+      "width": 3,
+      "matches": 380,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 384,
+      "factor": 1.0105263157894737
+    },
+    {
+      "term": "817",
+      "width": 3,
+      "matches": 380,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 386,
+      "factor": 1.0157894736842106
+    },
+    {
+      "term": "023",
+      "width": 3,
+      "matches": 381,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 384,
+      "factor": 1.0078740157480315
+    },
+    {
+      "term": "051",
+      "width": 3,
+      "matches": 381,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 385,
+      "factor": 1.010498687664042
+    },
+    {
+      "term": "117",
+      "width": 3,
+      "matches": 381,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 410,
+      "factor": 1.0761154855643045
+    },
+    {
+      "term": "171",
+      "width": 3,
+      "matches": 381,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 440,
+      "factor": 1.1548556430446195
+    },
+    {
+      "term": "297",
+      "width": 3,
+      "matches": 381,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 386,
+      "factor": 1.0131233595800524
+    },
+    {
+      "term": "435",
+      "width": 3,
+      "matches": 381,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 384,
+      "factor": 1.0078740157480315
+    },
+    {
+      "term": "695",
+      "width": 3,
+      "matches": 381,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 386,
+      "factor": 1.0131233595800524
+    },
+    {
+      "term": "717",
+      "width": 3,
+      "matches": 381,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 435,
+      "factor": 1.141732283464567
+    },
+    {
+      "term": "727",
+      "width": 3,
+      "matches": 381,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 430,
+      "factor": 1.1286089238845145
+    },
+    {
+      "term": "896",
+      "width": 3,
+      "matches": 381,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 385,
+      "factor": 1.010498687664042
+    },
+    {
+      "term": "898",
+      "width": 3,
+      "matches": 381,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 412,
+      "factor": 1.0813648293963254
+    },
+    {
+      "term": "937",
+      "width": 3,
+      "matches": 381,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 387,
+      "factor": 1.015748031496063
+    },
+    {
+      "term": "942",
+      "width": 3,
+      "matches": 381,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 384,
+      "factor": 1.0078740157480315
+    },
+    {
+      "term": "958",
+      "width": 3,
+      "matches": 381,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 384,
+      "factor": 1.0078740157480315
+    },
+    {
+      "term": "409",
+      "width": 3,
+      "matches": 382,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 388,
+      "factor": 1.0157068062827226
+    },
+    {
+      "term": "451",
+      "width": 3,
+      "matches": 382,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 386,
+      "factor": 1.0104712041884816
+    },
+    {
+      "term": "454",
+      "width": 3,
+      "matches": 382,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 435,
+      "factor": 1.138743455497382
+    },
+    {
+      "term": "490",
+      "width": 3,
+      "matches": 382,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 386,
+      "factor": 1.0104712041884816
+    },
+    {
+      "term": "543",
+      "width": 3,
+      "matches": 382,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 388,
+      "factor": 1.0157068062827226
+    },
+    {
+      "term": "651",
+      "width": 3,
+      "matches": 382,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 389,
+      "factor": 1.0183246073298429
+    },
+    {
+      "term": "894",
+      "width": 3,
+      "matches": 382,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 389,
+      "factor": 1.0183246073298429
+    },
+    {
+      "term": "978",
+      "width": 3,
+      "matches": 382,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 387,
+      "factor": 1.013089005235602
+    },
+    {
+      "term": "016",
+      "width": 3,
+      "matches": 383,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 385,
+      "factor": 1.0052219321148825
+    },
+    {
+      "term": "058",
+      "width": 3,
+      "matches": 383,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 389,
+      "factor": 1.0156657963446476
+    },
+    {
+      "term": "059",
+      "width": 3,
+      "matches": 383,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 392,
+      "factor": 1.0234986945169713
+    },
+    {
+      "term": "109",
+      "width": 3,
+      "matches": 383,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 387,
+      "factor": 1.010443864229765
+    },
+    {
+      "term": "167",
+      "width": 3,
+      "matches": 383,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 387,
+      "factor": 1.010443864229765
+    },
+    {
+      "term": "206",
+      "width": 3,
+      "matches": 383,
+      "group": "lowest-frequency-control",
+      "bits": 16,
+      "candidates": 387,
+      "factor": 1.010443864229765
+    },
+    {
+      "term": "0020",
+      "width": 4,
+      "matches": 9,
+      "group": "rare-1-10",
+      "bits": 16,
+      "candidates": 15,
+      "factor": 1.6666666666666667
+    },
+    {
+      "term": "1583",
+      "width": 4,
+      "matches": 10,
+      "group": "rare-1-10",
+      "bits": 16,
+      "candidates": 10,
+      "factor": 1
+    },
+    {
+      "term": "2101",
+      "width": 4,
+      "matches": 9,
+      "group": "rare-1-10",
+      "bits": 16,
+      "candidates": 10,
+      "factor": 1.1111111111111112
+    },
+    {
+      "term": "3764",
+      "width": 4,
+      "matches": 9,
+      "group": "rare-1-10",
+      "bits": 16,
+      "candidates": 10,
+      "factor": 1.1111111111111112
+    },
+    {
+      "term": "8174",
+      "width": 4,
+      "matches": 10,
+      "group": "rare-1-10",
+      "bits": 16,
+      "candidates": 11,
+      "factor": 1.1
+    },
+    {
+      "term": "4755",
+      "width": 4,
+      "matches": 10,
+      "group": "rare-1-10",
+      "bits": 16,
+      "candidates": 12,
+      "factor": 1.2
+    },
+    {
+      "term": "3470",
+      "width": 4,
+      "matches": 9,
+      "group": "rare-1-10",
+      "bits": 16,
+      "candidates": 10,
+      "factor": 1.1111111111111112
+    },
+    {
+      "term": "0271",
+      "width": 4,
+      "matches": 10,
+      "group": "rare-1-10",
+      "bits": 16,
+      "candidates": 10,
+      "factor": 1
+    },
+    {
+      "term": "7694",
+      "width": 4,
+      "matches": 10,
+      "group": "rare-1-10",
+      "bits": 16,
+      "candidates": 11,
+      "factor": 1.1
+    },
+    {
+      "term": "0621",
+      "width": 4,
+      "matches": 9,
+      "group": "rare-1-10",
+      "bits": 16,
+      "candidates": 10,
+      "factor": 1.1111111111111112
+    },
+    {
+      "term": "4770",
+      "width": 4,
+      "matches": 7,
+      "group": "rare-1-10",
+      "bits": 16,
+      "candidates": 11,
+      "factor": 1.5714285714285714
+    },
+    {
+      "term": "0494",
+      "width": 4,
+      "matches": 9,
+      "group": "rare-1-10",
+      "bits": 16,
+      "candidates": 13,
+      "factor": 1.4444444444444444
+    },
+    {
+      "term": "1501",
+      "width": 4,
+      "matches": 9,
+      "group": "rare-1-10",
+      "bits": 16,
+      "candidates": 9,
+      "factor": 1
+    },
+    {
+      "term": "7428",
+      "width": 4,
+      "matches": 8,
+      "group": "rare-1-10",
+      "bits": 16,
+      "candidates": 9,
+      "factor": 1.125
+    },
+    {
+      "term": "1986",
+      "width": 4,
+      "matches": 10,
+      "group": "rare-1-10",
+      "bits": 16,
+      "candidates": 12,
+      "factor": 1.2
+    },
+    {
+      "term": "4175",
+      "width": 4,
+      "matches": 10,
+      "group": "rare-1-10",
+      "bits": 16,
+      "candidates": 11,
+      "factor": 1.1
+    },
+    {
+      "term": "6030",
+      "width": 4,
+      "matches": 10,
+      "group": "rare-1-10",
+      "bits": 16,
+      "candidates": 12,
+      "factor": 1.2
+    },
+    {
+      "term": "0846",
+      "width": 4,
+      "matches": 10,
+      "group": "rare-1-10",
+      "bits": 16,
+      "candidates": 12,
+      "factor": 1.2
+    },
+    {
+      "term": "6249",
+      "width": 4,
+      "matches": 9,
+      "group": "rare-1-10",
+      "bits": 16,
+      "candidates": 10,
+      "factor": 1.1111111111111112
+    },
+    {
+      "term": "9301",
+      "width": 4,
+      "matches": 8,
+      "group": "rare-1-10",
+      "bits": 16,
+      "candidates": 8,
+      "factor": 1
+    },
+    {
+      "term": "1405",
+      "width": 4,
+      "matches": 9,
+      "group": "rare-1-10",
+      "bits": 16,
+      "candidates": 9,
+      "factor": 1
+    },
+    {
+      "term": "6254",
+      "width": 4,
+      "matches": 10,
+      "group": "rare-1-10",
+      "bits": 16,
+      "candidates": 10,
+      "factor": 1
+    },
+    {
+      "term": "9274",
+      "width": 4,
+      "matches": 10,
+      "group": "rare-1-10",
+      "bits": 16,
+      "candidates": 11,
+      "factor": 1.1
+    },
+    {
+      "term": "6913",
+      "width": 4,
+      "matches": 8,
+      "group": "rare-1-10",
+      "bits": 16,
+      "candidates": 10,
+      "factor": 1.25
+    },
+    {
+      "term": "2762",
+      "width": 4,
+      "matches": 9,
+      "group": "rare-1-10",
+      "bits": 16,
+      "candidates": 12,
+      "factor": 1.3333333333333333
+    },
+    {
+      "term": "8732",
+      "width": 4,
+      "matches": 10,
+      "group": "rare-1-10",
+      "bits": 16,
+      "candidates": 11,
+      "factor": 1.1
+    },
+    {
+      "term": "2344",
+      "width": 4,
+      "matches": 9,
+      "group": "rare-1-10",
+      "bits": 16,
+      "candidates": 11,
+      "factor": 1.2222222222222223
+    },
+    {
+      "term": "5380",
+      "width": 4,
+      "matches": 9,
+      "group": "rare-1-10",
+      "bits": 16,
+      "candidates": 9,
+      "factor": 1
+    },
+    {
+      "term": "9435",
+      "width": 4,
+      "matches": 10,
+      "group": "rare-1-10",
+      "bits": 16,
+      "candidates": 11,
+      "factor": 1.1
+    },
+    {
+      "term": "6750",
+      "width": 4,
+      "matches": 10,
+      "group": "rare-1-10",
+      "bits": 16,
+      "candidates": 10,
+      "factor": 1
+    },
+    {
+      "term": "9505",
+      "width": 4,
+      "matches": 10,
+      "group": "rare-1-10",
+      "bits": 16,
+      "candidates": 12,
+      "factor": 1.2
+    },
+    {
+      "term": "5502",
+      "width": 4,
+      "matches": 7,
+      "group": "rare-1-10",
+      "bits": 16,
+      "candidates": 8,
+      "factor": 1.1428571428571428
+    },
+    {
+      "term": "5639",
+      "width": 4,
+      "matches": 10,
+      "group": "rare-1-10",
+      "bits": 16,
+      "candidates": 14,
+      "factor": 1.4
+    },
+    {
+      "term": "7828",
+      "width": 4,
+      "matches": 10,
+      "group": "rare-1-10",
+      "bits": 16,
+      "candidates": 14,
+      "factor": 1.4
+    },
+    {
+      "term": "9054",
+      "width": 4,
+      "matches": 9,
+      "group": "rare-1-10",
+      "bits": 16,
+      "candidates": 9,
+      "factor": 1
+    },
+    {
+      "term": "3879",
+      "width": 4,
+      "matches": 10,
+      "group": "rare-1-10",
+      "bits": 16,
+      "candidates": 12,
+      "factor": 1.2
+    },
+    {
+      "term": "1419",
+      "width": 4,
+      "matches": 10,
+      "group": "rare-1-10",
+      "bits": 16,
+      "candidates": 11,
+      "factor": 1.1
+    },
+    {
+      "term": "0496",
+      "width": 4,
+      "matches": 10,
+      "group": "rare-1-10",
+      "bits": 16,
+      "candidates": 14,
+      "factor": 1.4
+    },
+    {
+      "term": "5638",
+      "width": 4,
+      "matches": 7,
+      "group": "rare-1-10",
+      "bits": 16,
+      "candidates": 7,
+      "factor": 1
+    },
+    {
+      "term": "8149",
+      "width": 4,
+      "matches": 9,
+      "group": "rare-1-10",
+      "bits": 16,
+      "candidates": 11,
+      "factor": 1.2222222222222223
+    },
+    {
+      "term": "6317",
+      "width": 4,
+      "matches": 9,
+      "group": "rare-1-10",
+      "bits": 16,
+      "candidates": 10,
+      "factor": 1.1111111111111112
+    },
+    {
+      "term": "4034",
+      "width": 4,
+      "matches": 10,
+      "group": "rare-1-10",
+      "bits": 16,
+      "candidates": 13,
+      "factor": 1.3
+    },
+    {
+      "term": "1837",
+      "width": 4,
+      "matches": 6,
+      "group": "rare-1-10",
+      "bits": 16,
+      "candidates": 7,
+      "factor": 1.1666666666666667
+    },
+    {
+      "term": "2364",
+      "width": 4,
+      "matches": 8,
+      "group": "rare-1-10",
+      "bits": 16,
+      "candidates": 9,
+      "factor": 1.125
+    },
+    {
+      "term": "4480",
+      "width": 4,
+      "matches": 10,
+      "group": "rare-1-10",
+      "bits": 16,
+      "candidates": 12,
+      "factor": 1.2
+    },
+    {
+      "term": "1069",
+      "width": 4,
+      "matches": 8,
+      "group": "rare-1-10",
+      "bits": 16,
+      "candidates": 12,
+      "factor": 1.5
+    },
+    {
+      "term": "9603",
+      "width": 4,
+      "matches": 8,
+      "group": "rare-1-10",
+      "bits": 16,
+      "candidates": 8,
+      "factor": 1
+    },
+    {
+      "term": "2537",
+      "width": 4,
+      "matches": 7,
+      "group": "rare-1-10",
+      "bits": 16,
+      "candidates": 8,
+      "factor": 1.1428571428571428
+    },
+    {
+      "term": "8325",
+      "width": 4,
+      "matches": 10,
+      "group": "rare-1-10",
+      "bits": 16,
+      "candidates": 11,
+      "factor": 1.1
+    },
+    {
+      "term": "2107",
+      "width": 4,
+      "matches": 10,
+      "group": "rare-1-10",
+      "bits": 16,
+      "candidates": 11,
+      "factor": 1.1
+    },
+    {
+      "term": "6561",
+      "width": 4,
+      "matches": 10,
+      "group": "rare-1-10",
+      "bits": 16,
+      "candidates": 13,
+      "factor": 1.3
+    },
+    {
+      "term": "0238",
+      "width": 4,
+      "matches": 9,
+      "group": "rare-1-10",
+      "bits": 16,
+      "candidates": 9,
+      "factor": 1
+    },
+    {
+      "term": "9768",
+      "width": 4,
+      "matches": 9,
+      "group": "rare-1-10",
+      "bits": 16,
+      "candidates": 9,
+      "factor": 1
+    },
+    {
+      "term": "0738",
+      "width": 4,
+      "matches": 10,
+      "group": "rare-1-10",
+      "bits": 16,
+      "candidates": 10,
+      "factor": 1
+    },
+    {
+      "term": "3603",
+      "width": 4,
+      "matches": 10,
+      "group": "rare-1-10",
+      "bits": 16,
+      "candidates": 12,
+      "factor": 1.2
+    },
+    {
+      "term": "1195",
+      "width": 4,
+      "matches": 10,
+      "group": "rare-1-10",
+      "bits": 16,
+      "candidates": 11,
+      "factor": 1.1
+    },
+    {
+      "term": "4964",
+      "width": 4,
+      "matches": 10,
+      "group": "rare-1-10",
+      "bits": 16,
+      "candidates": 16,
+      "factor": 1.6
+    },
+    {
+      "term": "4527",
+      "width": 4,
+      "matches": 9,
+      "group": "rare-1-10",
+      "bits": 16,
+      "candidates": 11,
+      "factor": 1.2222222222222223
+    },
+    {
+      "term": "1546",
+      "width": 4,
+      "matches": 8,
+      "group": "rare-1-10",
+      "bits": 16,
+      "candidates": 9,
+      "factor": 1.125
+    },
+    {
+      "term": "8971",
+      "width": 4,
+      "matches": 9,
+      "group": "rare-1-10",
+      "bits": 16,
+      "candidates": 9,
+      "factor": 1
+    },
+    {
+      "term": "5411",
+      "width": 4,
+      "matches": 10,
+      "group": "rare-1-10",
+      "bits": 16,
+      "candidates": 11,
+      "factor": 1.1
+    },
+    {
+      "term": "9653",
+      "width": 4,
+      "matches": 10,
+      "group": "rare-1-10",
+      "bits": 16,
+      "candidates": 12,
+      "factor": 1.2
+    },
+    {
+      "term": "5662",
+      "width": 4,
+      "matches": 8,
+      "group": "rare-1-10",
+      "bits": 16,
+      "candidates": 9,
+      "factor": 1.125
+    },
+    {
+      "term": "8955",
+      "width": 4,
+      "matches": 10,
+      "group": "rare-1-10",
+      "bits": 16,
+      "candidates": 10,
+      "factor": 1
+    },
+    {
+      "term": "5059",
+      "width": 4,
+      "matches": 8,
+      "group": "rare-1-10",
+      "bits": 16,
+      "candidates": 10,
+      "factor": 1.25
+    },
+    {
+      "term": "4107",
+      "width": 4,
+      "matches": 10,
+      "group": "rare-1-10",
+      "bits": 16,
+      "candidates": 10,
+      "factor": 1
+    },
+    {
+      "term": "8755",
+      "width": 4,
+      "matches": 10,
+      "group": "rare-1-10",
+      "bits": 16,
+      "candidates": 12,
+      "factor": 1.2
+    },
+    {
+      "term": "1683",
+      "width": 4,
+      "matches": 9,
+      "group": "rare-1-10",
+      "bits": 16,
+      "candidates": 9,
+      "factor": 1
+    },
+    {
+      "term": "4566",
+      "width": 4,
+      "matches": 9,
+      "group": "rare-1-10",
+      "bits": 16,
+      "candidates": 10,
+      "factor": 1.1111111111111112
+    },
+    {
+      "term": "0776",
+      "width": 4,
+      "matches": 10,
+      "group": "rare-1-10",
+      "bits": 16,
+      "candidates": 16,
+      "factor": 1.6
+    },
+    {
+      "term": "3030",
+      "width": 4,
+      "matches": 10,
+      "group": "rare-1-10",
+      "bits": 16,
+      "candidates": 48,
+      "factor": 4.8
+    },
+    {
+      "term": "5082",
+      "width": 4,
+      "matches": 10,
+      "group": "rare-1-10",
+      "bits": 16,
+      "candidates": 11,
+      "factor": 1.1
+    },
+    {
+      "term": "1793",
+      "width": 4,
+      "matches": 10,
+      "group": "rare-1-10",
+      "bits": 16,
+      "candidates": 10,
+      "factor": 1
+    },
+    {
+      "term": "4591",
+      "width": 4,
+      "matches": 8,
+      "group": "rare-1-10",
+      "bits": 16,
+      "candidates": 8,
+      "factor": 1
+    },
+    {
+      "term": "5940",
+      "width": 4,
+      "matches": 8,
+      "group": "rare-1-10",
+      "bits": 16,
+      "candidates": 10,
+      "factor": 1.25
+    },
+    {
+      "term": "0491",
+      "width": 4,
+      "matches": 9,
+      "group": "rare-1-10",
+      "bits": 16,
+      "candidates": 9,
+      "factor": 1
+    },
+    {
+      "term": "5692",
+      "width": 4,
+      "matches": 10,
+      "group": "rare-1-10",
+      "bits": 16,
+      "candidates": 10,
+      "factor": 1
+    },
+    {
+      "term": "3490",
+      "width": 4,
+      "matches": 10,
+      "group": "rare-1-10",
+      "bits": 16,
+      "candidates": 12,
+      "factor": 1.2
+    },
+    {
+      "term": "3217",
+      "width": 4,
+      "matches": 9,
+      "group": "rare-1-10",
+      "bits": 16,
+      "candidates": 9,
+      "factor": 1
+    },
+    {
+      "term": "0462",
+      "width": 4,
+      "matches": 6,
+      "group": "rare-1-10",
+      "bits": 16,
+      "candidates": 8,
+      "factor": 1.3333333333333333
+    },
+    {
+      "term": "4495",
+      "width": 4,
+      "matches": 10,
+      "group": "rare-1-10",
+      "bits": 16,
+      "candidates": 13,
+      "factor": 1.3
+    },
+    {
+      "term": "6895",
+      "width": 4,
+      "matches": 7,
+      "group": "rare-1-10",
+      "bits": 16,
+      "candidates": 8,
+      "factor": 1.1428571428571428
+    },
+    {
+      "term": "2352",
+      "width": 4,
+      "matches": 10,
+      "group": "rare-1-10",
+      "bits": 16,
+      "candidates": 10,
+      "factor": 1
+    },
+    {
+      "term": "1367",
+      "width": 4,
+      "matches": 10,
+      "group": "rare-1-10",
+      "bits": 16,
+      "candidates": 12,
+      "factor": 1.2
+    },
+    {
+      "term": "2201",
+      "width": 4,
+      "matches": 10,
+      "group": "rare-1-10",
+      "bits": 16,
+      "candidates": 12,
+      "factor": 1.2
+    },
+    {
+      "term": "0761",
+      "width": 4,
+      "matches": 10,
+      "group": "rare-1-10",
+      "bits": 16,
+      "candidates": 12,
+      "factor": 1.2
+    },
+    {
+      "term": "5876",
+      "width": 4,
+      "matches": 9,
+      "group": "rare-1-10",
+      "bits": 16,
+      "candidates": 9,
+      "factor": 1
+    },
+    {
+      "term": "4536",
+      "width": 4,
+      "matches": 9,
+      "group": "rare-1-10",
+      "bits": 16,
+      "candidates": 11,
+      "factor": 1.2222222222222223
+    },
+    {
+      "term": "6508",
+      "width": 4,
+      "matches": 10,
+      "group": "rare-1-10",
+      "bits": 16,
+      "candidates": 10,
+      "factor": 1
+    },
+    {
+      "term": "2614",
+      "width": 4,
+      "matches": 10,
+      "group": "rare-1-10",
+      "bits": 16,
+      "candidates": 12,
+      "factor": 1.2
+    },
+    {
+      "term": "2810",
+      "width": 4,
+      "matches": 9,
+      "group": "rare-1-10",
+      "bits": 16,
+      "candidates": 9,
+      "factor": 1
+    },
+    {
+      "term": "3263",
+      "width": 4,
+      "matches": 10,
+      "group": "rare-1-10",
+      "bits": 16,
+      "candidates": 13,
+      "factor": 1.3
+    },
+    {
+      "term": "5026",
+      "width": 4,
+      "matches": 10,
+      "group": "rare-1-10",
+      "bits": 16,
+      "candidates": 11,
+      "factor": 1.1
+    },
+    {
+      "term": "6815",
+      "width": 4,
+      "matches": 7,
+      "group": "rare-1-10",
+      "bits": 16,
+      "candidates": 7,
+      "factor": 1
+    },
+    {
+      "term": "5116",
+      "width": 4,
+      "matches": 7,
+      "group": "rare-1-10",
+      "bits": 16,
+      "candidates": 9,
+      "factor": 1.2857142857142858
+    },
+    {
+      "term": "6715",
+      "width": 4,
+      "matches": 9,
+      "group": "rare-1-10",
+      "bits": 16,
+      "candidates": 11,
+      "factor": 1.2222222222222223
+    },
+    {
+      "term": "2320",
+      "width": 4,
+      "matches": 10,
+      "group": "rare-1-10",
+      "bits": 16,
+      "candidates": 12,
+      "factor": 1.2
+    },
+    {
+      "term": "7578",
+      "width": 4,
+      "matches": 10,
+      "group": "rare-1-10",
+      "bits": 16,
+      "candidates": 11,
+      "factor": 1.1
+    },
+    {
+      "term": "9672",
+      "width": 4,
+      "matches": 10,
+      "group": "rare-1-10",
+      "bits": 16,
+      "candidates": 12,
+      "factor": 1.2
+    },
+    {
+      "term": "6300",
+      "width": 4,
+      "matches": 10,
+      "group": "rare-1-10",
+      "bits": 16,
+      "candidates": 10,
+      "factor": 1
+    },
+    {
+      "term": "6290",
+      "width": 4,
+      "matches": 10,
+      "group": "rare-1-10",
+      "bits": 16,
+      "candidates": 11,
+      "factor": 1.1
+    },
+    {
+      "term": "6266",
+      "width": 4,
+      "matches": 10,
+      "group": "rare-1-10",
+      "bits": 16,
+      "candidates": 14,
+      "factor": 1.4
+    },
+    {
+      "term": "8768",
+      "width": 4,
+      "matches": 10,
+      "group": "rare-1-10",
+      "bits": 16,
+      "candidates": 12,
+      "factor": 1.2
+    },
+    {
+      "term": "7116",
+      "width": 4,
+      "matches": 10,
+      "group": "rare-1-10",
+      "bits": 16,
+      "candidates": 12,
+      "factor": 1.2
+    },
+    {
+      "term": "1778",
+      "width": 4,
+      "matches": 10,
+      "group": "rare-1-10",
+      "bits": 16,
+      "candidates": 13,
+      "factor": 1.3
+    },
+    {
+      "term": "1193",
+      "width": 4,
+      "matches": 10,
+      "group": "rare-1-10",
+      "bits": 16,
+      "candidates": 11,
+      "factor": 1.1
+    },
+    {
+      "term": "1531",
+      "width": 4,
+      "matches": 9,
+      "group": "rare-1-10",
+      "bits": 16,
+      "candidates": 12,
+      "factor": 1.3333333333333333
+    },
+    {
+      "term": "8964",
+      "width": 4,
+      "matches": 10,
+      "group": "rare-1-10",
+      "bits": 16,
+      "candidates": 10,
+      "factor": 1
+    },
+    {
+      "term": "2900",
+      "width": 4,
+      "matches": 10,
+      "group": "rare-1-10",
+      "bits": 16,
+      "candidates": 12,
+      "factor": 1.2
+    },
+    {
+      "term": "1331",
+      "width": 4,
+      "matches": 10,
+      "group": "rare-1-10",
+      "bits": 16,
+      "candidates": 20,
+      "factor": 2
+    },
+    {
+      "term": "7992",
+      "width": 4,
+      "matches": 10,
+      "group": "rare-1-10",
+      "bits": 16,
+      "candidates": 12,
+      "factor": 1.2
+    },
+    {
+      "term": "6544",
+      "width": 4,
+      "matches": 10,
+      "group": "rare-1-10",
+      "bits": 16,
+      "candidates": 11,
+      "factor": 1.1
+    },
+    {
+      "term": "0937",
+      "width": 4,
+      "matches": 9,
+      "group": "rare-1-10",
+      "bits": 16,
+      "candidates": 11,
+      "factor": 1.2222222222222223
+    },
+    {
+      "term": "4418",
+      "width": 4,
+      "matches": 8,
+      "group": "rare-1-10",
+      "bits": 16,
+      "candidates": 11,
+      "factor": 1.375
+    },
+    {
+      "term": "6000",
+      "width": 4,
+      "matches": 9,
+      "group": "rare-1-10",
+      "bits": 16,
+      "candidates": 65,
+      "factor": 7.222222222222222
+    },
+    {
+      "term": "5463",
+      "width": 4,
+      "matches": 7,
+      "group": "rare-1-10",
+      "bits": 16,
+      "candidates": 9,
+      "factor": 1.2857142857142858
+    },
+    {
+      "term": "4548",
+      "width": 4,
+      "matches": 8,
+      "group": "rare-1-10",
+      "bits": 16,
+      "candidates": 11,
+      "factor": 1.375
+    },
+    {
+      "term": "6270",
+      "width": 4,
+      "matches": 10,
+      "group": "rare-1-10",
+      "bits": 16,
+      "candidates": 11,
+      "factor": 1.1
+    },
+    {
+      "term": "9637",
+      "width": 4,
+      "matches": 10,
+      "group": "rare-1-10",
+      "bits": 16,
+      "candidates": 11,
+      "factor": 1.1
+    },
+    {
+      "term": "0612",
+      "width": 4,
+      "matches": 9,
+      "group": "rare-1-10",
+      "bits": 16,
+      "candidates": 11,
+      "factor": 1.2222222222222223
+    },
+    {
+      "term": "0092",
+      "width": 4,
+      "matches": 10,
+      "group": "rare-1-10",
+      "bits": 16,
+      "candidates": 12,
+      "factor": 1.2
+    },
+    {
+      "term": "99",
+      "width": 2,
+      "matches": 5485,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 5485,
+      "factor": 1
+    },
+    {
+      "term": "00",
+      "width": 2,
+      "matches": 5512,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 5512,
+      "factor": 1
+    },
+    {
+      "term": "07",
+      "width": 2,
+      "matches": 5730,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 5730,
+      "factor": 1
+    },
+    {
+      "term": "94",
+      "width": 2,
+      "matches": 5776,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 5776,
+      "factor": 1
+    },
+    {
+      "term": "02",
+      "width": 2,
+      "matches": 5827,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 5827,
+      "factor": 1
+    },
+    {
+      "term": "96",
+      "width": 2,
+      "matches": 5827,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 5827,
+      "factor": 1
+    },
+    {
+      "term": "03",
+      "width": 2,
+      "matches": 5831,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 5831,
+      "factor": 1
+    },
+    {
+      "term": "05",
+      "width": 2,
+      "matches": 5864,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 5864,
+      "factor": 1
+    },
+    {
+      "term": "92",
+      "width": 2,
+      "matches": 5871,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 5871,
+      "factor": 1
+    },
+    {
+      "term": "08",
+      "width": 2,
+      "matches": 5878,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 5878,
+      "factor": 1
+    },
+    {
+      "term": "98",
+      "width": 2,
+      "matches": 5879,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 5879,
+      "factor": 1
+    },
+    {
+      "term": "06",
+      "width": 2,
+      "matches": 5881,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 5881,
+      "factor": 1
+    },
+    {
+      "term": "97",
+      "width": 2,
+      "matches": 5883,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 5883,
+      "factor": 1
+    },
+    {
+      "term": "90",
+      "width": 2,
+      "matches": 5899,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 5899,
+      "factor": 1
+    },
+    {
+      "term": "93",
+      "width": 2,
+      "matches": 5902,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 5902,
+      "factor": 1
+    },
+    {
+      "term": "95",
+      "width": 2,
+      "matches": 5918,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 5918,
+      "factor": 1
+    },
+    {
+      "term": "09",
+      "width": 2,
+      "matches": 5933,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 5933,
+      "factor": 1
+    },
+    {
+      "term": "01",
+      "width": 2,
+      "matches": 5960,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 5960,
+      "factor": 1
+    },
+    {
+      "term": "91",
+      "width": 2,
+      "matches": 5969,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 5969,
+      "factor": 1
+    },
+    {
+      "term": "04",
+      "width": 2,
+      "matches": 6010,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 6010,
+      "factor": 1
+    },
+    {
+      "term": "77",
+      "width": 2,
+      "matches": 6643,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 6643,
+      "factor": 1
+    },
+    {
+      "term": "55",
+      "width": 2,
+      "matches": 6662,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 6662,
+      "factor": 1
+    },
+    {
+      "term": "44",
+      "width": 2,
+      "matches": 6669,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 6669,
+      "factor": 1
+    },
+    {
+      "term": "33",
+      "width": 2,
+      "matches": 6736,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 6736,
+      "factor": 1
+    },
+    {
+      "term": "11",
+      "width": 2,
+      "matches": 6739,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 6739,
+      "factor": 1
+    },
+    {
+      "term": "66",
+      "width": 2,
+      "matches": 6753,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 6753,
+      "factor": 1
+    },
+    {
+      "term": "88",
+      "width": 2,
+      "matches": 6772,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 6772,
+      "factor": 1
+    },
+    {
+      "term": "38",
+      "width": 2,
+      "matches": 6894,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 6894,
+      "factor": 1
+    },
+    {
+      "term": "22",
+      "width": 2,
+      "matches": 6904,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 6904,
+      "factor": 1
+    },
+    {
+      "term": "67",
+      "width": 2,
+      "matches": 6904,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 6904,
+      "factor": 1
+    },
+    {
+      "term": "53",
+      "width": 2,
+      "matches": 6905,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 6905,
+      "factor": 1
+    },
+    {
+      "term": "78",
+      "width": 2,
+      "matches": 6912,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 6912,
+      "factor": 1
+    },
+    {
+      "term": "17",
+      "width": 2,
+      "matches": 6931,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 12604,
+      "factor": 1.8184966094358679
+    },
+    {
+      "term": "50",
+      "width": 2,
+      "matches": 6942,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 13645,
+      "factor": 1.9655718813022183
+    },
+    {
+      "term": "64",
+      "width": 2,
+      "matches": 6948,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 6948,
+      "factor": 1
+    },
+    {
+      "term": "49",
+      "width": 2,
+      "matches": 6958,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 6958,
+      "factor": 1
+    },
+    {
+      "term": "79",
+      "width": 2,
+      "matches": 6965,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 6965,
+      "factor": 1
+    },
+    {
+      "term": "41",
+      "width": 2,
+      "matches": 6968,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 6968,
+      "factor": 1
+    },
+    {
+      "term": "10",
+      "width": 2,
+      "matches": 6980,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 6980,
+      "factor": 1
+    },
+    {
+      "term": "61",
+      "width": 2,
+      "matches": 7000,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 7000,
+      "factor": 1
+    },
+    {
+      "term": "74",
+      "width": 2,
+      "matches": 7002,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 7002,
+      "factor": 1
+    },
+    {
+      "term": "39",
+      "width": 2,
+      "matches": 7004,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 7004,
+      "factor": 1
+    },
+    {
+      "term": "63",
+      "width": 2,
+      "matches": 7011,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 7011,
+      "factor": 1
+    },
+    {
+      "term": "86",
+      "width": 2,
+      "matches": 7015,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 7015,
+      "factor": 1
+    },
+    {
+      "term": "26",
+      "width": 2,
+      "matches": 7020,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 7020,
+      "factor": 1
+    },
+    {
+      "term": "47",
+      "width": 2,
+      "matches": 7020,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 24875,
+      "factor": 3.5434472934472936
+    },
+    {
+      "term": "15",
+      "width": 2,
+      "matches": 7022,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 7022,
+      "factor": 1
+    },
+    {
+      "term": "69",
+      "width": 2,
+      "matches": 7029,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 7029,
+      "factor": 1
+    },
+    {
+      "term": "72",
+      "width": 2,
+      "matches": 7029,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 7029,
+      "factor": 1
+    },
+    {
+      "term": "62",
+      "width": 2,
+      "matches": 7031,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 7031,
+      "factor": 1
+    },
+    {
+      "term": "23",
+      "width": 2,
+      "matches": 7034,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 7034,
+      "factor": 1
+    },
+    {
+      "term": "32",
+      "width": 2,
+      "matches": 7036,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 13645,
+      "factor": 1.9393121091529277
+    },
+    {
+      "term": "82",
+      "width": 2,
+      "matches": 7037,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 7037,
+      "factor": 1
+    },
+    {
+      "term": "19",
+      "width": 2,
+      "matches": 7038,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 7038,
+      "factor": 1
+    },
+    {
+      "term": "21",
+      "width": 2,
+      "matches": 7039,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 7039,
+      "factor": 1
+    },
+    {
+      "term": "51",
+      "width": 2,
+      "matches": 7040,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 7040,
+      "factor": 1
+    },
+    {
+      "term": "30",
+      "width": 2,
+      "matches": 7050,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 7050,
+      "factor": 1
+    },
+    {
+      "term": "36",
+      "width": 2,
+      "matches": 7050,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 12254,
+      "factor": 1.7381560283687942
+    },
+    {
+      "term": "80",
+      "width": 2,
+      "matches": 7050,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 12366,
+      "factor": 1.7540425531914894
+    },
+    {
+      "term": "89",
+      "width": 2,
+      "matches": 7054,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 7054,
+      "factor": 1
+    },
+    {
+      "term": "25",
+      "width": 2,
+      "matches": 7056,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 7056,
+      "factor": 1
+    },
+    {
+      "term": "18",
+      "width": 2,
+      "matches": 7059,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 7059,
+      "factor": 1
+    },
+    {
+      "term": "35",
+      "width": 2,
+      "matches": 7059,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 7059,
+      "factor": 1
+    },
+    {
+      "term": "76",
+      "width": 2,
+      "matches": 7060,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 7060,
+      "factor": 1
+    },
+    {
+      "term": "28",
+      "width": 2,
+      "matches": 7064,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 7064,
+      "factor": 1
+    },
+    {
+      "term": "29",
+      "width": 2,
+      "matches": 7065,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 7065,
+      "factor": 1
+    },
+    {
+      "term": "70",
+      "width": 2,
+      "matches": 7067,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 7067,
+      "factor": 1
+    },
+    {
+      "term": "16",
+      "width": 2,
+      "matches": 7075,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 7075,
+      "factor": 1
+    },
+    {
+      "term": "58",
+      "width": 2,
+      "matches": 7079,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 7079,
+      "factor": 1
+    },
+    {
+      "term": "45",
+      "width": 2,
+      "matches": 7084,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 7084,
+      "factor": 1
+    },
+    {
+      "term": "54",
+      "width": 2,
+      "matches": 7084,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 7084,
+      "factor": 1
+    },
+    {
+      "term": "59",
+      "width": 2,
+      "matches": 7086,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 7086,
+      "factor": 1
+    },
+    {
+      "term": "73",
+      "width": 2,
+      "matches": 7086,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 7086,
+      "factor": 1
+    },
+    {
+      "term": "71",
+      "width": 2,
+      "matches": 7094,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 7094,
+      "factor": 1
+    },
+    {
+      "term": "12",
+      "width": 2,
+      "matches": 7101,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 7101,
+      "factor": 1
+    },
+    {
+      "term": "42",
+      "width": 2,
+      "matches": 7101,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 7101,
+      "factor": 1
+    },
+    {
+      "term": "81",
+      "width": 2,
+      "matches": 7105,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 7105,
+      "factor": 1
+    },
+    {
+      "term": "46",
+      "width": 2,
+      "matches": 7106,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 7106,
+      "factor": 1
+    },
+    {
+      "term": "40",
+      "width": 2,
+      "matches": 7110,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 7110,
+      "factor": 1
+    },
+    {
+      "term": "27",
+      "width": 2,
+      "matches": 7114,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 7114,
+      "factor": 1
+    },
+    {
+      "term": "87",
+      "width": 2,
+      "matches": 7114,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 7114,
+      "factor": 1
+    },
+    {
+      "term": "20",
+      "width": 2,
+      "matches": 7117,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 7117,
+      "factor": 1
+    },
+    {
+      "term": "65",
+      "width": 2,
+      "matches": 7117,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 7117,
+      "factor": 1
+    },
+    {
+      "term": "68",
+      "width": 2,
+      "matches": 7123,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 7123,
+      "factor": 1
+    },
+    {
+      "term": "85",
+      "width": 2,
+      "matches": 7127,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 7127,
+      "factor": 1
+    },
+    {
+      "term": "14",
+      "width": 2,
+      "matches": 7128,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 7128,
+      "factor": 1
+    },
+    {
+      "term": "75",
+      "width": 2,
+      "matches": 7133,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 7133,
+      "factor": 1
+    },
+    {
+      "term": "60",
+      "width": 2,
+      "matches": 7136,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 18966,
+      "factor": 2.6577914798206277
+    },
+    {
+      "term": "83",
+      "width": 2,
+      "matches": 7141,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 7141,
+      "factor": 1
+    },
+    {
+      "term": "31",
+      "width": 2,
+      "matches": 7144,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 7144,
+      "factor": 1
+    },
+    {
+      "term": "24",
+      "width": 2,
+      "matches": 7147,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 7147,
+      "factor": 1
+    },
+    {
+      "term": "56",
+      "width": 2,
+      "matches": 7150,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 7150,
+      "factor": 1
+    },
+    {
+      "term": "43",
+      "width": 2,
+      "matches": 7158,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 7158,
+      "factor": 1
+    },
+    {
+      "term": "52",
+      "width": 2,
+      "matches": 7160,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 7160,
+      "factor": 1
+    },
+    {
+      "term": "57",
+      "width": 2,
+      "matches": 7179,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 7179,
+      "factor": 1
+    },
+    {
+      "term": "34",
+      "width": 2,
+      "matches": 7182,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 7182,
+      "factor": 1
+    },
+    {
+      "term": "84",
+      "width": 2,
+      "matches": 7195,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 7195,
+      "factor": 1
+    },
+    {
+      "term": "37",
+      "width": 2,
+      "matches": 7257,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 7257,
+      "factor": 1
+    },
+    {
+      "term": "48",
+      "width": 2,
+      "matches": 7288,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 7288,
+      "factor": 1
+    },
+    {
+      "term": "13",
+      "width": 2,
+      "matches": 7300,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 7300,
+      "factor": 1
+    },
+    {
+      "term": "-7",
+      "width": 2,
+      "matches": 18820,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 18820,
+      "factor": 1
+    },
+    {
+      "term": "7-",
+      "width": 2,
+      "matches": 18826,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 18826,
+      "factor": 1
+    },
+    {
+      "term": "2-",
+      "width": 2,
+      "matches": 18903,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 18903,
+      "factor": 1
+    },
+    {
+      "term": "0-",
+      "width": 2,
+      "matches": 18914,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 18914,
+      "factor": 1
+    },
+    {
+      "term": "8-",
+      "width": 2,
+      "matches": 18914,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 18914,
+      "factor": 1
+    },
+    {
+      "term": "-6",
+      "width": 2,
+      "matches": 18925,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 18925,
+      "factor": 1
+    },
+    {
+      "term": "-0",
+      "width": 2,
+      "matches": 18939,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 18939,
+      "factor": 1
+    },
+    {
+      "term": "9-",
+      "width": 2,
+      "matches": 18943,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 18943,
+      "factor": 1
+    },
+    {
+      "term": "-1",
+      "width": 2,
+      "matches": 18957,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 18957,
+      "factor": 1
+    },
+    {
+      "term": "-5",
+      "width": 2,
+      "matches": 18998,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 18998,
+      "factor": 1
+    },
+    {
+      "term": "1-",
+      "width": 2,
+      "matches": 19029,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 19029,
+      "factor": 1
+    },
+    {
+      "term": "-4",
+      "width": 2,
+      "matches": 19032,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 19032,
+      "factor": 1
+    },
+    {
+      "term": "4-",
+      "width": 2,
+      "matches": 19040,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 19040,
+      "factor": 1
+    },
+    {
+      "term": "6-",
+      "width": 2,
+      "matches": 19059,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 19059,
+      "factor": 1
+    },
+    {
+      "term": "-8",
+      "width": 2,
+      "matches": 19090,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 19090,
+      "factor": 1
+    },
+    {
+      "term": "-2",
+      "width": 2,
+      "matches": 19110,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 19110,
+      "factor": 1
+    },
+    {
+      "term": "-9",
+      "width": 2,
+      "matches": 19126,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 19126,
+      "factor": 1
+    },
+    {
+      "term": "-3",
+      "width": 2,
+      "matches": 19133,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 19133,
+      "factor": 1
+    },
+    {
+      "term": "3-",
+      "width": 2,
+      "matches": 19151,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 19151,
+      "factor": 1
+    },
+    {
+      "term": "5-",
+      "width": 2,
+      "matches": 19155,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 19155,
+      "factor": 1
+    },
+    {
+      "term": "738",
+      "width": 3,
+      "matches": 340,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 345,
+      "factor": 1.0147058823529411
+    },
+    {
+      "term": "002",
+      "width": 3,
+      "matches": 346,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 366,
+      "factor": 1.0578034682080926
+    },
+    {
+      "term": "496",
+      "width": 3,
+      "matches": 346,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 350,
+      "factor": 1.0115606936416186
+    },
+    {
+      "term": "502",
+      "width": 3,
+      "matches": 346,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 361,
+      "factor": 1.0433526011560694
+    },
+    {
+      "term": "555",
+      "width": 3,
+      "matches": 347,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 1188,
+      "factor": 3.4236311239193085
+    },
+    {
+      "term": "742",
+      "width": 3,
+      "matches": 347,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 353,
+      "factor": 1.0172910662824208
+    },
+    {
+      "term": "799",
+      "width": 3,
+      "matches": 347,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 367,
+      "factor": 1.057636887608069
+    },
+    {
+      "term": "092",
+      "width": 3,
+      "matches": 348,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 352,
+      "factor": 1.0114942528735633
+    },
+    {
+      "term": "081",
+      "width": 3,
+      "matches": 349,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 356,
+      "factor": 1.0200573065902578
+    },
+    {
+      "term": "649",
+      "width": 3,
+      "matches": 350,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 359,
+      "factor": 1.0257142857142858
+    },
+    {
+      "term": "268",
+      "width": 3,
+      "matches": 351,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 359,
+      "factor": 1.0227920227920229
+    },
+    {
+      "term": "546",
+      "width": 3,
+      "matches": 351,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 354,
+      "factor": 1.0085470085470085
+    },
+    {
+      "term": "508",
+      "width": 3,
+      "matches": 352,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 360,
+      "factor": 1.0227272727272727
+    },
+    {
+      "term": "583",
+      "width": 3,
+      "matches": 352,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 364,
+      "factor": 1.0340909090909092
+    },
+    {
+      "term": "638",
+      "width": 3,
+      "matches": 352,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 356,
+      "factor": 1.0113636363636365
+    },
+    {
+      "term": "049",
+      "width": 3,
+      "matches": 354,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 358,
+      "factor": 1.0112994350282485
+    },
+    {
+      "term": "238",
+      "width": 3,
+      "matches": 355,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 360,
+      "factor": 1.0140845070422535
+    },
+    {
+      "term": "450",
+      "width": 3,
+      "matches": 355,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 361,
+      "factor": 1.0169014084507042
+    },
+    {
+      "term": "755",
+      "width": 3,
+      "matches": 355,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 387,
+      "factor": 1.0901408450704226
+    },
+    {
+      "term": "692",
+      "width": 3,
+      "matches": 357,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 379,
+      "factor": 1.061624649859944
+    },
+    {
+      "term": "943",
+      "width": 3,
+      "matches": 357,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 360,
+      "factor": 1.0084033613445378
+    },
+    {
+      "term": "410",
+      "width": 3,
+      "matches": 359,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 363,
+      "factor": 1.011142061281337
+    },
+    {
+      "term": "778",
+      "width": 3,
+      "matches": 359,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 395,
+      "factor": 1.1002785515320335
+    },
+    {
+      "term": "784",
+      "width": 3,
+      "matches": 359,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 364,
+      "factor": 1.0139275766016713
+    },
+    {
+      "term": "827",
+      "width": 3,
+      "matches": 359,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 368,
+      "factor": 1.0250696378830084
+    },
+    {
+      "term": "899",
+      "width": 3,
+      "matches": 359,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 389,
+      "factor": 1.083565459610028
+    },
+    {
+      "term": "940",
+      "width": 3,
+      "matches": 359,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 365,
+      "factor": 1.0167130919220055
+    },
+    {
+      "term": "038",
+      "width": 3,
+      "matches": 360,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 368,
+      "factor": 1.0222222222222221
+    },
+    {
+      "term": "106",
+      "width": 3,
+      "matches": 360,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 365,
+      "factor": 1.0138888888888888
+    },
+    {
+      "term": "159",
+      "width": 3,
+      "matches": 360,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 364,
+      "factor": 1.011111111111111
+    },
+    {
+      "term": "477",
+      "width": 3,
+      "matches": 360,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 452,
+      "factor": 1.2555555555555555
+    },
+    {
+      "term": "539",
+      "width": 3,
+      "matches": 360,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 366,
+      "factor": 1.0166666666666666
+    },
+    {
+      "term": "027",
+      "width": 3,
+      "matches": 361,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 367,
+      "factor": 1.0166204986149585
+    },
+    {
+      "term": "211",
+      "width": 3,
+      "matches": 361,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 391,
+      "factor": 1.0831024930747923
+    },
+    {
+      "term": "594",
+      "width": 3,
+      "matches": 361,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 365,
+      "factor": 1.0110803324099722
+    },
+    {
+      "term": "777",
+      "width": 3,
+      "matches": 361,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 1155,
+      "factor": 3.1994459833795013
+    },
+    {
+      "term": "910",
+      "width": 3,
+      "matches": 361,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 363,
+      "factor": 1.005540166204986
+    },
+    {
+      "term": "197",
+      "width": 3,
+      "matches": 362,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 369,
+      "factor": 1.0193370165745856
+    },
+    {
+      "term": "276",
+      "width": 3,
+      "matches": 362,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 365,
+      "factor": 1.0082872928176796
+    },
+    {
+      "term": "282",
+      "width": 3,
+      "matches": 362,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 411,
+      "factor": 1.1353591160220995
+    },
+    {
+      "term": "380",
+      "width": 3,
+      "matches": 362,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 369,
+      "factor": 1.0193370165745856
+    },
+    {
+      "term": "641",
+      "width": 3,
+      "matches": 362,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 368,
+      "factor": 1.0165745856353592
+    },
+    {
+      "term": "960",
+      "width": 3,
+      "matches": 362,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 393,
+      "factor": 1.0856353591160222
+    },
+    {
+      "term": "071",
+      "width": 3,
+      "matches": 363,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 364,
+      "factor": 1.002754820936639
+    },
+    {
+      "term": "386",
+      "width": 3,
+      "matches": 363,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 367,
+      "factor": 1.0110192837465564
+    },
+    {
+      "term": "810",
+      "width": 3,
+      "matches": 363,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 366,
+      "factor": 1.0082644628099173
+    },
+    {
+      "term": "111",
+      "width": 3,
+      "matches": 364,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 1185,
+      "factor": 3.2554945054945055
+    },
+    {
+      "term": "298",
+      "width": 3,
+      "matches": 364,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 368,
+      "factor": 1.010989010989011
+    },
+    {
+      "term": "444",
+      "width": 3,
+      "matches": 364,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 1151,
+      "factor": 3.162087912087912
+    },
+    {
+      "term": "999",
+      "width": 3,
+      "matches": 364,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 1032,
+      "factor": 2.8351648351648353
+    },
+    {
+      "term": "307",
+      "width": 3,
+      "matches": 365,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 368,
+      "factor": 1.0082191780821919
+    },
+    {
+      "term": "554",
+      "width": 3,
+      "matches": 365,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 405,
+      "factor": 1.1095890410958904
+    },
+    {
+      "term": "992",
+      "width": 3,
+      "matches": 365,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 383,
+      "factor": 1.0493150684931507
+    },
+    {
+      "term": "030",
+      "width": 3,
+      "matches": 366,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 413,
+      "factor": 1.1284153005464481
+    },
+    {
+      "term": "082",
+      "width": 3,
+      "matches": 366,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 368,
+      "factor": 1.005464480874317
+    },
+    {
+      "term": "230",
+      "width": 3,
+      "matches": 366,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 372,
+      "factor": 1.0163934426229508
+    },
+    {
+      "term": "511",
+      "width": 3,
+      "matches": 366,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 404,
+      "factor": 1.1038251366120218
+    },
+    {
+      "term": "724",
+      "width": 3,
+      "matches": 366,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 378,
+      "factor": 1.0327868852459017
+    },
+    {
+      "term": "932",
+      "width": 3,
+      "matches": 366,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 369,
+      "factor": 1.0081967213114753
+    },
+    {
+      "term": "449",
+      "width": 3,
+      "matches": 367,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 404,
+      "factor": 1.1008174386920981
+    },
+    {
+      "term": "062",
+      "width": 3,
+      "matches": 368,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 370,
+      "factor": 1.0054347826086956
+    },
+    {
+      "term": "145",
+      "width": 3,
+      "matches": 368,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 372,
+      "factor": 1.0108695652173914
+    },
+    {
+      "term": "263",
+      "width": 3,
+      "matches": 368,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 376,
+      "factor": 1.0217391304347827
+    },
+    {
+      "term": "364",
+      "width": 3,
+      "matches": 368,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 395,
+      "factor": 1.0733695652173914
+    },
+    {
+      "term": "390",
+      "width": 3,
+      "matches": 368,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 370,
+      "factor": 1.0054347826086956
+    },
+    {
+      "term": "461",
+      "width": 3,
+      "matches": 368,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 374,
+      "factor": 1.016304347826087
+    },
+    {
+      "term": "764",
+      "width": 3,
+      "matches": 368,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 374,
+      "factor": 1.016304347826087
+    },
+    {
+      "term": "103",
+      "width": 3,
+      "matches": 369,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 371,
+      "factor": 1.005420054200542
+    },
+    {
+      "term": "161",
+      "width": 3,
+      "matches": 369,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 427,
+      "factor": 1.1571815718157181
+    },
+    {
+      "term": "538",
+      "width": 3,
+      "matches": 369,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 375,
+      "factor": 1.016260162601626
+    },
+    {
+      "term": "577",
+      "width": 3,
+      "matches": 369,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 405,
+      "factor": 1.0975609756097562
+    },
+    {
+      "term": "653",
+      "width": 3,
+      "matches": 369,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 373,
+      "factor": 1.010840108401084
+    },
+    {
+      "term": "662",
+      "width": 3,
+      "matches": 369,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 420,
+      "factor": 1.1382113821138211
+    },
+    {
+      "term": "947",
+      "width": 3,
+      "matches": 369,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 395,
+      "factor": 1.070460704607046
+    },
+    {
+      "term": "065",
+      "width": 3,
+      "matches": 370,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 375,
+      "factor": 1.0135135135135136
+    },
+    {
+      "term": "073",
+      "width": 3,
+      "matches": 370,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 375,
+      "factor": 1.0135135135135136
+    },
+    {
+      "term": "078",
+      "width": 3,
+      "matches": 370,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 376,
+      "factor": 1.0162162162162163
+    },
+    {
+      "term": "105",
+      "width": 3,
+      "matches": 370,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 373,
+      "factor": 1.008108108108108
+    },
+    {
+      "term": "135",
+      "width": 3,
+      "matches": 370,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 374,
+      "factor": 1.0108108108108107
+    },
+    {
+      "term": "140",
+      "width": 3,
+      "matches": 370,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 377,
+      "factor": 1.018918918918919
+    },
+    {
+      "term": "407",
+      "width": 3,
+      "matches": 370,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 379,
+      "factor": 1.0243243243243243
+    },
+    {
+      "term": "495",
+      "width": 3,
+      "matches": 370,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 378,
+      "factor": 1.0216216216216216
+    },
+    {
+      "term": "708",
+      "width": 3,
+      "matches": 370,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 375,
+      "factor": 1.0135135135135136
+    },
+    {
+      "term": "720",
+      "width": 3,
+      "matches": 370,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 372,
+      "factor": 1.0054054054054054
+    },
+    {
+      "term": "787",
+      "width": 3,
+      "matches": 370,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 417,
+      "factor": 1.127027027027027
+    },
+    {
+      "term": "841",
+      "width": 3,
+      "matches": 370,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 376,
+      "factor": 1.0162162162162163
+    },
+    {
+      "term": "261",
+      "width": 3,
+      "matches": 371,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 373,
+      "factor": 1.005390835579515
+    },
+    {
+      "term": "271",
+      "width": 3,
+      "matches": 371,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 377,
+      "factor": 1.0161725067385445
+    },
+    {
+      "term": "598",
+      "width": 3,
+      "matches": 371,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 374,
+      "factor": 1.0080862533692723
+    },
+    {
+      "term": "673",
+      "width": 3,
+      "matches": 371,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 376,
+      "factor": 1.013477088948787
+    },
+    {
+      "term": "415",
+      "width": 3,
+      "matches": 372,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 381,
+      "factor": 1.0241935483870968
+    },
+    {
+      "term": "439",
+      "width": 3,
+      "matches": 372,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 379,
+      "factor": 1.0188172043010753
+    },
+    {
+      "term": "471",
+      "width": 3,
+      "matches": 372,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 404,
+      "factor": 1.086021505376344
+    },
+    {
+      "term": "607",
+      "width": 3,
+      "matches": 372,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 402,
+      "factor": 1.0806451612903225
+    },
+    {
+      "term": "621",
+      "width": 3,
+      "matches": 372,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 374,
+      "factor": 1.0053763440860215
+    },
+    {
+      "term": "629",
+      "width": 3,
+      "matches": 372,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 378,
+      "factor": 1.0161290322580645
+    },
+    {
+      "term": "672",
+      "width": 3,
+      "matches": 372,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 408,
+      "factor": 1.096774193548387
+    },
+    {
+      "term": "785",
+      "width": 3,
+      "matches": 372,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 381,
+      "factor": 1.0241935483870968
+    },
+    {
+      "term": "793",
+      "width": 3,
+      "matches": 372,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 377,
+      "factor": 1.0134408602150538
+    },
+    {
+      "term": "929",
+      "width": 3,
+      "matches": 372,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 419,
+      "factor": 1.1263440860215055
+    },
+    {
+      "term": "985",
+      "width": 3,
+      "matches": 372,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 375,
+      "factor": 1.0080645161290323
+    },
+    {
+      "term": "277",
+      "width": 3,
+      "matches": 373,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 410,
+      "factor": 1.0991957104557641
+    },
+    {
+      "term": "303",
+      "width": 3,
+      "matches": 373,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 409,
+      "factor": 1.096514745308311
+    },
+    {
+      "term": "332",
+      "width": 3,
+      "matches": 373,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 423,
+      "factor": 1.1340482573726542
+    },
+    {
+      "term": "341",
+      "width": 3,
+      "matches": 373,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 381,
+      "factor": 1.0214477211796247
+    },
+    {
+      "term": "366",
+      "width": 3,
+      "matches": 373,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 481,
+      "factor": 1.289544235924933
+    },
+    {
+      "term": "475",
+      "width": 3,
+      "matches": 373,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 458,
+      "factor": 1.227882037533512
+    },
+    {
+      "term": "768",
+      "width": 3,
+      "matches": 373,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 385,
+      "factor": 1.032171581769437
+    },
+    {
+      "term": "499",
+      "width": 3,
+      "matches": 374,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 388,
+      "factor": 1.0374331550802138
+    },
+    {
+      "term": "866",
+      "width": 3,
+      "matches": 374,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 400,
+      "factor": 1.0695187165775402
+    },
+    {
+      "term": "874",
+      "width": 3,
+      "matches": 374,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 379,
+      "factor": 1.0133689839572193
+    },
+    {
+      "term": "878",
+      "width": 3,
+      "matches": 374,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 423,
+      "factor": 1.1310160427807487
+    },
+    {
+      "term": "158",
+      "width": 3,
+      "matches": 375,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 380,
+      "factor": 1.0133333333333334
+    },
+    {
+      "term": "212",
+      "width": 3,
+      "matches": 375,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 427,
+      "factor": 1.1386666666666667
+    },
+    {
+      "term": "311",
+      "width": 3,
+      "matches": 375,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 405,
+      "factor": 1.08
+    },
+    {
+      "term": "374",
+      "width": 3,
+      "matches": 375,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 381,
+      "factor": 1.016
+    },
+    {
+      "term": "676",
+      "width": 3,
+      "matches": 375,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 717,
+      "factor": 1.912
+    },
+    {
+      "term": "876",
+      "width": 3,
+      "matches": 375,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 379,
+      "factor": 1.0106666666666666
+    },
+    {
+      "term": "072",
+      "width": 3,
+      "matches": 376,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 384,
+      "factor": 1.0212765957446808
+    },
+    {
+      "term": "173",
+      "width": 3,
+      "matches": 376,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 406,
+      "factor": 1.0797872340425532
+    },
+    {
+      "term": "188",
+      "width": 3,
+      "matches": 376,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 423,
+      "factor": 1.125
+    },
+    {
+      "term": "207",
+      "width": 3,
+      "matches": 376,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 383,
+      "factor": 1.0186170212765957
+    },
+    {
+      "term": "249",
+      "width": 3,
+      "matches": 376,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 380,
+      "factor": 1.0106382978723405
+    },
+    {
+      "term": "329",
+      "width": 3,
+      "matches": 376,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 384,
+      "factor": 1.0212765957446808
+    },
+    {
+      "term": "544",
+      "width": 3,
+      "matches": 376,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 412,
+      "factor": 1.0957446808510638
+    },
+    {
+      "term": "612",
+      "width": 3,
+      "matches": 376,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 405,
+      "factor": 1.077127659574468
+    },
+    {
+      "term": "613",
+      "width": 3,
+      "matches": 376,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 381,
+      "factor": 1.0132978723404256
+    },
+    {
+      "term": "614",
+      "width": 3,
+      "matches": 376,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 382,
+      "factor": 1.0159574468085106
+    },
+    {
+      "term": "737",
+      "width": 3,
+      "matches": 376,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 439,
+      "factor": 1.1675531914893618
+    },
+    {
+      "term": "769",
+      "width": 3,
+      "matches": 376,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 381,
+      "factor": 1.0132978723404256
+    },
+    {
+      "term": "079",
+      "width": 3,
+      "matches": 377,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 382,
+      "factor": 1.013262599469496
+    },
+    {
+      "term": "156",
+      "width": 3,
+      "matches": 377,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 384,
+      "factor": 1.0185676392572944
+    },
+    {
+      "term": "210",
+      "width": 3,
+      "matches": 377,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 383,
+      "factor": 1.0159151193633953
+    },
+    {
+      "term": "253",
+      "width": 3,
+      "matches": 377,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 384,
+      "factor": 1.0185676392572944
+    },
+    {
+      "term": "325",
+      "width": 3,
+      "matches": 377,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 447,
+      "factor": 1.1856763925729443
+    },
+    {
+      "term": "358",
+      "width": 3,
+      "matches": 377,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 381,
+      "factor": 1.0106100795755968
+    },
+    {
+      "term": "678",
+      "width": 3,
+      "matches": 377,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 384,
+      "factor": 1.0185676392572944
+    },
+    {
+      "term": "745",
+      "width": 3,
+      "matches": 377,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 383,
+      "factor": 1.0159151193633953
+    },
+    {
+      "term": "786",
+      "width": 3,
+      "matches": 377,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 383,
+      "factor": 1.0159151193633953
+    },
+    {
+      "term": "794",
+      "width": 3,
+      "matches": 377,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 379,
+      "factor": 1.0053050397877985
+    },
+    {
+      "term": "839",
+      "width": 3,
+      "matches": 377,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 383,
+      "factor": 1.0159151193633953
+    },
+    {
+      "term": "930",
+      "width": 3,
+      "matches": 377,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 380,
+      "factor": 1.0079575596816976
+    },
+    {
+      "term": "164",
+      "width": 3,
+      "matches": 378,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 385,
+      "factor": 1.0185185185185186
+    },
+    {
+      "term": "235",
+      "width": 3,
+      "matches": 378,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 385,
+      "factor": 1.0185185185185186
+    },
+    {
+      "term": "247",
+      "width": 3,
+      "matches": 378,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 420,
+      "factor": 1.1111111111111112
+    },
+    {
+      "term": "526",
+      "width": 3,
+      "matches": 378,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 383,
+      "factor": 1.0132275132275133
+    },
+    {
+      "term": "528",
+      "width": 3,
+      "matches": 378,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 383,
+      "factor": 1.0132275132275133
+    },
+    {
+      "term": "550",
+      "width": 3,
+      "matches": 378,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 444,
+      "factor": 1.1746031746031746
+    },
+    {
+      "term": "620",
+      "width": 3,
+      "matches": 378,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 401,
+      "factor": 1.060846560846561
+    },
+    {
+      "term": "814",
+      "width": 3,
+      "matches": 378,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 386,
+      "factor": 1.0211640211640212
+    },
+    {
+      "term": "905",
+      "width": 3,
+      "matches": 378,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 379,
+      "factor": 1.0026455026455026
+    },
+    {
+      "term": "917",
+      "width": 3,
+      "matches": 378,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 386,
+      "factor": 1.0211640211640212
+    },
+    {
+      "term": "036",
+      "width": 3,
+      "matches": 379,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 394,
+      "factor": 1.0395778364116095
+    },
+    {
+      "term": "069",
+      "width": 3,
+      "matches": 379,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 387,
+      "factor": 1.0211081794195251
+    },
+    {
+      "term": "150",
+      "width": 3,
+      "matches": 379,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 391,
+      "factor": 1.0316622691292876
+    },
+    {
+      "term": "334",
+      "width": 3,
+      "matches": 379,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 412,
+      "factor": 1.087071240105541
+    },
+    {
+      "term": "387",
+      "width": 3,
+      "matches": 379,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 382,
+      "factor": 1.007915567282322
+    },
+    {
+      "term": "412",
+      "width": 3,
+      "matches": 379,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 386,
+      "factor": 1.0184696569920844
+    },
+    {
+      "term": "463",
+      "width": 3,
+      "matches": 379,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 386,
+      "factor": 1.0184696569920844
+    },
+    {
+      "term": "478",
+      "width": 3,
+      "matches": 379,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 411,
+      "factor": 1.0844327176781003
+    },
+    {
+      "term": "541",
+      "width": 3,
+      "matches": 379,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 385,
+      "factor": 1.0158311345646438
+    },
+    {
+      "term": "618",
+      "width": 3,
+      "matches": 379,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 384,
+      "factor": 1.0131926121372032
+    },
+    {
+      "term": "667",
+      "width": 3,
+      "matches": 379,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 407,
+      "factor": 1.0738786279683377
+    },
+    {
+      "term": "868",
+      "width": 3,
+      "matches": 379,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 437,
+      "factor": 1.1530343007915567
+    },
+    {
+      "term": "000",
+      "width": 3,
+      "matches": 380,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 1042,
+      "factor": 2.7421052631578946
+    },
+    {
+      "term": "165",
+      "width": 3,
+      "matches": 380,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 387,
+      "factor": 1.018421052631579
+    },
+    {
+      "term": "351",
+      "width": 3,
+      "matches": 380,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 384,
+      "factor": 1.0105263157894737
+    },
+    {
+      "term": "389",
+      "width": 3,
+      "matches": 380,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 386,
+      "factor": 1.0157894736842106
+    },
+    {
+      "term": "404",
+      "width": 3,
+      "matches": 380,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 421,
+      "factor": 1.1078947368421053
+    },
+    {
+      "term": "428",
+      "width": 3,
+      "matches": 380,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 391,
+      "factor": 1.0289473684210526
+    },
+    {
+      "term": "532",
+      "width": 3,
+      "matches": 380,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 399,
+      "factor": 1.05
+    },
+    {
+      "term": "817",
+      "width": 3,
+      "matches": 380,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 393,
+      "factor": 1.0342105263157895
+    },
+    {
+      "term": "023",
+      "width": 3,
+      "matches": 381,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 384,
+      "factor": 1.0078740157480315
+    },
+    {
+      "term": "051",
+      "width": 3,
+      "matches": 381,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 385,
+      "factor": 1.010498687664042
+    },
+    {
+      "term": "117",
+      "width": 3,
+      "matches": 381,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 421,
+      "factor": 1.10498687664042
+    },
+    {
+      "term": "171",
+      "width": 3,
+      "matches": 381,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 455,
+      "factor": 1.194225721784777
+    },
+    {
+      "term": "297",
+      "width": 3,
+      "matches": 381,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 386,
+      "factor": 1.0131233595800524
+    },
+    {
+      "term": "435",
+      "width": 3,
+      "matches": 381,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 384,
+      "factor": 1.0078740157480315
+    },
+    {
+      "term": "695",
+      "width": 3,
+      "matches": 381,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 386,
+      "factor": 1.0131233595800524
+    },
+    {
+      "term": "717",
+      "width": 3,
+      "matches": 381,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 447,
+      "factor": 1.1732283464566928
+    },
+    {
+      "term": "727",
+      "width": 3,
+      "matches": 381,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 430,
+      "factor": 1.1286089238845145
+    },
+    {
+      "term": "896",
+      "width": 3,
+      "matches": 381,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 385,
+      "factor": 1.010498687664042
+    },
+    {
+      "term": "898",
+      "width": 3,
+      "matches": 381,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 412,
+      "factor": 1.0813648293963254
+    },
+    {
+      "term": "937",
+      "width": 3,
+      "matches": 381,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 387,
+      "factor": 1.015748031496063
+    },
+    {
+      "term": "942",
+      "width": 3,
+      "matches": 381,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 384,
+      "factor": 1.0078740157480315
+    },
+    {
+      "term": "958",
+      "width": 3,
+      "matches": 381,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 384,
+      "factor": 1.0078740157480315
+    },
+    {
+      "term": "409",
+      "width": 3,
+      "matches": 382,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 388,
+      "factor": 1.0157068062827226
+    },
+    {
+      "term": "451",
+      "width": 3,
+      "matches": 382,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 386,
+      "factor": 1.0104712041884816
+    },
+    {
+      "term": "454",
+      "width": 3,
+      "matches": 382,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 435,
+      "factor": 1.138743455497382
+    },
+    {
+      "term": "490",
+      "width": 3,
+      "matches": 382,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 386,
+      "factor": 1.0104712041884816
+    },
+    {
+      "term": "543",
+      "width": 3,
+      "matches": 382,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 388,
+      "factor": 1.0157068062827226
+    },
+    {
+      "term": "651",
+      "width": 3,
+      "matches": 382,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 389,
+      "factor": 1.0183246073298429
+    },
+    {
+      "term": "894",
+      "width": 3,
+      "matches": 382,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 389,
+      "factor": 1.0183246073298429
+    },
+    {
+      "term": "978",
+      "width": 3,
+      "matches": 382,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 387,
+      "factor": 1.013089005235602
+    },
+    {
+      "term": "016",
+      "width": 3,
+      "matches": 383,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 385,
+      "factor": 1.0052219321148825
+    },
+    {
+      "term": "058",
+      "width": 3,
+      "matches": 383,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 389,
+      "factor": 1.0156657963446476
+    },
+    {
+      "term": "059",
+      "width": 3,
+      "matches": 383,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 392,
+      "factor": 1.0234986945169713
+    },
+    {
+      "term": "109",
+      "width": 3,
+      "matches": 383,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 387,
+      "factor": 1.010443864229765
+    },
+    {
+      "term": "167",
+      "width": 3,
+      "matches": 383,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 387,
+      "factor": 1.010443864229765
+    },
+    {
+      "term": "206",
+      "width": 3,
+      "matches": 383,
+      "group": "lowest-frequency-control",
+      "bits": 12,
+      "candidates": 387,
+      "factor": 1.010443864229765
+    },
+    {
+      "term": "0020",
+      "width": 4,
+      "matches": 9,
+      "group": "rare-1-10",
+      "bits": 12,
+      "candidates": 15,
+      "factor": 1.6666666666666667
+    },
+    {
+      "term": "1583",
+      "width": 4,
+      "matches": 10,
+      "group": "rare-1-10",
+      "bits": 12,
+      "candidates": 10,
+      "factor": 1
+    },
+    {
+      "term": "2101",
+      "width": 4,
+      "matches": 9,
+      "group": "rare-1-10",
+      "bits": 12,
+      "candidates": 10,
+      "factor": 1.1111111111111112
+    },
+    {
+      "term": "3764",
+      "width": 4,
+      "matches": 9,
+      "group": "rare-1-10",
+      "bits": 12,
+      "candidates": 10,
+      "factor": 1.1111111111111112
+    },
+    {
+      "term": "8174",
+      "width": 4,
+      "matches": 10,
+      "group": "rare-1-10",
+      "bits": 12,
+      "candidates": 11,
+      "factor": 1.1
+    },
+    {
+      "term": "4755",
+      "width": 4,
+      "matches": 10,
+      "group": "rare-1-10",
+      "bits": 12,
+      "candidates": 21,
+      "factor": 2.1
+    },
+    {
+      "term": "3470",
+      "width": 4,
+      "matches": 9,
+      "group": "rare-1-10",
+      "bits": 12,
+      "candidates": 10,
+      "factor": 1.1111111111111112
+    },
+    {
+      "term": "0271",
+      "width": 4,
+      "matches": 10,
+      "group": "rare-1-10",
+      "bits": 12,
+      "candidates": 10,
+      "factor": 1
+    },
+    {
+      "term": "7694",
+      "width": 4,
+      "matches": 10,
+      "group": "rare-1-10",
+      "bits": 12,
+      "candidates": 11,
+      "factor": 1.1
+    },
+    {
+      "term": "0621",
+      "width": 4,
+      "matches": 9,
+      "group": "rare-1-10",
+      "bits": 12,
+      "candidates": 10,
+      "factor": 1.1111111111111112
+    },
+    {
+      "term": "4770",
+      "width": 4,
+      "matches": 7,
+      "group": "rare-1-10",
+      "bits": 12,
+      "candidates": 16,
+      "factor": 2.2857142857142856
+    },
+    {
+      "term": "0494",
+      "width": 4,
+      "matches": 9,
+      "group": "rare-1-10",
+      "bits": 12,
+      "candidates": 13,
+      "factor": 1.4444444444444444
+    },
+    {
+      "term": "1501",
+      "width": 4,
+      "matches": 9,
+      "group": "rare-1-10",
+      "bits": 12,
+      "candidates": 9,
+      "factor": 1
+    },
+    {
+      "term": "7428",
+      "width": 4,
+      "matches": 8,
+      "group": "rare-1-10",
+      "bits": 12,
+      "candidates": 9,
+      "factor": 1.125
+    },
+    {
+      "term": "1986",
+      "width": 4,
+      "matches": 10,
+      "group": "rare-1-10",
+      "bits": 12,
+      "candidates": 12,
+      "factor": 1.2
+    },
+    {
+      "term": "4175",
+      "width": 4,
+      "matches": 10,
+      "group": "rare-1-10",
+      "bits": 12,
+      "candidates": 11,
+      "factor": 1.1
+    },
+    {
+      "term": "6030",
+      "width": 4,
+      "matches": 10,
+      "group": "rare-1-10",
+      "bits": 12,
+      "candidates": 12,
+      "factor": 1.2
+    },
+    {
+      "term": "0846",
+      "width": 4,
+      "matches": 10,
+      "group": "rare-1-10",
+      "bits": 12,
+      "candidates": 12,
+      "factor": 1.2
+    },
+    {
+      "term": "6249",
+      "width": 4,
+      "matches": 9,
+      "group": "rare-1-10",
+      "bits": 12,
+      "candidates": 10,
+      "factor": 1.1111111111111112
+    },
+    {
+      "term": "9301",
+      "width": 4,
+      "matches": 8,
+      "group": "rare-1-10",
+      "bits": 12,
+      "candidates": 8,
+      "factor": 1
+    },
+    {
+      "term": "1405",
+      "width": 4,
+      "matches": 9,
+      "group": "rare-1-10",
+      "bits": 12,
+      "candidates": 9,
+      "factor": 1
+    },
+    {
+      "term": "6254",
+      "width": 4,
+      "matches": 10,
+      "group": "rare-1-10",
+      "bits": 12,
+      "candidates": 10,
+      "factor": 1
+    },
+    {
+      "term": "9274",
+      "width": 4,
+      "matches": 10,
+      "group": "rare-1-10",
+      "bits": 12,
+      "candidates": 11,
+      "factor": 1.1
+    },
+    {
+      "term": "6913",
+      "width": 4,
+      "matches": 8,
+      "group": "rare-1-10",
+      "bits": 12,
+      "candidates": 10,
+      "factor": 1.25
+    },
+    {
+      "term": "2762",
+      "width": 4,
+      "matches": 9,
+      "group": "rare-1-10",
+      "bits": 12,
+      "candidates": 12,
+      "factor": 1.3333333333333333
+    },
+    {
+      "term": "8732",
+      "width": 4,
+      "matches": 10,
+      "group": "rare-1-10",
+      "bits": 12,
+      "candidates": 11,
+      "factor": 1.1
+    },
+    {
+      "term": "2344",
+      "width": 4,
+      "matches": 9,
+      "group": "rare-1-10",
+      "bits": 12,
+      "candidates": 11,
+      "factor": 1.2222222222222223
+    },
+    {
+      "term": "5380",
+      "width": 4,
+      "matches": 9,
+      "group": "rare-1-10",
+      "bits": 12,
+      "candidates": 9,
+      "factor": 1
+    },
+    {
+      "term": "9435",
+      "width": 4,
+      "matches": 10,
+      "group": "rare-1-10",
+      "bits": 12,
+      "candidates": 11,
+      "factor": 1.1
+    },
+    {
+      "term": "6750",
+      "width": 4,
+      "matches": 10,
+      "group": "rare-1-10",
+      "bits": 12,
+      "candidates": 10,
+      "factor": 1
+    },
+    {
+      "term": "9505",
+      "width": 4,
+      "matches": 10,
+      "group": "rare-1-10",
+      "bits": 12,
+      "candidates": 12,
+      "factor": 1.2
+    },
+    {
+      "term": "5502",
+      "width": 4,
+      "matches": 7,
+      "group": "rare-1-10",
+      "bits": 12,
+      "candidates": 8,
+      "factor": 1.1428571428571428
+    },
+    {
+      "term": "5639",
+      "width": 4,
+      "matches": 10,
+      "group": "rare-1-10",
+      "bits": 12,
+      "candidates": 14,
+      "factor": 1.4
+    },
+    {
+      "term": "7828",
+      "width": 4,
+      "matches": 10,
+      "group": "rare-1-10",
+      "bits": 12,
+      "candidates": 14,
+      "factor": 1.4
+    },
+    {
+      "term": "9054",
+      "width": 4,
+      "matches": 9,
+      "group": "rare-1-10",
+      "bits": 12,
+      "candidates": 9,
+      "factor": 1
+    },
+    {
+      "term": "3879",
+      "width": 4,
+      "matches": 10,
+      "group": "rare-1-10",
+      "bits": 12,
+      "candidates": 12,
+      "factor": 1.2
+    },
+    {
+      "term": "1419",
+      "width": 4,
+      "matches": 10,
+      "group": "rare-1-10",
+      "bits": 12,
+      "candidates": 11,
+      "factor": 1.1
+    },
+    {
+      "term": "0496",
+      "width": 4,
+      "matches": 10,
+      "group": "rare-1-10",
+      "bits": 12,
+      "candidates": 14,
+      "factor": 1.4
+    },
+    {
+      "term": "5638",
+      "width": 4,
+      "matches": 7,
+      "group": "rare-1-10",
+      "bits": 12,
+      "candidates": 7,
+      "factor": 1
+    },
+    {
+      "term": "8149",
+      "width": 4,
+      "matches": 9,
+      "group": "rare-1-10",
+      "bits": 12,
+      "candidates": 11,
+      "factor": 1.2222222222222223
+    },
+    {
+      "term": "6317",
+      "width": 4,
+      "matches": 9,
+      "group": "rare-1-10",
+      "bits": 12,
+      "candidates": 12,
+      "factor": 1.3333333333333333
+    },
+    {
+      "term": "4034",
+      "width": 4,
+      "matches": 10,
+      "group": "rare-1-10",
+      "bits": 12,
+      "candidates": 13,
+      "factor": 1.3
+    },
+    {
+      "term": "1837",
+      "width": 4,
+      "matches": 6,
+      "group": "rare-1-10",
+      "bits": 12,
+      "candidates": 7,
+      "factor": 1.1666666666666667
+    },
+    {
+      "term": "2364",
+      "width": 4,
+      "matches": 8,
+      "group": "rare-1-10",
+      "bits": 12,
+      "candidates": 10,
+      "factor": 1.25
+    },
+    {
+      "term": "4480",
+      "width": 4,
+      "matches": 10,
+      "group": "rare-1-10",
+      "bits": 12,
+      "candidates": 13,
+      "factor": 1.3
+    },
+    {
+      "term": "1069",
+      "width": 4,
+      "matches": 8,
+      "group": "rare-1-10",
+      "bits": 12,
+      "candidates": 12,
+      "factor": 1.5
+    },
+    {
+      "term": "9603",
+      "width": 4,
+      "matches": 8,
+      "group": "rare-1-10",
+      "bits": 12,
+      "candidates": 8,
+      "factor": 1
+    },
+    {
+      "term": "2537",
+      "width": 4,
+      "matches": 7,
+      "group": "rare-1-10",
+      "bits": 12,
+      "candidates": 8,
+      "factor": 1.1428571428571428
+    },
+    {
+      "term": "8325",
+      "width": 4,
+      "matches": 10,
+      "group": "rare-1-10",
+      "bits": 12,
+      "candidates": 11,
+      "factor": 1.1
+    },
+    {
+      "term": "2107",
+      "width": 4,
+      "matches": 10,
+      "group": "rare-1-10",
+      "bits": 12,
+      "candidates": 11,
+      "factor": 1.1
+    },
+    {
+      "term": "6561",
+      "width": 4,
+      "matches": 10,
+      "group": "rare-1-10",
+      "bits": 12,
+      "candidates": 29,
+      "factor": 2.9
+    },
+    {
+      "term": "0238",
+      "width": 4,
+      "matches": 9,
+      "group": "rare-1-10",
+      "bits": 12,
+      "candidates": 9,
+      "factor": 1
+    },
+    {
+      "term": "9768",
+      "width": 4,
+      "matches": 9,
+      "group": "rare-1-10",
+      "bits": 12,
+      "candidates": 9,
+      "factor": 1
+    },
+    {
+      "term": "0738",
+      "width": 4,
+      "matches": 10,
+      "group": "rare-1-10",
+      "bits": 12,
+      "candidates": 10,
+      "factor": 1
+    },
+    {
+      "term": "3603",
+      "width": 4,
+      "matches": 10,
+      "group": "rare-1-10",
+      "bits": 12,
+      "candidates": 12,
+      "factor": 1.2
+    },
+    {
+      "term": "1195",
+      "width": 4,
+      "matches": 10,
+      "group": "rare-1-10",
+      "bits": 12,
+      "candidates": 11,
+      "factor": 1.1
+    },
+    {
+      "term": "4964",
+      "width": 4,
+      "matches": 10,
+      "group": "rare-1-10",
+      "bits": 12,
+      "candidates": 16,
+      "factor": 1.6
+    },
+    {
+      "term": "4527",
+      "width": 4,
+      "matches": 9,
+      "group": "rare-1-10",
+      "bits": 12,
+      "candidates": 11,
+      "factor": 1.2222222222222223
+    },
+    {
+      "term": "1546",
+      "width": 4,
+      "matches": 8,
+      "group": "rare-1-10",
+      "bits": 12,
+      "candidates": 9,
+      "factor": 1.125
+    },
+    {
+      "term": "8971",
+      "width": 4,
+      "matches": 9,
+      "group": "rare-1-10",
+      "bits": 12,
+      "candidates": 9,
+      "factor": 1
+    },
+    {
+      "term": "5411",
+      "width": 4,
+      "matches": 10,
+      "group": "rare-1-10",
+      "bits": 12,
+      "candidates": 11,
+      "factor": 1.1
+    },
+    {
+      "term": "9653",
+      "width": 4,
+      "matches": 10,
+      "group": "rare-1-10",
+      "bits": 12,
+      "candidates": 12,
+      "factor": 1.2
+    },
+    {
+      "term": "5662",
+      "width": 4,
+      "matches": 8,
+      "group": "rare-1-10",
+      "bits": 12,
+      "candidates": 10,
+      "factor": 1.25
+    },
+    {
+      "term": "8955",
+      "width": 4,
+      "matches": 10,
+      "group": "rare-1-10",
+      "bits": 12,
+      "candidates": 10,
+      "factor": 1
+    },
+    {
+      "term": "5059",
+      "width": 4,
+      "matches": 8,
+      "group": "rare-1-10",
+      "bits": 12,
+      "candidates": 12,
+      "factor": 1.5
+    },
+    {
+      "term": "4107",
+      "width": 4,
+      "matches": 10,
+      "group": "rare-1-10",
+      "bits": 12,
+      "candidates": 10,
+      "factor": 1
+    },
+    {
+      "term": "8755",
+      "width": 4,
+      "matches": 10,
+      "group": "rare-1-10",
+      "bits": 12,
+      "candidates": 12,
+      "factor": 1.2
+    },
+    {
+      "term": "1683",
+      "width": 4,
+      "matches": 9,
+      "group": "rare-1-10",
+      "bits": 12,
+      "candidates": 9,
+      "factor": 1
+    },
+    {
+      "term": "4566",
+      "width": 4,
+      "matches": 9,
+      "group": "rare-1-10",
+      "bits": 12,
+      "candidates": 10,
+      "factor": 1.1111111111111112
+    },
+    {
+      "term": "0776",
+      "width": 4,
+      "matches": 10,
+      "group": "rare-1-10",
+      "bits": 12,
+      "candidates": 16,
+      "factor": 1.6
+    },
+    {
+      "term": "3030",
+      "width": 4,
+      "matches": 10,
+      "group": "rare-1-10",
+      "bits": 12,
+      "candidates": 48,
+      "factor": 4.8
+    },
+    {
+      "term": "5082",
+      "width": 4,
+      "matches": 10,
+      "group": "rare-1-10",
+      "bits": 12,
+      "candidates": 12,
+      "factor": 1.2
+    },
+    {
+      "term": "1793",
+      "width": 4,
+      "matches": 10,
+      "group": "rare-1-10",
+      "bits": 12,
+      "candidates": 10,
+      "factor": 1
+    },
+    {
+      "term": "4591",
+      "width": 4,
+      "matches": 8,
+      "group": "rare-1-10",
+      "bits": 12,
+      "candidates": 8,
+      "factor": 1
+    },
+    {
+      "term": "5940",
+      "width": 4,
+      "matches": 8,
+      "group": "rare-1-10",
+      "bits": 12,
+      "candidates": 10,
+      "factor": 1.25
+    },
+    {
+      "term": "0491",
+      "width": 4,
+      "matches": 9,
+      "group": "rare-1-10",
+      "bits": 12,
+      "candidates": 9,
+      "factor": 1
+    },
+    {
+      "term": "5692",
+      "width": 4,
+      "matches": 10,
+      "group": "rare-1-10",
+      "bits": 12,
+      "candidates": 10,
+      "factor": 1
+    },
+    {
+      "term": "3490",
+      "width": 4,
+      "matches": 10,
+      "group": "rare-1-10",
+      "bits": 12,
+      "candidates": 12,
+      "factor": 1.2
+    },
+    {
+      "term": "3217",
+      "width": 4,
+      "matches": 9,
+      "group": "rare-1-10",
+      "bits": 12,
+      "candidates": 9,
+      "factor": 1
+    },
+    {
+      "term": "0462",
+      "width": 4,
+      "matches": 6,
+      "group": "rare-1-10",
+      "bits": 12,
+      "candidates": 8,
+      "factor": 1.3333333333333333
+    },
+    {
+      "term": "4495",
+      "width": 4,
+      "matches": 10,
+      "group": "rare-1-10",
+      "bits": 12,
+      "candidates": 13,
+      "factor": 1.3
+    },
+    {
+      "term": "6895",
+      "width": 4,
+      "matches": 7,
+      "group": "rare-1-10",
+      "bits": 12,
+      "candidates": 8,
+      "factor": 1.1428571428571428
+    },
+    {
+      "term": "2352",
+      "width": 4,
+      "matches": 10,
+      "group": "rare-1-10",
+      "bits": 12,
+      "candidates": 10,
+      "factor": 1
+    },
+    {
+      "term": "1367",
+      "width": 4,
+      "matches": 10,
+      "group": "rare-1-10",
+      "bits": 12,
+      "candidates": 12,
+      "factor": 1.2
+    },
+    {
+      "term": "2201",
+      "width": 4,
+      "matches": 10,
+      "group": "rare-1-10",
+      "bits": 12,
+      "candidates": 12,
+      "factor": 1.2
+    },
+    {
+      "term": "0761",
+      "width": 4,
+      "matches": 10,
+      "group": "rare-1-10",
+      "bits": 12,
+      "candidates": 12,
+      "factor": 1.2
+    },
+    {
+      "term": "5876",
+      "width": 4,
+      "matches": 9,
+      "group": "rare-1-10",
+      "bits": 12,
+      "candidates": 9,
+      "factor": 1
+    },
+    {
+      "term": "4536",
+      "width": 4,
+      "matches": 9,
+      "group": "rare-1-10",
+      "bits": 12,
+      "candidates": 11,
+      "factor": 1.2222222222222223
+    },
+    {
+      "term": "6508",
+      "width": 4,
+      "matches": 10,
+      "group": "rare-1-10",
+      "bits": 12,
+      "candidates": 12,
+      "factor": 1.2
+    },
+    {
+      "term": "2614",
+      "width": 4,
+      "matches": 10,
+      "group": "rare-1-10",
+      "bits": 12,
+      "candidates": 12,
+      "factor": 1.2
+    },
+    {
+      "term": "2810",
+      "width": 4,
+      "matches": 9,
+      "group": "rare-1-10",
+      "bits": 12,
+      "candidates": 9,
+      "factor": 1
+    },
+    {
+      "term": "3263",
+      "width": 4,
+      "matches": 10,
+      "group": "rare-1-10",
+      "bits": 12,
+      "candidates": 13,
+      "factor": 1.3
+    },
+    {
+      "term": "5026",
+      "width": 4,
+      "matches": 10,
+      "group": "rare-1-10",
+      "bits": 12,
+      "candidates": 12,
+      "factor": 1.2
+    },
+    {
+      "term": "6815",
+      "width": 4,
+      "matches": 7,
+      "group": "rare-1-10",
+      "bits": 12,
+      "candidates": 7,
+      "factor": 1
+    },
+    {
+      "term": "5116",
+      "width": 4,
+      "matches": 7,
+      "group": "rare-1-10",
+      "bits": 12,
+      "candidates": 9,
+      "factor": 1.2857142857142858
+    },
+    {
+      "term": "6715",
+      "width": 4,
+      "matches": 9,
+      "group": "rare-1-10",
+      "bits": 12,
+      "candidates": 11,
+      "factor": 1.2222222222222223
+    },
+    {
+      "term": "2320",
+      "width": 4,
+      "matches": 10,
+      "group": "rare-1-10",
+      "bits": 12,
+      "candidates": 12,
+      "factor": 1.2
+    },
+    {
+      "term": "7578",
+      "width": 4,
+      "matches": 10,
+      "group": "rare-1-10",
+      "bits": 12,
+      "candidates": 11,
+      "factor": 1.1
+    },
+    {
+      "term": "9672",
+      "width": 4,
+      "matches": 10,
+      "group": "rare-1-10",
+      "bits": 12,
+      "candidates": 12,
+      "factor": 1.2
+    },
+    {
+      "term": "6300",
+      "width": 4,
+      "matches": 10,
+      "group": "rare-1-10",
+      "bits": 12,
+      "candidates": 10,
+      "factor": 1
+    },
+    {
+      "term": "6290",
+      "width": 4,
+      "matches": 10,
+      "group": "rare-1-10",
+      "bits": 12,
+      "candidates": 11,
+      "factor": 1.1
+    },
+    {
+      "term": "6266",
+      "width": 4,
+      "matches": 10,
+      "group": "rare-1-10",
+      "bits": 12,
+      "candidates": 41,
+      "factor": 4.1
+    },
+    {
+      "term": "8768",
+      "width": 4,
+      "matches": 10,
+      "group": "rare-1-10",
+      "bits": 12,
+      "candidates": 12,
+      "factor": 1.2
+    },
+    {
+      "term": "7116",
+      "width": 4,
+      "matches": 10,
+      "group": "rare-1-10",
+      "bits": 12,
+      "candidates": 12,
+      "factor": 1.2
+    },
+    {
+      "term": "1778",
+      "width": 4,
+      "matches": 10,
+      "group": "rare-1-10",
+      "bits": 12,
+      "candidates": 14,
+      "factor": 1.4
+    },
+    {
+      "term": "1193",
+      "width": 4,
+      "matches": 10,
+      "group": "rare-1-10",
+      "bits": 12,
+      "candidates": 11,
+      "factor": 1.1
+    },
+    {
+      "term": "1531",
+      "width": 4,
+      "matches": 9,
+      "group": "rare-1-10",
+      "bits": 12,
+      "candidates": 12,
+      "factor": 1.3333333333333333
+    },
+    {
+      "term": "8964",
+      "width": 4,
+      "matches": 10,
+      "group": "rare-1-10",
+      "bits": 12,
+      "candidates": 10,
+      "factor": 1
+    },
+    {
+      "term": "2900",
+      "width": 4,
+      "matches": 10,
+      "group": "rare-1-10",
+      "bits": 12,
+      "candidates": 12,
+      "factor": 1.2
+    },
+    {
+      "term": "1331",
+      "width": 4,
+      "matches": 10,
+      "group": "rare-1-10",
+      "bits": 12,
+      "candidates": 20,
+      "factor": 2
+    },
+    {
+      "term": "7992",
+      "width": 4,
+      "matches": 10,
+      "group": "rare-1-10",
+      "bits": 12,
+      "candidates": 12,
+      "factor": 1.2
+    },
+    {
+      "term": "6544",
+      "width": 4,
+      "matches": 10,
+      "group": "rare-1-10",
+      "bits": 12,
+      "candidates": 11,
+      "factor": 1.1
+    },
+    {
+      "term": "0937",
+      "width": 4,
+      "matches": 9,
+      "group": "rare-1-10",
+      "bits": 12,
+      "candidates": 11,
+      "factor": 1.2222222222222223
+    },
+    {
+      "term": "4418",
+      "width": 4,
+      "matches": 8,
+      "group": "rare-1-10",
+      "bits": 12,
+      "candidates": 11,
+      "factor": 1.375
+    },
+    {
+      "term": "6000",
+      "width": 4,
+      "matches": 9,
+      "group": "rare-1-10",
+      "bits": 12,
+      "candidates": 116,
+      "factor": 12.88888888888889
+    },
+    {
+      "term": "5463",
+      "width": 4,
+      "matches": 7,
+      "group": "rare-1-10",
+      "bits": 12,
+      "candidates": 9,
+      "factor": 1.2857142857142858
+    },
+    {
+      "term": "4548",
+      "width": 4,
+      "matches": 8,
+      "group": "rare-1-10",
+      "bits": 12,
+      "candidates": 11,
+      "factor": 1.375
+    },
+    {
+      "term": "6270",
+      "width": 4,
+      "matches": 10,
+      "group": "rare-1-10",
+      "bits": 12,
+      "candidates": 11,
+      "factor": 1.1
+    },
+    {
+      "term": "9637",
+      "width": 4,
+      "matches": 10,
+      "group": "rare-1-10",
+      "bits": 12,
+      "candidates": 11,
+      "factor": 1.1
+    },
+    {
+      "term": "0612",
+      "width": 4,
+      "matches": 9,
+      "group": "rare-1-10",
+      "bits": 12,
+      "candidates": 11,
+      "factor": 1.2222222222222223
+    },
+    {
+      "term": "0092",
+      "width": 4,
+      "matches": 10,
+      "group": "rare-1-10",
+      "bits": 12,
+      "candidates": 12,
+      "factor": 1.2
+    }
+  ],
+  "summary": [
+    {
+      "bits": 16,
+      "width": 2,
+      "group": "lowest-frequency-control",
+      "n": 120,
+      "candidates": {
+        "mean": 8830.383333333333,
+        "p95": 19059,
+        "max": 19155
+      },
+      "factor": {
+        "mean": 1,
+        "p95": 1,
+        "max": 1
+      },
+      "relative16": {
+        "mean": 1,
+        "p95": 1,
+        "max": 1
+      },
+      "ratioOfMeans": 1
+    },
+    {
+      "bits": 16,
+      "width": 3,
+      "group": "lowest-frequency-control",
+      "n": 200,
+      "candidates": {
+        "mean": 405.73,
+        "p95": 435,
+        "max": 1188
+      },
+      "factor": {
+        "mean": 1.0961710625589083,
+        "p95": 1.1530343007915567,
+        "max": 3.4236311239193085
+      },
+      "relative16": {
+        "mean": 1,
+        "p95": 1,
+        "max": 1
+      },
+      "ratioOfMeans": 1
+    },
+    {
+      "bits": 16,
+      "width": 4,
+      "group": "rare-1-10",
+      "n": 121,
+      "candidates": {
+        "mean": 11.586776859504132,
+        "p95": 14,
+        "max": 65
+      },
+      "factor": {
+        "mean": 1.2504525777253064,
+        "p95": 1.5714285714285714,
+        "max": 7.222222222222222
+      },
+      "relative16": {
+        "mean": 1,
+        "p95": 1,
+        "max": 1
+      },
+      "ratioOfMeans": 1
+    },
+    {
+      "bits": 12,
+      "width": 2,
+      "group": "lowest-frequency-control",
+      "n": 120,
+      "candidates": {
+        "mean": 9323.633333333333,
+        "p95": 19090,
+        "max": 24875
+      },
+      "factor": {
+        "mean": 1.0701401496226601,
+        "p95": 1.7381560283687942,
+        "max": 3.5434472934472936
+      },
+      "relative16": {
+        "mean": 1.0701401496226601,
+        "p95": 1.7381560283687942,
+        "max": 3.5434472934472936
+      },
+      "ratioOfMeans": 1.055858277198234
+    },
+    {
+      "bits": 12,
+      "width": 3,
+      "group": "lowest-frequency-control",
+      "n": 200,
+      "candidates": {
+        "mean": 410.75,
+        "p95": 452,
+        "max": 1188
+      },
+      "factor": {
+        "mean": 1.1096388458378406,
+        "p95": 1.194225721784777,
+        "max": 3.4236311239193085
+      },
+      "relative16": {
+        "mean": 1.012518410991778,
+        "p95": 1.06631299734748,
+        "max": 1.6258503401360545
+      },
+      "ratioOfMeans": 1.012372760209992
+    },
+    {
+      "bits": 12,
+      "width": 4,
+      "group": "rare-1-10",
+      "n": 121,
+      "candidates": {
+        "mean": 12.578512396694215,
+        "p95": 16,
+        "max": 116
+      },
+      "factor": {
+        "mean": 1.3570903843631128,
+        "p95": 2,
+        "max": 12.88888888888889
+      },
+      "relative16": {
+        "mean": 1.0521718868826309,
+        "p95": 1.2,
+        "max": 2.9285714285714284
+      },
+      "ratioOfMeans": 1.0855920114122681
+    }
+  ],
+  "validation": {
+    "priorAttackMatches": 12,
+    "noFalseNegatives": 2269764,
+    "actual16Rows": 5
+  },
+  "protocol": "Same fixture, key, scope, normalization and attacker as preceding bits study; actual stored hyphens retained",
+  "finished": "2026-09-29T12:03:34.799Z"
+}
