@@ -9,6 +9,9 @@ import {createSealer} from '../../src/index.js';
 import {createSealed} from '../../src/adapters/drizzle/v0.45/index.js';
 import {assertDisposable} from '../../test/disposable.js';
 import {prepareVariants,researchFallback,functionVariant,storageVariant,exactTailVariant,type Query} from './variants.js';
+import {profiles} from '../../src/core/search-tokens.js';
+import {positionProof} from '../../src/core/search-stamps.js';
+import {compileStampQuery,keyArray,patternProgram} from '../../src/core/stamp-query.js';
 
 test('benchmark variants preserve plaintext scope, transactions, deletes and Boolean pages',async()=>{
  assert.equal(readFileSync('.local/research/measure.lock','utf8'),'r9-final-return');
@@ -41,6 +44,28 @@ test('benchmark variants preserve plaintext scope, transactions, deletes and Boo
   const truth=(n:any,r:any):boolean=>n.all?n.all.every((c:any)=>truth(c,r)):n.any?n.any.some((c:any)=>truth(c,r)):r[n.field]!==null&&(n.op==='eq'?norm(r[n.field])===norm(n.value):norm(r[n.field]).includes(pair));
   const modes=[functionVariant(schema,'checks-off'),functionVariant(schema,'qualified-no-set')];
   for(const mode of modes)for(const sql of mode.statements)await pool.query(sql);
+  // Prove the no-SET candidate is immune to caller-path function/operator shadowing.
+  const client=await pool.connect();
+  try{
+   for(const [name,args,type]of [['cardinality','anyarray','integer'],['array_position','bigint[],bigint','integer'],['sha256','bytea','bytea'],['bad_add','integer,integer','integer'],['bad_concat','bytea,bytea','bytea'],['bad_less','integer,integer','boolean']])
+    await client.query(`create function ${schema}.${name}(${args}) returns ${type} language plpgsql as 'begin raise exception ''hijack''; end'`);
+   for(const [op,args,fn]of [['+','integer','bad_add'],['||','bytea','bad_concat'],['<','integer','bad_less']])
+    await client.query(`create operator ${schema}.${op} (leftarg=${args},rightarg=${args},function=${schema}.${fn})`);
+   await client.query(`set search_path to ${schema},pg_catalog`);
+   await assert.rejects(client.query('select 1 + 2'),/hijack/);
+   const profile=profiles('audit','body',{type:'text',search:{substring:true}})[0],ring=sealer.ring('audit');
+   const value=fixture[0].memo_plain.repeat(100),proof=await positionProof(ring,profile,'memory',value,'compact2');
+   const positions=await compileStampQuery(ring,profile,'memory',{op:'contains',value:pair});
+   const likeProof=await compileStampQuery(ring,profile,'memory',{op:'like',value:`%${pair}_%`});
+   for(const suffix of ['','_bench_noset']){
+    const a=await client.query(`select ${schema}.sealql_match_positions${suffix}($1::bytea[],$2::integer[],$3,$4,$5,$6::bigint[],$7::integer[],0) ok`,
+     [keyArray(positions.keys),positions.offsets,positions.length,proof.length,proof.salt,proof.stamps.map(String),proof.offsets]);
+    assert.equal(a.rows[0].ok,true);
+    const b=await client.query(`select ${schema}.sealql_match_like${suffix}($1::bytea[],$2::integer[],$3,$4,$5::bigint[],$6::integer[]) ok`,
+     [keyArray(likeProof.keys),patternProgram(likeProof.pattern!),proof.length,proof.salt,proof.stamps.map(String),proof.offsets]);
+    assert.equal(b.rows[0].ok,true);
+   }
+  }finally{await client.query('reset search_path');client.release();}
   const verify=async()=>{
    for(const scope of scopes)for(const node of cases){
     const expected=rows.filter(r=>r.scopeId===scope&&truth(node,r)).map(r=>r.id).sort();

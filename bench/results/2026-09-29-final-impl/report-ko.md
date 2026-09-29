@@ -32,6 +32,8 @@ Node pg·postgres-js·local workerd pg 모두 insert/count/update/reindex/search
 
 [벤치 변형](../../final-return/variants.ts)과 [사용법](../../final-return/variants-usage.md)은 제품 옵션을 만들지 않는다. `rtk proxy node --import tsx --test bench/final-return/variants.test.ts`는 tests1/pass1/fail0, duration_ms1249.4318이었다. 기존 fixture에서 파생한 두 scope·같은 row ID, NULL, rollback, 동시 부분 수정, 삭제 cascade와 reindex 뒤 직접 companion count를 평문/제품과 대조했다. 작은 probe로 fallback을 강제로 실행해 최상위 OR와 중첩 AND/OR의 전체 keyset 목록을 대조했고, 검사 제거 및 pg_catalog 한정/no-SET 함수에서도 일치했다. 이는 정확성 확인이며 성능 채택 판단은 아니다.
 
+코디네이터의 추가 조건에 따라 no-SET 변형은 함수·실행 연산자·자기 스키마 함수 참조를 모두 한정한다. 명시적 `OPERATOR`의 우선순위가 달라지므로 원래 산술 괄호를 보존했다. caller search_path에 cardinality/array_position/sha256 및 정수 덧셈·비교/bytea 결합을 가로채는 함수·연산자를 먼저 놓았고, 실제 일반 덧셈 탈취를 확인한 뒤 기존 SET 함수와 변형의 긴 값 contains·LIKE가 모두 정상임을 단언했다. 이 추가 시험을 포함한 재실행은 tests1/pass1/fail0, duration_ms1436.7354였다.
+
 ## 아직 검증하지 않은 범위
 
 4a–4d 전후 성능, 연구 최종안 대비52조건 기준, 새로운 쓰기·용량 수치는 독립 비교 측정 후 기록한다. 로컬 fixture 검증은 운영 성능 보장이나 보안 인증이 아니다.

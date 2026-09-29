@@ -58,6 +58,24 @@ function compact(query:Query):Query{
   return `$${used.get(old)}`;
  });return {text,params};
 }
+/** Qualify executable operators too: a caller can explicitly put pg_catalog last. */
+function catalogOperators(source:string):string{
+ let out='';
+ for(let i=0;i<source.length;){
+  if(source.startsWith('--',i)){const end=source.indexOf('\n',i);if(end<0)return out+source.slice(i);out+=source.slice(i,end);i=end;continue;}
+  if(source[i]==="'"||source[i]==='"'){
+   const quote=source[i];out+=source[i++];
+   while(i<source.length){const c=source[i++];out+=c;if(c===quote){if(source[i]===quote)out+=source[i++];else break;}}
+   continue;
+  }
+  if(source.startsWith(':=',i)){out+=':=';i+=2;continue;}
+  // RAISE USING options use assignment syntax, not an overloadable operator.
+  if(source[i]==='='&&/\b(?:errcode|message)\s*$/i.test(source.slice(0,i))){out+='=';i++;continue;}
+  const op=['||','<>','<=','>=','+','-','*','/','=','<','>'].find(op=>source.startsWith(op,i));
+  if(op){out+=` OPERATOR(pg_catalog.${op}) `;i+=op.length;}else out+=source[i++];
+ }
+ return out;
+}
 /** 4d: replace only fallback; keep API projection, quick, keyset and final LIMIT unchanged. */
 export function researchFallback(query:Query,coarse:Query):Query{
  if(!/\bwith sample as materialized\s*\(/i.test(query.text))return query;
@@ -92,7 +110,18 @@ export function functionVariant(schema:string,mode:'checks-off'|'qualified-no-se
   }else{
    sql=sql.replace(' set search_path = pg_catalog','');
    for(const name of ['cardinality','array_position','array_lower','array_fill','array_append','octet_length','encode','substr','sha256','int4send'])
-    sql=sql.replace(new RegExp(`(?<![.\\w])${name}\\(`,'g'),`pg_catalog.${name}(`);
+    sql=sql.replace(new RegExp(`(?:(?<![.\\w])|(?<=\\.\\.))${name}\\(`,'g'),`pg_catalog.${name}(`);
+   sql=sql.replace('affix not in (0,1,2)','(affix<>0 and affix<>1 and affix<>2)');
+   // Explicit OPERATOR syntax uses generic precedence. Preserve the original
+   // arithmetic grouping before qualifying comparison/arithmetic operators.
+   sql=sql.replaceAll('lo + (hi-lo)/2','lo + ((hi-lo)/2)')
+    .replaceAll('n-qlen','(n-qlen)')
+    .replaceAll('ends[ids[wi]]-starts[ids[wi]]','(ends[ids[wi]]-starts[ids[wi]])')
+    .replaceAll('ends[ids[anchor]]-starts[ids[anchor]]','(ends[ids[anchor]]-starts[ids[anchor]])')
+    .replaceAll('cursor+windows*2-1','(cursor+(windows*2)-1)')
+    .replace(/(?<![\w\]\)])-([12])\b/g,'(-$1)');
+   const start=sql.indexOf('$seal$')+6,end=sql.lastIndexOf('$seal$');
+   sql=sql.slice(0,start)+catalogOperators(sql.slice(start,end))+sql.slice(end);
   }
   return sql;
  });
