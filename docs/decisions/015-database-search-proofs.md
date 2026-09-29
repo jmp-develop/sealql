@@ -2,6 +2,21 @@
 
 상태: 채택, 2026-09-29. [001](001-search-hmac-pieces-gin-verify.md)의 앱 재확인, [006](006-query-engine.md)의 후보 복호화·증가 배치, [014](014-unbounded-query-work.md)의 후보 예산을 대체한다. [012](012-drizzle-companion-and-column-options.md)·[013](013-drizzle-native-api-implemented.md)의 공개 Drizzle 통합은 유지한다.
 
+구현 보완: [017](017-search-proof-review.md)의 전진 위치 탐색·LIKE 정수 배열과 검토 결과를 함께 적용한다.
+
+검토 뒤 선택한 트레이드오프(긴 값은 함수 호출당 1행, 대표 질의는 같은 10만 행; 예열 2회·교차 7회, SQL 왕복 중앙값):
+
+| 조건 | 검토 전 → 최종 | 판단 |
+|---|---:|---|
+| 긴 contains 근접 불일치 | >1500 → 33.5ms | 이전은 시험 제한으로 중단, 최악 반복 비용 수정 |
+| 2050글자 LIKE 근접 불일치 | 654 → 27ms | JSON 제거·공유 위치 목록 |
+| 메모 목록300 | 129 → 109ms | 디스크 정렬14.6MB → 메모리1.5MB, temp I/O 제거 |
+| 이메일 count | 523 → 674ms (1.29배) | 위치 검증·전진 상태의 비용을 수용 |
+| AND6 count | 30.7 → 37.1ms (1.21배) | 같은 검증 비용을 수용 |
+| 45글자 count / 목록 | 17.8 → 22.7ms / 24.1 → 34.8ms | 판정 검증과 proof 재조회 비용, 1.27배 / 1.44배 수용 |
+
+최악 경우 해결과 목록 디스크 정렬 제거를 우선해 확정했고 추가 튜닝은 하지 않는다. `SET search_path=pg_catalog` 제거는 일부 count 이득이 있지만 목록·OR에 일관된 이득이 없어 유지한다. [원본 측정과 전체 표](../../bench/results/2026-09-29-r9-review/report-ko.md)를 따른다.
+
 ## 변경
 
 | 항목 | 이전 | 현재 |
