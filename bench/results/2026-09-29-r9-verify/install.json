@@ -1,0 +1,1226 @@
+{
+  "at": "2026-09-29T03:32:12.938Z",
+  "commit": "a4231b47f03b9c0b859a600296cde20e91ff637e",
+  "installed": [
+    "test_r9_verify_main",
+    "test_r9_verify_join"
+  ],
+  "indexMigrations": [
+    {
+      "schema": "test_r9_verify_main",
+      "changes": [],
+      "current": {
+        "version": "7",
+        "dialect": "postgresql",
+        "tables": {
+          "test_r9_verify_main.customers": {
+            "name": "customers",
+            "schema": "test_r9_verify_main",
+            "columns": {
+              "id": {
+                "name": "id",
+                "type": "uuid",
+                "primaryKey": true,
+                "notNull": true
+              },
+              "scope_id": {
+                "name": "scope_id",
+                "type": "uuid",
+                "primaryKey": false,
+                "notNull": true
+              },
+              "name_ct": {
+                "name": "name_ct",
+                "type": "bytea",
+                "primaryKey": false,
+                "notNull": true
+              },
+              "phone_ct": {
+                "name": "phone_ct",
+                "type": "bytea",
+                "primaryKey": false,
+                "notNull": true
+              },
+              "address_ct": {
+                "name": "address_ct",
+                "type": "bytea",
+                "primaryKey": false,
+                "notNull": true
+              },
+              "memo_ct": {
+                "name": "memo_ct",
+                "type": "bytea",
+                "primaryKey": false,
+                "notNull": true
+              },
+              "email_ct": {
+                "name": "email_ct",
+                "type": "bytea",
+                "primaryKey": false,
+                "notNull": true
+              },
+              "company_ct": {
+                "name": "company_ct",
+                "type": "bytea",
+                "primaryKey": false,
+                "notNull": true
+              }
+            },
+            "indexes": {},
+            "foreignKeys": {},
+            "compositePrimaryKeys": {},
+            "uniqueConstraints": {},
+            "policies": {},
+            "checkConstraints": {},
+            "isRLSEnabled": false
+          },
+          "test_r9_verify_main.customers_seal_index": {
+            "name": "customers_seal_index",
+            "schema": "test_r9_verify_main",
+            "columns": {
+              "scope_id": {
+                "name": "scope_id",
+                "type": "uuid",
+                "primaryKey": false,
+                "notNull": true
+              },
+              "row_id": {
+                "name": "row_id",
+                "type": "uuid",
+                "primaryKey": false,
+                "notNull": true
+              },
+              "tokens_988d248ff4b71bf7": {
+                "name": "tokens_988d248ff4b71bf7",
+                "type": "bigint[]",
+                "primaryKey": false,
+                "notNull": false
+              },
+              "eq_salt_988d248ff4b71bf7": {
+                "name": "eq_salt_988d248ff4b71bf7",
+                "type": "bytea",
+                "primaryKey": false,
+                "notNull": false
+              },
+              "eq_stamp_988d248ff4b71bf7": {
+                "name": "eq_stamp_988d248ff4b71bf7",
+                "type": "bigint",
+                "primaryKey": false,
+                "notNull": false
+              },
+              "tokens_792d75cf01821d67": {
+                "name": "tokens_792d75cf01821d67",
+                "type": "bigint[]",
+                "primaryKey": false,
+                "notNull": false
+              },
+              "pos_salt_792d75cf01821d67": {
+                "name": "pos_salt_792d75cf01821d67",
+                "type": "bytea",
+                "primaryKey": false,
+                "notNull": false
+              },
+              "pos_len_792d75cf01821d67": {
+                "name": "pos_len_792d75cf01821d67",
+                "type": "integer",
+                "primaryKey": false,
+                "notNull": false
+              },
+              "pos_stamps_792d75cf01821d67": {
+                "name": "pos_stamps_792d75cf01821d67",
+                "type": "bigint[]",
+                "primaryKey": false,
+                "notNull": false
+              },
+              "pos_offsets_792d75cf01821d67": {
+                "name": "pos_offsets_792d75cf01821d67",
+                "type": "integer[]",
+                "primaryKey": false,
+                "notNull": false
+              },
+              "word_salt_792d75cf01821d67": {
+                "name": "word_salt_792d75cf01821d67",
+                "type": "bytea",
+                "primaryKey": false,
+                "notNull": false
+              },
+              "word_len_792d75cf01821d67": {
+                "name": "word_len_792d75cf01821d67",
+                "type": "integer",
+                "primaryKey": false,
+                "notNull": false
+              },
+              "word_stamps_792d75cf01821d67": {
+                "name": "word_stamps_792d75cf01821d67",
+                "type": "bigint[]",
+                "primaryKey": false,
+                "notNull": false
+              },
+              "word_offsets_792d75cf01821d67": {
+                "name": "word_offsets_792d75cf01821d67",
+                "type": "integer[]",
+                "primaryKey": false,
+                "notNull": false
+              },
+              "single_salt_792d75cf01821d67": {
+                "name": "single_salt_792d75cf01821d67",
+                "type": "bytea",
+                "primaryKey": false,
+                "notNull": false
+              },
+              "single_len_792d75cf01821d67": {
+                "name": "single_len_792d75cf01821d67",
+                "type": "integer",
+                "primaryKey": false,
+                "notNull": false
+              },
+              "single_stamps_792d75cf01821d67": {
+                "name": "single_stamps_792d75cf01821d67",
+                "type": "bigint[]",
+                "primaryKey": false,
+                "notNull": false
+              },
+              "single_offsets_792d75cf01821d67": {
+                "name": "single_offsets_792d75cf01821d67",
+                "type": "integer[]",
+                "primaryKey": false,
+                "notNull": false
+              },
+              "tokens_a106c26102b707f0": {
+                "name": "tokens_a106c26102b707f0",
+                "type": "bigint[]",
+                "primaryKey": false,
+                "notNull": false
+              },
+              "eq_salt_a106c26102b707f0": {
+                "name": "eq_salt_a106c26102b707f0",
+                "type": "bytea",
+                "primaryKey": false,
+                "notNull": false
+              },
+              "eq_stamp_a106c26102b707f0": {
+                "name": "eq_stamp_a106c26102b707f0",
+                "type": "bigint",
+                "primaryKey": false,
+                "notNull": false
+              },
+              "tokens_1127994ab736baf4": {
+                "name": "tokens_1127994ab736baf4",
+                "type": "bigint[]",
+                "primaryKey": false,
+                "notNull": false
+              },
+              "pos_salt_1127994ab736baf4": {
+                "name": "pos_salt_1127994ab736baf4",
+                "type": "bytea",
+                "primaryKey": false,
+                "notNull": false
+              },
+              "pos_len_1127994ab736baf4": {
+                "name": "pos_len_1127994ab736baf4",
+                "type": "integer",
+                "primaryKey": false,
+                "notNull": false
+              },
+              "pos_stamps_1127994ab736baf4": {
+                "name": "pos_stamps_1127994ab736baf4",
+                "type": "bigint[]",
+                "primaryKey": false,
+                "notNull": false
+              },
+              "pos_offsets_1127994ab736baf4": {
+                "name": "pos_offsets_1127994ab736baf4",
+                "type": "integer[]",
+                "primaryKey": false,
+                "notNull": false
+              },
+              "word_salt_1127994ab736baf4": {
+                "name": "word_salt_1127994ab736baf4",
+                "type": "bytea",
+                "primaryKey": false,
+                "notNull": false
+              },
+              "word_len_1127994ab736baf4": {
+                "name": "word_len_1127994ab736baf4",
+                "type": "integer",
+                "primaryKey": false,
+                "notNull": false
+              },
+              "word_stamps_1127994ab736baf4": {
+                "name": "word_stamps_1127994ab736baf4",
+                "type": "bigint[]",
+                "primaryKey": false,
+                "notNull": false
+              },
+              "word_offsets_1127994ab736baf4": {
+                "name": "word_offsets_1127994ab736baf4",
+                "type": "integer[]",
+                "primaryKey": false,
+                "notNull": false
+              },
+              "single_salt_1127994ab736baf4": {
+                "name": "single_salt_1127994ab736baf4",
+                "type": "bytea",
+                "primaryKey": false,
+                "notNull": false
+              },
+              "single_len_1127994ab736baf4": {
+                "name": "single_len_1127994ab736baf4",
+                "type": "integer",
+                "primaryKey": false,
+                "notNull": false
+              },
+              "single_stamps_1127994ab736baf4": {
+                "name": "single_stamps_1127994ab736baf4",
+                "type": "bigint[]",
+                "primaryKey": false,
+                "notNull": false
+              },
+              "single_offsets_1127994ab736baf4": {
+                "name": "single_offsets_1127994ab736baf4",
+                "type": "integer[]",
+                "primaryKey": false,
+                "notNull": false
+              },
+              "tokens_c5133b3810f23103": {
+                "name": "tokens_c5133b3810f23103",
+                "type": "bigint[]",
+                "primaryKey": false,
+                "notNull": false
+              },
+              "eq_salt_c5133b3810f23103": {
+                "name": "eq_salt_c5133b3810f23103",
+                "type": "bytea",
+                "primaryKey": false,
+                "notNull": false
+              },
+              "eq_stamp_c5133b3810f23103": {
+                "name": "eq_stamp_c5133b3810f23103",
+                "type": "bigint",
+                "primaryKey": false,
+                "notNull": false
+              },
+              "tokens_ef1d32a52e2ce103": {
+                "name": "tokens_ef1d32a52e2ce103",
+                "type": "bigint[]",
+                "primaryKey": false,
+                "notNull": false
+              },
+              "pos_salt_ef1d32a52e2ce103": {
+                "name": "pos_salt_ef1d32a52e2ce103",
+                "type": "bytea",
+                "primaryKey": false,
+                "notNull": false
+              },
+              "pos_len_ef1d32a52e2ce103": {
+                "name": "pos_len_ef1d32a52e2ce103",
+                "type": "integer",
+                "primaryKey": false,
+                "notNull": false
+              },
+              "pos_stamps_ef1d32a52e2ce103": {
+                "name": "pos_stamps_ef1d32a52e2ce103",
+                "type": "bigint[]",
+                "primaryKey": false,
+                "notNull": false
+              },
+              "pos_offsets_ef1d32a52e2ce103": {
+                "name": "pos_offsets_ef1d32a52e2ce103",
+                "type": "integer[]",
+                "primaryKey": false,
+                "notNull": false
+              },
+              "word_salt_ef1d32a52e2ce103": {
+                "name": "word_salt_ef1d32a52e2ce103",
+                "type": "bytea",
+                "primaryKey": false,
+                "notNull": false
+              },
+              "word_len_ef1d32a52e2ce103": {
+                "name": "word_len_ef1d32a52e2ce103",
+                "type": "integer",
+                "primaryKey": false,
+                "notNull": false
+              },
+              "word_stamps_ef1d32a52e2ce103": {
+                "name": "word_stamps_ef1d32a52e2ce103",
+                "type": "bigint[]",
+                "primaryKey": false,
+                "notNull": false
+              },
+              "word_offsets_ef1d32a52e2ce103": {
+                "name": "word_offsets_ef1d32a52e2ce103",
+                "type": "integer[]",
+                "primaryKey": false,
+                "notNull": false
+              },
+              "single_salt_ef1d32a52e2ce103": {
+                "name": "single_salt_ef1d32a52e2ce103",
+                "type": "bytea",
+                "primaryKey": false,
+                "notNull": false
+              },
+              "single_len_ef1d32a52e2ce103": {
+                "name": "single_len_ef1d32a52e2ce103",
+                "type": "integer",
+                "primaryKey": false,
+                "notNull": false
+              },
+              "single_stamps_ef1d32a52e2ce103": {
+                "name": "single_stamps_ef1d32a52e2ce103",
+                "type": "bigint[]",
+                "primaryKey": false,
+                "notNull": false
+              },
+              "single_offsets_ef1d32a52e2ce103": {
+                "name": "single_offsets_ef1d32a52e2ce103",
+                "type": "integer[]",
+                "primaryKey": false,
+                "notNull": false
+              },
+              "tokens_1c32fdad5d1c8367": {
+                "name": "tokens_1c32fdad5d1c8367",
+                "type": "bigint[]",
+                "primaryKey": false,
+                "notNull": false
+              },
+              "eq_salt_1c32fdad5d1c8367": {
+                "name": "eq_salt_1c32fdad5d1c8367",
+                "type": "bytea",
+                "primaryKey": false,
+                "notNull": false
+              },
+              "eq_stamp_1c32fdad5d1c8367": {
+                "name": "eq_stamp_1c32fdad5d1c8367",
+                "type": "bigint",
+                "primaryKey": false,
+                "notNull": false
+              },
+              "tokens_a639b11c8130dcf7": {
+                "name": "tokens_a639b11c8130dcf7",
+                "type": "bigint[]",
+                "primaryKey": false,
+                "notNull": false
+              },
+              "pos_salt_a639b11c8130dcf7": {
+                "name": "pos_salt_a639b11c8130dcf7",
+                "type": "bytea",
+                "primaryKey": false,
+                "notNull": false
+              },
+              "pos_len_a639b11c8130dcf7": {
+                "name": "pos_len_a639b11c8130dcf7",
+                "type": "integer",
+                "primaryKey": false,
+                "notNull": false
+              },
+              "pos_stamps_a639b11c8130dcf7": {
+                "name": "pos_stamps_a639b11c8130dcf7",
+                "type": "bigint[]",
+                "primaryKey": false,
+                "notNull": false
+              },
+              "pos_offsets_a639b11c8130dcf7": {
+                "name": "pos_offsets_a639b11c8130dcf7",
+                "type": "integer[]",
+                "primaryKey": false,
+                "notNull": false
+              },
+              "word_salt_a639b11c8130dcf7": {
+                "name": "word_salt_a639b11c8130dcf7",
+                "type": "bytea",
+                "primaryKey": false,
+                "notNull": false
+              },
+              "word_len_a639b11c8130dcf7": {
+                "name": "word_len_a639b11c8130dcf7",
+                "type": "integer",
+                "primaryKey": false,
+                "notNull": false
+              },
+              "word_stamps_a639b11c8130dcf7": {
+                "name": "word_stamps_a639b11c8130dcf7",
+                "type": "bigint[]",
+                "primaryKey": false,
+                "notNull": false
+              },
+              "word_offsets_a639b11c8130dcf7": {
+                "name": "word_offsets_a639b11c8130dcf7",
+                "type": "integer[]",
+                "primaryKey": false,
+                "notNull": false
+              },
+              "single_salt_a639b11c8130dcf7": {
+                "name": "single_salt_a639b11c8130dcf7",
+                "type": "bytea",
+                "primaryKey": false,
+                "notNull": false
+              },
+              "single_len_a639b11c8130dcf7": {
+                "name": "single_len_a639b11c8130dcf7",
+                "type": "integer",
+                "primaryKey": false,
+                "notNull": false
+              },
+              "single_stamps_a639b11c8130dcf7": {
+                "name": "single_stamps_a639b11c8130dcf7",
+                "type": "bigint[]",
+                "primaryKey": false,
+                "notNull": false
+              },
+              "single_offsets_a639b11c8130dcf7": {
+                "name": "single_offsets_a639b11c8130dcf7",
+                "type": "integer[]",
+                "primaryKey": false,
+                "notNull": false
+              },
+              "tokens_cd3096c7a3cd42c2": {
+                "name": "tokens_cd3096c7a3cd42c2",
+                "type": "bigint[]",
+                "primaryKey": false,
+                "notNull": false
+              },
+              "eq_salt_cd3096c7a3cd42c2": {
+                "name": "eq_salt_cd3096c7a3cd42c2",
+                "type": "bytea",
+                "primaryKey": false,
+                "notNull": false
+              },
+              "eq_stamp_cd3096c7a3cd42c2": {
+                "name": "eq_stamp_cd3096c7a3cd42c2",
+                "type": "bigint",
+                "primaryKey": false,
+                "notNull": false
+              },
+              "tokens_f289b89d86c7086a": {
+                "name": "tokens_f289b89d86c7086a",
+                "type": "bigint[]",
+                "primaryKey": false,
+                "notNull": false
+              },
+              "pos_salt_f289b89d86c7086a": {
+                "name": "pos_salt_f289b89d86c7086a",
+                "type": "bytea",
+                "primaryKey": false,
+                "notNull": false
+              },
+              "pos_len_f289b89d86c7086a": {
+                "name": "pos_len_f289b89d86c7086a",
+                "type": "integer",
+                "primaryKey": false,
+                "notNull": false
+              },
+              "pos_stamps_f289b89d86c7086a": {
+                "name": "pos_stamps_f289b89d86c7086a",
+                "type": "bigint[]",
+                "primaryKey": false,
+                "notNull": false
+              },
+              "pos_offsets_f289b89d86c7086a": {
+                "name": "pos_offsets_f289b89d86c7086a",
+                "type": "integer[]",
+                "primaryKey": false,
+                "notNull": false
+              },
+              "word_salt_f289b89d86c7086a": {
+                "name": "word_salt_f289b89d86c7086a",
+                "type": "bytea",
+                "primaryKey": false,
+                "notNull": false
+              },
+              "word_len_f289b89d86c7086a": {
+                "name": "word_len_f289b89d86c7086a",
+                "type": "integer",
+                "primaryKey": false,
+                "notNull": false
+              },
+              "word_stamps_f289b89d86c7086a": {
+                "name": "word_stamps_f289b89d86c7086a",
+                "type": "bigint[]",
+                "primaryKey": false,
+                "notNull": false
+              },
+              "word_offsets_f289b89d86c7086a": {
+                "name": "word_offsets_f289b89d86c7086a",
+                "type": "integer[]",
+                "primaryKey": false,
+                "notNull": false
+              },
+              "single_salt_f289b89d86c7086a": {
+                "name": "single_salt_f289b89d86c7086a",
+                "type": "bytea",
+                "primaryKey": false,
+                "notNull": false
+              },
+              "single_len_f289b89d86c7086a": {
+                "name": "single_len_f289b89d86c7086a",
+                "type": "integer",
+                "primaryKey": false,
+                "notNull": false
+              },
+              "single_stamps_f289b89d86c7086a": {
+                "name": "single_stamps_f289b89d86c7086a",
+                "type": "bigint[]",
+                "primaryKey": false,
+                "notNull": false
+              },
+              "single_offsets_f289b89d86c7086a": {
+                "name": "single_offsets_f289b89d86c7086a",
+                "type": "integer[]",
+                "primaryKey": false,
+                "notNull": false
+              },
+              "tokens_c44ae523cca61a0b": {
+                "name": "tokens_c44ae523cca61a0b",
+                "type": "bigint[]",
+                "primaryKey": false,
+                "notNull": false
+              },
+              "eq_salt_c44ae523cca61a0b": {
+                "name": "eq_salt_c44ae523cca61a0b",
+                "type": "bytea",
+                "primaryKey": false,
+                "notNull": false
+              },
+              "eq_stamp_c44ae523cca61a0b": {
+                "name": "eq_stamp_c44ae523cca61a0b",
+                "type": "bigint",
+                "primaryKey": false,
+                "notNull": false
+              },
+              "tokens_7a1d2ba5ce2368fb": {
+                "name": "tokens_7a1d2ba5ce2368fb",
+                "type": "bigint[]",
+                "primaryKey": false,
+                "notNull": false
+              },
+              "pos_salt_7a1d2ba5ce2368fb": {
+                "name": "pos_salt_7a1d2ba5ce2368fb",
+                "type": "bytea",
+                "primaryKey": false,
+                "notNull": false
+              },
+              "pos_len_7a1d2ba5ce2368fb": {
+                "name": "pos_len_7a1d2ba5ce2368fb",
+                "type": "integer",
+                "primaryKey": false,
+                "notNull": false
+              },
+              "pos_stamps_7a1d2ba5ce2368fb": {
+                "name": "pos_stamps_7a1d2ba5ce2368fb",
+                "type": "bigint[]",
+                "primaryKey": false,
+                "notNull": false
+              },
+              "pos_offsets_7a1d2ba5ce2368fb": {
+                "name": "pos_offsets_7a1d2ba5ce2368fb",
+                "type": "integer[]",
+                "primaryKey": false,
+                "notNull": false
+              },
+              "word_salt_7a1d2ba5ce2368fb": {
+                "name": "word_salt_7a1d2ba5ce2368fb",
+                "type": "bytea",
+                "primaryKey": false,
+                "notNull": false
+              },
+              "word_len_7a1d2ba5ce2368fb": {
+                "name": "word_len_7a1d2ba5ce2368fb",
+                "type": "integer",
+                "primaryKey": false,
+                "notNull": false
+              },
+              "word_stamps_7a1d2ba5ce2368fb": {
+                "name": "word_stamps_7a1d2ba5ce2368fb",
+                "type": "bigint[]",
+                "primaryKey": false,
+                "notNull": false
+              },
+              "word_offsets_7a1d2ba5ce2368fb": {
+                "name": "word_offsets_7a1d2ba5ce2368fb",
+                "type": "integer[]",
+                "primaryKey": false,
+                "notNull": false
+              },
+              "single_salt_7a1d2ba5ce2368fb": {
+                "name": "single_salt_7a1d2ba5ce2368fb",
+                "type": "bytea",
+                "primaryKey": false,
+                "notNull": false
+              },
+              "single_len_7a1d2ba5ce2368fb": {
+                "name": "single_len_7a1d2ba5ce2368fb",
+                "type": "integer",
+                "primaryKey": false,
+                "notNull": false
+              },
+              "single_stamps_7a1d2ba5ce2368fb": {
+                "name": "single_stamps_7a1d2ba5ce2368fb",
+                "type": "bigint[]",
+                "primaryKey": false,
+                "notNull": false
+              },
+              "single_offsets_7a1d2ba5ce2368fb": {
+                "name": "single_offsets_7a1d2ba5ce2368fb",
+                "type": "integer[]",
+                "primaryKey": false,
+                "notNull": false
+              }
+            },
+            "indexes": {
+              "customers_seal_index_scope_row_uq": {
+                "name": "customers_seal_index_scope_row_uq",
+                "columns": [
+                  {
+                    "expression": "scope_id",
+                    "isExpression": false,
+                    "asc": true,
+                    "nulls": "last"
+                  },
+                  {
+                    "expression": "row_id",
+                    "isExpression": false,
+                    "asc": true,
+                    "nulls": "last"
+                  }
+                ],
+                "isUnique": true,
+                "concurrently": false,
+                "method": "btree",
+                "with": {}
+              },
+              "customers_seal_index_row_uq": {
+                "name": "customers_seal_index_row_uq",
+                "columns": [
+                  {
+                    "expression": "row_id",
+                    "isExpression": false,
+                    "asc": true,
+                    "nulls": "last"
+                  }
+                ],
+                "isUnique": true,
+                "concurrently": false,
+                "method": "btree",
+                "with": {}
+              },
+              "seal_dfa387787f59f02a_bt": {
+                "name": "seal_dfa387787f59f02a_bt",
+                "columns": [
+                  {
+                    "expression": "scope_id",
+                    "asc": true,
+                    "isExpression": true,
+                    "nulls": "last"
+                  },
+                  {
+                    "expression": "(tokens_988d248ff4b71bf7[1])",
+                    "asc": true,
+                    "isExpression": true,
+                    "nulls": "last"
+                  },
+                  {
+                    "expression": "row_id",
+                    "asc": true,
+                    "isExpression": true,
+                    "nulls": "last"
+                  },
+                  {
+                    "expression": "eq_salt_988d248ff4b71bf7",
+                    "asc": true,
+                    "isExpression": true,
+                    "nulls": "last"
+                  },
+                  {
+                    "expression": "eq_stamp_988d248ff4b71bf7",
+                    "asc": true,
+                    "isExpression": true,
+                    "nulls": "last"
+                  },
+                  {
+                    "expression": "tokens_988d248ff4b71bf7",
+                    "asc": true,
+                    "isExpression": true,
+                    "nulls": "last"
+                  }
+                ],
+                "isUnique": false,
+                "concurrently": false,
+                "method": "btree",
+                "with": {}
+              },
+              "seal_4c8e2d2bddde3451_bt": {
+                "name": "seal_4c8e2d2bddde3451_bt",
+                "columns": [
+                  {
+                    "expression": "scope_id",
+                    "asc": true,
+                    "isExpression": true,
+                    "nulls": "last"
+                  },
+                  {
+                    "expression": "(tokens_a106c26102b707f0[1])",
+                    "asc": true,
+                    "isExpression": true,
+                    "nulls": "last"
+                  },
+                  {
+                    "expression": "row_id",
+                    "asc": true,
+                    "isExpression": true,
+                    "nulls": "last"
+                  },
+                  {
+                    "expression": "eq_salt_a106c26102b707f0",
+                    "asc": true,
+                    "isExpression": true,
+                    "nulls": "last"
+                  },
+                  {
+                    "expression": "eq_stamp_a106c26102b707f0",
+                    "asc": true,
+                    "isExpression": true,
+                    "nulls": "last"
+                  },
+                  {
+                    "expression": "tokens_a106c26102b707f0",
+                    "asc": true,
+                    "isExpression": true,
+                    "nulls": "last"
+                  }
+                ],
+                "isUnique": false,
+                "concurrently": false,
+                "method": "btree",
+                "with": {}
+              },
+              "seal_ae59b15a89e931d6_bt": {
+                "name": "seal_ae59b15a89e931d6_bt",
+                "columns": [
+                  {
+                    "expression": "scope_id",
+                    "asc": true,
+                    "isExpression": true,
+                    "nulls": "last"
+                  },
+                  {
+                    "expression": "(tokens_c5133b3810f23103[1])",
+                    "asc": true,
+                    "isExpression": true,
+                    "nulls": "last"
+                  },
+                  {
+                    "expression": "row_id",
+                    "asc": true,
+                    "isExpression": true,
+                    "nulls": "last"
+                  },
+                  {
+                    "expression": "eq_salt_c5133b3810f23103",
+                    "asc": true,
+                    "isExpression": true,
+                    "nulls": "last"
+                  },
+                  {
+                    "expression": "eq_stamp_c5133b3810f23103",
+                    "asc": true,
+                    "isExpression": true,
+                    "nulls": "last"
+                  },
+                  {
+                    "expression": "tokens_c5133b3810f23103",
+                    "asc": true,
+                    "isExpression": true,
+                    "nulls": "last"
+                  }
+                ],
+                "isUnique": false,
+                "concurrently": false,
+                "method": "btree",
+                "with": {}
+              },
+              "seal_8fa11f16c3da1ad8_bt": {
+                "name": "seal_8fa11f16c3da1ad8_bt",
+                "columns": [
+                  {
+                    "expression": "scope_id",
+                    "asc": true,
+                    "isExpression": true,
+                    "nulls": "last"
+                  },
+                  {
+                    "expression": "(tokens_1c32fdad5d1c8367[1])",
+                    "asc": true,
+                    "isExpression": true,
+                    "nulls": "last"
+                  },
+                  {
+                    "expression": "row_id",
+                    "asc": true,
+                    "isExpression": true,
+                    "nulls": "last"
+                  },
+                  {
+                    "expression": "eq_salt_1c32fdad5d1c8367",
+                    "asc": true,
+                    "isExpression": true,
+                    "nulls": "last"
+                  },
+                  {
+                    "expression": "eq_stamp_1c32fdad5d1c8367",
+                    "asc": true,
+                    "isExpression": true,
+                    "nulls": "last"
+                  },
+                  {
+                    "expression": "tokens_1c32fdad5d1c8367",
+                    "asc": true,
+                    "isExpression": true,
+                    "nulls": "last"
+                  }
+                ],
+                "isUnique": false,
+                "concurrently": false,
+                "method": "btree",
+                "with": {}
+              },
+              "seal_411905c9deef5c59_bt": {
+                "name": "seal_411905c9deef5c59_bt",
+                "columns": [
+                  {
+                    "expression": "scope_id",
+                    "asc": true,
+                    "isExpression": true,
+                    "nulls": "last"
+                  },
+                  {
+                    "expression": "(tokens_cd3096c7a3cd42c2[1])",
+                    "asc": true,
+                    "isExpression": true,
+                    "nulls": "last"
+                  },
+                  {
+                    "expression": "row_id",
+                    "asc": true,
+                    "isExpression": true,
+                    "nulls": "last"
+                  },
+                  {
+                    "expression": "eq_salt_cd3096c7a3cd42c2",
+                    "asc": true,
+                    "isExpression": true,
+                    "nulls": "last"
+                  },
+                  {
+                    "expression": "eq_stamp_cd3096c7a3cd42c2",
+                    "asc": true,
+                    "isExpression": true,
+                    "nulls": "last"
+                  },
+                  {
+                    "expression": "tokens_cd3096c7a3cd42c2",
+                    "asc": true,
+                    "isExpression": true,
+                    "nulls": "last"
+                  }
+                ],
+                "isUnique": false,
+                "concurrently": false,
+                "method": "btree",
+                "with": {}
+              },
+              "seal_62e346c0ef994072_bt": {
+                "name": "seal_62e346c0ef994072_bt",
+                "columns": [
+                  {
+                    "expression": "scope_id",
+                    "asc": true,
+                    "isExpression": true,
+                    "nulls": "last"
+                  },
+                  {
+                    "expression": "(tokens_c44ae523cca61a0b[1])",
+                    "asc": true,
+                    "isExpression": true,
+                    "nulls": "last"
+                  },
+                  {
+                    "expression": "row_id",
+                    "asc": true,
+                    "isExpression": true,
+                    "nulls": "last"
+                  },
+                  {
+                    "expression": "eq_salt_c44ae523cca61a0b",
+                    "asc": true,
+                    "isExpression": true,
+                    "nulls": "last"
+                  },
+                  {
+                    "expression": "eq_stamp_c44ae523cca61a0b",
+                    "asc": true,
+                    "isExpression": true,
+                    "nulls": "last"
+                  },
+                  {
+                    "expression": "tokens_c44ae523cca61a0b",
+                    "asc": true,
+                    "isExpression": true,
+                    "nulls": "last"
+                  }
+                ],
+                "isUnique": false,
+                "concurrently": false,
+                "method": "btree",
+                "with": {}
+              },
+              "seal_e66dc2708e915b65_gin": {
+                "name": "seal_e66dc2708e915b65_gin",
+                "columns": [
+                  {
+                    "expression": "tokens_792d75cf01821d67",
+                    "isExpression": false,
+                    "asc": true,
+                    "nulls": "last"
+                  },
+                  {
+                    "expression": "tokens_1127994ab736baf4",
+                    "isExpression": false,
+                    "asc": true,
+                    "nulls": "last"
+                  },
+                  {
+                    "expression": "tokens_ef1d32a52e2ce103",
+                    "isExpression": false,
+                    "asc": true,
+                    "nulls": "last"
+                  },
+                  {
+                    "expression": "tokens_a639b11c8130dcf7",
+                    "isExpression": false,
+                    "asc": true,
+                    "nulls": "last"
+                  },
+                  {
+                    "expression": "tokens_f289b89d86c7086a",
+                    "isExpression": false,
+                    "asc": true,
+                    "nulls": "last"
+                  },
+                  {
+                    "expression": "tokens_7a1d2ba5ce2368fb",
+                    "isExpression": false,
+                    "asc": true,
+                    "nulls": "last"
+                  }
+                ],
+                "isUnique": false,
+                "concurrently": false,
+                "method": "gin",
+                "with": {}
+              }
+            },
+            "foreignKeys": {
+              "customers_seal_index_row_id_customers_id_fk": {
+                "name": "customers_seal_index_row_id_customers_id_fk",
+                "tableFrom": "customers_seal_index",
+                "tableTo": "customers",
+                "schemaTo": "test_r9_verify_main",
+                "columnsFrom": [
+                  "row_id"
+                ],
+                "columnsTo": [
+                  "id"
+                ],
+                "onDelete": "cascade",
+                "onUpdate": "no action"
+              }
+            },
+            "compositePrimaryKeys": {},
+            "uniqueConstraints": {},
+            "policies": {},
+            "checkConstraints": {
+              "seal_dfa387787f59f02a_one_ck": {
+                "name": "seal_dfa387787f59f02a_one_ck",
+                "value": "\"test_r9_verify_main\".\"customers_seal_index\".\"tokens_988d248ff4b71bf7\" is null or\n        (cardinality(\"test_r9_verify_main\".\"customers_seal_index\".\"tokens_988d248ff4b71bf7\") = 1 and array_ndims(\"test_r9_verify_main\".\"customers_seal_index\".\"tokens_988d248ff4b71bf7\") = 1)"
+              },
+              "seal_4c8e2d2bddde3451_one_ck": {
+                "name": "seal_4c8e2d2bddde3451_one_ck",
+                "value": "\"test_r9_verify_main\".\"customers_seal_index\".\"tokens_a106c26102b707f0\" is null or\n        (cardinality(\"test_r9_verify_main\".\"customers_seal_index\".\"tokens_a106c26102b707f0\") = 1 and array_ndims(\"test_r9_verify_main\".\"customers_seal_index\".\"tokens_a106c26102b707f0\") = 1)"
+              },
+              "seal_ae59b15a89e931d6_one_ck": {
+                "name": "seal_ae59b15a89e931d6_one_ck",
+                "value": "\"test_r9_verify_main\".\"customers_seal_index\".\"tokens_c5133b3810f23103\" is null or\n        (cardinality(\"test_r9_verify_main\".\"customers_seal_index\".\"tokens_c5133b3810f23103\") = 1 and array_ndims(\"test_r9_verify_main\".\"customers_seal_index\".\"tokens_c5133b3810f23103\") = 1)"
+              },
+              "seal_8fa11f16c3da1ad8_one_ck": {
+                "name": "seal_8fa11f16c3da1ad8_one_ck",
+                "value": "\"test_r9_verify_main\".\"customers_seal_index\".\"tokens_1c32fdad5d1c8367\" is null or\n        (cardinality(\"test_r9_verify_main\".\"customers_seal_index\".\"tokens_1c32fdad5d1c8367\") = 1 and array_ndims(\"test_r9_verify_main\".\"customers_seal_index\".\"tokens_1c32fdad5d1c8367\") = 1)"
+              },
+              "seal_411905c9deef5c59_one_ck": {
+                "name": "seal_411905c9deef5c59_one_ck",
+                "value": "\"test_r9_verify_main\".\"customers_seal_index\".\"tokens_cd3096c7a3cd42c2\" is null or\n        (cardinality(\"test_r9_verify_main\".\"customers_seal_index\".\"tokens_cd3096c7a3cd42c2\") = 1 and array_ndims(\"test_r9_verify_main\".\"customers_seal_index\".\"tokens_cd3096c7a3cd42c2\") = 1)"
+              },
+              "seal_62e346c0ef994072_one_ck": {
+                "name": "seal_62e346c0ef994072_one_ck",
+                "value": "\"test_r9_verify_main\".\"customers_seal_index\".\"tokens_c44ae523cca61a0b\" is null or\n        (cardinality(\"test_r9_verify_main\".\"customers_seal_index\".\"tokens_c44ae523cca61a0b\") = 1 and array_ndims(\"test_r9_verify_main\".\"customers_seal_index\".\"tokens_c44ae523cca61a0b\") = 1)"
+              },
+              "seal_8087f389ab6d07a2_ck": {
+                "name": "seal_8087f389ab6d07a2_ck",
+                "value": "(\"test_r9_verify_main\".\"customers_seal_index\".\"eq_salt_988d248ff4b71bf7\" is null and \"test_r9_verify_main\".\"customers_seal_index\".\"eq_stamp_988d248ff4b71bf7\" is null) or\n          (\"test_r9_verify_main\".\"customers_seal_index\".\"eq_salt_988d248ff4b71bf7\" is not null and \"test_r9_verify_main\".\"customers_seal_index\".\"eq_stamp_988d248ff4b71bf7\" is not null and octet_length(\"test_r9_verify_main\".\"customers_seal_index\".\"eq_salt_988d248ff4b71bf7\") = 16 )"
+              },
+              "seal_3e959b5ee3a10b8e_ck": {
+                "name": "seal_3e959b5ee3a10b8e_ck",
+                "value": "(\"test_r9_verify_main\".\"customers_seal_index\".\"pos_salt_792d75cf01821d67\" is null and \"test_r9_verify_main\".\"customers_seal_index\".\"pos_len_792d75cf01821d67\" is null and \"test_r9_verify_main\".\"customers_seal_index\".\"pos_stamps_792d75cf01821d67\" is null and \"test_r9_verify_main\".\"customers_seal_index\".\"pos_offsets_792d75cf01821d67\" is null) or\n          (\"test_r9_verify_main\".\"customers_seal_index\".\"pos_salt_792d75cf01821d67\" is not null and \"test_r9_verify_main\".\"customers_seal_index\".\"pos_len_792d75cf01821d67\" is not null and \"test_r9_verify_main\".\"customers_seal_index\".\"pos_stamps_792d75cf01821d67\" is not null and \"test_r9_verify_main\".\"customers_seal_index\".\"pos_offsets_792d75cf01821d67\" is not null and octet_length(\"test_r9_verify_main\".\"customers_seal_index\".\"pos_salt_792d75cf01821d67\") = 16 and \"test_r9_verify_main\".\"customers_seal_index\".\"pos_len_792d75cf01821d67\" >= 0\n          and cardinality(\"test_r9_verify_main\".\"customers_seal_index\".\"pos_stamps_792d75cf01821d67\") = cardinality(\"test_r9_verify_main\".\"customers_seal_index\".\"pos_offsets_792d75cf01821d67\"))"
+              },
+              "seal_a9c47c55002424c8_ck": {
+                "name": "seal_a9c47c55002424c8_ck",
+                "value": "(\"test_r9_verify_main\".\"customers_seal_index\".\"word_salt_792d75cf01821d67\" is null and \"test_r9_verify_main\".\"customers_seal_index\".\"word_len_792d75cf01821d67\" is null and \"test_r9_verify_main\".\"customers_seal_index\".\"word_stamps_792d75cf01821d67\" is null and \"test_r9_verify_main\".\"customers_seal_index\".\"word_offsets_792d75cf01821d67\" is null) or\n          (\"test_r9_verify_main\".\"customers_seal_index\".\"word_salt_792d75cf01821d67\" is not null and \"test_r9_verify_main\".\"customers_seal_index\".\"word_len_792d75cf01821d67\" is not null and \"test_r9_verify_main\".\"customers_seal_index\".\"word_stamps_792d75cf01821d67\" is not null and \"test_r9_verify_main\".\"customers_seal_index\".\"word_offsets_792d75cf01821d67\" is not null and octet_length(\"test_r9_verify_main\".\"customers_seal_index\".\"word_salt_792d75cf01821d67\") = 16 and \"test_r9_verify_main\".\"customers_seal_index\".\"word_len_792d75cf01821d67\" >= 0\n          and cardinality(\"test_r9_verify_main\".\"customers_seal_index\".\"word_stamps_792d75cf01821d67\") = cardinality(\"test_r9_verify_main\".\"customers_seal_index\".\"word_offsets_792d75cf01821d67\"))"
+              },
+              "seal_22440b0305a4ab64_ck": {
+                "name": "seal_22440b0305a4ab64_ck",
+                "value": "(\"test_r9_verify_main\".\"customers_seal_index\".\"single_salt_792d75cf01821d67\" is null and \"test_r9_verify_main\".\"customers_seal_index\".\"single_len_792d75cf01821d67\" is null and \"test_r9_verify_main\".\"customers_seal_index\".\"single_stamps_792d75cf01821d67\" is null and \"test_r9_verify_main\".\"customers_seal_index\".\"single_offsets_792d75cf01821d67\" is null) or\n          (\"test_r9_verify_main\".\"customers_seal_index\".\"single_salt_792d75cf01821d67\" is not null and \"test_r9_verify_main\".\"customers_seal_index\".\"single_len_792d75cf01821d67\" is not null and \"test_r9_verify_main\".\"customers_seal_index\".\"single_stamps_792d75cf01821d67\" is not null and \"test_r9_verify_main\".\"customers_seal_index\".\"single_offsets_792d75cf01821d67\" is not null and octet_length(\"test_r9_verify_main\".\"customers_seal_index\".\"single_salt_792d75cf01821d67\") = 16 and \"test_r9_verify_main\".\"customers_seal_index\".\"single_len_792d75cf01821d67\" >= 0\n          and cardinality(\"test_r9_verify_main\".\"customers_seal_index\".\"single_stamps_792d75cf01821d67\") = cardinality(\"test_r9_verify_main\".\"customers_seal_index\".\"single_offsets_792d75cf01821d67\"))"
+              },
+              "seal_e7939aee6e139cf8_ck": {
+                "name": "seal_e7939aee6e139cf8_ck",
+                "value": "(\"test_r9_verify_main\".\"customers_seal_index\".\"eq_salt_a106c26102b707f0\" is null and \"test_r9_verify_main\".\"customers_seal_index\".\"eq_stamp_a106c26102b707f0\" is null) or\n          (\"test_r9_verify_main\".\"customers_seal_index\".\"eq_salt_a106c26102b707f0\" is not null and \"test_r9_verify_main\".\"customers_seal_index\".\"eq_stamp_a106c26102b707f0\" is not null and octet_length(\"test_r9_verify_main\".\"customers_seal_index\".\"eq_salt_a106c26102b707f0\") = 16 )"
+              },
+              "seal_3a4c44ea79bb2b5b_ck": {
+                "name": "seal_3a4c44ea79bb2b5b_ck",
+                "value": "(\"test_r9_verify_main\".\"customers_seal_index\".\"pos_salt_1127994ab736baf4\" is null and \"test_r9_verify_main\".\"customers_seal_index\".\"pos_len_1127994ab736baf4\" is null and \"test_r9_verify_main\".\"customers_seal_index\".\"pos_stamps_1127994ab736baf4\" is null and \"test_r9_verify_main\".\"customers_seal_index\".\"pos_offsets_1127994ab736baf4\" is null) or\n          (\"test_r9_verify_main\".\"customers_seal_index\".\"pos_salt_1127994ab736baf4\" is not null and \"test_r9_verify_main\".\"customers_seal_index\".\"pos_len_1127994ab736baf4\" is not null and \"test_r9_verify_main\".\"customers_seal_index\".\"pos_stamps_1127994ab736baf4\" is not null and \"test_r9_verify_main\".\"customers_seal_index\".\"pos_offsets_1127994ab736baf4\" is not null and octet_length(\"test_r9_verify_main\".\"customers_seal_index\".\"pos_salt_1127994ab736baf4\") = 16 and \"test_r9_verify_main\".\"customers_seal_index\".\"pos_len_1127994ab736baf4\" >= 0\n          and cardinality(\"test_r9_verify_main\".\"customers_seal_index\".\"pos_stamps_1127994ab736baf4\") = cardinality(\"test_r9_verify_main\".\"customers_seal_index\".\"pos_offsets_1127994ab736baf4\"))"
+              },
+              "seal_49d2acc1ff24d8cd_ck": {
+                "name": "seal_49d2acc1ff24d8cd_ck",
+                "value": "(\"test_r9_verify_main\".\"customers_seal_index\".\"word_salt_1127994ab736baf4\" is null and \"test_r9_verify_main\".\"customers_seal_index\".\"word_len_1127994ab736baf4\" is null and \"test_r9_verify_main\".\"customers_seal_index\".\"word_stamps_1127994ab736baf4\" is null and \"test_r9_verify_main\".\"customers_seal_index\".\"word_offsets_1127994ab736baf4\" is null) or\n          (\"test_r9_verify_main\".\"customers_seal_index\".\"word_salt_1127994ab736baf4\" is not null and \"test_r9_verify_main\".\"customers_seal_index\".\"word_len_1127994ab736baf4\" is not null and \"test_r9_verify_main\".\"customers_seal_index\".\"word_stamps_1127994ab736baf4\" is not null and \"test_r9_verify_main\".\"customers_seal_index\".\"word_offsets_1127994ab736baf4\" is not null and octet_length(\"test_r9_verify_main\".\"customers_seal_index\".\"word_salt_1127994ab736baf4\") = 16 and \"test_r9_verify_main\".\"customers_seal_index\".\"word_len_1127994ab736baf4\" >= 0\n          and cardinality(\"test_r9_verify_main\".\"customers_seal_index\".\"word_stamps_1127994ab736baf4\") = cardinality(\"test_r9_verify_main\".\"customers_seal_index\".\"word_offsets_1127994ab736baf4\"))"
+              },
+              "seal_17a272c1925c23e9_ck": {
+                "name": "seal_17a272c1925c23e9_ck",
+                "value": "(\"test_r9_verify_main\".\"customers_seal_index\".\"single_salt_1127994ab736baf4\" is null and \"test_r9_verify_main\".\"customers_seal_index\".\"single_len_1127994ab736baf4\" is null and \"test_r9_verify_main\".\"customers_seal_index\".\"single_stamps_1127994ab736baf4\" is null and \"test_r9_verify_main\".\"customers_seal_index\".\"single_offsets_1127994ab736baf4\" is null) or\n          (\"test_r9_verify_main\".\"customers_seal_index\".\"single_salt_1127994ab736baf4\" is not null and \"test_r9_verify_main\".\"customers_seal_index\".\"single_len_1127994ab736baf4\" is not null and \"test_r9_verify_main\".\"customers_seal_index\".\"single_stamps_1127994ab736baf4\" is not null and \"test_r9_verify_main\".\"customers_seal_index\".\"single_offsets_1127994ab736baf4\" is not null and octet_length(\"test_r9_verify_main\".\"customers_seal_index\".\"single_salt_1127994ab736baf4\") = 16 and \"test_r9_verify_main\".\"customers_seal_index\".\"single_len_1127994ab736baf4\" >= 0\n          and cardinality(\"test_r9_verify_main\".\"customers_seal_index\".\"single_stamps_1127994ab736baf4\") = cardinality(\"test_r9_verify_main\".\"customers_seal_index\".\"single_offsets_1127994ab736baf4\"))"
+              },
+              "seal_a342f7266d485434_ck": {
+                "name": "seal_a342f7266d485434_ck",
+                "value": "(\"test_r9_verify_main\".\"customers_seal_index\".\"eq_salt_c5133b3810f23103\" is null and \"test_r9_verify_main\".\"customers_seal_index\".\"eq_stamp_c5133b3810f23103\" is null) or\n          (\"test_r9_verify_main\".\"customers_seal_index\".\"eq_salt_c5133b3810f23103\" is not null and \"test_r9_verify_main\".\"customers_seal_index\".\"eq_stamp_c5133b3810f23103\" is not null and octet_length(\"test_r9_verify_main\".\"customers_seal_index\".\"eq_salt_c5133b3810f23103\") = 16 )"
+              },
+              "seal_29be74eeee1fbd9e_ck": {
+                "name": "seal_29be74eeee1fbd9e_ck",
+                "value": "(\"test_r9_verify_main\".\"customers_seal_index\".\"pos_salt_ef1d32a52e2ce103\" is null and \"test_r9_verify_main\".\"customers_seal_index\".\"pos_len_ef1d32a52e2ce103\" is null and \"test_r9_verify_main\".\"customers_seal_index\".\"pos_stamps_ef1d32a52e2ce103\" is null and \"test_r9_verify_main\".\"customers_seal_index\".\"pos_offsets_ef1d32a52e2ce103\" is null) or\n          (\"test_r9_verify_main\".\"customers_seal_index\".\"pos_salt_ef1d32a52e2ce103\" is not null and \"test_r9_verify_main\".\"customers_seal_index\".\"pos_len_ef1d32a52e2ce103\" is not null and \"test_r9_verify_main\".\"customers_seal_index\".\"pos_stamps_ef1d32a52e2ce103\" is not null and \"test_r9_verify_main\".\"customers_seal_index\".\"pos_offsets_ef1d32a52e2ce103\" is not null and octet_length(\"test_r9_verify_main\".\"customers_seal_index\".\"pos_salt_ef1d32a52e2ce103\") = 16 and \"test_r9_verify_main\".\"customers_seal_index\".\"pos_len_ef1d32a52e2ce103\" >= 0\n          and cardinality(\"test_r9_verify_main\".\"customers_seal_index\".\"pos_stamps_ef1d32a52e2ce103\") = cardinality(\"test_r9_verify_main\".\"customers_seal_index\".\"pos_offsets_ef1d32a52e2ce103\"))"
+              },
+              "seal_dabcdf67ec868294_ck": {
+                "name": "seal_dabcdf67ec868294_ck",
+                "value": "(\"test_r9_verify_main\".\"customers_seal_index\".\"word_salt_ef1d32a52e2ce103\" is null and \"test_r9_verify_main\".\"customers_seal_index\".\"word_len_ef1d32a52e2ce103\" is null and \"test_r9_verify_main\".\"customers_seal_index\".\"word_stamps_ef1d32a52e2ce103\" is null and \"test_r9_verify_main\".\"customers_seal_index\".\"word_offsets_ef1d32a52e2ce103\" is null) or\n          (\"test_r9_verify_main\".\"customers_seal_index\".\"word_salt_ef1d32a52e2ce103\" is not null and \"test_r9_verify_main\".\"customers_seal_index\".\"word_len_ef1d32a52e2ce103\" is not null and \"test_r9_verify_main\".\"customers_seal_index\".\"word_stamps_ef1d32a52e2ce103\" is not null and \"test_r9_verify_main\".\"customers_seal_index\".\"word_offsets_ef1d32a52e2ce103\" is not null and octet_length(\"test_r9_verify_main\".\"customers_seal_index\".\"word_salt_ef1d32a52e2ce103\") = 16 and \"test_r9_verify_main\".\"customers_seal_index\".\"word_len_ef1d32a52e2ce103\" >= 0\n          and cardinality(\"test_r9_verify_main\".\"customers_seal_index\".\"word_stamps_ef1d32a52e2ce103\") = cardinality(\"test_r9_verify_main\".\"customers_seal_index\".\"word_offsets_ef1d32a52e2ce103\"))"
+              },
+              "seal_ea9efba7ad61aed0_ck": {
+                "name": "seal_ea9efba7ad61aed0_ck",
+                "value": "(\"test_r9_verify_main\".\"customers_seal_index\".\"single_salt_ef1d32a52e2ce103\" is null and \"test_r9_verify_main\".\"customers_seal_index\".\"single_len_ef1d32a52e2ce103\" is null and \"test_r9_verify_main\".\"customers_seal_index\".\"single_stamps_ef1d32a52e2ce103\" is null and \"test_r9_verify_main\".\"customers_seal_index\".\"single_offsets_ef1d32a52e2ce103\" is null) or\n          (\"test_r9_verify_main\".\"customers_seal_index\".\"single_salt_ef1d32a52e2ce103\" is not null and \"test_r9_verify_main\".\"customers_seal_index\".\"single_len_ef1d32a52e2ce103\" is not null and \"test_r9_verify_main\".\"customers_seal_index\".\"single_stamps_ef1d32a52e2ce103\" is not null and \"test_r9_verify_main\".\"customers_seal_index\".\"single_offsets_ef1d32a52e2ce103\" is not null and octet_length(\"test_r9_verify_main\".\"customers_seal_index\".\"single_salt_ef1d32a52e2ce103\") = 16 and \"test_r9_verify_main\".\"customers_seal_index\".\"single_len_ef1d32a52e2ce103\" >= 0\n          and cardinality(\"test_r9_verify_main\".\"customers_seal_index\".\"single_stamps_ef1d32a52e2ce103\") = cardinality(\"test_r9_verify_main\".\"customers_seal_index\".\"single_offsets_ef1d32a52e2ce103\"))"
+              },
+              "seal_5854a3c438983f97_ck": {
+                "name": "seal_5854a3c438983f97_ck",
+                "value": "(\"test_r9_verify_main\".\"customers_seal_index\".\"eq_salt_1c32fdad5d1c8367\" is null and \"test_r9_verify_main\".\"customers_seal_index\".\"eq_stamp_1c32fdad5d1c8367\" is null) or\n          (\"test_r9_verify_main\".\"customers_seal_index\".\"eq_salt_1c32fdad5d1c8367\" is not null and \"test_r9_verify_main\".\"customers_seal_index\".\"eq_stamp_1c32fdad5d1c8367\" is not null and octet_length(\"test_r9_verify_main\".\"customers_seal_index\".\"eq_salt_1c32fdad5d1c8367\") = 16 )"
+              },
+              "seal_2d4368a47b9a1d16_ck": {
+                "name": "seal_2d4368a47b9a1d16_ck",
+                "value": "(\"test_r9_verify_main\".\"customers_seal_index\".\"pos_salt_a639b11c8130dcf7\" is null and \"test_r9_verify_main\".\"customers_seal_index\".\"pos_len_a639b11c8130dcf7\" is null and \"test_r9_verify_main\".\"customers_seal_index\".\"pos_stamps_a639b11c8130dcf7\" is null and \"test_r9_verify_main\".\"customers_seal_index\".\"pos_offsets_a639b11c8130dcf7\" is null) or\n          (\"test_r9_verify_main\".\"customers_seal_index\".\"pos_salt_a639b11c8130dcf7\" is not null and \"test_r9_verify_main\".\"customers_seal_index\".\"pos_len_a639b11c8130dcf7\" is not null and \"test_r9_verify_main\".\"customers_seal_index\".\"pos_stamps_a639b11c8130dcf7\" is not null and \"test_r9_verify_main\".\"customers_seal_index\".\"pos_offsets_a639b11c8130dcf7\" is not null and octet_length(\"test_r9_verify_main\".\"customers_seal_index\".\"pos_salt_a639b11c8130dcf7\") = 16 and \"test_r9_verify_main\".\"customers_seal_index\".\"pos_len_a639b11c8130dcf7\" >= 0\n          and cardinality(\"test_r9_verify_main\".\"customers_seal_index\".\"pos_stamps_a639b11c8130dcf7\") = cardinality(\"test_r9_verify_main\".\"customers_seal_index\".\"pos_offsets_a639b11c8130dcf7\"))"
+              },
+              "seal_5d68e66c89041848_ck": {
+                "name": "seal_5d68e66c89041848_ck",
+                "value": "(\"test_r9_verify_main\".\"customers_seal_index\".\"word_salt_a639b11c8130dcf7\" is null and \"test_r9_verify_main\".\"customers_seal_index\".\"word_len_a639b11c8130dcf7\" is null and \"test_r9_verify_main\".\"customers_seal_index\".\"word_stamps_a639b11c8130dcf7\" is null and \"test_r9_verify_main\".\"customers_seal_index\".\"word_offsets_a639b11c8130dcf7\" is null) or\n          (\"test_r9_verify_main\".\"customers_seal_index\".\"word_salt_a639b11c8130dcf7\" is not null and \"test_r9_verify_main\".\"customers_seal_index\".\"word_len_a639b11c8130dcf7\" is not null and \"test_r9_verify_main\".\"customers_seal_index\".\"word_stamps_a639b11c8130dcf7\" is not null and \"test_r9_verify_main\".\"customers_seal_index\".\"word_offsets_a639b11c8130dcf7\" is not null and octet_length(\"test_r9_verify_main\".\"customers_seal_index\".\"word_salt_a639b11c8130dcf7\") = 16 and \"test_r9_verify_main\".\"customers_seal_index\".\"word_len_a639b11c8130dcf7\" >= 0\n          and cardinality(\"test_r9_verify_main\".\"customers_seal_index\".\"word_stamps_a639b11c8130dcf7\") = cardinality(\"test_r9_verify_main\".\"customers_seal_index\".\"word_offsets_a639b11c8130dcf7\"))"
+              },
+              "seal_e5e93a720ca9e574_ck": {
+                "name": "seal_e5e93a720ca9e574_ck",
+                "value": "(\"test_r9_verify_main\".\"customers_seal_index\".\"single_salt_a639b11c8130dcf7\" is null and \"test_r9_verify_main\".\"customers_seal_index\".\"single_len_a639b11c8130dcf7\" is null and \"test_r9_verify_main\".\"customers_seal_index\".\"single_stamps_a639b11c8130dcf7\" is null and \"test_r9_verify_main\".\"customers_seal_index\".\"single_offsets_a639b11c8130dcf7\" is null) or\n          (\"test_r9_verify_main\".\"customers_seal_index\".\"single_salt_a639b11c8130dcf7\" is not null and \"test_r9_verify_main\".\"customers_seal_index\".\"single_len_a639b11c8130dcf7\" is not null and \"test_r9_verify_main\".\"customers_seal_index\".\"single_stamps_a639b11c8130dcf7\" is not null and \"test_r9_verify_main\".\"customers_seal_index\".\"single_offsets_a639b11c8130dcf7\" is not null and octet_length(\"test_r9_verify_main\".\"customers_seal_index\".\"single_salt_a639b11c8130dcf7\") = 16 and \"test_r9_verify_main\".\"customers_seal_index\".\"single_len_a639b11c8130dcf7\" >= 0\n          and cardinality(\"test_r9_verify_main\".\"customers_seal_index\".\"single_stamps_a639b11c8130dcf7\") = cardinality(\"test_r9_verify_main\".\"customers_seal_index\".\"single_offsets_a639b11c8130dcf7\"))"
+              },
+              "seal_baf0c757d4087c63_ck": {
+                "name": "seal_baf0c757d4087c63_ck",
+                "value": "(\"test_r9_verify_main\".\"customers_seal_index\".\"eq_salt_cd3096c7a3cd42c2\" is null and \"test_r9_verify_main\".\"customers_seal_index\".\"eq_stamp_cd3096c7a3cd42c2\" is null) or\n          (\"test_r9_verify_main\".\"customers_seal_index\".\"eq_salt_cd3096c7a3cd42c2\" is not null and \"test_r9_verify_main\".\"customers_seal_index\".\"eq_stamp_cd3096c7a3cd42c2\" is not null and octet_length(\"test_r9_verify_main\".\"customers_seal_index\".\"eq_salt_cd3096c7a3cd42c2\") = 16 )"
+              },
+              "seal_8609fff396d1e5e3_ck": {
+                "name": "seal_8609fff396d1e5e3_ck",
+                "value": "(\"test_r9_verify_main\".\"customers_seal_index\".\"pos_salt_f289b89d86c7086a\" is null and \"test_r9_verify_main\".\"customers_seal_index\".\"pos_len_f289b89d86c7086a\" is null and \"test_r9_verify_main\".\"customers_seal_index\".\"pos_stamps_f289b89d86c7086a\" is null and \"test_r9_verify_main\".\"customers_seal_index\".\"pos_offsets_f289b89d86c7086a\" is null) or\n          (\"test_r9_verify_main\".\"customers_seal_index\".\"pos_salt_f289b89d86c7086a\" is not null and \"test_r9_verify_main\".\"customers_seal_index\".\"pos_len_f289b89d86c7086a\" is not null and \"test_r9_verify_main\".\"customers_seal_index\".\"pos_stamps_f289b89d86c7086a\" is not null and \"test_r9_verify_main\".\"customers_seal_index\".\"pos_offsets_f289b89d86c7086a\" is not null and octet_length(\"test_r9_verify_main\".\"customers_seal_index\".\"pos_salt_f289b89d86c7086a\") = 16 and \"test_r9_verify_main\".\"customers_seal_index\".\"pos_len_f289b89d86c7086a\" >= 0\n          and cardinality(\"test_r9_verify_main\".\"customers_seal_index\".\"pos_stamps_f289b89d86c7086a\") = cardinality(\"test_r9_verify_main\".\"customers_seal_index\".\"pos_offsets_f289b89d86c7086a\"))"
+              },
+              "seal_6d8a174f1f160f79_ck": {
+                "name": "seal_6d8a174f1f160f79_ck",
+                "value": "(\"test_r9_verify_main\".\"customers_seal_index\".\"word_salt_f289b89d86c7086a\" is null and \"test_r9_verify_main\".\"customers_seal_index\".\"word_len_f289b89d86c7086a\" is null and \"test_r9_verify_main\".\"customers_seal_index\".\"word_stamps_f289b89d86c7086a\" is null and \"test_r9_verify_main\".\"customers_seal_index\".\"word_offsets_f289b89d86c7086a\" is null) or\n          (\"test_r9_verify_main\".\"customers_seal_index\".\"word_salt_f289b89d86c7086a\" is not null and \"test_r9_verify_main\".\"customers_seal_index\".\"word_len_f289b89d86c7086a\" is not null and \"test_r9_verify_main\".\"customers_seal_index\".\"word_stamps_f289b89d86c7086a\" is not null and \"test_r9_verify_main\".\"customers_seal_index\".\"word_offsets_f289b89d86c7086a\" is not null and octet_length(\"test_r9_verify_main\".\"customers_seal_index\".\"word_salt_f289b89d86c7086a\") = 16 and \"test_r9_verify_main\".\"customers_seal_index\".\"word_len_f289b89d86c7086a\" >= 0\n          and cardinality(\"test_r9_verify_main\".\"customers_seal_index\".\"word_stamps_f289b89d86c7086a\") = cardinality(\"test_r9_verify_main\".\"customers_seal_index\".\"word_offsets_f289b89d86c7086a\"))"
+              },
+              "seal_4d80426ebe8f6c0d_ck": {
+                "name": "seal_4d80426ebe8f6c0d_ck",
+                "value": "(\"test_r9_verify_main\".\"customers_seal_index\".\"single_salt_f289b89d86c7086a\" is null and \"test_r9_verify_main\".\"customers_seal_index\".\"single_len_f289b89d86c7086a\" is null and \"test_r9_verify_main\".\"customers_seal_index\".\"single_stamps_f289b89d86c7086a\" is null and \"test_r9_verify_main\".\"customers_seal_index\".\"single_offsets_f289b89d86c7086a\" is null) or\n          (\"test_r9_verify_main\".\"customers_seal_index\".\"single_salt_f289b89d86c7086a\" is not null and \"test_r9_verify_main\".\"customers_seal_index\".\"single_len_f289b89d86c7086a\" is not null and \"test_r9_verify_main\".\"customers_seal_index\".\"single_stamps_f289b89d86c7086a\" is not null and \"test_r9_verify_main\".\"customers_seal_index\".\"single_offsets_f289b89d86c7086a\" is not null and octet_length(\"test_r9_verify_main\".\"customers_seal_index\".\"single_salt_f289b89d86c7086a\") = 16 and \"test_r9_verify_main\".\"customers_seal_index\".\"single_len_f289b89d86c7086a\" >= 0\n          and cardinality(\"test_r9_verify_main\".\"customers_seal_index\".\"single_stamps_f289b89d86c7086a\") = cardinality(\"test_r9_verify_main\".\"customers_seal_index\".\"single_offsets_f289b89d86c7086a\"))"
+              },
+              "seal_ba07838904f4779e_ck": {
+                "name": "seal_ba07838904f4779e_ck",
+                "value": "(\"test_r9_verify_main\".\"customers_seal_index\".\"eq_salt_c44ae523cca61a0b\" is null and \"test_r9_verify_main\".\"customers_seal_index\".\"eq_stamp_c44ae523cca61a0b\" is null) or\n          (\"test_r9_verify_main\".\"customers_seal_index\".\"eq_salt_c44ae523cca61a0b\" is not null and \"test_r9_verify_main\".\"customers_seal_index\".\"eq_stamp_c44ae523cca61a0b\" is not null and octet_length(\"test_r9_verify_main\".\"customers_seal_index\".\"eq_salt_c44ae523cca61a0b\") = 16 )"
+              },
+              "seal_e3491d1167b1bb38_ck": {
+                "name": "seal_e3491d1167b1bb38_ck",
+                "value": "(\"test_r9_verify_main\".\"customers_seal_index\".\"pos_salt_7a1d2ba5ce2368fb\" is null and \"test_r9_verify_main\".\"customers_seal_index\".\"pos_len_7a1d2ba5ce2368fb\" is null and \"test_r9_verify_main\".\"customers_seal_index\".\"pos_stamps_7a1d2ba5ce2368fb\" is null and \"test_r9_verify_main\".\"customers_seal_index\".\"pos_offsets_7a1d2ba5ce2368fb\" is null) or\n          (\"test_r9_verify_main\".\"customers_seal_index\".\"pos_salt_7a1d2ba5ce2368fb\" is not null and \"test_r9_verify_main\".\"customers_seal_index\".\"pos_len_7a1d2ba5ce2368fb\" is not null and \"test_r9_verify_main\".\"customers_seal_index\".\"pos_stamps_7a1d2ba5ce2368fb\" is not null and \"test_r9_verify_main\".\"customers_seal_index\".\"pos_offsets_7a1d2ba5ce2368fb\" is not null and octet_length(\"test_r9_verify_main\".\"customers_seal_index\".\"pos_salt_7a1d2ba5ce2368fb\") = 16 and \"test_r9_verify_main\".\"customers_seal_index\".\"pos_len_7a1d2ba5ce2368fb\" >= 0\n          and cardinality(\"test_r9_verify_main\".\"customers_seal_index\".\"pos_stamps_7a1d2ba5ce2368fb\") = cardinality(\"test_r9_verify_main\".\"customers_seal_index\".\"pos_offsets_7a1d2ba5ce2368fb\"))"
+              },
+              "seal_7349ffa12e7a0da6_ck": {
+                "name": "seal_7349ffa12e7a0da6_ck",
+                "value": "(\"test_r9_verify_main\".\"customers_seal_index\".\"word_salt_7a1d2ba5ce2368fb\" is null and \"test_r9_verify_main\".\"customers_seal_index\".\"word_len_7a1d2ba5ce2368fb\" is null and \"test_r9_verify_main\".\"customers_seal_index\".\"word_stamps_7a1d2ba5ce2368fb\" is null and \"test_r9_verify_main\".\"customers_seal_index\".\"word_offsets_7a1d2ba5ce2368fb\" is null) or\n          (\"test_r9_verify_main\".\"customers_seal_index\".\"word_salt_7a1d2ba5ce2368fb\" is not null and \"test_r9_verify_main\".\"customers_seal_index\".\"word_len_7a1d2ba5ce2368fb\" is not null and \"test_r9_verify_main\".\"customers_seal_index\".\"word_stamps_7a1d2ba5ce2368fb\" is not null and \"test_r9_verify_main\".\"customers_seal_index\".\"word_offsets_7a1d2ba5ce2368fb\" is not null and octet_length(\"test_r9_verify_main\".\"customers_seal_index\".\"word_salt_7a1d2ba5ce2368fb\") = 16 and \"test_r9_verify_main\".\"customers_seal_index\".\"word_len_7a1d2ba5ce2368fb\" >= 0\n          and cardinality(\"test_r9_verify_main\".\"customers_seal_index\".\"word_stamps_7a1d2ba5ce2368fb\") = cardinality(\"test_r9_verify_main\".\"customers_seal_index\".\"word_offsets_7a1d2ba5ce2368fb\"))"
+              },
+              "seal_49c54d6be8c8a392_ck": {
+                "name": "seal_49c54d6be8c8a392_ck",
+                "value": "(\"test_r9_verify_main\".\"customers_seal_index\".\"single_salt_7a1d2ba5ce2368fb\" is null and \"test_r9_verify_main\".\"customers_seal_index\".\"single_len_7a1d2ba5ce2368fb\" is null and \"test_r9_verify_main\".\"customers_seal_index\".\"single_stamps_7a1d2ba5ce2368fb\" is null and \"test_r9_verify_main\".\"customers_seal_index\".\"single_offsets_7a1d2ba5ce2368fb\" is null) or\n          (\"test_r9_verify_main\".\"customers_seal_index\".\"single_salt_7a1d2ba5ce2368fb\" is not null and \"test_r9_verify_main\".\"customers_seal_index\".\"single_len_7a1d2ba5ce2368fb\" is not null and \"test_r9_verify_main\".\"customers_seal_index\".\"single_stamps_7a1d2ba5ce2368fb\" is not null and \"test_r9_verify_main\".\"customers_seal_index\".\"single_offsets_7a1d2ba5ce2368fb\" is not null and octet_length(\"test_r9_verify_main\".\"customers_seal_index\".\"single_salt_7a1d2ba5ce2368fb\") = 16 and \"test_r9_verify_main\".\"customers_seal_index\".\"single_len_7a1d2ba5ce2368fb\" >= 0\n          and cardinality(\"test_r9_verify_main\".\"customers_seal_index\".\"single_stamps_7a1d2ba5ce2368fb\") = cardinality(\"test_r9_verify_main\".\"customers_seal_index\".\"single_offsets_7a1d2ba5ce2368fb\"))"
+              }
+            },
+            "isRLSEnabled": false
+          }
+        },
+        "enums": {},
+        "schemas": {},
+        "sequences": {},
+        "roles": {},
+        "policies": {},
+        "views": {},
+        "_meta": {
+          "schemas": {},
+          "tables": {},
+          "columns": {}
+        },
+        "id": "f722e44a-5553-4e57-8723-0a84fabf7d5a",
+        "prevId": "00000000-0000-0000-0000-000000000000"
+      }
+    }
+  ],
+  "functions": [
+    {
+      "schema": "test_r9_verify_main",
+      "name": "sealql_match_like",
+      "definition_md5": "458394426eb049e4531562bc8ea6fc56"
+    },
+    {
+      "schema": "test_r9_verify_main",
+      "name": "sealql_match_positions",
+      "definition_md5": "57a8bb33f8c36dcbae0a38829e8f6f47"
+    },
+    {
+      "schema": "test_r9_verify_main",
+      "name": "sealql_piece_positions",
+      "definition_md5": "ac1c0a95eac16c1d435cc97d5342bbd9"
+    },
+    {
+      "schema": "test_r9_verify_main",
+      "name": "sealql_run_positions",
+      "definition_md5": "676ef71ab941971c639e2b5918475844"
+    },
+    {
+      "schema": "test_r9_verify_join",
+      "name": "sealql_match_like",
+      "definition_md5": "cd5f218926c1b5dbef9e0a85c31e1192"
+    },
+    {
+      "schema": "test_r9_verify_join",
+      "name": "sealql_match_positions",
+      "definition_md5": "9a153236470db78120ccf2e727fe304c"
+    },
+    {
+      "schema": "test_r9_verify_join",
+      "name": "sealql_piece_positions",
+      "definition_md5": "14931ee824229e35ab781fa5f493ac41"
+    },
+    {
+      "schema": "test_r9_verify_join",
+      "name": "sealql_run_positions",
+      "definition_md5": "354449a1b6da7b288b90c07b19284d57"
+    }
+  ],
+  "build": "npm run build passed under measurement lock"
+}

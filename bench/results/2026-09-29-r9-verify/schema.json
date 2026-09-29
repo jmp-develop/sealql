@@ -1,0 +1,1222 @@
+{
+  "schema": "test_r9_verify_main",
+  "snapshot": {
+    "version": "7",
+    "dialect": "postgresql",
+    "tables": {
+      "test_r9_verify_main.customers": {
+        "name": "customers",
+        "schema": "test_r9_verify_main",
+        "columns": {
+          "id": {
+            "name": "id",
+            "type": "uuid",
+            "primaryKey": true,
+            "notNull": true
+          },
+          "scope_id": {
+            "name": "scope_id",
+            "type": "uuid",
+            "primaryKey": false,
+            "notNull": true
+          },
+          "name_ct": {
+            "name": "name_ct",
+            "type": "bytea",
+            "primaryKey": false,
+            "notNull": true
+          },
+          "phone_ct": {
+            "name": "phone_ct",
+            "type": "bytea",
+            "primaryKey": false,
+            "notNull": true
+          },
+          "address_ct": {
+            "name": "address_ct",
+            "type": "bytea",
+            "primaryKey": false,
+            "notNull": true
+          },
+          "memo_ct": {
+            "name": "memo_ct",
+            "type": "bytea",
+            "primaryKey": false,
+            "notNull": true
+          },
+          "email_ct": {
+            "name": "email_ct",
+            "type": "bytea",
+            "primaryKey": false,
+            "notNull": true
+          },
+          "company_ct": {
+            "name": "company_ct",
+            "type": "bytea",
+            "primaryKey": false,
+            "notNull": true
+          }
+        },
+        "indexes": {},
+        "foreignKeys": {},
+        "compositePrimaryKeys": {},
+        "uniqueConstraints": {},
+        "policies": {},
+        "checkConstraints": {},
+        "isRLSEnabled": false
+      },
+      "test_r9_verify_main.customers_seal_index": {
+        "name": "customers_seal_index",
+        "schema": "test_r9_verify_main",
+        "columns": {
+          "scope_id": {
+            "name": "scope_id",
+            "type": "uuid",
+            "primaryKey": false,
+            "notNull": true
+          },
+          "row_id": {
+            "name": "row_id",
+            "type": "uuid",
+            "primaryKey": false,
+            "notNull": true
+          },
+          "tokens_988d248ff4b71bf7": {
+            "name": "tokens_988d248ff4b71bf7",
+            "type": "bigint[]",
+            "primaryKey": false,
+            "notNull": false
+          },
+          "eq_salt_988d248ff4b71bf7": {
+            "name": "eq_salt_988d248ff4b71bf7",
+            "type": "bytea",
+            "primaryKey": false,
+            "notNull": false
+          },
+          "eq_stamp_988d248ff4b71bf7": {
+            "name": "eq_stamp_988d248ff4b71bf7",
+            "type": "bigint",
+            "primaryKey": false,
+            "notNull": false
+          },
+          "tokens_792d75cf01821d67": {
+            "name": "tokens_792d75cf01821d67",
+            "type": "bigint[]",
+            "primaryKey": false,
+            "notNull": false
+          },
+          "pos_salt_792d75cf01821d67": {
+            "name": "pos_salt_792d75cf01821d67",
+            "type": "bytea",
+            "primaryKey": false,
+            "notNull": false
+          },
+          "pos_len_792d75cf01821d67": {
+            "name": "pos_len_792d75cf01821d67",
+            "type": "integer",
+            "primaryKey": false,
+            "notNull": false
+          },
+          "pos_stamps_792d75cf01821d67": {
+            "name": "pos_stamps_792d75cf01821d67",
+            "type": "bigint[]",
+            "primaryKey": false,
+            "notNull": false
+          },
+          "pos_offsets_792d75cf01821d67": {
+            "name": "pos_offsets_792d75cf01821d67",
+            "type": "integer[]",
+            "primaryKey": false,
+            "notNull": false
+          },
+          "word_salt_792d75cf01821d67": {
+            "name": "word_salt_792d75cf01821d67",
+            "type": "bytea",
+            "primaryKey": false,
+            "notNull": false
+          },
+          "word_len_792d75cf01821d67": {
+            "name": "word_len_792d75cf01821d67",
+            "type": "integer",
+            "primaryKey": false,
+            "notNull": false
+          },
+          "word_stamps_792d75cf01821d67": {
+            "name": "word_stamps_792d75cf01821d67",
+            "type": "bigint[]",
+            "primaryKey": false,
+            "notNull": false
+          },
+          "word_offsets_792d75cf01821d67": {
+            "name": "word_offsets_792d75cf01821d67",
+            "type": "integer[]",
+            "primaryKey": false,
+            "notNull": false
+          },
+          "single_salt_792d75cf01821d67": {
+            "name": "single_salt_792d75cf01821d67",
+            "type": "bytea",
+            "primaryKey": false,
+            "notNull": false
+          },
+          "single_len_792d75cf01821d67": {
+            "name": "single_len_792d75cf01821d67",
+            "type": "integer",
+            "primaryKey": false,
+            "notNull": false
+          },
+          "single_stamps_792d75cf01821d67": {
+            "name": "single_stamps_792d75cf01821d67",
+            "type": "bigint[]",
+            "primaryKey": false,
+            "notNull": false
+          },
+          "single_offsets_792d75cf01821d67": {
+            "name": "single_offsets_792d75cf01821d67",
+            "type": "integer[]",
+            "primaryKey": false,
+            "notNull": false
+          },
+          "tokens_a106c26102b707f0": {
+            "name": "tokens_a106c26102b707f0",
+            "type": "bigint[]",
+            "primaryKey": false,
+            "notNull": false
+          },
+          "eq_salt_a106c26102b707f0": {
+            "name": "eq_salt_a106c26102b707f0",
+            "type": "bytea",
+            "primaryKey": false,
+            "notNull": false
+          },
+          "eq_stamp_a106c26102b707f0": {
+            "name": "eq_stamp_a106c26102b707f0",
+            "type": "bigint",
+            "primaryKey": false,
+            "notNull": false
+          },
+          "tokens_1127994ab736baf4": {
+            "name": "tokens_1127994ab736baf4",
+            "type": "bigint[]",
+            "primaryKey": false,
+            "notNull": false
+          },
+          "pos_salt_1127994ab736baf4": {
+            "name": "pos_salt_1127994ab736baf4",
+            "type": "bytea",
+            "primaryKey": false,
+            "notNull": false
+          },
+          "pos_len_1127994ab736baf4": {
+            "name": "pos_len_1127994ab736baf4",
+            "type": "integer",
+            "primaryKey": false,
+            "notNull": false
+          },
+          "pos_stamps_1127994ab736baf4": {
+            "name": "pos_stamps_1127994ab736baf4",
+            "type": "bigint[]",
+            "primaryKey": false,
+            "notNull": false
+          },
+          "pos_offsets_1127994ab736baf4": {
+            "name": "pos_offsets_1127994ab736baf4",
+            "type": "integer[]",
+            "primaryKey": false,
+            "notNull": false
+          },
+          "word_salt_1127994ab736baf4": {
+            "name": "word_salt_1127994ab736baf4",
+            "type": "bytea",
+            "primaryKey": false,
+            "notNull": false
+          },
+          "word_len_1127994ab736baf4": {
+            "name": "word_len_1127994ab736baf4",
+            "type": "integer",
+            "primaryKey": false,
+            "notNull": false
+          },
+          "word_stamps_1127994ab736baf4": {
+            "name": "word_stamps_1127994ab736baf4",
+            "type": "bigint[]",
+            "primaryKey": false,
+            "notNull": false
+          },
+          "word_offsets_1127994ab736baf4": {
+            "name": "word_offsets_1127994ab736baf4",
+            "type": "integer[]",
+            "primaryKey": false,
+            "notNull": false
+          },
+          "single_salt_1127994ab736baf4": {
+            "name": "single_salt_1127994ab736baf4",
+            "type": "bytea",
+            "primaryKey": false,
+            "notNull": false
+          },
+          "single_len_1127994ab736baf4": {
+            "name": "single_len_1127994ab736baf4",
+            "type": "integer",
+            "primaryKey": false,
+            "notNull": false
+          },
+          "single_stamps_1127994ab736baf4": {
+            "name": "single_stamps_1127994ab736baf4",
+            "type": "bigint[]",
+            "primaryKey": false,
+            "notNull": false
+          },
+          "single_offsets_1127994ab736baf4": {
+            "name": "single_offsets_1127994ab736baf4",
+            "type": "integer[]",
+            "primaryKey": false,
+            "notNull": false
+          },
+          "tokens_c5133b3810f23103": {
+            "name": "tokens_c5133b3810f23103",
+            "type": "bigint[]",
+            "primaryKey": false,
+            "notNull": false
+          },
+          "eq_salt_c5133b3810f23103": {
+            "name": "eq_salt_c5133b3810f23103",
+            "type": "bytea",
+            "primaryKey": false,
+            "notNull": false
+          },
+          "eq_stamp_c5133b3810f23103": {
+            "name": "eq_stamp_c5133b3810f23103",
+            "type": "bigint",
+            "primaryKey": false,
+            "notNull": false
+          },
+          "tokens_ef1d32a52e2ce103": {
+            "name": "tokens_ef1d32a52e2ce103",
+            "type": "bigint[]",
+            "primaryKey": false,
+            "notNull": false
+          },
+          "pos_salt_ef1d32a52e2ce103": {
+            "name": "pos_salt_ef1d32a52e2ce103",
+            "type": "bytea",
+            "primaryKey": false,
+            "notNull": false
+          },
+          "pos_len_ef1d32a52e2ce103": {
+            "name": "pos_len_ef1d32a52e2ce103",
+            "type": "integer",
+            "primaryKey": false,
+            "notNull": false
+          },
+          "pos_stamps_ef1d32a52e2ce103": {
+            "name": "pos_stamps_ef1d32a52e2ce103",
+            "type": "bigint[]",
+            "primaryKey": false,
+            "notNull": false
+          },
+          "pos_offsets_ef1d32a52e2ce103": {
+            "name": "pos_offsets_ef1d32a52e2ce103",
+            "type": "integer[]",
+            "primaryKey": false,
+            "notNull": false
+          },
+          "word_salt_ef1d32a52e2ce103": {
+            "name": "word_salt_ef1d32a52e2ce103",
+            "type": "bytea",
+            "primaryKey": false,
+            "notNull": false
+          },
+          "word_len_ef1d32a52e2ce103": {
+            "name": "word_len_ef1d32a52e2ce103",
+            "type": "integer",
+            "primaryKey": false,
+            "notNull": false
+          },
+          "word_stamps_ef1d32a52e2ce103": {
+            "name": "word_stamps_ef1d32a52e2ce103",
+            "type": "bigint[]",
+            "primaryKey": false,
+            "notNull": false
+          },
+          "word_offsets_ef1d32a52e2ce103": {
+            "name": "word_offsets_ef1d32a52e2ce103",
+            "type": "integer[]",
+            "primaryKey": false,
+            "notNull": false
+          },
+          "single_salt_ef1d32a52e2ce103": {
+            "name": "single_salt_ef1d32a52e2ce103",
+            "type": "bytea",
+            "primaryKey": false,
+            "notNull": false
+          },
+          "single_len_ef1d32a52e2ce103": {
+            "name": "single_len_ef1d32a52e2ce103",
+            "type": "integer",
+            "primaryKey": false,
+            "notNull": false
+          },
+          "single_stamps_ef1d32a52e2ce103": {
+            "name": "single_stamps_ef1d32a52e2ce103",
+            "type": "bigint[]",
+            "primaryKey": false,
+            "notNull": false
+          },
+          "single_offsets_ef1d32a52e2ce103": {
+            "name": "single_offsets_ef1d32a52e2ce103",
+            "type": "integer[]",
+            "primaryKey": false,
+            "notNull": false
+          },
+          "tokens_1c32fdad5d1c8367": {
+            "name": "tokens_1c32fdad5d1c8367",
+            "type": "bigint[]",
+            "primaryKey": false,
+            "notNull": false
+          },
+          "eq_salt_1c32fdad5d1c8367": {
+            "name": "eq_salt_1c32fdad5d1c8367",
+            "type": "bytea",
+            "primaryKey": false,
+            "notNull": false
+          },
+          "eq_stamp_1c32fdad5d1c8367": {
+            "name": "eq_stamp_1c32fdad5d1c8367",
+            "type": "bigint",
+            "primaryKey": false,
+            "notNull": false
+          },
+          "tokens_a639b11c8130dcf7": {
+            "name": "tokens_a639b11c8130dcf7",
+            "type": "bigint[]",
+            "primaryKey": false,
+            "notNull": false
+          },
+          "pos_salt_a639b11c8130dcf7": {
+            "name": "pos_salt_a639b11c8130dcf7",
+            "type": "bytea",
+            "primaryKey": false,
+            "notNull": false
+          },
+          "pos_len_a639b11c8130dcf7": {
+            "name": "pos_len_a639b11c8130dcf7",
+            "type": "integer",
+            "primaryKey": false,
+            "notNull": false
+          },
+          "pos_stamps_a639b11c8130dcf7": {
+            "name": "pos_stamps_a639b11c8130dcf7",
+            "type": "bigint[]",
+            "primaryKey": false,
+            "notNull": false
+          },
+          "pos_offsets_a639b11c8130dcf7": {
+            "name": "pos_offsets_a639b11c8130dcf7",
+            "type": "integer[]",
+            "primaryKey": false,
+            "notNull": false
+          },
+          "word_salt_a639b11c8130dcf7": {
+            "name": "word_salt_a639b11c8130dcf7",
+            "type": "bytea",
+            "primaryKey": false,
+            "notNull": false
+          },
+          "word_len_a639b11c8130dcf7": {
+            "name": "word_len_a639b11c8130dcf7",
+            "type": "integer",
+            "primaryKey": false,
+            "notNull": false
+          },
+          "word_stamps_a639b11c8130dcf7": {
+            "name": "word_stamps_a639b11c8130dcf7",
+            "type": "bigint[]",
+            "primaryKey": false,
+            "notNull": false
+          },
+          "word_offsets_a639b11c8130dcf7": {
+            "name": "word_offsets_a639b11c8130dcf7",
+            "type": "integer[]",
+            "primaryKey": false,
+            "notNull": false
+          },
+          "single_salt_a639b11c8130dcf7": {
+            "name": "single_salt_a639b11c8130dcf7",
+            "type": "bytea",
+            "primaryKey": false,
+            "notNull": false
+          },
+          "single_len_a639b11c8130dcf7": {
+            "name": "single_len_a639b11c8130dcf7",
+            "type": "integer",
+            "primaryKey": false,
+            "notNull": false
+          },
+          "single_stamps_a639b11c8130dcf7": {
+            "name": "single_stamps_a639b11c8130dcf7",
+            "type": "bigint[]",
+            "primaryKey": false,
+            "notNull": false
+          },
+          "single_offsets_a639b11c8130dcf7": {
+            "name": "single_offsets_a639b11c8130dcf7",
+            "type": "integer[]",
+            "primaryKey": false,
+            "notNull": false
+          },
+          "tokens_cd3096c7a3cd42c2": {
+            "name": "tokens_cd3096c7a3cd42c2",
+            "type": "bigint[]",
+            "primaryKey": false,
+            "notNull": false
+          },
+          "eq_salt_cd3096c7a3cd42c2": {
+            "name": "eq_salt_cd3096c7a3cd42c2",
+            "type": "bytea",
+            "primaryKey": false,
+            "notNull": false
+          },
+          "eq_stamp_cd3096c7a3cd42c2": {
+            "name": "eq_stamp_cd3096c7a3cd42c2",
+            "type": "bigint",
+            "primaryKey": false,
+            "notNull": false
+          },
+          "tokens_f289b89d86c7086a": {
+            "name": "tokens_f289b89d86c7086a",
+            "type": "bigint[]",
+            "primaryKey": false,
+            "notNull": false
+          },
+          "pos_salt_f289b89d86c7086a": {
+            "name": "pos_salt_f289b89d86c7086a",
+            "type": "bytea",
+            "primaryKey": false,
+            "notNull": false
+          },
+          "pos_len_f289b89d86c7086a": {
+            "name": "pos_len_f289b89d86c7086a",
+            "type": "integer",
+            "primaryKey": false,
+            "notNull": false
+          },
+          "pos_stamps_f289b89d86c7086a": {
+            "name": "pos_stamps_f289b89d86c7086a",
+            "type": "bigint[]",
+            "primaryKey": false,
+            "notNull": false
+          },
+          "pos_offsets_f289b89d86c7086a": {
+            "name": "pos_offsets_f289b89d86c7086a",
+            "type": "integer[]",
+            "primaryKey": false,
+            "notNull": false
+          },
+          "word_salt_f289b89d86c7086a": {
+            "name": "word_salt_f289b89d86c7086a",
+            "type": "bytea",
+            "primaryKey": false,
+            "notNull": false
+          },
+          "word_len_f289b89d86c7086a": {
+            "name": "word_len_f289b89d86c7086a",
+            "type": "integer",
+            "primaryKey": false,
+            "notNull": false
+          },
+          "word_stamps_f289b89d86c7086a": {
+            "name": "word_stamps_f289b89d86c7086a",
+            "type": "bigint[]",
+            "primaryKey": false,
+            "notNull": false
+          },
+          "word_offsets_f289b89d86c7086a": {
+            "name": "word_offsets_f289b89d86c7086a",
+            "type": "integer[]",
+            "primaryKey": false,
+            "notNull": false
+          },
+          "single_salt_f289b89d86c7086a": {
+            "name": "single_salt_f289b89d86c7086a",
+            "type": "bytea",
+            "primaryKey": false,
+            "notNull": false
+          },
+          "single_len_f289b89d86c7086a": {
+            "name": "single_len_f289b89d86c7086a",
+            "type": "integer",
+            "primaryKey": false,
+            "notNull": false
+          },
+          "single_stamps_f289b89d86c7086a": {
+            "name": "single_stamps_f289b89d86c7086a",
+            "type": "bigint[]",
+            "primaryKey": false,
+            "notNull": false
+          },
+          "single_offsets_f289b89d86c7086a": {
+            "name": "single_offsets_f289b89d86c7086a",
+            "type": "integer[]",
+            "primaryKey": false,
+            "notNull": false
+          },
+          "tokens_c44ae523cca61a0b": {
+            "name": "tokens_c44ae523cca61a0b",
+            "type": "bigint[]",
+            "primaryKey": false,
+            "notNull": false
+          },
+          "eq_salt_c44ae523cca61a0b": {
+            "name": "eq_salt_c44ae523cca61a0b",
+            "type": "bytea",
+            "primaryKey": false,
+            "notNull": false
+          },
+          "eq_stamp_c44ae523cca61a0b": {
+            "name": "eq_stamp_c44ae523cca61a0b",
+            "type": "bigint",
+            "primaryKey": false,
+            "notNull": false
+          },
+          "tokens_7a1d2ba5ce2368fb": {
+            "name": "tokens_7a1d2ba5ce2368fb",
+            "type": "bigint[]",
+            "primaryKey": false,
+            "notNull": false
+          },
+          "pos_salt_7a1d2ba5ce2368fb": {
+            "name": "pos_salt_7a1d2ba5ce2368fb",
+            "type": "bytea",
+            "primaryKey": false,
+            "notNull": false
+          },
+          "pos_len_7a1d2ba5ce2368fb": {
+            "name": "pos_len_7a1d2ba5ce2368fb",
+            "type": "integer",
+            "primaryKey": false,
+            "notNull": false
+          },
+          "pos_stamps_7a1d2ba5ce2368fb": {
+            "name": "pos_stamps_7a1d2ba5ce2368fb",
+            "type": "bigint[]",
+            "primaryKey": false,
+            "notNull": false
+          },
+          "pos_offsets_7a1d2ba5ce2368fb": {
+            "name": "pos_offsets_7a1d2ba5ce2368fb",
+            "type": "integer[]",
+            "primaryKey": false,
+            "notNull": false
+          },
+          "word_salt_7a1d2ba5ce2368fb": {
+            "name": "word_salt_7a1d2ba5ce2368fb",
+            "type": "bytea",
+            "primaryKey": false,
+            "notNull": false
+          },
+          "word_len_7a1d2ba5ce2368fb": {
+            "name": "word_len_7a1d2ba5ce2368fb",
+            "type": "integer",
+            "primaryKey": false,
+            "notNull": false
+          },
+          "word_stamps_7a1d2ba5ce2368fb": {
+            "name": "word_stamps_7a1d2ba5ce2368fb",
+            "type": "bigint[]",
+            "primaryKey": false,
+            "notNull": false
+          },
+          "word_offsets_7a1d2ba5ce2368fb": {
+            "name": "word_offsets_7a1d2ba5ce2368fb",
+            "type": "integer[]",
+            "primaryKey": false,
+            "notNull": false
+          },
+          "single_salt_7a1d2ba5ce2368fb": {
+            "name": "single_salt_7a1d2ba5ce2368fb",
+            "type": "bytea",
+            "primaryKey": false,
+            "notNull": false
+          },
+          "single_len_7a1d2ba5ce2368fb": {
+            "name": "single_len_7a1d2ba5ce2368fb",
+            "type": "integer",
+            "primaryKey": false,
+            "notNull": false
+          },
+          "single_stamps_7a1d2ba5ce2368fb": {
+            "name": "single_stamps_7a1d2ba5ce2368fb",
+            "type": "bigint[]",
+            "primaryKey": false,
+            "notNull": false
+          },
+          "single_offsets_7a1d2ba5ce2368fb": {
+            "name": "single_offsets_7a1d2ba5ce2368fb",
+            "type": "integer[]",
+            "primaryKey": false,
+            "notNull": false
+          }
+        },
+        "indexes": {
+          "customers_seal_index_scope_row_uq": {
+            "name": "customers_seal_index_scope_row_uq",
+            "columns": [
+              {
+                "expression": "scope_id",
+                "isExpression": false,
+                "asc": true,
+                "nulls": "last"
+              },
+              {
+                "expression": "row_id",
+                "isExpression": false,
+                "asc": true,
+                "nulls": "last"
+              }
+            ],
+            "isUnique": true,
+            "concurrently": false,
+            "method": "btree",
+            "with": {}
+          },
+          "customers_seal_index_row_uq": {
+            "name": "customers_seal_index_row_uq",
+            "columns": [
+              {
+                "expression": "row_id",
+                "isExpression": false,
+                "asc": true,
+                "nulls": "last"
+              }
+            ],
+            "isUnique": true,
+            "concurrently": false,
+            "method": "btree",
+            "with": {}
+          },
+          "seal_dfa387787f59f02a_bt": {
+            "name": "seal_dfa387787f59f02a_bt",
+            "columns": [
+              {
+                "expression": "scope_id",
+                "asc": true,
+                "isExpression": true,
+                "nulls": "last"
+              },
+              {
+                "expression": "(tokens_988d248ff4b71bf7[1])",
+                "asc": true,
+                "isExpression": true,
+                "nulls": "last"
+              },
+              {
+                "expression": "row_id",
+                "asc": true,
+                "isExpression": true,
+                "nulls": "last"
+              },
+              {
+                "expression": "eq_salt_988d248ff4b71bf7",
+                "asc": true,
+                "isExpression": true,
+                "nulls": "last"
+              },
+              {
+                "expression": "eq_stamp_988d248ff4b71bf7",
+                "asc": true,
+                "isExpression": true,
+                "nulls": "last"
+              },
+              {
+                "expression": "tokens_988d248ff4b71bf7",
+                "asc": true,
+                "isExpression": true,
+                "nulls": "last"
+              }
+            ],
+            "isUnique": false,
+            "concurrently": false,
+            "method": "btree",
+            "with": {}
+          },
+          "seal_4c8e2d2bddde3451_bt": {
+            "name": "seal_4c8e2d2bddde3451_bt",
+            "columns": [
+              {
+                "expression": "scope_id",
+                "asc": true,
+                "isExpression": true,
+                "nulls": "last"
+              },
+              {
+                "expression": "(tokens_a106c26102b707f0[1])",
+                "asc": true,
+                "isExpression": true,
+                "nulls": "last"
+              },
+              {
+                "expression": "row_id",
+                "asc": true,
+                "isExpression": true,
+                "nulls": "last"
+              },
+              {
+                "expression": "eq_salt_a106c26102b707f0",
+                "asc": true,
+                "isExpression": true,
+                "nulls": "last"
+              },
+              {
+                "expression": "eq_stamp_a106c26102b707f0",
+                "asc": true,
+                "isExpression": true,
+                "nulls": "last"
+              },
+              {
+                "expression": "tokens_a106c26102b707f0",
+                "asc": true,
+                "isExpression": true,
+                "nulls": "last"
+              }
+            ],
+            "isUnique": false,
+            "concurrently": false,
+            "method": "btree",
+            "with": {}
+          },
+          "seal_ae59b15a89e931d6_bt": {
+            "name": "seal_ae59b15a89e931d6_bt",
+            "columns": [
+              {
+                "expression": "scope_id",
+                "asc": true,
+                "isExpression": true,
+                "nulls": "last"
+              },
+              {
+                "expression": "(tokens_c5133b3810f23103[1])",
+                "asc": true,
+                "isExpression": true,
+                "nulls": "last"
+              },
+              {
+                "expression": "row_id",
+                "asc": true,
+                "isExpression": true,
+                "nulls": "last"
+              },
+              {
+                "expression": "eq_salt_c5133b3810f23103",
+                "asc": true,
+                "isExpression": true,
+                "nulls": "last"
+              },
+              {
+                "expression": "eq_stamp_c5133b3810f23103",
+                "asc": true,
+                "isExpression": true,
+                "nulls": "last"
+              },
+              {
+                "expression": "tokens_c5133b3810f23103",
+                "asc": true,
+                "isExpression": true,
+                "nulls": "last"
+              }
+            ],
+            "isUnique": false,
+            "concurrently": false,
+            "method": "btree",
+            "with": {}
+          },
+          "seal_8fa11f16c3da1ad8_bt": {
+            "name": "seal_8fa11f16c3da1ad8_bt",
+            "columns": [
+              {
+                "expression": "scope_id",
+                "asc": true,
+                "isExpression": true,
+                "nulls": "last"
+              },
+              {
+                "expression": "(tokens_1c32fdad5d1c8367[1])",
+                "asc": true,
+                "isExpression": true,
+                "nulls": "last"
+              },
+              {
+                "expression": "row_id",
+                "asc": true,
+                "isExpression": true,
+                "nulls": "last"
+              },
+              {
+                "expression": "eq_salt_1c32fdad5d1c8367",
+                "asc": true,
+                "isExpression": true,
+                "nulls": "last"
+              },
+              {
+                "expression": "eq_stamp_1c32fdad5d1c8367",
+                "asc": true,
+                "isExpression": true,
+                "nulls": "last"
+              },
+              {
+                "expression": "tokens_1c32fdad5d1c8367",
+                "asc": true,
+                "isExpression": true,
+                "nulls": "last"
+              }
+            ],
+            "isUnique": false,
+            "concurrently": false,
+            "method": "btree",
+            "with": {}
+          },
+          "seal_411905c9deef5c59_bt": {
+            "name": "seal_411905c9deef5c59_bt",
+            "columns": [
+              {
+                "expression": "scope_id",
+                "asc": true,
+                "isExpression": true,
+                "nulls": "last"
+              },
+              {
+                "expression": "(tokens_cd3096c7a3cd42c2[1])",
+                "asc": true,
+                "isExpression": true,
+                "nulls": "last"
+              },
+              {
+                "expression": "row_id",
+                "asc": true,
+                "isExpression": true,
+                "nulls": "last"
+              },
+              {
+                "expression": "eq_salt_cd3096c7a3cd42c2",
+                "asc": true,
+                "isExpression": true,
+                "nulls": "last"
+              },
+              {
+                "expression": "eq_stamp_cd3096c7a3cd42c2",
+                "asc": true,
+                "isExpression": true,
+                "nulls": "last"
+              },
+              {
+                "expression": "tokens_cd3096c7a3cd42c2",
+                "asc": true,
+                "isExpression": true,
+                "nulls": "last"
+              }
+            ],
+            "isUnique": false,
+            "concurrently": false,
+            "method": "btree",
+            "with": {}
+          },
+          "seal_62e346c0ef994072_bt": {
+            "name": "seal_62e346c0ef994072_bt",
+            "columns": [
+              {
+                "expression": "scope_id",
+                "asc": true,
+                "isExpression": true,
+                "nulls": "last"
+              },
+              {
+                "expression": "(tokens_c44ae523cca61a0b[1])",
+                "asc": true,
+                "isExpression": true,
+                "nulls": "last"
+              },
+              {
+                "expression": "row_id",
+                "asc": true,
+                "isExpression": true,
+                "nulls": "last"
+              },
+              {
+                "expression": "eq_salt_c44ae523cca61a0b",
+                "asc": true,
+                "isExpression": true,
+                "nulls": "last"
+              },
+              {
+                "expression": "eq_stamp_c44ae523cca61a0b",
+                "asc": true,
+                "isExpression": true,
+                "nulls": "last"
+              },
+              {
+                "expression": "tokens_c44ae523cca61a0b",
+                "asc": true,
+                "isExpression": true,
+                "nulls": "last"
+              }
+            ],
+            "isUnique": false,
+            "concurrently": false,
+            "method": "btree",
+            "with": {}
+          },
+          "seal_e66dc2708e915b65_gin": {
+            "name": "seal_e66dc2708e915b65_gin",
+            "columns": [
+              {
+                "expression": "tokens_792d75cf01821d67",
+                "isExpression": false,
+                "asc": true,
+                "nulls": "last"
+              },
+              {
+                "expression": "tokens_1127994ab736baf4",
+                "isExpression": false,
+                "asc": true,
+                "nulls": "last"
+              },
+              {
+                "expression": "tokens_ef1d32a52e2ce103",
+                "isExpression": false,
+                "asc": true,
+                "nulls": "last"
+              },
+              {
+                "expression": "tokens_a639b11c8130dcf7",
+                "isExpression": false,
+                "asc": true,
+                "nulls": "last"
+              },
+              {
+                "expression": "tokens_f289b89d86c7086a",
+                "isExpression": false,
+                "asc": true,
+                "nulls": "last"
+              },
+              {
+                "expression": "tokens_7a1d2ba5ce2368fb",
+                "isExpression": false,
+                "asc": true,
+                "nulls": "last"
+              }
+            ],
+            "isUnique": false,
+            "concurrently": false,
+            "method": "gin",
+            "with": {}
+          }
+        },
+        "foreignKeys": {
+          "customers_seal_index_row_id_customers_id_fk": {
+            "name": "customers_seal_index_row_id_customers_id_fk",
+            "tableFrom": "customers_seal_index",
+            "tableTo": "customers",
+            "schemaTo": "test_r9_verify_main",
+            "columnsFrom": [
+              "row_id"
+            ],
+            "columnsTo": [
+              "id"
+            ],
+            "onDelete": "cascade",
+            "onUpdate": "no action"
+          }
+        },
+        "compositePrimaryKeys": {},
+        "uniqueConstraints": {},
+        "policies": {},
+        "checkConstraints": {
+          "seal_dfa387787f59f02a_one_ck": {
+            "name": "seal_dfa387787f59f02a_one_ck",
+            "value": "\"test_r9_verify_main\".\"customers_seal_index\".\"tokens_988d248ff4b71bf7\" is null or\n        (cardinality(\"test_r9_verify_main\".\"customers_seal_index\".\"tokens_988d248ff4b71bf7\") = 1 and array_ndims(\"test_r9_verify_main\".\"customers_seal_index\".\"tokens_988d248ff4b71bf7\") = 1)"
+          },
+          "seal_4c8e2d2bddde3451_one_ck": {
+            "name": "seal_4c8e2d2bddde3451_one_ck",
+            "value": "\"test_r9_verify_main\".\"customers_seal_index\".\"tokens_a106c26102b707f0\" is null or\n        (cardinality(\"test_r9_verify_main\".\"customers_seal_index\".\"tokens_a106c26102b707f0\") = 1 and array_ndims(\"test_r9_verify_main\".\"customers_seal_index\".\"tokens_a106c26102b707f0\") = 1)"
+          },
+          "seal_ae59b15a89e931d6_one_ck": {
+            "name": "seal_ae59b15a89e931d6_one_ck",
+            "value": "\"test_r9_verify_main\".\"customers_seal_index\".\"tokens_c5133b3810f23103\" is null or\n        (cardinality(\"test_r9_verify_main\".\"customers_seal_index\".\"tokens_c5133b3810f23103\") = 1 and array_ndims(\"test_r9_verify_main\".\"customers_seal_index\".\"tokens_c5133b3810f23103\") = 1)"
+          },
+          "seal_8fa11f16c3da1ad8_one_ck": {
+            "name": "seal_8fa11f16c3da1ad8_one_ck",
+            "value": "\"test_r9_verify_main\".\"customers_seal_index\".\"tokens_1c32fdad5d1c8367\" is null or\n        (cardinality(\"test_r9_verify_main\".\"customers_seal_index\".\"tokens_1c32fdad5d1c8367\") = 1 and array_ndims(\"test_r9_verify_main\".\"customers_seal_index\".\"tokens_1c32fdad5d1c8367\") = 1)"
+          },
+          "seal_411905c9deef5c59_one_ck": {
+            "name": "seal_411905c9deef5c59_one_ck",
+            "value": "\"test_r9_verify_main\".\"customers_seal_index\".\"tokens_cd3096c7a3cd42c2\" is null or\n        (cardinality(\"test_r9_verify_main\".\"customers_seal_index\".\"tokens_cd3096c7a3cd42c2\") = 1 and array_ndims(\"test_r9_verify_main\".\"customers_seal_index\".\"tokens_cd3096c7a3cd42c2\") = 1)"
+          },
+          "seal_62e346c0ef994072_one_ck": {
+            "name": "seal_62e346c0ef994072_one_ck",
+            "value": "\"test_r9_verify_main\".\"customers_seal_index\".\"tokens_c44ae523cca61a0b\" is null or\n        (cardinality(\"test_r9_verify_main\".\"customers_seal_index\".\"tokens_c44ae523cca61a0b\") = 1 and array_ndims(\"test_r9_verify_main\".\"customers_seal_index\".\"tokens_c44ae523cca61a0b\") = 1)"
+          },
+          "seal_8087f389ab6d07a2_ck": {
+            "name": "seal_8087f389ab6d07a2_ck",
+            "value": "(\"test_r9_verify_main\".\"customers_seal_index\".\"eq_salt_988d248ff4b71bf7\" is null and \"test_r9_verify_main\".\"customers_seal_index\".\"eq_stamp_988d248ff4b71bf7\" is null) or\n          (\"test_r9_verify_main\".\"customers_seal_index\".\"eq_salt_988d248ff4b71bf7\" is not null and \"test_r9_verify_main\".\"customers_seal_index\".\"eq_stamp_988d248ff4b71bf7\" is not null and octet_length(\"test_r9_verify_main\".\"customers_seal_index\".\"eq_salt_988d248ff4b71bf7\") = 16 )"
+          },
+          "seal_3e959b5ee3a10b8e_ck": {
+            "name": "seal_3e959b5ee3a10b8e_ck",
+            "value": "(\"test_r9_verify_main\".\"customers_seal_index\".\"pos_salt_792d75cf01821d67\" is null and \"test_r9_verify_main\".\"customers_seal_index\".\"pos_len_792d75cf01821d67\" is null and \"test_r9_verify_main\".\"customers_seal_index\".\"pos_stamps_792d75cf01821d67\" is null and \"test_r9_verify_main\".\"customers_seal_index\".\"pos_offsets_792d75cf01821d67\" is null) or\n          (\"test_r9_verify_main\".\"customers_seal_index\".\"pos_salt_792d75cf01821d67\" is not null and \"test_r9_verify_main\".\"customers_seal_index\".\"pos_len_792d75cf01821d67\" is not null and \"test_r9_verify_main\".\"customers_seal_index\".\"pos_stamps_792d75cf01821d67\" is not null and \"test_r9_verify_main\".\"customers_seal_index\".\"pos_offsets_792d75cf01821d67\" is not null and octet_length(\"test_r9_verify_main\".\"customers_seal_index\".\"pos_salt_792d75cf01821d67\") = 16 and \"test_r9_verify_main\".\"customers_seal_index\".\"pos_len_792d75cf01821d67\" >= 0\n          and cardinality(\"test_r9_verify_main\".\"customers_seal_index\".\"pos_stamps_792d75cf01821d67\") = cardinality(\"test_r9_verify_main\".\"customers_seal_index\".\"pos_offsets_792d75cf01821d67\"))"
+          },
+          "seal_a9c47c55002424c8_ck": {
+            "name": "seal_a9c47c55002424c8_ck",
+            "value": "(\"test_r9_verify_main\".\"customers_seal_index\".\"word_salt_792d75cf01821d67\" is null and \"test_r9_verify_main\".\"customers_seal_index\".\"word_len_792d75cf01821d67\" is null and \"test_r9_verify_main\".\"customers_seal_index\".\"word_stamps_792d75cf01821d67\" is null and \"test_r9_verify_main\".\"customers_seal_index\".\"word_offsets_792d75cf01821d67\" is null) or\n          (\"test_r9_verify_main\".\"customers_seal_index\".\"word_salt_792d75cf01821d67\" is not null and \"test_r9_verify_main\".\"customers_seal_index\".\"word_len_792d75cf01821d67\" is not null and \"test_r9_verify_main\".\"customers_seal_index\".\"word_stamps_792d75cf01821d67\" is not null and \"test_r9_verify_main\".\"customers_seal_index\".\"word_offsets_792d75cf01821d67\" is not null and octet_length(\"test_r9_verify_main\".\"customers_seal_index\".\"word_salt_792d75cf01821d67\") = 16 and \"test_r9_verify_main\".\"customers_seal_index\".\"word_len_792d75cf01821d67\" >= 0\n          and cardinality(\"test_r9_verify_main\".\"customers_seal_index\".\"word_stamps_792d75cf01821d67\") = cardinality(\"test_r9_verify_main\".\"customers_seal_index\".\"word_offsets_792d75cf01821d67\"))"
+          },
+          "seal_22440b0305a4ab64_ck": {
+            "name": "seal_22440b0305a4ab64_ck",
+            "value": "(\"test_r9_verify_main\".\"customers_seal_index\".\"single_salt_792d75cf01821d67\" is null and \"test_r9_verify_main\".\"customers_seal_index\".\"single_len_792d75cf01821d67\" is null and \"test_r9_verify_main\".\"customers_seal_index\".\"single_stamps_792d75cf01821d67\" is null and \"test_r9_verify_main\".\"customers_seal_index\".\"single_offsets_792d75cf01821d67\" is null) or\n          (\"test_r9_verify_main\".\"customers_seal_index\".\"single_salt_792d75cf01821d67\" is not null and \"test_r9_verify_main\".\"customers_seal_index\".\"single_len_792d75cf01821d67\" is not null and \"test_r9_verify_main\".\"customers_seal_index\".\"single_stamps_792d75cf01821d67\" is not null and \"test_r9_verify_main\".\"customers_seal_index\".\"single_offsets_792d75cf01821d67\" is not null and octet_length(\"test_r9_verify_main\".\"customers_seal_index\".\"single_salt_792d75cf01821d67\") = 16 and \"test_r9_verify_main\".\"customers_seal_index\".\"single_len_792d75cf01821d67\" >= 0\n          and cardinality(\"test_r9_verify_main\".\"customers_seal_index\".\"single_stamps_792d75cf01821d67\") = cardinality(\"test_r9_verify_main\".\"customers_seal_index\".\"single_offsets_792d75cf01821d67\"))"
+          },
+          "seal_e7939aee6e139cf8_ck": {
+            "name": "seal_e7939aee6e139cf8_ck",
+            "value": "(\"test_r9_verify_main\".\"customers_seal_index\".\"eq_salt_a106c26102b707f0\" is null and \"test_r9_verify_main\".\"customers_seal_index\".\"eq_stamp_a106c26102b707f0\" is null) or\n          (\"test_r9_verify_main\".\"customers_seal_index\".\"eq_salt_a106c26102b707f0\" is not null and \"test_r9_verify_main\".\"customers_seal_index\".\"eq_stamp_a106c26102b707f0\" is not null and octet_length(\"test_r9_verify_main\".\"customers_seal_index\".\"eq_salt_a106c26102b707f0\") = 16 )"
+          },
+          "seal_3a4c44ea79bb2b5b_ck": {
+            "name": "seal_3a4c44ea79bb2b5b_ck",
+            "value": "(\"test_r9_verify_main\".\"customers_seal_index\".\"pos_salt_1127994ab736baf4\" is null and \"test_r9_verify_main\".\"customers_seal_index\".\"pos_len_1127994ab736baf4\" is null and \"test_r9_verify_main\".\"customers_seal_index\".\"pos_stamps_1127994ab736baf4\" is null and \"test_r9_verify_main\".\"customers_seal_index\".\"pos_offsets_1127994ab736baf4\" is null) or\n          (\"test_r9_verify_main\".\"customers_seal_index\".\"pos_salt_1127994ab736baf4\" is not null and \"test_r9_verify_main\".\"customers_seal_index\".\"pos_len_1127994ab736baf4\" is not null and \"test_r9_verify_main\".\"customers_seal_index\".\"pos_stamps_1127994ab736baf4\" is not null and \"test_r9_verify_main\".\"customers_seal_index\".\"pos_offsets_1127994ab736baf4\" is not null and octet_length(\"test_r9_verify_main\".\"customers_seal_index\".\"pos_salt_1127994ab736baf4\") = 16 and \"test_r9_verify_main\".\"customers_seal_index\".\"pos_len_1127994ab736baf4\" >= 0\n          and cardinality(\"test_r9_verify_main\".\"customers_seal_index\".\"pos_stamps_1127994ab736baf4\") = cardinality(\"test_r9_verify_main\".\"customers_seal_index\".\"pos_offsets_1127994ab736baf4\"))"
+          },
+          "seal_49d2acc1ff24d8cd_ck": {
+            "name": "seal_49d2acc1ff24d8cd_ck",
+            "value": "(\"test_r9_verify_main\".\"customers_seal_index\".\"word_salt_1127994ab736baf4\" is null and \"test_r9_verify_main\".\"customers_seal_index\".\"word_len_1127994ab736baf4\" is null and \"test_r9_verify_main\".\"customers_seal_index\".\"word_stamps_1127994ab736baf4\" is null and \"test_r9_verify_main\".\"customers_seal_index\".\"word_offsets_1127994ab736baf4\" is null) or\n          (\"test_r9_verify_main\".\"customers_seal_index\".\"word_salt_1127994ab736baf4\" is not null and \"test_r9_verify_main\".\"customers_seal_index\".\"word_len_1127994ab736baf4\" is not null and \"test_r9_verify_main\".\"customers_seal_index\".\"word_stamps_1127994ab736baf4\" is not null and \"test_r9_verify_main\".\"customers_seal_index\".\"word_offsets_1127994ab736baf4\" is not null and octet_length(\"test_r9_verify_main\".\"customers_seal_index\".\"word_salt_1127994ab736baf4\") = 16 and \"test_r9_verify_main\".\"customers_seal_index\".\"word_len_1127994ab736baf4\" >= 0\n          and cardinality(\"test_r9_verify_main\".\"customers_seal_index\".\"word_stamps_1127994ab736baf4\") = cardinality(\"test_r9_verify_main\".\"customers_seal_index\".\"word_offsets_1127994ab736baf4\"))"
+          },
+          "seal_17a272c1925c23e9_ck": {
+            "name": "seal_17a272c1925c23e9_ck",
+            "value": "(\"test_r9_verify_main\".\"customers_seal_index\".\"single_salt_1127994ab736baf4\" is null and \"test_r9_verify_main\".\"customers_seal_index\".\"single_len_1127994ab736baf4\" is null and \"test_r9_verify_main\".\"customers_seal_index\".\"single_stamps_1127994ab736baf4\" is null and \"test_r9_verify_main\".\"customers_seal_index\".\"single_offsets_1127994ab736baf4\" is null) or\n          (\"test_r9_verify_main\".\"customers_seal_index\".\"single_salt_1127994ab736baf4\" is not null and \"test_r9_verify_main\".\"customers_seal_index\".\"single_len_1127994ab736baf4\" is not null and \"test_r9_verify_main\".\"customers_seal_index\".\"single_stamps_1127994ab736baf4\" is not null and \"test_r9_verify_main\".\"customers_seal_index\".\"single_offsets_1127994ab736baf4\" is not null and octet_length(\"test_r9_verify_main\".\"customers_seal_index\".\"single_salt_1127994ab736baf4\") = 16 and \"test_r9_verify_main\".\"customers_seal_index\".\"single_len_1127994ab736baf4\" >= 0\n          and cardinality(\"test_r9_verify_main\".\"customers_seal_index\".\"single_stamps_1127994ab736baf4\") = cardinality(\"test_r9_verify_main\".\"customers_seal_index\".\"single_offsets_1127994ab736baf4\"))"
+          },
+          "seal_a342f7266d485434_ck": {
+            "name": "seal_a342f7266d485434_ck",
+            "value": "(\"test_r9_verify_main\".\"customers_seal_index\".\"eq_salt_c5133b3810f23103\" is null and \"test_r9_verify_main\".\"customers_seal_index\".\"eq_stamp_c5133b3810f23103\" is null) or\n          (\"test_r9_verify_main\".\"customers_seal_index\".\"eq_salt_c5133b3810f23103\" is not null and \"test_r9_verify_main\".\"customers_seal_index\".\"eq_stamp_c5133b3810f23103\" is not null and octet_length(\"test_r9_verify_main\".\"customers_seal_index\".\"eq_salt_c5133b3810f23103\") = 16 )"
+          },
+          "seal_29be74eeee1fbd9e_ck": {
+            "name": "seal_29be74eeee1fbd9e_ck",
+            "value": "(\"test_r9_verify_main\".\"customers_seal_index\".\"pos_salt_ef1d32a52e2ce103\" is null and \"test_r9_verify_main\".\"customers_seal_index\".\"pos_len_ef1d32a52e2ce103\" is null and \"test_r9_verify_main\".\"customers_seal_index\".\"pos_stamps_ef1d32a52e2ce103\" is null and \"test_r9_verify_main\".\"customers_seal_index\".\"pos_offsets_ef1d32a52e2ce103\" is null) or\n          (\"test_r9_verify_main\".\"customers_seal_index\".\"pos_salt_ef1d32a52e2ce103\" is not null and \"test_r9_verify_main\".\"customers_seal_index\".\"pos_len_ef1d32a52e2ce103\" is not null and \"test_r9_verify_main\".\"customers_seal_index\".\"pos_stamps_ef1d32a52e2ce103\" is not null and \"test_r9_verify_main\".\"customers_seal_index\".\"pos_offsets_ef1d32a52e2ce103\" is not null and octet_length(\"test_r9_verify_main\".\"customers_seal_index\".\"pos_salt_ef1d32a52e2ce103\") = 16 and \"test_r9_verify_main\".\"customers_seal_index\".\"pos_len_ef1d32a52e2ce103\" >= 0\n          and cardinality(\"test_r9_verify_main\".\"customers_seal_index\".\"pos_stamps_ef1d32a52e2ce103\") = cardinality(\"test_r9_verify_main\".\"customers_seal_index\".\"pos_offsets_ef1d32a52e2ce103\"))"
+          },
+          "seal_dabcdf67ec868294_ck": {
+            "name": "seal_dabcdf67ec868294_ck",
+            "value": "(\"test_r9_verify_main\".\"customers_seal_index\".\"word_salt_ef1d32a52e2ce103\" is null and \"test_r9_verify_main\".\"customers_seal_index\".\"word_len_ef1d32a52e2ce103\" is null and \"test_r9_verify_main\".\"customers_seal_index\".\"word_stamps_ef1d32a52e2ce103\" is null and \"test_r9_verify_main\".\"customers_seal_index\".\"word_offsets_ef1d32a52e2ce103\" is null) or\n          (\"test_r9_verify_main\".\"customers_seal_index\".\"word_salt_ef1d32a52e2ce103\" is not null and \"test_r9_verify_main\".\"customers_seal_index\".\"word_len_ef1d32a52e2ce103\" is not null and \"test_r9_verify_main\".\"customers_seal_index\".\"word_stamps_ef1d32a52e2ce103\" is not null and \"test_r9_verify_main\".\"customers_seal_index\".\"word_offsets_ef1d32a52e2ce103\" is not null and octet_length(\"test_r9_verify_main\".\"customers_seal_index\".\"word_salt_ef1d32a52e2ce103\") = 16 and \"test_r9_verify_main\".\"customers_seal_index\".\"word_len_ef1d32a52e2ce103\" >= 0\n          and cardinality(\"test_r9_verify_main\".\"customers_seal_index\".\"word_stamps_ef1d32a52e2ce103\") = cardinality(\"test_r9_verify_main\".\"customers_seal_index\".\"word_offsets_ef1d32a52e2ce103\"))"
+          },
+          "seal_ea9efba7ad61aed0_ck": {
+            "name": "seal_ea9efba7ad61aed0_ck",
+            "value": "(\"test_r9_verify_main\".\"customers_seal_index\".\"single_salt_ef1d32a52e2ce103\" is null and \"test_r9_verify_main\".\"customers_seal_index\".\"single_len_ef1d32a52e2ce103\" is null and \"test_r9_verify_main\".\"customers_seal_index\".\"single_stamps_ef1d32a52e2ce103\" is null and \"test_r9_verify_main\".\"customers_seal_index\".\"single_offsets_ef1d32a52e2ce103\" is null) or\n          (\"test_r9_verify_main\".\"customers_seal_index\".\"single_salt_ef1d32a52e2ce103\" is not null and \"test_r9_verify_main\".\"customers_seal_index\".\"single_len_ef1d32a52e2ce103\" is not null and \"test_r9_verify_main\".\"customers_seal_index\".\"single_stamps_ef1d32a52e2ce103\" is not null and \"test_r9_verify_main\".\"customers_seal_index\".\"single_offsets_ef1d32a52e2ce103\" is not null and octet_length(\"test_r9_verify_main\".\"customers_seal_index\".\"single_salt_ef1d32a52e2ce103\") = 16 and \"test_r9_verify_main\".\"customers_seal_index\".\"single_len_ef1d32a52e2ce103\" >= 0\n          and cardinality(\"test_r9_verify_main\".\"customers_seal_index\".\"single_stamps_ef1d32a52e2ce103\") = cardinality(\"test_r9_verify_main\".\"customers_seal_index\".\"single_offsets_ef1d32a52e2ce103\"))"
+          },
+          "seal_5854a3c438983f97_ck": {
+            "name": "seal_5854a3c438983f97_ck",
+            "value": "(\"test_r9_verify_main\".\"customers_seal_index\".\"eq_salt_1c32fdad5d1c8367\" is null and \"test_r9_verify_main\".\"customers_seal_index\".\"eq_stamp_1c32fdad5d1c8367\" is null) or\n          (\"test_r9_verify_main\".\"customers_seal_index\".\"eq_salt_1c32fdad5d1c8367\" is not null and \"test_r9_verify_main\".\"customers_seal_index\".\"eq_stamp_1c32fdad5d1c8367\" is not null and octet_length(\"test_r9_verify_main\".\"customers_seal_index\".\"eq_salt_1c32fdad5d1c8367\") = 16 )"
+          },
+          "seal_2d4368a47b9a1d16_ck": {
+            "name": "seal_2d4368a47b9a1d16_ck",
+            "value": "(\"test_r9_verify_main\".\"customers_seal_index\".\"pos_salt_a639b11c8130dcf7\" is null and \"test_r9_verify_main\".\"customers_seal_index\".\"pos_len_a639b11c8130dcf7\" is null and \"test_r9_verify_main\".\"customers_seal_index\".\"pos_stamps_a639b11c8130dcf7\" is null and \"test_r9_verify_main\".\"customers_seal_index\".\"pos_offsets_a639b11c8130dcf7\" is null) or\n          (\"test_r9_verify_main\".\"customers_seal_index\".\"pos_salt_a639b11c8130dcf7\" is not null and \"test_r9_verify_main\".\"customers_seal_index\".\"pos_len_a639b11c8130dcf7\" is not null and \"test_r9_verify_main\".\"customers_seal_index\".\"pos_stamps_a639b11c8130dcf7\" is not null and \"test_r9_verify_main\".\"customers_seal_index\".\"pos_offsets_a639b11c8130dcf7\" is not null and octet_length(\"test_r9_verify_main\".\"customers_seal_index\".\"pos_salt_a639b11c8130dcf7\") = 16 and \"test_r9_verify_main\".\"customers_seal_index\".\"pos_len_a639b11c8130dcf7\" >= 0\n          and cardinality(\"test_r9_verify_main\".\"customers_seal_index\".\"pos_stamps_a639b11c8130dcf7\") = cardinality(\"test_r9_verify_main\".\"customers_seal_index\".\"pos_offsets_a639b11c8130dcf7\"))"
+          },
+          "seal_5d68e66c89041848_ck": {
+            "name": "seal_5d68e66c89041848_ck",
+            "value": "(\"test_r9_verify_main\".\"customers_seal_index\".\"word_salt_a639b11c8130dcf7\" is null and \"test_r9_verify_main\".\"customers_seal_index\".\"word_len_a639b11c8130dcf7\" is null and \"test_r9_verify_main\".\"customers_seal_index\".\"word_stamps_a639b11c8130dcf7\" is null and \"test_r9_verify_main\".\"customers_seal_index\".\"word_offsets_a639b11c8130dcf7\" is null) or\n          (\"test_r9_verify_main\".\"customers_seal_index\".\"word_salt_a639b11c8130dcf7\" is not null and \"test_r9_verify_main\".\"customers_seal_index\".\"word_len_a639b11c8130dcf7\" is not null and \"test_r9_verify_main\".\"customers_seal_index\".\"word_stamps_a639b11c8130dcf7\" is not null and \"test_r9_verify_main\".\"customers_seal_index\".\"word_offsets_a639b11c8130dcf7\" is not null and octet_length(\"test_r9_verify_main\".\"customers_seal_index\".\"word_salt_a639b11c8130dcf7\") = 16 and \"test_r9_verify_main\".\"customers_seal_index\".\"word_len_a639b11c8130dcf7\" >= 0\n          and cardinality(\"test_r9_verify_main\".\"customers_seal_index\".\"word_stamps_a639b11c8130dcf7\") = cardinality(\"test_r9_verify_main\".\"customers_seal_index\".\"word_offsets_a639b11c8130dcf7\"))"
+          },
+          "seal_e5e93a720ca9e574_ck": {
+            "name": "seal_e5e93a720ca9e574_ck",
+            "value": "(\"test_r9_verify_main\".\"customers_seal_index\".\"single_salt_a639b11c8130dcf7\" is null and \"test_r9_verify_main\".\"customers_seal_index\".\"single_len_a639b11c8130dcf7\" is null and \"test_r9_verify_main\".\"customers_seal_index\".\"single_stamps_a639b11c8130dcf7\" is null and \"test_r9_verify_main\".\"customers_seal_index\".\"single_offsets_a639b11c8130dcf7\" is null) or\n          (\"test_r9_verify_main\".\"customers_seal_index\".\"single_salt_a639b11c8130dcf7\" is not null and \"test_r9_verify_main\".\"customers_seal_index\".\"single_len_a639b11c8130dcf7\" is not null and \"test_r9_verify_main\".\"customers_seal_index\".\"single_stamps_a639b11c8130dcf7\" is not null and \"test_r9_verify_main\".\"customers_seal_index\".\"single_offsets_a639b11c8130dcf7\" is not null and octet_length(\"test_r9_verify_main\".\"customers_seal_index\".\"single_salt_a639b11c8130dcf7\") = 16 and \"test_r9_verify_main\".\"customers_seal_index\".\"single_len_a639b11c8130dcf7\" >= 0\n          and cardinality(\"test_r9_verify_main\".\"customers_seal_index\".\"single_stamps_a639b11c8130dcf7\") = cardinality(\"test_r9_verify_main\".\"customers_seal_index\".\"single_offsets_a639b11c8130dcf7\"))"
+          },
+          "seal_baf0c757d4087c63_ck": {
+            "name": "seal_baf0c757d4087c63_ck",
+            "value": "(\"test_r9_verify_main\".\"customers_seal_index\".\"eq_salt_cd3096c7a3cd42c2\" is null and \"test_r9_verify_main\".\"customers_seal_index\".\"eq_stamp_cd3096c7a3cd42c2\" is null) or\n          (\"test_r9_verify_main\".\"customers_seal_index\".\"eq_salt_cd3096c7a3cd42c2\" is not null and \"test_r9_verify_main\".\"customers_seal_index\".\"eq_stamp_cd3096c7a3cd42c2\" is not null and octet_length(\"test_r9_verify_main\".\"customers_seal_index\".\"eq_salt_cd3096c7a3cd42c2\") = 16 )"
+          },
+          "seal_8609fff396d1e5e3_ck": {
+            "name": "seal_8609fff396d1e5e3_ck",
+            "value": "(\"test_r9_verify_main\".\"customers_seal_index\".\"pos_salt_f289b89d86c7086a\" is null and \"test_r9_verify_main\".\"customers_seal_index\".\"pos_len_f289b89d86c7086a\" is null and \"test_r9_verify_main\".\"customers_seal_index\".\"pos_stamps_f289b89d86c7086a\" is null and \"test_r9_verify_main\".\"customers_seal_index\".\"pos_offsets_f289b89d86c7086a\" is null) or\n          (\"test_r9_verify_main\".\"customers_seal_index\".\"pos_salt_f289b89d86c7086a\" is not null and \"test_r9_verify_main\".\"customers_seal_index\".\"pos_len_f289b89d86c7086a\" is not null and \"test_r9_verify_main\".\"customers_seal_index\".\"pos_stamps_f289b89d86c7086a\" is not null and \"test_r9_verify_main\".\"customers_seal_index\".\"pos_offsets_f289b89d86c7086a\" is not null and octet_length(\"test_r9_verify_main\".\"customers_seal_index\".\"pos_salt_f289b89d86c7086a\") = 16 and \"test_r9_verify_main\".\"customers_seal_index\".\"pos_len_f289b89d86c7086a\" >= 0\n          and cardinality(\"test_r9_verify_main\".\"customers_seal_index\".\"pos_stamps_f289b89d86c7086a\") = cardinality(\"test_r9_verify_main\".\"customers_seal_index\".\"pos_offsets_f289b89d86c7086a\"))"
+          },
+          "seal_6d8a174f1f160f79_ck": {
+            "name": "seal_6d8a174f1f160f79_ck",
+            "value": "(\"test_r9_verify_main\".\"customers_seal_index\".\"word_salt_f289b89d86c7086a\" is null and \"test_r9_verify_main\".\"customers_seal_index\".\"word_len_f289b89d86c7086a\" is null and \"test_r9_verify_main\".\"customers_seal_index\".\"word_stamps_f289b89d86c7086a\" is null and \"test_r9_verify_main\".\"customers_seal_index\".\"word_offsets_f289b89d86c7086a\" is null) or\n          (\"test_r9_verify_main\".\"customers_seal_index\".\"word_salt_f289b89d86c7086a\" is not null and \"test_r9_verify_main\".\"customers_seal_index\".\"word_len_f289b89d86c7086a\" is not null and \"test_r9_verify_main\".\"customers_seal_index\".\"word_stamps_f289b89d86c7086a\" is not null and \"test_r9_verify_main\".\"customers_seal_index\".\"word_offsets_f289b89d86c7086a\" is not null and octet_length(\"test_r9_verify_main\".\"customers_seal_index\".\"word_salt_f289b89d86c7086a\") = 16 and \"test_r9_verify_main\".\"customers_seal_index\".\"word_len_f289b89d86c7086a\" >= 0\n          and cardinality(\"test_r9_verify_main\".\"customers_seal_index\".\"word_stamps_f289b89d86c7086a\") = cardinality(\"test_r9_verify_main\".\"customers_seal_index\".\"word_offsets_f289b89d86c7086a\"))"
+          },
+          "seal_4d80426ebe8f6c0d_ck": {
+            "name": "seal_4d80426ebe8f6c0d_ck",
+            "value": "(\"test_r9_verify_main\".\"customers_seal_index\".\"single_salt_f289b89d86c7086a\" is null and \"test_r9_verify_main\".\"customers_seal_index\".\"single_len_f289b89d86c7086a\" is null and \"test_r9_verify_main\".\"customers_seal_index\".\"single_stamps_f289b89d86c7086a\" is null and \"test_r9_verify_main\".\"customers_seal_index\".\"single_offsets_f289b89d86c7086a\" is null) or\n          (\"test_r9_verify_main\".\"customers_seal_index\".\"single_salt_f289b89d86c7086a\" is not null and \"test_r9_verify_main\".\"customers_seal_index\".\"single_len_f289b89d86c7086a\" is not null and \"test_r9_verify_main\".\"customers_seal_index\".\"single_stamps_f289b89d86c7086a\" is not null and \"test_r9_verify_main\".\"customers_seal_index\".\"single_offsets_f289b89d86c7086a\" is not null and octet_length(\"test_r9_verify_main\".\"customers_seal_index\".\"single_salt_f289b89d86c7086a\") = 16 and \"test_r9_verify_main\".\"customers_seal_index\".\"single_len_f289b89d86c7086a\" >= 0\n          and cardinality(\"test_r9_verify_main\".\"customers_seal_index\".\"single_stamps_f289b89d86c7086a\") = cardinality(\"test_r9_verify_main\".\"customers_seal_index\".\"single_offsets_f289b89d86c7086a\"))"
+          },
+          "seal_ba07838904f4779e_ck": {
+            "name": "seal_ba07838904f4779e_ck",
+            "value": "(\"test_r9_verify_main\".\"customers_seal_index\".\"eq_salt_c44ae523cca61a0b\" is null and \"test_r9_verify_main\".\"customers_seal_index\".\"eq_stamp_c44ae523cca61a0b\" is null) or\n          (\"test_r9_verify_main\".\"customers_seal_index\".\"eq_salt_c44ae523cca61a0b\" is not null and \"test_r9_verify_main\".\"customers_seal_index\".\"eq_stamp_c44ae523cca61a0b\" is not null and octet_length(\"test_r9_verify_main\".\"customers_seal_index\".\"eq_salt_c44ae523cca61a0b\") = 16 )"
+          },
+          "seal_e3491d1167b1bb38_ck": {
+            "name": "seal_e3491d1167b1bb38_ck",
+            "value": "(\"test_r9_verify_main\".\"customers_seal_index\".\"pos_salt_7a1d2ba5ce2368fb\" is null and \"test_r9_verify_main\".\"customers_seal_index\".\"pos_len_7a1d2ba5ce2368fb\" is null and \"test_r9_verify_main\".\"customers_seal_index\".\"pos_stamps_7a1d2ba5ce2368fb\" is null and \"test_r9_verify_main\".\"customers_seal_index\".\"pos_offsets_7a1d2ba5ce2368fb\" is null) or\n          (\"test_r9_verify_main\".\"customers_seal_index\".\"pos_salt_7a1d2ba5ce2368fb\" is not null and \"test_r9_verify_main\".\"customers_seal_index\".\"pos_len_7a1d2ba5ce2368fb\" is not null and \"test_r9_verify_main\".\"customers_seal_index\".\"pos_stamps_7a1d2ba5ce2368fb\" is not null and \"test_r9_verify_main\".\"customers_seal_index\".\"pos_offsets_7a1d2ba5ce2368fb\" is not null and octet_length(\"test_r9_verify_main\".\"customers_seal_index\".\"pos_salt_7a1d2ba5ce2368fb\") = 16 and \"test_r9_verify_main\".\"customers_seal_index\".\"pos_len_7a1d2ba5ce2368fb\" >= 0\n          and cardinality(\"test_r9_verify_main\".\"customers_seal_index\".\"pos_stamps_7a1d2ba5ce2368fb\") = cardinality(\"test_r9_verify_main\".\"customers_seal_index\".\"pos_offsets_7a1d2ba5ce2368fb\"))"
+          },
+          "seal_7349ffa12e7a0da6_ck": {
+            "name": "seal_7349ffa12e7a0da6_ck",
+            "value": "(\"test_r9_verify_main\".\"customers_seal_index\".\"word_salt_7a1d2ba5ce2368fb\" is null and \"test_r9_verify_main\".\"customers_seal_index\".\"word_len_7a1d2ba5ce2368fb\" is null and \"test_r9_verify_main\".\"customers_seal_index\".\"word_stamps_7a1d2ba5ce2368fb\" is null and \"test_r9_verify_main\".\"customers_seal_index\".\"word_offsets_7a1d2ba5ce2368fb\" is null) or\n          (\"test_r9_verify_main\".\"customers_seal_index\".\"word_salt_7a1d2ba5ce2368fb\" is not null and \"test_r9_verify_main\".\"customers_seal_index\".\"word_len_7a1d2ba5ce2368fb\" is not null and \"test_r9_verify_main\".\"customers_seal_index\".\"word_stamps_7a1d2ba5ce2368fb\" is not null and \"test_r9_verify_main\".\"customers_seal_index\".\"word_offsets_7a1d2ba5ce2368fb\" is not null and octet_length(\"test_r9_verify_main\".\"customers_seal_index\".\"word_salt_7a1d2ba5ce2368fb\") = 16 and \"test_r9_verify_main\".\"customers_seal_index\".\"word_len_7a1d2ba5ce2368fb\" >= 0\n          and cardinality(\"test_r9_verify_main\".\"customers_seal_index\".\"word_stamps_7a1d2ba5ce2368fb\") = cardinality(\"test_r9_verify_main\".\"customers_seal_index\".\"word_offsets_7a1d2ba5ce2368fb\"))"
+          },
+          "seal_49c54d6be8c8a392_ck": {
+            "name": "seal_49c54d6be8c8a392_ck",
+            "value": "(\"test_r9_verify_main\".\"customers_seal_index\".\"single_salt_7a1d2ba5ce2368fb\" is null and \"test_r9_verify_main\".\"customers_seal_index\".\"single_len_7a1d2ba5ce2368fb\" is null and \"test_r9_verify_main\".\"customers_seal_index\".\"single_stamps_7a1d2ba5ce2368fb\" is null and \"test_r9_verify_main\".\"customers_seal_index\".\"single_offsets_7a1d2ba5ce2368fb\" is null) or\n          (\"test_r9_verify_main\".\"customers_seal_index\".\"single_salt_7a1d2ba5ce2368fb\" is not null and \"test_r9_verify_main\".\"customers_seal_index\".\"single_len_7a1d2ba5ce2368fb\" is not null and \"test_r9_verify_main\".\"customers_seal_index\".\"single_stamps_7a1d2ba5ce2368fb\" is not null and \"test_r9_verify_main\".\"customers_seal_index\".\"single_offsets_7a1d2ba5ce2368fb\" is not null and octet_length(\"test_r9_verify_main\".\"customers_seal_index\".\"single_salt_7a1d2ba5ce2368fb\") = 16 and \"test_r9_verify_main\".\"customers_seal_index\".\"single_len_7a1d2ba5ce2368fb\" >= 0\n          and cardinality(\"test_r9_verify_main\".\"customers_seal_index\".\"single_stamps_7a1d2ba5ce2368fb\") = cardinality(\"test_r9_verify_main\".\"customers_seal_index\".\"single_offsets_7a1d2ba5ce2368fb\"))"
+          }
+        },
+        "isRLSEnabled": false
+      }
+    },
+    "enums": {},
+    "schemas": {},
+    "sequences": {},
+    "roles": {},
+    "policies": {},
+    "views": {},
+    "_meta": {
+      "schemas": {},
+      "tables": {},
+      "columns": {}
+    },
+    "id": "6d2e66b2-5066-4e69-8bf1-ac09c080fd4b",
+    "prevId": "00000000-0000-0000-0000-000000000000"
+  },
+  "migration": [
+    "CREATE TABLE \"test_r9_verify_main\".\"customers\" (\n\t\"id\" uuid PRIMARY KEY NOT NULL,\n\t\"scope_id\" uuid NOT NULL,\n\t\"name_ct\" \"bytea\" NOT NULL,\n\t\"phone_ct\" \"bytea\" NOT NULL,\n\t\"address_ct\" \"bytea\" NOT NULL,\n\t\"memo_ct\" \"bytea\" NOT NULL,\n\t\"email_ct\" \"bytea\" NOT NULL,\n\t\"company_ct\" \"bytea\" NOT NULL\n);\n",
+    "CREATE TABLE \"test_r9_verify_main\".\"customers_seal_index\" (\n\t\"scope_id\" uuid NOT NULL,\n\t\"row_id\" uuid NOT NULL,\n\t\"tokens_988d248ff4b71bf7\" bigint[],\n\t\"eq_salt_988d248ff4b71bf7\" \"bytea\",\n\t\"eq_stamp_988d248ff4b71bf7\" bigint,\n\t\"tokens_792d75cf01821d67\" bigint[],\n\t\"pos_salt_792d75cf01821d67\" \"bytea\",\n\t\"pos_len_792d75cf01821d67\" integer,\n\t\"pos_stamps_792d75cf01821d67\" bigint[],\n\t\"pos_offsets_792d75cf01821d67\" integer[],\n\t\"word_salt_792d75cf01821d67\" \"bytea\",\n\t\"word_len_792d75cf01821d67\" integer,\n\t\"word_stamps_792d75cf01821d67\" bigint[],\n\t\"word_offsets_792d75cf01821d67\" integer[],\n\t\"single_salt_792d75cf01821d67\" \"bytea\",\n\t\"single_len_792d75cf01821d67\" integer,\n\t\"single_stamps_792d75cf01821d67\" bigint[],\n\t\"single_offsets_792d75cf01821d67\" integer[],\n\t\"tokens_a106c26102b707f0\" bigint[],\n\t\"eq_salt_a106c26102b707f0\" \"bytea\",\n\t\"eq_stamp_a106c26102b707f0\" bigint,\n\t\"tokens_1127994ab736baf4\" bigint[],\n\t\"pos_salt_1127994ab736baf4\" \"bytea\",\n\t\"pos_len_1127994ab736baf4\" integer,\n\t\"pos_stamps_1127994ab736baf4\" bigint[],\n\t\"pos_offsets_1127994ab736baf4\" integer[],\n\t\"word_salt_1127994ab736baf4\" \"bytea\",\n\t\"word_len_1127994ab736baf4\" integer,\n\t\"word_stamps_1127994ab736baf4\" bigint[],\n\t\"word_offsets_1127994ab736baf4\" integer[],\n\t\"single_salt_1127994ab736baf4\" \"bytea\",\n\t\"single_len_1127994ab736baf4\" integer,\n\t\"single_stamps_1127994ab736baf4\" bigint[],\n\t\"single_offsets_1127994ab736baf4\" integer[],\n\t\"tokens_c5133b3810f23103\" bigint[],\n\t\"eq_salt_c5133b3810f23103\" \"bytea\",\n\t\"eq_stamp_c5133b3810f23103\" bigint,\n\t\"tokens_ef1d32a52e2ce103\" bigint[],\n\t\"pos_salt_ef1d32a52e2ce103\" \"bytea\",\n\t\"pos_len_ef1d32a52e2ce103\" integer,\n\t\"pos_stamps_ef1d32a52e2ce103\" bigint[],\n\t\"pos_offsets_ef1d32a52e2ce103\" integer[],\n\t\"word_salt_ef1d32a52e2ce103\" \"bytea\",\n\t\"word_len_ef1d32a52e2ce103\" integer,\n\t\"word_stamps_ef1d32a52e2ce103\" bigint[],\n\t\"word_offsets_ef1d32a52e2ce103\" integer[],\n\t\"single_salt_ef1d32a52e2ce103\" \"bytea\",\n\t\"single_len_ef1d32a52e2ce103\" integer,\n\t\"single_stamps_ef1d32a52e2ce103\" bigint[],\n\t\"single_offsets_ef1d32a52e2ce103\" integer[],\n\t\"tokens_1c32fdad5d1c8367\" bigint[],\n\t\"eq_salt_1c32fdad5d1c8367\" \"bytea\",\n\t\"eq_stamp_1c32fdad5d1c8367\" bigint,\n\t\"tokens_a639b11c8130dcf7\" bigint[],\n\t\"pos_salt_a639b11c8130dcf7\" \"bytea\",\n\t\"pos_len_a639b11c8130dcf7\" integer,\n\t\"pos_stamps_a639b11c8130dcf7\" bigint[],\n\t\"pos_offsets_a639b11c8130dcf7\" integer[],\n\t\"word_salt_a639b11c8130dcf7\" \"bytea\",\n\t\"word_len_a639b11c8130dcf7\" integer,\n\t\"word_stamps_a639b11c8130dcf7\" bigint[],\n\t\"word_offsets_a639b11c8130dcf7\" integer[],\n\t\"single_salt_a639b11c8130dcf7\" \"bytea\",\n\t\"single_len_a639b11c8130dcf7\" integer,\n\t\"single_stamps_a639b11c8130dcf7\" bigint[],\n\t\"single_offsets_a639b11c8130dcf7\" integer[],\n\t\"tokens_cd3096c7a3cd42c2\" bigint[],\n\t\"eq_salt_cd3096c7a3cd42c2\" \"bytea\",\n\t\"eq_stamp_cd3096c7a3cd42c2\" bigint,\n\t\"tokens_f289b89d86c7086a\" bigint[],\n\t\"pos_salt_f289b89d86c7086a\" \"bytea\",\n\t\"pos_len_f289b89d86c7086a\" integer,\n\t\"pos_stamps_f289b89d86c7086a\" bigint[],\n\t\"pos_offsets_f289b89d86c7086a\" integer[],\n\t\"word_salt_f289b89d86c7086a\" \"bytea\",\n\t\"word_len_f289b89d86c7086a\" integer,\n\t\"word_stamps_f289b89d86c7086a\" bigint[],\n\t\"word_offsets_f289b89d86c7086a\" integer[],\n\t\"single_salt_f289b89d86c7086a\" \"bytea\",\n\t\"single_len_f289b89d86c7086a\" integer,\n\t\"single_stamps_f289b89d86c7086a\" bigint[],\n\t\"single_offsets_f289b89d86c7086a\" integer[],\n\t\"tokens_c44ae523cca61a0b\" bigint[],\n\t\"eq_salt_c44ae523cca61a0b\" \"bytea\",\n\t\"eq_stamp_c44ae523cca61a0b\" bigint,\n\t\"tokens_7a1d2ba5ce2368fb\" bigint[],\n\t\"pos_salt_7a1d2ba5ce2368fb\" \"bytea\",\n\t\"pos_len_7a1d2ba5ce2368fb\" integer,\n\t\"pos_stamps_7a1d2ba5ce2368fb\" bigint[],\n\t\"pos_offsets_7a1d2ba5ce2368fb\" integer[],\n\t\"word_salt_7a1d2ba5ce2368fb\" \"bytea\",\n\t\"word_len_7a1d2ba5ce2368fb\" integer,\n\t\"word_stamps_7a1d2ba5ce2368fb\" bigint[],\n\t\"word_offsets_7a1d2ba5ce2368fb\" integer[],\n\t\"single_salt_7a1d2ba5ce2368fb\" \"bytea\",\n\t\"single_len_7a1d2ba5ce2368fb\" integer,\n\t\"single_stamps_7a1d2ba5ce2368fb\" bigint[],\n\t\"single_offsets_7a1d2ba5ce2368fb\" integer[],\n\tCONSTRAINT \"seal_dfa387787f59f02a_one_ck\" CHECK (\"test_r9_verify_main\".\"customers_seal_index\".\"tokens_988d248ff4b71bf7\" is null or\n        (cardinality(\"test_r9_verify_main\".\"customers_seal_index\".\"tokens_988d248ff4b71bf7\") = 1 and array_ndims(\"test_r9_verify_main\".\"customers_seal_index\".\"tokens_988d248ff4b71bf7\") = 1)),\n\tCONSTRAINT \"seal_4c8e2d2bddde3451_one_ck\" CHECK (\"test_r9_verify_main\".\"customers_seal_index\".\"tokens_a106c26102b707f0\" is null or\n        (cardinality(\"test_r9_verify_main\".\"customers_seal_index\".\"tokens_a106c26102b707f0\") = 1 and array_ndims(\"test_r9_verify_main\".\"customers_seal_index\".\"tokens_a106c26102b707f0\") = 1)),\n\tCONSTRAINT \"seal_ae59b15a89e931d6_one_ck\" CHECK (\"test_r9_verify_main\".\"customers_seal_index\".\"tokens_c5133b3810f23103\" is null or\n        (cardinality(\"test_r9_verify_main\".\"customers_seal_index\".\"tokens_c5133b3810f23103\") = 1 and array_ndims(\"test_r9_verify_main\".\"customers_seal_index\".\"tokens_c5133b3810f23103\") = 1)),\n\tCONSTRAINT \"seal_8fa11f16c3da1ad8_one_ck\" CHECK (\"test_r9_verify_main\".\"customers_seal_index\".\"tokens_1c32fdad5d1c8367\" is null or\n        (cardinality(\"test_r9_verify_main\".\"customers_seal_index\".\"tokens_1c32fdad5d1c8367\") = 1 and array_ndims(\"test_r9_verify_main\".\"customers_seal_index\".\"tokens_1c32fdad5d1c8367\") = 1)),\n\tCONSTRAINT \"seal_411905c9deef5c59_one_ck\" CHECK (\"test_r9_verify_main\".\"customers_seal_index\".\"tokens_cd3096c7a3cd42c2\" is null or\n        (cardinality(\"test_r9_verify_main\".\"customers_seal_index\".\"tokens_cd3096c7a3cd42c2\") = 1 and array_ndims(\"test_r9_verify_main\".\"customers_seal_index\".\"tokens_cd3096c7a3cd42c2\") = 1)),\n\tCONSTRAINT \"seal_62e346c0ef994072_one_ck\" CHECK (\"test_r9_verify_main\".\"customers_seal_index\".\"tokens_c44ae523cca61a0b\" is null or\n        (cardinality(\"test_r9_verify_main\".\"customers_seal_index\".\"tokens_c44ae523cca61a0b\") = 1 and array_ndims(\"test_r9_verify_main\".\"customers_seal_index\".\"tokens_c44ae523cca61a0b\") = 1)),\n\tCONSTRAINT \"seal_8087f389ab6d07a2_ck\" CHECK ((\"test_r9_verify_main\".\"customers_seal_index\".\"eq_salt_988d248ff4b71bf7\" is null and \"test_r9_verify_main\".\"customers_seal_index\".\"eq_stamp_988d248ff4b71bf7\" is null) or\n          (\"test_r9_verify_main\".\"customers_seal_index\".\"eq_salt_988d248ff4b71bf7\" is not null and \"test_r9_verify_main\".\"customers_seal_index\".\"eq_stamp_988d248ff4b71bf7\" is not null and octet_length(\"test_r9_verify_main\".\"customers_seal_index\".\"eq_salt_988d248ff4b71bf7\") = 16 )),\n\tCONSTRAINT \"seal_3e959b5ee3a10b8e_ck\" CHECK ((\"test_r9_verify_main\".\"customers_seal_index\".\"pos_salt_792d75cf01821d67\" is null and \"test_r9_verify_main\".\"customers_seal_index\".\"pos_len_792d75cf01821d67\" is null and \"test_r9_verify_main\".\"customers_seal_index\".\"pos_stamps_792d75cf01821d67\" is null and \"test_r9_verify_main\".\"customers_seal_index\".\"pos_offsets_792d75cf01821d67\" is null) or\n          (\"test_r9_verify_main\".\"customers_seal_index\".\"pos_salt_792d75cf01821d67\" is not null and \"test_r9_verify_main\".\"customers_seal_index\".\"pos_len_792d75cf01821d67\" is not null and \"test_r9_verify_main\".\"customers_seal_index\".\"pos_stamps_792d75cf01821d67\" is not null and \"test_r9_verify_main\".\"customers_seal_index\".\"pos_offsets_792d75cf01821d67\" is not null and octet_length(\"test_r9_verify_main\".\"customers_seal_index\".\"pos_salt_792d75cf01821d67\") = 16 and \"test_r9_verify_main\".\"customers_seal_index\".\"pos_len_792d75cf01821d67\" >= 0\n          and cardinality(\"test_r9_verify_main\".\"customers_seal_index\".\"pos_stamps_792d75cf01821d67\") = cardinality(\"test_r9_verify_main\".\"customers_seal_index\".\"pos_offsets_792d75cf01821d67\"))),\n\tCONSTRAINT \"seal_a9c47c55002424c8_ck\" CHECK ((\"test_r9_verify_main\".\"customers_seal_index\".\"word_salt_792d75cf01821d67\" is null and \"test_r9_verify_main\".\"customers_seal_index\".\"word_len_792d75cf01821d67\" is null and \"test_r9_verify_main\".\"customers_seal_index\".\"word_stamps_792d75cf01821d67\" is null and \"test_r9_verify_main\".\"customers_seal_index\".\"word_offsets_792d75cf01821d67\" is null) or\n          (\"test_r9_verify_main\".\"customers_seal_index\".\"word_salt_792d75cf01821d67\" is not null and \"test_r9_verify_main\".\"customers_seal_index\".\"word_len_792d75cf01821d67\" is not null and \"test_r9_verify_main\".\"customers_seal_index\".\"word_stamps_792d75cf01821d67\" is not null and \"test_r9_verify_main\".\"customers_seal_index\".\"word_offsets_792d75cf01821d67\" is not null and octet_length(\"test_r9_verify_main\".\"customers_seal_index\".\"word_salt_792d75cf01821d67\") = 16 and \"test_r9_verify_main\".\"customers_seal_index\".\"word_len_792d75cf01821d67\" >= 0\n          and cardinality(\"test_r9_verify_main\".\"customers_seal_index\".\"word_stamps_792d75cf01821d67\") = cardinality(\"test_r9_verify_main\".\"customers_seal_index\".\"word_offsets_792d75cf01821d67\"))),\n\tCONSTRAINT \"seal_22440b0305a4ab64_ck\" CHECK ((\"test_r9_verify_main\".\"customers_seal_index\".\"single_salt_792d75cf01821d67\" is null and \"test_r9_verify_main\".\"customers_seal_index\".\"single_len_792d75cf01821d67\" is null and \"test_r9_verify_main\".\"customers_seal_index\".\"single_stamps_792d75cf01821d67\" is null and \"test_r9_verify_main\".\"customers_seal_index\".\"single_offsets_792d75cf01821d67\" is null) or\n          (\"test_r9_verify_main\".\"customers_seal_index\".\"single_salt_792d75cf01821d67\" is not null and \"test_r9_verify_main\".\"customers_seal_index\".\"single_len_792d75cf01821d67\" is not null and \"test_r9_verify_main\".\"customers_seal_index\".\"single_stamps_792d75cf01821d67\" is not null and \"test_r9_verify_main\".\"customers_seal_index\".\"single_offsets_792d75cf01821d67\" is not null and octet_length(\"test_r9_verify_main\".\"customers_seal_index\".\"single_salt_792d75cf01821d67\") = 16 and \"test_r9_verify_main\".\"customers_seal_index\".\"single_len_792d75cf01821d67\" >= 0\n          and cardinality(\"test_r9_verify_main\".\"customers_seal_index\".\"single_stamps_792d75cf01821d67\") = cardinality(\"test_r9_verify_main\".\"customers_seal_index\".\"single_offsets_792d75cf01821d67\"))),\n\tCONSTRAINT \"seal_e7939aee6e139cf8_ck\" CHECK ((\"test_r9_verify_main\".\"customers_seal_index\".\"eq_salt_a106c26102b707f0\" is null and \"test_r9_verify_main\".\"customers_seal_index\".\"eq_stamp_a106c26102b707f0\" is null) or\n          (\"test_r9_verify_main\".\"customers_seal_index\".\"eq_salt_a106c26102b707f0\" is not null and \"test_r9_verify_main\".\"customers_seal_index\".\"eq_stamp_a106c26102b707f0\" is not null and octet_length(\"test_r9_verify_main\".\"customers_seal_index\".\"eq_salt_a106c26102b707f0\") = 16 )),\n\tCONSTRAINT \"seal_3a4c44ea79bb2b5b_ck\" CHECK ((\"test_r9_verify_main\".\"customers_seal_index\".\"pos_salt_1127994ab736baf4\" is null and \"test_r9_verify_main\".\"customers_seal_index\".\"pos_len_1127994ab736baf4\" is null and \"test_r9_verify_main\".\"customers_seal_index\".\"pos_stamps_1127994ab736baf4\" is null and \"test_r9_verify_main\".\"customers_seal_index\".\"pos_offsets_1127994ab736baf4\" is null) or\n          (\"test_r9_verify_main\".\"customers_seal_index\".\"pos_salt_1127994ab736baf4\" is not null and \"test_r9_verify_main\".\"customers_seal_index\".\"pos_len_1127994ab736baf4\" is not null and \"test_r9_verify_main\".\"customers_seal_index\".\"pos_stamps_1127994ab736baf4\" is not null and \"test_r9_verify_main\".\"customers_seal_index\".\"pos_offsets_1127994ab736baf4\" is not null and octet_length(\"test_r9_verify_main\".\"customers_seal_index\".\"pos_salt_1127994ab736baf4\") = 16 and \"test_r9_verify_main\".\"customers_seal_index\".\"pos_len_1127994ab736baf4\" >= 0\n          and cardinality(\"test_r9_verify_main\".\"customers_seal_index\".\"pos_stamps_1127994ab736baf4\") = cardinality(\"test_r9_verify_main\".\"customers_seal_index\".\"pos_offsets_1127994ab736baf4\"))),\n\tCONSTRAINT \"seal_49d2acc1ff24d8cd_ck\" CHECK ((\"test_r9_verify_main\".\"customers_seal_index\".\"word_salt_1127994ab736baf4\" is null and \"test_r9_verify_main\".\"customers_seal_index\".\"word_len_1127994ab736baf4\" is null and \"test_r9_verify_main\".\"customers_seal_index\".\"word_stamps_1127994ab736baf4\" is null and \"test_r9_verify_main\".\"customers_seal_index\".\"word_offsets_1127994ab736baf4\" is null) or\n          (\"test_r9_verify_main\".\"customers_seal_index\".\"word_salt_1127994ab736baf4\" is not null and \"test_r9_verify_main\".\"customers_seal_index\".\"word_len_1127994ab736baf4\" is not null and \"test_r9_verify_main\".\"customers_seal_index\".\"word_stamps_1127994ab736baf4\" is not null and \"test_r9_verify_main\".\"customers_seal_index\".\"word_offsets_1127994ab736baf4\" is not null and octet_length(\"test_r9_verify_main\".\"customers_seal_index\".\"word_salt_1127994ab736baf4\") = 16 and \"test_r9_verify_main\".\"customers_seal_index\".\"word_len_1127994ab736baf4\" >= 0\n          and cardinality(\"test_r9_verify_main\".\"customers_seal_index\".\"word_stamps_1127994ab736baf4\") = cardinality(\"test_r9_verify_main\".\"customers_seal_index\".\"word_offsets_1127994ab736baf4\"))),\n\tCONSTRAINT \"seal_17a272c1925c23e9_ck\" CHECK ((\"test_r9_verify_main\".\"customers_seal_index\".\"single_salt_1127994ab736baf4\" is null and \"test_r9_verify_main\".\"customers_seal_index\".\"single_len_1127994ab736baf4\" is null and \"test_r9_verify_main\".\"customers_seal_index\".\"single_stamps_1127994ab736baf4\" is null and \"test_r9_verify_main\".\"customers_seal_index\".\"single_offsets_1127994ab736baf4\" is null) or\n          (\"test_r9_verify_main\".\"customers_seal_index\".\"single_salt_1127994ab736baf4\" is not null and \"test_r9_verify_main\".\"customers_seal_index\".\"single_len_1127994ab736baf4\" is not null and \"test_r9_verify_main\".\"customers_seal_index\".\"single_stamps_1127994ab736baf4\" is not null and \"test_r9_verify_main\".\"customers_seal_index\".\"single_offsets_1127994ab736baf4\" is not null and octet_length(\"test_r9_verify_main\".\"customers_seal_index\".\"single_salt_1127994ab736baf4\") = 16 and \"test_r9_verify_main\".\"customers_seal_index\".\"single_len_1127994ab736baf4\" >= 0\n          and cardinality(\"test_r9_verify_main\".\"customers_seal_index\".\"single_stamps_1127994ab736baf4\") = cardinality(\"test_r9_verify_main\".\"customers_seal_index\".\"single_offsets_1127994ab736baf4\"))),\n\tCONSTRAINT \"seal_a342f7266d485434_ck\" CHECK ((\"test_r9_verify_main\".\"customers_seal_index\".\"eq_salt_c5133b3810f23103\" is null and \"test_r9_verify_main\".\"customers_seal_index\".\"eq_stamp_c5133b3810f23103\" is null) or\n          (\"test_r9_verify_main\".\"customers_seal_index\".\"eq_salt_c5133b3810f23103\" is not null and \"test_r9_verify_main\".\"customers_seal_index\".\"eq_stamp_c5133b3810f23103\" is not null and octet_length(\"test_r9_verify_main\".\"customers_seal_index\".\"eq_salt_c5133b3810f23103\") = 16 )),\n\tCONSTRAINT \"seal_29be74eeee1fbd9e_ck\" CHECK ((\"test_r9_verify_main\".\"customers_seal_index\".\"pos_salt_ef1d32a52e2ce103\" is null and \"test_r9_verify_main\".\"customers_seal_index\".\"pos_len_ef1d32a52e2ce103\" is null and \"test_r9_verify_main\".\"customers_seal_index\".\"pos_stamps_ef1d32a52e2ce103\" is null and \"test_r9_verify_main\".\"customers_seal_index\".\"pos_offsets_ef1d32a52e2ce103\" is null) or\n          (\"test_r9_verify_main\".\"customers_seal_index\".\"pos_salt_ef1d32a52e2ce103\" is not null and \"test_r9_verify_main\".\"customers_seal_index\".\"pos_len_ef1d32a52e2ce103\" is not null and \"test_r9_verify_main\".\"customers_seal_index\".\"pos_stamps_ef1d32a52e2ce103\" is not null and \"test_r9_verify_main\".\"customers_seal_index\".\"pos_offsets_ef1d32a52e2ce103\" is not null and octet_length(\"test_r9_verify_main\".\"customers_seal_index\".\"pos_salt_ef1d32a52e2ce103\") = 16 and \"test_r9_verify_main\".\"customers_seal_index\".\"pos_len_ef1d32a52e2ce103\" >= 0\n          and cardinality(\"test_r9_verify_main\".\"customers_seal_index\".\"pos_stamps_ef1d32a52e2ce103\") = cardinality(\"test_r9_verify_main\".\"customers_seal_index\".\"pos_offsets_ef1d32a52e2ce103\"))),\n\tCONSTRAINT \"seal_dabcdf67ec868294_ck\" CHECK ((\"test_r9_verify_main\".\"customers_seal_index\".\"word_salt_ef1d32a52e2ce103\" is null and \"test_r9_verify_main\".\"customers_seal_index\".\"word_len_ef1d32a52e2ce103\" is null and \"test_r9_verify_main\".\"customers_seal_index\".\"word_stamps_ef1d32a52e2ce103\" is null and \"test_r9_verify_main\".\"customers_seal_index\".\"word_offsets_ef1d32a52e2ce103\" is null) or\n          (\"test_r9_verify_main\".\"customers_seal_index\".\"word_salt_ef1d32a52e2ce103\" is not null and \"test_r9_verify_main\".\"customers_seal_index\".\"word_len_ef1d32a52e2ce103\" is not null and \"test_r9_verify_main\".\"customers_seal_index\".\"word_stamps_ef1d32a52e2ce103\" is not null and \"test_r9_verify_main\".\"customers_seal_index\".\"word_offsets_ef1d32a52e2ce103\" is not null and octet_length(\"test_r9_verify_main\".\"customers_seal_index\".\"word_salt_ef1d32a52e2ce103\") = 16 and \"test_r9_verify_main\".\"customers_seal_index\".\"word_len_ef1d32a52e2ce103\" >= 0\n          and cardinality(\"test_r9_verify_main\".\"customers_seal_index\".\"word_stamps_ef1d32a52e2ce103\") = cardinality(\"test_r9_verify_main\".\"customers_seal_index\".\"word_offsets_ef1d32a52e2ce103\"))),\n\tCONSTRAINT \"seal_ea9efba7ad61aed0_ck\" CHECK ((\"test_r9_verify_main\".\"customers_seal_index\".\"single_salt_ef1d32a52e2ce103\" is null and \"test_r9_verify_main\".\"customers_seal_index\".\"single_len_ef1d32a52e2ce103\" is null and \"test_r9_verify_main\".\"customers_seal_index\".\"single_stamps_ef1d32a52e2ce103\" is null and \"test_r9_verify_main\".\"customers_seal_index\".\"single_offsets_ef1d32a52e2ce103\" is null) or\n          (\"test_r9_verify_main\".\"customers_seal_index\".\"single_salt_ef1d32a52e2ce103\" is not null and \"test_r9_verify_main\".\"customers_seal_index\".\"single_len_ef1d32a52e2ce103\" is not null and \"test_r9_verify_main\".\"customers_seal_index\".\"single_stamps_ef1d32a52e2ce103\" is not null and \"test_r9_verify_main\".\"customers_seal_index\".\"single_offsets_ef1d32a52e2ce103\" is not null and octet_length(\"test_r9_verify_main\".\"customers_seal_index\".\"single_salt_ef1d32a52e2ce103\") = 16 and \"test_r9_verify_main\".\"customers_seal_index\".\"single_len_ef1d32a52e2ce103\" >= 0\n          and cardinality(\"test_r9_verify_main\".\"customers_seal_index\".\"single_stamps_ef1d32a52e2ce103\") = cardinality(\"test_r9_verify_main\".\"customers_seal_index\".\"single_offsets_ef1d32a52e2ce103\"))),\n\tCONSTRAINT \"seal_5854a3c438983f97_ck\" CHECK ((\"test_r9_verify_main\".\"customers_seal_index\".\"eq_salt_1c32fdad5d1c8367\" is null and \"test_r9_verify_main\".\"customers_seal_index\".\"eq_stamp_1c32fdad5d1c8367\" is null) or\n          (\"test_r9_verify_main\".\"customers_seal_index\".\"eq_salt_1c32fdad5d1c8367\" is not null and \"test_r9_verify_main\".\"customers_seal_index\".\"eq_stamp_1c32fdad5d1c8367\" is not null and octet_length(\"test_r9_verify_main\".\"customers_seal_index\".\"eq_salt_1c32fdad5d1c8367\") = 16 )),\n\tCONSTRAINT \"seal_2d4368a47b9a1d16_ck\" CHECK ((\"test_r9_verify_main\".\"customers_seal_index\".\"pos_salt_a639b11c8130dcf7\" is null and \"test_r9_verify_main\".\"customers_seal_index\".\"pos_len_a639b11c8130dcf7\" is null and \"test_r9_verify_main\".\"customers_seal_index\".\"pos_stamps_a639b11c8130dcf7\" is null and \"test_r9_verify_main\".\"customers_seal_index\".\"pos_offsets_a639b11c8130dcf7\" is null) or\n          (\"test_r9_verify_main\".\"customers_seal_index\".\"pos_salt_a639b11c8130dcf7\" is not null and \"test_r9_verify_main\".\"customers_seal_index\".\"pos_len_a639b11c8130dcf7\" is not null and \"test_r9_verify_main\".\"customers_seal_index\".\"pos_stamps_a639b11c8130dcf7\" is not null and \"test_r9_verify_main\".\"customers_seal_index\".\"pos_offsets_a639b11c8130dcf7\" is not null and octet_length(\"test_r9_verify_main\".\"customers_seal_index\".\"pos_salt_a639b11c8130dcf7\") = 16 and \"test_r9_verify_main\".\"customers_seal_index\".\"pos_len_a639b11c8130dcf7\" >= 0\n          and cardinality(\"test_r9_verify_main\".\"customers_seal_index\".\"pos_stamps_a639b11c8130dcf7\") = cardinality(\"test_r9_verify_main\".\"customers_seal_index\".\"pos_offsets_a639b11c8130dcf7\"))),\n\tCONSTRAINT \"seal_5d68e66c89041848_ck\" CHECK ((\"test_r9_verify_main\".\"customers_seal_index\".\"word_salt_a639b11c8130dcf7\" is null and \"test_r9_verify_main\".\"customers_seal_index\".\"word_len_a639b11c8130dcf7\" is null and \"test_r9_verify_main\".\"customers_seal_index\".\"word_stamps_a639b11c8130dcf7\" is null and \"test_r9_verify_main\".\"customers_seal_index\".\"word_offsets_a639b11c8130dcf7\" is null) or\n          (\"test_r9_verify_main\".\"customers_seal_index\".\"word_salt_a639b11c8130dcf7\" is not null and \"test_r9_verify_main\".\"customers_seal_index\".\"word_len_a639b11c8130dcf7\" is not null and \"test_r9_verify_main\".\"customers_seal_index\".\"word_stamps_a639b11c8130dcf7\" is not null and \"test_r9_verify_main\".\"customers_seal_index\".\"word_offsets_a639b11c8130dcf7\" is not null and octet_length(\"test_r9_verify_main\".\"customers_seal_index\".\"word_salt_a639b11c8130dcf7\") = 16 and \"test_r9_verify_main\".\"customers_seal_index\".\"word_len_a639b11c8130dcf7\" >= 0\n          and cardinality(\"test_r9_verify_main\".\"customers_seal_index\".\"word_stamps_a639b11c8130dcf7\") = cardinality(\"test_r9_verify_main\".\"customers_seal_index\".\"word_offsets_a639b11c8130dcf7\"))),\n\tCONSTRAINT \"seal_e5e93a720ca9e574_ck\" CHECK ((\"test_r9_verify_main\".\"customers_seal_index\".\"single_salt_a639b11c8130dcf7\" is null and \"test_r9_verify_main\".\"customers_seal_index\".\"single_len_a639b11c8130dcf7\" is null and \"test_r9_verify_main\".\"customers_seal_index\".\"single_stamps_a639b11c8130dcf7\" is null and \"test_r9_verify_main\".\"customers_seal_index\".\"single_offsets_a639b11c8130dcf7\" is null) or\n          (\"test_r9_verify_main\".\"customers_seal_index\".\"single_salt_a639b11c8130dcf7\" is not null and \"test_r9_verify_main\".\"customers_seal_index\".\"single_len_a639b11c8130dcf7\" is not null and \"test_r9_verify_main\".\"customers_seal_index\".\"single_stamps_a639b11c8130dcf7\" is not null and \"test_r9_verify_main\".\"customers_seal_index\".\"single_offsets_a639b11c8130dcf7\" is not null and octet_length(\"test_r9_verify_main\".\"customers_seal_index\".\"single_salt_a639b11c8130dcf7\") = 16 and \"test_r9_verify_main\".\"customers_seal_index\".\"single_len_a639b11c8130dcf7\" >= 0\n          and cardinality(\"test_r9_verify_main\".\"customers_seal_index\".\"single_stamps_a639b11c8130dcf7\") = cardinality(\"test_r9_verify_main\".\"customers_seal_index\".\"single_offsets_a639b11c8130dcf7\"))),\n\tCONSTRAINT \"seal_baf0c757d4087c63_ck\" CHECK ((\"test_r9_verify_main\".\"customers_seal_index\".\"eq_salt_cd3096c7a3cd42c2\" is null and \"test_r9_verify_main\".\"customers_seal_index\".\"eq_stamp_cd3096c7a3cd42c2\" is null) or\n          (\"test_r9_verify_main\".\"customers_seal_index\".\"eq_salt_cd3096c7a3cd42c2\" is not null and \"test_r9_verify_main\".\"customers_seal_index\".\"eq_stamp_cd3096c7a3cd42c2\" is not null and octet_length(\"test_r9_verify_main\".\"customers_seal_index\".\"eq_salt_cd3096c7a3cd42c2\") = 16 )),\n\tCONSTRAINT \"seal_8609fff396d1e5e3_ck\" CHECK ((\"test_r9_verify_main\".\"customers_seal_index\".\"pos_salt_f289b89d86c7086a\" is null and \"test_r9_verify_main\".\"customers_seal_index\".\"pos_len_f289b89d86c7086a\" is null and \"test_r9_verify_main\".\"customers_seal_index\".\"pos_stamps_f289b89d86c7086a\" is null and \"test_r9_verify_main\".\"customers_seal_index\".\"pos_offsets_f289b89d86c7086a\" is null) or\n          (\"test_r9_verify_main\".\"customers_seal_index\".\"pos_salt_f289b89d86c7086a\" is not null and \"test_r9_verify_main\".\"customers_seal_index\".\"pos_len_f289b89d86c7086a\" is not null and \"test_r9_verify_main\".\"customers_seal_index\".\"pos_stamps_f289b89d86c7086a\" is not null and \"test_r9_verify_main\".\"customers_seal_index\".\"pos_offsets_f289b89d86c7086a\" is not null and octet_length(\"test_r9_verify_main\".\"customers_seal_index\".\"pos_salt_f289b89d86c7086a\") = 16 and \"test_r9_verify_main\".\"customers_seal_index\".\"pos_len_f289b89d86c7086a\" >= 0\n          and cardinality(\"test_r9_verify_main\".\"customers_seal_index\".\"pos_stamps_f289b89d86c7086a\") = cardinality(\"test_r9_verify_main\".\"customers_seal_index\".\"pos_offsets_f289b89d86c7086a\"))),\n\tCONSTRAINT \"seal_6d8a174f1f160f79_ck\" CHECK ((\"test_r9_verify_main\".\"customers_seal_index\".\"word_salt_f289b89d86c7086a\" is null and \"test_r9_verify_main\".\"customers_seal_index\".\"word_len_f289b89d86c7086a\" is null and \"test_r9_verify_main\".\"customers_seal_index\".\"word_stamps_f289b89d86c7086a\" is null and \"test_r9_verify_main\".\"customers_seal_index\".\"word_offsets_f289b89d86c7086a\" is null) or\n          (\"test_r9_verify_main\".\"customers_seal_index\".\"word_salt_f289b89d86c7086a\" is not null and \"test_r9_verify_main\".\"customers_seal_index\".\"word_len_f289b89d86c7086a\" is not null and \"test_r9_verify_main\".\"customers_seal_index\".\"word_stamps_f289b89d86c7086a\" is not null and \"test_r9_verify_main\".\"customers_seal_index\".\"word_offsets_f289b89d86c7086a\" is not null and octet_length(\"test_r9_verify_main\".\"customers_seal_index\".\"word_salt_f289b89d86c7086a\") = 16 and \"test_r9_verify_main\".\"customers_seal_index\".\"word_len_f289b89d86c7086a\" >= 0\n          and cardinality(\"test_r9_verify_main\".\"customers_seal_index\".\"word_stamps_f289b89d86c7086a\") = cardinality(\"test_r9_verify_main\".\"customers_seal_index\".\"word_offsets_f289b89d86c7086a\"))),\n\tCONSTRAINT \"seal_4d80426ebe8f6c0d_ck\" CHECK ((\"test_r9_verify_main\".\"customers_seal_index\".\"single_salt_f289b89d86c7086a\" is null and \"test_r9_verify_main\".\"customers_seal_index\".\"single_len_f289b89d86c7086a\" is null and \"test_r9_verify_main\".\"customers_seal_index\".\"single_stamps_f289b89d86c7086a\" is null and \"test_r9_verify_main\".\"customers_seal_index\".\"single_offsets_f289b89d86c7086a\" is null) or\n          (\"test_r9_verify_main\".\"customers_seal_index\".\"single_salt_f289b89d86c7086a\" is not null and \"test_r9_verify_main\".\"customers_seal_index\".\"single_len_f289b89d86c7086a\" is not null and \"test_r9_verify_main\".\"customers_seal_index\".\"single_stamps_f289b89d86c7086a\" is not null and \"test_r9_verify_main\".\"customers_seal_index\".\"single_offsets_f289b89d86c7086a\" is not null and octet_length(\"test_r9_verify_main\".\"customers_seal_index\".\"single_salt_f289b89d86c7086a\") = 16 and \"test_r9_verify_main\".\"customers_seal_index\".\"single_len_f289b89d86c7086a\" >= 0\n          and cardinality(\"test_r9_verify_main\".\"customers_seal_index\".\"single_stamps_f289b89d86c7086a\") = cardinality(\"test_r9_verify_main\".\"customers_seal_index\".\"single_offsets_f289b89d86c7086a\"))),\n\tCONSTRAINT \"seal_ba07838904f4779e_ck\" CHECK ((\"test_r9_verify_main\".\"customers_seal_index\".\"eq_salt_c44ae523cca61a0b\" is null and \"test_r9_verify_main\".\"customers_seal_index\".\"eq_stamp_c44ae523cca61a0b\" is null) or\n          (\"test_r9_verify_main\".\"customers_seal_index\".\"eq_salt_c44ae523cca61a0b\" is not null and \"test_r9_verify_main\".\"customers_seal_index\".\"eq_stamp_c44ae523cca61a0b\" is not null and octet_length(\"test_r9_verify_main\".\"customers_seal_index\".\"eq_salt_c44ae523cca61a0b\") = 16 )),\n\tCONSTRAINT \"seal_e3491d1167b1bb38_ck\" CHECK ((\"test_r9_verify_main\".\"customers_seal_index\".\"pos_salt_7a1d2ba5ce2368fb\" is null and \"test_r9_verify_main\".\"customers_seal_index\".\"pos_len_7a1d2ba5ce2368fb\" is null and \"test_r9_verify_main\".\"customers_seal_index\".\"pos_stamps_7a1d2ba5ce2368fb\" is null and \"test_r9_verify_main\".\"customers_seal_index\".\"pos_offsets_7a1d2ba5ce2368fb\" is null) or\n          (\"test_r9_verify_main\".\"customers_seal_index\".\"pos_salt_7a1d2ba5ce2368fb\" is not null and \"test_r9_verify_main\".\"customers_seal_index\".\"pos_len_7a1d2ba5ce2368fb\" is not null and \"test_r9_verify_main\".\"customers_seal_index\".\"pos_stamps_7a1d2ba5ce2368fb\" is not null and \"test_r9_verify_main\".\"customers_seal_index\".\"pos_offsets_7a1d2ba5ce2368fb\" is not null and octet_length(\"test_r9_verify_main\".\"customers_seal_index\".\"pos_salt_7a1d2ba5ce2368fb\") = 16 and \"test_r9_verify_main\".\"customers_seal_index\".\"pos_len_7a1d2ba5ce2368fb\" >= 0\n          and cardinality(\"test_r9_verify_main\".\"customers_seal_index\".\"pos_stamps_7a1d2ba5ce2368fb\") = cardinality(\"test_r9_verify_main\".\"customers_seal_index\".\"pos_offsets_7a1d2ba5ce2368fb\"))),\n\tCONSTRAINT \"seal_7349ffa12e7a0da6_ck\" CHECK ((\"test_r9_verify_main\".\"customers_seal_index\".\"word_salt_7a1d2ba5ce2368fb\" is null and \"test_r9_verify_main\".\"customers_seal_index\".\"word_len_7a1d2ba5ce2368fb\" is null and \"test_r9_verify_main\".\"customers_seal_index\".\"word_stamps_7a1d2ba5ce2368fb\" is null and \"test_r9_verify_main\".\"customers_seal_index\".\"word_offsets_7a1d2ba5ce2368fb\" is null) or\n          (\"test_r9_verify_main\".\"customers_seal_index\".\"word_salt_7a1d2ba5ce2368fb\" is not null and \"test_r9_verify_main\".\"customers_seal_index\".\"word_len_7a1d2ba5ce2368fb\" is not null and \"test_r9_verify_main\".\"customers_seal_index\".\"word_stamps_7a1d2ba5ce2368fb\" is not null and \"test_r9_verify_main\".\"customers_seal_index\".\"word_offsets_7a1d2ba5ce2368fb\" is not null and octet_length(\"test_r9_verify_main\".\"customers_seal_index\".\"word_salt_7a1d2ba5ce2368fb\") = 16 and \"test_r9_verify_main\".\"customers_seal_index\".\"word_len_7a1d2ba5ce2368fb\" >= 0\n          and cardinality(\"test_r9_verify_main\".\"customers_seal_index\".\"word_stamps_7a1d2ba5ce2368fb\") = cardinality(\"test_r9_verify_main\".\"customers_seal_index\".\"word_offsets_7a1d2ba5ce2368fb\"))),\n\tCONSTRAINT \"seal_49c54d6be8c8a392_ck\" CHECK ((\"test_r9_verify_main\".\"customers_seal_index\".\"single_salt_7a1d2ba5ce2368fb\" is null and \"test_r9_verify_main\".\"customers_seal_index\".\"single_len_7a1d2ba5ce2368fb\" is null and \"test_r9_verify_main\".\"customers_seal_index\".\"single_stamps_7a1d2ba5ce2368fb\" is null and \"test_r9_verify_main\".\"customers_seal_index\".\"single_offsets_7a1d2ba5ce2368fb\" is null) or\n          (\"test_r9_verify_main\".\"customers_seal_index\".\"single_salt_7a1d2ba5ce2368fb\" is not null and \"test_r9_verify_main\".\"customers_seal_index\".\"single_len_7a1d2ba5ce2368fb\" is not null and \"test_r9_verify_main\".\"customers_seal_index\".\"single_stamps_7a1d2ba5ce2368fb\" is not null and \"test_r9_verify_main\".\"customers_seal_index\".\"single_offsets_7a1d2ba5ce2368fb\" is not null and octet_length(\"test_r9_verify_main\".\"customers_seal_index\".\"single_salt_7a1d2ba5ce2368fb\") = 16 and \"test_r9_verify_main\".\"customers_seal_index\".\"single_len_7a1d2ba5ce2368fb\" >= 0\n          and cardinality(\"test_r9_verify_main\".\"customers_seal_index\".\"single_stamps_7a1d2ba5ce2368fb\") = cardinality(\"test_r9_verify_main\".\"customers_seal_index\".\"single_offsets_7a1d2ba5ce2368fb\")))\n);\n",
+    "ALTER TABLE \"test_r9_verify_main\".\"customers_seal_index\" ADD CONSTRAINT \"customers_seal_index_row_id_customers_id_fk\" FOREIGN KEY (\"row_id\") REFERENCES \"test_r9_verify_main\".\"customers\"(\"id\") ON DELETE cascade ON UPDATE no action;",
+    "CREATE UNIQUE INDEX \"customers_seal_index_scope_row_uq\" ON \"test_r9_verify_main\".\"customers_seal_index\" USING btree (\"scope_id\",\"row_id\");",
+    "CREATE UNIQUE INDEX \"customers_seal_index_row_uq\" ON \"test_r9_verify_main\".\"customers_seal_index\" USING btree (\"row_id\");",
+    "CREATE INDEX \"seal_dfa387787f59f02a_bt\" ON \"test_r9_verify_main\".\"customers_seal_index\" USING btree (scope_id,(tokens_988d248ff4b71bf7[1]),row_id,eq_salt_988d248ff4b71bf7,eq_stamp_988d248ff4b71bf7,tokens_988d248ff4b71bf7);",
+    "CREATE INDEX \"seal_4c8e2d2bddde3451_bt\" ON \"test_r9_verify_main\".\"customers_seal_index\" USING btree (scope_id,(tokens_a106c26102b707f0[1]),row_id,eq_salt_a106c26102b707f0,eq_stamp_a106c26102b707f0,tokens_a106c26102b707f0);",
+    "CREATE INDEX \"seal_ae59b15a89e931d6_bt\" ON \"test_r9_verify_main\".\"customers_seal_index\" USING btree (scope_id,(tokens_c5133b3810f23103[1]),row_id,eq_salt_c5133b3810f23103,eq_stamp_c5133b3810f23103,tokens_c5133b3810f23103);",
+    "CREATE INDEX \"seal_8fa11f16c3da1ad8_bt\" ON \"test_r9_verify_main\".\"customers_seal_index\" USING btree (scope_id,(tokens_1c32fdad5d1c8367[1]),row_id,eq_salt_1c32fdad5d1c8367,eq_stamp_1c32fdad5d1c8367,tokens_1c32fdad5d1c8367);",
+    "CREATE INDEX \"seal_411905c9deef5c59_bt\" ON \"test_r9_verify_main\".\"customers_seal_index\" USING btree (scope_id,(tokens_cd3096c7a3cd42c2[1]),row_id,eq_salt_cd3096c7a3cd42c2,eq_stamp_cd3096c7a3cd42c2,tokens_cd3096c7a3cd42c2);",
+    "CREATE INDEX \"seal_62e346c0ef994072_bt\" ON \"test_r9_verify_main\".\"customers_seal_index\" USING btree (scope_id,(tokens_c44ae523cca61a0b[1]),row_id,eq_salt_c44ae523cca61a0b,eq_stamp_c44ae523cca61a0b,tokens_c44ae523cca61a0b);",
+    "CREATE INDEX \"seal_e66dc2708e915b65_gin\" ON \"test_r9_verify_main\".\"customers_seal_index\" USING gin (\"tokens_792d75cf01821d67\",\"tokens_1127994ab736baf4\",\"tokens_ef1d32a52e2ce103\",\"tokens_a639b11c8130dcf7\",\"tokens_f289b89d86c7086a\",\"tokens_7a1d2ba5ce2368fb\");"
+  ],
+  "extra": [
+    "create or replace function \"test_r9_verify_main\".sealql_piece_positions(k bytea, salt bytea, stamps bigint[], positions integer[], n integer) returns integer[] language plpgsql immutable strict parallel safe security invoker set search_path = pg_catalog as $seal$\n\ndeclare ordinal integer := 1; lo integer; hi integer; mid integer; wanted bigint; found integer; result integer[] := '{}';\nbegin\n  if octet_length(k) <> 32 or octet_length(salt) <> 16 or n < 0 or cardinality(stamps) <> cardinality(positions)\n    or (cardinality(stamps) > 0 and (array_lower(stamps,1) <> 1 or array_lower(positions,1) <> 1)) then\n    raise exception using errcode='22023', message='Invalid search proof';\n  end if;\n  while ordinal <= n loop\n    wanted := (('x' || encode(substr(pg_catalog.sha256(k || salt || pg_catalog.int4send(ordinal)),1,8),'hex'))::bit(64)::bigint);\n    lo := 1; hi := cardinality(stamps); found := 0;\n    while lo <= hi loop\n      mid := lo + (hi-lo)/2;\n      if stamps[mid] = wanted then found := mid; exit;\n      elsif stamps[mid] < wanted then lo := mid+1; else hi := mid-1; end if;\n    end loop;\n    exit when found = 0;\n    if positions[found] is null or positions[found] < 0 or positions[found] >= n then\n      raise exception using errcode='22023', message='Invalid search proof';\n    end if;\n    result := array_append(result, positions[found]); ordinal := ordinal+1;\n  end loop;\n  return result;\nend\n$seal$",
+    "create or replace function \"test_r9_verify_main\".sealql_run_positions(lists jsonb, ids integer[], offs integer[], qlen integer, n integer) returns integer[] language plpgsql immutable strict parallel safe security invoker set search_path = pg_catalog as $seal$\n\ndeclare i integer; p integer; starts integer[] := '{}'; counts integer[]; positions integer[];\nbegin\n  if qlen < 1 or n < qlen then return starts; end if;\n  if cardinality(ids) = 0 or cardinality(ids) <> cardinality(offs) then\n    raise exception using errcode='22023', message='Invalid search query';\n  end if;\n  counts := array_fill(0, array[n-qlen+1]);\n  for i in 1..cardinality(ids) loop\n    select coalesce(array_agg(v::integer),'{}') into positions from jsonb_array_elements_text(lists->ids[i]) v;\n    foreach p in array positions loop\n      p := p-offs[i];\n      if p >= 0 and p <= n-qlen then counts[p+1] := counts[p+1]+1; end if;\n    end loop;\n  end loop;\n  for p in 0..n-qlen loop\n    if counts[p+1] = cardinality(ids) then starts := array_append(starts,p); end if;\n  end loop;\n  return starts;\nend\n$seal$",
+    "create or replace function \"test_r9_verify_main\".sealql_match_positions(ks bytea[], offs integer[], qlen integer, n integer, salt bytea, stamps bigint[], positions integer[], affix integer) returns boolean language plpgsql immutable strict parallel safe security invoker set search_path = pg_catalog as $seal$\n\n DECLARE first_i int:=1; i int; wi int; idx int; p int; target_p int; got_p int; tag bigint; ok bool;\n BEGIN\n  IF cardinality(ks)=0 OR cardinality(ks)<>cardinality(offs) OR offs[1]<>0 OR qlen<2\n    OR affix NOT IN (0,1,2) OR octet_length(salt)<>16 OR cardinality(stamps)<>cardinality(positions) THEN\n    RAISE EXCEPTION USING errcode='22023',message='Invalid search proof';\n  END IF;\n  IF n<qlen THEN RETURN false;END IF;\n  LOOP\n   tag:=(('x'||encode(substr(sha256(ks[1]||salt||int4send(first_i)),1,8),'hex'))::bit(64)::bigint);\n   idx:=array_position(stamps,tag);IF idx IS NULL THEN RETURN false;END IF;\n   p:=positions[idx];IF p>n-qlen THEN RETURN false;END IF;\n   IF affix=1 AND p>0 THEN RETURN false;END IF;\n   IF affix=2 AND p<n-qlen THEN first_i:=first_i+1;CONTINUE;END IF;\n   ok:=true;\n   IF cardinality(ks)>1 THEN FOR wi IN 2..cardinality(ks) LOOP\n    target_p:=p+offs[wi];i:=1;\n    LOOP\n     tag:=(('x'||encode(substr(sha256(ks[wi]||salt||int4send(i)),1,8),'hex'))::bit(64)::bigint);\n     idx:=array_position(stamps,tag);IF idx IS NULL THEN ok:=false;EXIT;END IF;\n     got_p:=positions[idx];IF got_p>=target_p THEN ok:=got_p=target_p;EXIT;END IF;i:=i+1;\n    END LOOP;\n    IF NOT ok THEN EXIT;END IF;\n   END LOOP;END IF;\n   IF ok THEN RETURN true;END IF;first_i:=first_i+1;\n  END LOOP;\n END \n$seal$",
+    "create or replace function \"test_r9_verify_main\".sealql_match_like(ks bytea[], kinds integer[], pattern jsonb, n integer, salt bytea, stamps bigint[], positions integer[], single_salt bytea, single_stamps bigint[], single_positions integer[]) returns boolean language plpgsql immutable strict parallel safe security invoker set search_path = pg_catalog as $seal$\n\ndeclare i integer; p integer; qlen integer; token jsonb; lists jsonb := '[]'; ids integer[]; offs integer[];\n  frontier boolean[]; next_frontier boolean[]; reachable boolean;\nbegin\n  if n < 0 or cardinality(ks) <> cardinality(kinds) or jsonb_typeof(pattern) <> 'array' then\n    raise exception using errcode='22023', message='Invalid search query';\n  end if;\n  if cardinality(ks) > 0 then for i in 1..cardinality(ks) loop\n    if kinds[i] = 1 then lists := lists || jsonb_build_array(to_jsonb(\"test_r9_verify_main\".sealql_piece_positions(ks[i],single_salt,single_stamps,single_positions,n)));\n    elsif kinds[i] = 2 then lists := lists || jsonb_build_array(to_jsonb(\"test_r9_verify_main\".sealql_piece_positions(ks[i],salt,stamps,positions,n)));\n    else raise exception using errcode='22023', message='Invalid search query'; end if;\n  end loop; end if;\n  frontier := array_fill(false,array[n+1]); frontier[1] := true;\n  for token in select value from jsonb_array_elements(pattern) loop\n    next_frontier := array_fill(false,array[n+1]);\n    if token = '\"%\"'::jsonb then\n      reachable := false;\n      for p in 0..n loop reachable := reachable or frontier[p+1]; next_frontier[p+1] := reachable; end loop;\n    elsif token = '\"_\"'::jsonb then\n      if n > 0 then for p in 1..n loop next_frontier[p+1] := frontier[p]; end loop; end if;\n    else\n      qlen := (token->>'n')::integer;\n      select array_agg(v::integer) into ids from jsonb_array_elements_text(token->'k') v;\n      select array_agg(v::integer) into offs from jsonb_array_elements_text(token->'o') v;\n      foreach p in array \"test_r9_verify_main\".sealql_run_positions(lists,ids,offs,qlen,n) loop\n        if frontier[p+1] then next_frontier[p+qlen+1] := true; end if;\n      end loop;\n    end if;\n    frontier := next_frontier;\n  end loop;\n  return frontier[n+1];\nend\n$seal$",
+    "alter table \"test_r9_verify_main\".\"customers_seal_index\" alter column \"tokens_792d75cf01821d67\" set statistics 1000",
+    "alter table \"test_r9_verify_main\".\"customers_seal_index\" alter column \"tokens_1127994ab736baf4\" set statistics 1000",
+    "alter table \"test_r9_verify_main\".\"customers_seal_index\" alter column \"tokens_ef1d32a52e2ce103\" set statistics 1000",
+    "alter table \"test_r9_verify_main\".\"customers_seal_index\" alter column \"tokens_a639b11c8130dcf7\" set statistics 1000",
+    "alter table \"test_r9_verify_main\".\"customers_seal_index\" alter column \"tokens_f289b89d86c7086a\" set statistics 1000",
+    "alter table \"test_r9_verify_main\".\"customers_seal_index\" alter column \"tokens_7a1d2ba5ce2368fb\" set statistics 1000",
+    "alter table \"test_r9_verify_main\".\"customers_seal_index\" alter column \"tokens_988d248ff4b71bf7\" set storage main",
+    "alter table \"test_r9_verify_main\".\"customers_seal_index\" alter column \"tokens_792d75cf01821d67\" set storage main",
+    "alter table \"test_r9_verify_main\".\"customers_seal_index\" alter column \"pos_stamps_792d75cf01821d67\" set storage main",
+    "alter table \"test_r9_verify_main\".\"customers_seal_index\" alter column \"pos_offsets_792d75cf01821d67\" set storage main",
+    "alter table \"test_r9_verify_main\".\"customers_seal_index\" alter column \"tokens_a106c26102b707f0\" set storage main",
+    "alter table \"test_r9_verify_main\".\"customers_seal_index\" alter column \"tokens_1127994ab736baf4\" set storage main",
+    "alter table \"test_r9_verify_main\".\"customers_seal_index\" alter column \"pos_stamps_1127994ab736baf4\" set storage main",
+    "alter table \"test_r9_verify_main\".\"customers_seal_index\" alter column \"pos_offsets_1127994ab736baf4\" set storage main",
+    "alter table \"test_r9_verify_main\".\"customers_seal_index\" alter column \"tokens_c5133b3810f23103\" set storage main",
+    "alter table \"test_r9_verify_main\".\"customers_seal_index\" alter column \"tokens_ef1d32a52e2ce103\" set storage main",
+    "alter table \"test_r9_verify_main\".\"customers_seal_index\" alter column \"pos_stamps_ef1d32a52e2ce103\" set storage main",
+    "alter table \"test_r9_verify_main\".\"customers_seal_index\" alter column \"pos_offsets_ef1d32a52e2ce103\" set storage main",
+    "alter table \"test_r9_verify_main\".\"customers_seal_index\" alter column \"tokens_1c32fdad5d1c8367\" set storage main",
+    "alter table \"test_r9_verify_main\".\"customers_seal_index\" alter column \"tokens_a639b11c8130dcf7\" set storage main",
+    "alter table \"test_r9_verify_main\".\"customers_seal_index\" alter column \"pos_stamps_a639b11c8130dcf7\" set storage main",
+    "alter table \"test_r9_verify_main\".\"customers_seal_index\" alter column \"pos_offsets_a639b11c8130dcf7\" set storage main",
+    "alter table \"test_r9_verify_main\".\"customers_seal_index\" alter column \"tokens_cd3096c7a3cd42c2\" set storage main",
+    "alter table \"test_r9_verify_main\".\"customers_seal_index\" alter column \"tokens_f289b89d86c7086a\" set storage main",
+    "alter table \"test_r9_verify_main\".\"customers_seal_index\" alter column \"pos_stamps_f289b89d86c7086a\" set storage main",
+    "alter table \"test_r9_verify_main\".\"customers_seal_index\" alter column \"pos_offsets_f289b89d86c7086a\" set storage main",
+    "alter table \"test_r9_verify_main\".\"customers_seal_index\" alter column \"tokens_c44ae523cca61a0b\" set storage main",
+    "alter table \"test_r9_verify_main\".\"customers_seal_index\" alter column \"tokens_7a1d2ba5ce2368fb\" set storage main",
+    "alter table \"test_r9_verify_main\".\"customers_seal_index\" alter column \"pos_stamps_7a1d2ba5ce2368fb\" set storage main",
+    "alter table \"test_r9_verify_main\".\"customers_seal_index\" alter column \"pos_offsets_7a1d2ba5ce2368fb\" set storage main"
+  ]
+}

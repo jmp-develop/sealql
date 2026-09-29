@@ -1,0 +1,33 @@
+{
+  "started": "2026-09-29T01:57:51.933Z",
+  "schema": "test_r9_verify_main",
+  "source": "bench_realistic_100k.customers *_plain, unmodified original values",
+  "api": "sealql/drizzle/v0.45 sealed.insert",
+  "loaded": 100000,
+  "complete": true,
+  "batch": 1000,
+  "workers": 8,
+  "chunk": 125,
+  "errors": [],
+  "sourceHash": "1cf0a7590198cd9650ebbce302c0ee75eb8830fbadec3cef9f56ee00e199502b",
+  "normalizedBaselineMismatches": 0,
+  "sourceSpaces": {
+    "name": 100000,
+    "phone": 0,
+    "address": 100000,
+    "memo": 100000,
+    "email": 0,
+    "company": 100000
+  },
+  "sourceAsciiUpper": {
+    "name": 23944,
+    "phone": 0,
+    "address": 33393,
+    "memo": 0,
+    "email": 0,
+    "company": 39694
+  },
+  "elapsedMs": 1459269.9167999998,
+  "rawSampleRoundtrip": 100,
+  "finished": "2026-09-29T02:23:04.382Z"
+}

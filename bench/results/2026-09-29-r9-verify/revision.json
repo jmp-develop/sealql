@@ -1,0 +1,22 @@
+{
+  "at": "2026-09-29T03:31:46.512Z",
+  "commit": "a4231b47f03b9c0b859a600296cde20e91ff637e",
+  "base": "04994b2097a215a47dfb8ac07809bd9bb89f489c",
+  "changedProductFiles": [
+    "src/adapters/drizzle/v0.45/native-search.ts",
+    "src/core/candidate-sql.ts"
+  ],
+  "writePathUnchanged": true,
+  "evidence": "Full src diff reviewed: ascending-ID query canonicalization and finite-page prefix/fallback SQL only; no managed write, crypto, normalization, schema or migration implementation changes",
+  "reused": [
+    "load",
+    "writes",
+    "capacity",
+    "ticket-load"
+  ],
+  "remeasured": [
+    "measure",
+    "join"
+  ],
+  "previous": "prior-04994b2/report-ko.md"
+}

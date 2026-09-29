@@ -1,0 +1,1293 @@
+{
+  "at": "2026-09-29T02:53:49.569Z",
+  "tables": [
+    {
+      "relation": "research_u.customers_plain",
+      "rows": 100000,
+      "heap": 20054016,
+      "heap_fsm": 24576,
+      "heap_vm": 8192,
+      "indexes": 50388992,
+      "total": 70483968,
+      "toast_heap": 0,
+      "toast_indexes": 8192,
+      "toast_aux": 0,
+      "bytesPerRow": 704.83968
+    },
+    {
+      "relation": "test_r9_verify_main.customers",
+      "rows": 100000,
+      "heap": 38936576,
+      "heap_fsm": 32768,
+      "heap_vm": 8192,
+      "indexes": 4259840,
+      "total": 43245568,
+      "toast_heap": 0,
+      "toast_indexes": 8192,
+      "toast_aux": 0,
+      "bytesPerRow": 432.45568
+    },
+    {
+      "relation": "test_r9_verify_main.customers_seal_index",
+      "rows": 100000,
+      "heap": 409616384,
+      "heap_fsm": 122880,
+      "heap_vm": 16384,
+      "indexes": 196231168,
+      "total": 1007853568,
+      "toast_heap": 347815936,
+      "toast_indexes": 53927936,
+      "toast_aux": 122880,
+      "bytesPerRow": 10078.53568
+    }
+  ],
+  "streams": [
+    {
+      "field": "name",
+      "stream": "exact",
+      "columns": [
+        "eq_salt_cd3096c7a3cd42c2",
+        "eq_stamp_cd3096c7a3cd42c2"
+      ],
+      "valueBytes": 2500000,
+      "meanValueBytes": 25
+    },
+    {
+      "field": "name",
+      "stream": "compact",
+      "columns": [
+        "pos_salt_f289b89d86c7086a",
+        "pos_len_f289b89d86c7086a",
+        "pos_stamps_f289b89d86c7086a",
+        "pos_offsets_f289b89d86c7086a"
+      ],
+      "valueBytes": 16233024,
+      "meanValueBytes": 162.33024
+    },
+    {
+      "field": "name",
+      "stream": "words",
+      "columns": [
+        "word_salt_f289b89d86c7086a",
+        "word_len_f289b89d86c7086a",
+        "word_stamps_f289b89d86c7086a",
+        "word_offsets_f289b89d86c7086a"
+      ],
+      "valueBytes": 17612944,
+      "meanValueBytes": 176.12944
+    },
+    {
+      "field": "name",
+      "stream": "single",
+      "columns": [
+        "single_salt_f289b89d86c7086a",
+        "single_len_f289b89d86c7086a",
+        "single_stamps_f289b89d86c7086a",
+        "single_offsets_f289b89d86c7086a"
+      ],
+      "valueBytes": 17325616,
+      "meanValueBytes": 173.25616
+    },
+    {
+      "field": "name",
+      "stream": "candidate",
+      "columns": [
+        "tokens_cd3096c7a3cd42c2",
+        "tokens_f289b89d86c7086a"
+      ],
+      "valueBytes": 15237991,
+      "meanValueBytes": 152.37991
+    },
+    {
+      "field": "phone",
+      "stream": "exact",
+      "columns": [
+        "eq_salt_c44ae523cca61a0b",
+        "eq_stamp_c44ae523cca61a0b"
+      ],
+      "valueBytes": 2500000,
+      "meanValueBytes": 25
+    },
+    {
+      "field": "phone",
+      "stream": "compact",
+      "columns": [
+        "pos_salt_7a1d2ba5ce2368fb",
+        "pos_len_7a1d2ba5ce2368fb",
+        "pos_stamps_7a1d2ba5ce2368fb",
+        "pos_offsets_7a1d2ba5ce2368fb"
+      ],
+      "valueBytes": 19500000,
+      "meanValueBytes": 195
+    },
+    {
+      "field": "phone",
+      "stream": "words",
+      "columns": [
+        "word_salt_7a1d2ba5ce2368fb",
+        "word_len_7a1d2ba5ce2368fb",
+        "word_stamps_7a1d2ba5ce2368fb",
+        "word_offsets_7a1d2ba5ce2368fb"
+      ],
+      "valueBytes": 19300000,
+      "meanValueBytes": 193
+    },
+    {
+      "field": "phone",
+      "stream": "single",
+      "columns": [
+        "single_salt_7a1d2ba5ce2368fb",
+        "single_len_7a1d2ba5ce2368fb",
+        "single_stamps_7a1d2ba5ce2368fb",
+        "single_offsets_7a1d2ba5ce2368fb"
+      ],
+      "valueBytes": 20500000,
+      "meanValueBytes": 205
+    },
+    {
+      "field": "phone",
+      "stream": "candidate",
+      "columns": [
+        "tokens_c44ae523cca61a0b",
+        "tokens_7a1d2ba5ce2368fb"
+      ],
+      "valueBytes": 16157806,
+      "meanValueBytes": 161.57806
+    },
+    {
+      "field": "address",
+      "stream": "exact",
+      "columns": [
+        "eq_salt_988d248ff4b71bf7",
+        "eq_stamp_988d248ff4b71bf7"
+      ],
+      "valueBytes": 2500000,
+      "meanValueBytes": 25
+    },
+    {
+      "field": "address",
+      "stream": "compact",
+      "columns": [
+        "pos_salt_792d75cf01821d67",
+        "pos_len_792d75cf01821d67",
+        "pos_stamps_792d75cf01821d67",
+        "pos_offsets_792d75cf01821d67"
+      ],
+      "valueBytes": 23121351,
+      "meanValueBytes": 231.21351
+    },
+    {
+      "field": "address",
+      "stream": "words",
+      "columns": [
+        "word_salt_792d75cf01821d67",
+        "word_len_792d75cf01821d67",
+        "word_stamps_792d75cf01821d67",
+        "word_offsets_792d75cf01821d67"
+      ],
+      "valueBytes": 27374044,
+      "meanValueBytes": 273.74044
+    },
+    {
+      "field": "address",
+      "stream": "single",
+      "columns": [
+        "single_salt_792d75cf01821d67",
+        "single_len_792d75cf01821d67",
+        "single_stamps_792d75cf01821d67",
+        "single_offsets_792d75cf01821d67"
+      ],
+      "valueBytes": 23975896,
+      "meanValueBytes": 239.75896
+    },
+    {
+      "field": "address",
+      "stream": "candidate",
+      "columns": [
+        "tokens_988d248ff4b71bf7",
+        "tokens_792d75cf01821d67"
+      ],
+      "valueBytes": 21894995,
+      "meanValueBytes": 218.94995
+    },
+    {
+      "field": "memo",
+      "stream": "exact",
+      "columns": [
+        "eq_salt_1c32fdad5d1c8367",
+        "eq_stamp_1c32fdad5d1c8367"
+      ],
+      "valueBytes": 2500000,
+      "meanValueBytes": 25
+    },
+    {
+      "field": "memo",
+      "stream": "compact",
+      "columns": [
+        "pos_salt_a639b11c8130dcf7",
+        "pos_len_a639b11c8130dcf7",
+        "pos_stamps_a639b11c8130dcf7",
+        "pos_offsets_a639b11c8130dcf7"
+      ],
+      "valueBytes": 22921992,
+      "meanValueBytes": 229.21992
+    },
+    {
+      "field": "memo",
+      "stream": "words",
+      "columns": [
+        "word_salt_a639b11c8130dcf7",
+        "word_len_a639b11c8130dcf7",
+        "word_stamps_a639b11c8130dcf7",
+        "word_offsets_a639b11c8130dcf7"
+      ],
+      "valueBytes": 26745652,
+      "meanValueBytes": 267.45652
+    },
+    {
+      "field": "memo",
+      "stream": "single",
+      "columns": [
+        "single_salt_a639b11c8130dcf7",
+        "single_len_a639b11c8130dcf7",
+        "single_stamps_a639b11c8130dcf7",
+        "single_offsets_a639b11c8130dcf7"
+      ],
+      "valueBytes": 23849104,
+      "meanValueBytes": 238.49104
+    },
+    {
+      "field": "memo",
+      "stream": "candidate",
+      "columns": [
+        "tokens_1c32fdad5d1c8367",
+        "tokens_a639b11c8130dcf7"
+      ],
+      "valueBytes": 20685246,
+      "meanValueBytes": 206.85246
+    },
+    {
+      "field": "email",
+      "stream": "exact",
+      "columns": [
+        "eq_salt_c5133b3810f23103",
+        "eq_stamp_c5133b3810f23103"
+      ],
+      "valueBytes": 2500000,
+      "meanValueBytes": 25
+    },
+    {
+      "field": "email",
+      "stream": "compact",
+      "columns": [
+        "pos_salt_ef1d32a52e2ce103",
+        "pos_len_ef1d32a52e2ce103",
+        "pos_stamps_ef1d32a52e2ce103",
+        "pos_offsets_ef1d32a52e2ce103"
+      ],
+      "valueBytes": 30188292,
+      "meanValueBytes": 301.88292
+    },
+    {
+      "field": "email",
+      "stream": "words",
+      "columns": [
+        "word_salt_ef1d32a52e2ce103",
+        "word_len_ef1d32a52e2ce103",
+        "word_stamps_ef1d32a52e2ce103",
+        "word_offsets_ef1d32a52e2ce103"
+      ],
+      "valueBytes": 29688292,
+      "meanValueBytes": 296.88292
+    },
+    {
+      "field": "email",
+      "stream": "single",
+      "columns": [
+        "single_salt_ef1d32a52e2ce103",
+        "single_len_ef1d32a52e2ce103",
+        "single_stamps_ef1d32a52e2ce103",
+        "single_offsets_ef1d32a52e2ce103"
+      ],
+      "valueBytes": 30888292,
+      "meanValueBytes": 308.88292
+    },
+    {
+      "field": "email",
+      "stream": "candidate",
+      "columns": [
+        "tokens_c5133b3810f23103",
+        "tokens_ef1d32a52e2ce103"
+      ],
+      "valueBytes": 23267793,
+      "meanValueBytes": 232.67793
+    },
+    {
+      "field": "company",
+      "stream": "exact",
+      "columns": [
+        "eq_salt_a106c26102b707f0",
+        "eq_stamp_a106c26102b707f0"
+      ],
+      "valueBytes": 2500000,
+      "meanValueBytes": 25
+    },
+    {
+      "field": "company",
+      "stream": "compact",
+      "columns": [
+        "pos_salt_1127994ab736baf4",
+        "pos_len_1127994ab736baf4",
+        "pos_stamps_1127994ab736baf4",
+        "pos_offsets_1127994ab736baf4"
+      ],
+      "valueBytes": 16232271,
+      "meanValueBytes": 162.32271
+    },
+    {
+      "field": "company",
+      "stream": "words",
+      "columns": [
+        "word_salt_1127994ab736baf4",
+        "word_len_1127994ab736baf4",
+        "word_stamps_1127994ab736baf4",
+        "word_offsets_1127994ab736baf4"
+      ],
+      "valueBytes": 17644821,
+      "meanValueBytes": 176.44821
+    },
+    {
+      "field": "company",
+      "stream": "single",
+      "columns": [
+        "single_salt_1127994ab736baf4",
+        "single_len_1127994ab736baf4",
+        "single_stamps_1127994ab736baf4",
+        "single_offsets_1127994ab736baf4"
+      ],
+      "valueBytes": 17169229,
+      "meanValueBytes": 171.69229
+    },
+    {
+      "field": "company",
+      "stream": "candidate",
+      "columns": [
+        "tokens_a106c26102b707f0",
+        "tokens_1127994ab736baf4"
+      ],
+      "valueBytes": 15378944,
+      "meanValueBytes": 153.78944
+    }
+  ],
+  "indexes": [
+    {
+      "schemaname": "research_u",
+      "tablename": "customers_plain",
+      "indexname": "customers_plain_address_norm_idx",
+      "indexdef": "CREATE INDEX customers_plain_address_norm_idx ON research_u.customers_plain USING btree (address_norm)",
+      "bytes": "1015808"
+    },
+    {
+      "schemaname": "research_u",
+      "tablename": "customers_plain",
+      "indexname": "customers_plain_address_norm_idx1",
+      "indexdef": "CREATE INDEX customers_plain_address_norm_idx1 ON research_u.customers_plain USING gin (address_norm gin_trgm_ops)",
+      "bytes": "2318336"
+    },
+    {
+      "schemaname": "research_u",
+      "tablename": "customers_plain",
+      "indexname": "customers_plain_company_norm_idx",
+      "indexdef": "CREATE INDEX customers_plain_company_norm_idx ON research_u.customers_plain USING btree (company_norm)",
+      "bytes": "729088"
+    },
+    {
+      "schemaname": "research_u",
+      "tablename": "customers_plain",
+      "indexname": "customers_plain_company_norm_idx1",
+      "indexdef": "CREATE INDEX customers_plain_company_norm_idx1 ON research_u.customers_plain USING gin (company_norm gin_trgm_ops)",
+      "bytes": "1302528"
+    },
+    {
+      "schemaname": "research_u",
+      "tablename": "customers_plain",
+      "indexname": "customers_plain_email_norm_idx",
+      "indexdef": "CREATE INDEX customers_plain_email_norm_idx ON research_u.customers_plain USING btree (email_norm)",
+      "bytes": "4087808"
+    },
+    {
+      "schemaname": "research_u",
+      "tablename": "customers_plain",
+      "indexname": "customers_plain_email_norm_idx1",
+      "indexdef": "CREATE INDEX customers_plain_email_norm_idx1 ON research_u.customers_plain USING gin (email_norm gin_trgm_ops)",
+      "bytes": "8945664"
+    },
+    {
+      "schemaname": "research_u",
+      "tablename": "customers_plain",
+      "indexname": "customers_plain_memo_norm_idx",
+      "indexdef": "CREATE INDEX customers_plain_memo_norm_idx ON research_u.customers_plain USING btree (memo_norm)",
+      "bytes": "5054464"
+    },
+    {
+      "schemaname": "research_u",
+      "tablename": "customers_plain",
+      "indexname": "customers_plain_memo_norm_idx1",
+      "indexdef": "CREATE INDEX customers_plain_memo_norm_idx1 ON research_u.customers_plain USING gin (memo_norm gin_trgm_ops)",
+      "bytes": "6889472"
+    },
+    {
+      "schemaname": "research_u",
+      "tablename": "customers_plain",
+      "indexname": "customers_plain_name_norm_idx",
+      "indexdef": "CREATE INDEX customers_plain_name_norm_idx ON research_u.customers_plain USING btree (name_norm)",
+      "bytes": "3325952"
+    },
+    {
+      "schemaname": "research_u",
+      "tablename": "customers_plain",
+      "indexname": "customers_plain_name_norm_idx1",
+      "indexdef": "CREATE INDEX customers_plain_name_norm_idx1 ON research_u.customers_plain USING gin (name_norm gin_trgm_ops)",
+      "bytes": "6676480"
+    },
+    {
+      "schemaname": "research_u",
+      "tablename": "customers_plain",
+      "indexname": "customers_plain_phone_norm_idx",
+      "indexdef": "CREATE INDEX customers_plain_phone_norm_idx ON research_u.customers_plain USING btree (phone_norm)",
+      "bytes": "3178496"
+    },
+    {
+      "schemaname": "research_u",
+      "tablename": "customers_plain",
+      "indexname": "customers_plain_phone_norm_idx1",
+      "indexdef": "CREATE INDEX customers_plain_phone_norm_idx1 ON research_u.customers_plain USING gin (phone_norm gin_trgm_ops)",
+      "bytes": "3686400"
+    },
+    {
+      "schemaname": "research_u",
+      "tablename": "customers_plain",
+      "indexname": "customers_plain_pkey",
+      "indexdef": "CREATE UNIQUE INDEX customers_plain_pkey ON research_u.customers_plain USING btree (id)",
+      "bytes": "3178496"
+    },
+    {
+      "schemaname": "test_r9_verify_main",
+      "tablename": "customers",
+      "indexname": "customers_pkey",
+      "indexdef": "CREATE UNIQUE INDEX customers_pkey ON test_r9_verify_main.customers USING btree (id)",
+      "bytes": "4259840"
+    },
+    {
+      "schemaname": "test_r9_verify_main",
+      "tablename": "customers_seal_index",
+      "indexname": "customers_seal_index_row_uq",
+      "indexdef": "CREATE UNIQUE INDEX customers_seal_index_row_uq ON test_r9_verify_main.customers_seal_index USING btree (row_id)",
+      "bytes": "4276224"
+    },
+    {
+      "schemaname": "test_r9_verify_main",
+      "tablename": "customers_seal_index",
+      "indexname": "customers_seal_index_scope_row_uq",
+      "indexdef": "CREATE UNIQUE INDEX customers_seal_index_scope_row_uq ON test_r9_verify_main.customers_seal_index USING btree (scope_id, row_id)",
+      "bytes": "7487488"
+    },
+    {
+      "schemaname": "test_r9_verify_main",
+      "tablename": "customers_seal_index",
+      "indexname": "seal_411905c9deef5c59_bt",
+      "indexdef": "CREATE INDEX seal_411905c9deef5c59_bt ON test_r9_verify_main.customers_seal_index USING btree (scope_id, (tokens_cd3096c7a3cd42c2[1]), row_id, eq_salt_cd3096c7a3cd42c2, eq_stamp_cd3096c7a3cd42c2, tokens_cd3096c7a3cd42c2)",
+      "bytes": "17178624"
+    },
+    {
+      "schemaname": "test_r9_verify_main",
+      "tablename": "customers_seal_index",
+      "indexname": "seal_4c8e2d2bddde3451_bt",
+      "indexdef": "CREATE INDEX seal_4c8e2d2bddde3451_bt ON test_r9_verify_main.customers_seal_index USING btree (scope_id, (tokens_a106c26102b707f0[1]), row_id, eq_salt_a106c26102b707f0, eq_stamp_a106c26102b707f0, tokens_a106c26102b707f0)",
+      "bytes": "20029440"
+    },
+    {
+      "schemaname": "test_r9_verify_main",
+      "tablename": "customers_seal_index",
+      "indexname": "seal_62e346c0ef994072_bt",
+      "indexdef": "CREATE INDEX seal_62e346c0ef994072_bt ON test_r9_verify_main.customers_seal_index USING btree (scope_id, (tokens_c44ae523cca61a0b[1]), row_id, eq_salt_c44ae523cca61a0b, eq_stamp_c44ae523cca61a0b, tokens_c44ae523cca61a0b)",
+      "bytes": "17170432"
+    },
+    {
+      "schemaname": "test_r9_verify_main",
+      "tablename": "customers_seal_index",
+      "indexname": "seal_8fa11f16c3da1ad8_bt",
+      "indexdef": "CREATE INDEX seal_8fa11f16c3da1ad8_bt ON test_r9_verify_main.customers_seal_index USING btree (scope_id, (tokens_1c32fdad5d1c8367[1]), row_id, eq_salt_1c32fdad5d1c8367, eq_stamp_1c32fdad5d1c8367, tokens_1c32fdad5d1c8367)",
+      "bytes": "17252352"
+    },
+    {
+      "schemaname": "test_r9_verify_main",
+      "tablename": "customers_seal_index",
+      "indexname": "seal_ae59b15a89e931d6_bt",
+      "indexdef": "CREATE INDEX seal_ae59b15a89e931d6_bt ON test_r9_verify_main.customers_seal_index USING btree (scope_id, (tokens_c5133b3810f23103[1]), row_id, eq_salt_c5133b3810f23103, eq_stamp_c5133b3810f23103, tokens_c5133b3810f23103)",
+      "bytes": "17113088"
+    },
+    {
+      "schemaname": "test_r9_verify_main",
+      "tablename": "customers_seal_index",
+      "indexname": "seal_dfa387787f59f02a_bt",
+      "indexdef": "CREATE INDEX seal_dfa387787f59f02a_bt ON test_r9_verify_main.customers_seal_index USING btree (scope_id, (tokens_988d248ff4b71bf7[1]), row_id, eq_salt_988d248ff4b71bf7, eq_stamp_988d248ff4b71bf7, tokens_988d248ff4b71bf7)",
+      "bytes": "17334272"
+    },
+    {
+      "schemaname": "test_r9_verify_main",
+      "tablename": "customers_seal_index",
+      "indexname": "seal_e66dc2708e915b65_gin",
+      "indexdef": "CREATE INDEX seal_e66dc2708e915b65_gin ON test_r9_verify_main.customers_seal_index USING gin (tokens_792d75cf01821d67, tokens_1127994ab736baf4, tokens_ef1d32a52e2ce103, tokens_a639b11c8130dcf7, tokens_f289b89d86c7086a, tokens_7a1d2ba5ce2368fb)",
+      "bytes": "78348288"
+    }
+  ],
+  "catalog": [
+    {
+      "relation": "research_u.customers_plain",
+      "columns": [
+        {
+          "attname": "id",
+          "attstorage": "p",
+          "attstattarget": null,
+          "type": "uuid"
+        },
+        {
+          "attname": "scope_id",
+          "attstorage": "p",
+          "attstattarget": null,
+          "type": "uuid"
+        },
+        {
+          "attname": "name_norm",
+          "attstorage": "x",
+          "attstattarget": null,
+          "type": "text"
+        },
+        {
+          "attname": "phone_norm",
+          "attstorage": "x",
+          "attstattarget": null,
+          "type": "text"
+        },
+        {
+          "attname": "address_norm",
+          "attstorage": "x",
+          "attstattarget": null,
+          "type": "text"
+        },
+        {
+          "attname": "memo_norm",
+          "attstorage": "x",
+          "attstattarget": null,
+          "type": "text"
+        },
+        {
+          "attname": "email_norm",
+          "attstorage": "x",
+          "attstattarget": null,
+          "type": "text"
+        },
+        {
+          "attname": "company_norm",
+          "attstorage": "x",
+          "attstattarget": null,
+          "type": "text"
+        },
+        {
+          "attname": "memo_len",
+          "attstorage": "p",
+          "attstattarget": null,
+          "type": "integer"
+        }
+      ]
+    },
+    {
+      "relation": "test_r9_verify_main.customers",
+      "columns": [
+        {
+          "attname": "id",
+          "attstorage": "p",
+          "attstattarget": null,
+          "type": "uuid"
+        },
+        {
+          "attname": "scope_id",
+          "attstorage": "p",
+          "attstattarget": null,
+          "type": "uuid"
+        },
+        {
+          "attname": "name_ct",
+          "attstorage": "x",
+          "attstattarget": null,
+          "type": "bytea"
+        },
+        {
+          "attname": "phone_ct",
+          "attstorage": "x",
+          "attstattarget": null,
+          "type": "bytea"
+        },
+        {
+          "attname": "address_ct",
+          "attstorage": "x",
+          "attstattarget": null,
+          "type": "bytea"
+        },
+        {
+          "attname": "memo_ct",
+          "attstorage": "x",
+          "attstattarget": null,
+          "type": "bytea"
+        },
+        {
+          "attname": "email_ct",
+          "attstorage": "x",
+          "attstattarget": null,
+          "type": "bytea"
+        },
+        {
+          "attname": "company_ct",
+          "attstorage": "x",
+          "attstattarget": null,
+          "type": "bytea"
+        }
+      ]
+    },
+    {
+      "relation": "test_r9_verify_main.customers_seal_index",
+      "columns": [
+        {
+          "attname": "scope_id",
+          "attstorage": "p",
+          "attstattarget": null,
+          "type": "uuid"
+        },
+        {
+          "attname": "row_id",
+          "attstorage": "p",
+          "attstattarget": null,
+          "type": "uuid"
+        },
+        {
+          "attname": "tokens_988d248ff4b71bf7",
+          "attstorage": "m",
+          "attstattarget": null,
+          "type": "bigint[]"
+        },
+        {
+          "attname": "eq_salt_988d248ff4b71bf7",
+          "attstorage": "x",
+          "attstattarget": null,
+          "type": "bytea"
+        },
+        {
+          "attname": "eq_stamp_988d248ff4b71bf7",
+          "attstorage": "p",
+          "attstattarget": null,
+          "type": "bigint"
+        },
+        {
+          "attname": "tokens_792d75cf01821d67",
+          "attstorage": "m",
+          "attstattarget": 1000,
+          "type": "bigint[]"
+        },
+        {
+          "attname": "pos_salt_792d75cf01821d67",
+          "attstorage": "x",
+          "attstattarget": null,
+          "type": "bytea"
+        },
+        {
+          "attname": "pos_len_792d75cf01821d67",
+          "attstorage": "p",
+          "attstattarget": null,
+          "type": "integer"
+        },
+        {
+          "attname": "pos_stamps_792d75cf01821d67",
+          "attstorage": "m",
+          "attstattarget": null,
+          "type": "bigint[]"
+        },
+        {
+          "attname": "pos_offsets_792d75cf01821d67",
+          "attstorage": "m",
+          "attstattarget": null,
+          "type": "integer[]"
+        },
+        {
+          "attname": "word_salt_792d75cf01821d67",
+          "attstorage": "x",
+          "attstattarget": null,
+          "type": "bytea"
+        },
+        {
+          "attname": "word_len_792d75cf01821d67",
+          "attstorage": "p",
+          "attstattarget": null,
+          "type": "integer"
+        },
+        {
+          "attname": "word_stamps_792d75cf01821d67",
+          "attstorage": "x",
+          "attstattarget": null,
+          "type": "bigint[]"
+        },
+        {
+          "attname": "word_offsets_792d75cf01821d67",
+          "attstorage": "x",
+          "attstattarget": null,
+          "type": "integer[]"
+        },
+        {
+          "attname": "single_salt_792d75cf01821d67",
+          "attstorage": "x",
+          "attstattarget": null,
+          "type": "bytea"
+        },
+        {
+          "attname": "single_len_792d75cf01821d67",
+          "attstorage": "p",
+          "attstattarget": null,
+          "type": "integer"
+        },
+        {
+          "attname": "single_stamps_792d75cf01821d67",
+          "attstorage": "x",
+          "attstattarget": null,
+          "type": "bigint[]"
+        },
+        {
+          "attname": "single_offsets_792d75cf01821d67",
+          "attstorage": "x",
+          "attstattarget": null,
+          "type": "integer[]"
+        },
+        {
+          "attname": "tokens_a106c26102b707f0",
+          "attstorage": "m",
+          "attstattarget": null,
+          "type": "bigint[]"
+        },
+        {
+          "attname": "eq_salt_a106c26102b707f0",
+          "attstorage": "x",
+          "attstattarget": null,
+          "type": "bytea"
+        },
+        {
+          "attname": "eq_stamp_a106c26102b707f0",
+          "attstorage": "p",
+          "attstattarget": null,
+          "type": "bigint"
+        },
+        {
+          "attname": "tokens_1127994ab736baf4",
+          "attstorage": "m",
+          "attstattarget": 1000,
+          "type": "bigint[]"
+        },
+        {
+          "attname": "pos_salt_1127994ab736baf4",
+          "attstorage": "x",
+          "attstattarget": null,
+          "type": "bytea"
+        },
+        {
+          "attname": "pos_len_1127994ab736baf4",
+          "attstorage": "p",
+          "attstattarget": null,
+          "type": "integer"
+        },
+        {
+          "attname": "pos_stamps_1127994ab736baf4",
+          "attstorage": "m",
+          "attstattarget": null,
+          "type": "bigint[]"
+        },
+        {
+          "attname": "pos_offsets_1127994ab736baf4",
+          "attstorage": "m",
+          "attstattarget": null,
+          "type": "integer[]"
+        },
+        {
+          "attname": "word_salt_1127994ab736baf4",
+          "attstorage": "x",
+          "attstattarget": null,
+          "type": "bytea"
+        },
+        {
+          "attname": "word_len_1127994ab736baf4",
+          "attstorage": "p",
+          "attstattarget": null,
+          "type": "integer"
+        },
+        {
+          "attname": "word_stamps_1127994ab736baf4",
+          "attstorage": "x",
+          "attstattarget": null,
+          "type": "bigint[]"
+        },
+        {
+          "attname": "word_offsets_1127994ab736baf4",
+          "attstorage": "x",
+          "attstattarget": null,
+          "type": "integer[]"
+        },
+        {
+          "attname": "single_salt_1127994ab736baf4",
+          "attstorage": "x",
+          "attstattarget": null,
+          "type": "bytea"
+        },
+        {
+          "attname": "single_len_1127994ab736baf4",
+          "attstorage": "p",
+          "attstattarget": null,
+          "type": "integer"
+        },
+        {
+          "attname": "single_stamps_1127994ab736baf4",
+          "attstorage": "x",
+          "attstattarget": null,
+          "type": "bigint[]"
+        },
+        {
+          "attname": "single_offsets_1127994ab736baf4",
+          "attstorage": "x",
+          "attstattarget": null,
+          "type": "integer[]"
+        },
+        {
+          "attname": "tokens_c5133b3810f23103",
+          "attstorage": "m",
+          "attstattarget": null,
+          "type": "bigint[]"
+        },
+        {
+          "attname": "eq_salt_c5133b3810f23103",
+          "attstorage": "x",
+          "attstattarget": null,
+          "type": "bytea"
+        },
+        {
+          "attname": "eq_stamp_c5133b3810f23103",
+          "attstorage": "p",
+          "attstattarget": null,
+          "type": "bigint"
+        },
+        {
+          "attname": "tokens_ef1d32a52e2ce103",
+          "attstorage": "m",
+          "attstattarget": 1000,
+          "type": "bigint[]"
+        },
+        {
+          "attname": "pos_salt_ef1d32a52e2ce103",
+          "attstorage": "x",
+          "attstattarget": null,
+          "type": "bytea"
+        },
+        {
+          "attname": "pos_len_ef1d32a52e2ce103",
+          "attstorage": "p",
+          "attstattarget": null,
+          "type": "integer"
+        },
+        {
+          "attname": "pos_stamps_ef1d32a52e2ce103",
+          "attstorage": "m",
+          "attstattarget": null,
+          "type": "bigint[]"
+        },
+        {
+          "attname": "pos_offsets_ef1d32a52e2ce103",
+          "attstorage": "m",
+          "attstattarget": null,
+          "type": "integer[]"
+        },
+        {
+          "attname": "word_salt_ef1d32a52e2ce103",
+          "attstorage": "x",
+          "attstattarget": null,
+          "type": "bytea"
+        },
+        {
+          "attname": "word_len_ef1d32a52e2ce103",
+          "attstorage": "p",
+          "attstattarget": null,
+          "type": "integer"
+        },
+        {
+          "attname": "word_stamps_ef1d32a52e2ce103",
+          "attstorage": "x",
+          "attstattarget": null,
+          "type": "bigint[]"
+        },
+        {
+          "attname": "word_offsets_ef1d32a52e2ce103",
+          "attstorage": "x",
+          "attstattarget": null,
+          "type": "integer[]"
+        },
+        {
+          "attname": "single_salt_ef1d32a52e2ce103",
+          "attstorage": "x",
+          "attstattarget": null,
+          "type": "bytea"
+        },
+        {
+          "attname": "single_len_ef1d32a52e2ce103",
+          "attstorage": "p",
+          "attstattarget": null,
+          "type": "integer"
+        },
+        {
+          "attname": "single_stamps_ef1d32a52e2ce103",
+          "attstorage": "x",
+          "attstattarget": null,
+          "type": "bigint[]"
+        },
+        {
+          "attname": "single_offsets_ef1d32a52e2ce103",
+          "attstorage": "x",
+          "attstattarget": null,
+          "type": "integer[]"
+        },
+        {
+          "attname": "tokens_1c32fdad5d1c8367",
+          "attstorage": "m",
+          "attstattarget": null,
+          "type": "bigint[]"
+        },
+        {
+          "attname": "eq_salt_1c32fdad5d1c8367",
+          "attstorage": "x",
+          "attstattarget": null,
+          "type": "bytea"
+        },
+        {
+          "attname": "eq_stamp_1c32fdad5d1c8367",
+          "attstorage": "p",
+          "attstattarget": null,
+          "type": "bigint"
+        },
+        {
+          "attname": "tokens_a639b11c8130dcf7",
+          "attstorage": "m",
+          "attstattarget": 1000,
+          "type": "bigint[]"
+        },
+        {
+          "attname": "pos_salt_a639b11c8130dcf7",
+          "attstorage": "x",
+          "attstattarget": null,
+          "type": "bytea"
+        },
+        {
+          "attname": "pos_len_a639b11c8130dcf7",
+          "attstorage": "p",
+          "attstattarget": null,
+          "type": "integer"
+        },
+        {
+          "attname": "pos_stamps_a639b11c8130dcf7",
+          "attstorage": "m",
+          "attstattarget": null,
+          "type": "bigint[]"
+        },
+        {
+          "attname": "pos_offsets_a639b11c8130dcf7",
+          "attstorage": "m",
+          "attstattarget": null,
+          "type": "integer[]"
+        },
+        {
+          "attname": "word_salt_a639b11c8130dcf7",
+          "attstorage": "x",
+          "attstattarget": null,
+          "type": "bytea"
+        },
+        {
+          "attname": "word_len_a639b11c8130dcf7",
+          "attstorage": "p",
+          "attstattarget": null,
+          "type": "integer"
+        },
+        {
+          "attname": "word_stamps_a639b11c8130dcf7",
+          "attstorage": "x",
+          "attstattarget": null,
+          "type": "bigint[]"
+        },
+        {
+          "attname": "word_offsets_a639b11c8130dcf7",
+          "attstorage": "x",
+          "attstattarget": null,
+          "type": "integer[]"
+        },
+        {
+          "attname": "single_salt_a639b11c8130dcf7",
+          "attstorage": "x",
+          "attstattarget": null,
+          "type": "bytea"
+        },
+        {
+          "attname": "single_len_a639b11c8130dcf7",
+          "attstorage": "p",
+          "attstattarget": null,
+          "type": "integer"
+        },
+        {
+          "attname": "single_stamps_a639b11c8130dcf7",
+          "attstorage": "x",
+          "attstattarget": null,
+          "type": "bigint[]"
+        },
+        {
+          "attname": "single_offsets_a639b11c8130dcf7",
+          "attstorage": "x",
+          "attstattarget": null,
+          "type": "integer[]"
+        },
+        {
+          "attname": "tokens_cd3096c7a3cd42c2",
+          "attstorage": "m",
+          "attstattarget": null,
+          "type": "bigint[]"
+        },
+        {
+          "attname": "eq_salt_cd3096c7a3cd42c2",
+          "attstorage": "x",
+          "attstattarget": null,
+          "type": "bytea"
+        },
+        {
+          "attname": "eq_stamp_cd3096c7a3cd42c2",
+          "attstorage": "p",
+          "attstattarget": null,
+          "type": "bigint"
+        },
+        {
+          "attname": "tokens_f289b89d86c7086a",
+          "attstorage": "m",
+          "attstattarget": 1000,
+          "type": "bigint[]"
+        },
+        {
+          "attname": "pos_salt_f289b89d86c7086a",
+          "attstorage": "x",
+          "attstattarget": null,
+          "type": "bytea"
+        },
+        {
+          "attname": "pos_len_f289b89d86c7086a",
+          "attstorage": "p",
+          "attstattarget": null,
+          "type": "integer"
+        },
+        {
+          "attname": "pos_stamps_f289b89d86c7086a",
+          "attstorage": "m",
+          "attstattarget": null,
+          "type": "bigint[]"
+        },
+        {
+          "attname": "pos_offsets_f289b89d86c7086a",
+          "attstorage": "m",
+          "attstattarget": null,
+          "type": "integer[]"
+        },
+        {
+          "attname": "word_salt_f289b89d86c7086a",
+          "attstorage": "x",
+          "attstattarget": null,
+          "type": "bytea"
+        },
+        {
+          "attname": "word_len_f289b89d86c7086a",
+          "attstorage": "p",
+          "attstattarget": null,
+          "type": "integer"
+        },
+        {
+          "attname": "word_stamps_f289b89d86c7086a",
+          "attstorage": "x",
+          "attstattarget": null,
+          "type": "bigint[]"
+        },
+        {
+          "attname": "word_offsets_f289b89d86c7086a",
+          "attstorage": "x",
+          "attstattarget": null,
+          "type": "integer[]"
+        },
+        {
+          "attname": "single_salt_f289b89d86c7086a",
+          "attstorage": "x",
+          "attstattarget": null,
+          "type": "bytea"
+        },
+        {
+          "attname": "single_len_f289b89d86c7086a",
+          "attstorage": "p",
+          "attstattarget": null,
+          "type": "integer"
+        },
+        {
+          "attname": "single_stamps_f289b89d86c7086a",
+          "attstorage": "x",
+          "attstattarget": null,
+          "type": "bigint[]"
+        },
+        {
+          "attname": "single_offsets_f289b89d86c7086a",
+          "attstorage": "x",
+          "attstattarget": null,
+          "type": "integer[]"
+        },
+        {
+          "attname": "tokens_c44ae523cca61a0b",
+          "attstorage": "m",
+          "attstattarget": null,
+          "type": "bigint[]"
+        },
+        {
+          "attname": "eq_salt_c44ae523cca61a0b",
+          "attstorage": "x",
+          "attstattarget": null,
+          "type": "bytea"
+        },
+        {
+          "attname": "eq_stamp_c44ae523cca61a0b",
+          "attstorage": "p",
+          "attstattarget": null,
+          "type": "bigint"
+        },
+        {
+          "attname": "tokens_7a1d2ba5ce2368fb",
+          "attstorage": "m",
+          "attstattarget": 1000,
+          "type": "bigint[]"
+        },
+        {
+          "attname": "pos_salt_7a1d2ba5ce2368fb",
+          "attstorage": "x",
+          "attstattarget": null,
+          "type": "bytea"
+        },
+        {
+          "attname": "pos_len_7a1d2ba5ce2368fb",
+          "attstorage": "p",
+          "attstattarget": null,
+          "type": "integer"
+        },
+        {
+          "attname": "pos_stamps_7a1d2ba5ce2368fb",
+          "attstorage": "m",
+          "attstattarget": null,
+          "type": "bigint[]"
+        },
+        {
+          "attname": "pos_offsets_7a1d2ba5ce2368fb",
+          "attstorage": "m",
+          "attstattarget": null,
+          "type": "integer[]"
+        },
+        {
+          "attname": "word_salt_7a1d2ba5ce2368fb",
+          "attstorage": "x",
+          "attstattarget": null,
+          "type": "bytea"
+        },
+        {
+          "attname": "word_len_7a1d2ba5ce2368fb",
+          "attstorage": "p",
+          "attstattarget": null,
+          "type": "integer"
+        },
+        {
+          "attname": "word_stamps_7a1d2ba5ce2368fb",
+          "attstorage": "x",
+          "attstattarget": null,
+          "type": "bigint[]"
+        },
+        {
+          "attname": "word_offsets_7a1d2ba5ce2368fb",
+          "attstorage": "x",
+          "attstattarget": null,
+          "type": "integer[]"
+        },
+        {
+          "attname": "single_salt_7a1d2ba5ce2368fb",
+          "attstorage": "x",
+          "attstattarget": null,
+          "type": "bytea"
+        },
+        {
+          "attname": "single_len_7a1d2ba5ce2368fb",
+          "attstorage": "p",
+          "attstattarget": null,
+          "type": "integer"
+        },
+        {
+          "attname": "single_stamps_7a1d2ba5ce2368fb",
+          "attstorage": "x",
+          "attstattarget": null,
+          "type": "bigint[]"
+        },
+        {
+          "attname": "single_offsets_7a1d2ba5ce2368fb",
+          "attstorage": "x",
+          "attstattarget": null,
+          "type": "integer[]"
+        }
+      ]
+    }
+  ],
+  "functionBodies": [
+    {
+      "name": "sealql_piece_positions",
+      "matches": true
+    },
+    {
+      "name": "sealql_run_positions",
+      "matches": true
+    },
+    {
+      "name": "sealql_match_positions",
+      "matches": true
+    },
+    {
+      "name": "sealql_match_like",
+      "matches": true
+    }
+  ],
+  "correlations": [
+    {
+      "schemaname": "research_u",
+      "tablename": "customers_plain",
+      "attname": "id",
+      "correlation": 0.99999875
+    },
+    {
+      "schemaname": "test_r9_verify_main",
+      "tablename": "customers",
+      "attname": "id",
+      "correlation": 0.9997728
+    },
+    {
+      "schemaname": "test_r9_verify_main",
+      "tablename": "customers_seal_index",
+      "attname": "row_id",
+      "correlation": 0.99988633
+    }
+  ],
+  "provenance": "Public schema builder + generated Drizzle migration + extraMigrationSql; source original plaintext loaded through sealed.insert",
+  "logicalSizeCaveat": "SUM(pg_column_size(column)) is per-value stored/compressed size, excluding tuple/page/TOAST/index overhead; stream allocation is an estimate and must not be summed with table totals",
+  "complete": true
+}

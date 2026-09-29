@@ -1,0 +1,363 @@
+{
+  "snapshot": {
+    "version": "7",
+    "dialect": "postgresql",
+    "tables": {
+      "test_r9_verify_join.tickets": {
+        "name": "tickets",
+        "schema": "test_r9_verify_join",
+        "columns": {
+          "id": {
+            "name": "id",
+            "type": "uuid",
+            "primaryKey": true,
+            "notNull": true
+          },
+          "scope_id": {
+            "name": "scope_id",
+            "type": "uuid",
+            "primaryKey": false,
+            "notNull": true
+          },
+          "customer_id": {
+            "name": "customer_id",
+            "type": "uuid",
+            "primaryKey": false,
+            "notNull": true
+          },
+          "memo_ct": {
+            "name": "memo_ct",
+            "type": "bytea",
+            "primaryKey": false,
+            "notNull": true
+          }
+        },
+        "indexes": {
+          "tickets_customer_idx": {
+            "name": "tickets_customer_idx",
+            "columns": [
+              {
+                "expression": "scope_id",
+                "isExpression": false,
+                "asc": true,
+                "nulls": "last"
+              },
+              {
+                "expression": "customer_id",
+                "isExpression": false,
+                "asc": true,
+                "nulls": "last"
+              },
+              {
+                "expression": "id",
+                "isExpression": false,
+                "asc": true,
+                "nulls": "last"
+              }
+            ],
+            "isUnique": false,
+            "concurrently": false,
+            "method": "btree",
+            "with": {}
+          }
+        },
+        "foreignKeys": {},
+        "compositePrimaryKeys": {},
+        "uniqueConstraints": {},
+        "policies": {},
+        "checkConstraints": {},
+        "isRLSEnabled": false
+      },
+      "test_r9_verify_join.tickets_seal_index": {
+        "name": "tickets_seal_index",
+        "schema": "test_r9_verify_join",
+        "columns": {
+          "scope_id": {
+            "name": "scope_id",
+            "type": "uuid",
+            "primaryKey": false,
+            "notNull": true
+          },
+          "row_id": {
+            "name": "row_id",
+            "type": "uuid",
+            "primaryKey": false,
+            "notNull": true
+          },
+          "tokens_1c32fdad5d1c8367": {
+            "name": "tokens_1c32fdad5d1c8367",
+            "type": "bigint[]",
+            "primaryKey": false,
+            "notNull": false
+          },
+          "eq_salt_1c32fdad5d1c8367": {
+            "name": "eq_salt_1c32fdad5d1c8367",
+            "type": "bytea",
+            "primaryKey": false,
+            "notNull": false
+          },
+          "eq_stamp_1c32fdad5d1c8367": {
+            "name": "eq_stamp_1c32fdad5d1c8367",
+            "type": "bigint",
+            "primaryKey": false,
+            "notNull": false
+          },
+          "tokens_a639b11c8130dcf7": {
+            "name": "tokens_a639b11c8130dcf7",
+            "type": "bigint[]",
+            "primaryKey": false,
+            "notNull": false
+          },
+          "pos_salt_a639b11c8130dcf7": {
+            "name": "pos_salt_a639b11c8130dcf7",
+            "type": "bytea",
+            "primaryKey": false,
+            "notNull": false
+          },
+          "pos_len_a639b11c8130dcf7": {
+            "name": "pos_len_a639b11c8130dcf7",
+            "type": "integer",
+            "primaryKey": false,
+            "notNull": false
+          },
+          "pos_stamps_a639b11c8130dcf7": {
+            "name": "pos_stamps_a639b11c8130dcf7",
+            "type": "bigint[]",
+            "primaryKey": false,
+            "notNull": false
+          },
+          "pos_offsets_a639b11c8130dcf7": {
+            "name": "pos_offsets_a639b11c8130dcf7",
+            "type": "integer[]",
+            "primaryKey": false,
+            "notNull": false
+          },
+          "word_salt_a639b11c8130dcf7": {
+            "name": "word_salt_a639b11c8130dcf7",
+            "type": "bytea",
+            "primaryKey": false,
+            "notNull": false
+          },
+          "word_len_a639b11c8130dcf7": {
+            "name": "word_len_a639b11c8130dcf7",
+            "type": "integer",
+            "primaryKey": false,
+            "notNull": false
+          },
+          "word_stamps_a639b11c8130dcf7": {
+            "name": "word_stamps_a639b11c8130dcf7",
+            "type": "bigint[]",
+            "primaryKey": false,
+            "notNull": false
+          },
+          "word_offsets_a639b11c8130dcf7": {
+            "name": "word_offsets_a639b11c8130dcf7",
+            "type": "integer[]",
+            "primaryKey": false,
+            "notNull": false
+          },
+          "single_salt_a639b11c8130dcf7": {
+            "name": "single_salt_a639b11c8130dcf7",
+            "type": "bytea",
+            "primaryKey": false,
+            "notNull": false
+          },
+          "single_len_a639b11c8130dcf7": {
+            "name": "single_len_a639b11c8130dcf7",
+            "type": "integer",
+            "primaryKey": false,
+            "notNull": false
+          },
+          "single_stamps_a639b11c8130dcf7": {
+            "name": "single_stamps_a639b11c8130dcf7",
+            "type": "bigint[]",
+            "primaryKey": false,
+            "notNull": false
+          },
+          "single_offsets_a639b11c8130dcf7": {
+            "name": "single_offsets_a639b11c8130dcf7",
+            "type": "integer[]",
+            "primaryKey": false,
+            "notNull": false
+          }
+        },
+        "indexes": {
+          "tickets_seal_index_scope_row_uq": {
+            "name": "tickets_seal_index_scope_row_uq",
+            "columns": [
+              {
+                "expression": "scope_id",
+                "isExpression": false,
+                "asc": true,
+                "nulls": "last"
+              },
+              {
+                "expression": "row_id",
+                "isExpression": false,
+                "asc": true,
+                "nulls": "last"
+              }
+            ],
+            "isUnique": true,
+            "concurrently": false,
+            "method": "btree",
+            "with": {}
+          },
+          "tickets_seal_index_row_uq": {
+            "name": "tickets_seal_index_row_uq",
+            "columns": [
+              {
+                "expression": "row_id",
+                "isExpression": false,
+                "asc": true,
+                "nulls": "last"
+              }
+            ],
+            "isUnique": true,
+            "concurrently": false,
+            "method": "btree",
+            "with": {}
+          },
+          "seal_b3b7462e8d688f14_bt": {
+            "name": "seal_b3b7462e8d688f14_bt",
+            "columns": [
+              {
+                "expression": "scope_id",
+                "asc": true,
+                "isExpression": true,
+                "nulls": "last"
+              },
+              {
+                "expression": "(tokens_1c32fdad5d1c8367[1])",
+                "asc": true,
+                "isExpression": true,
+                "nulls": "last"
+              },
+              {
+                "expression": "row_id",
+                "asc": true,
+                "isExpression": true,
+                "nulls": "last"
+              },
+              {
+                "expression": "eq_salt_1c32fdad5d1c8367",
+                "asc": true,
+                "isExpression": true,
+                "nulls": "last"
+              },
+              {
+                "expression": "eq_stamp_1c32fdad5d1c8367",
+                "asc": true,
+                "isExpression": true,
+                "nulls": "last"
+              },
+              {
+                "expression": "tokens_1c32fdad5d1c8367",
+                "asc": true,
+                "isExpression": true,
+                "nulls": "last"
+              }
+            ],
+            "isUnique": false,
+            "concurrently": false,
+            "method": "btree",
+            "with": {}
+          },
+          "seal_d64a6460690f6fd1_gin": {
+            "name": "seal_d64a6460690f6fd1_gin",
+            "columns": [
+              {
+                "expression": "tokens_a639b11c8130dcf7",
+                "isExpression": false,
+                "asc": true,
+                "nulls": "last"
+              }
+            ],
+            "isUnique": false,
+            "concurrently": false,
+            "method": "gin",
+            "with": {}
+          }
+        },
+        "foreignKeys": {
+          "tickets_seal_index_row_id_tickets_id_fk": {
+            "name": "tickets_seal_index_row_id_tickets_id_fk",
+            "tableFrom": "tickets_seal_index",
+            "tableTo": "tickets",
+            "schemaTo": "test_r9_verify_join",
+            "columnsFrom": [
+              "row_id"
+            ],
+            "columnsTo": [
+              "id"
+            ],
+            "onDelete": "cascade",
+            "onUpdate": "no action"
+          }
+        },
+        "compositePrimaryKeys": {},
+        "uniqueConstraints": {},
+        "policies": {},
+        "checkConstraints": {
+          "seal_b3b7462e8d688f14_one_ck": {
+            "name": "seal_b3b7462e8d688f14_one_ck",
+            "value": "\"test_r9_verify_join\".\"tickets_seal_index\".\"tokens_1c32fdad5d1c8367\" is null or\n        (cardinality(\"test_r9_verify_join\".\"tickets_seal_index\".\"tokens_1c32fdad5d1c8367\") = 1 and array_ndims(\"test_r9_verify_join\".\"tickets_seal_index\".\"tokens_1c32fdad5d1c8367\") = 1)"
+          },
+          "seal_f72da94cff310c6b_ck": {
+            "name": "seal_f72da94cff310c6b_ck",
+            "value": "(\"test_r9_verify_join\".\"tickets_seal_index\".\"eq_salt_1c32fdad5d1c8367\" is null and \"test_r9_verify_join\".\"tickets_seal_index\".\"eq_stamp_1c32fdad5d1c8367\" is null) or\n          (\"test_r9_verify_join\".\"tickets_seal_index\".\"eq_salt_1c32fdad5d1c8367\" is not null and \"test_r9_verify_join\".\"tickets_seal_index\".\"eq_stamp_1c32fdad5d1c8367\" is not null and octet_length(\"test_r9_verify_join\".\"tickets_seal_index\".\"eq_salt_1c32fdad5d1c8367\") = 16 )"
+          },
+          "seal_5ecef1f29049b57a_ck": {
+            "name": "seal_5ecef1f29049b57a_ck",
+            "value": "(\"test_r9_verify_join\".\"tickets_seal_index\".\"pos_salt_a639b11c8130dcf7\" is null and \"test_r9_verify_join\".\"tickets_seal_index\".\"pos_len_a639b11c8130dcf7\" is null and \"test_r9_verify_join\".\"tickets_seal_index\".\"pos_stamps_a639b11c8130dcf7\" is null and \"test_r9_verify_join\".\"tickets_seal_index\".\"pos_offsets_a639b11c8130dcf7\" is null) or\n          (\"test_r9_verify_join\".\"tickets_seal_index\".\"pos_salt_a639b11c8130dcf7\" is not null and \"test_r9_verify_join\".\"tickets_seal_index\".\"pos_len_a639b11c8130dcf7\" is not null and \"test_r9_verify_join\".\"tickets_seal_index\".\"pos_stamps_a639b11c8130dcf7\" is not null and \"test_r9_verify_join\".\"tickets_seal_index\".\"pos_offsets_a639b11c8130dcf7\" is not null and octet_length(\"test_r9_verify_join\".\"tickets_seal_index\".\"pos_salt_a639b11c8130dcf7\") = 16 and \"test_r9_verify_join\".\"tickets_seal_index\".\"pos_len_a639b11c8130dcf7\" >= 0\n          and cardinality(\"test_r9_verify_join\".\"tickets_seal_index\".\"pos_stamps_a639b11c8130dcf7\") = cardinality(\"test_r9_verify_join\".\"tickets_seal_index\".\"pos_offsets_a639b11c8130dcf7\"))"
+          },
+          "seal_943788060f9f0704_ck": {
+            "name": "seal_943788060f9f0704_ck",
+            "value": "(\"test_r9_verify_join\".\"tickets_seal_index\".\"word_salt_a639b11c8130dcf7\" is null and \"test_r9_verify_join\".\"tickets_seal_index\".\"word_len_a639b11c8130dcf7\" is null and \"test_r9_verify_join\".\"tickets_seal_index\".\"word_stamps_a639b11c8130dcf7\" is null and \"test_r9_verify_join\".\"tickets_seal_index\".\"word_offsets_a639b11c8130dcf7\" is null) or\n          (\"test_r9_verify_join\".\"tickets_seal_index\".\"word_salt_a639b11c8130dcf7\" is not null and \"test_r9_verify_join\".\"tickets_seal_index\".\"word_len_a639b11c8130dcf7\" is not null and \"test_r9_verify_join\".\"tickets_seal_index\".\"word_stamps_a639b11c8130dcf7\" is not null and \"test_r9_verify_join\".\"tickets_seal_index\".\"word_offsets_a639b11c8130dcf7\" is not null and octet_length(\"test_r9_verify_join\".\"tickets_seal_index\".\"word_salt_a639b11c8130dcf7\") = 16 and \"test_r9_verify_join\".\"tickets_seal_index\".\"word_len_a639b11c8130dcf7\" >= 0\n          and cardinality(\"test_r9_verify_join\".\"tickets_seal_index\".\"word_stamps_a639b11c8130dcf7\") = cardinality(\"test_r9_verify_join\".\"tickets_seal_index\".\"word_offsets_a639b11c8130dcf7\"))"
+          },
+          "seal_39f29d9b46c80738_ck": {
+            "name": "seal_39f29d9b46c80738_ck",
+            "value": "(\"test_r9_verify_join\".\"tickets_seal_index\".\"single_salt_a639b11c8130dcf7\" is null and \"test_r9_verify_join\".\"tickets_seal_index\".\"single_len_a639b11c8130dcf7\" is null and \"test_r9_verify_join\".\"tickets_seal_index\".\"single_stamps_a639b11c8130dcf7\" is null and \"test_r9_verify_join\".\"tickets_seal_index\".\"single_offsets_a639b11c8130dcf7\" is null) or\n          (\"test_r9_verify_join\".\"tickets_seal_index\".\"single_salt_a639b11c8130dcf7\" is not null and \"test_r9_verify_join\".\"tickets_seal_index\".\"single_len_a639b11c8130dcf7\" is not null and \"test_r9_verify_join\".\"tickets_seal_index\".\"single_stamps_a639b11c8130dcf7\" is not null and \"test_r9_verify_join\".\"tickets_seal_index\".\"single_offsets_a639b11c8130dcf7\" is not null and octet_length(\"test_r9_verify_join\".\"tickets_seal_index\".\"single_salt_a639b11c8130dcf7\") = 16 and \"test_r9_verify_join\".\"tickets_seal_index\".\"single_len_a639b11c8130dcf7\" >= 0\n          and cardinality(\"test_r9_verify_join\".\"tickets_seal_index\".\"single_stamps_a639b11c8130dcf7\") = cardinality(\"test_r9_verify_join\".\"tickets_seal_index\".\"single_offsets_a639b11c8130dcf7\"))"
+          }
+        },
+        "isRLSEnabled": false
+      }
+    },
+    "enums": {},
+    "schemas": {},
+    "sequences": {},
+    "roles": {},
+    "policies": {},
+    "views": {},
+    "_meta": {
+      "schemas": {},
+      "tables": {},
+      "columns": {}
+    },
+    "id": "7db7d77b-8aff-4da2-ac6e-56c8f8484415",
+    "prevId": "00000000-0000-0000-0000-000000000000"
+  },
+  "migration": [
+    "CREATE TABLE \"test_r9_verify_join\".\"tickets\" (\n\t\"id\" uuid PRIMARY KEY NOT NULL,\n\t\"scope_id\" uuid NOT NULL,\n\t\"customer_id\" uuid NOT NULL,\n\t\"memo_ct\" \"bytea\" NOT NULL\n);\n",
+    "CREATE TABLE \"test_r9_verify_join\".\"tickets_seal_index\" (\n\t\"scope_id\" uuid NOT NULL,\n\t\"row_id\" uuid NOT NULL,\n\t\"tokens_1c32fdad5d1c8367\" bigint[],\n\t\"eq_salt_1c32fdad5d1c8367\" \"bytea\",\n\t\"eq_stamp_1c32fdad5d1c8367\" bigint,\n\t\"tokens_a639b11c8130dcf7\" bigint[],\n\t\"pos_salt_a639b11c8130dcf7\" \"bytea\",\n\t\"pos_len_a639b11c8130dcf7\" integer,\n\t\"pos_stamps_a639b11c8130dcf7\" bigint[],\n\t\"pos_offsets_a639b11c8130dcf7\" integer[],\n\t\"word_salt_a639b11c8130dcf7\" \"bytea\",\n\t\"word_len_a639b11c8130dcf7\" integer,\n\t\"word_stamps_a639b11c8130dcf7\" bigint[],\n\t\"word_offsets_a639b11c8130dcf7\" integer[],\n\t\"single_salt_a639b11c8130dcf7\" \"bytea\",\n\t\"single_len_a639b11c8130dcf7\" integer,\n\t\"single_stamps_a639b11c8130dcf7\" bigint[],\n\t\"single_offsets_a639b11c8130dcf7\" integer[],\n\tCONSTRAINT \"seal_b3b7462e8d688f14_one_ck\" CHECK (\"test_r9_verify_join\".\"tickets_seal_index\".\"tokens_1c32fdad5d1c8367\" is null or\n        (cardinality(\"test_r9_verify_join\".\"tickets_seal_index\".\"tokens_1c32fdad5d1c8367\") = 1 and array_ndims(\"test_r9_verify_join\".\"tickets_seal_index\".\"tokens_1c32fdad5d1c8367\") = 1)),\n\tCONSTRAINT \"seal_f72da94cff310c6b_ck\" CHECK ((\"test_r9_verify_join\".\"tickets_seal_index\".\"eq_salt_1c32fdad5d1c8367\" is null and \"test_r9_verify_join\".\"tickets_seal_index\".\"eq_stamp_1c32fdad5d1c8367\" is null) or\n          (\"test_r9_verify_join\".\"tickets_seal_index\".\"eq_salt_1c32fdad5d1c8367\" is not null and \"test_r9_verify_join\".\"tickets_seal_index\".\"eq_stamp_1c32fdad5d1c8367\" is not null and octet_length(\"test_r9_verify_join\".\"tickets_seal_index\".\"eq_salt_1c32fdad5d1c8367\") = 16 )),\n\tCONSTRAINT \"seal_5ecef1f29049b57a_ck\" CHECK ((\"test_r9_verify_join\".\"tickets_seal_index\".\"pos_salt_a639b11c8130dcf7\" is null and \"test_r9_verify_join\".\"tickets_seal_index\".\"pos_len_a639b11c8130dcf7\" is null and \"test_r9_verify_join\".\"tickets_seal_index\".\"pos_stamps_a639b11c8130dcf7\" is null and \"test_r9_verify_join\".\"tickets_seal_index\".\"pos_offsets_a639b11c8130dcf7\" is null) or\n          (\"test_r9_verify_join\".\"tickets_seal_index\".\"pos_salt_a639b11c8130dcf7\" is not null and \"test_r9_verify_join\".\"tickets_seal_index\".\"pos_len_a639b11c8130dcf7\" is not null and \"test_r9_verify_join\".\"tickets_seal_index\".\"pos_stamps_a639b11c8130dcf7\" is not null and \"test_r9_verify_join\".\"tickets_seal_index\".\"pos_offsets_a639b11c8130dcf7\" is not null and octet_length(\"test_r9_verify_join\".\"tickets_seal_index\".\"pos_salt_a639b11c8130dcf7\") = 16 and \"test_r9_verify_join\".\"tickets_seal_index\".\"pos_len_a639b11c8130dcf7\" >= 0\n          and cardinality(\"test_r9_verify_join\".\"tickets_seal_index\".\"pos_stamps_a639b11c8130dcf7\") = cardinality(\"test_r9_verify_join\".\"tickets_seal_index\".\"pos_offsets_a639b11c8130dcf7\"))),\n\tCONSTRAINT \"seal_943788060f9f0704_ck\" CHECK ((\"test_r9_verify_join\".\"tickets_seal_index\".\"word_salt_a639b11c8130dcf7\" is null and \"test_r9_verify_join\".\"tickets_seal_index\".\"word_len_a639b11c8130dcf7\" is null and \"test_r9_verify_join\".\"tickets_seal_index\".\"word_stamps_a639b11c8130dcf7\" is null and \"test_r9_verify_join\".\"tickets_seal_index\".\"word_offsets_a639b11c8130dcf7\" is null) or\n          (\"test_r9_verify_join\".\"tickets_seal_index\".\"word_salt_a639b11c8130dcf7\" is not null and \"test_r9_verify_join\".\"tickets_seal_index\".\"word_len_a639b11c8130dcf7\" is not null and \"test_r9_verify_join\".\"tickets_seal_index\".\"word_stamps_a639b11c8130dcf7\" is not null and \"test_r9_verify_join\".\"tickets_seal_index\".\"word_offsets_a639b11c8130dcf7\" is not null and octet_length(\"test_r9_verify_join\".\"tickets_seal_index\".\"word_salt_a639b11c8130dcf7\") = 16 and \"test_r9_verify_join\".\"tickets_seal_index\".\"word_len_a639b11c8130dcf7\" >= 0\n          and cardinality(\"test_r9_verify_join\".\"tickets_seal_index\".\"word_stamps_a639b11c8130dcf7\") = cardinality(\"test_r9_verify_join\".\"tickets_seal_index\".\"word_offsets_a639b11c8130dcf7\"))),\n\tCONSTRAINT \"seal_39f29d9b46c80738_ck\" CHECK ((\"test_r9_verify_join\".\"tickets_seal_index\".\"single_salt_a639b11c8130dcf7\" is null and \"test_r9_verify_join\".\"tickets_seal_index\".\"single_len_a639b11c8130dcf7\" is null and \"test_r9_verify_join\".\"tickets_seal_index\".\"single_stamps_a639b11c8130dcf7\" is null and \"test_r9_verify_join\".\"tickets_seal_index\".\"single_offsets_a639b11c8130dcf7\" is null) or\n          (\"test_r9_verify_join\".\"tickets_seal_index\".\"single_salt_a639b11c8130dcf7\" is not null and \"test_r9_verify_join\".\"tickets_seal_index\".\"single_len_a639b11c8130dcf7\" is not null and \"test_r9_verify_join\".\"tickets_seal_index\".\"single_stamps_a639b11c8130dcf7\" is not null and \"test_r9_verify_join\".\"tickets_seal_index\".\"single_offsets_a639b11c8130dcf7\" is not null and octet_length(\"test_r9_verify_join\".\"tickets_seal_index\".\"single_salt_a639b11c8130dcf7\") = 16 and \"test_r9_verify_join\".\"tickets_seal_index\".\"single_len_a639b11c8130dcf7\" >= 0\n          and cardinality(\"test_r9_verify_join\".\"tickets_seal_index\".\"single_stamps_a639b11c8130dcf7\") = cardinality(\"test_r9_verify_join\".\"tickets_seal_index\".\"single_offsets_a639b11c8130dcf7\")))\n);\n",
+    "ALTER TABLE \"test_r9_verify_join\".\"tickets_seal_index\" ADD CONSTRAINT \"tickets_seal_index_row_id_tickets_id_fk\" FOREIGN KEY (\"row_id\") REFERENCES \"test_r9_verify_join\".\"tickets\"(\"id\") ON DELETE cascade ON UPDATE no action;",
+    "CREATE INDEX \"tickets_customer_idx\" ON \"test_r9_verify_join\".\"tickets\" USING btree (\"scope_id\",\"customer_id\",\"id\");",
+    "CREATE UNIQUE INDEX \"tickets_seal_index_scope_row_uq\" ON \"test_r9_verify_join\".\"tickets_seal_index\" USING btree (\"scope_id\",\"row_id\");",
+    "CREATE UNIQUE INDEX \"tickets_seal_index_row_uq\" ON \"test_r9_verify_join\".\"tickets_seal_index\" USING btree (\"row_id\");",
+    "CREATE INDEX \"seal_b3b7462e8d688f14_bt\" ON \"test_r9_verify_join\".\"tickets_seal_index\" USING btree (scope_id,(tokens_1c32fdad5d1c8367[1]),row_id,eq_salt_1c32fdad5d1c8367,eq_stamp_1c32fdad5d1c8367,tokens_1c32fdad5d1c8367);",
+    "CREATE INDEX \"seal_d64a6460690f6fd1_gin\" ON \"test_r9_verify_join\".\"tickets_seal_index\" USING gin (\"tokens_a639b11c8130dcf7\");"
+  ],
+  "extra": [
+    "create or replace function \"test_r9_verify_join\".sealql_piece_positions(k bytea, salt bytea, stamps bigint[], positions integer[], n integer) returns integer[] language plpgsql immutable strict parallel safe security invoker set search_path = pg_catalog as $seal$\n\ndeclare ordinal integer := 1; lo integer; hi integer; mid integer; wanted bigint; found integer; result integer[] := '{}';\nbegin\n  if octet_length(k) <> 32 or octet_length(salt) <> 16 or n < 0 or cardinality(stamps) <> cardinality(positions)\n    or (cardinality(stamps) > 0 and (array_lower(stamps,1) <> 1 or array_lower(positions,1) <> 1)) then\n    raise exception using errcode='22023', message='Invalid search proof';\n  end if;\n  while ordinal <= n loop\n    wanted := (('x' || encode(substr(pg_catalog.sha256(k || salt || pg_catalog.int4send(ordinal)),1,8),'hex'))::bit(64)::bigint);\n    \n    lo := 1; hi := cardinality(stamps); found := 0;\n    -- Native search avoids interpreter overhead on small arrays; large arrays\n    -- use binary search, so long repeated values never rescan an entire proof.\n    if hi<=128 then found := coalesce(array_position(stamps,wanted),0);\n    else while lo <= hi loop\n      mid := lo + (hi-lo)/2;\n      if stamps[mid] = wanted then found := mid; exit;\n      elsif stamps[mid] < wanted then lo := mid+1; else hi := mid-1; end if;\n    end loop; end if;\n    if found <> 0 and (positions[found] is null or positions[found] < 0 or positions[found] >= n) then\n      raise exception using errcode='22023', message='Invalid search proof';\n    end if;\n    exit when found = 0;\n    if ordinal > 1 and positions[found] <= result[ordinal-1] then\n      raise exception using errcode='22023', message='Invalid search proof';\n    end if;\n    result := array_append(result, positions[found]); ordinal := ordinal+1;\n  end loop;\n  return result;\nend\n$seal$",
+    "create or replace function \"test_r9_verify_join\".sealql_run_positions(lists integer[], starts integer[], ends integer[], ids integer[], offs integer[], qlen integer, n integer) returns integer[] language plpgsql immutable strict parallel safe security invoker set search_path = pg_catalog as $seal$\n\ndeclare wi integer; anchor integer := 1; first_i integer; p integer; target integer; cursors integer[]; result integer[] := '{}'; ok boolean;\nbegin\n  if qlen < 1 or n < qlen then return result; end if;\n  if cardinality(ids) = 0 or cardinality(ids) <> cardinality(offs) then\n    raise exception using errcode='22023', message='Invalid search query';\n  end if;\n  cursors := array_fill(0,array[cardinality(ids)]);\n  for wi in 1..cardinality(ids) loop\n    if ids[wi] < 1 or ids[wi] > cardinality(starts) then\n      raise exception using errcode='22023', message='Invalid search query';\n    end if;\n    cursors[wi] := starts[ids[wi]];\n    if cursors[wi] > ends[ids[wi]] then return result; end if;\n    if ends[ids[wi]]-starts[ids[wi]] < ends[ids[anchor]]-starts[ids[anchor]] then anchor := wi; end if;\n  end loop;\n  -- Every list is already materialized: start from the shortest one to avoid\n  -- revisiting a long common prefix when a later literal window is rare.\n  for first_i in starts[ids[anchor]]..ends[ids[anchor]] loop\n    p := lists[first_i]-offs[anchor];\n    if p < 0 then continue; end if;\n    exit when p > n-qlen;\n    ok := true;\n    if cardinality(ids) > 1 then for wi in 1..cardinality(ids) loop\n      if wi=anchor then continue; end if;\n      target := p+offs[wi];\n      while cursors[wi] <= ends[ids[wi]] and lists[cursors[wi]] < target loop cursors[wi] := cursors[wi]+1; end loop;\n      if cursors[wi] > ends[ids[wi]] then return result; end if;\n      if lists[cursors[wi]] <> target then ok := false; exit; end if;\n    end loop; end if;\n    if ok then result := array_append(result,p); end if;\n  end loop;\n  return result;\nend\n$seal$",
+    "create or replace function \"test_r9_verify_join\".sealql_match_positions(ks bytea[], offs integer[], qlen integer, n integer, salt bytea, stamps bigint[], positions integer[], affix integer) returns boolean language plpgsql immutable strict parallel safe security invoker set search_path = pg_catalog as $seal$\n\ndeclare wi integer; p integer; target integer; wanted bigint; ok boolean; first_ordinal integer := 1; previous integer := -1;\n  ordinals integer[]; latest integer[]; lo integer; hi integer; mid integer; found integer;\nbegin\n  if cardinality(ks)=0 or cardinality(ks)<>cardinality(offs) or offs[1]<>0 or qlen<2 or n<0\n    or affix not in (0,1,2) or octet_length(salt)<>16 or cardinality(stamps)<>cardinality(positions)\n    or array_lower(ks,1)<>1 or array_lower(offs,1)<>1\n    or (cardinality(stamps)>0 and (array_lower(stamps,1)<>1 or array_lower(positions,1)<>1)) then\n    raise exception using errcode='22023',message='Invalid search proof';\n  end if;\n  if n<qlen then return false; end if;\n  if cardinality(ks)>1 then\n    ordinals := array_fill(1,array[cardinality(ks)]); latest := array_fill(-1,array[cardinality(ks)]);\n  end if;\n  loop\n    wanted := (('x'||encode(substr(sha256(ks[1]||salt||int4send(first_ordinal)),1,8),'hex'))::bit(64)::bigint);\n    \n    lo := 1; hi := cardinality(stamps); found := 0;\n    -- Native search avoids interpreter overhead on small arrays; large arrays\n    -- use binary search, so long repeated values never rescan an entire proof.\n    if hi<=128 then found := coalesce(array_position(stamps,wanted),0);\n    else while lo <= hi loop\n      mid := lo + (hi-lo)/2;\n      if stamps[mid] = wanted then found := mid; exit;\n      elsif stamps[mid] < wanted then lo := mid+1; else hi := mid-1; end if;\n    end loop; end if;\n    if found <> 0 and (positions[found] is null or positions[found] < 0 or positions[found] >= n) then\n      raise exception using errcode='22023', message='Invalid search proof';\n    end if;\n    if found=0 then return false; end if;\n    p := positions[found];\n    if p<=previous then raise exception using errcode='22023',message='Invalid search proof'; end if;\n    previous := p; first_ordinal := first_ordinal+1;\n    if p>n-qlen or (affix=1 and p>0) then return false; end if;\n    if affix=2 and p<n-qlen then continue; end if;\n    ok := true;\n    if cardinality(ks)>1 then for wi in 2..cardinality(ks) loop\n      target := p+offs[wi];\n      while latest[wi] < target loop\n        wanted := (('x'||encode(substr(sha256(ks[wi]||salt||int4send(ordinals[wi])),1,8),'hex'))::bit(64)::bigint);\n        \n    lo := 1; hi := cardinality(stamps); found := 0;\n    -- Native search avoids interpreter overhead on small arrays; large arrays\n    -- use binary search, so long repeated values never rescan an entire proof.\n    if hi<=128 then found := coalesce(array_position(stamps,wanted),0);\n    else while lo <= hi loop\n      mid := lo + (hi-lo)/2;\n      if stamps[mid] = wanted then found := mid; exit;\n      elsif stamps[mid] < wanted then lo := mid+1; else hi := mid-1; end if;\n    end loop; end if;\n    if found <> 0 and (positions[found] is null or positions[found] < 0 or positions[found] >= n) then\n      raise exception using errcode='22023', message='Invalid search proof';\n    end if;\n        if found=0 then return false; end if;\n        if positions[found] <= latest[wi] then\n          raise exception using errcode='22023',message='Invalid search proof';\n        end if;\n        latest[wi] := positions[found]; ordinals[wi] := ordinals[wi]+1;\n      end loop;\n      if latest[wi]<>target then ok := false; exit; end if;\n    end loop; end if;\n    if ok then return true; end if;\n  end loop;\nend\n$seal$",
+    "create or replace function \"test_r9_verify_join\".sealql_match_like(ks bytea[], kinds integer[], pattern integer[], n integer, salt bytea, stamps bigint[], positions integer[], single_salt bytea, single_stamps bigint[], single_positions integer[]) returns boolean language plpgsql immutable strict parallel safe security invoker set search_path = pg_catalog as $seal$\n\ndeclare i integer; p integer; qlen integer; cursor integer := 1; windows integer; ids integer[]; offs integer[];\n  lists integer[] := '{}'; starts integer[] := '{}'; ends integer[] := '{}'; locations integer[];\n  frontier boolean[]; next_frontier boolean[]; reachable boolean;\nbegin\n  if n<0 or cardinality(ks)<>cardinality(kinds) then\n    raise exception using errcode='22023',message='Invalid search query';\n  end if;\n  if cardinality(ks)>0 then for i in 1..cardinality(ks) loop\n    if kinds[i]=1 then locations := \"test_r9_verify_join\".sealql_piece_positions(ks[i],single_salt,single_stamps,single_positions,n);\n    elsif kinds[i]=2 then locations := \"test_r9_verify_join\".sealql_piece_positions(ks[i],salt,stamps,positions,n);\n    else raise exception using errcode='22023',message='Invalid search query'; end if;\n    starts := array_append(starts,cardinality(lists)+1); lists := lists || locations; ends := array_append(ends,cardinality(lists));\n  end loop; end if;\n  frontier := array_fill(false,array[n+1]); frontier[1] := true;\n  while cursor<=cardinality(pattern) loop\n    qlen := pattern[cursor]; cursor := cursor+1;\n    next_frontier := array_fill(false,array[n+1]);\n    if qlen=-1 then\n      reachable := false;\n      for p in 0..n loop reachable := reachable or frontier[p+1]; next_frontier[p+1] := reachable; end loop;\n    elsif qlen=-2 then\n      if n>0 then for p in 1..n loop next_frontier[p+1] := frontier[p]; end loop; end if;\n    else\n      windows := pattern[cursor]; cursor := cursor+1;\n      if qlen<1 or windows is null or windows<1 or cursor+windows*2-1>cardinality(pattern) then\n        raise exception using errcode='22023',message='Invalid search query';\n      end if;\n      ids := '{}'; offs := '{}';\n      for i in 1..windows loop\n        ids := array_append(ids,pattern[cursor]); offs := array_append(offs,pattern[cursor+1]); cursor := cursor+2;\n      end loop;\n      foreach p in array \"test_r9_verify_join\".sealql_run_positions(lists,starts,ends,ids,offs,qlen,n) loop\n        if frontier[p+1] then next_frontier[p+qlen+1] := true; end if;\n      end loop;\n    end if;\n    frontier := next_frontier;\n  end loop;\n  return frontier[n+1];\nend\n$seal$",
+    "drop function if exists \"test_r9_verify_join\".sealql_match_like(bytea[],integer[],jsonb,integer,bytea,bigint[],integer[],bytea,bigint[],integer[])",
+    "drop function if exists \"test_r9_verify_join\".sealql_run_positions(jsonb,integer[],integer[],integer,integer)",
+    "alter table \"test_r9_verify_join\".\"tickets_seal_index\" alter column \"tokens_a639b11c8130dcf7\" set statistics 1000",
+    "alter table \"test_r9_verify_join\".\"tickets_seal_index\" alter column \"tokens_1c32fdad5d1c8367\" set storage main",
+    "alter table \"test_r9_verify_join\".\"tickets_seal_index\" alter column \"tokens_a639b11c8130dcf7\" set storage main",
+    "alter table \"test_r9_verify_join\".\"tickets_seal_index\" alter column \"pos_stamps_a639b11c8130dcf7\" set storage main",
+    "alter table \"test_r9_verify_join\".\"tickets_seal_index\" alter column \"pos_offsets_a639b11c8130dcf7\" set storage main"
+  ]
+}
