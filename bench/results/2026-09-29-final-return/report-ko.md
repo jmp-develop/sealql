@@ -547,3 +547,206 @@ MiB=2^20 bytes. 연구 경로에는 공유 native 암호 본문 전체 크기를
 | like_prefix2plus | email like "iae%" |
 | like_suffix2plus | email like "%est" |
 | like_contains2plus | email like "%eea%" |
+
+<!-- FINAL-RETURN-REMEASURE -->
+
+## 최종 보완 측정: count 55개와 LIKE 목록 3개
+
+제품 커밋 `6fc43de0497037efed55647034aec4269eb53c8f`, 완료 58/58개, 전체 완료 true. 원래 113개 결과와 쓰기·용량은 위에 그대로 보존했다. 이 절은 보완 커밋으로 함수 재설치·ANALYZE 후 같은 데이터·연결에서 평문/연구 최종안/제품을 예열2·교차7로 새로 측정한 결과다.
+
+완료된 조회는 모두 원문 정규화 oracle과 일치했다. SQL 미달 11개, 전체 미달 14개, SQL >1초 0개, 전체 >1초 0개다. 1.10배 초과이면서 차이 >1ms를 미달로 판정한다. 
+
+근거: [remeasure.json](remeasure.json). 첫 실행·pre/between/post·SQL 횟수·DB 반환·인증 복호화 횟수는 원시 결과에 보존했다. OS 캐시는 비우지 않았다. 내부 후보 수는 미계측이고 †는 C 로캘 한글 LIKE의 평문 비교 주의 표시다. 기존 세션과 새 세션의 절대 수치 차이는 단독 개선 근거로 삼지 않는다.
+
+후속 일반 LIKE 수정과 분리하기 위해 git archive의 소스 트리 `a9c64d42c0eda72dbd0cb60e9bbfef5f5ee93ede`를 별도 빌드했다. 공유 작업 디렉터리의 src/dist는 사용하지 않았고 원래 일회용 DB guard를 호출했다.
+
+### SQL 요청~응답 (ms)
+
+| 조건 | 종류 | 평문 | 연구 최종안 | 제품 | 연구 대비 | 판정 |
+| --- | --- | --- | --- | --- | --- | --- |
+| coarse_company_zero | count | 0.44 | 74.21 | 26.57 | 0.36× | 통과 |
+| coarse_rare_and_memo † | count | 2.19 | 38.21 | 34.81 | 0.91× | 통과 |
+| coarse_zero_and_memo † | count | 0.56 | 90.32 | 32.32 | 0.36× | 통과 |
+| exact_common | count | 7.91 | 78.73 | 57.97 | 0.74× | 통과 |
+| sub_common_memo † | count | 20.00 | 366.38 | 191.95 | 0.52× | 통과 |
+| sub_mid † | count | 19.25 | 149.92 | 181.75 | 1.21× | 미달 |
+| sub_rare † | count | 18.77 | 1.41 | 1.60 | 1.14× | 차이 ≤1ms |
+| starts † | count | 7.00 | 98.37 | 92.99 | 0.95× | 통과 |
+| ends | count | 16.40 | 578.23 | 449.76 | 0.78× | 통과 |
+| and2 † | count | 10.25 | 260.49 | 161.61 | 0.62× | 통과 |
+| and4 † | count | 7.08 | 7.95 | 8.24 | 1.04× | 통과 |
+| and6 † | count | 7.46 | 27.44 | 28.32 | 1.03× | 통과 |
+| or2 † | count | 19.07 | 135.88 | 120.91 | 0.89× | 통과 |
+| or3 | count | 0.28 | 0.51 | 0.65 | 1.28× | 차이 ≤1ms |
+| or_and_mix † | count | 21.03 | 378.67 | 169.61 | 0.45× | 통과 |
+| word_boundary † | count | 18.63 | 367.76 | 405.45 | 1.10× | 미달 |
+| sub45 † | count | 21.99 | 32.97 | 17.47 | 0.53× | 통과 |
+| zero_and_common2 † | count | 10.06 | 7.00 | 28.70 | 4.10× | 미달 |
+| zero_and_common3 † | count | 10.38 | 6.53 | 6.41 | 0.98× | 통과 |
+| zero_fragment † | count | 22.83 | 0.65 | 0.55 | 0.85× | 통과 |
+| zero_fragment_long † | count | 21.68 | 0.65 | 0.68 | 1.04× | 통과 |
+| zero_or_all † | count | 35.51 | 0.69 | 0.75 | 1.09× | 통과 |
+| exact_zero | count | 0.22 | 0.30 | 0.38 | 1.28× | 차이 ≤1ms |
+| sub_zero † | count | 21.51 | 0.61 | 0.58 | 0.95× | 통과 |
+| or4 † | count | 24.62 | 143.26 | 124.49 | 0.87× | 통과 |
+| or5 † | count | 34.08 | 230.14 | 174.65 | 0.76× | 통과 |
+| or6 † | count | 36.53 | 424.72 | 304.18 | 0.72× | 통과 |
+| and2_or_and2 † | count | 23.88 | 203.79 | 177.87 | 0.87× | 통과 |
+| or2_and_or2 † | count | 22.05 | 146.05 | 112.52 | 0.77× | 통과 |
+| and3_or_rare † | count | 27.61 | 86.00 | 86.49 | 1.01× | 통과 |
+| nested3 † | count | 32.42 | 268.14 | 241.51 | 0.90× | 통과 |
+| exact_mid | count | 2.83 | 75.86 | 26.80 | 0.35× | 통과 |
+| exact_one | count | 0.19 | 0.27 | 0.29 | 1.06× | 통과 |
+| sub2_common † | count | 18.08 | 102.44 | 118.93 | 1.16× | 미달 |
+| sub_mid_space † | count | 1.10 | 3.68 | 4.33 | 1.18× | 차이 ≤1ms |
+| sub_long † | count | 20.64 | 91.55 | 79.87 | 0.87× | 통과 |
+| word_inside_longer † | count | 16.89 | 279.47 | 158.50 | 0.57× | 통과 |
+| space_memo † | count | 18.03 | 364.46 | 398.15 | 1.09× | 통과 |
+| space_address † | count | 0.99 | 3.55 | 4.15 | 1.17× | 차이 ≤1ms |
+| space_inside † | count | 16.68 | 281.22 | 158.68 | 0.56× | 통과 |
+| affix_startsWith_name † | count | 10.38 | 237.47 | 288.12 | 1.21× | 미달 |
+| affix_endsWith_name | count | 0.20 | 0.39 | 0.45 | 1.16× | 차이 ≤1ms |
+| affix_startsWith_phone | count | 1.77 | 12.63 | 14.22 | 1.13× | 미달 |
+| affix_endsWith_phone | count | 0.54 | 2.35 | 2.59 | 1.10× | 차이 ≤1ms |
+| affix_startsWith_address † | count | 7.24 | 149.03 | 172.61 | 1.16× | 미달 |
+| affix_endsWith_address † | count | 18.03 | 106.15 | 111.81 | 1.05× | 통과 |
+| affix_startsWith_memo † | count | 0.65 | 1.53 | 1.69 | 1.10× | 차이 ≤1ms |
+| affix_endsWith_memo | count | 0.35 | 0.73 | 0.80 | 1.10× | 통과 |
+| affix_startsWith_email | count | 0.52 | 1.03 | 1.27 | 1.23× | 차이 ≤1ms |
+| affix_endsWith_email | count | 21.96 | 540.46 | 356.48 | 0.66× | 통과 |
+| affix_startsWith_company † | count | 12.60 | 315.46 | 383.71 | 1.22× | 미달 |
+| affix_endsWith_company † | count | 37.06 | 54.38 | 60.76 | 1.12× | 미달 |
+| like_prefix2plus | count | 0.37 | 1.06 | 0.98 | 0.93× | 통과 |
+| like_suffix2plus | count | 22.96 | 581.54 | 385.40 | 0.66× | 통과 |
+| like_contains2plus | count | 0.30 | 0.77 | 0.78 | 1.02× | 통과 |
+| like_prefix2plus | list300 | 0.66 | 1.35 | 4.90 | 3.64× | 미달 |
+| like_suffix2plus | list300 | 1.42 | 9.58 | 6.98 | 0.73× | 통과 |
+| like_contains2plus | list300 | 0.53 | 1.13 | 4.09 | 3.62× | 미달 |
+
+### 전체 시간 (ms)
+
+| 조건 | 종류 | 평문 | 연구 최종안 | 제품 | 연구 대비 | 판정 |
+| --- | --- | --- | --- | --- | --- | --- |
+| coarse_company_zero | count | 0.49 | 74.65 | 27.62 | 0.37× | 통과 |
+| coarse_rare_and_memo † | count | 2.28 | 38.85 | 36.18 | 0.93× | 통과 |
+| coarse_zero_and_memo † | count | 0.64 | 90.88 | 33.65 | 0.37× | 통과 |
+| exact_common | count | 7.98 | 79.40 | 58.65 | 0.74× | 통과 |
+| sub_common_memo † | count | 20.08 | 367.30 | 192.90 | 0.53× | 통과 |
+| sub_mid † | count | 19.32 | 150.38 | 182.75 | 1.22× | 미달 |
+| sub_rare † | count | 18.83 | 1.78 | 2.55 | 1.43× | 차이 ≤1ms |
+| starts † | count | 7.08 | 98.74 | 93.81 | 0.95× | 통과 |
+| ends | count | 16.47 | 578.87 | 451.12 | 0.78× | 통과 |
+| and2 † | count | 10.33 | 261.05 | 163.02 | 0.62× | 통과 |
+| and4 † | count | 7.15 | 8.92 | 10.65 | 1.19× | 미달 |
+| and6 † | count | 7.54 | 28.82 | 30.68 | 1.06× | 통과 |
+| or2 † | count | 19.15 | 138.69 | 122.03 | 0.88× | 통과 |
+| or3 | count | 0.31 | 1.11 | 1.85 | 1.66× | 차이 ≤1ms |
+| or_and_mix † | count | 21.11 | 379.52 | 171.01 | 0.45× | 통과 |
+| word_boundary † | count | 18.70 | 368.31 | 406.70 | 1.10× | 미달 |
+| sub45 † | count | 22.04 | 34.50 | 19.77 | 0.57× | 통과 |
+| zero_and_common2 † | count | 10.14 | 7.67 | 29.77 | 3.88× | 미달 |
+| zero_and_common3 † | count | 10.47 | 7.37 | 7.81 | 1.06× | 통과 |
+| zero_fragment † | count | 22.88 | 1.14 | 1.53 | 1.34× | 차이 ≤1ms |
+| zero_fragment_long † | count | 21.72 | 1.45 | 2.14 | 1.48× | 차이 ≤1ms |
+| zero_or_all † | count | 35.57 | 1.85 | 2.45 | 1.33× | 차이 ≤1ms |
+| exact_zero | count | 0.24 | 0.48 | 0.83 | 1.72× | 차이 ≤1ms |
+| sub_zero † | count | 21.55 | 1.08 | 1.57 | 1.45× | 차이 ≤1ms |
+| or4 † | count | 24.70 | 144.64 | 126.25 | 0.87× | 통과 |
+| or5 † | count | 34.15 | 231.70 | 176.96 | 0.76× | 통과 |
+| or6 † | count | 36.61 | 426.53 | 307.14 | 0.72× | 통과 |
+| and2_or_and2 † | count | 23.99 | 204.63 | 179.59 | 0.88× | 통과 |
+| or2_and_or2 † | count | 22.13 | 147.45 | 114.85 | 0.78× | 통과 |
+| and3_or_rare † | count | 27.68 | 86.92 | 88.53 | 1.02× | 통과 |
+| nested3 † | count | 32.51 | 269.43 | 243.88 | 0.91× | 통과 |
+| exact_mid | count | 2.88 | 76.20 | 27.39 | 0.36× | 통과 |
+| exact_one | count | 0.20 | 0.42 | 0.65 | 1.53× | 차이 ≤1ms |
+| sub2_common † | count | 18.14 | 102.77 | 119.72 | 1.16× | 미달 |
+| sub_mid_space † | count | 1.13 | 4.19 | 5.47 | 1.31× | 미달 |
+| sub_long † | count | 20.71 | 92.45 | 81.47 | 0.88× | 통과 |
+| word_inside_longer † | count | 16.99 | 279.89 | 159.34 | 0.57× | 통과 |
+| space_memo † | count | 18.09 | 364.97 | 399.19 | 1.09× | 통과 |
+| space_address † | count | 1.01 | 4.00 | 5.15 | 1.29× | 미달 |
+| space_inside † | count | 16.74 | 281.64 | 159.50 | 0.57× | 통과 |
+| affix_startsWith_name † | count | 10.45 | 237.93 | 288.94 | 1.21× | 미달 |
+| affix_endsWith_name | count | 0.22 | 0.62 | 1.05 | 1.69× | 차이 ≤1ms |
+| affix_startsWith_phone | count | 1.81 | 13.08 | 15.27 | 1.17× | 미달 |
+| affix_endsWith_phone | count | 0.58 | 2.66 | 3.33 | 1.25× | 차이 ≤1ms |
+| affix_startsWith_address † | count | 7.30 | 149.44 | 173.47 | 1.16× | 미달 |
+| affix_endsWith_address † | count | 18.09 | 106.61 | 112.71 | 1.06× | 통과 |
+| affix_startsWith_memo † | count | 0.69 | 1.95 | 2.72 | 1.40× | 차이 ≤1ms |
+| affix_endsWith_memo | count | 0.39 | 1.18 | 1.72 | 1.46× | 차이 ≤1ms |
+| affix_startsWith_email | count | 0.56 | 1.55 | 2.51 | 1.61× | 차이 ≤1ms |
+| affix_endsWith_email | count | 22.03 | 541.10 | 357.65 | 0.66× | 통과 |
+| affix_startsWith_company † | count | 12.66 | 315.89 | 384.56 | 1.22× | 미달 |
+| affix_endsWith_company † | count | 37.12 | 55.06 | 61.57 | 1.12× | 미달 |
+| like_prefix2plus | count | 0.41 | 1.53 | 2.03 | 1.32× | 차이 ≤1ms |
+| like_suffix2plus | count | 23.02 | 581.99 | 386.91 | 0.66× | 통과 |
+| like_contains2plus | count | 0.32 | 1.28 | 1.61 | 1.26× | 차이 ≤1ms |
+| like_prefix2plus | list300 | 0.72 | 3.99 | 9.43 | 2.36× | 미달 |
+| like_suffix2plus | list300 | 1.47 | 92.48 | 92.49 | 1.00× | 통과 |
+| like_contains2plus | list300 | 0.56 | 3.86 | 8.39 | 2.17× | 미달 |
+
+| 조건/종류 | 첫 SQL/전체 ms | 제품 pre/between/post ms | SQL 횟수 | DB 반환/결과 | 인증 복호화 |
+| --- | --- | --- | --- | --- | --- |
+| coarse_company_zero/count | 30.27/36.46 | 0.81/0.00/0.06 | 1 | 1/1 | 0 |
+| coarse_rare_and_memo/count | 45.45/47.79 | 1.18/0.00/0.06 | 1 | 1/1 | 0 |
+| coarse_zero_and_memo/count | 33.84/35.11 | 1.15/0.00/0.06 | 1 | 1/1 | 0 |
+| exact_common/count | 64.93/65.60 | 0.62/0.00/0.06 | 1 | 1/1 | 0 |
+| sub_common_memo/count | 189.92/190.99 | 1.22/0.00/0.06 | 1 | 1/1 | 0 |
+| sub_mid/count | 174.03/176.35 | 1.14/0.00/0.06 | 1 | 1/1 | 0 |
+| sub_rare/count | 1.83/2.71 | 0.93/0.00/0.02 | 1 | 1/1 | 0 |
+| starts/count | 92.51/93.63 | 0.77/0.00/0.06 | 1 | 1/1 | 0 |
+| ends/count | 472.08/474.10 | 1.31/0.00/0.06 | 1 | 1/1 | 0 |
+| and2/count | 161.11/162.27 | 1.23/0.00/0.05 | 1 | 1/1 | 0 |
+| and4/count | 10.70/12.98 | 2.40/0.00/0.04 | 1 | 1/1 | 0 |
+| and6/count | 32.56/36.42 | 2.44/0.00/0.04 | 1 | 1/1 | 0 |
+| or2/count | 120.20/121.40 | 1.20/0.00/0.05 | 1 | 1/1 | 0 |
+| or3/count | 0.93/2.47 | 1.17/0.00/0.01 | 1 | 1/1 | 0 |
+| or_and_mix/count | 166.28/167.64 | 1.35/0.00/0.05 | 1 | 1/1 | 0 |
+| word_boundary/count | 399.89/401.02 | 1.20/0.00/0.05 | 1 | 1/1 | 0 |
+| sub45/count | 23.11/26.22 | 2.40/0.00/0.05 | 1 | 1/1 | 0 |
+| zero_and_common2/count | 30.14/31.44 | 1.05/0.00/0.04 | 1 | 1/1 | 0 |
+| zero_and_common3/count | 16.78/18.34 | 1.26/0.00/0.05 | 1 | 1/1 | 0 |
+| zero_fragment/count | 0.84/2.34 | 0.96/0.00/0.02 | 1 | 1/1 | 0 |
+| zero_fragment_long/count | 0.80/2.40 | 1.35/0.00/0.02 | 1 | 1/1 | 0 |
+| zero_or_all/count | 1.02/2.96 | 1.69/0.00/0.01 | 1 | 1/1 | 0 |
+| exact_zero/count | 0.44/0.92 | 0.41/0.00/0.01 | 1 | 1/1 | 0 |
+| sub_zero/count | 0.62/1.59 | 0.87/0.00/0.02 | 1 | 1/1 | 0 |
+| or4/count | 126.09/127.96 | 1.72/0.00/0.04 | 1 | 1/1 | 0 |
+| or5/count | 177.38/179.58 | 2.10/0.00/0.04 | 1 | 1/1 | 0 |
+| or6/count | 318.57/321.45 | 2.90/0.00/0.04 | 1 | 1/1 | 0 |
+| and2_or_and2/count | 175.20/177.02 | 1.51/0.00/0.05 | 1 | 1/1 | 0 |
+| or2_and_or2/count | 110.13/112.08 | 1.96/0.00/0.05 | 1 | 1/1 | 0 |
+| and3_or_rare/count | 100.94/102.67 | 1.75/0.00/0.05 | 1 | 1/1 | 0 |
+| nested3/count | 230.64/232.99 | 2.33/0.00/0.05 | 1 | 1/1 | 0 |
+| exact_mid/count | 31.90/32.70 | 0.59/0.00/0.05 | 1 | 1/1 | 0 |
+| exact_one/count | 0.38/0.89 | 0.36/0.00/0.01 | 1 | 1/1 | 0 |
+| sub2_common/count | 114.04/114.94 | 0.74/0.00/0.05 | 1 | 1/1 | 0 |
+| sub_mid_space/count | 5.48/6.52 | 1.05/0.00/0.04 | 1 | 1/1 | 0 |
+| sub_long/count | 83.82/85.23 | 1.53/0.00/0.05 | 1 | 1/1 | 0 |
+| word_inside_longer/count | 158.26/159.10 | 0.79/0.00/0.05 | 1 | 1/1 | 0 |
+| space_memo/count | 403.92/404.87 | 0.99/0.00/0.05 | 1 | 1/1 | 0 |
+| space_address/count | 5.37/6.57 | 0.95/0.00/0.04 | 1 | 1/1 | 0 |
+| space_inside/count | 156.94/157.77 | 0.79/0.00/0.05 | 1 | 1/1 | 0 |
+| affix_startsWith_name/count | 283.52/284.54 | 0.79/0.00/0.05 | 1 | 1/1 | 0 |
+| affix_endsWith_name/count | 0.65/1.40 | 0.59/0.00/0.01 | 1 | 1/1 | 0 |
+| affix_startsWith_phone/count | 18.67/19.66 | 0.93/0.00/0.05 | 1 | 1/1 | 0 |
+| affix_endsWith_phone/count | 2.83/3.54 | 0.76/0.00/0.02 | 1 | 1/1 | 0 |
+| affix_startsWith_address/count | 183.25/184.11 | 0.84/0.00/0.05 | 1 | 1/1 | 0 |
+| affix_endsWith_address/count | 134.03/135.52 | 0.99/0.00/0.05 | 1 | 1/1 | 0 |
+| affix_startsWith_memo/count | 2.12/3.17 | 0.95/0.00/0.03 | 1 | 1/1 | 0 |
+| affix_endsWith_memo/count | 1.07/2.00 | 0.90/0.00/0.02 | 1 | 1/1 | 0 |
+| affix_startsWith_email/count | 1.76/3.35 | 1.19/0.00/0.04 | 1 | 1/1 | 0 |
+| affix_endsWith_email/count | 366.85/367.75 | 1.00/0.00/0.05 | 1 | 1/1 | 0 |
+| affix_startsWith_company/count | 390.98/392.08 | 0.87/0.00/0.05 | 1 | 1/1 | 0 |
+| affix_endsWith_company/count | 100.34/101.66 | 0.85/0.00/0.05 | 1 | 1/1 | 0 |
+| like_prefix2plus/count | 0.91/1.93 | 0.98/0.00/0.02 | 1 | 1/1 | 0 |
+| like_suffix2plus/count | 375.99/376.90 | 0.92/0.00/0.05 | 1 | 1/1 | 0 |
+| like_contains2plus/count | 1.42/2.47 | 0.81/0.00/0.02 | 1 | 1/1 | 0 |
+| like_prefix2plus/list300 | 10.19/19.63 | 2.05/0.00/2.14 | 1 | 6/6 | 36 |
+| like_suffix2plus/list300 | 7.80/108.20 | 1.87/0.00/83.63 | 1 | 300/300 | 1800 |
+| like_contains2plus/list300 | 5.86/10.14 | 1.96/0.00/2.23 | 1 | 9/9 | 54 |
+
+오류: 없음. 미완료 조회: 없음. 종료 2026-09-29T08:23:55.132Z.
+
+로컬 합성 fixture 결과이며 운영 보장·보안 인증이 아니다.

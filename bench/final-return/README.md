@@ -6,6 +6,8 @@
 
 적재 완료 후 최종 일괄 실행은 `rtk proxy node bench/final-return/run-final.mjs 59d4ce9`이다. 빌드 전부터 조회·쓰기·용량·보고까지 같은 소유자의 락을 유지한다. 제품 소스·패키지·빌드 설정이 지정 커밋과 같은지 검증하므로 후속 벤치·문서 전용 커밋은 허용한다. 조회 25/50/75/100%에서 코디네이터 status를 보낸다.
 
+마감 보완 실행은 `rtk proxy node bench/final-return/run-remeasure.mjs <보완 커밋>`이다. 락 인계 후 git archive의 지정 커밋을 별도 로컬 디렉터리에서 빌드하므로 다른 작업자의 후속 src/dist 변경과 섞이지 않는다. DB guard는 원래 작업 디렉터리의 `test/disposable.ts`를 그대로 호출한다. count55개와 LIKE 목록300 3개만 같은 3경로로 재측정하고, `remeasure.json`에 저장해 기존 보고서의 추가 절로 붙인다. 2026-09-29 08:48Z에 다음 호출 시작을 중단하며 완료된 조회만 중앙값으로 보고한다. 진행 중 조회의 미완료 반복은 별도로 보존하고 완료된7회 자료와 섞지 않는다. 이전113개·쓰기·용량 결과를 덮어쓰지 않는다.
+
 | 순서 | 실행 (`rtk proxy node --import tsx` 뒤) | 역할 |
 |---|---|---|
 | 1 | `bench/final-return/freeze-research.ts` | 역사적 함수와 열 이름 고정 |
