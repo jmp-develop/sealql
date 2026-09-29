@@ -1,0 +1,173 @@
+{
+  "status": "stopped-by-user-partial",
+  "closed": "2026-09-29T19:01:46.832Z",
+  "databaseAccess": false,
+  "rawFiles": 17,
+  "expectedRawFiles": 24,
+  "missing": [
+    "ab-C-mongo-address.json",
+    "delta-C-mongo-name.json",
+    "delta-C-mongo-phone.json",
+    "delta-C-mongo-address.json",
+    "delta-C-mongo-memo.json",
+    "delta-C-mongo-email.json",
+    "delta-C-mongo-company.json"
+  ],
+  "completed": [
+    {
+      "file": "ab-C-mongo-company.json",
+      "field": "company",
+      "model": "C-mongo",
+      "conditions": 23,
+      "sha256": "8abb27e296d2783284bde468bf7875dcdcfd37f3e0bfbfc1a9db622dc77a0e84"
+    },
+    {
+      "file": "ab-C-mongo-email.json",
+      "field": "email",
+      "model": "C-mongo",
+      "conditions": 23,
+      "sha256": "9da2c6e58f75fdfec1abd53416cb08d8d7fed48e7303055959cab458eafe8938"
+    },
+    {
+      "file": "ab-C-mongo-memo.json",
+      "field": "memo",
+      "model": "C-mongo",
+      "conditions": 23,
+      "sha256": "d75b819439341c95e228dc0920aa41eb4060a1a17fdcab709d31e5d72f2aa5fa"
+    },
+    {
+      "file": "ab-C-mongo-name.json",
+      "field": "name",
+      "model": "C-mongo",
+      "conditions": 23,
+      "sha256": "c791656bfe3c62352d7acd8f274d31080635497465c5fcab7e8a75facb0380e7"
+    },
+    {
+      "file": "ab-C-mongo-phone.json",
+      "field": "phone",
+      "model": "C-mongo",
+      "conditions": 23,
+      "sha256": "32d5b7a340dc4a3579cca53fce6ff4f779e8b02c7e5eb235ea0f6801c480af20"
+    },
+    {
+      "file": "ab-C-port-address.json",
+      "field": "address",
+      "model": "C-port",
+      "conditions": 23,
+      "sha256": "037a81786dd4a8bc6d867bac8d48e27a98287cb4c82dad6239b71a822e3f7209"
+    },
+    {
+      "file": "ab-C-port-company.json",
+      "field": "company",
+      "model": "C-port",
+      "conditions": 23,
+      "sha256": "29d0ef782e0ef60b622bc7a5150944cc21123331d63e6351532ae04f031e6e29"
+    },
+    {
+      "file": "ab-C-port-email.json",
+      "field": "email",
+      "model": "C-port",
+      "conditions": 23,
+      "sha256": "d9ad1e8334e8f275af5641299e03f76ca2444bd5b1be1292fac651a370b972d2"
+    },
+    {
+      "file": "ab-C-port-memo.json",
+      "field": "memo",
+      "model": "C-port",
+      "conditions": 23,
+      "sha256": "11e560686709e08f5d7fbe8c120a40f703b312dfc700533278dcfa70a0718b6f"
+    },
+    {
+      "file": "ab-C-port-name.json",
+      "field": "name",
+      "model": "C-port",
+      "conditions": 23,
+      "sha256": "3cb51b9a1f270c2788d0011eb628671b291d23292a893d497a118028a5c99a14"
+    },
+    {
+      "file": "ab-C-port-phone.json",
+      "field": "phone",
+      "model": "C-port",
+      "conditions": 23,
+      "sha256": "a4d2b62c8a0ad73643b9e4835139e010a5b810212d51bd636193d21afeb9a593"
+    },
+    {
+      "file": "delta-C-port-address.json",
+      "field": "address",
+      "model": "C-port",
+      "conditions": 4,
+      "sha256": "28718ac4bc5d8085e73f88692c44c7ab051a61547766098785a3a56819f5ff8c"
+    },
+    {
+      "file": "delta-C-port-company.json",
+      "field": "company",
+      "model": "C-port",
+      "conditions": 4,
+      "sha256": "c62478a6beeafaba7686e6e51b8eb2b25e691ee72b183714d8fa0a23db43cd4d"
+    },
+    {
+      "file": "delta-C-port-email.json",
+      "field": "email",
+      "model": "C-port",
+      "conditions": 4,
+      "sha256": "62465a9b22edb77323f18a7e037c6ed8f878b256fcf93f7105abd474cc88aa22"
+    },
+    {
+      "file": "delta-C-port-memo.json",
+      "field": "memo",
+      "model": "C-port",
+      "conditions": 4,
+      "sha256": "d17989d459108843b99ab797664666f946bbfea299870bf2a7fa171379934f7a"
+    },
+    {
+      "file": "delta-C-port-name.json",
+      "field": "name",
+      "model": "C-port",
+      "conditions": 4,
+      "sha256": "059db4dcb35baa107c0a334679e1b8b90148e8995348d5e54b06930d0d81dd94"
+    },
+    {
+      "file": "delta-C-port-phone.json",
+      "field": "phone",
+      "model": "C-port",
+      "conditions": 4,
+      "sha256": "9bd18f684730ccf4ca5a2c01a9c679b0e6cbb92016ee9797db1f1c364d44f0e9"
+    }
+  ],
+  "ownedRunningProcesses": 0,
+  "preservationChecks": "Completed flags and frozen model hash only; no new attack, simulation or independent replay after stop",
+  "files": {
+    "bench/mongo-reeval/m1-astra/audit.ts": "a9e12c457eeee4b5f108b4bd9f577bb83fbcc20d21b6fd2cbe83c28e8ff679d9",
+    "bench/mongo-reeval/m1-astra/close-partial.ts": "8ff08094e315d7ef87f80d8904686c2f14bd7f8fc979207000b2463e6dc88537",
+    "bench/mongo-reeval/m1-astra/ledger-frequency.ts": "3452f11b90e3acf9af53bb2f98a55c7b42b362f91f2b58f7c7209f240ec5ed84",
+    "bench/mongo-reeval/m1-astra/report.ts": "7c2803393ff66e523698e987805d8393c13ce533f43b03084972df805a5b5100",
+    "bench/mongo-reeval/m1-astra/run-ab.ts": "42727d36d590528ff2f6be14f17d39964a723ca781e7af6ad23f5f8c68826350",
+    "bench/mongo-reeval/m1-astra/run-batch.ts": "2d65528140147365219302195ff3db4d2fc9e76e9de039ddf36c33458db8da11",
+    "bench/mongo-reeval/m1-astra/run-delta.ts": "227530fa34b975b40e6d7751527cb25ace81d3bbf94b29e9ed4c731d8ff36d2d",
+    "bench/mongo-reeval/m1-astra/shape-attacks.ts": "f100942c47e7a36f6b85983992c1a203a0c52365d1c14cdc728b9c38c8ad3ee0",
+    "bench/mongo-reeval/m1-astra/strong-dictionary.ts": "cb26e069c3e32ff27ef5d804a3fa3cb9de720609bbfedeaf6daa83df9d157692",
+    "bench/mongo-reeval/m1-astra/tsconfig.json": "96b0c70191d5bd4dc32ea7a995e8f868863d0793bad6594dd3aff7cc994b5b4b",
+    "bench/mongo-reeval/m1-astra/verify-strong.ts": "d97b79f2be0b7da4f1537439e41cc6bb15f3b40a5d82ecbb7560060e6afe1532",
+    "bench/results/2026-09-30-mongo-reeval/m1-astra/ab-C-mongo-company.json": "8abb27e296d2783284bde468bf7875dcdcfd37f3e0bfbfc1a9db622dc77a0e84",
+    "bench/results/2026-09-30-mongo-reeval/m1-astra/ab-C-mongo-email.json": "9da2c6e58f75fdfec1abd53416cb08d8d7fed48e7303055959cab458eafe8938",
+    "bench/results/2026-09-30-mongo-reeval/m1-astra/ab-C-mongo-memo.json": "d75b819439341c95e228dc0920aa41eb4060a1a17fdcab709d31e5d72f2aa5fa",
+    "bench/results/2026-09-30-mongo-reeval/m1-astra/ab-C-mongo-name.json": "c791656bfe3c62352d7acd8f274d31080635497465c5fcab7e8a75facb0380e7",
+    "bench/results/2026-09-30-mongo-reeval/m1-astra/ab-C-mongo-phone.json": "32d5b7a340dc4a3579cca53fce6ff4f779e8b02c7e5eb235ea0f6801c480af20",
+    "bench/results/2026-09-30-mongo-reeval/m1-astra/ab-C-port-address.json": "037a81786dd4a8bc6d867bac8d48e27a98287cb4c82dad6239b71a822e3f7209",
+    "bench/results/2026-09-30-mongo-reeval/m1-astra/ab-C-port-company.json": "29d0ef782e0ef60b622bc7a5150944cc21123331d63e6351532ae04f031e6e29",
+    "bench/results/2026-09-30-mongo-reeval/m1-astra/ab-C-port-email.json": "d9ad1e8334e8f275af5641299e03f76ca2444bd5b1be1292fac651a370b972d2",
+    "bench/results/2026-09-30-mongo-reeval/m1-astra/ab-C-port-memo.json": "11e560686709e08f5d7fbe8c120a40f703b312dfc700533278dcfa70a0718b6f",
+    "bench/results/2026-09-30-mongo-reeval/m1-astra/ab-C-port-name.json": "3cb51b9a1f270c2788d0011eb628671b291d23292a893d497a118028a5c99a14",
+    "bench/results/2026-09-30-mongo-reeval/m1-astra/ab-C-port-phone.json": "a4d2b62c8a0ad73643b9e4835139e010a5b810212d51bd636193d21afeb9a593",
+    "bench/results/2026-09-30-mongo-reeval/m1-astra/audit.json": "80f6ff216821202528fa15cf31183bd2ba162f21f381219b58b22386f6a5ed3c",
+    "bench/results/2026-09-30-mongo-reeval/m1-astra/delta-C-port-address.json": "28718ac4bc5d8085e73f88692c44c7ab051a61547766098785a3a56819f5ff8c",
+    "bench/results/2026-09-30-mongo-reeval/m1-astra/delta-C-port-company.json": "c62478a6beeafaba7686e6e51b8eb2b25e691ee72b183714d8fa0a23db43cd4d",
+    "bench/results/2026-09-30-mongo-reeval/m1-astra/delta-C-port-email.json": "62465a9b22edb77323f18a7e037c6ed8f878b256fcf93f7105abd474cc88aa22",
+    "bench/results/2026-09-30-mongo-reeval/m1-astra/delta-C-port-memo.json": "d17989d459108843b99ab797664666f946bbfea299870bf2a7fa171379934f7a",
+    "bench/results/2026-09-30-mongo-reeval/m1-astra/delta-C-port-name.json": "059db4dcb35baa107c0a334679e1b8b90148e8995348d5e54b06930d0d81dd94",
+    "bench/results/2026-09-30-mongo-reeval/m1-astra/delta-C-port-phone.json": "9bd18f684730ccf4ca5a2c01a9c679b0e6cbb92016ee9797db1f1c364d44f0e9",
+    "bench/results/2026-09-30-mongo-reeval/m1-astra/ledger-frequency.json": "c305b953adfd621d7e1ed5c2c9572b2b3a743903f189bb245e9be04fcc238c18",
+    "bench/results/2026-09-30-mongo-reeval/m1-astra/report-ko.md": "009efdd3d6ac6fd14068cc858fead9545e832093960878ebb9a6b399a5a9b279",
+    "bench/results/2026-09-30-mongo-reeval/m1-astra/strong-dictionary.json": "58892315e5fb68770c9b4e40cae5612282706355f964ebb2e16e605297718f87"
+  }
+}

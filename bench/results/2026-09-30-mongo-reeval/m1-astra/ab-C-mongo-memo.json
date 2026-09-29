@@ -1,0 +1,2493 @@
+{
+  "started": "2026-09-29T18:55:34.027Z",
+  "complete": true,
+  "databaseAccess": false,
+  "field": "memo",
+  "model": "C-mongo",
+  "mode": "partial",
+  "options": {
+    "id": "C-mongo",
+    "field": "memo",
+    "mode": "partial",
+    "contention": 8,
+    "maxLength": 60
+  },
+  "sourceHash": "fd0d2eefaf034bc868bbeae841d969ab8766504a4e008adb8eec527d75da44de",
+  "identityDigest": "189a19c99711fbacd9cafdb548f243a63657e12a0c1514a736c1f92da670f382",
+  "snapshotDigest": "0fc05fbe27fa716e05b06e5295e096e44d5583df8958aca393a7ba574da56e77",
+  "metadata": {
+    "source": "Mongo official padding/ESC review: v-astra/model-rules-ko.md",
+    "tagBits": 256,
+    "contention": 8,
+    "mode": "partial",
+    "maxLength": 60,
+    "fidelity": "Leakage model, independent field/value keys and AES-CTR counter envelope; NOT SDK bytes. Post-compaction endpoint replaces each hidden group by one encrypted anchor; runtime cleanup transcript is not reproduced.",
+    "cipherBytes": "Only observable encrypted BSON length bucket E; constant envelope overhead omitted",
+    "logicalUnorderedTagSets": true,
+    "compacted": false,
+    "escRows": 2184527,
+    "ecocRows": 2184527,
+    "ecocCiphertext": "Opaque randomized documents represented by aggregate count; no linkage is exposed",
+    "unsupportedRows": 26
+  },
+  "compactedMetadata": {
+    "source": "Mongo official padding/ESC review: v-astra/model-rules-ko.md",
+    "tagBits": 256,
+    "contention": 8,
+    "mode": "partial",
+    "maxLength": 60,
+    "fidelity": "Leakage model, independent field/value keys and AES-CTR counter envelope; NOT SDK bytes. Post-compaction endpoint replaces each hidden group by one encrypted anchor; runtime cleanup transcript is not reproduced.",
+    "cipherBytes": "Only observable encrypted BSON length bucket E; constant envelope overhead omitted",
+    "logicalUnorderedTagSets": true,
+    "compacted": true,
+    "escRows": 359170,
+    "ecocRows": 0,
+    "ecocCiphertext": "Opaque randomized documents represented by aggregate count; no linkage is exposed",
+    "unsupportedRows": 26
+  },
+  "esc": {
+    "beforeRows": 2184527,
+    "afterCompactionRows": 359170,
+    "plaintextCounters": 0,
+    "totalPlaintextCounts": 0,
+    "distinctPlaintextCounts": 0,
+    "preDigest": "b7bcf5cfd2ae0a3baba731be510a13982ab605d78550573a54e53c3800acab35",
+    "postDigest": "f53f4ad0e452af22228006cf082a33bdf281cd36c1c581fd0c56540e3a3e47aa"
+  },
+  "uniqueness": {
+    "tagOccurrences": 2184527,
+    "distinctTags": 2184527,
+    "crossRowRepeats": 0
+  },
+  "unsupported": [
+    {
+      "index": 492,
+      "id": "10000000-0000-4000-8000-0000000047c1"
+    },
+    {
+      "index": 549,
+      "id": "10000000-0000-4000-8000-0000000092b5"
+    },
+    {
+      "index": 1699,
+      "id": "10000000-0000-4000-8000-000000006205"
+    },
+    {
+      "index": 1853,
+      "id": "10000000-0000-4000-8000-00000001475d"
+    },
+    {
+      "index": 3274,
+      "id": "10000000-0000-4000-8000-000000001a45"
+    },
+    {
+      "index": 3580,
+      "id": "10000000-0000-4000-8000-000000004b99"
+    },
+    {
+      "index": 3589,
+      "id": "10000000-0000-4000-8000-000000005bef"
+    },
+    {
+      "index": 3723,
+      "id": "10000000-0000-4000-8000-000000011283"
+    },
+    {
+      "index": 3781,
+      "id": "10000000-0000-4000-8000-000000003a4d"
+    },
+    {
+      "index": 3788,
+      "id": "10000000-0000-4000-8000-000000000e94"
+    },
+    {
+      "index": 4947,
+      "id": "10000000-0000-4000-8000-00000000a7b0"
+    },
+    {
+      "index": 5194,
+      "id": "10000000-0000-4000-8000-000000000e42"
+    },
+    {
+      "index": 5203,
+      "id": "10000000-0000-4000-8000-00000001356d"
+    },
+    {
+      "index": 5379,
+      "id": "10000000-0000-4000-8000-00000000bd4f"
+    },
+    {
+      "index": 5750,
+      "id": "10000000-0000-4000-8000-00000000bfdf"
+    },
+    {
+      "index": 5908,
+      "id": "10000000-0000-4000-8000-000000017a22"
+    },
+    {
+      "index": 6037,
+      "id": "10000000-0000-4000-8000-00000000b59f"
+    },
+    {
+      "index": 6120,
+      "id": "10000000-0000-4000-8000-000000005892"
+    },
+    {
+      "index": 6236,
+      "id": "10000000-0000-4000-8000-00000000686d"
+    },
+    {
+      "index": 6570,
+      "id": "10000000-0000-4000-8000-000000012636"
+    },
+    {
+      "index": 6904,
+      "id": "10000000-0000-4000-8000-0000000056a6"
+    },
+    {
+      "index": 7149,
+      "id": "10000000-0000-4000-8000-000000016a70"
+    },
+    {
+      "index": 7190,
+      "id": "10000000-0000-4000-8000-00000000facf"
+    },
+    {
+      "index": 8191,
+      "id": "10000000-0000-4000-8000-0000000012e7"
+    },
+    {
+      "index": 9376,
+      "id": "10000000-0000-4000-8000-00000000a787"
+    },
+    {
+      "index": 9452,
+      "id": "10000000-0000-4000-8000-000000009f85"
+    }
+  ],
+  "results": [
+    {
+      "known": 0,
+      "knownSupported": 0,
+      "phase": "snapshot",
+      "method": "group_frequency",
+      "channel": "index",
+      "rows": 9974,
+      "correct": 0,
+      "pct": 0,
+      "characters": 14502,
+      "totalCharacters": 145558,
+      "characterPct": 9.963038788661564,
+      "mostly": 34,
+      "sharedKnownTargetRows": 0,
+      "learned": {
+        "dictionary": 9977,
+        "learnedFeatures": 0,
+        "candidateFeatures": 0,
+        "knownFingerprints": 0,
+        "noise": 0,
+        "knownRows": 0
+      },
+      "predictionDigest": "37f360718158b9e18c2500088090dfe75155e0caf1cddeed4eed757451db32b5",
+      "witnesses": [
+        {
+          "index": 121,
+          "id": "10000000-0000-4000-8000-000000016803",
+          "predicted": "계약서 검토 완료 · 상세 안내와 확인 내용 상세 안내와 확인 내용 상세 안내와 확인 내용 상세 안내와 확인 내용 0b7h0",
+          "correct": false
+        },
+        {
+          "index": 374,
+          "id": "10000000-0000-4000-8000-00000000cf96",
+          "predicted": "계약서 검토 완료 · 상세 안내와 확인 내용 상세 안내와 확인 내용 상세 안내와 확인 내용 상세 안내와 확인 내용 0b7h0",
+          "correct": false
+        },
+        {
+          "index": 793,
+          "id": "10000000-0000-4000-8000-0000000126d4",
+          "predicted": "계약서 검토 완료 · 상세 안내와 확인 내용 상세 안내와 확인 내용 상세 안내와 확인 내용 상세 안내와 확인 내용 0b7h0",
+          "correct": false
+        },
+        {
+          "index": 1338,
+          "id": "10000000-0000-4000-8000-0000000041e7",
+          "predicted": "계약서 검토 완료 · 상세 안내와 확인 내용 상세 안내와 확인 내용 상세 안내와 확인 내용 상세 안내와 확인 내용 0b7h0",
+          "correct": false
+        },
+        {
+          "index": 2480,
+          "id": "10000000-0000-4000-8000-000000008ed9",
+          "predicted": "계약서 검토 완료 · 상세 안내와 확인 내용 상세 안내와 확인 내용 상세 안내와 확인 내용 상세 안내와 확인 내용 0b7h0",
+          "correct": false
+        },
+        {
+          "index": 2507,
+          "id": "10000000-0000-4000-8000-000000004b88",
+          "predicted": "계약서 검토 완료 · 상세 안내와 확인 내용 상세 안내와 확인 내용 상세 안내와 확인 내용 상세 안내와 확인 내용 0b7h0",
+          "correct": false
+        },
+        {
+          "index": 2896,
+          "id": "10000000-0000-4000-8000-000000015fe1",
+          "predicted": "계약서 검토 완료 · 상세 안내와 확인 내용 상세 안내와 확인 내용 상세 안내와 확인 내용 상세 안내와 확인 내용 0b7h0",
+          "correct": false
+        },
+        {
+          "index": 3978,
+          "id": "10000000-0000-4000-8000-00000000d1c4",
+          "predicted": "계약서 검토 완료 · 상세 안내와 확인 내용 상세 안내와 확인 내용 상세 안내와 확인 내용 상세 안내와 확인 내용 0b7h0",
+          "correct": false
+        },
+        {
+          "index": 4700,
+          "id": "10000000-0000-4000-8000-0000000126ff",
+          "predicted": "계약서 검토 완료 · 상세 안내와 확인 내용 상세 안내와 확인 내용 상세 안내와 확인 내용 상세 안내와 확인 내용 0b7h0",
+          "correct": false
+        },
+        {
+          "index": 4840,
+          "id": "10000000-0000-4000-8000-000000005988",
+          "predicted": "계약서 검토 완료 · 상세 안내와 확인 내용 상세 안내와 확인 내용 상세 안내와 확인 내용 상세 안내와 확인 내용 0b7h0",
+          "correct": false
+        },
+        {
+          "index": 5745,
+          "id": "10000000-0000-4000-8000-00000000e391",
+          "predicted": "계약서 검토 완료 · 상세 안내와 확인 내용 상세 안내와 확인 내용 상세 안내와 확인 내용 상세 안내와 확인 내용 0b7h0",
+          "correct": false
+        },
+        {
+          "index": 9170,
+          "id": "10000000-0000-4000-8000-0000000072ef",
+          "predicted": "계약서 검토 완료 · 상세 안내와 확인 내용 상세 안내와 확인 내용 상세 안내와 확인 내용 상세 안내와 확인 내용 0b7h0",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "known": 0,
+      "knownSupported": 0,
+      "phase": "snapshot",
+      "method": "piece_frequency",
+      "channel": "index",
+      "rows": 9974,
+      "correct": 0,
+      "pct": 0,
+      "characters": 1136,
+      "totalCharacters": 145558,
+      "characterPct": 0.7804449085587876,
+      "mostly": 0,
+      "sharedKnownTargetRows": 0,
+      "learned": {
+        "dictionary": 9977,
+        "learnedFeatures": 0,
+        "candidateFeatures": 0,
+        "knownFingerprints": 0,
+        "noise": 0,
+        "knownRows": 0
+      },
+      "predictionDigest": "5d3522f370b110d98504f2f9eddf988735cf6860afa934cf7aac78a8b423ab15",
+      "witnesses": [
+        {
+          "index": 121,
+          "id": "10000000-0000-4000-8000-000000016803",
+          "predicted": "희귀표식 푸른달 rsjkf",
+          "correct": false
+        },
+        {
+          "index": 374,
+          "id": "10000000-0000-4000-8000-00000000cf96",
+          "predicted": "희귀표식 푸른달 rsjkf",
+          "correct": false
+        },
+        {
+          "index": 793,
+          "id": "10000000-0000-4000-8000-0000000126d4",
+          "predicted": "희귀표식 푸른달 rsjkf",
+          "correct": false
+        },
+        {
+          "index": 1338,
+          "id": "10000000-0000-4000-8000-0000000041e7",
+          "predicted": "희귀표식 푸른달 rsjkf",
+          "correct": false
+        },
+        {
+          "index": 2480,
+          "id": "10000000-0000-4000-8000-000000008ed9",
+          "predicted": "희귀표식 푸른달 rsjkf",
+          "correct": false
+        },
+        {
+          "index": 2507,
+          "id": "10000000-0000-4000-8000-000000004b88",
+          "predicted": "희귀표식 푸른달 rsjkf",
+          "correct": false
+        },
+        {
+          "index": 2896,
+          "id": "10000000-0000-4000-8000-000000015fe1",
+          "predicted": "희귀표식 푸른달 rsjkf",
+          "correct": false
+        },
+        {
+          "index": 3978,
+          "id": "10000000-0000-4000-8000-00000000d1c4",
+          "predicted": "희귀표식 푸른달 rsjkf",
+          "correct": false
+        },
+        {
+          "index": 4700,
+          "id": "10000000-0000-4000-8000-0000000126ff",
+          "predicted": "희귀표식 푸른달 rsjkf",
+          "correct": false
+        },
+        {
+          "index": 4840,
+          "id": "10000000-0000-4000-8000-000000005988",
+          "predicted": "희귀표식 푸른달 rsjkf",
+          "correct": false
+        },
+        {
+          "index": 5745,
+          "id": "10000000-0000-4000-8000-00000000e391",
+          "predicted": "희귀표식 푸른달 rsjkf",
+          "correct": false
+        },
+        {
+          "index": 9170,
+          "id": "10000000-0000-4000-8000-0000000072ef",
+          "predicted": "희귀표식 푸른달 rsjkf",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "known": 0,
+      "knownSupported": 0,
+      "phase": "snapshot",
+      "method": "rank_frequency",
+      "channel": "index",
+      "rows": 9974,
+      "correct": 0,
+      "pct": 0,
+      "characters": 15014,
+      "totalCharacters": 145558,
+      "characterPct": 10.314788606603553,
+      "mostly": 34,
+      "sharedKnownTargetRows": 0,
+      "learned": {
+        "dictionary": 9977,
+        "learnedFeatures": 0,
+        "candidateFeatures": 0,
+        "knownFingerprints": 0,
+        "noise": 0,
+        "knownRows": 0
+      },
+      "predictionDigest": "c8ce2a42b6554c2524ac58e5afeb5c63fba5b0213f28ce78a59bff679a7f1340",
+      "witnesses": [
+        {
+          "index": 121,
+          "id": "10000000-0000-4000-8000-000000016803",
+          "predicted": "정기 서비스 상담 mctir",
+          "correct": false
+        },
+        {
+          "index": 374,
+          "id": "10000000-0000-4000-8000-00000000cf96",
+          "predicted": "support case reopened 78lf0",
+          "correct": false
+        },
+        {
+          "index": 793,
+          "id": "10000000-0000-4000-8000-0000000126d4",
+          "predicted": "support case reopened hcrqj",
+          "correct": false
+        },
+        {
+          "index": 1338,
+          "id": "10000000-0000-4000-8000-0000000041e7",
+          "predicted": "정기 서비스 상담 psvqj",
+          "correct": false
+        },
+        {
+          "index": 2480,
+          "id": "10000000-0000-4000-8000-000000008ed9",
+          "predicted": "support case reopened f4ujd",
+          "correct": false
+        },
+        {
+          "index": 2507,
+          "id": "10000000-0000-4000-8000-000000004b88",
+          "predicted": "정기 서비스 상담 85qs9",
+          "correct": false
+        },
+        {
+          "index": 2896,
+          "id": "10000000-0000-4000-8000-000000015fe1",
+          "predicted": "정기 서비스 상담 2levq",
+          "correct": false
+        },
+        {
+          "index": 3978,
+          "id": "10000000-0000-4000-8000-00000000d1c4",
+          "predicted": "빠른 회신 바랍니다 di5eo",
+          "correct": false
+        },
+        {
+          "index": 4700,
+          "id": "10000000-0000-4000-8000-0000000126ff",
+          "predicted": "정기 서비스 상담 ltyee",
+          "correct": false
+        },
+        {
+          "index": 4840,
+          "id": "10000000-0000-4000-8000-000000005988",
+          "predicted": "정기 서비스 상담 87856",
+          "correct": false
+        },
+        {
+          "index": 5745,
+          "id": "10000000-0000-4000-8000-00000000e391",
+          "predicted": "서비스 일정 조정 0ttcq",
+          "correct": false
+        },
+        {
+          "index": 9170,
+          "id": "10000000-0000-4000-8000-0000000072ef",
+          "predicted": "서비스 일정 조정 xby7u",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "known": 0,
+      "knownSupported": 0,
+      "phase": "snapshot",
+      "method": "public_shape_reference",
+      "channel": "native_shape",
+      "rows": 9974,
+      "correct": 0,
+      "pct": 0,
+      "characters": 23633,
+      "totalCharacters": 145558,
+      "characterPct": 16.236139545748088,
+      "mostly": 44,
+      "sharedKnownTargetRows": 0,
+      "learned": {
+        "dictionary": 9977,
+        "learnedFeatures": 0,
+        "candidateFeatures": 0,
+        "knownFingerprints": 0,
+        "noise": 0,
+        "knownRows": 0
+      },
+      "predictionDigest": "3664c9490ad716b2272e86da82fc44494ff73c8969948a0740bf2f668f565e93",
+      "witnesses": [
+        {
+          "index": 121,
+          "id": "10000000-0000-4000-8000-000000016803",
+          "predicted": "계약서 검토 완료 02ru8",
+          "correct": false
+        },
+        {
+          "index": 374,
+          "id": "10000000-0000-4000-8000-00000000cf96",
+          "predicted": "계약서 검토 완료 02ru8",
+          "correct": false
+        },
+        {
+          "index": 793,
+          "id": "10000000-0000-4000-8000-0000000126d4",
+          "predicted": "계약서 검토 완료 02ru8",
+          "correct": false
+        },
+        {
+          "index": 1338,
+          "id": "10000000-0000-4000-8000-0000000041e7",
+          "predicted": "계약서 검토 완료 02ru8",
+          "correct": false
+        },
+        {
+          "index": 2480,
+          "id": "10000000-0000-4000-8000-000000008ed9",
+          "predicted": "계약서 검토 완료 02ru8",
+          "correct": false
+        },
+        {
+          "index": 2507,
+          "id": "10000000-0000-4000-8000-000000004b88",
+          "predicted": "계약서 검토 완료 02ru8",
+          "correct": false
+        },
+        {
+          "index": 2896,
+          "id": "10000000-0000-4000-8000-000000015fe1",
+          "predicted": "계약서 검토 완료 02ru8",
+          "correct": false
+        },
+        {
+          "index": 3978,
+          "id": "10000000-0000-4000-8000-00000000d1c4",
+          "predicted": "계약서 검토 완료 02ru8",
+          "correct": false
+        },
+        {
+          "index": 4700,
+          "id": "10000000-0000-4000-8000-0000000126ff",
+          "predicted": "계약서 검토 완료 02ru8",
+          "correct": false
+        },
+        {
+          "index": 4840,
+          "id": "10000000-0000-4000-8000-000000005988",
+          "predicted": "계약서 검토 완료 · 상세 안내와 확인 내용 상세 안내와 확인 내용 상세 안내와 확인 내용 상세 안내와 확인 내용 0b7h0",
+          "correct": false
+        },
+        {
+          "index": 5745,
+          "id": "10000000-0000-4000-8000-00000000e391",
+          "predicted": "계약서 검토 완료 02ru8",
+          "correct": false
+        },
+        {
+          "index": 9170,
+          "id": "10000000-0000-4000-8000-0000000072ef",
+          "predicted": "계약서 검토 완료 02ru8",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "known": 0,
+      "knownSupported": 0,
+      "phase": "snapshot",
+      "method": "public_tagcount_reference",
+      "channel": "index",
+      "rows": 9974,
+      "correct": 0,
+      "pct": 0,
+      "characters": 23185,
+      "totalCharacters": 145558,
+      "characterPct": 15.928358455048846,
+      "mostly": 34,
+      "sharedKnownTargetRows": 0,
+      "learned": {
+        "dictionary": 9977,
+        "learnedFeatures": 0,
+        "candidateFeatures": 0,
+        "knownFingerprints": 0,
+        "noise": 0,
+        "knownRows": 0
+      },
+      "predictionDigest": "674679bd80e6b7e8b2638b0259d7b473b1d82fed3d5c15f2d3df1bd1ecee9179",
+      "witnesses": [
+        {
+          "index": 121,
+          "id": "10000000-0000-4000-8000-000000016803",
+          "predicted": "계약서 검토 완료 02ru8",
+          "correct": false
+        },
+        {
+          "index": 374,
+          "id": "10000000-0000-4000-8000-00000000cf96",
+          "predicted": "계약서 검토 완료 02ru8",
+          "correct": false
+        },
+        {
+          "index": 793,
+          "id": "10000000-0000-4000-8000-0000000126d4",
+          "predicted": "계약서 검토 완료 02ru8",
+          "correct": false
+        },
+        {
+          "index": 1338,
+          "id": "10000000-0000-4000-8000-0000000041e7",
+          "predicted": "계약서 검토 완료 02ru8",
+          "correct": false
+        },
+        {
+          "index": 2480,
+          "id": "10000000-0000-4000-8000-000000008ed9",
+          "predicted": "계약서 검토 완료 02ru8",
+          "correct": false
+        },
+        {
+          "index": 2507,
+          "id": "10000000-0000-4000-8000-000000004b88",
+          "predicted": "계약서 검토 완료 02ru8",
+          "correct": false
+        },
+        {
+          "index": 2896,
+          "id": "10000000-0000-4000-8000-000000015fe1",
+          "predicted": "계약서 검토 완료 02ru8",
+          "correct": false
+        },
+        {
+          "index": 3978,
+          "id": "10000000-0000-4000-8000-00000000d1c4",
+          "predicted": "계약서 검토 완료 02ru8",
+          "correct": false
+        },
+        {
+          "index": 4700,
+          "id": "10000000-0000-4000-8000-0000000126ff",
+          "predicted": "계약서 검토 완료 02ru8",
+          "correct": false
+        },
+        {
+          "index": 4840,
+          "id": "10000000-0000-4000-8000-000000005988",
+          "predicted": "계약서 검토 완료 · 상세 안내와 확인 내용 상세 안내와 확인 내용 상세 안내와 확인 내용 상세 안내와 확인 내용 0b7h0",
+          "correct": false
+        },
+        {
+          "index": 5745,
+          "id": "10000000-0000-4000-8000-00000000e391",
+          "predicted": "계약서 검토 완료 02ru8",
+          "correct": false
+        },
+        {
+          "index": 9170,
+          "id": "10000000-0000-4000-8000-0000000072ef",
+          "predicted": "계약서 검토 완료 02ru8",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "known": 100,
+      "knownSupported": 100,
+      "phase": "snapshot",
+      "method": "group_frequency",
+      "channel": "index",
+      "rows": 9874,
+      "correct": 0,
+      "pct": 0,
+      "characters": 14415,
+      "totalCharacters": 144205,
+      "characterPct": 9.996185985229362,
+      "mostly": 34,
+      "sharedKnownTargetRows": 0,
+      "learned": {
+        "dictionary": 10077,
+        "learnedFeatures": 0,
+        "candidateFeatures": 4325,
+        "knownFingerprints": 100,
+        "noise": 0,
+        "knownRows": 100
+      },
+      "predictionDigest": "a4533a8028fc4c3bafea7600e04345ffd1ff612301dfbca313d673638c95394c",
+      "witnesses": [
+        {
+          "index": 2041,
+          "id": "10000000-0000-4000-8000-0000000136a9",
+          "predicted": "계약서 검토 완료 · 상세 안내와 확인 내용 상세 안내와 확인 내용 상세 안내와 확인 내용 상세 안내와 확인 내용 0b7h0",
+          "correct": false
+        },
+        {
+          "index": 2405,
+          "id": "10000000-0000-4000-8000-000000011905",
+          "predicted": "계약서 검토 완료 · 상세 안내와 확인 내용 상세 안내와 확인 내용 상세 안내와 확인 내용 상세 안내와 확인 내용 0b7h0",
+          "correct": false
+        },
+        {
+          "index": 2707,
+          "id": "10000000-0000-4000-8000-0000000005c7",
+          "predicted": "계약서 검토 완료 · 상세 안내와 확인 내용 상세 안내와 확인 내용 상세 안내와 확인 내용 상세 안내와 확인 내용 0b7h0",
+          "correct": false
+        },
+        {
+          "index": 3249,
+          "id": "10000000-0000-4000-8000-000000001037",
+          "predicted": "계약서 검토 완료 · 상세 안내와 확인 내용 상세 안내와 확인 내용 상세 안내와 확인 내용 상세 안내와 확인 내용 0b7h0",
+          "correct": false
+        },
+        {
+          "index": 4059,
+          "id": "10000000-0000-4000-8000-000000017e50",
+          "predicted": "계약서 검토 완료 · 상세 안내와 확인 내용 상세 안내와 확인 내용 상세 안내와 확인 내용 상세 안내와 확인 내용 0b7h0",
+          "correct": false
+        },
+        {
+          "index": 4172,
+          "id": "10000000-0000-4000-8000-0000000082ab",
+          "predicted": "계약서 검토 완료 · 상세 안내와 확인 내용 상세 안내와 확인 내용 상세 안내와 확인 내용 상세 안내와 확인 내용 0b7h0",
+          "correct": false
+        },
+        {
+          "index": 4636,
+          "id": "10000000-0000-4000-8000-00000000bea1",
+          "predicted": "계약서 검토 완료 · 상세 안내와 확인 내용 상세 안내와 확인 내용 상세 안내와 확인 내용 상세 안내와 확인 내용 0b7h0",
+          "correct": false
+        },
+        {
+          "index": 6268,
+          "id": "10000000-0000-4000-8000-00000000c0b7",
+          "predicted": "계약서 검토 완료 · 상세 안내와 확인 내용 상세 안내와 확인 내용 상세 안내와 확인 내용 상세 안내와 확인 내용 0b7h0",
+          "correct": false
+        },
+        {
+          "index": 6313,
+          "id": "10000000-0000-4000-8000-000000006d02",
+          "predicted": "계약서 검토 완료 · 상세 안내와 확인 내용 상세 안내와 확인 내용 상세 안내와 확인 내용 상세 안내와 확인 내용 0b7h0",
+          "correct": false
+        },
+        {
+          "index": 6426,
+          "id": "10000000-0000-4000-8000-000000013f8f",
+          "predicted": "계약서 검토 완료 · 상세 안내와 확인 내용 상세 안내와 확인 내용 상세 안내와 확인 내용 상세 안내와 확인 내용 0b7h0",
+          "correct": false
+        },
+        {
+          "index": 7083,
+          "id": "10000000-0000-4000-8000-0000000141f7",
+          "predicted": "계약서 검토 완료 · 상세 안내와 확인 내용 상세 안내와 확인 내용 상세 안내와 확인 내용 상세 안내와 확인 내용 0b7h0",
+          "correct": false
+        },
+        {
+          "index": 7682,
+          "id": "10000000-0000-4000-8000-00000001494d",
+          "predicted": "계약서 검토 완료 · 상세 안내와 확인 내용 상세 안내와 확인 내용 상세 안내와 확인 내용 상세 안내와 확인 내용 0b7h0",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "known": 100,
+      "knownSupported": 100,
+      "phase": "snapshot",
+      "method": "piece_frequency",
+      "channel": "index",
+      "rows": 9874,
+      "correct": 0,
+      "pct": 0,
+      "characters": 1124,
+      "totalCharacters": 144205,
+      "characterPct": 0.7794459276724108,
+      "mostly": 0,
+      "sharedKnownTargetRows": 0,
+      "learned": {
+        "dictionary": 10077,
+        "learnedFeatures": 0,
+        "candidateFeatures": 4325,
+        "knownFingerprints": 100,
+        "noise": 0,
+        "knownRows": 100
+      },
+      "predictionDigest": "41875cdeaf7fb8514f64eeeb501ab930afefec169115bb3801a92ba3162a5553",
+      "witnesses": [
+        {
+          "index": 2041,
+          "id": "10000000-0000-4000-8000-0000000136a9",
+          "predicted": "희귀표식 푸른달 rsjkf",
+          "correct": false
+        },
+        {
+          "index": 2405,
+          "id": "10000000-0000-4000-8000-000000011905",
+          "predicted": "희귀표식 푸른달 rsjkf",
+          "correct": false
+        },
+        {
+          "index": 2707,
+          "id": "10000000-0000-4000-8000-0000000005c7",
+          "predicted": "희귀표식 푸른달 rsjkf",
+          "correct": false
+        },
+        {
+          "index": 3249,
+          "id": "10000000-0000-4000-8000-000000001037",
+          "predicted": "희귀표식 푸른달 rsjkf",
+          "correct": false
+        },
+        {
+          "index": 4059,
+          "id": "10000000-0000-4000-8000-000000017e50",
+          "predicted": "희귀표식 푸른달 rsjkf",
+          "correct": false
+        },
+        {
+          "index": 4172,
+          "id": "10000000-0000-4000-8000-0000000082ab",
+          "predicted": "희귀표식 푸른달 rsjkf",
+          "correct": false
+        },
+        {
+          "index": 4636,
+          "id": "10000000-0000-4000-8000-00000000bea1",
+          "predicted": "희귀표식 푸른달 rsjkf",
+          "correct": false
+        },
+        {
+          "index": 6268,
+          "id": "10000000-0000-4000-8000-00000000c0b7",
+          "predicted": "희귀표식 푸른달 rsjkf",
+          "correct": false
+        },
+        {
+          "index": 6313,
+          "id": "10000000-0000-4000-8000-000000006d02",
+          "predicted": "희귀표식 푸른달 rsjkf",
+          "correct": false
+        },
+        {
+          "index": 6426,
+          "id": "10000000-0000-4000-8000-000000013f8f",
+          "predicted": "희귀표식 푸른달 rsjkf",
+          "correct": false
+        },
+        {
+          "index": 7083,
+          "id": "10000000-0000-4000-8000-0000000141f7",
+          "predicted": "희귀표식 푸른달 rsjkf",
+          "correct": false
+        },
+        {
+          "index": 7682,
+          "id": "10000000-0000-4000-8000-00000001494d",
+          "predicted": "희귀표식 푸른달 rsjkf",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "known": 100,
+      "knownSupported": 100,
+      "phase": "snapshot",
+      "method": "rank_frequency",
+      "channel": "index",
+      "rows": 9874,
+      "correct": 0,
+      "pct": 0,
+      "characters": 15029,
+      "totalCharacters": 144205,
+      "characterPct": 10.42196872507888,
+      "mostly": 31,
+      "sharedKnownTargetRows": 0,
+      "learned": {
+        "dictionary": 10077,
+        "learnedFeatures": 0,
+        "candidateFeatures": 4325,
+        "knownFingerprints": 100,
+        "noise": 0,
+        "knownRows": 100
+      },
+      "predictionDigest": "5cf1670cf65d3b33891d1a50eaf5ce07bdc202d117c9ac581ff29ca780f82ec5",
+      "witnesses": [
+        {
+          "index": 2041,
+          "id": "10000000-0000-4000-8000-0000000136a9",
+          "predicted": "주소 변경 접수 sl02a",
+          "correct": false
+        },
+        {
+          "index": 2405,
+          "id": "10000000-0000-4000-8000-000000011905",
+          "predicted": "invoice follow up ytsqf",
+          "correct": false
+        },
+        {
+          "index": 2707,
+          "id": "10000000-0000-4000-8000-0000000005c7",
+          "predicted": "빠른 회신 바랍니다 v2dvm",
+          "correct": false
+        },
+        {
+          "index": 3249,
+          "id": "10000000-0000-4000-8000-000000001037",
+          "predicted": "invoice follow up be8zk",
+          "correct": false
+        },
+        {
+          "index": 4059,
+          "id": "10000000-0000-4000-8000-000000017e50",
+          "predicted": "정기 서비스 상담 fig9u",
+          "correct": false
+        },
+        {
+          "index": 4172,
+          "id": "10000000-0000-4000-8000-0000000082ab",
+          "predicted": "정기 서비스 상담 1xywy",
+          "correct": false
+        },
+        {
+          "index": 4636,
+          "id": "10000000-0000-4000-8000-00000000bea1",
+          "predicted": "정기 서비스 상담 btyc3",
+          "correct": false
+        },
+        {
+          "index": 6268,
+          "id": "10000000-0000-4000-8000-00000000c0b7",
+          "predicted": "support case reopened dfzja",
+          "correct": false
+        },
+        {
+          "index": 6313,
+          "id": "10000000-0000-4000-8000-000000006d02",
+          "predicted": "support case reopened dluys",
+          "correct": false
+        },
+        {
+          "index": 6426,
+          "id": "10000000-0000-4000-8000-000000013f8f",
+          "predicted": "주소 변경 접수 i1j2d",
+          "correct": false
+        },
+        {
+          "index": 7083,
+          "id": "10000000-0000-4000-8000-0000000141f7",
+          "predicted": "서비스 일정 조정 lcw8w",
+          "correct": false
+        },
+        {
+          "index": 7682,
+          "id": "10000000-0000-4000-8000-00000001494d",
+          "predicted": "계약서 검토 완료 znhfy",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "known": 100,
+      "knownSupported": 100,
+      "phase": "snapshot",
+      "method": "known_projection",
+      "channel": "index",
+      "rows": 9874,
+      "correct": 0,
+      "pct": 0,
+      "characters": 14415,
+      "totalCharacters": 144205,
+      "characterPct": 9.996185985229362,
+      "mostly": 34,
+      "sharedKnownTargetRows": 0,
+      "learned": {
+        "dictionary": 10077,
+        "learnedFeatures": 0,
+        "candidateFeatures": 4325,
+        "knownFingerprints": 100,
+        "noise": 0,
+        "knownRows": 100
+      },
+      "predictionDigest": "a4533a8028fc4c3bafea7600e04345ffd1ff612301dfbca313d673638c95394c",
+      "witnesses": [
+        {
+          "index": 2041,
+          "id": "10000000-0000-4000-8000-0000000136a9",
+          "predicted": "계약서 검토 완료 · 상세 안내와 확인 내용 상세 안내와 확인 내용 상세 안내와 확인 내용 상세 안내와 확인 내용 0b7h0",
+          "correct": false
+        },
+        {
+          "index": 2405,
+          "id": "10000000-0000-4000-8000-000000011905",
+          "predicted": "계약서 검토 완료 · 상세 안내와 확인 내용 상세 안내와 확인 내용 상세 안내와 확인 내용 상세 안내와 확인 내용 0b7h0",
+          "correct": false
+        },
+        {
+          "index": 2707,
+          "id": "10000000-0000-4000-8000-0000000005c7",
+          "predicted": "계약서 검토 완료 · 상세 안내와 확인 내용 상세 안내와 확인 내용 상세 안내와 확인 내용 상세 안내와 확인 내용 0b7h0",
+          "correct": false
+        },
+        {
+          "index": 3249,
+          "id": "10000000-0000-4000-8000-000000001037",
+          "predicted": "계약서 검토 완료 · 상세 안내와 확인 내용 상세 안내와 확인 내용 상세 안내와 확인 내용 상세 안내와 확인 내용 0b7h0",
+          "correct": false
+        },
+        {
+          "index": 4059,
+          "id": "10000000-0000-4000-8000-000000017e50",
+          "predicted": "계약서 검토 완료 · 상세 안내와 확인 내용 상세 안내와 확인 내용 상세 안내와 확인 내용 상세 안내와 확인 내용 0b7h0",
+          "correct": false
+        },
+        {
+          "index": 4172,
+          "id": "10000000-0000-4000-8000-0000000082ab",
+          "predicted": "계약서 검토 완료 · 상세 안내와 확인 내용 상세 안내와 확인 내용 상세 안내와 확인 내용 상세 안내와 확인 내용 0b7h0",
+          "correct": false
+        },
+        {
+          "index": 4636,
+          "id": "10000000-0000-4000-8000-00000000bea1",
+          "predicted": "계약서 검토 완료 · 상세 안내와 확인 내용 상세 안내와 확인 내용 상세 안내와 확인 내용 상세 안내와 확인 내용 0b7h0",
+          "correct": false
+        },
+        {
+          "index": 6268,
+          "id": "10000000-0000-4000-8000-00000000c0b7",
+          "predicted": "계약서 검토 완료 · 상세 안내와 확인 내용 상세 안내와 확인 내용 상세 안내와 확인 내용 상세 안내와 확인 내용 0b7h0",
+          "correct": false
+        },
+        {
+          "index": 6313,
+          "id": "10000000-0000-4000-8000-000000006d02",
+          "predicted": "계약서 검토 완료 · 상세 안내와 확인 내용 상세 안내와 확인 내용 상세 안내와 확인 내용 상세 안내와 확인 내용 0b7h0",
+          "correct": false
+        },
+        {
+          "index": 6426,
+          "id": "10000000-0000-4000-8000-000000013f8f",
+          "predicted": "계약서 검토 완료 · 상세 안내와 확인 내용 상세 안내와 확인 내용 상세 안내와 확인 내용 상세 안내와 확인 내용 0b7h0",
+          "correct": false
+        },
+        {
+          "index": 7083,
+          "id": "10000000-0000-4000-8000-0000000141f7",
+          "predicted": "계약서 검토 완료 · 상세 안내와 확인 내용 상세 안내와 확인 내용 상세 안내와 확인 내용 상세 안내와 확인 내용 0b7h0",
+          "correct": false
+        },
+        {
+          "index": 7682,
+          "id": "10000000-0000-4000-8000-00000001494d",
+          "predicted": "계약서 검토 완료 · 상세 안내와 확인 내용 상세 안내와 확인 내용 상세 안내와 확인 내용 상세 안내와 확인 내용 0b7h0",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "known": 100,
+      "knownSupported": 100,
+      "phase": "snapshot",
+      "method": "known_fingerprint",
+      "channel": "index",
+      "rows": 9874,
+      "correct": 0,
+      "pct": 0,
+      "characters": 14415,
+      "totalCharacters": 144205,
+      "characterPct": 9.996185985229362,
+      "mostly": 34,
+      "sharedKnownTargetRows": 0,
+      "learned": {
+        "dictionary": 10077,
+        "learnedFeatures": 0,
+        "candidateFeatures": 4325,
+        "knownFingerprints": 100,
+        "noise": 0,
+        "knownRows": 100
+      },
+      "predictionDigest": "a4533a8028fc4c3bafea7600e04345ffd1ff612301dfbca313d673638c95394c",
+      "witnesses": [
+        {
+          "index": 2041,
+          "id": "10000000-0000-4000-8000-0000000136a9",
+          "predicted": "계약서 검토 완료 · 상세 안내와 확인 내용 상세 안내와 확인 내용 상세 안내와 확인 내용 상세 안내와 확인 내용 0b7h0",
+          "correct": false
+        },
+        {
+          "index": 2405,
+          "id": "10000000-0000-4000-8000-000000011905",
+          "predicted": "계약서 검토 완료 · 상세 안내와 확인 내용 상세 안내와 확인 내용 상세 안내와 확인 내용 상세 안내와 확인 내용 0b7h0",
+          "correct": false
+        },
+        {
+          "index": 2707,
+          "id": "10000000-0000-4000-8000-0000000005c7",
+          "predicted": "계약서 검토 완료 · 상세 안내와 확인 내용 상세 안내와 확인 내용 상세 안내와 확인 내용 상세 안내와 확인 내용 0b7h0",
+          "correct": false
+        },
+        {
+          "index": 3249,
+          "id": "10000000-0000-4000-8000-000000001037",
+          "predicted": "계약서 검토 완료 · 상세 안내와 확인 내용 상세 안내와 확인 내용 상세 안내와 확인 내용 상세 안내와 확인 내용 0b7h0",
+          "correct": false
+        },
+        {
+          "index": 4059,
+          "id": "10000000-0000-4000-8000-000000017e50",
+          "predicted": "계약서 검토 완료 · 상세 안내와 확인 내용 상세 안내와 확인 내용 상세 안내와 확인 내용 상세 안내와 확인 내용 0b7h0",
+          "correct": false
+        },
+        {
+          "index": 4172,
+          "id": "10000000-0000-4000-8000-0000000082ab",
+          "predicted": "계약서 검토 완료 · 상세 안내와 확인 내용 상세 안내와 확인 내용 상세 안내와 확인 내용 상세 안내와 확인 내용 0b7h0",
+          "correct": false
+        },
+        {
+          "index": 4636,
+          "id": "10000000-0000-4000-8000-00000000bea1",
+          "predicted": "계약서 검토 완료 · 상세 안내와 확인 내용 상세 안내와 확인 내용 상세 안내와 확인 내용 상세 안내와 확인 내용 0b7h0",
+          "correct": false
+        },
+        {
+          "index": 6268,
+          "id": "10000000-0000-4000-8000-00000000c0b7",
+          "predicted": "계약서 검토 완료 · 상세 안내와 확인 내용 상세 안내와 확인 내용 상세 안내와 확인 내용 상세 안내와 확인 내용 0b7h0",
+          "correct": false
+        },
+        {
+          "index": 6313,
+          "id": "10000000-0000-4000-8000-000000006d02",
+          "predicted": "계약서 검토 완료 · 상세 안내와 확인 내용 상세 안내와 확인 내용 상세 안내와 확인 내용 상세 안내와 확인 내용 0b7h0",
+          "correct": false
+        },
+        {
+          "index": 6426,
+          "id": "10000000-0000-4000-8000-000000013f8f",
+          "predicted": "계약서 검토 완료 · 상세 안내와 확인 내용 상세 안내와 확인 내용 상세 안내와 확인 내용 상세 안내와 확인 내용 0b7h0",
+          "correct": false
+        },
+        {
+          "index": 7083,
+          "id": "10000000-0000-4000-8000-0000000141f7",
+          "predicted": "계약서 검토 완료 · 상세 안내와 확인 내용 상세 안내와 확인 내용 상세 안내와 확인 내용 상세 안내와 확인 내용 0b7h0",
+          "correct": false
+        },
+        {
+          "index": 7682,
+          "id": "10000000-0000-4000-8000-00000001494d",
+          "predicted": "계약서 검토 완료 · 상세 안내와 확인 내용 상세 안내와 확인 내용 상세 안내와 확인 내용 상세 안내와 확인 내용 0b7h0",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "known": 100,
+      "knownSupported": 100,
+      "phase": "snapshot",
+      "method": "public_shape_reference",
+      "channel": "native_shape",
+      "rows": 9874,
+      "correct": 0,
+      "pct": 0,
+      "characters": 23469,
+      "totalCharacters": 144205,
+      "characterPct": 16.274747754932214,
+      "mostly": 44,
+      "sharedKnownTargetRows": 0,
+      "learned": {
+        "dictionary": 10077,
+        "learnedFeatures": 0,
+        "candidateFeatures": 4325,
+        "knownFingerprints": 100,
+        "noise": 0,
+        "knownRows": 100
+      },
+      "predictionDigest": "756cf75012e3e3d72203f3206fa4fd92c3ee0196fba7ff10763ec859e57bf764",
+      "witnesses": [
+        {
+          "index": 2041,
+          "id": "10000000-0000-4000-8000-0000000136a9",
+          "predicted": "빠른 회신 바랍니다 001iz",
+          "correct": false
+        },
+        {
+          "index": 2405,
+          "id": "10000000-0000-4000-8000-000000011905",
+          "predicted": "계약서 검토 완료 02ru8",
+          "correct": false
+        },
+        {
+          "index": 2707,
+          "id": "10000000-0000-4000-8000-0000000005c7",
+          "predicted": "계약서 검토 완료 02ru8",
+          "correct": false
+        },
+        {
+          "index": 3249,
+          "id": "10000000-0000-4000-8000-000000001037",
+          "predicted": "계약서 검토 완료 02ru8",
+          "correct": false
+        },
+        {
+          "index": 4059,
+          "id": "10000000-0000-4000-8000-000000017e50",
+          "predicted": "계약서 검토 완료 02ru8",
+          "correct": false
+        },
+        {
+          "index": 4172,
+          "id": "10000000-0000-4000-8000-0000000082ab",
+          "predicted": "계약서 검토 완료 02ru8",
+          "correct": false
+        },
+        {
+          "index": 4636,
+          "id": "10000000-0000-4000-8000-00000000bea1",
+          "predicted": "계약서 검토 완료 02ru8",
+          "correct": false
+        },
+        {
+          "index": 6268,
+          "id": "10000000-0000-4000-8000-00000000c0b7",
+          "predicted": "계약서 검토 완료 02ru8",
+          "correct": false
+        },
+        {
+          "index": 6313,
+          "id": "10000000-0000-4000-8000-000000006d02",
+          "predicted": "계약서 검토 완료 02ru8",
+          "correct": false
+        },
+        {
+          "index": 6426,
+          "id": "10000000-0000-4000-8000-000000013f8f",
+          "predicted": "계약서 검토 완료 02ru8",
+          "correct": false
+        },
+        {
+          "index": 7083,
+          "id": "10000000-0000-4000-8000-0000000141f7",
+          "predicted": "계약서 검토 완료 02ru8",
+          "correct": false
+        },
+        {
+          "index": 7682,
+          "id": "10000000-0000-4000-8000-00000001494d",
+          "predicted": "계약서 검토 완료 02ru8",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "known": 100,
+      "knownSupported": 100,
+      "phase": "snapshot",
+      "method": "public_tagcount_reference",
+      "channel": "index",
+      "rows": 9874,
+      "correct": 0,
+      "pct": 0,
+      "characters": 23021,
+      "totalCharacters": 144205,
+      "characterPct": 15.964078915432891,
+      "mostly": 34,
+      "sharedKnownTargetRows": 0,
+      "learned": {
+        "dictionary": 10077,
+        "learnedFeatures": 0,
+        "candidateFeatures": 4325,
+        "knownFingerprints": 100,
+        "noise": 0,
+        "knownRows": 100
+      },
+      "predictionDigest": "a6c74083b3fc4ee48c829cd8acd5e62355d6632b6345b7569b351a66e4b5afe5",
+      "witnesses": [
+        {
+          "index": 2041,
+          "id": "10000000-0000-4000-8000-0000000136a9",
+          "predicted": "빠른 회신 바랍니다 001iz",
+          "correct": false
+        },
+        {
+          "index": 2405,
+          "id": "10000000-0000-4000-8000-000000011905",
+          "predicted": "계약서 검토 완료 02ru8",
+          "correct": false
+        },
+        {
+          "index": 2707,
+          "id": "10000000-0000-4000-8000-0000000005c7",
+          "predicted": "계약서 검토 완료 02ru8",
+          "correct": false
+        },
+        {
+          "index": 3249,
+          "id": "10000000-0000-4000-8000-000000001037",
+          "predicted": "계약서 검토 완료 02ru8",
+          "correct": false
+        },
+        {
+          "index": 4059,
+          "id": "10000000-0000-4000-8000-000000017e50",
+          "predicted": "계약서 검토 완료 02ru8",
+          "correct": false
+        },
+        {
+          "index": 4172,
+          "id": "10000000-0000-4000-8000-0000000082ab",
+          "predicted": "계약서 검토 완료 02ru8",
+          "correct": false
+        },
+        {
+          "index": 4636,
+          "id": "10000000-0000-4000-8000-00000000bea1",
+          "predicted": "계약서 검토 완료 02ru8",
+          "correct": false
+        },
+        {
+          "index": 6268,
+          "id": "10000000-0000-4000-8000-00000000c0b7",
+          "predicted": "계약서 검토 완료 02ru8",
+          "correct": false
+        },
+        {
+          "index": 6313,
+          "id": "10000000-0000-4000-8000-000000006d02",
+          "predicted": "계약서 검토 완료 02ru8",
+          "correct": false
+        },
+        {
+          "index": 6426,
+          "id": "10000000-0000-4000-8000-000000013f8f",
+          "predicted": "계약서 검토 완료 02ru8",
+          "correct": false
+        },
+        {
+          "index": 7083,
+          "id": "10000000-0000-4000-8000-0000000141f7",
+          "predicted": "계약서 검토 완료 02ru8",
+          "correct": false
+        },
+        {
+          "index": 7682,
+          "id": "10000000-0000-4000-8000-00000001494d",
+          "predicted": "계약서 검토 완료 02ru8",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "known": 100,
+      "knownSupported": 100,
+      "phase": "snapshot",
+      "method": "public_shape_known",
+      "channel": "native_shape",
+      "rows": 9874,
+      "correct": 0,
+      "pct": 0,
+      "characters": 23469,
+      "totalCharacters": 144205,
+      "characterPct": 16.274747754932214,
+      "mostly": 44,
+      "sharedKnownTargetRows": 0,
+      "learned": {
+        "dictionary": 10077,
+        "learnedFeatures": 0,
+        "candidateFeatures": 4325,
+        "knownFingerprints": 100,
+        "noise": 0,
+        "knownRows": 100
+      },
+      "predictionDigest": "756cf75012e3e3d72203f3206fa4fd92c3ee0196fba7ff10763ec859e57bf764",
+      "witnesses": [
+        {
+          "index": 2041,
+          "id": "10000000-0000-4000-8000-0000000136a9",
+          "predicted": "빠른 회신 바랍니다 001iz",
+          "correct": false
+        },
+        {
+          "index": 2405,
+          "id": "10000000-0000-4000-8000-000000011905",
+          "predicted": "계약서 검토 완료 02ru8",
+          "correct": false
+        },
+        {
+          "index": 2707,
+          "id": "10000000-0000-4000-8000-0000000005c7",
+          "predicted": "계약서 검토 완료 02ru8",
+          "correct": false
+        },
+        {
+          "index": 3249,
+          "id": "10000000-0000-4000-8000-000000001037",
+          "predicted": "계약서 검토 완료 02ru8",
+          "correct": false
+        },
+        {
+          "index": 4059,
+          "id": "10000000-0000-4000-8000-000000017e50",
+          "predicted": "계약서 검토 완료 02ru8",
+          "correct": false
+        },
+        {
+          "index": 4172,
+          "id": "10000000-0000-4000-8000-0000000082ab",
+          "predicted": "계약서 검토 완료 02ru8",
+          "correct": false
+        },
+        {
+          "index": 4636,
+          "id": "10000000-0000-4000-8000-00000000bea1",
+          "predicted": "계약서 검토 완료 02ru8",
+          "correct": false
+        },
+        {
+          "index": 6268,
+          "id": "10000000-0000-4000-8000-00000000c0b7",
+          "predicted": "계약서 검토 완료 02ru8",
+          "correct": false
+        },
+        {
+          "index": 6313,
+          "id": "10000000-0000-4000-8000-000000006d02",
+          "predicted": "계약서 검토 완료 02ru8",
+          "correct": false
+        },
+        {
+          "index": 6426,
+          "id": "10000000-0000-4000-8000-000000013f8f",
+          "predicted": "계약서 검토 완료 02ru8",
+          "correct": false
+        },
+        {
+          "index": 7083,
+          "id": "10000000-0000-4000-8000-0000000141f7",
+          "predicted": "계약서 검토 완료 02ru8",
+          "correct": false
+        },
+        {
+          "index": 7682,
+          "id": "10000000-0000-4000-8000-00000001494d",
+          "predicted": "계약서 검토 완료 02ru8",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "known": 100,
+      "knownSupported": 100,
+      "phase": "snapshot",
+      "method": "public_tagcount_known",
+      "channel": "index",
+      "rows": 9874,
+      "correct": 0,
+      "pct": 0,
+      "characters": 23021,
+      "totalCharacters": 144205,
+      "characterPct": 15.964078915432891,
+      "mostly": 34,
+      "sharedKnownTargetRows": 0,
+      "learned": {
+        "dictionary": 10077,
+        "learnedFeatures": 0,
+        "candidateFeatures": 4325,
+        "knownFingerprints": 100,
+        "noise": 0,
+        "knownRows": 100
+      },
+      "predictionDigest": "a6c74083b3fc4ee48c829cd8acd5e62355d6632b6345b7569b351a66e4b5afe5",
+      "witnesses": [
+        {
+          "index": 2041,
+          "id": "10000000-0000-4000-8000-0000000136a9",
+          "predicted": "빠른 회신 바랍니다 001iz",
+          "correct": false
+        },
+        {
+          "index": 2405,
+          "id": "10000000-0000-4000-8000-000000011905",
+          "predicted": "계약서 검토 완료 02ru8",
+          "correct": false
+        },
+        {
+          "index": 2707,
+          "id": "10000000-0000-4000-8000-0000000005c7",
+          "predicted": "계약서 검토 완료 02ru8",
+          "correct": false
+        },
+        {
+          "index": 3249,
+          "id": "10000000-0000-4000-8000-000000001037",
+          "predicted": "계약서 검토 완료 02ru8",
+          "correct": false
+        },
+        {
+          "index": 4059,
+          "id": "10000000-0000-4000-8000-000000017e50",
+          "predicted": "계약서 검토 완료 02ru8",
+          "correct": false
+        },
+        {
+          "index": 4172,
+          "id": "10000000-0000-4000-8000-0000000082ab",
+          "predicted": "계약서 검토 완료 02ru8",
+          "correct": false
+        },
+        {
+          "index": 4636,
+          "id": "10000000-0000-4000-8000-00000000bea1",
+          "predicted": "계약서 검토 완료 02ru8",
+          "correct": false
+        },
+        {
+          "index": 6268,
+          "id": "10000000-0000-4000-8000-00000000c0b7",
+          "predicted": "계약서 검토 완료 02ru8",
+          "correct": false
+        },
+        {
+          "index": 6313,
+          "id": "10000000-0000-4000-8000-000000006d02",
+          "predicted": "계약서 검토 완료 02ru8",
+          "correct": false
+        },
+        {
+          "index": 6426,
+          "id": "10000000-0000-4000-8000-000000013f8f",
+          "predicted": "계약서 검토 완료 02ru8",
+          "correct": false
+        },
+        {
+          "index": 7083,
+          "id": "10000000-0000-4000-8000-0000000141f7",
+          "predicted": "계약서 검토 완료 02ru8",
+          "correct": false
+        },
+        {
+          "index": 7682,
+          "id": "10000000-0000-4000-8000-00000001494d",
+          "predicted": "계약서 검토 완료 02ru8",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "known": 500,
+      "knownSupported": 499,
+      "phase": "snapshot",
+      "method": "group_frequency",
+      "channel": "index",
+      "rows": 9475,
+      "correct": 0,
+      "pct": 0,
+      "characters": 13972,
+      "totalCharacters": 138280,
+      "characterPct": 10.104136534567544,
+      "mostly": 33,
+      "sharedKnownTargetRows": 0,
+      "learned": {
+        "dictionary": 10476,
+        "learnedFeatures": 0,
+        "candidateFeatures": 18553,
+        "knownFingerprints": 499,
+        "noise": 0,
+        "knownRows": 499
+      },
+      "predictionDigest": "03b38b3b7650c3c04a54ebd7649deacb4a7014396fc201d378e1877f667b45a0",
+      "witnesses": [
+        {
+          "index": 1635,
+          "id": "10000000-0000-4000-8000-000000004148",
+          "predicted": "계약서 검토 완료 · 상세 안내와 확인 내용 상세 안내와 확인 내용 상세 안내와 확인 내용 상세 안내와 확인 내용 0b7h0",
+          "correct": false
+        },
+        {
+          "index": 1743,
+          "id": "10000000-0000-4000-8000-00000000da8d",
+          "predicted": "계약서 검토 완료 · 상세 안내와 확인 내용 상세 안내와 확인 내용 상세 안내와 확인 내용 상세 안내와 확인 내용 0b7h0",
+          "correct": false
+        },
+        {
+          "index": 3491,
+          "id": "10000000-0000-4000-8000-0000000054d1",
+          "predicted": "계약서 검토 완료 · 상세 안내와 확인 내용 상세 안내와 확인 내용 상세 안내와 확인 내용 상세 안내와 확인 내용 0b7h0",
+          "correct": false
+        },
+        {
+          "index": 4278,
+          "id": "10000000-0000-4000-8000-000000007d50",
+          "predicted": "계약서 검토 완료 · 상세 안내와 확인 내용 상세 안내와 확인 내용 상세 안내와 확인 내용 상세 안내와 확인 내용 0b7h0",
+          "correct": false
+        },
+        {
+          "index": 4915,
+          "id": "10000000-0000-4000-8000-000000010d63",
+          "predicted": "계약서 검토 완료 · 상세 안내와 확인 내용 상세 안내와 확인 내용 상세 안내와 확인 내용 상세 안내와 확인 내용 0b7h0",
+          "correct": false
+        },
+        {
+          "index": 5316,
+          "id": "10000000-0000-4000-8000-00000000fae6",
+          "predicted": "계약서 검토 완료 · 상세 안내와 확인 내용 상세 안내와 확인 내용 상세 안내와 확인 내용 상세 안내와 확인 내용 0b7h0",
+          "correct": false
+        },
+        {
+          "index": 5580,
+          "id": "10000000-0000-4000-8000-00000000688b",
+          "predicted": "계약서 검토 완료 · 상세 안내와 확인 내용 상세 안내와 확인 내용 상세 안내와 확인 내용 상세 안내와 확인 내용 0b7h0",
+          "correct": false
+        },
+        {
+          "index": 6957,
+          "id": "10000000-0000-4000-8000-00000000cd87",
+          "predicted": "계약서 검토 완료 · 상세 안내와 확인 내용 상세 안내와 확인 내용 상세 안내와 확인 내용 상세 안내와 확인 내용 0b7h0",
+          "correct": false
+        },
+        {
+          "index": 8176,
+          "id": "10000000-0000-4000-8000-000000003f23",
+          "predicted": "계약서 검토 완료 · 상세 안내와 확인 내용 상세 안내와 확인 내용 상세 안내와 확인 내용 상세 안내와 확인 내용 0b7h0",
+          "correct": false
+        },
+        {
+          "index": 8469,
+          "id": "10000000-0000-4000-8000-00000000b190",
+          "predicted": "계약서 검토 완료 · 상세 안내와 확인 내용 상세 안내와 확인 내용 상세 안내와 확인 내용 상세 안내와 확인 내용 0b7h0",
+          "correct": false
+        },
+        {
+          "index": 9602,
+          "id": "10000000-0000-4000-8000-000000013612",
+          "predicted": "계약서 검토 완료 · 상세 안내와 확인 내용 상세 안내와 확인 내용 상세 안내와 확인 내용 상세 안내와 확인 내용 0b7h0",
+          "correct": false
+        },
+        {
+          "index": 9729,
+          "id": "10000000-0000-4000-8000-0000000074be",
+          "predicted": "계약서 검토 완료 · 상세 안내와 확인 내용 상세 안내와 확인 내용 상세 안내와 확인 내용 상세 안내와 확인 내용 0b7h0",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "known": 500,
+      "knownSupported": 499,
+      "phase": "snapshot",
+      "method": "piece_frequency",
+      "channel": "index",
+      "rows": 9475,
+      "correct": 0,
+      "pct": 0,
+      "characters": 1077,
+      "totalCharacters": 138280,
+      "characterPct": 0.778854498119757,
+      "mostly": 0,
+      "sharedKnownTargetRows": 0,
+      "learned": {
+        "dictionary": 10476,
+        "learnedFeatures": 0,
+        "candidateFeatures": 18553,
+        "knownFingerprints": 499,
+        "noise": 0,
+        "knownRows": 499
+      },
+      "predictionDigest": "dfd92f66fef1ef3de548ae4cce9c73702f459b73a9dcd1784d2ea3e297ffb66c",
+      "witnesses": [
+        {
+          "index": 1635,
+          "id": "10000000-0000-4000-8000-000000004148",
+          "predicted": "희귀표식 푸른달 rsjkf",
+          "correct": false
+        },
+        {
+          "index": 1743,
+          "id": "10000000-0000-4000-8000-00000000da8d",
+          "predicted": "희귀표식 푸른달 rsjkf",
+          "correct": false
+        },
+        {
+          "index": 3491,
+          "id": "10000000-0000-4000-8000-0000000054d1",
+          "predicted": "희귀표식 푸른달 rsjkf",
+          "correct": false
+        },
+        {
+          "index": 4278,
+          "id": "10000000-0000-4000-8000-000000007d50",
+          "predicted": "희귀표식 푸른달 rsjkf",
+          "correct": false
+        },
+        {
+          "index": 4915,
+          "id": "10000000-0000-4000-8000-000000010d63",
+          "predicted": "희귀표식 푸른달 rsjkf",
+          "correct": false
+        },
+        {
+          "index": 5316,
+          "id": "10000000-0000-4000-8000-00000000fae6",
+          "predicted": "희귀표식 푸른달 rsjkf",
+          "correct": false
+        },
+        {
+          "index": 5580,
+          "id": "10000000-0000-4000-8000-00000000688b",
+          "predicted": "희귀표식 푸른달 rsjkf",
+          "correct": false
+        },
+        {
+          "index": 6957,
+          "id": "10000000-0000-4000-8000-00000000cd87",
+          "predicted": "희귀표식 푸른달 rsjkf",
+          "correct": false
+        },
+        {
+          "index": 8176,
+          "id": "10000000-0000-4000-8000-000000003f23",
+          "predicted": "희귀표식 푸른달 rsjkf",
+          "correct": false
+        },
+        {
+          "index": 8469,
+          "id": "10000000-0000-4000-8000-00000000b190",
+          "predicted": "희귀표식 푸른달 rsjkf",
+          "correct": false
+        },
+        {
+          "index": 9602,
+          "id": "10000000-0000-4000-8000-000000013612",
+          "predicted": "희귀표식 푸른달 rsjkf",
+          "correct": false
+        },
+        {
+          "index": 9729,
+          "id": "10000000-0000-4000-8000-0000000074be",
+          "predicted": "희귀표식 푸른달 rsjkf",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "known": 500,
+      "knownSupported": 499,
+      "phase": "snapshot",
+      "method": "rank_frequency",
+      "channel": "index",
+      "rows": 9475,
+      "correct": 0,
+      "pct": 0,
+      "characters": 14196,
+      "totalCharacters": 138280,
+      "characterPct": 10.26612669945039,
+      "mostly": 18,
+      "sharedKnownTargetRows": 0,
+      "learned": {
+        "dictionary": 10476,
+        "learnedFeatures": 0,
+        "candidateFeatures": 18553,
+        "knownFingerprints": 499,
+        "noise": 0,
+        "knownRows": 499
+      },
+      "predictionDigest": "2f098bfd320d1d94b3cff57438cef2027077f6de70a17e7518ea85b42779f82d",
+      "witnesses": [
+        {
+          "index": 1635,
+          "id": "10000000-0000-4000-8000-000000004148",
+          "predicted": "배송 확인 요청 w54lb",
+          "correct": false
+        },
+        {
+          "index": 1743,
+          "id": "10000000-0000-4000-8000-00000000da8d",
+          "predicted": "서비스 일정 조정 2k9pw",
+          "correct": false
+        },
+        {
+          "index": 3491,
+          "id": "10000000-0000-4000-8000-0000000054d1",
+          "predicted": "invoice follow up qwwm5",
+          "correct": false
+        },
+        {
+          "index": 4278,
+          "id": "10000000-0000-4000-8000-000000007d50",
+          "predicted": "계약서 검토 완료 vbm9q",
+          "correct": false
+        },
+        {
+          "index": 4915,
+          "id": "10000000-0000-4000-8000-000000010d63",
+          "predicted": "정기 서비스 상담 24sfl",
+          "correct": false
+        },
+        {
+          "index": 5316,
+          "id": "10000000-0000-4000-8000-00000000fae6",
+          "predicted": "주소 변경 접수 mhol5",
+          "correct": false
+        },
+        {
+          "index": 5580,
+          "id": "10000000-0000-4000-8000-00000000688b",
+          "predicted": "주소 변경 접수 02ds3",
+          "correct": false
+        },
+        {
+          "index": 6957,
+          "id": "10000000-0000-4000-8000-00000000cd87",
+          "predicted": "빠른 회신 바랍니다 78n3y",
+          "correct": false
+        },
+        {
+          "index": 8176,
+          "id": "10000000-0000-4000-8000-000000003f23",
+          "predicted": "서비스 일정 조정 e3196",
+          "correct": false
+        },
+        {
+          "index": 8469,
+          "id": "10000000-0000-4000-8000-00000000b190",
+          "predicted": "정기 서비스 상담 r47dv",
+          "correct": false
+        },
+        {
+          "index": 9602,
+          "id": "10000000-0000-4000-8000-000000013612",
+          "predicted": "배송 확인 요청 dxexf",
+          "correct": false
+        },
+        {
+          "index": 9729,
+          "id": "10000000-0000-4000-8000-0000000074be",
+          "predicted": "주소 변경 접수 d1ght",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "known": 500,
+      "knownSupported": 499,
+      "phase": "snapshot",
+      "method": "known_projection",
+      "channel": "index",
+      "rows": 9475,
+      "correct": 0,
+      "pct": 0,
+      "characters": 13972,
+      "totalCharacters": 138280,
+      "characterPct": 10.104136534567544,
+      "mostly": 33,
+      "sharedKnownTargetRows": 0,
+      "learned": {
+        "dictionary": 10476,
+        "learnedFeatures": 0,
+        "candidateFeatures": 18553,
+        "knownFingerprints": 499,
+        "noise": 0,
+        "knownRows": 499
+      },
+      "predictionDigest": "03b38b3b7650c3c04a54ebd7649deacb4a7014396fc201d378e1877f667b45a0",
+      "witnesses": [
+        {
+          "index": 1635,
+          "id": "10000000-0000-4000-8000-000000004148",
+          "predicted": "계약서 검토 완료 · 상세 안내와 확인 내용 상세 안내와 확인 내용 상세 안내와 확인 내용 상세 안내와 확인 내용 0b7h0",
+          "correct": false
+        },
+        {
+          "index": 1743,
+          "id": "10000000-0000-4000-8000-00000000da8d",
+          "predicted": "계약서 검토 완료 · 상세 안내와 확인 내용 상세 안내와 확인 내용 상세 안내와 확인 내용 상세 안내와 확인 내용 0b7h0",
+          "correct": false
+        },
+        {
+          "index": 3491,
+          "id": "10000000-0000-4000-8000-0000000054d1",
+          "predicted": "계약서 검토 완료 · 상세 안내와 확인 내용 상세 안내와 확인 내용 상세 안내와 확인 내용 상세 안내와 확인 내용 0b7h0",
+          "correct": false
+        },
+        {
+          "index": 4278,
+          "id": "10000000-0000-4000-8000-000000007d50",
+          "predicted": "계약서 검토 완료 · 상세 안내와 확인 내용 상세 안내와 확인 내용 상세 안내와 확인 내용 상세 안내와 확인 내용 0b7h0",
+          "correct": false
+        },
+        {
+          "index": 4915,
+          "id": "10000000-0000-4000-8000-000000010d63",
+          "predicted": "계약서 검토 완료 · 상세 안내와 확인 내용 상세 안내와 확인 내용 상세 안내와 확인 내용 상세 안내와 확인 내용 0b7h0",
+          "correct": false
+        },
+        {
+          "index": 5316,
+          "id": "10000000-0000-4000-8000-00000000fae6",
+          "predicted": "계약서 검토 완료 · 상세 안내와 확인 내용 상세 안내와 확인 내용 상세 안내와 확인 내용 상세 안내와 확인 내용 0b7h0",
+          "correct": false
+        },
+        {
+          "index": 5580,
+          "id": "10000000-0000-4000-8000-00000000688b",
+          "predicted": "계약서 검토 완료 · 상세 안내와 확인 내용 상세 안내와 확인 내용 상세 안내와 확인 내용 상세 안내와 확인 내용 0b7h0",
+          "correct": false
+        },
+        {
+          "index": 6957,
+          "id": "10000000-0000-4000-8000-00000000cd87",
+          "predicted": "계약서 검토 완료 · 상세 안내와 확인 내용 상세 안내와 확인 내용 상세 안내와 확인 내용 상세 안내와 확인 내용 0b7h0",
+          "correct": false
+        },
+        {
+          "index": 8176,
+          "id": "10000000-0000-4000-8000-000000003f23",
+          "predicted": "계약서 검토 완료 · 상세 안내와 확인 내용 상세 안내와 확인 내용 상세 안내와 확인 내용 상세 안내와 확인 내용 0b7h0",
+          "correct": false
+        },
+        {
+          "index": 8469,
+          "id": "10000000-0000-4000-8000-00000000b190",
+          "predicted": "계약서 검토 완료 · 상세 안내와 확인 내용 상세 안내와 확인 내용 상세 안내와 확인 내용 상세 안내와 확인 내용 0b7h0",
+          "correct": false
+        },
+        {
+          "index": 9602,
+          "id": "10000000-0000-4000-8000-000000013612",
+          "predicted": "계약서 검토 완료 · 상세 안내와 확인 내용 상세 안내와 확인 내용 상세 안내와 확인 내용 상세 안내와 확인 내용 0b7h0",
+          "correct": false
+        },
+        {
+          "index": 9729,
+          "id": "10000000-0000-4000-8000-0000000074be",
+          "predicted": "계약서 검토 완료 · 상세 안내와 확인 내용 상세 안내와 확인 내용 상세 안내와 확인 내용 상세 안내와 확인 내용 0b7h0",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "known": 500,
+      "knownSupported": 499,
+      "phase": "snapshot",
+      "method": "known_fingerprint",
+      "channel": "index",
+      "rows": 9475,
+      "correct": 0,
+      "pct": 0,
+      "characters": 13972,
+      "totalCharacters": 138280,
+      "characterPct": 10.104136534567544,
+      "mostly": 33,
+      "sharedKnownTargetRows": 0,
+      "learned": {
+        "dictionary": 10476,
+        "learnedFeatures": 0,
+        "candidateFeatures": 18553,
+        "knownFingerprints": 499,
+        "noise": 0,
+        "knownRows": 499
+      },
+      "predictionDigest": "03b38b3b7650c3c04a54ebd7649deacb4a7014396fc201d378e1877f667b45a0",
+      "witnesses": [
+        {
+          "index": 1635,
+          "id": "10000000-0000-4000-8000-000000004148",
+          "predicted": "계약서 검토 완료 · 상세 안내와 확인 내용 상세 안내와 확인 내용 상세 안내와 확인 내용 상세 안내와 확인 내용 0b7h0",
+          "correct": false
+        },
+        {
+          "index": 1743,
+          "id": "10000000-0000-4000-8000-00000000da8d",
+          "predicted": "계약서 검토 완료 · 상세 안내와 확인 내용 상세 안내와 확인 내용 상세 안내와 확인 내용 상세 안내와 확인 내용 0b7h0",
+          "correct": false
+        },
+        {
+          "index": 3491,
+          "id": "10000000-0000-4000-8000-0000000054d1",
+          "predicted": "계약서 검토 완료 · 상세 안내와 확인 내용 상세 안내와 확인 내용 상세 안내와 확인 내용 상세 안내와 확인 내용 0b7h0",
+          "correct": false
+        },
+        {
+          "index": 4278,
+          "id": "10000000-0000-4000-8000-000000007d50",
+          "predicted": "계약서 검토 완료 · 상세 안내와 확인 내용 상세 안내와 확인 내용 상세 안내와 확인 내용 상세 안내와 확인 내용 0b7h0",
+          "correct": false
+        },
+        {
+          "index": 4915,
+          "id": "10000000-0000-4000-8000-000000010d63",
+          "predicted": "계약서 검토 완료 · 상세 안내와 확인 내용 상세 안내와 확인 내용 상세 안내와 확인 내용 상세 안내와 확인 내용 0b7h0",
+          "correct": false
+        },
+        {
+          "index": 5316,
+          "id": "10000000-0000-4000-8000-00000000fae6",
+          "predicted": "계약서 검토 완료 · 상세 안내와 확인 내용 상세 안내와 확인 내용 상세 안내와 확인 내용 상세 안내와 확인 내용 0b7h0",
+          "correct": false
+        },
+        {
+          "index": 5580,
+          "id": "10000000-0000-4000-8000-00000000688b",
+          "predicted": "계약서 검토 완료 · 상세 안내와 확인 내용 상세 안내와 확인 내용 상세 안내와 확인 내용 상세 안내와 확인 내용 0b7h0",
+          "correct": false
+        },
+        {
+          "index": 6957,
+          "id": "10000000-0000-4000-8000-00000000cd87",
+          "predicted": "계약서 검토 완료 · 상세 안내와 확인 내용 상세 안내와 확인 내용 상세 안내와 확인 내용 상세 안내와 확인 내용 0b7h0",
+          "correct": false
+        },
+        {
+          "index": 8176,
+          "id": "10000000-0000-4000-8000-000000003f23",
+          "predicted": "계약서 검토 완료 · 상세 안내와 확인 내용 상세 안내와 확인 내용 상세 안내와 확인 내용 상세 안내와 확인 내용 0b7h0",
+          "correct": false
+        },
+        {
+          "index": 8469,
+          "id": "10000000-0000-4000-8000-00000000b190",
+          "predicted": "계약서 검토 완료 · 상세 안내와 확인 내용 상세 안내와 확인 내용 상세 안내와 확인 내용 상세 안내와 확인 내용 0b7h0",
+          "correct": false
+        },
+        {
+          "index": 9602,
+          "id": "10000000-0000-4000-8000-000000013612",
+          "predicted": "계약서 검토 완료 · 상세 안내와 확인 내용 상세 안내와 확인 내용 상세 안내와 확인 내용 상세 안내와 확인 내용 0b7h0",
+          "correct": false
+        },
+        {
+          "index": 9729,
+          "id": "10000000-0000-4000-8000-0000000074be",
+          "predicted": "계약서 검토 완료 · 상세 안내와 확인 내용 상세 안내와 확인 내용 상세 안내와 확인 내용 상세 안내와 확인 내용 0b7h0",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "known": 500,
+      "knownSupported": 499,
+      "phase": "snapshot",
+      "method": "public_shape_reference",
+      "channel": "native_shape",
+      "rows": 9475,
+      "correct": 0,
+      "pct": 0,
+      "characters": 22695,
+      "totalCharacters": 138280,
+      "characterPct": 16.412351750072318,
+      "mostly": 43,
+      "sharedKnownTargetRows": 0,
+      "learned": {
+        "dictionary": 10476,
+        "learnedFeatures": 0,
+        "candidateFeatures": 18553,
+        "knownFingerprints": 499,
+        "noise": 0,
+        "knownRows": 499
+      },
+      "predictionDigest": "dd9b369d89deb1be91a5be4a08212479e7e271e56813e1d1de4a60d723fd83e4",
+      "witnesses": [
+        {
+          "index": 1635,
+          "id": "10000000-0000-4000-8000-000000004148",
+          "predicted": "계약서 검토 완료 02ru8",
+          "correct": false
+        },
+        {
+          "index": 1743,
+          "id": "10000000-0000-4000-8000-00000000da8d",
+          "predicted": "계약서 검토 완료 02ru8",
+          "correct": false
+        },
+        {
+          "index": 3491,
+          "id": "10000000-0000-4000-8000-0000000054d1",
+          "predicted": "계약서 검토 완료 02ru8",
+          "correct": false
+        },
+        {
+          "index": 4278,
+          "id": "10000000-0000-4000-8000-000000007d50",
+          "predicted": "계약서 검토 완료 02ru8",
+          "correct": false
+        },
+        {
+          "index": 4915,
+          "id": "10000000-0000-4000-8000-000000010d63",
+          "predicted": "계약서 검토 완료 · 상세 안내와 확인 내용 상세 안내와 확인 내용 상세 안내와 확인 내용 상세 안내와 확인 내용 0b7h0",
+          "correct": false
+        },
+        {
+          "index": 5316,
+          "id": "10000000-0000-4000-8000-00000000fae6",
+          "predicted": "계약서 검토 완료 02ru8",
+          "correct": false
+        },
+        {
+          "index": 5580,
+          "id": "10000000-0000-4000-8000-00000000688b",
+          "predicted": "계약서 검토 완료 02ru8",
+          "correct": false
+        },
+        {
+          "index": 6957,
+          "id": "10000000-0000-4000-8000-00000000cd87",
+          "predicted": "계약서 검토 완료 02ru8",
+          "correct": false
+        },
+        {
+          "index": 8176,
+          "id": "10000000-0000-4000-8000-000000003f23",
+          "predicted": "계약서 검토 완료 02ru8",
+          "correct": false
+        },
+        {
+          "index": 8469,
+          "id": "10000000-0000-4000-8000-00000000b190",
+          "predicted": "계약서 검토 완료 02ru8",
+          "correct": false
+        },
+        {
+          "index": 9602,
+          "id": "10000000-0000-4000-8000-000000013612",
+          "predicted": "계약서 검토 완료 02ru8",
+          "correct": false
+        },
+        {
+          "index": 9729,
+          "id": "10000000-0000-4000-8000-0000000074be",
+          "predicted": "계약서 검토 완료 02ru8",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "known": 500,
+      "knownSupported": 499,
+      "phase": "snapshot",
+      "method": "public_tagcount_reference",
+      "channel": "index",
+      "rows": 9475,
+      "correct": 0,
+      "pct": 0,
+      "characters": 22247,
+      "totalCharacters": 138280,
+      "characterPct": 16.088371420306625,
+      "mostly": 33,
+      "sharedKnownTargetRows": 0,
+      "learned": {
+        "dictionary": 10476,
+        "learnedFeatures": 0,
+        "candidateFeatures": 18553,
+        "knownFingerprints": 499,
+        "noise": 0,
+        "knownRows": 499
+      },
+      "predictionDigest": "efefb85beda097413028fc89856fb4927867558c4c04fc45fd2501583e1c781f",
+      "witnesses": [
+        {
+          "index": 1635,
+          "id": "10000000-0000-4000-8000-000000004148",
+          "predicted": "계약서 검토 완료 02ru8",
+          "correct": false
+        },
+        {
+          "index": 1743,
+          "id": "10000000-0000-4000-8000-00000000da8d",
+          "predicted": "계약서 검토 완료 02ru8",
+          "correct": false
+        },
+        {
+          "index": 3491,
+          "id": "10000000-0000-4000-8000-0000000054d1",
+          "predicted": "계약서 검토 완료 02ru8",
+          "correct": false
+        },
+        {
+          "index": 4278,
+          "id": "10000000-0000-4000-8000-000000007d50",
+          "predicted": "계약서 검토 완료 02ru8",
+          "correct": false
+        },
+        {
+          "index": 4915,
+          "id": "10000000-0000-4000-8000-000000010d63",
+          "predicted": "계약서 검토 완료 · 상세 안내와 확인 내용 상세 안내와 확인 내용 상세 안내와 확인 내용 상세 안내와 확인 내용 0b7h0",
+          "correct": false
+        },
+        {
+          "index": 5316,
+          "id": "10000000-0000-4000-8000-00000000fae6",
+          "predicted": "계약서 검토 완료 02ru8",
+          "correct": false
+        },
+        {
+          "index": 5580,
+          "id": "10000000-0000-4000-8000-00000000688b",
+          "predicted": "계약서 검토 완료 02ru8",
+          "correct": false
+        },
+        {
+          "index": 6957,
+          "id": "10000000-0000-4000-8000-00000000cd87",
+          "predicted": "계약서 검토 완료 02ru8",
+          "correct": false
+        },
+        {
+          "index": 8176,
+          "id": "10000000-0000-4000-8000-000000003f23",
+          "predicted": "계약서 검토 완료 02ru8",
+          "correct": false
+        },
+        {
+          "index": 8469,
+          "id": "10000000-0000-4000-8000-00000000b190",
+          "predicted": "계약서 검토 완료 02ru8",
+          "correct": false
+        },
+        {
+          "index": 9602,
+          "id": "10000000-0000-4000-8000-000000013612",
+          "predicted": "계약서 검토 완료 02ru8",
+          "correct": false
+        },
+        {
+          "index": 9729,
+          "id": "10000000-0000-4000-8000-0000000074be",
+          "predicted": "계약서 검토 완료 02ru8",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "known": 500,
+      "knownSupported": 499,
+      "phase": "snapshot",
+      "method": "public_shape_known",
+      "channel": "native_shape",
+      "rows": 9475,
+      "correct": 0,
+      "pct": 0,
+      "characters": 22695,
+      "totalCharacters": 138280,
+      "characterPct": 16.412351750072318,
+      "mostly": 43,
+      "sharedKnownTargetRows": 0,
+      "learned": {
+        "dictionary": 10476,
+        "learnedFeatures": 0,
+        "candidateFeatures": 18553,
+        "knownFingerprints": 499,
+        "noise": 0,
+        "knownRows": 499
+      },
+      "predictionDigest": "dd9b369d89deb1be91a5be4a08212479e7e271e56813e1d1de4a60d723fd83e4",
+      "witnesses": [
+        {
+          "index": 1635,
+          "id": "10000000-0000-4000-8000-000000004148",
+          "predicted": "계약서 검토 완료 02ru8",
+          "correct": false
+        },
+        {
+          "index": 1743,
+          "id": "10000000-0000-4000-8000-00000000da8d",
+          "predicted": "계약서 검토 완료 02ru8",
+          "correct": false
+        },
+        {
+          "index": 3491,
+          "id": "10000000-0000-4000-8000-0000000054d1",
+          "predicted": "계약서 검토 완료 02ru8",
+          "correct": false
+        },
+        {
+          "index": 4278,
+          "id": "10000000-0000-4000-8000-000000007d50",
+          "predicted": "계약서 검토 완료 02ru8",
+          "correct": false
+        },
+        {
+          "index": 4915,
+          "id": "10000000-0000-4000-8000-000000010d63",
+          "predicted": "계약서 검토 완료 · 상세 안내와 확인 내용 상세 안내와 확인 내용 상세 안내와 확인 내용 상세 안내와 확인 내용 0b7h0",
+          "correct": false
+        },
+        {
+          "index": 5316,
+          "id": "10000000-0000-4000-8000-00000000fae6",
+          "predicted": "계약서 검토 완료 02ru8",
+          "correct": false
+        },
+        {
+          "index": 5580,
+          "id": "10000000-0000-4000-8000-00000000688b",
+          "predicted": "계약서 검토 완료 02ru8",
+          "correct": false
+        },
+        {
+          "index": 6957,
+          "id": "10000000-0000-4000-8000-00000000cd87",
+          "predicted": "계약서 검토 완료 02ru8",
+          "correct": false
+        },
+        {
+          "index": 8176,
+          "id": "10000000-0000-4000-8000-000000003f23",
+          "predicted": "계약서 검토 완료 02ru8",
+          "correct": false
+        },
+        {
+          "index": 8469,
+          "id": "10000000-0000-4000-8000-00000000b190",
+          "predicted": "계약서 검토 완료 02ru8",
+          "correct": false
+        },
+        {
+          "index": 9602,
+          "id": "10000000-0000-4000-8000-000000013612",
+          "predicted": "계약서 검토 완료 02ru8",
+          "correct": false
+        },
+        {
+          "index": 9729,
+          "id": "10000000-0000-4000-8000-0000000074be",
+          "predicted": "계약서 검토 완료 02ru8",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "known": 500,
+      "knownSupported": 499,
+      "phase": "snapshot",
+      "method": "public_tagcount_known",
+      "channel": "index",
+      "rows": 9475,
+      "correct": 0,
+      "pct": 0,
+      "characters": 22247,
+      "totalCharacters": 138280,
+      "characterPct": 16.088371420306625,
+      "mostly": 33,
+      "sharedKnownTargetRows": 0,
+      "learned": {
+        "dictionary": 10476,
+        "learnedFeatures": 0,
+        "candidateFeatures": 18553,
+        "knownFingerprints": 499,
+        "noise": 0,
+        "knownRows": 499
+      },
+      "predictionDigest": "efefb85beda097413028fc89856fb4927867558c4c04fc45fd2501583e1c781f",
+      "witnesses": [
+        {
+          "index": 1635,
+          "id": "10000000-0000-4000-8000-000000004148",
+          "predicted": "계약서 검토 완료 02ru8",
+          "correct": false
+        },
+        {
+          "index": 1743,
+          "id": "10000000-0000-4000-8000-00000000da8d",
+          "predicted": "계약서 검토 완료 02ru8",
+          "correct": false
+        },
+        {
+          "index": 3491,
+          "id": "10000000-0000-4000-8000-0000000054d1",
+          "predicted": "계약서 검토 완료 02ru8",
+          "correct": false
+        },
+        {
+          "index": 4278,
+          "id": "10000000-0000-4000-8000-000000007d50",
+          "predicted": "계약서 검토 완료 02ru8",
+          "correct": false
+        },
+        {
+          "index": 4915,
+          "id": "10000000-0000-4000-8000-000000010d63",
+          "predicted": "계약서 검토 완료 · 상세 안내와 확인 내용 상세 안내와 확인 내용 상세 안내와 확인 내용 상세 안내와 확인 내용 0b7h0",
+          "correct": false
+        },
+        {
+          "index": 5316,
+          "id": "10000000-0000-4000-8000-00000000fae6",
+          "predicted": "계약서 검토 완료 02ru8",
+          "correct": false
+        },
+        {
+          "index": 5580,
+          "id": "10000000-0000-4000-8000-00000000688b",
+          "predicted": "계약서 검토 완료 02ru8",
+          "correct": false
+        },
+        {
+          "index": 6957,
+          "id": "10000000-0000-4000-8000-00000000cd87",
+          "predicted": "계약서 검토 완료 02ru8",
+          "correct": false
+        },
+        {
+          "index": 8176,
+          "id": "10000000-0000-4000-8000-000000003f23",
+          "predicted": "계약서 검토 완료 02ru8",
+          "correct": false
+        },
+        {
+          "index": 8469,
+          "id": "10000000-0000-4000-8000-00000000b190",
+          "predicted": "계약서 검토 완료 02ru8",
+          "correct": false
+        },
+        {
+          "index": 9602,
+          "id": "10000000-0000-4000-8000-000000013612",
+          "predicted": "계약서 검토 완료 02ru8",
+          "correct": false
+        },
+        {
+          "index": 9729,
+          "id": "10000000-0000-4000-8000-0000000074be",
+          "predicted": "계약서 검토 완료 02ru8",
+          "correct": false
+        }
+      ]
+    }
+  ],
+  "baselines": [
+    {
+      "known": 0,
+      "method": "random_empirical",
+      "rows": 9974,
+      "correct": 0,
+      "pct": 0,
+      "characters": 15076,
+      "totalCharacters": 145558,
+      "characterPct": 10.357383311119966,
+      "mostly": 22
+    },
+    {
+      "known": 0,
+      "method": "random_distinct",
+      "rows": 9974,
+      "correct": 0,
+      "pct": 0,
+      "characters": 14817,
+      "totalCharacters": 145558,
+      "characterPct": 10.179447368059467,
+      "mostly": 32
+    },
+    {
+      "known": 100,
+      "method": "random_empirical",
+      "rows": 9874,
+      "correct": 0,
+      "pct": 0,
+      "characters": 14929,
+      "totalCharacters": 144205,
+      "characterPct": 10.352623001976353,
+      "mostly": 22
+    },
+    {
+      "known": 100,
+      "method": "random_distinct",
+      "rows": 9874,
+      "correct": 0,
+      "pct": 0,
+      "characters": 14682,
+      "totalCharacters": 144205,
+      "characterPct": 10.181339065913109,
+      "mostly": 32
+    },
+    {
+      "known": 500,
+      "method": "random_empirical",
+      "rows": 9475,
+      "correct": 0,
+      "pct": 0,
+      "characters": 14289,
+      "totalCharacters": 138280,
+      "characterPct": 10.33338154469193,
+      "mostly": 20
+    },
+    {
+      "known": 500,
+      "method": "random_distinct",
+      "rows": 9475,
+      "correct": 0,
+      "pct": 0,
+      "characters": 14026,
+      "totalCharacters": 138280,
+      "characterPct": 10.143187735030374,
+      "mostly": 32
+    }
+  ],
+  "finished": "2026-09-29T18:56:03.427Z"
+}

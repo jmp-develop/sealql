@@ -1,0 +1,460 @@
+{
+  "started": "2026-09-29T18:42:16.356Z",
+  "complete": true,
+  "field": "name",
+  "model": "C-port",
+  "options": {
+    "id": "C-port",
+    "field": "name",
+    "mode": "combined",
+    "contention": 0,
+    "maxLength": 60
+  },
+  "sourceHash": "fd0d2eefaf034bc868bbeae841d969ab8766504a4e008adb8eec527d75da44de",
+  "databaseAccess": false,
+  "identityDigest": "189a19c99711fbacd9cafdb548f243a63657e12a0c1514a736c1f92da670f382",
+  "protocol": "Two batch endpoints only. Known replacement values from disjoint reference. No per-write timestamps, transaction grouping, query tokens, root or counter-to-document map to attacker.",
+  "cases": [
+    {
+      "operation": "insert",
+      "N": 100,
+      "knownSupported": 100,
+      "phase": "precompaction",
+      "unmodifiedVictims": {
+        "rows": 10000,
+        "correct": 0,
+        "pct": 0,
+        "predictionDigest": "439991ec64d7c147b76fc0799d83edfd39d95ece101e632e3acc250293701fad"
+      },
+      "referenceOnly": {
+        "rows": 10000,
+        "correct": 0,
+        "pct": 0,
+        "predictionDigest": "8d6fd0ef0a6b23b68965f5e2d3d107a5c090fb67c5db557ac9713de2e4bec4bd"
+      },
+      "knownTargetTagOverlapRows": 0,
+      "unexpectedChangedUntouchedRows": 0,
+      "oldTagsRetainedOnUpdatedRows": null,
+      "esc": {
+        "before": 204900,
+        "after": 206711,
+        "added": 1811,
+        "removed": 0,
+        "changed": 1286,
+        "plaintextCountDeltas": 3097,
+        "uniqueBatchCounterLabels": 1,
+        "evaluationOnlyCorrectCounterLabels": 1,
+        "counterToVictimRowLinksProvided": 0
+      },
+      "witnesses": [
+        {
+          "index": 1150,
+          "id": "10000000-0000-4000-8000-00000001496e",
+          "predicted": "Alex Kim mwirm",
+          "correct": false
+        },
+        {
+          "index": 1794,
+          "id": "10000000-0000-4000-8000-000000004dab",
+          "predicted": "Alex Kim mwirm",
+          "correct": false
+        },
+        {
+          "index": 3805,
+          "id": "10000000-0000-4000-8000-00000000e244",
+          "predicted": "김민서 2czoc",
+          "correct": false
+        },
+        {
+          "index": 5225,
+          "id": "10000000-0000-4000-8000-000000007639",
+          "predicted": "김민서 2czoc",
+          "correct": false
+        },
+        {
+          "index": 5627,
+          "id": "10000000-0000-4000-8000-00000000f90c",
+          "predicted": "김민서 2czoc",
+          "correct": false
+        },
+        {
+          "index": 6617,
+          "id": "10000000-0000-4000-8000-00000000f46c",
+          "predicted": "김민서 2czoc",
+          "correct": false
+        },
+        {
+          "index": 6899,
+          "id": "10000000-0000-4000-8000-000000006b72",
+          "predicted": "김민서 2czoc",
+          "correct": false
+        },
+        {
+          "index": 6963,
+          "id": "10000000-0000-4000-8000-0000000022e6",
+          "predicted": "김민서 2czoc",
+          "correct": false
+        },
+        {
+          "index": 7896,
+          "id": "10000000-0000-4000-8000-000000015a63",
+          "predicted": "김민서 2czoc",
+          "correct": false
+        },
+        {
+          "index": 8825,
+          "id": "10000000-0000-4000-8000-0000000008ce",
+          "predicted": "Alex Kim mwirm",
+          "correct": false
+        },
+        {
+          "index": 8869,
+          "id": "10000000-0000-4000-8000-00000000d66a",
+          "predicted": "김민서 2czoc",
+          "correct": false
+        },
+        {
+          "index": 9982,
+          "id": "10000000-0000-4000-8000-000000015360",
+          "predicted": "김민서 2czoc",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "operation": "insert",
+      "N": 1000,
+      "knownSupported": 1000,
+      "phase": "precompaction",
+      "unmodifiedVictims": {
+        "rows": 10000,
+        "correct": 0,
+        "pct": 0,
+        "predictionDigest": "7df9a3e5912e0ff352449c8f520d4f932c367e3a9a2257b97b69e0a63e7de0e2"
+      },
+      "referenceOnly": {
+        "rows": 10000,
+        "correct": 0,
+        "pct": 0,
+        "predictionDigest": "8d6fd0ef0a6b23b68965f5e2d3d107a5c090fb67c5db557ac9713de2e4bec4bd"
+      },
+      "knownTargetTagOverlapRows": 0,
+      "unexpectedChangedUntouchedRows": 0,
+      "oldTagsRetainedOnUpdatedRows": null,
+      "esc": {
+        "before": 204900,
+        "after": 223240,
+        "added": 18340,
+        "removed": 0,
+        "changed": 6536,
+        "plaintextCountDeltas": 24876,
+        "uniqueBatchCounterLabels": 5,
+        "evaluationOnlyCorrectCounterLabels": 5,
+        "counterToVictimRowLinksProvided": 0
+      },
+      "witnesses": [
+        {
+          "index": 1150,
+          "id": "10000000-0000-4000-8000-00000001496e",
+          "predicted": "Alex Kim 1hpcw",
+          "correct": false
+        },
+        {
+          "index": 1794,
+          "id": "10000000-0000-4000-8000-000000004dab",
+          "predicted": "Alex Kim 1hpcw",
+          "correct": false
+        },
+        {
+          "index": 3805,
+          "id": "10000000-0000-4000-8000-00000000e244",
+          "predicted": "김민서 04k1p",
+          "correct": false
+        },
+        {
+          "index": 5225,
+          "id": "10000000-0000-4000-8000-000000007639",
+          "predicted": "김민서 04k1p",
+          "correct": false
+        },
+        {
+          "index": 5627,
+          "id": "10000000-0000-4000-8000-00000000f90c",
+          "predicted": "김민서 04k1p",
+          "correct": false
+        },
+        {
+          "index": 6617,
+          "id": "10000000-0000-4000-8000-00000000f46c",
+          "predicted": "김민서 04k1p",
+          "correct": false
+        },
+        {
+          "index": 6899,
+          "id": "10000000-0000-4000-8000-000000006b72",
+          "predicted": "김민서 04k1p",
+          "correct": false
+        },
+        {
+          "index": 6963,
+          "id": "10000000-0000-4000-8000-0000000022e6",
+          "predicted": "김민서 04k1p",
+          "correct": false
+        },
+        {
+          "index": 7896,
+          "id": "10000000-0000-4000-8000-000000015a63",
+          "predicted": "김민서 04k1p",
+          "correct": false
+        },
+        {
+          "index": 8825,
+          "id": "10000000-0000-4000-8000-0000000008ce",
+          "predicted": "Alex Kim 1hpcw",
+          "correct": false
+        },
+        {
+          "index": 8869,
+          "id": "10000000-0000-4000-8000-00000000d66a",
+          "predicted": "김민서 04k1p",
+          "correct": false
+        },
+        {
+          "index": 9982,
+          "id": "10000000-0000-4000-8000-000000015360",
+          "predicted": "김민서 04k1p",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "operation": "update",
+      "N": 100,
+      "knownSupported": 100,
+      "phase": "precompaction",
+      "unmodifiedVictims": {
+        "rows": 9900,
+        "correct": 0,
+        "pct": 0,
+        "predictionDigest": "80c969ea567dd098b9fd1af4cde966ce25bd211ce17c21cbbe55c855a83a0362"
+      },
+      "referenceOnly": {
+        "rows": 9900,
+        "correct": 0,
+        "pct": 0,
+        "predictionDigest": "d89bfc9191e36d089a5b124daa4f301720028a446027fca1af4fc0bc77c8a4c6"
+      },
+      "knownTargetTagOverlapRows": 0,
+      "unexpectedChangedUntouchedRows": 0,
+      "oldTagsRetainedOnUpdatedRows": 0,
+      "esc": {
+        "before": 223240,
+        "after": 223240,
+        "added": 0,
+        "removed": 0,
+        "changed": 3097,
+        "plaintextCountDeltas": 3097,
+        "uniqueBatchCounterLabels": 1,
+        "evaluationOnlyCorrectCounterLabels": 1,
+        "counterToVictimRowLinksProvided": 0
+      },
+      "witnesses": [
+        {
+          "index": 971,
+          "id": "10000000-0000-4000-8000-0000000045a2",
+          "predicted": "김민서 2czoc",
+          "correct": false
+        },
+        {
+          "index": 2054,
+          "id": "10000000-0000-4000-8000-000000002bf0",
+          "predicted": "김민서 2czoc",
+          "correct": false
+        },
+        {
+          "index": 2369,
+          "id": "10000000-0000-4000-8000-0000000083f7",
+          "predicted": "김민서 2czoc",
+          "correct": false
+        },
+        {
+          "index": 2954,
+          "id": "10000000-0000-4000-8000-00000000fbe4",
+          "predicted": "José Rivera 2lsln",
+          "correct": false
+        },
+        {
+          "index": 4471,
+          "id": "10000000-0000-4000-8000-0000000145d4",
+          "predicted": "山田花子 1sglu",
+          "correct": false
+        },
+        {
+          "index": 6108,
+          "id": "10000000-0000-4000-8000-000000015722",
+          "predicted": "김민서 2czoc",
+          "correct": false
+        },
+        {
+          "index": 6587,
+          "id": "10000000-0000-4000-8000-000000016cb6",
+          "predicted": "김민서 2czoc",
+          "correct": false
+        },
+        {
+          "index": 7669,
+          "id": "10000000-0000-4000-8000-000000018337",
+          "predicted": "Mina Park 48it1",
+          "correct": false
+        },
+        {
+          "index": 8241,
+          "id": "10000000-0000-4000-8000-00000000ab0b",
+          "predicted": "김민서 2czoc",
+          "correct": false
+        },
+        {
+          "index": 8744,
+          "id": "10000000-0000-4000-8000-00000001441e",
+          "predicted": "Alex Kim mwirm",
+          "correct": false
+        },
+        {
+          "index": 9733,
+          "id": "10000000-0000-4000-8000-000000010685",
+          "predicted": "김민서 2czoc",
+          "correct": false
+        },
+        {
+          "index": 9953,
+          "id": "10000000-0000-4000-8000-000000003e23",
+          "predicted": "김민서 2czoc",
+          "correct": false
+        }
+      ],
+      "overwrittenOldValues": {
+        "rows": 100,
+        "correct": 0,
+        "pct": 0,
+        "predictionDigest": "f641be859bd4919de3310ab0d3b71d68831111b3b411532ff4e61bc3f131b71e",
+        "method": "pre-snapshot shape reference; new tag identities do not transfer to old occurrence tags",
+        "knownNewValueOnlyBaseline": "Replacement values are a fixed shuffled reference batch, not correlated character edits."
+      }
+    },
+    {
+      "operation": "update",
+      "N": 1000,
+      "knownSupported": 1000,
+      "phase": "precompaction",
+      "unmodifiedVictims": {
+        "rows": 9000,
+        "correct": 0,
+        "pct": 0,
+        "predictionDigest": "d863666860a0ad0f455c0984403219509ff94d7ade54d912880333faf11b7bc0"
+      },
+      "referenceOnly": {
+        "rows": 9000,
+        "correct": 0,
+        "pct": 0,
+        "predictionDigest": "1b96d632908edbfc7ddccead6eb8d299f75f39c2c9e1def4fcfb3e4addf27978"
+      },
+      "knownTargetTagOverlapRows": 0,
+      "unexpectedChangedUntouchedRows": 0,
+      "oldTagsRetainedOnUpdatedRows": 0,
+      "esc": {
+        "before": 223240,
+        "after": 223240,
+        "added": 0,
+        "removed": 0,
+        "changed": 24876,
+        "plaintextCountDeltas": 24876,
+        "uniqueBatchCounterLabels": 5,
+        "evaluationOnlyCorrectCounterLabels": 5,
+        "counterToVictimRowLinksProvided": 0
+      },
+      "witnesses": [
+        {
+          "index": 2031,
+          "id": "10000000-0000-4000-8000-000000018171",
+          "predicted": "José Rivera 17tsh",
+          "correct": false
+        },
+        {
+          "index": 2522,
+          "id": "10000000-0000-4000-8000-000000016de2",
+          "predicted": "김민서 04k1p",
+          "correct": false
+        },
+        {
+          "index": 3257,
+          "id": "10000000-0000-4000-8000-00000000d147",
+          "predicted": "김민서 04k1p",
+          "correct": false
+        },
+        {
+          "index": 4127,
+          "id": "10000000-0000-4000-8000-000000012c85",
+          "predicted": "Mina Park 1wq70",
+          "correct": false
+        },
+        {
+          "index": 4699,
+          "id": "10000000-0000-4000-8000-000000011e3e",
+          "predicted": "김민서 04k1p",
+          "correct": false
+        },
+        {
+          "index": 4792,
+          "id": "10000000-0000-4000-8000-000000013dc6",
+          "predicted": "Mina Park 1wq70",
+          "correct": false
+        },
+        {
+          "index": 5285,
+          "id": "10000000-0000-4000-8000-0000000064b8",
+          "predicted": "김민서 04k1p",
+          "correct": false
+        },
+        {
+          "index": 5876,
+          "id": "10000000-0000-4000-8000-00000000b0f7",
+          "predicted": "김민서 04k1p",
+          "correct": false
+        },
+        {
+          "index": 6103,
+          "id": "10000000-0000-4000-8000-000000013e46",
+          "predicted": "김민서 04k1p",
+          "correct": false
+        },
+        {
+          "index": 7411,
+          "id": "10000000-0000-4000-8000-000000008032",
+          "predicted": "김민서 04k1p",
+          "correct": false
+        },
+        {
+          "index": 7768,
+          "id": "10000000-0000-4000-8000-000000017f4b",
+          "predicted": "山田花子 00qm4",
+          "correct": false
+        },
+        {
+          "index": 9567,
+          "id": "10000000-0000-4000-8000-0000000143df",
+          "predicted": "김민서 04k1p",
+          "correct": false
+        }
+      ],
+      "overwrittenOldValues": {
+        "rows": 1000,
+        "correct": 0,
+        "pct": 0,
+        "predictionDigest": "cc1c9645f1c2a6e6d5fff9b851e51a9014fbeec718f51b7f780e2ec72486b671",
+        "method": "pre-snapshot shape reference; new tag identities do not transfer to old occurrence tags",
+        "knownNewValueOnlyBaseline": "Replacement values are a fixed shuffled reference batch, not correlated character edits."
+      }
+    }
+  ],
+  "finished": "2026-09-29T18:42:29.775Z"
+}

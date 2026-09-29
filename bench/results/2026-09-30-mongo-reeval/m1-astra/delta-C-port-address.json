@@ -1,0 +1,460 @@
+{
+  "started": "2026-09-29T18:42:39.087Z",
+  "complete": true,
+  "field": "address",
+  "model": "C-port",
+  "options": {
+    "id": "C-port",
+    "field": "address",
+    "mode": "combined",
+    "contention": 0,
+    "maxLength": 60
+  },
+  "sourceHash": "fd0d2eefaf034bc868bbeae841d969ab8766504a4e008adb8eec527d75da44de",
+  "databaseAccess": false,
+  "identityDigest": "189a19c99711fbacd9cafdb548f243a63657e12a0c1514a736c1f92da670f382",
+  "protocol": "Two batch endpoints only. Known replacement values from disjoint reference. No per-write timestamps, transaction grouping, query tokens, root or counter-to-document map to attacker.",
+  "cases": [
+    {
+      "operation": "insert",
+      "N": 100,
+      "knownSupported": 100,
+      "phase": "precompaction",
+      "unmodifiedVictims": {
+        "rows": 10000,
+        "correct": 30,
+        "pct": 0.3,
+        "predictionDigest": "1e9e9b68c18530d8c7540cb6b9b5a10f652c8c5065cc0b252fbd8acae3161198"
+      },
+      "referenceOnly": {
+        "rows": 10000,
+        "correct": 30,
+        "pct": 0.3,
+        "predictionDigest": "58390e567dcbeda32ac0ff1084916a42bb73a1ee61ce8523f69126fbbf9e3a6e"
+      },
+      "knownTargetTagOverlapRows": 0,
+      "unexpectedChangedUntouchedRows": 0,
+      "oldTagsRetainedOnUpdatedRows": null,
+      "esc": {
+        "before": 110071,
+        "after": 110416,
+        "added": 345,
+        "removed": 0,
+        "changed": 4008,
+        "plaintextCountDeltas": 4353,
+        "uniqueBatchCounterLabels": 3,
+        "evaluationOnlyCorrectCounterLabels": 3,
+        "counterToVictimRowLinksProvided": 0
+      },
+      "witnesses": [
+        {
+          "index": 1150,
+          "id": "10000000-0000-4000-8000-00000001496e",
+          "predicted": "인천 연수구 송도과학로 259 고객",
+          "correct": false
+        },
+        {
+          "index": 1794,
+          "id": "10000000-0000-4000-8000-000000004dab",
+          "predicted": "인천 연수구 송도과학로 259 고객",
+          "correct": false
+        },
+        {
+          "index": 3805,
+          "id": "10000000-0000-4000-8000-00000000e244",
+          "predicted": "대전 유성구 대학로 543 고객",
+          "correct": false
+        },
+        {
+          "index": 5225,
+          "id": "10000000-0000-4000-8000-000000007639",
+          "predicted": "대전 유성구 대학로 543 고객",
+          "correct": false
+        },
+        {
+          "index": 5627,
+          "id": "10000000-0000-4000-8000-00000000f90c",
+          "predicted": "대전 유성구 대학로 543 고객",
+          "correct": false
+        },
+        {
+          "index": 6617,
+          "id": "10000000-0000-4000-8000-00000000f46c",
+          "predicted": "대전 유성구 대학로 95 고객",
+          "correct": false
+        },
+        {
+          "index": 6899,
+          "id": "10000000-0000-4000-8000-000000006b72",
+          "predicted": "부산 해운대구 센텀로 130 고객",
+          "correct": false
+        },
+        {
+          "index": 6963,
+          "id": "10000000-0000-4000-8000-0000000022e6",
+          "predicted": "Tokyo Chiyoda 96 고객",
+          "correct": false
+        },
+        {
+          "index": 7896,
+          "id": "10000000-0000-4000-8000-000000015a63",
+          "predicted": "Tokyo Chiyoda 334 고객",
+          "correct": false
+        },
+        {
+          "index": 8825,
+          "id": "10000000-0000-4000-8000-0000000008ce",
+          "predicted": "대전 유성구 대학로 543 고객",
+          "correct": false
+        },
+        {
+          "index": 8869,
+          "id": "10000000-0000-4000-8000-00000000d66a",
+          "predicted": "부산 해운대구 센텀로 130 고객",
+          "correct": false
+        },
+        {
+          "index": 9982,
+          "id": "10000000-0000-4000-8000-000000015360",
+          "predicted": "대전 유성구 대학로 543 고객",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "operation": "insert",
+      "N": 1000,
+      "knownSupported": 1000,
+      "phase": "precompaction",
+      "unmodifiedVictims": {
+        "rows": 10000,
+        "correct": 29,
+        "pct": 0.29,
+        "predictionDigest": "6e2dccef87a8cb7c6c942036c2f75b2b726fbb7cecc56f31bde05be39fd2baef"
+      },
+      "referenceOnly": {
+        "rows": 10000,
+        "correct": 30,
+        "pct": 0.3,
+        "predictionDigest": "58390e567dcbeda32ac0ff1084916a42bb73a1ee61ce8523f69126fbbf9e3a6e"
+      },
+      "knownTargetTagOverlapRows": 0,
+      "unexpectedChangedUntouchedRows": 0,
+      "oldTagsRetainedOnUpdatedRows": null,
+      "esc": {
+        "before": 110071,
+        "after": 113507,
+        "added": 3436,
+        "removed": 0,
+        "changed": 24451,
+        "plaintextCountDeltas": 27887,
+        "uniqueBatchCounterLabels": 16,
+        "evaluationOnlyCorrectCounterLabels": 16,
+        "counterToVictimRowLinksProvided": 0
+      },
+      "witnesses": [
+        {
+          "index": 1150,
+          "id": "10000000-0000-4000-8000-00000001496e",
+          "predicted": "인천 연수구 송도과학로 259 고객",
+          "correct": false
+        },
+        {
+          "index": 1794,
+          "id": "10000000-0000-4000-8000-000000004dab",
+          "predicted": "인천 연수구 송도과학로 259 고객",
+          "correct": false
+        },
+        {
+          "index": 3805,
+          "id": "10000000-0000-4000-8000-00000000e244",
+          "predicted": "대전 유성구 대학로 543 고객",
+          "correct": false
+        },
+        {
+          "index": 5225,
+          "id": "10000000-0000-4000-8000-000000007639",
+          "predicted": "대전 유성구 대학로 543 고객",
+          "correct": false
+        },
+        {
+          "index": 5627,
+          "id": "10000000-0000-4000-8000-00000000f90c",
+          "predicted": "대전 유성구 대학로 543 고객",
+          "correct": false
+        },
+        {
+          "index": 6617,
+          "id": "10000000-0000-4000-8000-00000000f46c",
+          "predicted": "대전 유성구 대학로 95 고객",
+          "correct": false
+        },
+        {
+          "index": 6899,
+          "id": "10000000-0000-4000-8000-000000006b72",
+          "predicted": "부산 해운대구 센텀로 130 고객",
+          "correct": false
+        },
+        {
+          "index": 6963,
+          "id": "10000000-0000-4000-8000-0000000022e6",
+          "predicted": "Tokyo Chiyoda 96 고객",
+          "correct": false
+        },
+        {
+          "index": 7896,
+          "id": "10000000-0000-4000-8000-000000015a63",
+          "predicted": "Tokyo Chiyoda 293 고객",
+          "correct": false
+        },
+        {
+          "index": 8825,
+          "id": "10000000-0000-4000-8000-0000000008ce",
+          "predicted": "대전 유성구 대학로 543 고객",
+          "correct": false
+        },
+        {
+          "index": 8869,
+          "id": "10000000-0000-4000-8000-00000000d66a",
+          "predicted": "부산 해운대구 센텀로 130 고객",
+          "correct": false
+        },
+        {
+          "index": 9982,
+          "id": "10000000-0000-4000-8000-000000015360",
+          "predicted": "대전 유성구 대학로 543 고객",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "operation": "update",
+      "N": 100,
+      "knownSupported": 100,
+      "phase": "precompaction",
+      "unmodifiedVictims": {
+        "rows": 9900,
+        "correct": 30,
+        "pct": 0.30303030303030304,
+        "predictionDigest": "3b6219c10fc542e4457faa742a2284ffe3f6f00ca55bce7d9b403e548f252552"
+      },
+      "referenceOnly": {
+        "rows": 9900,
+        "correct": 30,
+        "pct": 0.30303030303030304,
+        "predictionDigest": "e20c130739218bc631761340d4c81dd2705cbb75926cbd01c6b288a2e8500d45"
+      },
+      "knownTargetTagOverlapRows": 0,
+      "unexpectedChangedUntouchedRows": 0,
+      "oldTagsRetainedOnUpdatedRows": 0,
+      "esc": {
+        "before": 113507,
+        "after": 113507,
+        "added": 0,
+        "removed": 0,
+        "changed": 4353,
+        "plaintextCountDeltas": 4353,
+        "uniqueBatchCounterLabels": 3,
+        "evaluationOnlyCorrectCounterLabels": 3,
+        "counterToVictimRowLinksProvided": 0
+      },
+      "witnesses": [
+        {
+          "index": 971,
+          "id": "10000000-0000-4000-8000-0000000045a2",
+          "predicted": "부산 해운대구 센텀로 39 고객",
+          "correct": false
+        },
+        {
+          "index": 2054,
+          "id": "10000000-0000-4000-8000-000000002bf0",
+          "predicted": "Madrid Gran Vía 661 고객",
+          "correct": false
+        },
+        {
+          "index": 2369,
+          "id": "10000000-0000-4000-8000-0000000083f7",
+          "predicted": "대전 유성구 대학로 543 고객",
+          "correct": false
+        },
+        {
+          "index": 2954,
+          "id": "10000000-0000-4000-8000-00000000fbe4",
+          "predicted": "부산 해운대구 센텀로 130 고객",
+          "correct": false
+        },
+        {
+          "index": 4471,
+          "id": "10000000-0000-4000-8000-0000000145d4",
+          "predicted": "대전 유성구 대학로 543 고객",
+          "correct": false
+        },
+        {
+          "index": 6108,
+          "id": "10000000-0000-4000-8000-000000015722",
+          "predicted": "Tokyo Chiyoda 334 고객",
+          "correct": false
+        },
+        {
+          "index": 6587,
+          "id": "10000000-0000-4000-8000-000000016cb6",
+          "predicted": "대전 유성구 대학로 543 고객",
+          "correct": false
+        },
+        {
+          "index": 7669,
+          "id": "10000000-0000-4000-8000-000000018337",
+          "predicted": "대전 유성구 대학로 543 고객",
+          "correct": false
+        },
+        {
+          "index": 8241,
+          "id": "10000000-0000-4000-8000-00000000ab0b",
+          "predicted": "인천 연수구 송도과학로 25 고객",
+          "correct": false
+        },
+        {
+          "index": 8744,
+          "id": "10000000-0000-4000-8000-00000001441e",
+          "predicted": "부산 해운대구 센텀로 130 고객",
+          "correct": false
+        },
+        {
+          "index": 9733,
+          "id": "10000000-0000-4000-8000-000000010685",
+          "predicted": "대전 유성구 대학로 543 고객",
+          "correct": false
+        },
+        {
+          "index": 9953,
+          "id": "10000000-0000-4000-8000-000000003e23",
+          "predicted": "부산 해운대구 센텀로 130 고객",
+          "correct": false
+        }
+      ],
+      "overwrittenOldValues": {
+        "rows": 100,
+        "correct": 0,
+        "pct": 0,
+        "predictionDigest": "09e7ef2b5799ebc8778e3a91b1efdc95c7938ca7c3b375f477a0ffebe8fdf522",
+        "method": "pre-snapshot shape reference; new tag identities do not transfer to old occurrence tags",
+        "knownNewValueOnlyBaseline": "Replacement values are a fixed shuffled reference batch, not correlated character edits."
+      }
+    },
+    {
+      "operation": "update",
+      "N": 1000,
+      "knownSupported": 1000,
+      "phase": "precompaction",
+      "unmodifiedVictims": {
+        "rows": 9000,
+        "correct": 28,
+        "pct": 0.3111111111111111,
+        "predictionDigest": "730948bf64c05672866d8f1ea5b5bfecce435b0a07ee9df0bef890e0e7066c60"
+      },
+      "referenceOnly": {
+        "rows": 9000,
+        "correct": 29,
+        "pct": 0.32222222222222224,
+        "predictionDigest": "66a5a0e1ac28f40bae3dae8686864c58e14277f6ef9c25d67657577d11c5aca9"
+      },
+      "knownTargetTagOverlapRows": 0,
+      "unexpectedChangedUntouchedRows": 0,
+      "oldTagsRetainedOnUpdatedRows": 0,
+      "esc": {
+        "before": 113507,
+        "after": 113507,
+        "added": 0,
+        "removed": 0,
+        "changed": 27887,
+        "plaintextCountDeltas": 27887,
+        "uniqueBatchCounterLabels": 16,
+        "evaluationOnlyCorrectCounterLabels": 16,
+        "counterToVictimRowLinksProvided": 0
+      },
+      "witnesses": [
+        {
+          "index": 2031,
+          "id": "10000000-0000-4000-8000-000000018171",
+          "predicted": "대전 유성구 대학로 95 고객",
+          "correct": false
+        },
+        {
+          "index": 2522,
+          "id": "10000000-0000-4000-8000-000000016de2",
+          "predicted": "대전 유성구 대학로 543 고객",
+          "correct": false
+        },
+        {
+          "index": 3257,
+          "id": "10000000-0000-4000-8000-00000000d147",
+          "predicted": "대전 유성구 대학로 543 고객",
+          "correct": false
+        },
+        {
+          "index": 4127,
+          "id": "10000000-0000-4000-8000-000000012c85",
+          "predicted": "인천 연수구 송도과학로 259 고객",
+          "correct": false
+        },
+        {
+          "index": 4699,
+          "id": "10000000-0000-4000-8000-000000011e3e",
+          "predicted": "인천 연수구 송도과학로 259 고객",
+          "correct": false
+        },
+        {
+          "index": 4792,
+          "id": "10000000-0000-4000-8000-000000013dc6",
+          "predicted": "대전 유성구 대학로 543 고객",
+          "correct": false
+        },
+        {
+          "index": 5285,
+          "id": "10000000-0000-4000-8000-0000000064b8",
+          "predicted": "부산 해운대구 센텀로 130 고객",
+          "correct": false
+        },
+        {
+          "index": 5876,
+          "id": "10000000-0000-4000-8000-00000000b0f7",
+          "predicted": "대전 유성구 대학로 543 고객",
+          "correct": false
+        },
+        {
+          "index": 6103,
+          "id": "10000000-0000-4000-8000-000000013e46",
+          "predicted": "Madrid Gran Vía 169 고객",
+          "correct": false
+        },
+        {
+          "index": 7411,
+          "id": "10000000-0000-4000-8000-000000008032",
+          "predicted": "대전 유성구 대학로 95 고객",
+          "correct": false
+        },
+        {
+          "index": 7768,
+          "id": "10000000-0000-4000-8000-000000017f4b",
+          "predicted": "대전 유성구 대학로 543 고객",
+          "correct": false
+        },
+        {
+          "index": 9567,
+          "id": "10000000-0000-4000-8000-0000000143df",
+          "predicted": "Tokyo Chiyoda 293 고객",
+          "correct": false
+        }
+      ],
+      "overwrittenOldValues": {
+        "rows": 1000,
+        "correct": 1,
+        "pct": 0.1,
+        "predictionDigest": "6c8e607133e877287d3174e63184d3133dda0f2c20b0434bfdb470ada1de81f6",
+        "method": "pre-snapshot shape reference; new tag identities do not transfer to old occurrence tags",
+        "knownNewValueOnlyBaseline": "Replacement values are a fixed shuffled reference batch, not correlated character edits."
+      }
+    }
+  ],
+  "finished": "2026-09-29T18:42:50.594Z"
+}

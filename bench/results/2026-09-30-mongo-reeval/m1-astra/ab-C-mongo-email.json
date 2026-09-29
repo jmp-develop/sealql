@@ -1,0 +1,2388 @@
+{
+  "started": "2026-09-29T18:57:22.583Z",
+  "complete": true,
+  "databaseAccess": false,
+  "field": "email",
+  "model": "C-mongo",
+  "mode": "partial",
+  "options": {
+    "id": "C-mongo",
+    "field": "email",
+    "mode": "partial",
+    "contention": 8,
+    "maxLength": 60
+  },
+  "sourceHash": "fd0d2eefaf034bc868bbeae841d969ab8766504a4e008adb8eec527d75da44de",
+  "identityDigest": "189a19c99711fbacd9cafdb548f243a63657e12a0c1514a736c1f92da670f382",
+  "snapshotDigest": "7757f9e54df7ff46a59192db1f57a1c48d69ca055665cb9222f854aa745465f2",
+  "metadata": {
+    "source": "Mongo official padding/ESC review: v-astra/model-rules-ko.md",
+    "tagBits": 256,
+    "contention": 8,
+    "mode": "partial",
+    "maxLength": 60,
+    "fidelity": "Leakage model, independent field/value keys and AES-CTR counter envelope; NOT SDK bytes. Post-compaction endpoint replaces each hidden group by one encrypted anchor; runtime cleanup transcript is not reproduced.",
+    "cipherBytes": "Only observable encrypted BSON length bucket E; constant envelope overhead omitted",
+    "logicalUnorderedTagSets": true,
+    "compacted": false,
+    "escRows": 1990000,
+    "ecocRows": 1990000,
+    "ecocCiphertext": "Opaque randomized documents represented by aggregate count; no linkage is exposed",
+    "unsupportedRows": 0
+  },
+  "compactedMetadata": {
+    "source": "Mongo official padding/ESC review: v-astra/model-rules-ko.md",
+    "tagBits": 256,
+    "contention": 8,
+    "mode": "partial",
+    "maxLength": 60,
+    "fidelity": "Leakage model, independent field/value keys and AES-CTR counter envelope; NOT SDK bytes. Post-compaction endpoint replaces each hidden group by one encrypted anchor; runtime cleanup transcript is not reproduced.",
+    "cipherBytes": "Only observable encrypted BSON length bucket E; constant envelope overhead omitted",
+    "logicalUnorderedTagSets": true,
+    "compacted": true,
+    "escRows": 693684,
+    "ecocRows": 0,
+    "ecocCiphertext": "Opaque randomized documents represented by aggregate count; no linkage is exposed",
+    "unsupportedRows": 0
+  },
+  "esc": {
+    "beforeRows": 1990000,
+    "afterCompactionRows": 693684,
+    "plaintextCounters": 0,
+    "totalPlaintextCounts": 0,
+    "distinctPlaintextCounts": 0,
+    "preDigest": "af2e54c29bf5b95b5cb11ccc32db466c52bfc7234d117a84cc2f59a046f31e99",
+    "postDigest": "98b916f4a8cd191996334851d1587c2b21a0562524400b300b79094af82bdad5"
+  },
+  "uniqueness": {
+    "tagOccurrences": 1990000,
+    "distinctTags": 1990000,
+    "crossRowRepeats": 0
+  },
+  "unsupported": [],
+  "results": [
+    {
+      "known": 0,
+      "knownSupported": 0,
+      "phase": "snapshot",
+      "method": "group_frequency",
+      "channel": "index",
+      "rows": 10000,
+      "correct": 0,
+      "pct": 0,
+      "characters": 45186,
+      "totalCharacters": 206574,
+      "characterPct": 21.874001568445205,
+      "mostly": 0,
+      "sharedKnownTargetRows": 0,
+      "learned": {
+        "dictionary": 10000,
+        "learnedFeatures": 0,
+        "candidateFeatures": 0,
+        "knownFingerprints": 0,
+        "noise": 0,
+        "knownRows": 0
+      },
+      "predictionDigest": "ad5d7b2df8b1e91554cade9c8e61d28bb56378fe284395475eef22f7c707abd5",
+      "witnesses": [
+        {
+          "index": 1150,
+          "id": "10000000-0000-4000-8000-00000001496e",
+          "predicted": "002nx.16n2@biz.test",
+          "correct": false
+        },
+        {
+          "index": 1794,
+          "id": "10000000-0000-4000-8000-000000004dab",
+          "predicted": "002nx.16n2@biz.test",
+          "correct": false
+        },
+        {
+          "index": 3805,
+          "id": "10000000-0000-4000-8000-00000000e244",
+          "predicted": "002nx.16n2@biz.test",
+          "correct": false
+        },
+        {
+          "index": 5225,
+          "id": "10000000-0000-4000-8000-000000007639",
+          "predicted": "002nx.16n2@biz.test",
+          "correct": false
+        },
+        {
+          "index": 5627,
+          "id": "10000000-0000-4000-8000-00000000f90c",
+          "predicted": "002nx.16n2@biz.test",
+          "correct": false
+        },
+        {
+          "index": 6617,
+          "id": "10000000-0000-4000-8000-00000000f46c",
+          "predicted": "002nx.16n2@biz.test",
+          "correct": false
+        },
+        {
+          "index": 6899,
+          "id": "10000000-0000-4000-8000-000000006b72",
+          "predicted": "002nx.16n2@biz.test",
+          "correct": false
+        },
+        {
+          "index": 6963,
+          "id": "10000000-0000-4000-8000-0000000022e6",
+          "predicted": "002nx.16n2@biz.test",
+          "correct": false
+        },
+        {
+          "index": 7896,
+          "id": "10000000-0000-4000-8000-000000015a63",
+          "predicted": "002nx.16n2@biz.test",
+          "correct": false
+        },
+        {
+          "index": 8825,
+          "id": "10000000-0000-4000-8000-0000000008ce",
+          "predicted": "002nx.16n2@biz.test",
+          "correct": false
+        },
+        {
+          "index": 8869,
+          "id": "10000000-0000-4000-8000-00000000d66a",
+          "predicted": "002nx.16n2@biz.test",
+          "correct": false
+        },
+        {
+          "index": 9982,
+          "id": "10000000-0000-4000-8000-000000015360",
+          "predicted": "002nx.16n2@biz.test",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "known": 0,
+      "knownSupported": 0,
+      "phase": "snapshot",
+      "method": "piece_frequency",
+      "channel": "index",
+      "rows": 10000,
+      "correct": 0,
+      "pct": 0,
+      "characters": 41158,
+      "totalCharacters": 206574,
+      "characterPct": 19.924094997434334,
+      "mostly": 0,
+      "sharedKnownTargetRows": 0,
+      "learned": {
+        "dictionary": 10000,
+        "learnedFeatures": 0,
+        "candidateFeatures": 0,
+        "knownFingerprints": 0,
+        "noise": 0,
+        "knownRows": 0
+      },
+      "predictionDigest": "0a2afa685d38f1bfb8726d0ff3327ac212fc736ac834378d486fc6a25f7e4606",
+      "witnesses": [
+        {
+          "index": 1150,
+          "id": "10000000-0000-4000-8000-00000001496e",
+          "predicted": "oqqld.23rt@biz.test",
+          "correct": false
+        },
+        {
+          "index": 1794,
+          "id": "10000000-0000-4000-8000-000000004dab",
+          "predicted": "oqqld.23rt@biz.test",
+          "correct": false
+        },
+        {
+          "index": 3805,
+          "id": "10000000-0000-4000-8000-00000000e244",
+          "predicted": "oqqld.23rt@biz.test",
+          "correct": false
+        },
+        {
+          "index": 5225,
+          "id": "10000000-0000-4000-8000-000000007639",
+          "predicted": "oqqld.23rt@biz.test",
+          "correct": false
+        },
+        {
+          "index": 5627,
+          "id": "10000000-0000-4000-8000-00000000f90c",
+          "predicted": "oqqld.23rt@biz.test",
+          "correct": false
+        },
+        {
+          "index": 6617,
+          "id": "10000000-0000-4000-8000-00000000f46c",
+          "predicted": "oqqld.23rt@biz.test",
+          "correct": false
+        },
+        {
+          "index": 6899,
+          "id": "10000000-0000-4000-8000-000000006b72",
+          "predicted": "oqqld.23rt@biz.test",
+          "correct": false
+        },
+        {
+          "index": 6963,
+          "id": "10000000-0000-4000-8000-0000000022e6",
+          "predicted": "oqqld.23rt@biz.test",
+          "correct": false
+        },
+        {
+          "index": 7896,
+          "id": "10000000-0000-4000-8000-000000015a63",
+          "predicted": "oqqld.23rt@biz.test",
+          "correct": false
+        },
+        {
+          "index": 8825,
+          "id": "10000000-0000-4000-8000-0000000008ce",
+          "predicted": "oqqld.23rt@biz.test",
+          "correct": false
+        },
+        {
+          "index": 8869,
+          "id": "10000000-0000-4000-8000-00000000d66a",
+          "predicted": "oqqld.23rt@biz.test",
+          "correct": false
+        },
+        {
+          "index": 9982,
+          "id": "10000000-0000-4000-8000-000000015360",
+          "predicted": "oqqld.23rt@biz.test",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "known": 0,
+      "knownSupported": 0,
+      "phase": "snapshot",
+      "method": "rank_frequency",
+      "channel": "index",
+      "rows": 10000,
+      "correct": 0,
+      "pct": 0,
+      "characters": 41432,
+      "totalCharacters": 206574,
+      "characterPct": 20.05673511671362,
+      "mostly": 0,
+      "sharedKnownTargetRows": 0,
+      "learned": {
+        "dictionary": 10000,
+        "learnedFeatures": 0,
+        "candidateFeatures": 0,
+        "knownFingerprints": 0,
+        "noise": 0,
+        "knownRows": 0
+      },
+      "predictionDigest": "c02ce0af648d0ab1e00ca3d8851086ceeede31e6af0cad91abf0132c88576b49",
+      "witnesses": [
+        {
+          "index": 1150,
+          "id": "10000000-0000-4000-8000-00000001496e",
+          "predicted": "vdd9a.vp0@service.test",
+          "correct": false
+        },
+        {
+          "index": 1794,
+          "id": "10000000-0000-4000-8000-000000004dab",
+          "predicted": "lwhcc.d5b@service.test",
+          "correct": false
+        },
+        {
+          "index": 3805,
+          "id": "10000000-0000-4000-8000-00000000e244",
+          "predicted": "65ex8.1sxd@example.test",
+          "correct": false
+        },
+        {
+          "index": 5225,
+          "id": "10000000-0000-4000-8000-000000007639",
+          "predicted": "9wria.6z@mail.test",
+          "correct": false
+        },
+        {
+          "index": 5627,
+          "id": "10000000-0000-4000-8000-00000000f90c",
+          "predicted": "b3oc1.1ip9@service.test",
+          "correct": false
+        },
+        {
+          "index": 6617,
+          "id": "10000000-0000-4000-8000-00000000f46c",
+          "predicted": "wlkxk.tqi@service.test",
+          "correct": false
+        },
+        {
+          "index": 6899,
+          "id": "10000000-0000-4000-8000-000000006b72",
+          "predicted": "jec6d.23sa@service.test",
+          "correct": false
+        },
+        {
+          "index": 6963,
+          "id": "10000000-0000-4000-8000-0000000022e6",
+          "predicted": "bos4f.jbu@example.test",
+          "correct": false
+        },
+        {
+          "index": 7896,
+          "id": "10000000-0000-4000-8000-000000015a63",
+          "predicted": "u2wzn.1hk8@mail.test",
+          "correct": false
+        },
+        {
+          "index": 8825,
+          "id": "10000000-0000-4000-8000-0000000008ce",
+          "predicted": "1467b.lqy@service.test",
+          "correct": false
+        },
+        {
+          "index": 8869,
+          "id": "10000000-0000-4000-8000-00000000d66a",
+          "predicted": "pkkbq.11n0@example.test",
+          "correct": false
+        },
+        {
+          "index": 9982,
+          "id": "10000000-0000-4000-8000-000000015360",
+          "predicted": "xiy4v.xh0@example.test",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "known": 0,
+      "knownSupported": 0,
+      "phase": "snapshot",
+      "method": "public_shape_reference",
+      "channel": "native_shape",
+      "rows": 10000,
+      "correct": 0,
+      "pct": 0,
+      "characters": 45186,
+      "totalCharacters": 206574,
+      "characterPct": 21.874001568445205,
+      "mostly": 0,
+      "sharedKnownTargetRows": 0,
+      "learned": {
+        "dictionary": 10000,
+        "learnedFeatures": 0,
+        "candidateFeatures": 0,
+        "knownFingerprints": 0,
+        "noise": 0,
+        "knownRows": 0
+      },
+      "predictionDigest": "ad5d7b2df8b1e91554cade9c8e61d28bb56378fe284395475eef22f7c707abd5",
+      "witnesses": [
+        {
+          "index": 1150,
+          "id": "10000000-0000-4000-8000-00000001496e",
+          "predicted": "002nx.16n2@biz.test",
+          "correct": false
+        },
+        {
+          "index": 1794,
+          "id": "10000000-0000-4000-8000-000000004dab",
+          "predicted": "002nx.16n2@biz.test",
+          "correct": false
+        },
+        {
+          "index": 3805,
+          "id": "10000000-0000-4000-8000-00000000e244",
+          "predicted": "002nx.16n2@biz.test",
+          "correct": false
+        },
+        {
+          "index": 5225,
+          "id": "10000000-0000-4000-8000-000000007639",
+          "predicted": "002nx.16n2@biz.test",
+          "correct": false
+        },
+        {
+          "index": 5627,
+          "id": "10000000-0000-4000-8000-00000000f90c",
+          "predicted": "002nx.16n2@biz.test",
+          "correct": false
+        },
+        {
+          "index": 6617,
+          "id": "10000000-0000-4000-8000-00000000f46c",
+          "predicted": "002nx.16n2@biz.test",
+          "correct": false
+        },
+        {
+          "index": 6899,
+          "id": "10000000-0000-4000-8000-000000006b72",
+          "predicted": "002nx.16n2@biz.test",
+          "correct": false
+        },
+        {
+          "index": 6963,
+          "id": "10000000-0000-4000-8000-0000000022e6",
+          "predicted": "002nx.16n2@biz.test",
+          "correct": false
+        },
+        {
+          "index": 7896,
+          "id": "10000000-0000-4000-8000-000000015a63",
+          "predicted": "002nx.16n2@biz.test",
+          "correct": false
+        },
+        {
+          "index": 8825,
+          "id": "10000000-0000-4000-8000-0000000008ce",
+          "predicted": "002nx.16n2@biz.test",
+          "correct": false
+        },
+        {
+          "index": 8869,
+          "id": "10000000-0000-4000-8000-00000000d66a",
+          "predicted": "002nx.16n2@biz.test",
+          "correct": false
+        },
+        {
+          "index": 9982,
+          "id": "10000000-0000-4000-8000-000000015360",
+          "predicted": "002nx.16n2@biz.test",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "known": 0,
+      "knownSupported": 0,
+      "phase": "snapshot",
+      "method": "public_tagcount_reference",
+      "channel": "index",
+      "rows": 10000,
+      "correct": 0,
+      "pct": 0,
+      "characters": 45186,
+      "totalCharacters": 206574,
+      "characterPct": 21.874001568445205,
+      "mostly": 0,
+      "sharedKnownTargetRows": 0,
+      "learned": {
+        "dictionary": 10000,
+        "learnedFeatures": 0,
+        "candidateFeatures": 0,
+        "knownFingerprints": 0,
+        "noise": 0,
+        "knownRows": 0
+      },
+      "predictionDigest": "ad5d7b2df8b1e91554cade9c8e61d28bb56378fe284395475eef22f7c707abd5",
+      "witnesses": [
+        {
+          "index": 1150,
+          "id": "10000000-0000-4000-8000-00000001496e",
+          "predicted": "002nx.16n2@biz.test",
+          "correct": false
+        },
+        {
+          "index": 1794,
+          "id": "10000000-0000-4000-8000-000000004dab",
+          "predicted": "002nx.16n2@biz.test",
+          "correct": false
+        },
+        {
+          "index": 3805,
+          "id": "10000000-0000-4000-8000-00000000e244",
+          "predicted": "002nx.16n2@biz.test",
+          "correct": false
+        },
+        {
+          "index": 5225,
+          "id": "10000000-0000-4000-8000-000000007639",
+          "predicted": "002nx.16n2@biz.test",
+          "correct": false
+        },
+        {
+          "index": 5627,
+          "id": "10000000-0000-4000-8000-00000000f90c",
+          "predicted": "002nx.16n2@biz.test",
+          "correct": false
+        },
+        {
+          "index": 6617,
+          "id": "10000000-0000-4000-8000-00000000f46c",
+          "predicted": "002nx.16n2@biz.test",
+          "correct": false
+        },
+        {
+          "index": 6899,
+          "id": "10000000-0000-4000-8000-000000006b72",
+          "predicted": "002nx.16n2@biz.test",
+          "correct": false
+        },
+        {
+          "index": 6963,
+          "id": "10000000-0000-4000-8000-0000000022e6",
+          "predicted": "002nx.16n2@biz.test",
+          "correct": false
+        },
+        {
+          "index": 7896,
+          "id": "10000000-0000-4000-8000-000000015a63",
+          "predicted": "002nx.16n2@biz.test",
+          "correct": false
+        },
+        {
+          "index": 8825,
+          "id": "10000000-0000-4000-8000-0000000008ce",
+          "predicted": "002nx.16n2@biz.test",
+          "correct": false
+        },
+        {
+          "index": 8869,
+          "id": "10000000-0000-4000-8000-00000000d66a",
+          "predicted": "002nx.16n2@biz.test",
+          "correct": false
+        },
+        {
+          "index": 9982,
+          "id": "10000000-0000-4000-8000-000000015360",
+          "predicted": "002nx.16n2@biz.test",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "known": 100,
+      "knownSupported": 100,
+      "phase": "snapshot",
+      "method": "group_frequency",
+      "channel": "index",
+      "rows": 9900,
+      "correct": 0,
+      "pct": 0,
+      "characters": 44717,
+      "totalCharacters": 204542,
+      "characterPct": 21.862013669564195,
+      "mostly": 0,
+      "sharedKnownTargetRows": 0,
+      "learned": {
+        "dictionary": 10100,
+        "learnedFeatures": 0,
+        "candidateFeatures": 8078,
+        "knownFingerprints": 100,
+        "noise": 0,
+        "knownRows": 100
+      },
+      "predictionDigest": "151797da42bbe74be71b16c44c0ed2b4cc53a71d59d9b7c3198da71e172a60d7",
+      "witnesses": [
+        {
+          "index": 971,
+          "id": "10000000-0000-4000-8000-0000000045a2",
+          "predicted": "002nx.16n2@biz.test",
+          "correct": false
+        },
+        {
+          "index": 2054,
+          "id": "10000000-0000-4000-8000-000000002bf0",
+          "predicted": "002nx.16n2@biz.test",
+          "correct": false
+        },
+        {
+          "index": 2369,
+          "id": "10000000-0000-4000-8000-0000000083f7",
+          "predicted": "002nx.16n2@biz.test",
+          "correct": false
+        },
+        {
+          "index": 2954,
+          "id": "10000000-0000-4000-8000-00000000fbe4",
+          "predicted": "002nx.16n2@biz.test",
+          "correct": false
+        },
+        {
+          "index": 4471,
+          "id": "10000000-0000-4000-8000-0000000145d4",
+          "predicted": "002nx.16n2@biz.test",
+          "correct": false
+        },
+        {
+          "index": 6108,
+          "id": "10000000-0000-4000-8000-000000015722",
+          "predicted": "002nx.16n2@biz.test",
+          "correct": false
+        },
+        {
+          "index": 6587,
+          "id": "10000000-0000-4000-8000-000000016cb6",
+          "predicted": "002nx.16n2@biz.test",
+          "correct": false
+        },
+        {
+          "index": 7669,
+          "id": "10000000-0000-4000-8000-000000018337",
+          "predicted": "002nx.16n2@biz.test",
+          "correct": false
+        },
+        {
+          "index": 8241,
+          "id": "10000000-0000-4000-8000-00000000ab0b",
+          "predicted": "002nx.16n2@biz.test",
+          "correct": false
+        },
+        {
+          "index": 8744,
+          "id": "10000000-0000-4000-8000-00000001441e",
+          "predicted": "002nx.16n2@biz.test",
+          "correct": false
+        },
+        {
+          "index": 9733,
+          "id": "10000000-0000-4000-8000-000000010685",
+          "predicted": "002nx.16n2@biz.test",
+          "correct": false
+        },
+        {
+          "index": 9953,
+          "id": "10000000-0000-4000-8000-000000003e23",
+          "predicted": "002nx.16n2@biz.test",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "known": 100,
+      "knownSupported": 100,
+      "phase": "snapshot",
+      "method": "piece_frequency",
+      "channel": "index",
+      "rows": 9900,
+      "correct": 0,
+      "pct": 0,
+      "characters": 44564,
+      "totalCharacters": 204542,
+      "characterPct": 21.78721240625397,
+      "mostly": 0,
+      "sharedKnownTargetRows": 0,
+      "learned": {
+        "dictionary": 10100,
+        "learnedFeatures": 0,
+        "candidateFeatures": 8078,
+        "knownFingerprints": 100,
+        "noise": 0,
+        "knownRows": 100
+      },
+      "predictionDigest": "6b1f3a8a3e094fdbbe0922a2312283f2d9bbca12516b824dddd271b37225520e",
+      "witnesses": [
+        {
+          "index": 971,
+          "id": "10000000-0000-4000-8000-0000000045a2",
+          "predicted": "dgfq6.174t@biz.test",
+          "correct": false
+        },
+        {
+          "index": 2054,
+          "id": "10000000-0000-4000-8000-000000002bf0",
+          "predicted": "dgfq6.174t@biz.test",
+          "correct": false
+        },
+        {
+          "index": 2369,
+          "id": "10000000-0000-4000-8000-0000000083f7",
+          "predicted": "dgfq6.174t@biz.test",
+          "correct": false
+        },
+        {
+          "index": 2954,
+          "id": "10000000-0000-4000-8000-00000000fbe4",
+          "predicted": "dgfq6.174t@biz.test",
+          "correct": false
+        },
+        {
+          "index": 4471,
+          "id": "10000000-0000-4000-8000-0000000145d4",
+          "predicted": "dgfq6.174t@biz.test",
+          "correct": false
+        },
+        {
+          "index": 6108,
+          "id": "10000000-0000-4000-8000-000000015722",
+          "predicted": "dgfq6.174t@biz.test",
+          "correct": false
+        },
+        {
+          "index": 6587,
+          "id": "10000000-0000-4000-8000-000000016cb6",
+          "predicted": "dgfq6.174t@biz.test",
+          "correct": false
+        },
+        {
+          "index": 7669,
+          "id": "10000000-0000-4000-8000-000000018337",
+          "predicted": "dgfq6.174t@biz.test",
+          "correct": false
+        },
+        {
+          "index": 8241,
+          "id": "10000000-0000-4000-8000-00000000ab0b",
+          "predicted": "dgfq6.174t@biz.test",
+          "correct": false
+        },
+        {
+          "index": 8744,
+          "id": "10000000-0000-4000-8000-00000001441e",
+          "predicted": "dgfq6.174t@biz.test",
+          "correct": false
+        },
+        {
+          "index": 9733,
+          "id": "10000000-0000-4000-8000-000000010685",
+          "predicted": "dgfq6.174t@biz.test",
+          "correct": false
+        },
+        {
+          "index": 9953,
+          "id": "10000000-0000-4000-8000-000000003e23",
+          "predicted": "dgfq6.174t@biz.test",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "known": 100,
+      "knownSupported": 100,
+      "phase": "snapshot",
+      "method": "rank_frequency",
+      "channel": "index",
+      "rows": 9900,
+      "correct": 0,
+      "pct": 0,
+      "characters": 40996,
+      "totalCharacters": 204542,
+      "characterPct": 20.0428273899737,
+      "mostly": 0,
+      "sharedKnownTargetRows": 0,
+      "learned": {
+        "dictionary": 10100,
+        "learnedFeatures": 0,
+        "candidateFeatures": 8078,
+        "knownFingerprints": 100,
+        "noise": 0,
+        "knownRows": 100
+      },
+      "predictionDigest": "7efe001937ce90863dd47a3b84c50e60f0f0ccb33c16805f44f2da6fea396646",
+      "witnesses": [
+        {
+          "index": 971,
+          "id": "10000000-0000-4000-8000-0000000045a2",
+          "predicted": "143j2.1e5e@service.test",
+          "correct": false
+        },
+        {
+          "index": 2054,
+          "id": "10000000-0000-4000-8000-000000002bf0",
+          "predicted": "omj6i.1t9l@example.test",
+          "correct": false
+        },
+        {
+          "index": 2369,
+          "id": "10000000-0000-4000-8000-0000000083f7",
+          "predicted": "ui8g3.1ae5@example.test",
+          "correct": false
+        },
+        {
+          "index": 2954,
+          "id": "10000000-0000-4000-8000-00000000fbe4",
+          "predicted": "6jdqv.9cc@biz.test",
+          "correct": false
+        },
+        {
+          "index": 4471,
+          "id": "10000000-0000-4000-8000-0000000145d4",
+          "predicted": "bt2yw.23sj@service.test",
+          "correct": false
+        },
+        {
+          "index": 6108,
+          "id": "10000000-0000-4000-8000-000000015722",
+          "predicted": "nk2ph.ch6@example.test",
+          "correct": false
+        },
+        {
+          "index": 6587,
+          "id": "10000000-0000-4000-8000-000000016cb6",
+          "predicted": "b4vn0.e8i@example.test",
+          "correct": false
+        },
+        {
+          "index": 7669,
+          "id": "10000000-0000-4000-8000-000000018337",
+          "predicted": "jyux1.22oa@mail.test",
+          "correct": false
+        },
+        {
+          "index": 8241,
+          "id": "10000000-0000-4000-8000-00000000ab0b",
+          "predicted": "zsot5.1bq1@service.test",
+          "correct": false
+        },
+        {
+          "index": 8744,
+          "id": "10000000-0000-4000-8000-00000001441e",
+          "predicted": "2jyh8.1siv@service.test",
+          "correct": false
+        },
+        {
+          "index": 9733,
+          "id": "10000000-0000-4000-8000-000000010685",
+          "predicted": "58ycd.164f@mail.test",
+          "correct": false
+        },
+        {
+          "index": 9953,
+          "id": "10000000-0000-4000-8000-000000003e23",
+          "predicted": "1sxj4.1ztc@biz.test",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "known": 100,
+      "knownSupported": 100,
+      "phase": "snapshot",
+      "method": "known_projection",
+      "channel": "index",
+      "rows": 9900,
+      "correct": 0,
+      "pct": 0,
+      "characters": 44717,
+      "totalCharacters": 204542,
+      "characterPct": 21.862013669564195,
+      "mostly": 0,
+      "sharedKnownTargetRows": 0,
+      "learned": {
+        "dictionary": 10100,
+        "learnedFeatures": 0,
+        "candidateFeatures": 8078,
+        "knownFingerprints": 100,
+        "noise": 0,
+        "knownRows": 100
+      },
+      "predictionDigest": "151797da42bbe74be71b16c44c0ed2b4cc53a71d59d9b7c3198da71e172a60d7",
+      "witnesses": [
+        {
+          "index": 971,
+          "id": "10000000-0000-4000-8000-0000000045a2",
+          "predicted": "002nx.16n2@biz.test",
+          "correct": false
+        },
+        {
+          "index": 2054,
+          "id": "10000000-0000-4000-8000-000000002bf0",
+          "predicted": "002nx.16n2@biz.test",
+          "correct": false
+        },
+        {
+          "index": 2369,
+          "id": "10000000-0000-4000-8000-0000000083f7",
+          "predicted": "002nx.16n2@biz.test",
+          "correct": false
+        },
+        {
+          "index": 2954,
+          "id": "10000000-0000-4000-8000-00000000fbe4",
+          "predicted": "002nx.16n2@biz.test",
+          "correct": false
+        },
+        {
+          "index": 4471,
+          "id": "10000000-0000-4000-8000-0000000145d4",
+          "predicted": "002nx.16n2@biz.test",
+          "correct": false
+        },
+        {
+          "index": 6108,
+          "id": "10000000-0000-4000-8000-000000015722",
+          "predicted": "002nx.16n2@biz.test",
+          "correct": false
+        },
+        {
+          "index": 6587,
+          "id": "10000000-0000-4000-8000-000000016cb6",
+          "predicted": "002nx.16n2@biz.test",
+          "correct": false
+        },
+        {
+          "index": 7669,
+          "id": "10000000-0000-4000-8000-000000018337",
+          "predicted": "002nx.16n2@biz.test",
+          "correct": false
+        },
+        {
+          "index": 8241,
+          "id": "10000000-0000-4000-8000-00000000ab0b",
+          "predicted": "002nx.16n2@biz.test",
+          "correct": false
+        },
+        {
+          "index": 8744,
+          "id": "10000000-0000-4000-8000-00000001441e",
+          "predicted": "002nx.16n2@biz.test",
+          "correct": false
+        },
+        {
+          "index": 9733,
+          "id": "10000000-0000-4000-8000-000000010685",
+          "predicted": "002nx.16n2@biz.test",
+          "correct": false
+        },
+        {
+          "index": 9953,
+          "id": "10000000-0000-4000-8000-000000003e23",
+          "predicted": "002nx.16n2@biz.test",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "known": 100,
+      "knownSupported": 100,
+      "phase": "snapshot",
+      "method": "known_fingerprint",
+      "channel": "index",
+      "rows": 9900,
+      "correct": 0,
+      "pct": 0,
+      "characters": 44717,
+      "totalCharacters": 204542,
+      "characterPct": 21.862013669564195,
+      "mostly": 0,
+      "sharedKnownTargetRows": 0,
+      "learned": {
+        "dictionary": 10100,
+        "learnedFeatures": 0,
+        "candidateFeatures": 8078,
+        "knownFingerprints": 100,
+        "noise": 0,
+        "knownRows": 100
+      },
+      "predictionDigest": "151797da42bbe74be71b16c44c0ed2b4cc53a71d59d9b7c3198da71e172a60d7",
+      "witnesses": [
+        {
+          "index": 971,
+          "id": "10000000-0000-4000-8000-0000000045a2",
+          "predicted": "002nx.16n2@biz.test",
+          "correct": false
+        },
+        {
+          "index": 2054,
+          "id": "10000000-0000-4000-8000-000000002bf0",
+          "predicted": "002nx.16n2@biz.test",
+          "correct": false
+        },
+        {
+          "index": 2369,
+          "id": "10000000-0000-4000-8000-0000000083f7",
+          "predicted": "002nx.16n2@biz.test",
+          "correct": false
+        },
+        {
+          "index": 2954,
+          "id": "10000000-0000-4000-8000-00000000fbe4",
+          "predicted": "002nx.16n2@biz.test",
+          "correct": false
+        },
+        {
+          "index": 4471,
+          "id": "10000000-0000-4000-8000-0000000145d4",
+          "predicted": "002nx.16n2@biz.test",
+          "correct": false
+        },
+        {
+          "index": 6108,
+          "id": "10000000-0000-4000-8000-000000015722",
+          "predicted": "002nx.16n2@biz.test",
+          "correct": false
+        },
+        {
+          "index": 6587,
+          "id": "10000000-0000-4000-8000-000000016cb6",
+          "predicted": "002nx.16n2@biz.test",
+          "correct": false
+        },
+        {
+          "index": 7669,
+          "id": "10000000-0000-4000-8000-000000018337",
+          "predicted": "002nx.16n2@biz.test",
+          "correct": false
+        },
+        {
+          "index": 8241,
+          "id": "10000000-0000-4000-8000-00000000ab0b",
+          "predicted": "002nx.16n2@biz.test",
+          "correct": false
+        },
+        {
+          "index": 8744,
+          "id": "10000000-0000-4000-8000-00000001441e",
+          "predicted": "002nx.16n2@biz.test",
+          "correct": false
+        },
+        {
+          "index": 9733,
+          "id": "10000000-0000-4000-8000-000000010685",
+          "predicted": "002nx.16n2@biz.test",
+          "correct": false
+        },
+        {
+          "index": 9953,
+          "id": "10000000-0000-4000-8000-000000003e23",
+          "predicted": "002nx.16n2@biz.test",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "known": 100,
+      "knownSupported": 100,
+      "phase": "snapshot",
+      "method": "public_shape_reference",
+      "channel": "native_shape",
+      "rows": 9900,
+      "correct": 0,
+      "pct": 0,
+      "characters": 44717,
+      "totalCharacters": 204542,
+      "characterPct": 21.862013669564195,
+      "mostly": 0,
+      "sharedKnownTargetRows": 0,
+      "learned": {
+        "dictionary": 10100,
+        "learnedFeatures": 0,
+        "candidateFeatures": 8078,
+        "knownFingerprints": 100,
+        "noise": 0,
+        "knownRows": 100
+      },
+      "predictionDigest": "151797da42bbe74be71b16c44c0ed2b4cc53a71d59d9b7c3198da71e172a60d7",
+      "witnesses": [
+        {
+          "index": 971,
+          "id": "10000000-0000-4000-8000-0000000045a2",
+          "predicted": "002nx.16n2@biz.test",
+          "correct": false
+        },
+        {
+          "index": 2054,
+          "id": "10000000-0000-4000-8000-000000002bf0",
+          "predicted": "002nx.16n2@biz.test",
+          "correct": false
+        },
+        {
+          "index": 2369,
+          "id": "10000000-0000-4000-8000-0000000083f7",
+          "predicted": "002nx.16n2@biz.test",
+          "correct": false
+        },
+        {
+          "index": 2954,
+          "id": "10000000-0000-4000-8000-00000000fbe4",
+          "predicted": "002nx.16n2@biz.test",
+          "correct": false
+        },
+        {
+          "index": 4471,
+          "id": "10000000-0000-4000-8000-0000000145d4",
+          "predicted": "002nx.16n2@biz.test",
+          "correct": false
+        },
+        {
+          "index": 6108,
+          "id": "10000000-0000-4000-8000-000000015722",
+          "predicted": "002nx.16n2@biz.test",
+          "correct": false
+        },
+        {
+          "index": 6587,
+          "id": "10000000-0000-4000-8000-000000016cb6",
+          "predicted": "002nx.16n2@biz.test",
+          "correct": false
+        },
+        {
+          "index": 7669,
+          "id": "10000000-0000-4000-8000-000000018337",
+          "predicted": "002nx.16n2@biz.test",
+          "correct": false
+        },
+        {
+          "index": 8241,
+          "id": "10000000-0000-4000-8000-00000000ab0b",
+          "predicted": "002nx.16n2@biz.test",
+          "correct": false
+        },
+        {
+          "index": 8744,
+          "id": "10000000-0000-4000-8000-00000001441e",
+          "predicted": "002nx.16n2@biz.test",
+          "correct": false
+        },
+        {
+          "index": 9733,
+          "id": "10000000-0000-4000-8000-000000010685",
+          "predicted": "002nx.16n2@biz.test",
+          "correct": false
+        },
+        {
+          "index": 9953,
+          "id": "10000000-0000-4000-8000-000000003e23",
+          "predicted": "002nx.16n2@biz.test",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "known": 100,
+      "knownSupported": 100,
+      "phase": "snapshot",
+      "method": "public_tagcount_reference",
+      "channel": "index",
+      "rows": 9900,
+      "correct": 0,
+      "pct": 0,
+      "characters": 44717,
+      "totalCharacters": 204542,
+      "characterPct": 21.862013669564195,
+      "mostly": 0,
+      "sharedKnownTargetRows": 0,
+      "learned": {
+        "dictionary": 10100,
+        "learnedFeatures": 0,
+        "candidateFeatures": 8078,
+        "knownFingerprints": 100,
+        "noise": 0,
+        "knownRows": 100
+      },
+      "predictionDigest": "151797da42bbe74be71b16c44c0ed2b4cc53a71d59d9b7c3198da71e172a60d7",
+      "witnesses": [
+        {
+          "index": 971,
+          "id": "10000000-0000-4000-8000-0000000045a2",
+          "predicted": "002nx.16n2@biz.test",
+          "correct": false
+        },
+        {
+          "index": 2054,
+          "id": "10000000-0000-4000-8000-000000002bf0",
+          "predicted": "002nx.16n2@biz.test",
+          "correct": false
+        },
+        {
+          "index": 2369,
+          "id": "10000000-0000-4000-8000-0000000083f7",
+          "predicted": "002nx.16n2@biz.test",
+          "correct": false
+        },
+        {
+          "index": 2954,
+          "id": "10000000-0000-4000-8000-00000000fbe4",
+          "predicted": "002nx.16n2@biz.test",
+          "correct": false
+        },
+        {
+          "index": 4471,
+          "id": "10000000-0000-4000-8000-0000000145d4",
+          "predicted": "002nx.16n2@biz.test",
+          "correct": false
+        },
+        {
+          "index": 6108,
+          "id": "10000000-0000-4000-8000-000000015722",
+          "predicted": "002nx.16n2@biz.test",
+          "correct": false
+        },
+        {
+          "index": 6587,
+          "id": "10000000-0000-4000-8000-000000016cb6",
+          "predicted": "002nx.16n2@biz.test",
+          "correct": false
+        },
+        {
+          "index": 7669,
+          "id": "10000000-0000-4000-8000-000000018337",
+          "predicted": "002nx.16n2@biz.test",
+          "correct": false
+        },
+        {
+          "index": 8241,
+          "id": "10000000-0000-4000-8000-00000000ab0b",
+          "predicted": "002nx.16n2@biz.test",
+          "correct": false
+        },
+        {
+          "index": 8744,
+          "id": "10000000-0000-4000-8000-00000001441e",
+          "predicted": "002nx.16n2@biz.test",
+          "correct": false
+        },
+        {
+          "index": 9733,
+          "id": "10000000-0000-4000-8000-000000010685",
+          "predicted": "002nx.16n2@biz.test",
+          "correct": false
+        },
+        {
+          "index": 9953,
+          "id": "10000000-0000-4000-8000-000000003e23",
+          "predicted": "002nx.16n2@biz.test",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "known": 100,
+      "knownSupported": 100,
+      "phase": "snapshot",
+      "method": "public_shape_known",
+      "channel": "native_shape",
+      "rows": 9900,
+      "correct": 0,
+      "pct": 0,
+      "characters": 44717,
+      "totalCharacters": 204542,
+      "characterPct": 21.862013669564195,
+      "mostly": 0,
+      "sharedKnownTargetRows": 0,
+      "learned": {
+        "dictionary": 10100,
+        "learnedFeatures": 0,
+        "candidateFeatures": 8078,
+        "knownFingerprints": 100,
+        "noise": 0,
+        "knownRows": 100
+      },
+      "predictionDigest": "151797da42bbe74be71b16c44c0ed2b4cc53a71d59d9b7c3198da71e172a60d7",
+      "witnesses": [
+        {
+          "index": 971,
+          "id": "10000000-0000-4000-8000-0000000045a2",
+          "predicted": "002nx.16n2@biz.test",
+          "correct": false
+        },
+        {
+          "index": 2054,
+          "id": "10000000-0000-4000-8000-000000002bf0",
+          "predicted": "002nx.16n2@biz.test",
+          "correct": false
+        },
+        {
+          "index": 2369,
+          "id": "10000000-0000-4000-8000-0000000083f7",
+          "predicted": "002nx.16n2@biz.test",
+          "correct": false
+        },
+        {
+          "index": 2954,
+          "id": "10000000-0000-4000-8000-00000000fbe4",
+          "predicted": "002nx.16n2@biz.test",
+          "correct": false
+        },
+        {
+          "index": 4471,
+          "id": "10000000-0000-4000-8000-0000000145d4",
+          "predicted": "002nx.16n2@biz.test",
+          "correct": false
+        },
+        {
+          "index": 6108,
+          "id": "10000000-0000-4000-8000-000000015722",
+          "predicted": "002nx.16n2@biz.test",
+          "correct": false
+        },
+        {
+          "index": 6587,
+          "id": "10000000-0000-4000-8000-000000016cb6",
+          "predicted": "002nx.16n2@biz.test",
+          "correct": false
+        },
+        {
+          "index": 7669,
+          "id": "10000000-0000-4000-8000-000000018337",
+          "predicted": "002nx.16n2@biz.test",
+          "correct": false
+        },
+        {
+          "index": 8241,
+          "id": "10000000-0000-4000-8000-00000000ab0b",
+          "predicted": "002nx.16n2@biz.test",
+          "correct": false
+        },
+        {
+          "index": 8744,
+          "id": "10000000-0000-4000-8000-00000001441e",
+          "predicted": "002nx.16n2@biz.test",
+          "correct": false
+        },
+        {
+          "index": 9733,
+          "id": "10000000-0000-4000-8000-000000010685",
+          "predicted": "002nx.16n2@biz.test",
+          "correct": false
+        },
+        {
+          "index": 9953,
+          "id": "10000000-0000-4000-8000-000000003e23",
+          "predicted": "002nx.16n2@biz.test",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "known": 100,
+      "knownSupported": 100,
+      "phase": "snapshot",
+      "method": "public_tagcount_known",
+      "channel": "index",
+      "rows": 9900,
+      "correct": 0,
+      "pct": 0,
+      "characters": 44717,
+      "totalCharacters": 204542,
+      "characterPct": 21.862013669564195,
+      "mostly": 0,
+      "sharedKnownTargetRows": 0,
+      "learned": {
+        "dictionary": 10100,
+        "learnedFeatures": 0,
+        "candidateFeatures": 8078,
+        "knownFingerprints": 100,
+        "noise": 0,
+        "knownRows": 100
+      },
+      "predictionDigest": "151797da42bbe74be71b16c44c0ed2b4cc53a71d59d9b7c3198da71e172a60d7",
+      "witnesses": [
+        {
+          "index": 971,
+          "id": "10000000-0000-4000-8000-0000000045a2",
+          "predicted": "002nx.16n2@biz.test",
+          "correct": false
+        },
+        {
+          "index": 2054,
+          "id": "10000000-0000-4000-8000-000000002bf0",
+          "predicted": "002nx.16n2@biz.test",
+          "correct": false
+        },
+        {
+          "index": 2369,
+          "id": "10000000-0000-4000-8000-0000000083f7",
+          "predicted": "002nx.16n2@biz.test",
+          "correct": false
+        },
+        {
+          "index": 2954,
+          "id": "10000000-0000-4000-8000-00000000fbe4",
+          "predicted": "002nx.16n2@biz.test",
+          "correct": false
+        },
+        {
+          "index": 4471,
+          "id": "10000000-0000-4000-8000-0000000145d4",
+          "predicted": "002nx.16n2@biz.test",
+          "correct": false
+        },
+        {
+          "index": 6108,
+          "id": "10000000-0000-4000-8000-000000015722",
+          "predicted": "002nx.16n2@biz.test",
+          "correct": false
+        },
+        {
+          "index": 6587,
+          "id": "10000000-0000-4000-8000-000000016cb6",
+          "predicted": "002nx.16n2@biz.test",
+          "correct": false
+        },
+        {
+          "index": 7669,
+          "id": "10000000-0000-4000-8000-000000018337",
+          "predicted": "002nx.16n2@biz.test",
+          "correct": false
+        },
+        {
+          "index": 8241,
+          "id": "10000000-0000-4000-8000-00000000ab0b",
+          "predicted": "002nx.16n2@biz.test",
+          "correct": false
+        },
+        {
+          "index": 8744,
+          "id": "10000000-0000-4000-8000-00000001441e",
+          "predicted": "002nx.16n2@biz.test",
+          "correct": false
+        },
+        {
+          "index": 9733,
+          "id": "10000000-0000-4000-8000-000000010685",
+          "predicted": "002nx.16n2@biz.test",
+          "correct": false
+        },
+        {
+          "index": 9953,
+          "id": "10000000-0000-4000-8000-000000003e23",
+          "predicted": "002nx.16n2@biz.test",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "known": 500,
+      "knownSupported": 500,
+      "phase": "snapshot",
+      "method": "group_frequency",
+      "channel": "index",
+      "rows": 9500,
+      "correct": 0,
+      "pct": 0,
+      "characters": 42932,
+      "totalCharacters": 196275,
+      "characterPct": 21.873391924595595,
+      "mostly": 0,
+      "sharedKnownTargetRows": 0,
+      "learned": {
+        "dictionary": 10500,
+        "learnedFeatures": 0,
+        "candidateFeatures": 35663,
+        "knownFingerprints": 500,
+        "noise": 0,
+        "knownRows": 500
+      },
+      "predictionDigest": "c5645c255886be65292ba8f0aea2274c0166a4d8bb7d0361ea970ba993d380eb",
+      "witnesses": [
+        {
+          "index": 3155,
+          "id": "10000000-0000-4000-8000-000000012a97",
+          "predicted": "002nx.16n2@biz.test",
+          "correct": false
+        },
+        {
+          "index": 3593,
+          "id": "10000000-0000-4000-8000-00000001740a",
+          "predicted": "002nx.16n2@biz.test",
+          "correct": false
+        },
+        {
+          "index": 3806,
+          "id": "10000000-0000-4000-8000-00000000b03b",
+          "predicted": "002nx.16n2@biz.test",
+          "correct": false
+        },
+        {
+          "index": 4051,
+          "id": "10000000-0000-4000-8000-000000018680",
+          "predicted": "002nx.16n2@biz.test",
+          "correct": false
+        },
+        {
+          "index": 4394,
+          "id": "10000000-0000-4000-8000-000000007d47",
+          "predicted": "002nx.16n2@biz.test",
+          "correct": false
+        },
+        {
+          "index": 5851,
+          "id": "10000000-0000-4000-8000-00000000dc1e",
+          "predicted": "002nx.16n2@biz.test",
+          "correct": false
+        },
+        {
+          "index": 6503,
+          "id": "10000000-0000-4000-8000-000000008d5d",
+          "predicted": "002nx.16n2@biz.test",
+          "correct": false
+        },
+        {
+          "index": 6998,
+          "id": "10000000-0000-4000-8000-00000000a4b6",
+          "predicted": "002nx.16n2@biz.test",
+          "correct": false
+        },
+        {
+          "index": 8407,
+          "id": "10000000-0000-4000-8000-0000000152ff",
+          "predicted": "002nx.16n2@biz.test",
+          "correct": false
+        },
+        {
+          "index": 9380,
+          "id": "10000000-0000-4000-8000-000000001758",
+          "predicted": "002nx.16n2@biz.test",
+          "correct": false
+        },
+        {
+          "index": 9686,
+          "id": "10000000-0000-4000-8000-00000000b02b",
+          "predicted": "002nx.16n2@biz.test",
+          "correct": false
+        },
+        {
+          "index": 9736,
+          "id": "10000000-0000-4000-8000-00000000e4c9",
+          "predicted": "002nx.16n2@biz.test",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "known": 500,
+      "knownSupported": 500,
+      "phase": "snapshot",
+      "method": "piece_frequency",
+      "channel": "index",
+      "rows": 9500,
+      "correct": 0,
+      "pct": 0,
+      "characters": 42894,
+      "totalCharacters": 196275,
+      "characterPct": 21.85403133358808,
+      "mostly": 0,
+      "sharedKnownTargetRows": 0,
+      "learned": {
+        "dictionary": 10500,
+        "learnedFeatures": 0,
+        "candidateFeatures": 35663,
+        "knownFingerprints": 500,
+        "noise": 0,
+        "knownRows": 500
+      },
+      "predictionDigest": "2ce0a58b02407c95f35e580fe2f331247ea0b6bc37905ddde12fe17d9318bf3e",
+      "witnesses": [
+        {
+          "index": 3155,
+          "id": "10000000-0000-4000-8000-000000012a97",
+          "predicted": "5llkv.1d3k@biz.test",
+          "correct": false
+        },
+        {
+          "index": 3593,
+          "id": "10000000-0000-4000-8000-00000001740a",
+          "predicted": "5llkv.1d3k@biz.test",
+          "correct": false
+        },
+        {
+          "index": 3806,
+          "id": "10000000-0000-4000-8000-00000000b03b",
+          "predicted": "5llkv.1d3k@biz.test",
+          "correct": false
+        },
+        {
+          "index": 4051,
+          "id": "10000000-0000-4000-8000-000000018680",
+          "predicted": "5llkv.1d3k@biz.test",
+          "correct": false
+        },
+        {
+          "index": 4394,
+          "id": "10000000-0000-4000-8000-000000007d47",
+          "predicted": "5llkv.1d3k@biz.test",
+          "correct": false
+        },
+        {
+          "index": 5851,
+          "id": "10000000-0000-4000-8000-00000000dc1e",
+          "predicted": "5llkv.1d3k@biz.test",
+          "correct": false
+        },
+        {
+          "index": 6503,
+          "id": "10000000-0000-4000-8000-000000008d5d",
+          "predicted": "5llkv.1d3k@biz.test",
+          "correct": false
+        },
+        {
+          "index": 6998,
+          "id": "10000000-0000-4000-8000-00000000a4b6",
+          "predicted": "5llkv.1d3k@biz.test",
+          "correct": false
+        },
+        {
+          "index": 8407,
+          "id": "10000000-0000-4000-8000-0000000152ff",
+          "predicted": "5llkv.1d3k@biz.test",
+          "correct": false
+        },
+        {
+          "index": 9380,
+          "id": "10000000-0000-4000-8000-000000001758",
+          "predicted": "5llkv.1d3k@biz.test",
+          "correct": false
+        },
+        {
+          "index": 9686,
+          "id": "10000000-0000-4000-8000-00000000b02b",
+          "predicted": "5llkv.1d3k@biz.test",
+          "correct": false
+        },
+        {
+          "index": 9736,
+          "id": "10000000-0000-4000-8000-00000000e4c9",
+          "predicted": "5llkv.1d3k@biz.test",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "known": 500,
+      "knownSupported": 500,
+      "phase": "snapshot",
+      "method": "rank_frequency",
+      "channel": "index",
+      "rows": 9500,
+      "correct": 0,
+      "pct": 0,
+      "characters": 39695,
+      "totalCharacters": 196275,
+      "characterPct": 20.224175264297543,
+      "mostly": 0,
+      "sharedKnownTargetRows": 0,
+      "learned": {
+        "dictionary": 10500,
+        "learnedFeatures": 0,
+        "candidateFeatures": 35663,
+        "knownFingerprints": 500,
+        "noise": 0,
+        "knownRows": 500
+      },
+      "predictionDigest": "bddc11aac4eba637b8d829f7af000cfe9e95d3dc6a35045a605dce6540c5bb92",
+      "witnesses": [
+        {
+          "index": 3155,
+          "id": "10000000-0000-4000-8000-000000012a97",
+          "predicted": "e7zr9.kiq@biz.test",
+          "correct": false
+        },
+        {
+          "index": 3593,
+          "id": "10000000-0000-4000-8000-00000001740a",
+          "predicted": "m4aoo.3j2@mail.test",
+          "correct": false
+        },
+        {
+          "index": 3806,
+          "id": "10000000-0000-4000-8000-00000000b03b",
+          "predicted": "g37u8.1kde@mail.test",
+          "correct": false
+        },
+        {
+          "index": 4051,
+          "id": "10000000-0000-4000-8000-000000018680",
+          "predicted": "ah8rm.23vw@service.test",
+          "correct": false
+        },
+        {
+          "index": 4394,
+          "id": "10000000-0000-4000-8000-000000007d47",
+          "predicted": "et9q5.1yvb@mail.test",
+          "correct": false
+        },
+        {
+          "index": 5851,
+          "id": "10000000-0000-4000-8000-00000000dc1e",
+          "predicted": "wy5es.95p@biz.test",
+          "correct": false
+        },
+        {
+          "index": 6503,
+          "id": "10000000-0000-4000-8000-000000008d5d",
+          "predicted": "8ehhg.1l93@biz.test",
+          "correct": false
+        },
+        {
+          "index": 6998,
+          "id": "10000000-0000-4000-8000-00000000a4b6",
+          "predicted": "1nhpt.862@mail.test",
+          "correct": false
+        },
+        {
+          "index": 8407,
+          "id": "10000000-0000-4000-8000-0000000152ff",
+          "predicted": "u3fn3.1hko@biz.test",
+          "correct": false
+        },
+        {
+          "index": 9380,
+          "id": "10000000-0000-4000-8000-000000001758",
+          "predicted": "o4rft.1ztx@mail.test",
+          "correct": false
+        },
+        {
+          "index": 9686,
+          "id": "10000000-0000-4000-8000-00000000b02b",
+          "predicted": "3kksw.24do@service.test",
+          "correct": false
+        },
+        {
+          "index": 9736,
+          "id": "10000000-0000-4000-8000-00000000e4c9",
+          "predicted": "lx5ai.5fw@service.test",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "known": 500,
+      "knownSupported": 500,
+      "phase": "snapshot",
+      "method": "known_projection",
+      "channel": "index",
+      "rows": 9500,
+      "correct": 0,
+      "pct": 0,
+      "characters": 42932,
+      "totalCharacters": 196275,
+      "characterPct": 21.873391924595595,
+      "mostly": 0,
+      "sharedKnownTargetRows": 0,
+      "learned": {
+        "dictionary": 10500,
+        "learnedFeatures": 0,
+        "candidateFeatures": 35663,
+        "knownFingerprints": 500,
+        "noise": 0,
+        "knownRows": 500
+      },
+      "predictionDigest": "c5645c255886be65292ba8f0aea2274c0166a4d8bb7d0361ea970ba993d380eb",
+      "witnesses": [
+        {
+          "index": 3155,
+          "id": "10000000-0000-4000-8000-000000012a97",
+          "predicted": "002nx.16n2@biz.test",
+          "correct": false
+        },
+        {
+          "index": 3593,
+          "id": "10000000-0000-4000-8000-00000001740a",
+          "predicted": "002nx.16n2@biz.test",
+          "correct": false
+        },
+        {
+          "index": 3806,
+          "id": "10000000-0000-4000-8000-00000000b03b",
+          "predicted": "002nx.16n2@biz.test",
+          "correct": false
+        },
+        {
+          "index": 4051,
+          "id": "10000000-0000-4000-8000-000000018680",
+          "predicted": "002nx.16n2@biz.test",
+          "correct": false
+        },
+        {
+          "index": 4394,
+          "id": "10000000-0000-4000-8000-000000007d47",
+          "predicted": "002nx.16n2@biz.test",
+          "correct": false
+        },
+        {
+          "index": 5851,
+          "id": "10000000-0000-4000-8000-00000000dc1e",
+          "predicted": "002nx.16n2@biz.test",
+          "correct": false
+        },
+        {
+          "index": 6503,
+          "id": "10000000-0000-4000-8000-000000008d5d",
+          "predicted": "002nx.16n2@biz.test",
+          "correct": false
+        },
+        {
+          "index": 6998,
+          "id": "10000000-0000-4000-8000-00000000a4b6",
+          "predicted": "002nx.16n2@biz.test",
+          "correct": false
+        },
+        {
+          "index": 8407,
+          "id": "10000000-0000-4000-8000-0000000152ff",
+          "predicted": "002nx.16n2@biz.test",
+          "correct": false
+        },
+        {
+          "index": 9380,
+          "id": "10000000-0000-4000-8000-000000001758",
+          "predicted": "002nx.16n2@biz.test",
+          "correct": false
+        },
+        {
+          "index": 9686,
+          "id": "10000000-0000-4000-8000-00000000b02b",
+          "predicted": "002nx.16n2@biz.test",
+          "correct": false
+        },
+        {
+          "index": 9736,
+          "id": "10000000-0000-4000-8000-00000000e4c9",
+          "predicted": "002nx.16n2@biz.test",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "known": 500,
+      "knownSupported": 500,
+      "phase": "snapshot",
+      "method": "known_fingerprint",
+      "channel": "index",
+      "rows": 9500,
+      "correct": 0,
+      "pct": 0,
+      "characters": 42932,
+      "totalCharacters": 196275,
+      "characterPct": 21.873391924595595,
+      "mostly": 0,
+      "sharedKnownTargetRows": 0,
+      "learned": {
+        "dictionary": 10500,
+        "learnedFeatures": 0,
+        "candidateFeatures": 35663,
+        "knownFingerprints": 500,
+        "noise": 0,
+        "knownRows": 500
+      },
+      "predictionDigest": "c5645c255886be65292ba8f0aea2274c0166a4d8bb7d0361ea970ba993d380eb",
+      "witnesses": [
+        {
+          "index": 3155,
+          "id": "10000000-0000-4000-8000-000000012a97",
+          "predicted": "002nx.16n2@biz.test",
+          "correct": false
+        },
+        {
+          "index": 3593,
+          "id": "10000000-0000-4000-8000-00000001740a",
+          "predicted": "002nx.16n2@biz.test",
+          "correct": false
+        },
+        {
+          "index": 3806,
+          "id": "10000000-0000-4000-8000-00000000b03b",
+          "predicted": "002nx.16n2@biz.test",
+          "correct": false
+        },
+        {
+          "index": 4051,
+          "id": "10000000-0000-4000-8000-000000018680",
+          "predicted": "002nx.16n2@biz.test",
+          "correct": false
+        },
+        {
+          "index": 4394,
+          "id": "10000000-0000-4000-8000-000000007d47",
+          "predicted": "002nx.16n2@biz.test",
+          "correct": false
+        },
+        {
+          "index": 5851,
+          "id": "10000000-0000-4000-8000-00000000dc1e",
+          "predicted": "002nx.16n2@biz.test",
+          "correct": false
+        },
+        {
+          "index": 6503,
+          "id": "10000000-0000-4000-8000-000000008d5d",
+          "predicted": "002nx.16n2@biz.test",
+          "correct": false
+        },
+        {
+          "index": 6998,
+          "id": "10000000-0000-4000-8000-00000000a4b6",
+          "predicted": "002nx.16n2@biz.test",
+          "correct": false
+        },
+        {
+          "index": 8407,
+          "id": "10000000-0000-4000-8000-0000000152ff",
+          "predicted": "002nx.16n2@biz.test",
+          "correct": false
+        },
+        {
+          "index": 9380,
+          "id": "10000000-0000-4000-8000-000000001758",
+          "predicted": "002nx.16n2@biz.test",
+          "correct": false
+        },
+        {
+          "index": 9686,
+          "id": "10000000-0000-4000-8000-00000000b02b",
+          "predicted": "002nx.16n2@biz.test",
+          "correct": false
+        },
+        {
+          "index": 9736,
+          "id": "10000000-0000-4000-8000-00000000e4c9",
+          "predicted": "002nx.16n2@biz.test",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "known": 500,
+      "knownSupported": 500,
+      "phase": "snapshot",
+      "method": "public_shape_reference",
+      "channel": "native_shape",
+      "rows": 9500,
+      "correct": 0,
+      "pct": 0,
+      "characters": 42932,
+      "totalCharacters": 196275,
+      "characterPct": 21.873391924595595,
+      "mostly": 0,
+      "sharedKnownTargetRows": 0,
+      "learned": {
+        "dictionary": 10500,
+        "learnedFeatures": 0,
+        "candidateFeatures": 35663,
+        "knownFingerprints": 500,
+        "noise": 0,
+        "knownRows": 500
+      },
+      "predictionDigest": "c5645c255886be65292ba8f0aea2274c0166a4d8bb7d0361ea970ba993d380eb",
+      "witnesses": [
+        {
+          "index": 3155,
+          "id": "10000000-0000-4000-8000-000000012a97",
+          "predicted": "002nx.16n2@biz.test",
+          "correct": false
+        },
+        {
+          "index": 3593,
+          "id": "10000000-0000-4000-8000-00000001740a",
+          "predicted": "002nx.16n2@biz.test",
+          "correct": false
+        },
+        {
+          "index": 3806,
+          "id": "10000000-0000-4000-8000-00000000b03b",
+          "predicted": "002nx.16n2@biz.test",
+          "correct": false
+        },
+        {
+          "index": 4051,
+          "id": "10000000-0000-4000-8000-000000018680",
+          "predicted": "002nx.16n2@biz.test",
+          "correct": false
+        },
+        {
+          "index": 4394,
+          "id": "10000000-0000-4000-8000-000000007d47",
+          "predicted": "002nx.16n2@biz.test",
+          "correct": false
+        },
+        {
+          "index": 5851,
+          "id": "10000000-0000-4000-8000-00000000dc1e",
+          "predicted": "002nx.16n2@biz.test",
+          "correct": false
+        },
+        {
+          "index": 6503,
+          "id": "10000000-0000-4000-8000-000000008d5d",
+          "predicted": "002nx.16n2@biz.test",
+          "correct": false
+        },
+        {
+          "index": 6998,
+          "id": "10000000-0000-4000-8000-00000000a4b6",
+          "predicted": "002nx.16n2@biz.test",
+          "correct": false
+        },
+        {
+          "index": 8407,
+          "id": "10000000-0000-4000-8000-0000000152ff",
+          "predicted": "002nx.16n2@biz.test",
+          "correct": false
+        },
+        {
+          "index": 9380,
+          "id": "10000000-0000-4000-8000-000000001758",
+          "predicted": "002nx.16n2@biz.test",
+          "correct": false
+        },
+        {
+          "index": 9686,
+          "id": "10000000-0000-4000-8000-00000000b02b",
+          "predicted": "002nx.16n2@biz.test",
+          "correct": false
+        },
+        {
+          "index": 9736,
+          "id": "10000000-0000-4000-8000-00000000e4c9",
+          "predicted": "002nx.16n2@biz.test",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "known": 500,
+      "knownSupported": 500,
+      "phase": "snapshot",
+      "method": "public_tagcount_reference",
+      "channel": "index",
+      "rows": 9500,
+      "correct": 0,
+      "pct": 0,
+      "characters": 42932,
+      "totalCharacters": 196275,
+      "characterPct": 21.873391924595595,
+      "mostly": 0,
+      "sharedKnownTargetRows": 0,
+      "learned": {
+        "dictionary": 10500,
+        "learnedFeatures": 0,
+        "candidateFeatures": 35663,
+        "knownFingerprints": 500,
+        "noise": 0,
+        "knownRows": 500
+      },
+      "predictionDigest": "c5645c255886be65292ba8f0aea2274c0166a4d8bb7d0361ea970ba993d380eb",
+      "witnesses": [
+        {
+          "index": 3155,
+          "id": "10000000-0000-4000-8000-000000012a97",
+          "predicted": "002nx.16n2@biz.test",
+          "correct": false
+        },
+        {
+          "index": 3593,
+          "id": "10000000-0000-4000-8000-00000001740a",
+          "predicted": "002nx.16n2@biz.test",
+          "correct": false
+        },
+        {
+          "index": 3806,
+          "id": "10000000-0000-4000-8000-00000000b03b",
+          "predicted": "002nx.16n2@biz.test",
+          "correct": false
+        },
+        {
+          "index": 4051,
+          "id": "10000000-0000-4000-8000-000000018680",
+          "predicted": "002nx.16n2@biz.test",
+          "correct": false
+        },
+        {
+          "index": 4394,
+          "id": "10000000-0000-4000-8000-000000007d47",
+          "predicted": "002nx.16n2@biz.test",
+          "correct": false
+        },
+        {
+          "index": 5851,
+          "id": "10000000-0000-4000-8000-00000000dc1e",
+          "predicted": "002nx.16n2@biz.test",
+          "correct": false
+        },
+        {
+          "index": 6503,
+          "id": "10000000-0000-4000-8000-000000008d5d",
+          "predicted": "002nx.16n2@biz.test",
+          "correct": false
+        },
+        {
+          "index": 6998,
+          "id": "10000000-0000-4000-8000-00000000a4b6",
+          "predicted": "002nx.16n2@biz.test",
+          "correct": false
+        },
+        {
+          "index": 8407,
+          "id": "10000000-0000-4000-8000-0000000152ff",
+          "predicted": "002nx.16n2@biz.test",
+          "correct": false
+        },
+        {
+          "index": 9380,
+          "id": "10000000-0000-4000-8000-000000001758",
+          "predicted": "002nx.16n2@biz.test",
+          "correct": false
+        },
+        {
+          "index": 9686,
+          "id": "10000000-0000-4000-8000-00000000b02b",
+          "predicted": "002nx.16n2@biz.test",
+          "correct": false
+        },
+        {
+          "index": 9736,
+          "id": "10000000-0000-4000-8000-00000000e4c9",
+          "predicted": "002nx.16n2@biz.test",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "known": 500,
+      "knownSupported": 500,
+      "phase": "snapshot",
+      "method": "public_shape_known",
+      "channel": "native_shape",
+      "rows": 9500,
+      "correct": 0,
+      "pct": 0,
+      "characters": 42932,
+      "totalCharacters": 196275,
+      "characterPct": 21.873391924595595,
+      "mostly": 0,
+      "sharedKnownTargetRows": 0,
+      "learned": {
+        "dictionary": 10500,
+        "learnedFeatures": 0,
+        "candidateFeatures": 35663,
+        "knownFingerprints": 500,
+        "noise": 0,
+        "knownRows": 500
+      },
+      "predictionDigest": "c5645c255886be65292ba8f0aea2274c0166a4d8bb7d0361ea970ba993d380eb",
+      "witnesses": [
+        {
+          "index": 3155,
+          "id": "10000000-0000-4000-8000-000000012a97",
+          "predicted": "002nx.16n2@biz.test",
+          "correct": false
+        },
+        {
+          "index": 3593,
+          "id": "10000000-0000-4000-8000-00000001740a",
+          "predicted": "002nx.16n2@biz.test",
+          "correct": false
+        },
+        {
+          "index": 3806,
+          "id": "10000000-0000-4000-8000-00000000b03b",
+          "predicted": "002nx.16n2@biz.test",
+          "correct": false
+        },
+        {
+          "index": 4051,
+          "id": "10000000-0000-4000-8000-000000018680",
+          "predicted": "002nx.16n2@biz.test",
+          "correct": false
+        },
+        {
+          "index": 4394,
+          "id": "10000000-0000-4000-8000-000000007d47",
+          "predicted": "002nx.16n2@biz.test",
+          "correct": false
+        },
+        {
+          "index": 5851,
+          "id": "10000000-0000-4000-8000-00000000dc1e",
+          "predicted": "002nx.16n2@biz.test",
+          "correct": false
+        },
+        {
+          "index": 6503,
+          "id": "10000000-0000-4000-8000-000000008d5d",
+          "predicted": "002nx.16n2@biz.test",
+          "correct": false
+        },
+        {
+          "index": 6998,
+          "id": "10000000-0000-4000-8000-00000000a4b6",
+          "predicted": "002nx.16n2@biz.test",
+          "correct": false
+        },
+        {
+          "index": 8407,
+          "id": "10000000-0000-4000-8000-0000000152ff",
+          "predicted": "002nx.16n2@biz.test",
+          "correct": false
+        },
+        {
+          "index": 9380,
+          "id": "10000000-0000-4000-8000-000000001758",
+          "predicted": "002nx.16n2@biz.test",
+          "correct": false
+        },
+        {
+          "index": 9686,
+          "id": "10000000-0000-4000-8000-00000000b02b",
+          "predicted": "002nx.16n2@biz.test",
+          "correct": false
+        },
+        {
+          "index": 9736,
+          "id": "10000000-0000-4000-8000-00000000e4c9",
+          "predicted": "002nx.16n2@biz.test",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "known": 500,
+      "knownSupported": 500,
+      "phase": "snapshot",
+      "method": "public_tagcount_known",
+      "channel": "index",
+      "rows": 9500,
+      "correct": 0,
+      "pct": 0,
+      "characters": 42932,
+      "totalCharacters": 196275,
+      "characterPct": 21.873391924595595,
+      "mostly": 0,
+      "sharedKnownTargetRows": 0,
+      "learned": {
+        "dictionary": 10500,
+        "learnedFeatures": 0,
+        "candidateFeatures": 35663,
+        "knownFingerprints": 500,
+        "noise": 0,
+        "knownRows": 500
+      },
+      "predictionDigest": "c5645c255886be65292ba8f0aea2274c0166a4d8bb7d0361ea970ba993d380eb",
+      "witnesses": [
+        {
+          "index": 3155,
+          "id": "10000000-0000-4000-8000-000000012a97",
+          "predicted": "002nx.16n2@biz.test",
+          "correct": false
+        },
+        {
+          "index": 3593,
+          "id": "10000000-0000-4000-8000-00000001740a",
+          "predicted": "002nx.16n2@biz.test",
+          "correct": false
+        },
+        {
+          "index": 3806,
+          "id": "10000000-0000-4000-8000-00000000b03b",
+          "predicted": "002nx.16n2@biz.test",
+          "correct": false
+        },
+        {
+          "index": 4051,
+          "id": "10000000-0000-4000-8000-000000018680",
+          "predicted": "002nx.16n2@biz.test",
+          "correct": false
+        },
+        {
+          "index": 4394,
+          "id": "10000000-0000-4000-8000-000000007d47",
+          "predicted": "002nx.16n2@biz.test",
+          "correct": false
+        },
+        {
+          "index": 5851,
+          "id": "10000000-0000-4000-8000-00000000dc1e",
+          "predicted": "002nx.16n2@biz.test",
+          "correct": false
+        },
+        {
+          "index": 6503,
+          "id": "10000000-0000-4000-8000-000000008d5d",
+          "predicted": "002nx.16n2@biz.test",
+          "correct": false
+        },
+        {
+          "index": 6998,
+          "id": "10000000-0000-4000-8000-00000000a4b6",
+          "predicted": "002nx.16n2@biz.test",
+          "correct": false
+        },
+        {
+          "index": 8407,
+          "id": "10000000-0000-4000-8000-0000000152ff",
+          "predicted": "002nx.16n2@biz.test",
+          "correct": false
+        },
+        {
+          "index": 9380,
+          "id": "10000000-0000-4000-8000-000000001758",
+          "predicted": "002nx.16n2@biz.test",
+          "correct": false
+        },
+        {
+          "index": 9686,
+          "id": "10000000-0000-4000-8000-00000000b02b",
+          "predicted": "002nx.16n2@biz.test",
+          "correct": false
+        },
+        {
+          "index": 9736,
+          "id": "10000000-0000-4000-8000-00000000e4c9",
+          "predicted": "002nx.16n2@biz.test",
+          "correct": false
+        }
+      ]
+    }
+  ],
+  "baselines": [
+    {
+      "known": 0,
+      "method": "random_empirical",
+      "rows": 10000,
+      "correct": 0,
+      "pct": 0,
+      "characters": 41537,
+      "totalCharacters": 206574,
+      "characterPct": 20.107564359503133,
+      "mostly": 0
+    },
+    {
+      "known": 0,
+      "method": "random_distinct",
+      "rows": 10000,
+      "correct": 0,
+      "pct": 0,
+      "characters": 40939,
+      "totalCharacters": 206574,
+      "characterPct": 19.818079719616215,
+      "mostly": 0
+    },
+    {
+      "known": 100,
+      "method": "random_empirical",
+      "rows": 9900,
+      "correct": 0,
+      "pct": 0,
+      "characters": 41161,
+      "totalCharacters": 204542,
+      "characterPct": 20.123495419033745,
+      "mostly": 0
+    },
+    {
+      "known": 100,
+      "method": "random_distinct",
+      "rows": 9900,
+      "correct": 0,
+      "pct": 0,
+      "characters": 40557,
+      "totalCharacters": 204542,
+      "characterPct": 19.82820154295939,
+      "mostly": 0
+    },
+    {
+      "known": 500,
+      "method": "random_empirical",
+      "rows": 9500,
+      "correct": 0,
+      "pct": 0,
+      "characters": 39513,
+      "totalCharacters": 196275,
+      "characterPct": 20.131448223156287,
+      "mostly": 0
+    },
+    {
+      "known": 500,
+      "method": "random_distinct",
+      "rows": 9500,
+      "correct": 0,
+      "pct": 0,
+      "characters": 38811,
+      "totalCharacters": 196275,
+      "characterPct": 19.7737867787543,
+      "mostly": 0
+    }
+  ],
+  "finished": "2026-09-29T18:57:52.346Z"
+}

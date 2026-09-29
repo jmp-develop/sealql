@@ -1,0 +1,2406 @@
+{
+  "started": "2026-09-29T18:44:48.002Z",
+  "complete": true,
+  "databaseAccess": false,
+  "field": "phone",
+  "model": "C-mongo",
+  "mode": "partial",
+  "options": {
+    "id": "C-mongo",
+    "field": "phone",
+    "mode": "partial",
+    "contention": 8,
+    "maxLength": 60
+  },
+  "sourceHash": "fd0d2eefaf034bc868bbeae841d969ab8766504a4e008adb8eec527d75da44de",
+  "identityDigest": "189a19c99711fbacd9cafdb548f243a63657e12a0c1514a736c1f92da670f382",
+  "snapshotDigest": "5d1b5fcb7a7053668912dae817c2050b26073d5b70aa6df3738918ab72067036",
+  "metadata": {
+    "source": "Mongo official padding/ESC review: v-astra/model-rules-ko.md",
+    "tagBits": 256,
+    "contention": 8,
+    "mode": "partial",
+    "maxLength": 60,
+    "fidelity": "Leakage model, independent field/value keys and AES-CTR counter envelope; NOT SDK bytes. Post-compaction endpoint replaces each hidden group by one encrypted anchor; runtime cleanup transcript is not reproduced.",
+    "cipherBytes": "Only observable encrypted BSON length bucket E; constant envelope overhead omitted",
+    "logicalUnorderedTagSets": true,
+    "compacted": false,
+    "escRows": 1990000,
+    "ecocRows": 1990000,
+    "ecocCiphertext": "Opaque randomized documents represented by aggregate count; no linkage is exposed",
+    "unsupportedRows": 0
+  },
+  "compactedMetadata": {
+    "source": "Mongo official padding/ESC review: v-astra/model-rules-ko.md",
+    "tagBits": 256,
+    "contention": 8,
+    "mode": "partial",
+    "maxLength": 60,
+    "fidelity": "Leakage model, independent field/value keys and AES-CTR counter envelope; NOT SDK bytes. Post-compaction endpoint replaces each hidden group by one encrypted anchor; runtime cleanup transcript is not reproduced.",
+    "cipherBytes": "Only observable encrypted BSON length bucket E; constant envelope overhead omitted",
+    "logicalUnorderedTagSets": true,
+    "compacted": true,
+    "escRows": 401662,
+    "ecocRows": 0,
+    "ecocCiphertext": "Opaque randomized documents represented by aggregate count; no linkage is exposed",
+    "unsupportedRows": 0
+  },
+  "esc": {
+    "beforeRows": 1990000,
+    "afterCompactionRows": 401662,
+    "plaintextCounters": 0,
+    "totalPlaintextCounts": 0,
+    "distinctPlaintextCounts": 0,
+    "preDigest": "85faa110559bef95fe410904238710960730b631393d247caf02f2939ec9d162",
+    "postDigest": "d90058fb0c3177c231be544d3981b6ab9fbab0e5fe47fdb4859f6f66f21009b4"
+  },
+  "uniqueness": {
+    "tagOccurrences": 1990000,
+    "distinctTags": 1990000,
+    "crossRowRepeats": 0
+  },
+  "unsupported": [],
+  "results": [
+    {
+      "known": 0,
+      "knownSupported": 0,
+      "phase": "snapshot",
+      "method": "group_frequency",
+      "channel": "index",
+      "rows": 10000,
+      "correct": 0,
+      "pct": 0,
+      "characters": 30365,
+      "totalCharacters": 120000,
+      "characterPct": 25.304166666666667,
+      "mostly": 0,
+      "sharedKnownTargetRows": 0,
+      "learned": {
+        "dictionary": 10000,
+        "learnedFeatures": 0,
+        "candidateFeatures": 0,
+        "knownFingerprints": 0,
+        "noise": 0,
+        "knownRows": 0
+      },
+      "predictionDigest": "55c0720baead6e4305161c6b66ead855f78ee5770afac12300822958bea1bf02",
+      "witnesses": [
+        {
+          "index": 1150,
+          "id": "10000000-0000-4000-8000-00000001496e",
+          "predicted": "10-0035-5669",
+          "correct": false
+        },
+        {
+          "index": 1794,
+          "id": "10000000-0000-4000-8000-000000004dab",
+          "predicted": "10-0035-5669",
+          "correct": false
+        },
+        {
+          "index": 3805,
+          "id": "10000000-0000-4000-8000-00000000e244",
+          "predicted": "10-0035-5669",
+          "correct": false
+        },
+        {
+          "index": 5225,
+          "id": "10000000-0000-4000-8000-000000007639",
+          "predicted": "10-0035-5669",
+          "correct": false
+        },
+        {
+          "index": 5627,
+          "id": "10000000-0000-4000-8000-00000000f90c",
+          "predicted": "10-0035-5669",
+          "correct": false
+        },
+        {
+          "index": 6617,
+          "id": "10000000-0000-4000-8000-00000000f46c",
+          "predicted": "10-0035-5669",
+          "correct": false
+        },
+        {
+          "index": 6899,
+          "id": "10000000-0000-4000-8000-000000006b72",
+          "predicted": "10-0035-5669",
+          "correct": false
+        },
+        {
+          "index": 6963,
+          "id": "10000000-0000-4000-8000-0000000022e6",
+          "predicted": "10-0035-5669",
+          "correct": false
+        },
+        {
+          "index": 7896,
+          "id": "10000000-0000-4000-8000-000000015a63",
+          "predicted": "10-0035-5669",
+          "correct": false
+        },
+        {
+          "index": 8825,
+          "id": "10000000-0000-4000-8000-0000000008ce",
+          "predicted": "10-0035-5669",
+          "correct": false
+        },
+        {
+          "index": 8869,
+          "id": "10000000-0000-4000-8000-00000000d66a",
+          "predicted": "10-0035-5669",
+          "correct": false
+        },
+        {
+          "index": 9982,
+          "id": "10000000-0000-4000-8000-000000015360",
+          "predicted": "10-0035-5669",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "known": 0,
+      "knownSupported": 0,
+      "phase": "snapshot",
+      "method": "piece_frequency",
+      "channel": "index",
+      "rows": 10000,
+      "correct": 0,
+      "pct": 0,
+      "characters": 30233,
+      "totalCharacters": 120000,
+      "characterPct": 25.194166666666668,
+      "mostly": 0,
+      "sharedKnownTargetRows": 0,
+      "learned": {
+        "dictionary": 10000,
+        "learnedFeatures": 0,
+        "candidateFeatures": 0,
+        "knownFingerprints": 0,
+        "noise": 0,
+        "knownRows": 0
+      },
+      "predictionDigest": "2c10d2880716b93bcdfe4ba339008b6d2378121d3de3513869bf1123acf8eef5",
+      "witnesses": [
+        {
+          "index": 1150,
+          "id": "10000000-0000-4000-8000-00000001496e",
+          "predicted": "47-8497-8426",
+          "correct": false
+        },
+        {
+          "index": 1794,
+          "id": "10000000-0000-4000-8000-000000004dab",
+          "predicted": "47-8497-8426",
+          "correct": false
+        },
+        {
+          "index": 3805,
+          "id": "10000000-0000-4000-8000-00000000e244",
+          "predicted": "47-8497-8426",
+          "correct": false
+        },
+        {
+          "index": 5225,
+          "id": "10000000-0000-4000-8000-000000007639",
+          "predicted": "47-8497-8426",
+          "correct": false
+        },
+        {
+          "index": 5627,
+          "id": "10000000-0000-4000-8000-00000000f90c",
+          "predicted": "47-8497-8426",
+          "correct": false
+        },
+        {
+          "index": 6617,
+          "id": "10000000-0000-4000-8000-00000000f46c",
+          "predicted": "47-8497-8426",
+          "correct": false
+        },
+        {
+          "index": 6899,
+          "id": "10000000-0000-4000-8000-000000006b72",
+          "predicted": "47-8497-8426",
+          "correct": false
+        },
+        {
+          "index": 6963,
+          "id": "10000000-0000-4000-8000-0000000022e6",
+          "predicted": "47-8497-8426",
+          "correct": false
+        },
+        {
+          "index": 7896,
+          "id": "10000000-0000-4000-8000-000000015a63",
+          "predicted": "47-8497-8426",
+          "correct": false
+        },
+        {
+          "index": 8825,
+          "id": "10000000-0000-4000-8000-0000000008ce",
+          "predicted": "47-8497-8426",
+          "correct": false
+        },
+        {
+          "index": 8869,
+          "id": "10000000-0000-4000-8000-00000000d66a",
+          "predicted": "47-8497-8426",
+          "correct": false
+        },
+        {
+          "index": 9982,
+          "id": "10000000-0000-4000-8000-000000015360",
+          "predicted": "47-8497-8426",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "known": 0,
+      "knownSupported": 0,
+      "phase": "snapshot",
+      "method": "rank_frequency",
+      "channel": "index",
+      "rows": 10000,
+      "correct": 0,
+      "pct": 0,
+      "characters": 30199,
+      "totalCharacters": 120000,
+      "characterPct": 25.16583333333333,
+      "mostly": 0,
+      "sharedKnownTargetRows": 0,
+      "learned": {
+        "dictionary": 10000,
+        "learnedFeatures": 0,
+        "candidateFeatures": 0,
+        "knownFingerprints": 0,
+        "noise": 0,
+        "knownRows": 0
+      },
+      "predictionDigest": "5728624fa69aa6b62e89ffcce4bb6252762bfef9279fc86b43b2873df28cdfd1",
+      "witnesses": [
+        {
+          "index": 1150,
+          "id": "10000000-0000-4000-8000-00000001496e",
+          "predicted": "27-8993-6045",
+          "correct": false
+        },
+        {
+          "index": 1794,
+          "id": "10000000-0000-4000-8000-000000004dab",
+          "predicted": "52-0960-4407",
+          "correct": false
+        },
+        {
+          "index": 3805,
+          "id": "10000000-0000-4000-8000-00000000e244",
+          "predicted": "82-0327-3387",
+          "correct": false
+        },
+        {
+          "index": 5225,
+          "id": "10000000-0000-4000-8000-000000007639",
+          "predicted": "69-3831-8232",
+          "correct": false
+        },
+        {
+          "index": 5627,
+          "id": "10000000-0000-4000-8000-00000000f90c",
+          "predicted": "56-3532-7823",
+          "correct": false
+        },
+        {
+          "index": 6617,
+          "id": "10000000-0000-4000-8000-00000000f46c",
+          "predicted": "50-0240-4761",
+          "correct": false
+        },
+        {
+          "index": 6899,
+          "id": "10000000-0000-4000-8000-000000006b72",
+          "predicted": "23-8446-0275",
+          "correct": false
+        },
+        {
+          "index": 6963,
+          "id": "10000000-0000-4000-8000-0000000022e6",
+          "predicted": "36-0638-7263",
+          "correct": false
+        },
+        {
+          "index": 7896,
+          "id": "10000000-0000-4000-8000-000000015a63",
+          "predicted": "63-0136-7501",
+          "correct": false
+        },
+        {
+          "index": 8825,
+          "id": "10000000-0000-4000-8000-0000000008ce",
+          "predicted": "74-6813-8650",
+          "correct": false
+        },
+        {
+          "index": 8869,
+          "id": "10000000-0000-4000-8000-00000000d66a",
+          "predicted": "47-2778-4232",
+          "correct": false
+        },
+        {
+          "index": 9982,
+          "id": "10000000-0000-4000-8000-000000015360",
+          "predicted": "44-6380-1517",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "known": 0,
+      "knownSupported": 0,
+      "phase": "snapshot",
+      "method": "public_shape_reference",
+      "channel": "native_shape",
+      "rows": 10000,
+      "correct": 0,
+      "pct": 0,
+      "characters": 30365,
+      "totalCharacters": 120000,
+      "characterPct": 25.304166666666667,
+      "mostly": 0,
+      "sharedKnownTargetRows": 0,
+      "learned": {
+        "dictionary": 10000,
+        "learnedFeatures": 0,
+        "candidateFeatures": 0,
+        "knownFingerprints": 0,
+        "noise": 0,
+        "knownRows": 0
+      },
+      "predictionDigest": "55c0720baead6e4305161c6b66ead855f78ee5770afac12300822958bea1bf02",
+      "witnesses": [
+        {
+          "index": 1150,
+          "id": "10000000-0000-4000-8000-00000001496e",
+          "predicted": "10-0035-5669",
+          "correct": false
+        },
+        {
+          "index": 1794,
+          "id": "10000000-0000-4000-8000-000000004dab",
+          "predicted": "10-0035-5669",
+          "correct": false
+        },
+        {
+          "index": 3805,
+          "id": "10000000-0000-4000-8000-00000000e244",
+          "predicted": "10-0035-5669",
+          "correct": false
+        },
+        {
+          "index": 5225,
+          "id": "10000000-0000-4000-8000-000000007639",
+          "predicted": "10-0035-5669",
+          "correct": false
+        },
+        {
+          "index": 5627,
+          "id": "10000000-0000-4000-8000-00000000f90c",
+          "predicted": "10-0035-5669",
+          "correct": false
+        },
+        {
+          "index": 6617,
+          "id": "10000000-0000-4000-8000-00000000f46c",
+          "predicted": "10-0035-5669",
+          "correct": false
+        },
+        {
+          "index": 6899,
+          "id": "10000000-0000-4000-8000-000000006b72",
+          "predicted": "10-0035-5669",
+          "correct": false
+        },
+        {
+          "index": 6963,
+          "id": "10000000-0000-4000-8000-0000000022e6",
+          "predicted": "10-0035-5669",
+          "correct": false
+        },
+        {
+          "index": 7896,
+          "id": "10000000-0000-4000-8000-000000015a63",
+          "predicted": "10-0035-5669",
+          "correct": false
+        },
+        {
+          "index": 8825,
+          "id": "10000000-0000-4000-8000-0000000008ce",
+          "predicted": "10-0035-5669",
+          "correct": false
+        },
+        {
+          "index": 8869,
+          "id": "10000000-0000-4000-8000-00000000d66a",
+          "predicted": "10-0035-5669",
+          "correct": false
+        },
+        {
+          "index": 9982,
+          "id": "10000000-0000-4000-8000-000000015360",
+          "predicted": "10-0035-5669",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "known": 0,
+      "knownSupported": 0,
+      "phase": "snapshot",
+      "method": "public_tagcount_reference",
+      "channel": "index",
+      "rows": 10000,
+      "correct": 0,
+      "pct": 0,
+      "characters": 30365,
+      "totalCharacters": 120000,
+      "characterPct": 25.304166666666667,
+      "mostly": 0,
+      "sharedKnownTargetRows": 0,
+      "learned": {
+        "dictionary": 10000,
+        "learnedFeatures": 0,
+        "candidateFeatures": 0,
+        "knownFingerprints": 0,
+        "noise": 0,
+        "knownRows": 0
+      },
+      "predictionDigest": "55c0720baead6e4305161c6b66ead855f78ee5770afac12300822958bea1bf02",
+      "witnesses": [
+        {
+          "index": 1150,
+          "id": "10000000-0000-4000-8000-00000001496e",
+          "predicted": "10-0035-5669",
+          "correct": false
+        },
+        {
+          "index": 1794,
+          "id": "10000000-0000-4000-8000-000000004dab",
+          "predicted": "10-0035-5669",
+          "correct": false
+        },
+        {
+          "index": 3805,
+          "id": "10000000-0000-4000-8000-00000000e244",
+          "predicted": "10-0035-5669",
+          "correct": false
+        },
+        {
+          "index": 5225,
+          "id": "10000000-0000-4000-8000-000000007639",
+          "predicted": "10-0035-5669",
+          "correct": false
+        },
+        {
+          "index": 5627,
+          "id": "10000000-0000-4000-8000-00000000f90c",
+          "predicted": "10-0035-5669",
+          "correct": false
+        },
+        {
+          "index": 6617,
+          "id": "10000000-0000-4000-8000-00000000f46c",
+          "predicted": "10-0035-5669",
+          "correct": false
+        },
+        {
+          "index": 6899,
+          "id": "10000000-0000-4000-8000-000000006b72",
+          "predicted": "10-0035-5669",
+          "correct": false
+        },
+        {
+          "index": 6963,
+          "id": "10000000-0000-4000-8000-0000000022e6",
+          "predicted": "10-0035-5669",
+          "correct": false
+        },
+        {
+          "index": 7896,
+          "id": "10000000-0000-4000-8000-000000015a63",
+          "predicted": "10-0035-5669",
+          "correct": false
+        },
+        {
+          "index": 8825,
+          "id": "10000000-0000-4000-8000-0000000008ce",
+          "predicted": "10-0035-5669",
+          "correct": false
+        },
+        {
+          "index": 8869,
+          "id": "10000000-0000-4000-8000-00000000d66a",
+          "predicted": "10-0035-5669",
+          "correct": false
+        },
+        {
+          "index": 9982,
+          "id": "10000000-0000-4000-8000-000000015360",
+          "predicted": "10-0035-5669",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "known": 100,
+      "knownSupported": 100,
+      "phase": "snapshot",
+      "method": "group_frequency",
+      "channel": "index",
+      "rows": 9900,
+      "correct": 0,
+      "pct": 0,
+      "characters": 30079,
+      "totalCharacters": 118800,
+      "characterPct": 25.319023569023567,
+      "mostly": 0,
+      "sharedKnownTargetRows": 0,
+      "learned": {
+        "dictionary": 10100,
+        "learnedFeatures": 0,
+        "candidateFeatures": 4861,
+        "knownFingerprints": 100,
+        "noise": 0,
+        "knownRows": 100
+      },
+      "predictionDigest": "593d08d143893639d2be3d8f0b176a92c170bf043080146d4c2aa58269be7429",
+      "witnesses": [
+        {
+          "index": 971,
+          "id": "10000000-0000-4000-8000-0000000045a2",
+          "predicted": "10-0035-5669",
+          "correct": false
+        },
+        {
+          "index": 2054,
+          "id": "10000000-0000-4000-8000-000000002bf0",
+          "predicted": "10-0035-5669",
+          "correct": false
+        },
+        {
+          "index": 2369,
+          "id": "10000000-0000-4000-8000-0000000083f7",
+          "predicted": "10-0035-5669",
+          "correct": false
+        },
+        {
+          "index": 2954,
+          "id": "10000000-0000-4000-8000-00000000fbe4",
+          "predicted": "10-0035-5669",
+          "correct": false
+        },
+        {
+          "index": 4471,
+          "id": "10000000-0000-4000-8000-0000000145d4",
+          "predicted": "10-0035-5669",
+          "correct": false
+        },
+        {
+          "index": 6108,
+          "id": "10000000-0000-4000-8000-000000015722",
+          "predicted": "10-0035-5669",
+          "correct": false
+        },
+        {
+          "index": 6587,
+          "id": "10000000-0000-4000-8000-000000016cb6",
+          "predicted": "10-0035-5669",
+          "correct": false
+        },
+        {
+          "index": 7669,
+          "id": "10000000-0000-4000-8000-000000018337",
+          "predicted": "10-0035-5669",
+          "correct": false
+        },
+        {
+          "index": 8241,
+          "id": "10000000-0000-4000-8000-00000000ab0b",
+          "predicted": "10-0035-5669",
+          "correct": false
+        },
+        {
+          "index": 8744,
+          "id": "10000000-0000-4000-8000-00000001441e",
+          "predicted": "10-0035-5669",
+          "correct": false
+        },
+        {
+          "index": 9733,
+          "id": "10000000-0000-4000-8000-000000010685",
+          "predicted": "10-0035-5669",
+          "correct": false
+        },
+        {
+          "index": 9953,
+          "id": "10000000-0000-4000-8000-000000003e23",
+          "predicted": "10-0035-5669",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "known": 100,
+      "knownSupported": 100,
+      "phase": "snapshot",
+      "method": "piece_frequency",
+      "channel": "index",
+      "rows": 9900,
+      "correct": 0,
+      "pct": 0,
+      "characters": 29876,
+      "totalCharacters": 118800,
+      "characterPct": 25.14814814814815,
+      "mostly": 0,
+      "sharedKnownTargetRows": 0,
+      "learned": {
+        "dictionary": 10100,
+        "learnedFeatures": 0,
+        "candidateFeatures": 4861,
+        "knownFingerprints": 100,
+        "noise": 0,
+        "knownRows": 100
+      },
+      "predictionDigest": "021167280419a6bee63edff22aca75936f2c437f6ad242685d90d1182e57e5c1",
+      "witnesses": [
+        {
+          "index": 971,
+          "id": "10000000-0000-4000-8000-0000000045a2",
+          "predicted": "79-5094-5432",
+          "correct": false
+        },
+        {
+          "index": 2054,
+          "id": "10000000-0000-4000-8000-000000002bf0",
+          "predicted": "79-5094-5432",
+          "correct": false
+        },
+        {
+          "index": 2369,
+          "id": "10000000-0000-4000-8000-0000000083f7",
+          "predicted": "79-5094-5432",
+          "correct": false
+        },
+        {
+          "index": 2954,
+          "id": "10000000-0000-4000-8000-00000000fbe4",
+          "predicted": "79-5094-5432",
+          "correct": false
+        },
+        {
+          "index": 4471,
+          "id": "10000000-0000-4000-8000-0000000145d4",
+          "predicted": "79-5094-5432",
+          "correct": false
+        },
+        {
+          "index": 6108,
+          "id": "10000000-0000-4000-8000-000000015722",
+          "predicted": "79-5094-5432",
+          "correct": false
+        },
+        {
+          "index": 6587,
+          "id": "10000000-0000-4000-8000-000000016cb6",
+          "predicted": "79-5094-5432",
+          "correct": false
+        },
+        {
+          "index": 7669,
+          "id": "10000000-0000-4000-8000-000000018337",
+          "predicted": "79-5094-5432",
+          "correct": false
+        },
+        {
+          "index": 8241,
+          "id": "10000000-0000-4000-8000-00000000ab0b",
+          "predicted": "79-5094-5432",
+          "correct": false
+        },
+        {
+          "index": 8744,
+          "id": "10000000-0000-4000-8000-00000001441e",
+          "predicted": "79-5094-5432",
+          "correct": false
+        },
+        {
+          "index": 9733,
+          "id": "10000000-0000-4000-8000-000000010685",
+          "predicted": "79-5094-5432",
+          "correct": false
+        },
+        {
+          "index": 9953,
+          "id": "10000000-0000-4000-8000-000000003e23",
+          "predicted": "79-5094-5432",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "known": 100,
+      "knownSupported": 100,
+      "phase": "snapshot",
+      "method": "rank_frequency",
+      "channel": "index",
+      "rows": 9900,
+      "correct": 0,
+      "pct": 0,
+      "characters": 29895,
+      "totalCharacters": 118800,
+      "characterPct": 25.164141414141415,
+      "mostly": 0,
+      "sharedKnownTargetRows": 0,
+      "learned": {
+        "dictionary": 10100,
+        "learnedFeatures": 0,
+        "candidateFeatures": 4861,
+        "knownFingerprints": 100,
+        "noise": 0,
+        "knownRows": 100
+      },
+      "predictionDigest": "8e7c2cdf4c05a4fadd2d43fe1a4d7653bcea6688f3a246e21634b1c35fcdca22",
+      "witnesses": [
+        {
+          "index": 971,
+          "id": "10000000-0000-4000-8000-0000000045a2",
+          "predicted": "74-5295-8747",
+          "correct": false
+        },
+        {
+          "index": 2054,
+          "id": "10000000-0000-4000-8000-000000002bf0",
+          "predicted": "70-7698-0982",
+          "correct": false
+        },
+        {
+          "index": 2369,
+          "id": "10000000-0000-4000-8000-0000000083f7",
+          "predicted": "26-9744-4135",
+          "correct": false
+        },
+        {
+          "index": 2954,
+          "id": "10000000-0000-4000-8000-00000000fbe4",
+          "predicted": "82-2595-3994",
+          "correct": false
+        },
+        {
+          "index": 4471,
+          "id": "10000000-0000-4000-8000-0000000145d4",
+          "predicted": "38-4570-5523",
+          "correct": false
+        },
+        {
+          "index": 6108,
+          "id": "10000000-0000-4000-8000-000000015722",
+          "predicted": "14-9397-2305",
+          "correct": false
+        },
+        {
+          "index": 6587,
+          "id": "10000000-0000-4000-8000-000000016cb6",
+          "predicted": "30-0472-4370",
+          "correct": false
+        },
+        {
+          "index": 7669,
+          "id": "10000000-0000-4000-8000-000000018337",
+          "predicted": "47-7850-0535",
+          "correct": false
+        },
+        {
+          "index": 8241,
+          "id": "10000000-0000-4000-8000-00000000ab0b",
+          "predicted": "48-4315-3294",
+          "correct": false
+        },
+        {
+          "index": 8744,
+          "id": "10000000-0000-4000-8000-00000001441e",
+          "predicted": "86-4867-4325",
+          "correct": false
+        },
+        {
+          "index": 9733,
+          "id": "10000000-0000-4000-8000-000000010685",
+          "predicted": "29-9606-1681",
+          "correct": false
+        },
+        {
+          "index": 9953,
+          "id": "10000000-0000-4000-8000-000000003e23",
+          "predicted": "35-9343-0413",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "known": 100,
+      "knownSupported": 100,
+      "phase": "snapshot",
+      "method": "known_projection",
+      "channel": "index",
+      "rows": 9900,
+      "correct": 0,
+      "pct": 0,
+      "characters": 30079,
+      "totalCharacters": 118800,
+      "characterPct": 25.319023569023567,
+      "mostly": 0,
+      "sharedKnownTargetRows": 0,
+      "learned": {
+        "dictionary": 10100,
+        "learnedFeatures": 0,
+        "candidateFeatures": 4861,
+        "knownFingerprints": 100,
+        "noise": 0,
+        "knownRows": 100
+      },
+      "predictionDigest": "593d08d143893639d2be3d8f0b176a92c170bf043080146d4c2aa58269be7429",
+      "witnesses": [
+        {
+          "index": 971,
+          "id": "10000000-0000-4000-8000-0000000045a2",
+          "predicted": "10-0035-5669",
+          "correct": false
+        },
+        {
+          "index": 2054,
+          "id": "10000000-0000-4000-8000-000000002bf0",
+          "predicted": "10-0035-5669",
+          "correct": false
+        },
+        {
+          "index": 2369,
+          "id": "10000000-0000-4000-8000-0000000083f7",
+          "predicted": "10-0035-5669",
+          "correct": false
+        },
+        {
+          "index": 2954,
+          "id": "10000000-0000-4000-8000-00000000fbe4",
+          "predicted": "10-0035-5669",
+          "correct": false
+        },
+        {
+          "index": 4471,
+          "id": "10000000-0000-4000-8000-0000000145d4",
+          "predicted": "10-0035-5669",
+          "correct": false
+        },
+        {
+          "index": 6108,
+          "id": "10000000-0000-4000-8000-000000015722",
+          "predicted": "10-0035-5669",
+          "correct": false
+        },
+        {
+          "index": 6587,
+          "id": "10000000-0000-4000-8000-000000016cb6",
+          "predicted": "10-0035-5669",
+          "correct": false
+        },
+        {
+          "index": 7669,
+          "id": "10000000-0000-4000-8000-000000018337",
+          "predicted": "10-0035-5669",
+          "correct": false
+        },
+        {
+          "index": 8241,
+          "id": "10000000-0000-4000-8000-00000000ab0b",
+          "predicted": "10-0035-5669",
+          "correct": false
+        },
+        {
+          "index": 8744,
+          "id": "10000000-0000-4000-8000-00000001441e",
+          "predicted": "10-0035-5669",
+          "correct": false
+        },
+        {
+          "index": 9733,
+          "id": "10000000-0000-4000-8000-000000010685",
+          "predicted": "10-0035-5669",
+          "correct": false
+        },
+        {
+          "index": 9953,
+          "id": "10000000-0000-4000-8000-000000003e23",
+          "predicted": "10-0035-5669",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "known": 100,
+      "knownSupported": 100,
+      "phase": "snapshot",
+      "method": "known_fingerprint",
+      "channel": "index",
+      "rows": 9900,
+      "correct": 0,
+      "pct": 0,
+      "characters": 30079,
+      "totalCharacters": 118800,
+      "characterPct": 25.319023569023567,
+      "mostly": 0,
+      "sharedKnownTargetRows": 0,
+      "learned": {
+        "dictionary": 10100,
+        "learnedFeatures": 0,
+        "candidateFeatures": 4861,
+        "knownFingerprints": 100,
+        "noise": 0,
+        "knownRows": 100
+      },
+      "predictionDigest": "593d08d143893639d2be3d8f0b176a92c170bf043080146d4c2aa58269be7429",
+      "witnesses": [
+        {
+          "index": 971,
+          "id": "10000000-0000-4000-8000-0000000045a2",
+          "predicted": "10-0035-5669",
+          "correct": false
+        },
+        {
+          "index": 2054,
+          "id": "10000000-0000-4000-8000-000000002bf0",
+          "predicted": "10-0035-5669",
+          "correct": false
+        },
+        {
+          "index": 2369,
+          "id": "10000000-0000-4000-8000-0000000083f7",
+          "predicted": "10-0035-5669",
+          "correct": false
+        },
+        {
+          "index": 2954,
+          "id": "10000000-0000-4000-8000-00000000fbe4",
+          "predicted": "10-0035-5669",
+          "correct": false
+        },
+        {
+          "index": 4471,
+          "id": "10000000-0000-4000-8000-0000000145d4",
+          "predicted": "10-0035-5669",
+          "correct": false
+        },
+        {
+          "index": 6108,
+          "id": "10000000-0000-4000-8000-000000015722",
+          "predicted": "10-0035-5669",
+          "correct": false
+        },
+        {
+          "index": 6587,
+          "id": "10000000-0000-4000-8000-000000016cb6",
+          "predicted": "10-0035-5669",
+          "correct": false
+        },
+        {
+          "index": 7669,
+          "id": "10000000-0000-4000-8000-000000018337",
+          "predicted": "10-0035-5669",
+          "correct": false
+        },
+        {
+          "index": 8241,
+          "id": "10000000-0000-4000-8000-00000000ab0b",
+          "predicted": "10-0035-5669",
+          "correct": false
+        },
+        {
+          "index": 8744,
+          "id": "10000000-0000-4000-8000-00000001441e",
+          "predicted": "10-0035-5669",
+          "correct": false
+        },
+        {
+          "index": 9733,
+          "id": "10000000-0000-4000-8000-000000010685",
+          "predicted": "10-0035-5669",
+          "correct": false
+        },
+        {
+          "index": 9953,
+          "id": "10000000-0000-4000-8000-000000003e23",
+          "predicted": "10-0035-5669",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "known": 100,
+      "knownSupported": 100,
+      "phase": "snapshot",
+      "method": "public_shape_reference",
+      "channel": "native_shape",
+      "rows": 9900,
+      "correct": 0,
+      "pct": 0,
+      "characters": 30079,
+      "totalCharacters": 118800,
+      "characterPct": 25.319023569023567,
+      "mostly": 0,
+      "sharedKnownTargetRows": 0,
+      "learned": {
+        "dictionary": 10100,
+        "learnedFeatures": 0,
+        "candidateFeatures": 4861,
+        "knownFingerprints": 100,
+        "noise": 0,
+        "knownRows": 100
+      },
+      "predictionDigest": "593d08d143893639d2be3d8f0b176a92c170bf043080146d4c2aa58269be7429",
+      "witnesses": [
+        {
+          "index": 971,
+          "id": "10000000-0000-4000-8000-0000000045a2",
+          "predicted": "10-0035-5669",
+          "correct": false
+        },
+        {
+          "index": 2054,
+          "id": "10000000-0000-4000-8000-000000002bf0",
+          "predicted": "10-0035-5669",
+          "correct": false
+        },
+        {
+          "index": 2369,
+          "id": "10000000-0000-4000-8000-0000000083f7",
+          "predicted": "10-0035-5669",
+          "correct": false
+        },
+        {
+          "index": 2954,
+          "id": "10000000-0000-4000-8000-00000000fbe4",
+          "predicted": "10-0035-5669",
+          "correct": false
+        },
+        {
+          "index": 4471,
+          "id": "10000000-0000-4000-8000-0000000145d4",
+          "predicted": "10-0035-5669",
+          "correct": false
+        },
+        {
+          "index": 6108,
+          "id": "10000000-0000-4000-8000-000000015722",
+          "predicted": "10-0035-5669",
+          "correct": false
+        },
+        {
+          "index": 6587,
+          "id": "10000000-0000-4000-8000-000000016cb6",
+          "predicted": "10-0035-5669",
+          "correct": false
+        },
+        {
+          "index": 7669,
+          "id": "10000000-0000-4000-8000-000000018337",
+          "predicted": "10-0035-5669",
+          "correct": false
+        },
+        {
+          "index": 8241,
+          "id": "10000000-0000-4000-8000-00000000ab0b",
+          "predicted": "10-0035-5669",
+          "correct": false
+        },
+        {
+          "index": 8744,
+          "id": "10000000-0000-4000-8000-00000001441e",
+          "predicted": "10-0035-5669",
+          "correct": false
+        },
+        {
+          "index": 9733,
+          "id": "10000000-0000-4000-8000-000000010685",
+          "predicted": "10-0035-5669",
+          "correct": false
+        },
+        {
+          "index": 9953,
+          "id": "10000000-0000-4000-8000-000000003e23",
+          "predicted": "10-0035-5669",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "known": 100,
+      "knownSupported": 100,
+      "phase": "snapshot",
+      "method": "public_tagcount_reference",
+      "channel": "index",
+      "rows": 9900,
+      "correct": 0,
+      "pct": 0,
+      "characters": 30079,
+      "totalCharacters": 118800,
+      "characterPct": 25.319023569023567,
+      "mostly": 0,
+      "sharedKnownTargetRows": 0,
+      "learned": {
+        "dictionary": 10100,
+        "learnedFeatures": 0,
+        "candidateFeatures": 4861,
+        "knownFingerprints": 100,
+        "noise": 0,
+        "knownRows": 100
+      },
+      "predictionDigest": "593d08d143893639d2be3d8f0b176a92c170bf043080146d4c2aa58269be7429",
+      "witnesses": [
+        {
+          "index": 971,
+          "id": "10000000-0000-4000-8000-0000000045a2",
+          "predicted": "10-0035-5669",
+          "correct": false
+        },
+        {
+          "index": 2054,
+          "id": "10000000-0000-4000-8000-000000002bf0",
+          "predicted": "10-0035-5669",
+          "correct": false
+        },
+        {
+          "index": 2369,
+          "id": "10000000-0000-4000-8000-0000000083f7",
+          "predicted": "10-0035-5669",
+          "correct": false
+        },
+        {
+          "index": 2954,
+          "id": "10000000-0000-4000-8000-00000000fbe4",
+          "predicted": "10-0035-5669",
+          "correct": false
+        },
+        {
+          "index": 4471,
+          "id": "10000000-0000-4000-8000-0000000145d4",
+          "predicted": "10-0035-5669",
+          "correct": false
+        },
+        {
+          "index": 6108,
+          "id": "10000000-0000-4000-8000-000000015722",
+          "predicted": "10-0035-5669",
+          "correct": false
+        },
+        {
+          "index": 6587,
+          "id": "10000000-0000-4000-8000-000000016cb6",
+          "predicted": "10-0035-5669",
+          "correct": false
+        },
+        {
+          "index": 7669,
+          "id": "10000000-0000-4000-8000-000000018337",
+          "predicted": "10-0035-5669",
+          "correct": false
+        },
+        {
+          "index": 8241,
+          "id": "10000000-0000-4000-8000-00000000ab0b",
+          "predicted": "10-0035-5669",
+          "correct": false
+        },
+        {
+          "index": 8744,
+          "id": "10000000-0000-4000-8000-00000001441e",
+          "predicted": "10-0035-5669",
+          "correct": false
+        },
+        {
+          "index": 9733,
+          "id": "10000000-0000-4000-8000-000000010685",
+          "predicted": "10-0035-5669",
+          "correct": false
+        },
+        {
+          "index": 9953,
+          "id": "10000000-0000-4000-8000-000000003e23",
+          "predicted": "10-0035-5669",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "known": 100,
+      "knownSupported": 100,
+      "phase": "snapshot",
+      "method": "public_shape_known",
+      "channel": "native_shape",
+      "rows": 9900,
+      "correct": 0,
+      "pct": 0,
+      "characters": 30079,
+      "totalCharacters": 118800,
+      "characterPct": 25.319023569023567,
+      "mostly": 0,
+      "sharedKnownTargetRows": 0,
+      "learned": {
+        "dictionary": 10100,
+        "learnedFeatures": 0,
+        "candidateFeatures": 4861,
+        "knownFingerprints": 100,
+        "noise": 0,
+        "knownRows": 100
+      },
+      "predictionDigest": "593d08d143893639d2be3d8f0b176a92c170bf043080146d4c2aa58269be7429",
+      "witnesses": [
+        {
+          "index": 971,
+          "id": "10000000-0000-4000-8000-0000000045a2",
+          "predicted": "10-0035-5669",
+          "correct": false
+        },
+        {
+          "index": 2054,
+          "id": "10000000-0000-4000-8000-000000002bf0",
+          "predicted": "10-0035-5669",
+          "correct": false
+        },
+        {
+          "index": 2369,
+          "id": "10000000-0000-4000-8000-0000000083f7",
+          "predicted": "10-0035-5669",
+          "correct": false
+        },
+        {
+          "index": 2954,
+          "id": "10000000-0000-4000-8000-00000000fbe4",
+          "predicted": "10-0035-5669",
+          "correct": false
+        },
+        {
+          "index": 4471,
+          "id": "10000000-0000-4000-8000-0000000145d4",
+          "predicted": "10-0035-5669",
+          "correct": false
+        },
+        {
+          "index": 6108,
+          "id": "10000000-0000-4000-8000-000000015722",
+          "predicted": "10-0035-5669",
+          "correct": false
+        },
+        {
+          "index": 6587,
+          "id": "10000000-0000-4000-8000-000000016cb6",
+          "predicted": "10-0035-5669",
+          "correct": false
+        },
+        {
+          "index": 7669,
+          "id": "10000000-0000-4000-8000-000000018337",
+          "predicted": "10-0035-5669",
+          "correct": false
+        },
+        {
+          "index": 8241,
+          "id": "10000000-0000-4000-8000-00000000ab0b",
+          "predicted": "10-0035-5669",
+          "correct": false
+        },
+        {
+          "index": 8744,
+          "id": "10000000-0000-4000-8000-00000001441e",
+          "predicted": "10-0035-5669",
+          "correct": false
+        },
+        {
+          "index": 9733,
+          "id": "10000000-0000-4000-8000-000000010685",
+          "predicted": "10-0035-5669",
+          "correct": false
+        },
+        {
+          "index": 9953,
+          "id": "10000000-0000-4000-8000-000000003e23",
+          "predicted": "10-0035-5669",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "known": 100,
+      "knownSupported": 100,
+      "phase": "snapshot",
+      "method": "public_tagcount_known",
+      "channel": "index",
+      "rows": 9900,
+      "correct": 0,
+      "pct": 0,
+      "characters": 30079,
+      "totalCharacters": 118800,
+      "characterPct": 25.319023569023567,
+      "mostly": 0,
+      "sharedKnownTargetRows": 0,
+      "learned": {
+        "dictionary": 10100,
+        "learnedFeatures": 0,
+        "candidateFeatures": 4861,
+        "knownFingerprints": 100,
+        "noise": 0,
+        "knownRows": 100
+      },
+      "predictionDigest": "593d08d143893639d2be3d8f0b176a92c170bf043080146d4c2aa58269be7429",
+      "witnesses": [
+        {
+          "index": 971,
+          "id": "10000000-0000-4000-8000-0000000045a2",
+          "predicted": "10-0035-5669",
+          "correct": false
+        },
+        {
+          "index": 2054,
+          "id": "10000000-0000-4000-8000-000000002bf0",
+          "predicted": "10-0035-5669",
+          "correct": false
+        },
+        {
+          "index": 2369,
+          "id": "10000000-0000-4000-8000-0000000083f7",
+          "predicted": "10-0035-5669",
+          "correct": false
+        },
+        {
+          "index": 2954,
+          "id": "10000000-0000-4000-8000-00000000fbe4",
+          "predicted": "10-0035-5669",
+          "correct": false
+        },
+        {
+          "index": 4471,
+          "id": "10000000-0000-4000-8000-0000000145d4",
+          "predicted": "10-0035-5669",
+          "correct": false
+        },
+        {
+          "index": 6108,
+          "id": "10000000-0000-4000-8000-000000015722",
+          "predicted": "10-0035-5669",
+          "correct": false
+        },
+        {
+          "index": 6587,
+          "id": "10000000-0000-4000-8000-000000016cb6",
+          "predicted": "10-0035-5669",
+          "correct": false
+        },
+        {
+          "index": 7669,
+          "id": "10000000-0000-4000-8000-000000018337",
+          "predicted": "10-0035-5669",
+          "correct": false
+        },
+        {
+          "index": 8241,
+          "id": "10000000-0000-4000-8000-00000000ab0b",
+          "predicted": "10-0035-5669",
+          "correct": false
+        },
+        {
+          "index": 8744,
+          "id": "10000000-0000-4000-8000-00000001441e",
+          "predicted": "10-0035-5669",
+          "correct": false
+        },
+        {
+          "index": 9733,
+          "id": "10000000-0000-4000-8000-000000010685",
+          "predicted": "10-0035-5669",
+          "correct": false
+        },
+        {
+          "index": 9953,
+          "id": "10000000-0000-4000-8000-000000003e23",
+          "predicted": "10-0035-5669",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "known": 500,
+      "knownSupported": 500,
+      "phase": "snapshot",
+      "method": "group_frequency",
+      "channel": "index",
+      "rows": 9500,
+      "correct": 0,
+      "pct": 0,
+      "characters": 28858,
+      "totalCharacters": 114000,
+      "characterPct": 25.314035087719297,
+      "mostly": 0,
+      "sharedKnownTargetRows": 0,
+      "learned": {
+        "dictionary": 10500,
+        "learnedFeatures": 0,
+        "candidateFeatures": 20800,
+        "knownFingerprints": 500,
+        "noise": 0,
+        "knownRows": 500
+      },
+      "predictionDigest": "9c1715c495e4df4320fc0ee77a33c136b26f388a21797460b2392acd9521b87a",
+      "witnesses": [
+        {
+          "index": 3155,
+          "id": "10000000-0000-4000-8000-000000012a97",
+          "predicted": "10-0035-5669",
+          "correct": false
+        },
+        {
+          "index": 3593,
+          "id": "10000000-0000-4000-8000-00000001740a",
+          "predicted": "10-0035-5669",
+          "correct": false
+        },
+        {
+          "index": 3806,
+          "id": "10000000-0000-4000-8000-00000000b03b",
+          "predicted": "10-0035-5669",
+          "correct": false
+        },
+        {
+          "index": 4051,
+          "id": "10000000-0000-4000-8000-000000018680",
+          "predicted": "10-0035-5669",
+          "correct": false
+        },
+        {
+          "index": 4394,
+          "id": "10000000-0000-4000-8000-000000007d47",
+          "predicted": "10-0035-5669",
+          "correct": false
+        },
+        {
+          "index": 5851,
+          "id": "10000000-0000-4000-8000-00000000dc1e",
+          "predicted": "10-0035-5669",
+          "correct": false
+        },
+        {
+          "index": 6503,
+          "id": "10000000-0000-4000-8000-000000008d5d",
+          "predicted": "10-0035-5669",
+          "correct": false
+        },
+        {
+          "index": 6998,
+          "id": "10000000-0000-4000-8000-00000000a4b6",
+          "predicted": "10-0035-5669",
+          "correct": false
+        },
+        {
+          "index": 8407,
+          "id": "10000000-0000-4000-8000-0000000152ff",
+          "predicted": "10-0035-5669",
+          "correct": false
+        },
+        {
+          "index": 9380,
+          "id": "10000000-0000-4000-8000-000000001758",
+          "predicted": "10-0035-5669",
+          "correct": false
+        },
+        {
+          "index": 9686,
+          "id": "10000000-0000-4000-8000-00000000b02b",
+          "predicted": "10-0035-5669",
+          "correct": false
+        },
+        {
+          "index": 9736,
+          "id": "10000000-0000-4000-8000-00000000e4c9",
+          "predicted": "10-0035-5669",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "known": 500,
+      "knownSupported": 500,
+      "phase": "snapshot",
+      "method": "piece_frequency",
+      "channel": "index",
+      "rows": 9500,
+      "correct": 0,
+      "pct": 0,
+      "characters": 28734,
+      "totalCharacters": 114000,
+      "characterPct": 25.205263157894738,
+      "mostly": 0,
+      "sharedKnownTargetRows": 0,
+      "learned": {
+        "dictionary": 10500,
+        "learnedFeatures": 0,
+        "candidateFeatures": 20800,
+        "knownFingerprints": 500,
+        "noise": 0,
+        "knownRows": 500
+      },
+      "predictionDigest": "bebc5137f29c6a8c7f460bdec8b858596b064540bccbf82ea8632b3de221a51d",
+      "witnesses": [
+        {
+          "index": 3155,
+          "id": "10000000-0000-4000-8000-000000012a97",
+          "predicted": "49-3199-3114",
+          "correct": false
+        },
+        {
+          "index": 3593,
+          "id": "10000000-0000-4000-8000-00000001740a",
+          "predicted": "49-3199-3114",
+          "correct": false
+        },
+        {
+          "index": 3806,
+          "id": "10000000-0000-4000-8000-00000000b03b",
+          "predicted": "49-3199-3114",
+          "correct": false
+        },
+        {
+          "index": 4051,
+          "id": "10000000-0000-4000-8000-000000018680",
+          "predicted": "49-3199-3114",
+          "correct": false
+        },
+        {
+          "index": 4394,
+          "id": "10000000-0000-4000-8000-000000007d47",
+          "predicted": "49-3199-3114",
+          "correct": false
+        },
+        {
+          "index": 5851,
+          "id": "10000000-0000-4000-8000-00000000dc1e",
+          "predicted": "49-3199-3114",
+          "correct": false
+        },
+        {
+          "index": 6503,
+          "id": "10000000-0000-4000-8000-000000008d5d",
+          "predicted": "49-3199-3114",
+          "correct": false
+        },
+        {
+          "index": 6998,
+          "id": "10000000-0000-4000-8000-00000000a4b6",
+          "predicted": "49-3199-3114",
+          "correct": false
+        },
+        {
+          "index": 8407,
+          "id": "10000000-0000-4000-8000-0000000152ff",
+          "predicted": "49-3199-3114",
+          "correct": false
+        },
+        {
+          "index": 9380,
+          "id": "10000000-0000-4000-8000-000000001758",
+          "predicted": "49-3199-3114",
+          "correct": false
+        },
+        {
+          "index": 9686,
+          "id": "10000000-0000-4000-8000-00000000b02b",
+          "predicted": "49-3199-3114",
+          "correct": false
+        },
+        {
+          "index": 9736,
+          "id": "10000000-0000-4000-8000-00000000e4c9",
+          "predicted": "49-3199-3114",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "known": 500,
+      "knownSupported": 500,
+      "phase": "snapshot",
+      "method": "rank_frequency",
+      "channel": "index",
+      "rows": 9500,
+      "correct": 0,
+      "pct": 0,
+      "characters": 28717,
+      "totalCharacters": 114000,
+      "characterPct": 25.190350877192984,
+      "mostly": 0,
+      "sharedKnownTargetRows": 0,
+      "learned": {
+        "dictionary": 10500,
+        "learnedFeatures": 0,
+        "candidateFeatures": 20800,
+        "knownFingerprints": 500,
+        "noise": 0,
+        "knownRows": 500
+      },
+      "predictionDigest": "10a6feee6df37f991f735c0b600c60b4a63f780ae717fa803513666b1f64d136",
+      "witnesses": [
+        {
+          "index": 3155,
+          "id": "10000000-0000-4000-8000-000000012a97",
+          "predicted": "22-5597-6228",
+          "correct": false
+        },
+        {
+          "index": 3593,
+          "id": "10000000-0000-4000-8000-00000001740a",
+          "predicted": "45-8911-5361",
+          "correct": false
+        },
+        {
+          "index": 3806,
+          "id": "10000000-0000-4000-8000-00000000b03b",
+          "predicted": "42-5636-0145",
+          "correct": false
+        },
+        {
+          "index": 4051,
+          "id": "10000000-0000-4000-8000-000000018680",
+          "predicted": "66-4598-2910",
+          "correct": false
+        },
+        {
+          "index": 4394,
+          "id": "10000000-0000-4000-8000-000000007d47",
+          "predicted": "18-3236-9165",
+          "correct": false
+        },
+        {
+          "index": 5851,
+          "id": "10000000-0000-4000-8000-00000000dc1e",
+          "predicted": "29-6173-1161",
+          "correct": false
+        },
+        {
+          "index": 6503,
+          "id": "10000000-0000-4000-8000-000000008d5d",
+          "predicted": "32-9649-2262",
+          "correct": false
+        },
+        {
+          "index": 6998,
+          "id": "10000000-0000-4000-8000-00000000a4b6",
+          "predicted": "20-9923-4635",
+          "correct": false
+        },
+        {
+          "index": 8407,
+          "id": "10000000-0000-4000-8000-0000000152ff",
+          "predicted": "77-8889-1981",
+          "correct": false
+        },
+        {
+          "index": 9380,
+          "id": "10000000-0000-4000-8000-000000001758",
+          "predicted": "66-3513-9907",
+          "correct": false
+        },
+        {
+          "index": 9686,
+          "id": "10000000-0000-4000-8000-00000000b02b",
+          "predicted": "46-3625-4542",
+          "correct": false
+        },
+        {
+          "index": 9736,
+          "id": "10000000-0000-4000-8000-00000000e4c9",
+          "predicted": "25-7592-2734",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "known": 500,
+      "knownSupported": 500,
+      "phase": "snapshot",
+      "method": "known_projection",
+      "channel": "index",
+      "rows": 9500,
+      "correct": 0,
+      "pct": 0,
+      "characters": 28858,
+      "totalCharacters": 114000,
+      "characterPct": 25.314035087719297,
+      "mostly": 0,
+      "sharedKnownTargetRows": 0,
+      "learned": {
+        "dictionary": 10500,
+        "learnedFeatures": 0,
+        "candidateFeatures": 20800,
+        "knownFingerprints": 500,
+        "noise": 0,
+        "knownRows": 500
+      },
+      "predictionDigest": "9c1715c495e4df4320fc0ee77a33c136b26f388a21797460b2392acd9521b87a",
+      "witnesses": [
+        {
+          "index": 3155,
+          "id": "10000000-0000-4000-8000-000000012a97",
+          "predicted": "10-0035-5669",
+          "correct": false
+        },
+        {
+          "index": 3593,
+          "id": "10000000-0000-4000-8000-00000001740a",
+          "predicted": "10-0035-5669",
+          "correct": false
+        },
+        {
+          "index": 3806,
+          "id": "10000000-0000-4000-8000-00000000b03b",
+          "predicted": "10-0035-5669",
+          "correct": false
+        },
+        {
+          "index": 4051,
+          "id": "10000000-0000-4000-8000-000000018680",
+          "predicted": "10-0035-5669",
+          "correct": false
+        },
+        {
+          "index": 4394,
+          "id": "10000000-0000-4000-8000-000000007d47",
+          "predicted": "10-0035-5669",
+          "correct": false
+        },
+        {
+          "index": 5851,
+          "id": "10000000-0000-4000-8000-00000000dc1e",
+          "predicted": "10-0035-5669",
+          "correct": false
+        },
+        {
+          "index": 6503,
+          "id": "10000000-0000-4000-8000-000000008d5d",
+          "predicted": "10-0035-5669",
+          "correct": false
+        },
+        {
+          "index": 6998,
+          "id": "10000000-0000-4000-8000-00000000a4b6",
+          "predicted": "10-0035-5669",
+          "correct": false
+        },
+        {
+          "index": 8407,
+          "id": "10000000-0000-4000-8000-0000000152ff",
+          "predicted": "10-0035-5669",
+          "correct": false
+        },
+        {
+          "index": 9380,
+          "id": "10000000-0000-4000-8000-000000001758",
+          "predicted": "10-0035-5669",
+          "correct": false
+        },
+        {
+          "index": 9686,
+          "id": "10000000-0000-4000-8000-00000000b02b",
+          "predicted": "10-0035-5669",
+          "correct": false
+        },
+        {
+          "index": 9736,
+          "id": "10000000-0000-4000-8000-00000000e4c9",
+          "predicted": "10-0035-5669",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "known": 500,
+      "knownSupported": 500,
+      "phase": "snapshot",
+      "method": "known_fingerprint",
+      "channel": "index",
+      "rows": 9500,
+      "correct": 0,
+      "pct": 0,
+      "characters": 28858,
+      "totalCharacters": 114000,
+      "characterPct": 25.314035087719297,
+      "mostly": 0,
+      "sharedKnownTargetRows": 0,
+      "learned": {
+        "dictionary": 10500,
+        "learnedFeatures": 0,
+        "candidateFeatures": 20800,
+        "knownFingerprints": 500,
+        "noise": 0,
+        "knownRows": 500
+      },
+      "predictionDigest": "9c1715c495e4df4320fc0ee77a33c136b26f388a21797460b2392acd9521b87a",
+      "witnesses": [
+        {
+          "index": 3155,
+          "id": "10000000-0000-4000-8000-000000012a97",
+          "predicted": "10-0035-5669",
+          "correct": false
+        },
+        {
+          "index": 3593,
+          "id": "10000000-0000-4000-8000-00000001740a",
+          "predicted": "10-0035-5669",
+          "correct": false
+        },
+        {
+          "index": 3806,
+          "id": "10000000-0000-4000-8000-00000000b03b",
+          "predicted": "10-0035-5669",
+          "correct": false
+        },
+        {
+          "index": 4051,
+          "id": "10000000-0000-4000-8000-000000018680",
+          "predicted": "10-0035-5669",
+          "correct": false
+        },
+        {
+          "index": 4394,
+          "id": "10000000-0000-4000-8000-000000007d47",
+          "predicted": "10-0035-5669",
+          "correct": false
+        },
+        {
+          "index": 5851,
+          "id": "10000000-0000-4000-8000-00000000dc1e",
+          "predicted": "10-0035-5669",
+          "correct": false
+        },
+        {
+          "index": 6503,
+          "id": "10000000-0000-4000-8000-000000008d5d",
+          "predicted": "10-0035-5669",
+          "correct": false
+        },
+        {
+          "index": 6998,
+          "id": "10000000-0000-4000-8000-00000000a4b6",
+          "predicted": "10-0035-5669",
+          "correct": false
+        },
+        {
+          "index": 8407,
+          "id": "10000000-0000-4000-8000-0000000152ff",
+          "predicted": "10-0035-5669",
+          "correct": false
+        },
+        {
+          "index": 9380,
+          "id": "10000000-0000-4000-8000-000000001758",
+          "predicted": "10-0035-5669",
+          "correct": false
+        },
+        {
+          "index": 9686,
+          "id": "10000000-0000-4000-8000-00000000b02b",
+          "predicted": "10-0035-5669",
+          "correct": false
+        },
+        {
+          "index": 9736,
+          "id": "10000000-0000-4000-8000-00000000e4c9",
+          "predicted": "10-0035-5669",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "known": 500,
+      "knownSupported": 500,
+      "phase": "snapshot",
+      "method": "public_shape_reference",
+      "channel": "native_shape",
+      "rows": 9500,
+      "correct": 0,
+      "pct": 0,
+      "characters": 28858,
+      "totalCharacters": 114000,
+      "characterPct": 25.314035087719297,
+      "mostly": 0,
+      "sharedKnownTargetRows": 0,
+      "learned": {
+        "dictionary": 10500,
+        "learnedFeatures": 0,
+        "candidateFeatures": 20800,
+        "knownFingerprints": 500,
+        "noise": 0,
+        "knownRows": 500
+      },
+      "predictionDigest": "9c1715c495e4df4320fc0ee77a33c136b26f388a21797460b2392acd9521b87a",
+      "witnesses": [
+        {
+          "index": 3155,
+          "id": "10000000-0000-4000-8000-000000012a97",
+          "predicted": "10-0035-5669",
+          "correct": false
+        },
+        {
+          "index": 3593,
+          "id": "10000000-0000-4000-8000-00000001740a",
+          "predicted": "10-0035-5669",
+          "correct": false
+        },
+        {
+          "index": 3806,
+          "id": "10000000-0000-4000-8000-00000000b03b",
+          "predicted": "10-0035-5669",
+          "correct": false
+        },
+        {
+          "index": 4051,
+          "id": "10000000-0000-4000-8000-000000018680",
+          "predicted": "10-0035-5669",
+          "correct": false
+        },
+        {
+          "index": 4394,
+          "id": "10000000-0000-4000-8000-000000007d47",
+          "predicted": "10-0035-5669",
+          "correct": false
+        },
+        {
+          "index": 5851,
+          "id": "10000000-0000-4000-8000-00000000dc1e",
+          "predicted": "10-0035-5669",
+          "correct": false
+        },
+        {
+          "index": 6503,
+          "id": "10000000-0000-4000-8000-000000008d5d",
+          "predicted": "10-0035-5669",
+          "correct": false
+        },
+        {
+          "index": 6998,
+          "id": "10000000-0000-4000-8000-00000000a4b6",
+          "predicted": "10-0035-5669",
+          "correct": false
+        },
+        {
+          "index": 8407,
+          "id": "10000000-0000-4000-8000-0000000152ff",
+          "predicted": "10-0035-5669",
+          "correct": false
+        },
+        {
+          "index": 9380,
+          "id": "10000000-0000-4000-8000-000000001758",
+          "predicted": "10-0035-5669",
+          "correct": false
+        },
+        {
+          "index": 9686,
+          "id": "10000000-0000-4000-8000-00000000b02b",
+          "predicted": "10-0035-5669",
+          "correct": false
+        },
+        {
+          "index": 9736,
+          "id": "10000000-0000-4000-8000-00000000e4c9",
+          "predicted": "10-0035-5669",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "known": 500,
+      "knownSupported": 500,
+      "phase": "snapshot",
+      "method": "public_tagcount_reference",
+      "channel": "index",
+      "rows": 9500,
+      "correct": 0,
+      "pct": 0,
+      "characters": 28858,
+      "totalCharacters": 114000,
+      "characterPct": 25.314035087719297,
+      "mostly": 0,
+      "sharedKnownTargetRows": 0,
+      "learned": {
+        "dictionary": 10500,
+        "learnedFeatures": 0,
+        "candidateFeatures": 20800,
+        "knownFingerprints": 500,
+        "noise": 0,
+        "knownRows": 500
+      },
+      "predictionDigest": "9c1715c495e4df4320fc0ee77a33c136b26f388a21797460b2392acd9521b87a",
+      "witnesses": [
+        {
+          "index": 3155,
+          "id": "10000000-0000-4000-8000-000000012a97",
+          "predicted": "10-0035-5669",
+          "correct": false
+        },
+        {
+          "index": 3593,
+          "id": "10000000-0000-4000-8000-00000001740a",
+          "predicted": "10-0035-5669",
+          "correct": false
+        },
+        {
+          "index": 3806,
+          "id": "10000000-0000-4000-8000-00000000b03b",
+          "predicted": "10-0035-5669",
+          "correct": false
+        },
+        {
+          "index": 4051,
+          "id": "10000000-0000-4000-8000-000000018680",
+          "predicted": "10-0035-5669",
+          "correct": false
+        },
+        {
+          "index": 4394,
+          "id": "10000000-0000-4000-8000-000000007d47",
+          "predicted": "10-0035-5669",
+          "correct": false
+        },
+        {
+          "index": 5851,
+          "id": "10000000-0000-4000-8000-00000000dc1e",
+          "predicted": "10-0035-5669",
+          "correct": false
+        },
+        {
+          "index": 6503,
+          "id": "10000000-0000-4000-8000-000000008d5d",
+          "predicted": "10-0035-5669",
+          "correct": false
+        },
+        {
+          "index": 6998,
+          "id": "10000000-0000-4000-8000-00000000a4b6",
+          "predicted": "10-0035-5669",
+          "correct": false
+        },
+        {
+          "index": 8407,
+          "id": "10000000-0000-4000-8000-0000000152ff",
+          "predicted": "10-0035-5669",
+          "correct": false
+        },
+        {
+          "index": 9380,
+          "id": "10000000-0000-4000-8000-000000001758",
+          "predicted": "10-0035-5669",
+          "correct": false
+        },
+        {
+          "index": 9686,
+          "id": "10000000-0000-4000-8000-00000000b02b",
+          "predicted": "10-0035-5669",
+          "correct": false
+        },
+        {
+          "index": 9736,
+          "id": "10000000-0000-4000-8000-00000000e4c9",
+          "predicted": "10-0035-5669",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "known": 500,
+      "knownSupported": 500,
+      "phase": "snapshot",
+      "method": "public_shape_known",
+      "channel": "native_shape",
+      "rows": 9500,
+      "correct": 0,
+      "pct": 0,
+      "characters": 28858,
+      "totalCharacters": 114000,
+      "characterPct": 25.314035087719297,
+      "mostly": 0,
+      "sharedKnownTargetRows": 0,
+      "learned": {
+        "dictionary": 10500,
+        "learnedFeatures": 0,
+        "candidateFeatures": 20800,
+        "knownFingerprints": 500,
+        "noise": 0,
+        "knownRows": 500
+      },
+      "predictionDigest": "9c1715c495e4df4320fc0ee77a33c136b26f388a21797460b2392acd9521b87a",
+      "witnesses": [
+        {
+          "index": 3155,
+          "id": "10000000-0000-4000-8000-000000012a97",
+          "predicted": "10-0035-5669",
+          "correct": false
+        },
+        {
+          "index": 3593,
+          "id": "10000000-0000-4000-8000-00000001740a",
+          "predicted": "10-0035-5669",
+          "correct": false
+        },
+        {
+          "index": 3806,
+          "id": "10000000-0000-4000-8000-00000000b03b",
+          "predicted": "10-0035-5669",
+          "correct": false
+        },
+        {
+          "index": 4051,
+          "id": "10000000-0000-4000-8000-000000018680",
+          "predicted": "10-0035-5669",
+          "correct": false
+        },
+        {
+          "index": 4394,
+          "id": "10000000-0000-4000-8000-000000007d47",
+          "predicted": "10-0035-5669",
+          "correct": false
+        },
+        {
+          "index": 5851,
+          "id": "10000000-0000-4000-8000-00000000dc1e",
+          "predicted": "10-0035-5669",
+          "correct": false
+        },
+        {
+          "index": 6503,
+          "id": "10000000-0000-4000-8000-000000008d5d",
+          "predicted": "10-0035-5669",
+          "correct": false
+        },
+        {
+          "index": 6998,
+          "id": "10000000-0000-4000-8000-00000000a4b6",
+          "predicted": "10-0035-5669",
+          "correct": false
+        },
+        {
+          "index": 8407,
+          "id": "10000000-0000-4000-8000-0000000152ff",
+          "predicted": "10-0035-5669",
+          "correct": false
+        },
+        {
+          "index": 9380,
+          "id": "10000000-0000-4000-8000-000000001758",
+          "predicted": "10-0035-5669",
+          "correct": false
+        },
+        {
+          "index": 9686,
+          "id": "10000000-0000-4000-8000-00000000b02b",
+          "predicted": "10-0035-5669",
+          "correct": false
+        },
+        {
+          "index": 9736,
+          "id": "10000000-0000-4000-8000-00000000e4c9",
+          "predicted": "10-0035-5669",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "known": 500,
+      "knownSupported": 500,
+      "phase": "snapshot",
+      "method": "public_tagcount_known",
+      "channel": "index",
+      "rows": 9500,
+      "correct": 0,
+      "pct": 0,
+      "characters": 28858,
+      "totalCharacters": 114000,
+      "characterPct": 25.314035087719297,
+      "mostly": 0,
+      "sharedKnownTargetRows": 0,
+      "learned": {
+        "dictionary": 10500,
+        "learnedFeatures": 0,
+        "candidateFeatures": 20800,
+        "knownFingerprints": 500,
+        "noise": 0,
+        "knownRows": 500
+      },
+      "predictionDigest": "9c1715c495e4df4320fc0ee77a33c136b26f388a21797460b2392acd9521b87a",
+      "witnesses": [
+        {
+          "index": 3155,
+          "id": "10000000-0000-4000-8000-000000012a97",
+          "predicted": "10-0035-5669",
+          "correct": false
+        },
+        {
+          "index": 3593,
+          "id": "10000000-0000-4000-8000-00000001740a",
+          "predicted": "10-0035-5669",
+          "correct": false
+        },
+        {
+          "index": 3806,
+          "id": "10000000-0000-4000-8000-00000000b03b",
+          "predicted": "10-0035-5669",
+          "correct": false
+        },
+        {
+          "index": 4051,
+          "id": "10000000-0000-4000-8000-000000018680",
+          "predicted": "10-0035-5669",
+          "correct": false
+        },
+        {
+          "index": 4394,
+          "id": "10000000-0000-4000-8000-000000007d47",
+          "predicted": "10-0035-5669",
+          "correct": false
+        },
+        {
+          "index": 5851,
+          "id": "10000000-0000-4000-8000-00000000dc1e",
+          "predicted": "10-0035-5669",
+          "correct": false
+        },
+        {
+          "index": 6503,
+          "id": "10000000-0000-4000-8000-000000008d5d",
+          "predicted": "10-0035-5669",
+          "correct": false
+        },
+        {
+          "index": 6998,
+          "id": "10000000-0000-4000-8000-00000000a4b6",
+          "predicted": "10-0035-5669",
+          "correct": false
+        },
+        {
+          "index": 8407,
+          "id": "10000000-0000-4000-8000-0000000152ff",
+          "predicted": "10-0035-5669",
+          "correct": false
+        },
+        {
+          "index": 9380,
+          "id": "10000000-0000-4000-8000-000000001758",
+          "predicted": "10-0035-5669",
+          "correct": false
+        },
+        {
+          "index": 9686,
+          "id": "10000000-0000-4000-8000-00000000b02b",
+          "predicted": "10-0035-5669",
+          "correct": false
+        },
+        {
+          "index": 9736,
+          "id": "10000000-0000-4000-8000-00000000e4c9",
+          "predicted": "10-0035-5669",
+          "correct": false
+        }
+      ]
+    }
+  ],
+  "baselines": [
+    {
+      "known": 0,
+      "method": "random_empirical",
+      "rows": 10000,
+      "correct": 0,
+      "pct": 0,
+      "characters": 30174,
+      "totalCharacters": 120000,
+      "characterPct": 25.145,
+      "mostly": 0
+    },
+    {
+      "known": 0,
+      "method": "random_distinct",
+      "rows": 10000,
+      "correct": 0,
+      "pct": 0,
+      "characters": 30327,
+      "totalCharacters": 120000,
+      "characterPct": 25.2725,
+      "mostly": 0
+    },
+    {
+      "known": 100,
+      "method": "random_empirical",
+      "rows": 9900,
+      "correct": 0,
+      "pct": 0,
+      "characters": 29894,
+      "totalCharacters": 118800,
+      "characterPct": 25.163299663299664,
+      "mostly": 0
+    },
+    {
+      "known": 100,
+      "method": "random_distinct",
+      "rows": 9900,
+      "correct": 0,
+      "pct": 0,
+      "characters": 30017,
+      "totalCharacters": 118800,
+      "characterPct": 25.266835016835017,
+      "mostly": 0
+    },
+    {
+      "known": 500,
+      "method": "random_empirical",
+      "rows": 9500,
+      "correct": 0,
+      "pct": 0,
+      "characters": 28673,
+      "totalCharacters": 114000,
+      "characterPct": 25.151754385964914,
+      "mostly": 0
+    },
+    {
+      "known": 500,
+      "method": "random_distinct",
+      "rows": 9500,
+      "correct": 0,
+      "pct": 0,
+      "characters": 28789,
+      "totalCharacters": 114000,
+      "characterPct": 25.253508771929823,
+      "mostly": 0
+    }
+  ],
+  "phoneShapeGraph": {
+    "maxStates": 20000,
+    "knownTagTransferRequired": true,
+    "classes": [
+      {
+        "shape": "[199,32]",
+        "solutions": 2,
+        "witnesses": [
+          "10-0000-0000",
+          "10-0000-0001"
+        ],
+        "states": 14,
+        "capped": false
+      }
+    ],
+    "rowsWithMultipleWitnesses": 10000,
+    "rowsWithCap": 0
+  },
+  "finished": "2026-09-29T18:45:12.565Z"
+}

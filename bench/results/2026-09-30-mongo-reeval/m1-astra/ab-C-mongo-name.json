@@ -1,0 +1,2388 @@
+{
+  "started": "2026-09-29T18:57:42.573Z",
+  "complete": true,
+  "databaseAccess": false,
+  "field": "name",
+  "model": "C-mongo",
+  "mode": "partial",
+  "options": {
+    "id": "C-mongo",
+    "field": "name",
+    "mode": "partial",
+    "contention": 8,
+    "maxLength": 60
+  },
+  "sourceHash": "fd0d2eefaf034bc868bbeae841d969ab8766504a4e008adb8eec527d75da44de",
+  "identityDigest": "189a19c99711fbacd9cafdb548f243a63657e12a0c1514a736c1f92da670f382",
+  "snapshotDigest": "0386857cee92df520ad71f39b2f008250f27f310cf2be5647b17913807138a41",
+  "metadata": {
+    "source": "Mongo official padding/ESC review: v-astra/model-rules-ko.md",
+    "tagBits": 256,
+    "contention": 8,
+    "mode": "partial",
+    "maxLength": 60,
+    "fidelity": "Leakage model, independent field/value keys and AES-CTR counter envelope; NOT SDK bytes. Post-compaction endpoint replaces each hidden group by one encrypted anchor; runtime cleanup transcript is not reproduced.",
+    "cipherBytes": "Only observable encrypted BSON length bucket E; constant envelope overhead omitted",
+    "logicalUnorderedTagSets": true,
+    "compacted": false,
+    "escRows": 1990000,
+    "ecocRows": 1990000,
+    "ecocCiphertext": "Opaque randomized documents represented by aggregate count; no linkage is exposed",
+    "unsupportedRows": 0
+  },
+  "compactedMetadata": {
+    "source": "Mongo official padding/ESC review: v-astra/model-rules-ko.md",
+    "tagBits": 256,
+    "contention": 8,
+    "mode": "partial",
+    "maxLength": 60,
+    "fidelity": "Leakage model, independent field/value keys and AES-CTR counter envelope; NOT SDK bytes. Post-compaction endpoint replaces each hidden group by one encrypted anchor; runtime cleanup transcript is not reproduced.",
+    "cipherBytes": "Only observable encrypted BSON length bucket E; constant envelope overhead omitted",
+    "logicalUnorderedTagSets": true,
+    "compacted": true,
+    "escRows": 256023,
+    "ecocRows": 0,
+    "ecocCiphertext": "Opaque randomized documents represented by aggregate count; no linkage is exposed",
+    "unsupportedRows": 0
+  },
+  "esc": {
+    "beforeRows": 1990000,
+    "afterCompactionRows": 256023,
+    "plaintextCounters": 0,
+    "totalPlaintextCounts": 0,
+    "distinctPlaintextCounts": 0,
+    "preDigest": "827e3100a39856ba4fe27bff64c0d9cdd6b6401056ea2de55f9a33fb25e4a7a3",
+    "postDigest": "7c54dde97c29af28ce8df202a79e72f8c017add4c9520564939b089f287e765a"
+  },
+  "uniqueness": {
+    "tagOccurrences": 1990000,
+    "distinctTags": 1990000,
+    "crossRowRepeats": 0
+  },
+  "unsupported": [],
+  "results": [
+    {
+      "known": 0,
+      "knownSupported": 0,
+      "phase": "snapshot",
+      "method": "group_frequency",
+      "channel": "index",
+      "rows": 10000,
+      "correct": 0,
+      "pct": 0,
+      "characters": 9520,
+      "totalCharacters": 92924,
+      "characterPct": 10.244931341741639,
+      "mostly": 0,
+      "sharedKnownTargetRows": 0,
+      "learned": {
+        "dictionary": 10000,
+        "learnedFeatures": 0,
+        "candidateFeatures": 0,
+        "knownFingerprints": 0,
+        "noise": 0,
+        "knownRows": 0
+      },
+      "predictionDigest": "027626acf44a835e425d0ed0c157bf1a1b236c4d832bb6ffbeb34db673f93886",
+      "witnesses": [
+        {
+          "index": 1150,
+          "id": "10000000-0000-4000-8000-00000001496e",
+          "predicted": "김민서 00soj",
+          "correct": false
+        },
+        {
+          "index": 1794,
+          "id": "10000000-0000-4000-8000-000000004dab",
+          "predicted": "김민서 00soj",
+          "correct": false
+        },
+        {
+          "index": 3805,
+          "id": "10000000-0000-4000-8000-00000000e244",
+          "predicted": "김민서 00soj",
+          "correct": false
+        },
+        {
+          "index": 5225,
+          "id": "10000000-0000-4000-8000-000000007639",
+          "predicted": "김민서 00soj",
+          "correct": false
+        },
+        {
+          "index": 5627,
+          "id": "10000000-0000-4000-8000-00000000f90c",
+          "predicted": "김민서 00soj",
+          "correct": false
+        },
+        {
+          "index": 6617,
+          "id": "10000000-0000-4000-8000-00000000f46c",
+          "predicted": "김민서 00soj",
+          "correct": false
+        },
+        {
+          "index": 6899,
+          "id": "10000000-0000-4000-8000-000000006b72",
+          "predicted": "김민서 00soj",
+          "correct": false
+        },
+        {
+          "index": 6963,
+          "id": "10000000-0000-4000-8000-0000000022e6",
+          "predicted": "김민서 00soj",
+          "correct": false
+        },
+        {
+          "index": 7896,
+          "id": "10000000-0000-4000-8000-000000015a63",
+          "predicted": "김민서 00soj",
+          "correct": false
+        },
+        {
+          "index": 8825,
+          "id": "10000000-0000-4000-8000-0000000008ce",
+          "predicted": "김민서 00soj",
+          "correct": false
+        },
+        {
+          "index": 8869,
+          "id": "10000000-0000-4000-8000-00000000d66a",
+          "predicted": "김민서 00soj",
+          "correct": false
+        },
+        {
+          "index": 9982,
+          "id": "10000000-0000-4000-8000-000000015360",
+          "predicted": "김민서 00soj",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "known": 0,
+      "knownSupported": 0,
+      "phase": "snapshot",
+      "method": "piece_frequency",
+      "channel": "index",
+      "rows": 10000,
+      "correct": 0,
+      "pct": 0,
+      "characters": 3480,
+      "totalCharacters": 92924,
+      "characterPct": 3.7449959106366495,
+      "mostly": 0,
+      "sharedKnownTargetRows": 0,
+      "learned": {
+        "dictionary": 10000,
+        "learnedFeatures": 0,
+        "candidateFeatures": 0,
+        "knownFingerprints": 0,
+        "noise": 0,
+        "knownRows": 0
+      },
+      "predictionDigest": "b0b6201f5f5202670bc5d8a3f857e20e87d89076a425265a82e7bb072e747ed4",
+      "witnesses": [
+        {
+          "index": 1150,
+          "id": "10000000-0000-4000-8000-00000001496e",
+          "predicted": "정하린 b3b3u",
+          "correct": false
+        },
+        {
+          "index": 1794,
+          "id": "10000000-0000-4000-8000-000000004dab",
+          "predicted": "정하린 b3b3u",
+          "correct": false
+        },
+        {
+          "index": 3805,
+          "id": "10000000-0000-4000-8000-00000000e244",
+          "predicted": "정하린 b3b3u",
+          "correct": false
+        },
+        {
+          "index": 5225,
+          "id": "10000000-0000-4000-8000-000000007639",
+          "predicted": "정하린 b3b3u",
+          "correct": false
+        },
+        {
+          "index": 5627,
+          "id": "10000000-0000-4000-8000-00000000f90c",
+          "predicted": "정하린 b3b3u",
+          "correct": false
+        },
+        {
+          "index": 6617,
+          "id": "10000000-0000-4000-8000-00000000f46c",
+          "predicted": "정하린 b3b3u",
+          "correct": false
+        },
+        {
+          "index": 6899,
+          "id": "10000000-0000-4000-8000-000000006b72",
+          "predicted": "정하린 b3b3u",
+          "correct": false
+        },
+        {
+          "index": 6963,
+          "id": "10000000-0000-4000-8000-0000000022e6",
+          "predicted": "정하린 b3b3u",
+          "correct": false
+        },
+        {
+          "index": 7896,
+          "id": "10000000-0000-4000-8000-000000015a63",
+          "predicted": "정하린 b3b3u",
+          "correct": false
+        },
+        {
+          "index": 8825,
+          "id": "10000000-0000-4000-8000-0000000008ce",
+          "predicted": "정하린 b3b3u",
+          "correct": false
+        },
+        {
+          "index": 8869,
+          "id": "10000000-0000-4000-8000-00000000d66a",
+          "predicted": "정하린 b3b3u",
+          "correct": false
+        },
+        {
+          "index": 9982,
+          "id": "10000000-0000-4000-8000-000000015360",
+          "predicted": "정하린 b3b3u",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "known": 0,
+      "knownSupported": 0,
+      "phase": "snapshot",
+      "method": "rank_frequency",
+      "channel": "index",
+      "rows": 10000,
+      "correct": 0,
+      "pct": 0,
+      "characters": 6497,
+      "totalCharacters": 92924,
+      "characterPct": 6.991735181438595,
+      "mostly": 0,
+      "sharedKnownTargetRows": 0,
+      "learned": {
+        "dictionary": 10000,
+        "learnedFeatures": 0,
+        "candidateFeatures": 0,
+        "knownFingerprints": 0,
+        "noise": 0,
+        "knownRows": 0
+      },
+      "predictionDigest": "438ee53a4e08a296262db40bc2b7e886da798817249dd5e7c4697761b5aed46e",
+      "witnesses": [
+        {
+          "index": 1150,
+          "id": "10000000-0000-4000-8000-00000001496e",
+          "predicted": "José Rivera umo05",
+          "correct": false
+        },
+        {
+          "index": 1794,
+          "id": "10000000-0000-4000-8000-000000004dab",
+          "predicted": "정하린 yx3cm",
+          "correct": false
+        },
+        {
+          "index": 3805,
+          "id": "10000000-0000-4000-8000-00000000e244",
+          "predicted": "박지훈 6zy9y",
+          "correct": false
+        },
+        {
+          "index": 5225,
+          "id": "10000000-0000-4000-8000-000000007639",
+          "predicted": "정하린 homzi",
+          "correct": false
+        },
+        {
+          "index": 5627,
+          "id": "10000000-0000-4000-8000-00000000f90c",
+          "predicted": "김민서 q1ryo",
+          "correct": false
+        },
+        {
+          "index": 6617,
+          "id": "10000000-0000-4000-8000-00000000f46c",
+          "predicted": "박지훈 8zrw7",
+          "correct": false
+        },
+        {
+          "index": 6899,
+          "id": "10000000-0000-4000-8000-000000006b72",
+          "predicted": "김민서 xakkt",
+          "correct": false
+        },
+        {
+          "index": 6963,
+          "id": "10000000-0000-4000-8000-0000000022e6",
+          "predicted": "山田花子 eve4n",
+          "correct": false
+        },
+        {
+          "index": 7896,
+          "id": "10000000-0000-4000-8000-000000015a63",
+          "predicted": "José Rivera nf526",
+          "correct": false
+        },
+        {
+          "index": 8825,
+          "id": "10000000-0000-4000-8000-0000000008ce",
+          "predicted": "김민서 oz538",
+          "correct": false
+        },
+        {
+          "index": 8869,
+          "id": "10000000-0000-4000-8000-00000000d66a",
+          "predicted": "김민서 5ux8k",
+          "correct": false
+        },
+        {
+          "index": 9982,
+          "id": "10000000-0000-4000-8000-000000015360",
+          "predicted": "최도윤 r074f",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "known": 0,
+      "knownSupported": 0,
+      "phase": "snapshot",
+      "method": "public_shape_reference",
+      "channel": "native_shape",
+      "rows": 10000,
+      "correct": 0,
+      "pct": 0,
+      "characters": 9520,
+      "totalCharacters": 92924,
+      "characterPct": 10.244931341741639,
+      "mostly": 0,
+      "sharedKnownTargetRows": 0,
+      "learned": {
+        "dictionary": 10000,
+        "learnedFeatures": 0,
+        "candidateFeatures": 0,
+        "knownFingerprints": 0,
+        "noise": 0,
+        "knownRows": 0
+      },
+      "predictionDigest": "027626acf44a835e425d0ed0c157bf1a1b236c4d832bb6ffbeb34db673f93886",
+      "witnesses": [
+        {
+          "index": 1150,
+          "id": "10000000-0000-4000-8000-00000001496e",
+          "predicted": "김민서 00soj",
+          "correct": false
+        },
+        {
+          "index": 1794,
+          "id": "10000000-0000-4000-8000-000000004dab",
+          "predicted": "김민서 00soj",
+          "correct": false
+        },
+        {
+          "index": 3805,
+          "id": "10000000-0000-4000-8000-00000000e244",
+          "predicted": "김민서 00soj",
+          "correct": false
+        },
+        {
+          "index": 5225,
+          "id": "10000000-0000-4000-8000-000000007639",
+          "predicted": "김민서 00soj",
+          "correct": false
+        },
+        {
+          "index": 5627,
+          "id": "10000000-0000-4000-8000-00000000f90c",
+          "predicted": "김민서 00soj",
+          "correct": false
+        },
+        {
+          "index": 6617,
+          "id": "10000000-0000-4000-8000-00000000f46c",
+          "predicted": "김민서 00soj",
+          "correct": false
+        },
+        {
+          "index": 6899,
+          "id": "10000000-0000-4000-8000-000000006b72",
+          "predicted": "김민서 00soj",
+          "correct": false
+        },
+        {
+          "index": 6963,
+          "id": "10000000-0000-4000-8000-0000000022e6",
+          "predicted": "김민서 00soj",
+          "correct": false
+        },
+        {
+          "index": 7896,
+          "id": "10000000-0000-4000-8000-000000015a63",
+          "predicted": "김민서 00soj",
+          "correct": false
+        },
+        {
+          "index": 8825,
+          "id": "10000000-0000-4000-8000-0000000008ce",
+          "predicted": "김민서 00soj",
+          "correct": false
+        },
+        {
+          "index": 8869,
+          "id": "10000000-0000-4000-8000-00000000d66a",
+          "predicted": "김민서 00soj",
+          "correct": false
+        },
+        {
+          "index": 9982,
+          "id": "10000000-0000-4000-8000-000000015360",
+          "predicted": "김민서 00soj",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "known": 0,
+      "knownSupported": 0,
+      "phase": "snapshot",
+      "method": "public_tagcount_reference",
+      "channel": "index",
+      "rows": 10000,
+      "correct": 0,
+      "pct": 0,
+      "characters": 9520,
+      "totalCharacters": 92924,
+      "characterPct": 10.244931341741639,
+      "mostly": 0,
+      "sharedKnownTargetRows": 0,
+      "learned": {
+        "dictionary": 10000,
+        "learnedFeatures": 0,
+        "candidateFeatures": 0,
+        "knownFingerprints": 0,
+        "noise": 0,
+        "knownRows": 0
+      },
+      "predictionDigest": "027626acf44a835e425d0ed0c157bf1a1b236c4d832bb6ffbeb34db673f93886",
+      "witnesses": [
+        {
+          "index": 1150,
+          "id": "10000000-0000-4000-8000-00000001496e",
+          "predicted": "김민서 00soj",
+          "correct": false
+        },
+        {
+          "index": 1794,
+          "id": "10000000-0000-4000-8000-000000004dab",
+          "predicted": "김민서 00soj",
+          "correct": false
+        },
+        {
+          "index": 3805,
+          "id": "10000000-0000-4000-8000-00000000e244",
+          "predicted": "김민서 00soj",
+          "correct": false
+        },
+        {
+          "index": 5225,
+          "id": "10000000-0000-4000-8000-000000007639",
+          "predicted": "김민서 00soj",
+          "correct": false
+        },
+        {
+          "index": 5627,
+          "id": "10000000-0000-4000-8000-00000000f90c",
+          "predicted": "김민서 00soj",
+          "correct": false
+        },
+        {
+          "index": 6617,
+          "id": "10000000-0000-4000-8000-00000000f46c",
+          "predicted": "김민서 00soj",
+          "correct": false
+        },
+        {
+          "index": 6899,
+          "id": "10000000-0000-4000-8000-000000006b72",
+          "predicted": "김민서 00soj",
+          "correct": false
+        },
+        {
+          "index": 6963,
+          "id": "10000000-0000-4000-8000-0000000022e6",
+          "predicted": "김민서 00soj",
+          "correct": false
+        },
+        {
+          "index": 7896,
+          "id": "10000000-0000-4000-8000-000000015a63",
+          "predicted": "김민서 00soj",
+          "correct": false
+        },
+        {
+          "index": 8825,
+          "id": "10000000-0000-4000-8000-0000000008ce",
+          "predicted": "김민서 00soj",
+          "correct": false
+        },
+        {
+          "index": 8869,
+          "id": "10000000-0000-4000-8000-00000000d66a",
+          "predicted": "김민서 00soj",
+          "correct": false
+        },
+        {
+          "index": 9982,
+          "id": "10000000-0000-4000-8000-000000015360",
+          "predicted": "김민서 00soj",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "known": 100,
+      "knownSupported": 100,
+      "phase": "snapshot",
+      "method": "group_frequency",
+      "channel": "index",
+      "rows": 9900,
+      "correct": 0,
+      "pct": 0,
+      "characters": 9445,
+      "totalCharacters": 91978,
+      "characterPct": 10.268759920850638,
+      "mostly": 0,
+      "sharedKnownTargetRows": 0,
+      "learned": {
+        "dictionary": 10100,
+        "learnedFeatures": 0,
+        "candidateFeatures": 3017,
+        "knownFingerprints": 100,
+        "noise": 0,
+        "knownRows": 100
+      },
+      "predictionDigest": "c2edc4365abc546bb0462f9cfc10d035e16936ab8f145da8f0681f6c6341cc35",
+      "witnesses": [
+        {
+          "index": 971,
+          "id": "10000000-0000-4000-8000-0000000045a2",
+          "predicted": "김민서 00soj",
+          "correct": false
+        },
+        {
+          "index": 2054,
+          "id": "10000000-0000-4000-8000-000000002bf0",
+          "predicted": "김민서 00soj",
+          "correct": false
+        },
+        {
+          "index": 2369,
+          "id": "10000000-0000-4000-8000-0000000083f7",
+          "predicted": "김민서 00soj",
+          "correct": false
+        },
+        {
+          "index": 2954,
+          "id": "10000000-0000-4000-8000-00000000fbe4",
+          "predicted": "김민서 00soj",
+          "correct": false
+        },
+        {
+          "index": 4471,
+          "id": "10000000-0000-4000-8000-0000000145d4",
+          "predicted": "김민서 00soj",
+          "correct": false
+        },
+        {
+          "index": 6108,
+          "id": "10000000-0000-4000-8000-000000015722",
+          "predicted": "김민서 00soj",
+          "correct": false
+        },
+        {
+          "index": 6587,
+          "id": "10000000-0000-4000-8000-000000016cb6",
+          "predicted": "김민서 00soj",
+          "correct": false
+        },
+        {
+          "index": 7669,
+          "id": "10000000-0000-4000-8000-000000018337",
+          "predicted": "김민서 00soj",
+          "correct": false
+        },
+        {
+          "index": 8241,
+          "id": "10000000-0000-4000-8000-00000000ab0b",
+          "predicted": "김민서 00soj",
+          "correct": false
+        },
+        {
+          "index": 8744,
+          "id": "10000000-0000-4000-8000-00000001441e",
+          "predicted": "김민서 00soj",
+          "correct": false
+        },
+        {
+          "index": 9733,
+          "id": "10000000-0000-4000-8000-000000010685",
+          "predicted": "김민서 00soj",
+          "correct": false
+        },
+        {
+          "index": 9953,
+          "id": "10000000-0000-4000-8000-000000003e23",
+          "predicted": "김민서 00soj",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "known": 100,
+      "knownSupported": 100,
+      "phase": "snapshot",
+      "method": "piece_frequency",
+      "channel": "index",
+      "rows": 9900,
+      "correct": 0,
+      "pct": 0,
+      "characters": 3446,
+      "totalCharacters": 91978,
+      "characterPct": 3.746548087586162,
+      "mostly": 0,
+      "sharedKnownTargetRows": 0,
+      "learned": {
+        "dictionary": 10100,
+        "learnedFeatures": 0,
+        "candidateFeatures": 3017,
+        "knownFingerprints": 100,
+        "noise": 0,
+        "knownRows": 100
+      },
+      "predictionDigest": "1eaa262684d6a5cce455a209c5b9217053a70b280e491470caac60c1a9f58ca1",
+      "witnesses": [
+        {
+          "index": 971,
+          "id": "10000000-0000-4000-8000-0000000045a2",
+          "predicted": "정하린 5lh5l",
+          "correct": false
+        },
+        {
+          "index": 2054,
+          "id": "10000000-0000-4000-8000-000000002bf0",
+          "predicted": "정하린 5lh5l",
+          "correct": false
+        },
+        {
+          "index": 2369,
+          "id": "10000000-0000-4000-8000-0000000083f7",
+          "predicted": "정하린 5lh5l",
+          "correct": false
+        },
+        {
+          "index": 2954,
+          "id": "10000000-0000-4000-8000-00000000fbe4",
+          "predicted": "정하린 5lh5l",
+          "correct": false
+        },
+        {
+          "index": 4471,
+          "id": "10000000-0000-4000-8000-0000000145d4",
+          "predicted": "정하린 5lh5l",
+          "correct": false
+        },
+        {
+          "index": 6108,
+          "id": "10000000-0000-4000-8000-000000015722",
+          "predicted": "정하린 5lh5l",
+          "correct": false
+        },
+        {
+          "index": 6587,
+          "id": "10000000-0000-4000-8000-000000016cb6",
+          "predicted": "정하린 5lh5l",
+          "correct": false
+        },
+        {
+          "index": 7669,
+          "id": "10000000-0000-4000-8000-000000018337",
+          "predicted": "정하린 5lh5l",
+          "correct": false
+        },
+        {
+          "index": 8241,
+          "id": "10000000-0000-4000-8000-00000000ab0b",
+          "predicted": "정하린 5lh5l",
+          "correct": false
+        },
+        {
+          "index": 8744,
+          "id": "10000000-0000-4000-8000-00000001441e",
+          "predicted": "정하린 5lh5l",
+          "correct": false
+        },
+        {
+          "index": 9733,
+          "id": "10000000-0000-4000-8000-000000010685",
+          "predicted": "정하린 5lh5l",
+          "correct": false
+        },
+        {
+          "index": 9953,
+          "id": "10000000-0000-4000-8000-000000003e23",
+          "predicted": "정하린 5lh5l",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "known": 100,
+      "knownSupported": 100,
+      "phase": "snapshot",
+      "method": "rank_frequency",
+      "channel": "index",
+      "rows": 9900,
+      "correct": 0,
+      "pct": 0,
+      "characters": 6398,
+      "totalCharacters": 91978,
+      "characterPct": 6.956011220074366,
+      "mostly": 2,
+      "sharedKnownTargetRows": 0,
+      "learned": {
+        "dictionary": 10100,
+        "learnedFeatures": 0,
+        "candidateFeatures": 3017,
+        "knownFingerprints": 100,
+        "noise": 0,
+        "knownRows": 100
+      },
+      "predictionDigest": "b491430cf995ab854ee4e86d2ecdc4f163ecc6e9a961becb5d57698cddc1e3aa",
+      "witnesses": [
+        {
+          "index": 971,
+          "id": "10000000-0000-4000-8000-0000000045a2",
+          "predicted": "최도윤 msd1e",
+          "correct": false
+        },
+        {
+          "index": 2054,
+          "id": "10000000-0000-4000-8000-000000002bf0",
+          "predicted": "김민서 plly5",
+          "correct": false
+        },
+        {
+          "index": 2369,
+          "id": "10000000-0000-4000-8000-0000000083f7",
+          "predicted": "山田花子 t0x2d",
+          "correct": false
+        },
+        {
+          "index": 2954,
+          "id": "10000000-0000-4000-8000-00000000fbe4",
+          "predicted": "山田花子 5e4ku",
+          "correct": false
+        },
+        {
+          "index": 4471,
+          "id": "10000000-0000-4000-8000-0000000145d4",
+          "predicted": "Mina Park ppjrg",
+          "correct": false
+        },
+        {
+          "index": 6108,
+          "id": "10000000-0000-4000-8000-000000015722",
+          "predicted": "한유진 vsq3c",
+          "correct": false
+        },
+        {
+          "index": 6587,
+          "id": "10000000-0000-4000-8000-000000016cb6",
+          "predicted": "한유진 y77jt",
+          "correct": false
+        },
+        {
+          "index": 7669,
+          "id": "10000000-0000-4000-8000-000000018337",
+          "predicted": "한유진 zwnmd",
+          "correct": false
+        },
+        {
+          "index": 8241,
+          "id": "10000000-0000-4000-8000-00000000ab0b",
+          "predicted": "김민서 ad5t8",
+          "correct": false
+        },
+        {
+          "index": 8744,
+          "id": "10000000-0000-4000-8000-00000001441e",
+          "predicted": "Alex Kim culln",
+          "correct": false
+        },
+        {
+          "index": 9733,
+          "id": "10000000-0000-4000-8000-000000010685",
+          "predicted": "김민서 b4dwm",
+          "correct": false
+        },
+        {
+          "index": 9953,
+          "id": "10000000-0000-4000-8000-000000003e23",
+          "predicted": "한유진 mdotj",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "known": 100,
+      "knownSupported": 100,
+      "phase": "snapshot",
+      "method": "known_projection",
+      "channel": "index",
+      "rows": 9900,
+      "correct": 0,
+      "pct": 0,
+      "characters": 9445,
+      "totalCharacters": 91978,
+      "characterPct": 10.268759920850638,
+      "mostly": 0,
+      "sharedKnownTargetRows": 0,
+      "learned": {
+        "dictionary": 10100,
+        "learnedFeatures": 0,
+        "candidateFeatures": 3017,
+        "knownFingerprints": 100,
+        "noise": 0,
+        "knownRows": 100
+      },
+      "predictionDigest": "c2edc4365abc546bb0462f9cfc10d035e16936ab8f145da8f0681f6c6341cc35",
+      "witnesses": [
+        {
+          "index": 971,
+          "id": "10000000-0000-4000-8000-0000000045a2",
+          "predicted": "김민서 00soj",
+          "correct": false
+        },
+        {
+          "index": 2054,
+          "id": "10000000-0000-4000-8000-000000002bf0",
+          "predicted": "김민서 00soj",
+          "correct": false
+        },
+        {
+          "index": 2369,
+          "id": "10000000-0000-4000-8000-0000000083f7",
+          "predicted": "김민서 00soj",
+          "correct": false
+        },
+        {
+          "index": 2954,
+          "id": "10000000-0000-4000-8000-00000000fbe4",
+          "predicted": "김민서 00soj",
+          "correct": false
+        },
+        {
+          "index": 4471,
+          "id": "10000000-0000-4000-8000-0000000145d4",
+          "predicted": "김민서 00soj",
+          "correct": false
+        },
+        {
+          "index": 6108,
+          "id": "10000000-0000-4000-8000-000000015722",
+          "predicted": "김민서 00soj",
+          "correct": false
+        },
+        {
+          "index": 6587,
+          "id": "10000000-0000-4000-8000-000000016cb6",
+          "predicted": "김민서 00soj",
+          "correct": false
+        },
+        {
+          "index": 7669,
+          "id": "10000000-0000-4000-8000-000000018337",
+          "predicted": "김민서 00soj",
+          "correct": false
+        },
+        {
+          "index": 8241,
+          "id": "10000000-0000-4000-8000-00000000ab0b",
+          "predicted": "김민서 00soj",
+          "correct": false
+        },
+        {
+          "index": 8744,
+          "id": "10000000-0000-4000-8000-00000001441e",
+          "predicted": "김민서 00soj",
+          "correct": false
+        },
+        {
+          "index": 9733,
+          "id": "10000000-0000-4000-8000-000000010685",
+          "predicted": "김민서 00soj",
+          "correct": false
+        },
+        {
+          "index": 9953,
+          "id": "10000000-0000-4000-8000-000000003e23",
+          "predicted": "김민서 00soj",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "known": 100,
+      "knownSupported": 100,
+      "phase": "snapshot",
+      "method": "known_fingerprint",
+      "channel": "index",
+      "rows": 9900,
+      "correct": 0,
+      "pct": 0,
+      "characters": 9445,
+      "totalCharacters": 91978,
+      "characterPct": 10.268759920850638,
+      "mostly": 0,
+      "sharedKnownTargetRows": 0,
+      "learned": {
+        "dictionary": 10100,
+        "learnedFeatures": 0,
+        "candidateFeatures": 3017,
+        "knownFingerprints": 100,
+        "noise": 0,
+        "knownRows": 100
+      },
+      "predictionDigest": "c2edc4365abc546bb0462f9cfc10d035e16936ab8f145da8f0681f6c6341cc35",
+      "witnesses": [
+        {
+          "index": 971,
+          "id": "10000000-0000-4000-8000-0000000045a2",
+          "predicted": "김민서 00soj",
+          "correct": false
+        },
+        {
+          "index": 2054,
+          "id": "10000000-0000-4000-8000-000000002bf0",
+          "predicted": "김민서 00soj",
+          "correct": false
+        },
+        {
+          "index": 2369,
+          "id": "10000000-0000-4000-8000-0000000083f7",
+          "predicted": "김민서 00soj",
+          "correct": false
+        },
+        {
+          "index": 2954,
+          "id": "10000000-0000-4000-8000-00000000fbe4",
+          "predicted": "김민서 00soj",
+          "correct": false
+        },
+        {
+          "index": 4471,
+          "id": "10000000-0000-4000-8000-0000000145d4",
+          "predicted": "김민서 00soj",
+          "correct": false
+        },
+        {
+          "index": 6108,
+          "id": "10000000-0000-4000-8000-000000015722",
+          "predicted": "김민서 00soj",
+          "correct": false
+        },
+        {
+          "index": 6587,
+          "id": "10000000-0000-4000-8000-000000016cb6",
+          "predicted": "김민서 00soj",
+          "correct": false
+        },
+        {
+          "index": 7669,
+          "id": "10000000-0000-4000-8000-000000018337",
+          "predicted": "김민서 00soj",
+          "correct": false
+        },
+        {
+          "index": 8241,
+          "id": "10000000-0000-4000-8000-00000000ab0b",
+          "predicted": "김민서 00soj",
+          "correct": false
+        },
+        {
+          "index": 8744,
+          "id": "10000000-0000-4000-8000-00000001441e",
+          "predicted": "김민서 00soj",
+          "correct": false
+        },
+        {
+          "index": 9733,
+          "id": "10000000-0000-4000-8000-000000010685",
+          "predicted": "김민서 00soj",
+          "correct": false
+        },
+        {
+          "index": 9953,
+          "id": "10000000-0000-4000-8000-000000003e23",
+          "predicted": "김민서 00soj",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "known": 100,
+      "knownSupported": 100,
+      "phase": "snapshot",
+      "method": "public_shape_reference",
+      "channel": "native_shape",
+      "rows": 9900,
+      "correct": 0,
+      "pct": 0,
+      "characters": 9445,
+      "totalCharacters": 91978,
+      "characterPct": 10.268759920850638,
+      "mostly": 0,
+      "sharedKnownTargetRows": 0,
+      "learned": {
+        "dictionary": 10100,
+        "learnedFeatures": 0,
+        "candidateFeatures": 3017,
+        "knownFingerprints": 100,
+        "noise": 0,
+        "knownRows": 100
+      },
+      "predictionDigest": "c2edc4365abc546bb0462f9cfc10d035e16936ab8f145da8f0681f6c6341cc35",
+      "witnesses": [
+        {
+          "index": 971,
+          "id": "10000000-0000-4000-8000-0000000045a2",
+          "predicted": "김민서 00soj",
+          "correct": false
+        },
+        {
+          "index": 2054,
+          "id": "10000000-0000-4000-8000-000000002bf0",
+          "predicted": "김민서 00soj",
+          "correct": false
+        },
+        {
+          "index": 2369,
+          "id": "10000000-0000-4000-8000-0000000083f7",
+          "predicted": "김민서 00soj",
+          "correct": false
+        },
+        {
+          "index": 2954,
+          "id": "10000000-0000-4000-8000-00000000fbe4",
+          "predicted": "김민서 00soj",
+          "correct": false
+        },
+        {
+          "index": 4471,
+          "id": "10000000-0000-4000-8000-0000000145d4",
+          "predicted": "김민서 00soj",
+          "correct": false
+        },
+        {
+          "index": 6108,
+          "id": "10000000-0000-4000-8000-000000015722",
+          "predicted": "김민서 00soj",
+          "correct": false
+        },
+        {
+          "index": 6587,
+          "id": "10000000-0000-4000-8000-000000016cb6",
+          "predicted": "김민서 00soj",
+          "correct": false
+        },
+        {
+          "index": 7669,
+          "id": "10000000-0000-4000-8000-000000018337",
+          "predicted": "김민서 00soj",
+          "correct": false
+        },
+        {
+          "index": 8241,
+          "id": "10000000-0000-4000-8000-00000000ab0b",
+          "predicted": "김민서 00soj",
+          "correct": false
+        },
+        {
+          "index": 8744,
+          "id": "10000000-0000-4000-8000-00000001441e",
+          "predicted": "김민서 00soj",
+          "correct": false
+        },
+        {
+          "index": 9733,
+          "id": "10000000-0000-4000-8000-000000010685",
+          "predicted": "김민서 00soj",
+          "correct": false
+        },
+        {
+          "index": 9953,
+          "id": "10000000-0000-4000-8000-000000003e23",
+          "predicted": "김민서 00soj",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "known": 100,
+      "knownSupported": 100,
+      "phase": "snapshot",
+      "method": "public_tagcount_reference",
+      "channel": "index",
+      "rows": 9900,
+      "correct": 0,
+      "pct": 0,
+      "characters": 9445,
+      "totalCharacters": 91978,
+      "characterPct": 10.268759920850638,
+      "mostly": 0,
+      "sharedKnownTargetRows": 0,
+      "learned": {
+        "dictionary": 10100,
+        "learnedFeatures": 0,
+        "candidateFeatures": 3017,
+        "knownFingerprints": 100,
+        "noise": 0,
+        "knownRows": 100
+      },
+      "predictionDigest": "c2edc4365abc546bb0462f9cfc10d035e16936ab8f145da8f0681f6c6341cc35",
+      "witnesses": [
+        {
+          "index": 971,
+          "id": "10000000-0000-4000-8000-0000000045a2",
+          "predicted": "김민서 00soj",
+          "correct": false
+        },
+        {
+          "index": 2054,
+          "id": "10000000-0000-4000-8000-000000002bf0",
+          "predicted": "김민서 00soj",
+          "correct": false
+        },
+        {
+          "index": 2369,
+          "id": "10000000-0000-4000-8000-0000000083f7",
+          "predicted": "김민서 00soj",
+          "correct": false
+        },
+        {
+          "index": 2954,
+          "id": "10000000-0000-4000-8000-00000000fbe4",
+          "predicted": "김민서 00soj",
+          "correct": false
+        },
+        {
+          "index": 4471,
+          "id": "10000000-0000-4000-8000-0000000145d4",
+          "predicted": "김민서 00soj",
+          "correct": false
+        },
+        {
+          "index": 6108,
+          "id": "10000000-0000-4000-8000-000000015722",
+          "predicted": "김민서 00soj",
+          "correct": false
+        },
+        {
+          "index": 6587,
+          "id": "10000000-0000-4000-8000-000000016cb6",
+          "predicted": "김민서 00soj",
+          "correct": false
+        },
+        {
+          "index": 7669,
+          "id": "10000000-0000-4000-8000-000000018337",
+          "predicted": "김민서 00soj",
+          "correct": false
+        },
+        {
+          "index": 8241,
+          "id": "10000000-0000-4000-8000-00000000ab0b",
+          "predicted": "김민서 00soj",
+          "correct": false
+        },
+        {
+          "index": 8744,
+          "id": "10000000-0000-4000-8000-00000001441e",
+          "predicted": "김민서 00soj",
+          "correct": false
+        },
+        {
+          "index": 9733,
+          "id": "10000000-0000-4000-8000-000000010685",
+          "predicted": "김민서 00soj",
+          "correct": false
+        },
+        {
+          "index": 9953,
+          "id": "10000000-0000-4000-8000-000000003e23",
+          "predicted": "김민서 00soj",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "known": 100,
+      "knownSupported": 100,
+      "phase": "snapshot",
+      "method": "public_shape_known",
+      "channel": "native_shape",
+      "rows": 9900,
+      "correct": 0,
+      "pct": 0,
+      "characters": 9445,
+      "totalCharacters": 91978,
+      "characterPct": 10.268759920850638,
+      "mostly": 0,
+      "sharedKnownTargetRows": 0,
+      "learned": {
+        "dictionary": 10100,
+        "learnedFeatures": 0,
+        "candidateFeatures": 3017,
+        "knownFingerprints": 100,
+        "noise": 0,
+        "knownRows": 100
+      },
+      "predictionDigest": "c2edc4365abc546bb0462f9cfc10d035e16936ab8f145da8f0681f6c6341cc35",
+      "witnesses": [
+        {
+          "index": 971,
+          "id": "10000000-0000-4000-8000-0000000045a2",
+          "predicted": "김민서 00soj",
+          "correct": false
+        },
+        {
+          "index": 2054,
+          "id": "10000000-0000-4000-8000-000000002bf0",
+          "predicted": "김민서 00soj",
+          "correct": false
+        },
+        {
+          "index": 2369,
+          "id": "10000000-0000-4000-8000-0000000083f7",
+          "predicted": "김민서 00soj",
+          "correct": false
+        },
+        {
+          "index": 2954,
+          "id": "10000000-0000-4000-8000-00000000fbe4",
+          "predicted": "김민서 00soj",
+          "correct": false
+        },
+        {
+          "index": 4471,
+          "id": "10000000-0000-4000-8000-0000000145d4",
+          "predicted": "김민서 00soj",
+          "correct": false
+        },
+        {
+          "index": 6108,
+          "id": "10000000-0000-4000-8000-000000015722",
+          "predicted": "김민서 00soj",
+          "correct": false
+        },
+        {
+          "index": 6587,
+          "id": "10000000-0000-4000-8000-000000016cb6",
+          "predicted": "김민서 00soj",
+          "correct": false
+        },
+        {
+          "index": 7669,
+          "id": "10000000-0000-4000-8000-000000018337",
+          "predicted": "김민서 00soj",
+          "correct": false
+        },
+        {
+          "index": 8241,
+          "id": "10000000-0000-4000-8000-00000000ab0b",
+          "predicted": "김민서 00soj",
+          "correct": false
+        },
+        {
+          "index": 8744,
+          "id": "10000000-0000-4000-8000-00000001441e",
+          "predicted": "김민서 00soj",
+          "correct": false
+        },
+        {
+          "index": 9733,
+          "id": "10000000-0000-4000-8000-000000010685",
+          "predicted": "김민서 00soj",
+          "correct": false
+        },
+        {
+          "index": 9953,
+          "id": "10000000-0000-4000-8000-000000003e23",
+          "predicted": "김민서 00soj",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "known": 100,
+      "knownSupported": 100,
+      "phase": "snapshot",
+      "method": "public_tagcount_known",
+      "channel": "index",
+      "rows": 9900,
+      "correct": 0,
+      "pct": 0,
+      "characters": 9445,
+      "totalCharacters": 91978,
+      "characterPct": 10.268759920850638,
+      "mostly": 0,
+      "sharedKnownTargetRows": 0,
+      "learned": {
+        "dictionary": 10100,
+        "learnedFeatures": 0,
+        "candidateFeatures": 3017,
+        "knownFingerprints": 100,
+        "noise": 0,
+        "knownRows": 100
+      },
+      "predictionDigest": "c2edc4365abc546bb0462f9cfc10d035e16936ab8f145da8f0681f6c6341cc35",
+      "witnesses": [
+        {
+          "index": 971,
+          "id": "10000000-0000-4000-8000-0000000045a2",
+          "predicted": "김민서 00soj",
+          "correct": false
+        },
+        {
+          "index": 2054,
+          "id": "10000000-0000-4000-8000-000000002bf0",
+          "predicted": "김민서 00soj",
+          "correct": false
+        },
+        {
+          "index": 2369,
+          "id": "10000000-0000-4000-8000-0000000083f7",
+          "predicted": "김민서 00soj",
+          "correct": false
+        },
+        {
+          "index": 2954,
+          "id": "10000000-0000-4000-8000-00000000fbe4",
+          "predicted": "김민서 00soj",
+          "correct": false
+        },
+        {
+          "index": 4471,
+          "id": "10000000-0000-4000-8000-0000000145d4",
+          "predicted": "김민서 00soj",
+          "correct": false
+        },
+        {
+          "index": 6108,
+          "id": "10000000-0000-4000-8000-000000015722",
+          "predicted": "김민서 00soj",
+          "correct": false
+        },
+        {
+          "index": 6587,
+          "id": "10000000-0000-4000-8000-000000016cb6",
+          "predicted": "김민서 00soj",
+          "correct": false
+        },
+        {
+          "index": 7669,
+          "id": "10000000-0000-4000-8000-000000018337",
+          "predicted": "김민서 00soj",
+          "correct": false
+        },
+        {
+          "index": 8241,
+          "id": "10000000-0000-4000-8000-00000000ab0b",
+          "predicted": "김민서 00soj",
+          "correct": false
+        },
+        {
+          "index": 8744,
+          "id": "10000000-0000-4000-8000-00000001441e",
+          "predicted": "김민서 00soj",
+          "correct": false
+        },
+        {
+          "index": 9733,
+          "id": "10000000-0000-4000-8000-000000010685",
+          "predicted": "김민서 00soj",
+          "correct": false
+        },
+        {
+          "index": 9953,
+          "id": "10000000-0000-4000-8000-000000003e23",
+          "predicted": "김민서 00soj",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "known": 500,
+      "knownSupported": 500,
+      "phase": "snapshot",
+      "method": "group_frequency",
+      "channel": "index",
+      "rows": 9500,
+      "correct": 0,
+      "pct": 0,
+      "characters": 9060,
+      "totalCharacters": 88296,
+      "characterPct": 10.260940472954607,
+      "mostly": 0,
+      "sharedKnownTargetRows": 0,
+      "learned": {
+        "dictionary": 10500,
+        "learnedFeatures": 0,
+        "candidateFeatures": 12693,
+        "knownFingerprints": 500,
+        "noise": 0,
+        "knownRows": 500
+      },
+      "predictionDigest": "8078466826835c0681a0ebf04975a1e9cacc5c75b54ab369937e54a53689a5e6",
+      "witnesses": [
+        {
+          "index": 3155,
+          "id": "10000000-0000-4000-8000-000000012a97",
+          "predicted": "김민서 00soj",
+          "correct": false
+        },
+        {
+          "index": 3593,
+          "id": "10000000-0000-4000-8000-00000001740a",
+          "predicted": "김민서 00soj",
+          "correct": false
+        },
+        {
+          "index": 3806,
+          "id": "10000000-0000-4000-8000-00000000b03b",
+          "predicted": "김민서 00soj",
+          "correct": false
+        },
+        {
+          "index": 4051,
+          "id": "10000000-0000-4000-8000-000000018680",
+          "predicted": "김민서 00soj",
+          "correct": false
+        },
+        {
+          "index": 4394,
+          "id": "10000000-0000-4000-8000-000000007d47",
+          "predicted": "김민서 00soj",
+          "correct": false
+        },
+        {
+          "index": 5851,
+          "id": "10000000-0000-4000-8000-00000000dc1e",
+          "predicted": "김민서 00soj",
+          "correct": false
+        },
+        {
+          "index": 6503,
+          "id": "10000000-0000-4000-8000-000000008d5d",
+          "predicted": "김민서 00soj",
+          "correct": false
+        },
+        {
+          "index": 6998,
+          "id": "10000000-0000-4000-8000-00000000a4b6",
+          "predicted": "김민서 00soj",
+          "correct": false
+        },
+        {
+          "index": 8407,
+          "id": "10000000-0000-4000-8000-0000000152ff",
+          "predicted": "김민서 00soj",
+          "correct": false
+        },
+        {
+          "index": 9380,
+          "id": "10000000-0000-4000-8000-000000001758",
+          "predicted": "김민서 00soj",
+          "correct": false
+        },
+        {
+          "index": 9686,
+          "id": "10000000-0000-4000-8000-00000000b02b",
+          "predicted": "김민서 00soj",
+          "correct": false
+        },
+        {
+          "index": 9736,
+          "id": "10000000-0000-4000-8000-00000000e4c9",
+          "predicted": "김민서 00soj",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "known": 500,
+      "knownSupported": 500,
+      "phase": "snapshot",
+      "method": "piece_frequency",
+      "channel": "index",
+      "rows": 9500,
+      "correct": 0,
+      "pct": 0,
+      "characters": 3297,
+      "totalCharacters": 88296,
+      "characterPct": 3.734030986681163,
+      "mostly": 0,
+      "sharedKnownTargetRows": 0,
+      "learned": {
+        "dictionary": 10500,
+        "learnedFeatures": 0,
+        "candidateFeatures": 12693,
+        "knownFingerprints": 500,
+        "noise": 0,
+        "knownRows": 500
+      },
+      "predictionDigest": "42379e0a64c95dac17fe4cc75308b9fed2a0f8d534665d196550c27ee7a1da40",
+      "witnesses": [
+        {
+          "index": 3155,
+          "id": "10000000-0000-4000-8000-000000012a97",
+          "predicted": "정하린 es421",
+          "correct": false
+        },
+        {
+          "index": 3593,
+          "id": "10000000-0000-4000-8000-00000001740a",
+          "predicted": "정하린 es421",
+          "correct": false
+        },
+        {
+          "index": 3806,
+          "id": "10000000-0000-4000-8000-00000000b03b",
+          "predicted": "정하린 es421",
+          "correct": false
+        },
+        {
+          "index": 4051,
+          "id": "10000000-0000-4000-8000-000000018680",
+          "predicted": "정하린 es421",
+          "correct": false
+        },
+        {
+          "index": 4394,
+          "id": "10000000-0000-4000-8000-000000007d47",
+          "predicted": "정하린 es421",
+          "correct": false
+        },
+        {
+          "index": 5851,
+          "id": "10000000-0000-4000-8000-00000000dc1e",
+          "predicted": "정하린 es421",
+          "correct": false
+        },
+        {
+          "index": 6503,
+          "id": "10000000-0000-4000-8000-000000008d5d",
+          "predicted": "정하린 es421",
+          "correct": false
+        },
+        {
+          "index": 6998,
+          "id": "10000000-0000-4000-8000-00000000a4b6",
+          "predicted": "정하린 es421",
+          "correct": false
+        },
+        {
+          "index": 8407,
+          "id": "10000000-0000-4000-8000-0000000152ff",
+          "predicted": "정하린 es421",
+          "correct": false
+        },
+        {
+          "index": 9380,
+          "id": "10000000-0000-4000-8000-000000001758",
+          "predicted": "정하린 es421",
+          "correct": false
+        },
+        {
+          "index": 9686,
+          "id": "10000000-0000-4000-8000-00000000b02b",
+          "predicted": "정하린 es421",
+          "correct": false
+        },
+        {
+          "index": 9736,
+          "id": "10000000-0000-4000-8000-00000000e4c9",
+          "predicted": "정하린 es421",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "known": 500,
+      "knownSupported": 500,
+      "phase": "snapshot",
+      "method": "rank_frequency",
+      "channel": "index",
+      "rows": 9500,
+      "correct": 0,
+      "pct": 0,
+      "characters": 6223,
+      "totalCharacters": 88296,
+      "characterPct": 7.047884388873788,
+      "mostly": 1,
+      "sharedKnownTargetRows": 0,
+      "learned": {
+        "dictionary": 10500,
+        "learnedFeatures": 0,
+        "candidateFeatures": 12693,
+        "knownFingerprints": 500,
+        "noise": 0,
+        "knownRows": 500
+      },
+      "predictionDigest": "5a0effa5c77dbdea83e8db3b9de84d8b6ee086ccbe35a6909af5f39cea5e88dd",
+      "witnesses": [
+        {
+          "index": 3155,
+          "id": "10000000-0000-4000-8000-000000012a97",
+          "predicted": "박지훈 xe0hn",
+          "correct": false
+        },
+        {
+          "index": 3593,
+          "id": "10000000-0000-4000-8000-00000001740a",
+          "predicted": "최도윤 xbqpg",
+          "correct": false
+        },
+        {
+          "index": 3806,
+          "id": "10000000-0000-4000-8000-00000000b03b",
+          "predicted": "정하린 hv2r7",
+          "correct": false
+        },
+        {
+          "index": 4051,
+          "id": "10000000-0000-4000-8000-000000018680",
+          "predicted": "정하린 dopkr",
+          "correct": false
+        },
+        {
+          "index": 4394,
+          "id": "10000000-0000-4000-8000-000000007d47",
+          "predicted": "박지훈 aavlf",
+          "correct": false
+        },
+        {
+          "index": 5851,
+          "id": "10000000-0000-4000-8000-00000000dc1e",
+          "predicted": "José Rivera gq52g",
+          "correct": false
+        },
+        {
+          "index": 6503,
+          "id": "10000000-0000-4000-8000-000000008d5d",
+          "predicted": "José Rivera feapm",
+          "correct": false
+        },
+        {
+          "index": 6998,
+          "id": "10000000-0000-4000-8000-00000000a4b6",
+          "predicted": "Alex Kim fmp51",
+          "correct": false
+        },
+        {
+          "index": 8407,
+          "id": "10000000-0000-4000-8000-0000000152ff",
+          "predicted": "Mina Park m8zpz",
+          "correct": false
+        },
+        {
+          "index": 9380,
+          "id": "10000000-0000-4000-8000-000000001758",
+          "predicted": "정하린 k7wus",
+          "correct": false
+        },
+        {
+          "index": 9686,
+          "id": "10000000-0000-4000-8000-00000000b02b",
+          "predicted": "한유진 91lv8",
+          "correct": false
+        },
+        {
+          "index": 9736,
+          "id": "10000000-0000-4000-8000-00000000e4c9",
+          "predicted": "박지훈 2huxa",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "known": 500,
+      "knownSupported": 500,
+      "phase": "snapshot",
+      "method": "known_projection",
+      "channel": "index",
+      "rows": 9500,
+      "correct": 0,
+      "pct": 0,
+      "characters": 9060,
+      "totalCharacters": 88296,
+      "characterPct": 10.260940472954607,
+      "mostly": 0,
+      "sharedKnownTargetRows": 0,
+      "learned": {
+        "dictionary": 10500,
+        "learnedFeatures": 0,
+        "candidateFeatures": 12693,
+        "knownFingerprints": 500,
+        "noise": 0,
+        "knownRows": 500
+      },
+      "predictionDigest": "8078466826835c0681a0ebf04975a1e9cacc5c75b54ab369937e54a53689a5e6",
+      "witnesses": [
+        {
+          "index": 3155,
+          "id": "10000000-0000-4000-8000-000000012a97",
+          "predicted": "김민서 00soj",
+          "correct": false
+        },
+        {
+          "index": 3593,
+          "id": "10000000-0000-4000-8000-00000001740a",
+          "predicted": "김민서 00soj",
+          "correct": false
+        },
+        {
+          "index": 3806,
+          "id": "10000000-0000-4000-8000-00000000b03b",
+          "predicted": "김민서 00soj",
+          "correct": false
+        },
+        {
+          "index": 4051,
+          "id": "10000000-0000-4000-8000-000000018680",
+          "predicted": "김민서 00soj",
+          "correct": false
+        },
+        {
+          "index": 4394,
+          "id": "10000000-0000-4000-8000-000000007d47",
+          "predicted": "김민서 00soj",
+          "correct": false
+        },
+        {
+          "index": 5851,
+          "id": "10000000-0000-4000-8000-00000000dc1e",
+          "predicted": "김민서 00soj",
+          "correct": false
+        },
+        {
+          "index": 6503,
+          "id": "10000000-0000-4000-8000-000000008d5d",
+          "predicted": "김민서 00soj",
+          "correct": false
+        },
+        {
+          "index": 6998,
+          "id": "10000000-0000-4000-8000-00000000a4b6",
+          "predicted": "김민서 00soj",
+          "correct": false
+        },
+        {
+          "index": 8407,
+          "id": "10000000-0000-4000-8000-0000000152ff",
+          "predicted": "김민서 00soj",
+          "correct": false
+        },
+        {
+          "index": 9380,
+          "id": "10000000-0000-4000-8000-000000001758",
+          "predicted": "김민서 00soj",
+          "correct": false
+        },
+        {
+          "index": 9686,
+          "id": "10000000-0000-4000-8000-00000000b02b",
+          "predicted": "김민서 00soj",
+          "correct": false
+        },
+        {
+          "index": 9736,
+          "id": "10000000-0000-4000-8000-00000000e4c9",
+          "predicted": "김민서 00soj",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "known": 500,
+      "knownSupported": 500,
+      "phase": "snapshot",
+      "method": "known_fingerprint",
+      "channel": "index",
+      "rows": 9500,
+      "correct": 0,
+      "pct": 0,
+      "characters": 9060,
+      "totalCharacters": 88296,
+      "characterPct": 10.260940472954607,
+      "mostly": 0,
+      "sharedKnownTargetRows": 0,
+      "learned": {
+        "dictionary": 10500,
+        "learnedFeatures": 0,
+        "candidateFeatures": 12693,
+        "knownFingerprints": 500,
+        "noise": 0,
+        "knownRows": 500
+      },
+      "predictionDigest": "8078466826835c0681a0ebf04975a1e9cacc5c75b54ab369937e54a53689a5e6",
+      "witnesses": [
+        {
+          "index": 3155,
+          "id": "10000000-0000-4000-8000-000000012a97",
+          "predicted": "김민서 00soj",
+          "correct": false
+        },
+        {
+          "index": 3593,
+          "id": "10000000-0000-4000-8000-00000001740a",
+          "predicted": "김민서 00soj",
+          "correct": false
+        },
+        {
+          "index": 3806,
+          "id": "10000000-0000-4000-8000-00000000b03b",
+          "predicted": "김민서 00soj",
+          "correct": false
+        },
+        {
+          "index": 4051,
+          "id": "10000000-0000-4000-8000-000000018680",
+          "predicted": "김민서 00soj",
+          "correct": false
+        },
+        {
+          "index": 4394,
+          "id": "10000000-0000-4000-8000-000000007d47",
+          "predicted": "김민서 00soj",
+          "correct": false
+        },
+        {
+          "index": 5851,
+          "id": "10000000-0000-4000-8000-00000000dc1e",
+          "predicted": "김민서 00soj",
+          "correct": false
+        },
+        {
+          "index": 6503,
+          "id": "10000000-0000-4000-8000-000000008d5d",
+          "predicted": "김민서 00soj",
+          "correct": false
+        },
+        {
+          "index": 6998,
+          "id": "10000000-0000-4000-8000-00000000a4b6",
+          "predicted": "김민서 00soj",
+          "correct": false
+        },
+        {
+          "index": 8407,
+          "id": "10000000-0000-4000-8000-0000000152ff",
+          "predicted": "김민서 00soj",
+          "correct": false
+        },
+        {
+          "index": 9380,
+          "id": "10000000-0000-4000-8000-000000001758",
+          "predicted": "김민서 00soj",
+          "correct": false
+        },
+        {
+          "index": 9686,
+          "id": "10000000-0000-4000-8000-00000000b02b",
+          "predicted": "김민서 00soj",
+          "correct": false
+        },
+        {
+          "index": 9736,
+          "id": "10000000-0000-4000-8000-00000000e4c9",
+          "predicted": "김민서 00soj",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "known": 500,
+      "knownSupported": 500,
+      "phase": "snapshot",
+      "method": "public_shape_reference",
+      "channel": "native_shape",
+      "rows": 9500,
+      "correct": 0,
+      "pct": 0,
+      "characters": 9060,
+      "totalCharacters": 88296,
+      "characterPct": 10.260940472954607,
+      "mostly": 0,
+      "sharedKnownTargetRows": 0,
+      "learned": {
+        "dictionary": 10500,
+        "learnedFeatures": 0,
+        "candidateFeatures": 12693,
+        "knownFingerprints": 500,
+        "noise": 0,
+        "knownRows": 500
+      },
+      "predictionDigest": "8078466826835c0681a0ebf04975a1e9cacc5c75b54ab369937e54a53689a5e6",
+      "witnesses": [
+        {
+          "index": 3155,
+          "id": "10000000-0000-4000-8000-000000012a97",
+          "predicted": "김민서 00soj",
+          "correct": false
+        },
+        {
+          "index": 3593,
+          "id": "10000000-0000-4000-8000-00000001740a",
+          "predicted": "김민서 00soj",
+          "correct": false
+        },
+        {
+          "index": 3806,
+          "id": "10000000-0000-4000-8000-00000000b03b",
+          "predicted": "김민서 00soj",
+          "correct": false
+        },
+        {
+          "index": 4051,
+          "id": "10000000-0000-4000-8000-000000018680",
+          "predicted": "김민서 00soj",
+          "correct": false
+        },
+        {
+          "index": 4394,
+          "id": "10000000-0000-4000-8000-000000007d47",
+          "predicted": "김민서 00soj",
+          "correct": false
+        },
+        {
+          "index": 5851,
+          "id": "10000000-0000-4000-8000-00000000dc1e",
+          "predicted": "김민서 00soj",
+          "correct": false
+        },
+        {
+          "index": 6503,
+          "id": "10000000-0000-4000-8000-000000008d5d",
+          "predicted": "김민서 00soj",
+          "correct": false
+        },
+        {
+          "index": 6998,
+          "id": "10000000-0000-4000-8000-00000000a4b6",
+          "predicted": "김민서 00soj",
+          "correct": false
+        },
+        {
+          "index": 8407,
+          "id": "10000000-0000-4000-8000-0000000152ff",
+          "predicted": "김민서 00soj",
+          "correct": false
+        },
+        {
+          "index": 9380,
+          "id": "10000000-0000-4000-8000-000000001758",
+          "predicted": "김민서 00soj",
+          "correct": false
+        },
+        {
+          "index": 9686,
+          "id": "10000000-0000-4000-8000-00000000b02b",
+          "predicted": "김민서 00soj",
+          "correct": false
+        },
+        {
+          "index": 9736,
+          "id": "10000000-0000-4000-8000-00000000e4c9",
+          "predicted": "김민서 00soj",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "known": 500,
+      "knownSupported": 500,
+      "phase": "snapshot",
+      "method": "public_tagcount_reference",
+      "channel": "index",
+      "rows": 9500,
+      "correct": 0,
+      "pct": 0,
+      "characters": 9060,
+      "totalCharacters": 88296,
+      "characterPct": 10.260940472954607,
+      "mostly": 0,
+      "sharedKnownTargetRows": 0,
+      "learned": {
+        "dictionary": 10500,
+        "learnedFeatures": 0,
+        "candidateFeatures": 12693,
+        "knownFingerprints": 500,
+        "noise": 0,
+        "knownRows": 500
+      },
+      "predictionDigest": "8078466826835c0681a0ebf04975a1e9cacc5c75b54ab369937e54a53689a5e6",
+      "witnesses": [
+        {
+          "index": 3155,
+          "id": "10000000-0000-4000-8000-000000012a97",
+          "predicted": "김민서 00soj",
+          "correct": false
+        },
+        {
+          "index": 3593,
+          "id": "10000000-0000-4000-8000-00000001740a",
+          "predicted": "김민서 00soj",
+          "correct": false
+        },
+        {
+          "index": 3806,
+          "id": "10000000-0000-4000-8000-00000000b03b",
+          "predicted": "김민서 00soj",
+          "correct": false
+        },
+        {
+          "index": 4051,
+          "id": "10000000-0000-4000-8000-000000018680",
+          "predicted": "김민서 00soj",
+          "correct": false
+        },
+        {
+          "index": 4394,
+          "id": "10000000-0000-4000-8000-000000007d47",
+          "predicted": "김민서 00soj",
+          "correct": false
+        },
+        {
+          "index": 5851,
+          "id": "10000000-0000-4000-8000-00000000dc1e",
+          "predicted": "김민서 00soj",
+          "correct": false
+        },
+        {
+          "index": 6503,
+          "id": "10000000-0000-4000-8000-000000008d5d",
+          "predicted": "김민서 00soj",
+          "correct": false
+        },
+        {
+          "index": 6998,
+          "id": "10000000-0000-4000-8000-00000000a4b6",
+          "predicted": "김민서 00soj",
+          "correct": false
+        },
+        {
+          "index": 8407,
+          "id": "10000000-0000-4000-8000-0000000152ff",
+          "predicted": "김민서 00soj",
+          "correct": false
+        },
+        {
+          "index": 9380,
+          "id": "10000000-0000-4000-8000-000000001758",
+          "predicted": "김민서 00soj",
+          "correct": false
+        },
+        {
+          "index": 9686,
+          "id": "10000000-0000-4000-8000-00000000b02b",
+          "predicted": "김민서 00soj",
+          "correct": false
+        },
+        {
+          "index": 9736,
+          "id": "10000000-0000-4000-8000-00000000e4c9",
+          "predicted": "김민서 00soj",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "known": 500,
+      "knownSupported": 500,
+      "phase": "snapshot",
+      "method": "public_shape_known",
+      "channel": "native_shape",
+      "rows": 9500,
+      "correct": 0,
+      "pct": 0,
+      "characters": 9060,
+      "totalCharacters": 88296,
+      "characterPct": 10.260940472954607,
+      "mostly": 0,
+      "sharedKnownTargetRows": 0,
+      "learned": {
+        "dictionary": 10500,
+        "learnedFeatures": 0,
+        "candidateFeatures": 12693,
+        "knownFingerprints": 500,
+        "noise": 0,
+        "knownRows": 500
+      },
+      "predictionDigest": "8078466826835c0681a0ebf04975a1e9cacc5c75b54ab369937e54a53689a5e6",
+      "witnesses": [
+        {
+          "index": 3155,
+          "id": "10000000-0000-4000-8000-000000012a97",
+          "predicted": "김민서 00soj",
+          "correct": false
+        },
+        {
+          "index": 3593,
+          "id": "10000000-0000-4000-8000-00000001740a",
+          "predicted": "김민서 00soj",
+          "correct": false
+        },
+        {
+          "index": 3806,
+          "id": "10000000-0000-4000-8000-00000000b03b",
+          "predicted": "김민서 00soj",
+          "correct": false
+        },
+        {
+          "index": 4051,
+          "id": "10000000-0000-4000-8000-000000018680",
+          "predicted": "김민서 00soj",
+          "correct": false
+        },
+        {
+          "index": 4394,
+          "id": "10000000-0000-4000-8000-000000007d47",
+          "predicted": "김민서 00soj",
+          "correct": false
+        },
+        {
+          "index": 5851,
+          "id": "10000000-0000-4000-8000-00000000dc1e",
+          "predicted": "김민서 00soj",
+          "correct": false
+        },
+        {
+          "index": 6503,
+          "id": "10000000-0000-4000-8000-000000008d5d",
+          "predicted": "김민서 00soj",
+          "correct": false
+        },
+        {
+          "index": 6998,
+          "id": "10000000-0000-4000-8000-00000000a4b6",
+          "predicted": "김민서 00soj",
+          "correct": false
+        },
+        {
+          "index": 8407,
+          "id": "10000000-0000-4000-8000-0000000152ff",
+          "predicted": "김민서 00soj",
+          "correct": false
+        },
+        {
+          "index": 9380,
+          "id": "10000000-0000-4000-8000-000000001758",
+          "predicted": "김민서 00soj",
+          "correct": false
+        },
+        {
+          "index": 9686,
+          "id": "10000000-0000-4000-8000-00000000b02b",
+          "predicted": "김민서 00soj",
+          "correct": false
+        },
+        {
+          "index": 9736,
+          "id": "10000000-0000-4000-8000-00000000e4c9",
+          "predicted": "김민서 00soj",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "known": 500,
+      "knownSupported": 500,
+      "phase": "snapshot",
+      "method": "public_tagcount_known",
+      "channel": "index",
+      "rows": 9500,
+      "correct": 0,
+      "pct": 0,
+      "characters": 9060,
+      "totalCharacters": 88296,
+      "characterPct": 10.260940472954607,
+      "mostly": 0,
+      "sharedKnownTargetRows": 0,
+      "learned": {
+        "dictionary": 10500,
+        "learnedFeatures": 0,
+        "candidateFeatures": 12693,
+        "knownFingerprints": 500,
+        "noise": 0,
+        "knownRows": 500
+      },
+      "predictionDigest": "8078466826835c0681a0ebf04975a1e9cacc5c75b54ab369937e54a53689a5e6",
+      "witnesses": [
+        {
+          "index": 3155,
+          "id": "10000000-0000-4000-8000-000000012a97",
+          "predicted": "김민서 00soj",
+          "correct": false
+        },
+        {
+          "index": 3593,
+          "id": "10000000-0000-4000-8000-00000001740a",
+          "predicted": "김민서 00soj",
+          "correct": false
+        },
+        {
+          "index": 3806,
+          "id": "10000000-0000-4000-8000-00000000b03b",
+          "predicted": "김민서 00soj",
+          "correct": false
+        },
+        {
+          "index": 4051,
+          "id": "10000000-0000-4000-8000-000000018680",
+          "predicted": "김민서 00soj",
+          "correct": false
+        },
+        {
+          "index": 4394,
+          "id": "10000000-0000-4000-8000-000000007d47",
+          "predicted": "김민서 00soj",
+          "correct": false
+        },
+        {
+          "index": 5851,
+          "id": "10000000-0000-4000-8000-00000000dc1e",
+          "predicted": "김민서 00soj",
+          "correct": false
+        },
+        {
+          "index": 6503,
+          "id": "10000000-0000-4000-8000-000000008d5d",
+          "predicted": "김민서 00soj",
+          "correct": false
+        },
+        {
+          "index": 6998,
+          "id": "10000000-0000-4000-8000-00000000a4b6",
+          "predicted": "김민서 00soj",
+          "correct": false
+        },
+        {
+          "index": 8407,
+          "id": "10000000-0000-4000-8000-0000000152ff",
+          "predicted": "김민서 00soj",
+          "correct": false
+        },
+        {
+          "index": 9380,
+          "id": "10000000-0000-4000-8000-000000001758",
+          "predicted": "김민서 00soj",
+          "correct": false
+        },
+        {
+          "index": 9686,
+          "id": "10000000-0000-4000-8000-00000000b02b",
+          "predicted": "김민서 00soj",
+          "correct": false
+        },
+        {
+          "index": 9736,
+          "id": "10000000-0000-4000-8000-00000000e4c9",
+          "predicted": "김민서 00soj",
+          "correct": false
+        }
+      ]
+    }
+  ],
+  "baselines": [
+    {
+      "known": 0,
+      "method": "random_empirical",
+      "rows": 10000,
+      "correct": 0,
+      "pct": 0,
+      "characters": 6727,
+      "totalCharacters": 92924,
+      "characterPct": 7.239249278980672,
+      "mostly": 1
+    },
+    {
+      "known": 0,
+      "method": "random_distinct",
+      "rows": 10000,
+      "correct": 0,
+      "pct": 0,
+      "characters": 6585,
+      "totalCharacters": 92924,
+      "characterPct": 7.086436227454694,
+      "mostly": 0
+    },
+    {
+      "known": 100,
+      "method": "random_empirical",
+      "rows": 9900,
+      "correct": 0,
+      "pct": 0,
+      "characters": 6681,
+      "totalCharacters": 91978,
+      "characterPct": 7.263693491921981,
+      "mostly": 1
+    },
+    {
+      "known": 100,
+      "method": "random_distinct",
+      "rows": 9900,
+      "correct": 0,
+      "pct": 0,
+      "characters": 6515,
+      "totalCharacters": 91978,
+      "characterPct": 7.083215551544935,
+      "mostly": 0
+    },
+    {
+      "known": 500,
+      "method": "random_empirical",
+      "rows": 9500,
+      "correct": 0,
+      "pct": 0,
+      "characters": 6456,
+      "totalCharacters": 88296,
+      "characterPct": 7.311769502582224,
+      "mostly": 1
+    },
+    {
+      "known": 500,
+      "method": "random_distinct",
+      "rows": 9500,
+      "correct": 0,
+      "pct": 0,
+      "characters": 6224,
+      "totalCharacters": 88296,
+      "characterPct": 7.0490169430098755,
+      "mostly": 0
+    }
+  ],
+  "finished": "2026-09-29T18:58:04.990Z"
+}

@@ -1,0 +1,460 @@
+{
+  "started": "2026-09-29T18:42:07.316Z",
+  "complete": true,
+  "field": "company",
+  "model": "C-port",
+  "options": {
+    "id": "C-port",
+    "field": "company",
+    "mode": "combined",
+    "contention": 0,
+    "maxLength": 60
+  },
+  "sourceHash": "fd0d2eefaf034bc868bbeae841d969ab8766504a4e008adb8eec527d75da44de",
+  "databaseAccess": false,
+  "identityDigest": "189a19c99711fbacd9cafdb548f243a63657e12a0c1514a736c1f92da670f382",
+  "protocol": "Two batch endpoints only. Known replacement values from disjoint reference. No per-write timestamps, transaction grouping, query tokens, root or counter-to-document map to attacker.",
+  "cases": [
+    {
+      "operation": "insert",
+      "N": 100,
+      "knownSupported": 100,
+      "phase": "precompaction",
+      "unmodifiedVictims": {
+        "rows": 10000,
+        "correct": 7017,
+        "pct": 70.17,
+        "predictionDigest": "02367daf4c98cafe186d440cb2c074db92b55de7ed88d798a2ba9e194d348f19"
+      },
+      "referenceOnly": {
+        "rows": 10000,
+        "correct": 7017,
+        "pct": 70.17,
+        "predictionDigest": "02367daf4c98cafe186d440cb2c074db92b55de7ed88d798a2ba9e194d348f19"
+      },
+      "knownTargetTagOverlapRows": 0,
+      "unexpectedChangedUntouchedRows": 0,
+      "oldTagsRetainedOnUpdatedRows": null,
+      "esc": {
+        "before": 568,
+        "after": 568,
+        "added": 0,
+        "removed": 0,
+        "changed": 517,
+        "plaintextCountDeltas": 517,
+        "uniqueBatchCounterLabels": 1,
+        "evaluationOnlyCorrectCounterLabels": 1,
+        "counterToVictimRowLinksProvided": 0
+      },
+      "witnesses": [
+        {
+          "index": 1150,
+          "id": "10000000-0000-4000-8000-00000001496e",
+          "predicted": "한빛테크 담당",
+          "correct": false
+        },
+        {
+          "index": 1794,
+          "id": "10000000-0000-4000-8000-000000004dab",
+          "predicted": "Acme Logistics 담당",
+          "correct": false
+        },
+        {
+          "index": 3805,
+          "id": "10000000-0000-4000-8000-00000000e244",
+          "predicted": "Acme Logistics 담당",
+          "correct": true
+        },
+        {
+          "index": 5225,
+          "id": "10000000-0000-4000-8000-000000007639",
+          "predicted": "한빛테크 담당",
+          "correct": true
+        },
+        {
+          "index": 5627,
+          "id": "10000000-0000-4000-8000-00000000f90c",
+          "predicted": "서울서비스 담당",
+          "correct": true
+        },
+        {
+          "index": 6617,
+          "id": "10000000-0000-4000-8000-00000000f46c",
+          "predicted": "Acme Logistics 담당",
+          "correct": true
+        },
+        {
+          "index": 6899,
+          "id": "10000000-0000-4000-8000-000000006b72",
+          "predicted": "서울서비스 담당",
+          "correct": true
+        },
+        {
+          "index": 6963,
+          "id": "10000000-0000-4000-8000-0000000022e6",
+          "predicted": "Acme Logistics 담당",
+          "correct": false
+        },
+        {
+          "index": 7896,
+          "id": "10000000-0000-4000-8000-000000015a63",
+          "predicted": "한빛테크 담당",
+          "correct": false
+        },
+        {
+          "index": 8825,
+          "id": "10000000-0000-4000-8000-0000000008ce",
+          "predicted": "Órbita Group 담당",
+          "correct": true
+        },
+        {
+          "index": 8869,
+          "id": "10000000-0000-4000-8000-00000000d66a",
+          "predicted": "한빛테크 담당",
+          "correct": false
+        },
+        {
+          "index": 9982,
+          "id": "10000000-0000-4000-8000-000000015360",
+          "predicted": "Acme Logistics 담당",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "operation": "insert",
+      "N": 1000,
+      "knownSupported": 1000,
+      "phase": "precompaction",
+      "unmodifiedVictims": {
+        "rows": 10000,
+        "correct": 7017,
+        "pct": 70.17,
+        "predictionDigest": "02367daf4c98cafe186d440cb2c074db92b55de7ed88d798a2ba9e194d348f19"
+      },
+      "referenceOnly": {
+        "rows": 10000,
+        "correct": 7017,
+        "pct": 70.17,
+        "predictionDigest": "02367daf4c98cafe186d440cb2c074db92b55de7ed88d798a2ba9e194d348f19"
+      },
+      "knownTargetTagOverlapRows": 0,
+      "unexpectedChangedUntouchedRows": 0,
+      "oldTagsRetainedOnUpdatedRows": null,
+      "esc": {
+        "before": 568,
+        "after": 568,
+        "added": 0,
+        "removed": 0,
+        "changed": 568,
+        "plaintextCountDeltas": 568,
+        "uniqueBatchCounterLabels": 1,
+        "evaluationOnlyCorrectCounterLabels": 1,
+        "counterToVictimRowLinksProvided": 0
+      },
+      "witnesses": [
+        {
+          "index": 1150,
+          "id": "10000000-0000-4000-8000-00000001496e",
+          "predicted": "한빛테크 담당",
+          "correct": false
+        },
+        {
+          "index": 1794,
+          "id": "10000000-0000-4000-8000-000000004dab",
+          "predicted": "Acme Logistics 담당",
+          "correct": false
+        },
+        {
+          "index": 3805,
+          "id": "10000000-0000-4000-8000-00000000e244",
+          "predicted": "Acme Logistics 담당",
+          "correct": true
+        },
+        {
+          "index": 5225,
+          "id": "10000000-0000-4000-8000-000000007639",
+          "predicted": "한빛테크 담당",
+          "correct": true
+        },
+        {
+          "index": 5627,
+          "id": "10000000-0000-4000-8000-00000000f90c",
+          "predicted": "서울서비스 담당",
+          "correct": true
+        },
+        {
+          "index": 6617,
+          "id": "10000000-0000-4000-8000-00000000f46c",
+          "predicted": "Acme Logistics 담당",
+          "correct": true
+        },
+        {
+          "index": 6899,
+          "id": "10000000-0000-4000-8000-000000006b72",
+          "predicted": "서울서비스 담당",
+          "correct": true
+        },
+        {
+          "index": 6963,
+          "id": "10000000-0000-4000-8000-0000000022e6",
+          "predicted": "Acme Logistics 담당",
+          "correct": false
+        },
+        {
+          "index": 7896,
+          "id": "10000000-0000-4000-8000-000000015a63",
+          "predicted": "한빛테크 담당",
+          "correct": false
+        },
+        {
+          "index": 8825,
+          "id": "10000000-0000-4000-8000-0000000008ce",
+          "predicted": "Órbita Group 담당",
+          "correct": true
+        },
+        {
+          "index": 8869,
+          "id": "10000000-0000-4000-8000-00000000d66a",
+          "predicted": "한빛테크 담당",
+          "correct": false
+        },
+        {
+          "index": 9982,
+          "id": "10000000-0000-4000-8000-000000015360",
+          "predicted": "Acme Logistics 담당",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "operation": "update",
+      "N": 100,
+      "knownSupported": 100,
+      "phase": "precompaction",
+      "unmodifiedVictims": {
+        "rows": 9900,
+        "correct": 6949,
+        "pct": 70.1919191919192,
+        "predictionDigest": "deb7ec6721a2bf7aa9c955d497ef8957f3a0f1e157a7355590efeefe1aaecb0a"
+      },
+      "referenceOnly": {
+        "rows": 9900,
+        "correct": 6949,
+        "pct": 70.1919191919192,
+        "predictionDigest": "deb7ec6721a2bf7aa9c955d497ef8957f3a0f1e157a7355590efeefe1aaecb0a"
+      },
+      "knownTargetTagOverlapRows": 0,
+      "unexpectedChangedUntouchedRows": 0,
+      "oldTagsRetainedOnUpdatedRows": 0,
+      "esc": {
+        "before": 568,
+        "after": 568,
+        "added": 0,
+        "removed": 0,
+        "changed": 517,
+        "plaintextCountDeltas": 517,
+        "uniqueBatchCounterLabels": 1,
+        "evaluationOnlyCorrectCounterLabels": 1,
+        "counterToVictimRowLinksProvided": 0
+      },
+      "witnesses": [
+        {
+          "index": 971,
+          "id": "10000000-0000-4000-8000-0000000045a2",
+          "predicted": "서울서비스 담당",
+          "correct": true
+        },
+        {
+          "index": 2054,
+          "id": "10000000-0000-4000-8000-000000002bf0",
+          "predicted": "Acme Logistics 담당",
+          "correct": false
+        },
+        {
+          "index": 2369,
+          "id": "10000000-0000-4000-8000-0000000083f7",
+          "predicted": "Órbita Group 담당",
+          "correct": true
+        },
+        {
+          "index": 2954,
+          "id": "10000000-0000-4000-8000-00000000fbe4",
+          "predicted": "한빛테크 담당",
+          "correct": true
+        },
+        {
+          "index": 4471,
+          "id": "10000000-0000-4000-8000-0000000145d4",
+          "predicted": "한빛테크 담당",
+          "correct": false
+        },
+        {
+          "index": 6108,
+          "id": "10000000-0000-4000-8000-000000015722",
+          "predicted": "Acme Logistics 담당",
+          "correct": true
+        },
+        {
+          "index": 6587,
+          "id": "10000000-0000-4000-8000-000000016cb6",
+          "predicted": "서울서비스 담당",
+          "correct": true
+        },
+        {
+          "index": 7669,
+          "id": "10000000-0000-4000-8000-000000018337",
+          "predicted": "한빛테크 담당",
+          "correct": false
+        },
+        {
+          "index": 8241,
+          "id": "10000000-0000-4000-8000-00000000ab0b",
+          "predicted": "서울서비스 담당",
+          "correct": true
+        },
+        {
+          "index": 8744,
+          "id": "10000000-0000-4000-8000-00000001441e",
+          "predicted": "한빛테크 담당",
+          "correct": false
+        },
+        {
+          "index": 9733,
+          "id": "10000000-0000-4000-8000-000000010685",
+          "predicted": "Acme Logistics 담당",
+          "correct": true
+        },
+        {
+          "index": 9953,
+          "id": "10000000-0000-4000-8000-000000003e23",
+          "predicted": "Acme Logistics 담당",
+          "correct": false
+        }
+      ],
+      "overwrittenOldValues": {
+        "rows": 100,
+        "correct": 68,
+        "pct": 68,
+        "predictionDigest": "442ea4b308424680ffeb3466210b6bca760560250dbba9e156f7f7414c4b8ddb",
+        "method": "pre-snapshot shape reference; new tag identities do not transfer to old occurrence tags",
+        "knownNewValueOnlyBaseline": "Replacement values are a fixed shuffled reference batch, not correlated character edits."
+      }
+    },
+    {
+      "operation": "update",
+      "N": 1000,
+      "knownSupported": 1000,
+      "phase": "precompaction",
+      "unmodifiedVictims": {
+        "rows": 9000,
+        "correct": 6288,
+        "pct": 69.86666666666666,
+        "predictionDigest": "6022253576d3f437f9b19083fe84f1eabf0ed388d582a6b4dc7c981b17ff3739"
+      },
+      "referenceOnly": {
+        "rows": 9000,
+        "correct": 6288,
+        "pct": 69.86666666666666,
+        "predictionDigest": "6022253576d3f437f9b19083fe84f1eabf0ed388d582a6b4dc7c981b17ff3739"
+      },
+      "knownTargetTagOverlapRows": 0,
+      "unexpectedChangedUntouchedRows": 0,
+      "oldTagsRetainedOnUpdatedRows": 0,
+      "esc": {
+        "before": 568,
+        "after": 568,
+        "added": 0,
+        "removed": 0,
+        "changed": 568,
+        "plaintextCountDeltas": 568,
+        "uniqueBatchCounterLabels": 1,
+        "evaluationOnlyCorrectCounterLabels": 1,
+        "counterToVictimRowLinksProvided": 0
+      },
+      "witnesses": [
+        {
+          "index": 2031,
+          "id": "10000000-0000-4000-8000-000000018171",
+          "predicted": "한빛테크 담당",
+          "correct": false
+        },
+        {
+          "index": 2522,
+          "id": "10000000-0000-4000-8000-000000016de2",
+          "predicted": "서울서비스 담당",
+          "correct": true
+        },
+        {
+          "index": 3257,
+          "id": "10000000-0000-4000-8000-00000000d147",
+          "predicted": "Acme Logistics 담당",
+          "correct": false
+        },
+        {
+          "index": 4127,
+          "id": "10000000-0000-4000-8000-000000012c85",
+          "predicted": "서울서비스 담당",
+          "correct": true
+        },
+        {
+          "index": 4699,
+          "id": "10000000-0000-4000-8000-000000011e3e",
+          "predicted": "Acme Logistics 담당",
+          "correct": false
+        },
+        {
+          "index": 4792,
+          "id": "10000000-0000-4000-8000-000000013dc6",
+          "predicted": "서울서비스 담당",
+          "correct": true
+        },
+        {
+          "index": 5285,
+          "id": "10000000-0000-4000-8000-0000000064b8",
+          "predicted": "한빛테크 담당",
+          "correct": false
+        },
+        {
+          "index": 5876,
+          "id": "10000000-0000-4000-8000-00000000b0f7",
+          "predicted": "서울서비스 담당",
+          "correct": true
+        },
+        {
+          "index": 6103,
+          "id": "10000000-0000-4000-8000-000000013e46",
+          "predicted": "Acme Logistics 담당",
+          "correct": false
+        },
+        {
+          "index": 7411,
+          "id": "10000000-0000-4000-8000-000000008032",
+          "predicted": "한빛테크 담당",
+          "correct": false
+        },
+        {
+          "index": 7768,
+          "id": "10000000-0000-4000-8000-000000017f4b",
+          "predicted": "한빛테크 담당",
+          "correct": false
+        },
+        {
+          "index": 9567,
+          "id": "10000000-0000-4000-8000-0000000143df",
+          "predicted": "서울서비스 담당",
+          "correct": true
+        }
+      ],
+      "overwrittenOldValues": {
+        "rows": 1000,
+        "correct": 729,
+        "pct": 72.9,
+        "predictionDigest": "9aa5eb04c0e9b5440fe06a0b1623aca157b9bc421ceee5a44df458b93288bb9e",
+        "method": "pre-snapshot shape reference; new tag identities do not transfer to old occurrence tags",
+        "knownNewValueOnlyBaseline": "Replacement values are a fixed shuffled reference batch, not correlated character edits."
+      }
+    }
+  ],
+  "finished": "2026-09-29T18:42:09.650Z"
+}

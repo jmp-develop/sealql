@@ -1,0 +1,460 @@
+{
+  "started": "2026-09-29T18:44:18.067Z",
+  "complete": true,
+  "field": "phone",
+  "model": "C-port",
+  "options": {
+    "id": "C-port",
+    "field": "phone",
+    "mode": "combined",
+    "contention": 0,
+    "maxLength": 60
+  },
+  "sourceHash": "fd0d2eefaf034bc868bbeae841d969ab8766504a4e008adb8eec527d75da44de",
+  "databaseAccess": false,
+  "identityDigest": "189a19c99711fbacd9cafdb548f243a63657e12a0c1514a736c1f92da670f382",
+  "protocol": "Two batch endpoints only. Known replacement values from disjoint reference. No per-write timestamps, transaction grouping, query tokens, root or counter-to-document map to attacker.",
+  "cases": [
+    {
+      "operation": "insert",
+      "N": 100,
+      "knownSupported": 100,
+      "phase": "precompaction",
+      "unmodifiedVictims": {
+        "rows": 10000,
+        "correct": 0,
+        "pct": 0,
+        "predictionDigest": "c068e603dc92efee04fc6d7e775b4d1d8c9680c8bb9af4735c76b969d40e188d"
+      },
+      "referenceOnly": {
+        "rows": 10000,
+        "correct": 0,
+        "pct": 0,
+        "predictionDigest": "c7fa9d2c8feac083a8009fc9c82cb76714a10d30da7340c020f017f3374d9845"
+      },
+      "knownTargetTagOverlapRows": 0,
+      "unexpectedChangedUntouchedRows": 0,
+      "oldTagsRetainedOnUpdatedRows": null,
+      "esc": {
+        "before": 302298,
+        "after": 304846,
+        "added": 2548,
+        "removed": 0,
+        "changed": 2380,
+        "plaintextCountDeltas": 4928,
+        "uniqueBatchCounterLabels": 3,
+        "evaluationOnlyCorrectCounterLabels": 3,
+        "counterToVictimRowLinksProvided": 0
+      },
+      "witnesses": [
+        {
+          "index": 1150,
+          "id": "10000000-0000-4000-8000-00000001496e",
+          "predicted": "10-2205-5907",
+          "correct": false
+        },
+        {
+          "index": 1794,
+          "id": "10000000-0000-4000-8000-000000004dab",
+          "predicted": "10-2205-5907",
+          "correct": false
+        },
+        {
+          "index": 3805,
+          "id": "10000000-0000-4000-8000-00000000e244",
+          "predicted": "10-3072-0784",
+          "correct": false
+        },
+        {
+          "index": 5225,
+          "id": "10000000-0000-4000-8000-000000007639",
+          "predicted": "10-3072-0784",
+          "correct": false
+        },
+        {
+          "index": 5627,
+          "id": "10000000-0000-4000-8000-00000000f90c",
+          "predicted": "10-2205-5907",
+          "correct": false
+        },
+        {
+          "index": 6617,
+          "id": "10000000-0000-4000-8000-00000000f46c",
+          "predicted": "10-3072-0784",
+          "correct": false
+        },
+        {
+          "index": 6899,
+          "id": "10000000-0000-4000-8000-000000006b72",
+          "predicted": "10-2205-5907",
+          "correct": false
+        },
+        {
+          "index": 6963,
+          "id": "10000000-0000-4000-8000-0000000022e6",
+          "predicted": "10-2205-5907",
+          "correct": false
+        },
+        {
+          "index": 7896,
+          "id": "10000000-0000-4000-8000-000000015a63",
+          "predicted": "10-3072-0784",
+          "correct": false
+        },
+        {
+          "index": 8825,
+          "id": "10000000-0000-4000-8000-0000000008ce",
+          "predicted": "10-2205-5907",
+          "correct": false
+        },
+        {
+          "index": 8869,
+          "id": "10000000-0000-4000-8000-00000000d66a",
+          "predicted": "10-3072-0784",
+          "correct": false
+        },
+        {
+          "index": 9982,
+          "id": "10000000-0000-4000-8000-000000015360",
+          "predicted": "10-2205-5907",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "operation": "insert",
+      "N": 1000,
+      "knownSupported": 1000,
+      "phase": "precompaction",
+      "unmodifiedVictims": {
+        "rows": 10000,
+        "correct": 0,
+        "pct": 0,
+        "predictionDigest": "fecaeaa71e3f24d1ed80983db65aa188a120e2f85cc344e771f839464c256032"
+      },
+      "referenceOnly": {
+        "rows": 10000,
+        "correct": 0,
+        "pct": 0,
+        "predictionDigest": "c7fa9d2c8feac083a8009fc9c82cb76714a10d30da7340c020f017f3374d9845"
+      },
+      "knownTargetTagOverlapRows": 0,
+      "unexpectedChangedUntouchedRows": 0,
+      "oldTagsRetainedOnUpdatedRows": null,
+      "esc": {
+        "before": 302298,
+        "after": 328008,
+        "added": 25710,
+        "removed": 0,
+        "changed": 13952,
+        "plaintextCountDeltas": 39662,
+        "uniqueBatchCounterLabels": 22,
+        "evaluationOnlyCorrectCounterLabels": 22,
+        "counterToVictimRowLinksProvided": 0
+      },
+      "witnesses": [
+        {
+          "index": 1150,
+          "id": "10000000-0000-4000-8000-00000001496e",
+          "predicted": "10-0035-5669",
+          "correct": false
+        },
+        {
+          "index": 1794,
+          "id": "10000000-0000-4000-8000-000000004dab",
+          "predicted": "10-0035-5669",
+          "correct": false
+        },
+        {
+          "index": 3805,
+          "id": "10000000-0000-4000-8000-00000000e244",
+          "predicted": "10-1436-1309",
+          "correct": false
+        },
+        {
+          "index": 5225,
+          "id": "10000000-0000-4000-8000-000000007639",
+          "predicted": "10-1436-1309",
+          "correct": false
+        },
+        {
+          "index": 5627,
+          "id": "10000000-0000-4000-8000-00000000f90c",
+          "predicted": "10-0035-5669",
+          "correct": false
+        },
+        {
+          "index": 6617,
+          "id": "10000000-0000-4000-8000-00000000f46c",
+          "predicted": "10-1436-1309",
+          "correct": false
+        },
+        {
+          "index": 6899,
+          "id": "10000000-0000-4000-8000-000000006b72",
+          "predicted": "10-0035-5669",
+          "correct": false
+        },
+        {
+          "index": 6963,
+          "id": "10000000-0000-4000-8000-0000000022e6",
+          "predicted": "10-0035-5669",
+          "correct": false
+        },
+        {
+          "index": 7896,
+          "id": "10000000-0000-4000-8000-000000015a63",
+          "predicted": "10-1436-1309",
+          "correct": false
+        },
+        {
+          "index": 8825,
+          "id": "10000000-0000-4000-8000-0000000008ce",
+          "predicted": "10-0035-5669",
+          "correct": false
+        },
+        {
+          "index": 8869,
+          "id": "10000000-0000-4000-8000-00000000d66a",
+          "predicted": "10-1436-1309",
+          "correct": false
+        },
+        {
+          "index": 9982,
+          "id": "10000000-0000-4000-8000-000000015360",
+          "predicted": "10-0035-5669",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "operation": "update",
+      "N": 100,
+      "knownSupported": 100,
+      "phase": "precompaction",
+      "unmodifiedVictims": {
+        "rows": 9900,
+        "correct": 0,
+        "pct": 0,
+        "predictionDigest": "e925fd2962090304c7e70b02885c4420bceaefa4407e8951090db89c9b03e6aa"
+      },
+      "referenceOnly": {
+        "rows": 9900,
+        "correct": 0,
+        "pct": 0,
+        "predictionDigest": "7786c8cbd5adf972b617dbdad4cd5c39315ee5e04c3c71dc6a221738095afb44"
+      },
+      "knownTargetTagOverlapRows": 0,
+      "unexpectedChangedUntouchedRows": 0,
+      "oldTagsRetainedOnUpdatedRows": 0,
+      "esc": {
+        "before": 328008,
+        "after": 328008,
+        "added": 0,
+        "removed": 0,
+        "changed": 4928,
+        "plaintextCountDeltas": 4928,
+        "uniqueBatchCounterLabels": 3,
+        "evaluationOnlyCorrectCounterLabels": 3,
+        "counterToVictimRowLinksProvided": 0
+      },
+      "witnesses": [
+        {
+          "index": 971,
+          "id": "10000000-0000-4000-8000-0000000045a2",
+          "predicted": "10-2205-5907",
+          "correct": false
+        },
+        {
+          "index": 2054,
+          "id": "10000000-0000-4000-8000-000000002bf0",
+          "predicted": "10-3072-0784",
+          "correct": false
+        },
+        {
+          "index": 2369,
+          "id": "10000000-0000-4000-8000-0000000083f7",
+          "predicted": "10-3072-0784",
+          "correct": false
+        },
+        {
+          "index": 2954,
+          "id": "10000000-0000-4000-8000-00000000fbe4",
+          "predicted": "10-2205-5907",
+          "correct": false
+        },
+        {
+          "index": 4471,
+          "id": "10000000-0000-4000-8000-0000000145d4",
+          "predicted": "10-2205-5907",
+          "correct": false
+        },
+        {
+          "index": 6108,
+          "id": "10000000-0000-4000-8000-000000015722",
+          "predicted": "10-2205-5907",
+          "correct": false
+        },
+        {
+          "index": 6587,
+          "id": "10000000-0000-4000-8000-000000016cb6",
+          "predicted": "10-2205-5907",
+          "correct": false
+        },
+        {
+          "index": 7669,
+          "id": "10000000-0000-4000-8000-000000018337",
+          "predicted": "10-3072-0784",
+          "correct": false
+        },
+        {
+          "index": 8241,
+          "id": "10000000-0000-4000-8000-00000000ab0b",
+          "predicted": "10-2205-5907",
+          "correct": false
+        },
+        {
+          "index": 8744,
+          "id": "10000000-0000-4000-8000-00000001441e",
+          "predicted": "10-2205-5907",
+          "correct": false
+        },
+        {
+          "index": 9733,
+          "id": "10000000-0000-4000-8000-000000010685",
+          "predicted": "10-2205-5907",
+          "correct": false
+        },
+        {
+          "index": 9953,
+          "id": "10000000-0000-4000-8000-000000003e23",
+          "predicted": "10-2205-5907",
+          "correct": false
+        }
+      ],
+      "overwrittenOldValues": {
+        "rows": 100,
+        "correct": 0,
+        "pct": 0,
+        "predictionDigest": "ef0e531e93592bfbd71b81d7143fde9d7951177e47ce19c275f1b1dbef803208",
+        "method": "pre-snapshot shape reference; new tag identities do not transfer to old occurrence tags",
+        "knownNewValueOnlyBaseline": "Replacement values are a fixed shuffled reference batch, not correlated character edits."
+      }
+    },
+    {
+      "operation": "update",
+      "N": 1000,
+      "knownSupported": 1000,
+      "phase": "precompaction",
+      "unmodifiedVictims": {
+        "rows": 9000,
+        "correct": 0,
+        "pct": 0,
+        "predictionDigest": "d5bf9ffc512aa3e1de1bb33cae3490ca3bd5a1cc59cc389ad9a581f5f5e6a1f5"
+      },
+      "referenceOnly": {
+        "rows": 9000,
+        "correct": 0,
+        "pct": 0,
+        "predictionDigest": "b916b3680c1ac1605b1daf20c5dfc1e1d50cbd170635c82b91100b1f95e4278f"
+      },
+      "knownTargetTagOverlapRows": 0,
+      "unexpectedChangedUntouchedRows": 0,
+      "oldTagsRetainedOnUpdatedRows": 0,
+      "esc": {
+        "before": 328008,
+        "after": 328008,
+        "added": 0,
+        "removed": 0,
+        "changed": 39662,
+        "plaintextCountDeltas": 39662,
+        "uniqueBatchCounterLabels": 22,
+        "evaluationOnlyCorrectCounterLabels": 22,
+        "counterToVictimRowLinksProvided": 0
+      },
+      "witnesses": [
+        {
+          "index": 2031,
+          "id": "10000000-0000-4000-8000-000000018171",
+          "predicted": "10-0035-5669",
+          "correct": false
+        },
+        {
+          "index": 2522,
+          "id": "10000000-0000-4000-8000-000000016de2",
+          "predicted": "10-0035-5669",
+          "correct": false
+        },
+        {
+          "index": 3257,
+          "id": "10000000-0000-4000-8000-00000000d147",
+          "predicted": "10-1436-1309",
+          "correct": false
+        },
+        {
+          "index": 4127,
+          "id": "10000000-0000-4000-8000-000000012c85",
+          "predicted": "10-1436-1309",
+          "correct": false
+        },
+        {
+          "index": 4699,
+          "id": "10000000-0000-4000-8000-000000011e3e",
+          "predicted": "10-0035-5669",
+          "correct": false
+        },
+        {
+          "index": 4792,
+          "id": "10000000-0000-4000-8000-000000013dc6",
+          "predicted": "10-0035-5669",
+          "correct": false
+        },
+        {
+          "index": 5285,
+          "id": "10000000-0000-4000-8000-0000000064b8",
+          "predicted": "10-0035-5669",
+          "correct": false
+        },
+        {
+          "index": 5876,
+          "id": "10000000-0000-4000-8000-00000000b0f7",
+          "predicted": "10-0035-5669",
+          "correct": false
+        },
+        {
+          "index": 6103,
+          "id": "10000000-0000-4000-8000-000000013e46",
+          "predicted": "10-1436-1309",
+          "correct": false
+        },
+        {
+          "index": 7411,
+          "id": "10000000-0000-4000-8000-000000008032",
+          "predicted": "10-1436-1309",
+          "correct": false
+        },
+        {
+          "index": 7768,
+          "id": "10000000-0000-4000-8000-000000017f4b",
+          "predicted": "10-0035-5669",
+          "correct": false
+        },
+        {
+          "index": 9567,
+          "id": "10000000-0000-4000-8000-0000000143df",
+          "predicted": "10-0035-5669",
+          "correct": false
+        }
+      ],
+      "overwrittenOldValues": {
+        "rows": 1000,
+        "correct": 0,
+        "pct": 0,
+        "predictionDigest": "a49f1e7556319cfe6b1609460a5d064f62774f59ab232e845b7789c9f3dfe430",
+        "method": "pre-snapshot shape reference; new tag identities do not transfer to old occurrence tags",
+        "knownNewValueOnlyBaseline": "Replacement values are a fixed shuffled reference batch, not correlated character edits."
+      }
+    }
+  ],
+  "finished": "2026-09-29T18:44:43.718Z"
+}

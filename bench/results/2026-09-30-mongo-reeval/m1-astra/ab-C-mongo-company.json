@@ -1,0 +1,2388 @@
+{
+  "started": "2026-09-29T18:47:39.914Z",
+  "complete": true,
+  "databaseAccess": false,
+  "field": "company",
+  "model": "C-mongo",
+  "mode": "partial",
+  "options": {
+    "id": "C-mongo",
+    "field": "company",
+    "mode": "partial",
+    "contention": 8,
+    "maxLength": 60
+  },
+  "sourceHash": "fd0d2eefaf034bc868bbeae841d969ab8766504a4e008adb8eec527d75da44de",
+  "identityDigest": "189a19c99711fbacd9cafdb548f243a63657e12a0c1514a736c1f92da670f382",
+  "snapshotDigest": "ca528ea20c0771576b42964a0d33b01dda1455c35e766d5e1c6445a40f64f3fb",
+  "metadata": {
+    "source": "Mongo official padding/ESC review: v-astra/model-rules-ko.md",
+    "tagBits": 256,
+    "contention": 8,
+    "mode": "partial",
+    "maxLength": 60,
+    "fidelity": "Leakage model, independent field/value keys and AES-CTR counter envelope; NOT SDK bytes. Post-compaction endpoint replaces each hidden group by one encrypted anchor; runtime cleanup transcript is not reproduced.",
+    "cipherBytes": "Only observable encrypted BSON length bucket E; constant envelope overhead omitted",
+    "logicalUnorderedTagSets": true,
+    "compacted": false,
+    "escRows": 2017504,
+    "ecocRows": 2017504,
+    "ecocCiphertext": "Opaque randomized documents represented by aggregate count; no linkage is exposed",
+    "unsupportedRows": 0
+  },
+  "compactedMetadata": {
+    "source": "Mongo official padding/ESC review: v-astra/model-rules-ko.md",
+    "tagBits": 256,
+    "contention": 8,
+    "mode": "partial",
+    "maxLength": 60,
+    "fidelity": "Leakage model, independent field/value keys and AES-CTR counter envelope; NOT SDK bytes. Post-compaction endpoint replaces each hidden group by one encrypted anchor; runtime cleanup transcript is not reproduced.",
+    "cipherBytes": "Only observable encrypted BSON length bucket E; constant envelope overhead omitted",
+    "logicalUnorderedTagSets": true,
+    "compacted": true,
+    "escRows": 5256,
+    "ecocRows": 0,
+    "ecocCiphertext": "Opaque randomized documents represented by aggregate count; no linkage is exposed",
+    "unsupportedRows": 0
+  },
+  "esc": {
+    "beforeRows": 2017504,
+    "afterCompactionRows": 5256,
+    "plaintextCounters": 0,
+    "totalPlaintextCounts": 0,
+    "distinctPlaintextCounts": 0,
+    "preDigest": "363b63b1b65738d71a23bbb50e761fb705174126e2d80831b23b2952214eaa09",
+    "postDigest": "412153e9e8670b1c64953969a0b702e8ddecc70578691c30769bda695741c320"
+  },
+  "uniqueness": {
+    "tagOccurrences": 2017504,
+    "distinctTags": 2017504,
+    "crossRowRepeats": 0
+  },
+  "unsupported": [],
+  "results": [
+    {
+      "known": 0,
+      "knownSupported": 0,
+      "phase": "snapshot",
+      "method": "group_frequency",
+      "channel": "index",
+      "rows": 10000,
+      "correct": 60,
+      "pct": 0.6,
+      "characters": 12396,
+      "totalCharacters": 93717,
+      "characterPct": 13.227055923685137,
+      "mostly": 1020,
+      "sharedKnownTargetRows": 0,
+      "learned": {
+        "dictionary": 16,
+        "learnedFeatures": 0,
+        "candidateFeatures": 0,
+        "knownFingerprints": 0,
+        "noise": 0,
+        "knownRows": 0
+      },
+      "predictionDigest": "727e43c9d2e687b10ea489a760a71fe1f6886e26adc4d9159cd9dc816042a48d",
+      "witnesses": [
+        {
+          "index": 1150,
+          "id": "10000000-0000-4000-8000-00000001496e",
+          "predicted": "Órbita Group 중앙지사",
+          "correct": false
+        },
+        {
+          "index": 1794,
+          "id": "10000000-0000-4000-8000-000000004dab",
+          "predicted": "Órbita Group 중앙지사",
+          "correct": false
+        },
+        {
+          "index": 3805,
+          "id": "10000000-0000-4000-8000-00000000e244",
+          "predicted": "Órbita Group 중앙지사",
+          "correct": false
+        },
+        {
+          "index": 5225,
+          "id": "10000000-0000-4000-8000-000000007639",
+          "predicted": "Órbita Group 중앙지사",
+          "correct": false
+        },
+        {
+          "index": 5627,
+          "id": "10000000-0000-4000-8000-00000000f90c",
+          "predicted": "Órbita Group 중앙지사",
+          "correct": false
+        },
+        {
+          "index": 6617,
+          "id": "10000000-0000-4000-8000-00000000f46c",
+          "predicted": "Órbita Group 중앙지사",
+          "correct": false
+        },
+        {
+          "index": 6899,
+          "id": "10000000-0000-4000-8000-000000006b72",
+          "predicted": "Órbita Group 중앙지사",
+          "correct": false
+        },
+        {
+          "index": 6963,
+          "id": "10000000-0000-4000-8000-0000000022e6",
+          "predicted": "Órbita Group 중앙지사",
+          "correct": false
+        },
+        {
+          "index": 7896,
+          "id": "10000000-0000-4000-8000-000000015a63",
+          "predicted": "Órbita Group 중앙지사",
+          "correct": false
+        },
+        {
+          "index": 8825,
+          "id": "10000000-0000-4000-8000-0000000008ce",
+          "predicted": "Órbita Group 중앙지사",
+          "correct": false
+        },
+        {
+          "index": 8869,
+          "id": "10000000-0000-4000-8000-00000000d66a",
+          "predicted": "Órbita Group 중앙지사",
+          "correct": false
+        },
+        {
+          "index": 9982,
+          "id": "10000000-0000-4000-8000-000000015360",
+          "predicted": "Órbita Group 중앙지사",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "known": 0,
+      "knownSupported": 0,
+      "phase": "snapshot",
+      "method": "piece_frequency",
+      "channel": "index",
+      "rows": 10000,
+      "correct": 53,
+      "pct": 0.53,
+      "characters": 4604,
+      "totalCharacters": 93717,
+      "characterPct": 4.912662590565212,
+      "mostly": 53,
+      "sharedKnownTargetRows": 0,
+      "learned": {
+        "dictionary": 16,
+        "learnedFeatures": 0,
+        "candidateFeatures": 0,
+        "knownFingerprints": 0,
+        "noise": 0,
+        "knownRows": 0
+      },
+      "predictionDigest": "32091cb13dbf9b789efa52b2e7dc7a2d9f9e2b329d6f613fe3f8f997ca1c5cbd",
+      "witnesses": [
+        {
+          "index": 1150,
+          "id": "10000000-0000-4000-8000-00000001496e",
+          "predicted": "한빛테크 중앙지사",
+          "correct": false
+        },
+        {
+          "index": 1794,
+          "id": "10000000-0000-4000-8000-000000004dab",
+          "predicted": "한빛테크 중앙지사",
+          "correct": false
+        },
+        {
+          "index": 3805,
+          "id": "10000000-0000-4000-8000-00000000e244",
+          "predicted": "한빛테크 중앙지사",
+          "correct": false
+        },
+        {
+          "index": 5225,
+          "id": "10000000-0000-4000-8000-000000007639",
+          "predicted": "한빛테크 중앙지사",
+          "correct": false
+        },
+        {
+          "index": 5627,
+          "id": "10000000-0000-4000-8000-00000000f90c",
+          "predicted": "한빛테크 중앙지사",
+          "correct": false
+        },
+        {
+          "index": 6617,
+          "id": "10000000-0000-4000-8000-00000000f46c",
+          "predicted": "한빛테크 중앙지사",
+          "correct": false
+        },
+        {
+          "index": 6899,
+          "id": "10000000-0000-4000-8000-000000006b72",
+          "predicted": "한빛테크 중앙지사",
+          "correct": false
+        },
+        {
+          "index": 6963,
+          "id": "10000000-0000-4000-8000-0000000022e6",
+          "predicted": "한빛테크 중앙지사",
+          "correct": false
+        },
+        {
+          "index": 7896,
+          "id": "10000000-0000-4000-8000-000000015a63",
+          "predicted": "한빛테크 중앙지사",
+          "correct": false
+        },
+        {
+          "index": 8825,
+          "id": "10000000-0000-4000-8000-0000000008ce",
+          "predicted": "한빛테크 중앙지사",
+          "correct": false
+        },
+        {
+          "index": 8869,
+          "id": "10000000-0000-4000-8000-00000000d66a",
+          "predicted": "한빛테크 중앙지사",
+          "correct": false
+        },
+        {
+          "index": 9982,
+          "id": "10000000-0000-4000-8000-000000015360",
+          "predicted": "한빛테크 중앙지사",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "known": 0,
+      "knownSupported": 0,
+      "phase": "snapshot",
+      "method": "rank_frequency",
+      "channel": "index",
+      "rows": 10000,
+      "correct": 59,
+      "pct": 0.59,
+      "characters": 12373,
+      "totalCharacters": 93717,
+      "characterPct": 13.202513951577622,
+      "mostly": 1018,
+      "sharedKnownTargetRows": 0,
+      "learned": {
+        "dictionary": 16,
+        "learnedFeatures": 0,
+        "candidateFeatures": 0,
+        "knownFingerprints": 0,
+        "noise": 0,
+        "knownRows": 0
+      },
+      "predictionDigest": "9e1080e474fc2d36c811a94f790fb0967b34b934452f0595667a6d4d8a9bcc32",
+      "witnesses": [
+        {
+          "index": 1150,
+          "id": "10000000-0000-4000-8000-00000001496e",
+          "predicted": "Órbita Group 중앙지사",
+          "correct": false
+        },
+        {
+          "index": 1794,
+          "id": "10000000-0000-4000-8000-000000004dab",
+          "predicted": "Órbita Group 중앙지사",
+          "correct": false
+        },
+        {
+          "index": 3805,
+          "id": "10000000-0000-4000-8000-00000000e244",
+          "predicted": "Órbita Group 중앙지사",
+          "correct": false
+        },
+        {
+          "index": 5225,
+          "id": "10000000-0000-4000-8000-000000007639",
+          "predicted": "Órbita Group 중앙지사",
+          "correct": false
+        },
+        {
+          "index": 5627,
+          "id": "10000000-0000-4000-8000-00000000f90c",
+          "predicted": "Órbita Group 중앙지사",
+          "correct": false
+        },
+        {
+          "index": 6617,
+          "id": "10000000-0000-4000-8000-00000000f46c",
+          "predicted": "Órbita Group 중앙지사",
+          "correct": false
+        },
+        {
+          "index": 6899,
+          "id": "10000000-0000-4000-8000-000000006b72",
+          "predicted": "Órbita Group 중앙지사",
+          "correct": false
+        },
+        {
+          "index": 6963,
+          "id": "10000000-0000-4000-8000-0000000022e6",
+          "predicted": "Órbita Group 중앙지사",
+          "correct": false
+        },
+        {
+          "index": 7896,
+          "id": "10000000-0000-4000-8000-000000015a63",
+          "predicted": "Órbita Group 중앙지사",
+          "correct": false
+        },
+        {
+          "index": 8825,
+          "id": "10000000-0000-4000-8000-0000000008ce",
+          "predicted": "Órbita Group 중앙지사",
+          "correct": false
+        },
+        {
+          "index": 8869,
+          "id": "10000000-0000-4000-8000-00000000d66a",
+          "predicted": "Órbita Group 중앙지사",
+          "correct": false
+        },
+        {
+          "index": 9982,
+          "id": "10000000-0000-4000-8000-000000015360",
+          "predicted": "Órbita Group 중앙지사",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "known": 0,
+      "knownSupported": 0,
+      "phase": "snapshot",
+      "method": "public_shape_reference",
+      "channel": "native_shape",
+      "rows": 10000,
+      "correct": 3054,
+      "pct": 30.54,
+      "characters": 21760,
+      "totalCharacters": 93717,
+      "characterPct": 23.218839698240448,
+      "mostly": 3054,
+      "sharedKnownTargetRows": 0,
+      "learned": {
+        "dictionary": 16,
+        "learnedFeatures": 0,
+        "candidateFeatures": 0,
+        "knownFingerprints": 0,
+        "noise": 0,
+        "knownRows": 0
+      },
+      "predictionDigest": "a04c27d63a8ca67bd13a97e034f04c6f289cde249ef3a2bc98b69467988f7412",
+      "witnesses": [
+        {
+          "index": 1150,
+          "id": "10000000-0000-4000-8000-00000001496e",
+          "predicted": "서울서비스 담당",
+          "correct": false
+        },
+        {
+          "index": 1794,
+          "id": "10000000-0000-4000-8000-000000004dab",
+          "predicted": "서울서비스 담당",
+          "correct": false
+        },
+        {
+          "index": 3805,
+          "id": "10000000-0000-4000-8000-00000000e244",
+          "predicted": "서울서비스 담당",
+          "correct": false
+        },
+        {
+          "index": 5225,
+          "id": "10000000-0000-4000-8000-000000007639",
+          "predicted": "서울서비스 담당",
+          "correct": false
+        },
+        {
+          "index": 5627,
+          "id": "10000000-0000-4000-8000-00000000f90c",
+          "predicted": "서울서비스 담당",
+          "correct": true
+        },
+        {
+          "index": 6617,
+          "id": "10000000-0000-4000-8000-00000000f46c",
+          "predicted": "서울서비스 담당",
+          "correct": false
+        },
+        {
+          "index": 6899,
+          "id": "10000000-0000-4000-8000-000000006b72",
+          "predicted": "서울서비스 담당",
+          "correct": true
+        },
+        {
+          "index": 6963,
+          "id": "10000000-0000-4000-8000-0000000022e6",
+          "predicted": "서울서비스 담당",
+          "correct": false
+        },
+        {
+          "index": 7896,
+          "id": "10000000-0000-4000-8000-000000015a63",
+          "predicted": "서울서비스 담당",
+          "correct": false
+        },
+        {
+          "index": 8825,
+          "id": "10000000-0000-4000-8000-0000000008ce",
+          "predicted": "서울서비스 담당",
+          "correct": false
+        },
+        {
+          "index": 8869,
+          "id": "10000000-0000-4000-8000-00000000d66a",
+          "predicted": "서울서비스 담당",
+          "correct": false
+        },
+        {
+          "index": 9982,
+          "id": "10000000-0000-4000-8000-000000015360",
+          "predicted": "서울서비스 담당",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "known": 0,
+      "knownSupported": 0,
+      "phase": "snapshot",
+      "method": "public_tagcount_reference",
+      "channel": "index",
+      "rows": 10000,
+      "correct": 3054,
+      "pct": 30.54,
+      "characters": 21760,
+      "totalCharacters": 93717,
+      "characterPct": 23.218839698240448,
+      "mostly": 3054,
+      "sharedKnownTargetRows": 0,
+      "learned": {
+        "dictionary": 16,
+        "learnedFeatures": 0,
+        "candidateFeatures": 0,
+        "knownFingerprints": 0,
+        "noise": 0,
+        "knownRows": 0
+      },
+      "predictionDigest": "a04c27d63a8ca67bd13a97e034f04c6f289cde249ef3a2bc98b69467988f7412",
+      "witnesses": [
+        {
+          "index": 1150,
+          "id": "10000000-0000-4000-8000-00000001496e",
+          "predicted": "서울서비스 담당",
+          "correct": false
+        },
+        {
+          "index": 1794,
+          "id": "10000000-0000-4000-8000-000000004dab",
+          "predicted": "서울서비스 담당",
+          "correct": false
+        },
+        {
+          "index": 3805,
+          "id": "10000000-0000-4000-8000-00000000e244",
+          "predicted": "서울서비스 담당",
+          "correct": false
+        },
+        {
+          "index": 5225,
+          "id": "10000000-0000-4000-8000-000000007639",
+          "predicted": "서울서비스 담당",
+          "correct": false
+        },
+        {
+          "index": 5627,
+          "id": "10000000-0000-4000-8000-00000000f90c",
+          "predicted": "서울서비스 담당",
+          "correct": true
+        },
+        {
+          "index": 6617,
+          "id": "10000000-0000-4000-8000-00000000f46c",
+          "predicted": "서울서비스 담당",
+          "correct": false
+        },
+        {
+          "index": 6899,
+          "id": "10000000-0000-4000-8000-000000006b72",
+          "predicted": "서울서비스 담당",
+          "correct": true
+        },
+        {
+          "index": 6963,
+          "id": "10000000-0000-4000-8000-0000000022e6",
+          "predicted": "서울서비스 담당",
+          "correct": false
+        },
+        {
+          "index": 7896,
+          "id": "10000000-0000-4000-8000-000000015a63",
+          "predicted": "서울서비스 담당",
+          "correct": false
+        },
+        {
+          "index": 8825,
+          "id": "10000000-0000-4000-8000-0000000008ce",
+          "predicted": "서울서비스 담당",
+          "correct": false
+        },
+        {
+          "index": 8869,
+          "id": "10000000-0000-4000-8000-00000000d66a",
+          "predicted": "서울서비스 담당",
+          "correct": false
+        },
+        {
+          "index": 9982,
+          "id": "10000000-0000-4000-8000-000000015360",
+          "predicted": "서울서비스 담당",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "known": 100,
+      "knownSupported": 100,
+      "phase": "snapshot",
+      "method": "group_frequency",
+      "channel": "index",
+      "rows": 9900,
+      "correct": 60,
+      "pct": 0.6060606060606061,
+      "characters": 12263,
+      "totalCharacters": 92741,
+      "characterPct": 13.22284642175521,
+      "mostly": 1009,
+      "sharedKnownTargetRows": 0,
+      "learned": {
+        "dictionary": 16,
+        "learnedFeatures": 0,
+        "candidateFeatures": 476,
+        "knownFingerprints": 100,
+        "noise": 0,
+        "knownRows": 100
+      },
+      "predictionDigest": "1d8ad28c140da98eafe53b1b89b5498a5d899b9ffa2341aec9ca9ef15265da27",
+      "witnesses": [
+        {
+          "index": 971,
+          "id": "10000000-0000-4000-8000-0000000045a2",
+          "predicted": "Órbita Group 중앙지사",
+          "correct": false
+        },
+        {
+          "index": 2054,
+          "id": "10000000-0000-4000-8000-000000002bf0",
+          "predicted": "Órbita Group 중앙지사",
+          "correct": false
+        },
+        {
+          "index": 2369,
+          "id": "10000000-0000-4000-8000-0000000083f7",
+          "predicted": "Órbita Group 중앙지사",
+          "correct": false
+        },
+        {
+          "index": 2954,
+          "id": "10000000-0000-4000-8000-00000000fbe4",
+          "predicted": "Órbita Group 중앙지사",
+          "correct": false
+        },
+        {
+          "index": 4471,
+          "id": "10000000-0000-4000-8000-0000000145d4",
+          "predicted": "Órbita Group 중앙지사",
+          "correct": false
+        },
+        {
+          "index": 6108,
+          "id": "10000000-0000-4000-8000-000000015722",
+          "predicted": "Órbita Group 중앙지사",
+          "correct": false
+        },
+        {
+          "index": 6587,
+          "id": "10000000-0000-4000-8000-000000016cb6",
+          "predicted": "Órbita Group 중앙지사",
+          "correct": false
+        },
+        {
+          "index": 7669,
+          "id": "10000000-0000-4000-8000-000000018337",
+          "predicted": "Órbita Group 중앙지사",
+          "correct": false
+        },
+        {
+          "index": 8241,
+          "id": "10000000-0000-4000-8000-00000000ab0b",
+          "predicted": "Órbita Group 중앙지사",
+          "correct": false
+        },
+        {
+          "index": 8744,
+          "id": "10000000-0000-4000-8000-00000001441e",
+          "predicted": "Órbita Group 중앙지사",
+          "correct": false
+        },
+        {
+          "index": 9733,
+          "id": "10000000-0000-4000-8000-000000010685",
+          "predicted": "Órbita Group 중앙지사",
+          "correct": false
+        },
+        {
+          "index": 9953,
+          "id": "10000000-0000-4000-8000-000000003e23",
+          "predicted": "Órbita Group 중앙지사",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "known": 100,
+      "knownSupported": 100,
+      "phase": "snapshot",
+      "method": "piece_frequency",
+      "channel": "index",
+      "rows": 9900,
+      "correct": 53,
+      "pct": 0.5353535353535354,
+      "characters": 4552,
+      "totalCharacters": 92741,
+      "characterPct": 4.908292987998835,
+      "mostly": 53,
+      "sharedKnownTargetRows": 0,
+      "learned": {
+        "dictionary": 16,
+        "learnedFeatures": 0,
+        "candidateFeatures": 476,
+        "knownFingerprints": 100,
+        "noise": 0,
+        "knownRows": 100
+      },
+      "predictionDigest": "8b0a7cfb345667e90959429a643c7377e830117bfe58f8c9834b9428f77a0eed",
+      "witnesses": [
+        {
+          "index": 971,
+          "id": "10000000-0000-4000-8000-0000000045a2",
+          "predicted": "한빛테크 중앙지사",
+          "correct": false
+        },
+        {
+          "index": 2054,
+          "id": "10000000-0000-4000-8000-000000002bf0",
+          "predicted": "한빛테크 중앙지사",
+          "correct": false
+        },
+        {
+          "index": 2369,
+          "id": "10000000-0000-4000-8000-0000000083f7",
+          "predicted": "한빛테크 중앙지사",
+          "correct": false
+        },
+        {
+          "index": 2954,
+          "id": "10000000-0000-4000-8000-00000000fbe4",
+          "predicted": "한빛테크 중앙지사",
+          "correct": false
+        },
+        {
+          "index": 4471,
+          "id": "10000000-0000-4000-8000-0000000145d4",
+          "predicted": "한빛테크 중앙지사",
+          "correct": false
+        },
+        {
+          "index": 6108,
+          "id": "10000000-0000-4000-8000-000000015722",
+          "predicted": "한빛테크 중앙지사",
+          "correct": false
+        },
+        {
+          "index": 6587,
+          "id": "10000000-0000-4000-8000-000000016cb6",
+          "predicted": "한빛테크 중앙지사",
+          "correct": false
+        },
+        {
+          "index": 7669,
+          "id": "10000000-0000-4000-8000-000000018337",
+          "predicted": "한빛테크 중앙지사",
+          "correct": false
+        },
+        {
+          "index": 8241,
+          "id": "10000000-0000-4000-8000-00000000ab0b",
+          "predicted": "한빛테크 중앙지사",
+          "correct": false
+        },
+        {
+          "index": 8744,
+          "id": "10000000-0000-4000-8000-00000001441e",
+          "predicted": "한빛테크 중앙지사",
+          "correct": false
+        },
+        {
+          "index": 9733,
+          "id": "10000000-0000-4000-8000-000000010685",
+          "predicted": "한빛테크 중앙지사",
+          "correct": false
+        },
+        {
+          "index": 9953,
+          "id": "10000000-0000-4000-8000-000000003e23",
+          "predicted": "한빛테크 중앙지사",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "known": 100,
+      "knownSupported": 100,
+      "phase": "snapshot",
+      "method": "rank_frequency",
+      "channel": "index",
+      "rows": 9900,
+      "correct": 59,
+      "pct": 0.5959595959595959,
+      "characters": 12240,
+      "totalCharacters": 92741,
+      "characterPct": 13.198046171596166,
+      "mostly": 1007,
+      "sharedKnownTargetRows": 0,
+      "learned": {
+        "dictionary": 16,
+        "learnedFeatures": 0,
+        "candidateFeatures": 476,
+        "knownFingerprints": 100,
+        "noise": 0,
+        "knownRows": 100
+      },
+      "predictionDigest": "7e3dba6bedaccb10bb6239efcdba79906bbd29bd99ef6e529cd6e800a23dac03",
+      "witnesses": [
+        {
+          "index": 971,
+          "id": "10000000-0000-4000-8000-0000000045a2",
+          "predicted": "Órbita Group 중앙지사",
+          "correct": false
+        },
+        {
+          "index": 2054,
+          "id": "10000000-0000-4000-8000-000000002bf0",
+          "predicted": "Órbita Group 중앙지사",
+          "correct": false
+        },
+        {
+          "index": 2369,
+          "id": "10000000-0000-4000-8000-0000000083f7",
+          "predicted": "Órbita Group 중앙지사",
+          "correct": false
+        },
+        {
+          "index": 2954,
+          "id": "10000000-0000-4000-8000-00000000fbe4",
+          "predicted": "Órbita Group 중앙지사",
+          "correct": false
+        },
+        {
+          "index": 4471,
+          "id": "10000000-0000-4000-8000-0000000145d4",
+          "predicted": "Órbita Group 중앙지사",
+          "correct": false
+        },
+        {
+          "index": 6108,
+          "id": "10000000-0000-4000-8000-000000015722",
+          "predicted": "Órbita Group 중앙지사",
+          "correct": false
+        },
+        {
+          "index": 6587,
+          "id": "10000000-0000-4000-8000-000000016cb6",
+          "predicted": "Órbita Group 중앙지사",
+          "correct": false
+        },
+        {
+          "index": 7669,
+          "id": "10000000-0000-4000-8000-000000018337",
+          "predicted": "Órbita Group 중앙지사",
+          "correct": false
+        },
+        {
+          "index": 8241,
+          "id": "10000000-0000-4000-8000-00000000ab0b",
+          "predicted": "Órbita Group 중앙지사",
+          "correct": false
+        },
+        {
+          "index": 8744,
+          "id": "10000000-0000-4000-8000-00000001441e",
+          "predicted": "Órbita Group 중앙지사",
+          "correct": false
+        },
+        {
+          "index": 9733,
+          "id": "10000000-0000-4000-8000-000000010685",
+          "predicted": "Órbita Group 중앙지사",
+          "correct": false
+        },
+        {
+          "index": 9953,
+          "id": "10000000-0000-4000-8000-000000003e23",
+          "predicted": "Órbita Group 중앙지사",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "known": 100,
+      "knownSupported": 100,
+      "phase": "snapshot",
+      "method": "known_projection",
+      "channel": "index",
+      "rows": 9900,
+      "correct": 2838,
+      "pct": 28.666666666666668,
+      "characters": 20811,
+      "totalCharacters": 92741,
+      "characterPct": 22.439913306951617,
+      "mostly": 2838,
+      "sharedKnownTargetRows": 0,
+      "learned": {
+        "dictionary": 16,
+        "learnedFeatures": 0,
+        "candidateFeatures": 476,
+        "knownFingerprints": 100,
+        "noise": 0,
+        "knownRows": 100
+      },
+      "predictionDigest": "3ff29e10791b6767f8e2cfdd88baf9e12f4e1d5a3bdb73517f01f5e7b526c390",
+      "witnesses": [
+        {
+          "index": 971,
+          "id": "10000000-0000-4000-8000-0000000045a2",
+          "predicted": "서울서비스 담당",
+          "correct": true
+        },
+        {
+          "index": 2054,
+          "id": "10000000-0000-4000-8000-000000002bf0",
+          "predicted": "서울서비스 담당",
+          "correct": false
+        },
+        {
+          "index": 2369,
+          "id": "10000000-0000-4000-8000-0000000083f7",
+          "predicted": "서울서비스 담당",
+          "correct": false
+        },
+        {
+          "index": 2954,
+          "id": "10000000-0000-4000-8000-00000000fbe4",
+          "predicted": "서울서비스 담당",
+          "correct": false
+        },
+        {
+          "index": 4471,
+          "id": "10000000-0000-4000-8000-0000000145d4",
+          "predicted": "서울서비스 담당",
+          "correct": false
+        },
+        {
+          "index": 6108,
+          "id": "10000000-0000-4000-8000-000000015722",
+          "predicted": "서울서비스 담당",
+          "correct": false
+        },
+        {
+          "index": 6587,
+          "id": "10000000-0000-4000-8000-000000016cb6",
+          "predicted": "서울서비스 담당",
+          "correct": true
+        },
+        {
+          "index": 7669,
+          "id": "10000000-0000-4000-8000-000000018337",
+          "predicted": "서울서비스 담당",
+          "correct": false
+        },
+        {
+          "index": 8241,
+          "id": "10000000-0000-4000-8000-00000000ab0b",
+          "predicted": "서울서비스 담당",
+          "correct": true
+        },
+        {
+          "index": 8744,
+          "id": "10000000-0000-4000-8000-00000001441e",
+          "predicted": "서울서비스 담당",
+          "correct": false
+        },
+        {
+          "index": 9733,
+          "id": "10000000-0000-4000-8000-000000010685",
+          "predicted": "서울서비스 담당",
+          "correct": false
+        },
+        {
+          "index": 9953,
+          "id": "10000000-0000-4000-8000-000000003e23",
+          "predicted": "서울서비스 담당",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "known": 100,
+      "knownSupported": 100,
+      "phase": "snapshot",
+      "method": "known_fingerprint",
+      "channel": "index",
+      "rows": 9900,
+      "correct": 2838,
+      "pct": 28.666666666666668,
+      "characters": 20811,
+      "totalCharacters": 92741,
+      "characterPct": 22.439913306951617,
+      "mostly": 2838,
+      "sharedKnownTargetRows": 0,
+      "learned": {
+        "dictionary": 16,
+        "learnedFeatures": 0,
+        "candidateFeatures": 476,
+        "knownFingerprints": 100,
+        "noise": 0,
+        "knownRows": 100
+      },
+      "predictionDigest": "3ff29e10791b6767f8e2cfdd88baf9e12f4e1d5a3bdb73517f01f5e7b526c390",
+      "witnesses": [
+        {
+          "index": 971,
+          "id": "10000000-0000-4000-8000-0000000045a2",
+          "predicted": "서울서비스 담당",
+          "correct": true
+        },
+        {
+          "index": 2054,
+          "id": "10000000-0000-4000-8000-000000002bf0",
+          "predicted": "서울서비스 담당",
+          "correct": false
+        },
+        {
+          "index": 2369,
+          "id": "10000000-0000-4000-8000-0000000083f7",
+          "predicted": "서울서비스 담당",
+          "correct": false
+        },
+        {
+          "index": 2954,
+          "id": "10000000-0000-4000-8000-00000000fbe4",
+          "predicted": "서울서비스 담당",
+          "correct": false
+        },
+        {
+          "index": 4471,
+          "id": "10000000-0000-4000-8000-0000000145d4",
+          "predicted": "서울서비스 담당",
+          "correct": false
+        },
+        {
+          "index": 6108,
+          "id": "10000000-0000-4000-8000-000000015722",
+          "predicted": "서울서비스 담당",
+          "correct": false
+        },
+        {
+          "index": 6587,
+          "id": "10000000-0000-4000-8000-000000016cb6",
+          "predicted": "서울서비스 담당",
+          "correct": true
+        },
+        {
+          "index": 7669,
+          "id": "10000000-0000-4000-8000-000000018337",
+          "predicted": "서울서비스 담당",
+          "correct": false
+        },
+        {
+          "index": 8241,
+          "id": "10000000-0000-4000-8000-00000000ab0b",
+          "predicted": "서울서비스 담당",
+          "correct": true
+        },
+        {
+          "index": 8744,
+          "id": "10000000-0000-4000-8000-00000001441e",
+          "predicted": "서울서비스 담당",
+          "correct": false
+        },
+        {
+          "index": 9733,
+          "id": "10000000-0000-4000-8000-000000010685",
+          "predicted": "서울서비스 담당",
+          "correct": false
+        },
+        {
+          "index": 9953,
+          "id": "10000000-0000-4000-8000-000000003e23",
+          "predicted": "서울서비스 담당",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "known": 100,
+      "knownSupported": 100,
+      "phase": "snapshot",
+      "method": "public_shape_reference",
+      "channel": "native_shape",
+      "rows": 9900,
+      "correct": 3027,
+      "pct": 30.575757575757574,
+      "characters": 21567,
+      "totalCharacters": 92741,
+      "characterPct": 23.255086746961968,
+      "mostly": 3027,
+      "sharedKnownTargetRows": 0,
+      "learned": {
+        "dictionary": 16,
+        "learnedFeatures": 0,
+        "candidateFeatures": 476,
+        "knownFingerprints": 100,
+        "noise": 0,
+        "knownRows": 100
+      },
+      "predictionDigest": "c85e44254c345d2beb5a75d87c3ccbac2541cab45bce41329c81cd2831a101b6",
+      "witnesses": [
+        {
+          "index": 971,
+          "id": "10000000-0000-4000-8000-0000000045a2",
+          "predicted": "서울서비스 담당",
+          "correct": true
+        },
+        {
+          "index": 2054,
+          "id": "10000000-0000-4000-8000-000000002bf0",
+          "predicted": "서울서비스 담당",
+          "correct": false
+        },
+        {
+          "index": 2369,
+          "id": "10000000-0000-4000-8000-0000000083f7",
+          "predicted": "서울서비스 담당",
+          "correct": false
+        },
+        {
+          "index": 2954,
+          "id": "10000000-0000-4000-8000-00000000fbe4",
+          "predicted": "서울서비스 담당",
+          "correct": false
+        },
+        {
+          "index": 4471,
+          "id": "10000000-0000-4000-8000-0000000145d4",
+          "predicted": "서울서비스 담당",
+          "correct": false
+        },
+        {
+          "index": 6108,
+          "id": "10000000-0000-4000-8000-000000015722",
+          "predicted": "서울서비스 담당",
+          "correct": false
+        },
+        {
+          "index": 6587,
+          "id": "10000000-0000-4000-8000-000000016cb6",
+          "predicted": "서울서비스 담당",
+          "correct": true
+        },
+        {
+          "index": 7669,
+          "id": "10000000-0000-4000-8000-000000018337",
+          "predicted": "서울서비스 담당",
+          "correct": false
+        },
+        {
+          "index": 8241,
+          "id": "10000000-0000-4000-8000-00000000ab0b",
+          "predicted": "서울서비스 담당",
+          "correct": true
+        },
+        {
+          "index": 8744,
+          "id": "10000000-0000-4000-8000-00000001441e",
+          "predicted": "서울서비스 담당",
+          "correct": false
+        },
+        {
+          "index": 9733,
+          "id": "10000000-0000-4000-8000-000000010685",
+          "predicted": "서울서비스 담당",
+          "correct": false
+        },
+        {
+          "index": 9953,
+          "id": "10000000-0000-4000-8000-000000003e23",
+          "predicted": "서울서비스 담당",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "known": 100,
+      "knownSupported": 100,
+      "phase": "snapshot",
+      "method": "public_tagcount_reference",
+      "channel": "index",
+      "rows": 9900,
+      "correct": 3027,
+      "pct": 30.575757575757574,
+      "characters": 21567,
+      "totalCharacters": 92741,
+      "characterPct": 23.255086746961968,
+      "mostly": 3027,
+      "sharedKnownTargetRows": 0,
+      "learned": {
+        "dictionary": 16,
+        "learnedFeatures": 0,
+        "candidateFeatures": 476,
+        "knownFingerprints": 100,
+        "noise": 0,
+        "knownRows": 100
+      },
+      "predictionDigest": "c85e44254c345d2beb5a75d87c3ccbac2541cab45bce41329c81cd2831a101b6",
+      "witnesses": [
+        {
+          "index": 971,
+          "id": "10000000-0000-4000-8000-0000000045a2",
+          "predicted": "서울서비스 담당",
+          "correct": true
+        },
+        {
+          "index": 2054,
+          "id": "10000000-0000-4000-8000-000000002bf0",
+          "predicted": "서울서비스 담당",
+          "correct": false
+        },
+        {
+          "index": 2369,
+          "id": "10000000-0000-4000-8000-0000000083f7",
+          "predicted": "서울서비스 담당",
+          "correct": false
+        },
+        {
+          "index": 2954,
+          "id": "10000000-0000-4000-8000-00000000fbe4",
+          "predicted": "서울서비스 담당",
+          "correct": false
+        },
+        {
+          "index": 4471,
+          "id": "10000000-0000-4000-8000-0000000145d4",
+          "predicted": "서울서비스 담당",
+          "correct": false
+        },
+        {
+          "index": 6108,
+          "id": "10000000-0000-4000-8000-000000015722",
+          "predicted": "서울서비스 담당",
+          "correct": false
+        },
+        {
+          "index": 6587,
+          "id": "10000000-0000-4000-8000-000000016cb6",
+          "predicted": "서울서비스 담당",
+          "correct": true
+        },
+        {
+          "index": 7669,
+          "id": "10000000-0000-4000-8000-000000018337",
+          "predicted": "서울서비스 담당",
+          "correct": false
+        },
+        {
+          "index": 8241,
+          "id": "10000000-0000-4000-8000-00000000ab0b",
+          "predicted": "서울서비스 담당",
+          "correct": true
+        },
+        {
+          "index": 8744,
+          "id": "10000000-0000-4000-8000-00000001441e",
+          "predicted": "서울서비스 담당",
+          "correct": false
+        },
+        {
+          "index": 9733,
+          "id": "10000000-0000-4000-8000-000000010685",
+          "predicted": "서울서비스 담당",
+          "correct": false
+        },
+        {
+          "index": 9953,
+          "id": "10000000-0000-4000-8000-000000003e23",
+          "predicted": "서울서비스 담당",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "known": 100,
+      "knownSupported": 100,
+      "phase": "snapshot",
+      "method": "public_shape_known",
+      "channel": "native_shape",
+      "rows": 9900,
+      "correct": 3027,
+      "pct": 30.575757575757574,
+      "characters": 21567,
+      "totalCharacters": 92741,
+      "characterPct": 23.255086746961968,
+      "mostly": 3027,
+      "sharedKnownTargetRows": 0,
+      "learned": {
+        "dictionary": 16,
+        "learnedFeatures": 0,
+        "candidateFeatures": 476,
+        "knownFingerprints": 100,
+        "noise": 0,
+        "knownRows": 100
+      },
+      "predictionDigest": "c85e44254c345d2beb5a75d87c3ccbac2541cab45bce41329c81cd2831a101b6",
+      "witnesses": [
+        {
+          "index": 971,
+          "id": "10000000-0000-4000-8000-0000000045a2",
+          "predicted": "서울서비스 담당",
+          "correct": true
+        },
+        {
+          "index": 2054,
+          "id": "10000000-0000-4000-8000-000000002bf0",
+          "predicted": "서울서비스 담당",
+          "correct": false
+        },
+        {
+          "index": 2369,
+          "id": "10000000-0000-4000-8000-0000000083f7",
+          "predicted": "서울서비스 담당",
+          "correct": false
+        },
+        {
+          "index": 2954,
+          "id": "10000000-0000-4000-8000-00000000fbe4",
+          "predicted": "서울서비스 담당",
+          "correct": false
+        },
+        {
+          "index": 4471,
+          "id": "10000000-0000-4000-8000-0000000145d4",
+          "predicted": "서울서비스 담당",
+          "correct": false
+        },
+        {
+          "index": 6108,
+          "id": "10000000-0000-4000-8000-000000015722",
+          "predicted": "서울서비스 담당",
+          "correct": false
+        },
+        {
+          "index": 6587,
+          "id": "10000000-0000-4000-8000-000000016cb6",
+          "predicted": "서울서비스 담당",
+          "correct": true
+        },
+        {
+          "index": 7669,
+          "id": "10000000-0000-4000-8000-000000018337",
+          "predicted": "서울서비스 담당",
+          "correct": false
+        },
+        {
+          "index": 8241,
+          "id": "10000000-0000-4000-8000-00000000ab0b",
+          "predicted": "서울서비스 담당",
+          "correct": true
+        },
+        {
+          "index": 8744,
+          "id": "10000000-0000-4000-8000-00000001441e",
+          "predicted": "서울서비스 담당",
+          "correct": false
+        },
+        {
+          "index": 9733,
+          "id": "10000000-0000-4000-8000-000000010685",
+          "predicted": "서울서비스 담당",
+          "correct": false
+        },
+        {
+          "index": 9953,
+          "id": "10000000-0000-4000-8000-000000003e23",
+          "predicted": "서울서비스 담당",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "known": 100,
+      "knownSupported": 100,
+      "phase": "snapshot",
+      "method": "public_tagcount_known",
+      "channel": "index",
+      "rows": 9900,
+      "correct": 3027,
+      "pct": 30.575757575757574,
+      "characters": 21567,
+      "totalCharacters": 92741,
+      "characterPct": 23.255086746961968,
+      "mostly": 3027,
+      "sharedKnownTargetRows": 0,
+      "learned": {
+        "dictionary": 16,
+        "learnedFeatures": 0,
+        "candidateFeatures": 476,
+        "knownFingerprints": 100,
+        "noise": 0,
+        "knownRows": 100
+      },
+      "predictionDigest": "c85e44254c345d2beb5a75d87c3ccbac2541cab45bce41329c81cd2831a101b6",
+      "witnesses": [
+        {
+          "index": 971,
+          "id": "10000000-0000-4000-8000-0000000045a2",
+          "predicted": "서울서비스 담당",
+          "correct": true
+        },
+        {
+          "index": 2054,
+          "id": "10000000-0000-4000-8000-000000002bf0",
+          "predicted": "서울서비스 담당",
+          "correct": false
+        },
+        {
+          "index": 2369,
+          "id": "10000000-0000-4000-8000-0000000083f7",
+          "predicted": "서울서비스 담당",
+          "correct": false
+        },
+        {
+          "index": 2954,
+          "id": "10000000-0000-4000-8000-00000000fbe4",
+          "predicted": "서울서비스 담당",
+          "correct": false
+        },
+        {
+          "index": 4471,
+          "id": "10000000-0000-4000-8000-0000000145d4",
+          "predicted": "서울서비스 담당",
+          "correct": false
+        },
+        {
+          "index": 6108,
+          "id": "10000000-0000-4000-8000-000000015722",
+          "predicted": "서울서비스 담당",
+          "correct": false
+        },
+        {
+          "index": 6587,
+          "id": "10000000-0000-4000-8000-000000016cb6",
+          "predicted": "서울서비스 담당",
+          "correct": true
+        },
+        {
+          "index": 7669,
+          "id": "10000000-0000-4000-8000-000000018337",
+          "predicted": "서울서비스 담당",
+          "correct": false
+        },
+        {
+          "index": 8241,
+          "id": "10000000-0000-4000-8000-00000000ab0b",
+          "predicted": "서울서비스 담당",
+          "correct": true
+        },
+        {
+          "index": 8744,
+          "id": "10000000-0000-4000-8000-00000001441e",
+          "predicted": "서울서비스 담당",
+          "correct": false
+        },
+        {
+          "index": 9733,
+          "id": "10000000-0000-4000-8000-000000010685",
+          "predicted": "서울서비스 담당",
+          "correct": false
+        },
+        {
+          "index": 9953,
+          "id": "10000000-0000-4000-8000-000000003e23",
+          "predicted": "서울서비스 담당",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "known": 500,
+      "knownSupported": 500,
+      "phase": "snapshot",
+      "method": "group_frequency",
+      "channel": "index",
+      "rows": 9500,
+      "correct": 55,
+      "pct": 0.5789473684210527,
+      "characters": 11665,
+      "totalCharacters": 88892,
+      "characterPct": 13.122665706700266,
+      "mostly": 959,
+      "sharedKnownTargetRows": 0,
+      "learned": {
+        "dictionary": 16,
+        "learnedFeatures": 0,
+        "candidateFeatures": 552,
+        "knownFingerprints": 500,
+        "noise": 0,
+        "knownRows": 500
+      },
+      "predictionDigest": "36520a053876fe4fea6f65d26c6f946e2b056cd49022c12b66e35e4cf302567b",
+      "witnesses": [
+        {
+          "index": 3155,
+          "id": "10000000-0000-4000-8000-000000012a97",
+          "predicted": "Órbita Group 중앙지사",
+          "correct": false
+        },
+        {
+          "index": 3593,
+          "id": "10000000-0000-4000-8000-00000001740a",
+          "predicted": "Órbita Group 중앙지사",
+          "correct": false
+        },
+        {
+          "index": 3806,
+          "id": "10000000-0000-4000-8000-00000000b03b",
+          "predicted": "Órbita Group 중앙지사",
+          "correct": false
+        },
+        {
+          "index": 4051,
+          "id": "10000000-0000-4000-8000-000000018680",
+          "predicted": "Órbita Group 중앙지사",
+          "correct": false
+        },
+        {
+          "index": 4394,
+          "id": "10000000-0000-4000-8000-000000007d47",
+          "predicted": "Órbita Group 중앙지사",
+          "correct": false
+        },
+        {
+          "index": 5851,
+          "id": "10000000-0000-4000-8000-00000000dc1e",
+          "predicted": "Órbita Group 중앙지사",
+          "correct": false
+        },
+        {
+          "index": 6503,
+          "id": "10000000-0000-4000-8000-000000008d5d",
+          "predicted": "Órbita Group 중앙지사",
+          "correct": false
+        },
+        {
+          "index": 6998,
+          "id": "10000000-0000-4000-8000-00000000a4b6",
+          "predicted": "Órbita Group 중앙지사",
+          "correct": false
+        },
+        {
+          "index": 8407,
+          "id": "10000000-0000-4000-8000-0000000152ff",
+          "predicted": "Órbita Group 중앙지사",
+          "correct": false
+        },
+        {
+          "index": 9380,
+          "id": "10000000-0000-4000-8000-000000001758",
+          "predicted": "Órbita Group 중앙지사",
+          "correct": false
+        },
+        {
+          "index": 9686,
+          "id": "10000000-0000-4000-8000-00000000b02b",
+          "predicted": "Órbita Group 중앙지사",
+          "correct": false
+        },
+        {
+          "index": 9736,
+          "id": "10000000-0000-4000-8000-00000000e4c9",
+          "predicted": "Órbita Group 중앙지사",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "known": 500,
+      "knownSupported": 500,
+      "phase": "snapshot",
+      "method": "piece_frequency",
+      "channel": "index",
+      "rows": 9500,
+      "correct": 51,
+      "pct": 0.5368421052631579,
+      "characters": 4360,
+      "totalCharacters": 88892,
+      "characterPct": 4.904828331008415,
+      "mostly": 51,
+      "sharedKnownTargetRows": 0,
+      "learned": {
+        "dictionary": 16,
+        "learnedFeatures": 0,
+        "candidateFeatures": 552,
+        "knownFingerprints": 500,
+        "noise": 0,
+        "knownRows": 500
+      },
+      "predictionDigest": "43303ebfda8fd33fc9eae554cb269b11c4a521ce9180cd4d4325662e6522b700",
+      "witnesses": [
+        {
+          "index": 3155,
+          "id": "10000000-0000-4000-8000-000000012a97",
+          "predicted": "한빛테크 중앙지사",
+          "correct": false
+        },
+        {
+          "index": 3593,
+          "id": "10000000-0000-4000-8000-00000001740a",
+          "predicted": "한빛테크 중앙지사",
+          "correct": false
+        },
+        {
+          "index": 3806,
+          "id": "10000000-0000-4000-8000-00000000b03b",
+          "predicted": "한빛테크 중앙지사",
+          "correct": false
+        },
+        {
+          "index": 4051,
+          "id": "10000000-0000-4000-8000-000000018680",
+          "predicted": "한빛테크 중앙지사",
+          "correct": false
+        },
+        {
+          "index": 4394,
+          "id": "10000000-0000-4000-8000-000000007d47",
+          "predicted": "한빛테크 중앙지사",
+          "correct": false
+        },
+        {
+          "index": 5851,
+          "id": "10000000-0000-4000-8000-00000000dc1e",
+          "predicted": "한빛테크 중앙지사",
+          "correct": false
+        },
+        {
+          "index": 6503,
+          "id": "10000000-0000-4000-8000-000000008d5d",
+          "predicted": "한빛테크 중앙지사",
+          "correct": false
+        },
+        {
+          "index": 6998,
+          "id": "10000000-0000-4000-8000-00000000a4b6",
+          "predicted": "한빛테크 중앙지사",
+          "correct": false
+        },
+        {
+          "index": 8407,
+          "id": "10000000-0000-4000-8000-0000000152ff",
+          "predicted": "한빛테크 중앙지사",
+          "correct": false
+        },
+        {
+          "index": 9380,
+          "id": "10000000-0000-4000-8000-000000001758",
+          "predicted": "한빛테크 중앙지사",
+          "correct": false
+        },
+        {
+          "index": 9686,
+          "id": "10000000-0000-4000-8000-00000000b02b",
+          "predicted": "한빛테크 중앙지사",
+          "correct": false
+        },
+        {
+          "index": 9736,
+          "id": "10000000-0000-4000-8000-00000000e4c9",
+          "predicted": "한빛테크 중앙지사",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "known": 500,
+      "knownSupported": 500,
+      "phase": "snapshot",
+      "method": "rank_frequency",
+      "channel": "index",
+      "rows": 9500,
+      "correct": 54,
+      "pct": 0.5684210526315789,
+      "characters": 11642,
+      "totalCharacters": 88892,
+      "characterPct": 13.09679161229357,
+      "mostly": 957,
+      "sharedKnownTargetRows": 0,
+      "learned": {
+        "dictionary": 16,
+        "learnedFeatures": 0,
+        "candidateFeatures": 552,
+        "knownFingerprints": 500,
+        "noise": 0,
+        "knownRows": 500
+      },
+      "predictionDigest": "5f7431872bbb3b80b26b7fe3e3b597c9cdc7b9fab2360b0b5f8c71b9fff5a152",
+      "witnesses": [
+        {
+          "index": 3155,
+          "id": "10000000-0000-4000-8000-000000012a97",
+          "predicted": "Órbita Group 중앙지사",
+          "correct": false
+        },
+        {
+          "index": 3593,
+          "id": "10000000-0000-4000-8000-00000001740a",
+          "predicted": "Órbita Group 중앙지사",
+          "correct": false
+        },
+        {
+          "index": 3806,
+          "id": "10000000-0000-4000-8000-00000000b03b",
+          "predicted": "Órbita Group 중앙지사",
+          "correct": false
+        },
+        {
+          "index": 4051,
+          "id": "10000000-0000-4000-8000-000000018680",
+          "predicted": "Órbita Group 중앙지사",
+          "correct": false
+        },
+        {
+          "index": 4394,
+          "id": "10000000-0000-4000-8000-000000007d47",
+          "predicted": "Órbita Group 중앙지사",
+          "correct": false
+        },
+        {
+          "index": 5851,
+          "id": "10000000-0000-4000-8000-00000000dc1e",
+          "predicted": "Órbita Group 중앙지사",
+          "correct": false
+        },
+        {
+          "index": 6503,
+          "id": "10000000-0000-4000-8000-000000008d5d",
+          "predicted": "Órbita Group 중앙지사",
+          "correct": false
+        },
+        {
+          "index": 6998,
+          "id": "10000000-0000-4000-8000-00000000a4b6",
+          "predicted": "Órbita Group 중앙지사",
+          "correct": false
+        },
+        {
+          "index": 8407,
+          "id": "10000000-0000-4000-8000-0000000152ff",
+          "predicted": "Órbita Group 중앙지사",
+          "correct": false
+        },
+        {
+          "index": 9380,
+          "id": "10000000-0000-4000-8000-000000001758",
+          "predicted": "Órbita Group 중앙지사",
+          "correct": false
+        },
+        {
+          "index": 9686,
+          "id": "10000000-0000-4000-8000-00000000b02b",
+          "predicted": "Órbita Group 중앙지사",
+          "correct": false
+        },
+        {
+          "index": 9736,
+          "id": "10000000-0000-4000-8000-00000000e4c9",
+          "predicted": "Órbita Group 중앙지사",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "known": 500,
+      "knownSupported": 500,
+      "phase": "snapshot",
+      "method": "known_projection",
+      "channel": "index",
+      "rows": 9500,
+      "correct": 2726,
+      "pct": 28.694736842105264,
+      "characters": 19992,
+      "totalCharacters": 88892,
+      "characterPct": 22.49021284255051,
+      "mostly": 2726,
+      "sharedKnownTargetRows": 0,
+      "learned": {
+        "dictionary": 16,
+        "learnedFeatures": 0,
+        "candidateFeatures": 552,
+        "knownFingerprints": 500,
+        "noise": 0,
+        "knownRows": 500
+      },
+      "predictionDigest": "c52e9014f01ea59a50d79a56f5495b884a32c6f61b70266a30f4da9a81e3ef25",
+      "witnesses": [
+        {
+          "index": 3155,
+          "id": "10000000-0000-4000-8000-000000012a97",
+          "predicted": "서울서비스 담당",
+          "correct": false
+        },
+        {
+          "index": 3593,
+          "id": "10000000-0000-4000-8000-00000001740a",
+          "predicted": "서울서비스 담당",
+          "correct": false
+        },
+        {
+          "index": 3806,
+          "id": "10000000-0000-4000-8000-00000000b03b",
+          "predicted": "서울서비스 담당",
+          "correct": false
+        },
+        {
+          "index": 4051,
+          "id": "10000000-0000-4000-8000-000000018680",
+          "predicted": "서울서비스 담당",
+          "correct": false
+        },
+        {
+          "index": 4394,
+          "id": "10000000-0000-4000-8000-000000007d47",
+          "predicted": "서울서비스 담당",
+          "correct": true
+        },
+        {
+          "index": 5851,
+          "id": "10000000-0000-4000-8000-00000000dc1e",
+          "predicted": "서울서비스 담당",
+          "correct": true
+        },
+        {
+          "index": 6503,
+          "id": "10000000-0000-4000-8000-000000008d5d",
+          "predicted": "서울서비스 담당",
+          "correct": true
+        },
+        {
+          "index": 6998,
+          "id": "10000000-0000-4000-8000-00000000a4b6",
+          "predicted": "서울서비스 담당",
+          "correct": true
+        },
+        {
+          "index": 8407,
+          "id": "10000000-0000-4000-8000-0000000152ff",
+          "predicted": "서울서비스 담당",
+          "correct": false
+        },
+        {
+          "index": 9380,
+          "id": "10000000-0000-4000-8000-000000001758",
+          "predicted": "서울서비스 담당",
+          "correct": true
+        },
+        {
+          "index": 9686,
+          "id": "10000000-0000-4000-8000-00000000b02b",
+          "predicted": "서울서비스 담당",
+          "correct": false
+        },
+        {
+          "index": 9736,
+          "id": "10000000-0000-4000-8000-00000000e4c9",
+          "predicted": "서울서비스 담당",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "known": 500,
+      "knownSupported": 500,
+      "phase": "snapshot",
+      "method": "known_fingerprint",
+      "channel": "index",
+      "rows": 9500,
+      "correct": 2726,
+      "pct": 28.694736842105264,
+      "characters": 19992,
+      "totalCharacters": 88892,
+      "characterPct": 22.49021284255051,
+      "mostly": 2726,
+      "sharedKnownTargetRows": 0,
+      "learned": {
+        "dictionary": 16,
+        "learnedFeatures": 0,
+        "candidateFeatures": 552,
+        "knownFingerprints": 500,
+        "noise": 0,
+        "knownRows": 500
+      },
+      "predictionDigest": "c52e9014f01ea59a50d79a56f5495b884a32c6f61b70266a30f4da9a81e3ef25",
+      "witnesses": [
+        {
+          "index": 3155,
+          "id": "10000000-0000-4000-8000-000000012a97",
+          "predicted": "서울서비스 담당",
+          "correct": false
+        },
+        {
+          "index": 3593,
+          "id": "10000000-0000-4000-8000-00000001740a",
+          "predicted": "서울서비스 담당",
+          "correct": false
+        },
+        {
+          "index": 3806,
+          "id": "10000000-0000-4000-8000-00000000b03b",
+          "predicted": "서울서비스 담당",
+          "correct": false
+        },
+        {
+          "index": 4051,
+          "id": "10000000-0000-4000-8000-000000018680",
+          "predicted": "서울서비스 담당",
+          "correct": false
+        },
+        {
+          "index": 4394,
+          "id": "10000000-0000-4000-8000-000000007d47",
+          "predicted": "서울서비스 담당",
+          "correct": true
+        },
+        {
+          "index": 5851,
+          "id": "10000000-0000-4000-8000-00000000dc1e",
+          "predicted": "서울서비스 담당",
+          "correct": true
+        },
+        {
+          "index": 6503,
+          "id": "10000000-0000-4000-8000-000000008d5d",
+          "predicted": "서울서비스 담당",
+          "correct": true
+        },
+        {
+          "index": 6998,
+          "id": "10000000-0000-4000-8000-00000000a4b6",
+          "predicted": "서울서비스 담당",
+          "correct": true
+        },
+        {
+          "index": 8407,
+          "id": "10000000-0000-4000-8000-0000000152ff",
+          "predicted": "서울서비스 담당",
+          "correct": false
+        },
+        {
+          "index": 9380,
+          "id": "10000000-0000-4000-8000-000000001758",
+          "predicted": "서울서비스 담당",
+          "correct": true
+        },
+        {
+          "index": 9686,
+          "id": "10000000-0000-4000-8000-00000000b02b",
+          "predicted": "서울서비스 담당",
+          "correct": false
+        },
+        {
+          "index": 9736,
+          "id": "10000000-0000-4000-8000-00000000e4c9",
+          "predicted": "서울서비스 담당",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "known": 500,
+      "knownSupported": 500,
+      "phase": "snapshot",
+      "method": "public_shape_reference",
+      "channel": "native_shape",
+      "rows": 9500,
+      "correct": 2908,
+      "pct": 30.610526315789475,
+      "characters": 20720,
+      "totalCharacters": 88892,
+      "characterPct": 23.30918417855375,
+      "mostly": 2908,
+      "sharedKnownTargetRows": 0,
+      "learned": {
+        "dictionary": 16,
+        "learnedFeatures": 0,
+        "candidateFeatures": 552,
+        "knownFingerprints": 500,
+        "noise": 0,
+        "knownRows": 500
+      },
+      "predictionDigest": "e06cb7f13767edc44882c7cb6cfaec438e66120dc839a11a08ba8ef6940c82a3",
+      "witnesses": [
+        {
+          "index": 3155,
+          "id": "10000000-0000-4000-8000-000000012a97",
+          "predicted": "서울서비스 담당",
+          "correct": false
+        },
+        {
+          "index": 3593,
+          "id": "10000000-0000-4000-8000-00000001740a",
+          "predicted": "서울서비스 담당",
+          "correct": false
+        },
+        {
+          "index": 3806,
+          "id": "10000000-0000-4000-8000-00000000b03b",
+          "predicted": "서울서비스 담당",
+          "correct": false
+        },
+        {
+          "index": 4051,
+          "id": "10000000-0000-4000-8000-000000018680",
+          "predicted": "서울서비스 담당",
+          "correct": false
+        },
+        {
+          "index": 4394,
+          "id": "10000000-0000-4000-8000-000000007d47",
+          "predicted": "서울서비스 담당",
+          "correct": true
+        },
+        {
+          "index": 5851,
+          "id": "10000000-0000-4000-8000-00000000dc1e",
+          "predicted": "서울서비스 담당",
+          "correct": true
+        },
+        {
+          "index": 6503,
+          "id": "10000000-0000-4000-8000-000000008d5d",
+          "predicted": "서울서비스 담당",
+          "correct": true
+        },
+        {
+          "index": 6998,
+          "id": "10000000-0000-4000-8000-00000000a4b6",
+          "predicted": "서울서비스 담당",
+          "correct": true
+        },
+        {
+          "index": 8407,
+          "id": "10000000-0000-4000-8000-0000000152ff",
+          "predicted": "서울서비스 담당",
+          "correct": false
+        },
+        {
+          "index": 9380,
+          "id": "10000000-0000-4000-8000-000000001758",
+          "predicted": "서울서비스 담당",
+          "correct": true
+        },
+        {
+          "index": 9686,
+          "id": "10000000-0000-4000-8000-00000000b02b",
+          "predicted": "서울서비스 담당",
+          "correct": false
+        },
+        {
+          "index": 9736,
+          "id": "10000000-0000-4000-8000-00000000e4c9",
+          "predicted": "서울서비스 담당",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "known": 500,
+      "knownSupported": 500,
+      "phase": "snapshot",
+      "method": "public_tagcount_reference",
+      "channel": "index",
+      "rows": 9500,
+      "correct": 2908,
+      "pct": 30.610526315789475,
+      "characters": 20720,
+      "totalCharacters": 88892,
+      "characterPct": 23.30918417855375,
+      "mostly": 2908,
+      "sharedKnownTargetRows": 0,
+      "learned": {
+        "dictionary": 16,
+        "learnedFeatures": 0,
+        "candidateFeatures": 552,
+        "knownFingerprints": 500,
+        "noise": 0,
+        "knownRows": 500
+      },
+      "predictionDigest": "e06cb7f13767edc44882c7cb6cfaec438e66120dc839a11a08ba8ef6940c82a3",
+      "witnesses": [
+        {
+          "index": 3155,
+          "id": "10000000-0000-4000-8000-000000012a97",
+          "predicted": "서울서비스 담당",
+          "correct": false
+        },
+        {
+          "index": 3593,
+          "id": "10000000-0000-4000-8000-00000001740a",
+          "predicted": "서울서비스 담당",
+          "correct": false
+        },
+        {
+          "index": 3806,
+          "id": "10000000-0000-4000-8000-00000000b03b",
+          "predicted": "서울서비스 담당",
+          "correct": false
+        },
+        {
+          "index": 4051,
+          "id": "10000000-0000-4000-8000-000000018680",
+          "predicted": "서울서비스 담당",
+          "correct": false
+        },
+        {
+          "index": 4394,
+          "id": "10000000-0000-4000-8000-000000007d47",
+          "predicted": "서울서비스 담당",
+          "correct": true
+        },
+        {
+          "index": 5851,
+          "id": "10000000-0000-4000-8000-00000000dc1e",
+          "predicted": "서울서비스 담당",
+          "correct": true
+        },
+        {
+          "index": 6503,
+          "id": "10000000-0000-4000-8000-000000008d5d",
+          "predicted": "서울서비스 담당",
+          "correct": true
+        },
+        {
+          "index": 6998,
+          "id": "10000000-0000-4000-8000-00000000a4b6",
+          "predicted": "서울서비스 담당",
+          "correct": true
+        },
+        {
+          "index": 8407,
+          "id": "10000000-0000-4000-8000-0000000152ff",
+          "predicted": "서울서비스 담당",
+          "correct": false
+        },
+        {
+          "index": 9380,
+          "id": "10000000-0000-4000-8000-000000001758",
+          "predicted": "서울서비스 담당",
+          "correct": true
+        },
+        {
+          "index": 9686,
+          "id": "10000000-0000-4000-8000-00000000b02b",
+          "predicted": "서울서비스 담당",
+          "correct": false
+        },
+        {
+          "index": 9736,
+          "id": "10000000-0000-4000-8000-00000000e4c9",
+          "predicted": "서울서비스 담당",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "known": 500,
+      "knownSupported": 500,
+      "phase": "snapshot",
+      "method": "public_shape_known",
+      "channel": "native_shape",
+      "rows": 9500,
+      "correct": 2908,
+      "pct": 30.610526315789475,
+      "characters": 20720,
+      "totalCharacters": 88892,
+      "characterPct": 23.30918417855375,
+      "mostly": 2908,
+      "sharedKnownTargetRows": 0,
+      "learned": {
+        "dictionary": 16,
+        "learnedFeatures": 0,
+        "candidateFeatures": 552,
+        "knownFingerprints": 500,
+        "noise": 0,
+        "knownRows": 500
+      },
+      "predictionDigest": "e06cb7f13767edc44882c7cb6cfaec438e66120dc839a11a08ba8ef6940c82a3",
+      "witnesses": [
+        {
+          "index": 3155,
+          "id": "10000000-0000-4000-8000-000000012a97",
+          "predicted": "서울서비스 담당",
+          "correct": false
+        },
+        {
+          "index": 3593,
+          "id": "10000000-0000-4000-8000-00000001740a",
+          "predicted": "서울서비스 담당",
+          "correct": false
+        },
+        {
+          "index": 3806,
+          "id": "10000000-0000-4000-8000-00000000b03b",
+          "predicted": "서울서비스 담당",
+          "correct": false
+        },
+        {
+          "index": 4051,
+          "id": "10000000-0000-4000-8000-000000018680",
+          "predicted": "서울서비스 담당",
+          "correct": false
+        },
+        {
+          "index": 4394,
+          "id": "10000000-0000-4000-8000-000000007d47",
+          "predicted": "서울서비스 담당",
+          "correct": true
+        },
+        {
+          "index": 5851,
+          "id": "10000000-0000-4000-8000-00000000dc1e",
+          "predicted": "서울서비스 담당",
+          "correct": true
+        },
+        {
+          "index": 6503,
+          "id": "10000000-0000-4000-8000-000000008d5d",
+          "predicted": "서울서비스 담당",
+          "correct": true
+        },
+        {
+          "index": 6998,
+          "id": "10000000-0000-4000-8000-00000000a4b6",
+          "predicted": "서울서비스 담당",
+          "correct": true
+        },
+        {
+          "index": 8407,
+          "id": "10000000-0000-4000-8000-0000000152ff",
+          "predicted": "서울서비스 담당",
+          "correct": false
+        },
+        {
+          "index": 9380,
+          "id": "10000000-0000-4000-8000-000000001758",
+          "predicted": "서울서비스 담당",
+          "correct": true
+        },
+        {
+          "index": 9686,
+          "id": "10000000-0000-4000-8000-00000000b02b",
+          "predicted": "서울서비스 담당",
+          "correct": false
+        },
+        {
+          "index": 9736,
+          "id": "10000000-0000-4000-8000-00000000e4c9",
+          "predicted": "서울서비스 담당",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "known": 500,
+      "knownSupported": 500,
+      "phase": "snapshot",
+      "method": "public_tagcount_known",
+      "channel": "index",
+      "rows": 9500,
+      "correct": 2908,
+      "pct": 30.610526315789475,
+      "characters": 20720,
+      "totalCharacters": 88892,
+      "characterPct": 23.30918417855375,
+      "mostly": 2908,
+      "sharedKnownTargetRows": 0,
+      "learned": {
+        "dictionary": 16,
+        "learnedFeatures": 0,
+        "candidateFeatures": 552,
+        "knownFingerprints": 500,
+        "noise": 0,
+        "knownRows": 500
+      },
+      "predictionDigest": "e06cb7f13767edc44882c7cb6cfaec438e66120dc839a11a08ba8ef6940c82a3",
+      "witnesses": [
+        {
+          "index": 3155,
+          "id": "10000000-0000-4000-8000-000000012a97",
+          "predicted": "서울서비스 담당",
+          "correct": false
+        },
+        {
+          "index": 3593,
+          "id": "10000000-0000-4000-8000-00000001740a",
+          "predicted": "서울서비스 담당",
+          "correct": false
+        },
+        {
+          "index": 3806,
+          "id": "10000000-0000-4000-8000-00000000b03b",
+          "predicted": "서울서비스 담당",
+          "correct": false
+        },
+        {
+          "index": 4051,
+          "id": "10000000-0000-4000-8000-000000018680",
+          "predicted": "서울서비스 담당",
+          "correct": false
+        },
+        {
+          "index": 4394,
+          "id": "10000000-0000-4000-8000-000000007d47",
+          "predicted": "서울서비스 담당",
+          "correct": true
+        },
+        {
+          "index": 5851,
+          "id": "10000000-0000-4000-8000-00000000dc1e",
+          "predicted": "서울서비스 담당",
+          "correct": true
+        },
+        {
+          "index": 6503,
+          "id": "10000000-0000-4000-8000-000000008d5d",
+          "predicted": "서울서비스 담당",
+          "correct": true
+        },
+        {
+          "index": 6998,
+          "id": "10000000-0000-4000-8000-00000000a4b6",
+          "predicted": "서울서비스 담당",
+          "correct": true
+        },
+        {
+          "index": 8407,
+          "id": "10000000-0000-4000-8000-0000000152ff",
+          "predicted": "서울서비스 담당",
+          "correct": false
+        },
+        {
+          "index": 9380,
+          "id": "10000000-0000-4000-8000-000000001758",
+          "predicted": "서울서비스 담당",
+          "correct": true
+        },
+        {
+          "index": 9686,
+          "id": "10000000-0000-4000-8000-00000000b02b",
+          "predicted": "서울서비스 담당",
+          "correct": false
+        },
+        {
+          "index": 9736,
+          "id": "10000000-0000-4000-8000-00000000e4c9",
+          "predicted": "서울서비스 담당",
+          "correct": false
+        }
+      ]
+    }
+  ],
+  "baselines": [
+    {
+      "known": 0,
+      "method": "random_empirical",
+      "rows": 10000,
+      "correct": 1507,
+      "pct": 15.07,
+      "characters": 15524,
+      "totalCharacters": 93717,
+      "characterPct": 16.5647641303072,
+      "mostly": 1521
+    },
+    {
+      "known": 0,
+      "method": "random_distinct",
+      "rows": 10000,
+      "correct": 599,
+      "pct": 5.99,
+      "characters": 12106,
+      "totalCharacters": 93717,
+      "characterPct": 12.917613666677337,
+      "mostly": 834
+    },
+    {
+      "known": 100,
+      "method": "random_empirical",
+      "rows": 9900,
+      "correct": 1494,
+      "pct": 15.090909090909092,
+      "characters": 15391,
+      "totalCharacters": 92741,
+      "characterPct": 16.59568044338534,
+      "mostly": 1508
+    },
+    {
+      "known": 100,
+      "method": "random_distinct",
+      "rows": 9900,
+      "correct": 595,
+      "pct": 6.01010101010101,
+      "characters": 12023,
+      "totalCharacters": 92741,
+      "characterPct": 12.964061202704306,
+      "mostly": 828
+    },
+    {
+      "known": 500,
+      "method": "random_empirical",
+      "rows": 9500,
+      "correct": 1423,
+      "pct": 14.978947368421053,
+      "characters": 14708,
+      "totalCharacters": 88892,
+      "characterPct": 16.545920892768752,
+      "mostly": 1436
+    },
+    {
+      "known": 500,
+      "method": "random_distinct",
+      "rows": 9500,
+      "correct": 575,
+      "pct": 6.052631578947368,
+      "characters": 11581,
+      "totalCharacters": 88892,
+      "characterPct": 13.028169014084508,
+      "mostly": 798
+    }
+  ],
+  "finished": "2026-09-29T18:47:58.318Z"
+}

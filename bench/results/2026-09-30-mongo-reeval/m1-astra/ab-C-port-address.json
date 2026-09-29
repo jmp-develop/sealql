@@ -1,0 +1,2378 @@
+{
+  "started": "2026-09-29T18:40:20.204Z",
+  "complete": true,
+  "databaseAccess": false,
+  "field": "address",
+  "model": "C-port",
+  "mode": "combined",
+  "options": {
+    "id": "C-port",
+    "field": "address",
+    "mode": "combined",
+    "contention": 0,
+    "maxLength": 60
+  },
+  "sourceHash": "fd0d2eefaf034bc868bbeae841d969ab8766504a4e008adb8eec527d75da44de",
+  "identityDigest": "189a19c99711fbacd9cafdb548f243a63657e12a0c1514a736c1f92da670f382",
+  "snapshotDigest": "43efe569ad2f4b4114afb4d66beb5e37f2b537c096258062e47ceac15a64e1df",
+  "metadata": {
+    "source": "bench/research-unified/m2-fable-unified.ts",
+    "tagBits": 64,
+    "counter": "plaintext per piece",
+    "mode": "combined",
+    "contention": 0,
+    "logicalUnorderedTagSets": true,
+    "compacted": false,
+    "escRows": 110071
+  },
+  "compactedMetadata": {
+    "source": "bench/research-unified/m2-fable-unified.ts",
+    "tagBits": 64,
+    "counter": "plaintext per piece",
+    "mode": "combined",
+    "contention": 0,
+    "logicalUnorderedTagSets": true,
+    "compacted": false,
+    "escRows": 110071
+  },
+  "esc": {
+    "beforeRows": 110071,
+    "afterCompactionRows": 110071,
+    "plaintextCounters": 110071,
+    "totalPlaintextCounts": 1078351,
+    "distinctPlaintextCounts": 205,
+    "preDigest": "d25b799c2849cb1c542c5ac2d70cd6f9ef425d1d2806937638963e9b3e995a91",
+    "postDigest": "d25b799c2849cb1c542c5ac2d70cd6f9ef425d1d2806937638963e9b3e995a91"
+  },
+  "uniqueness": {
+    "tagOccurrences": 1078351,
+    "distinctTags": 1078351,
+    "crossRowRepeats": 0
+  },
+  "unsupported": [],
+  "results": [
+    {
+      "known": 0,
+      "knownSupported": 0,
+      "phase": "snapshot",
+      "method": "group_frequency",
+      "channel": "index",
+      "rows": 10000,
+      "correct": 1,
+      "pct": 0.01,
+      "characters": 18029,
+      "totalCharacters": 148907,
+      "characterPct": 12.107557065819606,
+      "mostly": 145,
+      "sharedKnownTargetRows": 0,
+      "learned": {
+        "dictionary": 4890,
+        "learnedFeatures": 0,
+        "candidateFeatures": 0,
+        "knownFingerprints": 0,
+        "noise": 0,
+        "knownRows": 0
+      },
+      "predictionDigest": "2af647ba9388c3cae855dbf1c3b193662a4ffa4a12bdb9997ad553a7a9f85d7d",
+      "witnesses": [
+        {
+          "index": 1150,
+          "id": "10000000-0000-4000-8000-00000001496e",
+          "predicted": "대전 유성구 대학로 10 고객",
+          "correct": false
+        },
+        {
+          "index": 1794,
+          "id": "10000000-0000-4000-8000-000000004dab",
+          "predicted": "대전 유성구 대학로 10 고객",
+          "correct": false
+        },
+        {
+          "index": 3805,
+          "id": "10000000-0000-4000-8000-00000000e244",
+          "predicted": "대전 유성구 대학로 10 고객",
+          "correct": false
+        },
+        {
+          "index": 5225,
+          "id": "10000000-0000-4000-8000-000000007639",
+          "predicted": "대전 유성구 대학로 10 고객",
+          "correct": false
+        },
+        {
+          "index": 5627,
+          "id": "10000000-0000-4000-8000-00000000f90c",
+          "predicted": "대전 유성구 대학로 10 고객",
+          "correct": false
+        },
+        {
+          "index": 6617,
+          "id": "10000000-0000-4000-8000-00000000f46c",
+          "predicted": "대전 유성구 대학로 10 고객",
+          "correct": false
+        },
+        {
+          "index": 6899,
+          "id": "10000000-0000-4000-8000-000000006b72",
+          "predicted": "대전 유성구 대학로 10 고객",
+          "correct": false
+        },
+        {
+          "index": 6963,
+          "id": "10000000-0000-4000-8000-0000000022e6",
+          "predicted": "대전 유성구 대학로 10 고객",
+          "correct": false
+        },
+        {
+          "index": 7896,
+          "id": "10000000-0000-4000-8000-000000015a63",
+          "predicted": "대전 유성구 대학로 10 고객",
+          "correct": false
+        },
+        {
+          "index": 8825,
+          "id": "10000000-0000-4000-8000-0000000008ce",
+          "predicted": "대전 유성구 대학로 10 고객",
+          "correct": false
+        },
+        {
+          "index": 8869,
+          "id": "10000000-0000-4000-8000-00000000d66a",
+          "predicted": "대전 유성구 대학로 10 고객",
+          "correct": false
+        },
+        {
+          "index": 9982,
+          "id": "10000000-0000-4000-8000-000000015360",
+          "predicted": "대전 유성구 대학로 10 고객",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "known": 0,
+      "knownSupported": 0,
+      "phase": "snapshot",
+      "method": "piece_frequency",
+      "channel": "index",
+      "rows": 10000,
+      "correct": 2,
+      "pct": 0.02,
+      "characters": 24459,
+      "totalCharacters": 148907,
+      "characterPct": 16.42568851699383,
+      "mostly": 410,
+      "sharedKnownTargetRows": 0,
+      "learned": {
+        "dictionary": 4890,
+        "learnedFeatures": 0,
+        "candidateFeatures": 0,
+        "knownFingerprints": 0,
+        "noise": 0,
+        "knownRows": 0
+      },
+      "predictionDigest": "6be1e6853cc8c2b8aef248ecb2748f3ba06a0504a4021844ca97a90a7b736486",
+      "witnesses": [
+        {
+          "index": 1150,
+          "id": "10000000-0000-4000-8000-00000001496e",
+          "predicted": "대전 유성구 대학로 267 고객",
+          "correct": false
+        },
+        {
+          "index": 1794,
+          "id": "10000000-0000-4000-8000-000000004dab",
+          "predicted": "대전 유성구 대학로 267 고객",
+          "correct": false
+        },
+        {
+          "index": 3805,
+          "id": "10000000-0000-4000-8000-00000000e244",
+          "predicted": "대전 유성구 대학로 267 고객",
+          "correct": false
+        },
+        {
+          "index": 5225,
+          "id": "10000000-0000-4000-8000-000000007639",
+          "predicted": "대전 유성구 대학로 267 고객",
+          "correct": false
+        },
+        {
+          "index": 5627,
+          "id": "10000000-0000-4000-8000-00000000f90c",
+          "predicted": "대전 유성구 대학로 267 고객",
+          "correct": false
+        },
+        {
+          "index": 6617,
+          "id": "10000000-0000-4000-8000-00000000f46c",
+          "predicted": "대전 유성구 대학로 267 고객",
+          "correct": false
+        },
+        {
+          "index": 6899,
+          "id": "10000000-0000-4000-8000-000000006b72",
+          "predicted": "대전 유성구 대학로 267 고객",
+          "correct": false
+        },
+        {
+          "index": 6963,
+          "id": "10000000-0000-4000-8000-0000000022e6",
+          "predicted": "대전 유성구 대학로 267 고객",
+          "correct": false
+        },
+        {
+          "index": 7896,
+          "id": "10000000-0000-4000-8000-000000015a63",
+          "predicted": "대전 유성구 대학로 267 고객",
+          "correct": false
+        },
+        {
+          "index": 8825,
+          "id": "10000000-0000-4000-8000-0000000008ce",
+          "predicted": "대전 유성구 대학로 267 고객",
+          "correct": false
+        },
+        {
+          "index": 8869,
+          "id": "10000000-0000-4000-8000-00000000d66a",
+          "predicted": "대전 유성구 대학로 267 고객",
+          "correct": false
+        },
+        {
+          "index": 9982,
+          "id": "10000000-0000-4000-8000-000000015360",
+          "predicted": "대전 유성구 대학로 267 고객",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "known": 0,
+      "knownSupported": 0,
+      "phase": "snapshot",
+      "method": "rank_frequency",
+      "channel": "index",
+      "rows": 10000,
+      "correct": 2,
+      "pct": 0.02,
+      "characters": 21906,
+      "totalCharacters": 148907,
+      "characterPct": 14.711195578448294,
+      "mostly": 568,
+      "sharedKnownTargetRows": 0,
+      "learned": {
+        "dictionary": 4890,
+        "learnedFeatures": 0,
+        "candidateFeatures": 0,
+        "knownFingerprints": 0,
+        "noise": 0,
+        "knownRows": 0
+      },
+      "predictionDigest": "ff5598db9684df5d1c53e7a5de239c9739c726853f36c189f78f40408629f733",
+      "witnesses": [
+        {
+          "index": 1150,
+          "id": "10000000-0000-4000-8000-00000001496e",
+          "predicted": "대전 유성구 대학로 716 고객",
+          "correct": false
+        },
+        {
+          "index": 1794,
+          "id": "10000000-0000-4000-8000-000000004dab",
+          "predicted": "서울 중구 세종대로 336 고객",
+          "correct": false
+        },
+        {
+          "index": 3805,
+          "id": "10000000-0000-4000-8000-00000000e244",
+          "predicted": "Madrid Gran Vía 562 고객",
+          "correct": false
+        },
+        {
+          "index": 5225,
+          "id": "10000000-0000-4000-8000-000000007639",
+          "predicted": "부산 해운대구 센텀로 759 고객",
+          "correct": false
+        },
+        {
+          "index": 5627,
+          "id": "10000000-0000-4000-8000-00000000f90c",
+          "predicted": "대전 유성구 대학로 10 고객",
+          "correct": false
+        },
+        {
+          "index": 6617,
+          "id": "10000000-0000-4000-8000-00000000f46c",
+          "predicted": "대전 유성구 대학로 10 고객",
+          "correct": false
+        },
+        {
+          "index": 6899,
+          "id": "10000000-0000-4000-8000-000000006b72",
+          "predicted": "대전 유성구 대학로 10 고객",
+          "correct": false
+        },
+        {
+          "index": 6963,
+          "id": "10000000-0000-4000-8000-0000000022e6",
+          "predicted": "대전 유성구 대학로 10 고객",
+          "correct": false
+        },
+        {
+          "index": 7896,
+          "id": "10000000-0000-4000-8000-000000015a63",
+          "predicted": "대전 유성구 대학로 10 고객",
+          "correct": false
+        },
+        {
+          "index": 8825,
+          "id": "10000000-0000-4000-8000-0000000008ce",
+          "predicted": "대전 유성구 대학로 10 고객",
+          "correct": false
+        },
+        {
+          "index": 8869,
+          "id": "10000000-0000-4000-8000-00000000d66a",
+          "predicted": "대전 유성구 대학로 10 고객",
+          "correct": false
+        },
+        {
+          "index": 9982,
+          "id": "10000000-0000-4000-8000-000000015360",
+          "predicted": "Tokyo Chiyoda 461 고객",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "known": 0,
+      "knownSupported": 0,
+      "phase": "snapshot",
+      "method": "public_shape_reference",
+      "channel": "native_shape",
+      "rows": 10000,
+      "correct": 30,
+      "pct": 0.3,
+      "characters": 111731,
+      "totalCharacters": 148907,
+      "characterPct": 75.03408167513952,
+      "mostly": 6228,
+      "sharedKnownTargetRows": 0,
+      "learned": {
+        "dictionary": 4890,
+        "learnedFeatures": 0,
+        "candidateFeatures": 0,
+        "knownFingerprints": 0,
+        "noise": 0,
+        "knownRows": 0
+      },
+      "predictionDigest": "58390e567dcbeda32ac0ff1084916a42bb73a1ee61ce8523f69126fbbf9e3a6e",
+      "witnesses": [
+        {
+          "index": 1150,
+          "id": "10000000-0000-4000-8000-00000001496e",
+          "predicted": "인천 연수구 송도과학로 259 고객",
+          "correct": false
+        },
+        {
+          "index": 1794,
+          "id": "10000000-0000-4000-8000-000000004dab",
+          "predicted": "인천 연수구 송도과학로 259 고객",
+          "correct": false
+        },
+        {
+          "index": 3805,
+          "id": "10000000-0000-4000-8000-00000000e244",
+          "predicted": "대전 유성구 대학로 543 고객",
+          "correct": false
+        },
+        {
+          "index": 5225,
+          "id": "10000000-0000-4000-8000-000000007639",
+          "predicted": "대전 유성구 대학로 543 고객",
+          "correct": false
+        },
+        {
+          "index": 5627,
+          "id": "10000000-0000-4000-8000-00000000f90c",
+          "predicted": "대전 유성구 대학로 543 고객",
+          "correct": false
+        },
+        {
+          "index": 6617,
+          "id": "10000000-0000-4000-8000-00000000f46c",
+          "predicted": "대전 유성구 대학로 95 고객",
+          "correct": false
+        },
+        {
+          "index": 6899,
+          "id": "10000000-0000-4000-8000-000000006b72",
+          "predicted": "부산 해운대구 센텀로 130 고객",
+          "correct": false
+        },
+        {
+          "index": 6963,
+          "id": "10000000-0000-4000-8000-0000000022e6",
+          "predicted": "Tokyo Chiyoda 96 고객",
+          "correct": false
+        },
+        {
+          "index": 7896,
+          "id": "10000000-0000-4000-8000-000000015a63",
+          "predicted": "Tokyo Chiyoda 274 고객",
+          "correct": false
+        },
+        {
+          "index": 8825,
+          "id": "10000000-0000-4000-8000-0000000008ce",
+          "predicted": "대전 유성구 대학로 543 고객",
+          "correct": false
+        },
+        {
+          "index": 8869,
+          "id": "10000000-0000-4000-8000-00000000d66a",
+          "predicted": "부산 해운대구 센텀로 130 고객",
+          "correct": false
+        },
+        {
+          "index": 9982,
+          "id": "10000000-0000-4000-8000-000000015360",
+          "predicted": "대전 유성구 대학로 543 고객",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "known": 0,
+      "knownSupported": 0,
+      "phase": "snapshot",
+      "method": "public_tagcount_reference",
+      "channel": "index",
+      "rows": 10000,
+      "correct": 23,
+      "pct": 0.23,
+      "characters": 108361,
+      "totalCharacters": 148907,
+      "characterPct": 72.77092413385536,
+      "mostly": 5875,
+      "sharedKnownTargetRows": 0,
+      "learned": {
+        "dictionary": 4890,
+        "learnedFeatures": 0,
+        "candidateFeatures": 0,
+        "knownFingerprints": 0,
+        "noise": 0,
+        "knownRows": 0
+      },
+      "predictionDigest": "59c59ac7c4e7d3e5db722e7b1e12fb1dd4915654918ac8863dfe45324892ccd3",
+      "witnesses": [
+        {
+          "index": 1150,
+          "id": "10000000-0000-4000-8000-00000001496e",
+          "predicted": "인천 연수구 송도과학로 259 고객",
+          "correct": false
+        },
+        {
+          "index": 1794,
+          "id": "10000000-0000-4000-8000-000000004dab",
+          "predicted": "인천 연수구 송도과학로 259 고객",
+          "correct": false
+        },
+        {
+          "index": 3805,
+          "id": "10000000-0000-4000-8000-00000000e244",
+          "predicted": "대전 유성구 대학로 543 고객",
+          "correct": false
+        },
+        {
+          "index": 5225,
+          "id": "10000000-0000-4000-8000-000000007639",
+          "predicted": "대전 유성구 대학로 543 고객",
+          "correct": false
+        },
+        {
+          "index": 5627,
+          "id": "10000000-0000-4000-8000-00000000f90c",
+          "predicted": "대전 유성구 대학로 543 고객",
+          "correct": false
+        },
+        {
+          "index": 6617,
+          "id": "10000000-0000-4000-8000-00000000f46c",
+          "predicted": "대전 유성구 대학로 95 고객",
+          "correct": false
+        },
+        {
+          "index": 6899,
+          "id": "10000000-0000-4000-8000-000000006b72",
+          "predicted": "부산 해운대구 센텀로 130 고객",
+          "correct": false
+        },
+        {
+          "index": 6963,
+          "id": "10000000-0000-4000-8000-0000000022e6",
+          "predicted": "Tokyo Chiyoda 96 고객",
+          "correct": false
+        },
+        {
+          "index": 7896,
+          "id": "10000000-0000-4000-8000-000000015a63",
+          "predicted": "Tokyo Chiyoda 274 고객",
+          "correct": false
+        },
+        {
+          "index": 8825,
+          "id": "10000000-0000-4000-8000-0000000008ce",
+          "predicted": "대전 유성구 대학로 543 고객",
+          "correct": false
+        },
+        {
+          "index": 8869,
+          "id": "10000000-0000-4000-8000-00000000d66a",
+          "predicted": "부산 해운대구 센텀로 130 고객",
+          "correct": false
+        },
+        {
+          "index": 9982,
+          "id": "10000000-0000-4000-8000-000000015360",
+          "predicted": "대전 유성구 대학로 543 고객",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "known": 100,
+      "knownSupported": 100,
+      "phase": "snapshot",
+      "method": "group_frequency",
+      "channel": "index",
+      "rows": 9900,
+      "correct": 1,
+      "pct": 0.010101010101010102,
+      "characters": 17860,
+      "totalCharacters": 147395,
+      "characterPct": 12.117100308694324,
+      "mostly": 143,
+      "sharedKnownTargetRows": 0,
+      "learned": {
+        "dictionary": 4900,
+        "learnedFeatures": 0,
+        "candidateFeatures": 4500,
+        "knownFingerprints": 100,
+        "noise": 0,
+        "knownRows": 100
+      },
+      "predictionDigest": "41b41d6b48b812884aa9b608cc88b4fd407b1115af3ab1e0022263a4c709d36b",
+      "witnesses": [
+        {
+          "index": 971,
+          "id": "10000000-0000-4000-8000-0000000045a2",
+          "predicted": "대전 유성구 대학로 10 고객",
+          "correct": false
+        },
+        {
+          "index": 2054,
+          "id": "10000000-0000-4000-8000-000000002bf0",
+          "predicted": "대전 유성구 대학로 10 고객",
+          "correct": false
+        },
+        {
+          "index": 2369,
+          "id": "10000000-0000-4000-8000-0000000083f7",
+          "predicted": "대전 유성구 대학로 10 고객",
+          "correct": false
+        },
+        {
+          "index": 2954,
+          "id": "10000000-0000-4000-8000-00000000fbe4",
+          "predicted": "대전 유성구 대학로 10 고객",
+          "correct": false
+        },
+        {
+          "index": 4471,
+          "id": "10000000-0000-4000-8000-0000000145d4",
+          "predicted": "대전 유성구 대학로 10 고객",
+          "correct": false
+        },
+        {
+          "index": 6108,
+          "id": "10000000-0000-4000-8000-000000015722",
+          "predicted": "대전 유성구 대학로 10 고객",
+          "correct": false
+        },
+        {
+          "index": 6587,
+          "id": "10000000-0000-4000-8000-000000016cb6",
+          "predicted": "대전 유성구 대학로 10 고객",
+          "correct": false
+        },
+        {
+          "index": 7669,
+          "id": "10000000-0000-4000-8000-000000018337",
+          "predicted": "대전 유성구 대학로 10 고객",
+          "correct": false
+        },
+        {
+          "index": 8241,
+          "id": "10000000-0000-4000-8000-00000000ab0b",
+          "predicted": "대전 유성구 대학로 10 고객",
+          "correct": false
+        },
+        {
+          "index": 8744,
+          "id": "10000000-0000-4000-8000-00000001441e",
+          "predicted": "대전 유성구 대학로 10 고객",
+          "correct": false
+        },
+        {
+          "index": 9733,
+          "id": "10000000-0000-4000-8000-000000010685",
+          "predicted": "대전 유성구 대학로 10 고객",
+          "correct": false
+        },
+        {
+          "index": 9953,
+          "id": "10000000-0000-4000-8000-000000003e23",
+          "predicted": "대전 유성구 대학로 10 고객",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "known": 100,
+      "knownSupported": 100,
+      "phase": "snapshot",
+      "method": "piece_frequency",
+      "channel": "index",
+      "rows": 9900,
+      "correct": 0,
+      "pct": 0,
+      "characters": 22093,
+      "totalCharacters": 147395,
+      "characterPct": 14.988975202686659,
+      "mostly": 427,
+      "sharedKnownTargetRows": 0,
+      "learned": {
+        "dictionary": 4900,
+        "learnedFeatures": 0,
+        "candidateFeatures": 4500,
+        "knownFingerprints": 100,
+        "noise": 0,
+        "knownRows": 100
+      },
+      "predictionDigest": "4369e778e05b2edded61023db761db7875fbe82ccb40c59d243fb262753853f4",
+      "witnesses": [
+        {
+          "index": 971,
+          "id": "10000000-0000-4000-8000-0000000045a2",
+          "predicted": "서울 중구 세종대로 350 고객",
+          "correct": false
+        },
+        {
+          "index": 2054,
+          "id": "10000000-0000-4000-8000-000000002bf0",
+          "predicted": "서울 중구 세종대로 350 고객",
+          "correct": false
+        },
+        {
+          "index": 2369,
+          "id": "10000000-0000-4000-8000-0000000083f7",
+          "predicted": "서울 중구 세종대로 350 고객",
+          "correct": false
+        },
+        {
+          "index": 2954,
+          "id": "10000000-0000-4000-8000-00000000fbe4",
+          "predicted": "서울 중구 세종대로 350 고객",
+          "correct": false
+        },
+        {
+          "index": 4471,
+          "id": "10000000-0000-4000-8000-0000000145d4",
+          "predicted": "서울 중구 세종대로 350 고객",
+          "correct": false
+        },
+        {
+          "index": 6108,
+          "id": "10000000-0000-4000-8000-000000015722",
+          "predicted": "서울 중구 세종대로 350 고객",
+          "correct": false
+        },
+        {
+          "index": 6587,
+          "id": "10000000-0000-4000-8000-000000016cb6",
+          "predicted": "서울 중구 세종대로 350 고객",
+          "correct": false
+        },
+        {
+          "index": 7669,
+          "id": "10000000-0000-4000-8000-000000018337",
+          "predicted": "서울 중구 세종대로 350 고객",
+          "correct": false
+        },
+        {
+          "index": 8241,
+          "id": "10000000-0000-4000-8000-00000000ab0b",
+          "predicted": "서울 중구 세종대로 350 고객",
+          "correct": false
+        },
+        {
+          "index": 8744,
+          "id": "10000000-0000-4000-8000-00000001441e",
+          "predicted": "서울 중구 세종대로 350 고객",
+          "correct": false
+        },
+        {
+          "index": 9733,
+          "id": "10000000-0000-4000-8000-000000010685",
+          "predicted": "서울 중구 세종대로 350 고객",
+          "correct": false
+        },
+        {
+          "index": 9953,
+          "id": "10000000-0000-4000-8000-000000003e23",
+          "predicted": "서울 중구 세종대로 350 고객",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "known": 100,
+      "knownSupported": 100,
+      "phase": "snapshot",
+      "method": "rank_frequency",
+      "channel": "index",
+      "rows": 9900,
+      "correct": 3,
+      "pct": 0.030303030303030304,
+      "characters": 21718,
+      "totalCharacters": 147395,
+      "characterPct": 14.734556803148005,
+      "mostly": 570,
+      "sharedKnownTargetRows": 0,
+      "learned": {
+        "dictionary": 4900,
+        "learnedFeatures": 0,
+        "candidateFeatures": 4500,
+        "knownFingerprints": 100,
+        "noise": 0,
+        "knownRows": 100
+      },
+      "predictionDigest": "b2bf76805835679d31e7d525d42a681bd367657909e161b8edf0dccc20d80726",
+      "witnesses": [
+        {
+          "index": 971,
+          "id": "10000000-0000-4000-8000-0000000045a2",
+          "predicted": "Madrid Gran Vía 704 고객",
+          "correct": false
+        },
+        {
+          "index": 2054,
+          "id": "10000000-0000-4000-8000-000000002bf0",
+          "predicted": "Tokyo Chiyoda 936 고객",
+          "correct": false
+        },
+        {
+          "index": 2369,
+          "id": "10000000-0000-4000-8000-0000000083f7",
+          "predicted": "대전 유성구 대학로 10 고객",
+          "correct": false
+        },
+        {
+          "index": 2954,
+          "id": "10000000-0000-4000-8000-00000000fbe4",
+          "predicted": "대전 유성구 대학로 10 고객",
+          "correct": false
+        },
+        {
+          "index": 4471,
+          "id": "10000000-0000-4000-8000-0000000145d4",
+          "predicted": "Tokyo Chiyoda 991 고객",
+          "correct": false
+        },
+        {
+          "index": 6108,
+          "id": "10000000-0000-4000-8000-000000015722",
+          "predicted": "대전 유성구 대학로 10 고객",
+          "correct": false
+        },
+        {
+          "index": 6587,
+          "id": "10000000-0000-4000-8000-000000016cb6",
+          "predicted": "대전 유성구 대학로 645 고객",
+          "correct": false
+        },
+        {
+          "index": 7669,
+          "id": "10000000-0000-4000-8000-000000018337",
+          "predicted": "Tokyo Chiyoda 536 고객",
+          "correct": false
+        },
+        {
+          "index": 8241,
+          "id": "10000000-0000-4000-8000-00000000ab0b",
+          "predicted": "서울 중구 세종대로 188 고객",
+          "correct": false
+        },
+        {
+          "index": 8744,
+          "id": "10000000-0000-4000-8000-00000001441e",
+          "predicted": "서울 중구 세종대로 294 고객",
+          "correct": false
+        },
+        {
+          "index": 9733,
+          "id": "10000000-0000-4000-8000-000000010685",
+          "predicted": "대전 유성구 대학로 10 고객",
+          "correct": false
+        },
+        {
+          "index": 9953,
+          "id": "10000000-0000-4000-8000-000000003e23",
+          "predicted": "대전 유성구 대학로 10 고객",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "known": 100,
+      "knownSupported": 100,
+      "phase": "snapshot",
+      "method": "known_projection",
+      "channel": "index",
+      "rows": 9900,
+      "correct": 3,
+      "pct": 0.030303030303030304,
+      "characters": 24326,
+      "totalCharacters": 147395,
+      "characterPct": 16.503951965806166,
+      "mostly": 450,
+      "sharedKnownTargetRows": 0,
+      "learned": {
+        "dictionary": 4900,
+        "learnedFeatures": 0,
+        "candidateFeatures": 4500,
+        "knownFingerprints": 100,
+        "noise": 0,
+        "knownRows": 100
+      },
+      "predictionDigest": "b1468857f24340c645a72f277e4835ea7770625d3182686010445994b5726806",
+      "witnesses": [
+        {
+          "index": 971,
+          "id": "10000000-0000-4000-8000-0000000045a2",
+          "predicted": "대전 유성구 대학로 543 고객",
+          "correct": false
+        },
+        {
+          "index": 2054,
+          "id": "10000000-0000-4000-8000-000000002bf0",
+          "predicted": "대전 유성구 대학로 543 고객",
+          "correct": false
+        },
+        {
+          "index": 2369,
+          "id": "10000000-0000-4000-8000-0000000083f7",
+          "predicted": "대전 유성구 대학로 543 고객",
+          "correct": false
+        },
+        {
+          "index": 2954,
+          "id": "10000000-0000-4000-8000-00000000fbe4",
+          "predicted": "대전 유성구 대학로 543 고객",
+          "correct": false
+        },
+        {
+          "index": 4471,
+          "id": "10000000-0000-4000-8000-0000000145d4",
+          "predicted": "대전 유성구 대학로 543 고객",
+          "correct": false
+        },
+        {
+          "index": 6108,
+          "id": "10000000-0000-4000-8000-000000015722",
+          "predicted": "대전 유성구 대학로 543 고객",
+          "correct": false
+        },
+        {
+          "index": 6587,
+          "id": "10000000-0000-4000-8000-000000016cb6",
+          "predicted": "대전 유성구 대학로 543 고객",
+          "correct": false
+        },
+        {
+          "index": 7669,
+          "id": "10000000-0000-4000-8000-000000018337",
+          "predicted": "대전 유성구 대학로 543 고객",
+          "correct": false
+        },
+        {
+          "index": 8241,
+          "id": "10000000-0000-4000-8000-00000000ab0b",
+          "predicted": "대전 유성구 대학로 543 고객",
+          "correct": false
+        },
+        {
+          "index": 8744,
+          "id": "10000000-0000-4000-8000-00000001441e",
+          "predicted": "대전 유성구 대학로 543 고객",
+          "correct": false
+        },
+        {
+          "index": 9733,
+          "id": "10000000-0000-4000-8000-000000010685",
+          "predicted": "대전 유성구 대학로 543 고객",
+          "correct": false
+        },
+        {
+          "index": 9953,
+          "id": "10000000-0000-4000-8000-000000003e23",
+          "predicted": "대전 유성구 대학로 543 고객",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "known": 100,
+      "knownSupported": 100,
+      "phase": "snapshot",
+      "method": "known_fingerprint",
+      "channel": "index",
+      "rows": 9900,
+      "correct": 3,
+      "pct": 0.030303030303030304,
+      "characters": 24326,
+      "totalCharacters": 147395,
+      "characterPct": 16.503951965806166,
+      "mostly": 450,
+      "sharedKnownTargetRows": 0,
+      "learned": {
+        "dictionary": 4900,
+        "learnedFeatures": 0,
+        "candidateFeatures": 4500,
+        "knownFingerprints": 100,
+        "noise": 0,
+        "knownRows": 100
+      },
+      "predictionDigest": "b1468857f24340c645a72f277e4835ea7770625d3182686010445994b5726806",
+      "witnesses": [
+        {
+          "index": 971,
+          "id": "10000000-0000-4000-8000-0000000045a2",
+          "predicted": "대전 유성구 대학로 543 고객",
+          "correct": false
+        },
+        {
+          "index": 2054,
+          "id": "10000000-0000-4000-8000-000000002bf0",
+          "predicted": "대전 유성구 대학로 543 고객",
+          "correct": false
+        },
+        {
+          "index": 2369,
+          "id": "10000000-0000-4000-8000-0000000083f7",
+          "predicted": "대전 유성구 대학로 543 고객",
+          "correct": false
+        },
+        {
+          "index": 2954,
+          "id": "10000000-0000-4000-8000-00000000fbe4",
+          "predicted": "대전 유성구 대학로 543 고객",
+          "correct": false
+        },
+        {
+          "index": 4471,
+          "id": "10000000-0000-4000-8000-0000000145d4",
+          "predicted": "대전 유성구 대학로 543 고객",
+          "correct": false
+        },
+        {
+          "index": 6108,
+          "id": "10000000-0000-4000-8000-000000015722",
+          "predicted": "대전 유성구 대학로 543 고객",
+          "correct": false
+        },
+        {
+          "index": 6587,
+          "id": "10000000-0000-4000-8000-000000016cb6",
+          "predicted": "대전 유성구 대학로 543 고객",
+          "correct": false
+        },
+        {
+          "index": 7669,
+          "id": "10000000-0000-4000-8000-000000018337",
+          "predicted": "대전 유성구 대학로 543 고객",
+          "correct": false
+        },
+        {
+          "index": 8241,
+          "id": "10000000-0000-4000-8000-00000000ab0b",
+          "predicted": "대전 유성구 대학로 543 고객",
+          "correct": false
+        },
+        {
+          "index": 8744,
+          "id": "10000000-0000-4000-8000-00000001441e",
+          "predicted": "대전 유성구 대학로 543 고객",
+          "correct": false
+        },
+        {
+          "index": 9733,
+          "id": "10000000-0000-4000-8000-000000010685",
+          "predicted": "대전 유성구 대학로 543 고객",
+          "correct": false
+        },
+        {
+          "index": 9953,
+          "id": "10000000-0000-4000-8000-000000003e23",
+          "predicted": "대전 유성구 대학로 543 고객",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "known": 100,
+      "knownSupported": 100,
+      "phase": "snapshot",
+      "method": "public_shape_reference",
+      "channel": "native_shape",
+      "rows": 9900,
+      "correct": 30,
+      "pct": 0.30303030303030304,
+      "characters": 110573,
+      "totalCharacters": 147395,
+      "characterPct": 75.01814851250042,
+      "mostly": 6158,
+      "sharedKnownTargetRows": 0,
+      "learned": {
+        "dictionary": 4900,
+        "learnedFeatures": 0,
+        "candidateFeatures": 4500,
+        "knownFingerprints": 100,
+        "noise": 0,
+        "knownRows": 100
+      },
+      "predictionDigest": "e20c130739218bc631761340d4c81dd2705cbb75926cbd01c6b288a2e8500d45",
+      "witnesses": [
+        {
+          "index": 971,
+          "id": "10000000-0000-4000-8000-0000000045a2",
+          "predicted": "부산 해운대구 센텀로 39 고객",
+          "correct": false
+        },
+        {
+          "index": 2054,
+          "id": "10000000-0000-4000-8000-000000002bf0",
+          "predicted": "Madrid Gran Vía 169 고객",
+          "correct": false
+        },
+        {
+          "index": 2369,
+          "id": "10000000-0000-4000-8000-0000000083f7",
+          "predicted": "대전 유성구 대학로 543 고객",
+          "correct": false
+        },
+        {
+          "index": 2954,
+          "id": "10000000-0000-4000-8000-00000000fbe4",
+          "predicted": "부산 해운대구 센텀로 130 고객",
+          "correct": false
+        },
+        {
+          "index": 4471,
+          "id": "10000000-0000-4000-8000-0000000145d4",
+          "predicted": "대전 유성구 대학로 543 고객",
+          "correct": false
+        },
+        {
+          "index": 6108,
+          "id": "10000000-0000-4000-8000-000000015722",
+          "predicted": "Tokyo Chiyoda 274 고객",
+          "correct": false
+        },
+        {
+          "index": 6587,
+          "id": "10000000-0000-4000-8000-000000016cb6",
+          "predicted": "대전 유성구 대학로 543 고객",
+          "correct": false
+        },
+        {
+          "index": 7669,
+          "id": "10000000-0000-4000-8000-000000018337",
+          "predicted": "대전 유성구 대학로 543 고객",
+          "correct": false
+        },
+        {
+          "index": 8241,
+          "id": "10000000-0000-4000-8000-00000000ab0b",
+          "predicted": "인천 연수구 송도과학로 15 고객",
+          "correct": false
+        },
+        {
+          "index": 8744,
+          "id": "10000000-0000-4000-8000-00000001441e",
+          "predicted": "부산 해운대구 센텀로 130 고객",
+          "correct": false
+        },
+        {
+          "index": 9733,
+          "id": "10000000-0000-4000-8000-000000010685",
+          "predicted": "대전 유성구 대학로 543 고객",
+          "correct": false
+        },
+        {
+          "index": 9953,
+          "id": "10000000-0000-4000-8000-000000003e23",
+          "predicted": "부산 해운대구 센텀로 130 고객",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "known": 100,
+      "knownSupported": 100,
+      "phase": "snapshot",
+      "method": "public_tagcount_reference",
+      "channel": "index",
+      "rows": 9900,
+      "correct": 23,
+      "pct": 0.23232323232323232,
+      "characters": 107260,
+      "totalCharacters": 147395,
+      "characterPct": 72.7704467587096,
+      "mostly": 5811,
+      "sharedKnownTargetRows": 0,
+      "learned": {
+        "dictionary": 4900,
+        "learnedFeatures": 0,
+        "candidateFeatures": 4500,
+        "knownFingerprints": 100,
+        "noise": 0,
+        "knownRows": 100
+      },
+      "predictionDigest": "8c002eb009a281712c3864bc69c357bb177085edd3b5b0d7bc7075bad186852c",
+      "witnesses": [
+        {
+          "index": 971,
+          "id": "10000000-0000-4000-8000-0000000045a2",
+          "predicted": "대전 유성구 대학로 543 고객",
+          "correct": false
+        },
+        {
+          "index": 2054,
+          "id": "10000000-0000-4000-8000-000000002bf0",
+          "predicted": "Madrid Gran Vía 169 고객",
+          "correct": false
+        },
+        {
+          "index": 2369,
+          "id": "10000000-0000-4000-8000-0000000083f7",
+          "predicted": "대전 유성구 대학로 543 고객",
+          "correct": false
+        },
+        {
+          "index": 2954,
+          "id": "10000000-0000-4000-8000-00000000fbe4",
+          "predicted": "부산 해운대구 센텀로 130 고객",
+          "correct": false
+        },
+        {
+          "index": 4471,
+          "id": "10000000-0000-4000-8000-0000000145d4",
+          "predicted": "대전 유성구 대학로 543 고객",
+          "correct": false
+        },
+        {
+          "index": 6108,
+          "id": "10000000-0000-4000-8000-000000015722",
+          "predicted": "Tokyo Chiyoda 274 고객",
+          "correct": false
+        },
+        {
+          "index": 6587,
+          "id": "10000000-0000-4000-8000-000000016cb6",
+          "predicted": "대전 유성구 대학로 543 고객",
+          "correct": false
+        },
+        {
+          "index": 7669,
+          "id": "10000000-0000-4000-8000-000000018337",
+          "predicted": "대전 유성구 대학로 543 고객",
+          "correct": false
+        },
+        {
+          "index": 8241,
+          "id": "10000000-0000-4000-8000-00000000ab0b",
+          "predicted": "부산 해운대구 센텀로 130 고객",
+          "correct": false
+        },
+        {
+          "index": 8744,
+          "id": "10000000-0000-4000-8000-00000001441e",
+          "predicted": "부산 해운대구 센텀로 130 고객",
+          "correct": false
+        },
+        {
+          "index": 9733,
+          "id": "10000000-0000-4000-8000-000000010685",
+          "predicted": "대전 유성구 대학로 543 고객",
+          "correct": false
+        },
+        {
+          "index": 9953,
+          "id": "10000000-0000-4000-8000-000000003e23",
+          "predicted": "부산 해운대구 센텀로 130 고객",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "known": 100,
+      "knownSupported": 100,
+      "phase": "snapshot",
+      "method": "public_shape_known",
+      "channel": "native_shape",
+      "rows": 9900,
+      "correct": 30,
+      "pct": 0.30303030303030304,
+      "characters": 110573,
+      "totalCharacters": 147395,
+      "characterPct": 75.01814851250042,
+      "mostly": 6158,
+      "sharedKnownTargetRows": 0,
+      "learned": {
+        "dictionary": 4900,
+        "learnedFeatures": 0,
+        "candidateFeatures": 4500,
+        "knownFingerprints": 100,
+        "noise": 0,
+        "knownRows": 100
+      },
+      "predictionDigest": "e20c130739218bc631761340d4c81dd2705cbb75926cbd01c6b288a2e8500d45",
+      "witnesses": [
+        {
+          "index": 971,
+          "id": "10000000-0000-4000-8000-0000000045a2",
+          "predicted": "부산 해운대구 센텀로 39 고객",
+          "correct": false
+        },
+        {
+          "index": 2054,
+          "id": "10000000-0000-4000-8000-000000002bf0",
+          "predicted": "Madrid Gran Vía 169 고객",
+          "correct": false
+        },
+        {
+          "index": 2369,
+          "id": "10000000-0000-4000-8000-0000000083f7",
+          "predicted": "대전 유성구 대학로 543 고객",
+          "correct": false
+        },
+        {
+          "index": 2954,
+          "id": "10000000-0000-4000-8000-00000000fbe4",
+          "predicted": "부산 해운대구 센텀로 130 고객",
+          "correct": false
+        },
+        {
+          "index": 4471,
+          "id": "10000000-0000-4000-8000-0000000145d4",
+          "predicted": "대전 유성구 대학로 543 고객",
+          "correct": false
+        },
+        {
+          "index": 6108,
+          "id": "10000000-0000-4000-8000-000000015722",
+          "predicted": "Tokyo Chiyoda 274 고객",
+          "correct": false
+        },
+        {
+          "index": 6587,
+          "id": "10000000-0000-4000-8000-000000016cb6",
+          "predicted": "대전 유성구 대학로 543 고객",
+          "correct": false
+        },
+        {
+          "index": 7669,
+          "id": "10000000-0000-4000-8000-000000018337",
+          "predicted": "대전 유성구 대학로 543 고객",
+          "correct": false
+        },
+        {
+          "index": 8241,
+          "id": "10000000-0000-4000-8000-00000000ab0b",
+          "predicted": "인천 연수구 송도과학로 15 고객",
+          "correct": false
+        },
+        {
+          "index": 8744,
+          "id": "10000000-0000-4000-8000-00000001441e",
+          "predicted": "부산 해운대구 센텀로 130 고객",
+          "correct": false
+        },
+        {
+          "index": 9733,
+          "id": "10000000-0000-4000-8000-000000010685",
+          "predicted": "대전 유성구 대학로 543 고객",
+          "correct": false
+        },
+        {
+          "index": 9953,
+          "id": "10000000-0000-4000-8000-000000003e23",
+          "predicted": "부산 해운대구 센텀로 130 고객",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "known": 100,
+      "knownSupported": 100,
+      "phase": "snapshot",
+      "method": "public_tagcount_known",
+      "channel": "index",
+      "rows": 9900,
+      "correct": 23,
+      "pct": 0.23232323232323232,
+      "characters": 107260,
+      "totalCharacters": 147395,
+      "characterPct": 72.7704467587096,
+      "mostly": 5811,
+      "sharedKnownTargetRows": 0,
+      "learned": {
+        "dictionary": 4900,
+        "learnedFeatures": 0,
+        "candidateFeatures": 4500,
+        "knownFingerprints": 100,
+        "noise": 0,
+        "knownRows": 100
+      },
+      "predictionDigest": "8c002eb009a281712c3864bc69c357bb177085edd3b5b0d7bc7075bad186852c",
+      "witnesses": [
+        {
+          "index": 971,
+          "id": "10000000-0000-4000-8000-0000000045a2",
+          "predicted": "대전 유성구 대학로 543 고객",
+          "correct": false
+        },
+        {
+          "index": 2054,
+          "id": "10000000-0000-4000-8000-000000002bf0",
+          "predicted": "Madrid Gran Vía 169 고객",
+          "correct": false
+        },
+        {
+          "index": 2369,
+          "id": "10000000-0000-4000-8000-0000000083f7",
+          "predicted": "대전 유성구 대학로 543 고객",
+          "correct": false
+        },
+        {
+          "index": 2954,
+          "id": "10000000-0000-4000-8000-00000000fbe4",
+          "predicted": "부산 해운대구 센텀로 130 고객",
+          "correct": false
+        },
+        {
+          "index": 4471,
+          "id": "10000000-0000-4000-8000-0000000145d4",
+          "predicted": "대전 유성구 대학로 543 고객",
+          "correct": false
+        },
+        {
+          "index": 6108,
+          "id": "10000000-0000-4000-8000-000000015722",
+          "predicted": "Tokyo Chiyoda 274 고객",
+          "correct": false
+        },
+        {
+          "index": 6587,
+          "id": "10000000-0000-4000-8000-000000016cb6",
+          "predicted": "대전 유성구 대학로 543 고객",
+          "correct": false
+        },
+        {
+          "index": 7669,
+          "id": "10000000-0000-4000-8000-000000018337",
+          "predicted": "대전 유성구 대학로 543 고객",
+          "correct": false
+        },
+        {
+          "index": 8241,
+          "id": "10000000-0000-4000-8000-00000000ab0b",
+          "predicted": "부산 해운대구 센텀로 130 고객",
+          "correct": false
+        },
+        {
+          "index": 8744,
+          "id": "10000000-0000-4000-8000-00000001441e",
+          "predicted": "부산 해운대구 센텀로 130 고객",
+          "correct": false
+        },
+        {
+          "index": 9733,
+          "id": "10000000-0000-4000-8000-000000010685",
+          "predicted": "대전 유성구 대학로 543 고객",
+          "correct": false
+        },
+        {
+          "index": 9953,
+          "id": "10000000-0000-4000-8000-000000003e23",
+          "predicted": "부산 해운대구 센텀로 130 고객",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "known": 500,
+      "knownSupported": 500,
+      "phase": "snapshot",
+      "method": "group_frequency",
+      "channel": "index",
+      "rows": 9500,
+      "correct": 1,
+      "pct": 0.010526315789473684,
+      "characters": 17146,
+      "totalCharacters": 141372,
+      "characterPct": 12.128285657697422,
+      "mostly": 138,
+      "sharedKnownTargetRows": 0,
+      "learned": {
+        "dictionary": 4972,
+        "learnedFeatures": 0,
+        "candidateFeatures": 16558,
+        "knownFingerprints": 500,
+        "noise": 0,
+        "knownRows": 500
+      },
+      "predictionDigest": "93f816cad9336067ec8bfbb99af9e343677ca1c93193ebe2a25529c8394b2bfc",
+      "witnesses": [
+        {
+          "index": 3155,
+          "id": "10000000-0000-4000-8000-000000012a97",
+          "predicted": "대전 유성구 대학로 10 고객",
+          "correct": false
+        },
+        {
+          "index": 3593,
+          "id": "10000000-0000-4000-8000-00000001740a",
+          "predicted": "대전 유성구 대학로 10 고객",
+          "correct": false
+        },
+        {
+          "index": 3806,
+          "id": "10000000-0000-4000-8000-00000000b03b",
+          "predicted": "대전 유성구 대학로 10 고객",
+          "correct": false
+        },
+        {
+          "index": 4051,
+          "id": "10000000-0000-4000-8000-000000018680",
+          "predicted": "대전 유성구 대학로 10 고객",
+          "correct": false
+        },
+        {
+          "index": 4394,
+          "id": "10000000-0000-4000-8000-000000007d47",
+          "predicted": "대전 유성구 대학로 10 고객",
+          "correct": false
+        },
+        {
+          "index": 5851,
+          "id": "10000000-0000-4000-8000-00000000dc1e",
+          "predicted": "대전 유성구 대학로 10 고객",
+          "correct": false
+        },
+        {
+          "index": 6503,
+          "id": "10000000-0000-4000-8000-000000008d5d",
+          "predicted": "대전 유성구 대학로 10 고객",
+          "correct": false
+        },
+        {
+          "index": 6998,
+          "id": "10000000-0000-4000-8000-00000000a4b6",
+          "predicted": "대전 유성구 대학로 10 고객",
+          "correct": false
+        },
+        {
+          "index": 8407,
+          "id": "10000000-0000-4000-8000-0000000152ff",
+          "predicted": "대전 유성구 대학로 10 고객",
+          "correct": false
+        },
+        {
+          "index": 9380,
+          "id": "10000000-0000-4000-8000-000000001758",
+          "predicted": "대전 유성구 대학로 10 고객",
+          "correct": false
+        },
+        {
+          "index": 9686,
+          "id": "10000000-0000-4000-8000-00000000b02b",
+          "predicted": "대전 유성구 대학로 10 고객",
+          "correct": false
+        },
+        {
+          "index": 9736,
+          "id": "10000000-0000-4000-8000-00000000e4c9",
+          "predicted": "대전 유성구 대학로 10 고객",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "known": 500,
+      "knownSupported": 500,
+      "phase": "snapshot",
+      "method": "piece_frequency",
+      "channel": "index",
+      "rows": 9500,
+      "correct": 5,
+      "pct": 0.05263157894736842,
+      "characters": 21480,
+      "totalCharacters": 141372,
+      "characterPct": 15.193956370426958,
+      "mostly": 395,
+      "sharedKnownTargetRows": 0,
+      "learned": {
+        "dictionary": 4972,
+        "learnedFeatures": 0,
+        "candidateFeatures": 16558,
+        "knownFingerprints": 500,
+        "noise": 0,
+        "knownRows": 500
+      },
+      "predictionDigest": "497ece9d3b683aeee28c4aa74f899165d75d2f8f6f62cdcd5eb3c69edf4d815c",
+      "witnesses": [
+        {
+          "index": 3155,
+          "id": "10000000-0000-4000-8000-000000012a97",
+          "predicted": "서울 중구 세종대로 318 고객",
+          "correct": false
+        },
+        {
+          "index": 3593,
+          "id": "10000000-0000-4000-8000-00000001740a",
+          "predicted": "서울 중구 세종대로 318 고객",
+          "correct": false
+        },
+        {
+          "index": 3806,
+          "id": "10000000-0000-4000-8000-00000000b03b",
+          "predicted": "서울 중구 세종대로 318 고객",
+          "correct": false
+        },
+        {
+          "index": 4051,
+          "id": "10000000-0000-4000-8000-000000018680",
+          "predicted": "서울 중구 세종대로 318 고객",
+          "correct": false
+        },
+        {
+          "index": 4394,
+          "id": "10000000-0000-4000-8000-000000007d47",
+          "predicted": "서울 중구 세종대로 318 고객",
+          "correct": false
+        },
+        {
+          "index": 5851,
+          "id": "10000000-0000-4000-8000-00000000dc1e",
+          "predicted": "서울 중구 세종대로 318 고객",
+          "correct": false
+        },
+        {
+          "index": 6503,
+          "id": "10000000-0000-4000-8000-000000008d5d",
+          "predicted": "서울 중구 세종대로 318 고객",
+          "correct": false
+        },
+        {
+          "index": 6998,
+          "id": "10000000-0000-4000-8000-00000000a4b6",
+          "predicted": "서울 중구 세종대로 318 고객",
+          "correct": false
+        },
+        {
+          "index": 8407,
+          "id": "10000000-0000-4000-8000-0000000152ff",
+          "predicted": "서울 중구 세종대로 318 고객",
+          "correct": false
+        },
+        {
+          "index": 9380,
+          "id": "10000000-0000-4000-8000-000000001758",
+          "predicted": "서울 중구 세종대로 318 고객",
+          "correct": false
+        },
+        {
+          "index": 9686,
+          "id": "10000000-0000-4000-8000-00000000b02b",
+          "predicted": "서울 중구 세종대로 318 고객",
+          "correct": false
+        },
+        {
+          "index": 9736,
+          "id": "10000000-0000-4000-8000-00000000e4c9",
+          "predicted": "서울 중구 세종대로 318 고객",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "known": 500,
+      "knownSupported": 500,
+      "phase": "snapshot",
+      "method": "rank_frequency",
+      "channel": "index",
+      "rows": 9500,
+      "correct": 2,
+      "pct": 0.021052631578947368,
+      "characters": 20717,
+      "totalCharacters": 141372,
+      "characterPct": 14.654245536598477,
+      "mostly": 543,
+      "sharedKnownTargetRows": 0,
+      "learned": {
+        "dictionary": 4972,
+        "learnedFeatures": 0,
+        "candidateFeatures": 16558,
+        "knownFingerprints": 500,
+        "noise": 0,
+        "knownRows": 500
+      },
+      "predictionDigest": "9f32271002e293643f3fd63f9bcb2e7e9eb0b4ec1cd3cbd1099c47b705a99fdf",
+      "witnesses": [
+        {
+          "index": 3155,
+          "id": "10000000-0000-4000-8000-000000012a97",
+          "predicted": "대전 유성구 대학로 10 고객",
+          "correct": false
+        },
+        {
+          "index": 3593,
+          "id": "10000000-0000-4000-8000-00000001740a",
+          "predicted": "대전 유성구 대학로 10 고객",
+          "correct": false
+        },
+        {
+          "index": 3806,
+          "id": "10000000-0000-4000-8000-00000000b03b",
+          "predicted": "대전 유성구 대학로 662 고객",
+          "correct": false
+        },
+        {
+          "index": 4051,
+          "id": "10000000-0000-4000-8000-000000018680",
+          "predicted": "대전 유성구 대학로 10 고객",
+          "correct": false
+        },
+        {
+          "index": 4394,
+          "id": "10000000-0000-4000-8000-000000007d47",
+          "predicted": "Madrid Gran Vía 980 고객",
+          "correct": false
+        },
+        {
+          "index": 5851,
+          "id": "10000000-0000-4000-8000-00000000dc1e",
+          "predicted": "대전 유성구 대학로 10 고객",
+          "correct": false
+        },
+        {
+          "index": 6503,
+          "id": "10000000-0000-4000-8000-000000008d5d",
+          "predicted": "대전 유성구 대학로 10 고객",
+          "correct": false
+        },
+        {
+          "index": 6998,
+          "id": "10000000-0000-4000-8000-00000000a4b6",
+          "predicted": "부산 해운대구 센텀로 262 고객",
+          "correct": false
+        },
+        {
+          "index": 8407,
+          "id": "10000000-0000-4000-8000-0000000152ff",
+          "predicted": "대전 유성구 대학로 10 고객",
+          "correct": false
+        },
+        {
+          "index": 9380,
+          "id": "10000000-0000-4000-8000-000000001758",
+          "predicted": "부산 해운대구 센텀로 804 고객",
+          "correct": false
+        },
+        {
+          "index": 9686,
+          "id": "10000000-0000-4000-8000-00000000b02b",
+          "predicted": "부산 해운대구 센텀로 103 고객",
+          "correct": false
+        },
+        {
+          "index": 9736,
+          "id": "10000000-0000-4000-8000-00000000e4c9",
+          "predicted": "대전 유성구 대학로 10 고객",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "known": 500,
+      "knownSupported": 500,
+      "phase": "snapshot",
+      "method": "known_projection",
+      "channel": "index",
+      "rows": 9500,
+      "correct": 3,
+      "pct": 0.031578947368421054,
+      "characters": 23363,
+      "totalCharacters": 141372,
+      "characterPct": 16.525903290609172,
+      "mostly": 432,
+      "sharedKnownTargetRows": 0,
+      "learned": {
+        "dictionary": 4972,
+        "learnedFeatures": 0,
+        "candidateFeatures": 16558,
+        "knownFingerprints": 500,
+        "noise": 0,
+        "knownRows": 500
+      },
+      "predictionDigest": "b9f8aa8f19547c7d72d21ca7d6a7838d4cc3b1ff17faaa9022a837a4214080b8",
+      "witnesses": [
+        {
+          "index": 3155,
+          "id": "10000000-0000-4000-8000-000000012a97",
+          "predicted": "대전 유성구 대학로 543 고객",
+          "correct": false
+        },
+        {
+          "index": 3593,
+          "id": "10000000-0000-4000-8000-00000001740a",
+          "predicted": "대전 유성구 대학로 543 고객",
+          "correct": false
+        },
+        {
+          "index": 3806,
+          "id": "10000000-0000-4000-8000-00000000b03b",
+          "predicted": "대전 유성구 대학로 543 고객",
+          "correct": false
+        },
+        {
+          "index": 4051,
+          "id": "10000000-0000-4000-8000-000000018680",
+          "predicted": "대전 유성구 대학로 543 고객",
+          "correct": false
+        },
+        {
+          "index": 4394,
+          "id": "10000000-0000-4000-8000-000000007d47",
+          "predicted": "대전 유성구 대학로 543 고객",
+          "correct": false
+        },
+        {
+          "index": 5851,
+          "id": "10000000-0000-4000-8000-00000000dc1e",
+          "predicted": "대전 유성구 대학로 543 고객",
+          "correct": false
+        },
+        {
+          "index": 6503,
+          "id": "10000000-0000-4000-8000-000000008d5d",
+          "predicted": "대전 유성구 대학로 543 고객",
+          "correct": false
+        },
+        {
+          "index": 6998,
+          "id": "10000000-0000-4000-8000-00000000a4b6",
+          "predicted": "대전 유성구 대학로 543 고객",
+          "correct": false
+        },
+        {
+          "index": 8407,
+          "id": "10000000-0000-4000-8000-0000000152ff",
+          "predicted": "대전 유성구 대학로 543 고객",
+          "correct": false
+        },
+        {
+          "index": 9380,
+          "id": "10000000-0000-4000-8000-000000001758",
+          "predicted": "대전 유성구 대학로 543 고객",
+          "correct": false
+        },
+        {
+          "index": 9686,
+          "id": "10000000-0000-4000-8000-00000000b02b",
+          "predicted": "대전 유성구 대학로 543 고객",
+          "correct": false
+        },
+        {
+          "index": 9736,
+          "id": "10000000-0000-4000-8000-00000000e4c9",
+          "predicted": "대전 유성구 대학로 543 고객",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "known": 500,
+      "knownSupported": 500,
+      "phase": "snapshot",
+      "method": "known_fingerprint",
+      "channel": "index",
+      "rows": 9500,
+      "correct": 3,
+      "pct": 0.031578947368421054,
+      "characters": 23363,
+      "totalCharacters": 141372,
+      "characterPct": 16.525903290609172,
+      "mostly": 432,
+      "sharedKnownTargetRows": 0,
+      "learned": {
+        "dictionary": 4972,
+        "learnedFeatures": 0,
+        "candidateFeatures": 16558,
+        "knownFingerprints": 500,
+        "noise": 0,
+        "knownRows": 500
+      },
+      "predictionDigest": "b9f8aa8f19547c7d72d21ca7d6a7838d4cc3b1ff17faaa9022a837a4214080b8",
+      "witnesses": [
+        {
+          "index": 3155,
+          "id": "10000000-0000-4000-8000-000000012a97",
+          "predicted": "대전 유성구 대학로 543 고객",
+          "correct": false
+        },
+        {
+          "index": 3593,
+          "id": "10000000-0000-4000-8000-00000001740a",
+          "predicted": "대전 유성구 대학로 543 고객",
+          "correct": false
+        },
+        {
+          "index": 3806,
+          "id": "10000000-0000-4000-8000-00000000b03b",
+          "predicted": "대전 유성구 대학로 543 고객",
+          "correct": false
+        },
+        {
+          "index": 4051,
+          "id": "10000000-0000-4000-8000-000000018680",
+          "predicted": "대전 유성구 대학로 543 고객",
+          "correct": false
+        },
+        {
+          "index": 4394,
+          "id": "10000000-0000-4000-8000-000000007d47",
+          "predicted": "대전 유성구 대학로 543 고객",
+          "correct": false
+        },
+        {
+          "index": 5851,
+          "id": "10000000-0000-4000-8000-00000000dc1e",
+          "predicted": "대전 유성구 대학로 543 고객",
+          "correct": false
+        },
+        {
+          "index": 6503,
+          "id": "10000000-0000-4000-8000-000000008d5d",
+          "predicted": "대전 유성구 대학로 543 고객",
+          "correct": false
+        },
+        {
+          "index": 6998,
+          "id": "10000000-0000-4000-8000-00000000a4b6",
+          "predicted": "대전 유성구 대학로 543 고객",
+          "correct": false
+        },
+        {
+          "index": 8407,
+          "id": "10000000-0000-4000-8000-0000000152ff",
+          "predicted": "대전 유성구 대학로 543 고객",
+          "correct": false
+        },
+        {
+          "index": 9380,
+          "id": "10000000-0000-4000-8000-000000001758",
+          "predicted": "대전 유성구 대학로 543 고객",
+          "correct": false
+        },
+        {
+          "index": 9686,
+          "id": "10000000-0000-4000-8000-00000000b02b",
+          "predicted": "대전 유성구 대학로 543 고객",
+          "correct": false
+        },
+        {
+          "index": 9736,
+          "id": "10000000-0000-4000-8000-00000000e4c9",
+          "predicted": "대전 유성구 대학로 543 고객",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "known": 500,
+      "knownSupported": 500,
+      "phase": "snapshot",
+      "method": "public_shape_reference",
+      "channel": "native_shape",
+      "rows": 9500,
+      "correct": 29,
+      "pct": 0.30526315789473685,
+      "characters": 105949,
+      "totalCharacters": 141372,
+      "characterPct": 74.9434117081176,
+      "mostly": 5898,
+      "sharedKnownTargetRows": 0,
+      "learned": {
+        "dictionary": 4972,
+        "learnedFeatures": 0,
+        "candidateFeatures": 16558,
+        "knownFingerprints": 500,
+        "noise": 0,
+        "knownRows": 500
+      },
+      "predictionDigest": "7064b0783a2939cce2d610eb8f92090a95177edfbf69c2dd53a3ab61efc96dea",
+      "witnesses": [
+        {
+          "index": 3155,
+          "id": "10000000-0000-4000-8000-000000012a97",
+          "predicted": "인천 연수구 송도과학로 259 고객",
+          "correct": false
+        },
+        {
+          "index": 3593,
+          "id": "10000000-0000-4000-8000-00000001740a",
+          "predicted": "대전 유성구 대학로 543 고객",
+          "correct": false
+        },
+        {
+          "index": 3806,
+          "id": "10000000-0000-4000-8000-00000000b03b",
+          "predicted": "Madrid Gran Vía 169 고객",
+          "correct": false
+        },
+        {
+          "index": 4051,
+          "id": "10000000-0000-4000-8000-000000018680",
+          "predicted": "대전 유성구 대학로 543 고객",
+          "correct": false
+        },
+        {
+          "index": 4394,
+          "id": "10000000-0000-4000-8000-000000007d47",
+          "predicted": "인천 연수구 송도과학로 259 고객",
+          "correct": false
+        },
+        {
+          "index": 5851,
+          "id": "10000000-0000-4000-8000-00000000dc1e",
+          "predicted": "Madrid Gran Vía 169 고객",
+          "correct": false
+        },
+        {
+          "index": 6503,
+          "id": "10000000-0000-4000-8000-000000008d5d",
+          "predicted": "부산 해운대구 센텀로 130 고객",
+          "correct": false
+        },
+        {
+          "index": 6998,
+          "id": "10000000-0000-4000-8000-00000000a4b6",
+          "predicted": "Madrid Gran Vía 169 고객",
+          "correct": false
+        },
+        {
+          "index": 8407,
+          "id": "10000000-0000-4000-8000-0000000152ff",
+          "predicted": "Tokyo Chiyoda 274 고객",
+          "correct": false
+        },
+        {
+          "index": 9380,
+          "id": "10000000-0000-4000-8000-000000001758",
+          "predicted": "Madrid Gran Vía 169 고객",
+          "correct": false
+        },
+        {
+          "index": 9686,
+          "id": "10000000-0000-4000-8000-00000000b02b",
+          "predicted": "Tokyo Chiyoda 96 고객",
+          "correct": false
+        },
+        {
+          "index": 9736,
+          "id": "10000000-0000-4000-8000-00000000e4c9",
+          "predicted": "대전 유성구 대학로 543 고객",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "known": 500,
+      "knownSupported": 500,
+      "phase": "snapshot",
+      "method": "public_tagcount_reference",
+      "channel": "index",
+      "rows": 9500,
+      "correct": 23,
+      "pct": 0.24210526315789474,
+      "characters": 102819,
+      "totalCharacters": 141372,
+      "characterPct": 72.72939478821831,
+      "mostly": 5570,
+      "sharedKnownTargetRows": 0,
+      "learned": {
+        "dictionary": 4972,
+        "learnedFeatures": 0,
+        "candidateFeatures": 16558,
+        "knownFingerprints": 500,
+        "noise": 0,
+        "knownRows": 500
+      },
+      "predictionDigest": "5ca576a4fa2508ec8122fb9bb7aaaf8ed662a4b38094163fb2ec70c6b837b1f9",
+      "witnesses": [
+        {
+          "index": 3155,
+          "id": "10000000-0000-4000-8000-000000012a97",
+          "predicted": "인천 연수구 송도과학로 259 고객",
+          "correct": false
+        },
+        {
+          "index": 3593,
+          "id": "10000000-0000-4000-8000-00000001740a",
+          "predicted": "대전 유성구 대학로 543 고객",
+          "correct": false
+        },
+        {
+          "index": 3806,
+          "id": "10000000-0000-4000-8000-00000000b03b",
+          "predicted": "Madrid Gran Vía 169 고객",
+          "correct": false
+        },
+        {
+          "index": 4051,
+          "id": "10000000-0000-4000-8000-000000018680",
+          "predicted": "대전 유성구 대학로 543 고객",
+          "correct": false
+        },
+        {
+          "index": 4394,
+          "id": "10000000-0000-4000-8000-000000007d47",
+          "predicted": "인천 연수구 송도과학로 259 고객",
+          "correct": false
+        },
+        {
+          "index": 5851,
+          "id": "10000000-0000-4000-8000-00000000dc1e",
+          "predicted": "Madrid Gran Vía 169 고객",
+          "correct": false
+        },
+        {
+          "index": 6503,
+          "id": "10000000-0000-4000-8000-000000008d5d",
+          "predicted": "부산 해운대구 센텀로 130 고객",
+          "correct": false
+        },
+        {
+          "index": 6998,
+          "id": "10000000-0000-4000-8000-00000000a4b6",
+          "predicted": "Madrid Gran Vía 169 고객",
+          "correct": false
+        },
+        {
+          "index": 8407,
+          "id": "10000000-0000-4000-8000-0000000152ff",
+          "predicted": "Tokyo Chiyoda 274 고객",
+          "correct": false
+        },
+        {
+          "index": 9380,
+          "id": "10000000-0000-4000-8000-000000001758",
+          "predicted": "Madrid Gran Vía 169 고객",
+          "correct": false
+        },
+        {
+          "index": 9686,
+          "id": "10000000-0000-4000-8000-00000000b02b",
+          "predicted": "Tokyo Chiyoda 96 고객",
+          "correct": false
+        },
+        {
+          "index": 9736,
+          "id": "10000000-0000-4000-8000-00000000e4c9",
+          "predicted": "대전 유성구 대학로 543 고객",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "known": 500,
+      "knownSupported": 500,
+      "phase": "snapshot",
+      "method": "public_shape_known",
+      "channel": "native_shape",
+      "rows": 9500,
+      "correct": 36,
+      "pct": 0.37894736842105264,
+      "characters": 105956,
+      "totalCharacters": 141372,
+      "characterPct": 74.9483631836573,
+      "mostly": 5898,
+      "sharedKnownTargetRows": 0,
+      "learned": {
+        "dictionary": 4972,
+        "learnedFeatures": 0,
+        "candidateFeatures": 16558,
+        "knownFingerprints": 500,
+        "noise": 0,
+        "knownRows": 500
+      },
+      "predictionDigest": "8573f3cf20d832860a99ec01a4cc41d481449c943711f4f0e8935ac0c291921f",
+      "witnesses": [
+        {
+          "index": 3155,
+          "id": "10000000-0000-4000-8000-000000012a97",
+          "predicted": "인천 연수구 송도과학로 259 고객",
+          "correct": false
+        },
+        {
+          "index": 3593,
+          "id": "10000000-0000-4000-8000-00000001740a",
+          "predicted": "대전 유성구 대학로 543 고객",
+          "correct": false
+        },
+        {
+          "index": 3806,
+          "id": "10000000-0000-4000-8000-00000000b03b",
+          "predicted": "Madrid Gran Vía 169 고객",
+          "correct": false
+        },
+        {
+          "index": 4051,
+          "id": "10000000-0000-4000-8000-000000018680",
+          "predicted": "대전 유성구 대학로 543 고객",
+          "correct": false
+        },
+        {
+          "index": 4394,
+          "id": "10000000-0000-4000-8000-000000007d47",
+          "predicted": "인천 연수구 송도과학로 259 고객",
+          "correct": false
+        },
+        {
+          "index": 5851,
+          "id": "10000000-0000-4000-8000-00000000dc1e",
+          "predicted": "Madrid Gran Vía 169 고객",
+          "correct": false
+        },
+        {
+          "index": 6503,
+          "id": "10000000-0000-4000-8000-000000008d5d",
+          "predicted": "부산 해운대구 센텀로 130 고객",
+          "correct": false
+        },
+        {
+          "index": 6998,
+          "id": "10000000-0000-4000-8000-00000000a4b6",
+          "predicted": "Madrid Gran Vía 169 고객",
+          "correct": false
+        },
+        {
+          "index": 8407,
+          "id": "10000000-0000-4000-8000-0000000152ff",
+          "predicted": "Tokyo Chiyoda 274 고객",
+          "correct": false
+        },
+        {
+          "index": 9380,
+          "id": "10000000-0000-4000-8000-000000001758",
+          "predicted": "Madrid Gran Vía 169 고객",
+          "correct": false
+        },
+        {
+          "index": 9686,
+          "id": "10000000-0000-4000-8000-00000000b02b",
+          "predicted": "Tokyo Chiyoda 96 고객",
+          "correct": false
+        },
+        {
+          "index": 9736,
+          "id": "10000000-0000-4000-8000-00000000e4c9",
+          "predicted": "대전 유성구 대학로 543 고객",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "known": 500,
+      "knownSupported": 500,
+      "phase": "snapshot",
+      "method": "public_tagcount_known",
+      "channel": "index",
+      "rows": 9500,
+      "correct": 27,
+      "pct": 0.28421052631578947,
+      "characters": 91214,
+      "totalCharacters": 141372,
+      "characterPct": 64.52055569702628,
+      "mostly": 5313,
+      "sharedKnownTargetRows": 0,
+      "learned": {
+        "dictionary": 4972,
+        "learnedFeatures": 0,
+        "candidateFeatures": 16558,
+        "knownFingerprints": 500,
+        "noise": 0,
+        "knownRows": 500
+      },
+      "predictionDigest": "24e4bc2ea53f9884c4bfe4c7c8296a90e5adfdc137ce3dca550fe28b765eef1d",
+      "witnesses": [
+        {
+          "index": 3155,
+          "id": "10000000-0000-4000-8000-000000012a97",
+          "predicted": "인천 연수구 송도과학로 259 고객",
+          "correct": false
+        },
+        {
+          "index": 3593,
+          "id": "10000000-0000-4000-8000-00000001740a",
+          "predicted": "대전 유성구 대학로 543 고객",
+          "correct": false
+        },
+        {
+          "index": 3806,
+          "id": "10000000-0000-4000-8000-00000000b03b",
+          "predicted": "Madrid Gran Vía 169 고객",
+          "correct": false
+        },
+        {
+          "index": 4051,
+          "id": "10000000-0000-4000-8000-000000018680",
+          "predicted": "대전 유성구 대학로 543 고객",
+          "correct": false
+        },
+        {
+          "index": 4394,
+          "id": "10000000-0000-4000-8000-000000007d47",
+          "predicted": "인천 연수구 송도과학로 259 고객",
+          "correct": false
+        },
+        {
+          "index": 5851,
+          "id": "10000000-0000-4000-8000-00000000dc1e",
+          "predicted": "Madrid Gran Vía 169 고객",
+          "correct": false
+        },
+        {
+          "index": 6503,
+          "id": "10000000-0000-4000-8000-000000008d5d",
+          "predicted": "인천 연수구 송도과학로 15 고객",
+          "correct": false
+        },
+        {
+          "index": 6998,
+          "id": "10000000-0000-4000-8000-00000000a4b6",
+          "predicted": "Madrid Gran Vía 169 고객",
+          "correct": false
+        },
+        {
+          "index": 8407,
+          "id": "10000000-0000-4000-8000-0000000152ff",
+          "predicted": "Tokyo Chiyoda 274 고객",
+          "correct": false
+        },
+        {
+          "index": 9380,
+          "id": "10000000-0000-4000-8000-000000001758",
+          "predicted": "Madrid Gran Vía 169 고객",
+          "correct": false
+        },
+        {
+          "index": 9686,
+          "id": "10000000-0000-4000-8000-00000000b02b",
+          "predicted": "Tokyo Chiyoda 96 고객",
+          "correct": false
+        },
+        {
+          "index": 9736,
+          "id": "10000000-0000-4000-8000-00000000e4c9",
+          "predicted": "대전 유성구 대학로 543 고객",
+          "correct": false
+        }
+      ]
+    }
+  ],
+  "baselines": [
+    {
+      "known": 0,
+      "method": "random_empirical",
+      "rows": 10000,
+      "correct": 1,
+      "pct": 0.01,
+      "characters": 23250,
+      "totalCharacters": 148907,
+      "characterPct": 15.613772354556872,
+      "mostly": 907
+    },
+    {
+      "known": 0,
+      "method": "random_distinct",
+      "rows": 10000,
+      "correct": 0,
+      "pct": 0,
+      "characters": 22951,
+      "totalCharacters": 148907,
+      "characterPct": 15.412975884276763,
+      "mostly": 911
+    },
+    {
+      "known": 100,
+      "method": "random_empirical",
+      "rows": 9900,
+      "correct": 1,
+      "pct": 0.010101010101010102,
+      "characters": 23000,
+      "totalCharacters": 147395,
+      "characterPct": 15.604328505037484,
+      "mostly": 896
+    },
+    {
+      "known": 100,
+      "method": "random_distinct",
+      "rows": 9900,
+      "correct": 0,
+      "pct": 0,
+      "characters": 22810,
+      "totalCharacters": 147395,
+      "characterPct": 15.475423182604565,
+      "mostly": 907
+    },
+    {
+      "known": 500,
+      "method": "random_empirical",
+      "rows": 9500,
+      "correct": 1,
+      "pct": 0.010526315789473684,
+      "characters": 22057,
+      "totalCharacters": 141372,
+      "characterPct": 15.602099425628838,
+      "mostly": 855
+    },
+    {
+      "known": 500,
+      "method": "random_distinct",
+      "rows": 9500,
+      "correct": 0,
+      "pct": 0,
+      "characters": 21861,
+      "totalCharacters": 141372,
+      "characterPct": 15.463458110516934,
+      "mostly": 869
+    }
+  ],
+  "finished": "2026-09-29T18:40:34.278Z"
+}
