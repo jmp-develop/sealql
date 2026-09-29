@@ -1,0 +1,49 @@
+{
+  "checkedOn": "2026-09-29",
+  "method": "Report structure, reference targets, cited source link reachability, product coverage and private-path/local-identity scan; manual claim review. Not a security test or external product certification.",
+  "sourceCount": 53,
+  "localEvidenceCount": 4,
+  "judgmentCellsChecked": 177,
+  "missingCitationsOrConfidence": 0,
+  "allDirectSourceLinksHttp200": true,
+  "productsCovered": [
+    "CipherSweet",
+    "CipherStash",
+    "Acra",
+    "Cloaked Search",
+    "SaaS Shield",
+    "AWS",
+    "MongoDB",
+    "SQL",
+    "Baffle",
+    "Evervault",
+    "Skyflow",
+    "Ubiq",
+    "Piiano",
+    "Tink"
+  ],
+  "requiredThreats": [
+    "T1 snapshot",
+    "T2 WAL and multiple snapshots",
+    "T3 known and chosen plaintext",
+    "T4 query observation"
+  ],
+  "scopeChange": "Function and licensing matrix minimized in favor of security per coordinator direction.",
+  "productCodeChanged": false,
+  "databaseOperations": false,
+  "externalProductsExecuted": false,
+  "securityClaims": [
+    "No blanket superiority or equality claim.",
+    "No inference-resistance claim from AES or per-row salts.",
+    "Snapshot-only, query-observation and trusted-key-service boundaries kept separate.",
+    "Vendor opacity is unknown, not evidence of weakness."
+  ],
+  "limitations": [
+    "No matched cross-product attack simulation.",
+    "No physical WAL or page capture.",
+    "Piiano SDK 1.1.11 is not proof of current server internals.",
+    "Ciphertext authentication is not result-set completeness."
+  ],
+  "privacyScan": "pass",
+  "problems": []
+}
