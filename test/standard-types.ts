@@ -84,3 +84,7 @@ void [sealedName, openedName];
 // @ts-expect-error unopened data is opaque
 const plainName: string = row.name;
 void plainName;
+// @ts-expect-error count no longer accepts application candidate budgets
+sealed.count(db, customersSeal, { scope: 'x', budgets: { maxCandidates: 10 } });
+// @ts-expect-error count returns only a scalar and has no projection batch
+sealed.count(db, customersSeal, { scope: 'x', budgets: { batch: 10 } });
