@@ -1,0 +1,35 @@
+{
+  "started": "2026-09-29T12:45:51.764Z",
+  "commit": "7755fd7a51bd28a3f06066315108191b723e971f",
+  "schema": "test_lasthour_product",
+  "scope": "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa",
+  "loaded": 100000,
+  "complete": true,
+  "errors": [],
+  "method": "Public sealed.insert; four concurrent batches of 500 original fixture rows; ingestion duration is progress only, not an isolated performance benchmark.",
+  "fixture": "bench_realistic_100k.customers",
+  "fields": [
+    "name",
+    "phone",
+    "address",
+    "memo",
+    "email",
+    "company"
+  ],
+  "configuration": {
+    "keyByte": 93,
+    "exactCompanyBits": 2,
+    "otherExactBits": 16,
+    "substring": true,
+    "wordBoundary": false
+  },
+  "cleanupOwner": "r9-impl/coordinator after regression; retain schema for handoff",
+  "sourceHash": "4db88c4680eefac5d8d79366a77e4a5380481d9e79db12ab20fec89fc88ce2b7",
+  "elapsedMs": 942786.7159,
+  "tableCounts": {
+    "customers": 100000,
+    "customers_seal_index": 100000
+  },
+  "rawRoundtripFields": 600,
+  "finished": "2026-09-29T13:01:47.201Z"
+}

@@ -82,3 +82,7 @@ rtk npm test
 | `posting-pages-research-ko.md`, `posting-pages-v2-research-ko.md`, `posting-pages-supervisor-verdict-ko.md`, `lightweight-report-ko.md` | [011](../docs/decisions/011-rejected-research-lines.md) |
 
 큰 원시 파일(`*.jsonl`, `*.gz`)은 Git에 넣지 않는다.
+
+## 마지막 회귀용 공개 API 적재
+
+[적재 스크립트](lasthour/v-astra/README.md)는 원본 fixture 10만 행의 원문을 공개 API로 `test_lasthour_product`에 적재한다. [적재 결과](results/2026-09-29-lasthour/v-astra/report-ko.md)는 행 수와 원문 복호화 일치를 확인한 증거이며, 질의 성능·보안 검증 결과와는 별도다. 스키마는 후속 회귀 담당자에게 인계하고 전체 검증 뒤 정리한다.
