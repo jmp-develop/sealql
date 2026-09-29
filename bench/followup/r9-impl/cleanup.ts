@@ -1,0 +1,2 @@
+import {connect,save,schema,assert} from './common.js';
+assert.equal(schema,'test_followup_product');const db=await connect();try{await db.query(`drop schema ${schema} cascade`);assert.equal((await db.query('select to_regnamespace($1) n',[schema])).rows[0].n,null);save('query-tuning','cleanup',{complete:true,schema,at:new Date().toISOString()});console.log('PASS: owned followup schema removed');}finally{await db.end();}
