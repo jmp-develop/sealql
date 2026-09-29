@@ -1,0 +1,139 @@
+{
+  "source": "bench/results/2026-09-29-scale-count-million/measure.json",
+  "heapPagesFromCapacity": 336552,
+  "assumedBlockSize": 8192,
+  "assumedMinParallelTablePages": 1024,
+  "rows": [
+    {
+      "name": "memo_service",
+      "tokens": 3,
+      "estimatedCandidates": 64667,
+      "actualCandidates": 400970,
+      "underestimateFactor": 6.200535048788408,
+      "estimatedPages": 58999,
+      "estimatedMiB": 460.9296875,
+      "workersPlanned": 4,
+      "workersLaunched": 4,
+      "totalCost": 240390.79,
+      "estimatedFilteredRows": 5389,
+      "heapLoops": 5,
+      "actualFilteredRowsPerLoop": 80194,
+      "exactHeapBlocks": 9170,
+      "lossyHeapBlocks": 27418,
+      "indexMs": 63.607,
+      "explainMs": 1056.449,
+      "medianSqlMs": 1144.5868999999948,
+      "settings": {
+        "max_parallel_workers": "8",
+        "max_worker_processes": "8",
+        "work_mem": "4MB",
+        "locale": "C"
+      }
+    },
+    {
+      "name": "email_suffix",
+      "tokens": 14,
+      "estimatedCandidates": 816,
+      "actualCandidates": 265980,
+      "underestimateFactor": 325.95588235294116,
+      "estimatedPages": 816,
+      "estimatedMiB": 6.375,
+      "workersPlanned": 0,
+      "workersLaunched": 0,
+      "totalCost": 7368.68,
+      "estimatedFilteredRows": 272,
+      "heapLoops": 1,
+      "actualFilteredRowsPerLoop": 265980,
+      "exactHeapBlocks": 54696,
+      "lossyHeapBlocks": 66585,
+      "indexMs": 129.202,
+      "explainMs": 4519.752,
+      "medianSqlMs": 5522.488999999943,
+      "settings": {
+        "max_parallel_workers": "8",
+        "max_worker_processes": "8",
+        "work_mem": "4MB",
+        "locale": "C"
+      },
+      "actualHeapBlocks": 121281,
+      "parallelTimeModel": {
+        "formula": "S+(T-S)/E; T=median SQL, S=separate EXPLAIN bitmap index time; estimate only",
+        "effective3Ms": 1926.9643333333142,
+        "effective4Ms": 1477.5237499999857
+      },
+      "cpuCostGateModel": {
+        "assumptions": "default cpu_operator_cost=.0025, function COST1900, four workers; ignores other small costs",
+        "estimatedFunctionCost": 3876,
+        "actualCandidateEquivalentFunctionCost": 1263405,
+        "savingsBeforeSetup": 2907,
+        "defaultParallelSetup": 1000
+      }
+    },
+    {
+      "name": "memo_consult",
+      "tokens": 7,
+      "estimatedCandidates": 517,
+      "actualCandidates": 298430,
+      "underestimateFactor": 577.2340425531914,
+      "estimatedPages": 517,
+      "estimatedMiB": 4.0390625,
+      "workersPlanned": 0,
+      "workersLaunched": 0,
+      "totalCost": 4641.92,
+      "estimatedFilteredRows": 172,
+      "heapLoops": 1,
+      "actualFilteredRowsPerLoop": 298430,
+      "exactHeapBlocks": 39668,
+      "lossyHeapBlocks": 99539,
+      "indexMs": 70.525,
+      "explainMs": 4022.754,
+      "medianSqlMs": 4032.2894000000088,
+      "settings": {
+        "max_parallel_workers": "8",
+        "max_worker_processes": "8",
+        "work_mem": "4MB",
+        "locale": "C"
+      },
+      "actualHeapBlocks": 139207,
+      "parallelTimeModel": {
+        "formula": "S+(T-S)/E; T=median SQL, S=separate EXPLAIN bitmap index time; estimate only",
+        "effective3Ms": 1391.1131333333362,
+        "effective4Ms": 1060.9661000000021
+      },
+      "cpuCostGateModel": {
+        "assumptions": "default cpu_operator_cost=.0025, function COST1900, four workers; ignores other small costs",
+        "estimatedFunctionCost": 2455.75,
+        "actualCandidateEquivalentFunctionCost": 1417542.5,
+        "savingsBeforeSetup": 1841.8125,
+        "defaultParallelSetup": 1000
+      }
+    },
+    {
+      "name": "rare",
+      "tokens": 3,
+      "estimatedCandidates": 1,
+      "actualCandidates": 1010,
+      "underestimateFactor": 1010,
+      "estimatedPages": 1,
+      "estimatedMiB": 0.0078125,
+      "workersPlanned": 0,
+      "workersLaunched": 0,
+      "totalCost": 80.25,
+      "estimatedFilteredRows": 1,
+      "heapLoops": 1,
+      "actualFilteredRowsPerLoop": 1010,
+      "exactHeapBlocks": 499,
+      "lossyHeapBlocks": 0,
+      "indexMs": 0.13,
+      "explainMs": 9.482,
+      "medianSqlMs": 9.934299999964423,
+      "settings": {
+        "max_parallel_workers": "8",
+        "max_worker_processes": "8",
+        "work_mem": "4MB",
+        "locale": "C"
+      },
+      "actualHeapBlocks": 499
+    }
+  ]
+}
