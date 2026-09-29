@@ -1,0 +1,41 @@
+{
+  "columns": [
+    "scopeId",
+    "rowId",
+    "tokens_f574bea503740a7d",
+    "pos_salt_f574bea503740a7d",
+    "pos_len_f574bea503740a7d",
+    "pos_stamps_f574bea503740a7d",
+    "pos_offsets_f574bea503740a7d"
+  ],
+  "attacks": [
+    {
+      "corpus": "fixture",
+      "rows": 250,
+      "entries": 3408,
+      "duplicateStamps": 0,
+      "positionMismatch": 0,
+      "observedKeyRecoveredPositions": 250,
+      "observedKeyMismatch": 0
+    },
+    {
+      "corpus": "reviews-memory-only",
+      "rows": 250,
+      "entries": 6951,
+      "duplicateStamps": 0,
+      "positionMismatch": 0,
+      "observedKeyRecoveredPositions": 283,
+      "observedKeyMismatch": 0
+    }
+  ],
+  "removedChannels": [
+    "singleton proof/key",
+    "words proof length",
+    "boundary candidate tokens"
+  ],
+  "limits": [
+    "No full dictionary/co-occurrence/WAL attack rerun.",
+    "Ciphertext lengths and compact lengths still leak; adding spaces can change ciphertext byte length.",
+    "Observed compact piece keys still recover positions; zero collisions do not prove secrecy."
+  ]
+}
