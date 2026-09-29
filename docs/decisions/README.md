@@ -32,8 +32,8 @@
 | [013](013-drizzle-native-api-implemented.md) | Drizzle 네이티브 API 구현 완료 (008·012 구현 확정) |
 | [014](014-unbounded-query-work.md) | 호출자 선택 예산, count 단일 후보 흐름, 커서 결속 정리 |
 | [015](015-database-search-proofs.md) | DB 도장 판정, 스칼라 count, 선택 칸만 복호화 (001·006·014 일부 대체) |
-| [017](017-search-proof-review.md) | 전진 위치 탐색·LIKE 정수 배열·검토 비용 및 회귀 시험 |
 | [016](016-coarse-exact-bits.md) | 저카디널리티 exact의 명시적 2비트 허용 (004 일부 대체) |
+| [017](017-search-proof-review.md) | 전진 위치 탐색·LIKE 정수 배열·검토 비용 및 회귀 시험 |
 | [018](018-identity-order-page-plans.md) | ID 정렬 표현 통일과 연산자에 독립적인 페이지 quick/fallback |
 | [019](019-compact-only-search.md) | singleton·단어 경계 저장/옵션 제거와 연구 최종안 기준 복귀 |
 | [020](020-companion-predicate-plans.md) | 검색 표 판정·연속 quick·커서 지연 생성·실측 COST |
@@ -41,3 +41,4 @@
 | [022](022-like-segment-order.md) | 일반 LIKE의 고정 길이 구간 순서 판정 |
 | [023](023-join-callback-limit.md) | 호출 옵션에 따른 JOIN 콜백 limit 타입 |
 | [024](024-candidate-token-selection.md) | 공통 후보 조건에 정렬 토큰 최대 세 개 사용 |
+| [025](025-leakage-reevaluation-and-rejected-mitigations.md) | 강한 공격 재평가, 타 제품 비교, 누출 완화안(MongoDB식·비트 축소·패딩·더미) 기각 |
