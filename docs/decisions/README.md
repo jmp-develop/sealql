@@ -40,3 +40,4 @@
 | [021](021-like-normalization.md) | 단일 literal LIKE의 위치 조건 정규화·A 연기·B 미채택 |
 | [022](022-like-segment-order.md) | 일반 LIKE의 고정 길이 구간 순서 판정 |
 | [023](023-join-callback-limit.md) | 호출 옵션에 따른 JOIN 콜백 limit 타입 |
+| [024](024-candidate-token-selection.md) | 공통 후보 조건에 정렬 토큰 최대 세 개 사용 |

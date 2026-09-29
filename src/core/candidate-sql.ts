@@ -6,9 +6,11 @@ import { keyArray, patternProgram } from './stamp-query.js';
 import { type ProfileStorage } from './sealed-model.js';
 
 function tokenPredicate(alias: string, leaf: Extract<CompiledSearch, { op: 'leaf' }>['leaf'], mapped: ProfileStorage): Fragment {
-  return leaf.profile.mode === 'exact'
-    ? q`(${ident(alias, mapped.tokens)})[1]=${leaf.tokens[0]}::bigint`
-    : q`${ident(alias, mapped.tokens)} @> ${leaf.tokens}::bigint[]`;
+  if (leaf.profile.mode === 'exact') return q`(${ident(alias, mapped.tokens)})[1]=${leaf.tokens[0]}::bigint`;
+  const tokens = leaf.tokens;
+  // Three sorted pieces curb planner underestimation from correlated selectivities; this is not a candidate/result/work limit.
+  const selected = tokens.length > 3 ? [tokens[0], tokens[Math.floor((tokens.length - 1) / 2)], tokens[tokens.length - 1]] : tokens;
+  return q`${ident(alias, mapped.tokens)} @> ${selected}::bigint[]`;
 }
 
 function leafPredicate(schema: string, alias: string, leaf: Extract<CompiledSearch, { op: 'leaf' }>['leaf'], mapped: ProfileStorage): Fragment {

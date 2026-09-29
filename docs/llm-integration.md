@@ -54,6 +54,8 @@ Await a Drizzle query before passing its result to `sealed.open` or `sealed.open
 
 ## Search
 
+Substring candidate SQL uses at most three tokens in token-value order (first/middle/last), with full proofs and exact predicates unchanged; this internal plan choice limits neither candidates nor results/work, changes no public API or stored data, and requires no migration/reindex. See [024](decisions/024-candidate-token-selection.md).
+
 ```ts
 const page = await sealed.findMany(db, notesSeal, {
   scope: scopeId,

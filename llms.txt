@@ -1,6 +1,7 @@
 # SealQL
 
 Start: docs/current-state.md, then docs/llm-integration.md
+Substring candidate SQL uses at most three sorted tokens; full proofs and exact predicates are unchanged. This is no result/work limit and changes no public API or stored data; no migration/reindex is needed for this SQL-only update.
 Install: npm pack, then install the .tgz; Drizzle >=0.45.2 <0.46, Node >=22.12 or WebCrypto.
 Schema/key: examples/standard-consumer.ts; operations: examples/standard-operations.ts
 Raw SQL/JOIN: examples/standard-raw.ts; fixed key loading: examples/key-loader.ts

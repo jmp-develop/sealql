@@ -16,6 +16,8 @@ WHERE 아래 양의 AND/OR 식에서는 NULL과 false 모두 행을 제외한다
 
 ## 대체 관계
 
+[024](024-candidate-token-selection.md)가 부분 검색 후보 조건의 전송 토큰을 최대 세 개로 줄인다. 이 기록의 판정 함수와 quick/fallback 구조는 유지한다.
+
 018의 fallback 재조회·OR 분기와 017의 손상 검사 부분을 대체한다. 017의 전진 커서와 긴 근접 불일치 교정은 유지하며 019의 compact-only 형식은 바꾸지 않는다.
 
 이 변경은 SQL 생성과 DB 함수만 바꾼다. compact-only 스키마로 이미 완전히 재색인했다면 `extraMigrationSql`의 함수를 다시 적용하면 되고, 이 변경만을 위한 암호문·토큰 재작성은 필요 없다. 이전 singleton/words 형식에서 오는 경우에는 결정 019의 전체 schema·함수·reindex 순서를 반드시 따른다.
