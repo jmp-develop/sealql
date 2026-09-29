@@ -71,3 +71,5 @@
 10만 확대, 여러 키·seed, 실제 서비스 입력 승인 절차, 질의 관찰과 결합, exact 전용 프로필, 전체 위치 도장 암호 분석, 완전한 그래프 탐색은 미검증이다. 랜덤 기준선은 동일 참조 사전에서 무작위 값을 뽑으며 제품 성능을 측정한 실험이 아니다. 실제 개인 정보 대신 기존 fixture를 사용한 기계적 시뮬레이션이다.
 
 관련 공격 계열: [Zhang·Katz·Papamanthou, USENIX Security 2016](https://www.usenix.org/conference/usenixsecurity16/technical-sessions/presentation/zhang). 논문은 파일 삽입에 의한 질의 복원 공격을 다룬다. 이번 시험은 안정된 후보 토큰의 출현 서명과 알려진 삽입 평문을 대응하는 시험이며 논문 전체의 재현이라고 주장하지 않는다.
+
+후속 요청으로 진행한 [16·14·12비트 비교](bits-report-ko.md)는 동일한 공격의 전화·주소 복원과 55개 조건 후보 수를 별도로 기록한다.
