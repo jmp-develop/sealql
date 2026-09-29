@@ -26,13 +26,13 @@ function leafPredicate(schema: string, alias: string, leaf: Extract<CompiledSear
       : q`${ident(schema, 'sealql_match_positions')}(${keyArray(proof.keys)}::bytea[],${proof.offsets}::integer[],${proof.length},
         ${col(stream.length)},${col(stream.salt)},${col(stream.stamps)},${col(stream.offsets)},${node.op === 'startsWith' ? 1 : node.op === 'endsWith' ? 2 : 0})`;
   }
-  return q`(${tokenPredicate(alias, leaf, mapped)} and coalesce(${exact},false))`;
+  return q`(${tokenPredicate(alias, leaf, mapped)} and ${exact})`;
 }
 
-export function candidatePredicate(definition: SealedModelDefinition, storage: SealedStorage, scopeId: string, search: CompiledSearch): Fragment {
+/** Pure secured predicates are evaluated entirely against their companion. */
+export function candidateRows(storage: SealedStorage, scopeId: string, search: CompiledSearch): Fragment {
   ensure(storage.index, 'INVALID_SCHEMA');
   const companion = storage.index;
-  const parentRow = ident(storage.parent.name, definition.columns[definition.identity.row].name);
   const indexRow = ident('__seal_idx', 'row_id');
   const index = ident(companion.schema, companion.name);
   const inside = (node: CompiledSearch): Fragment => {
@@ -43,7 +43,12 @@ export function candidatePredicate(definition: SealedModelDefinition, storage: S
     ensure(mapped && mapped.mode === profile.mode, 'INVALID_SCHEMA');
     return leafPredicate(companion.schema, '__seal_idx', node.leaf, mapped);
   };
-  return q`${parentRow} in (select ${indexRow} from ${index} as ${ident('__seal_idx')} where ${ident('__seal_idx', 'scope_id')}=${scopeId} and ${inside(search)})`;
+  return q`select ${indexRow} from ${index} as ${ident('__seal_idx')} where ${ident('__seal_idx', 'scope_id')}=${scopeId} and ${inside(search)}`;
+}
+
+export function candidatePredicate(definition: SealedModelDefinition, storage: SealedStorage, scopeId: string, search: CompiledSearch): Fragment {
+  const parentRow = ident(storage.parent.name, definition.columns[definition.identity.row].name);
+  return q`${parentRow} in (${candidateRows(storage, scopeId, search)})`;
 }
 /** Order candidates before evaluation so LIMIT can stop proof evaluation early. */
 export function boundedCandidatePredicate(definition: SealedModelDefinition, storage: SealedStorage, scopeId: string, search: CompiledSearch, limit: number, after?: string): Fragment {
@@ -69,22 +74,14 @@ export function boundedCandidatePredicate(definition: SealedModelDefinition, sto
   const sampleColumns = join([...used].map(name => ident(name)), ',');
   const row = ident(storage.parent.name, definition.columns[definition.identity.row].name);
   const ordered = q`(
-    select ${ident('picked','row_id')},${join([...used].map(name => ident('proof',name)), ',')}
-    from (
-      select ${ident('row_id')} from ${index} as ${ident('c')}
-      where ${ident('c', 'scope_id')}=${scopeId}${keyset} and ${coarseWhere}
-      order by ${rowId} offset 0
-    ) as ${ident('picked')}
-    cross join lateral (
-      select ${sampleColumns} from ${index} as ${ident('lookup')}
-      where ${ident('lookup','scope_id')}=${scopeId} and ${ident('lookup','row_id')}=${ident('picked','row_id')} offset 0
-    ) as ${ident('proof')}
-    order by ${ident('picked','row_id')} offset 0
+    select ${ident('row_id')},${sampleColumns} from ${index} as ${ident('c')}
+    where ${ident('c', 'scope_id')}=${scopeId} and ${rowId}>(select row_id from sample order by row_id desc limit 1) and ${coarseWhere}
+    order by ${rowId} offset 0
   ) as ${ident('c')}`;
-  const finalSource = search.op === 'any' ? q`${index} as ${ident('c')}` : ordered;
-  const finalScope = search.op === 'any' ? q`${ident('c', 'scope_id')}=${scopeId}${keyset} and ` : q``;
   // A dense ID prefix can satisfy the page without sorting all token candidates.
-  // This is a probe size, never a result/work cap: misses use the complete fallback.
+  // The sample is a complete ID prefix within this scope/keyset, before any
+  // predicate. If quick is short it evaluated that whole prefix, so fallback
+  // can keep its matches and continue strictly after the sample's last ID.
   const sampleLimit = Math.max(256, Math.min(Number.MAX_SAFE_INTEGER, limit * 4));
   return q`${row} in (
     with sample as materialized (
@@ -93,11 +90,11 @@ export function boundedCandidatePredicate(definition: SealedModelDefinition, sto
     ), quick as materialized (
       select ${rowId} from sample as ${ident('c')} where ${tokenWhere} order by ${rowId} limit ${limit}
     ), fallback as materialized (
-      select ${rowId} from ${finalSource}
-      where ${finalScope}${tokenWhere} and (select count(*) from quick)<${limit}
-      order by ${rowId} limit ${limit}
+      select ${rowId} from ${ordered}
+      where ${tokenWhere}
+      order by ${rowId} limit (${limit}-(select count(*) from quick))
     )
-    select row_id from quick where (select count(*) from quick)=${limit}
+    select row_id from quick
     union all select row_id from fallback
   )`;
 }

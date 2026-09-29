@@ -8,7 +8,7 @@ import {
   type CompiledSearch, type SearchNode, type SearchOperator,
 } from '../../../core/search-predicate.js';
 import { profiles, type SearchTokenCache } from '../../../core/search-tokens.js';
-import { boundedCandidatePredicate, candidatePredicate } from '../../../core/candidate-sql.js';
+import { boundedCandidatePredicate, candidatePredicate, candidateRows } from '../../../core/candidate-sql.js';
 import type { Fragment, Node } from '../../../core/sql-fragment.js';
 import { Sealed, registrationOf, type Opened, type Registration, type SealMeta } from './native.js';
 import { mapRawRow } from './native-mapping.js';
@@ -293,7 +293,6 @@ export function searchMethods(sealerOf: () => import('../../../core/field-cipher
     let after = cursor?.lastId, afterSort = cursor?.lastSort, exhausted = false, resultBytes = 0;
     const items: Record<string, unknown>[] = [], state: ResultState = { scanned: 0, fetchedBytes: 0, decryptedBytes: 0, limited: false };
     const batch = options.budgets?.batch ?? limit;
-    const hasSubstring = (node: CompiledSearch): boolean => node.op === 'leaf' ? node.leaf.profile.mode === 'substring' : node.children.some(hasSubstring);
     while (items.length < limit && !state.limited) {
       check();
       const requestLimit = Math.min(batch, limit-items.length), direction = orders.at(-1)?.direction ?? 'asc';
@@ -301,7 +300,7 @@ export function searchMethods(sealerOf: () => import('../../../core/field-cipher
       const afterCondition = after === undefined ? undefined : executionOrders.length
         ? keysetAfter([...executionOrders.map(item => item.column), rowColumn], [...values, after], [...executionOrders.map(item => item.direction), direction])
         : direction === 'asc' ? gt(rowColumn, after) : lt(rowColumn, after);
-      const bounded = compiled?.op === 'secure' && hasSubstring(compiled.search) && !options.where && ascendingIdentity && Number.isFinite(requestLimit)
+      const bounded = compiled?.op === 'secure' && !options.where && ascendingIdentity && Number.isFinite(requestLimit)
         ? { limit: requestLimit, after } : undefined;
       const condition = and(reg.scope ? eq(columns[reg.scope], scopeId) : undefined, options.where, afterCondition,
         compiled ? candidate(reg, scopeId, compiled, bounded) : undefined);
@@ -358,8 +357,13 @@ export function searchMethods(sealerOf: () => import('../../../core/field-cipher
     check();
     const columns = getTableColumns(reg.parent) as Record<string, PgColumn>;
     let rows: { count: string }[];
-    try { rows = await (db as any).select({ count: sql<string>`count(*)::text` }).from(reg.parent).where(and(
-      reg.scope ? eq(columns[reg.scope], scopeId) : undefined, options.where, compiled ? candidate(reg, scopeId, compiled) : undefined)); }
+    try {
+      if (compiled?.op === 'secure' && !options.where) {
+        const result = await (db as any).execute(sql`select count(*)::text as count from (${fromFragment(candidateRows(reg.storage, scopeId, compiled.search))}) as ${sql.identifier('__seal_matches')}`);
+        rows = Array.isArray(result) ? result : result.rows;
+      } else rows = await (db as any).select({ count: sql<string>`count(*)::text` }).from(reg.parent).where(and(
+        reg.scope ? eq(columns[reg.scope], scopeId) : undefined, options.where, compiled ? candidate(reg, scopeId, compiled) : undefined));
+    }
     catch (error) { throw databaseError(error); }
     check();
     const value = rows[0]?.count;

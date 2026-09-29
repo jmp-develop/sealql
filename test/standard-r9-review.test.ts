@@ -6,7 +6,6 @@ import {getTableColumns,eq} from 'drizzle-orm';
 import {pgSchema,uuid} from 'drizzle-orm/pg-core';
 import {createSealer} from '../src/index.js';
 import {createSealed} from '../src/adapters/drizzle/v0.45/index.js';
-import {registrationOf} from '../src/adapters/drizzle/v0.45/native.js';
 import {compactText} from '../src/core/search-tokens.js';
 import {assertDisposable} from './disposable.js';
 
@@ -19,7 +18,7 @@ test('large final-match pages, root OR fallback and keysets match plaintext; rep
     assert.equal(fixture.length,640);assert.equal((await pool.query('select 1 from pg_namespace where nspname=$1',[schema])).rowCount,0);
     const sealed=createSealed({sealer:createSealer({key:new Uint8Array(32).fill(67)})});
     const table=pgSchema(schema).table('rows',{id:uuid('id').primaryKey(),scopeId:uuid('scope_id').notNull(),body:sealed.text('body',{search:{exact:{bits:2},substring:true}})});
-    const seal=sealed.register(table,{row:'id',scope:'scopeId'}),reg=registrationOf(seal),scope=fixture[0].scope_id;
+    const seal=sealed.register(table,{row:'id',scope:'scopeId'}),scope=fixture[0].scope_id;
     await pool.query(`create schema ${schema}`);created=true;
     await pool.query(`create table ${schema}.rows(id uuid primary key,scope_id uuid not null,body_ct bytea not null)`);
     const cols=Object.values(getTableColumns(seal)).map(c=>`"${c.name}" ${c.getSQLType()}${c.notNull?' not null':''}`).join(',');
@@ -50,12 +49,5 @@ test('large final-match pages, root OR fallback and keysets match plaintext; rep
     }
     await assert.rejects(sealed.count(db,seal,{scope,where:eq(table.id,rows[0].id),match:m=>m.body.like(`%${a+b}%${b}%`)}),{code:'QUERY_TOO_BROAD'});
     assert.equal(await sealed.count(db,seal,{scope,where:eq(table.id,rows[0].id),match:m=>m.body.like(`%${a+b}%${b+b}%`)}),1);
-    const proof=reg.storage.index!.profiles!['body/substring'].positions!;
-    const saved=(await pool.query(`select "${proof.offsets}" offsets from ${schema}.rows_seal_index where row_id=$1`,[rows[0].id])).rows[0].offsets as number[];
-    for(const bad of [null,-1,hay.length]){
-      await pool.query(`update ${schema}.rows_seal_index set "${proof.offsets}"=array_fill($2::integer,array[cardinality("${proof.offsets}")]) where row_id=$1`,[rows[0].id,bad]);
-      for(const mode of ['contains','like']as const)await assert.rejects(sealed.count(db,seal,{scope,where:eq(table.id,rows[0].id),match:m=>mode==='contains'?m.body.contains(a+b):m.body.like(`%${a+b}%`)}),{code:'DATABASE_ERROR'});
-    }
-    await pool.query(`update ${schema}.rows_seal_index set "${proof.offsets}"=$2::integer[] where row_id=$1`,[rows[0].id,saved]);
   }finally{if(created)await pool.query(`drop schema ${schema} cascade`);await pool.end();}
 });

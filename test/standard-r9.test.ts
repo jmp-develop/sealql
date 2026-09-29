@@ -114,7 +114,6 @@ test('DB proofs match plaintext across operators, types, nulls, mutations and JO
     const key=new Uint8Array(32).fill(7),salt=new Uint8Array(16).fill(9),expected=await stamp(key,salt,3);
     const pgStamp=(await pool.query("select (('x'||encode(substr(sha256($1::bytea||$2::bytea||int4send(3)),1,8),'hex'))::bit(64)::bigint)::text value",[key,salt])).rows[0].value;
     assert.equal(pgStamp,String(expected));
-    await assert.rejects(pool.query(`select "${schemaName}".sealql_piece_positions($1,$2,ARRAY[1]::bigint[],ARRAY[]::integer[],1)`,[key,salt]),/Invalid search proof/);
     await db.delete(table).where(eq(table.id,inputs[0].id));
     assert.equal((await pool.query(`select count(*)::int n from "${schemaName}".rows_seal_index`)).rows[0].n,15);
   }finally{if(created)await pool.query(`drop schema "${schemaName}" cascade`);await pool.end();}

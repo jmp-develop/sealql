@@ -99,7 +99,7 @@ test('native CRUD, verified pages, OR semi-join and bounded count', async () => 
     c.logs.length = 0;
     assert.equal((await c.sealed.findMany(c.db, c.seal, { scope, match: m => m.body.eq(exact), limit: 1 })).items.length, 1);
     assert.equal(c.logs.length, 1, 'one candidate SQL request for an exact page');
-    assert.ok(c.logs[0].includes(' in (select '));
+    assert.ok(c.logs[0].includes(' in ('));
     assert.ok(!c.logs[0].includes('exists('));
     c.logs.length = 0;
     assert.equal((await c.sealed.search(c.db, { scope,
