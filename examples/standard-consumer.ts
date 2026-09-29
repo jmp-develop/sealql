@@ -28,7 +28,8 @@ export async function example(db: PgDatabase<any, any, any>, scopeId: string, id
   await sealed.insert(db, noteSeal, { id, scopeId, title: 'Ada', count: 2, status: 'draft' });
   const row = await sealed.open(await db.select().from(note).where(eq(note.id, id)));
   const page = await sealed.findMany(db, noteSeal, {
-    scope: scopeId, match: m => m.title.contains('Ad'), where: eq(note.status, 'draft'), limit: 20,
+    // Every LIKE literal run needs two characters; ab%z%cd is rejected.
+    scope: scopeId, match: m => m.title.like('Ad%'), where: eq(note.status, 'draft'), limit: 20,
   });
   const total = await sealed.count(db, noteSeal, { scope: scopeId, match: m => m.title.contains('Ad') });
   await sealed.update(db, noteSeal, { id, scopeId }, { status: 'active' });

@@ -35,3 +35,4 @@
 | [017](017-search-proof-review.md) | 전진 위치 탐색·LIKE 정수 배열·검토 비용 및 회귀 시험 |
 | [016](016-coarse-exact-bits.md) | 저카디널리티 exact의 명시적 2비트 허용 (004 일부 대체) |
 | [018](018-identity-order-page-plans.md) | ID 정렬 표현 통일과 연산자에 독립적인 페이지 quick/fallback |
+| [019](019-compact-only-search.md) | singleton·단어 경계 저장/옵션 제거와 연구 최종안 기준 복귀 |
