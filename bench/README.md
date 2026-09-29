@@ -47,6 +47,7 @@ rtk npm test
 
 | 스크립트 | 결과 (`results/`) | 결정 |
 |---|---|---|
+| `final-return/*` (연구 기준선 재구축, 원문 공개 API 적재, 동일 세션 3경로·SQL 변형 비교) | [2026-09-29-final-return 보고](results/2026-09-29-final-return/report-ko.md) | 제품 결정 변경 없음; compact-only 제품과 연구 최종안 비교 실험 |
 | `verify-r9/*` (원문 공개 API 적재, 조회·쓰기·용량·JOIN 독립 검수) | [2026-09-29-r9-verify 보고](results/2026-09-29-r9-verify/report-ko.md) | 제품 결정 변경 없음; 최종 빌드의 독립 측정 |
 | `standard-review/corpus-sim2.ts`, `corpus-sim3.ts` | `standard-review-2026-09-26/corpus-sim2.json`, `corpus-sim3-long.json` | [004](../docs/decisions/004-token-layout-16bit.md), [005](../docs/decisions/005-skip-grams-default-on.md) |
 | `standard-review/frequency-attack.ts`, `known-row-attack.ts` (옛 벤치 토큰, 출력은 콘솔) | `2026-09-27-layout-attack/scale-ko.md`에서 재현 | [004](../docs/decisions/004-token-layout-16bit.md) |

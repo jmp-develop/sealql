@@ -1,0 +1,87 @@
+{
+  "started": "2026-09-29T06:58:32.126Z",
+  "complete": false,
+  "errors": [
+    "SealError: DATABASE_ERROR"
+  ],
+  "rows": [],
+  "protocol": "Same physical PostgreSQL connection; first call separate, two warmups, seven rotating rounds; raw fixture oracle every execution",
+  "commit": "527d13fab5b1d62a67d0b710687a461b1b2b1ce5",
+  "session": {
+    "pid": 34940,
+    "work_mem": "4MB",
+    "parallel_workers": "2",
+    "locale": "C"
+  },
+  "variants": [
+    {
+      "name": "v4a_seal_count",
+      "modes": [
+        "count"
+      ],
+      "description": "Pure secure predicate counted in companion, no parent JOIN; standard API preparation retained"
+    },
+    {
+      "name": "v4d_research_fallback",
+      "modes": [
+        "list300"
+      ],
+      "description": "Research candidate ordering then final proof then LIMIT; keeps quick prefix and API projection; unbounded queries have no bounded fallback to transform"
+    },
+    {
+      "name": "v4b_checks_off",
+      "modes": [
+        "count",
+        "list300",
+        "listAll"
+      ],
+      "description": "checks-off"
+    },
+    {
+      "name": "v4b_qualified_no_set",
+      "modes": [
+        "count",
+        "list300",
+        "listAll"
+      ],
+      "description": "qualified-no-set"
+    },
+    {
+      "name": "v4c_main_tail",
+      "modes": [
+        "count",
+        "list300",
+        "listAll"
+      ],
+      "description": "Identical ordered fresh clone: storage MAIN, exact tail true"
+    },
+    {
+      "name": "v4c_main_bare",
+      "modes": [
+        "count",
+        "list300",
+        "listAll"
+      ],
+      "description": "Identical ordered fresh clone: storage MAIN, exact tail false"
+    },
+    {
+      "name": "v4c_extended_tail",
+      "modes": [
+        "count",
+        "list300",
+        "listAll"
+      ],
+      "description": "Identical ordered fresh clone: storage EXTENDED, exact tail true"
+    },
+    {
+      "name": "v4c_extended_bare",
+      "modes": [
+        "count",
+        "list300",
+        "listAll"
+      ],
+      "description": "Identical ordered fresh clone: storage EXTENDED, exact tail false"
+    }
+  ],
+  "likeBaseline": "Three LIKE patterns are exactly equivalent to prefix/suffix/contains in historical task4; every literal run has >=2 Unicode characters; no general historical LIKE capability claimed"
+}

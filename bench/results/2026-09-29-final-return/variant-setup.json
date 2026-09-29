@@ -1,0 +1,873 @@
+{
+  "commit": "527d13fab5b1d62a67d0b710687a461b1b2b1ce5",
+  "functions": [
+    {
+      "mode": "checks-off",
+      "removedChecks": 12
+    },
+    {
+      "mode": "qualified-no-set",
+      "removedChecks": 0
+    }
+  ],
+  "clones": [
+    {
+      "schema": "test_final_return_main_tail",
+      "storage": "MAIN",
+      "cover": true,
+      "rows": 100000,
+      "allValuesEqual": true,
+      "catalog": [
+        {
+          "attname": "scope_id",
+          "attstorage": "p"
+        },
+        {
+          "attname": "row_id",
+          "attstorage": "p"
+        },
+        {
+          "attname": "tokens_988d248ff4b71bf7",
+          "attstorage": "m"
+        },
+        {
+          "attname": "eq_salt_988d248ff4b71bf7",
+          "attstorage": "x"
+        },
+        {
+          "attname": "eq_stamp_988d248ff4b71bf7",
+          "attstorage": "p"
+        },
+        {
+          "attname": "tokens_792d75cf01821d67",
+          "attstorage": "m"
+        },
+        {
+          "attname": "pos_salt_792d75cf01821d67",
+          "attstorage": "x"
+        },
+        {
+          "attname": "pos_len_792d75cf01821d67",
+          "attstorage": "p"
+        },
+        {
+          "attname": "pos_stamps_792d75cf01821d67",
+          "attstorage": "m"
+        },
+        {
+          "attname": "pos_offsets_792d75cf01821d67",
+          "attstorage": "m"
+        },
+        {
+          "attname": "tokens_a106c26102b707f0",
+          "attstorage": "m"
+        },
+        {
+          "attname": "eq_salt_a106c26102b707f0",
+          "attstorage": "x"
+        },
+        {
+          "attname": "eq_stamp_a106c26102b707f0",
+          "attstorage": "p"
+        },
+        {
+          "attname": "tokens_1127994ab736baf4",
+          "attstorage": "m"
+        },
+        {
+          "attname": "pos_salt_1127994ab736baf4",
+          "attstorage": "x"
+        },
+        {
+          "attname": "pos_len_1127994ab736baf4",
+          "attstorage": "p"
+        },
+        {
+          "attname": "pos_stamps_1127994ab736baf4",
+          "attstorage": "m"
+        },
+        {
+          "attname": "pos_offsets_1127994ab736baf4",
+          "attstorage": "m"
+        },
+        {
+          "attname": "tokens_c5133b3810f23103",
+          "attstorage": "m"
+        },
+        {
+          "attname": "eq_salt_c5133b3810f23103",
+          "attstorage": "x"
+        },
+        {
+          "attname": "eq_stamp_c5133b3810f23103",
+          "attstorage": "p"
+        },
+        {
+          "attname": "tokens_ef1d32a52e2ce103",
+          "attstorage": "m"
+        },
+        {
+          "attname": "pos_salt_ef1d32a52e2ce103",
+          "attstorage": "x"
+        },
+        {
+          "attname": "pos_len_ef1d32a52e2ce103",
+          "attstorage": "p"
+        },
+        {
+          "attname": "pos_stamps_ef1d32a52e2ce103",
+          "attstorage": "m"
+        },
+        {
+          "attname": "pos_offsets_ef1d32a52e2ce103",
+          "attstorage": "m"
+        },
+        {
+          "attname": "tokens_1c32fdad5d1c8367",
+          "attstorage": "m"
+        },
+        {
+          "attname": "eq_salt_1c32fdad5d1c8367",
+          "attstorage": "x"
+        },
+        {
+          "attname": "eq_stamp_1c32fdad5d1c8367",
+          "attstorage": "p"
+        },
+        {
+          "attname": "tokens_a639b11c8130dcf7",
+          "attstorage": "m"
+        },
+        {
+          "attname": "pos_salt_a639b11c8130dcf7",
+          "attstorage": "x"
+        },
+        {
+          "attname": "pos_len_a639b11c8130dcf7",
+          "attstorage": "p"
+        },
+        {
+          "attname": "pos_stamps_a639b11c8130dcf7",
+          "attstorage": "m"
+        },
+        {
+          "attname": "pos_offsets_a639b11c8130dcf7",
+          "attstorage": "m"
+        },
+        {
+          "attname": "tokens_cd3096c7a3cd42c2",
+          "attstorage": "m"
+        },
+        {
+          "attname": "eq_salt_cd3096c7a3cd42c2",
+          "attstorage": "x"
+        },
+        {
+          "attname": "eq_stamp_cd3096c7a3cd42c2",
+          "attstorage": "p"
+        },
+        {
+          "attname": "tokens_f289b89d86c7086a",
+          "attstorage": "m"
+        },
+        {
+          "attname": "pos_salt_f289b89d86c7086a",
+          "attstorage": "x"
+        },
+        {
+          "attname": "pos_len_f289b89d86c7086a",
+          "attstorage": "p"
+        },
+        {
+          "attname": "pos_stamps_f289b89d86c7086a",
+          "attstorage": "m"
+        },
+        {
+          "attname": "pos_offsets_f289b89d86c7086a",
+          "attstorage": "m"
+        },
+        {
+          "attname": "tokens_c44ae523cca61a0b",
+          "attstorage": "m"
+        },
+        {
+          "attname": "eq_salt_c44ae523cca61a0b",
+          "attstorage": "x"
+        },
+        {
+          "attname": "eq_stamp_c44ae523cca61a0b",
+          "attstorage": "p"
+        },
+        {
+          "attname": "tokens_7a1d2ba5ce2368fb",
+          "attstorage": "m"
+        },
+        {
+          "attname": "pos_salt_7a1d2ba5ce2368fb",
+          "attstorage": "x"
+        },
+        {
+          "attname": "pos_len_7a1d2ba5ce2368fb",
+          "attstorage": "p"
+        },
+        {
+          "attname": "pos_stamps_7a1d2ba5ce2368fb",
+          "attstorage": "m"
+        },
+        {
+          "attname": "pos_offsets_7a1d2ba5ce2368fb",
+          "attstorage": "m"
+        }
+      ],
+      "sizes": {
+        "heap": "273408000",
+        "indexes": "139550720",
+        "total": "413057024"
+      }
+    },
+    {
+      "schema": "test_final_return_main_bare",
+      "storage": "MAIN",
+      "cover": false,
+      "rows": 100000,
+      "allValuesEqual": true,
+      "catalog": [
+        {
+          "attname": "scope_id",
+          "attstorage": "p"
+        },
+        {
+          "attname": "row_id",
+          "attstorage": "p"
+        },
+        {
+          "attname": "tokens_988d248ff4b71bf7",
+          "attstorage": "m"
+        },
+        {
+          "attname": "eq_salt_988d248ff4b71bf7",
+          "attstorage": "x"
+        },
+        {
+          "attname": "eq_stamp_988d248ff4b71bf7",
+          "attstorage": "p"
+        },
+        {
+          "attname": "tokens_792d75cf01821d67",
+          "attstorage": "m"
+        },
+        {
+          "attname": "pos_salt_792d75cf01821d67",
+          "attstorage": "x"
+        },
+        {
+          "attname": "pos_len_792d75cf01821d67",
+          "attstorage": "p"
+        },
+        {
+          "attname": "pos_stamps_792d75cf01821d67",
+          "attstorage": "m"
+        },
+        {
+          "attname": "pos_offsets_792d75cf01821d67",
+          "attstorage": "m"
+        },
+        {
+          "attname": "tokens_a106c26102b707f0",
+          "attstorage": "m"
+        },
+        {
+          "attname": "eq_salt_a106c26102b707f0",
+          "attstorage": "x"
+        },
+        {
+          "attname": "eq_stamp_a106c26102b707f0",
+          "attstorage": "p"
+        },
+        {
+          "attname": "tokens_1127994ab736baf4",
+          "attstorage": "m"
+        },
+        {
+          "attname": "pos_salt_1127994ab736baf4",
+          "attstorage": "x"
+        },
+        {
+          "attname": "pos_len_1127994ab736baf4",
+          "attstorage": "p"
+        },
+        {
+          "attname": "pos_stamps_1127994ab736baf4",
+          "attstorage": "m"
+        },
+        {
+          "attname": "pos_offsets_1127994ab736baf4",
+          "attstorage": "m"
+        },
+        {
+          "attname": "tokens_c5133b3810f23103",
+          "attstorage": "m"
+        },
+        {
+          "attname": "eq_salt_c5133b3810f23103",
+          "attstorage": "x"
+        },
+        {
+          "attname": "eq_stamp_c5133b3810f23103",
+          "attstorage": "p"
+        },
+        {
+          "attname": "tokens_ef1d32a52e2ce103",
+          "attstorage": "m"
+        },
+        {
+          "attname": "pos_salt_ef1d32a52e2ce103",
+          "attstorage": "x"
+        },
+        {
+          "attname": "pos_len_ef1d32a52e2ce103",
+          "attstorage": "p"
+        },
+        {
+          "attname": "pos_stamps_ef1d32a52e2ce103",
+          "attstorage": "m"
+        },
+        {
+          "attname": "pos_offsets_ef1d32a52e2ce103",
+          "attstorage": "m"
+        },
+        {
+          "attname": "tokens_1c32fdad5d1c8367",
+          "attstorage": "m"
+        },
+        {
+          "attname": "eq_salt_1c32fdad5d1c8367",
+          "attstorage": "x"
+        },
+        {
+          "attname": "eq_stamp_1c32fdad5d1c8367",
+          "attstorage": "p"
+        },
+        {
+          "attname": "tokens_a639b11c8130dcf7",
+          "attstorage": "m"
+        },
+        {
+          "attname": "pos_salt_a639b11c8130dcf7",
+          "attstorage": "x"
+        },
+        {
+          "attname": "pos_len_a639b11c8130dcf7",
+          "attstorage": "p"
+        },
+        {
+          "attname": "pos_stamps_a639b11c8130dcf7",
+          "attstorage": "m"
+        },
+        {
+          "attname": "pos_offsets_a639b11c8130dcf7",
+          "attstorage": "m"
+        },
+        {
+          "attname": "tokens_cd3096c7a3cd42c2",
+          "attstorage": "m"
+        },
+        {
+          "attname": "eq_salt_cd3096c7a3cd42c2",
+          "attstorage": "x"
+        },
+        {
+          "attname": "eq_stamp_cd3096c7a3cd42c2",
+          "attstorage": "p"
+        },
+        {
+          "attname": "tokens_f289b89d86c7086a",
+          "attstorage": "m"
+        },
+        {
+          "attname": "pos_salt_f289b89d86c7086a",
+          "attstorage": "x"
+        },
+        {
+          "attname": "pos_len_f289b89d86c7086a",
+          "attstorage": "p"
+        },
+        {
+          "attname": "pos_stamps_f289b89d86c7086a",
+          "attstorage": "m"
+        },
+        {
+          "attname": "pos_offsets_f289b89d86c7086a",
+          "attstorage": "m"
+        },
+        {
+          "attname": "tokens_c44ae523cca61a0b",
+          "attstorage": "m"
+        },
+        {
+          "attname": "eq_salt_c44ae523cca61a0b",
+          "attstorage": "x"
+        },
+        {
+          "attname": "eq_stamp_c44ae523cca61a0b",
+          "attstorage": "p"
+        },
+        {
+          "attname": "tokens_7a1d2ba5ce2368fb",
+          "attstorage": "m"
+        },
+        {
+          "attname": "pos_salt_7a1d2ba5ce2368fb",
+          "attstorage": "x"
+        },
+        {
+          "attname": "pos_len_7a1d2ba5ce2368fb",
+          "attstorage": "p"
+        },
+        {
+          "attname": "pos_stamps_7a1d2ba5ce2368fb",
+          "attstorage": "m"
+        },
+        {
+          "attname": "pos_offsets_7a1d2ba5ce2368fb",
+          "attstorage": "m"
+        }
+      ],
+      "sizes": {
+        "heap": "273408000",
+        "indexes": "96346112",
+        "total": "369852416"
+      }
+    },
+    {
+      "schema": "test_final_return_extended_tail",
+      "storage": "EXTENDED",
+      "cover": true,
+      "rows": 100000,
+      "allValuesEqual": true,
+      "catalog": [
+        {
+          "attname": "scope_id",
+          "attstorage": "p"
+        },
+        {
+          "attname": "row_id",
+          "attstorage": "p"
+        },
+        {
+          "attname": "tokens_988d248ff4b71bf7",
+          "attstorage": "x"
+        },
+        {
+          "attname": "eq_salt_988d248ff4b71bf7",
+          "attstorage": "x"
+        },
+        {
+          "attname": "eq_stamp_988d248ff4b71bf7",
+          "attstorage": "p"
+        },
+        {
+          "attname": "tokens_792d75cf01821d67",
+          "attstorage": "x"
+        },
+        {
+          "attname": "pos_salt_792d75cf01821d67",
+          "attstorage": "x"
+        },
+        {
+          "attname": "pos_len_792d75cf01821d67",
+          "attstorage": "p"
+        },
+        {
+          "attname": "pos_stamps_792d75cf01821d67",
+          "attstorage": "x"
+        },
+        {
+          "attname": "pos_offsets_792d75cf01821d67",
+          "attstorage": "x"
+        },
+        {
+          "attname": "tokens_a106c26102b707f0",
+          "attstorage": "x"
+        },
+        {
+          "attname": "eq_salt_a106c26102b707f0",
+          "attstorage": "x"
+        },
+        {
+          "attname": "eq_stamp_a106c26102b707f0",
+          "attstorage": "p"
+        },
+        {
+          "attname": "tokens_1127994ab736baf4",
+          "attstorage": "x"
+        },
+        {
+          "attname": "pos_salt_1127994ab736baf4",
+          "attstorage": "x"
+        },
+        {
+          "attname": "pos_len_1127994ab736baf4",
+          "attstorage": "p"
+        },
+        {
+          "attname": "pos_stamps_1127994ab736baf4",
+          "attstorage": "x"
+        },
+        {
+          "attname": "pos_offsets_1127994ab736baf4",
+          "attstorage": "x"
+        },
+        {
+          "attname": "tokens_c5133b3810f23103",
+          "attstorage": "x"
+        },
+        {
+          "attname": "eq_salt_c5133b3810f23103",
+          "attstorage": "x"
+        },
+        {
+          "attname": "eq_stamp_c5133b3810f23103",
+          "attstorage": "p"
+        },
+        {
+          "attname": "tokens_ef1d32a52e2ce103",
+          "attstorage": "x"
+        },
+        {
+          "attname": "pos_salt_ef1d32a52e2ce103",
+          "attstorage": "x"
+        },
+        {
+          "attname": "pos_len_ef1d32a52e2ce103",
+          "attstorage": "p"
+        },
+        {
+          "attname": "pos_stamps_ef1d32a52e2ce103",
+          "attstorage": "x"
+        },
+        {
+          "attname": "pos_offsets_ef1d32a52e2ce103",
+          "attstorage": "x"
+        },
+        {
+          "attname": "tokens_1c32fdad5d1c8367",
+          "attstorage": "x"
+        },
+        {
+          "attname": "eq_salt_1c32fdad5d1c8367",
+          "attstorage": "x"
+        },
+        {
+          "attname": "eq_stamp_1c32fdad5d1c8367",
+          "attstorage": "p"
+        },
+        {
+          "attname": "tokens_a639b11c8130dcf7",
+          "attstorage": "x"
+        },
+        {
+          "attname": "pos_salt_a639b11c8130dcf7",
+          "attstorage": "x"
+        },
+        {
+          "attname": "pos_len_a639b11c8130dcf7",
+          "attstorage": "p"
+        },
+        {
+          "attname": "pos_stamps_a639b11c8130dcf7",
+          "attstorage": "x"
+        },
+        {
+          "attname": "pos_offsets_a639b11c8130dcf7",
+          "attstorage": "x"
+        },
+        {
+          "attname": "tokens_cd3096c7a3cd42c2",
+          "attstorage": "x"
+        },
+        {
+          "attname": "eq_salt_cd3096c7a3cd42c2",
+          "attstorage": "x"
+        },
+        {
+          "attname": "eq_stamp_cd3096c7a3cd42c2",
+          "attstorage": "p"
+        },
+        {
+          "attname": "tokens_f289b89d86c7086a",
+          "attstorage": "x"
+        },
+        {
+          "attname": "pos_salt_f289b89d86c7086a",
+          "attstorage": "x"
+        },
+        {
+          "attname": "pos_len_f289b89d86c7086a",
+          "attstorage": "p"
+        },
+        {
+          "attname": "pos_stamps_f289b89d86c7086a",
+          "attstorage": "x"
+        },
+        {
+          "attname": "pos_offsets_f289b89d86c7086a",
+          "attstorage": "x"
+        },
+        {
+          "attname": "tokens_c44ae523cca61a0b",
+          "attstorage": "x"
+        },
+        {
+          "attname": "eq_salt_c44ae523cca61a0b",
+          "attstorage": "x"
+        },
+        {
+          "attname": "eq_stamp_c44ae523cca61a0b",
+          "attstorage": "p"
+        },
+        {
+          "attname": "tokens_7a1d2ba5ce2368fb",
+          "attstorage": "x"
+        },
+        {
+          "attname": "pos_salt_7a1d2ba5ce2368fb",
+          "attstorage": "x"
+        },
+        {
+          "attname": "pos_len_7a1d2ba5ce2368fb",
+          "attstorage": "p"
+        },
+        {
+          "attname": "pos_stamps_7a1d2ba5ce2368fb",
+          "attstorage": "x"
+        },
+        {
+          "attname": "pos_offsets_7a1d2ba5ce2368fb",
+          "attstorage": "x"
+        }
+      ],
+      "sizes": {
+        "heap": "204800000",
+        "indexes": "138534912",
+        "total": "425828352"
+      }
+    },
+    {
+      "schema": "test_final_return_extended_bare",
+      "storage": "EXTENDED",
+      "cover": false,
+      "rows": 100000,
+      "allValuesEqual": true,
+      "catalog": [
+        {
+          "attname": "scope_id",
+          "attstorage": "p"
+        },
+        {
+          "attname": "row_id",
+          "attstorage": "p"
+        },
+        {
+          "attname": "tokens_988d248ff4b71bf7",
+          "attstorage": "x"
+        },
+        {
+          "attname": "eq_salt_988d248ff4b71bf7",
+          "attstorage": "x"
+        },
+        {
+          "attname": "eq_stamp_988d248ff4b71bf7",
+          "attstorage": "p"
+        },
+        {
+          "attname": "tokens_792d75cf01821d67",
+          "attstorage": "x"
+        },
+        {
+          "attname": "pos_salt_792d75cf01821d67",
+          "attstorage": "x"
+        },
+        {
+          "attname": "pos_len_792d75cf01821d67",
+          "attstorage": "p"
+        },
+        {
+          "attname": "pos_stamps_792d75cf01821d67",
+          "attstorage": "x"
+        },
+        {
+          "attname": "pos_offsets_792d75cf01821d67",
+          "attstorage": "x"
+        },
+        {
+          "attname": "tokens_a106c26102b707f0",
+          "attstorage": "x"
+        },
+        {
+          "attname": "eq_salt_a106c26102b707f0",
+          "attstorage": "x"
+        },
+        {
+          "attname": "eq_stamp_a106c26102b707f0",
+          "attstorage": "p"
+        },
+        {
+          "attname": "tokens_1127994ab736baf4",
+          "attstorage": "x"
+        },
+        {
+          "attname": "pos_salt_1127994ab736baf4",
+          "attstorage": "x"
+        },
+        {
+          "attname": "pos_len_1127994ab736baf4",
+          "attstorage": "p"
+        },
+        {
+          "attname": "pos_stamps_1127994ab736baf4",
+          "attstorage": "x"
+        },
+        {
+          "attname": "pos_offsets_1127994ab736baf4",
+          "attstorage": "x"
+        },
+        {
+          "attname": "tokens_c5133b3810f23103",
+          "attstorage": "x"
+        },
+        {
+          "attname": "eq_salt_c5133b3810f23103",
+          "attstorage": "x"
+        },
+        {
+          "attname": "eq_stamp_c5133b3810f23103",
+          "attstorage": "p"
+        },
+        {
+          "attname": "tokens_ef1d32a52e2ce103",
+          "attstorage": "x"
+        },
+        {
+          "attname": "pos_salt_ef1d32a52e2ce103",
+          "attstorage": "x"
+        },
+        {
+          "attname": "pos_len_ef1d32a52e2ce103",
+          "attstorage": "p"
+        },
+        {
+          "attname": "pos_stamps_ef1d32a52e2ce103",
+          "attstorage": "x"
+        },
+        {
+          "attname": "pos_offsets_ef1d32a52e2ce103",
+          "attstorage": "x"
+        },
+        {
+          "attname": "tokens_1c32fdad5d1c8367",
+          "attstorage": "x"
+        },
+        {
+          "attname": "eq_salt_1c32fdad5d1c8367",
+          "attstorage": "x"
+        },
+        {
+          "attname": "eq_stamp_1c32fdad5d1c8367",
+          "attstorage": "p"
+        },
+        {
+          "attname": "tokens_a639b11c8130dcf7",
+          "attstorage": "x"
+        },
+        {
+          "attname": "pos_salt_a639b11c8130dcf7",
+          "attstorage": "x"
+        },
+        {
+          "attname": "pos_len_a639b11c8130dcf7",
+          "attstorage": "p"
+        },
+        {
+          "attname": "pos_stamps_a639b11c8130dcf7",
+          "attstorage": "x"
+        },
+        {
+          "attname": "pos_offsets_a639b11c8130dcf7",
+          "attstorage": "x"
+        },
+        {
+          "attname": "tokens_cd3096c7a3cd42c2",
+          "attstorage": "x"
+        },
+        {
+          "attname": "eq_salt_cd3096c7a3cd42c2",
+          "attstorage": "x"
+        },
+        {
+          "attname": "eq_stamp_cd3096c7a3cd42c2",
+          "attstorage": "p"
+        },
+        {
+          "attname": "tokens_f289b89d86c7086a",
+          "attstorage": "x"
+        },
+        {
+          "attname": "pos_salt_f289b89d86c7086a",
+          "attstorage": "x"
+        },
+        {
+          "attname": "pos_len_f289b89d86c7086a",
+          "attstorage": "p"
+        },
+        {
+          "attname": "pos_stamps_f289b89d86c7086a",
+          "attstorage": "x"
+        },
+        {
+          "attname": "pos_offsets_f289b89d86c7086a",
+          "attstorage": "x"
+        },
+        {
+          "attname": "tokens_c44ae523cca61a0b",
+          "attstorage": "x"
+        },
+        {
+          "attname": "eq_salt_c44ae523cca61a0b",
+          "attstorage": "x"
+        },
+        {
+          "attname": "eq_stamp_c44ae523cca61a0b",
+          "attstorage": "p"
+        },
+        {
+          "attname": "tokens_7a1d2ba5ce2368fb",
+          "attstorage": "x"
+        },
+        {
+          "attname": "pos_salt_7a1d2ba5ce2368fb",
+          "attstorage": "x"
+        },
+        {
+          "attname": "pos_len_7a1d2ba5ce2368fb",
+          "attstorage": "p"
+        },
+        {
+          "attname": "pos_stamps_7a1d2ba5ce2368fb",
+          "attstorage": "x"
+        },
+        {
+          "attname": "pos_offsets_7a1d2ba5ce2368fb",
+          "attstorage": "x"
+        }
+      ],
+      "sizes": {
+        "heap": "204800000",
+        "indexes": "95264768",
+        "total": "382558208"
+      }
+    }
+  ],
+  "complete": true,
+  "note": "4c factors compared among four sorted clones; product parent stays unchanged; explicit array concat detoasts before target storage"
+}

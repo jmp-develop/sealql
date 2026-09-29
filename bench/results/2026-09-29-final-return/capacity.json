@@ -1,0 +1,261 @@
+{
+  "at": "2026-09-29T08:05:33.775Z",
+  "complete": true,
+  "commit": "59d4ce9e70aaffff2fca3a67baa6a4ee6c378c0a",
+  "tables": [
+    {
+      "relation": "research_u.customers_plain",
+      "rows": 100000,
+      "heap": 19922944,
+      "heap_aux": 32768,
+      "indexes": [
+        {
+          "indexname": "customers_plain_address_norm_idx",
+          "indexdef": "CREATE INDEX customers_plain_address_norm_idx ON research_u.customers_plain USING btree (address_norm)",
+          "bytes": "1015808"
+        },
+        {
+          "indexname": "customers_plain_address_norm_idx1",
+          "indexdef": "CREATE INDEX customers_plain_address_norm_idx1 ON research_u.customers_plain USING gin (address_norm gin_trgm_ops)",
+          "bytes": "2318336"
+        },
+        {
+          "indexname": "customers_plain_company_norm_idx",
+          "indexdef": "CREATE INDEX customers_plain_company_norm_idx ON research_u.customers_plain USING btree (company_norm)",
+          "bytes": "729088"
+        },
+        {
+          "indexname": "customers_plain_company_norm_idx1",
+          "indexdef": "CREATE INDEX customers_plain_company_norm_idx1 ON research_u.customers_plain USING gin (company_norm gin_trgm_ops)",
+          "bytes": "1302528"
+        },
+        {
+          "indexname": "customers_plain_email_norm_idx",
+          "indexdef": "CREATE INDEX customers_plain_email_norm_idx ON research_u.customers_plain USING btree (email_norm)",
+          "bytes": "4087808"
+        },
+        {
+          "indexname": "customers_plain_email_norm_idx1",
+          "indexdef": "CREATE INDEX customers_plain_email_norm_idx1 ON research_u.customers_plain USING gin (email_norm gin_trgm_ops)",
+          "bytes": "8945664"
+        },
+        {
+          "indexname": "customers_plain_memo_norm_idx",
+          "indexdef": "CREATE INDEX customers_plain_memo_norm_idx ON research_u.customers_plain USING btree (memo_norm)",
+          "bytes": "4841472"
+        },
+        {
+          "indexname": "customers_plain_memo_norm_idx1",
+          "indexdef": "CREATE INDEX customers_plain_memo_norm_idx1 ON research_u.customers_plain USING gin (memo_norm gin_trgm_ops)",
+          "bytes": "6889472"
+        },
+        {
+          "indexname": "customers_plain_name_norm_idx",
+          "indexdef": "CREATE INDEX customers_plain_name_norm_idx ON research_u.customers_plain USING btree (name_norm)",
+          "bytes": "3325952"
+        },
+        {
+          "indexname": "customers_plain_name_norm_idx1",
+          "indexdef": "CREATE INDEX customers_plain_name_norm_idx1 ON research_u.customers_plain USING gin (name_norm gin_trgm_ops)",
+          "bytes": "6676480"
+        },
+        {
+          "indexname": "customers_plain_phone_norm_idx",
+          "indexdef": "CREATE INDEX customers_plain_phone_norm_idx ON research_u.customers_plain USING btree (phone_norm)",
+          "bytes": "3178496"
+        },
+        {
+          "indexname": "customers_plain_phone_norm_idx1",
+          "indexdef": "CREATE INDEX customers_plain_phone_norm_idx1 ON research_u.customers_plain USING gin (phone_norm gin_trgm_ops)",
+          "bytes": "3678208"
+        },
+        {
+          "indexname": "customers_plain_pkey",
+          "indexdef": "CREATE UNIQUE INDEX customers_plain_pkey ON research_u.customers_plain USING btree (id)",
+          "bytes": "3178496"
+        }
+      ],
+      "total": 70131712,
+      "toast_heap": 0,
+      "toast_indexes": 8192,
+      "toast_aux": 0,
+      "indexBytes": 50167808,
+      "bytesPerRow": 701.31712
+    },
+    {
+      "relation": "native_verify_main.customers",
+      "rows": 100000,
+      "heap": 38920192,
+      "heap_aux": 40960,
+      "indexes": [
+        {
+          "indexname": "customers_pkey",
+          "indexdef": "CREATE UNIQUE INDEX customers_pkey ON native_verify_main.customers USING btree (id)",
+          "bytes": "3178496"
+        }
+      ],
+      "total": 42147840,
+      "toast_heap": 0,
+      "toast_indexes": 8192,
+      "toast_aux": 0,
+      "indexBytes": 3178496,
+      "bytesPerRow": 421.4784
+    },
+    {
+      "relation": "research_u.pb_4_final",
+      "rows": 100000,
+      "heap": 204808192,
+      "heap_aux": 81920,
+      "indexes": [
+        {
+          "indexname": "pb_4_final_address_exact",
+          "indexdef": "CREATE INDEX pb_4_final_address_exact ON research_u.pb_4_final USING btree (scope_id, (ce_address[1]), id)",
+          "bytes": "5931008"
+        },
+        {
+          "indexname": "pb_4_final_company_exact",
+          "indexdef": "CREATE INDEX pb_4_final_company_exact ON research_u.pb_4_final USING btree (scope_id, (ce_company[1]), id)",
+          "bytes": "5931008"
+        },
+        {
+          "indexname": "pb_4_final_email_exact",
+          "indexdef": "CREATE INDEX pb_4_final_email_exact ON research_u.pb_4_final USING btree (scope_id, (ce_email[1]), id)",
+          "bytes": "5922816"
+        },
+        {
+          "indexname": "pb_4_final_gin",
+          "indexdef": "CREATE INDEX pb_4_final_gin ON research_u.pb_4_final USING gin (cs_name, cs_phone, cs_address, cs_memo, cs_email, cs_company)",
+          "bytes": "59310080"
+        },
+        {
+          "indexname": "pb_4_final_memo_exact",
+          "indexdef": "CREATE INDEX pb_4_final_memo_exact ON research_u.pb_4_final USING btree (scope_id, (ce_memo[1]), id)",
+          "bytes": "5922816"
+        },
+        {
+          "indexname": "pb_4_final_name_exact",
+          "indexdef": "CREATE INDEX pb_4_final_name_exact ON research_u.pb_4_final USING btree (scope_id, (ce_name[1]), id)",
+          "bytes": "5922816"
+        },
+        {
+          "indexname": "pb_4_final_phone_exact",
+          "indexdef": "CREATE INDEX pb_4_final_phone_exact ON research_u.pb_4_final USING btree (scope_id, (ce_phone[1]), id)",
+          "bytes": "5922816"
+        },
+        {
+          "indexname": "pb_4_final_pkey",
+          "indexdef": "CREATE UNIQUE INDEX pb_4_final_pkey ON research_u.pb_4_final USING btree (id)",
+          "bytes": "3178496"
+        },
+        {
+          "indexname": "pb_4_final_scope_row",
+          "indexdef": "CREATE UNIQUE INDEX pb_4_final_scope_row ON research_u.pb_4_final USING btree (scope_id, id)",
+          "bytes": "4997120"
+        }
+      ],
+      "total": 410943488,
+      "toast_heap": 93954048,
+      "toast_indexes": 9011200,
+      "toast_aux": 49152,
+      "indexBytes": 103038976,
+      "bytesPerRow": 4109.43488
+    },
+    {
+      "relation": "test_final_return_product.customers",
+      "rows": 100000,
+      "heap": 38928384,
+      "heap_aux": 40960,
+      "indexes": [
+        {
+          "indexname": "customers_pkey",
+          "indexdef": "CREATE UNIQUE INDEX customers_pkey ON test_final_return_product.customers USING btree (id)",
+          "bytes": "4464640"
+        }
+      ],
+      "total": 43442176,
+      "toast_heap": 0,
+      "toast_indexes": 8192,
+      "toast_aux": 0,
+      "indexBytes": 4464640,
+      "bytesPerRow": 434.42176
+    },
+    {
+      "relation": "test_final_return_product.customers_seal_index",
+      "rows": 100000,
+      "heap": 273383424,
+      "heap_aux": 106496,
+      "indexes": [
+        {
+          "indexname": "customers_seal_index_row_uq",
+          "indexdef": "CREATE UNIQUE INDEX customers_seal_index_row_uq ON test_final_return_product.customers_seal_index USING btree (row_id)",
+          "bytes": "4464640"
+        },
+        {
+          "indexname": "customers_seal_index_scope_row_uq",
+          "indexdef": "CREATE UNIQUE INDEX customers_seal_index_scope_row_uq ON test_final_return_product.customers_seal_index USING btree (scope_id, row_id)",
+          "bytes": "7004160"
+        },
+        {
+          "indexname": "seal_411905c9deef5c59_bt",
+          "indexdef": "CREATE INDEX seal_411905c9deef5c59_bt ON test_final_return_product.customers_seal_index USING btree (scope_id, (tokens_cd3096c7a3cd42c2[1]), row_id, eq_salt_cd3096c7a3cd42c2, eq_stamp_cd3096c7a3cd42c2, tokens_cd3096c7a3cd42c2)",
+          "bytes": "17301504"
+        },
+        {
+          "indexname": "seal_4c8e2d2bddde3451_bt",
+          "indexdef": "CREATE INDEX seal_4c8e2d2bddde3451_bt ON test_final_return_product.customers_seal_index USING btree (scope_id, (tokens_a106c26102b707f0[1]), row_id, eq_salt_a106c26102b707f0, eq_stamp_a106c26102b707f0, tokens_a106c26102b707f0)",
+          "bytes": "21856256"
+        },
+        {
+          "indexname": "seal_62e346c0ef994072_bt",
+          "indexdef": "CREATE INDEX seal_62e346c0ef994072_bt ON test_final_return_product.customers_seal_index USING btree (scope_id, (tokens_c44ae523cca61a0b[1]), row_id, eq_salt_c44ae523cca61a0b, eq_stamp_c44ae523cca61a0b, tokens_c44ae523cca61a0b)",
+          "bytes": "17113088"
+        },
+        {
+          "indexname": "seal_8fa11f16c3da1ad8_bt",
+          "indexdef": "CREATE INDEX seal_8fa11f16c3da1ad8_bt ON test_final_return_product.customers_seal_index USING btree (scope_id, (tokens_1c32fdad5d1c8367[1]), row_id, eq_salt_1c32fdad5d1c8367, eq_stamp_1c32fdad5d1c8367, tokens_1c32fdad5d1c8367)",
+          "bytes": "17186816"
+        },
+        {
+          "indexname": "seal_ae59b15a89e931d6_bt",
+          "indexdef": "CREATE INDEX seal_ae59b15a89e931d6_bt ON test_final_return_product.customers_seal_index USING btree (scope_id, (tokens_c5133b3810f23103[1]), row_id, eq_salt_c5133b3810f23103, eq_stamp_c5133b3810f23103, tokens_c5133b3810f23103)",
+          "bytes": "17252352"
+        },
+        {
+          "indexname": "seal_dfa387787f59f02a_bt",
+          "indexdef": "CREATE INDEX seal_dfa387787f59f02a_bt ON test_final_return_product.customers_seal_index USING btree (scope_id, (tokens_988d248ff4b71bf7[1]), row_id, eq_salt_988d248ff4b71bf7, eq_stamp_988d248ff4b71bf7, tokens_988d248ff4b71bf7)",
+          "bytes": "17186816"
+        },
+        {
+          "indexname": "seal_e66dc2708e915b65_gin",
+          "indexdef": "CREATE INDEX seal_e66dc2708e915b65_gin ON test_final_return_product.customers_seal_index USING gin (tokens_792d75cf01821d67, tokens_1127994ab736baf4, tokens_ef1d32a52e2ce103, tokens_a639b11c8130dcf7, tokens_f289b89d86c7086a, tokens_7a1d2ba5ce2368fb)",
+          "bytes": "62840832"
+        }
+      ],
+      "total": 455737344,
+      "toast_heap": 0,
+      "toast_indexes": 8192,
+      "toast_aux": 0,
+      "indexBytes": 182239232,
+      "bytesPerRow": 4557.37344
+    }
+  ],
+  "paths": {
+    "plain": [
+      "research_u.customers_plain"
+    ],
+    "research": [
+      "native_verify_main.customers",
+      "research_u.pb_4_final"
+    ],
+    "product": [
+      "test_final_return_product.customers",
+      "test_final_return_product.customers_seal_index"
+    ]
+  },
+  "totals": {
+    "plain": 70131712,
+    "research": 453091328,
+    "product": 499179520
+  },
+  "note": "Research includes one full native ciphertext body plus rebuilt historical proof table; protected native body is read-only and shared physically, but its complete size is charged to the research representation"
+}
