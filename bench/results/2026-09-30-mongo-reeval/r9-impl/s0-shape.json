@@ -1,0 +1,835 @@
+{
+  "complete": true,
+  "databaseAccess": false,
+  "observable": "S0 normalized character length (position stream n) and ciphertext byte length; no PRF or key",
+  "results": [
+    {
+      "field": "name",
+      "mode": "eq",
+      "metrics": {
+        "prior": {
+          "rows": 10000,
+          "correct": 0,
+          "valuePct": 0,
+          "characters": 31941,
+          "totalCharacters": 92924,
+          "characterPct": 34.37325125909345,
+          "mostly": 8,
+          "mostlyPct": 0.08
+        },
+        "knownShape": {
+          "rows": 10000,
+          "correct": 0,
+          "valuePct": 0,
+          "characters": 25927,
+          "totalCharacters": 92924,
+          "characterPct": 27.90129568249322,
+          "mostly": 7,
+          "mostlyPct": 0.06999999999999999
+        },
+        "unknownShape": {
+          "rows": 10000,
+          "correct": 0,
+          "valuePct": 0,
+          "characters": 25927,
+          "totalCharacters": 92924,
+          "characterPct": 27.90129568249322,
+          "mostly": 7,
+          "mostlyPct": 0.06999999999999999
+        }
+      },
+      "supportedMetrics": {
+        "prior": {
+          "rows": 10000,
+          "correct": 0,
+          "valuePct": 0,
+          "characters": 31941,
+          "totalCharacters": 92924,
+          "characterPct": 34.37325125909345,
+          "mostly": 8,
+          "mostlyPct": 0.08
+        },
+        "knownShape": {
+          "rows": 10000,
+          "correct": 0,
+          "valuePct": 0,
+          "characters": 25927,
+          "totalCharacters": 92924,
+          "characterPct": 27.90129568249322,
+          "mostly": 7,
+          "mostlyPct": 0.06999999999999999
+        },
+        "unknownShape": {
+          "rows": 10000,
+          "correct": 0,
+          "valuePct": 0,
+          "characters": 25927,
+          "totalCharacters": 92924,
+          "characterPct": 27.90129568249322,
+          "mostly": 7,
+          "mostlyPct": 0.06999999999999999
+        }
+      },
+      "supportedRows": 10000
+    },
+    {
+      "field": "name",
+      "mode": "partial",
+      "metrics": {
+        "prior": {
+          "rows": 10000,
+          "correct": 0,
+          "valuePct": 0,
+          "characters": 31941,
+          "totalCharacters": 92924,
+          "characterPct": 34.37325125909345,
+          "mostly": 8,
+          "mostlyPct": 0.08
+        },
+        "knownShape": {
+          "rows": 10000,
+          "correct": 0,
+          "valuePct": 0,
+          "characters": 44249,
+          "totalCharacters": 92924,
+          "characterPct": 47.61848392234514,
+          "mostly": 7,
+          "mostlyPct": 0.06999999999999999
+        },
+        "unknownShape": {
+          "rows": 10000,
+          "correct": 0,
+          "valuePct": 0,
+          "characters": 31945,
+          "totalCharacters": 92924,
+          "characterPct": 34.37755585209418,
+          "mostly": 8,
+          "mostlyPct": 0.08
+        }
+      },
+      "supportedMetrics": {
+        "prior": {
+          "rows": 10000,
+          "correct": 0,
+          "valuePct": 0,
+          "characters": 31941,
+          "totalCharacters": 92924,
+          "characterPct": 34.37325125909345,
+          "mostly": 8,
+          "mostlyPct": 0.08
+        },
+        "knownShape": {
+          "rows": 10000,
+          "correct": 0,
+          "valuePct": 0,
+          "characters": 44249,
+          "totalCharacters": 92924,
+          "characterPct": 47.61848392234514,
+          "mostly": 7,
+          "mostlyPct": 0.06999999999999999
+        },
+        "unknownShape": {
+          "rows": 10000,
+          "correct": 0,
+          "valuePct": 0,
+          "characters": 31945,
+          "totalCharacters": 92924,
+          "characterPct": 34.37755585209418,
+          "mostly": 8,
+          "mostlyPct": 0.08
+        }
+      },
+      "supportedRows": 10000
+    },
+    {
+      "field": "phone",
+      "mode": "eq",
+      "metrics": {
+        "prior": {
+          "rows": 10000,
+          "correct": 0,
+          "valuePct": 0,
+          "characters": 30365,
+          "totalCharacters": 120000,
+          "characterPct": 25.304166666666667,
+          "mostly": 0,
+          "mostlyPct": 0
+        },
+        "knownShape": {
+          "rows": 10000,
+          "correct": 0,
+          "valuePct": 0,
+          "characters": 30172,
+          "totalCharacters": 120000,
+          "characterPct": 25.143333333333334,
+          "mostly": 0,
+          "mostlyPct": 0
+        },
+        "unknownShape": {
+          "rows": 10000,
+          "correct": 0,
+          "valuePct": 0,
+          "characters": 30172,
+          "totalCharacters": 120000,
+          "characterPct": 25.143333333333334,
+          "mostly": 0,
+          "mostlyPct": 0
+        }
+      },
+      "supportedMetrics": {
+        "prior": {
+          "rows": 10000,
+          "correct": 0,
+          "valuePct": 0,
+          "characters": 30365,
+          "totalCharacters": 120000,
+          "characterPct": 25.304166666666667,
+          "mostly": 0,
+          "mostlyPct": 0
+        },
+        "knownShape": {
+          "rows": 10000,
+          "correct": 0,
+          "valuePct": 0,
+          "characters": 30172,
+          "totalCharacters": 120000,
+          "characterPct": 25.143333333333334,
+          "mostly": 0,
+          "mostlyPct": 0
+        },
+        "unknownShape": {
+          "rows": 10000,
+          "correct": 0,
+          "valuePct": 0,
+          "characters": 30172,
+          "totalCharacters": 120000,
+          "characterPct": 25.143333333333334,
+          "mostly": 0,
+          "mostlyPct": 0
+        }
+      },
+      "supportedRows": 10000
+    },
+    {
+      "field": "phone",
+      "mode": "partial",
+      "metrics": {
+        "prior": {
+          "rows": 10000,
+          "correct": 0,
+          "valuePct": 0,
+          "characters": 30365,
+          "totalCharacters": 120000,
+          "characterPct": 25.304166666666667,
+          "mostly": 0,
+          "mostlyPct": 0
+        },
+        "knownShape": {
+          "rows": 10000,
+          "correct": 0,
+          "valuePct": 0,
+          "characters": 30707,
+          "totalCharacters": 120000,
+          "characterPct": 25.589166666666667,
+          "mostly": 0,
+          "mostlyPct": 0
+        },
+        "unknownShape": {
+          "rows": 10000,
+          "correct": 0,
+          "valuePct": 0,
+          "characters": 30166,
+          "totalCharacters": 120000,
+          "characterPct": 25.138333333333335,
+          "mostly": 0,
+          "mostlyPct": 0
+        }
+      },
+      "supportedMetrics": {
+        "prior": {
+          "rows": 10000,
+          "correct": 0,
+          "valuePct": 0,
+          "characters": 30365,
+          "totalCharacters": 120000,
+          "characterPct": 25.304166666666667,
+          "mostly": 0,
+          "mostlyPct": 0
+        },
+        "knownShape": {
+          "rows": 10000,
+          "correct": 0,
+          "valuePct": 0,
+          "characters": 30707,
+          "totalCharacters": 120000,
+          "characterPct": 25.589166666666667,
+          "mostly": 0,
+          "mostlyPct": 0
+        },
+        "unknownShape": {
+          "rows": 10000,
+          "correct": 0,
+          "valuePct": 0,
+          "characters": 30166,
+          "totalCharacters": 120000,
+          "characterPct": 25.138333333333335,
+          "mostly": 0,
+          "mostlyPct": 0
+        }
+      },
+      "supportedRows": 10000
+    },
+    {
+      "field": "address",
+      "mode": "eq",
+      "metrics": {
+        "prior": {
+          "rows": 10000,
+          "correct": 20,
+          "valuePct": 0.2,
+          "characters": 111727,
+          "totalCharacters": 148907,
+          "characterPct": 75.03139543473442,
+          "mostly": 6235,
+          "mostlyPct": 62.35000000000001
+        },
+        "knownShape": {
+          "rows": 10000,
+          "correct": 300,
+          "valuePct": 3,
+          "characters": 112938,
+          "totalCharacters": 148907,
+          "characterPct": 75.84465471737393,
+          "mostly": 6341,
+          "mostlyPct": 63.41
+        },
+        "unknownShape": {
+          "rows": 10000,
+          "correct": 20,
+          "valuePct": 0.2,
+          "characters": 111736,
+          "totalCharacters": 148907,
+          "characterPct": 75.03743947564587,
+          "mostly": 6225,
+          "mostlyPct": 62.25000000000001
+        }
+      },
+      "supportedMetrics": {
+        "prior": {
+          "rows": 10000,
+          "correct": 20,
+          "valuePct": 0.2,
+          "characters": 111727,
+          "totalCharacters": 148907,
+          "characterPct": 75.03139543473442,
+          "mostly": 6235,
+          "mostlyPct": 62.35000000000001
+        },
+        "knownShape": {
+          "rows": 10000,
+          "correct": 300,
+          "valuePct": 3,
+          "characters": 112938,
+          "totalCharacters": 148907,
+          "characterPct": 75.84465471737393,
+          "mostly": 6341,
+          "mostlyPct": 63.41
+        },
+        "unknownShape": {
+          "rows": 10000,
+          "correct": 20,
+          "valuePct": 0.2,
+          "characters": 111736,
+          "totalCharacters": 148907,
+          "characterPct": 75.03743947564587,
+          "mostly": 6225,
+          "mostlyPct": 62.25000000000001
+        }
+      },
+      "supportedRows": 10000
+    },
+    {
+      "field": "address",
+      "mode": "partial",
+      "metrics": {
+        "prior": {
+          "rows": 10000,
+          "correct": 20,
+          "valuePct": 0.2,
+          "characters": 111727,
+          "totalCharacters": 148907,
+          "characterPct": 75.03139543473442,
+          "mostly": 6235,
+          "mostlyPct": 62.35000000000001
+        },
+        "knownShape": {
+          "rows": 10000,
+          "correct": 521,
+          "valuePct": 5.21,
+          "characters": 124354,
+          "totalCharacters": 148907,
+          "characterPct": 83.51118483348668,
+          "mostly": 6971,
+          "mostlyPct": 69.71000000000001
+        },
+        "unknownShape": {
+          "rows": 10000,
+          "correct": 20,
+          "valuePct": 0.2,
+          "characters": 111727,
+          "totalCharacters": 148907,
+          "characterPct": 75.03139543473442,
+          "mostly": 6235,
+          "mostlyPct": 62.35000000000001
+        }
+      },
+      "supportedMetrics": {
+        "prior": {
+          "rows": 10000,
+          "correct": 20,
+          "valuePct": 0.2,
+          "characters": 111727,
+          "totalCharacters": 148907,
+          "characterPct": 75.03139543473442,
+          "mostly": 6235,
+          "mostlyPct": 62.35000000000001
+        },
+        "knownShape": {
+          "rows": 10000,
+          "correct": 521,
+          "valuePct": 5.21,
+          "characters": 124354,
+          "totalCharacters": 148907,
+          "characterPct": 83.51118483348668,
+          "mostly": 6971,
+          "mostlyPct": 69.71000000000001
+        },
+        "unknownShape": {
+          "rows": 10000,
+          "correct": 20,
+          "valuePct": 0.2,
+          "characters": 111727,
+          "totalCharacters": 148907,
+          "characterPct": 75.03139543473442,
+          "mostly": 6235,
+          "mostlyPct": 62.35000000000001
+        }
+      },
+      "supportedRows": 10000
+    },
+    {
+      "field": "memo",
+      "mode": "eq",
+      "metrics": {
+        "prior": {
+          "rows": 10000,
+          "correct": 0,
+          "valuePct": 0,
+          "characters": 66939,
+          "totalCharacters": 147144,
+          "characterPct": 45.49217093459468,
+          "mostly": 394,
+          "mostlyPct": 3.94
+        },
+        "knownShape": {
+          "rows": 10000,
+          "correct": 0,
+          "valuePct": 0,
+          "characters": 67113,
+          "totalCharacters": 147144,
+          "characterPct": 45.61042244332083,
+          "mostly": 404,
+          "mostlyPct": 4.04
+        },
+        "unknownShape": {
+          "rows": 10000,
+          "correct": 0,
+          "valuePct": 0,
+          "characters": 67111,
+          "totalCharacters": 147144,
+          "characterPct": 45.60906323057685,
+          "mostly": 404,
+          "mostlyPct": 4.04
+        }
+      },
+      "supportedMetrics": {
+        "prior": {
+          "rows": 10000,
+          "correct": 0,
+          "valuePct": 0,
+          "characters": 66939,
+          "totalCharacters": 147144,
+          "characterPct": 45.49217093459468,
+          "mostly": 394,
+          "mostlyPct": 3.94
+        },
+        "knownShape": {
+          "rows": 10000,
+          "correct": 0,
+          "valuePct": 0,
+          "characters": 67113,
+          "totalCharacters": 147144,
+          "characterPct": 45.61042244332083,
+          "mostly": 404,
+          "mostlyPct": 4.04
+        },
+        "unknownShape": {
+          "rows": 10000,
+          "correct": 0,
+          "valuePct": 0,
+          "characters": 67111,
+          "totalCharacters": 147144,
+          "characterPct": 45.60906323057685,
+          "mostly": 404,
+          "mostlyPct": 4.04
+        }
+      },
+      "supportedRows": 10000
+    },
+    {
+      "field": "memo",
+      "mode": "partial",
+      "metrics": {
+        "prior": {
+          "rows": 10000,
+          "correct": 0,
+          "valuePct": 0,
+          "characters": 66939,
+          "totalCharacters": 147144,
+          "characterPct": 45.49217093459468,
+          "mostly": 394,
+          "mostlyPct": 3.94
+        },
+        "knownShape": {
+          "rows": 10000,
+          "correct": 0,
+          "valuePct": 0,
+          "characters": 85279,
+          "totalCharacters": 147144,
+          "characterPct": 57.956151796879254,
+          "mostly": 438,
+          "mostlyPct": 4.38
+        },
+        "unknownShape": {
+          "rows": 10000,
+          "correct": 0,
+          "valuePct": 0,
+          "characters": 85304,
+          "totalCharacters": 147144,
+          "characterPct": 57.973141956178985,
+          "mostly": 459,
+          "mostlyPct": 4.590000000000001
+        }
+      },
+      "supportedMetrics": {
+        "prior": {
+          "rows": 9974,
+          "correct": 0,
+          "valuePct": 0,
+          "characters": 65478,
+          "totalCharacters": 145558,
+          "characterPct": 44.98413003751082,
+          "mostly": 368,
+          "mostlyPct": 3.6895929416482858
+        },
+        "knownShape": {
+          "rows": 9974,
+          "correct": 0,
+          "valuePct": 0,
+          "characters": 83820,
+          "totalCharacters": 145558,
+          "characterPct": 57.5852924607373,
+          "mostly": 412,
+          "mostlyPct": 4.130739923801885
+        },
+        "unknownShape": {
+          "rows": 9974,
+          "correct": 0,
+          "valuePct": 0,
+          "characters": 83843,
+          "totalCharacters": 145558,
+          "characterPct": 57.60109372209017,
+          "mostly": 433,
+          "mostlyPct": 4.341287347102466
+        }
+      },
+      "supportedRows": 9974
+    },
+    {
+      "field": "email",
+      "mode": "eq",
+      "metrics": {
+        "prior": {
+          "rows": 10000,
+          "correct": 0,
+          "valuePct": 0,
+          "characters": 108752,
+          "totalCharacters": 206574,
+          "characterPct": 52.645541065187295,
+          "mostly": 0,
+          "mostlyPct": 0
+        },
+        "knownShape": {
+          "rows": 10000,
+          "correct": 0,
+          "valuePct": 0,
+          "characters": 109636,
+          "totalCharacters": 206574,
+          "characterPct": 53.0734748806723,
+          "mostly": 0,
+          "mostlyPct": 0
+        },
+        "unknownShape": {
+          "rows": 10000,
+          "correct": 0,
+          "valuePct": 0,
+          "characters": 109636,
+          "totalCharacters": 206574,
+          "characterPct": 53.0734748806723,
+          "mostly": 0,
+          "mostlyPct": 0
+        }
+      },
+      "supportedMetrics": {
+        "prior": {
+          "rows": 10000,
+          "correct": 0,
+          "valuePct": 0,
+          "characters": 108752,
+          "totalCharacters": 206574,
+          "characterPct": 52.645541065187295,
+          "mostly": 0,
+          "mostlyPct": 0
+        },
+        "knownShape": {
+          "rows": 10000,
+          "correct": 0,
+          "valuePct": 0,
+          "characters": 109636,
+          "totalCharacters": 206574,
+          "characterPct": 53.0734748806723,
+          "mostly": 0,
+          "mostlyPct": 0
+        },
+        "unknownShape": {
+          "rows": 10000,
+          "correct": 0,
+          "valuePct": 0,
+          "characters": 109636,
+          "totalCharacters": 206574,
+          "characterPct": 53.0734748806723,
+          "mostly": 0,
+          "mostlyPct": 0
+        }
+      },
+      "supportedRows": 10000
+    },
+    {
+      "field": "email",
+      "mode": "partial",
+      "metrics": {
+        "prior": {
+          "rows": 10000,
+          "correct": 0,
+          "valuePct": 0,
+          "characters": 108752,
+          "totalCharacters": 206574,
+          "characterPct": 52.645541065187295,
+          "mostly": 0,
+          "mostlyPct": 0
+        },
+        "knownShape": {
+          "rows": 10000,
+          "correct": 0,
+          "valuePct": 0,
+          "characters": 128294,
+          "totalCharacters": 206574,
+          "characterPct": 62.10558928035474,
+          "mostly": 1,
+          "mostlyPct": 0.01
+        },
+        "unknownShape": {
+          "rows": 10000,
+          "correct": 0,
+          "valuePct": 0,
+          "characters": 119715,
+          "totalCharacters": 206574,
+          "characterPct": 57.95259810043858,
+          "mostly": 0,
+          "mostlyPct": 0
+        }
+      },
+      "supportedMetrics": {
+        "prior": {
+          "rows": 10000,
+          "correct": 0,
+          "valuePct": 0,
+          "characters": 108752,
+          "totalCharacters": 206574,
+          "characterPct": 52.645541065187295,
+          "mostly": 0,
+          "mostlyPct": 0
+        },
+        "knownShape": {
+          "rows": 10000,
+          "correct": 0,
+          "valuePct": 0,
+          "characters": 128294,
+          "totalCharacters": 206574,
+          "characterPct": 62.10558928035474,
+          "mostly": 1,
+          "mostlyPct": 0.01
+        },
+        "unknownShape": {
+          "rows": 10000,
+          "correct": 0,
+          "valuePct": 0,
+          "characters": 119715,
+          "totalCharacters": 206574,
+          "characterPct": 57.95259810043858,
+          "mostly": 0,
+          "mostlyPct": 0
+        }
+      },
+      "supportedRows": 10000
+    },
+    {
+      "field": "company",
+      "mode": "eq",
+      "metrics": {
+        "prior": {
+          "rows": 10000,
+          "correct": 7017,
+          "valuePct": 70.17,
+          "characters": 73897,
+          "totalCharacters": 93717,
+          "characterPct": 78.85122229691518,
+          "mostly": 7017,
+          "mostlyPct": 70.17
+        },
+        "knownShape": {
+          "rows": 10000,
+          "correct": 9947,
+          "valuePct": 99.47,
+          "characters": 93505,
+          "totalCharacters": 93717,
+          "characterPct": 99.77378703970464,
+          "mostly": 9947,
+          "mostlyPct": 99.47
+        },
+        "unknownShape": {
+          "rows": 10000,
+          "correct": 7017,
+          "valuePct": 70.17,
+          "characters": 73897,
+          "totalCharacters": 93717,
+          "characterPct": 78.85122229691518,
+          "mostly": 7017,
+          "mostlyPct": 70.17
+        }
+      },
+      "supportedMetrics": {
+        "prior": {
+          "rows": 10000,
+          "correct": 7017,
+          "valuePct": 70.17,
+          "characters": 73897,
+          "totalCharacters": 93717,
+          "characterPct": 78.85122229691518,
+          "mostly": 7017,
+          "mostlyPct": 70.17
+        },
+        "knownShape": {
+          "rows": 10000,
+          "correct": 9947,
+          "valuePct": 99.47,
+          "characters": 93505,
+          "totalCharacters": 93717,
+          "characterPct": 99.77378703970464,
+          "mostly": 9947,
+          "mostlyPct": 99.47
+        },
+        "unknownShape": {
+          "rows": 10000,
+          "correct": 7017,
+          "valuePct": 70.17,
+          "characters": 73897,
+          "totalCharacters": 93717,
+          "characterPct": 78.85122229691518,
+          "mostly": 7017,
+          "mostlyPct": 70.17
+        }
+      },
+      "supportedRows": 10000
+    },
+    {
+      "field": "company",
+      "mode": "partial",
+      "metrics": {
+        "prior": {
+          "rows": 10000,
+          "correct": 7017,
+          "valuePct": 70.17,
+          "characters": 73897,
+          "totalCharacters": 93717,
+          "characterPct": 78.85122229691518,
+          "mostly": 7017,
+          "mostlyPct": 70.17
+        },
+        "knownShape": {
+          "rows": 10000,
+          "correct": 10000,
+          "valuePct": 100,
+          "characters": 93717,
+          "totalCharacters": 93717,
+          "characterPct": 100,
+          "mostly": 10000,
+          "mostlyPct": 100
+        },
+        "unknownShape": {
+          "rows": 10000,
+          "correct": 7070,
+          "valuePct": 70.7,
+          "characters": 74109,
+          "totalCharacters": 93717,
+          "characterPct": 79.07743525721054,
+          "mostly": 7070,
+          "mostlyPct": 70.7
+        }
+      },
+      "supportedMetrics": {
+        "prior": {
+          "rows": 10000,
+          "correct": 7017,
+          "valuePct": 70.17,
+          "characters": 73897,
+          "totalCharacters": 93717,
+          "characterPct": 78.85122229691518,
+          "mostly": 7017,
+          "mostlyPct": 70.17
+        },
+        "knownShape": {
+          "rows": 10000,
+          "correct": 10000,
+          "valuePct": 100,
+          "characters": 93717,
+          "totalCharacters": 93717,
+          "characterPct": 100,
+          "mostly": 10000,
+          "mostlyPct": 100
+        },
+        "unknownShape": {
+          "rows": 10000,
+          "correct": 7070,
+          "valuePct": 70.7,
+          "characters": 74109,
+          "totalCharacters": 93717,
+          "characterPct": 79.07743525721054,
+          "mostly": 7070,
+          "mostlyPct": 70.7
+        }
+      },
+      "supportedRows": 10000
+    }
+  ]
+}

@@ -1,0 +1,57 @@
+import {readFileSync,writeFileSync} from 'node:fs';
+const OUT='bench/results/2026-09-30-mongo-reeval/r9-impl';
+const r=JSON.parse(readFileSync(`${OUT}/results.json`,'utf8'));
+const read=(p:string)=>JSON.parse(readFileSync(`${OUT}/${p}.json`,'utf8'));
+const fields=['name','phone','address','memo','email','company'];
+const pct=(v:number|undefined)=>v===undefined?'미측정':v.toFixed(2)+'%';
+function best(metrics:Record<string,any>,keys?:string[]){return Math.max(...Object.entries(metrics).filter(([k])=>!keys||keys.includes(k)).map(([,m])=>m.valuePct));}
+const lines=[`# 사용자 결정으로 중단, 부분 결과`,
+``, `Mongo 방식 재평가: 선택 삽입·질의 관찰. 2026-09-30. 완료된 C ${r.C.length}/24조건, D ${r.D.length}/24조건만 보존했다. 실행 프로세스는 중단했으며 나머지는 **미측정**이다. 제품 코드와 DB는 변경하지 않았다. 수치는 실제 MongoDB 서버가 아니라 공식 규칙을 반영한 메모리 누출 모형의 공격 성공률이다.`,
+``, `## 결론의 범위`,
+``, `등장마다 다른 태그를 저장하면 알려진 삽입 행의 태그를 기존 행에 그대로 대입하는 조립 공격의 연결 고리가 사라진다. 이번 공격은 이 차이를 길이·태그 수 사전, 질의의 긍정·부정 응답, 공개 전화 형식 조립으로 다시 검증했다. 낮은 복원율은 이 공격군에서의 결과이며 실제 MongoDB 또는 새 제품의 안전 보증·복원 상한이 아니다.`,
+``, `C-port의 평문 장부는 익명 조각별 누적 빈도와 선택 삽입 전후 증가량을 추가로 드러낸다. C-mongo의 암호화 장부는 이 평문 증가량을 주지 않는다. 두 끝점 스냅샷만으로 장부 그룹을 피해 행에 연결할 수 있다고 가정하지 않았다.`,
+``, `## 고정 조건과 입력 경계`,
+``, `- 기존 fixture를 같은 고정 seed로 메모리 재생성하고 앞 10,000행을 피해, 다음 10,000행을 참조로 사용했다. 기존 DB 적재나 새 데이터 생성은 없다. ID 분할 SHA-256: \`${r.identityDigest}\`.`,
+`- C는 같은 scope에 참조 행에서 seed 108029로 선택한 100/1,000행을 삽입한다. 선택한 원문·삽입 행의 공개 태그만 제공하며 서버 검색 키는 제공하지 않는다. 두 스냅샷은 일괄 삽입 전/후 두 끝점이다.`,
+`- D는 이전 실험의 **전역 1,000회** 일정을 그대로 사용한다. 이름 161, 전화 161, 주소 175, 메모 174, 이메일 170, 회사 159회이며, 필드당 1,000회가 아니다. 반복 검색어는 첫 등장 순서로 묶는다. 부분 검색어는 모두 2..10 범위이며 이번 일정에는 10자 초과 검색어가 없다.`,
+`- D-known은 검색어와 서버용 값 키, D-unknown은 서버용 키·응답 행 집합만 받는다. unknown 추정기에 검색어 라벨을 전달하지 않는다. 독립 참조 사전의 빈도로 라벨을 추정한다. TLS 패킷만 보거나 정적인 DB 백업만 본 조건과 다르다.`,
+`- 정답은 결과 집계·검산에만 쓰인다. 공격은 피해 값 대신 저장 태그, 길이 버킷, 공개 형식과 참조 사전을 사용한다. \`models.ts\`의 생성용 비밀 키/장부 연결표는 공격 입력에서 제외한다.`,
+`- 전화 탐색은 동일한 공개 형식·관찰 제약을 만족하는 서로 다른 참조 전화 두 개가 있으면 비유일성 증거로 반환한다. 없을 때만 깊이 우선 탐색하며 행당 20,000상태, 두 해에서 중단한다. 마지막 상한 초과 시도까지 기록해 최대 states는 20,001이다.`,
+`- C-mongo partial은 최대 60글자, 최소/최대 검색어 2/10, contention 8(9개 버킷)이다. 60글자 초과 메모는 미지원으로 남기며 잘라내지 않는다. 같은 지원 행으로 S0 기존 예측도 재채점한다. equality는 별도 프로필이다.`,
+``, `## C: 선택 삽입 후 완전한 값 복원`,
+``, `각 칸은 완결된 공격 하나의 성공률 중 최대값이다. 행마다 정답을 보고 공격을 골라 합치지 않는다. C-mongo 압축 전후 문서 관찰은 같아 아래 문서 복원율도 같다.`,
+``, `| 칸 | 삽입 수 | 현재 S0 | C-port | C-mongo partial | Mongo 지원 피해 행 |`, `|---|---:|---:|---:|---:|---:|`];
+for(const field of fields)for(const N of [100,1000]){const p=r.C.find((x:any)=>x.field===field&&x.model==='C-port'&&x.N===N),m=r.C.find((x:any)=>x.field===field&&x.model==='C-mongo'&&x.N===N);lines.push(`| ${field} | ${N} | ${pct(m?.current.valuePct??p?.current.valuePct)} | ${pct(p?best(p.metrics):undefined)} | ${pct(m?best(m.metrics):undefined)} | ${m?.supportedRows??'미측정'} |`);}
+lines.push('', '## D: 같은 질의 1,000회 관찰 후 완전한 값 복원', '', '부분 검색의 known은 사전·형상·공개 전화 조립 중 완결된 공격 최대, unknown은 빈도 라벨 추정·형상 공격 최대다. S0는 같은 피해 지원 행의 기존 강한 공격 예측을 재채점했다.', '', '| 칸 | 검색어 앎 | 현재 S0 | C-port | C-mongo partial |', '|---|---|---:|---:|---:|');
+for(const field of fields)for(const known of [true,false]){const p=r.D.find((x:any)=>x.field===field&&x.model==='C-port'&&x.mode==='partial'),m=r.D.find((x:any)=>x.field===field&&x.model==='C-mongo'&&x.mode==='partial'),keys=known?['known','knownShape','assembled']:['unknown','unknownShape'];const current=m?.current??p?.current;lines.push(`| ${field} | ${known?'앎':'모름'} | ${pct(current?best(current,Object.keys(current).filter(k=>k.startsWith(known?'known':'unknown'))):undefined)} | ${pct(p?best(p.metrics,keys):undefined)} | ${pct(m?best(m.metrics,keys):undefined)} |`);}
+lines.push('', '**비교 한계:** 이번 C-port에는 길이·형상+질의 incidence 공격을 추가했지만 이전 S0 D 결과에는 이 공격이 없었다. 회사 unknown의 50.63% 대 70.70%를 설계 보안 우열로 해석하지 않는다. [S0 보강 탐색 결과](s0-shape.json)는 normalized UTF-8 길이를 실제 raw 본문 암호문 길이처럼 사용한 공개정보 경계 오류가 발견돼 **대표값에서 제외**했다. 원본 출력은 그대로 보존했으며 사용자 중단 후 수정 재실험은 하지 않았다. 70.70% 보강값은 채택된 S0 측정값이 아니다.');
+lines.push('', '### D equality 별도 프로필', '', '| 칸 | C-port 앎 / 모름 | C-mongo eq 앎 / 모름 |', '|---|---:|---:|');
+for(const field of fields){const p=r.D.find((x:any)=>x.field===field&&x.model==='C-port'&&x.mode==='eq'),m=r.D.find((x:any)=>x.field===field&&x.model==='C-mongo'&&x.mode==='eq');const pair=(v:any)=>v?`${pct(best(v.metrics,['known','knownShape']))} / ${pct(best(v.metrics,['unknown','unknownShape']))}`:'미측정';lines.push(`| ${field} | ${pair(p)} | ${pair(m)} |`);}
+lines.push('', '## 전화 조립: 비유일성과 탐색 상한', '', '| 채널 | 모형 | 행 수 | 유일해 | 서로 다른 두 해 | 상한 중단 |', '|---|---|---:|---:|---:|---:|');
+for(const x of [...r.C.filter((x:any)=>x.field==='phone'),...r.D.filter((x:any)=>x.field==='phone'&&x.mode==='partial')]){const a=read(x.N?`chosen-phone-${x.model}-${x.N}`:`observed-phone-${x.model}-partial`);lines.push(`| ${x.N?'C '+x.N:'D known'} | ${x.model} | ${a.graph.length} | ${a.graph.filter((g:any)=>g.value!==undefined).length} | ${a.graph.filter((g:any)=>g.solutions===2).length} | ${a.graph.filter((g:any)=>g.capped).length} |`);}
+lines.push('', '## 장부·압축 별도 채널', '', '| 칸 | 모형 | 삽입 수 | 기존 피해 태그 재사용 행 | 평문 n 변경 그룹 | 단일 후보로 추정한 조각 라벨 / 정답 | 압축 전 → 후 ESC 행 |', '|---|---|---:|---:|---:|---:|---:|');
+for(const x of r.C.filter((x:any)=>x.N===1000))lines.push(`| ${x.field} | ${x.model} | ${x.N} | ${x.sharedVictimRows} | ${x.twoSnapshots.changedPlainCounters} | ${x.twoSnapshots.uniqueInferredLabels} / ${x.twoSnapshots.correctLabels??'해당 없음'} | ${x.compaction.beforeEsc} → ${x.compaction.afterEsc} |`);
+lines.push('', 'C-port의 라벨 추정은 알려진 삽입 배치에서 조각별 빈도가 유일할 때 장부 증가량과 대응시킨 결과다. 장부 라벨을 맞혔다는 사실을 기존 문서의 값 복원으로 세지 않는다. C-mongo 압축 후 그룹 개수에는 원문+0xFF 패딩 그룹도 포함되지만 개별 그룹의 원문이나 EDC 연결은 제공하지 않는다.',
+ '', '## 재현 정확도와 미검증', '',
+ '- C-port는 과거 통합 연구의 SHA-256 prefix-key 프록시, 64비트 등장 태그, 평문 장부를 재현한다. C-mongo는 독립 EDC/ESC 키, HMAC 태그, 암호화된 카운터, 실제 소스의 UTF-8 길이 버킷 기반 패딩을 반영한 **누출 모형**이다. SDK 바이트 형식 일치나 실서버 침투 시험이 아니다.',
+ '- **실제 BSON 배열 순서 채널은 미구현**이다. 공식 서버는 exact→substring 순서, 클라이언트는 FNV 문자열 집합 순서와 뒤쪽 가짜 조각 반복을 보존한다. 모형은 정렬된 불투명 태그 집합을 쓴다. D의 태그 rank를 이용한 추가 공격이 가능할 수 있으므로 실제 MongoDB 복원율의 상한으로 해석하지 않는다.',
+ '- 압축은 숨은 값/버킷마다 암호화 anchor 하나가 남는 이상화된 끝점이다. 최신 서버 compaction/cleanup의 실제 변경 로그, WAL, 트랜잭션별 그룹 경계, 장애·동시성은 미재현이다. 끝점 두 개와 지속적인 연산 관찰을 혼동하지 않는다.',
+ '- ECOC는 불투명 암호문 수만 모사한다. 본문 암호문은 관찰 가능한 길이 버킷으로 모사하며 Mongo 상수 envelope 바이트는 생략했다. 실제 저장 용량·성능은 이 실험으로 주장하지 않는다.',
+ '- 본 작업의 0건은 제한된 공격군의 실패다. 공격자 질의 선택 최적화, 순차 적응 삽입, 배열 순서, 장기간 질의·압축 로그 결합, 참조 분포 변화는 별도 과제다.',
+ '', '## 근거와 실행', '',
+ '- [공식 규칙·소스 고정·배열 순서 한계](../v-astra/model-rules-ko.md)',
+ '- [A/B 및 삽입·수정 두 스냅샷 연구](../m1-astra/report-ko.md)',
+ '- [전체 C/D 집계](results.json), 필드별 chosen-/observed- JSON에 10,000행 예측·관찰·비유일성 witness 보존.',
+ '- [18개 모형 기계적 검증](model-verification.json), [완료된 부분 결과의 예측·witness 재채점](verification-partial.json).',
+ '- 기존 비교 기준: [동일 강도 경쟁 모델 C/D](../../2026-09-30-competitor-sim/r9-impl/report-ko.md).',
+ '', '```sh',
+ 'rtk proxy node --expose-gc --max-old-space-size=6144 --import tsx bench/mongo-reeval/run.ts',
+ 'rtk proxy node --import tsx bench/mongo-reeval/verify-model.ts',
+ 'rtk proxy node --import tsx bench/mongo-reeval/verify-results.ts',
+ 'rtk proxy node --import tsx bench/mongo-reeval/report.ts',
+ 'rtk proxy npx tsc -p bench/mongo-reeval/tsconfig.json',
+ 'rtk npm run docs:check', '```', '',
+ '사용자 중단 이후 새 공격·적재는 실행하지 않았다. 위 명령은 재현용이며, 중단 후에는 완료 출력의 병합·재채점과 문서 검증만 수행했다. 제품 build/test와 DB 시험은 제품 변경이 없어 실행하지 않았다.', '',
+ '완료 결과 검증 출력: `pass=true, partial=true, files=26, scoredPredictions=1620000, phoneWitnesses=99965, queryTruthPairs=14850000`. 연구 TypeScript 검사 exit 0, `docs:check`는 `Documentation entry, links, decisions, plans, exports, and shared example references PASS`였다. 이 검산은 철회한 s0-shape 탐색을 포함하지 않는다.', '',
+ `모형 SHA-256: \`${r.sourceHash}\`.`, '');
+writeFileSync(`${OUT}/report-ko.md`,lines.join('\n'));console.log(`report C=${r.C.length}/24 D=${r.D.length}/24 complete=${r.complete}`);
