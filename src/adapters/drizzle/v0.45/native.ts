@@ -10,6 +10,7 @@ import { envelopeShape, type Sealer } from '../../../core/field-cipher.js';
 import { validateField, type FieldSpec, type JsonValue } from '../../../core/field-codec.js';
 import type { SealedModelDefinition, SealedStorage } from '../../../core/sealed-model.js';
 import { runtimeMethods } from './native-runtime.js';
+import { stampMigrationSql } from '../../../core/stamp-sql.js';
 
 declare const sealedBrand: unique symbol;
 declare const sealMetaBrand: unique symbol;
@@ -229,8 +230,8 @@ export function createSealed(options: { sealer: Sealer | (() => Sealer) }) {
     ) => register(table, cfg, models),
     extraMigrationSql(seal: object): string[] {
       const reg = registrationOf(seal);
-      return Object.values(reg.storage.index?.profiles ?? {}).filter(profile => profile.mode === 'substring')
-        .map(profile => `alter table "${reg.storage.index!.schema}"."${reg.storage.index!.name}" alter column "${profile.tokens}" set statistics 1000`);
+      return [...stampMigrationSql(reg.storage.parent.schema), ...Object.values(reg.storage.index?.profiles ?? {}).filter(profile => profile.mode === 'substring')
+        .map(profile => `alter table "${reg.storage.index!.schema}"."${reg.storage.index!.name}" alter column "${profile.tokens}" set statistics 1000`)];
     },
     ...runtimeMethods(sealer),
   };

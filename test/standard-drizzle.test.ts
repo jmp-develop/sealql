@@ -417,7 +417,7 @@ test('native managed writes and opens stay atomic', async () => {
       orderBy: { column: people.createdAt, direction: 'asc' }, limit: 1, cursor: sorted.nextCursor! });
     assert.equal(sortedNext.items.length, 1);
     assert.deepEqual([sorted.items[0].id, sortedNext.items[0].id], [first.id, third.id]);
-    await assert.rejects(sealed.count(db, peopleSeal, { scope: first.scope_id, budgets: { fetchBytes: 80 } }), { code: 'LIMIT_EXCEEDED' });
+    assert.equal(await sealed.count(db, peopleSeal, { scope: first.scope_id }), 2);
     const tenantPage = await sealed.search(db, { scope: first.scope_id,
       match: { p: [peopleSeal, m => m.or(m.name.eq('absent'), m.sql(sql`true`))] },
       query: ({ where, after, orderBy, flags, limit }) => db.select({ p: people, ...flags }).from(people)

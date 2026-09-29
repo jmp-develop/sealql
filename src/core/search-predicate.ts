@@ -1,9 +1,9 @@
-import { compare, utf8 } from './bytes.js';
-import { ensure, fail } from './errors.js';
+import { ensure } from './errors.js';
 import { encodeField, type FieldSpec } from './field-codec.js';
-import { normalizeText, normalizeWords, searchPieces, searchTokens, type SearchProfile, type SearchTokenCache } from './search-tokens.js';
+import { normalizeText, searchPieces, searchTokens, type SearchProfile, type SearchTokenCache } from './search-tokens.js';
 import type { Keyring } from './field-cipher.js';
 import type { SealedModelDefinition } from './sealed-model.js';
+import { compileStampQuery, type StampQuery } from './stamp-query.js';
 
 export type SearchOperator = 'eq' | 'contains' | 'startsWith' | 'endsWith' | 'like';
 export type SearchNode = { op: SearchOperator; field: string; value: unknown; respectWords?: boolean } | { op: 'all'; children: SearchNode[] } | { op: 'any'; children: SearchNode[] };
@@ -26,7 +26,7 @@ export function validateSearch(node: SearchNode, definition: SealedModelDefiniti
   };
   visit(node);
 }
-export interface CompiledLeaf { node: Extract<SearchNode, { field: string }>; profile: SearchProfile; tokens: string[]; normalized: string | Uint8Array }
+export interface CompiledLeaf { node: Extract<SearchNode, { field: string }>; profile: SearchProfile; tokens: string[]; normalized: string | Uint8Array; proof: StampQuery }
 export type CompiledSearch = { op: 'all'; children: CompiledSearch[] } | { op: 'any'; children: CompiledSearch[] } | { op: 'leaf'; leaf: CompiledLeaf };
 export async function compileSearch(node: SearchNode, definition: SealedModelDefinition, storedProfiles: SearchProfile[], ring: Keyring, scopeId: string, tokenCache?: SearchTokenCache, checkpoint: () => void = () => {}): Promise<CompiledSearch> {
   checkpoint();
@@ -41,7 +41,8 @@ export async function compileSearch(node: SearchNode, definition: SealedModelDef
   const pieces = node.op === 'like' ? likeAnchors(node.value as string, profile) : searchPieces(profile, node.value, node.op === 'eq' ? 'write' : node.op, node.respectWords);
   ensure(pieces.length > 0 || node.op === 'eq', 'QUERY_TOO_BROAD');
   const tokens = await searchTokens(ring, scopeId, profile, pieces, tokenCache, checkpoint);
-  return { op: 'leaf', leaf: { node, profile, tokens, normalized } };
+  const proof = await compileStampQuery(ring, profile, scopeId, node);
+  return { op: 'leaf', leaf: { node, profile, tokens, normalized, proof } };
 }
 function likeAnchors(pattern: string, profile: SearchProfile): Uint8Array[] {
   const runs: string[] = []; let run = '';
@@ -55,37 +56,4 @@ function likeAnchors(pattern: string, profile: SearchProfile): Uint8Array[] {
   const normalized = runs.map(value => compactSubstring(value, profile.normalizer));
   ensure(normalized.some(value => Array.from(value).length >= 2), 'QUERY_TOO_BROAD');
   return [...new Map(runs.flatMap(value => searchPieces(profile, value, 'contains')).map(value => [Array.from(value).join(','), value])).values()];
-}
-function likeMatch(value: string, pattern: string, normalizer: string): boolean {
-  const tokens: ({ type: 'literal'; value: string } | { type: '%' | '_' })[] = [];
-  let run = '';
-  const flush = () => { if (run) { for (const c of compactSubstring(run, normalizer)) tokens.push({ type: 'literal', value: c }); run = ''; } };
-  for (let i = 0; i < pattern.length; i++) {
-    const c = pattern[i];
-    if (c === '\\') { const next = pattern[++i]; ensure(next === '%' || next === '_' || next === '\\', 'INVALID_VALUE'); run += next; }
-    else if (c === '%' || c === '_') { flush(); tokens.push({ type: c }); }
-    else run += c;
-  }
-  flush();
-  const chars = Array.from(value);
-  let prev = new Uint8Array(tokens.length + 1); prev[0] = 1;
-  for (let j = 1; j <= tokens.length; j++) prev[j] = tokens[j - 1].type === '%' ? prev[j - 1] : 0;
-  for (const char of chars) { const next = new Uint8Array(tokens.length + 1); for (let j = 1; j <= tokens.length; j++) { const token = tokens[j - 1]; next[j] = token.type === '%' ? (prev[j] || next[j - 1]) : token.type === '_' || (token.type === 'literal' && token.value === char) ? prev[j - 1] : 0; } prev = next; }
-  return !!prev[tokens.length];
-}
-export async function verifySearch(compiled: CompiledSearch, get: (field: string) => Promise<unknown>): Promise<boolean> {
-  if (compiled.op === 'all') { for (const child of compiled.children) if (!(await verifySearch(child, get))) return false; return true; }
-  if (compiled.op === 'any') { for (const child of compiled.children) if (await verifySearch(child, get)) return true; return false; }
-  const { node, profile, normalized } = compiled.leaf;
-  const value = await get(node.field); if (value === null) return false;
-  if (profile.spec.type !== 'text') return value !== undefined && compare(encodeField(profile.spec, value, false), normalized as Uint8Array) === 0;
-  ensure(typeof value === 'string', 'AUTHENTICATION_FAILED');
-  const text = profile.mode === 'substring' ? compactSubstring(value, profile.normalizer) : normalizeText(value, profile.normalizer);
-  switch (node.op) {
-    case 'eq': return text === normalized;
-    case 'contains': return node.respectWords ? normalizeWords(value).includes(normalizeWords(node.value as string)) : text.includes(normalized as string);
-    case 'startsWith': return text.startsWith(normalized as string);
-    case 'endsWith': return text.endsWith(normalized as string);
-    case 'like': return likeMatch(text, node.value as string, profile.normalizer);
-  }
 }

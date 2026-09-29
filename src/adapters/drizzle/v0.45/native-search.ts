@@ -4,7 +4,7 @@ import { canonical, compareText, hex, identity, utf8 } from '../../../core/bytes
 import { databaseError, driverError, ensure, fail } from '../../../core/errors.js';
 import { openCursor, sealCursor } from '../../../core/search-cursor.js';
 import {
-  compileSearch, validateSearch, verifySearch,
+  compileSearch, validateSearch,
   type CompiledSearch, type SearchNode, type SearchOperator,
 } from '../../../core/search-predicate.js';
 import { profiles, type SearchTokenCache } from '../../../core/search-tokens.js';
@@ -14,18 +14,17 @@ import { Sealed, registrationOf, type Opened, type Registration, type SealMeta }
 import { mapRawRow } from './native-mapping.js';
 
 type Db = PgDatabase<any, any, any>;
-export interface SearchBudgets { batch?: number; maxCandidates?: number; fetchBytes?: number; decryptedBytes?: number; resultBytes?: number; deadlineMs?: number; decryptConcurrency?: number }
+export interface SearchBudgets { batch?: number; fetchBytes?: number; decryptedBytes?: number; resultBytes?: number; deadlineMs?: number; decryptConcurrency?: number }
 type ResolvedBudgets = Required<SearchBudgets>;
 function budgetsFor(counting: boolean, requested?: SearchBudgets): ResolvedBudgets {
-  const budgets: ResolvedBudgets = { batch: Infinity, maxCandidates: Infinity,
+  const budgets: ResolvedBudgets = { batch: Infinity,
     fetchBytes: Infinity, decryptedBytes: Infinity, resultBytes: Infinity,
     deadlineMs: Infinity, decryptConcurrency: 64, ...requested };
-  for (const value of Object.values(requested ?? {})) ensure(Number.isSafeInteger(value) && value > 0, 'INVALID_VALUE');
+  for (const [key, value] of Object.entries(requested ?? {})) {
+    ensure((counting ? ['deadlineMs'] : ['batch','fetchBytes','decryptedBytes','resultBytes','deadlineMs','decryptConcurrency']).includes(key), 'INVALID_VALUE');
+    ensure(Number.isSafeInteger(value) && value > 0, 'INVALID_VALUE');
+  }
   return budgets;
-}
-// Keep the first request within the 256-row prefix path (decisions 006/014); removing 200 regressed limit-200 OR queries.
-function firstPageBatch(limit: number, callerBatch?: number): number {
-  return Math.min(callerBatch ?? 200, Math.max(limit + Math.ceil(limit / 4) + 2, 16));
 }
 type PlainOfSealed<V> = V extends Sealed<infer P, any> ? P : never;
 type SearchOfSealed<V> = V extends Sealed<any, infer S> ? S : never;
@@ -42,7 +41,7 @@ export type MatchBuilder<T extends PgTable> = {
 
 export type NativeNode = { op: SearchOperator; field: string; value: unknown; respectWords?: boolean } |
   { op: 'and' | 'or'; children: NativeNode[] } | { op: 'sql'; condition: SQL; flag?: string };
-type CompiledNode = { op: 'secure'; search: CompiledSearch } | { op: 'sql'; condition: SQL; flag: string } |
+type CompiledNode = { op: 'secure'; search: CompiledSearch } | { op: 'sql'; condition: SQL } |
   { op: 'and' | 'or'; children: CompiledNode[] };
 type FindOptions<T extends PgTable> = {
   scope?: string; match?: (m: MatchBuilder<T>) => NativeNode; where?: SQL;
@@ -50,7 +49,7 @@ type FindOptions<T extends PgTable> = {
   orderBy?: { column: PgColumn; direction: 'asc' | 'desc' } | readonly { column: PgColumn; direction: 'asc' | 'desc' }[];
   limit?: number; cursor?: string | undefined; budgets?: SearchBudgets; signal?: AbortSignal;
 };
-type CountOptions<T extends PgTable> = Omit<FindOptions<T>, 'columns' | 'orderBy' | 'limit' | 'cursor'> & { maxCandidates?: number };
+type CountOptions<T extends PgTable> = Pick<FindOptions<T>, 'scope' | 'match' | 'where' | 'signal'> & { budgets?: { deadlineMs?: number } };
 type SelectedKeys<T extends PgTable, R extends string, S extends string | undefined, O> =
   Extract<R | Exclude<S, undefined>, keyof InferSelectModel<T>> |
   (O extends { columns: infer C } ? { [K in keyof C]: C[K] extends true ? K : never }[keyof C] : keyof InferSelectModel<T>);
@@ -96,15 +95,15 @@ function asCore(node: NativeNode): SearchNode {
   ensure('field' in node, 'INVALID_VALUE');
   return node;
 }
-async function compile(node: NativeNode, reg: Registration, scopeId: string, sealer: ReturnType<() => import('../../../core/field-cipher.js').Sealer>, cache: SearchTokenCache, nextFlag: () => string): Promise<CompiledNode> {
+async function compile(node: NativeNode, reg: Registration, scopeId: string, sealer: ReturnType<() => import('../../../core/field-cipher.js').Sealer>, cache: SearchTokenCache): Promise<CompiledNode> {
   if (plainFree(node)) {
     const core = asCore(node);
     validateSearch(core, reg.definition);
     const stored = [...reg.fields].flatMap(([key, field]) => profiles(reg.model, field.spec.id ?? key, field.spec));
     return { op: 'secure', search: await compileSearch(core, reg.definition, stored, sealer.ring(reg.model), scopeId, cache) };
   }
-  if (node.op === 'sql') return { op: 'sql', condition: node.condition, flag: nextFlag() };
-  if (node.op === 'and' || node.op === 'or') return { op: node.op, children: await Promise.all(node.children.map(child => compile(child, reg, scopeId, sealer, cache, nextFlag))) };
+  if (node.op === 'sql') return { op: 'sql', condition: node.condition };
+  if (node.op === 'and' || node.op === 'or') return { op: node.op, children: await Promise.all(node.children.map(child => compile(child, reg, scopeId, sealer, cache))) };
   fail('INVALID_VALUE');
 }
 function fromFragment(fragment: Fragment): SQL {
@@ -125,24 +124,6 @@ function candidate(reg: Registration, scopeId: string, node: CompiledNode, bound
   if (node.op === 'sql') return node.condition;
   const children = node.children.map(child => candidate(reg, scopeId, child));
   return node.op === 'and' ? and(...children)! : sql`(${sql.join(children.map(child => sql`(${child})`), sql.raw(' or '))})`;
-}
-async function verify(node: CompiledNode, row: Record<string, unknown>): Promise<boolean> {
-  if (node.op === 'secure') return verifySearch(node.search, key => Promise.resolve(row[key]));
-  if (node.op === 'sql') return row[node.flag] === true;
-  if (node.op === 'and') { for (const child of node.children) if (!(await verify(child, row))) return false; return true; }
-  for (const child of node.children) if (await verify(child, row)) return true;
-  return false;
-}
-function encryptedKeys(node: NativeNode): string[] {
-  if (node.op === 'sql') return [];
-  if (node.op === 'and' || node.op === 'or') return [...new Set(node.children.flatMap(encryptedKeys))];
-  ensure('field' in node, 'INVALID_VALUE');
-  return [node.field];
-}
-function flags(node: CompiledNode): Record<string, SQL | SQL.Aliased> {
-  if (node.op === 'sql') return { [node.flag]: sql`coalesce((${node.condition}),false)`.as(node.flag) };
-  if (node.op === 'secure') return {};
-  return Object.assign({}, ...node.children.map(flags));
 }
 function sqlFingerprint(value: SQL | undefined): unknown {
   if (!value) return null;
@@ -194,11 +175,19 @@ function keysetAfter(columns: PgColumn[], values: (string | null)[], directions:
   return sql`(${sql.join(terms.map(term => sql`(${term})`), sql.raw(' or '))})`;
 }
 
+function measureRow(value: unknown): { fetched: number; decrypted: number } {
+  if (value instanceof Sealed) return { fetched: value.bytes.length, decrypted: value.bytes.length-29 };
+  if (value instanceof Uint8Array) return { fetched: value.length, decrypted: 0 };
+  if (typeof value === 'string') return { fetched: utf8(value).length, decrypted: 0 };
+  if (value && typeof value === 'object' && !(value instanceof Date)) return Object.values(value).reduce(
+    (sum, part) => { const size = measureRow(part); return { fetched: sum.fetched+size.fetched, decrypted: sum.decrypted+size.decrypted }; }, { fetched: 0, decrypted: 0 });
+  return { fetched: 16, decrypted: 0 };
+}
 type AuthCache = Map<string, { bytes: Uint8Array; result: Promise<unknown> }>;
-type CandidateState = { scanned: number; fetchedBytes: number; decryptedBytes: number; limited: boolean };
-async function scanCandidates<R, P>(rows: R[], remaining: () => number, budgets: SearchBudgets & {
-  maxCandidates: number; fetchBytes: number; decryptedBytes: number; decryptConcurrency: number;
-}, deadline: number, signal: AbortSignal | undefined, state: CandidateState,
+type ResultState = { scanned: number; fetchedBytes: number; decryptedBytes: number; limited: boolean };
+async function scanRows<R, P>(rows: R[], remaining: () => number, budgets: SearchBudgets & {
+  fetchBytes: number; decryptedBytes: number; decryptConcurrency: number;
+}, deadline: number, signal: AbortSignal | undefined, state: ResultState,
   measure: (row: R) => { fetched: number; decrypted: number },
   openWindow: (window: R[]) => Promise<P[]>, consume: (row: R, opened: P) => Promise<boolean>): Promise<number> {
   let offset = 0, consumed = 0;
@@ -207,7 +196,7 @@ async function scanCandidates<R, P>(rows: R[], remaining: () => number, budgets:
     const windowSize = Math.min(budgets.decryptConcurrency, remaining());
     while (offset < rows.length && window.length < windowSize) {
       if (signal?.aborted) fail('CANCELLED');
-      if (Date.now() >= deadline || state.scanned + window.length >= budgets.maxCandidates) { state.limited = true; break; }
+      if (Date.now() >= deadline) { state.limited = true; break; }
       const row = rows[offset], size = measure(row);
       if (state.fetchedBytes + size.fetched > budgets.fetchBytes || state.decryptedBytes + size.decrypted > budgets.decryptedBytes) {
         state.limited = true; break;
@@ -227,10 +216,6 @@ async function scanCandidates<R, P>(rows: R[], remaining: () => number, budgets:
     }
   }
   return consumed;
-}
-function growBatch(current: number, remaining: number, verified: number, accepted: number): number {
-  const estimated = accepted === 0 ? current * 2 : Math.ceil(remaining * verified / accepted * 1.25);
-  return Math.min(Number.MAX_SAFE_INTEGER, Math.max(current * 2, estimated));
 }
 // Carry each text column's collation into the comparison without looking up the row.
 // The previous cursor row may have been deleted between requests.
@@ -281,147 +266,103 @@ async function validateTextOrder(db: Db, columns: PgColumn[], positions: unknown
 }
 export function searchMethods(sealerOf: () => import('../../../core/field-cipher.js').Sealer, open: <R>(rows: R, options?: { scope?: string; budgets?: { maxRows?: number; maxBytes?: number; deadlineMs?: number; concurrency?: number } }, authCache?: AuthCache) => Promise<Opened<R>>,
   cache: SearchTokenCache) {
-  async function run<T extends PgTable>(db: Db, reg: Registration, options: FindOptions<T>, counting: boolean, absoluteDeadline?: number) {
+  async function run<T extends PgTable>(db: Db, reg: Registration, options: FindOptions<T>) {
     ensure(options && typeof options === 'object', 'INVALID_VALUE');
     const scopeId = scope(reg, options.scope), columns = getTableColumns(reg.parent) as Record<string, PgColumn>;
-    const rowColumn = columns[reg.row], scopeColumn = reg.scope ? columns[reg.scope] : undefined;
-    const orders = order(reg, options.orderBy), orderColumn = orders[0]?.column;
-    const limit = options.limit ?? Infinity;
-    if (options.limit !== undefined) ensure(Number.isSafeInteger(limit) && limit >= 1, 'INVALID_VALUE');
-    const budgets = budgetsFor(counting, options.budgets);
-    const deadline = absoluteDeadline ?? Date.now() + budgets.deadlineMs;
+    const rowColumn = columns[reg.row], orders = order(reg, options.orderBy);
+    const limit = options.limit ?? Infinity, budgets = budgetsFor(false, options.budgets);
+    if (options.limit !== undefined) ensure(Number.isSafeInteger(limit) && limit > 0, 'INVALID_VALUE');
+    const deadline = Date.now() + budgets.deadlineMs;
     const check = () => { if (options.signal?.aborted) fail('CANCELLED'); ensure(Date.now() < deadline, 'LIMIT_EXCEEDED'); };
     check();
     const ast = options.match?.(m<T>(reg));
     if (ast) validate(ast, reg);
-    let flagIndex = 0;
-    const compiled = ast ? await compile(ast, reg, scopeId, sealerOf(), cache, () => `__seal_flag_${flagIndex++}`) : undefined;
+    const compiled = ast ? await compile(ast, reg, scopeId, sealerOf(), cache) : undefined;
     const selection = options.columns ? Object.keys(options.columns).filter(key => options.columns![key as keyof typeof options.columns]) : Object.keys(columns);
-    for (const key of selection) ensure(!!columns[key], 'INVALID_VALUE');
+    selection.forEach(key => ensure(!!columns[key], 'INVALID_VALUE'));
     const projected = [...new Set([reg.row, ...(reg.scope ? [reg.scope] : []), ...selection])];
-    const fetched = [...new Set([...projected, ...(ast ? encryptedKeys(ast) : [])])];
-    const conditionKeys = ast ? encryptedKeys(ast) : [];
-    const selected: Record<string, PgColumn | SQL> = Object.fromEntries(fetched.map(key => [key, columns[key]]));
+    const selected: Record<string, PgColumn | SQL> = Object.fromEntries(projected.map(key => [key, columns[key]]));
     orders.forEach(({ column }, index) => { selected[`__seal_sort_${index}`] = sql<string>`to_jsonb(${column}) #>> '{}'`; });
-    const flagCols = compiled ? flags(compiled) : {};
-    const cursorDigest = await digest({ scopeId, positionEncoding: 'jsonb-v1', match: nodeFingerprint(ast), where: sqlFingerprint(options.where),
+    const queryDigest = await digest({ scopeId, positionEncoding: 'jsonb-v1', match: nodeFingerprint(ast), where: sqlFingerprint(options.where),
       orderBy: orders.map(item => [item.column.name, item.direction]) });
-    const ring = sealerOf().ring(reg.model);
-    const cursorContext = { modelId: reg.model, scopeId, keyScopeId: ring.keyScopeId, queryDigest: cursorDigest };
-    const openedCursor = options.cursor ? await openCursor(options.cursor, cursorContext, ring) : undefined;
-    let after = openedCursor?.lastId, afterSort = openedCursor?.lastSort;
-    const items: Record<string, unknown>[] = [];
-    let scanned = 0, fetchedBytes = 0, decryptedBytes = 0, resultBytes = 0;
-    let batch = Number.isFinite(limit) ? firstPageBatch(limit, options.budgets?.batch) : 200;
-    let exhausted = false, limited = false;
-    while (items.length < limit) {
-      if (Date.now() >= deadline || scanned >= budgets.maxCandidates) {
-        if (scanned === 0) fail('LIMIT_EXCEEDED');
-        limited = true;
-        break;
-      }
+    const ring = sealerOf().ring(reg.model), context = { modelId: reg.model, scopeId, keyScopeId: ring.keyScopeId, queryDigest };
+    const cursor = options.cursor ? await openCursor(options.cursor, context, ring) : undefined;
+    let after = cursor?.lastId, afterSort = cursor?.lastSort, exhausted = false, resultBytes = 0;
+    const items: Record<string, unknown>[] = [], state: ResultState = { scanned: 0, fetchedBytes: 0, decryptedBytes: 0, limited: false };
+    const batch = options.budgets?.batch ?? (Number.isFinite(limit) ? 200 : Infinity);
+    const hasSubstring = (node: CompiledSearch): boolean => node.op === 'leaf' ? node.leaf.profile.mode === 'substring' : node.children.some(hasSubstring);
+    while (items.length < limit && !state.limited) {
       check();
-      const remainingCandidates = budgets.maxCandidates - scanned;
-      const requestLimit = Number.isFinite(limit) ? Math.min(batch, remainingCandidates) + (remainingCandidates <= batch ? 1 : 0)
-        : counting && Number.isFinite(remainingCandidates) ? remainingCandidates + 1 : Infinity;
-      const orderedRow = rowColumn;
-      const direction = orders.at(-1)?.direction ?? 'asc';
-      const sortValues = afterSort === undefined ? [] : JSON.parse(afterSort) as (string | null)[];
+      const requestLimit = Math.min(batch, limit-items.length), direction = orders.at(-1)?.direction ?? 'asc';
+      const values = afterSort === undefined ? [] : JSON.parse(afterSort) as (string | null)[];
       const afterCondition = after === undefined ? undefined : orders.length
-        ? keysetAfter([...orders.map(item => item.column), rowColumn], [...sortValues, after],
-          [...orders.map(item => item.direction), direction])
+        ? keysetAfter([...orders.map(item => item.column), rowColumn], [...values, after], [...orders.map(item => item.direction), direction])
         : direction === 'asc' ? gt(rowColumn, after) : lt(rowColumn, after);
-      const hasSql = ast && !plainFree(ast);
-      const hasSubstring = (node: CompiledSearch): boolean => node.op === 'leaf' ? node.leaf.profile.mode === 'substring' : node.children.some(hasSubstring);
-      const bounded = compiled?.op === 'secure' && hasSubstring(compiled.search) && !options.where && !orderColumn && !hasSql && requestLimit <= 200
+      const bounded = compiled?.op === 'secure' && hasSubstring(compiled.search) && !options.where && !orders.length && requestLimit <= 200
         ? { limit: requestLimit, after } : undefined;
-      const condition = and(scopeColumn ? eq(scopeColumn, scopeId) : undefined, options.where, afterCondition,
+      const condition = and(reg.scope ? eq(columns[reg.scope], scopeId) : undefined, options.where, afterCondition,
         compiled ? candidate(reg, scopeId, compiled, bounded) : undefined);
-      const query = (db as any).select({ ...selected, ...flagCols }).from(reg.parent).where(condition)
-        .orderBy(...orders.map(item => item.direction === 'asc' ? asc(item.column) : desc(item.column)),
-          direction === 'asc' ? asc(orderedRow) : desc(orderedRow));
-      const rows = await (Number.isFinite(requestLimit) ? query.limit(requestLimit) : query);
+      let rows: Record<string, unknown>[];
+      try {
+        const query = (db as any).select(selected).from(reg.parent).where(condition).orderBy(
+          ...orders.map(item => item.direction === 'asc' ? asc(item.column) : desc(item.column)),
+          direction === 'asc' ? asc(rowColumn) : desc(rowColumn));
+        rows = await (Number.isFinite(requestLimit) ? query.limit(requestLimit) : query);
+      } catch (error) { throw databaseError(error); }
       ensure(rows.length <= requestLimit, 'INVALID_CANDIDATE_SHAPE');
-      if (!rows.length) { exhausted = true; break; }
-      const acceptedBefore = items.length;
-      const state: CandidateState = { scanned, fetchedBytes, decryptedBytes, limited };
-      const consumed = await scanCandidates(rows as Record<string, unknown>[], () => limit - items.length, budgets, deadline, options.signal, state,
+      if (!rows.length) { check(); exhausted = true; break; }
+      await scanRows(rows, () => limit-items.length, budgets, deadline, options.signal, state,
         row => {
           identity(row[reg.row] as string, reg.definition.rowType);
           ensure(!reg.scope || row[reg.scope] === scopeId, 'INVALID_CANDIDATE_SHAPE');
-          return {
-            fetched: Object.values(row).reduce((sum: number, value) => sum + (value instanceof Sealed ? value.bytes.length : typeof value === 'string' ? utf8(value).length : 16), 0),
-            decrypted: conditionKeys.reduce((sum, key) => sum + (row[key] instanceof Sealed ? (row[key] as Sealed<unknown>).bytes.length - 29 : 0), 0),
-          };
+          return measureRow(row);
         },
-        async window => {
-          const conditionPlains = await open(window.map(row => Object.fromEntries(
-            [reg.row, ...(reg.scope ? [reg.scope] : []), ...conditionKeys, ...Object.keys(flagCols)].map(key => [key, row[key]]))),
-          { scope: scopeId, budgets: { concurrency: budgets.decryptConcurrency } }) as Record<string, unknown>[];
-          const matches = await Promise.all(conditionPlains.map(plain => compiled ? verify(compiled, plain) : true));
-          const remainingKeys = projected.filter(key => reg.fields.has(key) && !conditionKeys.includes(key));
-          const projectionInputs: Record<string, unknown>[] = [], projectionIndexes: number[] = [];
-          for (let i = 0; i < window.length; i++) if (matches[i]) {
-            const extraBytes = remainingKeys.reduce((sum, key) => sum + (window[i][key] instanceof Sealed ? (window[i][key] as Sealed<unknown>).bytes.length - 29 : 0), 0);
-            if (state.decryptedBytes + extraBytes > budgets.decryptedBytes) break;
-            state.decryptedBytes += extraBytes;
-            projectionInputs.push(Object.fromEntries([reg.row, ...(reg.scope ? [reg.scope] : []), ...remainingKeys].map(key => [key, window[i][key]])));
-            projectionIndexes.push(i);
-          }
-          const projections = projectionInputs.length ? await open(projectionInputs, { scope: scopeId,
-            budgets: { concurrency: budgets.decryptConcurrency } }) as Record<string, unknown>[] : [];
-          const result = conditionPlains.map((conditionPlain, i) => ({ conditionPlain, matches: matches[i], projectionPlain: undefined as Record<string, unknown> | undefined }));
-          projectionIndexes.forEach((index, i) => { result[index].projectionPlain = projections[i]; });
-          return result;
-        },
-        async (row, opened) => {
-          const position = identity(row[reg.row] as string, reg.definition.rowType);
-          const sort = orders.length ? JSON.stringify(orders.map((_, index) => row[`__seal_sort_${index}`] ?? null)) : undefined;
-          ensure(after === undefined || reg.definition.rowType === 'text' || !!orderColumn ||
-            (direction === 'asc' ? compareText(position, after) > 0 : compareText(position, after) < 0), 'INVALID_CANDIDATE_SHAPE');
-          if (opened.matches) {
-            if (!opened.projectionPlain) return false;
-            const plain = { ...row, ...opened.conditionPlain, ...opened.projectionPlain };
-            const item = Object.fromEntries(projected.map(key => [key, plain[key]]));
-            const itemBytes = Number.isFinite(budgets.resultBytes) ? canonical(item).length : 0;
-            if (resultBytes + itemBytes > budgets.resultBytes) return false;
-            resultBytes += itemBytes;
-            items.push(item);
-          }
-          after = position; afterSort = sort;
+        window => open(window, { scope: scopeId, budgets: { concurrency: budgets.decryptConcurrency } }) as Promise<Record<string, unknown>[]>,
+        async (row, plain) => {
+          const item = Object.fromEntries(projected.map(key => [key, plain[key]]));
+          const size = Number.isFinite(budgets.resultBytes) ? canonical(item).length : 0;
+          if (resultBytes+size > budgets.resultBytes) return false;
+          resultBytes += size; items.push(item);
+          after = identity(row[reg.row] as string, reg.definition.rowType);
+          afterSort = orders.length ? JSON.stringify(orders.map((_, index) => row[`__seal_sort_${index}`] ?? null)) : undefined;
           return true;
         });
-      ({ scanned, fetchedBytes, decryptedBytes, limited } = state);
-      if (limited) {
-        if (!scanned) fail('LIMIT_EXCEEDED');
-        if (scanned >= budgets.maxCandidates && consumed === rows.length && rows.length < requestLimit) { exhausted = true; limited = false; }
-        break;
-      }
-      if (items.length === limit || rows.length < requestLimit || scanned >= budgets.maxCandidates) {
-        exhausted = consumed === rows.length && rows.length < requestLimit;
-        limited = scanned >= budgets.maxCandidates && !exhausted; break;
-      }
-      batch = growBatch(batch, limit - items.length, consumed, items.length - acceptedBefore);
+      if (state.limited) break;
+      if (rows.length < requestLimit) { exhausted = true; break; }
     }
-    const nextCursor = exhausted || after === undefined ? null : await sealCursor(cursorContext,
-      { lastId: after, ...(afterSort === undefined ? {} : { lastSort: afterSort }) }, ring);
-    return { items, nextCursor, scanned, exhausted, limited };
+    if (state.limited && !state.scanned) fail('LIMIT_EXCEEDED');
+    return { items, nextCursor: exhausted || after === undefined ? null : await sealCursor(context,
+      { lastId: after, ...(afterSort === undefined ? {} : { lastSort: afterSort }) }, ring) };
   }
-
   async function findMany<T extends PgTable, R extends string, S extends string | undefined = undefined, const O extends FindOptions<T> = FindOptions<T>>(
     db: Db, seal: SealMeta<T, R, S> & object, options: O,
   ): Promise<{ items: SelectedRow<T, R, S, O>[]; nextCursor: string | null }> {
-    const result = await run<T>(db, registrationOf(seal), options, false);
+    const result = await run<T>(db, registrationOf(seal), options);
     return { items: result.items as SelectedRow<T, R, S, O>[], nextCursor: result.nextCursor };
   }
   async function count<T extends PgTable, R extends string, S extends string | undefined = undefined>(
     db: Db, seal: SealMeta<T, R, S> & object, options: CountOptions<T>,
   ): Promise<number> {
-    if (options.maxCandidates !== undefined) ensure(Number.isSafeInteger(options.maxCandidates) && options.maxCandidates > 0, 'INVALID_VALUE');
-    const page = await run<T>(db, registrationOf(seal), { ...options, columns: {},
-      budgets: { ...options.budgets, ...(options.maxCandidates === undefined ? {} : { maxCandidates: options.maxCandidates }) } }, true);
-    if (page.limited) fail('LIMIT_EXCEEDED');
-    return page.items.length;
+    ensure(!Object.hasOwn(options, 'maxCandidates'), 'INVALID_VALUE');
+    const reg = registrationOf(seal), scopeId = scope(reg, options.scope);
+    const budgets = budgetsFor(true, options.budgets), deadline = Date.now()+budgets.deadlineMs;
+    const check = () => { if (options.signal?.aborted) fail('CANCELLED'); ensure(Date.now() < deadline, 'LIMIT_EXCEEDED'); };
+    check();
+    const ast = options.match?.(m<T>(reg));
+    if (ast) validate(ast, reg);
+    const compiled = ast ? await compile(ast, reg, scopeId, sealerOf(), cache) : undefined;
+    check();
+    const columns = getTableColumns(reg.parent) as Record<string, PgColumn>;
+    let rows: { count: string }[];
+    try { rows = await (db as any).select({ count: sql<string>`count(*)::text` }).from(reg.parent).where(and(
+      reg.scope ? eq(columns[reg.scope], scopeId) : undefined, options.where, compiled ? candidate(reg, scopeId, compiled) : undefined)); }
+    catch (error) { throw databaseError(error); }
+    check();
+    const value = rows[0]?.count;
+    ensure(typeof value === 'string' && /^[0-9]+$/.test(value), 'INVALID_CANDIDATE_SHAPE');
+    const exact = BigInt(value);
+    ensure(exact <= BigInt(Number.MAX_SAFE_INTEGER), 'LIMIT_EXCEEDED');
+    return Number(exact);
   }
   type SearchParts = { where: SQL; after: SQL | undefined; orderBy: SQL[]; flags: Record<string, SQL | SQL.Aliased>;
     flagsSql: SQL; limit: number | undefined };
@@ -434,218 +375,118 @@ export function searchMethods(sealerOf: () => import('../../../core/field-cipher
   };
   type PublicRow<R> = { [K in keyof R as K extends `__seal_${string}` ? never : K]: Opened<R[K]> };
   async function search<const M extends Record<string, object>, R extends Record<string, unknown>>(db: Db, options: SearchOptions<M, R>): Promise<{ items: PublicRow<R>[]; nextCursor: string | null }> {
-    ensure(options && options.match && options.query && typeof options.query === 'function', 'INVALID_VALUE');
+    ensure(options && options.match && typeof options.query === 'function', 'INVALID_VALUE');
     const keys = Object.keys(options.match);
     ensure(keys.length > 0, 'INVALID_VALUE');
-    const limit = options.limit ?? Infinity;
-    if (options.limit !== undefined) ensure(Number.isSafeInteger(limit) && limit >= 1, 'INVALID_VALUE');
-    const budgets = budgetsFor(false, options.budgets);
-    const deadline = Date.now() + budgets.deadlineMs;
+    const limit = options.limit ?? Infinity, budgets = budgetsFor(false, options.budgets), deadline = Date.now()+budgets.deadlineMs;
+    if (options.limit !== undefined) ensure(Number.isSafeInteger(limit) && limit > 0, 'INVALID_VALUE');
+    const check = () => { if (options.signal?.aborted) fail('CANCELLED'); ensure(Date.now() < deadline, 'LIMIT_EXCEEDED'); };
+    check();
     const regs = Object.fromEntries(keys.map(key => [key, registrationOf(options.match[key][0])])) as Record<string, Registration>;
     ensure(new Set(keys.map(key => regs[key].parent)).size === keys.length, 'INVALID_SCHEMA');
     const scopeId = options.scope ?? '_';
-    for (const key of keys) ensure(scope(regs[key], options.scope) === scopeId, 'INVALID_VALUE');
+    keys.forEach(key => ensure(scope(regs[key], options.scope) === scopeId, 'INVALID_VALUE'));
     const asts = Object.fromEntries(keys.map(key => [key, options.match[key][1](m(regs[key]))])) as Record<string, NativeNode>;
-    for (const key of keys) validate(asts[key], regs[key]);
-    let flagIndex = 0;
     const compiled: Record<string, CompiledNode> = Object.create(null);
-    for (const key of keys) compiled[key] = await compile(asts[key], regs[key], scopeId, sealerOf(), cache, () => `__seal_flag_${flagIndex++}`);
+    for (const key of keys) { validate(asts[key], regs[key]); compiled[key] = await compile(asts[key], regs[key], scopeId, sealerOf(), cache); }
     const keyset = options.keyset ?? [];
-    const keysetTypes = /^(?:smallint|integer|bigint|numeric(?:\(\d+(?:,\s*\d+)?\))?|decimal(?:\(\d+(?:,\s*\d+)?\))?|text|character varying(?:\(\d+\))?|varchar(?:\(\d+\))?|uuid|date|timestamp(?:\s*\(\d+\))?(?: with(?:out)? time zone)?|boolean)$/;
-    const columnTypes = keyset.map(column => {
-      ensure(keysetTypes.test(column.getSQLType()), 'INVALID_VALUE');
-      return column.getSQLType();
-    });
+    const allowed = /^(?:smallint|integer|bigint|numeric(?:\(\d+(?:,\s*\d+)?\))?|decimal(?:\(\d+(?:,\s*\d+)?\))?|text|character varying(?:\(\d+\))?|varchar(?:\(\d+\))?|uuid|date|timestamp(?:\s*\(\d+\))?(?: with(?:out)? time zone)?|boolean)$/;
+    keyset.forEach(column => ensure(allowed.test(column.getSQLType()), 'INVALID_VALUE'));
     const positionColumns = [...keys.map(key => (getTableColumns(regs[key].parent) as Record<string, PgColumn>)[regs[key].row]), ...keyset];
     const orderBy = positionColumns.map(column => asc(column));
-    const allFlags = Object.assign({}, ...keys.map(key => flags(compiled[key]))) as Record<string, SQL | SQL.Aliased>;
+    const allFlags: Record<string, SQL | SQL.Aliased> = {};
     keyset.forEach((column, index) => { allFlags[`__seal_keyset_${index}`] = sql<string>`to_jsonb(${column}) #>> '{}'`.as(`__seal_keyset_${index}`); });
-    const flagsSql = sql.join(Object.entries(allFlags).map(([name, expression]) => sql`${expression instanceof SQL ? expression : expression.sql} as ${sql.identifier(name)}`), sql.raw(','));
-    const where = and(...keys.flatMap(key => {
-      const reg = regs[key];
-      const columns = getTableColumns(reg.parent) as Record<string, PgColumn>;
-      return [reg.scope ? eq(columns[reg.scope], scopeId) : undefined, candidate(reg, scopeId, compiled[key])];
-    }))!;
+    const flagsSql = Object.keys(allFlags).length ? sql.join(Object.entries(allFlags).map(([name, expression]) =>
+      sql`${expression instanceof SQL ? expression : expression.sql} as ${sql.identifier(name)}`), sql.raw(',')) : sql`true as __seal_position`;
+    const where = and(...keys.flatMap(key => { const reg = regs[key], columns = getTableColumns(reg.parent) as Record<string, PgColumn>;
+      return [reg.scope ? eq(columns[reg.scope], scopeId) : undefined, candidate(reg, scopeId, compiled[key])]; }))!;
     const queryDigest = await digest({ scopeId, positionEncoding: 'jsonb-v1', match: keys.map(key => [key, regs[key].model, nodeFingerprint(asts[key])]),
       keyset: keyset.map(column => [getTableName(column.table), column.name]) });
-    const firstByName = regs[[...keys].sort()[0]], ring = sealerOf().ring(firstByName.model);
-    const cursorContext = { modelId: `search:${JSON.stringify(keys.map(key => regs[key].model).sort())}`, scopeId, keyScopeId: ring.keyScopeId, queryDigest };
-    const openedCursor = options.cursor ? await openCursor(options.cursor, cursorContext, ring) : undefined;
-    let previous: unknown[] | undefined;
-    if (openedCursor) {
-      try { previous = JSON.parse(openedCursor.lastId); ensure(Array.isArray(previous) && previous.length === positionColumns.length, 'CURSOR_INVALID'); }
+    const ring = sealerOf().ring(regs[[...keys].sort()[0]].model);
+    const context = { modelId: `search:${JSON.stringify(keys.map(key => regs[key].model).sort())}`, scopeId, keyScopeId: ring.keyScopeId, queryDigest };
+    const cursor = options.cursor ? await openCursor(options.cursor, context, ring) : undefined;
+    let previous: (string | null)[] | undefined;
+    if (cursor) {
+      try { previous = JSON.parse(cursor.lastId); ensure(Array.isArray(previous) && previous.length === positionColumns.length, 'CURSOR_INVALID'); }
       catch { fail('CURSOR_INVALID'); }
     }
-    const positionKey = (parts: unknown[]) => JSON.stringify(parts.map(value => value === null ? null : String(value)));
-    const seenPositions = new Set<string>(previous ? [positionKey(previous)] : []);
-    const items: PublicRow<R>[] = [];
-    const authCache: AuthCache = new Map();
-    const conditionKeys = Object.fromEntries(keys.map(key => [key, encryptedKeys(asts[key])])) as Record<string, string[]>;
-    const ciphertextBytes = (value: unknown): number => value instanceof Sealed ? value.bytes.length : value instanceof Uint8Array ? value.length
-      : typeof value === 'string' && /^\\x(?:[0-9a-f]{2})*$/i.test(value) ? (value.length - 2) / 2 : 0;
-    const rawDecryptedBytes = (raw: Record<string, unknown>, conditionOnly: boolean): number => keys.reduce((sum, key) => {
-      const mapping = options.columns?.[key];
-      if (!mapping) return sum;
-      const fields = conditionOnly ? conditionKeys[key] : [...regs[key].fields.keys()].filter(field => !conditionKeys[key].includes(field));
-      return sum + fields.reduce((bytes, field) => {
-        const name = mapping[field];
-        if (!name || raw[name] === null || !Object.hasOwn(raw, name)) return bytes;
-        const length = ciphertextBytes(raw[name]);
-        ensure(length >= 29, 'INVALID_CANDIDATE_SHAPE');
-        return bytes + length - 29;
-      }, 0);
-    }, 0);
-    const openMapped = async (raw: Record<string, unknown>, conditionOnly: boolean) => {
-      const view: Record<string, unknown> = conditionOnly ? {} : { ...raw };
-      if (conditionOnly) for (const [name, value] of Object.entries(raw))
-        if (!value || typeof value !== 'object' || value instanceof Date || value instanceof Uint8Array || name.startsWith('__seal_')) view[name] = value;
-      const mapped = new Map<string, { columns: Record<string, string>; fields: string[] }>();
+    const seen = new Set<string>(previous ? [JSON.stringify(previous)] : []), authCache: AuthCache = new Map();
+    const position = (raw: Record<string, unknown>): (string | null)[] => {
+      const parts = keys.map(key => {
+        const reg = regs[key], mapping = options.columns?.[key], row = mapping ? raw : raw[key] as Record<string, unknown>;
+        ensure(row && typeof row === 'object', 'INVALID_CANDIDATE_SHAPE');
+        const id = row[mapping ? mapping[reg.row] : reg.row];
+        ensure(typeof id === 'string' && (!reg.scope || row[mapping ? mapping[reg.scope] : reg.scope] === scopeId), 'INVALID_CANDIDATE_SHAPE');
+        return identity(id, reg.definition.rowType);
+      }) as (string | null)[];
+      keyset.forEach((_, index) => { const value = raw[`__seal_keyset_${index}`]; ensure(value !== undefined, 'INVALID_CANDIDATE_SHAPE'); parts.push(value === null ? null : String(value)); });
+      return parts;
+    };
+    const openProjection = async (raw: Record<string, unknown>) => {
+      const view = { ...raw }, mapped: { viewKey: string; columns: Record<string, string>; fields: string[] }[] = [];
       for (const key of keys) {
         const reg = regs[key], mapping = options.columns?.[key];
         if (mapping) {
-          ensure(!!mapping[reg.row] && (!reg.scope || !!mapping[reg.scope]), 'INVALID_VALUE');
-          const fields = conditionOnly ? conditionKeys[key] : [...reg.fields.keys()].filter(field => !!mapping[field] && Object.hasOwn(raw, mapping[field]));
-          const nested = mapRawRow(reg, raw, mapping, fields, true);
+          const fields = [...reg.fields.keys()].filter(field => !!mapping[field] && Object.hasOwn(raw, mapping[field]));
           const viewKey = `__seal_view_${key}`;
-          view[viewKey] = nested;
-          mapped.set(viewKey, { columns: mapping, fields });
+          view[viewKey] = mapRawRow(reg, raw, mapping, fields, true); mapped.push({ viewKey, columns: mapping, fields });
         } else {
-          const nested = raw[key] as Record<string, unknown>;
-          ensure(nested && typeof nested === 'object' && !Array.isArray(nested), 'INVALID_CANDIDATE_SHAPE');
-          for (const field of reg.fields.keys()) if (Object.hasOwn(nested, field)) {
-            const value = nested[field];
-            ensure(value === null || value instanceof Sealed &&
-              value.binding?.registration === reg && value.binding.key === field, 'INVALID_CANDIDATE_SHAPE');
+          const row = raw[key] as Record<string, unknown>;
+          for (const field of reg.fields.keys()) if (Object.hasOwn(row, field)) {
+            const value = row[field]; ensure(value === null || value instanceof Sealed && value.binding?.registration === reg && value.binding.key === field, 'INVALID_CANDIDATE_SHAPE');
           }
-          if (conditionOnly) for (const field of conditionKeys[key]) ensure(Object.hasOwn(nested, field), 'INVALID_CANDIDATE_SHAPE');
-          if (conditionOnly) view[key] = Object.fromEntries([reg.row, ...(reg.scope ? [reg.scope] : []), ...conditionKeys[key]]
-            .map(field => [field, nested[field]]));
         }
       }
       const opened = await open(view, { scope: scopeId }, authCache) as Record<string, unknown>;
-      for (const [viewKey, { columns, fields }] of mapped) {
-        const nested = opened[viewKey] as Record<string, unknown>;
-        for (const field of fields) opened[columns[field]] = nested[field];
-        delete opened[viewKey];
-      }
+      for (const { viewKey, columns, fields } of mapped) { const row = opened[viewKey] as Record<string, unknown>;
+        fields.forEach(field => { opened[columns[field]] = row[field]; }); delete opened[viewKey]; }
       return opened;
     };
-    const openCondition = (raw: Record<string, unknown>) => openMapped(raw, true);
-    const openProjection = (raw: Record<string, unknown>) => openMapped(raw, false);
-    const matchesCondition = async (opened: Record<string, unknown>) => {
-      for (const key of keys) {
-        const mapping = options.columns?.[key];
-        const row = mapping ? opened : opened[key] as Record<string, unknown>;
-        ensure(row && typeof row === 'object', 'INVALID_CANDIDATE_SHAPE');
-        const view = mapping ? Object.fromEntries([...regs[key].fields.keys()].map(field => [field, row[mapping[field]]])) : row;
-        if (!(await verify(compiled[key], { ...opened, ...view }))) return false;
-      }
-      return true;
-    };
-    let scanned = 0, fetchedBytes = 0, decryptedBytes = 0, resultBytes = 0;
-    let batch = Number.isFinite(limit) ? firstPageBatch(limit, options.budgets?.batch) : Infinity;
-    let exhausted = false, limited = false;
-    const compare = (left: unknown, right: unknown, type: string) => ['smallint', 'integer', 'bigint'].includes(type)
-      ? BigInt(left as string) < BigInt(right as string) ? -1 : BigInt(left as string) > BigInt(right as string) ? 1 : 0
-      : compareText(String(left), String(right));
-    const measured = (value: unknown): { fetched: number; decrypted: number } => {
-      if (value instanceof Sealed) return { fetched: value.bytes.length, decrypted: value.bytes.length - 29 };
-      if (value instanceof Uint8Array) return { fetched: value.length, decrypted: 0 };
-      if (typeof value === 'string') return { fetched: utf8(value).length, decrypted: 0 };
-      if (value && typeof value === 'object' && !(value instanceof Date))
-        return Object.values(value).reduce((sum, part) => { const next = measured(part); return { fetched: sum.fetched + next.fetched, decrypted: sum.decrypted + next.decrypted }; }, { fetched: 0, decrypted: 0 });
-      return { fetched: 16, decrypted: 0 };
-    };
-    while (items.length < limit) {
-      if (options.signal?.aborted) fail('CANCELLED');
-      if (Date.now() >= deadline || scanned >= budgets.maxCandidates) { if (!scanned) fail('LIMIT_EXCEEDED'); limited = true; break; }
-      const requestLimit = Math.min(batch, budgets.maxCandidates - scanned);
-      const after = previous ? keysetAfter(positionColumns, previous.map(value => value === null ? null : String(value)),
-        positionColumns.map(() => 'asc')) : undefined;
-      const returned = await options.query({ where, after, orderBy, flags: allFlags, flagsSql,
-        limit: Number.isFinite(requestLimit) ? requestLimit : undefined });
+    const items: PublicRow<R>[] = [], state: ResultState = { scanned: 0, fetchedBytes: 0, decryptedBytes: 0, limited: false };
+    const batch = options.budgets?.batch ?? (Number.isFinite(limit) ? 200 : Infinity);
+    const needsDbOrder = positionColumns.some(column => !column.notNull || !['uuid','smallint','integer','bigint'].includes(column.getSQLType()));
+    let exhausted = false, resultBytes = 0;
+    while (items.length < limit && !state.limited) {
+      check();
+      const requestLimit = Math.min(batch, limit-items.length);
+      const after = previous ? keysetAfter(positionColumns, previous, positionColumns.map(() => 'asc')) : undefined;
+      let returned: R[] | { rows: R[] };
+      try { returned = await options.query({ where, after, orderBy, flags: allFlags, flagsSql, limit: Number.isFinite(requestLimit) ? requestLimit : undefined }); }
+      catch (error) { throw databaseError(error); }
       const rows = Array.isArray(returned) ? returned : returned?.rows;
       ensure(Array.isArray(rows) && rows.length <= requestLimit, 'INVALID_CANDIDATE_SHAPE');
-      if (!rows.length) { exhausted = true; break; }
-      const needsDbOrder = positionColumns.some(column => !column.notNull || !['uuid', 'smallint', 'integer', 'bigint'].includes(column.getSQLType()));
-      if (needsDbOrder) {
-        const positions = rows.map(raw => {
-          ensure(raw && typeof raw === 'object', 'INVALID_CANDIDATE_SHAPE');
-          const parts: (string | null)[] = keys.map(key => {
-            const reg = regs[key], mapping = options.columns?.[key];
-            const source = mapping ? raw : raw[key] as Record<string, unknown>;
-            ensure(source && typeof source === 'object', 'INVALID_CANDIDATE_SHAPE');
-            const id = source[mapping ? mapping[reg.row] : reg.row];
-            ensure(typeof id === 'string', 'INVALID_CANDIDATE_SHAPE');
-            return id;
-          });
-          keyset.forEach((_, index) => {
-            const value = raw[`__seal_keyset_${index}`];
-            ensure(value !== undefined, 'INVALID_CANDIDATE_SHAPE');
-            parts.push(value === null ? null : String(value));
-          });
-          return parts;
+      if (!rows.length) { check(); exhausted = true; break; }
+      if (needsDbOrder) await validateTextOrder(db, positionColumns, previous ? [previous,...rows.map(position)] : rows.map(position), options.signal, deadline);
+      await scanRows(rows, () => limit-items.length, budgets, deadline, options.signal, state,
+        raw => {
+          position(raw); const size = measureRow(raw);
+          for (const key of keys) { const mapping = options.columns?.[key]; if (!mapping) continue;
+            for (const field of regs[key].fields.keys()) { const value = raw[mapping[field]];
+              if (value === null || value === undefined) continue;
+              const bytes = value instanceof Uint8Array ? value.length : typeof value === 'string' && /^\\x(?:[0-9a-f]{2})*$/i.test(value) ? (value.length-2)/2 : 0;
+              ensure(bytes >= 29, 'INVALID_CANDIDATE_SHAPE'); size.decrypted += bytes-29;
+            }
+          }
+          return size;
+        }, window => Promise.all(window.map(openProjection)),
+        async (raw, opened) => {
+          const parts = position(raw), encoded = JSON.stringify(parts);
+          ensure(!seen.has(encoded), 'INVALID_CANDIDATE_SHAPE');
+          if (previous && !needsDbOrder) {
+            const signs = parts.map((value, i) => ['smallint','integer','bigint'].includes(positionColumns[i].getSQLType())
+              ? BigInt(value!) < BigInt(previous![i]!) ? -1 : BigInt(value!) > BigInt(previous![i]!) ? 1 : 0
+              : compareText(value!, previous![i]!));
+            ensure(signs.find(sign => sign !== 0)! > 0, 'INVALID_CANDIDATE_SHAPE');
+          }
+          const item = Object.fromEntries(Object.entries(opened).filter(([key]) => !key.startsWith('__seal_'))) as PublicRow<R>;
+          const size = Number.isFinite(budgets.resultBytes) ? canonical(item).length : 0;
+          if (resultBytes+size > budgets.resultBytes) return false;
+          resultBytes += size; items.push(item); previous = parts; seen.add(encoded); return true;
         });
-        await validateTextOrder(db, positionColumns, previous ? [previous, ...positions] : positions, options.signal, deadline);
-      }
-      const acceptedBefore = items.length;
-      const state: CandidateState = { scanned, fetchedBytes, decryptedBytes, limited };
-      const consumed = await scanCandidates(rows as Record<string, unknown>[], () => limit - items.length,
-        budgets, deadline, options.signal, state,
-        raw => { ensure(raw && typeof raw === 'object', 'INVALID_CANDIDATE_SHAPE');
-          const size = measured(raw); return { fetched: size.fetched, decrypted: size.decrypted + rawDecryptedBytes(raw, true) }; },
-        async window => {
-          const conditions = await Promise.all(window.map(openCondition));
-          const matches = await Promise.all(conditions.map(matchesCondition));
-          const projections = await Promise.all(window.map((raw, i) => {
-            if (!matches[i]) return undefined;
-            const extraBytes = rawDecryptedBytes(raw, false);
-            if (state.decryptedBytes + extraBytes > budgets.decryptedBytes) return undefined;
-            state.decryptedBytes += extraBytes;
-            return openProjection(raw);
-          }));
-          return conditions.map((condition, i) => ({ condition, matched: matches[i], full: projections[i] }));
-        },
-        async (_raw, opened) => {
-        const condition = opened.condition;
-        const parts: unknown[] = [];
-        for (const key of keys) {
-          const reg = regs[key], mapping = options.columns?.[key];
-          const row = mapping ? condition : condition[key] as Record<string, unknown>;
-          ensure(row && typeof row === 'object', 'INVALID_CANDIDATE_SHAPE');
-          const get = (field: string) => mapping ? row[mapping[field]] : row[field];
-          const rowId = get(reg.row);
-          ensure(typeof rowId === 'string' && (!reg.scope || get(reg.scope) === scopeId), 'INVALID_CANDIDATE_SHAPE');
-          for (const field of conditionKeys[key]) ensure(get(field) !== undefined, 'INVALID_CANDIDATE_SHAPE');
-          parts.push(rowId);
-        }
-        keyset.forEach((_, index) => { ensure(condition[`__seal_keyset_${index}`] !== undefined, 'INVALID_CANDIDATE_SHAPE'); parts.push(condition[`__seal_keyset_${index}`]); });
-        const currentPosition = positionKey(parts);
-        ensure(!seenPositions.has(currentPosition), 'INVALID_CANDIDATE_SHAPE');
-        seenPositions.add(currentPosition);
-        if (previous && !needsDbOrder) {
-          const signs = parts.map((value, index) => compare(value, previous![index], index < keys.length ? regs[keys[index]].definition.rowType : columnTypes[index - keys.length]));
-          ensure(signs.find(sign => sign !== 0)! > 0, 'INVALID_CANDIDATE_SHAPE');
-        }
-        if (opened.matched) {
-          if (!opened.full) return false;
-          const full = Object.fromEntries(Object.entries(opened.full).filter(([key]) => !key.startsWith('__seal_'))) as PublicRow<R>;
-          const size = Number.isFinite(budgets.resultBytes) ? canonical(full).length : 0;
-          if (resultBytes + size > budgets.resultBytes) return false;
-          resultBytes += size;
-          items.push(full);
-        }
-        previous = parts;
-        return true;
-        });
-      ({ scanned, fetchedBytes, decryptedBytes, limited } = state);
-      if (limited) { if (!scanned) fail('LIMIT_EXCEEDED'); break; }
-      if (items.length === limit || rows.length < requestLimit) { exhausted = items.length < limit && rows.length < requestLimit; break; }
-      if (consumed === 0) { if (!scanned) fail('LIMIT_EXCEEDED'); break; }
-      batch = growBatch(batch, limit - items.length, consumed, items.length - acceptedBefore);
+      if (rows.length < requestLimit && !state.limited) { exhausted = true; break; }
     }
-    const nextCursor = exhausted || !previous ? null : await sealCursor(cursorContext, { lastId: JSON.stringify(previous) }, ring);
-    return { items, nextCursor };
+    if (state.limited && !state.scanned) fail('LIMIT_EXCEEDED');
+    return { items, nextCursor: exhausted || !previous ? null : await sealCursor(context, { lastId: JSON.stringify(previous) }, ring) };
   }
   return { findMany, count, search };
 }

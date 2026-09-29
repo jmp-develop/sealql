@@ -119,11 +119,11 @@ test('native CRUD, verified pages, OR semi-join and bounded count', async () => 
     const callerRequestIndex = c.logEntries.length;
     await c.sealed.findMany(c.db, c.seal, { scope, match: m => m.body.contains(prefixTerm), limit: 200,
       budgets: { batch: 251 } });
-    assert.equal(c.logEntries[callerRequestIndex].params.at(-1), 251, 'caller batch caps the first request size');
+    assert.equal(c.logEntries[callerRequestIndex].params.at(-1), 200, 'limit caps returned-row batches');
     const largeBatchRequestIndex = c.logEntries.length;
     await c.sealed.findMany(c.db, c.seal, { scope, match: m => m.body.contains(prefixTerm), limit: 20,
       budgets: { batch: 500 } });
-    assert.equal(c.logEntries[largeBatchRequestIndex].params.at(-1), 27, 'caller batch does not enlarge the first request beyond the heuristic');
+    assert.equal(c.logEntries[largeBatchRequestIndex].params.at(-1), 20, 'only requested final rows are fetched');
     const searchLimits: Array<number | undefined> = [];
     const searchWithBatch = (batch?: number) => c.sealed.search(c.db, { scope,
       match: { m: [c.seal, m => m.body.contains(prefixTerm)] }, limit: 200,
@@ -134,7 +134,7 @@ test('native CRUD, verified pages, OR semi-join and bounded count', async () => 
     await searchWithBatch(251);
     await c.sealed.search(c.db, { scope, match: { m: [c.seal, m => m.body.contains(prefixTerm)] },
       limit: 20, budgets: { batch: 500 }, query: ({ limit }) => { searchLimits.push(limit); return []; } });
-    assert.deepEqual(searchLimits, [200, 251, 27], 'search uses the same first request cap');
+    assert.deepEqual(searchLimits, [200, 200, 20], 'search batches final rows');
     const literal = Array.from(exact).slice(0, 3).join('');
     assert.equal((await c.sealed.findMany(c.db, c.seal, { scope, match: m => m.body.like(`% ${literal} %`) })).items.length,
       c.rows.filter(row => norm(row.memo_plain).includes(norm(literal))).length);
@@ -157,9 +157,8 @@ test('native CRUD, verified pages, OR semi-join and bounded count', async () => 
     } while (tinyCursor);
     assert.deepEqual(allIds, c.rows.map(row => row.id), 'short budget pages resume without losing any of 30 rows');
     assert.ok(c.logs.some(query => query.includes('with sample as materialized')));
-    assert.equal(await c.sealed.count(c.db, c.seal, { scope, match: m => m.or(m.body.contains('빠른'), m.body.eq(exact)), maxCandidates: 50 }), expected.length);
-    await assert.rejects(c.sealed.count(c.db, c.seal, { scope, match: m => m.body.contains('빠른'), maxCandidates: 1 }),
-      (error: unknown) => error instanceof SealError && error.code === 'LIMIT_EXCEEDED');
+    assert.equal(await c.sealed.count(c.db, c.seal, { scope, match: m => m.or(m.body.contains('빠른'), m.body.eq(exact)) }), expected.length);
+    assert.equal(await c.sealed.count(c.db, c.seal, { scope, match: m => m.body.contains('빠른') }), c.rows.filter(row => norm(row.memo_plain).includes('빠른')).length);
     const first = c.rows[0], second = c.rows[1];
     const before = (await c.pool.query(`select * from "${c.schemaName}".memo_seal_index where row_id=$1`, [first.id])).rows[0];
     const exactProfile = profiles('memo', 'body', registrationOf(c.seal).definition.fields.body).find(profile => profile.mode === 'exact')!;
@@ -277,7 +276,7 @@ test('insert splits above the PostgreSQL parameter limit within one transaction'
   } finally { await c.close(); }
 });
 
-test('high false-positive pages grow batches without losing rows', async () => {
+test('false token candidates are rejected in the DB without opening condition fields', async () => {
   const c = await setup('batch', 220);
   try {
     const term = '빠른', scope = c.rows[0].scope_id;
@@ -300,7 +299,7 @@ test('high false-positive pages grow batches without losing rows', async () => {
       budgets: { batch: 16 } });
     assert.equal(firstPage.items.length, 8);
     const candidateRequests = c.logs.filter(query => query.includes('from') && query.includes('"memo"'));
-    assert.ok(candidateRequests.length > 1, 'first candidate batch requires a follow-up');
+    assert.equal(candidateRequests.length, 1, 'DB returns the final page in one request');
     assert.ok(candidateRequests.every(query => /\blimit\s+\$\d+/i.test(query)), 'every limited page request has SQL LIMIT');
     c.logs.length = 0;
     conditionOpens = 0; projectedOpens = 0; peak = 0;
@@ -314,10 +313,10 @@ test('high false-positive pages grow batches without losing rows', async () => {
     } while (cursor);
     assert.deepEqual(ids, expected);
     assert.ok(peak > 1 && peak <= 64, `bounded parallel authentication peak=${peak}`);
-    assert.ok(conditionOpens > projectedOpens, 'false positives do not open projected fields');
+    assert.equal(conditionOpens, projectedOpens, 'only returned fields are opened');
     assert.equal(projectedOpens, expected.length, 'no projection decryption beyond accepted page rows');
     assert.ok(c.logs.some(query => query.includes('with sample as materialized')));
-    assert.ok(c.logs.length > Math.ceil(expected.length / 8), 'false positives require additional candidate batches');
+    assert.ok(c.logs.length <= Math.ceil(expected.length / 8) + 1, 'no candidate retries in the app');
   } finally { await c.close(); }
 });
 
@@ -328,7 +327,7 @@ test('multicolumn GIN preserves writes, cursor search and exact count', async ()
       [c.schemaName, 'memo_seal_index', '%USING gin%'])).rows;
     assert.equal(indexes.length, 1);
     assert.equal((indexes[0].indexdef.match(/tokens_[a-f0-9]{16}/g) ?? []).length, 2);
-    assert.equal(c.sealed.extraMigrationSql(c.seal).length, 2);
+    assert.equal(c.sealed.extraMigrationSql(c.seal).filter(sql => sql.startsWith('alter table')).length, 2);
     const bodyTerm = Array.from(norm(c.rows[0].memo_plain)).slice(0, 2).join('');
     const addressTerm = Array.from(norm(c.rows[0].address_plain)).slice(0, 2).join('');
     const expected = c.rows.filter(row => norm(row.memo_plain).includes(bodyTerm) && norm(row.address_plain).includes(addressTerm)).map(row => row.id);
@@ -341,7 +340,7 @@ test('multicolumn GIN preserves writes, cursor search and exact count', async ()
     } while (cursor);
     assert.deepEqual(ids, expected);
     assert.equal(await c.sealed.count(c.db, c.seal, { scope: c.rows[0].scope_id,
-      match: m => m.and(m.body.contains(bodyTerm), m.address.contains(addressTerm)), maxCandidates: 50 }), expected.length);
+      match: m => m.and(m.body.contains(bodyTerm), m.address.contains(addressTerm)) }), expected.length);
     const changed = c.rows[1].memo_plain;
     await c.sealed.update(c.db, c.seal, { id: c.rows[0].id, scopeId: c.rows[0].scope_id }, { body: changed });
     assert.equal((await c.sealed.open(await c.db.select().from(c.memo).where(eq(c.memo.id, c.rows[0].id))))[0].body, changed);
@@ -350,7 +349,7 @@ test('multicolumn GIN preserves writes, cursor search and exact count', async ()
       match: m => m.and(m.body.contains(changedTerm), m.address.contains(addressTerm)) })).items.some(row => row.id === c.rows[0].id));
     await c.db.delete(c.memo).where(eq(c.memo.id, c.rows[0].id));
     assert.equal(await c.sealed.count(c.db, c.seal, { scope: c.rows[0].scope_id,
-      match: m => m.and(m.body.contains(changedTerm), m.address.contains(addressTerm)), maxCandidates: 50 }),
+      match: m => m.and(m.body.contains(changedTerm), m.address.contains(addressTerm)) }),
       c.rows.slice(1).filter(row => norm(row.memo_plain).includes(changedTerm) && norm(row.address_plain).includes(addressTerm)).length);
   } finally { await c.close(); }
 });
@@ -368,7 +367,7 @@ test('reindex accepts a caller batch above the old maximum', async () => {
     c.logs.length = 0;
     await c.sealed.findMany(c.db, c.seal, { scope: first.scope_id,
       match: m => m.body.contains(Array.from(norm(first.memo_plain)).slice(0, 2).join('')),
-      limit: 200, budgets: { batch: 501 } });
+      limit: 501, budgets: { batch: 501 } });
     assert.ok(c.logs.some(query => query.includes('memo_seal_index') && !query.includes('with sample as materialized')),
       'candidate batches above 200 use the direct index path');
     assert.equal((await c.sealed.findMany(c.db, c.seal, { scope: first.scope_id,
@@ -376,22 +375,20 @@ test('reindex accepts a caller batch above the old maximum', async () => {
   } finally { await c.close(); }
 });
 
-test('count uses one SQL candidate stream and accepts an exact candidate ceiling', async () => {
+test('count returns one scalar without selecting or decrypting row values', async () => {
   const c = await setup('count_pages', 2001);
   try {
     const scope = c.rows[0].scope_id;
-    assert.equal(c.rows.filter(row => row.scope_id === scope).length, 2001);
     c.logs.length = 0;
-    assert.equal(await c.sealed.count(c.db, c.seal, { scope, maxCandidates: 2001,
-      budgets: { deadlineMs: 30000, fetchBytes: 32 * 1024 * 1024, resultBytes: 32 * 1024 * 1024 } }), 2001);
-    assert.equal(c.logs.length, 1);
-    assert.match(c.logs[0], /\blimit\s+\$\d+/i);
-    assert.equal(c.logEntries.at(-1)?.params.at(-1), 2002);
-    await assert.rejects(c.sealed.count(c.db, c.seal, { scope, maxCandidates: 2000,
-      budgets: { deadlineMs: 30000, fetchBytes: 32 * 1024 * 1024, resultBytes: 32 * 1024 * 1024 } }),
-    { code: 'LIMIT_EXCEEDED' });
-    await assert.rejects(c.sealed.count(c.db, c.seal, { scope, maxCandidates: 2001,
-      budgets: { deadlineMs: 1 } }), { code: 'LIMIT_EXCEEDED' });
+    let opens = 0;
+    const original = c.cipher.open.bind(c.cipher);
+    c.cipher.open = async (...args) => { opens++; return original(...args); };
+    assert.equal(await c.sealed.count(c.db, c.seal, { scope, budgets: { deadlineMs: 30000 } }), 2001);
+    assert.equal(c.logs.length, 1); assert.equal(opens, 0);
+    assert.match(c.logs[0], /count\(\*\)::text/i);
+    assert.doesNotMatch(c.logs[0], /\blimit\b|_ct/i);
+    const controller = new AbortController(); controller.abort();
+    await assert.rejects(c.sealed.count(c.db, c.seal, { scope, signal: controller.signal }), { code: 'CANCELLED' });
   } finally { await c.close(); }
 });
 
