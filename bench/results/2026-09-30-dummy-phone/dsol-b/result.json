@@ -1,0 +1,237 @@
+{
+  "complete": true,
+  "databaseAccess": false,
+  "role": "dsol-b",
+  "started": "2026-09-29T21:42:14.893Z",
+  "seed": 930620,
+  "fixture": {
+    "rows": 100000,
+    "victims": 10000,
+    "reference": 10000,
+    "identityDigest": "189a19c99711fbacd9cafdb548f243a63657e12a0c1514a736c1f92da670f382"
+  },
+  "model": {
+    "id": "S0",
+    "dummySource": "bench/dummy-sim/model.ts",
+    "candidatePartition": "attacker-favourable exact-cover oracle, shuffled; union asserted, enumeration not independently proved"
+  },
+  "queryObservation": {
+    "queries": 1000,
+    "distinctObservedPieces": 120,
+    "possiblePieces": 120,
+    "unknownMapped": 120,
+    "unknownMappingCorrect": 1,
+    "unknownMappingPct": 0.8333333333333334,
+    "queryDigest": "b7c5ef1dc2b7299355a56440d7e3d92a4b50d5d1587e33206c3c16c9c14c737e"
+  },
+  "harness": {
+    "k": 0,
+    "evaluatedRows": 10000,
+    "candidatesPerRow": 1,
+    "correct": 10000,
+    "pct": 100,
+    "note": "D-k exact-cover pipeline identity check; prior 1%-known phonePredictor result (about 99.8%) is not remeasured here"
+  },
+  "cases": [
+    {
+      "mode": "R",
+      "k": 1,
+      "rows": 10000,
+      "randomBaselinePct": 50,
+      "knownQueryObservation": {
+        "rows": 10000,
+        "oneShotCorrect": 10000,
+        "oneShotPct": 100,
+        "truthIncluded": 10000,
+        "truthIncludedPct": 100,
+        "averageCandidates": 1,
+        "empty": 0,
+        "randomBaselinePct": 50
+      },
+      "unknownQueryObservation": {
+        "rows": 10000,
+        "oneShotCorrect": 3984,
+        "oneShotPct": 39.839999999999996,
+        "truthIncluded": 10000,
+        "truthIncludedPct": 100,
+        "averageCandidates": 2,
+        "empty": 0,
+        "randomBaselinePct": 50
+      },
+      "twoSnapshotIntersection": {
+        "rows": 10000,
+        "oneShotCorrect": 10000,
+        "oneShotPct": 100,
+        "truthIncluded": 10000,
+        "truthIncludedPct": 100,
+        "averageCandidates": 1,
+        "empty": 0,
+        "randomBaselinePct": 50
+      },
+      "distributionAndTokenCount": {
+        "rows": 10000,
+        "oneShotCorrect": 4965,
+        "oneShotPct": 49.65,
+        "truthIncluded": 10000,
+        "truthIncludedPct": 100,
+        "averageCandidates": 2,
+        "empty": 0,
+        "randomBaselinePct": 50
+      },
+      "rewriteStableRows": 0,
+      "meanStoredSubstringTokens": 42.0095
+    },
+    {
+      "mode": "R",
+      "k": 3,
+      "rows": 10000,
+      "randomBaselinePct": 25,
+      "knownQueryObservation": {
+        "rows": 10000,
+        "oneShotCorrect": 10000,
+        "oneShotPct": 100,
+        "truthIncluded": 10000,
+        "truthIncludedPct": 100,
+        "averageCandidates": 1,
+        "empty": 0,
+        "randomBaselinePct": 25
+      },
+      "unknownQueryObservation": {
+        "rows": 10000,
+        "oneShotCorrect": 1480,
+        "oneShotPct": 14.799999999999999,
+        "truthIncluded": 10000,
+        "truthIncludedPct": 100,
+        "averageCandidates": 4,
+        "empty": 0,
+        "randomBaselinePct": 25
+      },
+      "twoSnapshotIntersection": {
+        "rows": 10000,
+        "oneShotCorrect": 10000,
+        "oneShotPct": 100,
+        "truthIncluded": 10000,
+        "truthIncludedPct": 100,
+        "averageCandidates": 1,
+        "empty": 0,
+        "randomBaselinePct": 25
+      },
+      "distributionAndTokenCount": {
+        "rows": 10000,
+        "oneShotCorrect": 2505,
+        "oneShotPct": 25.05,
+        "truthIncluded": 10000,
+        "truthIncludedPct": 100,
+        "averageCandidates": 4,
+        "empty": 0,
+        "randomBaselinePct": 25
+      },
+      "rewriteStableRows": 0,
+      "meanStoredSubstringTokens": 75.4043
+    },
+    {
+      "mode": "H",
+      "k": 1,
+      "rows": 10000,
+      "randomBaselinePct": 50,
+      "knownQueryObservation": {
+        "rows": 10000,
+        "oneShotCorrect": 10000,
+        "oneShotPct": 100,
+        "truthIncluded": 10000,
+        "truthIncludedPct": 100,
+        "averageCandidates": 1,
+        "empty": 0,
+        "randomBaselinePct": 50
+      },
+      "unknownQueryObservation": {
+        "rows": 10000,
+        "oneShotCorrect": 3994,
+        "oneShotPct": 39.94,
+        "truthIncluded": 10000,
+        "truthIncludedPct": 100,
+        "averageCandidates": 2,
+        "empty": 0,
+        "randomBaselinePct": 50
+      },
+      "twoSnapshotIntersection": {
+        "rows": 10000,
+        "oneShotCorrect": 4996,
+        "oneShotPct": 49.96,
+        "truthIncluded": 10000,
+        "truthIncludedPct": 100,
+        "averageCandidates": 2,
+        "empty": 0,
+        "randomBaselinePct": 50
+      },
+      "distributionAndTokenCount": {
+        "rows": 10000,
+        "oneShotCorrect": 4964,
+        "oneShotPct": 49.64,
+        "truthIncluded": 10000,
+        "truthIncludedPct": 100,
+        "averageCandidates": 2,
+        "empty": 0,
+        "randomBaselinePct": 50
+      },
+      "rewriteStableRows": 10000,
+      "meanStoredSubstringTokens": 41.9849
+    },
+    {
+      "mode": "H",
+      "k": 3,
+      "rows": 10000,
+      "randomBaselinePct": 25,
+      "knownQueryObservation": {
+        "rows": 10000,
+        "oneShotCorrect": 10000,
+        "oneShotPct": 100,
+        "truthIncluded": 10000,
+        "truthIncludedPct": 100,
+        "averageCandidates": 1,
+        "empty": 0,
+        "randomBaselinePct": 25
+      },
+      "unknownQueryObservation": {
+        "rows": 10000,
+        "oneShotCorrect": 1427,
+        "oneShotPct": 14.27,
+        "truthIncluded": 10000,
+        "truthIncludedPct": 100,
+        "averageCandidates": 4,
+        "empty": 0,
+        "randomBaselinePct": 25
+      },
+      "twoSnapshotIntersection": {
+        "rows": 10000,
+        "oneShotCorrect": 2479,
+        "oneShotPct": 24.79,
+        "truthIncluded": 10000,
+        "truthIncludedPct": 100,
+        "averageCandidates": 4,
+        "empty": 0,
+        "randomBaselinePct": 25
+      },
+      "distributionAndTokenCount": {
+        "rows": 10000,
+        "oneShotCorrect": 2472,
+        "oneShotPct": 24.72,
+        "truthIncluded": 10000,
+        "truthIncludedPct": 100,
+        "averageCandidates": 4,
+        "empty": 0,
+        "randomBaselinePct": 25
+      },
+      "rewriteStableRows": 10000,
+      "meanStoredSubstringTokens": 75.3849
+    }
+  ],
+  "limitations": [
+    "후보 분할은 exact-cover 오라클로 주고 토큰 합집합 일치만 검증했다. 가능한 모든 분할을 독립 열거하지 않았다.",
+    "검색어를 모르는 키 라벨링은 탐욕적 위치 빈도 대응이며 최적 할당이나 공동 그래프 풀이가 아니다.",
+    "분포 학습은 알려진 참조 2,000행과 그 행에서 관찰한 더미 후보를 사용했다.",
+    "fixture·키 대용값·시드·질의 일정이 각각 하나뿐이다. 실제 관찰 가능한 채널의 성공만 누출 하한이다.",
+    "메모리 시뮬레이션만 사용했고 DB·SQL 지연·WAL·MVCC 파일은 사용하지 않았다."
+  ],
+  "finished": "2026-09-29T21:46:57.248Z"
+}
