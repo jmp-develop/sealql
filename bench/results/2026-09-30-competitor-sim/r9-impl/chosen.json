@@ -1,0 +1,2515 @@
+{
+  "complete": true,
+  "databaseAccess": false,
+  "seed": 108029,
+  "victimRows": 10000,
+  "referenceRows": 10000,
+  "identityDigest": "189a19c99711fbacd9cafdb548f243a63657e12a0c1514a736c1f92da670f382",
+  "models": [
+    {
+      "field": "name",
+      "id": "S0",
+      "substringBits": 16,
+      "exactBits": 16,
+      "stored": "Full candidate sets plus separate salted exact/position proofs; tokens() exposes deterministic candidate sets only",
+      "proofs": "Use Codec snapshots and observed keys for T4 positional attack",
+      "source": "src/core/search-tokens.ts",
+      "fidelity": "Actual product bytes, prefixed with index-column tags for simulation"
+    },
+    {
+      "field": "name",
+      "id": "AWS-standard",
+      "bits": 12,
+      "distinctReference": 10000,
+      "applicationNormalization": "SealQL compact text before indexing",
+      "hash": "HMAC-SHA384 first8B/rightmost b bits/ceil(b/4) hex; empty partition suffix",
+      "source": "https://docs.aws.amazon.com/database-encryption-sdk/latest/devguide/choosing-beacon-length.html",
+      "setting": "Single partition; floor(log2(U_ref)-1) guideline, not tuned/default",
+      "fidelity": "Documented index primitive; independent simulation field key, not SDK envelope/key derivation"
+    },
+    {
+      "field": "name",
+      "id": "CipherSweet-FIPS-fast",
+      "bits": 8,
+      "distinctReference": 10000,
+      "applicationNormalization": "SealQL compact text before indexing",
+      "hash": "PBKDF2-HMAC-SHA384, password=value, salt=indexKey, iterations=1",
+      "source": "https://ciphersweet.paragonie.com/internals/blind-index",
+      "setting": "Explicit 8-bit, R=10000/C≈39.06 supported FIPS-fast profile, not default; byte-aligned PHP output",
+      "fidelity": "Documented index primitive; independent simulation field key, not SDK envelope/key derivation"
+    },
+    {
+      "field": "name",
+      "id": "CipherStash-unique",
+      "bits": 256,
+      "distinctReference": 10000,
+      "applicationNormalization": "SealQL compact text before indexing",
+      "hash": "HMAC-SHA256",
+      "source": "https://cipherstash.com/docs/security/cryptography",
+      "setting": "Full 256-bit equality tag; no ordering",
+      "fidelity": "Documented index primitive; independent simulation field key, not SDK envelope/key derivation"
+    },
+    {
+      "field": "name",
+      "id": "CipherStash-match",
+      "m": 2048,
+      "k": 6,
+      "gram": 3,
+      "source": "https://crates.io/crates/cipherstash-core/0.42.3",
+      "semantics": "Probabilistic downcased trigram-set containment; not LIKE",
+      "fidelity": "cipherstash-core 0.42.3 HMAC-SHA256/u16LE bit placement; Stack 6a926344 ngram3/downcase/k6/m2048 defaults; independent simulation field key"
+    },
+    {
+      "field": "name",
+      "id": "Acra-CE-exact",
+      "bits": 256,
+      "distinctReference": 10000,
+      "applicationNormalization": "SealQL compact text before indexing",
+      "hash": "HMAC-SHA256",
+      "source": "https://docs.cossacklabs.com/acra/security-controls/searchable-encryption/",
+      "setting": "Full 256-bit equality tag; no ordering",
+      "fidelity": "Documented index primitive; independent simulation field key, not SDK envelope/key derivation"
+    },
+    {
+      "field": "phone",
+      "id": "S0",
+      "substringBits": 16,
+      "exactBits": 16,
+      "stored": "Full candidate sets plus separate salted exact/position proofs; tokens() exposes deterministic candidate sets only",
+      "proofs": "Use Codec snapshots and observed keys for T4 positional attack",
+      "source": "src/core/search-tokens.ts",
+      "fidelity": "Actual product bytes, prefixed with index-column tags for simulation"
+    },
+    {
+      "field": "phone",
+      "id": "AWS-standard",
+      "bits": 12,
+      "distinctReference": 10000,
+      "applicationNormalization": "SealQL compact text before indexing",
+      "hash": "HMAC-SHA384 first8B/rightmost b bits/ceil(b/4) hex; empty partition suffix",
+      "source": "https://docs.aws.amazon.com/database-encryption-sdk/latest/devguide/choosing-beacon-length.html",
+      "setting": "Single partition; floor(log2(U_ref)-1) guideline, not tuned/default",
+      "fidelity": "Documented index primitive; independent simulation field key, not SDK envelope/key derivation"
+    },
+    {
+      "field": "phone",
+      "id": "CipherSweet-FIPS-fast",
+      "bits": 8,
+      "distinctReference": 10000,
+      "applicationNormalization": "SealQL compact text before indexing",
+      "hash": "PBKDF2-HMAC-SHA384, password=value, salt=indexKey, iterations=1",
+      "source": "https://ciphersweet.paragonie.com/internals/blind-index",
+      "setting": "Explicit 8-bit, R=10000/C≈39.06 supported FIPS-fast profile, not default; byte-aligned PHP output",
+      "fidelity": "Documented index primitive; independent simulation field key, not SDK envelope/key derivation"
+    },
+    {
+      "field": "phone",
+      "id": "CipherStash-unique",
+      "bits": 256,
+      "distinctReference": 10000,
+      "applicationNormalization": "SealQL compact text before indexing",
+      "hash": "HMAC-SHA256",
+      "source": "https://cipherstash.com/docs/security/cryptography",
+      "setting": "Full 256-bit equality tag; no ordering",
+      "fidelity": "Documented index primitive; independent simulation field key, not SDK envelope/key derivation"
+    },
+    {
+      "field": "phone",
+      "id": "CipherStash-match",
+      "m": 2048,
+      "k": 6,
+      "gram": 3,
+      "source": "https://crates.io/crates/cipherstash-core/0.42.3",
+      "semantics": "Probabilistic downcased trigram-set containment; not LIKE",
+      "fidelity": "cipherstash-core 0.42.3 HMAC-SHA256/u16LE bit placement; Stack 6a926344 ngram3/downcase/k6/m2048 defaults; independent simulation field key"
+    },
+    {
+      "field": "phone",
+      "id": "Acra-CE-exact",
+      "bits": 256,
+      "distinctReference": 10000,
+      "applicationNormalization": "SealQL compact text before indexing",
+      "hash": "HMAC-SHA256",
+      "source": "https://docs.cossacklabs.com/acra/security-controls/searchable-encryption/",
+      "setting": "Full 256-bit equality tag; no ordering",
+      "fidelity": "Documented index primitive; independent simulation field key, not SDK envelope/key derivation"
+    },
+    {
+      "field": "address",
+      "id": "S0",
+      "substringBits": 16,
+      "exactBits": 16,
+      "stored": "Full candidate sets plus separate salted exact/position proofs; tokens() exposes deterministic candidate sets only",
+      "proofs": "Use Codec snapshots and observed keys for T4 positional attack",
+      "source": "src/core/search-tokens.ts",
+      "fidelity": "Actual product bytes, prefixed with index-column tags for simulation"
+    },
+    {
+      "field": "address",
+      "id": "AWS-standard",
+      "bits": 11,
+      "distinctReference": 4890,
+      "applicationNormalization": "SealQL compact text before indexing",
+      "hash": "HMAC-SHA384 first8B/rightmost b bits/ceil(b/4) hex; empty partition suffix",
+      "source": "https://docs.aws.amazon.com/database-encryption-sdk/latest/devguide/choosing-beacon-length.html",
+      "setting": "Single partition; floor(log2(U_ref)-1) guideline, not tuned/default",
+      "fidelity": "Documented index primitive; independent simulation field key, not SDK envelope/key derivation"
+    },
+    {
+      "field": "address",
+      "id": "CipherSweet-FIPS-fast",
+      "bits": 8,
+      "distinctReference": 4890,
+      "applicationNormalization": "SealQL compact text before indexing",
+      "hash": "PBKDF2-HMAC-SHA384, password=value, salt=indexKey, iterations=1",
+      "source": "https://ciphersweet.paragonie.com/internals/blind-index",
+      "setting": "Explicit 8-bit, R=10000/C≈39.06 supported FIPS-fast profile, not default; byte-aligned PHP output",
+      "fidelity": "Documented index primitive; independent simulation field key, not SDK envelope/key derivation"
+    },
+    {
+      "field": "address",
+      "id": "CipherStash-unique",
+      "bits": 256,
+      "distinctReference": 4890,
+      "applicationNormalization": "SealQL compact text before indexing",
+      "hash": "HMAC-SHA256",
+      "source": "https://cipherstash.com/docs/security/cryptography",
+      "setting": "Full 256-bit equality tag; no ordering",
+      "fidelity": "Documented index primitive; independent simulation field key, not SDK envelope/key derivation"
+    },
+    {
+      "field": "address",
+      "id": "CipherStash-match",
+      "m": 2048,
+      "k": 6,
+      "gram": 3,
+      "source": "https://crates.io/crates/cipherstash-core/0.42.3",
+      "semantics": "Probabilistic downcased trigram-set containment; not LIKE",
+      "fidelity": "cipherstash-core 0.42.3 HMAC-SHA256/u16LE bit placement; Stack 6a926344 ngram3/downcase/k6/m2048 defaults; independent simulation field key"
+    },
+    {
+      "field": "address",
+      "id": "Acra-CE-exact",
+      "bits": 256,
+      "distinctReference": 4890,
+      "applicationNormalization": "SealQL compact text before indexing",
+      "hash": "HMAC-SHA256",
+      "source": "https://docs.cossacklabs.com/acra/security-controls/searchable-encryption/",
+      "setting": "Full 256-bit equality tag; no ordering",
+      "fidelity": "Documented index primitive; independent simulation field key, not SDK envelope/key derivation"
+    },
+    {
+      "field": "memo",
+      "id": "S0",
+      "substringBits": 16,
+      "exactBits": 16,
+      "stored": "Full candidate sets plus separate salted exact/position proofs; tokens() exposes deterministic candidate sets only",
+      "proofs": "Use Codec snapshots and observed keys for T4 positional attack",
+      "source": "src/core/search-tokens.ts",
+      "fidelity": "Actual product bytes, prefixed with index-column tags for simulation"
+    },
+    {
+      "field": "memo",
+      "id": "AWS-standard",
+      "bits": 12,
+      "distinctReference": 10000,
+      "applicationNormalization": "SealQL compact text before indexing",
+      "hash": "HMAC-SHA384 first8B/rightmost b bits/ceil(b/4) hex; empty partition suffix",
+      "source": "https://docs.aws.amazon.com/database-encryption-sdk/latest/devguide/choosing-beacon-length.html",
+      "setting": "Single partition; floor(log2(U_ref)-1) guideline, not tuned/default",
+      "fidelity": "Documented index primitive; independent simulation field key, not SDK envelope/key derivation"
+    },
+    {
+      "field": "memo",
+      "id": "CipherSweet-FIPS-fast",
+      "bits": 8,
+      "distinctReference": 10000,
+      "applicationNormalization": "SealQL compact text before indexing",
+      "hash": "PBKDF2-HMAC-SHA384, password=value, salt=indexKey, iterations=1",
+      "source": "https://ciphersweet.paragonie.com/internals/blind-index",
+      "setting": "Explicit 8-bit, R=10000/C≈39.06 supported FIPS-fast profile, not default; byte-aligned PHP output",
+      "fidelity": "Documented index primitive; independent simulation field key, not SDK envelope/key derivation"
+    },
+    {
+      "field": "memo",
+      "id": "CipherStash-unique",
+      "bits": 256,
+      "distinctReference": 10000,
+      "applicationNormalization": "SealQL compact text before indexing",
+      "hash": "HMAC-SHA256",
+      "source": "https://cipherstash.com/docs/security/cryptography",
+      "setting": "Full 256-bit equality tag; no ordering",
+      "fidelity": "Documented index primitive; independent simulation field key, not SDK envelope/key derivation"
+    },
+    {
+      "field": "memo",
+      "id": "CipherStash-match",
+      "m": 2048,
+      "k": 6,
+      "gram": 3,
+      "source": "https://crates.io/crates/cipherstash-core/0.42.3",
+      "semantics": "Probabilistic downcased trigram-set containment; not LIKE",
+      "fidelity": "cipherstash-core 0.42.3 HMAC-SHA256/u16LE bit placement; Stack 6a926344 ngram3/downcase/k6/m2048 defaults; independent simulation field key"
+    },
+    {
+      "field": "memo",
+      "id": "Acra-CE-exact",
+      "bits": 256,
+      "distinctReference": 10000,
+      "applicationNormalization": "SealQL compact text before indexing",
+      "hash": "HMAC-SHA256",
+      "source": "https://docs.cossacklabs.com/acra/security-controls/searchable-encryption/",
+      "setting": "Full 256-bit equality tag; no ordering",
+      "fidelity": "Documented index primitive; independent simulation field key, not SDK envelope/key derivation"
+    },
+    {
+      "field": "email",
+      "id": "S0",
+      "substringBits": 16,
+      "exactBits": 16,
+      "stored": "Full candidate sets plus separate salted exact/position proofs; tokens() exposes deterministic candidate sets only",
+      "proofs": "Use Codec snapshots and observed keys for T4 positional attack",
+      "source": "src/core/search-tokens.ts",
+      "fidelity": "Actual product bytes, prefixed with index-column tags for simulation"
+    },
+    {
+      "field": "email",
+      "id": "AWS-standard",
+      "bits": 12,
+      "distinctReference": 10000,
+      "applicationNormalization": "SealQL compact text before indexing",
+      "hash": "HMAC-SHA384 first8B/rightmost b bits/ceil(b/4) hex; empty partition suffix",
+      "source": "https://docs.aws.amazon.com/database-encryption-sdk/latest/devguide/choosing-beacon-length.html",
+      "setting": "Single partition; floor(log2(U_ref)-1) guideline, not tuned/default",
+      "fidelity": "Documented index primitive; independent simulation field key, not SDK envelope/key derivation"
+    },
+    {
+      "field": "email",
+      "id": "CipherSweet-FIPS-fast",
+      "bits": 8,
+      "distinctReference": 10000,
+      "applicationNormalization": "SealQL compact text before indexing",
+      "hash": "PBKDF2-HMAC-SHA384, password=value, salt=indexKey, iterations=1",
+      "source": "https://ciphersweet.paragonie.com/internals/blind-index",
+      "setting": "Explicit 8-bit, R=10000/C≈39.06 supported FIPS-fast profile, not default; byte-aligned PHP output",
+      "fidelity": "Documented index primitive; independent simulation field key, not SDK envelope/key derivation"
+    },
+    {
+      "field": "email",
+      "id": "CipherStash-unique",
+      "bits": 256,
+      "distinctReference": 10000,
+      "applicationNormalization": "SealQL compact text before indexing",
+      "hash": "HMAC-SHA256",
+      "source": "https://cipherstash.com/docs/security/cryptography",
+      "setting": "Full 256-bit equality tag; no ordering",
+      "fidelity": "Documented index primitive; independent simulation field key, not SDK envelope/key derivation"
+    },
+    {
+      "field": "email",
+      "id": "CipherStash-match",
+      "m": 2048,
+      "k": 6,
+      "gram": 3,
+      "source": "https://crates.io/crates/cipherstash-core/0.42.3",
+      "semantics": "Probabilistic downcased trigram-set containment; not LIKE",
+      "fidelity": "cipherstash-core 0.42.3 HMAC-SHA256/u16LE bit placement; Stack 6a926344 ngram3/downcase/k6/m2048 defaults; independent simulation field key"
+    },
+    {
+      "field": "email",
+      "id": "Acra-CE-exact",
+      "bits": 256,
+      "distinctReference": 10000,
+      "applicationNormalization": "SealQL compact text before indexing",
+      "hash": "HMAC-SHA256",
+      "source": "https://docs.cossacklabs.com/acra/security-controls/searchable-encryption/",
+      "setting": "Full 256-bit equality tag; no ordering",
+      "fidelity": "Documented index primitive; independent simulation field key, not SDK envelope/key derivation"
+    },
+    {
+      "field": "company",
+      "id": "S0",
+      "substringBits": 16,
+      "exactBits": 2,
+      "stored": "Full candidate sets plus separate salted exact/position proofs; tokens() exposes deterministic candidate sets only",
+      "proofs": "Use Codec snapshots and observed keys for T4 positional attack",
+      "source": "src/core/search-tokens.ts",
+      "fidelity": "Actual product bytes, prefixed with index-column tags for simulation"
+    },
+    {
+      "field": "company",
+      "id": "AWS-standard",
+      "bits": 3,
+      "distinctReference": 16,
+      "applicationNormalization": "SealQL compact text before indexing",
+      "hash": "HMAC-SHA384 first8B/rightmost b bits/ceil(b/4) hex; empty partition suffix",
+      "source": "https://docs.aws.amazon.com/database-encryption-sdk/latest/devguide/choosing-beacon-length.html",
+      "setting": "Single partition; floor(log2(U_ref)-1) guideline, not tuned/default",
+      "fidelity": "Documented index primitive; independent simulation field key, not SDK envelope/key derivation"
+    },
+    {
+      "field": "company",
+      "id": "CipherSweet-FIPS-fast",
+      "bits": 8,
+      "distinctReference": 16,
+      "applicationNormalization": "SealQL compact text before indexing",
+      "hash": "PBKDF2-HMAC-SHA384, password=value, salt=indexKey, iterations=1",
+      "source": "https://ciphersweet.paragonie.com/internals/blind-index",
+      "setting": "Explicit 8-bit, R=10000/C≈39.06 supported FIPS-fast profile, not default; byte-aligned PHP output",
+      "fidelity": "Documented index primitive; independent simulation field key, not SDK envelope/key derivation"
+    },
+    {
+      "field": "company",
+      "id": "CipherStash-unique",
+      "bits": 256,
+      "distinctReference": 16,
+      "applicationNormalization": "SealQL compact text before indexing",
+      "hash": "HMAC-SHA256",
+      "source": "https://cipherstash.com/docs/security/cryptography",
+      "setting": "Full 256-bit equality tag; no ordering",
+      "fidelity": "Documented index primitive; independent simulation field key, not SDK envelope/key derivation"
+    },
+    {
+      "field": "company",
+      "id": "CipherStash-match",
+      "m": 2048,
+      "k": 6,
+      "gram": 3,
+      "source": "https://crates.io/crates/cipherstash-core/0.42.3",
+      "semantics": "Probabilistic downcased trigram-set containment; not LIKE",
+      "fidelity": "cipherstash-core 0.42.3 HMAC-SHA256/u16LE bit placement; Stack 6a926344 ngram3/downcase/k6/m2048 defaults; independent simulation field key"
+    },
+    {
+      "field": "company",
+      "id": "Acra-CE-exact",
+      "bits": 256,
+      "distinctReference": 16,
+      "applicationNormalization": "SealQL compact text before indexing",
+      "hash": "HMAC-SHA256",
+      "source": "https://docs.cossacklabs.com/acra/security-controls/searchable-encryption/",
+      "setting": "Full 256-bit equality tag; no ordering",
+      "fidelity": "Documented index primitive; independent simulation field key, not SDK envelope/key derivation"
+    }
+  ],
+  "results": [
+    {
+      "field": "name",
+      "model": "S0",
+      "N": 100,
+      "base": {
+        "rows": 10000,
+        "correct": 0,
+        "valuePct": 0,
+        "characters": 24104,
+        "totalCharacters": 92924,
+        "characterPct": 25.939477422409713,
+        "mostly": 110,
+        "mostlyPct": 1.0999999999999999
+      },
+      "strongest": {
+        "rows": 10000,
+        "correct": 0,
+        "valuePct": 0,
+        "characters": 24104,
+        "totalCharacters": 92924,
+        "characterPct": 25.939477422409713,
+        "mostly": 110,
+        "mostlyPct": 1.0999999999999999
+      },
+      "learnedLabels": 132,
+      "mappedCorrect": 132
+    },
+    {
+      "field": "name",
+      "model": "S0",
+      "N": 1000,
+      "base": {
+        "rows": 10000,
+        "correct": 0,
+        "valuePct": 0,
+        "characters": 3448,
+        "totalCharacters": 92924,
+        "characterPct": 3.7105591666307953,
+        "mostly": 0,
+        "mostlyPct": 0
+      },
+      "strongest": {
+        "rows": 10000,
+        "correct": 0,
+        "valuePct": 0,
+        "characters": 3448,
+        "totalCharacters": 92924,
+        "characterPct": 3.7105591666307953,
+        "mostly": 0,
+        "mostlyPct": 0
+      },
+      "learnedLabels": 2736,
+      "mappedCorrect": 2736
+    },
+    {
+      "field": "name",
+      "model": "AWS-standard",
+      "N": 100,
+      "base": {
+        "rows": 10000,
+        "correct": 0,
+        "valuePct": 0,
+        "characters": 3530,
+        "totalCharacters": 92924,
+        "characterPct": 3.7988033231457967,
+        "mostly": 0,
+        "mostlyPct": 0
+      },
+      "strongest": {
+        "rows": 10000,
+        "correct": 0,
+        "valuePct": 0,
+        "characters": 3530,
+        "totalCharacters": 92924,
+        "characterPct": 3.7988033231457967,
+        "mostly": 0,
+        "mostlyPct": 0
+      },
+      "learnedLabels": 98,
+      "mappedCorrect": 98
+    },
+    {
+      "field": "name",
+      "model": "AWS-standard",
+      "N": 1000,
+      "base": {
+        "rows": 10000,
+        "correct": 0,
+        "valuePct": 0,
+        "characters": 4162,
+        "totalCharacters": 92924,
+        "characterPct": 4.478929017261418,
+        "mostly": 0,
+        "mostlyPct": 0
+      },
+      "strongest": {
+        "rows": 10000,
+        "correct": 0,
+        "valuePct": 0,
+        "characters": 4162,
+        "totalCharacters": 92924,
+        "characterPct": 4.478929017261418,
+        "mostly": 0,
+        "mostlyPct": 0
+      },
+      "learnedLabels": 790,
+      "mappedCorrect": 790
+    },
+    {
+      "field": "name",
+      "model": "CipherSweet-FIPS-fast",
+      "N": 100,
+      "base": {
+        "rows": 10000,
+        "correct": 0,
+        "valuePct": 0,
+        "characters": 4366,
+        "totalCharacters": 92924,
+        "characterPct": 4.698463260298738,
+        "mostly": 1,
+        "mostlyPct": 0.01
+      },
+      "strongest": {
+        "rows": 10000,
+        "correct": 0,
+        "valuePct": 0,
+        "characters": 4366,
+        "totalCharacters": 92924,
+        "characterPct": 4.698463260298738,
+        "mostly": 1,
+        "mostlyPct": 0.01
+      },
+      "learnedLabels": 59,
+      "mappedCorrect": 59
+    },
+    {
+      "field": "name",
+      "model": "CipherSweet-FIPS-fast",
+      "N": 1000,
+      "base": {
+        "rows": 10000,
+        "correct": 0,
+        "valuePct": 0,
+        "characters": 7382,
+        "totalCharacters": 92924,
+        "characterPct": 7.944126382850501,
+        "mostly": 3,
+        "mostlyPct": 0.03
+      },
+      "strongest": {
+        "rows": 10000,
+        "correct": 0,
+        "valuePct": 0,
+        "characters": 7382,
+        "totalCharacters": 92924,
+        "characterPct": 7.944126382850501,
+        "mostly": 3,
+        "mostlyPct": 0.03
+      },
+      "learnedLabels": 18,
+      "mappedCorrect": 18
+    },
+    {
+      "field": "name",
+      "model": "CipherStash-unique",
+      "N": 100,
+      "base": {
+        "rows": 10000,
+        "correct": 0,
+        "valuePct": 0,
+        "characters": 3448,
+        "totalCharacters": 92924,
+        "characterPct": 3.7105591666307953,
+        "mostly": 0,
+        "mostlyPct": 0
+      },
+      "strongest": {
+        "rows": 10000,
+        "correct": 0,
+        "valuePct": 0,
+        "characters": 3448,
+        "totalCharacters": 92924,
+        "characterPct": 3.7105591666307953,
+        "mostly": 0,
+        "mostlyPct": 0
+      },
+      "learnedLabels": 100,
+      "mappedCorrect": 100
+    },
+    {
+      "field": "name",
+      "model": "CipherStash-unique",
+      "N": 1000,
+      "base": {
+        "rows": 10000,
+        "correct": 0,
+        "valuePct": 0,
+        "characters": 3448,
+        "totalCharacters": 92924,
+        "characterPct": 3.7105591666307953,
+        "mostly": 0,
+        "mostlyPct": 0
+      },
+      "strongest": {
+        "rows": 10000,
+        "correct": 0,
+        "valuePct": 0,
+        "characters": 3448,
+        "totalCharacters": 92924,
+        "characterPct": 3.7105591666307953,
+        "mostly": 0,
+        "mostlyPct": 0
+      },
+      "learnedLabels": 1000,
+      "mappedCorrect": 1000
+    },
+    {
+      "field": "name",
+      "model": "CipherStash-match",
+      "N": 100,
+      "base": {
+        "rows": 10000,
+        "correct": 0,
+        "valuePct": 0,
+        "characters": 20085,
+        "totalCharacters": 92924,
+        "characterPct": 21.614437604924454,
+        "mostly": 1,
+        "mostlyPct": 0.01
+      },
+      "strongest": {
+        "rows": 10000,
+        "correct": 0,
+        "valuePct": 0,
+        "characters": 20085,
+        "totalCharacters": 92924,
+        "characterPct": 21.614437604924454,
+        "mostly": 1,
+        "mostlyPct": 0.01
+      },
+      "learnedLabels": 28,
+      "mappedCorrect": 28
+    },
+    {
+      "field": "name",
+      "model": "CipherStash-match",
+      "N": 1000,
+      "base": {
+        "rows": 10000,
+        "correct": 0,
+        "valuePct": 0,
+        "characters": 3448,
+        "totalCharacters": 92924,
+        "characterPct": 3.7105591666307953,
+        "mostly": 0,
+        "mostlyPct": 0
+      },
+      "strongest": {
+        "rows": 10000,
+        "correct": 0,
+        "valuePct": 0,
+        "characters": 3448,
+        "totalCharacters": 92924,
+        "characterPct": 3.7105591666307953,
+        "mostly": 0,
+        "mostlyPct": 0
+      },
+      "learnedLabels": 0,
+      "mappedCorrect": 0
+    },
+    {
+      "field": "name",
+      "model": "Acra-CE-exact",
+      "N": 100,
+      "base": {
+        "rows": 10000,
+        "correct": 0,
+        "valuePct": 0,
+        "characters": 3448,
+        "totalCharacters": 92924,
+        "characterPct": 3.7105591666307953,
+        "mostly": 0,
+        "mostlyPct": 0
+      },
+      "strongest": {
+        "rows": 10000,
+        "correct": 0,
+        "valuePct": 0,
+        "characters": 3448,
+        "totalCharacters": 92924,
+        "characterPct": 3.7105591666307953,
+        "mostly": 0,
+        "mostlyPct": 0
+      },
+      "learnedLabels": 100,
+      "mappedCorrect": 100
+    },
+    {
+      "field": "name",
+      "model": "Acra-CE-exact",
+      "N": 1000,
+      "base": {
+        "rows": 10000,
+        "correct": 0,
+        "valuePct": 0,
+        "characters": 3448,
+        "totalCharacters": 92924,
+        "characterPct": 3.7105591666307953,
+        "mostly": 0,
+        "mostlyPct": 0
+      },
+      "strongest": {
+        "rows": 10000,
+        "correct": 0,
+        "valuePct": 0,
+        "characters": 3448,
+        "totalCharacters": 92924,
+        "characterPct": 3.7105591666307953,
+        "mostly": 0,
+        "mostlyPct": 0
+      },
+      "learnedLabels": 1000,
+      "mappedCorrect": 1000
+    },
+    {
+      "field": "phone",
+      "model": "S0",
+      "N": 100,
+      "base": {
+        "rows": 10000,
+        "correct": 0,
+        "valuePct": 0,
+        "characters": 30172,
+        "totalCharacters": 120000,
+        "characterPct": 25.143333333333334,
+        "mostly": 0,
+        "mostlyPct": 0
+      },
+      "strongest": {
+        "rows": 10000,
+        "correct": 9974,
+        "valuePct": 99.74,
+        "characters": 119762,
+        "totalCharacters": 120000,
+        "characterPct": 99.80166666666666,
+        "mostly": 9974,
+        "mostlyPct": 99.74
+      },
+      "phone": {
+        "hypotheses": 1,
+        "overflow": true,
+        "mappedPieces": 258,
+        "bloomHypothesis": false,
+        "returned": 9974,
+        "capped": 0
+      },
+      "learnedLabels": 352,
+      "mappedCorrect": 352
+    },
+    {
+      "field": "phone",
+      "model": "S0",
+      "N": 1000,
+      "base": {
+        "rows": 10000,
+        "correct": 0,
+        "valuePct": 0,
+        "characters": 30172,
+        "totalCharacters": 120000,
+        "characterPct": 25.143333333333334,
+        "mostly": 0,
+        "mostlyPct": 0
+      },
+      "strongest": {
+        "rows": 10000,
+        "correct": 9980,
+        "valuePct": 99.8,
+        "characters": 119818,
+        "totalCharacters": 120000,
+        "characterPct": 99.84833333333333,
+        "mostly": 9980,
+        "mostlyPct": 99.8
+      },
+      "phone": {
+        "hypotheses": 1,
+        "overflow": false,
+        "mappedPieces": 258,
+        "bloomHypothesis": false,
+        "returned": 9980,
+        "capped": 0
+      },
+      "learnedLabels": 1248,
+      "mappedCorrect": 1248
+    },
+    {
+      "field": "phone",
+      "model": "AWS-standard",
+      "N": 100,
+      "base": {
+        "rows": 10000,
+        "correct": 0,
+        "valuePct": 0,
+        "characters": 30187,
+        "totalCharacters": 120000,
+        "characterPct": 25.155833333333334,
+        "mostly": 0,
+        "mostlyPct": 0
+      },
+      "strongest": {
+        "rows": 10000,
+        "correct": 0,
+        "valuePct": 0,
+        "characters": 30187,
+        "totalCharacters": 120000,
+        "characterPct": 25.155833333333334,
+        "mostly": 0,
+        "mostlyPct": 0
+      },
+      "learnedLabels": 98,
+      "mappedCorrect": 98
+    },
+    {
+      "field": "phone",
+      "model": "AWS-standard",
+      "N": 1000,
+      "base": {
+        "rows": 10000,
+        "correct": 0,
+        "valuePct": 0,
+        "characters": 30158,
+        "totalCharacters": 120000,
+        "characterPct": 25.131666666666668,
+        "mostly": 0,
+        "mostlyPct": 0
+      },
+      "strongest": {
+        "rows": 10000,
+        "correct": 0,
+        "valuePct": 0,
+        "characters": 30158,
+        "totalCharacters": 120000,
+        "characterPct": 25.131666666666668,
+        "mostly": 0,
+        "mostlyPct": 0
+      },
+      "learnedLabels": 801,
+      "mappedCorrect": 801
+    },
+    {
+      "field": "phone",
+      "model": "CipherSweet-FIPS-fast",
+      "N": 100,
+      "base": {
+        "rows": 10000,
+        "correct": 0,
+        "valuePct": 0,
+        "characters": 30240,
+        "totalCharacters": 120000,
+        "characterPct": 25.2,
+        "mostly": 0,
+        "mostlyPct": 0
+      },
+      "strongest": {
+        "rows": 10000,
+        "correct": 0,
+        "valuePct": 0,
+        "characters": 30240,
+        "totalCharacters": 120000,
+        "characterPct": 25.2,
+        "mostly": 0,
+        "mostlyPct": 0
+      },
+      "learnedLabels": 64,
+      "mappedCorrect": 64
+    },
+    {
+      "field": "phone",
+      "model": "CipherSweet-FIPS-fast",
+      "N": 1000,
+      "base": {
+        "rows": 10000,
+        "correct": 0,
+        "valuePct": 0,
+        "characters": 30292,
+        "totalCharacters": 120000,
+        "characterPct": 25.243333333333336,
+        "mostly": 0,
+        "mostlyPct": 0
+      },
+      "strongest": {
+        "rows": 10000,
+        "correct": 0,
+        "valuePct": 0,
+        "characters": 30292,
+        "totalCharacters": 120000,
+        "characterPct": 25.243333333333336,
+        "mostly": 0,
+        "mostlyPct": 0
+      },
+      "learnedLabels": 19,
+      "mappedCorrect": 19
+    },
+    {
+      "field": "phone",
+      "model": "CipherStash-unique",
+      "N": 100,
+      "base": {
+        "rows": 10000,
+        "correct": 0,
+        "valuePct": 0,
+        "characters": 30172,
+        "totalCharacters": 120000,
+        "characterPct": 25.143333333333334,
+        "mostly": 0,
+        "mostlyPct": 0
+      },
+      "strongest": {
+        "rows": 10000,
+        "correct": 0,
+        "valuePct": 0,
+        "characters": 30172,
+        "totalCharacters": 120000,
+        "characterPct": 25.143333333333334,
+        "mostly": 0,
+        "mostlyPct": 0
+      },
+      "learnedLabels": 100,
+      "mappedCorrect": 100
+    },
+    {
+      "field": "phone",
+      "model": "CipherStash-unique",
+      "N": 1000,
+      "base": {
+        "rows": 10000,
+        "correct": 0,
+        "valuePct": 0,
+        "characters": 30172,
+        "totalCharacters": 120000,
+        "characterPct": 25.143333333333334,
+        "mostly": 0,
+        "mostlyPct": 0
+      },
+      "strongest": {
+        "rows": 10000,
+        "correct": 0,
+        "valuePct": 0,
+        "characters": 30172,
+        "totalCharacters": 120000,
+        "characterPct": 25.143333333333334,
+        "mostly": 0,
+        "mostlyPct": 0
+      },
+      "learnedLabels": 1000,
+      "mappedCorrect": 1000
+    },
+    {
+      "field": "phone",
+      "model": "CipherStash-match",
+      "N": 100,
+      "base": {
+        "rows": 10000,
+        "correct": 0,
+        "valuePct": 0,
+        "characters": 32545,
+        "totalCharacters": 120000,
+        "characterPct": 27.120833333333334,
+        "mostly": 0,
+        "mostlyPct": 0
+      },
+      "strongest": {
+        "rows": 10000,
+        "correct": 0,
+        "valuePct": 0,
+        "characters": 32545,
+        "totalCharacters": 120000,
+        "characterPct": 27.120833333333334,
+        "mostly": 0,
+        "mostlyPct": 0
+      },
+      "phone": {
+        "hypotheses": 1,
+        "overflow": false,
+        "mappedPieces": 107,
+        "bloomHypothesis": true,
+        "algorithm": "complete-intersection-at-most-k",
+        "returned": 0,
+        "capped": 0
+      },
+      "learnedLabels": 251,
+      "mappedCorrect": 248
+    },
+    {
+      "field": "phone",
+      "model": "CipherStash-match",
+      "N": 1000,
+      "base": {
+        "rows": 10000,
+        "correct": 0,
+        "valuePct": 0,
+        "characters": 35839,
+        "totalCharacters": 120000,
+        "characterPct": 29.865833333333335,
+        "mostly": 2,
+        "mostlyPct": 0.02
+      },
+      "strongest": {
+        "rows": 10000,
+        "correct": 2056,
+        "valuePct": 20.560000000000002,
+        "characters": 53218,
+        "totalCharacters": 120000,
+        "characterPct": 44.348333333333336,
+        "mostly": 2058,
+        "mostlyPct": 20.580000000000002
+      },
+      "phone": {
+        "hypotheses": 1,
+        "overflow": false,
+        "mappedPieces": 975,
+        "bloomHypothesis": true,
+        "algorithm": "complete-intersection-at-most-k",
+        "returned": 2056,
+        "capped": 0
+      },
+      "learnedLabels": 176,
+      "mappedCorrect": 176
+    },
+    {
+      "field": "phone",
+      "model": "Acra-CE-exact",
+      "N": 100,
+      "base": {
+        "rows": 10000,
+        "correct": 0,
+        "valuePct": 0,
+        "characters": 30172,
+        "totalCharacters": 120000,
+        "characterPct": 25.143333333333334,
+        "mostly": 0,
+        "mostlyPct": 0
+      },
+      "strongest": {
+        "rows": 10000,
+        "correct": 0,
+        "valuePct": 0,
+        "characters": 30172,
+        "totalCharacters": 120000,
+        "characterPct": 25.143333333333334,
+        "mostly": 0,
+        "mostlyPct": 0
+      },
+      "learnedLabels": 100,
+      "mappedCorrect": 100
+    },
+    {
+      "field": "phone",
+      "model": "Acra-CE-exact",
+      "N": 1000,
+      "base": {
+        "rows": 10000,
+        "correct": 0,
+        "valuePct": 0,
+        "characters": 30172,
+        "totalCharacters": 120000,
+        "characterPct": 25.143333333333334,
+        "mostly": 0,
+        "mostlyPct": 0
+      },
+      "strongest": {
+        "rows": 10000,
+        "correct": 0,
+        "valuePct": 0,
+        "characters": 30172,
+        "totalCharacters": 120000,
+        "characterPct": 25.143333333333334,
+        "mostly": 0,
+        "mostlyPct": 0
+      },
+      "learnedLabels": 1000,
+      "mappedCorrect": 1000
+    },
+    {
+      "field": "address",
+      "model": "S0",
+      "N": 100,
+      "base": {
+        "rows": 10000,
+        "correct": 5017,
+        "valuePct": 50.17,
+        "characters": 99007,
+        "totalCharacters": 148907,
+        "characterPct": 66.48915094656395,
+        "mostly": 6503,
+        "mostlyPct": 65.03
+      },
+      "strongest": {
+        "rows": 10000,
+        "correct": 5017,
+        "valuePct": 50.17,
+        "characters": 99007,
+        "totalCharacters": 148907,
+        "characterPct": 66.48915094656395,
+        "mostly": 6503,
+        "mostlyPct": 65.03
+      },
+      "learnedLabels": 188,
+      "mappedCorrect": 188
+    },
+    {
+      "field": "address",
+      "model": "S0",
+      "N": 1000,
+      "base": {
+        "rows": 10000,
+        "correct": 7366,
+        "valuePct": 73.66,
+        "characters": 113901,
+        "totalCharacters": 148907,
+        "characterPct": 76.49136709489815,
+        "mostly": 7412,
+        "mostlyPct": 74.11999999999999
+      },
+      "strongest": {
+        "rows": 10000,
+        "correct": 7366,
+        "valuePct": 73.66,
+        "characters": 113901,
+        "totalCharacters": 148907,
+        "characterPct": 76.49136709489815,
+        "mostly": 7412,
+        "mostlyPct": 74.11999999999999
+      },
+      "learnedLabels": 1176,
+      "mappedCorrect": 1176
+    },
+    {
+      "field": "address",
+      "model": "AWS-standard",
+      "N": 100,
+      "base": {
+        "rows": 10000,
+        "correct": 148,
+        "valuePct": 1.48,
+        "characters": 26156,
+        "totalCharacters": 148907,
+        "characterPct": 17.565326008851162,
+        "mostly": 606,
+        "mostlyPct": 6.0600000000000005
+      },
+      "strongest": {
+        "rows": 10000,
+        "correct": 148,
+        "valuePct": 1.48,
+        "characters": 26156,
+        "totalCharacters": 148907,
+        "characterPct": 17.565326008851162,
+        "mostly": 606,
+        "mostlyPct": 6.0600000000000005
+      },
+      "learnedLabels": 91,
+      "mappedCorrect": 91
+    },
+    {
+      "field": "address",
+      "model": "AWS-standard",
+      "N": 1000,
+      "base": {
+        "rows": 10000,
+        "correct": 1227,
+        "valuePct": 12.27,
+        "characters": 38297,
+        "totalCharacters": 148907,
+        "characterPct": 25.718737198385572,
+        "mostly": 1740,
+        "mostlyPct": 17.4
+      },
+      "strongest": {
+        "rows": 10000,
+        "correct": 1227,
+        "valuePct": 12.27,
+        "characters": 38297,
+        "totalCharacters": 148907,
+        "characterPct": 25.718737198385572,
+        "mostly": 1740,
+        "mostlyPct": 17.4
+      },
+      "learnedLabels": 590,
+      "mappedCorrect": 590
+    },
+    {
+      "field": "address",
+      "model": "CipherSweet-FIPS-fast",
+      "N": 100,
+      "base": {
+        "rows": 10000,
+        "correct": 129,
+        "valuePct": 1.29,
+        "characters": 25563,
+        "totalCharacters": 148907,
+        "characterPct": 17.167090868797303,
+        "mostly": 712,
+        "mostlyPct": 7.12
+      },
+      "strongest": {
+        "rows": 10000,
+        "correct": 129,
+        "valuePct": 1.29,
+        "characters": 25563,
+        "totalCharacters": 148907,
+        "characterPct": 17.167090868797303,
+        "mostly": 712,
+        "mostlyPct": 7.12
+      },
+      "learnedLabels": 66,
+      "mappedCorrect": 66
+    },
+    {
+      "field": "address",
+      "model": "CipherSweet-FIPS-fast",
+      "N": 1000,
+      "base": {
+        "rows": 10000,
+        "correct": 420,
+        "valuePct": 4.2,
+        "characters": 27642,
+        "totalCharacters": 148907,
+        "characterPct": 18.56326431934026,
+        "mostly": 1249,
+        "mostlyPct": 12.49
+      },
+      "strongest": {
+        "rows": 10000,
+        "correct": 420,
+        "valuePct": 4.2,
+        "characters": 27642,
+        "totalCharacters": 148907,
+        "characterPct": 18.56326431934026,
+        "mostly": 1249,
+        "mostlyPct": 12.49
+      },
+      "learnedLabels": 25,
+      "mappedCorrect": 25
+    },
+    {
+      "field": "address",
+      "model": "CipherStash-unique",
+      "N": 100,
+      "base": {
+        "rows": 10000,
+        "correct": 157,
+        "valuePct": 1.5699999999999998,
+        "characters": 26364,
+        "totalCharacters": 148907,
+        "characterPct": 17.705010509915585,
+        "mostly": 598,
+        "mostlyPct": 5.9799999999999995
+      },
+      "strongest": {
+        "rows": 10000,
+        "correct": 157,
+        "valuePct": 1.5699999999999998,
+        "characters": 26364,
+        "totalCharacters": 148907,
+        "characterPct": 17.705010509915585,
+        "mostly": 598,
+        "mostlyPct": 5.9799999999999995
+      },
+      "learnedLabels": 97,
+      "mappedCorrect": 97
+    },
+    {
+      "field": "address",
+      "model": "CipherStash-unique",
+      "N": 1000,
+      "base": {
+        "rows": 10000,
+        "correct": 1497,
+        "valuePct": 14.97,
+        "characters": 43182,
+        "totalCharacters": 148907,
+        "characterPct": 28.999308293095687,
+        "mostly": 1881,
+        "mostlyPct": 18.81
+      },
+      "strongest": {
+        "rows": 10000,
+        "correct": 1497,
+        "valuePct": 14.97,
+        "characters": 43182,
+        "totalCharacters": 148907,
+        "characterPct": 28.999308293095687,
+        "mostly": 1881,
+        "mostlyPct": 18.81
+      },
+      "learnedLabels": 912,
+      "mappedCorrect": 912
+    },
+    {
+      "field": "address",
+      "model": "CipherStash-match",
+      "N": 100,
+      "base": {
+        "rows": 10000,
+        "correct": 1798,
+        "valuePct": 17.98,
+        "characters": 70221,
+        "totalCharacters": 148907,
+        "characterPct": 47.15762187136938,
+        "mostly": 4263,
+        "mostlyPct": 42.63
+      },
+      "strongest": {
+        "rows": 10000,
+        "correct": 1798,
+        "valuePct": 17.98,
+        "characters": 70221,
+        "totalCharacters": 148907,
+        "characterPct": 47.15762187136938,
+        "mostly": 4263,
+        "mostlyPct": 42.63
+      },
+      "learnedLabels": 243,
+      "mappedCorrect": 243
+    },
+    {
+      "field": "address",
+      "model": "CipherStash-match",
+      "N": 1000,
+      "base": {
+        "rows": 10000,
+        "correct": 2881,
+        "valuePct": 28.810000000000002,
+        "characters": 66650,
+        "totalCharacters": 148907,
+        "characterPct": 44.7594807497297,
+        "mostly": 4034,
+        "mostlyPct": 40.339999999999996
+      },
+      "strongest": {
+        "rows": 10000,
+        "correct": 2881,
+        "valuePct": 28.810000000000002,
+        "characters": 66650,
+        "totalCharacters": 148907,
+        "characterPct": 44.7594807497297,
+        "mostly": 4034,
+        "mostlyPct": 40.339999999999996
+      },
+      "learnedLabels": 339,
+      "mappedCorrect": 339
+    },
+    {
+      "field": "address",
+      "model": "Acra-CE-exact",
+      "N": 100,
+      "base": {
+        "rows": 10000,
+        "correct": 157,
+        "valuePct": 1.5699999999999998,
+        "characters": 26364,
+        "totalCharacters": 148907,
+        "characterPct": 17.705010509915585,
+        "mostly": 598,
+        "mostlyPct": 5.9799999999999995
+      },
+      "strongest": {
+        "rows": 10000,
+        "correct": 157,
+        "valuePct": 1.5699999999999998,
+        "characters": 26364,
+        "totalCharacters": 148907,
+        "characterPct": 17.705010509915585,
+        "mostly": 598,
+        "mostlyPct": 5.9799999999999995
+      },
+      "learnedLabels": 97,
+      "mappedCorrect": 97
+    },
+    {
+      "field": "address",
+      "model": "Acra-CE-exact",
+      "N": 1000,
+      "base": {
+        "rows": 10000,
+        "correct": 1497,
+        "valuePct": 14.97,
+        "characters": 43182,
+        "totalCharacters": 148907,
+        "characterPct": 28.999308293095687,
+        "mostly": 1881,
+        "mostlyPct": 18.81
+      },
+      "strongest": {
+        "rows": 10000,
+        "correct": 1497,
+        "valuePct": 14.97,
+        "characters": 43182,
+        "totalCharacters": 148907,
+        "characterPct": 28.999308293095687,
+        "mostly": 1881,
+        "mostlyPct": 18.81
+      },
+      "learnedLabels": 912,
+      "mappedCorrect": 912
+    },
+    {
+      "field": "memo",
+      "model": "S0",
+      "N": 100,
+      "base": {
+        "rows": 10000,
+        "correct": 0,
+        "valuePct": 0,
+        "characters": 48003,
+        "totalCharacters": 147144,
+        "characterPct": 32.62314467460447,
+        "mostly": 1186,
+        "mostlyPct": 11.86
+      },
+      "strongest": {
+        "rows": 10000,
+        "correct": 0,
+        "valuePct": 0,
+        "characters": 48003,
+        "totalCharacters": 147144,
+        "characterPct": 32.62314467460447,
+        "mostly": 1186,
+        "mostlyPct": 11.86
+      },
+      "learnedLabels": 138,
+      "mappedCorrect": 138
+    },
+    {
+      "field": "memo",
+      "model": "S0",
+      "N": 1000,
+      "base": {
+        "rows": 10000,
+        "correct": 0,
+        "valuePct": 0,
+        "characters": 10893,
+        "totalCharacters": 147144,
+        "characterPct": 7.402952210079921,
+        "mostly": 0,
+        "mostlyPct": 0
+      },
+      "strongest": {
+        "rows": 10000,
+        "correct": 0,
+        "valuePct": 0,
+        "characters": 10893,
+        "totalCharacters": 147144,
+        "characterPct": 7.402952210079921,
+        "mostly": 0,
+        "mostlyPct": 0
+      },
+      "learnedLabels": 2699,
+      "mappedCorrect": 2699
+    },
+    {
+      "field": "memo",
+      "model": "AWS-standard",
+      "N": 100,
+      "base": {
+        "rows": 10000,
+        "correct": 0,
+        "valuePct": 0,
+        "characters": 11063,
+        "totalCharacters": 147144,
+        "characterPct": 7.518485293318109,
+        "mostly": 0,
+        "mostlyPct": 0
+      },
+      "strongest": {
+        "rows": 10000,
+        "correct": 0,
+        "valuePct": 0,
+        "characters": 11063,
+        "totalCharacters": 147144,
+        "characterPct": 7.518485293318109,
+        "mostly": 0,
+        "mostlyPct": 0
+      },
+      "learnedLabels": 100,
+      "mappedCorrect": 100
+    },
+    {
+      "field": "memo",
+      "model": "AWS-standard",
+      "N": 1000,
+      "base": {
+        "rows": 10000,
+        "correct": 0,
+        "valuePct": 0,
+        "characters": 11965,
+        "totalCharacters": 147144,
+        "characterPct": 8.131490240852498,
+        "mostly": 6,
+        "mostlyPct": 0.06
+      },
+      "strongest": {
+        "rows": 10000,
+        "correct": 0,
+        "valuePct": 0,
+        "characters": 11965,
+        "totalCharacters": 147144,
+        "characterPct": 8.131490240852498,
+        "mostly": 6,
+        "mostlyPct": 0.06
+      },
+      "learnedLabels": 785,
+      "mappedCorrect": 785
+    },
+    {
+      "field": "memo",
+      "model": "CipherSweet-FIPS-fast",
+      "N": 100,
+      "base": {
+        "rows": 10000,
+        "correct": 0,
+        "valuePct": 0,
+        "characters": 12971,
+        "totalCharacters": 147144,
+        "characterPct": 8.815174251073778,
+        "mostly": 7,
+        "mostlyPct": 0.06999999999999999
+      },
+      "strongest": {
+        "rows": 10000,
+        "correct": 0,
+        "valuePct": 0,
+        "characters": 12971,
+        "totalCharacters": 147144,
+        "characterPct": 8.815174251073778,
+        "mostly": 7,
+        "mostlyPct": 0.06999999999999999
+      },
+      "learnedLabels": 58,
+      "mappedCorrect": 58
+    },
+    {
+      "field": "memo",
+      "model": "CipherSweet-FIPS-fast",
+      "N": 1000,
+      "base": {
+        "rows": 10000,
+        "correct": 0,
+        "valuePct": 0,
+        "characters": 15941,
+        "totalCharacters": 147144,
+        "characterPct": 10.833605175882129,
+        "mostly": 57,
+        "mostlyPct": 0.5700000000000001
+      },
+      "strongest": {
+        "rows": 10000,
+        "correct": 0,
+        "valuePct": 0,
+        "characters": 15941,
+        "totalCharacters": 147144,
+        "characterPct": 10.833605175882129,
+        "mostly": 57,
+        "mostlyPct": 0.5700000000000001
+      },
+      "learnedLabels": 26,
+      "mappedCorrect": 26
+    },
+    {
+      "field": "memo",
+      "model": "CipherStash-unique",
+      "N": 100,
+      "base": {
+        "rows": 10000,
+        "correct": 0,
+        "valuePct": 0,
+        "characters": 10893,
+        "totalCharacters": 147144,
+        "characterPct": 7.402952210079921,
+        "mostly": 0,
+        "mostlyPct": 0
+      },
+      "strongest": {
+        "rows": 10000,
+        "correct": 0,
+        "valuePct": 0,
+        "characters": 10893,
+        "totalCharacters": 147144,
+        "characterPct": 7.402952210079921,
+        "mostly": 0,
+        "mostlyPct": 0
+      },
+      "learnedLabels": 100,
+      "mappedCorrect": 100
+    },
+    {
+      "field": "memo",
+      "model": "CipherStash-unique",
+      "N": 1000,
+      "base": {
+        "rows": 10000,
+        "correct": 0,
+        "valuePct": 0,
+        "characters": 10893,
+        "totalCharacters": 147144,
+        "characterPct": 7.402952210079921,
+        "mostly": 0,
+        "mostlyPct": 0
+      },
+      "strongest": {
+        "rows": 10000,
+        "correct": 0,
+        "valuePct": 0,
+        "characters": 10893,
+        "totalCharacters": 147144,
+        "characterPct": 7.402952210079921,
+        "mostly": 0,
+        "mostlyPct": 0
+      },
+      "learnedLabels": 1000,
+      "mappedCorrect": 1000
+    },
+    {
+      "field": "memo",
+      "model": "CipherStash-match",
+      "N": 100,
+      "base": {
+        "rows": 10000,
+        "correct": 0,
+        "valuePct": 0,
+        "characters": 31446,
+        "totalCharacters": 147144,
+        "characterPct": 21.370901973576903,
+        "mostly": 83,
+        "mostlyPct": 0.83
+      },
+      "strongest": {
+        "rows": 10000,
+        "correct": 0,
+        "valuePct": 0,
+        "characters": 31446,
+        "totalCharacters": 147144,
+        "characterPct": 21.370901973576903,
+        "mostly": 83,
+        "mostlyPct": 0.83
+      },
+      "learnedLabels": 19,
+      "mappedCorrect": 18
+    },
+    {
+      "field": "memo",
+      "model": "CipherStash-match",
+      "N": 1000,
+      "base": {
+        "rows": 10000,
+        "correct": 0,
+        "valuePct": 0,
+        "characters": 10893,
+        "totalCharacters": 147144,
+        "characterPct": 7.402952210079921,
+        "mostly": 0,
+        "mostlyPct": 0
+      },
+      "strongest": {
+        "rows": 10000,
+        "correct": 0,
+        "valuePct": 0,
+        "characters": 10893,
+        "totalCharacters": 147144,
+        "characterPct": 7.402952210079921,
+        "mostly": 0,
+        "mostlyPct": 0
+      },
+      "learnedLabels": 0,
+      "mappedCorrect": 0
+    },
+    {
+      "field": "memo",
+      "model": "Acra-CE-exact",
+      "N": 100,
+      "base": {
+        "rows": 10000,
+        "correct": 0,
+        "valuePct": 0,
+        "characters": 10893,
+        "totalCharacters": 147144,
+        "characterPct": 7.402952210079921,
+        "mostly": 0,
+        "mostlyPct": 0
+      },
+      "strongest": {
+        "rows": 10000,
+        "correct": 0,
+        "valuePct": 0,
+        "characters": 10893,
+        "totalCharacters": 147144,
+        "characterPct": 7.402952210079921,
+        "mostly": 0,
+        "mostlyPct": 0
+      },
+      "learnedLabels": 100,
+      "mappedCorrect": 100
+    },
+    {
+      "field": "memo",
+      "model": "Acra-CE-exact",
+      "N": 1000,
+      "base": {
+        "rows": 10000,
+        "correct": 0,
+        "valuePct": 0,
+        "characters": 10893,
+        "totalCharacters": 147144,
+        "characterPct": 7.402952210079921,
+        "mostly": 0,
+        "mostlyPct": 0
+      },
+      "strongest": {
+        "rows": 10000,
+        "correct": 0,
+        "valuePct": 0,
+        "characters": 10893,
+        "totalCharacters": 147144,
+        "characterPct": 7.402952210079921,
+        "mostly": 0,
+        "mostlyPct": 0
+      },
+      "learnedLabels": 1000,
+      "mappedCorrect": 1000
+    },
+    {
+      "field": "email",
+      "model": "S0",
+      "N": 100,
+      "base": {
+        "rows": 10000,
+        "correct": 0,
+        "valuePct": 0,
+        "characters": 48335,
+        "totalCharacters": 206574,
+        "characterPct": 23.398394764103905,
+        "mostly": 0,
+        "mostlyPct": 0
+      },
+      "strongest": {
+        "rows": 10000,
+        "correct": 0,
+        "valuePct": 0,
+        "characters": 48335,
+        "totalCharacters": 206574,
+        "characterPct": 23.398394764103905,
+        "mostly": 0,
+        "mostlyPct": 0
+      },
+      "learnedLabels": 392,
+      "mappedCorrect": 392
+    },
+    {
+      "field": "email",
+      "model": "S0",
+      "N": 1000,
+      "base": {
+        "rows": 10000,
+        "correct": 0,
+        "valuePct": 0,
+        "characters": 48290,
+        "totalCharacters": 206574,
+        "characterPct": 23.376610802908402,
+        "mostly": 0,
+        "mostlyPct": 0
+      },
+      "strongest": {
+        "rows": 10000,
+        "correct": 0,
+        "valuePct": 0,
+        "characters": 48290,
+        "totalCharacters": 206574,
+        "characterPct": 23.376610802908402,
+        "mostly": 0,
+        "mostlyPct": 0
+      },
+      "learnedLabels": 3371,
+      "mappedCorrect": 3371
+    },
+    {
+      "field": "email",
+      "model": "AWS-standard",
+      "N": 100,
+      "base": {
+        "rows": 10000,
+        "correct": 0,
+        "valuePct": 0,
+        "characters": 48109,
+        "totalCharacters": 206574,
+        "characterPct": 23.28899087009982,
+        "mostly": 0,
+        "mostlyPct": 0
+      },
+      "strongest": {
+        "rows": 10000,
+        "correct": 0,
+        "valuePct": 0,
+        "characters": 48109,
+        "totalCharacters": 206574,
+        "characterPct": 23.28899087009982,
+        "mostly": 0,
+        "mostlyPct": 0
+      },
+      "learnedLabels": 98,
+      "mappedCorrect": 98
+    },
+    {
+      "field": "email",
+      "model": "AWS-standard",
+      "N": 1000,
+      "base": {
+        "rows": 10000,
+        "correct": 0,
+        "valuePct": 0,
+        "characters": 46875,
+        "totalCharacters": 206574,
+        "characterPct": 22.69162624531645,
+        "mostly": 0,
+        "mostlyPct": 0
+      },
+      "strongest": {
+        "rows": 10000,
+        "correct": 0,
+        "valuePct": 0,
+        "characters": 46875,
+        "totalCharacters": 206574,
+        "characterPct": 22.69162624531645,
+        "mostly": 0,
+        "mostlyPct": 0
+      },
+      "learnedLabels": 798,
+      "mappedCorrect": 798
+    },
+    {
+      "field": "email",
+      "model": "CipherSweet-FIPS-fast",
+      "N": 100,
+      "base": {
+        "rows": 10000,
+        "correct": 0,
+        "valuePct": 0,
+        "characters": 46083,
+        "totalCharacters": 206574,
+        "characterPct": 22.30822852827558,
+        "mostly": 0,
+        "mostlyPct": 0
+      },
+      "strongest": {
+        "rows": 10000,
+        "correct": 0,
+        "valuePct": 0,
+        "characters": 46083,
+        "totalCharacters": 206574,
+        "characterPct": 22.30822852827558,
+        "mostly": 0,
+        "mostlyPct": 0
+      },
+      "learnedLabels": 75,
+      "mappedCorrect": 75
+    },
+    {
+      "field": "email",
+      "model": "CipherSweet-FIPS-fast",
+      "N": 1000,
+      "base": {
+        "rows": 10000,
+        "correct": 0,
+        "valuePct": 0,
+        "characters": 41200,
+        "totalCharacters": 206574,
+        "characterPct": 19.94442669455014,
+        "mostly": 0,
+        "mostlyPct": 0
+      },
+      "strongest": {
+        "rows": 10000,
+        "correct": 0,
+        "valuePct": 0,
+        "characters": 41200,
+        "totalCharacters": 206574,
+        "characterPct": 19.94442669455014,
+        "mostly": 0,
+        "mostlyPct": 0
+      },
+      "learnedLabels": 21,
+      "mappedCorrect": 21
+    },
+    {
+      "field": "email",
+      "model": "CipherStash-unique",
+      "N": 100,
+      "base": {
+        "rows": 10000,
+        "correct": 0,
+        "valuePct": 0,
+        "characters": 48290,
+        "totalCharacters": 206574,
+        "characterPct": 23.376610802908402,
+        "mostly": 0,
+        "mostlyPct": 0
+      },
+      "strongest": {
+        "rows": 10000,
+        "correct": 0,
+        "valuePct": 0,
+        "characters": 48290,
+        "totalCharacters": 206574,
+        "characterPct": 23.376610802908402,
+        "mostly": 0,
+        "mostlyPct": 0
+      },
+      "learnedLabels": 100,
+      "mappedCorrect": 100
+    },
+    {
+      "field": "email",
+      "model": "CipherStash-unique",
+      "N": 1000,
+      "base": {
+        "rows": 10000,
+        "correct": 0,
+        "valuePct": 0,
+        "characters": 48290,
+        "totalCharacters": 206574,
+        "characterPct": 23.376610802908402,
+        "mostly": 0,
+        "mostlyPct": 0
+      },
+      "strongest": {
+        "rows": 10000,
+        "correct": 0,
+        "valuePct": 0,
+        "characters": 48290,
+        "totalCharacters": 206574,
+        "characterPct": 23.376610802908402,
+        "mostly": 0,
+        "mostlyPct": 0
+      },
+      "learnedLabels": 1000,
+      "mappedCorrect": 1000
+    },
+    {
+      "field": "email",
+      "model": "CipherStash-match",
+      "N": 100,
+      "base": {
+        "rows": 10000,
+        "correct": 0,
+        "valuePct": 0,
+        "characters": 57442,
+        "totalCharacters": 206574,
+        "characterPct": 27.806984422047304,
+        "mostly": 1,
+        "mostlyPct": 0.01
+      },
+      "strongest": {
+        "rows": 10000,
+        "correct": 0,
+        "valuePct": 0,
+        "characters": 57442,
+        "totalCharacters": 206574,
+        "characterPct": 27.806984422047304,
+        "mostly": 1,
+        "mostlyPct": 0.01
+      },
+      "learnedLabels": 28,
+      "mappedCorrect": 24
+    },
+    {
+      "field": "email",
+      "model": "CipherStash-match",
+      "N": 1000,
+      "base": {
+        "rows": 10000,
+        "correct": 0,
+        "valuePct": 0,
+        "characters": 48290,
+        "totalCharacters": 206574,
+        "characterPct": 23.376610802908402,
+        "mostly": 0,
+        "mostlyPct": 0
+      },
+      "strongest": {
+        "rows": 10000,
+        "correct": 0,
+        "valuePct": 0,
+        "characters": 48290,
+        "totalCharacters": 206574,
+        "characterPct": 23.376610802908402,
+        "mostly": 0,
+        "mostlyPct": 0
+      },
+      "learnedLabels": 0,
+      "mappedCorrect": 0
+    },
+    {
+      "field": "email",
+      "model": "Acra-CE-exact",
+      "N": 100,
+      "base": {
+        "rows": 10000,
+        "correct": 0,
+        "valuePct": 0,
+        "characters": 48290,
+        "totalCharacters": 206574,
+        "characterPct": 23.376610802908402,
+        "mostly": 0,
+        "mostlyPct": 0
+      },
+      "strongest": {
+        "rows": 10000,
+        "correct": 0,
+        "valuePct": 0,
+        "characters": 48290,
+        "totalCharacters": 206574,
+        "characterPct": 23.376610802908402,
+        "mostly": 0,
+        "mostlyPct": 0
+      },
+      "learnedLabels": 100,
+      "mappedCorrect": 100
+    },
+    {
+      "field": "email",
+      "model": "Acra-CE-exact",
+      "N": 1000,
+      "base": {
+        "rows": 10000,
+        "correct": 0,
+        "valuePct": 0,
+        "characters": 48290,
+        "totalCharacters": 206574,
+        "characterPct": 23.376610802908402,
+        "mostly": 0,
+        "mostlyPct": 0
+      },
+      "strongest": {
+        "rows": 10000,
+        "correct": 0,
+        "valuePct": 0,
+        "characters": 48290,
+        "totalCharacters": 206574,
+        "characterPct": 23.376610802908402,
+        "mostly": 0,
+        "mostlyPct": 0
+      },
+      "learnedLabels": 1000,
+      "mappedCorrect": 1000
+    },
+    {
+      "field": "company",
+      "model": "S0",
+      "N": 100,
+      "base": {
+        "rows": 10000,
+        "correct": 9838,
+        "valuePct": 98.38,
+        "characters": 92421,
+        "totalCharacters": 93717,
+        "characterPct": 98.6171132238548,
+        "mostly": 9838,
+        "mostlyPct": 98.38
+      },
+      "strongest": {
+        "rows": 10000,
+        "correct": 9838,
+        "valuePct": 98.38,
+        "characters": 92421,
+        "totalCharacters": 93717,
+        "characterPct": 98.6171132238548,
+        "mostly": 9838,
+        "mostlyPct": 98.38
+      },
+      "learnedLabels": 0,
+      "mappedCorrect": 0
+    },
+    {
+      "field": "company",
+      "model": "S0",
+      "N": 1000,
+      "base": {
+        "rows": 10000,
+        "correct": 10000,
+        "valuePct": 100,
+        "characters": 93717,
+        "totalCharacters": 93717,
+        "characterPct": 100,
+        "mostly": 10000,
+        "mostlyPct": 100
+      },
+      "strongest": {
+        "rows": 10000,
+        "correct": 10000,
+        "valuePct": 100,
+        "characters": 93717,
+        "totalCharacters": 93717,
+        "characterPct": 100,
+        "mostly": 10000,
+        "mostlyPct": 100
+      },
+      "learnedLabels": 0,
+      "mappedCorrect": 0
+    },
+    {
+      "field": "company",
+      "model": "AWS-standard",
+      "N": 100,
+      "base": {
+        "rows": 10000,
+        "correct": 6868,
+        "valuePct": 68.67999999999999,
+        "characters": 58370,
+        "totalCharacters": 93717,
+        "characterPct": 62.283257039811346,
+        "mostly": 6868,
+        "mostlyPct": 68.67999999999999
+      },
+      "strongest": {
+        "rows": 10000,
+        "correct": 6868,
+        "valuePct": 68.67999999999999,
+        "characters": 58370,
+        "totalCharacters": 93717,
+        "characterPct": 62.283257039811346,
+        "mostly": 6868,
+        "mostlyPct": 68.67999999999999
+      },
+      "learnedLabels": 3,
+      "mappedCorrect": 3
+    },
+    {
+      "field": "company",
+      "model": "AWS-standard",
+      "N": 1000,
+      "base": {
+        "rows": 10000,
+        "correct": 6868,
+        "valuePct": 68.67999999999999,
+        "characters": 58370,
+        "totalCharacters": 93717,
+        "characterPct": 62.283257039811346,
+        "mostly": 6868,
+        "mostlyPct": 68.67999999999999
+      },
+      "strongest": {
+        "rows": 10000,
+        "correct": 6868,
+        "valuePct": 68.67999999999999,
+        "characters": 58370,
+        "totalCharacters": 93717,
+        "characterPct": 62.283257039811346,
+        "mostly": 6868,
+        "mostlyPct": 68.67999999999999
+      },
+      "learnedLabels": 3,
+      "mappedCorrect": 3
+    },
+    {
+      "field": "company",
+      "model": "CipherSweet-FIPS-fast",
+      "N": 100,
+      "base": {
+        "rows": 10000,
+        "correct": 9896,
+        "valuePct": 98.96000000000001,
+        "characters": 93301,
+        "totalCharacters": 93717,
+        "characterPct": 99.55611041753365,
+        "mostly": 9896,
+        "mostlyPct": 98.96000000000001
+      },
+      "strongest": {
+        "rows": 10000,
+        "correct": 9896,
+        "valuePct": 98.96000000000001,
+        "characters": 93301,
+        "totalCharacters": 93717,
+        "characterPct": 99.55611041753365,
+        "mostly": 9896,
+        "mostlyPct": 98.96000000000001
+      },
+      "learnedLabels": 13,
+      "mappedCorrect": 13
+    },
+    {
+      "field": "company",
+      "model": "CipherSweet-FIPS-fast",
+      "N": 1000,
+      "base": {
+        "rows": 10000,
+        "correct": 10000,
+        "valuePct": 100,
+        "characters": 93717,
+        "totalCharacters": 93717,
+        "characterPct": 100,
+        "mostly": 10000,
+        "mostlyPct": 100
+      },
+      "strongest": {
+        "rows": 10000,
+        "correct": 10000,
+        "valuePct": 100,
+        "characters": 93717,
+        "totalCharacters": 93717,
+        "characterPct": 100,
+        "mostly": 10000,
+        "mostlyPct": 100
+      },
+      "learnedLabels": 16,
+      "mappedCorrect": 16
+    },
+    {
+      "field": "company",
+      "model": "CipherStash-unique",
+      "N": 100,
+      "base": {
+        "rows": 10000,
+        "correct": 9896,
+        "valuePct": 98.96000000000001,
+        "characters": 93301,
+        "totalCharacters": 93717,
+        "characterPct": 99.55611041753365,
+        "mostly": 9896,
+        "mostlyPct": 98.96000000000001
+      },
+      "strongest": {
+        "rows": 10000,
+        "correct": 9896,
+        "valuePct": 98.96000000000001,
+        "characters": 93301,
+        "totalCharacters": 93717,
+        "characterPct": 99.55611041753365,
+        "mostly": 9896,
+        "mostlyPct": 98.96000000000001
+      },
+      "learnedLabels": 13,
+      "mappedCorrect": 13
+    },
+    {
+      "field": "company",
+      "model": "CipherStash-unique",
+      "N": 1000,
+      "base": {
+        "rows": 10000,
+        "correct": 10000,
+        "valuePct": 100,
+        "characters": 93717,
+        "totalCharacters": 93717,
+        "characterPct": 100,
+        "mostly": 10000,
+        "mostlyPct": 100
+      },
+      "strongest": {
+        "rows": 10000,
+        "correct": 10000,
+        "valuePct": 100,
+        "characters": 93717,
+        "totalCharacters": 93717,
+        "characterPct": 100,
+        "mostly": 10000,
+        "mostlyPct": 100
+      },
+      "learnedLabels": 16,
+      "mappedCorrect": 16
+    },
+    {
+      "field": "company",
+      "model": "CipherStash-match",
+      "N": 100,
+      "base": {
+        "rows": 10000,
+        "correct": 9838,
+        "valuePct": 98.38,
+        "characters": 92421,
+        "totalCharacters": 93717,
+        "characterPct": 98.6171132238548,
+        "mostly": 9838,
+        "mostlyPct": 98.38
+      },
+      "strongest": {
+        "rows": 10000,
+        "correct": 9838,
+        "valuePct": 98.38,
+        "characters": 92421,
+        "totalCharacters": 93717,
+        "characterPct": 98.6171132238548,
+        "mostly": 9838,
+        "mostlyPct": 98.38
+      },
+      "learnedLabels": 32,
+      "mappedCorrect": 32
+    },
+    {
+      "field": "company",
+      "model": "CipherStash-match",
+      "N": 1000,
+      "base": {
+        "rows": 10000,
+        "correct": 10000,
+        "valuePct": 100,
+        "characters": 93717,
+        "totalCharacters": 93717,
+        "characterPct": 100,
+        "mostly": 10000,
+        "mostlyPct": 100
+      },
+      "strongest": {
+        "rows": 10000,
+        "correct": 10000,
+        "valuePct": 100,
+        "characters": 93717,
+        "totalCharacters": 93717,
+        "characterPct": 100,
+        "mostly": 10000,
+        "mostlyPct": 100
+      },
+      "learnedLabels": 31,
+      "mappedCorrect": 31
+    },
+    {
+      "field": "company",
+      "model": "Acra-CE-exact",
+      "N": 100,
+      "base": {
+        "rows": 10000,
+        "correct": 9896,
+        "valuePct": 98.96000000000001,
+        "characters": 93301,
+        "totalCharacters": 93717,
+        "characterPct": 99.55611041753365,
+        "mostly": 9896,
+        "mostlyPct": 98.96000000000001
+      },
+      "strongest": {
+        "rows": 10000,
+        "correct": 9896,
+        "valuePct": 98.96000000000001,
+        "characters": 93301,
+        "totalCharacters": 93717,
+        "characterPct": 99.55611041753365,
+        "mostly": 9896,
+        "mostlyPct": 98.96000000000001
+      },
+      "learnedLabels": 13,
+      "mappedCorrect": 13
+    },
+    {
+      "field": "company",
+      "model": "Acra-CE-exact",
+      "N": 1000,
+      "base": {
+        "rows": 10000,
+        "correct": 10000,
+        "valuePct": 100,
+        "characters": 93717,
+        "totalCharacters": 93717,
+        "characterPct": 100,
+        "mostly": 10000,
+        "mostlyPct": 100
+      },
+      "strongest": {
+        "rows": 10000,
+        "correct": 10000,
+        "valuePct": 100,
+        "characters": 93717,
+        "totalCharacters": 93717,
+        "characterPct": 100,
+        "mostly": 10000,
+        "mostlyPct": 100
+      },
+      "learnedLabels": 16,
+      "mappedCorrect": 16
+    }
+  ],
+  "baselines": [
+    {
+      "field": "name",
+      "empirical": {
+        "rows": 10000,
+        "correct": 0,
+        "valuePct": 0,
+        "characters": 6473,
+        "totalCharacters": 92924,
+        "characterPct": 6.965907623434204,
+        "mostly": 0,
+        "mostlyPct": 0
+      },
+      "uniform": {
+        "rows": 10000,
+        "correct": 0,
+        "valuePct": 0,
+        "characters": 6412,
+        "totalCharacters": 92924,
+        "characterPct": 6.900262580173044,
+        "mostly": 0,
+        "mostlyPct": 0
+      }
+    },
+    {
+      "field": "phone",
+      "empirical": {
+        "rows": 10000,
+        "correct": 0,
+        "valuePct": 0,
+        "characters": 30421,
+        "totalCharacters": 120000,
+        "characterPct": 25.350833333333334,
+        "mostly": 0,
+        "mostlyPct": 0
+      },
+      "uniform": {
+        "rows": 10000,
+        "correct": 0,
+        "valuePct": 0,
+        "characters": 30211,
+        "totalCharacters": 120000,
+        "characterPct": 25.17583333333333,
+        "mostly": 0,
+        "mostlyPct": 0
+      }
+    },
+    {
+      "field": "address",
+      "empirical": {
+        "rows": 10000,
+        "correct": 2,
+        "valuePct": 0.02,
+        "characters": 23020,
+        "totalCharacters": 148907,
+        "characterPct": 15.45931353126448,
+        "mostly": 914,
+        "mostlyPct": 9.139999999999999
+      },
+      "uniform": {
+        "rows": 10000,
+        "correct": 1,
+        "valuePct": 0.01,
+        "characters": 22763,
+        "totalCharacters": 148907,
+        "characterPct": 15.286722585237767,
+        "mostly": 865,
+        "mostlyPct": 8.649999999999999
+      }
+    },
+    {
+      "field": "memo",
+      "empirical": {
+        "rows": 10000,
+        "correct": 0,
+        "valuePct": 0,
+        "characters": 15327,
+        "totalCharacters": 147144,
+        "characterPct": 10.416326863480672,
+        "mostly": 32,
+        "mostlyPct": 0.32
+      },
+      "uniform": {
+        "rows": 10000,
+        "correct": 0,
+        "valuePct": 0,
+        "characters": 15817,
+        "totalCharacters": 147144,
+        "characterPct": 10.74933398575545,
+        "mostly": 29,
+        "mostlyPct": 0.29
+      }
+    },
+    {
+      "field": "email",
+      "empirical": {
+        "rows": 10000,
+        "correct": 0,
+        "valuePct": 0,
+        "characters": 41209,
+        "totalCharacters": 206574,
+        "characterPct": 19.94878348678924,
+        "mostly": 0,
+        "mostlyPct": 0
+      },
+      "uniform": {
+        "rows": 10000,
+        "correct": 0,
+        "valuePct": 0,
+        "characters": 40984,
+        "totalCharacters": 206574,
+        "characterPct": 19.83986368081172,
+        "mostly": 0,
+        "mostlyPct": 0
+      }
+    },
+    {
+      "field": "company",
+      "empirical": {
+        "rows": 10000,
+        "correct": 1400,
+        "valuePct": 14.000000000000002,
+        "characters": 14853,
+        "totalCharacters": 93717,
+        "characterPct": 15.848778770127083,
+        "mostly": 1420,
+        "mostlyPct": 14.2
+      },
+      "uniform": {
+        "rows": 10000,
+        "correct": 637,
+        "valuePct": 6.370000000000001,
+        "characters": 12174,
+        "totalCharacters": 93717,
+        "characterPct": 12.990172540734338,
+        "mostly": 856,
+        "mostlyPct": 8.559999999999999
+      }
+    }
+  ],
+  "productChecks": 120
+}
