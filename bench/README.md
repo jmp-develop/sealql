@@ -47,6 +47,9 @@ rtk npm test
 
 | 스크립트 | 결과 (`results/`) | 결정 |
 |---|---|---|
+| `competitor-sim/*` (공식 색인 원시 연산·빈도/알려진 원문·선택 삽입·질의 관찰, 메모리 전용) | [2026-09-30 통합·독립 검산](results/2026-09-30-competitor-sim/v-astra/report-ko.md), [A/B](results/2026-09-30-competitor-sim/m1-astra/report-ko.md), [C/D](results/2026-09-30-competitor-sim/r9-impl/report-ko.md) | 제품·DB 변경 없음; 전수와 강화 500행 표본 구분, 기능·구성 차이를 제품 전체 보안 순위로 일반화하지 않음 |
+| `p1-verify/*` (공개 API 10만 적재, 평문·이전 제품·P1 제품 교차 검증) | [2026-09-30 P1 독립 검증 118항목](results/2026-09-30-p1-verify/v-astra/report-ko.md), [적재 근거](results/2026-09-30-p1-verify/v-astra/load-report-ko.md) | [024](../docs/decisions/024-candidate-token-selection.md); 3경로 정답·순서·원문 대조, 후보 최대3개 제품 적용 후 검증 |
+| `lasthour/v-astra/*` (마지막 회귀용 공개 API 적재; [실행 절차](lasthour/v-astra/README.md)) | [2026-09-29 적재·원문 대조](results/2026-09-29-lasthour/v-astra/report-ko.md) | 제품 변경 없음; 원본 10만 행의 공개 API 파생 적재, 질의 성능·보안 검증과 별도 |
 | `lasthour/m1-astra/*` (메모리 전용 cap3/P2 관찰·칸별 비트·충돌 대응 전화 복원) | [2026-09-29 마지막 보안 검증](results/2026-09-29-lasthour/m1-astra/report-ko.md) | 제품 변경 없음; 10·12비트 전화도 강한 공격에서 99.6% 복원, P2 전송 토큰 동일 |
 | `lasthour/r9-impl/run.ts`, `variants.ts`, `verify-variants.ts`, `cleanup.ts` (P0~P4, 기존55+LIKE2 조건 count/목록) | [2026-09-29 전체 회귀 보고](results/2026-09-29-lasthour/r9-impl/report-ko.md) | 제품 변경 없음; 후보 최대3개·잔여 토큰 함수·병렬4의 전체 비용과 회귀 비교 |
 | `followup/r9-impl/phone-bits.ts` (전화 칸16/12비트, 선택 삽입·드문 검색 메모리 비교) | [2026-09-29 전화 칸 비트 보고](results/2026-09-29-followup/token-bits/report-ko.md) | 제품 변경 없음; 복원 감소와 개별 검색 후보 증가를 함께 확인 |
@@ -84,7 +87,3 @@ rtk npm test
 | `posting-pages-research-ko.md`, `posting-pages-v2-research-ko.md`, `posting-pages-supervisor-verdict-ko.md`, `lightweight-report-ko.md` | [011](../docs/decisions/011-rejected-research-lines.md) |
 
 큰 원시 파일(`*.jsonl`, `*.gz`)은 Git에 넣지 않는다.
-
-## 마지막 회귀용 공개 API 적재
-
-[적재 스크립트](lasthour/v-astra/README.md)는 원본 fixture 10만 행의 원문을 공개 API로 `test_lasthour_product`에 적재한다. [적재 결과](results/2026-09-29-lasthour/v-astra/report-ko.md)는 행 수와 원문 복호화 일치를 확인한 증거이며, 질의 성능·보안 검증 결과와는 별도다. 스키마는 후속 회귀 담당자에게 인계하고 전체 검증 뒤 정리한다.

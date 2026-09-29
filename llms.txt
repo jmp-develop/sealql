@@ -7,6 +7,7 @@ Schema/key: examples/standard-consumer.ts; operations: examples/standard-operati
 Raw SQL/JOIN: examples/standard-raw.ts; fixed key loading: examples/key-loader.ts
 Exports: sealql and sealql/drizzle/v0.45; types in dist/index.d.ts and dist/adapters/drizzle/v0.45/index.d.ts
 Security: docs/threat-model.md. Source decisions/evidence are not packaged.
+For fixed-format, small-alphabet fields (phone, bank account, resident registration numbers), do not enable substring search; use exact matching only if needed (search: { exact: true }, omit substring), which still leaks equality and frequency.
 
 Purpose: encrypt selected PostgreSQL fields without losing ordinary Drizzle integration. AES-256-GCM binds ciphertext to model/field/scope/row. Standard search uses HMAC candidate tokens plus salted exact/occurrence proofs; PostgreSQL finishes predicates and count, and the app authenticates only returned encrypted projections. Encrypted-only count reads the companion; parent predicates and unfiltered count retain the parent. Count returns one exact number, opens no fields, and rejects results above the safe integer range. No application condition-field verification remains.
 
