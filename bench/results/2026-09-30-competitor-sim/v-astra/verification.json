@@ -1,0 +1,51 @@
+{
+  "complete": true,
+  "databaseAccess": false,
+  "productCodeChanged": false,
+  "modelChecks": 1152,
+  "abConditions": 1176,
+  "abReplayedPredictions": 14112,
+  "chosenConditions": 72,
+  "chosenScoredPredictions": 1440000,
+  "chosenReplayedPredictions": 648,
+  "observedConditions": 42,
+  "observedScoredPredictions": 1800000,
+  "observedReplayedPredictions": 840000,
+  "observedHitChecks": 2880,
+  "extraObservedGraph": {
+    "complete": true,
+    "databaseAccess": false,
+    "scoredRows": 10000,
+    "replayedRows": 9,
+    "correct": 0,
+    "characters": 30714,
+    "totalCharacters": 120000,
+    "fileHash": "bd96775171dda76708d535c12a3b0ae9be248a3f47de71b458024e5c37744090"
+  },
+  "sampleConditions": 5,
+  "sampleScoredRows": 2500,
+  "sampleReplayedRows": 45,
+  "rawFixtureHash": "4db88c4680eefac5d8d79366a77e4a5380481d9e79db12ab20fec89fc88ce2b7",
+  "identityDigest": "189a19c99711fbacd9cafdb548f243a63657e12a0c1514a736c1f92da670f382",
+  "sourceHashes": {
+    "bench/competitor-sim/models.ts": "cd367ec3dfa313f0cb63f192c12824c691ba7c366bd3afd80327df0db40f2e03",
+    "bench/competitor-sim/attacks.ts": "d6dc63337fe7edf2e4aa659b54dba2768e509c8b2da479649ef6c63ff3b3352f",
+    "bench/competitor-sim/completed-phone.ts": "cb018a098e87a5ee25b825ca33b0a65648e283409103f2d1c0c1b547fb5d2eef",
+    "bench/competitor-sim/observation.ts": "297b9e4620a3aadf16042eb1c657f955fc43e1d9b1e258cfa54b2f374c76b68e",
+    "bench/competitor-sim/m1-astra/attacks.ts": "300ae4aeb5d1ed8c8ad6c64e1860399733109dfe94762c18304359505287f94e"
+  },
+  "evidenceHashes": {
+    "bench/results/2026-09-30-competitor-sim/v-astra/verify-attacks-ab.json": "3838b59a3e150a4c9e95e6eaa66eb2466c6228a638876f318fe90f6f6d93d3fe",
+    "bench/results/2026-09-30-competitor-sim/v-astra/verify-attacks-c.json": "053d97f7b904a11e54db99de43630d389ad8522dcb8af3b3b4c1314e07b7e0a2",
+    "bench/results/2026-09-30-competitor-sim/v-astra/verify-models.json": "5df1b3b9ee56c985cbf9f3a52027904e65f0465096d3b5c387a2a848faf039d6",
+    "bench/results/2026-09-30-competitor-sim/v-astra/verify-observed-graph.json": "18cc18e81c7bbc13efc136e261a72f100aaa9c7477668fecbdc5a518d1c00df8",
+    "bench/results/2026-09-30-competitor-sim/v-astra/verify-observed.json": "11dbbe6956c2b3e719c094c916895d4cbdd054f9bbf44871edc04842c29255d8",
+    "bench/results/2026-09-30-competitor-sim/v-astra/verify-samples.json": "da09b0e2b918fcdb442a9c4d5d5e313324ce8ab72f0b7cac290aa7267eaf34a3"
+  },
+  "limitations": [
+    "External index primitive models, not interoperable SDKs or deployed-product attacks",
+    "Single synthetic fixture and fixed key configuration",
+    "Whole-population completed attacks and 500-row strengthening reported separately",
+    "Independent model recomputation and scoring; attack predictions replay reviewed public implementations"
+  ]
+}
