@@ -52,8 +52,11 @@ export async function compileStampQuery(ring: Keyring, profile: SearchProfile, s
   }
   const text = node.respectWords ? normalizeWords(node.value as string) : compactText(node.value as string, profile);
   const part = await run(text, node.respectWords);
-  // Position requests carry one key per window; the SQL function deduplicates repeated keys.
+  // Position requests carry one key and an independent forward cursor per window.
   return { keys: part.k.map(index => keys[index]), kinds: [], offsets: part.o, length: part.n };
 }
 /** PostgreSQL text-array encoding, independent of pg/postgres-js bytea[] adapters. */
 export const keyArray = (keys: Uint8Array[]): string => `{${keys.map(key => `"\\\\x${hex(key)}"`).join(',')}}`;
+/** Flat LIKE program: -1=%; -2=_; otherwise [length, windowCount, keyId+1, offset, ...]. */
+export const patternProgram = (pattern: ProofPattern): number[] => pattern.flatMap(part =>
+  part === '%' ? [-1] : part === '_' ? [-2] : [part.n, part.k.length, ...part.k.flatMap((key, i) => [key+1, part.o[i]])]);

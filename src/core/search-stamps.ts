@@ -2,15 +2,14 @@ import { concat, frame, hex, u32, utf8 } from './bytes.js';
 import { ensure } from './errors.js';
 import { codecId, codecParameters, codecVersion, encodeField } from './field-codec.js';
 import type { Keyring } from './field-cipher.js';
-import { normalizeText, normalizeWords, type SearchProfile } from './search-tokens.js';
+import { compactText, normalizeText, normalizeWords, type SearchProfile } from './search-tokens.js';
 
 export type StampStream = 'exact' | 'compact2' | 'words2' | 'single1';
 export interface PositionProof { salt: Uint8Array; length: number; stamps: bigint[]; offsets: number[] }
 export interface ExactProof { salt: Uint8Array; stamp: bigint }
 const roots = new WeakMap<Keyring, Map<string, Promise<CryptoKey>>>();
 const buffer = (value: Uint8Array): ArrayBuffer => Uint8Array.from(value).buffer;
-export const compactText = (value: string, profile: SearchProfile): string => normalizeText(value, profile.normalizer)
-  .replace(/[\u0009-\u000d\u0020\u0085\u00a0\u1680\u2000-\u200a\u2028\u2029\u202f\u205f\u3000]/g, '');
+export { compactText } from './search-tokens.js';
 export function exactBytes(profile: SearchProfile, value: unknown): Uint8Array {
   if (profile.spec.type !== 'text') return encodeField(profile.spec, value, false);
   ensure(typeof value === 'string', 'INVALID_VALUE');

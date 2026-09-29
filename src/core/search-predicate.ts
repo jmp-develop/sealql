@@ -1,13 +1,13 @@
 import { ensure } from './errors.js';
 import { encodeField, type FieldSpec } from './field-codec.js';
-import { normalizeText, searchPieces, searchTokens, type SearchProfile, type SearchTokenCache } from './search-tokens.js';
+import { compactText, normalizeText, searchPieces, searchTokens, type SearchProfile, type SearchTokenCache } from './search-tokens.js';
 import type { Keyring } from './field-cipher.js';
 import type { SealedModelDefinition } from './sealed-model.js';
 import { compileStampQuery, type StampQuery } from './stamp-query.js';
 
 export type SearchOperator = 'eq' | 'contains' | 'startsWith' | 'endsWith' | 'like';
 export type SearchNode = { op: SearchOperator; field: string; value: unknown; respectWords?: boolean } | { op: 'all'; children: SearchNode[] } | { op: 'any'; children: SearchNode[] };
-const compactSubstring = (value: string, normalizer: string) => normalizeText(value, normalizer).replace(/[\u0009-\u000d\u0020\u0085\u00a0\u1680\u2000-\u200a\u2028\u2029\u202f\u205f\u3000]/g, '');
+const compactSubstring = (value: string, normalizer: string) => compactText(value, { normalizer });
 function normalizeLeaf(node: Extract<SearchNode, { field: string }>, spec: FieldSpec, profile: SearchProfile): string | Uint8Array {
   if (spec.type !== 'text') { ensure(node.op === 'eq', 'UNSUPPORTED_SEARCH'); return encodeField(spec, node.value, false); }
   ensure(typeof node.value === 'string', 'INVALID_VALUE');

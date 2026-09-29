@@ -11,6 +11,7 @@ export interface SearchProfile {
 }
 const buffer = (v: Uint8Array): ArrayBuffer => Uint8Array.from(v).buffer as ArrayBuffer;
 const whitespace = /[\u0009-\u000d\u0020\u0085\u00a0\u1680\u2000-\u200a\u2028\u2029\u202f\u205f\u3000]/g;
+export const compactText = (value: string, profile: Pick<SearchProfile, 'normalizer'>): string => normalizeText(value, profile.normalizer).replace(whitespace, '');
 const fold = (value: string) => value.normalize('NFC').replace(/[！-～]/g, c => String.fromCharCode(c.charCodeAt(0) - 0xff01 + 0x21)).replace(/[A-Z]/g, c => c.toLowerCase());
 export function normalizeText(value: string, normalizer: string): string {
   utf8(value);
@@ -53,7 +54,7 @@ const piece = (kind: string, value: string): Uint8Array => frame([kind, utf8(val
 export function searchPieces(p: SearchProfile, value: unknown, operation: 'write' | 'contains' | 'startsWith' | 'endsWith' = 'write', respectWords = false): Uint8Array[] {
   if (p.spec.type !== 'text') { ensure(p.mode === 'exact', 'UNSUPPORTED_SEARCH'); return [encodeField(p.spec, value, false)]; }
   ensure(typeof value === 'string', 'INVALID_VALUE');
-  const normalized = p.mode === 'substring' ? normalizeText(value, p.normalizer).replace(whitespace, '') : normalizeText(value, p.normalizer);
+  const normalized = p.mode === 'substring' ? compactText(value, p) : normalizeText(value, p.normalizer);
   const chars = Array.from(normalized);
   if (p.mode === 'exact') return [utf8(normalized)];
   if (chars.length < 2) return [];

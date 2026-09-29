@@ -2,7 +2,7 @@ import { ensure } from './errors.js';
 import type { CompiledSearch } from './search-predicate.js';
 import type { SealedModelDefinition, SealedStorage } from './sealed-model.js';
 import { column as ident, join, pgsql as q, type Fragment } from './sql-fragment.js';
-import { keyArray } from './stamp-query.js';
+import { keyArray, patternProgram } from './stamp-query.js';
 import { type ProfileStorage } from './sealed-model.js';
 
 function tokenPredicate(alias: string, leaf: Extract<CompiledSearch, { op: 'leaf' }>['leaf'], mapped: ProfileStorage): Fragment {
@@ -22,7 +22,7 @@ function leafPredicate(schema: string, alias: string, leaf: Extract<CompiledSear
     const stream = node.respectWords ? mapped.words! : mapped.positions!;
     ensure(stream, 'INVALID_SCHEMA');
     const single = mapped.singles!;
-    exact = proof.pattern ? q`${ident(schema, 'sealql_match_like')}(${keyArray(proof.keys)}::bytea[],${proof.kinds}::integer[],${JSON.stringify(proof.pattern)}::jsonb,
+    exact = proof.pattern ? q`${ident(schema, 'sealql_match_like')}(${keyArray(proof.keys)}::bytea[],${proof.kinds}::integer[],${patternProgram(proof.pattern)}::integer[],
       ${col(stream.length)},${col(stream.salt)},${col(stream.stamps)},${col(stream.offsets)},${col(single.salt)},${col(single.stamps)},${col(single.offsets)})`
       : q`${ident(schema, 'sealql_match_positions')}(${keyArray(proof.keys)}::bytea[],${proof.offsets}::integer[],${proof.length},
         ${col(stream.length)},${col(stream.salt)},${col(stream.stamps)},${col(stream.offsets)},${node.op === 'startsWith' ? 1 : node.op === 'endsWith' ? 2 : 0})`;
@@ -71,9 +71,17 @@ export function boundedCandidatePredicate(definition: SealedModelDefinition, sto
   const sampleColumns = join([...used].map(name => ident(name)), ',');
   const row = ident(storage.parent.name, definition.columns[definition.identity.row].name);
   const ordered = q`(
-    select ${ident('row_id')},${sampleColumns} from ${index} as ${ident('c')}
-    where ${ident('c', 'scope_id')}=${scopeId}${keyset} and ${coarseWhere}
-    order by ${rowId} offset 0
+    select ${ident('picked','row_id')},${join([...used].map(name => ident('proof',name)), ',')}
+    from (
+      select ${ident('row_id')} from ${index} as ${ident('c')}
+      where ${ident('c', 'scope_id')}=${scopeId}${keyset} and ${coarseWhere}
+      order by ${rowId} offset 0
+    ) as ${ident('picked')}
+    cross join lateral (
+      select ${sampleColumns} from ${index} as ${ident('lookup')}
+      where ${ident('lookup','scope_id')}=${scopeId} and ${ident('lookup','row_id')}=${ident('picked','row_id')} offset 0
+    ) as ${ident('proof')}
+    order by ${ident('picked','row_id')} offset 0
   ) as ${ident('c')}`;
   const finalSource = search.op === 'any' ? q`${index} as ${ident('c')}` : ordered;
   const finalScope = search.op === 'any' ? q`${ident('c', 'scope_id')}=${scopeId}${keyset} and ` : q``;

@@ -343,7 +343,8 @@ export function searchMethods(sealerOf: () => import('../../../core/field-cipher
   async function count<T extends PgTable, R extends string, S extends string | undefined = undefined>(
     db: Db, seal: SealMeta<T, R, S> & object, options: CountOptions<T>,
   ): Promise<number> {
-    ensure(!Object.hasOwn(options, 'maxCandidates'), 'INVALID_VALUE');
+    ensure(options && typeof options === 'object' && Object.keys(options).every(key =>
+      ['scope','match','where','signal','budgets'].includes(key)), 'INVALID_VALUE');
     const reg = registrationOf(seal), scopeId = scope(reg, options.scope);
     const budgets = budgetsFor(true, options.budgets), deadline = Date.now()+budgets.deadlineMs;
     const check = () => { if (options.signal?.aborted) fail('CANCELLED'); ensure(Date.now() < deadline, 'LIMIT_EXCEEDED'); };

@@ -16,6 +16,7 @@ test('scalar count rejects unsafe integers, removed budgets, and cancellation wi
   const before=queries;
   await assert.rejects(sealed.count(db,seal,{budgets:{batch:10}} as never),{code:'INVALID_VALUE'});
   await assert.rejects(sealed.count(db,seal,{maxCandidates:10} as never),{code:'INVALID_VALUE'});
+  await assert.rejects(sealed.count(db,seal,{unrecognized:10} as never),{code:'INVALID_VALUE'});
   await assert.rejects(sealed.count(db,seal,{signal:AbortSignal.abort()}),{code:'CANCELLED'});
   assert.equal(queries,before);
 });
