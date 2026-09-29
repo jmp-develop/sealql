@@ -39,6 +39,7 @@ test('benchmark variants preserve plaintext scope, transactions, deletes and Boo
   const norm=(s:string)=>s.normalize('NFC').replace(/\s/g,'').toLowerCase();
   const pair=Array.from(norm(fixture[0].memo_plain)).slice(0,2).join(''),company=fixture[0].company_plain;
   const cases=[{any:[{field:'body',op:'contains',value:pair},{field:'company',op:'eq',value:company}]},
+   {any:[{all:[{field:'body',op:'contains',value:pair},{field:'company',op:'eq',value:company}]},{field:'body',op:'like',value:`%${pair}%`}]},
    {all:[{field:'body',op:'contains',value:pair},{any:[{field:'company',op:'eq',value:company},{field:'body',op:'like',value:`%${pair}%`}]}]}] as const;
   const match=(n:any,m:any):any=>n.all?m.and(...n.all.map((c:any)=>match(c,m))):n.any?m.or(...n.any.map((c:any)=>match(c,m))):m[n.field][n.op](n.value);
   const truth=(n:any,r:any):boolean=>n.all?n.all.every((c:any)=>truth(c,r)):n.any?n.any.some((c:any)=>truth(c,r)):r[n.field]!==null&&(n.op==='eq'?norm(r[n.field])===norm(n.value):norm(r[n.field]).includes(pair));

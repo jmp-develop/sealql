@@ -1,0 +1,71 @@
+
+> sealql@0.1.0-experimental.0 test
+> node --import tsx --test test/*.test.ts
+
+✔ large JSON and deep nesting have no library size or depth cap (39.7778ms)
+✔ search expression accepts more than eight leaves and nested groups (0.3176ms)
+✔ normalization folds NFC, full-width ASCII, and ASCII case (0.4042ms)
+✔ ciphertext binds row and field, rejects tampering, and uses multiple shards (23.295ms)
+✔ cached field context preserves versionless AAD bytes and opens independent ciphertext (4.1044ms)
+✔ cursor key cache keeps independent root keys isolated (3.2274ms)
+✔ fixed global and model keys are copied at construction (1.4769ms)
+✔ field and token profile keys are shared across tenants without retaining scope prefixes (32.5061ms)
+✔ marked pieces are distinct from literal punctuation (0.8076ms)
+✔ substring skip grams default on and only explicit false disables them (0.8812ms)
+✔ exact bits allow 32 while substring tokens remain 16 (1.8484ms)
+✔ scalar count rejects unsafe integers, removed budgets, and cancellation without decryption (5.6526ms)
+✔ open rejects pending queries and database wrapping sanitizes cause (10.4442ms)
+✔ transactionless drivers report UNSUPPORTED_DRIVER before any callback work (15.2029ms)
+✔ text position validation wraps SQL errors and checks cancellation before SQL (5.1488ms)
+✔ native managed writes and opens stay atomic (1718.4195ms)
+✔ text row IDs follow the database collation and keep index-backed keysets (452.6539ms)
+✔ package schema generates, migrates, and pushes twice without drift (3905.4057ms)
+✔ scope-free nullable index rows disappear when every token is null (132.5161ms)
+✔ composite parent key uses scope and row foreign key (86.4922ms)
+✔ native registration builds same-schema companion without loading a key (19.7757ms)
+✖ native CRUD, verified pages, OR semi-join and bounded count (482.528ms)
+✔ large searchable fields and public open have no implicit size or row budget (4542.6994ms)
+✔ insert splits above the PostgreSQL parameter limit within one transaction (69113.283ms)
+✔ false token candidates are rejected in the DB without opening condition fields (1081.9343ms)
+✔ multicolumn GIN preserves writes, cursor search and exact count (133.2401ms)
+✔ reindex accepts a caller batch above the old maximum (13254.9454ms)
+✔ count returns one scalar without selecting or decrypting row values (7889.3462ms)
+✔ microsecond timestamp keysets resume under another DateStyle (212.5139ms)
+✔ findMany returns a thousand-level JSON field with a result byte budget (73.8431ms)
+✔ large final-match pages, root OR fallback and keysets match plaintext; repeated near misses terminate (5792.9421ms)
+✔ DB proofs match plaintext across operators, types, nulls, mutations and JOIN projections (806.8768ms)
+✔ stamp derivation and signed big endian digest match independent crypto (14.3564ms)
+✔ position proofs retain occurrences, stream domains, Unicode and empty values (4.8908ms)
+✔ two-bit exact profiles are explicit; the population recommendation stays unchanged (1.7047ms)
+Node pg flow {"ok":true,"insert":1,"count":1,"update":1,"reindex":1,"search":1,"substring":1,"afterDelete":0}
+postgres-js flow {"ok":true,"insert":1,"count":1,"update":1,"reindex":1,"search":1,"substring":1,"afterDelete":0}
+workerd pg flow {"ok":true,"insert":1,"count":1,"update":1,"reindex":1,"search":1,"substring":1,"afterDelete":0}
+✔ Node pg, postgres-js and local workerd pg execute the complete public DB flow (709.2941ms)
+✔ v3 envelope crosses local workerd and Node WebCrypto (361.5795ms)
+ℹ tests 37
+ℹ suites 0
+ℹ pass 36
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 97738.8204
+
+✖ failing tests:
+
+test at test\standard-postgres.test.ts:1:4204
+✖ native CRUD, verified pages, OR semi-join and bounded count (482.528ms)
+  AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:
+  
+    assert.ok(c.logs[0].includes(' in (select '))
+  
+      at TestContext.<anonymous> (<workspace>\test\standard-postgres.test.ts:102:12)
+      at async Test.run (node:internal/test_runner/test:1332:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:385:3) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }

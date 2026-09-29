@@ -1,0 +1,1466 @@
+[
+  {
+    "name": "sub_common_memo",
+    "cost": 110,
+    "nodes": [
+      "Aggregate",
+      "Bitmap Heap Scan",
+      "Bitmap Index Scan"
+    ],
+    "plan": {
+      "Plan": {
+        "Node Type": "Aggregate",
+        "Strategy": "Plain",
+        "Partial Mode": "Simple",
+        "Parallel Aware": false,
+        "Async Capable": false,
+        "Startup Cost": 18074.48,
+        "Total Cost": 18074.5,
+        "Plan Rows": 1,
+        "Plan Width": 32,
+        "Disabled": false,
+        "Plans": [
+          {
+            "Node Type": "Bitmap Heap Scan",
+            "Parent Relationship": "Outer",
+            "Parallel Aware": false,
+            "Async Capable": false,
+            "Relation Name": "customers_seal_index",
+            "Alias": "__seal_idx",
+            "Startup Cost": 83.99,
+            "Total Cost": 18069.11,
+            "Plan Rows": 2149,
+            "Plan Width": 0,
+            "Disabled": false,
+            "Recheck Cond": "(tokens_a639b11c8130dcf7 @> '{3760032929106296832,3760032929528348672,3760032930565980160}'::bigint[])",
+            "Filter": "((scope_id = 'aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa'::uuid) AND test_cost_plans_46928.sealql_match_positions('{\"\\\\x21168fb2e4d0c4b8914d7fded731c99d910f99950c4caaedb84c8220d16ce130\",\"\\\\x446e1bdd572f1f425d3a420641a4404e90543b1bda56b5e0f275fc6e4b9e7328\"}'::bytea[], '{0,1}'::integer[], 3, pos_len_a639b11c8130dcf7, pos_salt_a639b11c8130dcf7, pos_stamps_a639b11c8130dcf7, pos_offsets_a639b11c8130dcf7, 0))",
+            "Plans": [
+              {
+                "Node Type": "Bitmap Index Scan",
+                "Parent Relationship": "Outer",
+                "Parallel Aware": false,
+                "Async Capable": false,
+                "Index Name": "seal_e66dc2708e915b65_gin",
+                "Startup Cost": 0,
+                "Total Cost": 83.45,
+                "Plan Rows": 6447,
+                "Plan Width": 0,
+                "Disabled": false,
+                "Index Cond": "(tokens_a639b11c8130dcf7 @> '{3760032929106296832,3760032929528348672,3760032930565980160}'::bigint[])"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  {
+    "name": "sub_common_memo",
+    "cost": 125,
+    "nodes": [
+      "Aggregate",
+      "Gather",
+      "Aggregate",
+      "Bitmap Heap Scan",
+      "Bitmap Index Scan"
+    ],
+    "plan": {
+      "Plan": {
+        "Node Type": "Aggregate",
+        "Strategy": "Plain",
+        "Partial Mode": "Finalize",
+        "Parallel Aware": false,
+        "Async Capable": false,
+        "Startup Cost": 18081.68,
+        "Total Cost": 18081.7,
+        "Plan Rows": 1,
+        "Plan Width": 32,
+        "Disabled": false,
+        "Plans": [
+          {
+            "Node Type": "Gather",
+            "Parent Relationship": "Outer",
+            "Parallel Aware": false,
+            "Async Capable": false,
+            "Startup Cost": 18081.47,
+            "Total Cost": 18081.68,
+            "Plan Rows": 2,
+            "Plan Width": 8,
+            "Disabled": false,
+            "Workers Planned": 2,
+            "Single Copy": false,
+            "Plans": [
+              {
+                "Node Type": "Aggregate",
+                "Strategy": "Plain",
+                "Partial Mode": "Partial",
+                "Parent Relationship": "Outer",
+                "Parallel Aware": false,
+                "Async Capable": false,
+                "Startup Cost": 17081.47,
+                "Total Cost": 17081.48,
+                "Plan Rows": 1,
+                "Plan Width": 8,
+                "Disabled": false,
+                "Plans": [
+                  {
+                    "Node Type": "Bitmap Heap Scan",
+                    "Parent Relationship": "Outer",
+                    "Parallel Aware": true,
+                    "Async Capable": false,
+                    "Relation Name": "customers_seal_index",
+                    "Alias": "__seal_idx",
+                    "Startup Cost": 83.99,
+                    "Total Cost": 17079.23,
+                    "Plan Rows": 895,
+                    "Plan Width": 0,
+                    "Disabled": false,
+                    "Recheck Cond": "(tokens_a639b11c8130dcf7 @> '{3760032929106296832,3760032929528348672,3760032930565980160}'::bigint[])",
+                    "Filter": "((scope_id = 'aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa'::uuid) AND test_cost_plans_46928.sealql_match_positions('{\"\\\\x21168fb2e4d0c4b8914d7fded731c99d910f99950c4caaedb84c8220d16ce130\",\"\\\\x446e1bdd572f1f425d3a420641a4404e90543b1bda56b5e0f275fc6e4b9e7328\"}'::bytea[], '{0,1}'::integer[], 3, pos_len_a639b11c8130dcf7, pos_salt_a639b11c8130dcf7, pos_stamps_a639b11c8130dcf7, pos_offsets_a639b11c8130dcf7, 0))",
+                    "Plans": [
+                      {
+                        "Node Type": "Bitmap Index Scan",
+                        "Parent Relationship": "Outer",
+                        "Parallel Aware": false,
+                        "Async Capable": false,
+                        "Index Name": "seal_e66dc2708e915b65_gin",
+                        "Startup Cost": 0,
+                        "Total Cost": 83.45,
+                        "Plan Rows": 6447,
+                        "Plan Width": 0,
+                        "Disabled": false,
+                        "Index Cond": "(tokens_a639b11c8130dcf7 @> '{3760032929106296832,3760032929528348672,3760032930565980160}'::bigint[])"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  {
+    "name": "sub_common_memo",
+    "cost": 150,
+    "nodes": [
+      "Aggregate",
+      "Gather",
+      "Aggregate",
+      "Bitmap Heap Scan",
+      "Bitmap Index Scan"
+    ],
+    "plan": {
+      "Plan": {
+        "Node Type": "Aggregate",
+        "Strategy": "Plain",
+        "Partial Mode": "Finalize",
+        "Parallel Aware": false,
+        "Async Capable": false,
+        "Startup Cost": 18249.57,
+        "Total Cost": 18249.59,
+        "Plan Rows": 1,
+        "Plan Width": 32,
+        "Disabled": false,
+        "Plans": [
+          {
+            "Node Type": "Gather",
+            "Parent Relationship": "Outer",
+            "Parallel Aware": false,
+            "Async Capable": false,
+            "Startup Cost": 18249.36,
+            "Total Cost": 18249.57,
+            "Plan Rows": 2,
+            "Plan Width": 8,
+            "Disabled": false,
+            "Workers Planned": 2,
+            "Single Copy": false,
+            "Plans": [
+              {
+                "Node Type": "Aggregate",
+                "Strategy": "Plain",
+                "Partial Mode": "Partial",
+                "Parent Relationship": "Outer",
+                "Parallel Aware": false,
+                "Async Capable": false,
+                "Startup Cost": 17249.36,
+                "Total Cost": 17249.37,
+                "Plan Rows": 1,
+                "Plan Width": 8,
+                "Disabled": false,
+                "Plans": [
+                  {
+                    "Node Type": "Bitmap Heap Scan",
+                    "Parent Relationship": "Outer",
+                    "Parallel Aware": true,
+                    "Async Capable": false,
+                    "Relation Name": "customers_seal_index",
+                    "Alias": "__seal_idx",
+                    "Startup Cost": 83.99,
+                    "Total Cost": 17247.12,
+                    "Plan Rows": 895,
+                    "Plan Width": 0,
+                    "Disabled": false,
+                    "Recheck Cond": "(tokens_a639b11c8130dcf7 @> '{3760032929106296832,3760032929528348672,3760032930565980160}'::bigint[])",
+                    "Filter": "((scope_id = 'aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa'::uuid) AND test_cost_plans_46928.sealql_match_positions('{\"\\\\x21168fb2e4d0c4b8914d7fded731c99d910f99950c4caaedb84c8220d16ce130\",\"\\\\x446e1bdd572f1f425d3a420641a4404e90543b1bda56b5e0f275fc6e4b9e7328\"}'::bytea[], '{0,1}'::integer[], 3, pos_len_a639b11c8130dcf7, pos_salt_a639b11c8130dcf7, pos_stamps_a639b11c8130dcf7, pos_offsets_a639b11c8130dcf7, 0))",
+                    "Plans": [
+                      {
+                        "Node Type": "Bitmap Index Scan",
+                        "Parent Relationship": "Outer",
+                        "Parallel Aware": false,
+                        "Async Capable": false,
+                        "Index Name": "seal_e66dc2708e915b65_gin",
+                        "Startup Cost": 0,
+                        "Total Cost": 83.45,
+                        "Plan Rows": 6447,
+                        "Plan Width": 0,
+                        "Disabled": false,
+                        "Index Cond": "(tokens_a639b11c8130dcf7 @> '{3760032929106296832,3760032929528348672,3760032930565980160}'::bigint[])"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  {
+    "name": "sub_common_memo",
+    "cost": 175,
+    "nodes": [
+      "Aggregate",
+      "Gather",
+      "Aggregate",
+      "Bitmap Heap Scan",
+      "Bitmap Index Scan"
+    ],
+    "plan": {
+      "Plan": {
+        "Node Type": "Aggregate",
+        "Strategy": "Plain",
+        "Partial Mode": "Finalize",
+        "Parallel Aware": false,
+        "Async Capable": false,
+        "Startup Cost": 18417.46,
+        "Total Cost": 18417.48,
+        "Plan Rows": 1,
+        "Plan Width": 32,
+        "Disabled": false,
+        "Plans": [
+          {
+            "Node Type": "Gather",
+            "Parent Relationship": "Outer",
+            "Parallel Aware": false,
+            "Async Capable": false,
+            "Startup Cost": 18417.25,
+            "Total Cost": 18417.46,
+            "Plan Rows": 2,
+            "Plan Width": 8,
+            "Disabled": false,
+            "Workers Planned": 2,
+            "Single Copy": false,
+            "Plans": [
+              {
+                "Node Type": "Aggregate",
+                "Strategy": "Plain",
+                "Partial Mode": "Partial",
+                "Parent Relationship": "Outer",
+                "Parallel Aware": false,
+                "Async Capable": false,
+                "Startup Cost": 17417.25,
+                "Total Cost": 17417.26,
+                "Plan Rows": 1,
+                "Plan Width": 8,
+                "Disabled": false,
+                "Plans": [
+                  {
+                    "Node Type": "Bitmap Heap Scan",
+                    "Parent Relationship": "Outer",
+                    "Parallel Aware": true,
+                    "Async Capable": false,
+                    "Relation Name": "customers_seal_index",
+                    "Alias": "__seal_idx",
+                    "Startup Cost": 83.99,
+                    "Total Cost": 17415.01,
+                    "Plan Rows": 895,
+                    "Plan Width": 0,
+                    "Disabled": false,
+                    "Recheck Cond": "(tokens_a639b11c8130dcf7 @> '{3760032929106296832,3760032929528348672,3760032930565980160}'::bigint[])",
+                    "Filter": "((scope_id = 'aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa'::uuid) AND test_cost_plans_46928.sealql_match_positions('{\"\\\\x21168fb2e4d0c4b8914d7fded731c99d910f99950c4caaedb84c8220d16ce130\",\"\\\\x446e1bdd572f1f425d3a420641a4404e90543b1bda56b5e0f275fc6e4b9e7328\"}'::bytea[], '{0,1}'::integer[], 3, pos_len_a639b11c8130dcf7, pos_salt_a639b11c8130dcf7, pos_stamps_a639b11c8130dcf7, pos_offsets_a639b11c8130dcf7, 0))",
+                    "Plans": [
+                      {
+                        "Node Type": "Bitmap Index Scan",
+                        "Parent Relationship": "Outer",
+                        "Parallel Aware": false,
+                        "Async Capable": false,
+                        "Index Name": "seal_e66dc2708e915b65_gin",
+                        "Startup Cost": 0,
+                        "Total Cost": 83.45,
+                        "Plan Rows": 6447,
+                        "Plan Width": 0,
+                        "Disabled": false,
+                        "Index Cond": "(tokens_a639b11c8130dcf7 @> '{3760032929106296832,3760032929528348672,3760032930565980160}'::bigint[])"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  {
+    "name": "sub_common_memo",
+    "cost": 190,
+    "nodes": [
+      "Aggregate",
+      "Gather",
+      "Aggregate",
+      "Bitmap Heap Scan",
+      "Bitmap Index Scan"
+    ],
+    "plan": {
+      "Plan": {
+        "Node Type": "Aggregate",
+        "Strategy": "Plain",
+        "Partial Mode": "Finalize",
+        "Parallel Aware": false,
+        "Async Capable": false,
+        "Startup Cost": 18518.2,
+        "Total Cost": 18518.21,
+        "Plan Rows": 1,
+        "Plan Width": 32,
+        "Disabled": false,
+        "Plans": [
+          {
+            "Node Type": "Gather",
+            "Parent Relationship": "Outer",
+            "Parallel Aware": false,
+            "Async Capable": false,
+            "Startup Cost": 18517.98,
+            "Total Cost": 18518.19,
+            "Plan Rows": 2,
+            "Plan Width": 8,
+            "Disabled": false,
+            "Workers Planned": 2,
+            "Single Copy": false,
+            "Plans": [
+              {
+                "Node Type": "Aggregate",
+                "Strategy": "Plain",
+                "Partial Mode": "Partial",
+                "Parent Relationship": "Outer",
+                "Parallel Aware": false,
+                "Async Capable": false,
+                "Startup Cost": 17517.98,
+                "Total Cost": 17517.99,
+                "Plan Rows": 1,
+                "Plan Width": 8,
+                "Disabled": false,
+                "Plans": [
+                  {
+                    "Node Type": "Bitmap Heap Scan",
+                    "Parent Relationship": "Outer",
+                    "Parallel Aware": true,
+                    "Async Capable": false,
+                    "Relation Name": "customers_seal_index",
+                    "Alias": "__seal_idx",
+                    "Startup Cost": 83.99,
+                    "Total Cost": 17515.74,
+                    "Plan Rows": 895,
+                    "Plan Width": 0,
+                    "Disabled": false,
+                    "Recheck Cond": "(tokens_a639b11c8130dcf7 @> '{3760032929106296832,3760032929528348672,3760032930565980160}'::bigint[])",
+                    "Filter": "((scope_id = 'aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa'::uuid) AND test_cost_plans_46928.sealql_match_positions('{\"\\\\x21168fb2e4d0c4b8914d7fded731c99d910f99950c4caaedb84c8220d16ce130\",\"\\\\x446e1bdd572f1f425d3a420641a4404e90543b1bda56b5e0f275fc6e4b9e7328\"}'::bytea[], '{0,1}'::integer[], 3, pos_len_a639b11c8130dcf7, pos_salt_a639b11c8130dcf7, pos_stamps_a639b11c8130dcf7, pos_offsets_a639b11c8130dcf7, 0))",
+                    "Plans": [
+                      {
+                        "Node Type": "Bitmap Index Scan",
+                        "Parent Relationship": "Outer",
+                        "Parallel Aware": false,
+                        "Async Capable": false,
+                        "Index Name": "seal_e66dc2708e915b65_gin",
+                        "Startup Cost": 0,
+                        "Total Cost": 83.45,
+                        "Plan Rows": 6447,
+                        "Plan Width": 0,
+                        "Disabled": false,
+                        "Index Cond": "(tokens_a639b11c8130dcf7 @> '{3760032929106296832,3760032929528348672,3760032930565980160}'::bigint[])"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  {
+    "name": "zero_and_common2",
+    "cost": 110,
+    "nodes": [
+      "Aggregate",
+      "Bitmap Heap Scan",
+      "BitmapAnd",
+      "Bitmap Index Scan",
+      "Bitmap Index Scan"
+    ],
+    "plan": {
+      "Plan": {
+        "Node Type": "Aggregate",
+        "Strategy": "Plain",
+        "Partial Mode": "Simple",
+        "Parallel Aware": false,
+        "Async Capable": false,
+        "Startup Cost": 23480.47,
+        "Total Cost": 23480.49,
+        "Plan Rows": 1,
+        "Plan Width": 32,
+        "Disabled": false,
+        "Plans": [
+          {
+            "Node Type": "Bitmap Heap Scan",
+            "Parent Relationship": "Outer",
+            "Parallel Aware": false,
+            "Async Capable": false,
+            "Relation Name": "customers_seal_index",
+            "Alias": "__seal_idx",
+            "Startup Cost": 6747.7,
+            "Total Cost": 23480.45,
+            "Plan Rows": 10,
+            "Plan Width": 0,
+            "Disabled": false,
+            "Recheck Cond": "((tokens_1127994ab736baf4 @> '{-3805287604326039552}'::bigint[]) AND (scope_id = 'aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa'::uuid) AND (tokens_a106c26102b707f0[1] = '-5916137954966765568'::bigint))",
+            "Filter": "((eq_stamp_a106c26102b707f0 = ((('x'::text || encode(substr(sha256(('\\xcddcc62151dc0c3899604a2d45b694a164e1f5b96bdbd05b69bd5e5c2b4d4d82'::bytea || eq_salt_a106c26102b707f0)), 1, 8), 'hex'::text)))::bit(64))::bigint) AND test_cost_plans_46928.sealql_match_positions('{\"\\\\xb4a4550bf62746fb4af0e2a0416edb979eee5abb0e0b3999c833441d715b9326\"}'::bytea[], '{0}'::integer[], 2, pos_len_1127994ab736baf4, pos_salt_1127994ab736baf4, pos_stamps_1127994ab736baf4, pos_offsets_1127994ab736baf4, 0))",
+            "Plans": [
+              {
+                "Node Type": "BitmapAnd",
+                "Parent Relationship": "Outer",
+                "Parallel Aware": false,
+                "Async Capable": false,
+                "Startup Cost": 6747.7,
+                "Total Cost": 6747.7,
+                "Plan Rows": 5776,
+                "Plan Width": 0,
+                "Disabled": false,
+                "Plans": [
+                  {
+                    "Node Type": "Bitmap Index Scan",
+                    "Parent Relationship": "Member",
+                    "Parallel Aware": false,
+                    "Async Capable": false,
+                    "Index Name": "seal_e66dc2708e915b65_gin",
+                    "Startup Cost": 0,
+                    "Total Cost": 80.03,
+                    "Plan Rows": 10116,
+                    "Plan Width": 0,
+                    "Disabled": false,
+                    "Index Cond": "(tokens_1127994ab736baf4 @> '{-3805287604326039552}'::bigint[])"
+                  },
+                  {
+                    "Node Type": "Bitmap Index Scan",
+                    "Parent Relationship": "Member",
+                    "Parallel Aware": false,
+                    "Async Capable": false,
+                    "Index Name": "seal_4c8e2d2bddde3451_bt",
+                    "Startup Cost": 0,
+                    "Total Cost": 6667.42,
+                    "Plan Rows": 57100,
+                    "Plan Width": 0,
+                    "Disabled": false,
+                    "Index Cond": "((scope_id = 'aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa'::uuid) AND (tokens_a106c26102b707f0[1] = '-5916137954966765568'::bigint))"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  {
+    "name": "zero_and_common2",
+    "cost": 125,
+    "nodes": [
+      "Aggregate",
+      "Bitmap Heap Scan",
+      "BitmapAnd",
+      "Bitmap Index Scan",
+      "Bitmap Index Scan"
+    ],
+    "plan": {
+      "Plan": {
+        "Node Type": "Aggregate",
+        "Strategy": "Plain",
+        "Partial Mode": "Simple",
+        "Parallel Aware": false,
+        "Async Capable": false,
+        "Startup Cost": 23697.07,
+        "Total Cost": 23697.09,
+        "Plan Rows": 1,
+        "Plan Width": 32,
+        "Disabled": false,
+        "Plans": [
+          {
+            "Node Type": "Bitmap Heap Scan",
+            "Parent Relationship": "Outer",
+            "Parallel Aware": false,
+            "Async Capable": false,
+            "Relation Name": "customers_seal_index",
+            "Alias": "__seal_idx",
+            "Startup Cost": 6747.7,
+            "Total Cost": 23697.05,
+            "Plan Rows": 10,
+            "Plan Width": 0,
+            "Disabled": false,
+            "Recheck Cond": "((tokens_1127994ab736baf4 @> '{-3805287604326039552}'::bigint[]) AND (scope_id = 'aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa'::uuid) AND (tokens_a106c26102b707f0[1] = '-5916137954966765568'::bigint))",
+            "Filter": "((eq_stamp_a106c26102b707f0 = ((('x'::text || encode(substr(sha256(('\\xcddcc62151dc0c3899604a2d45b694a164e1f5b96bdbd05b69bd5e5c2b4d4d82'::bytea || eq_salt_a106c26102b707f0)), 1, 8), 'hex'::text)))::bit(64))::bigint) AND test_cost_plans_46928.sealql_match_positions('{\"\\\\xb4a4550bf62746fb4af0e2a0416edb979eee5abb0e0b3999c833441d715b9326\"}'::bytea[], '{0}'::integer[], 2, pos_len_1127994ab736baf4, pos_salt_1127994ab736baf4, pos_stamps_1127994ab736baf4, pos_offsets_1127994ab736baf4, 0))",
+            "Plans": [
+              {
+                "Node Type": "BitmapAnd",
+                "Parent Relationship": "Outer",
+                "Parallel Aware": false,
+                "Async Capable": false,
+                "Startup Cost": 6747.7,
+                "Total Cost": 6747.7,
+                "Plan Rows": 5776,
+                "Plan Width": 0,
+                "Disabled": false,
+                "Plans": [
+                  {
+                    "Node Type": "Bitmap Index Scan",
+                    "Parent Relationship": "Member",
+                    "Parallel Aware": false,
+                    "Async Capable": false,
+                    "Index Name": "seal_e66dc2708e915b65_gin",
+                    "Startup Cost": 0,
+                    "Total Cost": 80.03,
+                    "Plan Rows": 10116,
+                    "Plan Width": 0,
+                    "Disabled": false,
+                    "Index Cond": "(tokens_1127994ab736baf4 @> '{-3805287604326039552}'::bigint[])"
+                  },
+                  {
+                    "Node Type": "Bitmap Index Scan",
+                    "Parent Relationship": "Member",
+                    "Parallel Aware": false,
+                    "Async Capable": false,
+                    "Index Name": "seal_4c8e2d2bddde3451_bt",
+                    "Startup Cost": 0,
+                    "Total Cost": 6667.42,
+                    "Plan Rows": 57100,
+                    "Plan Width": 0,
+                    "Disabled": false,
+                    "Index Cond": "((scope_id = 'aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa'::uuid) AND (tokens_a106c26102b707f0[1] = '-5916137954966765568'::bigint))"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  {
+    "name": "zero_and_common2",
+    "cost": 150,
+    "nodes": [
+      "Aggregate",
+      "Gather",
+      "Aggregate",
+      "Bitmap Heap Scan",
+      "BitmapAnd",
+      "Bitmap Index Scan",
+      "Bitmap Index Scan"
+    ],
+    "plan": {
+      "Plan": {
+        "Node Type": "Aggregate",
+        "Strategy": "Plain",
+        "Partial Mode": "Finalize",
+        "Parallel Aware": false,
+        "Async Capable": false,
+        "Startup Cost": 23651.57,
+        "Total Cost": 23651.59,
+        "Plan Rows": 1,
+        "Plan Width": 32,
+        "Disabled": false,
+        "Plans": [
+          {
+            "Node Type": "Gather",
+            "Parent Relationship": "Outer",
+            "Parallel Aware": false,
+            "Async Capable": false,
+            "Startup Cost": 23651.36,
+            "Total Cost": 23651.57,
+            "Plan Rows": 2,
+            "Plan Width": 8,
+            "Disabled": false,
+            "Workers Planned": 2,
+            "Single Copy": false,
+            "Plans": [
+              {
+                "Node Type": "Aggregate",
+                "Strategy": "Plain",
+                "Partial Mode": "Partial",
+                "Parent Relationship": "Outer",
+                "Parallel Aware": false,
+                "Async Capable": false,
+                "Startup Cost": 22651.36,
+                "Total Cost": 22651.37,
+                "Plan Rows": 1,
+                "Plan Width": 8,
+                "Disabled": false,
+                "Plans": [
+                  {
+                    "Node Type": "Bitmap Heap Scan",
+                    "Parent Relationship": "Outer",
+                    "Parallel Aware": true,
+                    "Async Capable": false,
+                    "Relation Name": "customers_seal_index",
+                    "Alias": "__seal_idx",
+                    "Startup Cost": 6747.7,
+                    "Total Cost": 22651.35,
+                    "Plan Rows": 4,
+                    "Plan Width": 0,
+                    "Disabled": false,
+                    "Recheck Cond": "((tokens_1127994ab736baf4 @> '{-3805287604326039552}'::bigint[]) AND (scope_id = 'aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa'::uuid) AND (tokens_a106c26102b707f0[1] = '-5916137954966765568'::bigint))",
+                    "Filter": "((eq_stamp_a106c26102b707f0 = ((('x'::text || encode(substr(sha256(('\\xcddcc62151dc0c3899604a2d45b694a164e1f5b96bdbd05b69bd5e5c2b4d4d82'::bytea || eq_salt_a106c26102b707f0)), 1, 8), 'hex'::text)))::bit(64))::bigint) AND test_cost_plans_46928.sealql_match_positions('{\"\\\\xb4a4550bf62746fb4af0e2a0416edb979eee5abb0e0b3999c833441d715b9326\"}'::bytea[], '{0}'::integer[], 2, pos_len_1127994ab736baf4, pos_salt_1127994ab736baf4, pos_stamps_1127994ab736baf4, pos_offsets_1127994ab736baf4, 0))",
+                    "Plans": [
+                      {
+                        "Node Type": "BitmapAnd",
+                        "Parent Relationship": "Outer",
+                        "Parallel Aware": false,
+                        "Async Capable": false,
+                        "Startup Cost": 6747.7,
+                        "Total Cost": 6747.7,
+                        "Plan Rows": 5776,
+                        "Plan Width": 0,
+                        "Disabled": false,
+                        "Plans": [
+                          {
+                            "Node Type": "Bitmap Index Scan",
+                            "Parent Relationship": "Member",
+                            "Parallel Aware": false,
+                            "Async Capable": false,
+                            "Index Name": "seal_e66dc2708e915b65_gin",
+                            "Startup Cost": 0,
+                            "Total Cost": 80.03,
+                            "Plan Rows": 10116,
+                            "Plan Width": 0,
+                            "Disabled": false,
+                            "Index Cond": "(tokens_1127994ab736baf4 @> '{-3805287604326039552}'::bigint[])"
+                          },
+                          {
+                            "Node Type": "Bitmap Index Scan",
+                            "Parent Relationship": "Member",
+                            "Parallel Aware": false,
+                            "Async Capable": false,
+                            "Index Name": "seal_4c8e2d2bddde3451_bt",
+                            "Startup Cost": 0,
+                            "Total Cost": 6667.42,
+                            "Plan Rows": 57100,
+                            "Plan Width": 0,
+                            "Disabled": false,
+                            "Index Cond": "((scope_id = 'aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa'::uuid) AND (tokens_a106c26102b707f0[1] = '-5916137954966765568'::bigint))"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  {
+    "name": "zero_and_common2",
+    "cost": 175,
+    "nodes": [
+      "Aggregate",
+      "Gather",
+      "Aggregate",
+      "Bitmap Heap Scan",
+      "BitmapAnd",
+      "Bitmap Index Scan",
+      "Bitmap Index Scan"
+    ],
+    "plan": {
+      "Plan": {
+        "Node Type": "Aggregate",
+        "Strategy": "Plain",
+        "Partial Mode": "Finalize",
+        "Parallel Aware": false,
+        "Async Capable": false,
+        "Startup Cost": 23801.99,
+        "Total Cost": 23802.01,
+        "Plan Rows": 1,
+        "Plan Width": 32,
+        "Disabled": false,
+        "Plans": [
+          {
+            "Node Type": "Gather",
+            "Parent Relationship": "Outer",
+            "Parallel Aware": false,
+            "Async Capable": false,
+            "Startup Cost": 23801.78,
+            "Total Cost": 23801.99,
+            "Plan Rows": 2,
+            "Plan Width": 8,
+            "Disabled": false,
+            "Workers Planned": 2,
+            "Single Copy": false,
+            "Plans": [
+              {
+                "Node Type": "Aggregate",
+                "Strategy": "Plain",
+                "Partial Mode": "Partial",
+                "Parent Relationship": "Outer",
+                "Parallel Aware": false,
+                "Async Capable": false,
+                "Startup Cost": 22801.78,
+                "Total Cost": 22801.79,
+                "Plan Rows": 1,
+                "Plan Width": 8,
+                "Disabled": false,
+                "Plans": [
+                  {
+                    "Node Type": "Bitmap Heap Scan",
+                    "Parent Relationship": "Outer",
+                    "Parallel Aware": true,
+                    "Async Capable": false,
+                    "Relation Name": "customers_seal_index",
+                    "Alias": "__seal_idx",
+                    "Startup Cost": 6747.7,
+                    "Total Cost": 22801.77,
+                    "Plan Rows": 4,
+                    "Plan Width": 0,
+                    "Disabled": false,
+                    "Recheck Cond": "((tokens_1127994ab736baf4 @> '{-3805287604326039552}'::bigint[]) AND (scope_id = 'aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa'::uuid) AND (tokens_a106c26102b707f0[1] = '-5916137954966765568'::bigint))",
+                    "Filter": "((eq_stamp_a106c26102b707f0 = ((('x'::text || encode(substr(sha256(('\\xcddcc62151dc0c3899604a2d45b694a164e1f5b96bdbd05b69bd5e5c2b4d4d82'::bytea || eq_salt_a106c26102b707f0)), 1, 8), 'hex'::text)))::bit(64))::bigint) AND test_cost_plans_46928.sealql_match_positions('{\"\\\\xb4a4550bf62746fb4af0e2a0416edb979eee5abb0e0b3999c833441d715b9326\"}'::bytea[], '{0}'::integer[], 2, pos_len_1127994ab736baf4, pos_salt_1127994ab736baf4, pos_stamps_1127994ab736baf4, pos_offsets_1127994ab736baf4, 0))",
+                    "Plans": [
+                      {
+                        "Node Type": "BitmapAnd",
+                        "Parent Relationship": "Outer",
+                        "Parallel Aware": false,
+                        "Async Capable": false,
+                        "Startup Cost": 6747.7,
+                        "Total Cost": 6747.7,
+                        "Plan Rows": 5776,
+                        "Plan Width": 0,
+                        "Disabled": false,
+                        "Plans": [
+                          {
+                            "Node Type": "Bitmap Index Scan",
+                            "Parent Relationship": "Member",
+                            "Parallel Aware": false,
+                            "Async Capable": false,
+                            "Index Name": "seal_e66dc2708e915b65_gin",
+                            "Startup Cost": 0,
+                            "Total Cost": 80.03,
+                            "Plan Rows": 10116,
+                            "Plan Width": 0,
+                            "Disabled": false,
+                            "Index Cond": "(tokens_1127994ab736baf4 @> '{-3805287604326039552}'::bigint[])"
+                          },
+                          {
+                            "Node Type": "Bitmap Index Scan",
+                            "Parent Relationship": "Member",
+                            "Parallel Aware": false,
+                            "Async Capable": false,
+                            "Index Name": "seal_4c8e2d2bddde3451_bt",
+                            "Startup Cost": 0,
+                            "Total Cost": 6667.42,
+                            "Plan Rows": 57100,
+                            "Plan Width": 0,
+                            "Disabled": false,
+                            "Index Cond": "((scope_id = 'aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa'::uuid) AND (tokens_a106c26102b707f0[1] = '-5916137954966765568'::bigint))"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  {
+    "name": "zero_and_common2",
+    "cost": 190,
+    "nodes": [
+      "Aggregate",
+      "Gather",
+      "Aggregate",
+      "Bitmap Heap Scan",
+      "BitmapAnd",
+      "Bitmap Index Scan",
+      "Bitmap Index Scan"
+    ],
+    "plan": {
+      "Plan": {
+        "Node Type": "Aggregate",
+        "Strategy": "Plain",
+        "Partial Mode": "Finalize",
+        "Parallel Aware": false,
+        "Async Capable": false,
+        "Startup Cost": 23892.24,
+        "Total Cost": 23892.26,
+        "Plan Rows": 1,
+        "Plan Width": 32,
+        "Disabled": false,
+        "Plans": [
+          {
+            "Node Type": "Gather",
+            "Parent Relationship": "Outer",
+            "Parallel Aware": false,
+            "Async Capable": false,
+            "Startup Cost": 23892.03,
+            "Total Cost": 23892.24,
+            "Plan Rows": 2,
+            "Plan Width": 8,
+            "Disabled": false,
+            "Workers Planned": 2,
+            "Single Copy": false,
+            "Plans": [
+              {
+                "Node Type": "Aggregate",
+                "Strategy": "Plain",
+                "Partial Mode": "Partial",
+                "Parent Relationship": "Outer",
+                "Parallel Aware": false,
+                "Async Capable": false,
+                "Startup Cost": 22892.03,
+                "Total Cost": 22892.04,
+                "Plan Rows": 1,
+                "Plan Width": 8,
+                "Disabled": false,
+                "Plans": [
+                  {
+                    "Node Type": "Bitmap Heap Scan",
+                    "Parent Relationship": "Outer",
+                    "Parallel Aware": true,
+                    "Async Capable": false,
+                    "Relation Name": "customers_seal_index",
+                    "Alias": "__seal_idx",
+                    "Startup Cost": 6747.7,
+                    "Total Cost": 22892.02,
+                    "Plan Rows": 4,
+                    "Plan Width": 0,
+                    "Disabled": false,
+                    "Recheck Cond": "((tokens_1127994ab736baf4 @> '{-3805287604326039552}'::bigint[]) AND (scope_id = 'aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa'::uuid) AND (tokens_a106c26102b707f0[1] = '-5916137954966765568'::bigint))",
+                    "Filter": "((eq_stamp_a106c26102b707f0 = ((('x'::text || encode(substr(sha256(('\\xcddcc62151dc0c3899604a2d45b694a164e1f5b96bdbd05b69bd5e5c2b4d4d82'::bytea || eq_salt_a106c26102b707f0)), 1, 8), 'hex'::text)))::bit(64))::bigint) AND test_cost_plans_46928.sealql_match_positions('{\"\\\\xb4a4550bf62746fb4af0e2a0416edb979eee5abb0e0b3999c833441d715b9326\"}'::bytea[], '{0}'::integer[], 2, pos_len_1127994ab736baf4, pos_salt_1127994ab736baf4, pos_stamps_1127994ab736baf4, pos_offsets_1127994ab736baf4, 0))",
+                    "Plans": [
+                      {
+                        "Node Type": "BitmapAnd",
+                        "Parent Relationship": "Outer",
+                        "Parallel Aware": false,
+                        "Async Capable": false,
+                        "Startup Cost": 6747.7,
+                        "Total Cost": 6747.7,
+                        "Plan Rows": 5776,
+                        "Plan Width": 0,
+                        "Disabled": false,
+                        "Plans": [
+                          {
+                            "Node Type": "Bitmap Index Scan",
+                            "Parent Relationship": "Member",
+                            "Parallel Aware": false,
+                            "Async Capable": false,
+                            "Index Name": "seal_e66dc2708e915b65_gin",
+                            "Startup Cost": 0,
+                            "Total Cost": 80.03,
+                            "Plan Rows": 10116,
+                            "Plan Width": 0,
+                            "Disabled": false,
+                            "Index Cond": "(tokens_1127994ab736baf4 @> '{-3805287604326039552}'::bigint[])"
+                          },
+                          {
+                            "Node Type": "Bitmap Index Scan",
+                            "Parent Relationship": "Member",
+                            "Parallel Aware": false,
+                            "Async Capable": false,
+                            "Index Name": "seal_4c8e2d2bddde3451_bt",
+                            "Startup Cost": 0,
+                            "Total Cost": 6667.42,
+                            "Plan Rows": 57100,
+                            "Plan Width": 0,
+                            "Disabled": false,
+                            "Index Cond": "((scope_id = 'aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa'::uuid) AND (tokens_a106c26102b707f0[1] = '-5916137954966765568'::bigint))"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  {
+    "name": "starts",
+    "cost": 110,
+    "nodes": [
+      "Aggregate",
+      "Bitmap Heap Scan",
+      "Bitmap Index Scan"
+    ],
+    "plan": {
+      "Plan": {
+        "Node Type": "Aggregate",
+        "Strategy": "Plain",
+        "Partial Mode": "Simple",
+        "Parallel Aware": false,
+        "Async Capable": false,
+        "Startup Cost": 9176.7,
+        "Total Cost": 9176.72,
+        "Plan Rows": 1,
+        "Plan Width": 32,
+        "Disabled": false,
+        "Plans": [
+          {
+            "Node Type": "Bitmap Heap Scan",
+            "Parent Relationship": "Outer",
+            "Parallel Aware": false,
+            "Async Capable": false,
+            "Relation Name": "customers_seal_index",
+            "Alias": "__seal_idx",
+            "Startup Cost": 48.11,
+            "Total Cost": 9174.41,
+            "Plan Rows": 916,
+            "Plan Width": 0,
+            "Disabled": false,
+            "Recheck Cond": "(tokens_792d75cf01821d67 @> '{4146536005757239296,4146536005890801664}'::bigint[])",
+            "Filter": "((scope_id = 'aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa'::uuid) AND test_cost_plans_46928.sealql_match_positions('{\"\\\\x1de01e77cddeda493a638cad5bec363a74e06c27d9e6a4879691169a854050c1\"}'::bytea[], '{0}'::integer[], 2, pos_len_792d75cf01821d67, pos_salt_792d75cf01821d67, pos_stamps_792d75cf01821d67, pos_offsets_792d75cf01821d67, 1))",
+            "Plans": [
+              {
+                "Node Type": "Bitmap Index Scan",
+                "Parent Relationship": "Outer",
+                "Parallel Aware": false,
+                "Async Capable": false,
+                "Index Name": "seal_e66dc2708e915b65_gin",
+                "Startup Cost": 0,
+                "Total Cost": 47.88,
+                "Plan Rows": 2747,
+                "Plan Width": 0,
+                "Disabled": false,
+                "Index Cond": "(tokens_792d75cf01821d67 @> '{4146536005757239296,4146536005890801664}'::bigint[])"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  {
+    "name": "starts",
+    "cost": 125,
+    "nodes": [
+      "Aggregate",
+      "Bitmap Heap Scan",
+      "Bitmap Index Scan"
+    ],
+    "plan": {
+      "Plan": {
+        "Node Type": "Aggregate",
+        "Strategy": "Plain",
+        "Partial Mode": "Simple",
+        "Parallel Aware": false,
+        "Async Capable": false,
+        "Startup Cost": 9279.71,
+        "Total Cost": 9279.73,
+        "Plan Rows": 1,
+        "Plan Width": 32,
+        "Disabled": false,
+        "Plans": [
+          {
+            "Node Type": "Bitmap Heap Scan",
+            "Parent Relationship": "Outer",
+            "Parallel Aware": false,
+            "Async Capable": false,
+            "Relation Name": "customers_seal_index",
+            "Alias": "__seal_idx",
+            "Startup Cost": 48.11,
+            "Total Cost": 9277.42,
+            "Plan Rows": 916,
+            "Plan Width": 0,
+            "Disabled": false,
+            "Recheck Cond": "(tokens_792d75cf01821d67 @> '{4146536005757239296,4146536005890801664}'::bigint[])",
+            "Filter": "((scope_id = 'aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa'::uuid) AND test_cost_plans_46928.sealql_match_positions('{\"\\\\x1de01e77cddeda493a638cad5bec363a74e06c27d9e6a4879691169a854050c1\"}'::bytea[], '{0}'::integer[], 2, pos_len_792d75cf01821d67, pos_salt_792d75cf01821d67, pos_stamps_792d75cf01821d67, pos_offsets_792d75cf01821d67, 1))",
+            "Plans": [
+              {
+                "Node Type": "Bitmap Index Scan",
+                "Parent Relationship": "Outer",
+                "Parallel Aware": false,
+                "Async Capable": false,
+                "Index Name": "seal_e66dc2708e915b65_gin",
+                "Startup Cost": 0,
+                "Total Cost": 47.88,
+                "Plan Rows": 2747,
+                "Plan Width": 0,
+                "Disabled": false,
+                "Index Cond": "(tokens_792d75cf01821d67 @> '{4146536005757239296,4146536005890801664}'::bigint[])"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  {
+    "name": "starts",
+    "cost": 150,
+    "nodes": [
+      "Aggregate",
+      "Bitmap Heap Scan",
+      "Bitmap Index Scan"
+    ],
+    "plan": {
+      "Plan": {
+        "Node Type": "Aggregate",
+        "Strategy": "Plain",
+        "Partial Mode": "Simple",
+        "Parallel Aware": false,
+        "Async Capable": false,
+        "Startup Cost": 9451.4,
+        "Total Cost": 9451.42,
+        "Plan Rows": 1,
+        "Plan Width": 32,
+        "Disabled": false,
+        "Plans": [
+          {
+            "Node Type": "Bitmap Heap Scan",
+            "Parent Relationship": "Outer",
+            "Parallel Aware": false,
+            "Async Capable": false,
+            "Relation Name": "customers_seal_index",
+            "Alias": "__seal_idx",
+            "Startup Cost": 48.11,
+            "Total Cost": 9449.11,
+            "Plan Rows": 916,
+            "Plan Width": 0,
+            "Disabled": false,
+            "Recheck Cond": "(tokens_792d75cf01821d67 @> '{4146536005757239296,4146536005890801664}'::bigint[])",
+            "Filter": "((scope_id = 'aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa'::uuid) AND test_cost_plans_46928.sealql_match_positions('{\"\\\\x1de01e77cddeda493a638cad5bec363a74e06c27d9e6a4879691169a854050c1\"}'::bytea[], '{0}'::integer[], 2, pos_len_792d75cf01821d67, pos_salt_792d75cf01821d67, pos_stamps_792d75cf01821d67, pos_offsets_792d75cf01821d67, 1))",
+            "Plans": [
+              {
+                "Node Type": "Bitmap Index Scan",
+                "Parent Relationship": "Outer",
+                "Parallel Aware": false,
+                "Async Capable": false,
+                "Index Name": "seal_e66dc2708e915b65_gin",
+                "Startup Cost": 0,
+                "Total Cost": 47.88,
+                "Plan Rows": 2747,
+                "Plan Width": 0,
+                "Disabled": false,
+                "Index Cond": "(tokens_792d75cf01821d67 @> '{4146536005757239296,4146536005890801664}'::bigint[])"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  {
+    "name": "starts",
+    "cost": 175,
+    "nodes": [
+      "Aggregate",
+      "Bitmap Heap Scan",
+      "Bitmap Index Scan"
+    ],
+    "plan": {
+      "Plan": {
+        "Node Type": "Aggregate",
+        "Strategy": "Plain",
+        "Partial Mode": "Simple",
+        "Parallel Aware": false,
+        "Async Capable": false,
+        "Startup Cost": 9623.09,
+        "Total Cost": 9623.1,
+        "Plan Rows": 1,
+        "Plan Width": 32,
+        "Disabled": false,
+        "Plans": [
+          {
+            "Node Type": "Bitmap Heap Scan",
+            "Parent Relationship": "Outer",
+            "Parallel Aware": false,
+            "Async Capable": false,
+            "Relation Name": "customers_seal_index",
+            "Alias": "__seal_idx",
+            "Startup Cost": 48.11,
+            "Total Cost": 9620.8,
+            "Plan Rows": 916,
+            "Plan Width": 0,
+            "Disabled": false,
+            "Recheck Cond": "(tokens_792d75cf01821d67 @> '{4146536005757239296,4146536005890801664}'::bigint[])",
+            "Filter": "((scope_id = 'aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa'::uuid) AND test_cost_plans_46928.sealql_match_positions('{\"\\\\x1de01e77cddeda493a638cad5bec363a74e06c27d9e6a4879691169a854050c1\"}'::bytea[], '{0}'::integer[], 2, pos_len_792d75cf01821d67, pos_salt_792d75cf01821d67, pos_stamps_792d75cf01821d67, pos_offsets_792d75cf01821d67, 1))",
+            "Plans": [
+              {
+                "Node Type": "Bitmap Index Scan",
+                "Parent Relationship": "Outer",
+                "Parallel Aware": false,
+                "Async Capable": false,
+                "Index Name": "seal_e66dc2708e915b65_gin",
+                "Startup Cost": 0,
+                "Total Cost": 47.88,
+                "Plan Rows": 2747,
+                "Plan Width": 0,
+                "Disabled": false,
+                "Index Cond": "(tokens_792d75cf01821d67 @> '{4146536005757239296,4146536005890801664}'::bigint[])"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  {
+    "name": "starts",
+    "cost": 190,
+    "nodes": [
+      "Aggregate",
+      "Bitmap Heap Scan",
+      "Bitmap Index Scan"
+    ],
+    "plan": {
+      "Plan": {
+        "Node Type": "Aggregate",
+        "Strategy": "Plain",
+        "Partial Mode": "Simple",
+        "Parallel Aware": false,
+        "Async Capable": false,
+        "Startup Cost": 9726.1,
+        "Total Cost": 9726.12,
+        "Plan Rows": 1,
+        "Plan Width": 32,
+        "Disabled": false,
+        "Plans": [
+          {
+            "Node Type": "Bitmap Heap Scan",
+            "Parent Relationship": "Outer",
+            "Parallel Aware": false,
+            "Async Capable": false,
+            "Relation Name": "customers_seal_index",
+            "Alias": "__seal_idx",
+            "Startup Cost": 48.11,
+            "Total Cost": 9723.81,
+            "Plan Rows": 916,
+            "Plan Width": 0,
+            "Disabled": false,
+            "Recheck Cond": "(tokens_792d75cf01821d67 @> '{4146536005757239296,4146536005890801664}'::bigint[])",
+            "Filter": "((scope_id = 'aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa'::uuid) AND test_cost_plans_46928.sealql_match_positions('{\"\\\\x1de01e77cddeda493a638cad5bec363a74e06c27d9e6a4879691169a854050c1\"}'::bytea[], '{0}'::integer[], 2, pos_len_792d75cf01821d67, pos_salt_792d75cf01821d67, pos_stamps_792d75cf01821d67, pos_offsets_792d75cf01821d67, 1))",
+            "Plans": [
+              {
+                "Node Type": "Bitmap Index Scan",
+                "Parent Relationship": "Outer",
+                "Parallel Aware": false,
+                "Async Capable": false,
+                "Index Name": "seal_e66dc2708e915b65_gin",
+                "Startup Cost": 0,
+                "Total Cost": 47.88,
+                "Plan Rows": 2747,
+                "Plan Width": 0,
+                "Disabled": false,
+                "Index Cond": "(tokens_792d75cf01821d67 @> '{4146536005757239296,4146536005890801664}'::bigint[])"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  {
+    "name": "sub_rare",
+    "cost": 110,
+    "nodes": [
+      "Aggregate",
+      "Bitmap Heap Scan",
+      "Bitmap Index Scan"
+    ],
+    "plan": {
+      "Plan": {
+        "Node Type": "Aggregate",
+        "Strategy": "Plain",
+        "Partial Mode": "Simple",
+        "Parallel Aware": false,
+        "Async Capable": false,
+        "Startup Cost": 51.39,
+        "Total Cost": 51.4,
+        "Plan Rows": 1,
+        "Plan Width": 32,
+        "Disabled": false,
+        "Plans": [
+          {
+            "Node Type": "Bitmap Heap Scan",
+            "Parent Relationship": "Outer",
+            "Parallel Aware": false,
+            "Async Capable": false,
+            "Relation Name": "customers_seal_index",
+            "Alias": "__seal_idx",
+            "Startup Cost": 47.09,
+            "Total Cost": 51.38,
+            "Plan Rows": 1,
+            "Plan Width": 0,
+            "Disabled": false,
+            "Recheck Cond": "(tokens_a639b11c8130dcf7 @> '{3760032929334362112,3760032929599389696,3760032929758052352}'::bigint[])",
+            "Filter": "((scope_id = 'aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa'::uuid) AND test_cost_plans_46928.sealql_match_positions('{\"\\\\x622049be394403ca0ec90f3934f0b8305dc5544e5c6ae5f09479a7c372e83214\",\"\\\\x2c561389724750b2e195359ca129f5a88f7b1aa225a79afd8c9eda8cba7078c1\"}'::bytea[], '{0,1}'::integer[], 3, pos_len_a639b11c8130dcf7, pos_salt_a639b11c8130dcf7, pos_stamps_a639b11c8130dcf7, pos_offsets_a639b11c8130dcf7, 0))",
+            "Plans": [
+              {
+                "Node Type": "Bitmap Index Scan",
+                "Parent Relationship": "Outer",
+                "Parallel Aware": false,
+                "Async Capable": false,
+                "Index Name": "seal_e66dc2708e915b65_gin",
+                "Startup Cost": 0,
+                "Total Cost": 47.09,
+                "Plan Rows": 1,
+                "Plan Width": 0,
+                "Disabled": false,
+                "Index Cond": "(tokens_a639b11c8130dcf7 @> '{3760032929334362112,3760032929599389696,3760032929758052352}'::bigint[])"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  {
+    "name": "sub_rare",
+    "cost": 125,
+    "nodes": [
+      "Aggregate",
+      "Bitmap Heap Scan",
+      "Bitmap Index Scan"
+    ],
+    "plan": {
+      "Plan": {
+        "Node Type": "Aggregate",
+        "Strategy": "Plain",
+        "Partial Mode": "Simple",
+        "Parallel Aware": false,
+        "Async Capable": false,
+        "Startup Cost": 51.42,
+        "Total Cost": 51.44,
+        "Plan Rows": 1,
+        "Plan Width": 32,
+        "Disabled": false,
+        "Plans": [
+          {
+            "Node Type": "Bitmap Heap Scan",
+            "Parent Relationship": "Outer",
+            "Parallel Aware": false,
+            "Async Capable": false,
+            "Relation Name": "customers_seal_index",
+            "Alias": "__seal_idx",
+            "Startup Cost": 47.09,
+            "Total Cost": 51.42,
+            "Plan Rows": 1,
+            "Plan Width": 0,
+            "Disabled": false,
+            "Recheck Cond": "(tokens_a639b11c8130dcf7 @> '{3760032929334362112,3760032929599389696,3760032929758052352}'::bigint[])",
+            "Filter": "((scope_id = 'aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa'::uuid) AND test_cost_plans_46928.sealql_match_positions('{\"\\\\x622049be394403ca0ec90f3934f0b8305dc5544e5c6ae5f09479a7c372e83214\",\"\\\\x2c561389724750b2e195359ca129f5a88f7b1aa225a79afd8c9eda8cba7078c1\"}'::bytea[], '{0,1}'::integer[], 3, pos_len_a639b11c8130dcf7, pos_salt_a639b11c8130dcf7, pos_stamps_a639b11c8130dcf7, pos_offsets_a639b11c8130dcf7, 0))",
+            "Plans": [
+              {
+                "Node Type": "Bitmap Index Scan",
+                "Parent Relationship": "Outer",
+                "Parallel Aware": false,
+                "Async Capable": false,
+                "Index Name": "seal_e66dc2708e915b65_gin",
+                "Startup Cost": 0,
+                "Total Cost": 47.09,
+                "Plan Rows": 1,
+                "Plan Width": 0,
+                "Disabled": false,
+                "Index Cond": "(tokens_a639b11c8130dcf7 @> '{3760032929334362112,3760032929599389696,3760032929758052352}'::bigint[])"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  {
+    "name": "sub_rare",
+    "cost": 150,
+    "nodes": [
+      "Aggregate",
+      "Bitmap Heap Scan",
+      "Bitmap Index Scan"
+    ],
+    "plan": {
+      "Plan": {
+        "Node Type": "Aggregate",
+        "Strategy": "Plain",
+        "Partial Mode": "Simple",
+        "Parallel Aware": false,
+        "Async Capable": false,
+        "Startup Cost": 51.49,
+        "Total Cost": 51.5,
+        "Plan Rows": 1,
+        "Plan Width": 32,
+        "Disabled": false,
+        "Plans": [
+          {
+            "Node Type": "Bitmap Heap Scan",
+            "Parent Relationship": "Outer",
+            "Parallel Aware": false,
+            "Async Capable": false,
+            "Relation Name": "customers_seal_index",
+            "Alias": "__seal_idx",
+            "Startup Cost": 47.09,
+            "Total Cost": 51.48,
+            "Plan Rows": 1,
+            "Plan Width": 0,
+            "Disabled": false,
+            "Recheck Cond": "(tokens_a639b11c8130dcf7 @> '{3760032929334362112,3760032929599389696,3760032929758052352}'::bigint[])",
+            "Filter": "((scope_id = 'aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa'::uuid) AND test_cost_plans_46928.sealql_match_positions('{\"\\\\x622049be394403ca0ec90f3934f0b8305dc5544e5c6ae5f09479a7c372e83214\",\"\\\\x2c561389724750b2e195359ca129f5a88f7b1aa225a79afd8c9eda8cba7078c1\"}'::bytea[], '{0,1}'::integer[], 3, pos_len_a639b11c8130dcf7, pos_salt_a639b11c8130dcf7, pos_stamps_a639b11c8130dcf7, pos_offsets_a639b11c8130dcf7, 0))",
+            "Plans": [
+              {
+                "Node Type": "Bitmap Index Scan",
+                "Parent Relationship": "Outer",
+                "Parallel Aware": false,
+                "Async Capable": false,
+                "Index Name": "seal_e66dc2708e915b65_gin",
+                "Startup Cost": 0,
+                "Total Cost": 47.09,
+                "Plan Rows": 1,
+                "Plan Width": 0,
+                "Disabled": false,
+                "Index Cond": "(tokens_a639b11c8130dcf7 @> '{3760032929334362112,3760032929599389696,3760032929758052352}'::bigint[])"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  {
+    "name": "sub_rare",
+    "cost": 175,
+    "nodes": [
+      "Aggregate",
+      "Bitmap Heap Scan",
+      "Bitmap Index Scan"
+    ],
+    "plan": {
+      "Plan": {
+        "Node Type": "Aggregate",
+        "Strategy": "Plain",
+        "Partial Mode": "Simple",
+        "Parallel Aware": false,
+        "Async Capable": false,
+        "Startup Cost": 51.55,
+        "Total Cost": 51.56,
+        "Plan Rows": 1,
+        "Plan Width": 32,
+        "Disabled": false,
+        "Plans": [
+          {
+            "Node Type": "Bitmap Heap Scan",
+            "Parent Relationship": "Outer",
+            "Parallel Aware": false,
+            "Async Capable": false,
+            "Relation Name": "customers_seal_index",
+            "Alias": "__seal_idx",
+            "Startup Cost": 47.09,
+            "Total Cost": 51.55,
+            "Plan Rows": 1,
+            "Plan Width": 0,
+            "Disabled": false,
+            "Recheck Cond": "(tokens_a639b11c8130dcf7 @> '{3760032929334362112,3760032929599389696,3760032929758052352}'::bigint[])",
+            "Filter": "((scope_id = 'aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa'::uuid) AND test_cost_plans_46928.sealql_match_positions('{\"\\\\x622049be394403ca0ec90f3934f0b8305dc5544e5c6ae5f09479a7c372e83214\",\"\\\\x2c561389724750b2e195359ca129f5a88f7b1aa225a79afd8c9eda8cba7078c1\"}'::bytea[], '{0,1}'::integer[], 3, pos_len_a639b11c8130dcf7, pos_salt_a639b11c8130dcf7, pos_stamps_a639b11c8130dcf7, pos_offsets_a639b11c8130dcf7, 0))",
+            "Plans": [
+              {
+                "Node Type": "Bitmap Index Scan",
+                "Parent Relationship": "Outer",
+                "Parallel Aware": false,
+                "Async Capable": false,
+                "Index Name": "seal_e66dc2708e915b65_gin",
+                "Startup Cost": 0,
+                "Total Cost": 47.09,
+                "Plan Rows": 1,
+                "Plan Width": 0,
+                "Disabled": false,
+                "Index Cond": "(tokens_a639b11c8130dcf7 @> '{3760032929334362112,3760032929599389696,3760032929758052352}'::bigint[])"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  {
+    "name": "sub_rare",
+    "cost": 190,
+    "nodes": [
+      "Aggregate",
+      "Bitmap Heap Scan",
+      "Bitmap Index Scan"
+    ],
+    "plan": {
+      "Plan": {
+        "Node Type": "Aggregate",
+        "Strategy": "Plain",
+        "Partial Mode": "Simple",
+        "Parallel Aware": false,
+        "Async Capable": false,
+        "Startup Cost": 51.59,
+        "Total Cost": 51.6,
+        "Plan Rows": 1,
+        "Plan Width": 32,
+        "Disabled": false,
+        "Plans": [
+          {
+            "Node Type": "Bitmap Heap Scan",
+            "Parent Relationship": "Outer",
+            "Parallel Aware": false,
+            "Async Capable": false,
+            "Relation Name": "customers_seal_index",
+            "Alias": "__seal_idx",
+            "Startup Cost": 47.09,
+            "Total Cost": 51.58,
+            "Plan Rows": 1,
+            "Plan Width": 0,
+            "Disabled": false,
+            "Recheck Cond": "(tokens_a639b11c8130dcf7 @> '{3760032929334362112,3760032929599389696,3760032929758052352}'::bigint[])",
+            "Filter": "((scope_id = 'aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa'::uuid) AND test_cost_plans_46928.sealql_match_positions('{\"\\\\x622049be394403ca0ec90f3934f0b8305dc5544e5c6ae5f09479a7c372e83214\",\"\\\\x2c561389724750b2e195359ca129f5a88f7b1aa225a79afd8c9eda8cba7078c1\"}'::bytea[], '{0,1}'::integer[], 3, pos_len_a639b11c8130dcf7, pos_salt_a639b11c8130dcf7, pos_stamps_a639b11c8130dcf7, pos_offsets_a639b11c8130dcf7, 0))",
+            "Plans": [
+              {
+                "Node Type": "Bitmap Index Scan",
+                "Parent Relationship": "Outer",
+                "Parallel Aware": false,
+                "Async Capable": false,
+                "Index Name": "seal_e66dc2708e915b65_gin",
+                "Startup Cost": 0,
+                "Total Cost": 47.09,
+                "Plan Rows": 1,
+                "Plan Width": 0,
+                "Disabled": false,
+                "Index Cond": "(tokens_a639b11c8130dcf7 @> '{3760032929334362112,3760032929599389696,3760032929758052352}'::bigint[])"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  }
+]

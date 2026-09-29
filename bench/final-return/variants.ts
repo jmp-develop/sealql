@@ -4,7 +4,7 @@ import {registrationOf} from '../../src/adapters/drizzle/v0.45/native.js';
 import {candidatePredicate} from '../../src/core/candidate-sql.js';
 import {compileSearch,type SearchNode} from '../../src/core/search-predicate.js';
 import {profiles} from '../../src/core/search-tokens.js';
-import {stampMigrationSql} from '../../src/core/stamp-sql.js';
+import {stampMigrationSql} from './variant-stamp-baseline.js';
 import {companionIndexName} from '../../src/core/companion-layout.js';
 import type {Sealer} from '../../src/index.js';
 import {column,join,pgsql,type Fragment,type Node as SqlNode} from '../../src/core/sql-fragment.js';
@@ -79,6 +79,9 @@ function catalogOperators(source:string):string{
 /** 4d: replace only fallback; keep API projection, quick, keyset and final LIMIT unchanged. */
 export function researchFallback(query:Query,coarse:Query):Query{
  if(!/\bwith sample as materialized\s*\(/i.test(query.text))return query;
+ // The adopted continuation already has the research fallback and preserves
+ // partial quick matches; only transform the historical restart shape.
+ if(!/select row_id from quick where/i.test(query.text))return query;
  const sample=cte(query.text,'sample'),quick=cte(query.text,'quick'),fallback=cte(query.text,'fallback');
  const s=/^\s*select "row_id",([\s\S]+?) from ([\s\S]+?) as "c"\s+where ([\s\S]+?) order by "c"\."row_id" limit \$\d+\s*$/i.exec(sample.body);
  const q=/^\s*select "c"\."row_id" from sample as "c" where ([\s\S]+?) order by "c"\."row_id" limit (\$\d+)\s*$/i.exec(quick.body);
