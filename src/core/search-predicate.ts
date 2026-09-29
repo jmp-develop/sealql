@@ -3,7 +3,7 @@ import { encodeField, type FieldSpec } from './field-codec.js';
 import { compactText, normalizeText, searchPieces, searchTokens, type SearchProfile, type SearchTokenCache } from './search-tokens.js';
 import type { Keyring } from './field-cipher.js';
 import type { SealedModelDefinition } from './sealed-model.js';
-import { compileStampQuery, parseLike, type StampQuery } from './stamp-query.js';
+import { compileStampQuery, normalizeLike, parseLike, type StampQuery } from './stamp-query.js';
 
 export type SearchOperator = 'eq' | 'contains' | 'startsWith' | 'endsWith' | 'like';
 export type SearchNode = { op: SearchOperator; field: string; value: unknown } | { op: 'all'; children: SearchNode[] } | { op: 'any'; children: SearchNode[] };
@@ -37,7 +37,9 @@ export async function compileSearch(node: SearchNode, definition: SealedModelDef
   const profile = storedProfiles.find(profile => profile.fieldId === id && profile.mode === mode);
   ensure(profile, 'INVALID_SCHEMA');
   const normalized = normalizeLeaf(node, spec, profile);
-  const pieces = node.op === 'like' ? likeAnchors(node.value as string, profile) : searchPieces(profile, node.value, node.op === 'eq' ? 'write' : node.op);
+  const simpleLike = node.op === 'like' ? normalizeLike(node.value as string, profile) : undefined;
+  const pieces = simpleLike ? searchPieces(profile, simpleLike.value, simpleLike.op)
+    : node.op === 'like' ? likeAnchors(node.value as string, profile) : searchPieces(profile, node.value, node.op === 'eq' ? 'write' : node.op);
   ensure(pieces.length > 0 || node.op === 'eq', 'QUERY_TOO_BROAD');
   const tokens = await searchTokens(ring, scopeId, profile, pieces, tokenCache, checkpoint);
   const proof = await compileStampQuery(ring, profile, scopeId, node);

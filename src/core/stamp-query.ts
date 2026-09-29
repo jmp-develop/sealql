@@ -5,7 +5,7 @@ import { compactText, exactBytes, stampKey } from './search-stamps.js';
 import { type SearchProfile } from './search-tokens.js';
 export type LikePart = '%' | '_' | { text: string };
 export type ProofPattern = ('%' | '_' | { k: number[]; o: number[]; n: number })[];
-export interface StampQuery { keys: Uint8Array[]; offsets: number[]; length: number; pattern?: ProofPattern }
+export interface StampQuery { keys: Uint8Array[]; offsets: number[]; length: number; pattern?: ProofPattern; affix?: 0 | 1 | 2; whole?: boolean }
 export function parseLike(pattern: string, profile: SearchProfile): LikePart[] {
   const result: LikePart[] = []; let run = '';
   const flush = () => { if (run) { const text = compactText(run, profile); if (text) result.push({ text }); run = ''; } };
@@ -19,6 +19,14 @@ export function parseLike(pattern: string, profile: SearchProfile): LikePart[] {
   const literals = result.filter((part): part is { text: string } => typeof part !== 'string');
   ensure(literals.length > 0 && literals.every(part => Array.from(part.text).length >= 2), 'QUERY_TOO_BROAD');
   return result;
+}
+/** A single literal with only edge % wildcards is a positional predicate. */
+export function normalizeLike(pattern: string, profile: SearchProfile): {value: string; op: 'contains' | 'startsWith' | 'endsWith'; whole: boolean} | undefined {
+  const parts = parseLike(pattern, profile);
+  const literals = parts.filter((part): part is {text: string} => typeof part !== 'string');
+  if (literals.length !== 1 || parts.includes('_')) return undefined;
+  const leading = parts[0] === '%', trailing = parts.at(-1) === '%';
+  return {value: literals[0].text, op: leading ? trailing ? 'contains' : 'endsWith' : 'startsWith', whole: !leading && !trailing};
 }
 const windows = (length: number) => {
   const result: number[] = [];
@@ -48,13 +56,20 @@ export async function compileStampQuery(ring: Keyring, profile: SearchProfile, s
     return { k: ids, o: offsets, n: chars.length };
   };
   if (node.op === 'like') {
+    const simple = normalizeLike(node.value as string, profile);
+    if (simple) {
+      const part = await run(simple.value);
+      return {keys: part.k.map(index => keys[index]), offsets: part.o, length: part.n,
+        affix: simple.op === 'startsWith' ? 1 : simple.op === 'endsWith' ? 2 : 0, ...(simple.whole ? {whole: true} : {})};
+    }
     const pattern: ProofPattern = [];
     for (const part of parseLike(node.value as string, profile)) pattern.push(typeof part === 'string' ? part : await run(part.text));
     return { keys, offsets: [], length: 0, pattern };
   }
   const part = await run(compactText(node.value as string, profile));
   // Position requests carry one key and an independent forward cursor per window.
-  return { keys: part.k.map(index => keys[index]), offsets: part.o, length: part.n };
+  return { keys: part.k.map(index => keys[index]), offsets: part.o, length: part.n,
+    affix: node.op === 'startsWith' ? 1 : node.op === 'endsWith' ? 2 : 0 };
 }
 /** PostgreSQL text-array encoding, independent of pg/postgres-js bytea[] adapters. */
 export const keyArray = (keys: Uint8Array[]): string => `{${keys.map(key => `"\\\\x${hex(key)}"`).join(',')}}`;

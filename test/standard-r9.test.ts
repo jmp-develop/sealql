@@ -67,7 +67,7 @@ test('DB proofs match plaintext across operators, types, nulls, mutations and JO
       ['45',m=>m.body.contains(base.slice(0,45)),v=>compact(v).includes(compact(base.slice(0,45)))],
       ['nested',m=>m.or(m.and(m.body.contains(pair),m.body.endsWith(pair)),m.body.eq(base)),v=>(compact(v).includes(pair)&&compact(v).endsWith(pair))||compact(v)===compact(base)],
     ];
-    const patterns=[`${escaped(pair)}%${escaped(pair)}`,`${escaped(pair)}_${escaped(pair)}`,`${escaped(pair)}%${escaped(pair)}%${escaped(pair)}`,
+    const patterns=[escaped(base),`${escaped(pair)}%`,`%${escaped(pair)}`,`${escaped(pair)}%${escaped(pair)}`,`${escaped(pair)}_${escaped(pair)}`,`${escaped(pair)}%${escaped(pair)}%${escaped(pair)}`,
       `%${escaped(pair)}%`,`%${escaped(pair)}_`,`${escaped(pair)}\\%${escaped(pair)}`,`${escaped(pair)}\\\\${escaped(pair)}`,`%${escaped(pair)}%%_%%`];
     for(const pattern of [`${pair}%${single}%${pair}`,`${pair}_${single}`,`${single}%${pair}`,`${pair}%😀`])
       await assert.rejects(sealed.count(db,seal,{scope,match:m=>m.body.like(pattern)}),{code:'QUERY_TOO_BROAD'});

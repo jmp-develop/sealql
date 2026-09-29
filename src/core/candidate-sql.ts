@@ -12,7 +12,7 @@ function tokenPredicate(alias: string, leaf: Extract<CompiledSearch, { op: 'leaf
 }
 
 function leafPredicate(schema: string, alias: string, leaf: Extract<CompiledSearch, { op: 'leaf' }>['leaf'], mapped: ProfileStorage): Fragment {
-  const { proof, node } = leaf;
+  const { proof } = leaf;
   const col = (name: string) => ident(alias, name);
   let exact: Fragment;
   if (mapped.exact) {
@@ -24,7 +24,8 @@ function leafPredicate(schema: string, alias: string, leaf: Extract<CompiledSear
     exact = proof.pattern ? q`${ident(schema, 'sealql_match_like')}(${keyArray(proof.keys)}::bytea[],${patternProgram(proof.pattern)}::integer[],
       ${col(stream.length)},${col(stream.salt)},${col(stream.stamps)},${col(stream.offsets)})`
       : q`${ident(schema, 'sealql_match_positions')}(${keyArray(proof.keys)}::bytea[],${proof.offsets}::integer[],${proof.length},
-        ${col(stream.length)},${col(stream.salt)},${col(stream.stamps)},${col(stream.offsets)},${node.op === 'startsWith' ? 1 : node.op === 'endsWith' ? 2 : 0})`;
+        ${col(stream.length)},${col(stream.salt)},${col(stream.stamps)},${col(stream.offsets)},${proof.affix ?? 0})`;
+    if (proof.whole) exact = q`(${col(stream.length)}=${proof.length} and ${exact})`;
   }
   return q`(${tokenPredicate(alias, leaf, mapped)} and ${exact})`;
 }
