@@ -1,0 +1,854 @@
+{
+  "fixture": "bench_realistic_100k.customers",
+  "rows": 100000,
+  "seed": 714029,
+  "identityDigest": "0d1df9a1eaddabac111577bf771ca3bc18721db3e651f3ab809644529a3636c8",
+  "cipherOverheadBytes": 29,
+  "historicalSourceHash": "025edd4fbdde6a1d02643f6992c89480567529894193dad40706100d1de45630",
+  "readOnly": true,
+  "formulas": {
+    "minOldN": "ceil((substringTokenCount + 1) / 2), for n>=2; adjacent+skip+start+end at most 2n-1 tokens",
+    "genericOld": "s in [0,b-minOldN] (normalization-width stable, ASCII spaces, nonspace widths 1..4)",
+    "genericNew": "s in [max(0,b-4n),b-n]",
+    "hangulNew": "s=b-3n; valid only if all nonspaces are 3-byte characters",
+    "referenceAttack": "10,000 disjoint reference rows -> 10,000 victims; old signature b,t; new b,t,n; unique reference space count is a prediction, not a guarantee"
+  },
+  "fields": {
+    "memo": {
+      "counts": {
+        "rows": 100000,
+        "spaceOnlyWhitespace": 100000,
+        "normalizationWidthStable": 100000,
+        "pureHangulAndSpace": 0,
+        "threeByteAndSpace": 0,
+        "asciiAndSpace": 19416,
+        "naiveHangulFormulaCorrect": 0,
+        "naiveHangulFormulaNonnegative": 1979,
+        "oldGenericExact": 0,
+        "newGenericExact": 0,
+        "newRangeTighter": 3937,
+        "oldIncludesTruth": 100000,
+        "newIncludesTruth": 100000,
+        "asciiSuffix5AndHangul": 78144,
+        "asciiSuffix5FormulaCorrect": 78144
+      },
+      "actualSpaces": {
+        "2": 98,
+        "3": 97462,
+        "19": 3,
+        "20": 2437
+      },
+      "algebra": {
+        "oldPossibleSpaceCounts": {
+          "min": 4,
+          "median": 18,
+          "max": 136,
+          "mean": 17.84337
+        },
+        "newPossibleSpaceCounts": {
+          "min": 4,
+          "median": 18,
+          "max": 110,
+          "mean": 17.21261
+        },
+        "oldMinN": {
+          "min": 10,
+          "median": 12,
+          "max": 35,
+          "mean": 14.16016
+        },
+        "actualN": {
+          "min": 11,
+          "median": 12,
+          "max": 61,
+          "mean": 14.79092
+        },
+        "threeByteSubsetOldPossibleSpaceCounts": null,
+        "hangulPlusFiveAsciiSubset": {
+          "rows": 78144,
+          "oldExact": 98,
+          "newExact": 78144,
+          "oldPossibleCountSum": 156200,
+          "oldMaxPossibleCount": 3
+        }
+      },
+      "referencePrediction": {
+        "bytes": {
+          "referenceRows": 10000,
+          "victimRows": 10000,
+          "covered": 10000,
+          "uniquePredictionRows": 10000,
+          "uniqueCorrectRows": 10000,
+          "uniqueWrongRows": 0,
+          "ambiguousRows": 0,
+          "missingRows": 0,
+          "rangeIncludesTruthRows": 10000,
+          "meanCoveredRangeWidth": 1,
+          "maxRangeWidth": 1
+        },
+        "bytesTokens": {
+          "referenceRows": 10000,
+          "victimRows": 10000,
+          "covered": 9997,
+          "uniquePredictionRows": 9997,
+          "uniqueCorrectRows": 9997,
+          "uniqueWrongRows": 0,
+          "ambiguousRows": 0,
+          "missingRows": 3,
+          "rangeIncludesTruthRows": 9997,
+          "meanCoveredRangeWidth": 1,
+          "maxRangeWidth": 1
+        },
+        "bytesTokensN": {
+          "referenceRows": 10000,
+          "victimRows": 10000,
+          "covered": 9997,
+          "uniquePredictionRows": 9997,
+          "uniqueCorrectRows": 9997,
+          "uniqueWrongRows": 0,
+          "ambiguousRows": 0,
+          "missingRows": 3,
+          "rangeIncludesTruthRows": 9997,
+          "meanCoveredRangeWidth": 1,
+          "maxRangeWidth": 1
+        },
+        "tokensN": {
+          "referenceRows": 10000,
+          "victimRows": 10000,
+          "covered": 9998,
+          "uniquePredictionRows": 5133,
+          "uniqueCorrectRows": 5132,
+          "uniqueWrongRows": 1,
+          "ambiguousRows": 4865,
+          "missingRows": 2,
+          "rangeIncludesTruthRows": 9997,
+          "meanCoveredRangeWidth": 1.4865973194638928,
+          "maxRangeWidth": 2
+        },
+        "padded32TokensN": {
+          "referenceRows": 10000,
+          "victimRows": 10000,
+          "covered": 9997,
+          "uniquePredictionRows": 9997,
+          "uniqueCorrectRows": 9997,
+          "uniqueWrongRows": 0,
+          "ambiguousRows": 0,
+          "missingRows": 3,
+          "rangeIncludesTruthRows": 9997,
+          "meanCoveredRangeWidth": 1,
+          "maxRangeWidth": 1
+        },
+        "padded64TokensN": {
+          "referenceRows": 10000,
+          "victimRows": 10000,
+          "covered": 9998,
+          "uniquePredictionRows": 5133,
+          "uniqueCorrectRows": 5132,
+          "uniqueWrongRows": 1,
+          "ambiguousRows": 4865,
+          "missingRows": 2,
+          "rangeIncludesTruthRows": 9997,
+          "meanCoveredRangeWidth": 1.4865973194638928,
+          "maxRangeWidth": 2
+        },
+        "padded128TokensN": {
+          "referenceRows": 10000,
+          "victimRows": 10000,
+          "covered": 9998,
+          "uniquePredictionRows": 5133,
+          "uniqueCorrectRows": 5132,
+          "uniqueWrongRows": 1,
+          "ambiguousRows": 4865,
+          "missingRows": 2,
+          "rangeIncludesTruthRows": 9997,
+          "meanCoveredRangeWidth": 1.4865973194638928,
+          "maxRangeWidth": 2
+        }
+      },
+      "padding": {
+        "32": {
+          "innerLengthBytes": 4,
+          "currentCipherBytes": 6000353,
+          "paddedCipherBytes": 8293408,
+          "extraBytes": {
+            "min": 4,
+            "median": 32,
+            "max": 35,
+            "mean": 22.93055
+          },
+          "ratio": 1.3821533499779097,
+          "strongAttackerPossibleSpaceCounts": {
+            "min": 3,
+            "median": 32,
+            "max": 32,
+            "mean": 21.84158
+          }
+        },
+        "64": {
+          "innerLengthBytes": 4,
+          "currentCipherBytes": 6000353,
+          "paddedCipherBytes": 9612320,
+          "extraBytes": {
+            "min": 32,
+            "median": 35,
+            "max": 42,
+            "mean": 36.11967
+          },
+          "ratio": 1.6019590847405145,
+          "strongAttackerPossibleSpaceCounts": {
+            "min": 32,
+            "median": 35,
+            "max": 59,
+            "mean": 36.53346
+          }
+        },
+        "128": {
+          "innerLengthBytes": 4,
+          "currentCipherBytes": 6000353,
+          "paddedCipherBytes": 16012320,
+          "extraBytes": {
+            "min": 96,
+            "median": 99,
+            "max": 106,
+            "mean": 100.11967
+          },
+          "ratio": 2.6685629995435267,
+          "strongAttackerPossibleSpaceCounts": {
+            "min": 96,
+            "median": 99,
+            "max": 123,
+            "mean": 100.53346
+          }
+        }
+      },
+      "histograms": {
+        "spaces": {
+          "2": 98,
+          "3": 97462,
+          "19": 3,
+          "20": 2437
+        },
+        "byteWidths": {
+          "5,0,7,0": 48846,
+          "5,0,6,0": 19486,
+          "5,0,8,0": 9812,
+          "24,0,0,0": 9710,
+          "20,0,0,0": 9706,
+          "5,1,43,0": 1225,
+          "5,1,42,0": 530,
+          "20,1,36,0": 227,
+          "24,1,36,0": 234,
+          "5,1,44,0": 224
+        },
+        "oldBounds": {
+          "0:17": 48743,
+          "0:15": 19483,
+          "0:19": 9810,
+          "0:3": 17929,
+          "0:4": 1448,
+          "0:132": 1209,
+          "0:131": 263,
+          "0:118": 205,
+          "0:119": 254,
+          "0:134": 216,
+          "0:16": 101,
+          "0:5": 38,
+          "0:130": 270,
+          "0:133": 13,
+          "0:18": 5,
+          "0:120": 2,
+          "0:135": 8,
+          "0:20": 2,
+          "0:6": 1
+        },
+        "newBounds": {
+          "0:17": 48748,
+          "0:15": 19486,
+          "0:19": 9812,
+          "0:3": 19416,
+          "0:107": 1222,
+          "0:105": 530,
+          "0:93": 461,
+          "0:109": 224,
+          "0:16": 98,
+          "0:106": 3
+        }
+      },
+      "signatureHistogram": {
+        "29,23,12,3": 48146,
+        "26,21,11,3": 19303,
+        "32,25,13,3": 9735,
+        "27,46,24,3": 8289,
+        "23,38,20,3": 804,
+        "23,39,20,3": 8836,
+        "27,45,24,3": 1209,
+        "26,20,11,3": 180,
+        "156,46,49,20": 1209,
+        "153,43,48,20": 256,
+        "29,22,12,3": 597,
+        "150,62,57,20": 205,
+        "32,24,13,3": 75,
+        "154,69,61,20": 212,
+        "159,48,50,20": 216,
+        "28,23,12,2": 95,
+        "27,43,24,3": 36,
+        "153,44,48,20": 270,
+        "27,44,24,3": 173,
+        "23,37,20,3": 55,
+        "28,22,12,2": 3,
+        "156,45,49,20": 13,
+        "154,68,61,20": 20,
+        "23,36,20,3": 11,
+        "150,60,57,20": 2,
+        "29,21,12,3": 5,
+        "150,61,57,20": 20,
+        "27,42,24,3": 2,
+        "154,67,61,20": 1,
+        "159,47,50,20": 8,
+        "153,42,48,20": 4,
+        "26,19,11,3": 2,
+        "155,46,49,19": 3,
+        "26,18,11,3": 1,
+        "154,66,61,20": 1,
+        "32,23,13,3": 1,
+        "32,22,13,3": 1,
+        "27,41,24,3": 1
+      },
+      "validation": {
+        "historicalWebCryptoRows": 20,
+        "coverageAssertions": 100000
+      }
+    },
+    "address": {
+      "counts": {
+        "rows": 100000,
+        "spaceOnlyWhitespace": 100000,
+        "normalizationWidthStable": 100000,
+        "pureHangulAndSpace": 0,
+        "threeByteAndSpace": 0,
+        "asciiAndSpace": 0,
+        "naiveHangulFormulaCorrect": 0,
+        "naiveHangulFormulaNonnegative": 6549,
+        "oldGenericExact": 0,
+        "newGenericExact": 0,
+        "newRangeTighter": 144,
+        "oldIncludesTruth": 100000,
+        "newIncludesTruth": 100000,
+        "asciiSuffix5AndHangul": 0,
+        "asciiSuffix5FormulaCorrect": 0
+      },
+      "actualSpaces": {
+        "3": 16821,
+        "4": 83179
+      },
+      "algebra": {
+        "oldPossibleSpaceCounts": {
+          "min": 8,
+          "median": 25,
+          "max": 29,
+          "mean": 20.66181
+        },
+        "newPossibleSpaceCounts": {
+          "min": 8,
+          "median": 25,
+          "max": 29,
+          "mean": 20.66037
+        },
+        "oldMinN": {
+          "min": 11,
+          "median": 14,
+          "max": 18,
+          "mean": 14.89514
+        },
+        "actualN": {
+          "min": 11,
+          "median": 14,
+          "max": 18,
+          "mean": 14.89658
+        },
+        "threeByteSubsetOldPossibleSpaceCounts": null,
+        "hangulPlusFiveAsciiSubset": {
+          "rows": 0,
+          "oldExact": 0,
+          "newExact": 0,
+          "oldPossibleCountSum": 0,
+          "oldMaxPossibleCount": 0
+        }
+      },
+      "referencePrediction": {
+        "bytes": {
+          "referenceRows": 10000,
+          "victimRows": 10000,
+          "covered": 10000,
+          "uniquePredictionRows": 10000,
+          "uniqueCorrectRows": 10000,
+          "uniqueWrongRows": 0,
+          "ambiguousRows": 0,
+          "missingRows": 0,
+          "rangeIncludesTruthRows": 10000,
+          "meanCoveredRangeWidth": 1,
+          "maxRangeWidth": 1
+        },
+        "bytesTokens": {
+          "referenceRows": 10000,
+          "victimRows": 10000,
+          "covered": 10000,
+          "uniquePredictionRows": 10000,
+          "uniqueCorrectRows": 10000,
+          "uniqueWrongRows": 0,
+          "ambiguousRows": 0,
+          "missingRows": 0,
+          "rangeIncludesTruthRows": 10000,
+          "meanCoveredRangeWidth": 1,
+          "maxRangeWidth": 1
+        },
+        "bytesTokensN": {
+          "referenceRows": 10000,
+          "victimRows": 10000,
+          "covered": 10000,
+          "uniquePredictionRows": 10000,
+          "uniqueCorrectRows": 10000,
+          "uniqueWrongRows": 0,
+          "ambiguousRows": 0,
+          "missingRows": 0,
+          "rangeIncludesTruthRows": 10000,
+          "meanCoveredRangeWidth": 1,
+          "maxRangeWidth": 1
+        },
+        "tokensN": {
+          "referenceRows": 10000,
+          "victimRows": 10000,
+          "covered": 10000,
+          "uniquePredictionRows": 9972,
+          "uniqueCorrectRows": 9972,
+          "uniqueWrongRows": 0,
+          "ambiguousRows": 28,
+          "missingRows": 0,
+          "rangeIncludesTruthRows": 10000,
+          "meanCoveredRangeWidth": 1.0028,
+          "maxRangeWidth": 2
+        },
+        "padded32TokensN": {
+          "referenceRows": 10000,
+          "victimRows": 10000,
+          "covered": 10000,
+          "uniquePredictionRows": 10000,
+          "uniqueCorrectRows": 10000,
+          "uniqueWrongRows": 0,
+          "ambiguousRows": 0,
+          "missingRows": 0,
+          "rangeIncludesTruthRows": 10000,
+          "meanCoveredRangeWidth": 1,
+          "maxRangeWidth": 1
+        },
+        "padded64TokensN": {
+          "referenceRows": 10000,
+          "victimRows": 10000,
+          "covered": 10000,
+          "uniquePredictionRows": 9972,
+          "uniqueCorrectRows": 9972,
+          "uniqueWrongRows": 0,
+          "ambiguousRows": 28,
+          "missingRows": 0,
+          "rangeIncludesTruthRows": 10000,
+          "meanCoveredRangeWidth": 1.0028,
+          "maxRangeWidth": 2
+        },
+        "padded128TokensN": {
+          "referenceRows": 10000,
+          "victimRows": 10000,
+          "covered": 10000,
+          "uniquePredictionRows": 9972,
+          "uniqueCorrectRows": 9972,
+          "uniqueWrongRows": 0,
+          "ambiguousRows": 28,
+          "missingRows": 0,
+          "rangeIncludesTruthRows": 10000,
+          "meanCoveredRangeWidth": 1.0028,
+          "maxRangeWidth": 2
+        }
+      },
+      "padding": {
+        "32": {
+          "innerLengthBytes": 4,
+          "currentCipherBytes": 6355695,
+          "paddedCipherBytes": 8231424,
+          "extraBytes": {
+            "min": 5,
+            "median": 22,
+            "max": 29,
+            "mean": 18.75729
+          },
+          "ratio": 1.2951257100915006,
+          "strongAttackerPossibleSpaceCounts": {
+            "min": 6,
+            "median": 23,
+            "max": 30,
+            "mean": 19.58908
+          }
+        },
+        "64": {
+          "innerLengthBytes": 4,
+          "currentCipherBytes": 6355695,
+          "paddedCipherBytes": 9300000,
+          "extraBytes": {
+            "min": 21,
+            "median": 27,
+            "max": 42,
+            "mean": 29.44305
+          },
+          "ratio": 1.4632546086619953,
+          "strongAttackerPossibleSpaceCounts": {
+            "min": 22,
+            "median": 28,
+            "max": 42,
+            "mean": 30.27484
+          }
+        },
+        "128": {
+          "innerLengthBytes": 4,
+          "currentCipherBytes": 6355695,
+          "paddedCipherBytes": 15700000,
+          "extraBytes": {
+            "min": 85,
+            "median": 91,
+            "max": 106,
+            "mean": 93.44305
+          },
+          "ratio": 2.47022552214982,
+          "strongAttackerPossibleSpaceCounts": {
+            "min": 86,
+            "median": 92,
+            "max": 106,
+            "mean": 94.27484
+          }
+        }
+      },
+      "histograms": {
+        "spaces": {
+          "3": 16821,
+          "4": 83179
+        },
+        "byteWidths": {
+          "15,0,2,0": 15195,
+          "15,1,2,0": 14882,
+          "3,0,10,0": 29891,
+          "3,0,11,0": 15075,
+          "2,0,11,0": 1482,
+          "2,0,10,0": 2896,
+          "3,0,12,0": 15092,
+          "2,0,12,0": 1556,
+          "14,0,2,0": 1479,
+          "14,1,2,0": 1544,
+          "1,0,10,0": 313,
+          "1,0,11,0": 170,
+          "13,0,2,0": 147,
+          "13,1,2,0": 146,
+          "1,0,12,0": 132
+        },
+        "oldBounds": {
+          "0:7": 16677,
+          "0:9": 16572,
+          "0:24": 33100,
+          "0:26": 16727,
+          "0:28": 16780,
+          "0:8": 144
+        },
+        "newBounds": {
+          "0:7": 16821,
+          "0:9": 16572,
+          "0:24": 33100,
+          "0:26": 16727,
+          "0:28": 16780
+        }
+      },
+      "signatureHistogram": {
+        "24,32,17,3": 15051,
+        "27,35,18,4": 14738,
+        "37,25,13,4": 29579,
+        "40,27,14,4": 14941,
+        "39,25,13,4": 1482,
+        "36,23,12,4": 2896,
+        "43,29,15,4": 14941,
+        "42,27,14,4": 1556,
+        "24,31,17,3": 144,
+        "23,30,16,3": 1479,
+        "26,33,17,4": 1544,
+        "40,26,14,4": 134,
+        "37,24,13,4": 312,
+        "35,21,11,4": 313,
+        "38,23,12,4": 170,
+        "22,28,15,3": 147,
+        "25,31,16,4": 146,
+        "27,34,18,4": 144,
+        "43,28,15,4": 151,
+        "41,25,13,4": 132
+      },
+      "validation": {
+        "historicalWebCryptoRows": 20,
+        "coverageAssertions": 100000
+      }
+    },
+    "name": {
+      "counts": {
+        "rows": 100000,
+        "spaceOnlyWhitespace": 100000,
+        "normalizationWidthStable": 100000,
+        "pureHangulAndSpace": 0,
+        "threeByteAndSpace": 0,
+        "asciiAndSpace": 16046,
+        "naiveHangulFormulaCorrect": 0,
+        "naiveHangulFormulaNonnegative": 0,
+        "oldGenericExact": 0,
+        "newGenericExact": 0,
+        "newRangeTighter": 97,
+        "oldIncludesTruth": 100000,
+        "newIncludesTruth": 100000,
+        "asciiSuffix5AndHangul": 68143,
+        "asciiSuffix5FormulaCorrect": 68143
+      },
+      "actualSpaces": {
+        "1": 76056,
+        "2": 23944
+      },
+      "algebra": {
+        "oldPossibleSpaceCounts": {
+          "min": 3,
+          "median": 8,
+          "max": 11,
+          "mean": 7.04102
+        },
+        "newPossibleSpaceCounts": {
+          "min": 3,
+          "median": 8,
+          "max": 10,
+          "mean": 7.04004
+        },
+        "oldMinN": {
+          "min": 7,
+          "median": 8,
+          "max": 15,
+          "mean": 9.3537
+        },
+        "actualN": {
+          "min": 8,
+          "median": 8,
+          "max": 15,
+          "mean": 9.35468
+        },
+        "threeByteSubsetOldPossibleSpaceCounts": null,
+        "hangulPlusFiveAsciiSubset": {
+          "rows": 68143,
+          "oldExact": 68138,
+          "newExact": 68143,
+          "oldPossibleCountSum": 68148,
+          "oldMaxPossibleCount": 2
+        }
+      },
+      "referencePrediction": {
+        "bytes": {
+          "referenceRows": 10000,
+          "victimRows": 10000,
+          "covered": 10000,
+          "uniquePredictionRows": 765,
+          "uniqueCorrectRows": 765,
+          "uniqueWrongRows": 0,
+          "ambiguousRows": 9235,
+          "missingRows": 0,
+          "rangeIncludesTruthRows": 10000,
+          "meanCoveredRangeWidth": 1.9235,
+          "maxRangeWidth": 2
+        },
+        "bytesTokens": {
+          "referenceRows": 10000,
+          "victimRows": 10000,
+          "covered": 9994,
+          "uniquePredictionRows": 9994,
+          "uniqueCorrectRows": 9994,
+          "uniqueWrongRows": 0,
+          "ambiguousRows": 0,
+          "missingRows": 6,
+          "rangeIncludesTruthRows": 9994,
+          "meanCoveredRangeWidth": 1,
+          "maxRangeWidth": 1
+        },
+        "bytesTokensN": {
+          "referenceRows": 10000,
+          "victimRows": 10000,
+          "covered": 9994,
+          "uniquePredictionRows": 9994,
+          "uniqueCorrectRows": 9994,
+          "uniqueWrongRows": 0,
+          "ambiguousRows": 0,
+          "missingRows": 6,
+          "rangeIncludesTruthRows": 9994,
+          "meanCoveredRangeWidth": 1,
+          "maxRangeWidth": 1
+        },
+        "tokensN": {
+          "referenceRows": 10000,
+          "victimRows": 10000,
+          "covered": 9994,
+          "uniquePredictionRows": 9994,
+          "uniqueCorrectRows": 9994,
+          "uniqueWrongRows": 0,
+          "ambiguousRows": 0,
+          "missingRows": 6,
+          "rangeIncludesTruthRows": 9994,
+          "meanCoveredRangeWidth": 1,
+          "maxRangeWidth": 1
+        },
+        "padded32TokensN": {
+          "referenceRows": 10000,
+          "victimRows": 10000,
+          "covered": 9994,
+          "uniquePredictionRows": 9994,
+          "uniqueCorrectRows": 9994,
+          "uniqueWrongRows": 0,
+          "ambiguousRows": 0,
+          "missingRows": 6,
+          "rangeIncludesTruthRows": 9994,
+          "meanCoveredRangeWidth": 1,
+          "maxRangeWidth": 1
+        },
+        "padded64TokensN": {
+          "referenceRows": 10000,
+          "victimRows": 10000,
+          "covered": 9994,
+          "uniquePredictionRows": 9994,
+          "uniqueCorrectRows": 9994,
+          "uniqueWrongRows": 0,
+          "ambiguousRows": 0,
+          "missingRows": 6,
+          "rangeIncludesTruthRows": 9994,
+          "meanCoveredRangeWidth": 1,
+          "maxRangeWidth": 1
+        },
+        "padded128TokensN": {
+          "referenceRows": 10000,
+          "victimRows": 10000,
+          "covered": 9994,
+          "uniquePredictionRows": 9994,
+          "uniqueCorrectRows": 9994,
+          "uniqueWrongRows": 0,
+          "ambiguousRows": 0,
+          "missingRows": 6,
+          "rangeIncludesTruthRows": 9994,
+          "meanCoveredRangeWidth": 1,
+          "maxRangeWidth": 1
+        }
+      },
+      "padding": {
+        "32": {
+          "innerLengthBytes": 4,
+          "currentCipherBytes": 4439472,
+          "paddedCipherBytes": 6100000,
+          "extraBytes": {
+            "min": 14,
+            "median": 17,
+            "max": 18,
+            "mean": 16.60528
+          },
+          "ratio": 1.3740372729009216,
+          "strongAttackerPossibleSpaceCounts": {
+            "min": 12,
+            "median": 15,
+            "max": 17,
+            "mean": 14.84472
+          }
+        },
+        "64": {
+          "innerLengthBytes": 4,
+          "currentCipherBytes": 4439472,
+          "paddedCipherBytes": 9300000,
+          "extraBytes": {
+            "min": 46,
+            "median": 49,
+            "max": 50,
+            "mean": 48.60528
+          },
+          "ratio": 2.094843711144028,
+          "strongAttackerPossibleSpaceCounts": {
+            "min": 44,
+            "median": 47,
+            "max": 49,
+            "mean": 46.84472
+          }
+        },
+        "128": {
+          "innerLengthBytes": 4,
+          "currentCipherBytes": 4439472,
+          "paddedCipherBytes": 15700000,
+          "extraBytes": {
+            "min": 110,
+            "median": 113,
+            "max": 114,
+            "mean": 112.60528
+          },
+          "ratio": 3.5364565876302407,
+          "strongAttackerPossibleSpaceCounts": {
+            "min": 108,
+            "median": 111,
+            "max": 113,
+            "mean": 110.84472
+          }
+        }
+      },
+      "histograms": {
+        "spaces": {
+          "1": 76056,
+          "2": 23944
+        },
+        "byteWidths": {
+          "14,1,0,0": 7898,
+          "5,0,3,0": 68143,
+          "13,0,0,0": 8085,
+          "5,0,4,0": 7913,
+          "12,0,0,0": 7961
+        },
+        "oldBounds": {
+          "0:3": 7887,
+          "0:7": 68138,
+          "0:2": 16006,
+          "0:9": 7912,
+          "0:4": 50,
+          "0:10": 1,
+          "0:8": 5,
+          "0:5": 1
+        },
+        "newBounds": {
+          "0:3": 7898,
+          "0:7": 68143,
+          "0:2": 16046,
+          "0:9": 7913
+        }
+      },
+      "signatureHistogram": {
+        "18,29,15,2": 7318,
+        "15,15,8,1": 67617,
+        "15,25,13,2": 7701,
+        "18,17,9,1": 7847,
+        "14,23,12,2": 7600,
+        "15,14,8,1": 521,
+        "14,20,12,2": 5,
+        "14,22,12,2": 349,
+        "18,28,15,2": 529,
+        "15,24,13,2": 356,
+        "18,16,9,1": 65,
+        "15,23,13,2": 21,
+        "15,22,13,2": 7,
+        "18,27,15,2": 43,
+        "18,15,9,1": 1,
+        "15,13,8,1": 4,
+        "18,26,15,2": 7,
+        "14,21,12,2": 7,
+        "15,12,8,1": 1,
+        "18,25,15,2": 1
+      },
+      "validation": {
+        "historicalWebCryptoRows": 20,
+        "coverageAssertions": 100000
+      }
+    }
+  }
+}
