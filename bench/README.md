@@ -47,6 +47,8 @@ rtk npm test
 
 | 스크립트 | 결과 (`results/`) | 결정 |
 |---|---|---|
+| `lasthour/m1-astra/*` (메모리 전용 cap3/P2 관찰·칸별 비트·충돌 대응 전화 복원) | [2026-09-29 마지막 보안 검증](results/2026-09-29-lasthour/m1-astra/report-ko.md) | 제품 변경 없음; 10·12비트 전화도 강한 공격에서 99.6% 복원, P2 전송 토큰 동일 |
+| `lasthour/r9-impl/run.ts`, `variants.ts`, `verify-variants.ts`, `cleanup.ts` (P0~P4, 기존55+LIKE2 조건 count/목록) | [2026-09-29 전체 회귀 보고](results/2026-09-29-lasthour/r9-impl/report-ko.md) | 제품 변경 없음; 후보 최대3개·잔여 토큰 함수·병렬4의 전체 비용과 회귀 비교 |
 | `followup/r9-impl/phone-bits.ts` (전화 칸16/12비트, 선택 삽입·드문 검색 메모리 비교) | [2026-09-29 전화 칸 비트 보고](results/2026-09-29-followup/token-bits/report-ko.md) | 제품 변경 없음; 복원 감소와 개별 검색 후보 증가를 함께 확인 |
 | `followup/r9-impl/load.ts`, `tune.ts`, `cap3.ts`, `cleanup.ts` (공개 API 10만 적재·관계 병렬도·work_mem·후보 최대3개) | [2026-09-29 질의 튜닝 보고](results/2026-09-29-followup/query-tuning/report-ko.md), [후보 최대3개](results/2026-09-29-followup/query-tuning/cap3-report-ko.md) | 제품 변경 없음; 23조건 평문 대조·같은 연결 예열2/교차7, 자기 스키마 정리 |
 | `followup-wal/run.ts` (공개 API 파생 쓰기·rollback, pg_waldump·FPI·pglz 대조) | [2026-09-29 WAL 보고](results/2026-09-29-followup/wal/report-ko.md) | 제품 변경 없음; 과거·삭제·롤백 저장물의 물리 이력 확인, 다른 wal_level은 미측정 |

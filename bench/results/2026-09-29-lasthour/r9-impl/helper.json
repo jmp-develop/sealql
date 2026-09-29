@@ -1,0 +1,3 @@
+{
+  "sql": "create or replace function test_lasthour_product.sealql_has_all(haystack pg_catalog.int8[], needles pg_catalog.int8[]) returns pg_catalog.bool\nlanguage plpgsql immutable strict parallel safe cost 100 set search_path=pg_catalog\nas $$ begin return haystack OPERATOR(pg_catalog.@>) needles; end $$"
+}
