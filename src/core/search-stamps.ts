@@ -1,0 +1,73 @@
+import { concat, frame, hex, u32, utf8 } from './bytes.js';
+import { ensure } from './errors.js';
+import { codecId, codecParameters, codecVersion, encodeField } from './field-codec.js';
+import type { Keyring } from './field-cipher.js';
+import { normalizeText, normalizeWords, type SearchProfile } from './search-tokens.js';
+
+export type StampStream = 'exact' | 'compact2' | 'words2' | 'single1';
+export interface PositionProof { salt: Uint8Array; length: number; stamps: bigint[]; offsets: number[] }
+export interface ExactProof { salt: Uint8Array; stamp: bigint }
+const roots = new WeakMap<Keyring, Map<string, Promise<CryptoKey>>>();
+const buffer = (value: Uint8Array): ArrayBuffer => Uint8Array.from(value).buffer;
+export const compactText = (value: string, profile: SearchProfile): string => normalizeText(value, profile.normalizer)
+  .replace(/[\u0009-\u000d\u0020\u0085\u00a0\u1680\u2000-\u200a\u2028\u2029\u202f\u205f\u3000]/g, '');
+export function exactBytes(profile: SearchProfile, value: unknown): Uint8Array {
+  if (profile.spec.type !== 'text') return encodeField(profile.spec, value, false);
+  ensure(typeof value === 'string', 'INVALID_VALUE');
+  return utf8(normalizeText(value, profile.normalizer));
+}
+/** Only fixed profile roots survive a request; value and piece keys do not. */
+export async function stampKey(ring: Keyring, profile: SearchProfile, stream: StampStream, scope: string, value: Uint8Array): Promise<Uint8Array> {
+  const info = frame(['sealql/search-stamp/v1', ring.keyScopeId, profile.modelId, profile.fieldId,
+    codecId(profile.spec), u32(codecVersion(profile.spec)), codecParameters(profile.spec), profile.normalizer, stream]);
+  let cache = roots.get(ring);
+  if (!cache) { cache = new Map(); roots.set(ring, cache); }
+  const id = hex(info);
+  let pending = cache.get(id);
+  if (!pending) {
+    pending = (async () => {
+      const source = await crypto.subtle.importKey('raw', buffer(ring.key), 'HKDF', false, ['deriveKey']);
+      return crypto.subtle.deriveKey({ name: 'HKDF', hash: 'SHA-384', salt: new Uint8Array(), info: buffer(info) },
+        source, { name: 'HMAC', hash: 'SHA-256', length: 256 }, false, ['sign']);
+    })();
+    cache.set(id, pending);
+    const current = cache;
+    pending.catch(() => { if (current.get(id) === pending) current.delete(id); });
+  }
+  return new Uint8Array(await crypto.subtle.sign('HMAC', await pending, buffer(frame([scope, value]))));
+}
+export async function stamp(key: Uint8Array, salt: Uint8Array, ordinal?: number): Promise<bigint> {
+  ensure(key.length === 32 && salt.length === 16, 'INVALID_VALUE');
+  if (ordinal !== undefined) ensure(Number.isInteger(ordinal) && ordinal > 0 && ordinal <= 0xffffffff, 'INVALID_VALUE');
+  const digest = await crypto.subtle.digest('SHA-256', buffer(concat(key, salt, ...(ordinal === undefined ? [] : [u32(ordinal)]))));
+  return new DataView(digest).getBigInt64(0);
+}
+export async function exactProof(ring: Keyring, profile: SearchProfile, scope: string, value: unknown): Promise<ExactProof> {
+  const salt = crypto.getRandomValues(new Uint8Array(16));
+  return { salt, stamp: await stamp(await stampKey(ring, profile, 'exact', scope, exactBytes(profile, value)), salt) };
+}
+export async function positionProof(ring: Keyring, profile: SearchProfile, scope: string, value: string, stream: Exclude<StampStream, 'exact'>): Promise<PositionProof> {
+  const chars = Array.from(stream === 'words2' ? normalizeWords(value) : compactText(value, profile));
+  const width = stream === 'single1' ? 1 : 2;
+  const seen = new Map<string, number>(), keys = new Map<string, Promise<Uint8Array>>();
+  const pieces = Array.from({ length: Math.max(0, chars.length - width + 1) }, (_, offset) => {
+    const piece = chars.slice(offset, offset + width).join('');
+    const ordinal = (seen.get(piece) ?? 0) + 1; seen.set(piece, ordinal);
+    if (!keys.has(piece)) keys.set(piece, stampKey(ring, profile, stream, scope, utf8(piece)));
+    return { key: keys.get(piece)!, ordinal, offset };
+  });
+  for (;;) {
+    const salt = crypto.getRandomValues(new Uint8Array(16));
+    const entries: { stamp: bigint; offset: number }[] = new Array(pieces.length);
+    let cursor = 0;
+    await Promise.all(Array.from({ length: Math.min(8, pieces.length) }, async () => {
+      while (cursor < pieces.length) {
+        const index = cursor++, piece = pieces[index];
+        entries[index] = { stamp: await stamp(await piece.key, salt, piece.ordinal), offset: piece.offset };
+      }
+    }));
+    entries.sort((a, b) => a.stamp < b.stamp ? -1 : a.stamp > b.stamp ? 1 : 0);
+    if (entries.some((entry, index) => index > 0 && entry.stamp === entries[index - 1].stamp)) continue;
+    return { salt, length: chars.length, stamps: entries.map(entry => entry.stamp), offsets: entries.map(entry => entry.offset) };
+  }
+}
