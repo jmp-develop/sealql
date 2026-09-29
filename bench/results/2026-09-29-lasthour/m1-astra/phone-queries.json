@@ -1,0 +1,319 @@
+{
+  "started": "2026-09-29T13:00:51.697Z",
+  "complete": true,
+  "databaseAccess": false,
+  "rows": 100000,
+  "sourceCases": 55,
+  "queries": [
+    {
+      "op": "contains",
+      "field": "phone",
+      "value": "-5",
+      "source": [
+        "and6",
+        "nested3"
+      ]
+    },
+    {
+      "op": "eq",
+      "field": "phone",
+      "value": "42-5748-1542",
+      "source": [
+        "or3",
+        "or4",
+        "or5",
+        "or6",
+        "exact_one"
+      ]
+    },
+    {
+      "op": "eq",
+      "field": "phone",
+      "value": "21-7100-5875",
+      "source": [
+        "or3"
+      ]
+    },
+    {
+      "op": "eq",
+      "field": "phone",
+      "value": "99-0000-0000",
+      "source": [
+        "exact_zero"
+      ]
+    },
+    {
+      "field": "phone",
+      "op": "startsWith",
+      "value": "41-",
+      "source": [
+        "affix_startsWith_phone"
+      ]
+    },
+    {
+      "field": "phone",
+      "op": "endsWith",
+      "value": "813",
+      "source": [
+        "affix_endsWith_phone"
+      ]
+    }
+  ],
+  "results": [
+    {
+      "op": "contains",
+      "field": "phone",
+      "value": "-5",
+      "source": [
+        "and6",
+        "nested3"
+      ],
+      "matches": 18998,
+      "candidates": 18998,
+      "bits": 16,
+      "extra": 0,
+      "ratio": 1
+    },
+    {
+      "op": "eq",
+      "field": "phone",
+      "value": "42-5748-1542",
+      "source": [
+        "or3",
+        "or4",
+        "or5",
+        "or6",
+        "exact_one"
+      ],
+      "matches": 1,
+      "candidates": 2,
+      "bits": 16,
+      "extra": 0,
+      "ratio": 1
+    },
+    {
+      "op": "eq",
+      "field": "phone",
+      "value": "21-7100-5875",
+      "source": [
+        "or3"
+      ],
+      "matches": 1,
+      "candidates": 2,
+      "bits": 16,
+      "extra": 0,
+      "ratio": 1
+    },
+    {
+      "op": "eq",
+      "field": "phone",
+      "value": "99-0000-0000",
+      "source": [
+        "exact_zero"
+      ],
+      "matches": 0,
+      "candidates": 0,
+      "bits": 16,
+      "extra": 0,
+      "ratio": 1
+    },
+    {
+      "field": "phone",
+      "op": "startsWith",
+      "value": "41-",
+      "source": [
+        "affix_startsWith_phone"
+      ],
+      "matches": 1251,
+      "candidates": 1410,
+      "bits": 16,
+      "extra": 0,
+      "ratio": 1
+    },
+    {
+      "field": "phone",
+      "op": "endsWith",
+      "value": "813",
+      "source": [
+        "affix_endsWith_phone"
+      ],
+      "matches": 110,
+      "candidates": 144,
+      "bits": 16,
+      "extra": 0,
+      "ratio": 1
+    },
+    {
+      "op": "contains",
+      "field": "phone",
+      "value": "-5",
+      "source": [
+        "and6",
+        "nested3"
+      ],
+      "matches": 18998,
+      "candidates": 18998,
+      "bits": 12,
+      "extra": 0,
+      "ratio": 1
+    },
+    {
+      "op": "eq",
+      "field": "phone",
+      "value": "42-5748-1542",
+      "source": [
+        "or3",
+        "or4",
+        "or5",
+        "or6",
+        "exact_one"
+      ],
+      "matches": 1,
+      "candidates": 2,
+      "bits": 12,
+      "extra": 0,
+      "ratio": 1
+    },
+    {
+      "op": "eq",
+      "field": "phone",
+      "value": "21-7100-5875",
+      "source": [
+        "or3"
+      ],
+      "matches": 1,
+      "candidates": 2,
+      "bits": 12,
+      "extra": 0,
+      "ratio": 1
+    },
+    {
+      "op": "eq",
+      "field": "phone",
+      "value": "99-0000-0000",
+      "source": [
+        "exact_zero"
+      ],
+      "matches": 0,
+      "candidates": 0,
+      "bits": 12,
+      "extra": 0,
+      "ratio": 1
+    },
+    {
+      "field": "phone",
+      "op": "startsWith",
+      "value": "41-",
+      "source": [
+        "affix_startsWith_phone"
+      ],
+      "matches": 1251,
+      "candidates": 1410,
+      "bits": 12,
+      "extra": 0,
+      "ratio": 1
+    },
+    {
+      "field": "phone",
+      "op": "endsWith",
+      "value": "813",
+      "source": [
+        "affix_endsWith_phone"
+      ],
+      "matches": 110,
+      "candidates": 144,
+      "bits": 12,
+      "extra": 0,
+      "ratio": 1
+    },
+    {
+      "op": "contains",
+      "field": "phone",
+      "value": "-5",
+      "source": [
+        "and6",
+        "nested3"
+      ],
+      "matches": 18998,
+      "candidates": 18998,
+      "bits": 10,
+      "extra": 0,
+      "ratio": 1
+    },
+    {
+      "op": "eq",
+      "field": "phone",
+      "value": "42-5748-1542",
+      "source": [
+        "or3",
+        "or4",
+        "or5",
+        "or6",
+        "exact_one"
+      ],
+      "matches": 1,
+      "candidates": 2,
+      "bits": 10,
+      "extra": 0,
+      "ratio": 1
+    },
+    {
+      "op": "eq",
+      "field": "phone",
+      "value": "21-7100-5875",
+      "source": [
+        "or3"
+      ],
+      "matches": 1,
+      "candidates": 2,
+      "bits": 10,
+      "extra": 0,
+      "ratio": 1
+    },
+    {
+      "op": "eq",
+      "field": "phone",
+      "value": "99-0000-0000",
+      "source": [
+        "exact_zero"
+      ],
+      "matches": 0,
+      "candidates": 0,
+      "bits": 10,
+      "extra": 0,
+      "ratio": 1
+    },
+    {
+      "field": "phone",
+      "op": "startsWith",
+      "value": "41-",
+      "source": [
+        "affix_startsWith_phone"
+      ],
+      "matches": 1251,
+      "candidates": 1557,
+      "bits": 10,
+      "extra": 147,
+      "ratio": 1.1042553191489362
+    },
+    {
+      "field": "phone",
+      "op": "endsWith",
+      "value": "813",
+      "source": [
+        "affix_endsWith_phone"
+      ],
+      "matches": 110,
+      "candidates": 144,
+      "bits": 10,
+      "extra": 0,
+      "ratio": 1
+    }
+  ],
+  "validation": {
+    "productExactRows": 5,
+    "noFalseNegatives": 61083
+  },
+  "interpretation": "Phone leaves isolated from 55 Boolean conditions; other fields unchanged. Ratio estimates only per-candidate work under a fixed cost, not measured SQL latency.",
+  "finished": "2026-09-29T13:02:00.030Z"
+}
