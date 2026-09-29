@@ -175,6 +175,9 @@ function register<T extends PgTable, R extends UuidOrTextKeys<T>, S extends Uuid
   const substring = Object.values(profiles).filter(profile => profile.mode === 'substring');
   const tableFactory: typeof pgTable = (tableConfig.schema ? pgSchema(tableConfig.schema).table : pgTable) as typeof pgTable;
   const companion = tableFactory(indexName, companionColumns, (t: any) => [
+    ...Object.entries(profiles).filter(([, profile]) => profile.mode === 'exact').map(([id, profile]) =>
+      check(`${companionIndexName(indexName, id)}_one_ck`, sql`${t[profile.tokens]} is null or
+        (cardinality(${t[profile.tokens]}) = 1 and array_ndims(${t[profile.tokens]}) = 1)`)),
     ...Object.values(profiles).flatMap(profile => {
       const groups = [profile.exact, profile.positions, profile.words, profile.singles].filter(group => !!group);
       return groups.map(group => {
@@ -189,11 +192,16 @@ function register<T extends PgTable, R extends UuidOrTextKeys<T>, S extends Uuid
     }),
     // drizzle-kit 0.31 reads composite PK columns out of order on push; the same unique B-tree stays stable.
     uniqueIndex(`${indexName}_scope_row_uq`).on(t.scopeId, t.rowId),
+    ...(rowUnique ? [uniqueIndex(`${indexName}_row_uq`).on(t.rowId)] : []),
     rowUnique
       ? foreignKey({ columns: [t.rowId], foreignColumns: [rowColumn] }).onDelete('cascade')
       : foreignKey({ columns: [t.scopeId, t.rowId], foreignColumns: [scopeColumn!, rowColumn] }).onDelete('cascade'),
     ...Object.entries(profiles).filter(([, profile]) => profile.mode === 'exact').map(([id, profile]) =>
-      index(`${companionIndexName(indexName, id)}_bt`).on(sql.raw('scope_id'), sql.raw(`(${profile.tokens}[1])`), sql.raw('row_id'))),
+      index(`${companionIndexName(indexName, id)}_bt`).on(sql.raw('scope_id'), sql.raw(`(${profile.tokens}[1])`), sql.raw('row_id'),
+        // Fixed-width identities keep the covering entry far below PostgreSQL's B-tree tuple limit.
+        // Text identities retain the narrower index: adding proof data must not restrict accepted IDs.
+        ...(rowType === 'uuid' && (!scopeColumn || scopeType === 'uuid')
+          ? [profile.exact!.salt, profile.exact!.stamp, profile.tokens].map(name => sql.raw(name)) : []))),
     ...(substring.length ? [index(`${companionIndexName(indexName, 'substring')}_gin`).using('gin',
       t[substring[0].tokens], ...substring.slice(1).map(profile => t[profile.tokens]))] : []),
   ]);
@@ -230,8 +238,15 @@ export function createSealed(options: { sealer: Sealer | (() => Sealer) }) {
     ) => register(table, cfg, models),
     extraMigrationSql(seal: object): string[] {
       const reg = registrationOf(seal);
-      return [...stampMigrationSql(reg.storage.parent.schema), ...Object.values(reg.storage.index?.profiles ?? {}).filter(profile => profile.mode === 'substring')
-        .map(profile => `alter table "${reg.storage.index!.schema}"."${reg.storage.index!.name}" alter column "${profile.tokens}" set statistics 1000`)];
+      const quote = (name: string) => `"${name.replaceAll('"', '""')}"`;
+      const index = reg.storage.index!, table = `${quote(index.schema)}.${quote(index.name)}`;
+      const profiles = Object.values(index.profiles ?? {});
+      return [...stampMigrationSql(reg.storage.parent.schema),
+        ...profiles.filter(profile => profile.mode === 'substring')
+          .map(profile => `alter table ${table} alter column ${quote(profile.tokens)} set statistics 1000`),
+        ...profiles.flatMap(profile => [profile.tokens, ...(profile.positions ? [profile.positions.stamps, profile.positions.offsets] : [])])
+          .map(column => `alter table ${table} alter column ${quote(column)} set storage main`),
+      ];
     },
     ...runtimeMethods(sealer),
   };

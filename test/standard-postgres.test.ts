@@ -327,7 +327,7 @@ test('multicolumn GIN preserves writes, cursor search and exact count', async ()
       [c.schemaName, 'memo_seal_index', '%USING gin%'])).rows;
     assert.equal(indexes.length, 1);
     assert.equal((indexes[0].indexdef.match(/tokens_[a-f0-9]{16}/g) ?? []).length, 2);
-    assert.equal(c.sealed.extraMigrationSql(c.seal).filter(sql => sql.startsWith('alter table')).length, 2);
+    assert.equal(c.sealed.extraMigrationSql(c.seal).filter(sql => sql.includes('set statistics')).length, 2);
     const bodyTerm = Array.from(norm(c.rows[0].memo_plain)).slice(0, 2).join('');
     const addressTerm = Array.from(norm(c.rows[0].address_plain)).slice(0, 2).join('');
     const expected = c.rows.filter(row => norm(row.memo_plain).includes(bodyTerm) && norm(row.address_plain).includes(addressTerm)).map(row => row.id);

@@ -2,7 +2,7 @@ import { pgSchema, text, uuid } from 'drizzle-orm/pg-core';
 import { createSealer } from 'sealql';
 import { createSealed } from 'sealql/drizzle/v0.45';
 
-const sealed = createSealed({ sealer: () => createSealer({ key: new Uint8Array(32) }) });
+export const sealed = createSealed({ sealer: () => createSealer({ key: new Uint8Array(32) }) });
 export const schema = pgSchema('test_kit_roundtrip');
 
 export const uuidScoped = schema.table('uuid_scoped', {

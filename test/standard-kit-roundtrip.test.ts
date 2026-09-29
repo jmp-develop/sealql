@@ -5,6 +5,7 @@ import { resolve, sep } from 'node:path';
 import { test } from 'node:test';
 import { Pool } from 'pg';
 import { assertDisposable } from './disposable.js';
+import { sealed, uuidScopedSeal, uuidUnscopedSeal, textScopedSeal, textUnscopedSeal } from './standard-kit-schema.js';
 
 test('package schema generates, migrates, and pushes twice without drift', async () => {
   const pool = new Pool({ host: '127.0.0.1', port: 56439, user: 'sealql_test', database: 'postgres' });
@@ -35,8 +36,21 @@ export default defineConfig({ dialect: 'postgresql', schema: './test/standard-ki
     const migrated = kit('migrate');
     assert.match(generated, /tables?/i);
     assert.match(migrated, /migrations applied successfully/i);
+    for (let pass = 0; pass < 2; pass++) {
+      for (const table of [uuidScopedSeal, uuidUnscopedSeal, textScopedSeal, textUnscopedSeal]) {
+        for (const statement of sealed.extraMigrationSql(table)) await pool.query(statement);
+      }
+    }
+    const storage = async () => (await pool.query(`select c.relname, a.attname, a.attstorage
+      from pg_attribute a join pg_class c on c.oid=a.attrelid
+      join pg_namespace n on n.oid=c.relnamespace
+      where n.nspname='test_kit_roundtrip' and a.attnum>0 and not a.attisdropped
+      order by c.relname,a.attnum`)).rows;
+    const installed = await storage();
+    assert.ok(installed.some(column => column.attstorage === 'm'));
     assert.match(kit('push'), /No changes detected/);
     assert.match(kit('push'), /No changes detected/);
+    assert.deepEqual(await storage(), installed);
   } finally {
     if (created) {
       await pool.query('drop schema if exists test_kit_roundtrip cascade');

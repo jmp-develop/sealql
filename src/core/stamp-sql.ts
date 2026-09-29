@@ -48,34 +48,32 @@ begin
   return starts;
 end`),
     functionSql('sealql_match_positions', 'ks bytea[], offs integer[], qlen integer, n integer, salt bytea, stamps bigint[], positions integer[], affix integer', 'boolean', `
-declare i integer; p integer; cached jsonb := '{}'; labels text[] := '{}'; label text; values jsonb;
-  first_positions integer[]; found_positions integer[]; matched boolean;
-begin
-  if cardinality(ks) = 0 or cardinality(ks) <> cardinality(offs) or qlen < 2 or affix not in (0,1,2) then
-    raise exception using errcode='22023', message='Invalid search query';
-  end if;
-  if n < qlen then return false; end if;
-  for i in 1..cardinality(ks) loop
-    label := encode(ks[i],'hex'); values := cached->label;
-    if values is null then
-      found_positions := ${ns}.sealql_piece_positions(ks[i],salt,stamps,positions,n);
-      if i = 1 then first_positions := found_positions; end if;
-      select coalesce(jsonb_object_agg(v::text,true),'{}') into values from unnest(found_positions) v;
-      cached := jsonb_set(cached,array[label],values);
-    end if;
-    labels := array_append(labels,label);
-  end loop;
-  foreach p in array first_positions loop
-    p := p-offs[1];
-    if p < 0 or p+qlen > n or (affix = 1 and p <> 0) or (affix = 2 and p+qlen <> n) then continue; end if;
-    matched := true;
-    for i in 1..cardinality(ks) loop
-      if not ((cached->labels[i]) ? (p+offs[i])::text) then matched := false; exit; end if;
-    end loop;
-    if matched then return true; end if;
-  end loop;
-  return false;
-end`),
+ DECLARE first_i int:=1; i int; wi int; idx int; p int; target_p int; got_p int; tag bigint; ok bool;
+ BEGIN
+  IF cardinality(ks)=0 OR cardinality(ks)<>cardinality(offs) OR offs[1]<>0 OR qlen<2
+    OR affix NOT IN (0,1,2) OR octet_length(salt)<>16 OR cardinality(stamps)<>cardinality(positions) THEN
+    RAISE EXCEPTION USING errcode='22023',message='Invalid search proof';
+  END IF;
+  IF n<qlen THEN RETURN false;END IF;
+  LOOP
+   tag:=(('x'||encode(substr(sha256(ks[1]||salt||int4send(first_i)),1,8),'hex'))::bit(64)::bigint);
+   idx:=array_position(stamps,tag);IF idx IS NULL THEN RETURN false;END IF;
+   p:=positions[idx];IF p>n-qlen THEN RETURN false;END IF;
+   IF affix=1 AND p>0 THEN RETURN false;END IF;
+   IF affix=2 AND p<n-qlen THEN first_i:=first_i+1;CONTINUE;END IF;
+   ok:=true;
+   IF cardinality(ks)>1 THEN FOR wi IN 2..cardinality(ks) LOOP
+    target_p:=p+offs[wi];i:=1;
+    LOOP
+     tag:=(('x'||encode(substr(sha256(ks[wi]||salt||int4send(i)),1,8),'hex'))::bit(64)::bigint);
+     idx:=array_position(stamps,tag);IF idx IS NULL THEN ok:=false;EXIT;END IF;
+     got_p:=positions[idx];IF got_p>=target_p THEN ok:=got_p=target_p;EXIT;END IF;i:=i+1;
+    END LOOP;
+    IF NOT ok THEN EXIT;END IF;
+   END LOOP;END IF;
+   IF ok THEN RETURN true;END IF;first_i:=first_i+1;
+  END LOOP;
+ END `),
     functionSql('sealql_match_like', 'ks bytea[], kinds integer[], pattern jsonb, n integer, salt bytea, stamps bigint[], positions integer[], single_salt bytea, single_stamps bigint[], single_positions integer[]', 'boolean', `
 declare i integer; p integer; qlen integer; token jsonb; lists jsonb := '[]'; ids integer[]; offs integer[];
   frontier boolean[]; next_frontier boolean[]; reachable boolean;

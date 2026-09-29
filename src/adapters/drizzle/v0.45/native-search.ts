@@ -289,7 +289,7 @@ export function searchMethods(sealerOf: () => import('../../../core/field-cipher
     const cursor = options.cursor ? await openCursor(options.cursor, context, ring) : undefined;
     let after = cursor?.lastId, afterSort = cursor?.lastSort, exhausted = false, resultBytes = 0;
     const items: Record<string, unknown>[] = [], state: ResultState = { scanned: 0, fetchedBytes: 0, decryptedBytes: 0, limited: false };
-    const batch = options.budgets?.batch ?? (Number.isFinite(limit) ? 200 : Infinity);
+    const batch = options.budgets?.batch ?? limit;
     const hasSubstring = (node: CompiledSearch): boolean => node.op === 'leaf' ? node.leaf.profile.mode === 'substring' : node.children.some(hasSubstring);
     while (items.length < limit && !state.limited) {
       check();
@@ -298,7 +298,7 @@ export function searchMethods(sealerOf: () => import('../../../core/field-cipher
       const afterCondition = after === undefined ? undefined : orders.length
         ? keysetAfter([...orders.map(item => item.column), rowColumn], [...values, after], [...orders.map(item => item.direction), direction])
         : direction === 'asc' ? gt(rowColumn, after) : lt(rowColumn, after);
-      const bounded = compiled?.op === 'secure' && hasSubstring(compiled.search) && !options.where && !orders.length && requestLimit <= 200
+      const bounded = compiled?.op === 'secure' && hasSubstring(compiled.search) && !options.where && !orders.length && Number.isFinite(requestLimit)
         ? { limit: requestLimit, after } : undefined;
       const condition = and(reg.scope ? eq(columns[reg.scope], scopeId) : undefined, options.where, afterCondition,
         compiled ? candidate(reg, scopeId, compiled, bounded) : undefined);

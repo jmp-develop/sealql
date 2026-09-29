@@ -17,9 +17,10 @@ test('native registration builds same-schema companion without loading a key', (
   assert.equal(config.schema, 'native_schema_test');
   assert.equal(config.name, 'people_seal_index');
   assert.equal(config.foreignKeys.length, 1);
-  assert.equal(config.indexes.length, 3);
+  assert.equal(config.indexes.length, 4);
   assert.equal(registrationOf(companion).fields.size, 2);
-  assert.equal(sealed.extraMigrationSql(companion).filter(sql => sql.startsWith('alter table')).length, 2);
+  assert.equal(sealed.extraMigrationSql(companion).filter(sql => sql.includes('set statistics')).length, 2);
+  assert.equal(sealed.extraMigrationSql(companion).filter(sql => sql.includes('set storage main')).length, 7);
   assert.throws(() => parent.name.mapToDriverValue('plain' as never), /SEAL_REQUIRED/);
   const withDefault = schema.table('invalid_default', { id: uuid('id').primaryKey(), name: sealed.text('name').default(null as never) });
   assert.throws(() => sealed.register(withDefault, { row: 'id' }), /INVALID_SCHEMA/);
