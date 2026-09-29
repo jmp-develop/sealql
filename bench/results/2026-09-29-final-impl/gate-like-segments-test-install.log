@@ -1,0 +1,29 @@
+
+> sealql@0.1.0-experimental.0 test:install
+> node scripts/install-smoke.mjs
+
+
+> sealql@0.1.0-experimental.0 prepack
+> npm run build
+
+
+> sealql@0.1.0-experimental.0 build
+> node scripts/clean-dist.mjs && tsc -p tsconfig.json
+
+sealql-0.1.0-experimental.0.tgz
+
+changed 2 packages in 6s
+Ignored 70 upstream drizzle-orm declaration diagnostics
+Ignored 70 upstream drizzle-orm declaration diagnostics
+Reading config file '<workspace>\.local\consumer\kit.config.ts'
+2 tables
+kit_smoke_note 2 columns 0 indexes 0 fks
+kit_smoke_note_seal_index 5 columns 3 indexes 1 fks
+
+No schema changes, nothing to migrate 😴
+Installed standard consumer compiles with drizzle-orm 0.45.3
+
+changed 1 package in 8s
+Ignored 70 upstream drizzle-orm declaration diagnostics
+Ignored 70 upstream drizzle-orm declaration diagnostics
+Installed standard consumer compiles with drizzle-orm 0.45.2
