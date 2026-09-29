@@ -31,3 +31,5 @@
 | [012](012-drizzle-companion-and-column-options.md) | Drizzle 통합: 보조 테이블 유지, 칸마다 옵션 (008 일부 대체) |
 | [013](013-drizzle-native-api-implemented.md) | Drizzle 네이티브 API 구현 완료 (008·012 구현 확정) |
 | [014](014-unbounded-query-work.md) | 호출자 선택 예산, count 단일 후보 흐름, 커서 결속 정리 |
+| [015](015-database-search-proofs.md) | DB 도장 판정, 스칼라 count, 선택 칸만 복호화 (001·006·014 일부 대체) |
+| [016](016-coarse-exact-bits.md) | 저카디널리티 exact의 명시적 2비트 허용 (004 일부 대체) |

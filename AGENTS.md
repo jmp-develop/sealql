@@ -5,7 +5,7 @@
 ## 1. 작업 규칙
 
 1. 먼저 [`docs/current-state.md`](docs/current-state.md)를 읽는다. 설계를 바꾸거나 새로 계획할 때는 [`docs/decisions/`](docs/decisions/README.md)의 관련 결정과 [`docs/threat-model.md`](docs/threat-model.md)를 읽는다. 공개 API는 [`docs/llm-integration.md`](docs/llm-integration.md)와 `examples/`, 계획 규칙은 [`plan/README.md`](plan/README.md), 검증 절차는 [`docs/verification.md`](docs/verification.md), 측정 규칙은 [`docs/measurement.md`](docs/measurement.md)를 따른다.
-2. 현재 제품의 검색 방식은 `standard`(HMAC 조각 토큰 + GIN + 라이브러리 내부 재확인)뿐이다. stateful, V2 posting page, bucket은 기각된 연구다([decisions/011](docs/decisions/011-rejected-research-lines.md)). 실험 결과를 제품 기능·보안 인증·운영 성능으로 표현하지 않는다.
+2. 현재 제품의 검색 방식은 `standard`(HMAC 후보 토큰 + GIN/B-tree + DB 도장 판정, 선택 칸 인증 복호화)뿐이다([decisions/015](docs/decisions/015-database-search-proofs.md)). stateful, V2 posting page, bucket은 기각된 연구다([decisions/011](docs/decisions/011-rejected-research-lines.md)). 실험 결과를 제품 기능·보안 인증·운영 성능으로 표현하지 않는다.
 3. 코드의 실제 동작을 확인한 뒤 변경한다. 저장 구조나 검색 방식을 바꾸면 관리형 쓰기, 부분 수정·삭제, 동시성, 검색 누락, 누출 경계를 함께 확인한다.
 4. 실측은 평문·현재 제품·후보를 같은 데이터와 질의로 비교한다. SQL 요청~응답, 전체 시간, 후보·반환 행 수, 인증 복호화 필드 수를 나눈다. 예열 2회, 교차 7회 중앙값. 측정하지 않은 값은 "추정"이라고 적는다.
 5. **DB는 일회용 클러스터만 쓴다:** `127.0.0.1:56439`, 데이터 디렉터리 `.local/pg-test`. 모든 DB 스크립트와 테스트는 `test/disposable.ts`의 `assertDisposable`과 포트 확인을 먼저 호출한다. 운영 DB와 5432 포트에는 절대 접속하지 않는다. 기존 데이터에 테스트·마이그레이션을 실행하지 않는다. 원본 fixture `bench_realistic_100k`는 읽기만 한다.

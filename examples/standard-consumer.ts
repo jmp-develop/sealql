@@ -18,6 +18,8 @@ export const sealed = createSealed({ sealer: () => {
 export const note = pgTable('note', {
   id: uuid('id').primaryKey(), scopeId: uuid('scope_id').notNull(), status: text('status').notNull(),
   title: sealed.text('title', { search: { exact: true, substring: true } }),
+  // Low-cardinality choice: coarser exact candidates; the DB proof still decides equality.
+  category: sealed.text('category', { nullable: true, search: { exact: { bits: 2 } } }),
   count: sealed.integer('count', { nullable: true, search: { exact: true } }),
 });
 export const noteSeal = sealed.register(note, { row: 'id', scope: 'scopeId' });
