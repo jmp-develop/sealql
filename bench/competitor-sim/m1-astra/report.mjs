@@ -107,7 +107,7 @@ ${methods}
 
 seed=714029, 피해 첫10,000행·참조 다음10,000행, 알려진 행은 피해의 첫100/500행이다. 기존 fixture 재생 결과와 ID digest를 단언한다. 무작위 기준선은 칸별 고정 seed로 전체 피해에 대한 예측을 먼저 만든 뒤 알려진 행을 제외한다. 단일 seed/키이며 키별 분산·신뢰구간은 측정 안 함.
 
-내부 검산은 ${v.aggregateRows}개 집계의 분모·중복 키, ${v.witnessChecks}개 표본 정답/ID, ${v.baselineChecks}개 무작위 기준선과 Bloom 강화 표본 1,000행의 seed·분모·채점을 확인했다. v-astra의 독립 예측 재실행 결과는 [독립 검산 JSON](../v-astra/verify-attacks-ab.json)을 참조한다. 이 보고서 자체 검산과 독립 검산을 구분한다. 연구 코드 TypeScript 검사와 문서 검사가 통과했다.
+내부 검산은 ${v.aggregateRows}개 집계의 분모·중복 키, ${v.witnessChecks}개 표본 정답/ID, ${v.baselineChecks}개 무작위 기준선과 Bloom 강화 표본 1,000행의 seed·분모·채점을 확인했다. v-astra의 [독립 검산 JSON](../v-astra/verify-attacks-ab.json)은 같은 최신 모델/공격 해시에서 1,176개 집계·14,112개 witness 예측 재실행을 통과했다. [별도 표본 검산](../v-astra/verify-samples.json)도 B100/B500 각500행 재채점, 각9행 예측 재생, seed·모집단·상한·Wilson95% 구간을 통과했다. 연구 코드 TypeScript 검사와 문서 검사가 통과했다.
 
 비전화5칸은 먼저 완료한 파일을 보존하고, 공통 전화 함수에 기본 동작이 같은 선택적 maxStates 인자를 추가한 뒤 전화만 재실행해 병합했다. merge.mjs는 두 부분의 모델 해시·행 ID digest와 비전화 공유 함수 구간의 바이트 해시가 같음을 단언한다. 결과의 mergedParts에 각 실행의 원래 공격 소스 해시·시각을 남겼다.
 
