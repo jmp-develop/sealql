@@ -40,7 +40,7 @@ test('DB proofs match plaintext across operators, types, nulls, mutations and JO
       body:sealed.text('body',{nullable:true,search:{exact:true,substring:{wordBoundary:true}}}),
       nfc:sealed.text('nfc',{search:{exact:true,substring:true,normalizer:'nfc-v1'}}),
       phone:sealed.text('phone',{search:{exact:true,substring:{wordBoundary:true},normalizer:'phone-v1'}}),
-      amount:sealed.integer('amount',{search:{exact:true}}), big:sealed.bigint('big',{search:{exact:true}}),
+      amount:sealed.integer('amount',{search:{exact:{bits:2}}}), big:sealed.bigint('big',{search:{exact:true}}),
       price:sealed.decimal('price',{precision:12,scale:2,search:{exact:true}}),
     });
     const seal=sealed.register(table,{row:'id',scope:'scopeId'}), reg=registrationOf(seal), scope=fixture[0].scope_id;
@@ -97,7 +97,7 @@ test('DB proofs match plaintext across operators, types, nulls, mutations and JO
     assert.equal(joined.items.length,inputs.filter(r=>r.body!==null&&compact(r.body).includes(pair)).length);
     assert.equal(opens,0,'JOIN does not need condition ciphertext');
     const before=(await pool.query(`select * from "${schemaName}".rows_seal_index where row_id=$1`,[inputs[0].id])).rows[0];
-    await Promise.all(Array.from({length:8},(_,i)=>sealed.update(db,seal,{id:inputs[0].id,scopeId:scope},{body:inputs[i+1].body})));
+    await Promise.all(Array.from({length:8},(_,i)=>sealed.update(db,seal,{id:inputs[0].id,scopeId:scope},{body:inputs[i+1].body ?? base})));
     const after=await sealed.open(await db.select().from(table).where(eq(table.id,inputs[0].id)));
     assert.equal(await sealed.count(db,seal,{scope,where:eq(table.id,inputs[0].id),match:m=>m.body.eq(after[0].body!)}),1);
     const afterProof=(await pool.query(`select * from "${schemaName}".rows_seal_index where row_id=$1`,[inputs[0].id])).rows[0];

@@ -4,6 +4,8 @@ import { test } from 'node:test';
 import { frame, u32, utf8 } from '../src/core/bytes.js';
 import { profiles } from '../src/core/search-tokens.js';
 import { exactBytes, positionProof, stamp, stampKey } from '../src/core/search-stamps.js';
+import { validateField } from '../src/core/field-codec.js';
+import { descriptorBytes, exactBitsForPopulation } from '../src/core/search-tokens.js';
 
 test('stamp derivation and signed big endian digest match independent crypto', async () => {
   const ring = { keyScopeId: 'global', key: new Uint8Array(32).fill(7) };
@@ -41,4 +43,15 @@ test('position proofs retain occurrences, stream domains, Unicode and empty valu
   assert.equal((await positionProof(ring, profile, 'scope', '😀', 'compact2')).length, 1);
   const decimal = profiles('notes', 'price', { type: 'decimal', precision: 8, scale: 2, search: { exact: true } })[0];
   assert.deepEqual(exactBytes(decimal, '+0001.0'), utf8('1.00'));
+});
+
+test('two-bit exact profiles are explicit; the population recommendation stays unchanged', () => {
+  for (const bits of [2, 8, 16, 32]) {
+    const spec = { type: 'text' as const, search: { exact: { bits } } };
+    validateField(spec); assert.ok(descriptorBytes(profiles('m','f',spec)[0]).length);
+  }
+  for (const bits of [0, 1, 2.5, 33]) assert.throws(() => validateField({type:'text',search:{exact:{bits}}}), {code:'INVALID_SCHEMA'});
+  assert.equal(exactBitsForPopulation(512),8);
+  assert.throws(() => exactBitsForPopulation(16),{code:'INVALID_VALUE'});
+  assert.equal(profiles('m','f',{type:'text',search:{exact:true}})[0].bits,16);
 });

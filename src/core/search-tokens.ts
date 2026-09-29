@@ -46,7 +46,7 @@ export function profiles(modelId: string, fieldId: string, spec: FieldSpec, defa
   });
 }
 export function descriptorBytes(p: SearchProfile): Uint8Array {
-  ensure(Number.isInteger(p.bits) && p.bits >= 8 && p.bits <= 32 && (p.mode !== 'substring' || p.bits === 16), 'INVALID_SCHEMA');
+  ensure(Number.isInteger(p.bits) && p.bits >= 2 && p.bits <= 32 && (p.mode !== 'substring' || p.bits === 16), 'INVALID_SCHEMA');
   return frame([p.modelId, p.fieldId, p.indexId, codecId(p.spec), u32(codecVersion(p.spec)), codecParameters(p.spec), p.normalizer, p.mode, u32(p.bits), p.wordBoundary ? 'word' : '', p.skipGrams ? 'skip' : '']);
 }
 const piece = (kind: string, value: string): Uint8Array => frame([kind, utf8(value)]);

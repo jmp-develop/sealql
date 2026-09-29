@@ -100,7 +100,7 @@ export function validateField(spec: FieldSpec): void {
       if (key === 'normalizer') { ensure(spec.type === 'text' && ['nfc-v1', 'legacy-text-v1', 'phone-v1'].includes(value as string), 'INVALID_SCHEMA'); continue; }
       if (key === 'substring') {
         ensure(spec.type === 'text' && (value === true || (value && typeof value === 'object' && Object.keys(value).every(k => ['wordBoundary', 'skipGrams'].includes(k)) && Object.values(value).every(v => typeof v === 'boolean'))), 'INVALID_SCHEMA');
-      } else ensure(value === true || (value && typeof value === 'object' && Number.isInteger((value as { bits?: number }).bits ?? 16) && ((value as { bits?: number }).bits ?? 16) >= 8 && ((value as { bits?: number }).bits ?? 16) <= 32), 'INVALID_SCHEMA');
+      } else ensure(value === true || (value && typeof value === 'object' && Number.isInteger((value as { bits?: number }).bits ?? 16) && ((value as { bits?: number }).bits ?? 16) >= 2 && ((value as { bits?: number }).bits ?? 16) <= 32), 'INVALID_SCHEMA');
     }
   }
 }
