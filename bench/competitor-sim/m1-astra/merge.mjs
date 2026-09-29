@@ -1,0 +1,17 @@
+import assert from 'node:assert/strict';
+import {hash} from 'node:crypto';
+import {readFileSync,writeFileSync} from 'node:fs';
+const out='bench/results/2026-09-30-competitor-sim/m1-astra',read=p=>JSON.parse(readFileSync(`${out}/${p}`));
+const a=read('without-phone/results.json'),b=read('phone/results.json'),proof=read('without-phone/dependency-proof.json');
+assert.equal(a.complete,true);assert.equal(b.complete,true);assert.equal(a.models.length,30);assert.equal(b.models.length,6);assert.equal(a.results.length,975);assert.equal(b.results.length,201);
+assert.equal(a.identityDigest,b.identityDigest);assert.equal(a.modelSourceHash,b.modelSourceHash);
+assert.ok(a.results.every(r=>r.field!=='phone'));assert.ok(b.results.every(r=>r.field==='phone'));
+const attackSource=readFileSync('bench/competitor-sim/attacks.ts','utf8');
+assert.equal(proof.sourceHash,a.attackSourceHash);
+assert.equal(proof.nonPhonePrefixHash,hash('sha256',attackSource.split('/** Collision-aware phone reconstruction.')[0]),'Non-phone attack implementation changed');
+assert.equal(b.attackSourceHash,hash('sha256',attackSource));
+assert.equal(b.modelSourceHash,hash('sha256',readFileSync('bench/competitor-sim/models.ts')));
+const d={...a,complete:true,finished:new Date().toISOString(),scope:{field:'all',model:'all'},models:[...a.models,...b.models],results:[...a.results,...b.results],baselines:[...a.baselines,...b.baselines],phoneSamples:b.phoneSamples,attackSourceHash:b.attackSourceHash,validation:{productTokenRows:a.validation.productTokenRows+b.validation.productTokenRows},mergedParts:[{path:'without-phone/results.json',attackSourceHash:a.attackSourceHash,started:a.started,finished:a.finished,validation:'Same model source and byte-identical non-phone shared attack prefix verified with dependency-proof.json'},{path:'phone/results.json',attackSourceHash:b.attackSourceHash,started:b.started,finished:b.finished,validation:'Latest optional maxStates API; S0 default full census, Bloom 500-row sample / 20000 states'}]};
+assert.equal(new Set(d.results.map(r=>[r.field,r.model,r.known,r.channel,r.method].join('/'))).size,1176);
+assert.equal(d.phoneSamples.length,2);
+writeFileSync(`${out}/results.json`,JSON.stringify(d,null,2)+'\n');console.log(JSON.stringify({merged:true,results:d.results.length,samples:d.phoneSamples.length}));
