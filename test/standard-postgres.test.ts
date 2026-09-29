@@ -364,12 +364,20 @@ test('reindex accepts a caller batch above the old maximum', async () => {
     assert.equal(locks.length, 2);
     assert.ok(locks.every(entry => entry.params.at(-1) === 1000));
     const first = c.rows[0];
+    const term = Array.from(norm(first.memo_plain)).slice(0, 2).join('');
+    const expected = c.rows.filter(row => norm(row.memo_plain).includes(term)).slice(0, 501).map(row => row.id);
     c.logs.length = 0;
-    await c.sealed.findMany(c.db, c.seal, { scope: first.scope_id,
-      match: m => m.body.contains(Array.from(norm(first.memo_plain)).slice(0, 2).join('')),
+    const page = await c.sealed.findMany(c.db, c.seal, { scope: first.scope_id,
+      match: m => m.body.contains(term),
       limit: 501, budgets: { batch: 501 } });
-    assert.ok(c.logs.some(query => query.includes('memo_seal_index') && !query.includes('with sample as materialized')),
-      'candidate batches above 200 use the direct index path');
+    assert.deepEqual(page.items.map(row => row.id), expected);
+    const implicitSql = [...c.logs];
+    c.logs.length = 0;
+    const explicit = await c.sealed.findMany(c.db, c.seal, { scope: first.scope_id,
+      match: m => m.body.contains(term), orderBy: { column: c.memo.id, direction: 'asc' },
+      limit: 501, budgets: { batch: 501 } });
+    assert.deepEqual(explicit.items, page.items);
+    assert.deepEqual(c.logs, implicitSql, 'equivalent ID orderings use identical SQL above 200 rows');
     assert.equal((await c.sealed.findMany(c.db, c.seal, { scope: first.scope_id,
       match: m => m.body.eq(first.memo_plain), limit: 1 })).items[0].id, first.id);
   } finally { await c.close(); }

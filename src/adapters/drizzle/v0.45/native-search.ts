@@ -270,6 +270,9 @@ export function searchMethods(sealerOf: () => import('../../../core/field-cipher
     ensure(options && typeof options === 'object', 'INVALID_VALUE');
     const scopeId = scope(reg, options.scope), columns = getTableColumns(reg.parent) as Record<string, PgColumn>;
     const rowColumn = columns[reg.row], orders = order(reg, options.orderBy);
+    // Preserve cursor binding, but canonicalize equivalent ID orderings in SQL.
+    const ascendingIdentity = !orders.length || (orders.length === 1 && orders[0].column === rowColumn && orders[0].direction === 'asc');
+    const executionOrders = ascendingIdentity ? [] : orders;
     const limit = options.limit ?? Infinity, budgets = budgetsFor(false, options.budgets);
     if (options.limit !== undefined) ensure(Number.isSafeInteger(limit) && limit > 0, 'INVALID_VALUE');
     const deadline = Date.now() + budgets.deadlineMs;
@@ -282,7 +285,7 @@ export function searchMethods(sealerOf: () => import('../../../core/field-cipher
     selection.forEach(key => ensure(!!columns[key], 'INVALID_VALUE'));
     const projected = [...new Set([reg.row, ...(reg.scope ? [reg.scope] : []), ...selection])];
     const selected: Record<string, PgColumn | SQL> = Object.fromEntries(projected.map(key => [key, columns[key]]));
-    orders.forEach(({ column }, index) => { selected[`__seal_sort_${index}`] = sql<string>`to_jsonb(${column}) #>> '{}'`; });
+    executionOrders.forEach(({ column }, index) => { selected[`__seal_sort_${index}`] = sql<string>`to_jsonb(${column}) #>> '{}'`; });
     const queryDigest = await digest({ scopeId, positionEncoding: 'jsonb-v1', match: nodeFingerprint(ast), where: sqlFingerprint(options.where),
       orderBy: orders.map(item => [item.column.name, item.direction]) });
     const ring = sealerOf().ring(reg.model), context = { modelId: reg.model, scopeId, keyScopeId: ring.keyScopeId, queryDigest };
@@ -295,17 +298,17 @@ export function searchMethods(sealerOf: () => import('../../../core/field-cipher
       check();
       const requestLimit = Math.min(batch, limit-items.length), direction = orders.at(-1)?.direction ?? 'asc';
       const values = afterSort === undefined ? [] : JSON.parse(afterSort) as (string | null)[];
-      const afterCondition = after === undefined ? undefined : orders.length
-        ? keysetAfter([...orders.map(item => item.column), rowColumn], [...values, after], [...orders.map(item => item.direction), direction])
+      const afterCondition = after === undefined ? undefined : executionOrders.length
+        ? keysetAfter([...executionOrders.map(item => item.column), rowColumn], [...values, after], [...executionOrders.map(item => item.direction), direction])
         : direction === 'asc' ? gt(rowColumn, after) : lt(rowColumn, after);
-      const bounded = compiled?.op === 'secure' && hasSubstring(compiled.search) && !options.where && !orders.length && Number.isFinite(requestLimit)
+      const bounded = compiled?.op === 'secure' && hasSubstring(compiled.search) && !options.where && ascendingIdentity && Number.isFinite(requestLimit)
         ? { limit: requestLimit, after } : undefined;
       const condition = and(reg.scope ? eq(columns[reg.scope], scopeId) : undefined, options.where, afterCondition,
         compiled ? candidate(reg, scopeId, compiled, bounded) : undefined);
       let rows: Record<string, unknown>[];
       try {
         const query = (db as any).select(selected).from(reg.parent).where(condition).orderBy(
-          ...orders.map(item => item.direction === 'asc' ? asc(item.column) : desc(item.column)),
+          ...executionOrders.map(item => item.direction === 'asc' ? asc(item.column) : desc(item.column)),
           direction === 'asc' ? asc(rowColumn) : desc(rowColumn));
         rows = await (Number.isFinite(requestLimit) ? query.limit(requestLimit) : query);
       } catch (error) { throw databaseError(error); }
@@ -324,7 +327,7 @@ export function searchMethods(sealerOf: () => import('../../../core/field-cipher
           if (resultBytes+size > budgets.resultBytes) return false;
           resultBytes += size; items.push(item);
           after = identity(row[reg.row] as string, reg.definition.rowType);
-          afterSort = orders.length ? JSON.stringify(orders.map((_, index) => row[`__seal_sort_${index}`] ?? null)) : undefined;
+          afterSort = orders.length ? JSON.stringify(ascendingIdentity ? [after] : orders.map((_, index) => row[`__seal_sort_${index}`] ?? null)) : undefined;
           return true;
         });
       if (state.limited) break;

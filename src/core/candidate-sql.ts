@@ -85,15 +85,13 @@ export function boundedCandidatePredicate(definition: SealedModelDefinition, sto
   ) as ${ident('c')}`;
   const finalSource = search.op === 'any' ? q`${index} as ${ident('c')}` : ordered;
   const finalScope = search.op === 'any' ? q`${ident('c', 'scope_id')}=${scopeId}${keyset} and ` : q``;
-  if (limit > 200) return q`${row} in (
-    with matched as materialized (
-      select ${rowId} from ${finalSource} where ${finalScope}${tokenWhere} order by ${rowId} limit ${limit}
-    ) select row_id from matched
-  )`;
+  // A dense ID prefix can satisfy the page without sorting all token candidates.
+  // This is a probe size, never a result/work cap: misses use the complete fallback.
+  const sampleLimit = Math.max(256, Math.min(Number.MAX_SAFE_INTEGER, limit * 4));
   return q`${row} in (
     with sample as materialized (
       select ${ident('row_id')},${sampleColumns} from ${index} as ${ident('c')}
-      where ${ident('c', 'scope_id')}=${scopeId}${keyset} order by ${rowId} limit 256
+      where ${ident('c', 'scope_id')}=${scopeId}${keyset} order by ${rowId} limit ${sampleLimit}
     ), quick as materialized (
       select ${rowId} from sample as ${ident('c')} where ${tokenWhere} order by ${rowId} limit ${limit}
     ), fallback as materialized (

@@ -26,16 +26,16 @@ test('large final-match pages, root OR fallback and keysets match plaintext; rep
     await pool.query(`create table ${schema}.rows_seal_index(${cols},unique(scope_id,row_id),foreign key(row_id) references ${schema}.rows(id) on delete cascade)`);
     for(const sql of sealed.extraMigrationSql(seal))await pool.query(sql);
     const base=String(fixture[0].memo_plain),normalized=compactText(base,{normalizer:'legacy-text-v1'}),pair=Array.from(normalized).slice(0,2).join('');
-    const rows=fixture.map((r,i)=>({id:r.id as string,scopeId:scope,body:i<260?base:base.repeat(2)})),db=drizzle(pool);
+    const rows=fixture.map((r,i)=>({id:r.id as string,scopeId:scope,body:i<400?base:base.repeat(2)})),db=drizzle(pool);
     await sealed.insert(db,seal,rows);
-    for(const [limit,rootOr]of [[201,false],[201,true],[100,true]] as const){
+    for(const explicitOrder of [false,true])for(const [limit,rootOr]of [[201,false],[201,true],[100,true]] as const){
       const expected=rows.filter(r=>rootOr?r.body===base.repeat(2):compactText(r.body,{normalizer:'legacy-text-v1'}).includes(pair));
       const result:typeof rows=[];let cursor:string|undefined;
       do {
-        const page=await sealed.findMany(db,seal,{scope,limit,cursor,match:m=>rootOr?m.or(m.body.eq(base.repeat(2)),m.body.contains(base.repeat(3))):m.body.contains(pair)});
+        const page=await sealed.findMany(db,seal,{scope,limit,cursor,...(explicitOrder?{orderBy:{column:table.id,direction:'asc' as const}}:{}),match:m=>rootOr?m.or(m.body.eq(base.repeat(2)),m.body.contains(base.repeat(3))):m.body.contains(pair)});
         result.push(...page.items);cursor=page.nextCursor??undefined;
       }while(cursor);
-      assert.deepEqual(result,expected,`limit=${limit}, rootOr=${rootOr}`);
+      assert.deepEqual(result,expected,`limit=${limit}, rootOr=${rootOr}, explicitOrder=${explicitOrder}`);
     }
     // Derive a near miss from two existing fixture characters; every coarse query piece exists.
     const [a,b]=[...new Set(Array.from(normalized))],needle=a+b+b+a;
