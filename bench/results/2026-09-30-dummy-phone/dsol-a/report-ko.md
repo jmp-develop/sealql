@@ -56,10 +56,30 @@ k=3 알려진 원문 5%의 유일한 비상한 행에서 정확 덮개가 없었
 
 이는 SQL 시간이나 전체 응답 시간이 아니라 후보 수와 토큰 수만의 메모리 측정이다.
 
+## 추가 집중 실행: 칸당 200행
+
+작은 표본을 보완하기 위해 k=0·1·3에서 알려진 원문 1%와 선택 삽입 1,000만 다시 실행했다. k=3은 사슬 상태를 200,000→2,000,000, 사슬 수를 300→3,000, 분할 상태를 50,000→500,000, 분할 수를 1,000→10,000으로 각각 10배 높였다. 알려진 원문 집합과 평가 표본이 겹친 3행은 제외되어 그 칸의 분모는 197이다.
+
+| 공격 입력 | k | 결정/전체 | 미해결 | 한 번 찍기(전체) | 정답 포함(전체) | 완료 행 평균 후보 |
+|---|---:|---:|---:|---:|---:|---:|
+| 알려진 원문 1% | 0 | 197/197 | 0.0% | 196/197 = 99.49% | 197/197 = 100% | 1.005 |
+| 선택 삽입 1,000 | 0 | 200/200 | 0.0% | 199/200 = 99.50% | 200/200 = 100% | 1.005 |
+| 알려진 원문 1% | 1 | 189/197 | 8/197 = 4.06% | 69/197 = 35.03% | 189/197 = 95.94% | 3.079 |
+| 선택 삽입 1,000 | 1 | 200/200 | 0.0% | 75/200 = 37.50% | 200/200 = 100% | 3.020 |
+| 알려진 원문 1% | 3 | 0/197 | 197/197 = 100% | 미측정 | 미측정 | 미측정 |
+| 선택 삽입 1,000 | 3 | 131/200 | 69/200 = 34.50% | 16/200 = 8.00% | 131/200 = 65.50% | 12.321 |
+
+k=1 완료 행만 보면 정답 포함률은 두 공격 모두 100%이고, 한 번 찍기는 알려진 원문 69/189 = 36.51%, 선택 삽입 75/200 = 37.50%다. k=3 선택 삽입 1,000도 완료 행 정답 포함률은 131/131 = 100%, 한 번 찍기는 16/131 = 12.21%로 25% 기준선보다 낮았다. 알려진 원문 1%의 k=3은 상한을 10배 올려도 전부 미해결이므로 안전 수치가 아니라 현재 조립기의 계산 한계다.
+
+집중 실행 원자료는 `result-200-k0.json`, `result-200-k1.json`, `result-200-k3.json`이다.
+
 ## 실행
 
 ```text
 rtk cmd /c "set DUMMY_VICTIMS=12&& set DUMMY_CHAIN_STATES=200000&& set DUMMY_CHAINS=300&& set DUMMY_PARTITION_STATES=50000&& set DUMMY_PARTITIONS=1000&& node --import tsx bench/dummy-sim/run.ts"
+rtk cmd /c "set DUMMY_FOCUS_200=1&& set DUMMY_VICTIMS=200&& set DUMMY_K=0&& set DUMMY_CHAIN_STATES=200000&& set DUMMY_CHAINS=300&& set DUMMY_PARTITION_STATES=50000&& node --import tsx bench/dummy-sim/run.ts"
+rtk cmd /c "set DUMMY_FOCUS_200=1&& set DUMMY_VICTIMS=200&& set DUMMY_K=1&& set DUMMY_CHAIN_STATES=200000&& set DUMMY_CHAINS=300&& set DUMMY_PARTITION_STATES=50000&& node --import tsx bench/dummy-sim/run.ts"
+rtk cmd /c "set DUMMY_FOCUS_200=1&& set DUMMY_VICTIMS=200&& set DUMMY_K=3&& set DUMMY_CHAIN_STATES=2000000&& set DUMMY_CHAINS=3000&& set DUMMY_PARTITION_STATES=500000&& set DUMMY_PARTITIONS=10000&& node --import tsx bench/dummy-sim/run.ts"
 rtk npm run check
 ```
 

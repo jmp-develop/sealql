@@ -1,0 +1,198 @@
+{
+  "complete": true,
+  "databaseAccess": false,
+  "productCodeChanged": false,
+  "fixtureRows": 100000,
+  "victimPopulation": 10000,
+  "referencePopulation": 10000,
+  "evaluatedPerCell": 200,
+  "modeNote": "단일 스냅샷 공격은 R/H의 주변분포가 같으므로 H를 본표로 실행하고 생성 불변식에서 R/H를 함께 검증했다.",
+  "limits": {
+    "MAX_CHAIN_STATES": 2000000,
+    "MAX_CHAINS": 3000,
+    "MAX_PARTITION_STATES": 500000,
+    "MAX_PARTITIONS": 10000
+  },
+  "model": {
+    "id": "D-k over S0",
+    "phoneFormat": "50-9799-2678",
+    "prefixes": 80,
+    "sourceHash": "974a7daae18912b62f66ce42110b7f63bf78b995bd09493c082320258ac83a56"
+  },
+  "validation": {
+    "R": {
+      "sameRewrite": false,
+      "trueExactPreserved": true,
+      "dummies": [
+        "52-6923-9365",
+        "23-3861-8555",
+        "53-7951-6395"
+      ]
+    },
+    "H": {
+      "sameRewrite": true,
+      "trueExactPreserved": true,
+      "dummies": [
+        "74-6525-7034",
+        "43-2723-0761",
+        "58-1635-1760"
+      ]
+    }
+  },
+  "baselineHarness": [
+    {
+      "knownPercent": 1,
+      "knownRows": 100,
+      "evaluatedRows": 197,
+      "correct": 196,
+      "oneGuessPct": 99.49238578680203,
+      "graphUnique": 196,
+      "graphCapped": 0,
+      "method": "기존 collision-aware phonePredictor; 유일 조립이 없으면 기존 incidence dictionary prior"
+    }
+  ],
+  "attacks": [
+    {
+      "label": "known-1%",
+      "mode": "H",
+      "k": 3,
+      "probeRows": 100,
+      "evaluatedRows": 197,
+      "decidedRows": 0,
+      "capped": 197,
+      "zero": 0,
+      "randomBaselinePct": 25,
+      "oneGuessCorrect": 0,
+      "oneGuessPct": 0,
+      "truthIncluded": 0,
+      "truthIncludedPct": 0,
+      "meanCandidates": 0,
+      "meanPartitions": 0,
+      "learned": {
+        "plainPieces": 258,
+        "observedTokens": 258,
+        "resolvedPieces": 105
+      },
+      "examples": []
+    },
+    {
+      "label": "chosen-1000",
+      "mode": "H",
+      "k": 3,
+      "probeRows": 1000,
+      "evaluatedRows": 200,
+      "decidedRows": 131,
+      "capped": 69,
+      "zero": 0,
+      "randomBaselinePct": 25,
+      "oneGuessCorrect": 16,
+      "oneGuessPct": 8,
+      "truthIncluded": 131,
+      "truthIncludedPct": 65.5,
+      "meanCandidates": 12.320610687022901,
+      "meanPartitions": 12.320610687022901,
+      "learned": {
+        "plainPieces": 264,
+        "observedTokens": 264,
+        "resolvedPieces": 264
+      },
+      "examples": [
+        {
+          "id": "10000000-0000-4000-8000-00000000facf",
+          "truth": "11-0989-2943",
+          "candidates": [
+            "82-6727-0751",
+            "48-2861-9238",
+            "40-9906-7738",
+            "11-0989-2943"
+          ],
+          "candidateCount": 4,
+          "partitions": 4,
+          "chainStates": 1107,
+          "partitionStates": 169155
+        },
+        {
+          "id": "10000000-0000-4000-8000-000000016939",
+          "truth": "47-7128-4304",
+          "candidates": [
+            "47-7128-4504",
+            "55-6217-7057",
+            "47-7128-4304",
+            "34-1226-2693",
+            "34-1139-4504",
+            "83-1226-2693",
+            "34-1139-4304",
+            "83-1139-4504",
+            "83-1139-4304"
+          ],
+          "candidateCount": 9,
+          "partitions": 9,
+          "chainStates": 363,
+          "partitionStates": 1740
+        },
+        {
+          "id": "10000000-0000-4000-8000-000000004db2",
+          "truth": "29-8632-1166",
+          "candidates": [
+            "34-9836-1166",
+            "29-8632-1166",
+            "63-0427-6176",
+            "34-9836-1620",
+            "29-8632-1620",
+            "81-1548-0545"
+          ],
+          "candidateCount": 6,
+          "partitions": 6,
+          "chainStates": 1547,
+          "partitionStates": 90348
+        },
+        {
+          "id": "10000000-0000-4000-8000-00000000b454",
+          "truth": "41-1826-2944",
+          "candidates": [
+            "10-0477-8311",
+            "20-0477-8311",
+            "21-1826-2104",
+            "41-1826-2104",
+            "12-9509-3052",
+            "21-1826-2944",
+            "41-1826-2944",
+            "11-1826-2104",
+            "10-2104-5595",
+            "21-2104-5595",
+            "11-1826-2944",
+            "26-2104-5595"
+          ],
+          "candidateCount": 21,
+          "partitions": 21,
+          "chainStates": 938,
+          "partitionStates": 39457
+        },
+        {
+          "id": "10000000-0000-4000-8000-000000011d48",
+          "truth": "85-4983-8253",
+          "candidates": [
+            "44-8762-0246",
+            "45-8762-0246",
+            "85-8762-0246",
+            "33-9194-8253",
+            "44-8640-2125",
+            "45-4983-8253",
+            "45-8640-2125",
+            "85-4983-8253",
+            "85-8640-2125",
+            "33-9194-8927",
+            "45-4983-8927",
+            "85-4983-8927"
+          ],
+          "candidateCount": 12,
+          "partitions": 12,
+          "chainStates": 492,
+          "partitionStates": 12684
+        }
+      ]
+    }
+  ],
+  "costs": [],
+  "finished": "2026-09-29T21:43:28.199Z"
+}

@@ -1,0 +1,226 @@
+{
+  "complete": true,
+  "databaseAccess": false,
+  "productCodeChanged": false,
+  "fixtureRows": 100000,
+  "victimPopulation": 10000,
+  "referencePopulation": 10000,
+  "evaluatedPerCell": 200,
+  "modeNote": "단일 스냅샷 공격은 R/H의 주변분포가 같으므로 H를 본표로 실행하고 생성 불변식에서 R/H를 함께 검증했다.",
+  "limits": {
+    "MAX_CHAIN_STATES": 200000,
+    "MAX_CHAINS": 300,
+    "MAX_PARTITION_STATES": 50000,
+    "MAX_PARTITIONS": 1000
+  },
+  "model": {
+    "id": "D-k over S0",
+    "phoneFormat": "50-9799-2678",
+    "prefixes": 80,
+    "sourceHash": "974a7daae18912b62f66ce42110b7f63bf78b995bd09493c082320258ac83a56"
+  },
+  "validation": {
+    "R": {
+      "sameRewrite": false,
+      "trueExactPreserved": true,
+      "dummies": [
+        "52-6923-9365",
+        "23-3861-8555",
+        "53-7951-6395"
+      ]
+    },
+    "H": {
+      "sameRewrite": true,
+      "trueExactPreserved": true,
+      "dummies": [
+        "74-6525-7034",
+        "43-2723-0761",
+        "58-1635-1760"
+      ]
+    }
+  },
+  "baselineHarness": [
+    {
+      "knownPercent": 1,
+      "knownRows": 100,
+      "evaluatedRows": 197,
+      "correct": 196,
+      "oneGuessPct": 99.49238578680203,
+      "graphUnique": 196,
+      "graphCapped": 0,
+      "method": "기존 collision-aware phonePredictor; 유일 조립이 없으면 기존 incidence dictionary prior"
+    }
+  ],
+  "attacks": [
+    {
+      "label": "known-1%",
+      "mode": "H",
+      "k": 1,
+      "probeRows": 100,
+      "evaluatedRows": 197,
+      "decidedRows": 189,
+      "capped": 8,
+      "zero": 0,
+      "randomBaselinePct": 50,
+      "oneGuessCorrect": 69,
+      "oneGuessPct": 35.025380710659896,
+      "truthIncluded": 189,
+      "truthIncludedPct": 95.93908629441624,
+      "meanCandidates": 3.0793650793650795,
+      "meanPartitions": 1.597883597883598,
+      "learned": {
+        "plainPieces": 258,
+        "observedTokens": 258,
+        "resolvedPieces": 197
+      },
+      "examples": [
+        {
+          "id": "10000000-0000-4000-8000-00000000facf",
+          "truth": "11-0989-2943",
+          "candidates": [
+            "82-6727-0751",
+            "11-0989-2943"
+          ],
+          "candidateCount": 2,
+          "partitions": 1,
+          "chainStates": 410,
+          "partitionStates": 821
+        },
+        {
+          "id": "10000000-0000-4000-8000-000000016939",
+          "truth": "47-7128-4304",
+          "candidates": [
+            "55-6217-7057",
+            "47-7128-4304"
+          ],
+          "candidateCount": 2,
+          "partitions": 1,
+          "chainStates": 131,
+          "partitionStates": 92
+        },
+        {
+          "id": "10000000-0000-4000-8000-000000011e25",
+          "truth": "14-7802-3021",
+          "candidates": [
+            "14-7802-3021",
+            "60-0124-1233"
+          ],
+          "candidateCount": 2,
+          "partitions": 1,
+          "chainStates": 290,
+          "partitionStates": 1486
+        },
+        {
+          "id": "10000000-0000-4000-8000-000000004db2",
+          "truth": "29-8632-1166",
+          "candidates": [
+            "29-8632-1166",
+            "81-1548-0545"
+          ],
+          "candidateCount": 2,
+          "partitions": 1,
+          "chainStates": 155,
+          "partitionStates": 191
+        },
+        {
+          "id": "10000000-0000-4000-8000-000000003025",
+          "truth": "44-6114-7692",
+          "candidates": [
+            "44-6114-7692",
+            "86-7937-4505"
+          ],
+          "candidateCount": 2,
+          "partitions": 1,
+          "chainStates": 155,
+          "partitionStates": 67
+        }
+      ]
+    },
+    {
+      "label": "chosen-1000",
+      "mode": "H",
+      "k": 1,
+      "probeRows": 1000,
+      "evaluatedRows": 200,
+      "decidedRows": 200,
+      "capped": 0,
+      "zero": 0,
+      "randomBaselinePct": 50,
+      "oneGuessCorrect": 75,
+      "oneGuessPct": 37.5,
+      "truthIncluded": 200,
+      "truthIncludedPct": 100,
+      "meanCandidates": 3.02,
+      "meanPartitions": 3.02,
+      "learned": {
+        "plainPieces": 264,
+        "observedTokens": 264,
+        "resolvedPieces": 264
+      },
+      "examples": [
+        {
+          "id": "10000000-0000-4000-8000-00000000facf",
+          "truth": "11-0989-2943",
+          "candidates": [
+            "82-6727-0751",
+            "11-0989-2943"
+          ],
+          "candidateCount": 2,
+          "partitions": 2,
+          "chainStates": 43,
+          "partitionStates": 4
+        },
+        {
+          "id": "10000000-0000-4000-8000-000000016939",
+          "truth": "47-7128-4304",
+          "candidates": [
+            "55-6217-7057",
+            "47-7128-4304"
+          ],
+          "candidateCount": 2,
+          "partitions": 2,
+          "chainStates": 64,
+          "partitionStates": 10
+        },
+        {
+          "id": "10000000-0000-4000-8000-000000011e25",
+          "truth": "14-7802-3021",
+          "candidates": [
+            "14-7802-3021",
+            "60-0124-1233"
+          ],
+          "candidateCount": 2,
+          "partitions": 2,
+          "chainStates": 48,
+          "partitionStates": 4
+        },
+        {
+          "id": "10000000-0000-4000-8000-000000004db2",
+          "truth": "29-8632-1166",
+          "candidates": [
+            "29-8632-1166",
+            "81-1548-0545"
+          ],
+          "candidateCount": 2,
+          "partitions": 2,
+          "chainStates": 43,
+          "partitionStates": 8
+        },
+        {
+          "id": "10000000-0000-4000-8000-000000003025",
+          "truth": "44-6114-7692",
+          "candidates": [
+            "44-6114-7692",
+            "86-7937-4505"
+          ],
+          "candidateCount": 2,
+          "partitions": 2,
+          "chainStates": 50,
+          "partitionStates": 6
+        }
+      ]
+    }
+  ],
+  "costs": [],
+  "finished": "2026-09-29T21:41:50.204Z"
+}
