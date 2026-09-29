@@ -1,0 +1,55 @@
+
+> sealql@0.1.0-experimental.0 test
+> node --import tsx --test test/*.test.ts
+
+✔ single-literal LIKE compiles to equivalent positional SQL without an exact profile (31.325ms)
+{"likeSegmentComparisons":3836,"longValueLength":4002,"dbRowsInserted":0}
+✔ LIKE segment order matches PostgreSQL LIKE for overlaps, escapes, underscores, empty and long values (1995.2974ms)
+✔ large JSON and deep nesting have no library size or depth cap (45.7762ms)
+✔ search expression accepts more than eight leaves and nested groups (0.4172ms)
+✔ normalization folds NFC, full-width ASCII, and ASCII case (0.4098ms)
+✔ ciphertext binds row and field, rejects tampering, and uses multiple shards (20.6738ms)
+✔ cached field context preserves versionless AAD bytes and opens independent ciphertext (4.2008ms)
+✔ cursor key cache keeps independent root keys isolated (3.8853ms)
+✔ fixed global and model keys are copied at construction (1.9672ms)
+✔ field and token profile keys are shared across tenants without retaining scope prefixes (41.2951ms)
+✔ marked pieces are distinct from literal punctuation (2.6512ms)
+✔ substring skip grams default on and only explicit false disables them (1.3673ms)
+✔ exact bits allow 32 while substring tokens remain 16 (2.1485ms)
+✔ scalar count rejects unsafe integers, removed budgets, and cancellation without decryption (6.2227ms)
+✔ open rejects pending queries and database wrapping sanitizes cause (13.6374ms)
+✔ transactionless drivers report UNSUPPORTED_DRIVER before any callback work (18.5984ms)
+✔ text position validation wraps SQL errors and checks cancellation before SQL (5.9281ms)
+✔ native managed writes and opens stay atomic (1798.9573ms)
+✔ text row IDs follow the database collation and keep index-backed keysets (428.6713ms)
+✔ package schema generates, migrates, and pushes twice without drift (3956.6575ms)
+✔ scope-free nullable index rows disappear when every token is null (112.1595ms)
+✔ composite parent key uses scope and row foreign key (91.4908ms)
+✔ native registration builds same-schema companion without loading a key (18.7254ms)
+✔ native CRUD, verified pages, OR semi-join and bounded count (601.0446ms)
+✔ large searchable fields and public open have no implicit size or row budget (4464.4827ms)
+✔ insert splits above the PostgreSQL parameter limit within one transaction (71302.9877ms)
+✔ false token candidates are rejected in the DB without opening condition fields (1206.0103ms)
+✔ multicolumn GIN preserves writes, cursor search and exact count (130.5971ms)
+✔ reindex accepts a caller batch above the old maximum (14015.8998ms)
+✔ count returns one scalar without selecting or decrypting row values (8255.3891ms)
+✔ microsecond timestamp keysets resume under another DateStyle (113.5285ms)
+✔ findMany returns a thousand-level JSON field with a result byte budget (73.9052ms)
+✔ large final-match pages, root OR fallback and keysets match plaintext; repeated near misses terminate (7774.2588ms)
+✔ DB proofs match plaintext across operators, types, nulls, mutations and JOIN projections (973.1663ms)
+✔ stamp derivation and signed big endian digest match independent crypto (14.6381ms)
+✔ position proofs retain occurrences, stream domains, Unicode and empty values (5.7677ms)
+✔ two-bit exact profiles are explicit; the population recommendation stays unchanged (1.6726ms)
+Node pg flow {"ok":true,"insert":1,"count":1,"update":1,"reindex":1,"search":1,"substring":1,"afterDelete":0}
+postgres-js flow {"ok":true,"insert":1,"count":1,"update":1,"reindex":1,"search":1,"substring":1,"afterDelete":0}
+workerd pg flow {"ok":true,"insert":1,"count":1,"update":1,"reindex":1,"search":1,"substring":1,"afterDelete":0}
+✔ Node pg, postgres-js and local workerd pg execute the complete public DB flow (758.9136ms)
+✔ v3 envelope crosses local workerd and Node WebCrypto (380.4826ms)
+ℹ tests 39
+ℹ suites 0
+ℹ pass 39
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 101263.1607

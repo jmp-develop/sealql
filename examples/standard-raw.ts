@@ -1,5 +1,5 @@
 /** Raw SQL remains available through Drizzle db.execute plus SealQL opening. */
-import { sql } from 'drizzle-orm';
+import { and, sql } from 'drizzle-orm';
 import type { PgDatabase } from 'drizzle-orm/pg-core';
 import { configureKey, note, noteSeal, sealed } from './standard-consumer.js';
 
@@ -23,5 +23,14 @@ export async function rawSearch(db: PgDatabase<any, any, any>, rootKey: Uint8Arr
       ${Object.keys(flags).length ? sql`, ${flagsSql}` : sql``}
       from ${note} where ${where} ${after ? sql`and ${after}` : sql``}
       order by ${sql.join(orderBy, sql.raw(','))} limit ${limit}`),
+  });
+}
+
+/** Supplying a numeric limit makes the callback limit a number for Drizzle. */
+export async function querySearch(db: PgDatabase<any, any, any>, scopeId: string) {
+  return sealed.search(db, {
+    scope: scopeId, limit: 20, match: { n: [noteSeal, m => m.title.contains('ell')] },
+    query: ({where, after, orderBy, flags, limit}) => db.select({n: note, ...flags}).from(note)
+      .where(and(where, after)).orderBy(...orderBy).limit(limit),
   });
 }

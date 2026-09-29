@@ -39,3 +39,4 @@
 | [020](020-companion-predicate-plans.md) | 검색 표 판정·연속 quick·커서 지연 생성·실측 COST |
 | [021](021-like-normalization.md) | 단일 literal LIKE의 위치 조건 정규화·A 연기·B 미채택 |
 | [022](022-like-segment-order.md) | 일반 LIKE의 고정 길이 구간 순서 판정 |
+| [023](023-join-callback-limit.md) | 호출 옵션에 따른 JOIN 콜백 limit 타입 |

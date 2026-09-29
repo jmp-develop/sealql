@@ -90,3 +90,48 @@ void plainName;
 sealed.count(db, customersSeal, { scope: 'x', budgets: { maxCandidates: 10 } });
 // @ts-expect-error count returns only a scalar and has no projection batch
 sealed.count(db, customersSeal, { scope: 'x', budgets: { batch: 10 } });
+
+const limitedJoin = sealed.search(db, {
+  scope: 'x', limit: 20,
+  match: { customer: [customersSeal, m => m.name.contains('Ad')] },
+  query: ({where, after, orderBy, flags, limit}) => {
+    const size: number = limit;
+    // The callback batch can differ from the requested page size.
+    // @ts-expect-error limit is a number, not the literal page size
+    const literal: 20 = limit;
+    void [size, literal, after];
+    return db.select({customer:customers,...flags}).from(customers).where(where).orderBy(...orderBy).limit(limit);
+  },
+});
+void limitedJoin.then(page => { const name: string = page.items[0].customer.name; void name; });
+sealed.search(db, {
+  scope: 'x', match: {customer:[customersSeal,m=>m.name.contains('Ad')]},
+  query: ({limit}) => {
+    // @ts-expect-error an unbounded search may omit the SQL limit
+    const size: number = limit;
+    void size; return [];
+  },
+});
+declare const optionalPage: {limit?:number};
+sealed.search(db, {
+  ...optionalPage, scope:'x', match:{customer:[customersSeal,m=>m.name.contains('Ad')]},
+  query: ({limit}) => {
+    // @ts-expect-error an optional caller limit cannot promise a bounded callback
+    const size: number = limit;
+    void size; return [];
+  },
+});
+declare const maybeLimit: number | undefined;
+sealed.search(db, {
+  limit:maybeLimit, scope:'x', match:{customer:[customersSeal,m=>m.name.contains('Ad')]},
+  query: ({limit}) => {
+    // @ts-expect-error a possibly undefined limit cannot promise a bounded callback
+    const size: number = limit;
+    void size; return [];
+  },
+});
+sealed.search(db, {
+  scope:'x', limit:20, match:{customer:[customersSeal,m=>m.name.contains('Ad')]},
+  // A callback accepting the old wider context remains assignable.
+  query: (parts:{limit:number|undefined}) => { void parts; return []; },
+});

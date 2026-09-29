@@ -372,17 +372,21 @@ export function searchMethods(sealerOf: () => import('../../../core/field-cipher
     ensure(exact <= BigInt(Number.MAX_SAFE_INTEGER), 'LIMIT_EXCEEDED');
     return Number(exact);
   }
-  type SearchParts = { where: SQL; after: SQL | undefined; orderBy: SQL[]; flags: Record<string, SQL | SQL.Aliased>;
-    flagsSql: SQL; limit: number | undefined };
-  type SearchOptions<M extends Record<string, object>, R> = {
+  type SearchParts<L extends number | undefined = number | undefined> = { where: SQL; after: SQL | undefined; orderBy: SQL[]; flags: Record<string, SQL | SQL.Aliased>;
+    flagsSql: SQL; limit: L };
+  type SearchOptions<M extends Record<string, object>, R, L extends number | undefined = number | undefined> = {
     scope?: string;
     match: { [K in keyof M]: readonly [M[K], (m: MatchBuilder<ParentOf<M[K]>>) => NativeNode] };
     keyset?: PgColumn[]; columns?: Record<string, Record<string, string>>;
     limit?: number; cursor?: string | undefined; budgets?: SearchBudgets; signal?: AbortSignal;
-    query: (parts: SearchParts) => Promise<R[] | { rows: R[] }> | R[] | { rows: R[] };
+    query: (parts: SearchParts<L>) => Promise<R[] | { rows: R[] }> | R[] | { rows: R[] };
   };
   type PublicRow<R> = { [K in keyof R as K extends `__seal_${string}` ? never : K]: Opened<R[K]> };
-  async function search<const M extends Record<string, object>, R extends Record<string, unknown>>(db: Db, options: SearchOptions<M, R>): Promise<{ items: PublicRow<R>[]; nextCursor: string | null }> {
+  function search<const M extends Record<string, object>, R extends Record<string, unknown>>(db: Db, options: SearchOptions<M, R, number> & { limit: number }): Promise<{ items: PublicRow<R>[]; nextCursor: string | null }>;
+  function search<const M extends Record<string, object>, R extends Record<string, unknown>>(db: Db, options: SearchOptions<M, R>): Promise<{ items: PublicRow<R>[]; nextCursor: string | null }>;
+  // The overloads preserve the caller's required/optional limit; the shared
+  // implementation validates it before computing the callback's batch size.
+  async function search<const M extends Record<string, object>, R extends Record<string, unknown>>(db: Db, options: SearchOptions<M, R, any>): Promise<{ items: PublicRow<R>[]; nextCursor: string | null }> {
     ensure(options && options.match && typeof options.query === 'function', 'INVALID_VALUE');
     const keys = Object.keys(options.match);
     ensure(keys.length > 0, 'INVALID_VALUE');

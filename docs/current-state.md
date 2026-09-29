@@ -21,3 +21,5 @@ The position predicate has one fixed COST 1900, calibrated against measured Post
 Security: the DB receives query value/piece keys, never the root or encryption keys. Disable parameter logging in the database, driver, proxy and telemetry. Token frequency/co-occurrence, normalized lengths, compact position permutations remain visible; observed keys reveal their piece occurrences. A hostile DB can omit rows or falsify predicates even while returning authentic ciphertext. A 64-bit proof collision is possible. Full-record keyless theft resistance is unproven; see the [threat model](threat-model.md) and [mechanical attack method](attack-simulation.md).
 
 General LIKE no longer materializes every piece occurrence or a length-sized frontier. Reapply extraMigrationSql to install the first-position helper and replace the LIKE function; no data rewrite is needed.
+
+JOIN search callbacks infer a numeric limit when the call requires a numeric limit; omitted or optional limits retain number | undefined. This is a declaration-only improvement; runtime batching and unbounded search behavior are unchanged.
