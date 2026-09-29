@@ -1,0 +1,3636 @@
+{
+  "protocol": "Same 100k product table/API/keys; before a15f85a vs after vs fully function-qualified no-SET candidate. Two warmups and seven alternating rounds; full six-field values and IDs checked.",
+  "records": [
+    {
+      "name": "exact_common",
+      "mode": "count",
+      "runs": {
+        "before": [
+          {
+            "totalMs": 63.60680000000002,
+            "sqlMs": 62.45719999999983,
+            "sqlRequests": 1,
+            "appRows": 1
+          },
+          {
+            "totalMs": 62.938899999999876,
+            "sqlMs": 61.71360000000004,
+            "sqlRequests": 1,
+            "appRows": 1
+          },
+          {
+            "totalMs": 61.14539999999988,
+            "sqlMs": 60.26089999999999,
+            "sqlRequests": 1,
+            "appRows": 1
+          },
+          {
+            "totalMs": 61.625299999999925,
+            "sqlMs": 60.4224999999999,
+            "sqlRequests": 1,
+            "appRows": 1
+          },
+          {
+            "totalMs": 124.45949999999993,
+            "sqlMs": 123.46939999999995,
+            "sqlRequests": 1,
+            "appRows": 1
+          },
+          {
+            "totalMs": 63.087299999999686,
+            "sqlMs": 62.179499999999734,
+            "sqlRequests": 1,
+            "appRows": 1
+          },
+          {
+            "totalMs": 58.884199999999964,
+            "sqlMs": 57.949299999999766,
+            "sqlRequests": 1,
+            "appRows": 1
+          }
+        ],
+        "after": [
+          {
+            "totalMs": 63.71539999999982,
+            "sqlMs": 62.40090000000009,
+            "sqlRequests": 1,
+            "appRows": 1
+          },
+          {
+            "totalMs": 61.969100000000026,
+            "sqlMs": 61.02369999999996,
+            "sqlRequests": 1,
+            "appRows": 1
+          },
+          {
+            "totalMs": 61.23610000000008,
+            "sqlMs": 60.330600000000004,
+            "sqlRequests": 1,
+            "appRows": 1
+          },
+          {
+            "totalMs": 60.06050000000005,
+            "sqlMs": 59.24240000000009,
+            "sqlRequests": 1,
+            "appRows": 1
+          },
+          {
+            "totalMs": 59.74770000000012,
+            "sqlMs": 58.86779999999999,
+            "sqlRequests": 1,
+            "appRows": 1
+          },
+          {
+            "totalMs": 79.0273000000002,
+            "sqlMs": 78.2212999999997,
+            "sqlRequests": 1,
+            "appRows": 1
+          },
+          {
+            "totalMs": 60.23759999999993,
+            "sqlMs": 59.444800000000214,
+            "sqlRequests": 1,
+            "appRows": 1
+          }
+        ],
+        "qualified": [
+          {
+            "totalMs": 63.44849999999997,
+            "sqlMs": 62.24350000000004,
+            "sqlRequests": 1,
+            "appRows": 1
+          },
+          {
+            "totalMs": 61.25469999999996,
+            "sqlMs": 60.3909000000001,
+            "sqlRequests": 1,
+            "appRows": 1
+          },
+          {
+            "totalMs": 62.01319999999987,
+            "sqlMs": 61.088199999999915,
+            "sqlRequests": 1,
+            "appRows": 1
+          },
+          {
+            "totalMs": 61.060199999999895,
+            "sqlMs": 60.104899999999816,
+            "sqlRequests": 1,
+            "appRows": 1
+          },
+          {
+            "totalMs": 62.8440999999998,
+            "sqlMs": 61.69569999999976,
+            "sqlRequests": 1,
+            "appRows": 1
+          },
+          {
+            "totalMs": 64.35910000000013,
+            "sqlMs": 63.26949999999988,
+            "sqlRequests": 1,
+            "appRows": 1
+          },
+          {
+            "totalMs": 60.99000000000024,
+            "sqlMs": 60.17819999999983,
+            "sqlRequests": 1,
+            "appRows": 1
+          }
+        ]
+      },
+      "summary": {
+        "before": {
+          "totalMs": 62.938899999999876,
+          "sqlMs": 61.71360000000004,
+          "sqlRequests": 1,
+          "appRows": 1
+        },
+        "after": {
+          "totalMs": 61.23610000000008,
+          "sqlMs": 60.330600000000004,
+          "sqlRequests": 1,
+          "appRows": 1
+        },
+        "qualified": {
+          "totalMs": 62.01319999999987,
+          "sqlMs": 61.088199999999915,
+          "sqlRequests": 1,
+          "appRows": 1
+        }
+      },
+      "plans": {}
+    },
+    {
+      "name": "exact_common",
+      "mode": "list",
+      "runs": {
+        "before": [
+          {
+            "totalMs": 68.21230000000014,
+            "sqlMs": 3.4599999999995816,
+            "sqlRequests": 1,
+            "appRows": 300
+          },
+          {
+            "totalMs": 62.04120000000012,
+            "sqlMs": 3.1358000000000175,
+            "sqlRequests": 1,
+            "appRows": 300
+          },
+          {
+            "totalMs": 70.6519000000003,
+            "sqlMs": 3.3095000000002983,
+            "sqlRequests": 1,
+            "appRows": 300
+          },
+          {
+            "totalMs": 67.90139999999974,
+            "sqlMs": 3.6714999999999236,
+            "sqlRequests": 1,
+            "appRows": 300
+          },
+          {
+            "totalMs": 65.98120000000017,
+            "sqlMs": 3.354399999999714,
+            "sqlRequests": 1,
+            "appRows": 300
+          },
+          {
+            "totalMs": 66.20160000000033,
+            "sqlMs": 3.4729999999999563,
+            "sqlRequests": 1,
+            "appRows": 300
+          },
+          {
+            "totalMs": 64.34619999999995,
+            "sqlMs": 3.2101000000002387,
+            "sqlRequests": 1,
+            "appRows": 300
+          }
+        ],
+        "after": [
+          {
+            "totalMs": 63.00520000000006,
+            "sqlMs": 3.5812999999998283,
+            "sqlRequests": 1,
+            "appRows": 300
+          },
+          {
+            "totalMs": 65.89450000000033,
+            "sqlMs": 3.286899999999605,
+            "sqlRequests": 1,
+            "appRows": 300
+          },
+          {
+            "totalMs": 65.54179999999997,
+            "sqlMs": 3.263500000000022,
+            "sqlRequests": 1,
+            "appRows": 300
+          },
+          {
+            "totalMs": 63.53710000000001,
+            "sqlMs": 3.402599999999893,
+            "sqlRequests": 1,
+            "appRows": 300
+          },
+          {
+            "totalMs": 63.35789999999997,
+            "sqlMs": 3.602199999999357,
+            "sqlRequests": 1,
+            "appRows": 300
+          },
+          {
+            "totalMs": 66.97870000000057,
+            "sqlMs": 3.4015999999992346,
+            "sqlRequests": 1,
+            "appRows": 300
+          },
+          {
+            "totalMs": 61.342099999999846,
+            "sqlMs": 3.3177999999998065,
+            "sqlRequests": 1,
+            "appRows": 300
+          }
+        ],
+        "qualified": [
+          {
+            "totalMs": 65.5646999999999,
+            "sqlMs": 3.25400000000036,
+            "sqlRequests": 1,
+            "appRows": 300
+          },
+          {
+            "totalMs": 62.483999999999924,
+            "sqlMs": 3.1923000000001593,
+            "sqlRequests": 1,
+            "appRows": 300
+          },
+          {
+            "totalMs": 64.13589999999976,
+            "sqlMs": 3.163800000000265,
+            "sqlRequests": 1,
+            "appRows": 300
+          },
+          {
+            "totalMs": 67.60410000000002,
+            "sqlMs": 3.547099999999773,
+            "sqlRequests": 1,
+            "appRows": 300
+          },
+          {
+            "totalMs": 64.64180000000033,
+            "sqlMs": 3.242500000000291,
+            "sqlRequests": 1,
+            "appRows": 300
+          },
+          {
+            "totalMs": 65.37870000000021,
+            "sqlMs": 3.4234999999998763,
+            "sqlRequests": 1,
+            "appRows": 300
+          },
+          {
+            "totalMs": 60.798499999999876,
+            "sqlMs": 3.2473999999992884,
+            "sqlRequests": 1,
+            "appRows": 300
+          }
+        ]
+      },
+      "summary": {
+        "before": {
+          "totalMs": 66.20160000000033,
+          "sqlMs": 3.354399999999714,
+          "sqlRequests": 1,
+          "appRows": 300
+        },
+        "after": {
+          "totalMs": 63.53710000000001,
+          "sqlMs": 3.4015999999992346,
+          "sqlRequests": 1,
+          "appRows": 300
+        },
+        "qualified": {
+          "totalMs": 64.64180000000033,
+          "sqlMs": 3.2473999999992884,
+          "sqlRequests": 1,
+          "appRows": 300
+        }
+      },
+      "plans": {}
+    },
+    {
+      "name": "sub_common_memo",
+      "mode": "count",
+      "runs": {
+        "before": [
+          {
+            "totalMs": 285.2954,
+            "sqlMs": 284.03190000000086,
+            "sqlRequests": 1,
+            "appRows": 1
+          },
+          {
+            "totalMs": 255.4375999999993,
+            "sqlMs": 254.34189999999944,
+            "sqlRequests": 1,
+            "appRows": 1
+          },
+          {
+            "totalMs": 263.60739999999896,
+            "sqlMs": 262.11309999999867,
+            "sqlRequests": 1,
+            "appRows": 1
+          },
+          {
+            "totalMs": 282.7457999999988,
+            "sqlMs": 281.6214,
+            "sqlRequests": 1,
+            "appRows": 1
+          },
+          {
+            "totalMs": 270.34299999999894,
+            "sqlMs": 269.0473000000002,
+            "sqlRequests": 1,
+            "appRows": 1
+          },
+          {
+            "totalMs": 254.02430000000095,
+            "sqlMs": 252.3775999999998,
+            "sqlRequests": 1,
+            "appRows": 1
+          },
+          {
+            "totalMs": 261.23839999999836,
+            "sqlMs": 259.96930000000066,
+            "sqlRequests": 1,
+            "appRows": 1
+          }
+        ],
+        "after": [
+          {
+            "totalMs": 342.26990000000023,
+            "sqlMs": 341.21330000000034,
+            "sqlRequests": 1,
+            "appRows": 1
+          },
+          {
+            "totalMs": 334.4427999999998,
+            "sqlMs": 333.39969999999994,
+            "sqlRequests": 1,
+            "appRows": 1
+          },
+          {
+            "totalMs": 339.7314000000006,
+            "sqlMs": 338.6746999999996,
+            "sqlRequests": 1,
+            "appRows": 1
+          },
+          {
+            "totalMs": 339.8862999999983,
+            "sqlMs": 338.83359999999993,
+            "sqlRequests": 1,
+            "appRows": 1
+          },
+          {
+            "totalMs": 337.6720999999998,
+            "sqlMs": 336.47919999999976,
+            "sqlRequests": 1,
+            "appRows": 1
+          },
+          {
+            "totalMs": 331.4868000000006,
+            "sqlMs": 329.9304000000011,
+            "sqlRequests": 1,
+            "appRows": 1
+          },
+          {
+            "totalMs": 340.88870000000134,
+            "sqlMs": 339.45800000000054,
+            "sqlRequests": 1,
+            "appRows": 1
+          }
+        ],
+        "qualified": [
+          {
+            "totalMs": 332.5591000000004,
+            "sqlMs": 331.46119999999974,
+            "sqlRequests": 1,
+            "appRows": 1
+          },
+          {
+            "totalMs": 327.2090999999991,
+            "sqlMs": 326.21380000000045,
+            "sqlRequests": 1,
+            "appRows": 1
+          },
+          {
+            "totalMs": 323.4822000000004,
+            "sqlMs": 322.4565999999995,
+            "sqlRequests": 1,
+            "appRows": 1
+          },
+          {
+            "totalMs": 320.22710000000006,
+            "sqlMs": 319.0528000000013,
+            "sqlRequests": 1,
+            "appRows": 1
+          },
+          {
+            "totalMs": 338.4442999999992,
+            "sqlMs": 336.7582999999995,
+            "sqlRequests": 1,
+            "appRows": 1
+          },
+          {
+            "totalMs": 354.6347000000005,
+            "sqlMs": 353.5518000000011,
+            "sqlRequests": 1,
+            "appRows": 1
+          },
+          {
+            "totalMs": 329.8349999999991,
+            "sqlMs": 328.7026999999998,
+            "sqlRequests": 1,
+            "appRows": 1
+          }
+        ]
+      },
+      "summary": {
+        "before": {
+          "totalMs": 263.60739999999896,
+          "sqlMs": 262.11309999999867,
+          "sqlRequests": 1,
+          "appRows": 1
+        },
+        "after": {
+          "totalMs": 339.7314000000006,
+          "sqlMs": 338.6746999999996,
+          "sqlRequests": 1,
+          "appRows": 1
+        },
+        "qualified": {
+          "totalMs": 329.8349999999991,
+          "sqlMs": 328.7026999999998,
+          "sqlRequests": 1,
+          "appRows": 1
+        }
+      },
+      "plans": {}
+    },
+    {
+      "name": "sub_common_memo",
+      "mode": "list",
+      "runs": {
+        "before": [
+          {
+            "totalMs": 197.40669999999955,
+            "sqlMs": 131.21100000000115,
+            "sqlRequests": 1,
+            "appRows": 300
+          },
+          {
+            "totalMs": 193.09469999999965,
+            "sqlMs": 126.13650000000052,
+            "sqlRequests": 1,
+            "appRows": 300
+          },
+          {
+            "totalMs": 208.95240000000013,
+            "sqlMs": 137.48619999999937,
+            "sqlRequests": 1,
+            "appRows": 300
+          },
+          {
+            "totalMs": 218.51859999999942,
+            "sqlMs": 152.34679999999935,
+            "sqlRequests": 1,
+            "appRows": 300
+          },
+          {
+            "totalMs": 201.8777000000009,
+            "sqlMs": 138.73010000000068,
+            "sqlRequests": 1,
+            "appRows": 300
+          },
+          {
+            "totalMs": 189.85740000000078,
+            "sqlMs": 124.96250000000146,
+            "sqlRequests": 1,
+            "appRows": 300
+          },
+          {
+            "totalMs": 192.6906999999992,
+            "sqlMs": 128.97270000000208,
+            "sqlRequests": 1,
+            "appRows": 300
+          }
+        ],
+        "after": [
+          {
+            "totalMs": 197.80829999999878,
+            "sqlMs": 131.39799999999923,
+            "sqlRequests": 1,
+            "appRows": 300
+          },
+          {
+            "totalMs": 188.16530000000057,
+            "sqlMs": 126.35850000000028,
+            "sqlRequests": 1,
+            "appRows": 300
+          },
+          {
+            "totalMs": 193.9865000000009,
+            "sqlMs": 126.20399999999972,
+            "sqlRequests": 1,
+            "appRows": 300
+          },
+          {
+            "totalMs": 199.8604000000014,
+            "sqlMs": 136.7514999999985,
+            "sqlRequests": 1,
+            "appRows": 300
+          },
+          {
+            "totalMs": 212.51540000000023,
+            "sqlMs": 143.40659999999843,
+            "sqlRequests": 1,
+            "appRows": 300
+          },
+          {
+            "totalMs": 208.57970000000205,
+            "sqlMs": 140.59109999999782,
+            "sqlRequests": 1,
+            "appRows": 300
+          },
+          {
+            "totalMs": 192.550900000002,
+            "sqlMs": 128.54060000000027,
+            "sqlRequests": 1,
+            "appRows": 300
+          }
+        ],
+        "qualified": [
+          {
+            "totalMs": 196.27839999999924,
+            "sqlMs": 132.28199999999924,
+            "sqlRequests": 1,
+            "appRows": 300
+          },
+          {
+            "totalMs": 192.6776000000009,
+            "sqlMs": 132.41039999999884,
+            "sqlRequests": 1,
+            "appRows": 300
+          },
+          {
+            "totalMs": 206.6826999999994,
+            "sqlMs": 139.82940000000053,
+            "sqlRequests": 1,
+            "appRows": 300
+          },
+          {
+            "totalMs": 206.57749999999942,
+            "sqlMs": 139.99369999999908,
+            "sqlRequests": 1,
+            "appRows": 300
+          },
+          {
+            "totalMs": 212.3109000000004,
+            "sqlMs": 145.45530000000144,
+            "sqlRequests": 1,
+            "appRows": 300
+          },
+          {
+            "totalMs": 198.3122000000003,
+            "sqlMs": 136.870600000002,
+            "sqlRequests": 1,
+            "appRows": 300
+          },
+          {
+            "totalMs": 186.99770000000353,
+            "sqlMs": 126.03340000000026,
+            "sqlRequests": 1,
+            "appRows": 300
+          }
+        ]
+      },
+      "summary": {
+        "before": {
+          "totalMs": 197.40669999999955,
+          "sqlMs": 131.21100000000115,
+          "sqlRequests": 1,
+          "appRows": 300
+        },
+        "after": {
+          "totalMs": 197.80829999999878,
+          "sqlMs": 131.39799999999923,
+          "sqlRequests": 1,
+          "appRows": 300
+        },
+        "qualified": {
+          "totalMs": 198.3122000000003,
+          "sqlMs": 136.870600000002,
+          "sqlRequests": 1,
+          "appRows": 300
+        }
+      },
+      "plans": {
+        "before": [
+          {
+            "Plan": {
+              "Node Type": "Limit",
+              "Parallel Aware": false,
+              "Async Capable": false,
+              "Startup Cost": 22338.89,
+              "Total Cost": 22339.41,
+              "Plan Rows": 208,
+              "Plan Width": 334,
+              "Actual Startup Time": 142.939,
+              "Actual Total Time": 142.968,
+              "Actual Rows": 300,
+              "Actual Loops": 1,
+              "Disabled": false,
+              "Shared Hit Blocks": 1060,
+              "Shared Read Blocks": 32591,
+              "Shared Dirtied Blocks": 0,
+              "Shared Written Blocks": 0,
+              "Local Hit Blocks": 0,
+              "Local Read Blocks": 0,
+              "Local Dirtied Blocks": 0,
+              "Local Written Blocks": 0,
+              "Temp Read Blocks": 492,
+              "Temp Written Blocks": 1831,
+              "Plans": [
+                {
+                  "Node Type": "Sort",
+                  "Parent Relationship": "Outer",
+                  "Parallel Aware": false,
+                  "Async Capable": false,
+                  "Startup Cost": 22338.89,
+                  "Total Cost": 22339.41,
+                  "Plan Rows": 208,
+                  "Plan Width": 334,
+                  "Actual Startup Time": 142.939,
+                  "Actual Total Time": 142.952,
+                  "Actual Rows": 300,
+                  "Actual Loops": 1,
+                  "Disabled": false,
+                  "Sort Key": [
+                    "customers.id"
+                  ],
+                  "Sort Method": "quicksort",
+                  "Sort Space Used": 177,
+                  "Sort Space Type": "Memory",
+                  "Shared Hit Blocks": 1060,
+                  "Shared Read Blocks": 32591,
+                  "Shared Dirtied Blocks": 0,
+                  "Shared Written Blocks": 0,
+                  "Local Hit Blocks": 0,
+                  "Local Read Blocks": 0,
+                  "Local Dirtied Blocks": 0,
+                  "Local Written Blocks": 0,
+                  "Temp Read Blocks": 492,
+                  "Temp Written Blocks": 1831,
+                  "Plans": [
+                    {
+                      "Node Type": "Nested Loop",
+                      "Parent Relationship": "Outer",
+                      "Parallel Aware": false,
+                      "Async Capable": false,
+                      "Join Type": "Inner",
+                      "Startup Cost": 20762.19,
+                      "Total Cost": 22330.88,
+                      "Plan Rows": 208,
+                      "Plan Width": 334,
+                      "Actual Startup Time": 139.24,
+                      "Actual Total Time": 142.736,
+                      "Actual Rows": 300,
+                      "Actual Loops": 1,
+                      "Disabled": false,
+                      "Inner Unique": true,
+                      "Shared Hit Blocks": 1057,
+                      "Shared Read Blocks": 32591,
+                      "Shared Dirtied Blocks": 0,
+                      "Shared Written Blocks": 0,
+                      "Local Hit Blocks": 0,
+                      "Local Read Blocks": 0,
+                      "Local Dirtied Blocks": 0,
+                      "Local Written Blocks": 0,
+                      "Temp Read Blocks": 492,
+                      "Temp Written Blocks": 1831,
+                      "Plans": [
+                        {
+                          "Node Type": "Aggregate",
+                          "Strategy": "Hashed",
+                          "Partial Mode": "Simple",
+                          "Parent Relationship": "Outer",
+                          "Parallel Aware": false,
+                          "Async Capable": false,
+                          "Startup Cost": 20761.77,
+                          "Total Cost": 20763.85,
+                          "Plan Rows": 208,
+                          "Plan Width": 16,
+                          "Actual Startup Time": 139.197,
+                          "Actual Total Time": 139.238,
+                          "Actual Rows": 300,
+                          "Actual Loops": 1,
+                          "Disabled": false,
+                          "Group Key": [
+                            "matched.row_id"
+                          ],
+                          "Planned Partitions": 0,
+                          "HashAgg Batches": 1,
+                          "Peak Memory Usage": 56,
+                          "Disk Usage": 0,
+                          "Shared Hit Blocks": 134,
+                          "Shared Read Blocks": 32314,
+                          "Shared Dirtied Blocks": 0,
+                          "Shared Written Blocks": 0,
+                          "Local Hit Blocks": 0,
+                          "Local Read Blocks": 0,
+                          "Local Dirtied Blocks": 0,
+                          "Local Written Blocks": 0,
+                          "Temp Read Blocks": 492,
+                          "Temp Written Blocks": 1831,
+                          "Plans": [
+                            {
+                              "Node Type": "CTE Scan",
+                              "Parent Relationship": "Outer",
+                              "Parallel Aware": false,
+                              "Async Capable": false,
+                              "CTE Name": "matched",
+                              "Alias": "matched",
+                              "Startup Cost": 20757.09,
+                              "Total Cost": 20761.25,
+                              "Plan Rows": 208,
+                              "Plan Width": 16,
+                              "Actual Startup Time": 136.375,
+                              "Actual Total Time": 139.119,
+                              "Actual Rows": 300,
+                              "Actual Loops": 1,
+                              "Disabled": false,
+                              "Storage": "Memory",
+                              "Maximum Storage": 28,
+                              "Shared Hit Blocks": 134,
+                              "Shared Read Blocks": 32314,
+                              "Shared Dirtied Blocks": 0,
+                              "Shared Written Blocks": 0,
+                              "Local Hit Blocks": 0,
+                              "Local Read Blocks": 0,
+                              "Local Dirtied Blocks": 0,
+                              "Local Written Blocks": 0,
+                              "Temp Read Blocks": 492,
+                              "Temp Written Blocks": 1831,
+                              "Plans": [
+                                {
+                                  "Node Type": "Limit",
+                                  "Parent Relationship": "InitPlan",
+                                  "Subplan Name": "CTE matched",
+                                  "Parallel Aware": false,
+                                  "Async Capable": false,
+                                  "Startup Cost": 19047.05,
+                                  "Total Cost": 20757.09,
+                                  "Plan Rows": 208,
+                                  "Plan Width": 16,
+                                  "Actual Startup Time": 136.371,
+                                  "Actual Total Time": 139.053,
+                                  "Actual Rows": 300,
+                                  "Actual Loops": 1,
+                                  "Disabled": false,
+                                  "Shared Hit Blocks": 134,
+                                  "Shared Read Blocks": 32314,
+                                  "Shared Dirtied Blocks": 0,
+                                  "Shared Written Blocks": 0,
+                                  "Local Hit Blocks": 0,
+                                  "Local Read Blocks": 0,
+                                  "Local Dirtied Blocks": 0,
+                                  "Local Written Blocks": 0,
+                                  "Temp Read Blocks": 492,
+                                  "Temp Written Blocks": 1831,
+                                  "Plans": [
+                                    {
+                                      "Node Type": "Subquery Scan",
+                                      "Parent Relationship": "Outer",
+                                      "Parallel Aware": false,
+                                      "Async Capable": false,
+                                      "Alias": "c",
+                                      "Startup Cost": 19047.05,
+                                      "Total Cost": 20757.09,
+                                      "Plan Rows": 208,
+                                      "Plan Width": 16,
+                                      "Actual Startup Time": 136.371,
+                                      "Actual Total Time": 139.031,
+                                      "Actual Rows": 300,
+                                      "Actual Loops": 1,
+                                      "Disabled": false,
+                                      "Filter": "((c.tokens_a639b11c8130dcf7 @> '{-2098416977109319680,-2098416976992862208,-2098416976693886976}'::bigint[]) AND COALESCE(test_r9_performance_main.sealql_before_match_positions('{\"\\\\x21168fb2e4d0c4b8914d7fded731c99d910f99950c4caaedb84c8220d16ce130\",\"\\\\x446e1bdd572f1f425d3a420641a4404e90543b1bda56b5e0f275fc6e4b9e7328\"}'::bytea[], '{0,1}'::integer[], 3, c.pos_len_a639b11c8130dcf7, c.pos_salt_a639b11c8130dcf7, c.pos_stamps_a639b11c8130dcf7, c.pos_offsets_a639b11c8130dcf7, 0), false))",
+                                      "Rows Removed by Filter": 0,
+                                      "Shared Hit Blocks": 134,
+                                      "Shared Read Blocks": 32314,
+                                      "Shared Dirtied Blocks": 0,
+                                      "Shared Written Blocks": 0,
+                                      "Local Hit Blocks": 0,
+                                      "Local Read Blocks": 0,
+                                      "Local Dirtied Blocks": 0,
+                                      "Local Written Blocks": 0,
+                                      "Temp Read Blocks": 492,
+                                      "Temp Written Blocks": 1831,
+                                      "Plans": [
+                                        {
+                                          "Node Type": "Sort",
+                                          "Parent Relationship": "Subquery",
+                                          "Parallel Aware": false,
+                                          "Async Capable": false,
+                                          "Startup Cost": 19047.05,
+                                          "Total Cost": 19063.18,
+                                          "Plan Rows": 6453,
+                                          "Plan Width": 396,
+                                          "Actual Startup Time": 134.744,
+                                          "Actual Total Time": 134.802,
+                                          "Actual Rows": 300,
+                                          "Actual Loops": 1,
+                                          "Disabled": false,
+                                          "Sort Key": [
+                                            "c_1.row_id"
+                                          ],
+                                          "Sort Method": "external merge",
+                                          "Sort Space Used": 14624,
+                                          "Sort Space Type": "Disk",
+                                          "Shared Hit Blocks": 25,
+                                          "Shared Read Blocks": 32265,
+                                          "Shared Dirtied Blocks": 0,
+                                          "Shared Written Blocks": 0,
+                                          "Local Hit Blocks": 0,
+                                          "Local Read Blocks": 0,
+                                          "Local Dirtied Blocks": 0,
+                                          "Local Written Blocks": 0,
+                                          "Temp Read Blocks": 492,
+                                          "Temp Written Blocks": 1831,
+                                          "Plans": [
+                                            {
+                                              "Node Type": "Bitmap Heap Scan",
+                                              "Parent Relationship": "Outer",
+                                              "Parallel Aware": false,
+                                              "Async Capable": false,
+                                              "Relation Name": "customers_seal_index",
+                                              "Alias": "c_1",
+                                              "Startup Cost": 620.6,
+                                              "Total Cost": 18638.71,
+                                              "Plan Rows": 6453,
+                                              "Plan Width": 396,
+                                              "Actual Startup Time": 11.17,
+                                              "Actual Total Time": 100.813,
+                                              "Actual Rows": 40097,
+                                              "Actual Loops": 1,
+                                              "Disabled": false,
+                                              "Recheck Cond": "(tokens_a639b11c8130dcf7 @> '{-2098416977109319680,-2098416976992862208,-2098416976693886976}'::bigint[])",
+                                              "Rows Removed by Index Recheck": 0,
+                                              "Filter": "(scope_id = 'aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa'::uuid)",
+                                              "Rows Removed by Filter": 0,
+                                              "Exact Heap Blocks": 32103,
+                                              "Lossy Heap Blocks": 0,
+                                              "Shared Hit Blocks": 25,
+                                              "Shared Read Blocks": 32265,
+                                              "Shared Dirtied Blocks": 0,
+                                              "Shared Written Blocks": 0,
+                                              "Local Hit Blocks": 0,
+                                              "Local Read Blocks": 0,
+                                              "Local Dirtied Blocks": 0,
+                                              "Local Written Blocks": 0,
+                                              "Temp Read Blocks": 0,
+                                              "Temp Written Blocks": 0,
+                                              "Plans": [
+                                                {
+                                                  "Node Type": "Bitmap Index Scan",
+                                                  "Parent Relationship": "Outer",
+                                                  "Parallel Aware": false,
+                                                  "Async Capable": false,
+                                                  "Index Name": "r9_sub_gin",
+                                                  "Startup Cost": 0,
+                                                  "Total Cost": 618.98,
+                                                  "Plan Rows": 6453,
+                                                  "Plan Width": 0,
+                                                  "Actual Startup Time": 7.4,
+                                                  "Actual Total Time": 7.401,
+                                                  "Actual Rows": 40187,
+                                                  "Actual Loops": 1,
+                                                  "Disabled": false,
+                                                  "Index Cond": "(tokens_a639b11c8130dcf7 @> '{-2098416977109319680,-2098416976992862208,-2098416976693886976}'::bigint[])",
+                                                  "Index Searches": 1,
+                                                  "Shared Hit Blocks": 25,
+                                                  "Shared Read Blocks": 162,
+                                                  "Shared Dirtied Blocks": 0,
+                                                  "Shared Written Blocks": 0,
+                                                  "Local Hit Blocks": 0,
+                                                  "Local Read Blocks": 0,
+                                                  "Local Dirtied Blocks": 0,
+                                                  "Local Written Blocks": 0,
+                                                  "Temp Read Blocks": 0,
+                                                  "Temp Written Blocks": 0
+                                                }
+                                              ]
+                                            }
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "Node Type": "Index Scan",
+                          "Parent Relationship": "Inner",
+                          "Parallel Aware": false,
+                          "Async Capable": false,
+                          "Scan Direction": "Forward",
+                          "Index Name": "customers_pkey",
+                          "Relation Name": "customers",
+                          "Alias": "customers",
+                          "Startup Cost": 0.42,
+                          "Total Cost": 7.53,
+                          "Plan Rows": 1,
+                          "Plan Width": 334,
+                          "Actual Startup Time": 0.011,
+                          "Actual Total Time": 0.011,
+                          "Actual Rows": 1,
+                          "Actual Loops": 300,
+                          "Disabled": false,
+                          "Index Cond": "(id = matched.row_id)",
+                          "Rows Removed by Index Recheck": 0,
+                          "Filter": "(scope_id = 'aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa'::uuid)",
+                          "Rows Removed by Filter": 0,
+                          "Index Searches": 300,
+                          "Shared Hit Blocks": 923,
+                          "Shared Read Blocks": 277,
+                          "Shared Dirtied Blocks": 0,
+                          "Shared Written Blocks": 0,
+                          "Local Hit Blocks": 0,
+                          "Local Read Blocks": 0,
+                          "Local Dirtied Blocks": 0,
+                          "Local Written Blocks": 0,
+                          "Temp Read Blocks": 0,
+                          "Temp Written Blocks": 0
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            "Planning": {
+              "Shared Hit Blocks": 375,
+              "Shared Read Blocks": 92,
+              "Shared Dirtied Blocks": 0,
+              "Shared Written Blocks": 0,
+              "Local Hit Blocks": 0,
+              "Local Read Blocks": 0,
+              "Local Dirtied Blocks": 0,
+              "Local Written Blocks": 0,
+              "Temp Read Blocks": 0,
+              "Temp Written Blocks": 0
+            },
+            "Planning Time": 2.963,
+            "Triggers": [],
+            "Execution Time": 144.814
+          }
+        ],
+        "after": [
+          {
+            "Plan": {
+              "Node Type": "Limit",
+              "Parallel Aware": false,
+              "Async Capable": false,
+              "Startup Cost": 22338.89,
+              "Total Cost": 22339.41,
+              "Plan Rows": 208,
+              "Plan Width": 334,
+              "Actual Startup Time": 135.042,
+              "Actual Total Time": 135.069,
+              "Actual Rows": 300,
+              "Actual Loops": 1,
+              "Disabled": false,
+              "Shared Hit Blocks": 989,
+              "Shared Read Blocks": 32549,
+              "Shared Dirtied Blocks": 0,
+              "Shared Written Blocks": 0,
+              "Local Hit Blocks": 0,
+              "Local Read Blocks": 0,
+              "Local Dirtied Blocks": 0,
+              "Local Written Blocks": 0,
+              "Temp Read Blocks": 492,
+              "Temp Written Blocks": 1831,
+              "Plans": [
+                {
+                  "Node Type": "Sort",
+                  "Parent Relationship": "Outer",
+                  "Parallel Aware": false,
+                  "Async Capable": false,
+                  "Startup Cost": 22338.89,
+                  "Total Cost": 22339.41,
+                  "Plan Rows": 208,
+                  "Plan Width": 334,
+                  "Actual Startup Time": 135.041,
+                  "Actual Total Time": 135.053,
+                  "Actual Rows": 300,
+                  "Actual Loops": 1,
+                  "Disabled": false,
+                  "Sort Key": [
+                    "customers.id"
+                  ],
+                  "Sort Method": "quicksort",
+                  "Sort Space Used": 177,
+                  "Sort Space Type": "Memory",
+                  "Shared Hit Blocks": 989,
+                  "Shared Read Blocks": 32549,
+                  "Shared Dirtied Blocks": 0,
+                  "Shared Written Blocks": 0,
+                  "Local Hit Blocks": 0,
+                  "Local Read Blocks": 0,
+                  "Local Dirtied Blocks": 0,
+                  "Local Written Blocks": 0,
+                  "Temp Read Blocks": 492,
+                  "Temp Written Blocks": 1831,
+                  "Plans": [
+                    {
+                      "Node Type": "Nested Loop",
+                      "Parent Relationship": "Outer",
+                      "Parallel Aware": false,
+                      "Async Capable": false,
+                      "Join Type": "Inner",
+                      "Startup Cost": 20762.19,
+                      "Total Cost": 22330.88,
+                      "Plan Rows": 208,
+                      "Plan Width": 334,
+                      "Actual Startup Time": 131.627,
+                      "Actual Total Time": 134.885,
+                      "Actual Rows": 300,
+                      "Actual Loops": 1,
+                      "Disabled": false,
+                      "Inner Unique": true,
+                      "Shared Hit Blocks": 989,
+                      "Shared Read Blocks": 32549,
+                      "Shared Dirtied Blocks": 0,
+                      "Shared Written Blocks": 0,
+                      "Local Hit Blocks": 0,
+                      "Local Read Blocks": 0,
+                      "Local Dirtied Blocks": 0,
+                      "Local Written Blocks": 0,
+                      "Temp Read Blocks": 492,
+                      "Temp Written Blocks": 1831,
+                      "Plans": [
+                        {
+                          "Node Type": "Aggregate",
+                          "Strategy": "Hashed",
+                          "Partial Mode": "Simple",
+                          "Parent Relationship": "Outer",
+                          "Parallel Aware": false,
+                          "Async Capable": false,
+                          "Startup Cost": 20761.77,
+                          "Total Cost": 20763.85,
+                          "Plan Rows": 208,
+                          "Plan Width": 16,
+                          "Actual Startup Time": 131.593,
+                          "Actual Total Time": 131.635,
+                          "Actual Rows": 300,
+                          "Actual Loops": 1,
+                          "Disabled": false,
+                          "Group Key": [
+                            "matched.row_id"
+                          ],
+                          "Planned Partitions": 0,
+                          "HashAgg Batches": 1,
+                          "Peak Memory Usage": 56,
+                          "Disk Usage": 0,
+                          "Shared Hit Blocks": 66,
+                          "Shared Read Blocks": 32272,
+                          "Shared Dirtied Blocks": 0,
+                          "Shared Written Blocks": 0,
+                          "Local Hit Blocks": 0,
+                          "Local Read Blocks": 0,
+                          "Local Dirtied Blocks": 0,
+                          "Local Written Blocks": 0,
+                          "Temp Read Blocks": 492,
+                          "Temp Written Blocks": 1831,
+                          "Plans": [
+                            {
+                              "Node Type": "CTE Scan",
+                              "Parent Relationship": "Outer",
+                              "Parallel Aware": false,
+                              "Async Capable": false,
+                              "CTE Name": "matched",
+                              "Alias": "matched",
+                              "Startup Cost": 20757.09,
+                              "Total Cost": 20761.25,
+                              "Plan Rows": 208,
+                              "Plan Width": 16,
+                              "Actual Startup Time": 127.162,
+                              "Actual Total Time": 131.511,
+                              "Actual Rows": 300,
+                              "Actual Loops": 1,
+                              "Disabled": false,
+                              "Storage": "Memory",
+                              "Maximum Storage": 28,
+                              "Shared Hit Blocks": 66,
+                              "Shared Read Blocks": 32272,
+                              "Shared Dirtied Blocks": 0,
+                              "Shared Written Blocks": 0,
+                              "Local Hit Blocks": 0,
+                              "Local Read Blocks": 0,
+                              "Local Dirtied Blocks": 0,
+                              "Local Written Blocks": 0,
+                              "Temp Read Blocks": 492,
+                              "Temp Written Blocks": 1831,
+                              "Plans": [
+                                {
+                                  "Node Type": "Limit",
+                                  "Parent Relationship": "InitPlan",
+                                  "Subplan Name": "CTE matched",
+                                  "Parallel Aware": false,
+                                  "Async Capable": false,
+                                  "Startup Cost": 19047.05,
+                                  "Total Cost": 20757.09,
+                                  "Plan Rows": 208,
+                                  "Plan Width": 16,
+                                  "Actual Startup Time": 127.16,
+                                  "Actual Total Time": 131.382,
+                                  "Actual Rows": 300,
+                                  "Actual Loops": 1,
+                                  "Disabled": false,
+                                  "Shared Hit Blocks": 66,
+                                  "Shared Read Blocks": 32272,
+                                  "Shared Dirtied Blocks": 0,
+                                  "Shared Written Blocks": 0,
+                                  "Local Hit Blocks": 0,
+                                  "Local Read Blocks": 0,
+                                  "Local Dirtied Blocks": 0,
+                                  "Local Written Blocks": 0,
+                                  "Temp Read Blocks": 492,
+                                  "Temp Written Blocks": 1831,
+                                  "Plans": [
+                                    {
+                                      "Node Type": "Subquery Scan",
+                                      "Parent Relationship": "Outer",
+                                      "Parallel Aware": false,
+                                      "Async Capable": false,
+                                      "Alias": "c",
+                                      "Startup Cost": 19047.05,
+                                      "Total Cost": 20757.09,
+                                      "Plan Rows": 208,
+                                      "Plan Width": 16,
+                                      "Actual Startup Time": 127.159,
+                                      "Actual Total Time": 131.365,
+                                      "Actual Rows": 300,
+                                      "Actual Loops": 1,
+                                      "Disabled": false,
+                                      "Filter": "((c.tokens_a639b11c8130dcf7 @> '{-2098416977109319680,-2098416976992862208,-2098416976693886976}'::bigint[]) AND COALESCE(test_r9_performance_main.sealql_match_positions('{\"\\\\x21168fb2e4d0c4b8914d7fded731c99d910f99950c4caaedb84c8220d16ce130\",\"\\\\x446e1bdd572f1f425d3a420641a4404e90543b1bda56b5e0f275fc6e4b9e7328\"}'::bytea[], '{0,1}'::integer[], 3, c.pos_len_a639b11c8130dcf7, c.pos_salt_a639b11c8130dcf7, c.pos_stamps_a639b11c8130dcf7, c.pos_offsets_a639b11c8130dcf7, 0), false))",
+                                      "Rows Removed by Filter": 0,
+                                      "Shared Hit Blocks": 66,
+                                      "Shared Read Blocks": 32272,
+                                      "Shared Dirtied Blocks": 0,
+                                      "Shared Written Blocks": 0,
+                                      "Local Hit Blocks": 0,
+                                      "Local Read Blocks": 0,
+                                      "Local Dirtied Blocks": 0,
+                                      "Local Written Blocks": 0,
+                                      "Temp Read Blocks": 492,
+                                      "Temp Written Blocks": 1831,
+                                      "Plans": [
+                                        {
+                                          "Node Type": "Sort",
+                                          "Parent Relationship": "Subquery",
+                                          "Parallel Aware": false,
+                                          "Async Capable": false,
+                                          "Startup Cost": 19047.05,
+                                          "Total Cost": 19063.18,
+                                          "Plan Rows": 6453,
+                                          "Plan Width": 396,
+                                          "Actual Startup Time": 126.231,
+                                          "Actual Total Time": 126.288,
+                                          "Actual Rows": 300,
+                                          "Actual Loops": 1,
+                                          "Disabled": false,
+                                          "Sort Key": [
+                                            "c_1.row_id"
+                                          ],
+                                          "Sort Method": "external merge",
+                                          "Sort Space Used": 14624,
+                                          "Sort Space Type": "Disk",
+                                          "Shared Hit Blocks": 27,
+                                          "Shared Read Blocks": 32263,
+                                          "Shared Dirtied Blocks": 0,
+                                          "Shared Written Blocks": 0,
+                                          "Local Hit Blocks": 0,
+                                          "Local Read Blocks": 0,
+                                          "Local Dirtied Blocks": 0,
+                                          "Local Written Blocks": 0,
+                                          "Temp Read Blocks": 492,
+                                          "Temp Written Blocks": 1831,
+                                          "Plans": [
+                                            {
+                                              "Node Type": "Bitmap Heap Scan",
+                                              "Parent Relationship": "Outer",
+                                              "Parallel Aware": false,
+                                              "Async Capable": false,
+                                              "Relation Name": "customers_seal_index",
+                                              "Alias": "c_1",
+                                              "Startup Cost": 620.6,
+                                              "Total Cost": 18638.71,
+                                              "Plan Rows": 6453,
+                                              "Plan Width": 396,
+                                              "Actual Startup Time": 11.196,
+                                              "Actual Total Time": 91.057,
+                                              "Actual Rows": 40097,
+                                              "Actual Loops": 1,
+                                              "Disabled": false,
+                                              "Recheck Cond": "(tokens_a639b11c8130dcf7 @> '{-2098416977109319680,-2098416976992862208,-2098416976693886976}'::bigint[])",
+                                              "Rows Removed by Index Recheck": 0,
+                                              "Filter": "(scope_id = 'aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa'::uuid)",
+                                              "Rows Removed by Filter": 0,
+                                              "Exact Heap Blocks": 32103,
+                                              "Lossy Heap Blocks": 0,
+                                              "Shared Hit Blocks": 27,
+                                              "Shared Read Blocks": 32263,
+                                              "Shared Dirtied Blocks": 0,
+                                              "Shared Written Blocks": 0,
+                                              "Local Hit Blocks": 0,
+                                              "Local Read Blocks": 0,
+                                              "Local Dirtied Blocks": 0,
+                                              "Local Written Blocks": 0,
+                                              "Temp Read Blocks": 0,
+                                              "Temp Written Blocks": 0,
+                                              "Plans": [
+                                                {
+                                                  "Node Type": "Bitmap Index Scan",
+                                                  "Parent Relationship": "Outer",
+                                                  "Parallel Aware": false,
+                                                  "Async Capable": false,
+                                                  "Index Name": "r9_sub_gin",
+                                                  "Startup Cost": 0,
+                                                  "Total Cost": 618.98,
+                                                  "Plan Rows": 6453,
+                                                  "Plan Width": 0,
+                                                  "Actual Startup Time": 7.353,
+                                                  "Actual Total Time": 7.353,
+                                                  "Actual Rows": 40187,
+                                                  "Actual Loops": 1,
+                                                  "Disabled": false,
+                                                  "Index Cond": "(tokens_a639b11c8130dcf7 @> '{-2098416977109319680,-2098416976992862208,-2098416976693886976}'::bigint[])",
+                                                  "Index Searches": 1,
+                                                  "Shared Hit Blocks": 27,
+                                                  "Shared Read Blocks": 160,
+                                                  "Shared Dirtied Blocks": 0,
+                                                  "Shared Written Blocks": 0,
+                                                  "Local Hit Blocks": 0,
+                                                  "Local Read Blocks": 0,
+                                                  "Local Dirtied Blocks": 0,
+                                                  "Local Written Blocks": 0,
+                                                  "Temp Read Blocks": 0,
+                                                  "Temp Written Blocks": 0
+                                                }
+                                              ]
+                                            }
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "Node Type": "Index Scan",
+                          "Parent Relationship": "Inner",
+                          "Parallel Aware": false,
+                          "Async Capable": false,
+                          "Scan Direction": "Forward",
+                          "Index Name": "customers_pkey",
+                          "Relation Name": "customers",
+                          "Alias": "customers",
+                          "Startup Cost": 0.42,
+                          "Total Cost": 7.53,
+                          "Plan Rows": 1,
+                          "Plan Width": 334,
+                          "Actual Startup Time": 0.01,
+                          "Actual Total Time": 0.01,
+                          "Actual Rows": 1,
+                          "Actual Loops": 300,
+                          "Disabled": false,
+                          "Index Cond": "(id = matched.row_id)",
+                          "Rows Removed by Index Recheck": 0,
+                          "Filter": "(scope_id = 'aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa'::uuid)",
+                          "Rows Removed by Filter": 0,
+                          "Index Searches": 300,
+                          "Shared Hit Blocks": 923,
+                          "Shared Read Blocks": 277,
+                          "Shared Dirtied Blocks": 0,
+                          "Shared Written Blocks": 0,
+                          "Local Hit Blocks": 0,
+                          "Local Read Blocks": 0,
+                          "Local Dirtied Blocks": 0,
+                          "Local Written Blocks": 0,
+                          "Temp Read Blocks": 0,
+                          "Temp Written Blocks": 0
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            "Planning": {
+              "Shared Hit Blocks": 5,
+              "Shared Read Blocks": 5,
+              "Shared Dirtied Blocks": 0,
+              "Shared Written Blocks": 0,
+              "Local Hit Blocks": 0,
+              "Local Read Blocks": 0,
+              "Local Dirtied Blocks": 0,
+              "Local Written Blocks": 0,
+              "Temp Read Blocks": 0,
+              "Temp Written Blocks": 0
+            },
+            "Planning Time": 0.442,
+            "Triggers": [],
+            "Execution Time": 136.898
+          }
+        ],
+        "qualified": [
+          {
+            "Plan": {
+              "Node Type": "Limit",
+              "Parallel Aware": false,
+              "Async Capable": false,
+              "Startup Cost": 22338.89,
+              "Total Cost": 22339.41,
+              "Plan Rows": 208,
+              "Plan Width": 334,
+              "Actual Startup Time": 134.369,
+              "Actual Total Time": 134.395,
+              "Actual Rows": 300,
+              "Actual Loops": 1,
+              "Disabled": false,
+              "Shared Hit Blocks": 948,
+              "Shared Read Blocks": 32544,
+              "Shared Dirtied Blocks": 0,
+              "Shared Written Blocks": 0,
+              "Local Hit Blocks": 0,
+              "Local Read Blocks": 0,
+              "Local Dirtied Blocks": 0,
+              "Local Written Blocks": 0,
+              "Temp Read Blocks": 492,
+              "Temp Written Blocks": 1831,
+              "Plans": [
+                {
+                  "Node Type": "Sort",
+                  "Parent Relationship": "Outer",
+                  "Parallel Aware": false,
+                  "Async Capable": false,
+                  "Startup Cost": 22338.89,
+                  "Total Cost": 22339.41,
+                  "Plan Rows": 208,
+                  "Plan Width": 334,
+                  "Actual Startup Time": 134.368,
+                  "Actual Total Time": 134.379,
+                  "Actual Rows": 300,
+                  "Actual Loops": 1,
+                  "Disabled": false,
+                  "Sort Key": [
+                    "customers.id"
+                  ],
+                  "Sort Method": "quicksort",
+                  "Sort Space Used": 177,
+                  "Sort Space Type": "Memory",
+                  "Shared Hit Blocks": 948,
+                  "Shared Read Blocks": 32544,
+                  "Shared Dirtied Blocks": 0,
+                  "Shared Written Blocks": 0,
+                  "Local Hit Blocks": 0,
+                  "Local Read Blocks": 0,
+                  "Local Dirtied Blocks": 0,
+                  "Local Written Blocks": 0,
+                  "Temp Read Blocks": 492,
+                  "Temp Written Blocks": 1831,
+                  "Plans": [
+                    {
+                      "Node Type": "Nested Loop",
+                      "Parent Relationship": "Outer",
+                      "Parallel Aware": false,
+                      "Async Capable": false,
+                      "Join Type": "Inner",
+                      "Startup Cost": 20762.19,
+                      "Total Cost": 22330.88,
+                      "Plan Rows": 208,
+                      "Plan Width": 334,
+                      "Actual Startup Time": 130.839,
+                      "Actual Total Time": 134.204,
+                      "Actual Rows": 300,
+                      "Actual Loops": 1,
+                      "Disabled": false,
+                      "Inner Unique": true,
+                      "Shared Hit Blocks": 948,
+                      "Shared Read Blocks": 32544,
+                      "Shared Dirtied Blocks": 0,
+                      "Shared Written Blocks": 0,
+                      "Local Hit Blocks": 0,
+                      "Local Read Blocks": 0,
+                      "Local Dirtied Blocks": 0,
+                      "Local Written Blocks": 0,
+                      "Temp Read Blocks": 492,
+                      "Temp Written Blocks": 1831,
+                      "Plans": [
+                        {
+                          "Node Type": "Aggregate",
+                          "Strategy": "Hashed",
+                          "Partial Mode": "Simple",
+                          "Parent Relationship": "Outer",
+                          "Parallel Aware": false,
+                          "Async Capable": false,
+                          "Startup Cost": 20761.77,
+                          "Total Cost": 20763.85,
+                          "Plan Rows": 208,
+                          "Plan Width": 16,
+                          "Actual Startup Time": 130.803,
+                          "Actual Total Time": 130.843,
+                          "Actual Rows": 300,
+                          "Actual Loops": 1,
+                          "Disabled": false,
+                          "Group Key": [
+                            "matched.row_id"
+                          ],
+                          "Planned Partitions": 0,
+                          "HashAgg Batches": 1,
+                          "Peak Memory Usage": 56,
+                          "Disk Usage": 0,
+                          "Shared Hit Blocks": 25,
+                          "Shared Read Blocks": 32267,
+                          "Shared Dirtied Blocks": 0,
+                          "Shared Written Blocks": 0,
+                          "Local Hit Blocks": 0,
+                          "Local Read Blocks": 0,
+                          "Local Dirtied Blocks": 0,
+                          "Local Written Blocks": 0,
+                          "Temp Read Blocks": 492,
+                          "Temp Written Blocks": 1831,
+                          "Plans": [
+                            {
+                              "Node Type": "CTE Scan",
+                              "Parent Relationship": "Outer",
+                              "Parallel Aware": false,
+                              "Async Capable": false,
+                              "CTE Name": "matched",
+                              "Alias": "matched",
+                              "Startup Cost": 20757.09,
+                              "Total Cost": 20761.25,
+                              "Plan Rows": 208,
+                              "Plan Width": 16,
+                              "Actual Startup Time": 126.622,
+                              "Actual Total Time": 130.722,
+                              "Actual Rows": 300,
+                              "Actual Loops": 1,
+                              "Disabled": false,
+                              "Storage": "Memory",
+                              "Maximum Storage": 28,
+                              "Shared Hit Blocks": 25,
+                              "Shared Read Blocks": 32267,
+                              "Shared Dirtied Blocks": 0,
+                              "Shared Written Blocks": 0,
+                              "Local Hit Blocks": 0,
+                              "Local Read Blocks": 0,
+                              "Local Dirtied Blocks": 0,
+                              "Local Written Blocks": 0,
+                              "Temp Read Blocks": 492,
+                              "Temp Written Blocks": 1831,
+                              "Plans": [
+                                {
+                                  "Node Type": "Limit",
+                                  "Parent Relationship": "InitPlan",
+                                  "Subplan Name": "CTE matched",
+                                  "Parallel Aware": false,
+                                  "Async Capable": false,
+                                  "Startup Cost": 19047.05,
+                                  "Total Cost": 20757.09,
+                                  "Plan Rows": 208,
+                                  "Plan Width": 16,
+                                  "Actual Startup Time": 126.619,
+                                  "Actual Total Time": 130.66,
+                                  "Actual Rows": 300,
+                                  "Actual Loops": 1,
+                                  "Disabled": false,
+                                  "Shared Hit Blocks": 25,
+                                  "Shared Read Blocks": 32267,
+                                  "Shared Dirtied Blocks": 0,
+                                  "Shared Written Blocks": 0,
+                                  "Local Hit Blocks": 0,
+                                  "Local Read Blocks": 0,
+                                  "Local Dirtied Blocks": 0,
+                                  "Local Written Blocks": 0,
+                                  "Temp Read Blocks": 492,
+                                  "Temp Written Blocks": 1831,
+                                  "Plans": [
+                                    {
+                                      "Node Type": "Subquery Scan",
+                                      "Parent Relationship": "Outer",
+                                      "Parallel Aware": false,
+                                      "Async Capable": false,
+                                      "Alias": "c",
+                                      "Startup Cost": 19047.05,
+                                      "Total Cost": 20757.09,
+                                      "Plan Rows": 208,
+                                      "Plan Width": 16,
+                                      "Actual Startup Time": 126.618,
+                                      "Actual Total Time": 130.638,
+                                      "Actual Rows": 300,
+                                      "Actual Loops": 1,
+                                      "Disabled": false,
+                                      "Filter": "((c.tokens_a639b11c8130dcf7 @> '{-2098416977109319680,-2098416976992862208,-2098416976693886976}'::bigint[]) AND COALESCE(test_r9_performance_main.sealql_qualified_match_positions('{\"\\\\x21168fb2e4d0c4b8914d7fded731c99d910f99950c4caaedb84c8220d16ce130\",\"\\\\x446e1bdd572f1f425d3a420641a4404e90543b1bda56b5e0f275fc6e4b9e7328\"}'::bytea[], '{0,1}'::integer[], 3, c.pos_len_a639b11c8130dcf7, c.pos_salt_a639b11c8130dcf7, c.pos_stamps_a639b11c8130dcf7, c.pos_offsets_a639b11c8130dcf7, 0), false))",
+                                      "Rows Removed by Filter": 0,
+                                      "Shared Hit Blocks": 25,
+                                      "Shared Read Blocks": 32267,
+                                      "Shared Dirtied Blocks": 0,
+                                      "Shared Written Blocks": 0,
+                                      "Local Hit Blocks": 0,
+                                      "Local Read Blocks": 0,
+                                      "Local Dirtied Blocks": 0,
+                                      "Local Written Blocks": 0,
+                                      "Temp Read Blocks": 492,
+                                      "Temp Written Blocks": 1831,
+                                      "Plans": [
+                                        {
+                                          "Node Type": "Sort",
+                                          "Parent Relationship": "Subquery",
+                                          "Parallel Aware": false,
+                                          "Async Capable": false,
+                                          "Startup Cost": 19047.05,
+                                          "Total Cost": 19063.18,
+                                          "Plan Rows": 6453,
+                                          "Plan Width": 396,
+                                          "Actual Startup Time": 125.881,
+                                          "Actual Total Time": 125.927,
+                                          "Actual Rows": 300,
+                                          "Actual Loops": 1,
+                                          "Disabled": false,
+                                          "Sort Key": [
+                                            "c_1.row_id"
+                                          ],
+                                          "Sort Method": "external merge",
+                                          "Sort Space Used": 14624,
+                                          "Sort Space Type": "Disk",
+                                          "Shared Hit Blocks": 25,
+                                          "Shared Read Blocks": 32265,
+                                          "Shared Dirtied Blocks": 0,
+                                          "Shared Written Blocks": 0,
+                                          "Local Hit Blocks": 0,
+                                          "Local Read Blocks": 0,
+                                          "Local Dirtied Blocks": 0,
+                                          "Local Written Blocks": 0,
+                                          "Temp Read Blocks": 492,
+                                          "Temp Written Blocks": 1831,
+                                          "Plans": [
+                                            {
+                                              "Node Type": "Bitmap Heap Scan",
+                                              "Parent Relationship": "Outer",
+                                              "Parallel Aware": false,
+                                              "Async Capable": false,
+                                              "Relation Name": "customers_seal_index",
+                                              "Alias": "c_1",
+                                              "Startup Cost": 620.6,
+                                              "Total Cost": 18638.71,
+                                              "Plan Rows": 6453,
+                                              "Plan Width": 396,
+                                              "Actual Startup Time": 11.188,
+                                              "Actual Total Time": 90.318,
+                                              "Actual Rows": 40097,
+                                              "Actual Loops": 1,
+                                              "Disabled": false,
+                                              "Recheck Cond": "(tokens_a639b11c8130dcf7 @> '{-2098416977109319680,-2098416976992862208,-2098416976693886976}'::bigint[])",
+                                              "Rows Removed by Index Recheck": 0,
+                                              "Filter": "(scope_id = 'aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa'::uuid)",
+                                              "Rows Removed by Filter": 0,
+                                              "Exact Heap Blocks": 32103,
+                                              "Lossy Heap Blocks": 0,
+                                              "Shared Hit Blocks": 25,
+                                              "Shared Read Blocks": 32265,
+                                              "Shared Dirtied Blocks": 0,
+                                              "Shared Written Blocks": 0,
+                                              "Local Hit Blocks": 0,
+                                              "Local Read Blocks": 0,
+                                              "Local Dirtied Blocks": 0,
+                                              "Local Written Blocks": 0,
+                                              "Temp Read Blocks": 0,
+                                              "Temp Written Blocks": 0,
+                                              "Plans": [
+                                                {
+                                                  "Node Type": "Bitmap Index Scan",
+                                                  "Parent Relationship": "Outer",
+                                                  "Parallel Aware": false,
+                                                  "Async Capable": false,
+                                                  "Index Name": "r9_sub_gin",
+                                                  "Startup Cost": 0,
+                                                  "Total Cost": 618.98,
+                                                  "Plan Rows": 6453,
+                                                  "Plan Width": 0,
+                                                  "Actual Startup Time": 7.375,
+                                                  "Actual Total Time": 7.375,
+                                                  "Actual Rows": 40187,
+                                                  "Actual Loops": 1,
+                                                  "Disabled": false,
+                                                  "Index Cond": "(tokens_a639b11c8130dcf7 @> '{-2098416977109319680,-2098416976992862208,-2098416976693886976}'::bigint[])",
+                                                  "Index Searches": 1,
+                                                  "Shared Hit Blocks": 25,
+                                                  "Shared Read Blocks": 162,
+                                                  "Shared Dirtied Blocks": 0,
+                                                  "Shared Written Blocks": 0,
+                                                  "Local Hit Blocks": 0,
+                                                  "Local Read Blocks": 0,
+                                                  "Local Dirtied Blocks": 0,
+                                                  "Local Written Blocks": 0,
+                                                  "Temp Read Blocks": 0,
+                                                  "Temp Written Blocks": 0
+                                                }
+                                              ]
+                                            }
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "Node Type": "Index Scan",
+                          "Parent Relationship": "Inner",
+                          "Parallel Aware": false,
+                          "Async Capable": false,
+                          "Scan Direction": "Forward",
+                          "Index Name": "customers_pkey",
+                          "Relation Name": "customers",
+                          "Alias": "customers",
+                          "Startup Cost": 0.42,
+                          "Total Cost": 7.53,
+                          "Plan Rows": 1,
+                          "Plan Width": 334,
+                          "Actual Startup Time": 0.011,
+                          "Actual Total Time": 0.011,
+                          "Actual Rows": 1,
+                          "Actual Loops": 300,
+                          "Disabled": false,
+                          "Index Cond": "(id = matched.row_id)",
+                          "Rows Removed by Index Recheck": 0,
+                          "Filter": "(scope_id = 'aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa'::uuid)",
+                          "Rows Removed by Filter": 0,
+                          "Index Searches": 300,
+                          "Shared Hit Blocks": 923,
+                          "Shared Read Blocks": 277,
+                          "Shared Dirtied Blocks": 0,
+                          "Shared Written Blocks": 0,
+                          "Local Hit Blocks": 0,
+                          "Local Read Blocks": 0,
+                          "Local Dirtied Blocks": 0,
+                          "Local Written Blocks": 0,
+                          "Temp Read Blocks": 0,
+                          "Temp Written Blocks": 0
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            "Planning": {
+              "Shared Hit Blocks": 5,
+              "Shared Read Blocks": 5,
+              "Shared Dirtied Blocks": 0,
+              "Shared Written Blocks": 0,
+              "Local Hit Blocks": 0,
+              "Local Read Blocks": 0,
+              "Local Dirtied Blocks": 0,
+              "Local Written Blocks": 0,
+              "Temp Read Blocks": 0,
+              "Temp Written Blocks": 0
+            },
+            "Planning Time": 0.444,
+            "Triggers": [],
+            "Execution Time": 136.224
+          }
+        ]
+      }
+    },
+    {
+      "name": "starts",
+      "mode": "count",
+      "runs": {
+        "before": [
+          {
+            "totalMs": 135.09969999999885,
+            "sqlMs": 134.15599999999904,
+            "sqlRequests": 1,
+            "appRows": 1
+          },
+          {
+            "totalMs": 133.40729999999894,
+            "sqlMs": 132.47940000000017,
+            "sqlRequests": 1,
+            "appRows": 1
+          },
+          {
+            "totalMs": 132.92189999999755,
+            "sqlMs": 131.9751000000033,
+            "sqlRequests": 1,
+            "appRows": 1
+          },
+          {
+            "totalMs": 134.1942999999992,
+            "sqlMs": 132.95820000000094,
+            "sqlRequests": 1,
+            "appRows": 1
+          },
+          {
+            "totalMs": 136.2622999999985,
+            "sqlMs": 135.1311999999998,
+            "sqlRequests": 1,
+            "appRows": 1
+          },
+          {
+            "totalMs": 128.63640000000305,
+            "sqlMs": 127.71429999999964,
+            "sqlRequests": 1,
+            "appRows": 1
+          },
+          {
+            "totalMs": 135.26829999999973,
+            "sqlMs": 134.13390000000072,
+            "sqlRequests": 1,
+            "appRows": 1
+          }
+        ],
+        "after": [
+          {
+            "totalMs": 169.56909999999698,
+            "sqlMs": 168.6195000000007,
+            "sqlRequests": 1,
+            "appRows": 1
+          },
+          {
+            "totalMs": 168.49029999999766,
+            "sqlMs": 167.52510000000257,
+            "sqlRequests": 1,
+            "appRows": 1
+          },
+          {
+            "totalMs": 161.45700000000215,
+            "sqlMs": 160.55059999999867,
+            "sqlRequests": 1,
+            "appRows": 1
+          },
+          {
+            "totalMs": 168.79829999999856,
+            "sqlMs": 167.7417000000023,
+            "sqlRequests": 1,
+            "appRows": 1
+          },
+          {
+            "totalMs": 158.95200000000114,
+            "sqlMs": 158.02239999999802,
+            "sqlRequests": 1,
+            "appRows": 1
+          },
+          {
+            "totalMs": 163.0636999999988,
+            "sqlMs": 162.1221000000005,
+            "sqlRequests": 1,
+            "appRows": 1
+          },
+          {
+            "totalMs": 214.3657000000021,
+            "sqlMs": 213.1857999999993,
+            "sqlRequests": 1,
+            "appRows": 1
+          }
+        ],
+        "qualified": [
+          {
+            "totalMs": 165.76480000000083,
+            "sqlMs": 164.72409999999945,
+            "sqlRequests": 1,
+            "appRows": 1
+          },
+          {
+            "totalMs": 193.91830000000118,
+            "sqlMs": 192.9425999999985,
+            "sqlRequests": 1,
+            "appRows": 1
+          },
+          {
+            "totalMs": 157.8293999999987,
+            "sqlMs": 156.90639999999985,
+            "sqlRequests": 1,
+            "appRows": 1
+          },
+          {
+            "totalMs": 154.047300000002,
+            "sqlMs": 152.8608000000022,
+            "sqlRequests": 1,
+            "appRows": 1
+          },
+          {
+            "totalMs": 178.44720000000234,
+            "sqlMs": 177.49239999999918,
+            "sqlRequests": 1,
+            "appRows": 1
+          },
+          {
+            "totalMs": 159.8189999999995,
+            "sqlMs": 158.91200000000026,
+            "sqlRequests": 1,
+            "appRows": 1
+          },
+          {
+            "totalMs": 161.60829999999987,
+            "sqlMs": 160.6988999999994,
+            "sqlRequests": 1,
+            "appRows": 1
+          }
+        ]
+      },
+      "summary": {
+        "before": {
+          "totalMs": 134.1942999999992,
+          "sqlMs": 132.95820000000094,
+          "sqlRequests": 1,
+          "appRows": 1
+        },
+        "after": {
+          "totalMs": 168.49029999999766,
+          "sqlMs": 167.52510000000257,
+          "sqlRequests": 1,
+          "appRows": 1
+        },
+        "qualified": {
+          "totalMs": 161.60829999999987,
+          "sqlMs": 160.6988999999994,
+          "sqlRequests": 1,
+          "appRows": 1
+        }
+      },
+      "plans": {}
+    },
+    {
+      "name": "starts",
+      "mode": "list",
+      "runs": {
+        "before": [
+          {
+            "totalMs": 99.72370000000228,
+            "sqlMs": 34.79809999999998,
+            "sqlRequests": 1,
+            "appRows": 300
+          },
+          {
+            "totalMs": 96.26039999999921,
+            "sqlMs": 35.05630000000019,
+            "sqlRequests": 1,
+            "appRows": 300
+          },
+          {
+            "totalMs": 101.96010000000024,
+            "sqlMs": 36.01270000000295,
+            "sqlRequests": 1,
+            "appRows": 300
+          },
+          {
+            "totalMs": 102.02439999999842,
+            "sqlMs": 36.040399999998044,
+            "sqlRequests": 1,
+            "appRows": 300
+          },
+          {
+            "totalMs": 102.46790000000328,
+            "sqlMs": 36.59019999999873,
+            "sqlRequests": 1,
+            "appRows": 300
+          },
+          {
+            "totalMs": 98.13070000000153,
+            "sqlMs": 35.42130000000179,
+            "sqlRequests": 1,
+            "appRows": 300
+          },
+          {
+            "totalMs": 95.72030000000086,
+            "sqlMs": 34.55630000000019,
+            "sqlRequests": 1,
+            "appRows": 300
+          }
+        ],
+        "after": [
+          {
+            "totalMs": 98.58209999999963,
+            "sqlMs": 36.690999999998894,
+            "sqlRequests": 1,
+            "appRows": 300
+          },
+          {
+            "totalMs": 94.59930000000168,
+            "sqlMs": 36.53930000000037,
+            "sqlRequests": 1,
+            "appRows": 300
+          },
+          {
+            "totalMs": 94.50610000000233,
+            "sqlMs": 35.640699999999924,
+            "sqlRequests": 1,
+            "appRows": 300
+          },
+          {
+            "totalMs": 98.40999999999985,
+            "sqlMs": 36.38589999999749,
+            "sqlRequests": 1,
+            "appRows": 300
+          },
+          {
+            "totalMs": 100.5512000000017,
+            "sqlMs": 36.87700000000041,
+            "sqlRequests": 1,
+            "appRows": 300
+          },
+          {
+            "totalMs": 95.47999999999956,
+            "sqlMs": 36.3363999999965,
+            "sqlRequests": 1,
+            "appRows": 300
+          },
+          {
+            "totalMs": 95.41670000000158,
+            "sqlMs": 35.76329999999871,
+            "sqlRequests": 1,
+            "appRows": 300
+          }
+        ],
+        "qualified": [
+          {
+            "totalMs": 92.93000000000029,
+            "sqlMs": 35.97910000000047,
+            "sqlRequests": 1,
+            "appRows": 300
+          },
+          {
+            "totalMs": 98.29360000000088,
+            "sqlMs": 36.41749999999956,
+            "sqlRequests": 1,
+            "appRows": 300
+          },
+          {
+            "totalMs": 98.05690000000322,
+            "sqlMs": 37.030000000002474,
+            "sqlRequests": 1,
+            "appRows": 300
+          },
+          {
+            "totalMs": 97.08250000000044,
+            "sqlMs": 37.59309999999823,
+            "sqlRequests": 1,
+            "appRows": 300
+          },
+          {
+            "totalMs": 97.88580000000002,
+            "sqlMs": 36.06469999999899,
+            "sqlRequests": 1,
+            "appRows": 300
+          },
+          {
+            "totalMs": 93.64400000000023,
+            "sqlMs": 35.12220000000161,
+            "sqlRequests": 1,
+            "appRows": 300
+          },
+          {
+            "totalMs": 93.1752000000015,
+            "sqlMs": 35.57969999999841,
+            "sqlRequests": 1,
+            "appRows": 300
+          }
+        ]
+      },
+      "summary": {
+        "before": {
+          "totalMs": 99.72370000000228,
+          "sqlMs": 35.42130000000179,
+          "sqlRequests": 1,
+          "appRows": 300
+        },
+        "after": {
+          "totalMs": 95.47999999999956,
+          "sqlMs": 36.38589999999749,
+          "sqlRequests": 1,
+          "appRows": 300
+        },
+        "qualified": {
+          "totalMs": 97.08250000000044,
+          "sqlMs": 36.06469999999899,
+          "sqlRequests": 1,
+          "appRows": 300
+        }
+      },
+      "plans": {}
+    },
+    {
+      "name": "ends",
+      "mode": "count",
+      "runs": {
+        "before": [
+          {
+            "totalMs": 524.1248000000014,
+            "sqlMs": 522.7223000000013,
+            "sqlRequests": 1,
+            "appRows": 1
+          },
+          {
+            "totalMs": 525.7301000000043,
+            "sqlMs": 524.350400000003,
+            "sqlRequests": 1,
+            "appRows": 1
+          },
+          {
+            "totalMs": 528.9903999999951,
+            "sqlMs": 527.6010000000024,
+            "sqlRequests": 1,
+            "appRows": 1
+          },
+          {
+            "totalMs": 513.6039000000019,
+            "sqlMs": 512.0518999999986,
+            "sqlRequests": 1,
+            "appRows": 1
+          },
+          {
+            "totalMs": 510.37860000000364,
+            "sqlMs": 508.9334999999992,
+            "sqlRequests": 1,
+            "appRows": 1
+          },
+          {
+            "totalMs": 531.7082000000009,
+            "sqlMs": 530.3151999999973,
+            "sqlRequests": 1,
+            "appRows": 1
+          },
+          {
+            "totalMs": 528.9115999999995,
+            "sqlMs": 527.3055000000022,
+            "sqlRequests": 1,
+            "appRows": 1
+          }
+        ],
+        "after": [
+          {
+            "totalMs": 796.2548000000024,
+            "sqlMs": 794.8988000000027,
+            "sqlRequests": 1,
+            "appRows": 1
+          },
+          {
+            "totalMs": 791.9456999999966,
+            "sqlMs": 790.4773999999961,
+            "sqlRequests": 1,
+            "appRows": 1
+          },
+          {
+            "totalMs": 854.9746000000014,
+            "sqlMs": 853.6011999999973,
+            "sqlRequests": 1,
+            "appRows": 1
+          },
+          {
+            "totalMs": 801.5634999999966,
+            "sqlMs": 799.9478999999992,
+            "sqlRequests": 1,
+            "appRows": 1
+          },
+          {
+            "totalMs": 791.6762999999992,
+            "sqlMs": 790.0689999999959,
+            "sqlRequests": 1,
+            "appRows": 1
+          },
+          {
+            "totalMs": 800.1333999999988,
+            "sqlMs": 798.7144000000044,
+            "sqlRequests": 1,
+            "appRows": 1
+          },
+          {
+            "totalMs": 794.4558000000034,
+            "sqlMs": 793.0990999999995,
+            "sqlRequests": 1,
+            "appRows": 1
+          }
+        ],
+        "qualified": [
+          {
+            "totalMs": 794.6329000000005,
+            "sqlMs": 793.2875999999997,
+            "sqlRequests": 1,
+            "appRows": 1
+          },
+          {
+            "totalMs": 790.1368999999977,
+            "sqlMs": 788.3113000000012,
+            "sqlRequests": 1,
+            "appRows": 1
+          },
+          {
+            "totalMs": 774.9160000000047,
+            "sqlMs": 773.5023999999976,
+            "sqlRequests": 1,
+            "appRows": 1
+          },
+          {
+            "totalMs": 783.6228999999948,
+            "sqlMs": 782.1891999999934,
+            "sqlRequests": 1,
+            "appRows": 1
+          },
+          {
+            "totalMs": 778.0459999999948,
+            "sqlMs": 776.6983999999939,
+            "sqlRequests": 1,
+            "appRows": 1
+          },
+          {
+            "totalMs": 807.002999999997,
+            "sqlMs": 805.6182000000044,
+            "sqlRequests": 1,
+            "appRows": 1
+          },
+          {
+            "totalMs": 780.9210000000021,
+            "sqlMs": 779.442200000005,
+            "sqlRequests": 1,
+            "appRows": 1
+          }
+        ]
+      },
+      "summary": {
+        "before": {
+          "totalMs": 525.7301000000043,
+          "sqlMs": 524.350400000003,
+          "sqlRequests": 1,
+          "appRows": 1
+        },
+        "after": {
+          "totalMs": 796.2548000000024,
+          "sqlMs": 794.8988000000027,
+          "sqlRequests": 1,
+          "appRows": 1
+        },
+        "qualified": {
+          "totalMs": 783.6228999999948,
+          "sqlMs": 782.1891999999934,
+          "sqlRequests": 1,
+          "appRows": 1
+        }
+      },
+      "plans": {}
+    },
+    {
+      "name": "ends",
+      "mode": "list",
+      "runs": {
+        "before": [
+          {
+            "totalMs": 187.89809999999852,
+            "sqlMs": 122.83430000000226,
+            "sqlRequests": 1,
+            "appRows": 300
+          },
+          {
+            "totalMs": 183.38969999999972,
+            "sqlMs": 120.56170000000566,
+            "sqlRequests": 1,
+            "appRows": 300
+          },
+          {
+            "totalMs": 188.67779999999766,
+            "sqlMs": 125.45019999999931,
+            "sqlRequests": 1,
+            "appRows": 300
+          },
+          {
+            "totalMs": 181.42949999999837,
+            "sqlMs": 116.98740000000544,
+            "sqlRequests": 1,
+            "appRows": 300
+          },
+          {
+            "totalMs": 178.74930000000313,
+            "sqlMs": 116.66850000000704,
+            "sqlRequests": 1,
+            "appRows": 300
+          },
+          {
+            "totalMs": 177.88519999999698,
+            "sqlMs": 114.47409999999945,
+            "sqlRequests": 1,
+            "appRows": 300
+          },
+          {
+            "totalMs": 179.28050000000076,
+            "sqlMs": 114.55019999999786,
+            "sqlRequests": 1,
+            "appRows": 300
+          }
+        ],
+        "after": [
+          {
+            "totalMs": 192.34590000000026,
+            "sqlMs": 128.6345999999976,
+            "sqlRequests": 1,
+            "appRows": 300
+          },
+          {
+            "totalMs": 192.54499999999825,
+            "sqlMs": 123.96250000000146,
+            "sqlRequests": 1,
+            "appRows": 300
+          },
+          {
+            "totalMs": 179.57800000000134,
+            "sqlMs": 118.98370000000432,
+            "sqlRequests": 1,
+            "appRows": 300
+          },
+          {
+            "totalMs": 177.811099999999,
+            "sqlMs": 116.8599999999933,
+            "sqlRequests": 1,
+            "appRows": 300
+          },
+          {
+            "totalMs": 192.9452999999994,
+            "sqlMs": 126.23050000000512,
+            "sqlRequests": 1,
+            "appRows": 300
+          },
+          {
+            "totalMs": 186.45999999999913,
+            "sqlMs": 125.83179999999993,
+            "sqlRequests": 1,
+            "appRows": 300
+          },
+          {
+            "totalMs": 187.43040000000474,
+            "sqlMs": 124.34060000000318,
+            "sqlRequests": 1,
+            "appRows": 300
+          }
+        ],
+        "qualified": [
+          {
+            "totalMs": 198.60540000000037,
+            "sqlMs": 128.84049999999843,
+            "sqlRequests": 1,
+            "appRows": 300
+          },
+          {
+            "totalMs": 195.05189999999857,
+            "sqlMs": 130.44959999999992,
+            "sqlRequests": 1,
+            "appRows": 300
+          },
+          {
+            "totalMs": 180.7329000000027,
+            "sqlMs": 117.21869999999763,
+            "sqlRequests": 1,
+            "appRows": 300
+          },
+          {
+            "totalMs": 187.79490000000078,
+            "sqlMs": 122.70179999999527,
+            "sqlRequests": 1,
+            "appRows": 300
+          },
+          {
+            "totalMs": 184.2737000000052,
+            "sqlMs": 122.77139999999781,
+            "sqlRequests": 1,
+            "appRows": 300
+          },
+          {
+            "totalMs": 188.31890000000567,
+            "sqlMs": 127.92949999999837,
+            "sqlRequests": 1,
+            "appRows": 300
+          },
+          {
+            "totalMs": 179.00760000000446,
+            "sqlMs": 117.57900000000518,
+            "sqlRequests": 1,
+            "appRows": 300
+          }
+        ]
+      },
+      "summary": {
+        "before": {
+          "totalMs": 181.42949999999837,
+          "sqlMs": 116.98740000000544,
+          "sqlRequests": 1,
+          "appRows": 300
+        },
+        "after": {
+          "totalMs": 187.43040000000474,
+          "sqlMs": 124.34060000000318,
+          "sqlRequests": 1,
+          "appRows": 300
+        },
+        "qualified": {
+          "totalMs": 187.79490000000078,
+          "sqlMs": 122.77139999999781,
+          "sqlRequests": 1,
+          "appRows": 300
+        }
+      },
+      "plans": {}
+    },
+    {
+      "name": "and2",
+      "mode": "count",
+      "runs": {
+        "before": [
+          {
+            "totalMs": 238.27049999999872,
+            "sqlMs": 236.8770000000004,
+            "sqlRequests": 1,
+            "appRows": 1
+          },
+          {
+            "totalMs": 226.08810000000085,
+            "sqlMs": 224.78719999999885,
+            "sqlRequests": 1,
+            "appRows": 1
+          },
+          {
+            "totalMs": 228.59389999999985,
+            "sqlMs": 227.3266999999978,
+            "sqlRequests": 1,
+            "appRows": 1
+          },
+          {
+            "totalMs": 231.39360000000306,
+            "sqlMs": 230.22329999999783,
+            "sqlRequests": 1,
+            "appRows": 1
+          },
+          {
+            "totalMs": 235.65929999999935,
+            "sqlMs": 234.3960999999981,
+            "sqlRequests": 1,
+            "appRows": 1
+          },
+          {
+            "totalMs": 234.08800000000338,
+            "sqlMs": 232.67519999999786,
+            "sqlRequests": 1,
+            "appRows": 1
+          },
+          {
+            "totalMs": 227.8449999999939,
+            "sqlMs": 226.43830000000162,
+            "sqlRequests": 1,
+            "appRows": 1
+          }
+        ],
+        "after": [
+          {
+            "totalMs": 289.1241000000009,
+            "sqlMs": 287.9326000000001,
+            "sqlRequests": 1,
+            "appRows": 1
+          },
+          {
+            "totalMs": 293.3853999999992,
+            "sqlMs": 292.1519000000044,
+            "sqlRequests": 1,
+            "appRows": 1
+          },
+          {
+            "totalMs": 297.28519999999844,
+            "sqlMs": 296.09990000000107,
+            "sqlRequests": 1,
+            "appRows": 1
+          },
+          {
+            "totalMs": 292.8882999999987,
+            "sqlMs": 291.59509999999864,
+            "sqlRequests": 1,
+            "appRows": 1
+          },
+          {
+            "totalMs": 335.0859999999957,
+            "sqlMs": 333.85979999999836,
+            "sqlRequests": 1,
+            "appRows": 1
+          },
+          {
+            "totalMs": 290.06210000000283,
+            "sqlMs": 288.8497000000061,
+            "sqlRequests": 1,
+            "appRows": 1
+          },
+          {
+            "totalMs": 289.03029999999853,
+            "sqlMs": 287.80229999999574,
+            "sqlRequests": 1,
+            "appRows": 1
+          }
+        ],
+        "qualified": [
+          {
+            "totalMs": 288.6727000000028,
+            "sqlMs": 287.43999999999505,
+            "sqlRequests": 1,
+            "appRows": 1
+          },
+          {
+            "totalMs": 284.38760000000184,
+            "sqlMs": 283.1735999999946,
+            "sqlRequests": 1,
+            "appRows": 1
+          },
+          {
+            "totalMs": 278.5239999999976,
+            "sqlMs": 277.1209000000017,
+            "sqlRequests": 1,
+            "appRows": 1
+          },
+          {
+            "totalMs": 277.32710000000225,
+            "sqlMs": 276.1296999999977,
+            "sqlRequests": 1,
+            "appRows": 1
+          },
+          {
+            "totalMs": 325.56700000000274,
+            "sqlMs": 324.4038999999975,
+            "sqlRequests": 1,
+            "appRows": 1
+          },
+          {
+            "totalMs": 287.52850000000035,
+            "sqlMs": 286.14510000000155,
+            "sqlRequests": 1,
+            "appRows": 1
+          },
+          {
+            "totalMs": 281.738400000002,
+            "sqlMs": 280.1273000000001,
+            "sqlRequests": 1,
+            "appRows": 1
+          }
+        ]
+      },
+      "summary": {
+        "before": {
+          "totalMs": 231.39360000000306,
+          "sqlMs": 230.22329999999783,
+          "sqlRequests": 1,
+          "appRows": 1
+        },
+        "after": {
+          "totalMs": 292.8882999999987,
+          "sqlMs": 291.59509999999864,
+          "sqlRequests": 1,
+          "appRows": 1
+        },
+        "qualified": {
+          "totalMs": 284.38760000000184,
+          "sqlMs": 283.1735999999946,
+          "sqlRequests": 1,
+          "appRows": 1
+        }
+      },
+      "plans": {}
+    },
+    {
+      "name": "and2",
+      "mode": "list",
+      "runs": {
+        "before": [
+          {
+            "totalMs": 167.20100000000093,
+            "sqlMs": 106.21919999999955,
+            "sqlRequests": 1,
+            "appRows": 300
+          },
+          {
+            "totalMs": 184.21500000000378,
+            "sqlMs": 117.32930000000488,
+            "sqlRequests": 1,
+            "appRows": 300
+          },
+          {
+            "totalMs": 169.539300000004,
+            "sqlMs": 105.51380000000063,
+            "sqlRequests": 1,
+            "appRows": 300
+          },
+          {
+            "totalMs": 169.89419999999518,
+            "sqlMs": 107.61490000000049,
+            "sqlRequests": 1,
+            "appRows": 300
+          },
+          {
+            "totalMs": 174.75739999999496,
+            "sqlMs": 107.77799999999843,
+            "sqlRequests": 1,
+            "appRows": 300
+          },
+          {
+            "totalMs": 179.74839999999676,
+            "sqlMs": 116.71029999999882,
+            "sqlRequests": 1,
+            "appRows": 300
+          },
+          {
+            "totalMs": 176.10809999999765,
+            "sqlMs": 112.26109999999608,
+            "sqlRequests": 1,
+            "appRows": 300
+          }
+        ],
+        "after": [
+          {
+            "totalMs": 175.62769999999728,
+            "sqlMs": 107.99229999999807,
+            "sqlRequests": 1,
+            "appRows": 300
+          },
+          {
+            "totalMs": 182.42700000000332,
+            "sqlMs": 117.09230000000389,
+            "sqlRequests": 1,
+            "appRows": 300
+          },
+          {
+            "totalMs": 183.52939999999944,
+            "sqlMs": 118.23830000000453,
+            "sqlRequests": 1,
+            "appRows": 300
+          },
+          {
+            "totalMs": 171.67399999999907,
+            "sqlMs": 110.35310000000027,
+            "sqlRequests": 1,
+            "appRows": 300
+          },
+          {
+            "totalMs": 182.575499999999,
+            "sqlMs": 117.681700000001,
+            "sqlRequests": 1,
+            "appRows": 300
+          },
+          {
+            "totalMs": 178.08000000000175,
+            "sqlMs": 115.92329999999492,
+            "sqlRequests": 1,
+            "appRows": 300
+          },
+          {
+            "totalMs": 191.38610000000335,
+            "sqlMs": 121.25679999999556,
+            "sqlRequests": 1,
+            "appRows": 300
+          }
+        ],
+        "qualified": [
+          {
+            "totalMs": 172.7164000000048,
+            "sqlMs": 110.37950000000274,
+            "sqlRequests": 1,
+            "appRows": 300
+          },
+          {
+            "totalMs": 172.64999999999418,
+            "sqlMs": 109.30600000000413,
+            "sqlRequests": 1,
+            "appRows": 300
+          },
+          {
+            "totalMs": 176.92529999999533,
+            "sqlMs": 117.25149999999849,
+            "sqlRequests": 1,
+            "appRows": 300
+          },
+          {
+            "totalMs": 172.9140000000043,
+            "sqlMs": 110.09969999999885,
+            "sqlRequests": 1,
+            "appRows": 300
+          },
+          {
+            "totalMs": 176.8185999999987,
+            "sqlMs": 111.38549999999668,
+            "sqlRequests": 1,
+            "appRows": 300
+          },
+          {
+            "totalMs": 185.68439999999828,
+            "sqlMs": 121.19890000000305,
+            "sqlRequests": 1,
+            "appRows": 300
+          },
+          {
+            "totalMs": 178.19889999999577,
+            "sqlMs": 117.21289999999863,
+            "sqlRequests": 1,
+            "appRows": 300
+          }
+        ]
+      },
+      "summary": {
+        "before": {
+          "totalMs": 174.75739999999496,
+          "sqlMs": 107.77799999999843,
+          "sqlRequests": 1,
+          "appRows": 300
+        },
+        "after": {
+          "totalMs": 182.42700000000332,
+          "sqlMs": 117.09230000000389,
+          "sqlRequests": 1,
+          "appRows": 300
+        },
+        "qualified": {
+          "totalMs": 176.8185999999987,
+          "sqlMs": 111.38549999999668,
+          "sqlRequests": 1,
+          "appRows": 300
+        }
+      },
+      "plans": {}
+    },
+    {
+      "name": "and6",
+      "mode": "count",
+      "runs": {
+        "before": [
+          {
+            "totalMs": 34.17229999999836,
+            "sqlMs": 31.466300000000047,
+            "sqlRequests": 1,
+            "appRows": 1
+          },
+          {
+            "totalMs": 34.36049999999523,
+            "sqlMs": 31.084900000001653,
+            "sqlRequests": 1,
+            "appRows": 1
+          },
+          {
+            "totalMs": 32.35729999999603,
+            "sqlMs": 29.789499999998952,
+            "sqlRequests": 1,
+            "appRows": 1
+          },
+          {
+            "totalMs": 32.97030000000086,
+            "sqlMs": 30.391499999997905,
+            "sqlRequests": 1,
+            "appRows": 1
+          },
+          {
+            "totalMs": 32.492599999997765,
+            "sqlMs": 29.955400000006193,
+            "sqlRequests": 1,
+            "appRows": 1
+          },
+          {
+            "totalMs": 32.958700000002864,
+            "sqlMs": 30.308199999999488,
+            "sqlRequests": 1,
+            "appRows": 1
+          },
+          {
+            "totalMs": 32.766600000002654,
+            "sqlMs": 29.83600000000297,
+            "sqlRequests": 1,
+            "appRows": 1
+          }
+        ],
+        "after": [
+          {
+            "totalMs": 47.46100000000297,
+            "sqlMs": 44.66139999999723,
+            "sqlRequests": 1,
+            "appRows": 1
+          },
+          {
+            "totalMs": 46.56300000000192,
+            "sqlMs": 43.61960000000545,
+            "sqlRequests": 1,
+            "appRows": 1
+          },
+          {
+            "totalMs": 45.96449999999459,
+            "sqlMs": 43.31039999999484,
+            "sqlRequests": 1,
+            "appRows": 1
+          },
+          {
+            "totalMs": 45.80879999999888,
+            "sqlMs": 43.09019999999873,
+            "sqlRequests": 1,
+            "appRows": 1
+          },
+          {
+            "totalMs": 45.64170000000013,
+            "sqlMs": 42.98329999999987,
+            "sqlRequests": 1,
+            "appRows": 1
+          },
+          {
+            "totalMs": 46.81449999999313,
+            "sqlMs": 44.2867000000042,
+            "sqlRequests": 1,
+            "appRows": 1
+          },
+          {
+            "totalMs": 45.62279999999737,
+            "sqlMs": 42.82890000000043,
+            "sqlRequests": 1,
+            "appRows": 1
+          }
+        ],
+        "qualified": [
+          {
+            "totalMs": 46.444500000005064,
+            "sqlMs": 43.90719999999419,
+            "sqlRequests": 1,
+            "appRows": 1
+          },
+          {
+            "totalMs": 44.71089999999822,
+            "sqlMs": 42.098400000002584,
+            "sqlRequests": 1,
+            "appRows": 1
+          },
+          {
+            "totalMs": 44.560700000001816,
+            "sqlMs": 41.73479999999836,
+            "sqlRequests": 1,
+            "appRows": 1
+          },
+          {
+            "totalMs": 44.171500000004016,
+            "sqlMs": 41.51520000000164,
+            "sqlRequests": 1,
+            "appRows": 1
+          },
+          {
+            "totalMs": 44.1111000000019,
+            "sqlMs": 41.70699999999488,
+            "sqlRequests": 1,
+            "appRows": 1
+          },
+          {
+            "totalMs": 44.808399999994435,
+            "sqlMs": 42.23780000000261,
+            "sqlRequests": 1,
+            "appRows": 1
+          },
+          {
+            "totalMs": 44.21209999999701,
+            "sqlMs": 41.54530000000523,
+            "sqlRequests": 1,
+            "appRows": 1
+          }
+        ]
+      },
+      "summary": {
+        "before": {
+          "totalMs": 32.958700000002864,
+          "sqlMs": 30.308199999999488,
+          "sqlRequests": 1,
+          "appRows": 1
+        },
+        "after": {
+          "totalMs": 45.96449999999459,
+          "sqlMs": 43.31039999999484,
+          "sqlRequests": 1,
+          "appRows": 1
+        },
+        "qualified": {
+          "totalMs": 44.560700000001816,
+          "sqlMs": 41.73479999999836,
+          "sqlRequests": 1,
+          "appRows": 1
+        }
+      },
+      "plans": {}
+    },
+    {
+      "name": "and6",
+      "mode": "list",
+      "runs": {
+        "before": [
+          {
+            "totalMs": 87.28560000000289,
+            "sqlMs": 22.101300000002084,
+            "sqlRequests": 1,
+            "appRows": 300
+          },
+          {
+            "totalMs": 87.7989000000016,
+            "sqlMs": 22.949899999999616,
+            "sqlRequests": 1,
+            "appRows": 300
+          },
+          {
+            "totalMs": 94.14890000000014,
+            "sqlMs": 21.799999999995634,
+            "sqlRequests": 1,
+            "appRows": 300
+          },
+          {
+            "totalMs": 89.36579999999958,
+            "sqlMs": 21.967400000001362,
+            "sqlRequests": 1,
+            "appRows": 300
+          },
+          {
+            "totalMs": 93.40570000000298,
+            "sqlMs": 22.174700000003213,
+            "sqlRequests": 1,
+            "appRows": 300
+          },
+          {
+            "totalMs": 96.10819999998785,
+            "sqlMs": 23.177700000000186,
+            "sqlRequests": 1,
+            "appRows": 300
+          },
+          {
+            "totalMs": 100.63880000000063,
+            "sqlMs": 26.611900000003516,
+            "sqlRequests": 1,
+            "appRows": 300
+          }
+        ],
+        "after": [
+          {
+            "totalMs": 95.12229999999545,
+            "sqlMs": 29.038300000000163,
+            "sqlRequests": 1,
+            "appRows": 300
+          },
+          {
+            "totalMs": 93.2451000000001,
+            "sqlMs": 28.932099999998172,
+            "sqlRequests": 1,
+            "appRows": 300
+          },
+          {
+            "totalMs": 102.63379999999597,
+            "sqlMs": 31.652399999999034,
+            "sqlRequests": 1,
+            "appRows": 300
+          },
+          {
+            "totalMs": 91.53699999999662,
+            "sqlMs": 28.323499999998603,
+            "sqlRequests": 1,
+            "appRows": 300
+          },
+          {
+            "totalMs": 92.82480000000214,
+            "sqlMs": 29.319299999995565,
+            "sqlRequests": 1,
+            "appRows": 300
+          },
+          {
+            "totalMs": 97.27210000000196,
+            "sqlMs": 29.567500000004657,
+            "sqlRequests": 1,
+            "appRows": 300
+          },
+          {
+            "totalMs": 98.40509999998903,
+            "sqlMs": 28.974700000006123,
+            "sqlRequests": 1,
+            "appRows": 300
+          }
+        ],
+        "qualified": [
+          {
+            "totalMs": 97.69759999999951,
+            "sqlMs": 30.991500000003725,
+            "sqlRequests": 1,
+            "appRows": 300
+          },
+          {
+            "totalMs": 93.07209999999759,
+            "sqlMs": 28.08849999999802,
+            "sqlRequests": 1,
+            "appRows": 300
+          },
+          {
+            "totalMs": 97.43989999999758,
+            "sqlMs": 27.81079999999929,
+            "sqlRequests": 1,
+            "appRows": 300
+          },
+          {
+            "totalMs": 89.32740000000194,
+            "sqlMs": 28.112800000002608,
+            "sqlRequests": 1,
+            "appRows": 300
+          },
+          {
+            "totalMs": 90.05910000000586,
+            "sqlMs": 27.716700000004494,
+            "sqlRequests": 1,
+            "appRows": 300
+          },
+          {
+            "totalMs": 94.58780000000843,
+            "sqlMs": 28.762300000002142,
+            "sqlRequests": 1,
+            "appRows": 300
+          },
+          {
+            "totalMs": 102.18279999999504,
+            "sqlMs": 28.87650000001304,
+            "sqlRequests": 1,
+            "appRows": 300
+          }
+        ]
+      },
+      "summary": {
+        "before": {
+          "totalMs": 93.40570000000298,
+          "sqlMs": 22.174700000003213,
+          "sqlRequests": 1,
+          "appRows": 300
+        },
+        "after": {
+          "totalMs": 95.12229999999545,
+          "sqlMs": 29.038300000000163,
+          "sqlRequests": 1,
+          "appRows": 300
+        },
+        "qualified": {
+          "totalMs": 94.58780000000843,
+          "sqlMs": 28.112800000002608,
+          "sqlRequests": 1,
+          "appRows": 300
+        }
+      },
+      "plans": {}
+    },
+    {
+      "name": "or2",
+      "mode": "count",
+      "runs": {
+        "before": [
+          {
+            "totalMs": 157.10319999999774,
+            "sqlMs": 155.86579999999958,
+            "sqlRequests": 1,
+            "appRows": 1
+          },
+          {
+            "totalMs": 143.4250000000029,
+            "sqlMs": 142.23669999999402,
+            "sqlRequests": 1,
+            "appRows": 1
+          },
+          {
+            "totalMs": 154.22480000001087,
+            "sqlMs": 153.02790000000095,
+            "sqlRequests": 1,
+            "appRows": 1
+          },
+          {
+            "totalMs": 145.8801999999996,
+            "sqlMs": 144.64939999999478,
+            "sqlRequests": 1,
+            "appRows": 1
+          },
+          {
+            "totalMs": 145.1030000000028,
+            "sqlMs": 143.92009999998845,
+            "sqlRequests": 1,
+            "appRows": 1
+          },
+          {
+            "totalMs": 141.4819000000134,
+            "sqlMs": 140.2829999999958,
+            "sqlRequests": 1,
+            "appRows": 1
+          },
+          {
+            "totalMs": 154.57009999999718,
+            "sqlMs": 153.3506999999954,
+            "sqlRequests": 1,
+            "appRows": 1
+          }
+        ],
+        "after": [
+          {
+            "totalMs": 145.57050000000163,
+            "sqlMs": 144.37699999999313,
+            "sqlRequests": 1,
+            "appRows": 1
+          },
+          {
+            "totalMs": 143.3877000000066,
+            "sqlMs": 142.15649999999732,
+            "sqlRequests": 1,
+            "appRows": 1
+          },
+          {
+            "totalMs": 140.92519999999786,
+            "sqlMs": 139.3984000000055,
+            "sqlRequests": 1,
+            "appRows": 1
+          },
+          {
+            "totalMs": 142.3368000000046,
+            "sqlMs": 141.15140000000247,
+            "sqlRequests": 1,
+            "appRows": 1
+          },
+          {
+            "totalMs": 162.2329999999929,
+            "sqlMs": 160.77350000001024,
+            "sqlRequests": 1,
+            "appRows": 1
+          },
+          {
+            "totalMs": 144.46029999999155,
+            "sqlMs": 143.26469999999972,
+            "sqlRequests": 1,
+            "appRows": 1
+          },
+          {
+            "totalMs": 160.91909999999916,
+            "sqlMs": 159.63930000000983,
+            "sqlRequests": 1,
+            "appRows": 1
+          }
+        ],
+        "qualified": [
+          {
+            "totalMs": 148.3451999999961,
+            "sqlMs": 146.9305000000022,
+            "sqlRequests": 1,
+            "appRows": 1
+          },
+          {
+            "totalMs": 147.85920000000624,
+            "sqlMs": 146.48420000000624,
+            "sqlRequests": 1,
+            "appRows": 1
+          },
+          {
+            "totalMs": 143.7381000000023,
+            "sqlMs": 142.5734000000084,
+            "sqlRequests": 1,
+            "appRows": 1
+          },
+          {
+            "totalMs": 146.4262000000017,
+            "sqlMs": 145.25830000000133,
+            "sqlRequests": 1,
+            "appRows": 1
+          },
+          {
+            "totalMs": 143.65920000000915,
+            "sqlMs": 142.48889999999665,
+            "sqlRequests": 1,
+            "appRows": 1
+          },
+          {
+            "totalMs": 142.19980000000214,
+            "sqlMs": 140.9427999999898,
+            "sqlRequests": 1,
+            "appRows": 1
+          },
+          {
+            "totalMs": 141.4615999999951,
+            "sqlMs": 140.11389999999665,
+            "sqlRequests": 1,
+            "appRows": 1
+          }
+        ]
+      },
+      "summary": {
+        "before": {
+          "totalMs": 145.8801999999996,
+          "sqlMs": 144.64939999999478,
+          "sqlRequests": 1,
+          "appRows": 1
+        },
+        "after": {
+          "totalMs": 144.46029999999155,
+          "sqlMs": 143.26469999999972,
+          "sqlRequests": 1,
+          "appRows": 1
+        },
+        "qualified": {
+          "totalMs": 143.7381000000023,
+          "sqlMs": 142.5734000000084,
+          "sqlRequests": 1,
+          "appRows": 1
+        }
+      },
+      "plans": {}
+    },
+    {
+      "name": "or2",
+      "mode": "list",
+      "runs": {
+        "before": [
+          {
+            "totalMs": 68.05620000000636,
+            "sqlMs": 5.222200000003795,
+            "sqlRequests": 1,
+            "appRows": 300
+          },
+          {
+            "totalMs": 67.574099999998,
+            "sqlMs": 5.269700000004377,
+            "sqlRequests": 1,
+            "appRows": 300
+          },
+          {
+            "totalMs": 69.33970000001136,
+            "sqlMs": 5.032200000001467,
+            "sqlRequests": 1,
+            "appRows": 300
+          },
+          {
+            "totalMs": 69.08310000000347,
+            "sqlMs": 5.4465000000054715,
+            "sqlRequests": 1,
+            "appRows": 300
+          },
+          {
+            "totalMs": 66.04249999999593,
+            "sqlMs": 5.172600000005332,
+            "sqlRequests": 1,
+            "appRows": 300
+          },
+          {
+            "totalMs": 74.07420000000275,
+            "sqlMs": 5.312799999999697,
+            "sqlRequests": 1,
+            "appRows": 300
+          },
+          {
+            "totalMs": 68.02590000000782,
+            "sqlMs": 5.232499999998254,
+            "sqlRequests": 1,
+            "appRows": 300
+          }
+        ],
+        "after": [
+          {
+            "totalMs": 66.37589999999909,
+            "sqlMs": 5.421900000001187,
+            "sqlRequests": 1,
+            "appRows": 300
+          },
+          {
+            "totalMs": 71.30019999999786,
+            "sqlMs": 5.607900000002701,
+            "sqlRequests": 1,
+            "appRows": 300
+          },
+          {
+            "totalMs": 64.35480000000098,
+            "sqlMs": 5.408899999994901,
+            "sqlRequests": 1,
+            "appRows": 300
+          },
+          {
+            "totalMs": 67.6018999999942,
+            "sqlMs": 5.058399999994435,
+            "sqlRequests": 1,
+            "appRows": 300
+          },
+          {
+            "totalMs": 70.88339999999152,
+            "sqlMs": 5.052700000000186,
+            "sqlRequests": 1,
+            "appRows": 300
+          },
+          {
+            "totalMs": 70.83079999999609,
+            "sqlMs": 5.584200000012061,
+            "sqlRequests": 1,
+            "appRows": 300
+          },
+          {
+            "totalMs": 65.74300000000221,
+            "sqlMs": 5.837299999999232,
+            "sqlRequests": 1,
+            "appRows": 300
+          }
+        ],
+        "qualified": [
+          {
+            "totalMs": 71.46949999999197,
+            "sqlMs": 5.136800000007497,
+            "sqlRequests": 1,
+            "appRows": 300
+          },
+          {
+            "totalMs": 67.26459999999497,
+            "sqlMs": 5.512400000006892,
+            "sqlRequests": 1,
+            "appRows": 300
+          },
+          {
+            "totalMs": 67.6133000000118,
+            "sqlMs": 5.21820000000298,
+            "sqlRequests": 1,
+            "appRows": 300
+          },
+          {
+            "totalMs": 71.65170000000217,
+            "sqlMs": 5.229899999991176,
+            "sqlRequests": 1,
+            "appRows": 300
+          },
+          {
+            "totalMs": 69.70419999999285,
+            "sqlMs": 5.569699999992736,
+            "sqlRequests": 1,
+            "appRows": 300
+          },
+          {
+            "totalMs": 67.289300000004,
+            "sqlMs": 5.420499999992899,
+            "sqlRequests": 1,
+            "appRows": 300
+          },
+          {
+            "totalMs": 67.25460000000021,
+            "sqlMs": 5.456600000004983,
+            "sqlRequests": 1,
+            "appRows": 300
+          }
+        ]
+      },
+      "summary": {
+        "before": {
+          "totalMs": 68.05620000000636,
+          "sqlMs": 5.232499999998254,
+          "sqlRequests": 1,
+          "appRows": 300
+        },
+        "after": {
+          "totalMs": 67.6018999999942,
+          "sqlMs": 5.421900000001187,
+          "sqlRequests": 1,
+          "appRows": 300
+        },
+        "qualified": {
+          "totalMs": 67.6133000000118,
+          "sqlMs": 5.420499999992899,
+          "sqlRequests": 1,
+          "appRows": 300
+        }
+      },
+      "plans": {}
+    },
+    {
+      "name": "sub45",
+      "mode": "count",
+      "runs": {
+        "before": [
+          {
+            "totalMs": 20.916400000001886,
+            "sqlMs": 18.448300000003655,
+            "sqlRequests": 1,
+            "appRows": 1
+          },
+          {
+            "totalMs": 20.253700000001118,
+            "sqlMs": 18.030899999997928,
+            "sqlRequests": 1,
+            "appRows": 1
+          },
+          {
+            "totalMs": 19.962899999998626,
+            "sqlMs": 17.229800000000978,
+            "sqlRequests": 1,
+            "appRows": 1
+          },
+          {
+            "totalMs": 20.06940000000759,
+            "sqlMs": 17.60429999999178,
+            "sqlRequests": 1,
+            "appRows": 1
+          },
+          {
+            "totalMs": 20.14100000000326,
+            "sqlMs": 17.838100000008126,
+            "sqlRequests": 1,
+            "appRows": 1
+          },
+          {
+            "totalMs": 20.471300000004703,
+            "sqlMs": 17.71799999999348,
+            "sqlRequests": 1,
+            "appRows": 1
+          },
+          {
+            "totalMs": 20.626799999998184,
+            "sqlMs": 18.30580000000191,
+            "sqlRequests": 1,
+            "appRows": 1
+          }
+        ],
+        "after": [
+          {
+            "totalMs": 31.63279999999213,
+            "sqlMs": 29.27630000001227,
+            "sqlRequests": 1,
+            "appRows": 1
+          },
+          {
+            "totalMs": 31.156300000002375,
+            "sqlMs": 28.388200000001234,
+            "sqlRequests": 1,
+            "appRows": 1
+          },
+          {
+            "totalMs": 30.656500000011874,
+            "sqlMs": 28.326699999990524,
+            "sqlRequests": 1,
+            "appRows": 1
+          },
+          {
+            "totalMs": 30.691299999991315,
+            "sqlMs": 28.479900000005728,
+            "sqlRequests": 1,
+            "appRows": 1
+          },
+          {
+            "totalMs": 31.071100000001024,
+            "sqlMs": 28.724499999996624,
+            "sqlRequests": 1,
+            "appRows": 1
+          },
+          {
+            "totalMs": 32.68420000000333,
+            "sqlMs": 30.168999999994412,
+            "sqlRequests": 1,
+            "appRows": 1
+          },
+          {
+            "totalMs": 31.956600000004983,
+            "sqlMs": 29.791199999992386,
+            "sqlRequests": 1,
+            "appRows": 1
+          }
+        ],
+        "qualified": [
+          {
+            "totalMs": 30.193800000008196,
+            "sqlMs": 27.870799999989686,
+            "sqlRequests": 1,
+            "appRows": 1
+          },
+          {
+            "totalMs": 29.816600000005565,
+            "sqlMs": 27.41240000000107,
+            "sqlRequests": 1,
+            "appRows": 1
+          },
+          {
+            "totalMs": 29.82970000000205,
+            "sqlMs": 26.95089999999618,
+            "sqlRequests": 1,
+            "appRows": 1
+          },
+          {
+            "totalMs": 29.259299999990617,
+            "sqlMs": 27.11119999999937,
+            "sqlRequests": 1,
+            "appRows": 1
+          },
+          {
+            "totalMs": 29.597299999993993,
+            "sqlMs": 27.124299999995856,
+            "sqlRequests": 1,
+            "appRows": 1
+          },
+          {
+            "totalMs": 38.720799999995506,
+            "sqlMs": 27.788099999990663,
+            "sqlRequests": 1,
+            "appRows": 1
+          },
+          {
+            "totalMs": 30.64879999999539,
+            "sqlMs": 27.599099999992177,
+            "sqlRequests": 1,
+            "appRows": 1
+          }
+        ]
+      },
+      "summary": {
+        "before": {
+          "totalMs": 20.253700000001118,
+          "sqlMs": 17.838100000008126,
+          "sqlRequests": 1,
+          "appRows": 1
+        },
+        "after": {
+          "totalMs": 31.156300000002375,
+          "sqlMs": 28.724499999996624,
+          "sqlRequests": 1,
+          "appRows": 1
+        },
+        "qualified": {
+          "totalMs": 29.82970000000205,
+          "sqlMs": 27.41240000000107,
+          "sqlRequests": 1,
+          "appRows": 1
+        }
+      },
+      "plans": {}
+    },
+    {
+      "name": "sub45",
+      "mode": "list",
+      "runs": {
+        "before": [
+          {
+            "totalMs": 26.85020000000077,
+            "sqlMs": 24.17380000000412,
+            "sqlRequests": 1,
+            "appRows": 0
+          },
+          {
+            "totalMs": 28.584799999996903,
+            "sqlMs": 25.605300000010175,
+            "sqlRequests": 1,
+            "appRows": 0
+          },
+          {
+            "totalMs": 26.86939999999595,
+            "sqlMs": 23.992799999992712,
+            "sqlRequests": 1,
+            "appRows": 0
+          },
+          {
+            "totalMs": 26.788200000009965,
+            "sqlMs": 24.17039999998815,
+            "sqlRequests": 1,
+            "appRows": 0
+          },
+          {
+            "totalMs": 27.003599999996368,
+            "sqlMs": 24.29090000000724,
+            "sqlRequests": 1,
+            "appRows": 0
+          },
+          {
+            "totalMs": 27.408299999995506,
+            "sqlMs": 24.584399999992456,
+            "sqlRequests": 1,
+            "appRows": 0
+          },
+          {
+            "totalMs": 26.871400000003632,
+            "sqlMs": 24.130400000009104,
+            "sqlRequests": 1,
+            "appRows": 0
+          }
+        ],
+        "after": [
+          {
+            "totalMs": 41.70010000000184,
+            "sqlMs": 38.88739999999234,
+            "sqlRequests": 1,
+            "appRows": 0
+          },
+          {
+            "totalMs": 41.685899999996764,
+            "sqlMs": 38.443700000003446,
+            "sqlRequests": 1,
+            "appRows": 0
+          },
+          {
+            "totalMs": 38.86569999999483,
+            "sqlMs": 35.86139999999432,
+            "sqlRequests": 1,
+            "appRows": 0
+          },
+          {
+            "totalMs": 38.363100000002305,
+            "sqlMs": 35.45020000000659,
+            "sqlRequests": 1,
+            "appRows": 0
+          },
+          {
+            "totalMs": 37.993700000006356,
+            "sqlMs": 35.36669999999867,
+            "sqlRequests": 1,
+            "appRows": 0
+          },
+          {
+            "totalMs": 38.43660000000091,
+            "sqlMs": 35.814999999987776,
+            "sqlRequests": 1,
+            "appRows": 0
+          },
+          {
+            "totalMs": 37.75920000000042,
+            "sqlMs": 35.06510000000708,
+            "sqlRequests": 1,
+            "appRows": 0
+          }
+        ],
+        "qualified": [
+          {
+            "totalMs": 37.10220000000845,
+            "sqlMs": 34.33660000000964,
+            "sqlRequests": 1,
+            "appRows": 0
+          },
+          {
+            "totalMs": 37.684699999997974,
+            "sqlMs": 34.4149999999936,
+            "sqlRequests": 1,
+            "appRows": 0
+          },
+          {
+            "totalMs": 37.69200000001001,
+            "sqlMs": 35.07589999999618,
+            "sqlRequests": 1,
+            "appRows": 0
+          },
+          {
+            "totalMs": 37.84010000000126,
+            "sqlMs": 34.85319999999774,
+            "sqlRequests": 1,
+            "appRows": 0
+          },
+          {
+            "totalMs": 37.49430000000575,
+            "sqlMs": 34.681200000006356,
+            "sqlRequests": 1,
+            "appRows": 0
+          },
+          {
+            "totalMs": 38.447199999995064,
+            "sqlMs": 35.07020000000193,
+            "sqlRequests": 1,
+            "appRows": 0
+          },
+          {
+            "totalMs": 37.90090000000782,
+            "sqlMs": 34.83640000000014,
+            "sqlRequests": 1,
+            "appRows": 0
+          }
+        ]
+      },
+      "summary": {
+        "before": {
+          "totalMs": 26.871400000003632,
+          "sqlMs": 24.17380000000412,
+          "sqlRequests": 1,
+          "appRows": 0
+        },
+        "after": {
+          "totalMs": 38.43660000000091,
+          "sqlMs": 35.814999999987776,
+          "sqlRequests": 1,
+          "appRows": 0
+        },
+        "qualified": {
+          "totalMs": 37.69200000001001,
+          "sqlMs": 34.83640000000014,
+          "sqlRequests": 1,
+          "appRows": 0
+        }
+      },
+      "plans": {}
+    }
+  ]
+}
