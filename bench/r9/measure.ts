@@ -8,10 +8,10 @@ import {pgSchema,uuid} from 'drizzle-orm/pg-core';
 import {createSealer} from '../../src/index.js';
 import {createSealed} from '../../src/adapters/drizzle/v0.45/index.js';
 import {assertDisposable} from '../../test/disposable.js';
-import {candidate} from '../research-unified/b-product.js';
-import {B_SCOPE,normalize,verification} from '../research-unified/b-codec.js';
-import {BASE_CASES} from '../research-task4/cases.js';
-import {fields,plainWhere,condition,type Node} from '../verify-native/r8-cases.js';
+import {candidate} from './b-product.js';
+import {B_SCOPE,normalize,verification} from './b-codec.js';
+import {BASE_CASES} from './cases.js';
+import {fields,plainWhere,condition,type Node} from './r8-cases.js';
 
 const layout=process.argv[2];assert.ok(layout==='sorted'||layout==='random');
 const S='test_r9_performance_main',OUT='bench/results/2026-09-29-r9',lock='.local/research/measure.lock';

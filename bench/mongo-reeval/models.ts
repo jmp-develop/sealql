@@ -1,5 +1,5 @@
 /** Stateful occurrence-index leakage models. This is NOT an SDK implementation.
- * C-port follows research-unified/m2-fable-unified.ts's digest proxy exactly.
+ * C-port retains the historical occurrence-tag digest proxy in this file.
  * Encoder state is evaluator-only; attackers receive snapshot()/query() outputs.
  */
 import {hash,createHmac,createCipheriv,createDecipheriv} from 'node:crypto';
@@ -63,7 +63,7 @@ export function queryHits(query:QueryView,snapshot:Snapshot):number[]{
 export function createOccurrenceModel(options:Options){
  if(options.id==='C-mongo')return createMongoModel(options);
  const mode=options.mode??'combined',field=options.field,counters=new Map<string,{key:Buffer;n:number}>(),views:RowView[]=[];
- const encoder={id:options.id,field,mode,metadata:{source:'bench/research-unified/m2-fable-unified.ts',tagBits:64,counter:'plaintext per piece',mode,contention:0,logicalUnorderedTagSets:true},
+ const encoder={id:options.id,field,mode,metadata:{source:'historical occurrence-tag proxy retained in bench/mongo-reeval/models.ts',tagBits:64,counter:'plaintext per piece',mode,contention:0,logicalUnorderedTagSets:true},
   pieces:(v:string)=>publicPieces(field,v,mode),
   insert(id:string,value:string){assert.ok(!views.some(r=>r.id===id));const tags=encoder.pieces(value).map(p=>{let e=counters.get(p);if(!e){e={key:portToken(field,p),n:0};counters.set(p,e);}return portTag(e.key,++e.n);}).sort();
    const row:RowView={id,tags,tagCount:tags.length,cipherBytes:Buffer.byteLength(norm(value))+28,supported:true};views.push(row);return row;},

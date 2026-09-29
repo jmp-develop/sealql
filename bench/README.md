@@ -1,89 +1,57 @@
 # bench/
 
-측정·공격 시뮬레이션 스크립트와 결과(`results/`)다. 공통 규칙은 [docs/measurement.md](../docs/measurement.md)와 [docs/attack-simulation.md](../docs/attack-simulation.md)에 있다. 결과는 로컬 일회용 DB의 관찰이며 운영 보장·보안 인증이 아니다.
+현재 제품의 측정·검증과 기계적 공격 시뮬레이션을 둔다. 공통 측정 규칙은 [measurement.md](../docs/measurement.md), 공격자 조건과 해석은 [attack-simulation.md](../docs/attack-simulation.md)를 따른다. 과거 실험의 근거는 `bench/results/`와 [experiments.md](../docs/experiments.md)에 있으며, 여기에는 실행 가능한 현재 도구만 기록한다.
 
-현재 DB 도장 판정 구현의 측정은 [R9 보고](results/2026-09-29-r9/report-ko.md)와 [스크립트](r9/)에 있다. 정렬/무작위 물리 순서의 제품·연구·평문 교차 측정, 후보 수, words/single 누출·용량, 쓰기 비용과 드라이버 흐름을 기록한다. 이전 결과는 해당 시점 구현의 증거로 보존한다.
+## 일회용 DB
 
-검토 반영의 전후 비교와 기각한 SHA 후보는 [R9 검토 보고](results/2026-09-29-r9-review/report-ko.md), `r9/review-*.ts`와 [결정 017](../docs/decisions/017-search-proof-review.md)에 있다.
+- DB 스크립트는 `127.0.0.1:56439`, 사용자 `sealql_test`, 데이터 디렉터리 `.local/pg-test`만 사용한다. 운영 DB와 기본 포트 5432에는 접속하지 않는다.
+- 연결 직후 [common/db.ts](common/db.ts)의 `disposablePool()` 또는 같은 수준의 가드를 호출한다. 이 함수는 `test/disposable.ts`의 `assertDisposable`과 실제 포트 56439를 모두 확인한다.
+- 원본 `bench_realistic_100k`는 읽기 전용이다. 쓰기는 새 스키마에서만 수행하고, 임시 검증이면 끝에 그 스키마만 삭제한다.
+- 결과는 로컬 합성 fixture의 관찰이며 운영 성능 보장이나 보안 인증이 아니다.
 
-## 일회용 DB 규칙
+## 환경 만들기
 
-- `127.0.0.1:56439`, 사용자 `sealql_test`, 데이터 디렉터리 `.local/pg-test`만 쓴다. 기동: `pg_ctl -D .local/pg-test -o "-h 127.0.0.1 -p 56439" -l .local/pg-test.log start -w -t 60`.
-- 모든 DB 스크립트는 `test/disposable.ts`의 `assertDisposable`(데이터 디렉터리·소유자 확인)과 포트 확인을 먼저 호출한다. `standard-next/common.ts`의 `guard()`가 이를 감싼다.
-- 운영 DB와 5432 포트는 쓰지 않는다. 원본 `bench_realistic_100k`는 읽기만 하고, 파생 스키마(`bench_standard_next_100k` 등)에만 쓴다. 스크립트가 만든 임시 객체는 끝에 지운다.
-- 실행: `rtk proxy node --import tsx bench/<폴더>/<스크립트>.ts`.
-
-## fixture
-
-- `bench_realistic_100k`: 고객·티켓 각 100,000행의 합성 업무 데이터. 필드 `name`, `phone`, `address`, `memo`, `email`, `company`마다 평문(`*_plain`)과 정규화 평문(`*_norm`)이 있다. 티켓 i는 고객 i를 참조한다. 시드 `0x20260924`.
-- 평문 생성기: [fixture/generator.ts](fixture/generator.ts). 원래 적재 스크립트에서 평문 부분만 추출했다. [fixture/load.ts](fixture/load.ts)는 같은 시드와 행 순서로 평문 스키마를 재현하거나 `--verify`로 전수 대조한다.
-- 새 형식 fixture는 원본의 `*_plain`에서 `standard-next/load.ts`로 파생한다.
-
-## 처음부터 환경 만들기
-
-PostgreSQL 18의 `initdb`와 `pg_ctl`이 PATH에 있어야 한다. 아래 명령은 저장소 루트에서 실행한다. `.local/pg-test`가 이미 있다면 초기화하지 않는다. 새 클러스터는 로컬 전용이며, `initdb -U`가 `sealql_test` 역할을 초기 슈퍼유저로 만들므로 별도 역할 생성이나 권한 부여가 필요 없다. 이후 스크립트는 데이터 디렉터리와 `current_user`가 이 값인지 확인한다.
+PostgreSQL 18의 `initdb`와 `pg_ctl`이 PATH에 있어야 한다. 새 클러스터에서 다음 순서로 평문 fixture와 현재 공개 API 형식의 파생 fixture를 만든다. 대상 스키마가 이미 있으면 로더는 덮어쓰지 않고 중단한다.
 
 ```powershell
 rtk proxy initdb -D .local/pg-test -U sealql_test -E UTF8 --locale=C --auth-local=trust --auth-host=trust
 rtk proxy pg_ctl -D .local/pg-test -o "-h 127.0.0.1 -p 56439" -l .local/pg-test.log start -w -t 60
+rtk npm run build
 rtk proxy node --import tsx bench/fixture/setup-extension.ts
 rtk proxy node --import tsx bench/fixture/load.ts
 rtk proxy node --import tsx bench/fixture/load.ts --verify
-rtk proxy node --import tsx bench/standard-next/load.ts
-rtk npm test
+rtk proxy node --import tsx bench/common/load-product-fixture.ts
 ```
 
-현재 일회용 클러스터를 읽기 전용으로 확인한 값은 PostgreSQL 18.4, UTF8, DB 로캘 `C`/`C`, 사용자 `sealql_test`, DB `postgres`, 필수 확장 `pg_trgm` 1.6이다. `pgstattuple` 1.5도 설치돼 있지만 평문 fixture 적재에는 필요하지 않다. 확인 쿼리는 `show server_version`, `show server_encoding`, `show data_directory`, `show port`, `select datcollate, datctype from pg_database where datname=current_database()`, `select extname, extversion from pg_extension`이다. 필수 설정은 이 로캘·인코딩·포트이며, 다른 서버 설정 변경은 필요하지 않다.
+[load-product-fixture.ts](common/load-product-fixture.ts)는 원본 100,000행을 공개 `sealql`·`sealql/drizzle/v0.45` API로 `bench_product_100k`에 파생하고 부모·검색표 행 수와 600개 필드의 인증 복호화 왕복을 확인한다. 일회성 확인은 `--schema test_name --drop`을 붙인다.
 
-`load.ts`는 대상 스키마가 이미 있으면 거부한다. 다른 이름으로 재현할 때는 `--schema <name>`을 쓰고, 그 스키마의 모든 행을 읽어 비교할 때는 `--schema <name> --verify`를 쓴다. 원본 `bench_realistic_100k`가 있는 기존 클러스터에서는 `--verify`만 실행한다. 원본은 읽기만 하며, 검증용 임시 스키마는 확인 후 별도로 삭제한다. `standard-next/load.ts`는 이 평문 원본에서 제품 형식 `bench_standard_next_100k`를 파생한다.
+## 현재 도구
+
+측정·제품 검증:
+
+- `r9/`: DB 도장 판정의 고정 케이스, 후보·쓰기·검토 측정
+- `verify-r9/`: 공개 API 적재, 조회·쓰기·용량·JOIN 독립 검수
+- `final-return/`, `followup/r9-impl/`, `followup-wal/`: 기준선, 질의 튜닝, WAL 검증
+- `p1-verify/`, `lasthour/r9-impl/`, `lasthour/v-astra/`: 후보 3개 경로와 최종 공개 API 회귀
+- `scale-count-million/`: count 전용 10만/100만 행 비교
+
+공격·누출 검증:
+
+- `competitor-sim/`: 결정적 색인 모델의 빈도·알려진 원문·선택 삽입·관찰 공격
+- `dummy-sim/`: 전화번호 더미 후보의 충돌 인지 정확 덮개 공격
+- `mongo-reeval/`: 상태형 occurrence 색인의 메모리 누출 모델
+- `attack-extra/`: 백업·알려진 원문·관찰·시간 채널 추가 공격
+- `final-review/r9-impl/`: 현재 제품 토큰의 공격·희귀 토큰·비트 비교
+- `lasthour/m1-astra/`: 충돌 인지 전화 복원과 쿼리 관찰 공격
+
+## 새 벤치 추가
+
+1. `bench/<주제>/`에 재실행 가능한 스크립트를 둔다. 공통 코드는 `bench/common/` 또는 그 주제 폴더 한 곳에 두고, 삭제된 실험 폴더를 import하지 않는다.
+2. DB를 쓰면 `disposablePool()`을 호출하고 포트 56439를 다시 확인한다. 기존 스키마와 원본 fixture를 수정하지 않으며, 자신이 만든 스키마만 정리한다.
+3. 같은 데이터·질의·시드로 평문, 현재 제품, 후보를 비교한다. SQL 시간, 전체 시간, 후보·반환 행, 인증 복호화 필드를 분리하고 예열 2회·교차 7회 중앙값을 기록한다.
+4. 결과는 `bench/results/<YYYY-MM-DD>-<주제>/`에 JSON 원자료와 `report-ko.md`로 둔다. 보고서는 조건·실행 명령·표본/seed·완료 여부·한계·제품 기능으로 일반화할 수 없는 범위를 적는다. 큰 원시 파일은 커밋하지 않는다.
+5. `rtk npm run docs:check`로 모든 bench 상대 import와 문서 링크를 검사하고, 작업 범위에 맞는 build/check/test를 실행한다.
 
 ## 공개 말뭉치
 
-- NSMC(Naver sentiment movie corpus) `ratings.txt`: <https://github.com/e9t/nsmc>. 로컬 위치 `.local/ratings.txt`(Git 제외), 200,000행.
-- SHA-256 `7d1d8e66323eb5a64feb2e299178f58827d8302111c434195dfeef48506e1256`.
-- 메모리 시뮬레이션에만 쓴다. DB 적재는 승인되지 않았다.
-
-## 스크립트 → 결과 → 결정
-
-| 스크립트 | 결과 (`results/`) | 결정 |
-|---|---|---|
-| `competitor-sim/*` (공식 색인 원시 연산·빈도/알려진 원문·선택 삽입·질의 관찰, 메모리 전용) | [2026-09-30 통합·독립 검산](results/2026-09-30-competitor-sim/v-astra/report-ko.md), [A/B](results/2026-09-30-competitor-sim/m1-astra/report-ko.md), [C/D](results/2026-09-30-competitor-sim/r9-impl/report-ko.md) | 제품·DB 변경 없음; 전수와 강화 500행 표본 구분, 기능·구성 차이를 제품 전체 보안 순위로 일반화하지 않음 |
-| `p1-verify/*` (공개 API 10만 적재, 평문·이전 제품·P1 제품 교차 검증) | [2026-09-30 P1 독립 검증 118항목](results/2026-09-30-p1-verify/v-astra/report-ko.md), [적재 근거](results/2026-09-30-p1-verify/v-astra/load-report-ko.md) | [024](../docs/decisions/024-candidate-token-selection.md); 3경로 정답·순서·원문 대조, 후보 최대3개 제품 적용 후 검증 |
-| `lasthour/v-astra/*` (마지막 회귀용 공개 API 적재; [실행 절차](lasthour/v-astra/README.md)) | [2026-09-29 적재·원문 대조](results/2026-09-29-lasthour/v-astra/report-ko.md) | 제품 변경 없음; 원본 10만 행의 공개 API 파생 적재, 질의 성능·보안 검증과 별도 |
-| `lasthour/m1-astra/*` (메모리 전용 cap3/P2 관찰·칸별 비트·충돌 대응 전화 복원) | [2026-09-29 마지막 보안 검증](results/2026-09-29-lasthour/m1-astra/report-ko.md) | 제품 변경 없음; 10·12비트 전화도 강한 공격에서 99.6% 복원, P2 전송 토큰 동일 |
-| `lasthour/r9-impl/run.ts`, `variants.ts`, `verify-variants.ts`, `cleanup.ts` (P0~P4, 기존55+LIKE2 조건 count/목록) | [2026-09-29 전체 회귀 보고](results/2026-09-29-lasthour/r9-impl/report-ko.md) | 제품 변경 없음; 후보 최대3개·잔여 토큰 함수·병렬4의 전체 비용과 회귀 비교 |
-| `followup/r9-impl/phone-bits.ts` (전화 칸16/12비트, 선택 삽입·드문 검색 메모리 비교) | [2026-09-29 전화 칸 비트 보고](results/2026-09-29-followup/token-bits/report-ko.md) | 제품 변경 없음; 복원 감소와 개별 검색 후보 증가를 함께 확인 |
-| `followup/r9-impl/load.ts`, `tune.ts`, `cap3.ts`, `cleanup.ts` (공개 API 10만 적재·관계 병렬도·work_mem·후보 최대3개) | [2026-09-29 질의 튜닝 보고](results/2026-09-29-followup/query-tuning/report-ko.md), [후보 최대3개](results/2026-09-29-followup/query-tuning/cap3-report-ko.md) | 제품 변경 없음; 23조건 평문 대조·같은 연결 예열2/교차7, 자기 스키마 정리 |
-| `followup-wal/run.ts` (공개 API 파생 쓰기·rollback, pg_waldump·FPI·pglz 대조) | [2026-09-29 WAL 보고](results/2026-09-29-followup/wal/report-ko.md) | 제품 변경 없음; 과거·삭제·롤백 저장물의 물리 이력 확인, 다른 wal_level은 미측정 |
-| `scale-count-million/*` (공개 API 10만 적재 후 count 전용 SQL복제, 10만/100만·병렬도2/4/8 비교) | [2026-09-29-scale-count-million 보고](results/2026-09-29-scale-count-million/report-ko.md) | 제품 코드 변경 없음; 복제 파생 count 비용 전용 실측 |
-| `final-return/*` (연구 기준선 재구축, 원문 공개 API 적재, 동일 세션 3경로·SQL 변형 비교) | [2026-09-29-final-return 보고](results/2026-09-29-final-return/report-ko.md) | 제품 결정 변경 없음; compact-only 제품과 연구 최종안 비교 실험 |
-| `verify-r9/*` (원문 공개 API 적재, 조회·쓰기·용량·JOIN 독립 검수) | [2026-09-29-r9-verify 보고](results/2026-09-29-r9-verify/report-ko.md) | 제품 결정 변경 없음; 최종 빌드의 독립 측정 |
-| `standard-review/corpus-sim2.ts`, `corpus-sim3.ts` | `standard-review-2026-09-26/corpus-sim2.json`, `corpus-sim3-long.json` | [004](../docs/decisions/004-token-layout-16bit.md), [005](../docs/decisions/005-skip-grams-default-on.md) |
-| `standard-review/frequency-attack.ts`, `known-row-attack.ts` (옛 벤치 토큰, 출력은 콘솔) | `2026-09-27-layout-attack/scale-ko.md`에서 재현 | [004](../docs/decisions/004-token-layout-16bit.md) |
-| `standard-review/product-basic-bench.ts`, `product-token-attack.ts` | `standard-product-*-2026-09-27.json`, `standard-core-implementation-2026-09-27.md` | [003](../docs/decisions/003-field-cipher-key-cache-aad.md), [010](../docs/decisions/010-security-claim-limits.md) |
-| `standard-next/probe.ts`(원본 스키마 확인), `load.ts`, `verify-all.ts`, `matrix.ts`, `count.ts`, `join.ts`, `mixed.ts`, `crud.ts`, `storage.ts`, `stages.ts`, `explain.ts`, `db-attack.ts`, `old-column.ts`, `old-oracle.ts`, `report-data.ts` | `2026-09-27-standard-next/` ([절차](standard-next/README.md)) | [002](../docs/decisions/002-fixed-keys-no-db-policy.md), [006](../docs/decisions/006-query-engine.md) |
-| `standard-next/sqlplan-probe.ts`, `sqlplan-sweep.ts`, `sqlplan-and.ts` | `2026-09-27-standard-next-sqlplan/` | [006](../docs/decisions/006-query-engine.md) |
-| `standard-next/sqlplan-sweep.ts`, `matrix.ts` (전후) | `2026-09-27-candidate-batching/` | [006](../docs/decisions/006-query-engine.md) |
-| `standard-next/layout-attack.ts` | `2026-09-27-layout-attack/` | [004](../docs/decisions/004-token-layout-16bit.md), [005](../docs/decisions/005-skip-grams-default-on.md) |
-| `standard-next/combined-gin.ts` | `2026-09-27-combined-gin/` | [005](../docs/decisions/005-skip-grams-default-on.md), [007](../docs/decisions/007-multicolumn-gin-not-combined-array.md) |
-| `standard-next/multicolumn-gin.ts` | `2026-09-27-multicolumn-gin/` | [007](../docs/decisions/007-multicolumn-gin-not-combined-array.md) |
-| `standard-next/multicolumn-product-fixture.ts` | `2026-09-27-product-multicolumn-gin/` | [007](../docs/decisions/007-multicolumn-gin-not-combined-array.md) |
-| `standard-next/skip-write-cost.ts` | `2026-09-27-skip-write-cost/` | [005](../docs/decisions/005-skip-grams-default-on.md) |
-| `verify-core/*` (V1 정확성·무결성, `v2-attack.ts`, `v3-*.ts`) | `2026-09-27-core-verification/v1`, `v2`, `v3` | [006](../docs/decisions/006-query-engine.md), [010](../docs/decisions/010-security-claim-limits.md) |
-| `drizzle-poc/*` (시제품 H1–H7, 반증 E1–E7) | `2026-09-27-drizzle-poc/`, `2026-09-27-drizzle-falsify/` | [008](../docs/decisions/008-drizzle-integration.md) |
-| `standard-next/g0-token-placement.ts` | `2026-09-27-g0-token-placement/` | [008](../docs/decisions/008-drizzle-integration.md) |
-| `gate-x1x2/*` | `2026-09-27-gate-x1x2/` | [008](../docs/decisions/008-drizzle-integration.md) |
-| `drizzle-design/*` (타입 실험 `tsc -p bench/drizzle-design`, drizzle-kit 실험, 트리거 초안) | 결과 파일 없음 | [013](../docs/decisions/013-drizzle-native-api-implemented.md) |
-| `verify-native/scale-scope-b-*.ts` (1억 행 중 복제본 1벌을 다른 scope로 재암호화하고 21개 조회·AND/OR 200건·count를 측정) | `2026-09-27-native-scale-100m/scope-b/` ([보고](results/2026-09-27-native-scale-100m/scope-b/report-ko.md)) | 제품 결정 변경 없음 |
-
-## 스크립트 없이 결과만 보존한 것 (재현 불가)
-
-기각된 연구와 이전 형식의 측정이다. 코드는 지웠고 결과만 결정의 근거로 남긴다.
-
-| 결과 (`results/`) | 결정 |
-|---|---|
-| `standard-review-2026-09-26/stages.json`, `std-matrix-baseline.json`, `token-leakage.json`, `corpus-sim.json` | [001](../docs/decisions/001-search-hmac-pieces-gin-verify.md), [002](../docs/decisions/002-fixed-keys-no-db-policy.md), [003](../docs/decisions/003-field-cipher-key-cache-aad.md), [006](../docs/decisions/006-query-engine.md) |
-| `keyless-snapshot-length-attack-ko.md`, `.json`; `confidentiality-diverse-100k/score-report*.json`, `audit-report.json`; `reconstruction-blind/v2-evaluation-ko.md` | [010](../docs/decisions/010-security-claim-limits.md) |
-| `posting-pages-research-ko.md`, `posting-pages-v2-research-ko.md`, `posting-pages-supervisor-verdict-ko.md`, `lightweight-report-ko.md` | [011](../docs/decisions/011-rejected-research-lines.md) |
-
-큰 원시 파일(`*.jsonl`, `*.gz`)은 Git에 넣지 않는다.
+NSMC `ratings.txt`의 로컬 사본은 `.local/ratings.txt`에만 두며 메모리 공격 시뮬레이션에서만 쓴다. DB 적재는 승인되지 않았다. 기준 SHA-256은 `7d1d8e66323eb5a64feb2e299178f58827d8302111c434195dfeef48506e1256`이다.

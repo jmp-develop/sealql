@@ -1,5 +1,6 @@
 import { readFileSync, existsSync, readdirSync } from 'node:fs';
 import { dirname, resolve } from 'node:path';
+import { checkBenchImports } from './check-bench-imports.mjs';
 
 const packageJson = JSON.parse(readFileSync('package.json', 'utf8'));
 const entry = readFileSync('llms.txt', 'utf8');
@@ -17,7 +18,7 @@ for (const name of ['createSealer', 'createSealed', 'register', 'findMany', 'cou
 const markdown = dir => readdirSync(dir, { recursive: true })
   .map(path => `${dir}/${path.replaceAll('\\', '/')}`)
   .filter(path => path.endsWith('.md') && !path.startsWith('bench/results/'));
-for (const file of ['llms.txt', 'README.md', 'AGENTS.md', 'bench/README.md', 'bench/standard-next/README.md', ...markdown('docs'), ...markdown('plan')]) {
+for (const file of ['llms.txt', 'README.md', 'AGENTS.md', 'bench/README.md', ...markdown('docs'), ...markdown('plan')]) {
   const body = readFileSync(file, 'utf8');
   for (const match of body.matchAll(/\[[^\]]+\]\(([^)]+)\)/g)) {
     const path = match[1].split('#')[0];
@@ -27,6 +28,7 @@ for (const file of ['llms.txt', 'README.md', 'AGENTS.md', 'bench/README.md', 'be
     if (!existsSync(path[1])) throw Error(`Missing referenced file in ${file}: ${path[1]}`);
   }
 }
+const checkedBenchFiles = checkBenchImports();
 const decisions = readdirSync('docs/decisions').filter(name => /^\d{3}-.+\.md$/.test(name));
 const decisionIndex = readFileSync('docs/decisions/README.md', 'utf8');
 for (const name of decisions) if (!decisionIndex.includes(`(${name})`)) throw Error(`Decision not indexed: ${name}`);
@@ -44,4 +46,4 @@ for (const name of ['createSealed', 'register', 'findMany', 'count', 'openRaw', 
 for (const path of ['examples', 'llms.txt', 'docs/llm-integration.md', 'docs/current-state.md', 'docs/threat-model.md']) {
   if (!packageJson.files.includes(path)) throw Error(`AI docs missing from package: ${path}`);
 }
-console.log('Documentation entry, links, decisions, plans, exports, and shared example references PASS');
+console.log(`Documentation entry, links, decisions, plans, exports, shared example references, and ${checkedBenchFiles} bench imports PASS`);

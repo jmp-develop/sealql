@@ -30,4 +30,4 @@
 - **비교:** 현재 방식과 후보 방식을 같은 공격, 같은 데이터, 같은 시드로 돌린다. 공격자 지식(아는 행 비율 등)을 여러 단계로 바꾼다.
 - **지표:** 해독된 조각 비율(등장 기준), 대부분(80%+) 해독된 행 비율, 짧은 필드의 값 완전 복원 비율을 낸다. 같은 표에 검색 오탐과 속도도 함께 둔다.
 - **기록:** 스크립트는 `bench/`, 결과는 `bench/results/`에 둔다. 결론에는 "사용한 공격 목록 = 하한"과 쓰지 않은 공격을 적는다.
-- **기존 예:** [`frequency-attack.ts`](../bench/standard-review/frequency-attack.ts), [`known-row-attack.ts`](../bench/standard-review/known-row-attack.ts), [`layout-attack.ts`](../bench/standard-next/layout-attack.ts)(구성·비트·규모 비교), [`v2-attack.ts`](../bench/verify-core/v2-attack.ts)(최종 구성, 짧은 필드). 결과는 [결정 004](decisions/004-token-layout-16bit.md), [010](decisions/010-security-claim-limits.md)에 요약했다.
+- **현재 예:** [`competitor-sim/attacks.ts`](../bench/competitor-sim/attacks.ts)(빈도·알려진 원문·선택 삽입), [`dummy-sim/run.ts`](../bench/dummy-sim/run.ts)(더미 인지 전화 복원), [`attack-extra/backup.ts`](../bench/attack-extra/backup.ts)(키 없는 백업), [`final-review/r9-impl/attack.ts`](../bench/final-review/r9-impl/attack.ts)(현재 토큰 공격), [`lasthour/m1-astra/observation.ts`](../bench/lasthour/m1-astra/observation.ts)(쿼리 관찰). 각 결과는 대응하는 `bench/results/` 보고서에 조건과 한계를 기록한다.
