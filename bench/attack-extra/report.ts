@@ -1,0 +1,75 @@
+import {readFileSync,writeFileSync} from 'node:fs';
+import {OUT,fields} from './common.js';
+const read=(name:string)=>JSON.parse(readFileSync(`${OUT}/${name}.json`,'utf8'));
+const obs=[...fields.map(f=>read('observation-fixture-'+f)),read('observation-reviews-memo')],stats=[...fields.map(f=>read('statistics-fixture-'+f)),read('statistics-reviews-memo')];
+const backup=read('backup'),timing=read('timing'),verification=read('verification'),dataset=read('dataset');
+const pct=(n:number,d:number)=>d?(100*n/d).toFixed(2):'—',name=(d:any)=>d.label==='reviews'?'공개 리뷰':d.field;
+const rate=(m:any)=>`${pct(m.values,m.rows)} / ${pct(m.characters,m.characterTotal)} / ${pct(m.positions,m.positionTotal)}`;
+const table=(headers:string[],rows:(string|number)[][])=>['| '+headers.join(' | ')+' |','| '+headers.map(()=>'---').join(' | ')+' |',...rows.map(r=>'| '+r.join(' | ')+' |')].join('\n');
+const lines:string[]=[];const add=(s:string)=>lines.push(s);
+add('# 미시험 공격의 기계적 시뮬레이션 — 추가 관찰·다중 스냅샷·결합 통계·시간\n');
+add('제품 코드 변경 없음. 루트 키를 공격자에게 주지 않고 제품 저장물/질의 키 바이트로 아래 공격을 실행했다. **결과는 이 알고리즘이 복원한 하한이며 안전성 인증이나 공격자의 최대 복원율이 아니다.** 값은 공백 제거·문자 정규화 뒤의 값이다. 원래 공백·대소문자·서식 복원과 완전한 6필드 레코드 복원을 뜻하지 않는다.');
+add('## 1. 데이터와 공격자 지식\n');
+add(`원본 fixture ${dataset.fixtureRows.toLocaleString()}행은 읽기만 했다. 시드 ${dataset.seed}로 섞은 뒤 서로 다른 ID의 피해 10,000행과 참조 10,000행을 사용했다. 같은 분포의 참조 원문을 가진 강한 공격자 조건이다. 공개 리뷰도 서로 다른 레코드 인덱스의 피해/참조 각 10,000행이며, 자연 발생한 같은 문장은 제거하지 않았다. 리뷰는 메모리에서만 처리했다. 짧은 반복 템플릿 fixture의 결과를 자연어 일반의 결과로 확대하지 않는다.`);
+add('하나의 고정 scope 안에서 표본 시드 1개로 실행했다. 10만 행 전체의 복원율이나 여러 표본에 대한 신뢰구간은 측정하지 않았다. 조각 키는 모델·필드·scope에 결속되므로 여기서 관찰한 한 키를 다른 필드나 scope의 키라고 취급하지 않았다.');
+add(table(['공격','공격자에게 제공','공격자에게 제공하지 않음'],[
+ ['질의 + 원문','스냅샷, 10/100/1000 질의 전송물, 그 질의의 원문, 참조 원문','루트 키, 나머지 피해 원문'],
+ ['질의 키만 + 빈도','스냅샷, 익명 조각 키, 참조 원문의 조각 빈도','질의 원문·조각 문자 라벨·루트 키'],
+ ['다중 스냅샷','수정 전후 저장물; 토큰 명명 실험은 128행의 이전 원문 추가','수정 후 원문, 루트 키'],
+ ['결합 통계','토큰 빈도, 정규화 길이, 배열 길이, 참조 원문, 피해 중 0/1/10/100행 원문','나머지 피해 원문·질의 키'],
+ ['시간','추론 때 경과 시간만; 별도 질의군의 시간/개수 보정 자료','평가 질의의 이름·조건·결과·SQL 파라미터'],
+ ]));
+add('제품 동기 시뮬레이터는 HKDF-SHA384/HMAC-SHA384 토큰, HKDF/HMAC-SHA256 조각 키, SHA256(key || salt || ordinal) 앞 64비트 signed 정렬을 그대로 사용한다. 생성기의 키 접근과 공격자의 관측 입력을 구분했다. 참조-피해 분리 후 공격이 사용한 파라미터를 피해 정답에 맞춰 조정하지 않았다. 해시 salt는 매 실행 새로 생성하므로 저장 바이트는 달라지지만 표본·질의 시드는 고정이다.');
+add('## 2. 검색 관찰 누적\n');
+add('질의 분포는 실제 사용자 로그가 아닌 **모형**이다. fixture에서는 여섯 필드를 균등 추출하고, 선택된 필드의 참조 원문에 등장한 단어를 등장 빈도에 비례해 추출한다. 최소 2글자, 최대 45글자이며 흔한 단어가 반복된다. N은 모든 필드를 합친 질의 수다. 공개 리뷰에서는 1000개 모두 memo 질의라 fixture memo와 질의 수가 같지 않다. 정확한 필드별 질의·고유 질의·고유 키 수는 JSON에 남겼다.');
+add('관찰한 조각 키마다 각 행의 salt와 ordinal 1부터 도장을 계산하여 이진 탐색한다. 첫 누락에서 멈춘다. 원문도 아는 경우에만 그 조각의 문자 라벨을 붙인다. 표의 위치는 **관찰한 조각 등장 자체의 정확한 시작 위치 / 전체 인접 조각 등장**이다. 문자 둘이 다른 조각에서 복원되면 그 사이 조각을 관찰하지 않아도 문자 복원율은 더 높을 수 있다.');
+add(table(['자료/필드','전체 N / 해당 필드 질의','값 %','글자 %','위치 %','80% 이상 글자 복원 행 %'],obs.flatMap(d=>d.results.map((r:any)=>[name(d),`${r.observations} / ${r.fieldObservations}`,pct(r.values,r.rows),pct(r.characters,r.characterTotal),pct(r.positions,r.positionTotal),pct(r.mostly,r.rows)]))));
+add('### 2.1 R9 이전 후보 토큰만 있었을 때와 같은 1000질의 비교\n');
+add('f9005bd의 원본 search-tokens 모듈을 Git 객체에서 읽어 실행하여 이전 descriptor/HMAC 바이트를 대조했다. substring 기본 설정(skip=true, wordBoundary=false)이며 위치/정규화 길이/조각 키는 없다. 당시에도 보이던 암호문 UTF-8 길이(+29B)는 허용했다. 전체 과거 검색 런타임/DB를 재설치한 시험은 아니다.');
+add('두 경로 모두 같은 참조 사전·피해 데이터·질의 순서를 사용한다. 이전 경로는 관찰된 토큰 묶음이 각 행에 포함되는 1000개 이진 패턴과 암호문 길이를 참조 값에 대조하여 가장 흔한 값을 고른다(일치 사전이 없으면 길이별 최빈값). 위치 추가 경로는 같은 패턴에 알려진 위치·정규화 길이 제약을 더하고, 사전 후보가 없으면 기존 추측의 해당 글자를 복원한 글자로 대체한다. 이 두 경로의 값/글자/위치는 **추측 정답률**이며 위 표의 도장으로 계산한 위치와 구분한다.');
+add('이 증가량 비교에서는 이전 후보 바이트를 양쪽에 고정하고 현재 위치 정보를 추가했다. 후보 키 유도 도메인 변경에 따른 우연한 16비트 충돌 차이까지 위치 효과로 세지 않기 위한 대조다. 현재 제품 자체의 토큰 결합 통계는 §4에서 따로 실행했다.');
+add(table(['자료/필드','이전 후보-only 값/글자/위치 %','후보 + 위치 값/글자/위치 %','값 증가 pp','글자 증가 pp'],obs.map(d=>{const r=d.results.at(-1),a=r.candidateOnlyKnownQuery,b=r.candidateAndPositionsKnownQuery;return [name(d),rate(a),rate(b),((b.values/b.rows-a.values/a.rows)*100).toFixed(2),((b.characters/b.characterTotal-a.characters/a.characterTotal)*100).toFixed(2)];})));
+add('이 차이는 **실행한 사전 공격에서 위치를 추가했을 때의 증가분**이다. 이전 후보-only 방식에 대한 모든 동시출현·조각 조립 공격의 최대치를 측정한 것이 아니므로 설계의 절대적인 누출량 차이라고 해석하면 안 된다. 후보-only도 회사처럼 사전에 모두 있는 작은 값 집합을 복원할 수 있다. 위치 도장은 거기에 관찰 조각의 모든 등장 위치·중복 횟수와 고정 길이를 제공하며, 사전에 없는 값의 일부 글자도 직접 배치할 수 있게 한다.');
+add('### 2.2 검색어 원문 없는 키-only 빈도 공격\n');
+add('익명 키가 존재하는 피해 행 수와 전체 등장 수를 계산한 뒤, 참조 원문의 인접 2글자 조각 빈도와 log 빈도 거리로 탐욕 대응한다. 이미 사용한 문자 조각 라벨은 재사용하지 않으며, 겹치는 위치는 득표가 많은 글자를 고른다. 질의 원문·키의 실제 문자 라벨은 예측에 넣지 않았다. 빈도만으로 라벨을 잘못 붙일 수 있으므로 이 표는 정답률이다. 익명 조각 위치 자체는 §2와 동일하게 계산된다.');
+add(table(['자료/필드, N=1000','키-only 추정 값/글자/위치 %','익명 위치 복원 %','무작위 문자 %','무작위 참조 값의 글자 %','무작위 위치 기대 %'],obs.map((d,i)=>{const r=d.results.at(-1),b=d.randomCharacterBaseline,reference=stats[i].rows.find((r:any)=>r.knownRows===0&&r.mode==='random-empirical');return [name(d),rate(r.keyOnlyFrequency),pct(r.positions,r.positionTotal),pct(b.characters,b.characterTotal),pct(reference.characters,reference.characterTotal),pct(r.randomPositionExpectedCorrect,r.positionTotal)];})));
+add('무작위 글자 기준선은 참조의 고유 문자 집합에서 매 위치 독립 균등 추출하여 모든 칸을 채운다. 무작위 위치 기준선은 관찰된 등장 각각을 그 행의 가능한 n−1개 시작 위치 중 균등 추측할 때 맞는 개수의 기대값이다. 익명 키가 문자 라벨을 자동으로 알려준다는 주장은 하지 않는다. 빈도 공격은 순서·교차 조각 일관성으로 개선할 여지가 있으며 실패가 방어 증거는 아니다.');
+add('참조 값 무작위 추측은 참조 행을 균등 추출하므로 실제 빈도와 고정 형식이 반영된다. 단순 키 빈도 라벨 추정이 이 기준선보다 못한 필드도 있다. §4의 스냅샷-only 사전 통계는 키 관찰 없이도 회사 값을 많이 맞히므로, 키-only 표의 완전 값 0%를 그 공격자 전체의 복원력 0%로 해석해서는 안 된다. 여기서는 두 공격을 전역적으로 통합하는 최적화까지 실행하지 않았다.');
+add('### 2.3 파라미터 로그가 꺼져 있을 때의 획득 조건\n');
+add(table(['공격자가 가진 접근','조각 키 획득 조건'],[
+ ['정적 DB 표/백업만','저장된 salt·도장·토큰만으로 질의 키를 주지는 않는다. 이 실험의 키 관찰 전제를 충족하지 않는다.'],
+ ['실행 중 DB 서버 메모리/서버 내부 계측','DB 함수 인자로 키가 전달되므로 실행 순간의 backend 메모리, 서버 측 추적 또는 변경된 함수/확장 접근이 있으면 관찰 가능하다. 메모리 탈취를 실제 실행한 시험은 아니다.'],
+ ['드라이버·프록시·APM 또는 앱 측 추적','실제 bind 인자를 읽을 수 있어야 한다. SQL 템플릿만 보이는 정규화 통계와 다르다. 루트 키 탈취를 가정할 필요는 없다.'],
+ ['네트워크 패킷','비암호화 DB 구간의 캡처 또는 TLS 종단에서 복호화된 인자 접근이 필요하다. 정상 TLS 통신의 수동 패킷 캡처만으로 키를 읽는다고 가정하지 않는다.'],
+ ['검색어 라벨 추가','검색 UI/요청 로그/알려진 검색 행위 등 별도 원문 정보가 필요하다. 키-only 빈도 표는 이를 주지 않았다.'],
+ ]));
+add('PostgreSQL은 log_parameter_max_length=0으로 비오류 bind 기록을 끄고, log_parameter_max_length_on_error=0으로 오류 메시지의 bind 기록을 끈다. 이는 해당 서버 로깅 경로의 제어이며 다른 추적 도구나 실행 메모리 접근의 차단을 뜻하지 않는다([공식 로깅 문서](https://www.postgresql.org/docs/18/runtime-config-logging.html#GUC-LOG-PARAMETER-MAX-LENGTH)). TLS는 클라이언트-서버 전송을 암호화한다([공식 TLS 문서](https://www.postgresql.org/docs/18/ssl-tcp.html)).');
+add('## 3. 여러 시점 스냅샷 / 변경 조각\n');
+add('새 일회용 스키마에 fixture 원문 128행을 공개 관리형 API로 삽입하고, 각 시나리오 64행을 수정했다. 변경 값도 다른 fixture 행에서 가져왔다. 같은 memo 재쓰기 → 다른 memo → 다른 email 순서이며 나머지 필드의 바이트 동일성 및 복호화 원문을 검증했다. 물리 WAL 파싱이나 dead tuple 복구는 실행하지 않았다. 아래 결과는 논리적 전후 스냅샷 채널이다.');
+add(table(['수정','위치 salt/값 salt/암호문 변경(각 /64)','위치 도장 교집합','후보 토큰 불변 행','추가/제거 토큰','변경 조각 정답/추측/실제','추측 정밀도 %','변경 조각 재현율 %','무작위 정답 기대'],backup.cases.map((c:any)=>[c.scenario,`${c.saltsChanged}/${c.exactSaltsChanged}/${c.ciphertextsChanged}`,c.stampIntersection,c.tokensUnchanged,`${c.addedTokens}/${c.removedTokens}`,`${c.correctChangedPieces}/${c.guessedPieces}/${c.changedPieces}`,pct(c.correctChangedPieces,c.guessedPieces),pct(c.correctChangedPieces,c.changedPieces),c.randomPieceExpectedCorrect.toFixed(2)])));
+add('변경 조각 명명에는 **이전 128행의 원문을 모두 안다**는 추가 조건을 썼다. 토큰/평문 조각이 등장하는 알려진 행의 집합이 유일하게 같으면 이름을 붙이고 전후 토큰 차집합을 해석했다. 루트로 토큰을 만들어 공격자에게 사전을 주지 않았다. 무작위는 같은 수의 추측에 대해 이전 원문의 조각 사전에서 균등 선택한 기대 정답이다. 이 표는 인접/skip/경계 조각의 집합 추정이며 전체 값·글자별 위치 복원율은 산출하지 않았다(N/A).');
+add(`수정하지 않은 필드 셀 ${backup.cases.reduce((s:number,c:any)=>s+c.checkedUnchangedFieldCells,0)}개는 전부 같았다. 같은 memo를 재써도 salt/암호문은 달라지고 후보 토큰은 같았으므로 재쓰기 행과 필드 연결은 드러난다. 반대로 토큰 배열이 같다는 것만으로 원문이 같다고 증명하지는 못한다. 이전 memo의 한 조각 키로 찾은 위치 수는 같은 값 재쓰기에서 ${backup.cases[0].observedKeyPositionsBefore}→${backup.cases[0].observedKeyPositionsAfter}, 값 변경에서는 ${backup.cases[1].observedKeyPositionsBefore}→${backup.cases[1].observedKeyPositionsAfter}였다. 새 salt는 관찰된 고정 조각 키를 만료시키지 않는다.`);
+add('## 4. 후보 빈도 + 길이 + 위치 배열 길이\n');
+add('참조 사전의 각 값에 대해 조각 문서 빈도의 최소/중앙/최대/평균 log 값과 조각 수를 계산한다. 피해 토큰으로 같은 통계를 계산해 가까운 참조 값을 추측한다. 길이 사용 시 같은 정규화 길이로 제한하며, 원문을 아는 행은 토큰/조각의 알려진 행 집합이 유일하게 일치할 때 문자 조각 라벨을 붙여 사전 후보를 제한한다. 정답 검사는 알려진 행을 제외한 10,000−k행에만 수행한다.');
+add(table(['자료/필드, 알려진 행 0','무작위 참조 값/글자 %','길이만 값/글자 %','빈도만 값/글자 %','빈도+길이 값/글자 %','+위치 배열 길이 값/글자 %','참조 사전에 있는 피해 값 %'],stats.map(d=>{const get=(mode:string)=>d.rows.find((r:any)=>r.knownRows===0&&r.mode===mode),r=(m:any)=>`${pct(m.values,m.rows)} / ${pct(m.characters,m.characterTotal)}`;return [name(d),r(get('random-empirical')),r(get('length')),r(get('frequency')),r(get('frequency+length')),r(get('frequency+length+positions')),(get('frequency').dictionaryCoverage*100).toFixed(2)];})));
+add('위치 배열 길이는 이번 compact2 형식에서 항상 max(정규화 길이−1, 0)였다. 따라서 **정규화 길이에 배열 길이를 결합해도 추가 정보는 없으며 모든 예측이 동일**했다. 0.01%, 0.1%, 1%는 각각 피해 원문 1, 10, 100행이다. 아래 위치는 추측 문자열에서 맞힌 인접 문자 쌍의 시작 위치 비율이며, 도장으로 확인한 위치가 아니다.');
+add(table(['자료/필드','알려진 원문 %','정답 토큰 라벨/고유 대응','값/글자/위치 %','80%+ 복원 행 %'],stats.flatMap(d=>[1,10,100].map(k=>{const r=d.rows.find((r:any)=>r.knownRows===k&&r.mode==='known+joint');return [name(d),r.knownPercent,`${r.correctlyMappedTokens}/${r.uniquelyMappedTokens}`,rate(r),pct(r.mostly,r.rows)];}))));
+add('참조 사전에 없는 고유 값은 이 사전 공격으로 완전 복원하기 어렵다. 예를 들어 fixture memo/email의 값 복원 0%는 사전 값 겹침 0%라는 제한과 함께 읽어야 한다. 같은 자료의 관찰 키 공격은 그 제한 없이 일부 글자를 직접 복원한다. 공개 리뷰는 희귀·다양한 조각 때문에 fixture와 크게 다르다.');
+add('알려진 행이 늘어도 이 단순 추측기의 글자 정답률은 항상 증가하지 않는다. 모든 알려진 조각을 만족하는 참조 값이 없으면 빈도 추측으로 돌아가는 규칙 때문이다(예: phone 0.1%→1%). 이것은 사전 밖 값을 조립하지 않는 알고리즘의 한계이며 정보를 더 알려주면 보안이 좋아진다는 뜻이 아니다.');
+add('## 5. 개수 세기 시간만 보는 공격\n');
+add(`기존 실제 측정 ${timing.source}를 재분석했다(SHA-256 ${timing.sha256}). ${timing.queryRows}개 count 질의, ${timing.canonicalQueryGroups}개 정규형 질의군, 질의당 교차 7회, 합계 385개 경과 시간이다. 정규화해서 같은 질의는 같은 fold에 두는 5-fold 검증으로 학습/평가 누출을 막았다. 보정 자료의 log 시간에 가장 가까운 3개 질의군의 개수 중앙값을 예측한다. 추론 입력에는 경과 시간만 전달된다. 보정용 시간-개수 라벨이 없다면 이 시험만으로 절대 개수 추정 능력을 주장할 수 없다.`);
+add(table(['경로 / 관측','정확 개수 %','±20% 또는 1건 이내 %','개수 구간 정확도 %','무작위 구간 %','평균 절대 오차(건)','무작위 평균 오차(건)'],timing.results.map((r:any)=>[`${r.path} / ${r.metric}`,r.exactCountPercent.toFixed(2),r.within20Percent.toFixed(2),r.binAccuracyPercent.toFixed(2),r.randomBaseline.binAccuracyPercent.toFixed(2),r.meanAbsoluteError.toFixed(1),r.randomBaseline.meanAbsoluteError.toFixed(1)])));
+add('구간은 0 / 1–100 / 101–1000 / 1001–10000 / 10000 초과다. 무작위는 보정 자료의 개수를 균등하게 추출한다. totalMs는 로컬 API 전체 시간이고 sqlMs는 SQL 요청~응답만 보는 더 강한 관찰자의 진단값이다. 원격 네트워크 지연을 실제 측정하거나 가짜 지연을 섞지 않았다. 이 입력은 6fc43de의 단일 literal LIKE 정규화 이후 기록이며 여기 포함된 LIKE는 단일 literal이라 이후 일반 LIKE 수정 대상이 아니다. 최신 바이너리를 다시 구동한 원격 공격 시험은 아니다. 시간과 개수 사이에는 후보 수·연산자·필드·병렬 시작 비용이 섞인다. 값/글자/위치 복원은 이 공격에서 N/A다.');
+add('## 6. 연구 최종안 대비 새 누출 판정\n');
+add(table(['비교','관측 범위','판정'],[
+ ['R9 이전 후보-only → 위치 도장','동일 질의·데이터에서 후보-only 추측과 위치 추가 추측, 직접 위치 복원','관찰된 조각의 등장 위치/횟수를 새로 내준다. §2.1은 실행한 공격에서의 증가량이다.'],
+ ['과제4 연구 최종안 → 현재 제품',`고정 연구 codec과 현재 codec의 ${verification.researchComparisons}개 조각/행 위치 대조, 같은 2글자·salt·ordinal 구조`,'이 위치 관찰 채널은 연구 최종안에도 있다. 시험한 구조에서 제품만의 새 위치 채널을 확인하지 않았다.'],
+ ['연구 최종안 → 현재 제품 시간','같은 세션·질의군의 실제 시간에서 같은 모델로 예측','양쪽 모두 대략적 개수 구간 추정이 무작위보다 높다. 전체 시간 정확 개수 복원은 낮고 제품에만 있는 새 채널로 판정할 근거는 없다.'],
+ ['결합 통계/다중 스냅샷','현재 제품 바이트 실험, 연구 구조 코드 대조','연구 전후의 모든 통계 공격을 동일 세션으로 전수 재실행한 것은 아니다. 제품과 연구의 전체 보안 동등성 증명이 아니다.'],
+ ]));
+add('공격 종류는 [Cash 외의 leakage-abuse 연구](https://eprint.iacr.org/2016/718)와 저장소 공격 시뮬레이션 문서의 빈도/알려진 행/관찰 누적 계열을 따랐다. 여기의 단순 빈도 대응·사전 서명·시간 kNN이 논문의 전체 최적화 공격을 재현한다고 주장하지 않는다. IKK 전역 동시출현 최적화, 조각 그래프 조립, 능동 삽입, 원시 WAL/페이지 복구, 앱 침해는 미시험이다.');
+add('## 7. 재현과 검증\n');
+add('```text\nrtk proxy node --import tsx bench/attack-extra/memory.ts --reviews\nrtk proxy node --import tsx bench/attack-extra/backup.ts\nrtk proxy node --import tsx bench/attack-extra/timing.ts\nrtk proxy node --import tsx bench/attack-extra/verify.ts\nrtk proxy npx tsc -p bench/attack-extra/tsconfig.json --noEmit\nrtk proxy node --import tsx bench/attack-extra/report.ts\n```');
+add(`기계적 검증: ${verification.assertions}개 결과 불변식, 제품 WebCrypto ${verification.productWebCryptoChecks}건, f9005bd WebCrypto ${verification.historicalWebCryptoChecks}건, 독립 연구 위치 ${verification.researchComparisons}건, PostgreSQL 실제 저장 필드 768건, 관리형 수정 후 복호화 필드 768건을 대조했다. backup 스키마 삭제 확인=${verification.schemaDeleted}. 제품 build/dist 삭제, 제품 코드 변경, 보호 스키마 쓰기, 새 시간 측정은 하지 않았다. 기존 다른 작업자의 측정 락을 획득하거나 해제하지 않았다. 실제 명령 출력은 validation.txt에 기록한다.`);
+writeFileSync(`${OUT}/report-ko.md`,lines.join('\n\n')+'\n');
+console.log(`${OUT}/report-ko.md`);

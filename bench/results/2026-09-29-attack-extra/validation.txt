@@ -1,0 +1,111 @@
+제품 코드 변경 없음. DB 시간 측정은 재실행하지 않았고 기존 raw timing을 분석했다.
+
+$ rtk proxy node --import tsx bench/attack-extra/memory.ts --reviews
+[마지막 실제 출력]
+reviews memo 1000 135598 287793
+statistics reviews memo 0
+statistics reviews memo 1
+statistics reviews memo 10
+statistics reviews memo 100
+attack memory completed
+exit 0
+
+$ rtk proxy node --import tsx bench/attack-extra/backup.ts
+{
+  "schema": "test_attack_extra_snapshots",
+  "rows": 128,
+  "complete": true,
+  "source": "fixture-derived raw plaintext",
+  "cases": [
+    {
+      "scenario": "same-memo",
+      "updated": 64,
+      "saltsChanged": 64,
+      "exactSaltsChanged": 64,
+      "exactStampsChanged": 64,
+      "ciphertextsChanged": 64,
+      "unchangedFieldCells": 2560,
+      "checkedUnchangedFieldCells": 2560,
+      "stampIntersection": 0,
+      "tokensUnchanged": 64,
+      "addedTokens": 0,
+      "removedTokens": 0,
+      "changedPieces": 0,
+      "guessedPieces": 0,
+      "correctChangedPieces": 0,
+      "observedKeyPositionsBefore": 22,
+      "observedKeyPositionsAfter": 22,
+      "randomPieceExpectedCorrect": 0
+    },
+    {
+      "scenario": "changed-memo",
+      "updated": 64,
+      "saltsChanged": 64,
+      "exactSaltsChanged": 64,
+      "exactStampsChanged": 64,
+      "ciphertextsChanged": 64,
+      "unchangedFieldCells": 2560,
+      "checkedUnchangedFieldCells": 2560,
+      "stampIntersection": 0,
+      "tokensUnchanged": 0,
+      "addedTokens": 1776,
+      "removedTokens": 1575,
+      "changedPieces": 3351,
+      "guessedPieces": 496,
+      "correctChangedPieces": 494,
+      "observedKeyPositionsBefore": 22,
+      "observedKeyPositionsAfter": 15,
+      "randomPieceExpectedCorrect": 12.853420195439753
+    },
+    {
+      "scenario": "changed-email",
+      "updated": 64,
+      "saltsChanged": 64,
+      "exactSaltsChanged": 64,
+      "exactStampsChanged": 64,
+      "ciphertextsChanged": 64,
+      "unchangedFieldCells": 2560,
+      "checkedUnchangedFieldCells": 2560,
+      "stampIntersection": 0,
+      "tokensUnchanged": 0,
+      "addedTokens": 1811,
+      "removedTokens": 1778,
+      "changedPieces": 3594,
+      "guessedPieces": 1740,
+      "correctChangedPieces": 1735,
+      "observedKeyPositionsBefore": 1,
+      "observedKeyPositionsAfter": 0,
+      "randomPieceExpectedCorrect": 36.14366197183059
+    }
+  ],
+  "rawPhysicalWalParsed": false,
+  "roundtripFields": 768,
+  "codecDatabaseChecks": 768,
+  "schemaDeleted": true
+}
+
+exit 0
+
+$ rtk proxy node --import tsx bench/attack-extra/timing.ts
+exit 0; 연구/제품 totalMs·sqlMs의 385개 held-out 예측과 기준선을 timing.json에 저장
+실제 출력의 핵심: research totalMs binAccuracyPercent=48.83116883116883; product totalMs binAccuracyPercent=50.64935064935065; randomBaseline binAccuracyPercent=24.155844155844157
+
+$ rtk proxy node --import tsx bench/attack-extra/verify.ts
+PASS 1709 evidence assertions; product 70, pre-R9 70, research 941, stored fields 768, roundtrip fields 768; schema deleted
+exit 0
+
+$ rtk proxy npx tsc -p bench/attack-extra/tsconfig.json --noEmit
+출력 없음, exit 0
+
+$ rtk proxy npm run docs:check
+> sealql@0.1.0-experimental.0 docs:check
+> node scripts/docs-check.mjs
+Documentation entry, links, decisions, plans, exports, and shared example references PASS
+exit 0
+
+$ rtk proxy node --import tsx bench/attack-extra/report.ts
+bench/results/2026-09-29-attack-extra/report-ko.md
+exit 0
+
+미검증: 원시 WAL/물리 페이지 복구, 실행 프로세스 메모리 탈취, 실제 네트워크 캡처/원격 시간 공격, 전역 동시출현·조각 조립 공격, 능동 삽입, 완전 레코드 복원, 연구 최종안의 모든 통계 공격 전수 재실행.
+제품 코드 변경이 없어 제품 build/test/install은 이번 공격 연구에서 재실행하지 않았다(다른 작업자의 dist·측정 락 유지).

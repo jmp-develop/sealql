@@ -1,0 +1,151 @@
+{
+  "seed": 714029,
+  "field": "memo",
+  "label": "reviews",
+  "referenceRows": 10000,
+  "victimRows": 10000,
+  "queryDistribution": "empirical word frequency in disjoint reference, uniform field assignment",
+  "results": [
+    {
+      "observations": 10,
+      "fieldObservations": 10,
+      "distinctQueries": 10,
+      "distinctKeys": 20,
+      "randomPositionExpectedCorrect": 308.7833921497089,
+      "rows": 10000,
+      "values": 1,
+      "characters": 16061,
+      "characterTotal": 287793,
+      "positions": 8132,
+      "positionTotal": 277793,
+      "mostly": 1,
+      "candidateOnlyKnownQuery": {
+        "rows": 10000,
+        "values": 20,
+        "characters": 3559,
+        "characterTotal": 287793,
+        "positions": 648,
+        "positionTotal": 277793,
+        "mostly": 20,
+        "noDictionarySignature": 210
+      },
+      "candidateAndPositionsKnownQuery": {
+        "rows": 10000,
+        "values": 17,
+        "characters": 19950,
+        "characterTotal": 287793,
+        "positions": 9654,
+        "positionTotal": 277793,
+        "mostly": 18
+      },
+      "keyOnlyFrequency": {
+        "rows": 10000,
+        "values": 0,
+        "characters": 12163,
+        "characterTotal": 287793,
+        "positions": 5960,
+        "positionTotal": 277793,
+        "mostly": 0
+      }
+    },
+    {
+      "observations": 100,
+      "fieldObservations": 100,
+      "distinctQueries": 96,
+      "distinctKeys": 173,
+      "randomPositionExpectedCorrect": 754.9409772986477,
+      "rows": 10000,
+      "values": 7,
+      "characters": 40361,
+      "characterTotal": 287793,
+      "positions": 20797,
+      "positionTotal": 277793,
+      "mostly": 16,
+      "candidateOnlyKnownQuery": {
+        "rows": 10000,
+        "values": 25,
+        "characters": 4057,
+        "characterTotal": 287793,
+        "positions": 916,
+        "positionTotal": 277793,
+        "mostly": 27,
+        "noDictionarySignature": 2517
+      },
+      "candidateAndPositionsKnownQuery": {
+        "rows": 10000,
+        "values": 36,
+        "characters": 43767,
+        "characterTotal": 287793,
+        "positions": 23947,
+        "positionTotal": 277793,
+        "mostly": 48
+      },
+      "keyOnlyFrequency": {
+        "rows": 10000,
+        "values": 0,
+        "characters": 13110,
+        "characterTotal": 287793,
+        "positions": 6050,
+        "positionTotal": 277793,
+        "mostly": 0
+      }
+    },
+    {
+      "observations": 1000,
+      "fieldObservations": 1000,
+      "distinctQueries": 874,
+      "distinctKeys": 1329,
+      "randomPositionExpectedCorrect": 2865.4332256421926,
+      "rows": 10000,
+      "values": 179,
+      "characters": 135598,
+      "characterTotal": 287793,
+      "positions": 77221,
+      "positionTotal": 277793,
+      "mostly": 589,
+      "candidateOnlyKnownQuery": {
+        "rows": 10000,
+        "values": 62,
+        "characters": 4141,
+        "characterTotal": 287793,
+        "positions": 1010,
+        "positionTotal": 277793,
+        "mostly": 67,
+        "noDictionarySignature": 8025
+      },
+      "candidateAndPositionsKnownQuery": {
+        "rows": 10000,
+        "values": 218,
+        "characters": 137704,
+        "characterTotal": 287793,
+        "positions": 98653,
+        "positionTotal": 277793,
+        "mostly": 661
+      },
+      "keyOnlyFrequency": {
+        "rows": 10000,
+        "values": 3,
+        "characters": 23598,
+        "characterTotal": 287793,
+        "positions": 11227,
+        "positionTotal": 277793,
+        "mostly": 16
+      }
+    }
+  ],
+  "productWebCryptoChecks": 10,
+  "historicalWebCryptoChecks": 10,
+  "historicalSourceHash": "025edd4fbdde6a1d02643f6992c89480567529894193dad40706100d1de45630",
+  "randomCharacterBaseline": {
+    "rows": 10000,
+    "values": 0,
+    "characters": 169,
+    "characterTotal": 287793,
+    "positions": 0,
+    "positionTotal": 277793,
+    "mostly": 0
+  },
+  "opaqueKeys": "Anonymous positions exact; character labels guessed by disjoint reference document+occurrence frequency, no observed query plaintext",
+  "candidateOnly": "f9005bd actual token format, default substring skip=true/wordBoundary=false; same 1000 query order; ciphertext byte length allowed, no normalized length/stamp/key access; query-bundle inclusion signature + ciphertext length -> most frequent reference dictionary value; length-only prior fallback; not a full historical search-runtime replay",
+  "researchComparisons": 200
+}
