@@ -24,7 +24,7 @@ export function companionProfiles(definition: SealedModelDefinition): NonNullabl
         stamps: `${prefix}_stamps_${tag}`, offsets: `${prefix}_offsets_${tag}` });
       result[profile.indexId] = { tokens, mode: profile.mode, protection: 'standard',
         ...(profile.mode === 'exact' ? { exact: { salt: `eq_salt_${tag}`, stamp: `eq_stamp_${tag}` } }
-          : { positions: positions('pos'), singles: positions('single'), ...(profile.wordBoundary ? { words: positions('word') } : {}) }) };
+          : { positions: positions('pos') }) };
     }
   }
   return Object.fromEntries(Object.entries(result).sort(([a], [b]) => a.localeCompare(b)));

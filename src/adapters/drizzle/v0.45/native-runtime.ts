@@ -51,8 +51,9 @@ async function proofValues(sealer: Sealer, scope: string, profile: ReturnType<ty
     const proof = await exactProof(ring, profile, scope, value);
     result[stored.exact.salt] = proof.salt; result[stored.exact.stamp] = proof.stamp;
   }
-  for (const [group, stream] of [[stored.positions, 'compact2'], [stored.words, 'words2'], [stored.singles, 'single1']] as const) if (group) {
-    const proof = await positionProof(ring, profile, scope, value as string, stream);
+  if (stored.positions) {
+    const group = stored.positions;
+    const proof = await positionProof(ring, profile, scope, value as string, 'compact2');
     result[group.salt] = proof.salt; result[group.length] = proof.length;
     result[group.stamps] = proof.stamps; result[group.offsets] = proof.offsets;
   }

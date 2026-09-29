@@ -48,7 +48,8 @@ test('large final-match pages, root OR fallback and keysets match plaintext; rep
       assert.equal(await sealed.count(db,seal,{scope,where:eq(table.id,rows[0].id),match:m=>m.body.contains(term)}),0);
       assert.equal(await sealed.count(db,seal,{scope,where:eq(table.id,rows[0].id),match:m=>m.body.like(`%${term}%`)}),0);
     }
-    assert.equal(await sealed.count(db,seal,{scope,where:eq(table.id,rows[0].id),match:m=>m.body.like(`%${a+b}%${b}%`)}),1);
+    await assert.rejects(sealed.count(db,seal,{scope,where:eq(table.id,rows[0].id),match:m=>m.body.like(`%${a+b}%${b}%`)}),{code:'QUERY_TOO_BROAD'});
+    assert.equal(await sealed.count(db,seal,{scope,where:eq(table.id,rows[0].id),match:m=>m.body.like(`%${a+b}%${b+b}%`)}),1);
     const proof=reg.storage.index!.profiles!['body/substring'].positions!;
     const saved=(await pool.query(`select "${proof.offsets}" offsets from ${schema}.rows_seal_index where row_id=$1`,[rows[0].id])).rows[0].offsets as number[];
     for(const bad of [null,-1,hay.length]){

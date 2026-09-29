@@ -19,11 +19,10 @@ function leafPredicate(schema: string, alias: string, leaf: Extract<CompiledSear
     const key = proof.keys[0];
     exact = q`${col(mapped.exact.stamp)}=(('x'||pg_catalog.encode(pg_catalog.substr(pg_catalog.sha256(${key}::bytea||${col(mapped.exact.salt)}),1,8),'hex'))::bit(64)::bigint)`;
   } else {
-    const stream = node.respectWords ? mapped.words! : mapped.positions!;
+    const stream = mapped.positions!;
     ensure(stream, 'INVALID_SCHEMA');
-    const single = mapped.singles!;
-    exact = proof.pattern ? q`${ident(schema, 'sealql_match_like')}(${keyArray(proof.keys)}::bytea[],${proof.kinds}::integer[],${patternProgram(proof.pattern)}::integer[],
-      ${col(stream.length)},${col(stream.salt)},${col(stream.stamps)},${col(stream.offsets)},${col(single.salt)},${col(single.stamps)},${col(single.offsets)})`
+    exact = proof.pattern ? q`${ident(schema, 'sealql_match_like')}(${keyArray(proof.keys)}::bytea[],${patternProgram(proof.pattern)}::integer[],
+      ${col(stream.length)},${col(stream.salt)},${col(stream.stamps)},${col(stream.offsets)})`
       : q`${ident(schema, 'sealql_match_positions')}(${keyArray(proof.keys)}::bytea[],${proof.offsets}::integer[],${proof.length},
         ${col(stream.length)},${col(stream.salt)},${col(stream.stamps)},${col(stream.offsets)},${node.op === 'startsWith' ? 1 : node.op === 'endsWith' ? 2 : 0})`;
   }
@@ -58,9 +57,8 @@ export function boundedCandidatePredicate(definition: SealedModelDefinition, sto
     const mapped = companion.profiles?.[profile.indexId];
     ensure(mapped && mapped.mode === profile.mode, 'INVALID_SCHEMA');
     used.add(mapped.tokens);
-    const proofColumns = mapped.exact ?? (node.leaf.node.respectWords ? mapped.words! : mapped.positions!);
+    const proofColumns = mapped.exact ?? mapped.positions!;
     Object.values(proofColumns).forEach(name => used.add(name));
-    if (node.leaf.proof.pattern) Object.values(mapped.singles!).forEach(name => used.add(name));
     return tokensOnly ? tokenPredicate('c', node.leaf, mapped) : leafPredicate(companion.schema, 'c', node.leaf, mapped);
   };
   const tokenWhere = condition(search);

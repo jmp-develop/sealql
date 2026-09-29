@@ -165,7 +165,7 @@ function register<T extends PgTable, R extends UuidOrTextKeys<T>, S extends Uuid
       companionColumns[profile.exact.salt] = bytea(profile.exact.salt);
       companionColumns[profile.exact.stamp] = bigint(profile.exact.stamp, { mode: 'bigint' });
     }
-    for (const group of [profile.positions, profile.words, profile.singles]) if (group) {
+    for (const group of [profile.positions]) if (group) {
       companionColumns[group.salt] = bytea(group.salt);
       companionColumns[group.length] = integer(group.length);
       companionColumns[group.stamps] = bigint(group.stamps, { mode: 'bigint' }).array();
@@ -179,7 +179,7 @@ function register<T extends PgTable, R extends UuidOrTextKeys<T>, S extends Uuid
       check(`${companionIndexName(indexName, id)}_one_ck`, sql`${t[profile.tokens]} is null or
         (cardinality(${t[profile.tokens]}) = 1 and array_ndims(${t[profile.tokens]}) = 1)`)),
     ...Object.values(profiles).flatMap(profile => {
-      const groups = [profile.exact, profile.positions, profile.words, profile.singles].filter(group => !!group);
+      const groups = [profile.exact, profile.positions].filter(group => !!group);
       return groups.map(group => {
         const names = Object.values(group!);
         const allNull = sql.join(names.map(name => sql`${t[name]} is null`), sql.raw(' and '));

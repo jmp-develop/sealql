@@ -7,7 +7,7 @@ export type SearchMode = 'exact' | 'substring';
 export interface SearchProfile {
   modelId: string; fieldId: string; indexId: string; spec: FieldSpec;
   mode: SearchMode; bits: number;
-  normalizer: string; protection?: SearchProtection; wordBoundary?: boolean; skipGrams?: boolean;
+  normalizer: string; protection?: SearchProtection; skipGrams?: boolean;
 }
 const buffer = (v: Uint8Array): ArrayBuffer => Uint8Array.from(v).buffer as ArrayBuffer;
 const whitespace = /[\u0009-\u000d\u0020\u0085\u00a0\u1680\u2000-\u200a\u2028\u2029\u202f\u205f\u3000]/g;
@@ -24,9 +24,6 @@ export function normalizeText(value: string, normalizer: string): string {
   ensure(/^[0-9]*$/.test(s) && (value === '' || s !== ''), 'INVALID_VALUE');
   return s;
 }
-export function normalizeWords(value: string): string {
-  return fold(value).replace(whitespace, ' ').replace(/ +/g, ' ').trim();
-}
 /** Bit width for an exact-value index with an expected maximum of P distinct values. */
 export function exactBitsForPopulation(population: number): number {
   ensure(Number.isSafeInteger(population) && population >= 512, 'INVALID_VALUE');
@@ -41,17 +38,17 @@ export function profiles(modelId: string, fieldId: string, spec: FieldSpec, defa
     const option = mode in search ? (search as Record<string, unknown>)[mode] : undefined;
     if (!option) return [];
     const bits = mode === 'substring' ? 16 : option === true ? 16 : (option as { bits?: number }).bits ?? 16;
-    const words: { wordBoundary?: boolean; skipGrams?: boolean } = mode === 'substring' && option !== true ? option as { wordBoundary?: boolean; skipGrams?: boolean } : {};
+    const options: { skipGrams?: boolean } = mode === 'substring' && option !== true ? option as { skipGrams?: boolean } : {};
     return [{ modelId, fieldId, indexId: `${fieldId}/${mode}`, spec, mode, bits, normalizer, protection: 'standard' as const,
-      ...words, ...(mode === 'substring' ? { skipGrams: words.skipGrams !== false } : {}) }];
+      ...options, ...(mode === 'substring' ? { skipGrams: options.skipGrams !== false } : {}) }];
   });
 }
 export function descriptorBytes(p: SearchProfile): Uint8Array {
   ensure(Number.isInteger(p.bits) && p.bits >= 2 && p.bits <= 32 && (p.mode !== 'substring' || p.bits === 16), 'INVALID_SCHEMA');
-  return frame([p.modelId, p.fieldId, p.indexId, codecId(p.spec), u32(codecVersion(p.spec)), codecParameters(p.spec), p.normalizer, p.mode, u32(p.bits), p.wordBoundary ? 'word' : '', p.skipGrams ? 'skip' : '']);
+  return frame([p.modelId, p.fieldId, p.indexId, codecId(p.spec), u32(codecVersion(p.spec)), codecParameters(p.spec), p.normalizer, p.mode, u32(p.bits), p.skipGrams ? 'skip' : '']);
 }
 const piece = (kind: string, value: string): Uint8Array => frame([kind, utf8(value)]);
-export function searchPieces(p: SearchProfile, value: unknown, operation: 'write' | 'contains' | 'startsWith' | 'endsWith' = 'write', respectWords = false): Uint8Array[] {
+export function searchPieces(p: SearchProfile, value: unknown, operation: 'write' | 'contains' | 'startsWith' | 'endsWith' = 'write'): Uint8Array[] {
   if (p.spec.type !== 'text') { ensure(p.mode === 'exact', 'UNSUPPORTED_SEARCH'); return [encodeField(p.spec, value, false)]; }
   ensure(typeof value === 'string', 'INVALID_VALUE');
   const normalized = p.mode === 'substring' ? compactText(value, p) : normalizeText(value, p.normalizer);
@@ -63,13 +60,6 @@ export function searchPieces(p: SearchProfile, value: unknown, operation: 'write
   if (operation === 'write' || operation === 'startsWith') result.push(piece('start', chars[0]));
   if (operation === 'write' || operation === 'endsWith') result.push(piece('end', chars.at(-1)!));
   if (p.skipGrams) for (let i = 0; i + 2 < chars.length; i++) result.push(piece('skip', chars[i] + chars[i + 2]));
-  if (p.wordBoundary && (operation === 'write' || respectWords)) {
-    const words = normalizeWords(value).split(' ').filter(Boolean).map(word => Array.from(word));
-    words.forEach((letters, index) => {
-      if (operation === 'write' || index > 0) result.push(piece('word-start', letters[0]));
-      if (operation === 'write' || index < words.length - 1) result.push(piece('word-end', letters.at(-1)!));
-    });
-  }
   return [...new Map(result.map(bytes => [hex(bytes), bytes])).values()];
 }
 export interface SearchTokenCache {

@@ -7,7 +7,7 @@ export function driverSchema(schema: string) {
   const sealed=createSealed({sealer:createSealer({key:new Uint8Array(32).fill(79)})});
   const rows=pgSchema(schema).table('rows',{
     id:uuid('id').primaryKey(),scopeId:uuid('scope_id').notNull(),
-    body:sealed.text('body',{search:{exact:{bits:2},substring:{wordBoundary:true}}}),
+    body:sealed.text('body',{search:{exact:{bits:2},substring:true}}),
   });
   return {sealed,rows,seal:sealed.register(rows,{row:'id',scope:'scopeId'})};
 }

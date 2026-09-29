@@ -31,7 +31,7 @@ type SearchOfSealed<V> = V extends Sealed<any, infer S> ? S : never;
 type ParentOf<C> = C extends SealMeta<infer T, any, any> ? T : never;
 type Operation<V> = (SearchOfSealed<V> extends { exact: unknown } ? { eq(value: PlainOfSealed<V>): NativeNode } : {}) &
   (PlainOfSealed<V> extends string ? SearchOfSealed<V> extends { substring: unknown } ? {
-    contains(value: string, options?: { respectWords?: boolean }): NativeNode;
+    contains(value: string): NativeNode;
     startsWith(value: string): NativeNode; endsWith(value: string): NativeNode; like(value: string): NativeNode;
   } : {} : {});
 export type MatchBuilder<T extends PgTable> = {
@@ -39,7 +39,7 @@ export type MatchBuilder<T extends PgTable> = {
     ? S extends false | undefined ? never : K : never]: Operation<NonNullable<InferSelectModel<T>[K]>>;
 } & { and(...children: NativeNode[]): NativeNode; or(...children: NativeNode[]): NativeNode; sql(condition: SQL): NativeNode };
 
-export type NativeNode = { op: SearchOperator; field: string; value: unknown; respectWords?: boolean } |
+export type NativeNode = { op: SearchOperator; field: string; value: unknown } |
   { op: 'and' | 'or'; children: NativeNode[] } | { op: 'sql'; condition: SQL; flag?: string };
 type CompiledNode = { op: 'secure'; search: CompiledSearch } | { op: 'sql'; condition: SQL } |
   { op: 'and' | 'or'; children: CompiledNode[] };
@@ -68,7 +68,7 @@ function m<T extends PgTable>(reg: Registration): MatchBuilder<T> {
     const operations: Record<string, (...values: any[]) => NativeNode> = {};
     if ('exact' in search) operations.eq = value => ({ op: 'eq', field: key, value });
     if ('substring' in search) for (const op of ['contains', 'startsWith', 'endsWith', 'like'] as const)
-      operations[op] = (value, options) => ({ op, field: key, value, ...(op === 'contains' && options?.respectWords ? { respectWords: true } : {}) });
+      operations[op] = (value, ...extra) => { ensure(extra.length === 0, 'INVALID_VALUE'); return { op, field: key, value }; };
     result[key] = operations;
   }
   return result as MatchBuilder<T>;

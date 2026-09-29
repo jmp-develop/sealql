@@ -19,7 +19,7 @@ test('native registration builds same-schema companion without loading a key', (
   assert.equal(config.foreignKeys.length, 1);
   assert.equal(config.indexes.length, 4);
   assert.equal(registrationOf(companion).fields.size, 2);
-  assert.ok(Object.values(registrationOf(companion).storage.index!.profiles!).every(profile => !profile.words));
+  assert.ok(Object.values(registrationOf(companion).storage.index!.profiles!).every(profile => !('words' in profile) && !('singles' in profile)));
   assert.equal(sealed.extraMigrationSql(companion).filter(sql => sql.includes('set statistics')).length, 2);
   assert.equal(sealed.extraMigrationSql(companion).filter(sql => sql.includes('set storage main')).length, 7);
   assert.throws(() => parent.name.mapToDriverValue('plain' as never), /SEAL_REQUIRED/);

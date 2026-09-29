@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import { test } from 'node:test';
-import { createSealer, exactBitsForPopulation, normalizeText, normalizeWords, profiles, searchPieces, searchTokens } from '../src/index.js';
+import { createSealer, exactBitsForPopulation, normalizeText, profiles, searchPieces, searchTokens } from '../src/index.js';
 import { canonical, frame, hex, u32, utf8 } from '../src/core/bytes.js';
 import { codecId, codecParameters, codecVersion, decodeField, encodeField } from '../src/core/field-codec.js';
 import { openCursor, sealCursor } from '../src/core/search-cursor.js';
@@ -8,7 +8,7 @@ import { validateSearch, type SearchNode } from '../src/core/search-predicate.js
 import type { SearchTokenCache } from '../src/core/search-tokens.js';
 
 const root = Uint8Array.from({ length: 32 }, (_, i) => i + 1);
-const spec = { type: 'text', search: { exact: { bits: 32 }, substring: { wordBoundary: true, skipGrams: true } } } as const;
+const spec = { type: 'text', search: { exact: { bits: 32 }, substring: { skipGrams: true } } } as const;
 const context = (rowId: string, fieldId = 'body') => ({ modelId: 'note', fieldId, keyScopeId: 'global', scopeId: 'tenant', rowId, spec });
 
 test('large JSON and deep nesting have no library size or depth cap', () => {
@@ -38,7 +38,6 @@ test('search expression accepts more than eight leaves and nested groups', () =>
 test('normalization folds NFC, full-width ASCII, and ASCII case', () => {
   assert.equal(normalizeText('한ＡＢ１２', 'legacy-text-v1'), '한ab12');
   assert.equal(normalizeText('한ab12', 'legacy-text-v1'), '한ab12');
-  assert.equal(normalizeWords('  ＡＢ  CＤ  '), 'ab cd');
 });
 
 test('ciphertext binds row and field, rejects tampering, and uses multiple shards', async () => {
@@ -135,14 +134,13 @@ test('marked pieces are distinct from literal punctuation', async () => {
 });
 
 test('substring skip grams default on and only explicit false disables them', () => {
-  const profileFor = (substring: true | { wordBoundary?: boolean; skipGrams?: boolean }) =>
+  const profileFor = (substring: true | { skipGrams?: boolean }) =>
     profiles('note', 'body', { type: 'text', search: { substring } })[0];
   const trueProfile = profileFor(true);
   const emptyProfile = profileFor({});
-  const wordProfile = profileFor({ wordBoundary: true });
   const offProfile = profileFor({ skipGrams: false });
   const skipped = hex(frame(['skip', utf8('ac')]));
-  for (const profile of [trueProfile, emptyProfile, wordProfile]) {
+  for (const profile of [trueProfile, emptyProfile]) {
     assert.equal(profile.skipGrams, true);
     assert.ok(searchPieces(profile, 'abc').map(hex).includes(skipped));
     const stored = new Set(searchPieces(profile, 'xabcx').map(hex));
@@ -150,13 +148,6 @@ test('substring skip grams default on and only explicit false disables them', ()
   }
   assert.equal(offProfile.skipGrams, false);
   assert.ok(!searchPieces(offProfile, 'abc').map(hex).includes(skipped));
-});
-
-test('word-respecting search uses only internal boundaries', () => {
-  const p = profiles('note', 'body', spec)[1];
-  const stored = new Set(searchPieces(p, '서세종대로 25번지').map(hex));
-  const query = searchPieces(p, '세종대로 25', 'contains', true).map(hex);
-  assert.ok(query.every(piece => stored.has(piece)), 'matching phrase inside edge words must remain a candidate');
 });
 
 test('exact bits allow 32 while substring tokens remain 16', async () => {

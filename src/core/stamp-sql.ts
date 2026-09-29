@@ -109,18 +109,16 @@ begin
     if ok then return true; end if;
   end loop;
 end`),
-    functionSql('sealql_match_like', 'ks bytea[], kinds integer[], pattern integer[], n integer, salt bytea, stamps bigint[], positions integer[], single_salt bytea, single_stamps bigint[], single_positions integer[]', 'boolean', `
+    functionSql('sealql_match_like', 'ks bytea[], pattern integer[], n integer, salt bytea, stamps bigint[], positions integer[]', 'boolean', `
 declare i integer; p integer; qlen integer; cursor integer := 1; windows integer; ids integer[]; offs integer[];
   lists integer[] := '{}'; starts integer[] := '{}'; ends integer[] := '{}'; locations integer[];
   frontier boolean[]; next_frontier boolean[]; reachable boolean;
 begin
-  if n<0 or cardinality(ks)<>cardinality(kinds) then
+  if n<0 then
     raise exception using errcode='22023',message='Invalid search query';
   end if;
   if cardinality(ks)>0 then for i in 1..cardinality(ks) loop
-    if kinds[i]=1 then locations := ${ns}.sealql_piece_positions(ks[i],single_salt,single_stamps,single_positions,n);
-    elsif kinds[i]=2 then locations := ${ns}.sealql_piece_positions(ks[i],salt,stamps,positions,n);
-    else raise exception using errcode='22023',message='Invalid search query'; end if;
+    locations := ${ns}.sealql_piece_positions(ks[i],salt,stamps,positions,n);
     starts := array_append(starts,cardinality(lists)+1); lists := lists || locations; ends := array_append(ends,cardinality(lists));
   end loop; end if;
   frontier := array_fill(false,array[n+1]); frontier[1] := true;
@@ -134,7 +132,7 @@ begin
       if n>0 then for p in 1..n loop next_frontier[p+1] := frontier[p]; end loop; end if;
     else
       windows := pattern[cursor]; cursor := cursor+1;
-      if qlen<1 or windows is null or windows<1 or cursor+windows*2-1>cardinality(pattern) then
+      if qlen<2 or windows is null or windows<1 or cursor+windows*2-1>cardinality(pattern) then
         raise exception using errcode='22023',message='Invalid search query';
       end if;
       ids := '{}'; offs := '{}';
@@ -150,6 +148,7 @@ begin
   return frontier[n+1];
 end`),
     // Remove obsolete internal overloads when upgrading a previously installed companion.
+    `drop function if exists ${ns}.sealql_match_like(bytea[],integer[],integer[],integer,bytea,bigint[],integer[],bytea,bigint[],integer[])`,
     `drop function if exists ${ns}.sealql_match_like(bytea[],integer[],jsonb,integer,bytea,bigint[],integer[],bytea,bigint[],integer[])`,
     `drop function if exists ${ns}.sealql_run_positions(jsonb,integer[],integer[],integer,integer)`,
   ];

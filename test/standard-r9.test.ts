@@ -37,9 +37,9 @@ test('DB proofs match plaintext across operators, types, nulls, mutations and JO
     await pool.query(`create schema "${schemaName}"`); created = true;
     const cipher = createSealer({key:new Uint8Array(32).fill(39)}), sealed = createSealed({sealer:cipher});
     const table = pgSchema(schemaName).table('rows', { id:uuid('id').primaryKey(), scopeId:uuid('scope_id').notNull(),
-      body:sealed.text('body',{nullable:true,search:{exact:true,substring:{wordBoundary:true}}}),
+      body:sealed.text('body',{nullable:true,search:{exact:true,substring:true}}),
       nfc:sealed.text('nfc',{search:{exact:true,substring:true,normalizer:'nfc-v1'}}),
-      phone:sealed.text('phone',{search:{exact:true,substring:{wordBoundary:true},normalizer:'phone-v1'}}),
+      phone:sealed.text('phone',{search:{exact:true,substring:true,normalizer:'phone-v1'}}),
       amount:sealed.integer('amount',{search:{exact:{bits:2}}}), big:sealed.bigint('big',{search:{exact:true}}),
       price:sealed.decimal('price',{precision:12,scale:2,search:{exact:true}}),
     });
@@ -61,15 +61,18 @@ test('DB proofs match plaintext across operators, types, nulls, mutations and JO
       ['empty eq',m=>m.body.eq(''),v=>compact(v)===''],
       ['single eq',m=>m.body.eq(chars[0]),v=>compact(v)===chars[0]],
       ['contains',m=>m.body.contains(pair),v=>compact(v).includes(pair)],
-      ['words',m=>m.body.contains(`${pair} ${single}`,{respectWords:true}),v=>words(v).includes(`${pair} ${single}`)],
       ['starts',m=>m.body.startsWith(pair),v=>compact(v).startsWith(pair)],
       ['ends',m=>m.body.endsWith(pair),v=>compact(v).endsWith(pair)],
       ['zero',m=>m.body.contains(base.repeat(4)),v=>compact(v).includes(compact(base.repeat(4)))],
       ['45',m=>m.body.contains(base.slice(0,45)),v=>compact(v).includes(compact(base.slice(0,45)))],
       ['nested',m=>m.or(m.and(m.body.contains(pair),m.body.endsWith(pair)),m.body.eq(base)),v=>(compact(v).includes(pair)&&compact(v).endsWith(pair))||compact(v)===compact(base)],
     ];
-    const patterns=[`${escaped(pair)}%${escaped(single)}`,`${escaped(pair)}_${escaped(single)}`,`${escaped(pair)}%${escaped(single)}%${escaped(pair)}`,
-      `${escaped(single)}%${escaped(pair)}`,`%${escaped(pair)}%`,`%${escaped(pair)}_`,`%${escaped(pair)}\\%%`,`${escaped(pair)}\\\\${escaped(single)}`,`%${escaped(pair)}%%_%%`];
+    const patterns=[`${escaped(pair)}%${escaped(pair)}`,`${escaped(pair)}_${escaped(pair)}`,`${escaped(pair)}%${escaped(pair)}%${escaped(pair)}`,
+      `%${escaped(pair)}%`,`%${escaped(pair)}_`,`${escaped(pair)}\\%${escaped(pair)}`,`${escaped(pair)}\\\\${escaped(pair)}`,`%${escaped(pair)}%%_%%`];
+    for(const pattern of [`${pair}%${single}%${pair}`,`${pair}_${single}`,`${single}%${pair}`,`${pair}%😀`])
+      await assert.rejects(sealed.count(db,seal,{scope,match:m=>m.body.like(pattern)}),{code:'QUERY_TOO_BROAD'});
+    await assert.rejects(sealed.count(db,seal,{scope,match:m=>(m.body.contains as any)(pair,{respectWords:true})}),{code:'INVALID_VALUE'});
+    assert.ok(Object.keys(getTableColumns(seal)).every(name=>!name.startsWith('single_')&&!name.startsWith('word_')));
     for(const pattern of patterns)cases.push([`like ${pattern}`,m=>m.body.like(pattern),v=>like(v,pattern)]);
     for(const [name,match,oracle]of cases){
       const expected=inputs.filter(row=>row.body!==null&&oracle(row.body)).map(row=>row.id);
@@ -85,7 +88,8 @@ test('DB proofs match plaintext across operators, types, nulls, mutations and JO
       assert.equal(await sealed.count(db,seal,{scope,match:m=>m.big.eq(row.big)}),inputs.filter(r=>r.big===row.big).length);
       assert.equal(await sealed.count(db,seal,{scope,match:m=>m.price.eq(`+00${row.price}`)}),inputs.filter(r=>r.price===row.price).length);
       assert.equal(await sealed.count(db,seal,{scope,match:m=>m.phone.eq(row.phone.replace(/[-()+]/g,''))}),1);
-      assert.equal(await sealed.count(db,seal,{scope,match:m=>m.phone.contains(row.phone.slice(2,4),{respectWords:true})}),1);
+      assert.equal(await sealed.count(db,seal,{scope,match:m=>m.phone.contains(row.phone.slice(2,4))}),
+        inputs.filter(r=>r.phone.replace(/[-()+]/g,'').includes(row.phone.slice(2,4))).length);
       assert.equal(await sealed.count(db,seal,{scope,match:m=>m.nfc.eq(row.nfc)}),inputs.filter(r=>fold(r.nfc)===fold(row.nfc)).length);
     }
     await assert.rejects(sealed.findMany(db,seal,{scope,match:m=>m.body.contains(chars[0])}),{code:'QUERY_TOO_BROAD'});

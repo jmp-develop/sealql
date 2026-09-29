@@ -2,9 +2,9 @@ import { concat, frame, hex, u32, utf8 } from './bytes.js';
 import { ensure } from './errors.js';
 import { codecId, codecParameters, codecVersion, encodeField } from './field-codec.js';
 import type { Keyring } from './field-cipher.js';
-import { compactText, normalizeText, normalizeWords, type SearchProfile } from './search-tokens.js';
+import { compactText, normalizeText, type SearchProfile } from './search-tokens.js';
 
-export type StampStream = 'exact' | 'compact2' | 'words2' | 'single1';
+export type StampStream = 'exact' | 'compact2';
 export interface PositionProof { salt: Uint8Array; length: number; stamps: bigint[]; offsets: number[] }
 export interface ExactProof { salt: Uint8Array; stamp: bigint }
 const roots = new WeakMap<Keyring, Map<string, Promise<CryptoKey>>>();
@@ -46,8 +46,8 @@ export async function exactProof(ring: Keyring, profile: SearchProfile, scope: s
   return { salt, stamp: await stamp(await stampKey(ring, profile, 'exact', scope, exactBytes(profile, value)), salt) };
 }
 export async function positionProof(ring: Keyring, profile: SearchProfile, scope: string, value: string, stream: Exclude<StampStream, 'exact'>): Promise<PositionProof> {
-  const chars = Array.from(stream === 'words2' ? normalizeWords(value) : compactText(value, profile));
-  const width = stream === 'single1' ? 1 : 2;
+  const chars = Array.from(compactText(value, profile));
+  const width = 2;
   const seen = new Map<string, number>(), keys = new Map<string, Promise<Uint8Array>>();
   const pieces = Array.from({ length: Math.max(0, chars.length - width + 1) }, (_, offset) => {
     const piece = chars.slice(offset, offset + width).join('');

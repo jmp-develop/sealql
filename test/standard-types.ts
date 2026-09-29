@@ -19,6 +19,8 @@ sealed.register(customers, { row: 'name' });
 sealed.register(customers, { row: 'id', scope: 'missing' });
 
 const db = drizzle.mock();
+// @ts-expect-error substring predicates have no word-boundary query option
+sealed.findMany(db, customersSeal, { scope: 'x', match: m => m.name.contains('ab', { respectWords: true }) });
 // @ts-expect-error open requires an awaited query result
 sealed.open(Promise.resolve({ id: 'x' }));
 // @ts-expect-error openRaw requires awaited raw rows
