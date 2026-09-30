@@ -1,23 +1,20 @@
 # SealQL
 
-Read docs/llm-integration.md for the complete API and docs/current-state.md for implemented internals. Compilable examples: examples/standard-consumer.ts, examples/standard-operations.ts, examples/standard-raw.ts, examples/key-loader.ts, and examples/integer-primary-key.ts. Security boundary: docs/threat-model.md.
+Start with `docs/llm-integration.md`. It routes readers to the ORM-neutral contract, the selected adapter, and compilable examples without duplicating their API details.
 
-SealQL encrypts selected PostgreSQL fields and integrates with Drizzle ORM 0.45. Public exports are `sealql` and `sealql/drizzle/v0.45`; require Node >=22.12 or compatible WebCrypto and drizzle-orm >=0.45.2 <0.46. The package is not on npm: build it and install the tarball produced by `npm pack`.
+## Reading order
 
-Create a sealer from one fixed 32-byte application key, pass it to `createSealed`, build encrypted fields, and call `register(table, { row, scope? })`. Export both the parent table and returned companion table to drizzle-kit. Optional model keys are fixed too. There is no key version, rotation API, user/group key, or database policy table; a key change requires application-managed re-encryption and reindexing.
+1. `docs/core-concepts.md` — keys, field/search choices, leakage, scopes, budgets, and rebuild invariants.
+2. Choose a supported adapter:
+   - Drizzle ORM 0.45: `docs/adapters/drizzle-v0.45.md`, export `sealql/drizzle/v0.45`, examples under `examples/drizzle/v0.45/`.
+3. For core-only field encryption, use export `sealql` and `examples/core/sealer.ts`. Database search lifecycle is adapter-owned.
+4. Check `docs/current-state.md` for implemented internals and `docs/threat-model.md` for the security boundary.
 
-Apply a searchable schema in this order: schema migration, every statement from `sealed.extraMigrationSql(...)`, complete `sealed.reindex(...)` for existing rows, then deploy queries. Do not query a partially rebuilt companion because no persisted completion marker exists. Profile changes use the same sequence; function-only updates may need only `extraMigrationSql` as documented in docs/current-state.md.
+## Non-negotiable constraints
 
-Use `sealed.insert`, `update`, and `upsert` for encrypted writes. They update parent ciphertext and companion search data in one transaction. `undefined` omits a property; an omitted nullable encrypted field inserts null, while an omitted required field is invalid. Plain Drizzle encrypted writes raise `SEAL_REQUIRED`; raw SQL encrypted writes bypass maintenance and may cause omissions. Parent deletes cascade. `reindex` repairs companion rows from authenticated ciphertext.
-
-Await Drizzle reads before `sealed.open`. Whole, partial, and nested results are supported when encrypted projections include registered row and scope properties under their registered names. Use `openRaw` with an explicit property-to-result-column map for `db.execute` rows. A caller may require an authorized scope.
-
-Use `findMany`, `count`, or `search` with SealQL match builders. `findMany` and `search` return all matches when `limit` is omitted. `count` returns one exact safe `number`, decrypts no fields, and accepts only `deadlineMs` plus `signal`; budget exhaustion or an unsafe integer raises `LIMIT_EXCEEDED`. List budgets are `batch`, `fetchBytes`, `decryptedBytes`, `resultBytes`, `deadlineMs`, and `decryptConcurrency`. There is no default work ceiling.
-
-`search` accepts a custom Drizzle or raw SQL candidate query for JOINs. Its callback must apply `where`, optional `after`, `orderBy`, optional `limit`, and select `flags` or `flagsSql`. The first table in `match` controls page order; 1:N joins need a unique many-side keyset column. A required numeric caller limit types the callback limit as `number`; omitted or optional limits use `number | undefined`. Sealed aliases and self-JOINs are unsupported.
-
-Searchable text supports exact equality, `contains`, `startsWith`, `endsWith`, and LIKE. Substring queries and every LIKE literal run need at least two normalized characters; `%`, `_`, and backslash escapes retain PostgreSQL-like meanings. Exact equality accepts empty and one-character values. Exact candidate widths are 2-32 bits, default 16; explicit `exact: { bits: 2 }` can coarsen low-cardinality exact-only candidates while proofs still decide equality. Do not use ordinary Drizzle `eq`, `like`, `ilike`, or ordering on encrypted columns. Encrypted range, sort, aggregate, word-boundary, and standalone one-character substring operations are unsupported.
-
-UUID and `sealed.textId` rows, text scopes, and scope-free tables support drizzle-kit generate, migrate, and repeated push. Integer primary keys need a separate unique UUID row column. Managed writes and reindexing require transactions; transactionless drivers raise `UNSUPPORTED_DRIVER`. Node pg, postgres-js, and local workerd with pg are verified. Hosted Workers/Hyperdrive is unverified; neon-http cannot perform managed writes or reindex.
-
-For fixed-format, small-alphabet fields such as phone, bank account, or resident registration numbers, omit substring and use exact search only if needed. Exact-only search still leaks equality and frequency. The database observes token frequency/co-occurrence, lengths, query/update patterns, result volume, and query value/piece keys; observed piece keys reveal occurrences. Disable bind-parameter logging in the database, driver, proxy, and telemetry. A hostile database can omit rows or falsify predicates, and ciphertext authentication does not authenticate SQL results. Keyless full-record recovery resistance is not established.
+- `standard` is the only product search design. Do not present rejected stateful, posting-page, or bucket research as product behavior.
+- Keys are fixed global or model keys. There is no key version, in-place rotation, user/group key, or database policy table.
+- Substring search and each LIKE literal run require at least two normalized characters. Encrypted range, sort, aggregate, exact statistics, and standalone one-character substring search are unsupported.
+- Fixed-format, small-alphabet fields such as phone or account numbers must not use substring search. Exact search still leaks equality and frequency.
+- Managed writes and the documented migration → `extraMigrationSql` → `reindex` → query deployment order prevent silent search omissions.
+- `count` returns one exact safe `number`; a budget or safe-integer overflow is an error. Search has no implicit work ceiling, so applications set budgets from measurements.

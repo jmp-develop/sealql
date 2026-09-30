@@ -4,7 +4,7 @@
 
 ## 1. 작업 규칙
 
-1. 먼저 [`docs/current-state.md`](docs/current-state.md)를 읽는다. 설계를 바꾸거나 새 실험·최적화·보안 완화를 제안하기 전에는 [`docs/experiments.md`](docs/experiments.md)(이미 해 본 것과 실패 이유)를 먼저 읽고, [`docs/decisions/`](docs/decisions/README.md)의 관련 결정과 [`docs/threat-model.md`](docs/threat-model.md)를 읽는다. 실험이 끝나면 `docs/experiments.md`에 한 줄을 추가한다. 공개 API는 [`docs/llm-integration.md`](docs/llm-integration.md)와 `examples/`, 계획 규칙은 [`plan/README.md`](plan/README.md), 검증 절차는 [`docs/verification.md`](docs/verification.md), 측정 규칙은 [`docs/measurement.md`](docs/measurement.md)를 따른다.
+1. 먼저 [`docs/current-state.md`](docs/current-state.md)를 읽는다. 설계를 바꾸거나 새 실험·최적화·보안 완화를 제안하기 전에는 [`docs/experiments.md`](docs/experiments.md)(이미 해 본 것과 실패 이유)를 먼저 읽고, [`docs/decisions/`](docs/decisions/README.md)의 관련 결정과 [`docs/threat-model.md`](docs/threat-model.md)를 읽는다. 실험이 끝나면 `docs/experiments.md`에 한 줄을 추가한다. 공개 API는 [`docs/llm-integration.md`](docs/llm-integration.md)에서 시작해 [`docs/core-concepts.md`](docs/core-concepts.md), 해당 [`docs/adapters/`](docs/adapters/drizzle-v0.45.md), `examples/`를 따르고, 계획 규칙은 [`plan/README.md`](plan/README.md), 검증 절차는 [`docs/verification.md`](docs/verification.md), 측정 규칙은 [`docs/measurement.md`](docs/measurement.md)를 따른다.
 2. 현재 제품의 검색 방식은 `standard`(HMAC 후보 토큰 + GIN/B-tree + DB 도장 판정, 선택 칸 인증 복호화)뿐이다([decisions/015](docs/decisions/015-database-search-proofs.md)). stateful, V2 posting page, bucket은 기각된 연구다([decisions/011](docs/decisions/011-rejected-research-lines.md)). 실험 결과를 제품 기능·보안 인증·운영 성능으로 표현하지 않는다.
 3. 코드의 실제 동작을 확인한 뒤 변경한다. 저장 구조나 검색 방식을 바꾸면 관리형 쓰기, 부분 수정·삭제, 동시성, 검색 누락, 누출 경계를 함께 확인한다.
 4. 실측은 평문·현재 제품·후보를 같은 데이터와 질의로 비교한다. SQL 요청~응답, 전체 시간, 후보·반환 행 수, 인증 복호화 필드 수를 나눈다. 예열 2회, 교차 7회 중앙값. 측정하지 않은 값은 "추정"이라고 적는다.

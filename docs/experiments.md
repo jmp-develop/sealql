@@ -33,7 +33,7 @@
 
 ## 3. 누출 완화 (모두 기각, [025](decisions/025-leakage-reevaluation-and-rejected-mitigations.md))
 
-현재 누출 수치는 [threat-model](threat-model.md)에 있다. 요지: 부분 검색을 켠 전화는 알려진 원문 1%·선택 삽입으로 99.8% 복원, 백업만으로는 0%. 그래서 형식 고정 칸은 **정확 일치만** 쓴다.
+현재 누출 수치는 [threat-model](threat-model.md)에 있고, 제품 적용 기준은 [core concepts의 칸별 결정표](core-concepts.md#choose-fields-and-search-profiles)에 있다. 요지: 부분 검색을 켠 전화는 알려진 원문 1%·선택 삽입으로 99.8% 복원, 백업만으로는 0%. 그래서 형식 고정 칸은 **정확 일치만** 쓴다.
 
 | 시도 | 핵심 수치 | 결론과 이유 | 근거 |
 |---|---|---|---|
