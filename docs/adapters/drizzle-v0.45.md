@@ -170,6 +170,31 @@ A numeric caller limit makes callback `limit` a `number`; omitted or optional li
 
 All matched sealed tables must be scoped or all scope-free. Sealed aliases and self-joins are unsupported. Cursor paging must reuse the same callback SQL because a custom cursor binds scope, match, and keyset, not the callback body. Malformed, duplicated, or out-of-order positions raise `INVALID_CANDIDATE_SHAPE`.
 
+Multiple sealed matches and ordinary tables can share one callback. Put a unique many-side column first in `keyset` so one-to-many rows remain independently pageable:
+
+```ts
+const page = await sealed.search(db, {
+  scope: scopeId,
+  match: {
+    o: [ordersSeal, m => m.or(m.label.eq('urgent'), m.label.eq('normal'))],
+    c: [customersSeal, m => m.and(m.name.eq(name), m.note.contains(fragment))],
+  },
+  keyset: [orders.id],
+  limit: 50,
+  query: ({ where, after, orderBy, flags, limit }) => db
+    .select({ o: orders, c: customers, team: teams, region: regions, ...flags })
+    .from(orders)
+    .innerJoin(customers, eq(orders.customerId, customers.id))
+    .innerJoin(teams, eq(teams.customerId, customers.id))
+    .innerJoin(regions, eq(regions.orderId, orders.id))
+    .where(and(where, after))
+    .orderBy(...orderBy)
+    .limit(limit),
+});
+```
+
+An unmatched sealed table selected through `leftJoin` is returned as nested `null` when it is not itself a match target. Custom JOIN search has no separate count shortcut: for an exact result-row count, traverse every cursor page with the identical callback and add `items.length`. This counts one-to-many duplicates as separate result rows. Do not count the callback's candidate SQL directly because only returned search items have completed proof and authenticated-plaintext verification; `sealed.count` owns the single-registration path, not arbitrary JOIN multiplicity. Cursor traversal is not a snapshot, so use the same quiescence/consistency assumptions as any multi-page result.
+
 The supplied `query` callback, not SealQL, owns and executes the database handle. An OR branch containing `m.sql` may be slow when its ordinary SQL condition lacks an index. Limited pages fetch final database matches in finite batches and apply proofs before SQL `LIMIT`; internal probes do not cap total work. Date/timestamp keyset positions use database-DateStyle-independent text. Use the caller-budget procedure in [core concepts](../core-concepts.md#exact-count-and-caller-budgets).
 
 ## Handle errors by code
