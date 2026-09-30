@@ -1,6 +1,6 @@
 # 002. Drizzle 사용성 최소 개선과 버전 결속 완화
 
-- 작성일: 2026-09-30. 상태: C 구현 완료(a66f0c1), F·B·A·E 제안(검토 4라운드 + 최종 독립 검토 2명 차단 이견 0). 관련: [013](../docs/decisions/013-drizzle-native-api-implemented.md), [019](../docs/decisions/019-compact-only-search.md), [025](../docs/decisions/025-leakage-reevaluation-and-rejected-mitigations.md).
+- 작성일: 2026-09-30. 상태: C(입력 타입, a66f0c1)·A·E(문서·시험, 2ab440e) 완료, JOIN용 `sealed.where` 추가(8d7167e). **남은 것: F(Drizzle 결속 정리)·B(`prepareAllSearch` 배포 관문)** — 사용 중 필요해지면 진행. 관련: [013](../docs/decisions/013-drizzle-native-api-implemented.md), [019](../docs/decisions/019-compact-only-search.md), [025](../docs/decisions/025-leakage-reevaluation-and-rejected-mitigations.md).
 - 불변: `extraMigrationSql`, 설치되는 DB 판정 함수(`stamp-sql.ts`), `exactProof`/`positionProof` 생성 경로, 저장 형식, 검색·count 결과는 **변경 0**.
 
 ## 근거 (일회용 DB·격리 설치 실측, 미커밋 조사)

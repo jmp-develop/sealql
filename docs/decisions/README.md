@@ -42,3 +42,4 @@
 | [023](023-join-callback-limit.md) | 호출 옵션에 따른 JOIN 콜백 limit 타입 |
 | [024](024-candidate-token-selection.md) | 공통 후보 조건에 정렬 토큰 최대 세 개 사용 |
 | [025](025-leakage-reevaluation-and-rejected-mitigations.md) | 강한 공격 재평가, 타 제품 비교, 누출 완화안(MongoDB식·비트 축소·패딩·더미) 기각 |
+| [026](026-composable-where-and-input-types.md) | JOIN·자유 쿼리용 `sealed.where`와 관리형 입력 타입 공개 |
