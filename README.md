@@ -2,7 +2,14 @@
 
 SealQL encrypts selected PostgreSQL fields while keeping ordinary SQL and Drizzle integration. The `standard` path uses HMAC tokens and GIN/B-tree indexes to narrow candidates, then per-row salted proofs finish predicates inside PostgreSQL. Encrypted-only count reads the companion and returns one exact number; lists authenticate and decrypt only projected fields. AES-256-GCM still binds ciphertext to its row, field, and scope. Read the [integration guide](docs/llm-integration.md), [current state](docs/current-state.md), and [schema example](examples/drizzle/v0.45/schema.ts).
 
-The package is not on the npm registry. For an application, install a tarball made with `npm pack`; use `npm ci && npm run build` when developing this repository. Peer dependency: `drizzle-orm >=0.45.2 <0.46`; runtime: Node `>=22.12` or compatible WebCrypto. Managed writes and reindex need a PostgreSQL driver with transaction support, such as node-postgres or postgres-js. Public exports are `sealql` and `sealql/drizzle/v0.45`.
+Install from a GitHub release (prebuilt package; works with npm and pnpm):
+
+```sh
+npm install https://github.com/jmp-develop/sealql/releases/download/v1.1.0/sealql-1.1.0.tgz
+pnpm add https://github.com/jmp-develop/sealql/releases/download/v1.1.0/sealql-1.1.0.tgz
+```
+
+Installing from the Git tag (`npm install github:jmp-develop/sealql#v1.1.0`) builds the package during install. Tested with PostgreSQL 18. Peer dependency: `drizzle-orm >=0.45.2 <0.46`; runtime: Node `>=22.12` or compatible WebCrypto. Managed writes and reindex need a PostgreSQL driver with transaction support, such as node-postgres or postgres-js. Public exports are `sealql` and `sealql/drizzle/v0.45`.
 
 ```ts
 import { pgTable, uuid } from 'drizzle-orm/pg-core';

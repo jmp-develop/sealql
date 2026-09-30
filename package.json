@@ -3,6 +3,15 @@
   "version": "1.0.0",
   "type": "module",
   "description": "Scoped encrypted fields and verified PostgreSQL search",
+  "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jmp-develop/sealql.git"
+  },
+  "homepage": "https://github.com/jmp-develop/sealql#readme",
+  "bugs": {
+    "url": "https://github.com/jmp-develop/sealql/issues"
+  },
   "sideEffects": false,
   "files": [
     "dist",
@@ -13,7 +22,8 @@
     "docs/core-concepts.md",
     "docs/adapters",
     "docs/current-state.md",
-    "docs/threat-model.md"
+    "docs/threat-model.md",
+    "LICENSE"
   ],
   "engines": {
     "node": ">=22.12"
@@ -34,6 +44,7 @@
   },
   "scripts": {
     "build": "node scripts/clean-dist.mjs && tsc -p tsconfig.json",
+    "prepare": "npm run build",
     "prepack": "npm run build",
     "test": "node --import tsx --test test/*.test.ts",
     "check": "tsc -p tsconfig.check.json --noEmit",
