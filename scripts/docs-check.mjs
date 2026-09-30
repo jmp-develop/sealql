@@ -1,20 +1,41 @@
-import { readFileSync, existsSync, readdirSync } from 'node:fs';
+import { existsSync, readFileSync, readdirSync } from 'node:fs';
 import { dirname, resolve } from 'node:path';
+import { adapterSurfaces, coreExamples } from './adapter-surfaces.mjs';
 import { checkBenchImports } from './check-bench-imports.mjs';
 
 const packageJson = JSON.parse(readFileSync('package.json', 'utf8'));
 const entry = readFileSync('llms.txt', 'utf8');
 const guide = readFileSync('docs/llm-integration.md', 'utf8');
+const core = readFileSync('docs/core-concepts.md', 'utf8');
 const readme = readFileSync('README.md', 'utf8');
-const sample = readFileSync('examples/standard-consumer.ts', 'utf8');
-const raw = readFileSync('examples/standard-raw.ts', 'utf8');
-const operations = readFileSync('examples/standard-operations.ts', 'utf8');
-for (const path of ['.', './drizzle/v0.45']) {
-  if (!packageJson.exports[path]) throw Error(`Missing package export: ${path}`);
+const packaged = path => packageJson.files.some(root => path === root || path.startsWith(`${root}/`));
+
+for (const surface of adapterSurfaces) {
+  if (!packageJson.exports[surface.packageExport]) throw Error(`Missing package export: ${surface.packageExport}`);
+  if (!existsSync(surface.docs)) throw Error(`Missing adapter guide: ${surface.docs}`);
+  const guidePath = surface.docs.replace(/^docs\//, '');
+  if (!entry.includes(surface.docs) || !guide.includes(guidePath)) throw Error(`Unlinked adapter guide: ${surface.docs}`);
+  if (!packaged(surface.docs) || !packaged(surface.examples)) throw Error(`Adapter surface is not packaged: ${surface.id}`);
+  const adapterGuide = readFileSync(surface.docs, 'utf8');
+  const bodies = [];
+  for (const file of surface.files) {
+    const path = `${surface.examples}/${file}`;
+    if (!existsSync(path)) throw Error(`Missing adapter example: ${path}`);
+    bodies.push(readFileSync(path, 'utf8'));
+  }
+  const examples = bodies.join('\n');
+  for (const name of ['createSealed', 'register', 'extraMigrationSql', 'insert', 'update', 'upsert', 'delete',
+    'reindex', 'findMany', 'count', 'nextCursor', 'openRaw', 'SealError']) {
+    if (!examples.includes(name)) throw Error(`Adapter examples missing ${name}: ${surface.id}`);
+  }
+  if (!adapterGuide.includes(surface.examples)) throw Error(`Adapter guide does not link examples: ${surface.id}`);
 }
+
 if (packageJson.exports['./postgres']) throw Error('Legacy Postgres export remains');
-for (const name of ['createSealer', 'createSealed', 'register', 'findMany', 'count'])
-  if (!sample.includes(name)) throw Error(`Sample API drift: ${name}`);
+for (const path of coreExamples) {
+  if (!existsSync(path) || !packaged(path)) throw Error(`Missing packaged core example: ${path}`);
+}
+
 const markdown = dir => readdirSync(dir, { recursive: true })
   .map(path => `${dir}/${path.replaceAll('\\', '/')}`)
   .filter(path => path.endsWith('.md') && !path.startsWith('bench/results/'));
@@ -28,6 +49,7 @@ for (const file of ['llms.txt', 'README.md', 'AGENTS.md', 'bench/README.md', ...
     if (!existsSync(path[1])) throw Error(`Missing referenced file in ${file}: ${path[1]}`);
   }
 }
+
 const checkedBenchFiles = checkBenchImports();
 const decisions = readdirSync('docs/decisions').filter(name => /^\d{3}-.+\.md$/.test(name));
 const decisionIndex = readFileSync('docs/decisions/README.md', 'utf8');
@@ -35,15 +57,15 @@ for (const name of decisions) if (!decisionIndex.includes(`(${name})`)) throw Er
 const plans = readdirSync('plan').filter(name => /^\d{3}-.+\.md$/.test(name));
 const planIndex = readFileSync('plan/README.md', 'utf8');
 for (const name of plans) if (!planIndex.includes(`(${name})`)) throw Error(`Plan not indexed: ${name}`);
-if (!entry.includes('docs/llm-integration.md') || !readme.includes('docs/llm-integration.md')) throw Error('AI entry missing');
-if (!entry.includes('docs/current-state.md') || !readme.includes('docs/current-state.md')) throw Error('Current-state entry missing');
-for (const path of ['examples/standard-consumer.ts', 'examples/standard-raw.ts', 'examples/standard-operations.ts', 'examples/key-loader.ts']) {
-  if (!entry.includes(path) || !guide.includes(path)) throw Error(`Unlinked shared example: ${path}`);
+
+if (!entry.includes('docs/llm-integration.md') || !entry.includes('docs/core-concepts.md')) throw Error('AI entry missing');
+if (!readme.includes('docs/llm-integration.md') || !readme.includes('docs/current-state.md')) throw Error('Human entry missing');
+const publicDocs = [guide, core, ...adapterSurfaces.map(surface => readFileSync(surface.docs, 'utf8'))].join('\n');
+for (const name of ['createSealer', 'createSealed', 'register', 'findMany', 'count', 'openRaw', 'reindex']) {
+  if (!publicDocs.includes(name)) throw Error(`Public guide API drift: ${name}`);
 }
-if (!raw.includes('sealed.search') || !raw.includes('flagsSql') || !operations.includes('sealed.count') || !sample.includes('sealed.insert') || !sample.includes('sealed.open')) throw Error('Raw/operations example drift');
-for (const name of ['createSealed', 'register', 'findMany', 'count', 'openRaw', 'reindex'])
-  if (!guide.includes(name)) throw Error(`Guide API drift: ${name}`);
-for (const path of ['examples', 'llms.txt', 'docs/llm-integration.md', 'docs/current-state.md', 'docs/threat-model.md']) {
+for (const path of ['examples', 'llms.txt', 'docs/llm-integration.md', 'docs/core-concepts.md',
+  'docs/adapters', 'docs/current-state.md', 'docs/threat-model.md']) {
   if (!packageJson.files.includes(path)) throw Error(`AI docs missing from package: ${path}`);
 }
-console.log(`Documentation entry, links, decisions, plans, exports, shared example references, and ${checkedBenchFiles} bench imports PASS`);
+console.log(`Documentation entry, links, adapter surfaces, decisions, plans, exports, and ${checkedBenchFiles} bench imports PASS`);

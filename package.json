@@ -10,6 +10,8 @@
     "llms.txt",
     "examples",
     "docs/llm-integration.md",
+    "docs/core-concepts.md",
+    "docs/adapters",
     "docs/current-state.md",
     "docs/threat-model.md"
   ],
@@ -36,7 +38,8 @@
     "test": "node --import tsx --test test/*.test.ts",
     "check": "tsc -p tsconfig.check.json --noEmit",
     "test:install": "node scripts/install-smoke.mjs",
-    "docs:check": "node scripts/docs-check.mjs"
+    "docs:check": "node scripts/docs-check.mjs",
+    "example:drizzle-v0.45": "node --import tsx scripts/run-drizzle-v0.45-example.ts"
   },
   "peerDependencies": {
     "drizzle-orm": ">=0.45.2 <0.46"
