@@ -4,11 +4,11 @@ This guide owns the `sealql/drizzle/v0.45` API. Read the ORM-neutral [core conce
 
 ## Install and verify the driver
 
-Install the prebuilt release package with npm or pnpm, plus `drizzle-orm >=0.45.2 <0.46`:
+Install from npm together with `drizzle-orm >=0.45.2 <0.46`:
 
 ```sh
-npm install https://github.com/jmp-develop/sealql/releases/download/v1.1.0/sealql-1.1.0.tgz drizzle-orm@0.45
-pnpm add https://github.com/jmp-develop/sealql/releases/download/v1.1.0/sealql-1.1.0.tgz drizzle-orm@0.45
+pnpm add sealql drizzle-orm@0.45
+npm install sealql drizzle-orm@0.45
 ```
 
 Use Node `>=22.12` or another runtime with compatible WebCrypto (Cloudflare Workers with `nodejs_compat` works). Verified on PostgreSQL 18.

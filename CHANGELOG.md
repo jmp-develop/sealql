@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.1.1 — 2026-09-30
+
+- Published to the npm registry as `sealql` (`pnpm add sealql`).
+- Usage guides moved next to the examples (`examples/README.md`, `examples/drizzle/v0.45/README.md`); `llms.txt` points there. Maintainer documents stay in the repository and are no longer packaged.
+- New English README with a Korean translation (`README_ko.md`).
+
 ## 1.1.0 — 2026-09-30
 
 - Added `sealed.prepareAllSearch(db, { batchSize?, signal? })`: after migrations and `extraMigrationSql`, it checks the database objects (read-only), rebuilds search data for every registered table, and proves every row was processed before returning a receipt.
