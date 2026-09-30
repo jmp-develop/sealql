@@ -13,4 +13,6 @@
 
 ## 현재 계획
 
-없음. Drizzle 네이티브 API 계획(001)은 구현이 끝나 [`docs/decisions/013`](../docs/decisions/013-drizzle-native-api-implemented.md)로 요약하고 지웠다.
+| [002](002-drizzle-usability-mvp.md) | Drizzle 사용성 최소 개선과 버전 결속 완화 (제안) |
+
+Drizzle 네이티브 API 계획(001)은 구현이 끝나 [`docs/decisions/013`](../docs/decisions/013-drizzle-native-api-implemented.md)로 요약하고 지웠다.
