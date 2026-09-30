@@ -246,6 +246,7 @@ export function registrationOf(seal: object): Registration {
 export function createSealed(options: { sealer: Sealer | (() => Sealer) }) {
   let resolved: Sealer | undefined;
   const models = new Set<string>();
+  const registered: Registration[] = [];
   const sealer = () => resolved ??= typeof options.sealer === 'function' ? options.sealer() : options.sealer;
   return {
     text: <const O extends TextOptions = {}>(name: string, opts?: O) => createField<string, O, SearchOf<O & { type: 'text' }>>('text', name, opts),
@@ -259,7 +260,11 @@ export function createSealed(options: { sealer: Sealer | (() => Sealer) }) {
     textId,
     register: <T extends PgTable, R extends UuidOrTextKeys<T>, S extends UuidOrTextKeys<T> | undefined = undefined>(
       table: T, cfg: { row: R; scope?: S; model?: string },
-    ) => register(table, cfg, models),
+    ) => {
+      const seal = register(table, cfg, models);
+      registered.push(registrationOf(seal));
+      return seal;
+    },
     extraMigrationSql(seal: object): string[] {
       const reg = registrationOf(seal);
       const quote = (name: string) => `"${name.replaceAll('"', '""')}"`;
@@ -272,6 +277,6 @@ export function createSealed(options: { sealer: Sealer | (() => Sealer) }) {
           .map(column => `alter table ${table} alter column ${quote(column)} set storage main`),
       ];
     },
-    ...runtimeMethods(sealer),
+    ...runtimeMethods(sealer, () => registered),
   };
 }

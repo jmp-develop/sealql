@@ -24,7 +24,7 @@ export const notes = pgTable('notes', {
 });
 export const notesSeal = sealed.register(notes, { row: 'id' });
 // Export both notes and notesSeal to drizzle-kit.
-// Migrate, execute sealed.extraMigrationSql(notesSeal), then reindex existing rows.
+// Migrate, execute sealed.extraMigrationSql(notesSeal), then await sealed.prepareAllSearch(db).
 
 await sealed.insert(db, notesSeal, { id: crypto.randomUUID(), body: 'Ada' });
 const page = await sealed.findMany(db, notesSeal, {

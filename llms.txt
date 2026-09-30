@@ -19,3 +19,4 @@ Start with `docs/llm-integration.md`. It routes readers to the ORM-neutral contr
 - Managed writes and the documented migration → `extraMigrationSql` → `reindex` → query deployment order prevent silent search omissions.
 - `count` returns one exact safe `number`; a budget or safe-integer overflow is an error. Search has no implicit work ceiling, so applications set budgets from measurements.
 - Use `sealed.where` for verified encrypted predicates inside caller-owned Drizzle JOINs, subqueries, ordering, and counts; reserve `sealed.search` for SealQL-managed cursor paging and candidate-shape checks.
+- After migrations and `extraMigrationSql`, use top-level `prepareAllSearch` as the offline all-registered-model catalog, reindex, and coverage gate before deploying new search code.

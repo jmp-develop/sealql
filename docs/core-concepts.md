@@ -72,7 +72,7 @@ For a new searchable schema or any search-profile change, deployment order is:
 
 1. Apply the adapter's schema migration.
 2. Apply every adapter-supplied predicate/storage statement (`extraMigrationSql` in the current Drizzle adapter).
-3. Complete authenticated `reindex` for every existing row.
+3. Run the adapter's all-model preparation gate (`prepareAllSearch` in the current Drizzle adapter), which checks installed catalog state and completes authenticated reindex with parent-row coverage.
 4. Only then deploy queries that use the profile.
 
 Do not query a partially rebuilt profile. SealQL has no persisted profile-version or rebuild-completion marker, so early search or count can silently omit existing rows. A predicate-function-only change may need the adapter SQL step without a data rewrite; the adapter guide must state that case explicitly.

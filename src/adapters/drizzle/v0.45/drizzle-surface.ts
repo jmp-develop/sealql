@@ -5,6 +5,7 @@ import {
 } from 'drizzle-orm/pg-core';
 
 export type DrizzleDb = PgDatabase<any, any, any>;
+export type DrizzleTransaction = PgTransaction<any, any, any>;
 export type DrizzleColumns<T extends PgTable> = T['_']['columns'];
 export type DrizzleColumnData<C> = C extends { _: { data: infer D } } ? D : never;
 export type DrizzleColumnType<C> = C extends { _: { columnType: infer K } } ? K : never;

@@ -8,7 +8,7 @@ The product exposes `sealql` and `sealql/drizzle/v0.45`. The [integration entry]
 
 Each registered parent table has a companion table with one row per scope and row identity. The companion stores deterministic candidate tokens and salted proof material. Exact proofs use a 64-bit stamp. Substring profiles store only compact two-character occurrence proofs; substring candidate tokens also include the configured adjacent/start/end/skip pieces. Candidate-token and compact-proof arrays use PostgreSQL `MAIN` storage.
 
-Managed `insert`, `update`, and `upsert` operations update ciphertext and the affected companion fields atomically. Partial updates preserve untouched fields, and parent deletes cascade. Raw SQL writes to encrypted columns bypass companion maintenance and can silently omit search results. `reindex` authenticates parent ciphertext and rebuilds companion rows without changing ciphertext.
+Managed `insert`, `update`, and `upsert` operations update ciphertext and the affected companion fields atomically. Partial updates preserve untouched fields, and parent deletes cascade. Raw SQL writes to encrypted columns bypass companion maintenance and can silently omit search results. `reindex` authenticates parent ciphertext and rebuilds companion rows without changing ciphertext. `prepareAllSearch` snapshots all models registered on one adapter instance, verifies required catalog state without executing DDL, reindexes every parent row, and returns exact coverage counts only when start/end/visited totals agree.
 
 Substring candidate predicates send at most three existing tokens—the first, middle, and last in token-value order—to the common SQL builder. This is an index-selection input, not a candidate, result, or work limit; the full proof program still decides the predicate. Exact predicates and stored data are unchanged. See [decision 024](decisions/024-candidate-token-selection.md).
 
@@ -36,7 +36,7 @@ For a new schema or any searchable-profile change, complete these steps in order
 
 1. Apply the Drizzle schema migration.
 2. Apply every statement from `sealed.extraMigrationSql(...)`.
-3. Complete `sealed.reindex(...)` for existing rows.
+3. With old traffic drained, complete `sealed.prepareAllSearch(...)` on a top-level database; it reindexes all registered models and rejects incomplete parent coverage.
 4. Deploy queries that use the new profile.
 
 Do not query a partially rebuilt companion: SealQL has no persisted profile-version or rebuild-completion marker, so incomplete work can silently omit rows. Profile changes that alter the token descriptor require the full sequence. A change limited to installed predicate functions requires `extraMigrationSql` again but no data rewrite; a SQL-only candidate-plan change such as decision 024 needs neither migration nor reindex. The [Drizzle ORM 0.45 guide](adapters/drizzle-v0.45.md#migrate-and-rebuild) gives the operational commands, while [core concepts](core-concepts.md#rebuild-invariant) owns the adapter-independent deployment invariant.
