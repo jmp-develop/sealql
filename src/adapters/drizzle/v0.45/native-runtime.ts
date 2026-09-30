@@ -1,5 +1,5 @@
-import { and, eq, gt, getTableColumns, is, sql, type InferSelectModel } from 'drizzle-orm';
-import { PgTransaction, type PgColumn, type PgDatabase, type PgTable } from 'drizzle-orm/pg-core';
+import { and, eq, gt, getTableColumns, sql, type InferSelectModel } from 'drizzle-orm';
+import { type PgColumn, type PgTable } from 'drizzle-orm/pg-core';
 import { identity } from '../../../core/bytes.js';
 import { databaseError, ensure, fail, SealError, unsupportedTransaction } from '../../../core/errors.js';
 import type { Sealer } from '../../../core/field-cipher.js';
@@ -12,10 +12,11 @@ import {
 } from './native.js';
 import { mapRawRow } from './native-mapping.js';
 import { searchMethods } from './native-search.js';
+import { columnInfo, isTransaction, type DrizzleDb } from './drizzle-surface.js';
 
 type AuthCache = Map<string, { bytes: Uint8Array; result: Promise<unknown> }>;
 
-type Db = PgDatabase<any, any, any>;
+type Db = DrizzleDb;
 type Identity<T extends PgTable, R extends string, S extends string | undefined> =
   Pick<InferSelectModel<T>, Extract<R | Exclude<S, undefined>, keyof InferSelectModel<T>>>;
 type Result<T extends PgTable, R extends string, S extends string | undefined, O> = O extends { returning: true }
@@ -62,7 +63,7 @@ async function proofValues(sealer: Sealer, scope: string, profile: ReturnType<ty
 async function prepare(reg: Registration, source: Record<string, unknown>, sealer: Sealer, cache: SearchTokenCache, fillId: boolean, fillFields: boolean): Promise<Prepared> {
   const parent: Record<string, unknown> = { ...source };
   if (fillFields) for (const [key, field] of reg.fields) if (parent[key] === undefined) {
-    ensure(!field.column.notNull, 'INVALID_VALUE');
+    ensure(!columnInfo(field.column).notNull, 'INVALID_VALUE');
     parent[key] = null;
   }
   const { rowId, scopeId } = rowIdentity(reg, parent, fillId);
@@ -73,7 +74,7 @@ async function prepare(reg: Registration, source: Record<string, unknown>, seale
   for (const [key, value] of Object.entries(parent)) {
     const field = reg.fields.get(key);
     if (!field) continue;
-    if (value === null) ensure(!field.column.notNull, 'INVALID_VALUE');
+    if (value === null) ensure(!columnInfo(field.column).notNull, 'INVALID_VALUE');
     if (value !== null) {
       const bytes = await sealer.seal(value, context(reg, scopeId, rowId, key, sealer), ring);
       const handle = Sealed.forWrite(bytes, field);
@@ -106,7 +107,7 @@ async function writeTransaction<T>(db: Db, callback: (tx: any) => Promise<T>): P
     });
   } catch (error) {
     if (!callbackEntered && unsupportedTransaction(error)) fail('UNSUPPORTED_DRIVER');
-    if (callbackDone && !is(db, PgTransaction)) fail('WRITE_OUTCOME_UNKNOWN');
+    if (callbackDone && !isTransaction(db)) fail('WRITE_OUTCOME_UNKNOWN');
     throw error;
   }
 }
@@ -266,7 +267,7 @@ export function runtimeMethods(sealerOf: () => Sealer) {
       const columns = getTableColumns(reg.parent) as Record<string, PgColumn>;
       const target = reg.rowUnique ? [columns[reg.row]] : [columns[reg.scope!], columns[reg.row]];
       const changed = Object.fromEntries(Object.entries(prepared[0].parent).filter(([key]) => key !== reg.row && key !== reg.scope && Object.hasOwn(input, key)));
-      const setWhere = reg.scope && reg.rowUnique ? eq(columns[reg.scope], sql.raw(`excluded."${columns[reg.scope].name}"`)) : undefined;
+      const setWhere = reg.scope && reg.rowUnique ? eq(columns[reg.scope], sql.raw(`excluded."${columnInfo(columns[reg.scope]).name}"`)) : undefined;
       const result = await writeTransaction(db, async (tx: any) => {
         const found = await tx.insert(reg.parent).values(prepared[0].parent)
           .onConflictDoUpdate({ target, set: changed, setWhere }).returning();
