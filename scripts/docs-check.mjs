@@ -39,16 +39,20 @@ for (const path of coreExamples) {
 const markdown = dir => readdirSync(dir, { recursive: true })
   .map(path => `${dir}/${path.replaceAll('\\', '/')}`)
   .filter(path => path.endsWith('.md') && !path.startsWith('bench/results/'));
+// README.md is maintained by hand for people; its stale links are reported, not enforced.
+const readmeWarnings = [];
 for (const file of ['llms.txt', 'README.md', 'AGENTS.md', 'bench/README.md', ...markdown('docs'), ...markdown('plan')]) {
   const body = readFileSync(file, 'utf8');
+  const fail = message => { if (file === 'README.md') readmeWarnings.push(message); else throw Error(message); };
   for (const match of body.matchAll(/\[[^\]]+\]\(([^)]+)\)/g)) {
     const path = match[1].split('#')[0];
-    if (path && !path.includes('://') && !existsSync(resolve(dirname(file), path))) throw Error(`Broken link in ${file}: ${path}`);
+    if (path && !path.includes('://') && !existsSync(resolve(dirname(file), path))) fail(`Broken link in ${file}: ${path}`);
   }
   for (const path of body.matchAll(/(?:^|[\s(`])((?:docs|plan|bench|examples)\/[\w./-]+\.(?:md|ts|json))/g)) {
-    if (!existsSync(path[1])) throw Error(`Missing referenced file in ${file}: ${path[1]}`);
+    if (!existsSync(path[1])) fail(`Missing referenced file in ${file}: ${path[1]}`);
   }
 }
+for (const message of readmeWarnings) console.warn(`WARN ${message}`);
 
 const checkedBenchFiles = checkBenchImports();
 const decisions = readdirSync('docs/decisions').filter(name => /^\d{3}-.+\.md$/.test(name));

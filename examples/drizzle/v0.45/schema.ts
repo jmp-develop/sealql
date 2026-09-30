@@ -22,5 +22,7 @@ export const customer = app.table('customer', {
   name: sealed.text('name', { search: { exact: true, substring: true } }),
   phone: sealed.text('phone', { search: { exact: true } }),
   memo: sealed.text('memo', { nullable: true, search: { substring: true } }),
+  // Few distinct values: a coarse 2-bit exact candidate; salted proofs still decide equality.
+  tier: sealed.text('tier', { nullable: true, search: { exact: { bits: 2 } } }),
 });
 export const customerSeal = sealed.register(customer, { row: 'id', scope: 'tenantId' });

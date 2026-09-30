@@ -6,4 +6,4 @@
 
 모든 필드에 2비트를 권장하지 않는다. 후보 수·실행 계획·누출을 사용 데이터로 확인한다. 길이와 질의 키, 결과 수로 드러나는 정보는 그대로다. `exactBitsForPopulation`의 최소 population 512와 최소 권장 8비트는 바꾸지 않는다. 키 버전·별도 타입·불확실한 count 반환형은 추가하지 않는다.
 
-검증: 2/8/16/32 허용과 0/1/소수/33 거부, 기본16과 helper 불변, 비텍스트 2비트 충돌 후보를 포함한 DB/평문 대조, 10만 행 회사명 2비트 count/목록을 확인했다. 예시는 [standard-consumer](../../examples/standard-consumer.ts), 결과는 [R9 보고](../../bench/results/2026-09-29-r9/report-ko.md)에 있다. 프로필 변경은 schema/추가 SQL/전체 reindex 완료 후 검색 코드를 배포한다.
+검증: 2/8/16/32 허용과 0/1/소수/33 거부, 기본16과 helper 불변, 비텍스트 2비트 충돌 후보를 포함한 DB/평문 대조, 10만 행 회사명 2비트 count/목록을 확인했다. 예시는 [schema](../../examples/drizzle/v0.45/schema.ts), 결과는 [R9 보고](../../bench/results/2026-09-29-r9/report-ko.md)에 있다. 프로필 변경은 schema/추가 SQL/전체 reindex 완료 후 검색 코드를 배포한다.
