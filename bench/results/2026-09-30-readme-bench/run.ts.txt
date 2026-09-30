@@ -1,0 +1,136 @@
+import assert from 'node:assert/strict';
+import { performance } from 'node:perf_hooks';
+import { avg, count, eq, sql, sum } from 'drizzle-orm';
+import { drizzle } from 'drizzle-orm/node-postgres';
+import { integer, pgSchema, text, uuid } from 'drizzle-orm/pg-core';
+import { Pool } from 'pg';
+import { createSealer } from 'sealql';
+import { createSealed } from 'sealql/drizzle/v0.45';
+import { assertDisposable } from '../../test/disposable.ts';
+
+const schemaName = 'readme_bench';
+const q = (name: string) => `"${name}"`;
+const schema = q(schemaName);
+const fields = ['name', 'phone', 'address', 'memo', 'email', 'company'] as const;
+const pool = new Pool({ host: '127.0.0.1', port: 56439, user: 'sealql_test', database: 'postgres' });
+await assertDisposable(pool);
+assert.equal(Number((await pool.query('show port')).rows[0].port), 56439);
+const originalQuery = pool.query.bind(pool) as any;
+let capture = false, sqlElapsed = 0;
+(pool as any).query = (...args: any[]) => {
+  const started = performance.now();
+  const result = originalQuery(...args);
+  if (result?.then) return result.finally(() => { if (capture) sqlElapsed += performance.now() - started; });
+  return result;
+};
+const raw = (text: string, values?: unknown[]) => originalQuery(text, values);
+const db = drizzle(pool);
+const sealed = createSealed({ sealer: createSealer({ key: new Uint8Array(32).fill(93) }) });
+const s = pgSchema(schemaName);
+const columns: any = { id: uuid('id').primaryKey(), scopeId: uuid('scope_id').notNull(), points: integer('points').notNull() };
+for (const field of fields) columns[field] = sealed.text(field, { search: { exact: field === 'company' ? { bits: 2 } : true, substring: true } });
+const customers = s.table('customers', columns);
+const customersSeal = sealed.register(customers, { row: 'id', scope: 'scopeId' });
+const tickets = s.table('tickets_plain', {
+  id: uuid('id').primaryKey(), scopeId: uuid('scope_id').notNull(), customerId: uuid('customer_id').notNull(),
+});
+
+type Result = { query: string; term: string; rows: number; plainMs: number; sealSqlMs: number; sealTotalMs: number; ratio: number; mismatch: number };
+const output: Result[] = [];
+const median = (values: number[]) => [...values].sort((a, b) => a - b)[Math.floor(values.length / 2)];
+const ids = (value: any) => value.map((row: any) => String(row.id ?? row.customer?.id ?? row.customerId));
+const same = (a: unknown, b: unknown, name: string) => assert.deepEqual(a, b, `${name}: plaintext mismatch`);
+async function sealTimed<T>(fn: () => Promise<T>) {
+  capture = true; sqlElapsed = 0; const started = performance.now();
+  try { const value = await fn(); return { value, sql: sqlElapsed, total: performance.now() - started }; }
+  finally { capture = false; }
+}
+async function plainTimed<T>(fn: () => Promise<T>) { const started = performance.now(); const value = await fn(); return { value, total: performance.now() - started }; }
+async function benchmark<T>(name: string, term: string, plainFn: () => Promise<T>, sealFn: () => Promise<T>, signature: (value: T) => unknown, rowCount: (value: T) => number) {
+  for (let i = 0; i < 2; i++) {
+    const p = await plainTimed(plainFn), e = await sealTimed(sealFn); same(signature(e.value), signature(p.value), name);
+  }
+  const plain: number[] = [], sealSql: number[] = [], sealTotal: number[] = [];
+  let last!: T;
+  for (let i = 0; i < 7; i++) {
+    let p: Awaited<ReturnType<typeof plainTimed<T>>>, e: Awaited<ReturnType<typeof sealTimed<T>>>;
+    if (i % 2 === 0) { p = await plainTimed(plainFn); e = await sealTimed(sealFn); }
+    else { e = await sealTimed(sealFn); p = await plainTimed(plainFn); }
+    same(signature(e.value), signature(p.value), name); last = e.value;
+    plain.push(p.total); sealSql.push(e.sql); sealTotal.push(e.total);
+  }
+  const plainMs = median(plain), sealSqlMs = median(sealSql), sealTotalMs = median(sealTotal);
+  output.push({ query: name, term, rows: rowCount(last), plainMs, sealSqlMs, sealTotalMs, ratio: sealTotalMs / plainMs, mismatch: 0 });
+}
+
+let created = true;
+try {
+  assert.notEqual((await raw('select to_regnamespace($1) name', [schemaName])).rows[0].name, null, 'loader schema missing');
+  await raw(`alter table ${schema}.customers add column if not exists points integer`);
+  await raw(`with ranked as (select id, 1 + ((row_number() over(order by id)-1)%1000)::int points from ${schema}.customers)
+    update ${schema}.customers c set points=r.points from ranked r where r.id=c.id`);
+  await raw(`alter table ${schema}.customers alter column points set not null`);
+  await raw(`drop table if exists ${schema}.customers_plain; drop table if exists ${schema}.tickets_plain`);
+  await raw(`create table ${schema}.customers_plain as
+    select id,scope_id,${fields.map(f => `${f}_plain,${f}_norm`).join(',')},1+((row_number() over(order by id)-1)%1000)::int points
+    from bench_realistic_100k.customers`);
+  await raw(`create table ${schema}.tickets_plain as select id,scope_id,customer_id from bench_realistic_100k.tickets`);
+  await raw(`create extension if not exists pg_trgm`);
+  await raw(`create unique index customers_plain_id on ${schema}.customers_plain(id);
+    create index customers_plain_name_bt on ${schema}.customers_plain(scope_id,name_norm);
+    create index customers_plain_name_trgm on ${schema}.customers_plain using gin(name_norm gin_trgm_ops);
+    create index customers_plain_address_trgm on ${schema}.customers_plain using gin(address_norm gin_trgm_ops);
+    create unique index tickets_plain_id on ${schema}.tickets_plain(id);
+    create index tickets_plain_customer on ${schema}.tickets_plain(customer_id,id)`);
+  await raw(`analyze ${schema}.customers; analyze ${schema}.customers_seal_index; analyze ${schema}.customers_plain; analyze ${schema}.tickets_plain`);
+  const scope = (await raw(`select scope_id from ${schema}.customers_plain limit 1`)).rows[0].scope_id as string;
+  const exactCommon = (await raw(`select name_norm term,count(*) n from ${schema}.customers_plain group by name_norm order by n desc,term limit 1`)).rows[0].term as string;
+  const exactRare = (await raw(`select name_norm term,count(*) n from ${schema}.customers_plain group by name_norm order by n,term limit 1`)).rows[0].term as string;
+  const piece = async (field: 'name'|'address', length: 2|3, rare: boolean) => (await raw(`
+    select substr(${field}_norm,g,${length}) term,count(distinct id) hits from ${schema}.customers_plain
+    cross join lateral generate_series(1,greatest(char_length(${field}_norm)-${length}+1,0)) g
+    group by term having char_length(substr(${field}_norm,g,${length}))=${length}
+    order by hits ${rare ? 'asc' : 'desc'},term limit 1`)).rows[0].term as string;
+  const common2 = await piece('name', 2, false), rare3 = await piece('name', 3, true), address2 = await piece('address', 2, false);
+  const starts = Array.from(exactCommon).slice(0, 2).join(''), ends = Array.from(exactCommon).slice(-2).join('');
+  const like = `${starts}%${ends}`;
+  const plainList = (predicate: string, params: unknown[]) => async () => (await raw(`select id from ${schema}.customers_plain where scope_id=$1 and ${predicate} order by id limit 20`, [scope, ...params])).rows;
+  const sealList = (match: (m: any) => any) => async () => (await sealed.findMany(db, customersSeal, { scope, match, limit: 20 })).items;
+  const listSig = (rows: any) => ids(rows);
+  const listRows = (rows: any) => rows.length;
+  await benchmark('exact-common', exactCommon, plainList('name_norm=$2', [exactCommon]), sealList(m => m.name.eq(exactCommon)), listSig, listRows);
+  await benchmark('exact-rare', exactRare, plainList('name_norm=$2', [exactRare]), sealList(m => m.name.eq(exactRare)), listSig, listRows);
+  await benchmark('contains-common-2', common2, plainList(`name_norm like '%'||$2||'%'`, [common2]), sealList(m => m.name.contains(common2)), listSig, listRows);
+  await benchmark('contains-rare-3', rare3, plainList(`name_norm like '%'||$2||'%'`, [rare3]), sealList(m => m.name.contains(rare3)), listSig, listRows);
+  await benchmark('startsWith', starts, plainList(`name_norm like $2||'%'`, [starts]), sealList(m => m.name.startsWith(starts)), listSig, listRows);
+  await benchmark('endsWith', ends, plainList(`name_norm like '%'||$2`, [ends]), sealList(m => m.name.endsWith(ends)), listSig, listRows);
+  await benchmark('like', like, plainList('name_norm like $2', [like]), sealList(m => m.name.like(like)), listSig, listRows);
+  await benchmark('and-name-address', `${common2}&${address2}`, plainList(`name_norm like '%'||$2||'%' and address_norm like '%'||$3||'%'`, [common2, address2]),
+    sealList(m => m.and(m.name.contains(common2), m.address.contains(address2))), listSig, listRows);
+  const plainCount = (predicate: string, params: unknown[]) => async () => Number((await raw(`select count(*)::int n from ${schema}.customers_plain where scope_id=$1 and ${predicate}`, [scope, ...params])).rows[0].n);
+  const sealCount = (match: (m: any) => any) => () => sealed.count(db, customersSeal, { scope, match });
+  await benchmark('count-exact', exactCommon, plainCount('name_norm=$2', [exactCommon]), sealCount(m => m.name.eq(exactCommon)), x => x, x => x);
+  await benchmark('count-contains', common2, plainCount(`name_norm like '%'||$2||'%'`, [common2]), sealCount(m => m.name.contains(common2)), x => x, x => x);
+  const aggregatePlain = (kind: 'sum'|'avg') => async () => Number((await raw(`select ${kind}(points)::text value,count(*)::int rows from ${schema}.customers_plain where scope_id=$1 and name_norm like '%'||$2||'%'`, [scope, common2])).rows[0].value);
+  const aggregateSeal = (kind: 'sum'|'avg') => async () => {
+    const condition = await sealed.where(customersSeal, { scope, match: m => m.name.contains(common2) });
+    const [row] = kind === 'sum' ? await db.select({ value: sum(customers.points) }).from(customers).where(condition)
+      : await db.select({ value: avg(customers.points) }).from(customers).where(condition);
+    return Number(row.value);
+  };
+  const aggregateRows = await plainCount(`name_norm like '%'||$2||'%'`, [common2])();
+  await benchmark('sum-points', common2, aggregatePlain('sum'), aggregateSeal('sum'), x => x, () => aggregateRows);
+  await benchmark('avg-points', common2, aggregatePlain('avg'), aggregateSeal('avg'), x => x, () => aggregateRows);
+  const joinPlainCount = async () => Number((await raw(`select count(*)::int n from ${schema}.tickets_plain t join ${schema}.customers_plain c on c.id=t.customer_id where c.scope_id=$1 and c.name_norm like '%'||$2||'%'`, [scope, common2])).rows[0].n);
+  const joinSealCount = async () => { const condition = await sealed.where(customersSeal, { scope, match: m => m.name.contains(common2) }); const [row] = await db.select({ n: count() }).from(tickets).innerJoin(customers, eq(customers.id, tickets.customerId)).where(condition); return Number(row.n); };
+  await benchmark('join-count', common2, joinPlainCount, joinSealCount, x => x, x => x);
+  const joinPlainList = async () => (await raw(`select c.id customer_id,t.id ticket_id from ${schema}.tickets_plain t join ${schema}.customers_plain c on c.id=t.customer_id where c.scope_id=$1 and c.name_norm like '%'||$2||'%' order by c.id,t.id limit 20`, [scope, common2])).rows;
+  const joinSealList = async () => { const condition = await sealed.where(customersSeal, { scope, match: m => m.name.contains(common2) }); const selected = await db.select({ customer: customers, ticketId: tickets.id }).from(tickets).innerJoin(customers, eq(customers.id, tickets.customerId)).where(condition).orderBy(customers.id, tickets.id).limit(20); return sealed.open(selected, { scope }); };
+  const joinSig = (rows: any) => rows.map((row: any) => `${row.customer_id ?? row.customer.id}:${row.ticket_id ?? row.ticketId}`);
+  await benchmark('join-list-20', common2, joinPlainList, joinSealList, joinSig, listRows);
+  console.log('RESULT_JSON=' + JSON.stringify({ head: '1ebeee5', source: 'bench_realistic_100k', rows: 100000, warmups: 2, repetitions: 7,
+    note: 'local synthetic fixture; C locale Korean LIKE ratios are not performance claims', terms: { exactCommon, exactRare, common2, rare3, address2, starts, ends, like }, results: output }));
+} finally {
+  if (created) await raw(`drop schema if exists ${schema} cascade`);
+  await pool.end();
+}

@@ -1,0 +1,35 @@
+{
+  "head": "1ebeee5",
+  "source": "bench_realistic_100k",
+  "sourceHash": "4db88c4680eefac5d8d79366a77e4a5380481d9e79db12ab20fec89fc88ce2b7",
+  "rows": 100000,
+  "warmups": 2,
+  "repetitions": 7,
+  "note": "로컬 합성 fixture 결과이며 운영 보장·보안 인증이 아니다. C 로캘 한글 LIKE 배율은 성능 주장에 쓰지 않는다.",
+  "terms": {
+    "exactCommon": "alexkim8paz6",
+    "exactRare": "alexkim001vl",
+    "common2": "김민",
+    "rare3": "00m",
+    "address2": "고객",
+    "starts": "al",
+    "ends": "z6",
+    "like": "al%z6"
+  },
+  "results": [
+    { "query": "exact-common", "term": "alexkim8paz6", "rows": 2, "plainMs": 0.32, "sealSqlMs": 1.4658, "sealTotalMs": 3.587, "ratio": 11.2094, "mismatch": 0 },
+    { "query": "exact-rare", "term": "alexkim001vl", "rows": 1, "plainMs": 0.3287, "sealSqlMs": 1.3548, "sealTotalMs": 2.7767, "ratio": 8.4475, "mismatch": 0 },
+    { "query": "contains-common-2", "term": "김민", "rows": 20, "plainMs": 0.462, "sealSqlMs": 1.7604, "sealTotalMs": 8.0555, "ratio": 17.4361, "mismatch": 0 },
+    { "query": "contains-rare-3", "term": "00m", "rows": 1, "plainMs": 0.3277, "sealSqlMs": 2.2139, "sealTotalMs": 3.9808, "ratio": 12.1477, "mismatch": 0 },
+    { "query": "startsWith", "term": "al", "rows": 20, "plainMs": 0.6156, "sealSqlMs": 23.9702, "sealTotalMs": 30.1719, "ratio": 49.0122, "mismatch": 0 },
+    { "query": "endsWith", "term": "z6", "rows": 20, "plainMs": 0.7097, "sealSqlMs": 2.763, "sealTotalMs": 8.8871, "ratio": 12.5223, "mismatch": 0 },
+    { "query": "like", "term": "al%z6", "rows": 8, "plainMs": 0.5928, "sealSqlMs": 3.044, "sealTotalMs": 6.1097, "ratio": 10.3065, "mismatch": 0 },
+    { "query": "and-name-address", "term": "김민&고객", "rows": 20, "plainMs": 0.5546, "sealSqlMs": 1.976, "sealTotalMs": 7.9695, "ratio": 14.3698, "mismatch": 0 },
+    { "query": "count-exact", "term": "alexkim8paz6", "rows": 2, "plainMs": 0.2194, "sealSqlMs": 0.3699, "sealTotalMs": 0.779, "ratio": 3.5506, "mismatch": 0 },
+    { "query": "count-contains", "term": "김민", "rows": 28023, "plainMs": 15.9356, "sealSqlMs": 113.8589, "sealTotalMs": 114.5444, "ratio": 7.188, "mismatch": 0 },
+    { "query": "sum-points", "term": "김민", "rows": 28023, "plainMs": 17.5998, "sealSqlMs": 141.2718, "sealTotalMs": 142.1318, "ratio": 8.0758, "mismatch": 0 },
+    { "query": "avg-points", "term": "김민", "rows": 28023, "plainMs": 18.4872, "sealSqlMs": 141.7387, "sealTotalMs": 142.5328, "ratio": 7.7098, "mismatch": 0 },
+    { "query": "join-count", "term": "김민", "rows": 28023, "plainMs": 32.6355, "sealSqlMs": 195.0031, "sealTotalMs": 195.9207, "ratio": 6.0033, "mismatch": 0 },
+    { "query": "join-list-20", "term": "김민", "rows": 20, "plainMs": 0.6344, "sealSqlMs": 1.509, "sealTotalMs": 6.1693, "ratio": 9.7246, "mismatch": 0 }
+  ]
+}
