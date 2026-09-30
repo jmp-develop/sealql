@@ -6,7 +6,7 @@ This guide owns the `sealql/drizzle/v0.45` API. Read the ORM-neutral [core conce
 
 SealQL is not published to the npm registry. Run `npm pack` in a checkout and install the resulting `.tgz`, plus `drizzle-orm >=0.45.2 <0.46`. Use Node `>=22.12` or another runtime with compatible WebCrypto.
 
-Managed writes and `reindex` require a transactional PostgreSQL driver. Node pg, postgres-js, and local workerd with pg passed the repository database flow. Hosted Workers/Hyperdrive remains unverified. `neon-http` cannot run managed writes or `reindex` because it lacks the required transaction callback. These are verification results, not deployment guarantees.
+Managed writes (`insert`, `update`, `upsert`) and `reindex` open a database transaction, so they need a driver with transaction support, such as node-postgres (`pg`) or postgres-js. This applies wherever those calls run, including request handlers. A driver without transactions (for example `neon-http`) raises `UNSUPPORTED_DRIVER`. Reads, searches, and counts do not need a transaction.
 
 The [injected integration flow](../../examples/drizzle/v0.45/app.ts) demonstrates connection, migration, `extraMigrationSql`, insert, search, count, and cleanup. It is run by the repository [example runner](../../scripts/run-drizzle-v0.45-example.ts), which injects the disposable-database guard and example root key; it is not a standalone application entry point. With the read-only `bench_realistic_100k` fixture already present, prepare and run it with:
 
@@ -122,6 +122,8 @@ The [managed-write example](../../examples/drizzle/v0.45/managed-writes.ts) cont
 
 `sealed.reindex(db, notesSeal, { scope?, batch? })` locks parent rows in keyset batches, authenticates ciphertext, and rebuilds companion data without changing ciphertext; it returns `{ rows }`. Its default batch is 1,000 and callers may override it without a library maximum. If all searchable fields are null it removes the companion row. It repairs raw-write drift but does not rotate keys.
 
+When to run it: only when existing rows need new search data, for example after enabling or changing search options on an encrypted field or adding a searchable encrypted field to a table that already has rows. New tables and rows written through managed writes need no reindex. Run it where you run migrations (a deployment or maintenance script with a transactional driver), after the migration and `extraMigrationSql`, and before deploying code that searches with the new options. Omit `scope` to rebuild the whole table; `scope` exists only to rebuild one scope of a scoped model. If it stops midway, run it again; it is safe to repeat.
+
 Empty and one-character searchable values retain exact/positional proofs even when no substring candidate tokens exist.
 
 A top-level commit failure after the helper callback finishes raises `WRITE_OUTCOME_UNKNOWN`; reconcile the row before retrying.
@@ -142,7 +144,7 @@ Passing a Promise or thenable instead of an awaited result raises `INVALID_VALUE
 
 ## Find, count, and page
 
-Use SealQL match builders, not Drizzle `eq`/`like`/`ilike` or ordering on encrypted columns. Ordinary Drizzle equality raises `SEAL_REQUIRED`; LIKE can silently return zero and encrypted ordering sorts meaningless ciphertext.
+Search encrypted columns only with SealQL match builders (`m.field.eq`, `contains`, `startsWith`, `endsWith`, `like`, `m.and`, `m.or`). Drizzle `eq`/`ne`/`inArray` on an encrypted column raise `SEAL_REQUIRED`, but SealQL cannot intercept Drizzle `like`, `ilike`, `orderBy`, or raw `sql` comparisons on encrypted columns: those run against ciphertext and return wrong results without an error (usually zero rows, or rows sorted by ciphertext). Blocking them would require patching Drizzle internals, which would break on Drizzle updates, so this is the developer's responsibility. Sort only by unencrypted columns; filter ordinary columns with Drizzle predicates through `where` or `m.sql`.
 
 `sealed.findMany` accepts `scope`, `match`, `where`, `columns`, `orderBy`, `limit`, `cursor`, `budgets`, and `signal`. It returns:
 
@@ -163,6 +165,18 @@ Match builders compose exact equality, substring operations, LIKE, AND/OR, and p
 - apply `where`, optional `after`, and `orderBy`;
 - apply a defined `limit`, but omit SQL LIMIT when it is undefined;
 - select `flags` for Drizzle or `flagsSql` for raw SQL.
+
+Why: your callback writes the SQL, so SealQL cannot see or change it. SealQL hands over each piece it needs in the query, and each missing piece has a concrete symptom:
+
+| Piece | What it does | If you leave it out |
+|---|---|---|
+| `where` | The encrypted-search condition (scope, candidate tokens, and the database proof check) | Rows that do not match the search are returned as if they matched. SealQL cannot detect this |
+| `after` | Starts this page after the previous page's last row | The next page returns earlier rows again; SealQL detects the repeat or backward order and raises `INVALID_CANDIDATE_SHAPE` |
+| `orderBy` | The row order SealQL pages in | Out-of-order rows raise `INVALID_CANDIDATE_SHAPE` |
+| `limit` | Page size SealQL expects | Returning more rows than the limit raises `INVALID_CANDIDATE_SHAPE` |
+| `flags` / `flagsSql` | Row position values SealQL uses to build the next cursor | SealQL cannot position the rows and raises `INVALID_CANDIDATE_SHAPE` |
+
+Only a missing `where` produces silently wrong results; the other omissions fail loudly. Your own JOINs and filters are applied as written. An INNER JOIN or an extra WHERE that removes a row also removes it from the search result; that is ordinary SQL behavior, not an error.
 
 The [raw SQL example](../../examples/drizzle/v0.45/raw-sql.ts) provides a complete callback that selects mapped ciphertext columns and `flagsSql`, applies `where`/`after`, reuses `orderBy`, and honors the numeric limit around a JOIN.
 
