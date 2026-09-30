@@ -9,7 +9,7 @@ npm install https://github.com/jmp-develop/sealql/releases/download/v1.1.0/sealq
 pnpm add https://github.com/jmp-develop/sealql/releases/download/v1.1.0/sealql-1.1.0.tgz
 ```
 
-Installing from the Git tag (`npm install github:jmp-develop/sealql#v1.1.0`) builds the package during install. Tested with PostgreSQL 18. Peer dependency: `drizzle-orm >=0.45.2 <0.46`; runtime: Node `>=22.12` or compatible WebCrypto. Managed writes and reindex need a PostgreSQL driver with transaction support, such as node-postgres or postgres-js. Public exports are `sealql` and `sealql/drizzle/v0.45`.
+The Git tag (`npm install github:jmp-develop/sealql#v1.1.0`) also works with npm and builds during install; pnpm blocks dependency build scripts by default, so use the release URL with pnpm. Tested with PostgreSQL 18. Peer dependency: `drizzle-orm >=0.45.2 <0.46`; runtime: Node `>=22.12` or compatible WebCrypto. Managed writes and reindex need a PostgreSQL driver with transaction support, such as node-postgres or postgres-js. Public exports are `sealql` and `sealql/drizzle/v0.45`.
 
 ```ts
 import { pgTable, uuid } from 'drizzle-orm/pg-core';
