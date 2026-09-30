@@ -1,14 +1,9 @@
 import { and, eq } from 'drizzle-orm';
 import type { PgDatabase } from 'drizzle-orm/pg-core';
+import type { InferSealedInsert } from 'sealql/drizzle/v0.45';
 import { customer, customerSeal, sealed } from './schema.js';
 
-export interface CustomerInput {
-  id?: string;
-  tenantId: string;
-  name: string;
-  phone: string;
-  memo?: string | null;
-}
+export type CustomerInput = InferSealedInsert<typeof customerSeal>;
 
 export const insertCustomer = (db: PgDatabase<any, any, any>, value: CustomerInput) =>
   sealed.insert(db, customerSeal, value, { returning: true });

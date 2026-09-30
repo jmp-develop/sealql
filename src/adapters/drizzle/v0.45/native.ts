@@ -76,9 +76,26 @@ export type UuidOrTextKeys<T extends PgTable> = {
   [K in keyof T['_']['columns']]: NonNullable<T['_']['columns'][K]['_']['data']> extends Sealed<any, any> ? never :
     T['_']['columns'][K]['_']['columnType'] extends 'PgUUID' | 'PgText' | 'PgCustomColumn' ? K : never;
 }[keyof T['_']['columns']] & string;
+type RowKind<T extends PgTable, R extends string> = R extends keyof T['_']['columns']
+  ? T['_']['columns'][R]['_']['columnType'] extends 'PgUUID' ? 'uuid' : 'text'
+  : never;
+type RequiredValue<P, K extends keyof P> = { [Q in K]-?: Exclude<P[Q], undefined> };
+type OptionalValue<P, K extends keyof P> = { [Q in K]?: Exclude<P[Q], undefined> };
+type ScopeKey<P, S> = Extract<Exclude<S, undefined>, keyof P>;
+type ManagedInsert<T extends PgTable, R extends string, S, G extends 'uuid' | 'text', P = InferSelectModel<T>> =
+  Omit<PlainShape<T>, Extract<R | Exclude<S, undefined>, keyof PlainShape<T>>> &
+  (G extends 'uuid' ? OptionalValue<P, Extract<R, keyof P>> : RequiredValue<P, Extract<R, keyof P>>) &
+  ([ScopeKey<P, S>] extends [never] ? {} : RequiredValue<P, ScopeKey<P, S>>);
+
 export type SealMeta<T extends PgTable, R extends string, S extends string | undefined> = {
-  readonly [sealMetaBrand]?: { parent: T; row: R; scope: S };
+  readonly [sealMetaBrand]: { parent: T; row: R; scope: S; rowKind: RowKind<T, R> };
 };
+export type InferSealedInsert<M> = M extends SealMeta<infer T, infer R, infer S>
+  ? ManagedInsert<T, R, S, RowKind<T, R>> : never;
+export type InferSealedIdentity<M> = M extends SealMeta<infer T, infer R, infer S>
+  ? RequiredValue<InferSelectModel<T>, Extract<R | Exclude<S, undefined>, keyof InferSelectModel<T>>> : never;
+export type InferSealedPatch<M> = M extends SealMeta<infer T, infer R, infer S>
+  ? Partial<Omit<PlainShape<T>, Extract<R | Exclude<S, undefined>, keyof PlainShape<T>>>> : never;
 
 function sealedColumn<T, O extends { nullable?: boolean; column?: string }, S>(name: string, options: O | undefined, spec: FieldSpec): NullableBuilder<T, S, O> {
   const dbName = options?.column ?? `${name}_ct`;
@@ -212,7 +229,7 @@ function register<T extends PgTable, R extends UuidOrTextKeys<T>, S extends Uuid
   for (const binding of fields.values()) binding.registration = registration;
   registrations.set(companion, registration);
   models.add(model);
-  return companion as PgTable & SealMeta<T, R, S>;
+  return companion as unknown as PgTable & SealMeta<T, R, S>;
 }
 
 export function registrationOf(seal: object): Registration {

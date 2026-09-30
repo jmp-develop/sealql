@@ -6,7 +6,10 @@ import type { Sealer } from '../../../core/field-cipher.js';
 import { profiles, searchPieces, searchTokens, type SearchTokenCache } from '../../../core/search-tokens.js';
 import { exactProof, positionProof } from '../../../core/search-stamps.js';
 import { profileColumns, type ProfileStorage } from '../../../core/sealed-model.js';
-import { Sealed, registrationOf, type Opened, type PlainShape, type Registration, type SealMeta } from './native.js';
+import {
+  Sealed, registrationOf, type InferSealedIdentity, type InferSealedInsert, type InferSealedPatch,
+  type Opened, type Registration, type SealMeta,
+} from './native.js';
 import { mapRawRow } from './native-mapping.js';
 import { searchMethods } from './native-search.js';
 
@@ -15,10 +18,6 @@ type AuthCache = Map<string, { bytes: Uint8Array; result: Promise<unknown> }>;
 type Db = PgDatabase<any, any, any>;
 type Identity<T extends PgTable, R extends string, S extends string | undefined> =
   Pick<InferSelectModel<T>, Extract<R | Exclude<S, undefined>, keyof InferSelectModel<T>>>;
-type InsertRow<T extends PgTable, R extends string> = Omit<PlainShape<T>, R> & Partial<PlainShape<T>>;
-type Patch<T extends PgTable, R extends string, S extends string | undefined> = {
-  [K in keyof Omit<PlainShape<T>, R | Exclude<S, undefined>>]?: PlainShape<T>[K] | undefined;
-};
 type Result<T extends PgTable, R extends string, S extends string | undefined, O> = O extends { returning: true }
   ? Opened<InferSelectModel<T>>[] : Identity<T, R, S>[];
 export interface OpenOptions { scope?: string; budgets?: { maxRows?: number; maxBytes?: number; deadlineMs?: number; concurrency?: number } | undefined }
@@ -215,7 +214,8 @@ export function runtimeMethods(sealerOf: () => Sealer) {
   const open = <R>(rows: R & (R extends PromiseLike<unknown> ? never : unknown), options?: OpenOptions): Promise<Opened<R>> => openWithCache(rows, options);
 
   async function insert<T extends PgTable, R extends string, S extends string | undefined = undefined, O extends { returning?: boolean } = {}>(
-    db: Db, seal: SealMeta<T, R, S> & object, rows: InsertRow<T, R> | InsertRow<T, R>[], options?: O,
+    db: Db, seal: SealMeta<T, R, S> & object,
+    rows: InferSealedInsert<SealMeta<T, R, S>> | InferSealedInsert<SealMeta<T, R, S>>[], options?: O,
   ): Promise<Result<T, R, S, O>> {
     const reg = registrationOf(seal), arr = Array.isArray(rows) ? rows : [rows];
     ensure(arr.length > 0, 'INVALID_VALUE');
@@ -236,7 +236,8 @@ export function runtimeMethods(sealerOf: () => Sealer) {
   }
 
   async function update<T extends PgTable, R extends string, S extends string | undefined = undefined, O extends { returning?: boolean } = {}>(
-    db: Db, seal: SealMeta<T, R, S> & object, at: Identity<T, R, S>, patch: Patch<T, R, S>, options?: O,
+    db: Db, seal: SealMeta<T, R, S> & object, at: InferSealedIdentity<SealMeta<T, R, S>>,
+    patch: InferSealedPatch<SealMeta<T, R, S>>, options?: O,
   ): Promise<Result<T, R, S, O>> {
     const reg = registrationOf(seal), input = checkedValues(reg, asRecord(patch), 'update');
     const where = whereIdentity(reg, asRecord(at));
@@ -256,7 +257,7 @@ export function runtimeMethods(sealerOf: () => Sealer) {
   }
 
   async function upsert<T extends PgTable, R extends string, S extends string | undefined = undefined, O extends { returning?: boolean } = {}>(
-    db: Db, seal: SealMeta<T, R, S> & object, row: InsertRow<T, R>, options?: O,
+    db: Db, seal: SealMeta<T, R, S> & object, row: InferSealedInsert<SealMeta<T, R, S>>, options?: O,
   ): Promise<Result<T, R, S, O>> {
     const reg = registrationOf(seal), input = checkedValues(reg, asRecord(row), 'upsert');
     const sealer = sealerOf(), prepared: Prepared[] = [];

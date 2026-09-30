@@ -19,7 +19,7 @@ Additional examples cover [managed writes](../../examples/drizzle/v0.45/managed-
 
 ## Create and register a schema
 
-`sealql` exports `createSealer`, core codecs/types, and `SealError`. `sealql/drizzle/v0.45` exports `createSealed` and the `Sealed`/`Opened` types.
+`sealql` exports `createSealer`, core codecs/types, and `SealError`. `sealql/drizzle/v0.45` exports `createSealed` and the `Sealed`, `Opened`, `PlainShape`, `InferSealedInsert`, `InferSealedIdentity`, and `InferSealedPatch` types.
 
 ```ts
 import { pgTable, text, uuid } from 'drizzle-orm/pg-core';
@@ -83,6 +83,20 @@ Import `defineConfig` from `drizzle-kit`. Verify where the migration journal is 
 For profile additions or changes, follow the [rebuild invariant](../core-concepts.md#rebuild-invariant). Generated migrations may rebuild a GIN index without `CONCURRENTLY`; plan for locking and rebuild time. Changes limited to installed LIKE predicate functions require `extraMigrationSql` again but no row rewrite when rows already use the compact-only profile.
 
 ## Managed writes, deletion, and reindex
+
+Derive application inputs from the registered companion instead of duplicating the schema by hand:
+
+```ts
+import type {
+  InferSealedIdentity, InferSealedInsert, InferSealedPatch,
+} from 'sealql/drizzle/v0.45';
+
+type NoteInput = InferSealedInsert<typeof notesSeal>;
+type NoteIdentity = InferSealedIdentity<typeof notesSeal>;
+type NotePatch = InferSealedPatch<typeof notesSeal>;
+```
+
+`InferSealedInsert` is shared by `insert` and `upsert`. Only a registered UUID row may be omitted for generation; a text row and every registered scope are required even when the database column has a default. `InferSealedIdentity` requires the registered row and scope names, while `InferSealedPatch` excludes both so an update cannot move identity. A scope-free registration adds no scope property. These types follow the property names supplied to `register`; they do not assume names such as `id` or `scopeId`.
 
 ```ts
 await sealed.insert(db, notesSeal, { id, scopeId, status: 'draft', body: 'Ada' });

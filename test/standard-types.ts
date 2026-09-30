@@ -2,8 +2,10 @@ import { eq, type InferSelectModel } from 'drizzle-orm';
 import { drizzle } from 'drizzle-orm/node-postgres';
 import { pgTable, text, uuid } from 'drizzle-orm/pg-core';
 import { createSealer } from '../src/index.js';
-import { createSealed, type Sealed, type Opened } from '../src/adapters/drizzle/v0.45/index.js';
-import type { PlainShape } from '../src/adapters/drizzle/v0.45/native.js';
+import {
+  createSealed, type InferSealedIdentity, type InferSealedInsert, type InferSealedPatch,
+  type Sealed, type Opened, type PlainShape,
+} from '../src/adapters/drizzle/v0.45/index.js';
 
 const sealed = createSealed({ sealer: () => createSealer({ key: new Uint8Array(32) }) });
 const customers = pgTable('native_type_customers', {
@@ -13,6 +15,23 @@ const customers = pgTable('native_type_customers', {
   age: sealed.integer('age', { search: { exact: true } }),
 });
 export const customersSeal = sealed.register(customers, { row: 'id', scope: 'tenantId' });
+const textRows = pgTable('native_type_text_rows', {
+  recordKey: sealed.textId('record_key').primaryKey().default('database-default'),
+  accountKey: uuid('account_key').notNull().defaultRandom(),
+  name: sealed.text('name'),
+});
+const textRowsSeal = sealed.register(textRows, { row: 'recordKey', scope: 'accountKey' });
+const textScopes = pgTable('native_type_text_scopes', {
+  recordKey: uuid('record_key').primaryKey(),
+  accountKey: text('account_key').notNull().default('database-default'),
+  name: sealed.text('name'),
+});
+const textScopesSeal = sealed.register(textScopes, { row: 'recordKey', scope: 'accountKey' });
+const globalRows = pgTable('native_type_global_rows', {
+  recordKey: uuid('record_key').primaryKey(),
+  name: sealed.text('name'),
+});
+const globalRowsSeal = sealed.register(globalRows, { row: 'recordKey' });
 // @ts-expect-error row must be a valid plain identifier column
 sealed.register(customers, { row: 'name' });
 // @ts-expect-error scope must be a valid column
@@ -39,6 +58,35 @@ sealed.update(db, customersSeal, { id: 'x', tenantId: 'x' }, { name: undefined, 
 // @ts-expect-error managed update rejects unknown columns
 sealed.update(db, customersSeal, { id: 'x', tenantId: 'x' }, { unknown: 'x' });
 sealed.upsert(db, customersSeal, { tenantId: 'x', status: 'a', name: 'Ada', age: 3, memo: undefined });
+type CustomerInsert = InferSealedInsert<typeof customersSeal>;
+type CustomerIdentity = InferSealedIdentity<typeof customersSeal>;
+type CustomerPatch = InferSealedPatch<typeof customersSeal>;
+const inferredCustomer: CustomerInsert = { tenantId: 'x', status: 'a', name: 'Ada', age: 3 };
+const inferredIdentity: CustomerIdentity = { id: 'x', tenantId: 'x' };
+const inferredPatch: CustomerPatch = { status: 'b', memo: null };
+// @ts-expect-error a registered scope is required even when the UUID row is generated
+const missingCustomerScope: CustomerInsert = { status: 'a', name: 'Ada', age: 3 };
+type TextRowInsert = InferSealedInsert<typeof textRowsSeal>;
+const inferredTextRow: TextRowInsert = { recordKey: 'row', accountKey: 'scope', name: 'Ada' };
+// @ts-expect-error a text row remains required even when the database column has a default
+const missingTextRow: TextRowInsert = { accountKey: 'scope', name: 'Ada' };
+// @ts-expect-error a UUID scope remains required even when the database column has a default
+const missingUuidScope: TextRowInsert = { recordKey: 'row', name: 'Ada' };
+type TextScopeInsert = InferSealedInsert<typeof textScopesSeal>;
+// @ts-expect-error a text scope remains required even when the database column has a default
+const missingTextScope: TextScopeInsert = { name: 'Ada' };
+type GlobalInsert = InferSealedInsert<typeof globalRowsSeal>;
+type GlobalIdentity = InferSealedIdentity<typeof globalRowsSeal>;
+const inferredGlobal: GlobalInsert = { name: 'Ada' };
+const inferredGlobalIdentity: GlobalIdentity = { recordKey: 'row' };
+// @ts-expect-error a scope-free identity has no scope property
+const invalidGlobalIdentity: GlobalIdentity = { recordKey: 'row', accountKey: 'scope' };
+// @ts-expect-error update patches cannot move the registered row
+const patchWithRow: CustomerPatch = { id: 'row' };
+// @ts-expect-error update patches cannot move the registered scope
+const patchWithScope: CustomerPatch = { tenantId: 'scope' };
+void [inferredCustomer, inferredIdentity, inferredPatch, missingCustomerScope, inferredTextRow, missingTextRow,
+  missingUuidScope, missingTextScope, inferredGlobal, inferredGlobalIdentity, invalidGlobalIdentity, patchWithRow, patchWithScope];
 sealed.findMany(db, customersSeal, { scope: 'x', match: m => {
   // @ts-expect-error ordinary plaintext column is not a sealed search field
   m.status.eq('a');

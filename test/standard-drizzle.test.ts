@@ -469,7 +469,8 @@ test('text row IDs follow the database collation and keep index-backed keysets',
     const db = drizzle(pool, { logger: { logQuery(query, params) { logged.push({ query, params }); } } });
     const prefixes = ['Z', 'a', '가', '!'];
     const ids = fixture.map((row, index) => index === 0 ? '' : `${prefixes[index % prefixes.length]}${row.id}`);
-    await assert.rejects(sealed.insert(db, seal, { scopeId: fixture[0].scope_id, name: fixture[0].name_plain }), { code: 'INVALID_VALUE' });
+    await assert.rejects(sealed.insert(db, seal,
+      { scopeId: fixture[0].scope_id, name: fixture[0].name_plain } as any), { code: 'INVALID_VALUE' });
     await sealed.insert(db, seal, ids.map((id, index) => ({
       id, scopeId: fixture[0].scope_id, name: fixture[index].name_plain,
     })));
