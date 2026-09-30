@@ -1,7 +1,7 @@
-import { getTableColumns, getTableName, is, sql, type InferInsertModel, type InferSelectModel } from 'drizzle-orm';
+import { getTableColumns, getTableName, sql, type InferInsertModel, type InferSelectModel } from 'drizzle-orm';
 import {
-  bigint, check, customType, foreignKey, getTableConfig, index, integer, pgSchema, pgTable, text, uniqueIndex,
-  uuid, PgCustomColumn, type PgColumn, type PgTable,
+  bigint, check, foreignKey, index, integer, pgSchema, pgTable, text, uniqueIndex,
+  uuid, type PgColumn, type PgTable,
 } from 'drizzle-orm/pg-core';
 import { unhex } from '../../../core/bytes.js';
 import { companionIndexName, companionProfiles } from '../../../core/companion-layout.js';
@@ -11,6 +11,11 @@ import { validateField, type FieldSpec, type JsonValue } from '../../../core/fie
 import type { SealedModelDefinition, SealedStorage } from '../../../core/sealed-model.js';
 import { runtimeMethods } from './native-runtime.js';
 import { stampMigrationSql } from '../../../core/stamp-sql.js';
+import {
+  columnInfo, customBuilder, drizzleCustomType, drizzleTableConfig, nullableCustomBuilder,
+  type DrizzleColumnData, type DrizzleColumns, type DrizzleColumnType,
+  type DrizzleCustomBuilder, type DrizzleNullableBuilder,
+} from './drizzle-surface.js';
 
 declare const sealedBrand: unique symbol;
 declare const sealMetaBrand: unique symbol;
@@ -50,8 +55,8 @@ type BooleanOptions = Options<Extract<FieldSpec, { type: 'boolean' }>>;
 type InstantOptions = Options<Extract<FieldSpec, { type: 'instant' }>>;
 type JsonOptions = Options<Extract<FieldSpec, { type: 'json' }>>;
 type BytesOptions = Options<Extract<FieldSpec, { type: 'bytes' }>>;
-type Builder<T, S> = ReturnType<ReturnType<typeof customType<{ data: Sealed<T, S>; driverData: Uint8Array }>>>;
-type NullableBuilder<T, S, O> = O extends { nullable: true } ? Builder<T, S> : ReturnType<Builder<T, S>['notNull']>;
+type Builder<T, S> = DrizzleCustomBuilder<Sealed<T, S>, Uint8Array>;
+type NullableBuilder<T, S, O> = DrizzleNullableBuilder<Sealed<T, S>, Uint8Array, O>;
 
 interface FieldBinding { key: string; column: PgColumn; spec: FieldSpec & { nullable: boolean }; registration: Registration }
 interface PendingField { name: string; spec: FieldSpec & { nullable: boolean }; bind?: FieldBinding }
@@ -73,11 +78,11 @@ export type PlainShape<T extends PgTable> = ExplicitUndefined<Pick<InferInsertMo
   [K in keyof InferSelectModel<T> as K extends SealedKeys<T> ? null extends InferSelectModel<T>[K] ? K : never : never]?: Unseal<InferSelectModel<T>[K]> | null | undefined
 };
 export type UuidOrTextKeys<T extends PgTable> = {
-  [K in keyof T['_']['columns']]: NonNullable<T['_']['columns'][K]['_']['data']> extends Sealed<any, any> ? never :
-    T['_']['columns'][K]['_']['columnType'] extends 'PgUUID' | 'PgText' | 'PgCustomColumn' ? K : never;
-}[keyof T['_']['columns']] & string;
-type RowKind<T extends PgTable, R extends string> = R extends keyof T['_']['columns']
-  ? T['_']['columns'][R]['_']['columnType'] extends 'PgUUID' ? 'uuid' : 'text'
+  [K in keyof DrizzleColumns<T>]: NonNullable<DrizzleColumnData<DrizzleColumns<T>[K]>> extends Sealed<any, any> ? never :
+    DrizzleColumnType<DrizzleColumns<T>[K]> extends 'PgUUID' | 'PgText' | 'PgCustomColumn' ? K : never;
+}[keyof DrizzleColumns<T>] & string;
+type RowKind<T extends PgTable, R extends string> = R extends keyof DrizzleColumns<T>
+  ? DrizzleColumnType<DrizzleColumns<T>[R]> extends 'PgUUID' ? 'uuid' : 'text'
   : never;
 type RequiredValue<P, K extends keyof P> = { [Q in K]-?: Exclude<P[Q], undefined> };
 type OptionalValue<P, K extends keyof P> = { [Q in K]?: Exclude<P[Q], undefined> };
@@ -102,15 +107,15 @@ function sealedColumn<T, O extends { nullable?: boolean; column?: string }, S>(n
   const pending: PendingField = { name, spec: { ...spec, nullable: !!options?.nullable } };
   const guard = () => fail('SEAL_REQUIRED');
   pendingFields.set(guard, pending);
-  const builder = customType<{ data: Sealed<T, S>; driverData: Uint8Array }>({
+  const builder = customBuilder<Sealed<T, S>, Uint8Array>(drizzleCustomType<{ data: Sealed<T, S>; driverData: Uint8Array }>({
     dataType: () => 'bytea',
     toDriver(value) {
       ensure(value instanceof Sealed && writable.has(value) && value.binding === pending.bind, 'SEAL_REQUIRED');
       return value.bytes;
     },
     fromDriver(value) { return Sealed.fromDriver<T, S>(value, pending.bind); },
-  })(dbName);
-  return (options?.nullable ? builder.$defaultFn(guard) : builder.notNull().$defaultFn(guard)) as NullableBuilder<T, S, O>;
+  })(dbName));
+  return nullableCustomBuilder<Sealed<T, S>, Uint8Array, O>(builder, !!options?.nullable, guard);
 }
 
 function createField<T, O extends { nullable?: boolean; column?: string }, S>(type: FieldSpec['type'], name: string, options?: O): NullableBuilder<T, S, O> {
@@ -121,39 +126,41 @@ function createField<T, O extends { nullable?: boolean; column?: string }, S>(ty
 }
 
 function keyType(column: PgColumn): 'uuid' | 'text' {
-  const kind = column.getSQLType();
-  ensure(kind === 'uuid' || (kind === 'text' && is(column, PgCustomColumn)), 'INVALID_SCHEMA');
+  const info = columnInfo(column), kind = info.sqlType;
+  ensure(kind === 'uuid' || (kind === 'text' && info.custom), 'INVALID_SCHEMA');
   return kind === 'uuid' ? 'uuid' : 'text';
 }
 function mirrorKey(name: string, type: 'uuid' | 'text') { return type === 'uuid' ? uuid(name) : textId(name); }
-export const textId = customType<{ data: string; driverData: string }>({ dataType: () => 'text' });
+export const textId = drizzleCustomType<{ data: string; driverData: string }>({ dataType: () => 'text' });
 
 function register<T extends PgTable, R extends UuidOrTextKeys<T>, S extends UuidOrTextKeys<T> | undefined = undefined>(
   table: T, cfg: { row: R; scope?: S; model?: string }, models: Set<string>,
 ): PgTable & SealMeta<T, R, S> {
   const columns = getTableColumns(table) as Record<string, PgColumn>;
   const rowColumn = columns[cfg.row];
-  ensure(!!rowColumn && !rowColumn.keyAsName && rowColumn.notNull, 'INVALID_SCHEMA');
+  const rowInfo = rowColumn && columnInfo(rowColumn);
+  ensure(!!rowInfo && !rowInfo.keyAsName && rowInfo.notNull, 'INVALID_SCHEMA');
   const rowType = keyType(rowColumn);
   const scopeColumn = cfg.scope ? columns[cfg.scope] : undefined;
-  ensure(!cfg.scope || (!!scopeColumn && !scopeColumn.keyAsName && scopeColumn.notNull && ['uuid', 'text'].includes(scopeColumn.getSQLType())), 'INVALID_SCHEMA');
-  const scopeType = scopeColumn?.getSQLType() === 'uuid' ? 'uuid' : 'text';
-  const tableConfig = getTableConfig(table);
+  const scopeInfo = scopeColumn && columnInfo(scopeColumn);
+  ensure(!cfg.scope || (!!scopeInfo && !scopeInfo.keyAsName && scopeInfo.notNull && ['uuid', 'text'].includes(scopeInfo.sqlType)), 'INVALID_SCHEMA');
+  const scopeType = scopeInfo?.sqlType === 'uuid' ? 'uuid' : 'text';
+  const tableConfig = drizzleTableConfig(table);
   const uniqueSets = [...tableConfig.primaryKeys, ...tableConfig.uniqueConstraints, ...tableConfig.indexes.filter(i => i.config.unique)]
     .map(key => ('columns' in key ? key.columns : key.config.columns).map(column => 'name' in column ? column.name : undefined));
   const hasUnique = (names: string[]) => uniqueSets.some(columns => columns.length === names.length && names.every(name => columns.includes(name)));
   // A unique row column is enough to back a row-only FK even on scoped tables.
-  const rowUnique = rowColumn.primary || rowColumn.isUnique || hasUnique([rowColumn.name]);
-  ensure(rowUnique || !!scopeColumn && hasUnique([scopeColumn.name, rowColumn.name]), 'INVALID_SCHEMA');
+  const rowUnique = rowInfo.primary || rowInfo.isUnique || hasUnique([rowInfo.name]);
+  ensure(rowUnique || !!scopeInfo && hasUnique([scopeInfo.name, rowInfo.name]), 'INVALID_SCHEMA');
   const model = cfg.model ?? getTableName(table);
   ensure(model.length > 0 && !models.has(model), 'INVALID_SCHEMA');
   const fields = new Map<string, FieldBinding>();
   const usedIds = new Set<string>();
   for (const [key, column] of Object.entries(columns)) {
-    const guard = (column as PgColumn & { defaultFn?: Function }).defaultFn;
+    const info = columnInfo(column), guard = info.defaultFn;
     const pending = guard ? pendingFields.get(guard) : undefined;
     if (!pending) continue;
-    ensure(is(column, PgCustomColumn) && column.getSQLType() === 'bytea' && column.default === undefined && !column.primary && !column.isUnique && !column.generated && !column.generatedIdentity && !column.onUpdateFn, 'INVALID_SCHEMA');
+    ensure(info.custom && info.sqlType === 'bytea' && info.defaultValue === undefined && !info.primary && !info.isUnique && !info.generated && !info.generatedIdentity && !info.onUpdateFn, 'INVALID_SCHEMA');
     const fieldId = pending.spec.id ?? pending.name;
     ensure(!usedIds.has(fieldId), 'INVALID_SCHEMA');
     usedIds.add(fieldId);
@@ -174,7 +181,7 @@ function register<T extends PgTable, R extends UuidOrTextKeys<T>, S extends Uuid
     scopeId: (scopeColumn ? mirrorKey('scope_id', scopeType) : text('scope_id').default('_')).notNull(),
     rowId: mirrorKey('row_id', rowType).notNull(),
   };
-  const bytea = customType<{ data: Uint8Array; driverData: Uint8Array }>({ dataType: () => 'bytea',
+  const bytea = drizzleCustomType<{ data: Uint8Array; driverData: Uint8Array }>({ dataType: () => 'bytea',
     toDriver: value => value, fromDriver: value => typeof value === 'string' ? unhex((value as string).replace(/^\\x/, '')) : new Uint8Array(value) });
   for (const profile of Object.values(profiles)) {
     companionColumns[profile.tokens] = bigint(profile.tokens, { mode: 'bigint' }).array();

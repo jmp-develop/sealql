@@ -1,5 +1,5 @@
 import { and, asc, desc, eq, gt, lt, getTableColumns, getTableName, sql, SQL, type InferSelectModel } from 'drizzle-orm';
-import { PgDialect, type PgColumn, type PgDatabase, type PgTable } from 'drizzle-orm/pg-core';
+import { type PgColumn, type PgTable } from 'drizzle-orm/pg-core';
 import { canonical, compareText, hex, identity, utf8 } from '../../../core/bytes.js';
 import { databaseError, driverError, ensure, fail } from '../../../core/errors.js';
 import { openCursor, sealCursor } from '../../../core/search-cursor.js';
@@ -12,8 +12,9 @@ import { boundedCandidatePredicate, candidatePredicate, candidateRows } from '..
 import type { Fragment, Node } from '../../../core/sql-fragment.js';
 import { Sealed, registrationOf, type Opened, type Registration, type SealMeta } from './native.js';
 import { mapRawRow } from './native-mapping.js';
+import { columnInfo, drizzleQuery, type DrizzleDb } from './drizzle-surface.js';
 
-type Db = PgDatabase<any, any, any>;
+type Db = DrizzleDb;
 export interface SearchBudgets { batch?: number; fetchBytes?: number; decryptedBytes?: number; resultBytes?: number; deadlineMs?: number; decryptConcurrency?: number }
 type ResolvedBudgets = Required<SearchBudgets>;
 function budgetsFor(counting: boolean, requested?: SearchBudgets): ResolvedBudgets {
@@ -129,7 +130,7 @@ function candidate(reg: Registration, scopeId: string, node: CompiledNode, bound
 }
 function sqlFingerprint(value: SQL | undefined): unknown {
   if (!value) return null;
-  const query = new PgDialect().sqlToQuery(value);
+  const query = drizzleQuery(value);
   return [query.sql, query.params];
 }
 async function digest(value: unknown): Promise<string> {
@@ -155,7 +156,7 @@ function order(reg: Registration, requested?: FindOptions<PgTable>['orderBy']) {
   const seen = new Set<PgColumn>();
   for (const item of items) {
     ensure(Object.values(columns).includes(item.column) && ![...reg.fields.values()].some(field => field.column === item.column) &&
-      allowed.test(item.column.getSQLType()) && ['asc', 'desc'].includes(item.direction) && !seen.has(item.column), 'INVALID_VALUE');
+      allowed.test(columnInfo(item.column).sqlType) && ['asc', 'desc'].includes(item.direction) && !seen.has(item.column), 'INVALID_VALUE');
     seen.add(item.column);
   }
   return items;
@@ -163,7 +164,7 @@ function order(reg: Registration, requested?: FindOptions<PgTable>['orderBy']) {
 function keysetAfter(columns: PgColumn[], values: (string | null)[], directions: ('asc' | 'desc')[]): SQL {
   ensure(columns.length === values.length && columns.length === directions.length, 'CURSOR_INVALID');
   if (values.every(value => value !== null) && directions.every(direction => direction === directions[0]) &&
-    columns.every(column => column.notNull)) {
+    columns.every(column => columnInfo(column).notNull)) {
     return sql`(${sql.join(columns.map(column => sql`${column}`), sql.raw(','))})
       ${sql.raw(directions[0] === 'asc' ? '>' : '<')}
       (${sql.join(values.map(value => sql`${value}`), sql.raw(','))})`;
@@ -223,7 +224,7 @@ async function scanRows<R, P>(rows: R[], remaining: () => number, budgets: Searc
 // The previous cursor row may have been deleted between requests.
 async function validateTextOrder(db: Db, columns: PgColumn[], positions: unknown[][], signal: AbortSignal | undefined, deadline: number): Promise<void> {
   const names = columns.map((_, index) => `p${index}`);
-  const types = columns.map(column => column.getSQLType());
+  const types = columns.map(column => columnInfo(column).sqlType);
   const arrays = columns.map((_, index) => {
     const literal = `{${positions.map(parts => parts[index] === null ? 'NULL' : `"${String(parts[index]).replace(/\\/g, '\\\\').replace(/"/g, '\\"')}"`).join(',')}}`;
     return sql`${literal}::${sql.raw(types[index])}[]`;
@@ -232,7 +233,7 @@ async function validateTextOrder(db: Db, columns: PgColumn[], positions: unknown
   const qualified = (table: string, name: string) => sql`${sql.identifier(table)}.${sql.identifier(name)}`;
   const inputColumn = (index: number) => qualified('input', names[index]);
   const values = columns.map((column, index) => /^(?:text|character varying|varchar)/.test(types[index])
-    ? sql`coalesce((select ${column} from ${column.table} where false), ${inputColumn(index)})` : inputColumn(index));
+    ? sql`coalesce((select ${column} from ${columnInfo(column).table} where false), ${inputColumn(index)})` : inputColumn(index));
   const current = values.map((_, index) => qualified('ordered', `v${index}`));
   const prior = values.map((_, index) => qualified('ordered', `previous_${index}`));
   const orderedAfter = sql`(${sql.join(values.map((_, index) => {
@@ -301,7 +302,7 @@ export function searchMethods(sealerOf: () => import('../../../core/field-cipher
     const selected: Record<string, PgColumn | SQL> = Object.fromEntries(projected.map(key => [key, columns[key]]));
     executionOrders.forEach(({ column }, index) => { selected[`__seal_sort_${index}`] = sql<string>`to_jsonb(${column}) #>> '{}'`; });
     const queryDigest = await digest({ scopeId, positionEncoding: 'jsonb-v1', match: nodeFingerprint(ast), where: sqlFingerprint(options.where),
-      orderBy: orders.map(item => [item.column.name, item.direction]) });
+      orderBy: orders.map(item => [columnInfo(item.column).name, item.direction]) });
     const ring = sealerOf().ring(reg.model), context = { modelId: reg.model, scopeId, keyScopeId: ring.keyScopeId, queryDigest };
     const cursor = options.cursor ? await openCursor(options.cursor, context, ring) : undefined;
     let after = cursor?.lastId, afterSort = cursor?.lastSort, exhausted = false, resultBytes = 0;
@@ -417,7 +418,7 @@ export function searchMethods(sealerOf: () => import('../../../core/field-cipher
     for (const key of keys) { validate(asts[key], regs[key]); compiled[key] = await compile(asts[key], regs[key], scopeId, sealerOf(), cache); }
     const keyset = options.keyset ?? [];
     const allowed = /^(?:smallint|integer|bigint|numeric(?:\(\d+(?:,\s*\d+)?\))?|decimal(?:\(\d+(?:,\s*\d+)?\))?|text|character varying(?:\(\d+\))?|varchar(?:\(\d+\))?|uuid|date|timestamp(?:\s*\(\d+\))?(?: with(?:out)? time zone)?|boolean)$/;
-    keyset.forEach(column => ensure(allowed.test(column.getSQLType()), 'INVALID_VALUE'));
+    keyset.forEach(column => ensure(allowed.test(columnInfo(column).sqlType), 'INVALID_VALUE'));
     const positionColumns = [...keys.map(key => (getTableColumns(regs[key].parent) as Record<string, PgColumn>)[regs[key].row]), ...keyset];
     const orderBy = positionColumns.map(column => asc(column));
     const allFlags: Record<string, SQL | SQL.Aliased> = {};
@@ -427,7 +428,7 @@ export function searchMethods(sealerOf: () => import('../../../core/field-cipher
     const where = and(...keys.flatMap(key => { const reg = regs[key], columns = getTableColumns(reg.parent) as Record<string, PgColumn>;
       return [reg.scope ? eq(columns[reg.scope], scopeId) : undefined, candidate(reg, scopeId, compiled[key])]; }))!;
     const queryDigest = await digest({ scopeId, positionEncoding: 'jsonb-v1', match: keys.map(key => [key, regs[key].model, nodeFingerprint(asts[key])]),
-      keyset: keyset.map(column => [getTableName(column.table), column.name]) });
+      keyset: keyset.map(column => { const info = columnInfo(column); return [getTableName(info.table), info.name]; }) });
     const ring = sealerOf().ring(regs[[...keys].sort()[0]].model);
     const context = { modelId: `search:${JSON.stringify(keys.map(key => regs[key].model).sort())}`, scopeId, keyScopeId: ring.keyScopeId, queryDigest };
     const cursor = options.cursor ? await openCursor(options.cursor, context, ring) : undefined;
@@ -470,7 +471,7 @@ export function searchMethods(sealerOf: () => import('../../../core/field-cipher
     };
     const items: PublicRow<R>[] = [], state: ResultState = { scanned: 0, fetchedBytes: 0, decryptedBytes: 0, limited: false };
     const batch = options.budgets?.batch ?? (Number.isFinite(limit) ? 200 : Infinity);
-    const needsDbOrder = positionColumns.some(column => !column.notNull || !['uuid','smallint','integer','bigint'].includes(column.getSQLType()));
+    const needsDbOrder = positionColumns.some(column => { const info = columnInfo(column); return !info.notNull || !['uuid','smallint','integer','bigint'].includes(info.sqlType); });
     let exhausted = false, resultBytes = 0;
     while (items.length < limit && !state.limited) {
       check();
@@ -499,7 +500,7 @@ export function searchMethods(sealerOf: () => import('../../../core/field-cipher
           const parts = position(raw), encoded = JSON.stringify(parts);
           ensure(!seen.has(encoded), 'INVALID_CANDIDATE_SHAPE');
           if (previous && !needsDbOrder) {
-            const signs = parts.map((value, i) => ['smallint','integer','bigint'].includes(positionColumns[i].getSQLType())
+            const signs = parts.map((value, i) => ['smallint','integer','bigint'].includes(columnInfo(positionColumns[i]).sqlType)
               ? BigInt(value!) < BigInt(previous![i]!) ? -1 : BigInt(value!) > BigInt(previous![i]!) ? 1 : 0
               : compareText(value!, previous![i]!));
             ensure(signs.find(sign => sign !== 0)! > 0, 'INVALID_CANDIDATE_SHAPE');
