@@ -1,5 +1,5 @@
 import { and, eq, gt, getTableColumns, is, sql, type InferSelectModel } from 'drizzle-orm';
-import { PgTransaction, type PgColumn, type PgDatabase, type PgTable } from 'drizzle-orm/pg-core';
+import { getTableConfig, PgTransaction, type PgColumn, type PgDatabase, type PgTable } from 'drizzle-orm/pg-core';
 import { identity } from '../../../core/bytes.js';
 import { databaseError, ensure, fail, SealError, unsupportedTransaction } from '../../../core/errors.js';
 import type { Sealer } from '../../../core/field-cipher.js';
@@ -21,6 +21,179 @@ type Identity<T extends PgTable, R extends string, S extends string | undefined>
 type Result<T extends PgTable, R extends string, S extends string | undefined, O> = O extends { returning: true }
   ? Opened<InferSelectModel<T>>[] : Identity<T, R, S>[];
 export interface OpenOptions { scope?: string; budgets?: { maxRows?: number; maxBytes?: number; deadlineMs?: number; concurrency?: number } | undefined }
+export interface PrepareRegistrationReceipt {
+  modelId: string; schemaVerified: true; parentRowsAtStart: number; visitedRows: number;
+  verifiedRows: number; parentRowsAtEnd: number; rebuiltFields: number;
+}
+export interface PrepareAllSearchReceipt {
+  registrations: readonly PrepareRegistrationReceipt[]; totalRows: number; totalFields: number;
+}
+type PreparePhase = 'beforeCatalog' | 'afterCatalog' | 'beforeBatch' | 'afterBatch' | 'beforeFinal' | 'afterRegistration' | 'beforeReceipt';
+interface PrepareTestHooks {
+  checkpoint?: (phase: PreparePhase, reg?: Registration) => void | Promise<void>;
+  skipVisitedRow?: (reg: Registration, ordinal: number) => boolean;
+}
+let prepareTestHooks: PrepareTestHooks | undefined;
+/** Internal fault injection for source tests; not exported from the adapter entry point. */
+export function setPrepareAllSearchTestHooks(hooks?: PrepareTestHooks): void { prepareTestHooks = hooks; }
+
+const quote = (name: string) => `"${name.replaceAll('"', '""')}"`;
+const resultRows = (value: unknown): Record<string, any>[] => {
+  const rows = Array.isArray(value) ? value : (value as { rows?: unknown })?.rows;
+  ensure(Array.isArray(rows), 'DATABASE_ERROR');
+  return rows as Record<string, any>[];
+};
+const schemaFailure = (): never => { throw new SealError('INVALID_SCHEMA', undefined, { detail: 'extraMigrationSql 적용 필요' }); };
+function exactNumber(value: unknown): number {
+  let integer: bigint;
+  try {
+    integer = typeof value === 'bigint' ? value : typeof value === 'string' && /^\d+$/.test(value) ? BigInt(value)
+      : typeof value === 'number' && Number.isSafeInteger(value) && value >= 0 ? BigInt(value) : schemaFailure();
+  } catch { return schemaFailure(); }
+  ensure(integer >= 0n && integer <= BigInt(Number.MAX_SAFE_INTEGER), 'LIMIT_EXCEEDED');
+  return Number(integer);
+}
+function safeAdd(left: number, right: number): number {
+  const next = left + right;
+  ensure(Number.isSafeInteger(next) && next >= 0, 'LIMIT_EXCEEDED');
+  return next;
+}
+async function checkpoint(signal: AbortSignal | undefined, phase: PreparePhase, reg?: Registration): Promise<void> {
+  if (signal?.aborted) fail('CANCELLED');
+  await prepareTestHooks?.checkpoint?.(phase, reg);
+  if (signal?.aborted) fail('CANCELLED');
+}
+
+async function parentCount(db: Db, reg: Registration): Promise<number> {
+  const rows = resultRows(await db.execute(sql`select count(*)::text as n from ${reg.parent}`));
+  ensure(rows.length === 1, 'INVALID_SCHEMA');
+  return exactNumber(rows[0].n);
+}
+
+async function strictDatabaseOrder(
+  db: Db, reg: Registration, pairs: { current: { row: string; scope: string }; previous: { row: string; scope: string } }[],
+): Promise<boolean> {
+  if (!pairs.length) return true;
+  const parent = getTableColumns(reg.parent) as Record<string, PgColumn>;
+  const storage = reg.storage.parent;
+  const parentName = sql.raw(`${quote(storage.schema)}.${quote(storage.name)}`);
+  const rowName = sql.raw(`p.${quote(parent[reg.row].name)}`);
+  const rowType = sql.raw(reg.definition.rowType);
+  let query;
+  if (reg.scope) {
+    const scopeName = sql.raw(`p.${quote(parent[reg.scope].name)}`);
+    const scopeType = sql.raw(reg.definition.scopeType);
+    const values = sql.join(pairs.map(({ current, previous }) => sql`(
+      ${current.scope}::${scopeType},${current.row}::${rowType},
+      ${previous.scope}::${scopeType},${previous.row}::${rowType})`), sql.raw(','));
+    query = sql`select count(*)::integer as n,
+      coalesce(bool_and((${scopeName},${rowName}) > (v.previous_scope,v.previous_row)),true) as ok
+      from ${parentName} p
+      join (values ${values}) as v(current_scope,current_row,previous_scope,previous_row)
+        on ${scopeName}=v.current_scope and ${rowName}=v.current_row`;
+  } else {
+    const values = sql.join(pairs.map(({ current, previous }) => sql`(
+      ${current.row}::${rowType},${previous.row}::${rowType})`), sql.raw(','));
+    query = sql`select count(*)::integer as n,
+      coalesce(bool_and(${rowName} > v.previous_row),true) as ok
+      from ${parentName} p
+      join (values ${values}) as v(current_row,previous_row) on ${rowName}=v.current_row`;
+  }
+  const rows = resultRows(await db.execute(query));
+  return rows.length === 1 && Number(rows[0].n) === pairs.length && rows[0].ok === true;
+}
+
+async function catalogPreflight(db: Db, reg: Registration): Promise<void> {
+  const storage = reg.storage.index ?? schemaFailure();
+  const attributes = resultRows(await db.execute(sql`
+    select a.attname as name, format_type(a.atttypid,a.atttypmod) as type,
+      a.attnotnull as not_null, a.attstattarget as statistics, a.attstorage as storage, a.attnum as position
+    from pg_catalog.pg_attribute a
+    join pg_catalog.pg_class c on c.oid=a.attrelid
+    join pg_catalog.pg_namespace n on n.oid=c.relnamespace
+    where n.nspname=${storage.schema} and c.relname=${storage.name}
+      and a.attnum>0 and not a.attisdropped order by a.attnum`));
+  const expectedColumns = Object.values(getTableColumns(reg.index)) as PgColumn[];
+  if (attributes.length !== expectedColumns.length) schemaFailure();
+  for (let i = 0; i < expectedColumns.length; i++) {
+    const actual = attributes[i], expected = expectedColumns[i];
+    if (actual.name !== expected.name || String(actual.type).replaceAll(' ', '') !== expected.getSQLType().replaceAll(' ', '') ||
+      actual.not_null !== expected.notNull || Number(actual.position) !== i + 1) schemaFailure();
+  }
+
+  const indexRows = resultRows(await db.execute(sql`
+    select i.relname as name, x.indisvalid as valid, x.indisready as ready,
+      x.indisunique as unique_index, x.indkey::text as keys
+    from pg_catalog.pg_index x
+    join pg_catalog.pg_class t on t.oid=x.indrelid
+    join pg_catalog.pg_namespace n on n.oid=t.relnamespace
+    join pg_catalog.pg_class i on i.oid=x.indexrelid
+    where n.nspname=${storage.schema} and t.relname=${storage.name}`));
+  const byIndex = new Map(indexRows.map(row => [row.name, row]));
+  for (const expected of getTableConfig(reg.index).indexes) {
+    const actual = byIndex.get(expected.config.name);
+    if (!actual || actual.valid !== true || actual.ready !== true || actual.unique_index !== !!expected.config.unique) schemaFailure();
+  }
+  const positions = new Map(attributes.map(row => [row.name, Number(row.position)]));
+  const expectedIdentityIndexes = [
+    [`${storage.name}_scope_row_uq`, [positions.get('scope_id'), positions.get('row_id')]],
+    ...(reg.rowUnique ? [[`${storage.name}_row_uq`, [positions.get('row_id')]]] as [string, (number | undefined)[]][] : []),
+  ] as [string, (number | undefined)[]][];
+  for (const [name, expectedKeys] of expectedIdentityIndexes) {
+    const actual = byIndex.get(name);
+    const keys = String(actual?.keys ?? '').trim().split(/\s+/).filter(Boolean).map(Number);
+    if (!actual || actual.unique_index !== true || expectedKeys.some(key => key === undefined) ||
+      keys.length !== expectedKeys.length || keys.some((key, i) => key !== expectedKeys[i])) schemaFailure();
+  }
+
+  const constraints = resultRows(await db.execute(sql`
+    select c.contype as type, c.convalidated as validated, c.confdeltype as delete_action,
+      pg_catalog.pg_get_constraintdef(c.oid) as definition
+    from pg_catalog.pg_constraint c
+    join pg_catalog.pg_class t on t.oid=c.conrelid
+    join pg_catalog.pg_namespace n on n.oid=t.relnamespace
+    where n.nspname=${storage.schema} and t.relname=${storage.name}`));
+  const foreign = constraints.find(row => row.type === 'f' && row.validated === true && row.delete_action === 'c');
+  if (constraints.some(row => row.validated !== true)) schemaFailure();
+  if (!foreign) schemaFailure();
+  const foreignDefinition = String(foreign!.definition).replace(/["\s]/g, '').toLowerCase();
+  const parentColumns = getTableColumns(reg.parent) as Record<string, PgColumn>;
+  const localKeys = reg.rowUnique ? 'foreignkey(row_id)' : 'foreignkey(scope_id,row_id)';
+  const referencedKeys = reg.rowUnique ? `(${parentColumns[reg.row].name})`
+    : `(${parentColumns[reg.scope!].name},${parentColumns[reg.row].name})`;
+  if (!foreignDefinition.includes(localKeys) || !foreignDefinition.includes(referencedKeys.toLowerCase())) schemaFailure();
+
+  const functions = resultRows(await db.execute(sql`
+    select p.proname as name, pg_catalog.oidvectortypes(p.proargtypes) as arguments,
+      pg_catalog.format_type(p.prorettype,null) as returns, l.lanname as language,
+      p.provolatile as volatility, p.proisstrict as strict, p.proparallel as parallel,
+      p.prosecdef as security_definer, p.procost as cost, p.proconfig as config
+    from pg_catalog.pg_proc p
+    join pg_catalog.pg_namespace n on n.oid=p.pronamespace
+    join pg_catalog.pg_language l on l.oid=p.prolang
+    where n.nspname=${reg.storage.parent.schema}
+      and p.proname in ('sealql_match_positions','sealql_find_positions','sealql_match_like')`));
+  const expectedFunctions = new Map<string, { arguments: string; returns: string; cost: number }>([
+    ['sealql_match_positions', { arguments: 'bytea[], integer[], integer, integer, bytea, bigint[], integer[], integer', returns: 'boolean', cost: 1900 }],
+    ['sealql_find_positions', { arguments: 'bytea[], integer[], integer, integer, bytea, bigint[], integer[], integer, integer', returns: 'integer', cost: 1900 }],
+    ['sealql_match_like', { arguments: 'bytea[], integer[], integer, bytea, bigint[], integer[]', returns: 'boolean', cost: 100 }],
+  ]);
+  if (functions.length !== expectedFunctions.size) schemaFailure();
+  for (const row of functions) {
+    const expected = expectedFunctions.get(row.name);
+    if (!expected || row.arguments !== expected.arguments || row.returns !== expected.returns || row.language !== 'plpgsql' ||
+      row.volatility !== 'i' || row.strict !== true || row.parallel !== 's' || row.security_definer !== false ||
+      Number(row.cost) !== expected.cost || !Array.isArray(row.config) || !row.config.includes('search_path=pg_catalog')) schemaFailure();
+  }
+
+  const byColumn = new Map(attributes.map(row => [row.name, row]));
+  for (const profile of Object.values(storage.profiles ?? {})) {
+    const token = byColumn.get(profile.tokens);
+    if (!token || token.storage !== 'm' || (profile.mode === 'substring' && Number(token.statistics) !== 1000)) schemaFailure();
+    if (profile.positions) for (const name of [profile.positions.stamps, profile.positions.offsets])
+      if (byColumn.get(name)?.storage !== 'm') schemaFailure();
+  }
+}
 
 function asRecord(value: unknown): Record<string, unknown> {
   ensure(value && typeof value === 'object' && !Array.isArray(value) && Object.getPrototypeOf(value) === Object.prototype, 'INVALID_VALUE');
@@ -158,7 +331,7 @@ async function upsertIndexes(tx: any, reg: Registration, rows: readonly Prepared
   }
 }
 
-export function runtimeMethods(sealerOf: () => Sealer) {
+export function runtimeMethods(sealerOf: () => Sealer, registrationsOf: () => Registration[] = () => []) {
   const cache: SearchTokenCache = { profiles: new Map() };
   async function openWithCache<R>(rows: R, options: OpenOptions = {}, authCache?: AuthCache): Promise<Opened<R>> {
     const budget = { maxRows: Infinity, maxBytes: Infinity, deadlineMs: Infinity, concurrency: 64, ...options.budgets };
@@ -300,24 +473,23 @@ export function runtimeMethods(sealerOf: () => Sealer) {
     });
   }
 
-  async function reindex<T extends PgTable, R extends string, S extends string | undefined = undefined>(
-    db: Db, seal: SealMeta<T, R, S> & object, options: { scope?: string; batch?: number } = {},
-  ): Promise<{ rows: number }> {
-    const reg = registrationOf(seal);
-    if (options.batch !== undefined) ensure(Number.isSafeInteger(options.batch) && options.batch >= 1, 'INVALID_VALUE');
-    const batch = options.batch ?? 1000;
-    ensure(!options.scope || !!reg.scope, 'INVALID_VALUE');
-    const scopeId = options.scope === undefined ? undefined : identity(options.scope, reg.definition.scopeType);
+  async function reindexRegistration(
+    db: Db, reg: Registration, batch: number, scopeId?: string,
+    control?: { signal?: AbortSignal; coverage?: boolean },
+  ): Promise<{ rows: number; fields: number }> {
     const parent = getTableColumns(reg.parent) as Record<string, PgColumn>;
     const index = getTableColumns(reg.index) as Record<string, PgColumn>;
     const profileList = [...reg.fields].flatMap(([key, field]) => profiles(reg.model, field.spec.id ?? key, field.spec).map(profile => ({ key, profile })));
     const tokenKeys = [...new Set(profileList.flatMap(({ profile }) => profileColumns(reg.storage.index?.profiles?.[profile.indexId] ?? fail('INVALID_SCHEMA'))))];
-    let lastRow: string | undefined, lastScope: string | undefined, count = 0;
+    const searchableFields = new Set(profileList.map(item => item.key)).size;
+    let lastRow: string | undefined, lastScope: string | undefined, count = 0, fieldCount = 0, encountered = 0;
+    const seen = new Set<string>();
     const sealer = sealerOf(), ring = sealer.ring(reg.model);
     while (true) {
+      if (control) await checkpoint(control.signal, 'beforeBatch', reg);
       let callbackEntered = false;
-      let page: { row: string; scope: string }[];
-      try { page = await checkedDb(db).transaction(async (tx: any) => {
+      let result: { page: { row: string; scope: string }[]; visited: { row: string; scope: string }[] };
+      try { result = await checkedDb(db).transaction(async (tx: any) => {
         callbackEntered = true;
         const rowOrder = parent[reg.row];
         const scopeOrder = reg.scope ? parent[reg.scope] : undefined;
@@ -328,9 +500,13 @@ export function runtimeMethods(sealerOf: () => Sealer) {
           scopeId !== undefined ? eq(parent[reg.scope!], scopeId) : undefined, after,
         )).orderBy(...(scopeOrder && scopeId === undefined ? [scopeOrder] : []), rowOrder).limit(batch).for('update');
         const opened = await open(rows) as Record<string, unknown>[];
+        const visited: { row: string; scope: string }[] = [];
         for (const row of opened) {
           const rowId = identity(row[reg.row] as string, reg.definition.rowType);
           const rowScope = reg.scope ? identity(row[reg.scope] as string, reg.definition.scopeType) : '_';
+          const ordinal = encountered++;
+          if (control?.coverage && prepareTestHooks?.skipVisitedRow?.(reg, ordinal)) continue;
+          visited.push({ row: rowId, scope: rowScope });
           const values: Record<string, unknown> = { scopeId: rowScope, rowId };
           for (const { key, profile } of profileList) {
             const value = row[key];
@@ -347,17 +523,75 @@ export function runtimeMethods(sealerOf: () => Sealer) {
             set: Object.fromEntries(tokenKeys.map(key => [key, values[key]])) });
           else await query.onConflictDoNothing({ target: [index.scopeId, index.rowId] });
         }
-        return opened.map(row => ({ row: row[reg.row] as string, scope: reg.scope ? row[reg.scope] as string : '_' }));
+        return {
+          page: opened.map(row => ({ row: row[reg.row] as string, scope: reg.scope ? row[reg.scope] as string : '_' })),
+          visited,
+        };
       }); } catch (error) {
         if (!callbackEntered && unsupportedTransaction(error)) fail('UNSUPPORTED_DRIVER');
         throw error;
       }
-      if (!page.length) break;
-      count += page.length;
-      lastRow = page.at(-1)!.row; lastScope = page.at(-1)!.scope;
-      if (page.length < batch) break;
+      if (control) await checkpoint(control.signal, 'afterBatch', reg);
+      if (!result.page.length) break;
+      let previous = lastRow === undefined ? undefined : { row: lastRow, scope: lastScope! };
+      const orderPairs: { current: { row: string; scope: string }; previous: { row: string; scope: string } }[] = [];
+      for (const current of result.visited) {
+        const key = `${current.scope}\0${current.row}`;
+        if (seen.has(key)) fail('REBUILD_INCOMPLETE');
+        seen.add(key);
+        if (control?.coverage && previous) orderPairs.push({ current, previous });
+        previous = current;
+        count = safeAdd(count, 1);
+        fieldCount = safeAdd(fieldCount, searchableFields);
+      }
+      if (control?.coverage && !await strictDatabaseOrder(db, reg, orderPairs)) fail('REBUILD_INCOMPLETE');
+      lastRow = result.page.at(-1)!.row; lastScope = result.page.at(-1)!.scope;
+      if (result.page.length < batch) break;
     }
-    return { rows: count };
+    return { rows: count, fields: fieldCount };
   }
-  return { insert, update, upsert, open, openRaw, reindex, ...searchMethods(sealerOf, openWithCache, cache) };
+
+  async function reindex<T extends PgTable, R extends string, S extends string | undefined = undefined>(
+    db: Db, seal: SealMeta<T, R, S> & object, options: { scope?: string; batch?: number } = {},
+  ): Promise<{ rows: number }> {
+    const reg = registrationOf(seal);
+    if (options.batch !== undefined) ensure(Number.isSafeInteger(options.batch) && options.batch >= 1, 'INVALID_VALUE');
+    const batch = options.batch ?? 1000;
+    ensure(!options.scope || !!reg.scope, 'INVALID_VALUE');
+    const scopeId = options.scope === undefined ? undefined : identity(options.scope, reg.definition.scopeType);
+    return { rows: (await reindexRegistration(db, reg, batch, scopeId)).rows };
+  }
+
+  async function prepareAllSearch<D extends Db>(
+    db: D extends PgTransaction<any, any, any> ? never : D,
+    options: { batchSize?: number; signal?: AbortSignal } = {},
+  ): Promise<PrepareAllSearchReceipt> {
+    const snapshot = [...registrationsOf()];
+    ensure(snapshot.length > 0, 'INVALID_SCHEMA');
+    if (options.batchSize !== undefined) ensure(Number.isSafeInteger(options.batchSize) && options.batchSize >= 1, 'INVALID_VALUE');
+    const batch = options.batchSize ?? 1000;
+    if (is(db, PgTransaction)) fail('INVALID_TRANSACTION_CONTEXT');
+    await checkpoint(options.signal, 'beforeCatalog');
+    for (const reg of snapshot) {
+      await catalogPreflight(db, reg);
+      await checkpoint(options.signal, 'afterCatalog', reg);
+    }
+    const receipts: PrepareRegistrationReceipt[] = [];
+    let totalRows = 0, totalFields = 0;
+    for (const reg of snapshot) {
+      const parentRowsAtStart = await parentCount(db, reg);
+      const rebuilt = await reindexRegistration(db, reg, batch, undefined, { signal: options.signal, coverage: true });
+      await checkpoint(options.signal, 'beforeFinal', reg);
+      const parentRowsAtEnd = await parentCount(db, reg);
+      if (parentRowsAtStart !== parentRowsAtEnd || rebuilt.rows !== parentRowsAtStart) fail('REBUILD_INCOMPLETE');
+      receipts.push({ modelId: reg.model, schemaVerified: true, parentRowsAtStart,
+        visitedRows: rebuilt.rows, verifiedRows: rebuilt.rows, parentRowsAtEnd, rebuiltFields: rebuilt.fields });
+      totalRows = safeAdd(totalRows, rebuilt.rows);
+      totalFields = safeAdd(totalFields, rebuilt.fields);
+      await checkpoint(options.signal, 'afterRegistration', reg);
+    }
+    await checkpoint(options.signal, 'beforeReceipt');
+    return { registrations: receipts, totalRows, totalFields };
+  }
+  return { insert, update, upsert, open, openRaw, reindex, prepareAllSearch, ...searchMethods(sealerOf, openWithCache, cache) };
 }

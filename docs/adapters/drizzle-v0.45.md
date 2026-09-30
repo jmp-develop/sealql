@@ -124,6 +124,16 @@ The [managed-write example](../../examples/drizzle/v0.45/managed-writes.ts) cont
 
 When to run it: only when existing rows need new search data, for example after enabling or changing search options on an encrypted field or adding a searchable encrypted field to a table that already has rows. New tables and rows written through managed writes need no reindex. Run it where you run migrations (a deployment or maintenance script with a transactional driver), after the migration and `extraMigrationSql`, and before deploying code that searches with the new options. Omit `scope` to rebuild the whole table; `scope` exists only to rebuild one scope of a scoped model. If it stops midway, run it again; it is safe to repeat.
 
+For a deployment profile change, prefer the all-model gate after applying the migration and every `extraMigrationSql` statement:
+
+```ts
+const receipt = await sealed.prepareAllSearch(db, { batchSize: 1_000, signal });
+```
+
+`prepareAllSearch` snapshots every model already registered on that `createSealed` instance, rejects a transaction handle, and performs a read-only catalog preflight. It requires the companion columns, validated foreign key/check constraints, valid and ready indexes, installed predicate functions with their expected signatures and attributes, statistics target, and `MAIN` storage settings; it never runs DDL. A mismatch raises `INVALID_SCHEMA` with an `extraMigrationSql` hint. It then reuses the authenticated full-table reindex path and requires the parent count at start and end, unique rows visited in database identity order, and verified rows to agree. A skipped row or concurrent count change raises `REBUILD_INCOMPLETE`.
+
+The receipt contains exact safe `number` counts per model (`parentRowsAtStart`, `visitedRows`, `verifiedRows`, `parentRowsAtEnd`, and `rebuiltFields`) plus `totalRows` and `totalFields`; overflow raises `LIMIT_EXCEEDED`. Cancellation raises `CANCELLED` at checkpoints, leaves already committed batches in place, and produces no receipt. Drain old application reads and writes before the migration, run `extraMigrationSql`, await this gate, and deploy new searches only after success. There is no persisted completion marker or online-transition guarantee, so a failed run must be restarted from the beginning. Registrations created during a run belong to the next run.
+
 Empty and one-character searchable values retain exact/positional proofs even when no substring candidate tokens exist.
 
 A top-level commit failure after the helper callback finishes raises `WRITE_OUTCOME_UNKNOWN`; reconcile the row before retrying.
@@ -240,6 +250,7 @@ Catch `SealError` and branch on stable `error.code`, not message text. Database 
 |---|---|
 | `SEAL_REQUIRED` | Route encrypted writes through managed helpers; do not serialize unopened values. |
 | `INVALID_VALUE`, `INVALID_SCHEMA`, `INVALID_QUERY`, `INVALID_ID` | Reject caller/configuration input and fix the schema or query. |
+| `INVALID_TRANSACTION_CONTEXT`, `REBUILD_INCOMPLETE` | Run `prepareAllSearch` on a top-level deployment database after quiescing traffic; apply the missing migration SQL or rerun the full gate. |
 | `NOT_FOUND`, `SCOPE_CONFLICT`, `SCOPE_MISMATCH`, `ROW_CONTEXT_MISSING` | Reconcile identity, authorization, or selected row/scope context. |
 | `LIMIT_EXCEEDED`, `CANCELLED`, `DB_TIMEOUT` | Apply the application's timeout/budget response; do not return an uncertain count. |
 | `QUERY_TOO_BROAD`, `UNSUPPORTED_SEARCH` | Require a supported profile and at least two usable normalized substring characters. |

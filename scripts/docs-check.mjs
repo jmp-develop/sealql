@@ -25,7 +25,7 @@ for (const surface of adapterSurfaces) {
   }
   const examples = bodies.join('\n');
   for (const name of ['createSealed', 'register', 'extraMigrationSql', 'insert', 'update', 'upsert', 'delete',
-    'reindex', 'where', 'findMany', 'count', 'nextCursor', 'openRaw', 'SealError']) {
+    'reindex', 'prepareAllSearch', 'where', 'findMany', 'count', 'nextCursor', 'openRaw', 'SealError']) {
     if (!examples.includes(name)) throw Error(`Adapter examples missing ${name}: ${surface.id}`);
   }
   if (!adapterGuide.includes(surface.examples)) throw Error(`Adapter guide does not link examples: ${surface.id}`);
@@ -65,7 +65,7 @@ for (const name of plans) if (!planIndex.includes(`(${name})`)) throw Error(`Pla
 if (!entry.includes('docs/llm-integration.md') || !entry.includes('docs/core-concepts.md')) throw Error('AI entry missing');
 if (!readme.includes('docs/llm-integration.md') || !readme.includes('docs/current-state.md')) throw Error('Human entry missing');
 const publicDocs = [guide, core, ...adapterSurfaces.map(surface => readFileSync(surface.docs, 'utf8'))].join('\n');
-for (const name of ['createSealer', 'createSealed', 'register', 'where', 'findMany', 'count', 'openRaw', 'reindex']) {
+for (const name of ['createSealer', 'createSealed', 'register', 'where', 'findMany', 'count', 'openRaw', 'reindex', 'prepareAllSearch']) {
   if (!publicDocs.includes(name)) throw Error(`Public guide API drift: ${name}`);
 }
 for (const path of ['examples', 'llms.txt', 'docs/llm-integration.md', 'docs/core-concepts.md',

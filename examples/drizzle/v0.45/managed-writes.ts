@@ -19,3 +19,7 @@ export const deleteCustomer = (db: PgDatabase<any, any, any>, tenantId: string, 
 
 export const reindexCustomers = (db: PgDatabase<any, any, any>, tenantId?: string) =>
   sealed.reindex(db, customerSeal, { ...(tenantId ? { scope: tenantId } : {}), batch: 1_000 });
+
+// Run after migrations and every extraMigrationSql statement, with old traffic drained.
+export const prepareSearchDeployment = (db: PgDatabase<any, any, any>, signal?: AbortSignal) =>
+  sealed.prepareAllSearch(db, { batchSize: 1_000, signal });

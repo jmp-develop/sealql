@@ -92,6 +92,11 @@ const globalWhere: Promise<SQL> = sealed.where(globalRowsSeal, { match: m => m.n
 const runtimeScopedWhere: Promise<SQL> = sealed.where(customersSeal, { match: m => m.name.contains('Ad') });
 const runtimeGlobalWhere: Promise<SQL> = sealed.where(globalRowsSeal, { scope: 'x', match: m => m.name.eq('Ada') });
 void [scopedWhere, globalWhere, runtimeScopedWhere, runtimeGlobalWhere];
+sealed.prepareAllSearch(db, { batchSize: 1000 });
+db.transaction(async tx => {
+  // @ts-expect-error prepareAllSearch requires a top-level database, not a transaction
+  await sealed.prepareAllSearch(tx);
+});
 sealed.findMany(db, customersSeal, { scope: 'x', match: m => {
   // @ts-expect-error ordinary plaintext column is not a sealed search field
   m.status.eq('a');
