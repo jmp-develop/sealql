@@ -1,14 +1,14 @@
 # SealQL
 
-Start with `docs/llm-integration.md`. It routes readers to the ORM-neutral contract, the selected adapter, and compilable examples without duplicating their API details.
+Everything an application developer or AI needs is in `examples/`: concepts and rules first, then one folder per adapter with a guide and compilable code.
 
 ## Reading order
 
-1. `docs/core-concepts.md` — keys, field/search choices, leakage, scopes, budgets, and rebuild invariants.
+1. `examples/README.md` — keys, field/search choices, leakage, scopes, budgets, and rebuild order.
 2. Choose a supported adapter:
-   - Drizzle ORM 0.45: `docs/adapters/drizzle-v0.45.md`, export `sealql/drizzle/v0.45`, examples under `examples/drizzle/v0.45/`.
+   - Drizzle ORM 0.45: `examples/drizzle/v0.45/README.md` (guide) and the code next to it; export `sealql/drizzle/v0.45`.
 3. For core-only field encryption, use export `sealql` and `examples/core/sealer.ts`. Database search lifecycle is adapter-owned.
-4. Check `docs/current-state.md` for implemented internals and `docs/threat-model.md` for the security boundary.
+4. For implemented internals and the security boundary, see the repository docs: https://github.com/jmp-develop/sealql/blob/main/docs/current-state.md and https://github.com/jmp-develop/sealql/blob/main/docs/threat-model.md.
 
 ## Non-negotiable constraints
 

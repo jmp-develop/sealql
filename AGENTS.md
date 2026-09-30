@@ -4,7 +4,7 @@
 
 ## 1. 작업 규칙
 
-1. 먼저 [`docs/current-state.md`](docs/current-state.md)를 읽는다. 설계를 바꾸거나 새 실험·최적화·보안 완화를 제안하기 전에는 [`docs/experiments.md`](docs/experiments.md)(이미 해 본 것과 실패 이유)를 먼저 읽고, [`docs/decisions/`](docs/decisions/README.md)의 관련 결정과 [`docs/threat-model.md`](docs/threat-model.md)를 읽는다. 실험이 끝나면 `docs/experiments.md`에 한 줄을 추가한다. 공개 API는 [`docs/llm-integration.md`](docs/llm-integration.md)에서 시작해 [`docs/core-concepts.md`](docs/core-concepts.md), 해당 [`docs/adapters/`](docs/adapters/drizzle-v0.45.md), `examples/`를 따르고, 계획 규칙은 [`plan/README.md`](plan/README.md), 검증 절차는 [`docs/verification.md`](docs/verification.md), 측정 규칙은 [`docs/measurement.md`](docs/measurement.md)를 따른다.
+1. 먼저 [`docs/current-state.md`](docs/current-state.md)를 읽는다. 설계를 바꾸거나 새 실험·최적화·보안 완화를 제안하기 전에는 [`docs/experiments.md`](docs/experiments.md)(이미 해 본 것과 실패 이유)를 먼저 읽고, [`docs/decisions/`](docs/decisions/README.md)의 관련 결정과 [`docs/threat-model.md`](docs/threat-model.md)를 읽는다. 실험이 끝나면 `docs/experiments.md`에 한 줄을 추가한다. 공개 API는 [`examples/README.md`](llms.txt)에서 시작해 [`examples/README.md`](examples/README.md), 해당 [`docs/adapters/`](examples/drizzle/v0.45/README.md), `examples/`를 따르고, 계획 규칙은 [`plan/README.md`](plan/README.md), 검증 절차는 [`docs/verification.md`](docs/verification.md), 측정 규칙은 [`docs/measurement.md`](docs/measurement.md)를 따른다.
 2. 현재 제품의 검색 방식은 `standard`(HMAC 후보 토큰 + GIN/B-tree + DB 도장 판정, 선택 칸 인증 복호화)뿐이다([decisions/015](docs/decisions/015-database-search-proofs.md)). stateful, V2 posting page, bucket은 기각된 연구다([decisions/011](docs/decisions/011-rejected-research-lines.md)). 실험 결과를 제품 기능·보안 인증·운영 성능으로 표현하지 않는다.
 3. 코드의 실제 동작을 확인한 뒤 변경한다. 저장 구조나 검색 방식을 바꾸면 관리형 쓰기, 부분 수정·삭제, 동시성, 검색 누락, 누출 경계를 함께 확인한다.
 4. 실측은 평문·현재 제품·후보를 같은 데이터와 질의로 비교한다. SQL 요청~응답, 전체 시간, 후보·반환 행 수, 인증 복호화 필드 수를 나눈다. 예열 2회, 교차 7회 중앙값. 측정하지 않은 값은 "추정"이라고 적는다.
@@ -12,7 +12,7 @@
    - 기동: `pg_ctl -D .local/pg-test -o "-h 127.0.0.1 -p 56439" -l .local/pg-test.log start -w -t 60` (PostgreSQL 18의 `pg_ctl`)
 6. 작업과 관련된 검증(`build`, `check`, `test`, `docs:check`)만 실행하고 결과와 남은 한계를 기록한다.
 7. Git 상태와 다른 작업자의 변경을 보존한다. **커밋은 `git commit -- <자기 경로>`로 자기 파일만** 한다. 다른 사람이 스테이징한 파일이 섞이지 않게 한다.
-8. 제품 상태가 바뀌면 `docs/current-state.md`를, 공개 API나 사용법이 바뀌면 `README.md`, `llms.txt`, `docs/llm-integration.md`, `examples/`를 함께 갱신한다. 계획이 끝나면 `docs/decisions/`에 요약하고 `plan/`에서 지운다. 결정을 바꾸면 기존 기록을 덮어쓰지 않고 새 결정 기록을 추가한다.
+8. 제품 상태가 바뀌면 `docs/current-state.md`를, 공개 API나 사용법이 바뀌면 `README.md`, `llms.txt`, `examples/`(사용 문서와 예시), `examples/`를 함께 갱신한다. 계획이 끝나면 `docs/decisions/`에 요약하고 `plan/`에서 지운다. 결정을 바꾸면 기존 기록을 덮어쓰지 않고 새 결정 기록을 추가한다.
 9. 보안·누출에 관한 결정은 기획 중과 완료 후에 [`docs/attack-simulation.md`](docs/attack-simulation.md)의 **기계적 공격 시뮬레이션**으로 검증한다. AI의 자유 해석("뚫어 보라")을 검증으로 쓰지 않는다.
 10. 특정 사용처(서비스, 회사, 업종)의 이름이나 경로, 로컬 경로, 사용자명, 하드웨어 사양을 저장소에 적지 않는다. 실제 서비스 DB는 "운영 DB"라고만 쓴다.
 

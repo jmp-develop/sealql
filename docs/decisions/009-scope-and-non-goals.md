@@ -25,7 +25,7 @@
 
 다음 두 한계는 옛 API 기준이었고 [013](013-drizzle-native-api-implemented.md)의 네이티브 API로 해결됐다.
 
-- **일반 칸과 암호 칸 사이의 OR**은 이제 `m.sql(cond)`로 표현한다. AND로만 쓰이면 WHERE로 내려가고, OR 안에 있으면 후보 SQL에 OR로 넣은 뒤 재확인 플래그로 검증한다 ([V1 재현](../../bench/results/2026-09-27-core-verification/v1/report-ko.md)의 옛 한계, [docs/llm-integration.md](../llm-integration.md) 검색 절).
+- **일반 칸과 암호 칸 사이의 OR**은 이제 `m.sql(cond)`로 표현한다. AND로만 쓰이면 WHERE로 내려가고, OR 안에 있으면 후보 SQL에 OR로 넣은 뒤 재확인 플래그로 검증한다 ([V1 재현](../../bench/results/2026-09-27-core-verification/v1/report-ko.md)의 옛 한계, [docs/llm-integration.md](../../llms.txt) 검색 절).
 - 옛 `searchWithQuery`(queryId, parameters)는 `sealed.search`(Drizzle 콜백 또는 raw SQL 콜백)로 대체됐다.
 
 ## 대체 관계

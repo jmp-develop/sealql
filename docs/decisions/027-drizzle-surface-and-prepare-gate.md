@@ -22,4 +22,4 @@
 
 ## 대체 관계
 
-- 대체하는 것: 없음. 운영 순서(마이그레이션 → `extraMigrationSql` → 관문 → 배포)는 [core-concepts](../core-concepts.md)에 있다.
+- 대체하는 것: 없음. 운영 순서(마이그레이션 → `extraMigrationSql` → 관문 → 배포)는 [core-concepts](../../examples/README.md)에 있다.

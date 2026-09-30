@@ -62,4 +62,4 @@ rtk npm run test:install
 
 결과는 `bench/results/<날짜>-<주제>/`에 한국어 보고서와 기계 판독 가능한 원본으로 둔다. 보고서에는 조건, 소스 파일, 명령, 표, 기각안, 제한, 재현 시드를 포함한다. 결정이 확정되면 새 [결정 기록](decisions/README.md)에 선택과 근거를 남기고 완료한 계획 파일을 제거한다. 기존 결정 기록은 덮어쓰지 않는다.
 
-제품 상태가 바뀌면 [current-state](current-state.md), 공개 API나 사용법이 바뀌면 `README.md`, `llms.txt`, [integration guide](llm-integration.md), `examples/`를 함께 검토한다. 문서에 과거 구현을 현재 동작처럼 남기지 않고, 역사와 대체 관계는 결정 기록에만 둔다.
+제품 상태가 바뀌면 [current-state](current-state.md), 공개 API나 사용법이 바뀌면 `README.md`, `llms.txt`, [integration guide](../llms.txt), `examples/`를 함께 검토한다. 문서에 과거 구현을 현재 동작처럼 남기지 않고, 역사와 대체 관계는 결정 기록에만 둔다.

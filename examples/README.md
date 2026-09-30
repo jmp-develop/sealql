@@ -1,12 +1,17 @@
-# SealQL core concepts
+# SealQL usage guide and examples
 
-These rules apply independently of an ORM. Read the selected [adapter guide](llm-integration.md#supported-adapters) for database-specific APIs and commands.
+This folder is the usage reference for applications and AI assistants. Read this page first; it holds the rules that apply to every ORM. Then open the guide for your adapter.
+
+| Folder | Contents |
+|---|---|
+| [`core/`](core/sealer.ts) | Field encryption with the `sealql` core only (no database search) |
+| [`drizzle/v0.45/`](drizzle/v0.45/README.md) | Drizzle ORM 0.45 adapter guide and compilable examples |
 
 ## Core boundary
 
-The root `sealql` export provides `createSealer`/`Sealer`, ciphertext envelope validation, field codecs and types, text normalization, search-profile and candidate-token primitives, and `SealError`. A `Sealer` authenticates and encrypts or opens one field in an explicit model, field, scope, and row context. See the compilable [core sealer example](../examples/core/sealer.ts).
+The root `sealql` export provides `createSealer`/`Sealer`, ciphertext envelope validation, field codecs and types, text normalization, search-profile and candidate-token primitives, and `SealError`. A `Sealer` authenticates and encrypts or opens one field in an explicit model, field, scope, and row context. See the compilable [core sealer example](core/sealer.ts).
 
-The root export does not own tables, transactions, companion rows, database proofs, migrations, or query execution. Candidate tokens alone are not a complete searchable database integration; a versioned adapter must maintain storage and execute proof predicates. The [Drizzle ORM 0.45 adapter](adapters/drizzle-v0.45.md) is currently the only such adapter.
+The root export does not own tables, transactions, companion rows, database proofs, migrations, or query execution. Candidate tokens alone are not a complete searchable database integration; a versioned adapter must maintain storage and execute proof predicates. The [Drizzle ORM 0.45 adapter](drizzle/v0.45/README.md) is currently the only such adapter.
 
 ## Keys, identity, and authorization
 
@@ -19,7 +24,7 @@ The root export does not own tables, transactions, companion rows, database proo
 - Scope is optional. Use it only when rows belong to separate tenants or groups that must never be searched together; ordinary tables omit it.
 - A scope-free model uses the constant scope `_`. Adding a real scope later changes the cipher and token context, so every row must be re-encrypted and reindexed.
 
-SealQL automatically maps each row identity to one of 256 deterministic field-key shards; there is no public shard selector or per-shard accounting setting. Without external per-shard accounting, a high-write application must conservatively keep aggregate writes for each model/field/key scope within the per-shard AES-GCM usage limit documented in the [threat model](threat-model.md#5-운영-필수-조치-라이브러리-밖).
+SealQL automatically maps each row identity to one of 256 deterministic field-key shards; there is no public shard selector or per-shard accounting setting. Without external per-shard accounting, a high-write application must conservatively keep aggregate writes for each model/field/key scope within the per-shard AES-GCM usage limit documented in the [threat model](https://github.com/jmp-develop/sealql/blob/main/docs/threat-model.md#5-운영-필수-조치-라이브러리-밖).
 
 ## Standard search
 
@@ -37,18 +42,18 @@ Start with no search profile. Add only the operation the product actually needs.
 
 | Field/use | Choice | Reason and required review |
 |---|---|---|
-| Fixed format and small alphabet: phone, bank account, resident-registration-like values | Warning: substring search is not recommended; prefer exact only. Enable substring only when the product truly needs partial lookup and accepts the risk below. | Known plaintext or chosen insertions can teach an attacker to assemble unseen values. In the measured fixture, phone substring profiles allowed about 99.8% whole-value recovery under specified T3 conditions; follow the [canonical measurements](threat-model.md#3-누출-매트릭스), not a generic safety claim. |
+| Fixed format and small alphabet: phone, bank account, resident-registration-like values | Warning: substring search is not recommended; prefer exact only. Enable substring only when the product truly needs partial lookup and accepts the risk below. | Known plaintext or chosen insertions can teach an attacker to assemble unseen values. In the measured fixture, phone substring profiles allowed about 99.8% whole-value recovery under specified T3 conditions; follow the [canonical measurements](https://github.com/jmp-develop/sealql/blob/main/docs/threat-model.md#3-누출-매트릭스), not a generic safety claim. |
 | Low-cardinality state or short choice | Prefer no encrypted search; if equality lookup is necessary, use exact only. | Exact search exposes equality and frequency. Coarser exact candidates do not remove that leakage. |
-| Name, memo, or address | Substring search is available; enable it where partial lookup is needed. | Review whether originals are public or inferable, whether an attacker can insert chosen values in the same scope, and whether value reconstruction is acceptable. The [T3 model](threat-model.md#2-공격자-유형) explicitly includes known plaintext and public distributions. |
+| Name, memo, or address | Substring search is available; enable it where partial lookup is needed. | Review whether originals are public or inferable, whether an attacker can insert chosen values in the same scope, and whether value reconstruction is acceptable. The [T3 model](https://github.com/jmp-develop/sealql/blob/main/docs/threat-model.md#2-공격자-유형) explicitly includes known plaintext and public distributions. |
 | Numeric/date value needing range, order, or aggregate | Do not use an encrypted SealQL query for that operation. | These operations are unsupported; do not weaken encryption or invent approximate public results to simulate them. |
 
-Do not recommend dummy values, token-bit reduction, padding, or a different rejected storage line as a security improvement. Their measured failures and limits are indexed in [experiments](experiments.md#3-누출-완화-모두-기각-025).
+Do not recommend dummy values, token-bit reduction, padding, or a different rejected storage line as a security improvement. Their measured failures and limits are indexed in [experiments](https://github.com/jmp-develop/sealql/blob/main/docs/experiments.md#3-누출-완화-모두-기각-025).
 
 ## Leakage and trust boundary
 
 With keys outside the database, ciphertext is not directly decrypted by a snapshot attacker. The database still observes deterministic token equality, frequency and co-occurrence, ciphertext and normalized lengths, compact position permutations, query/update patterns, result volume, and the value or piece keys sent by observed queries. Observed piece keys reveal occurrences and positions for that piece.
 
-Returned ciphertext authentication detects selected ciphertext movement or alteration; it does not prove that SQL predicates ran correctly or that the database returned every row. A hostile database can omit results or falsify predicates, including count. Resistance to keyless full-record recovery is not established. Disable bind-parameter logging in the database, driver, proxy, APM, and error paths. Use the [threat model](threat-model.md), not local fixture results, for allowed security wording.
+Returned ciphertext authentication detects selected ciphertext movement or alteration; it does not prove that SQL predicates ran correctly or that the database returned every row. A hostile database can omit results or falsify predicates, including count. Resistance to keyless full-record recovery is not established. Disable bind-parameter logging in the database, driver, proxy, APM, and error paths. Use the [threat model](https://github.com/jmp-develop/sealql/blob/main/docs/threat-model.md), not local fixture results, for allowed security wording.
 
 ## Exact count and caller budgets
 
@@ -58,7 +63,7 @@ List search has no default byte, time, result, or total-work ceiling. Current li
 
 Set budgets in this order:
 
-1. Measure plaintext, current product, and any candidate with the same data and queries using the repository [measurement rules](measurement.md).
+1. Measure plaintext, current product, and any candidate with the same data and queries using the repository [measurement rules](https://github.com/jmp-develop/sealql/blob/main/docs/measurement.md).
 2. Record SQL request-to-response time, total time, candidates, returned rows, projected encrypted fields, fetched bytes, decrypted bytes, and serialized response bytes.
 3. Choose the application's maximum response size and memory/time envelope from those measurements. Treat any numeric configuration shown in an example as an example, not a library recommendation.
 4. Set list budgets and a database statement timeout below the application's outer request deadline, then test the budget-exhausted path.

@@ -1,7 +1,7 @@
 export const adapterSurfaces = [{
   id: 'drizzle-v0.45',
   packageExport: './drizzle/v0.45',
-  docs: 'docs/adapters/drizzle-v0.45.md',
+  docs: 'examples/drizzle/v0.45/README.md',
   examples: 'examples/drizzle/v0.45',
   files: [
     'schema.ts',

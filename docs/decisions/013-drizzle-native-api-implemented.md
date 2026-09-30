@@ -1,7 +1,7 @@
 # 013. Drizzle 네이티브 API 구현 완료
 
 - 상태: 구현 완료 (2026-09-27). 이전 계획 문서(§10 실행 가능성 점검 포함)를 이 기록으로 요약하고 `plan/`에서 지운다.
-- 코드: [`src/adapters/drizzle/v0.45/`](../../src/adapters/drizzle/v0.45/). 사용법: [`docs/llm-integration.md`](../llm-integration.md), [`examples/`](../../examples/).
+- 코드: [`src/adapters/drizzle/v0.45/`](../../src/adapters/drizzle/v0.45). 사용법: [`examples/README.md`](../../llms.txt), [`examples/`](../../examples).
 
 ## 결정
 
@@ -16,7 +16,7 @@
 5. **관리형 쓰기 입력은 `undefined` 속성을 생략된 것으로 취급한다**(Drizzle과 동일한 동작).
 6. **Text 행 ID(`sealed.textId`)는 평범한 `text` 칸으로 선언한다.** 정렬·keyset은 DB 칸의 collation을 그대로 따르고, SQL에는 `COLLATE`를 붙이지 않는다. 비교·정렬 SQL에 `COLLATE "C"`를 붙이는 초기 접근은 색인 미사용(Seq Scan/전체 Sort, 아래 근거)이 확인되어 되돌렸다. JS 쪽 "위치 엄격 증가" 검사는 uuid·integer 위치에 그대로 적용하고, text 위치는 "호출 안에서 위치 반복 없음" 검사로 바꿨다(DB collation을 JS가 재현할 수 없으므로).
 7. **`sealed.search`의 커서 위치 순서 = match에 사용자가 적은 키의 순서**(그 다음 keyset 칸). 이전 계획 초안은 "키 이름순"을 정했으나, 이는 JOIN 결과 전체를 정렬시켰다(아래 근거). 사용자는 주 테이블(행이 늘어나는 쪽/페이지 기준 테이블)을 먼저 적어야 한다.
-8. **한 `search` 호출에서 scope 있는 테이블과 scope 없는(고정 `_`) 테이블을 섞어 매칭하는 것은 지원하지 않는다**(문서화, `docs/llm-integration.md`).
+8. **한 `search` 호출에서 scope 있는 테이블과 scope 없는(고정 `_`) 테이블을 섞어 매칭하는 것은 지원하지 않는다**(문서화, `examples/README.md`).
 
 ## 근거
 

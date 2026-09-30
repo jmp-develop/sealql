@@ -2,7 +2,7 @@
 
 SealQL's only product search design is `standard`: application-side HMAC candidate tokens narrow rows through PostgreSQL GIN/B-tree indexes, and per-row salted exact or occurrence proofs let PostgreSQL finish each predicate. An encrypted-only `count` reads the companion table, returns one exact scalar, and decrypts no fields. List queries return only final matches, then authenticate and decrypt only projected encrypted fields. Field ciphertext uses AES-256-GCM bound to the model, field, scope, and row.
 
-The product exposes `sealql` and `sealql/drizzle/v0.45`. The [integration entry](llm-integration.md) separates ORM-neutral [core concepts](core-concepts.md) from the [Drizzle ORM 0.45 guide](adapters/drizzle-v0.45.md); the compilable [injected integration flow](../examples/drizzle/v0.45/app.ts), its repository [runner](../scripts/run-drizzle-v0.45-example.ts), and adjacent examples cover schema, managed writes, reads, search, raw SQL, and key loading.
+The product exposes `sealql` and `sealql/drizzle/v0.45`. The [integration entry](../llms.txt) separates ORM-neutral [core concepts](../examples/README.md) from the [Drizzle ORM 0.45 guide](../examples/drizzle/v0.45/README.md); the compilable [injected integration flow](../examples/drizzle/v0.45/app.ts), its repository [runner](../scripts/run-drizzle-v0.45-example.ts), and adjacent examples cover schema, managed writes, reads, search, raw SQL, and key loading.
 
 ## Storage and execution
 
@@ -39,7 +39,7 @@ For a new schema or any searchable-profile change, complete these steps in order
 3. With old traffic drained, complete `sealed.prepareAllSearch(...)` on a top-level database; it reindexes all registered models and rejects incomplete parent coverage.
 4. Deploy queries that use the new profile.
 
-Do not query a partially rebuilt companion: SealQL has no persisted profile-version or rebuild-completion marker, so incomplete work can silently omit rows. Profile changes that alter the token descriptor require the full sequence. A change limited to installed predicate functions requires `extraMigrationSql` again but no data rewrite; a SQL-only candidate-plan change such as decision 024 needs neither migration nor reindex. The [Drizzle ORM 0.45 guide](adapters/drizzle-v0.45.md#migrate-and-rebuild) gives the operational commands, while [core concepts](core-concepts.md#rebuild-invariant) owns the adapter-independent deployment invariant.
+Do not query a partially rebuilt companion: SealQL has no persisted profile-version or rebuild-completion marker, so incomplete work can silently omit rows. Profile changes that alter the token descriptor require the full sequence. A change limited to installed predicate functions requires `extraMigrationSql` again but no data rewrite; a SQL-only candidate-plan change such as decision 024 needs neither migration nor reindex. The [Drizzle ORM 0.45 guide](../examples/drizzle/v0.45/README.md#migrate-and-rebuild) gives the operational commands, while [core concepts](../examples/README.md#rebuild-invariant) owns the adapter-independent deployment invariant.
 
 ## Security and verification boundary
 

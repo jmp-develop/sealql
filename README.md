@@ -1,6 +1,6 @@
 # SealQL
 
-SealQL encrypts selected PostgreSQL fields while keeping ordinary SQL and Drizzle integration. The `standard` path uses HMAC tokens and GIN/B-tree indexes to narrow candidates, then per-row salted proofs finish predicates inside PostgreSQL. Encrypted-only count reads the companion and returns one exact number; lists authenticate and decrypt only projected fields. AES-256-GCM still binds ciphertext to its row, field, and scope. Read the [integration guide](docs/llm-integration.md), [current state](docs/current-state.md), and [schema example](examples/drizzle/v0.45/schema.ts).
+SealQL encrypts selected PostgreSQL fields while keeping ordinary SQL and Drizzle integration. The `standard` path uses HMAC tokens and GIN/B-tree indexes to narrow candidates, then per-row salted proofs finish predicates inside PostgreSQL. Encrypted-only count reads the companion and returns one exact number; lists authenticate and decrypt only projected fields. AES-256-GCM still binds ciphertext to its row, field, and scope. Read the [integration guide](llms.txt), [current state](docs/current-state.md), and [schema example](examples/drizzle/v0.45/schema.ts).
 
 Install from a GitHub release (prebuilt package; works with npm and pnpm):
 
@@ -47,7 +47,7 @@ Substring proofs store only compact two-character positions, with no singleton o
 
 | Document | Purpose |
 |---|---|
-| [Integration guide](docs/llm-integration.md) | API, schema, writes, reads, search, and operational limits |
+| [Integration guide](llms.txt) | API, schema, writes, reads, search, and operational limits |
 | [Current state](docs/current-state.md) | Implemented code and verification status |
 | [Decisions](docs/decisions/README.md) | Design choices and evidence |
 | [Plan](plan/README.md) | Work still in progress |
