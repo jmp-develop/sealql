@@ -50,6 +50,8 @@ type FindOptions<T extends PgTable> = {
   limit?: number; cursor?: string | undefined; budgets?: SearchBudgets; signal?: AbortSignal;
 };
 type CountOptions<T extends PgTable> = Pick<FindOptions<T>, 'scope' | 'match' | 'where' | 'signal'> & { budgets?: { deadlineMs?: number } };
+type WhereOptions<T extends PgTable> = Pick<FindOptions<T>, 'scope'> &
+  { match: (m: MatchBuilder<T>) => NativeNode };
 type SelectedKeys<T extends PgTable, R extends string, S extends string | undefined, O> =
   Extract<R | Exclude<S, undefined>, keyof InferSelectModel<T>> |
   (O extends { columns: infer C } ? { [K in keyof C]: C[K] extends true ? K : never }[keyof C] : keyof InferSelectModel<T>);
@@ -266,6 +268,18 @@ async function validateTextOrder(db: Db, columns: PgColumn[], positions: unknown
 }
 export function searchMethods(sealerOf: () => import('../../../core/field-cipher.js').Sealer, open: <R>(rows: R, options?: { scope?: string; budgets?: { maxRows?: number; maxBytes?: number; deadlineMs?: number; concurrency?: number } }, authCache?: AuthCache) => Promise<Opened<R>>,
   cache: SearchTokenCache) {
+  async function where<T extends PgTable, R extends string, S extends string | undefined = undefined>(
+    seal: SealMeta<T, R, S> & object, options: WhereOptions<T>,
+  ): Promise<SQL> {
+    ensure(options && typeof options === 'object' && typeof options.match === 'function' &&
+      Object.keys(options).every(key => ['scope','match'].includes(key)), 'INVALID_VALUE');
+    const reg = registrationOf(seal), scopeId = scope(reg, options.scope);
+    const ast = options.match(m<T>(reg));
+    validate(ast, reg);
+    const compiled = await compile(ast, reg, scopeId, sealerOf(), cache);
+    const columns = getTableColumns(reg.parent) as Record<string, PgColumn>;
+    return and(reg.scope ? eq(columns[reg.scope], scopeId) : undefined, candidate(reg, scopeId, compiled))!;
+  }
   async function run<T extends PgTable>(db: Db, reg: Registration, options: FindOptions<T>) {
     ensure(options && typeof options === 'object', 'INVALID_VALUE');
     const scopeId = scope(reg, options.scope), columns = getTableColumns(reg.parent) as Record<string, PgColumn>;
@@ -500,5 +514,5 @@ export function searchMethods(sealerOf: () => import('../../../core/field-cipher
     if (state.limited && !state.scanned) fail('LIMIT_EXCEEDED');
     return { items, nextCursor: exhausted || !previous ? null : await sealCursor(context, { lastId: JSON.stringify(previous) }, ring) };
   }
-  return { findMany, count, search };
+  return { where, findMany, count, search };
 }

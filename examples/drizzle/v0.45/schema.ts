@@ -1,4 +1,4 @@
-import { pgSchema, uuid } from 'drizzle-orm/pg-core';
+import { pgSchema, text, uuid } from 'drizzle-orm/pg-core';
 import { createSealer, type Sealer } from 'sealql';
 import { createSealed } from 'sealql/drizzle/v0.45';
 
@@ -26,3 +26,8 @@ export const customer = app.table('customer', {
   tier: sealed.text('tier', { nullable: true, search: { exact: { bits: 2 } } }),
 });
 export const customerSeal = sealed.register(customer, { row: 'id', scope: 'tenantId' });
+export const customerTag = app.table('customer_tag', {
+  id: uuid('id').primaryKey(),
+  customerId: uuid('customer_id').notNull(),
+  label: text('label').notNull(),
+});

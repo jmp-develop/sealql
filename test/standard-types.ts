@@ -1,4 +1,4 @@
-import { eq, type InferSelectModel } from 'drizzle-orm';
+import { eq, type InferSelectModel, type SQL } from 'drizzle-orm';
 import { drizzle } from 'drizzle-orm/node-postgres';
 import { pgTable, text, uuid } from 'drizzle-orm/pg-core';
 import { createSealer } from '../src/index.js';
@@ -29,7 +29,7 @@ const textScopes = pgTable('native_type_text_scopes', {
 const textScopesSeal = sealed.register(textScopes, { row: 'recordKey', scope: 'accountKey' });
 const globalRows = pgTable('native_type_global_rows', {
   recordKey: uuid('record_key').primaryKey(),
-  name: sealed.text('name'),
+  name: sealed.text('name', { search: { exact: true } }),
 });
 const globalRowsSeal = sealed.register(globalRows, { row: 'recordKey' });
 // @ts-expect-error row must be a valid plain identifier column
@@ -87,6 +87,11 @@ const patchWithRow: CustomerPatch = { id: 'row' };
 const patchWithScope: CustomerPatch = { tenantId: 'scope' };
 void [inferredCustomer, inferredIdentity, inferredPatch, missingCustomerScope, inferredTextRow, missingTextRow,
   missingUuidScope, missingTextScope, inferredGlobal, inferredGlobalIdentity, invalidGlobalIdentity, patchWithRow, patchWithScope];
+const scopedWhere: Promise<SQL> = sealed.where(customersSeal, { scope: 'x', match: m => m.name.contains('Ad') });
+const globalWhere: Promise<SQL> = sealed.where(globalRowsSeal, { match: m => m.name.eq('Ada') });
+const runtimeScopedWhere: Promise<SQL> = sealed.where(customersSeal, { match: m => m.name.contains('Ad') });
+const runtimeGlobalWhere: Promise<SQL> = sealed.where(globalRowsSeal, { scope: 'x', match: m => m.name.eq('Ada') });
+void [scopedWhere, globalWhere, runtimeScopedWhere, runtimeGlobalWhere];
 sealed.findMany(db, customersSeal, { scope: 'x', match: m => {
   // @ts-expect-error ordinary plaintext column is not a sealed search field
   m.status.eq('a');

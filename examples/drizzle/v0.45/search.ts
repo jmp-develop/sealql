@@ -1,7 +1,21 @@
-import { eq } from 'drizzle-orm';
+import { count, eq } from 'drizzle-orm';
 import { SealError } from 'sealql';
 import type { PgDatabase } from 'drizzle-orm/pg-core';
-import { customer, customerSeal, sealed } from './schema.js';
+import { customer, customerSeal, customerTag, sealed } from './schema.js';
+
+export async function searchCustomerTags(
+  db: PgDatabase<any, any, any>, tenantId: string, name: string,
+) {
+  const condition = await sealed.where(customerSeal, {
+    scope: tenantId, match: m => m.name.contains(name),
+  });
+  const selected = await db.select({ customer, tag: customerTag }).from(customer)
+    .innerJoin(customerTag, eq(customerTag.customerId, customer.id)).where(condition);
+  const rows = await sealed.open(selected, { scope: tenantId });
+  const [{ value }] = await db.select({ value: count() }).from(customer).where(condition);
+  // Flattened or renamed db.execute columns use sealed.openRaw with a column map; see raw-sql.ts.
+  return { rows, count: value };
+}
 
 export const findPhone = (db: PgDatabase<any, any, any>, tenantId: string, phone: string) =>
   sealed.findMany(db, customerSeal, { scope: tenantId, match: m => m.phone.eq(phone), limit: 20 });

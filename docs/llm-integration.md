@@ -11,6 +11,8 @@ SealQL exposes an ORM-neutral cryptographic core and versioned database adapters
 
 Read [core concepts](core-concepts.md) before an adapter guide. The core document owns key policy, search-field selection, leakage, scope authorization, count/budget policy, and rebuild invariants. The adapter document owns installation, schema APIs, query shapes, migrations, drivers, and error handling.
 
+For caller-owned JOINs, subqueries, ordering, and counts, start with the Drizzle adapter's `sealed.where` condition builder.
+
 ## Supported adapters
 
 - [Drizzle ORM 0.45](adapters/drizzle-v0.45.md), requiring `drizzle-orm >=0.45.2 <0.46`.

@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import { generateDrizzleJson, generateMigration } from 'drizzle-kit/api';
 import { drizzle } from 'drizzle-orm/node-postgres';
 import { Pool } from 'pg';
-import { customer, customerSeal, configureKey, exampleSchemaName, sealed } from './schema.js';
+import { customer, customerSeal, customerTag, configureKey, exampleSchemaName, sealed } from './schema.js';
 import { insertCustomer, reindexCustomers } from './managed-writes.js';
 
 export type DatabaseGuard = (pool: InstanceType<typeof Pool>) => Promise<void>;
@@ -22,7 +22,7 @@ export async function runExample(assertDatabase: DatabaseGuard, rootKey: Uint8Ar
     await pool.query(`create schema "${exampleSchemaName}"`);
 
     const migration = await generateMigration(
-      generateDrizzleJson({}), generateDrizzleJson({ customer, customerSeal }),
+      generateDrizzleJson({}), generateDrizzleJson({ customer, customerSeal, customerTag }),
     );
     for (const statement of migration) await pool.query(statement);
     for (const statement of sealed.extraMigrationSql(customerSeal)) await pool.query(statement);

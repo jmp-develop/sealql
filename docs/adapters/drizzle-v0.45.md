@@ -144,7 +144,28 @@ Passing a Promise or thenable instead of an awaited result raises `INVALID_VALUE
 
 ## Find, count, and page
 
-Search encrypted columns only with SealQL match builders (`m.field.eq`, `contains`, `startsWith`, `endsWith`, `like`, `m.and`, `m.or`). Drizzle `eq`/`ne`/`inArray` on an encrypted column raise `SEAL_REQUIRED`, but SealQL cannot intercept Drizzle `like`, `ilike`, `orderBy`, or raw `sql` comparisons on encrypted columns: those run against ciphertext and return wrong results without an error (usually zero rows, or rows sorted by ciphertext). Blocking them would require patching Drizzle internals, which would break on Drizzle updates, so this is the developer's responsibility. Sort only by unencrypted columns; filter ordinary columns with Drizzle predicates through `where` or `m.sql`.
+Search encrypted columns only with SealQL match builders (`m.field.eq`, `contains`, `startsWith`, `endsWith`, `like`, `m.and`, `m.or`). Drizzle `eq`/`ne`/`inArray` on an encrypted column raise `SEAL_REQUIRED`, but SealQL cannot intercept Drizzle `like`, `ilike`, `orderBy`, or raw `sql` comparisons on encrypted columns: those run against ciphertext and return wrong results without an error (usually zero rows, or rows sorted by ciphertext). Blocking them would require patching Drizzle internals, which would break on Drizzle updates, so this is the developer's responsibility. Sort only by unencrypted columns; combine ordinary Drizzle predicates with a condition from `sealed.where`, or place them in `m.sql`.
+
+### Search inside your own queries (JOIN, custom order)
+
+`sealed.where` is the default way to put encrypted search inside a caller-owned Drizzle query. It performs no database access and returns a `Promise<SQL>` condition containing the scope, candidate-token, and database-proof checks. Combine that condition with ordinary predicates, JOINs, subqueries, ordering, limits, and `count()` as usual, then pass selected encrypted rows to `sealed.open`:
+
+```ts
+const condition = await sealed.where(notesSeal, {
+  scope: scopeId,
+  match: m => m.body.contains('Ada'),
+});
+const selected = await db.select({ note: notes, tag: tags.label }).from(notes)
+  .innerJoin(tags, eq(tags.noteId, notes.id))
+  .where(and(condition, eq(tags.active, true)))
+  .orderBy(desc(tags.createdAt));
+const opened = await sealed.open(selected, { scope: scopeId });
+const [{ value }] = await db.select({ value: count() }).from(notes).where(condition);
+```
+
+The returned value has the same SQL meaning as an ordinary Drizzle condition that references columns of the registered table. Use it only when that original parent table (not an alias) is present at the applicable query level; SQL correlation rules apply unchanged when the table is inside a subquery. Sealed aliases and self-JOINs remain unsupported. For multiple registered sealed tables, call `sealed.where` once per table and combine the returned conditions. `scope` has exactly the same type and runtime rules as `findMany`: omitting it for a scoped registration, or supplying it for a scope-free registration, raises `INVALID_VALUE`. The same match validation applies, including `QUERY_TOO_BROAD` for a standalone one-character substring.
+
+Create the condition afresh for each query. It captures key-derived search values at preparation time, so a condition created before an application key change does not match data under the new key. `db.update(...).set({ ordinaryColumn: value }).where(condition)` and similarly filtered deletes have ordinary SQL semantics; direct encrypted-column updates remain blocked by `SEAL_REQUIRED`. Nested table-shaped selections such as `db.select({ c: customers, o: orders })` can be passed directly to `sealed.open` as long as each shape contains its row and scope fields. For flattened or renamed raw result columns, use `openRaw` with an explicit column map, as shown in the [raw SQL example](../../examples/drizzle/v0.45/raw-sql.ts).
 
 `sealed.findMany` accepts `scope`, `match`, `where`, `columns`, `orderBy`, `limit`, `cursor`, `budgets`, and `signal`. It returns:
 
@@ -158,9 +179,9 @@ When `limit` is omitted, all matches are returned. `columns` controls the parent
 
 Match builders compose exact equality, substring operations, LIKE, AND/OR, and parameterized ordinary SQL via `m.sql`. The [search example](../../examples/drizzle/v0.45/search.ts) shows exact and Boolean predicates, LIKE, cursor iteration, `m.sql`, encrypted-field projection, caller-supplied budgets, and a typed `QUERY_TOO_BROAD` response that is distinct from an empty result. Search normalization and unsupported operations are defined in [standard search](../core-concepts.md#standard-search).
 
-## Custom JOIN search
+## Cursor-managed custom JOIN search
 
-`sealed.search` accepts a custom Drizzle or raw `db.execute` candidate query. The first table in `match` controls page order. Its callback receives `{ where, after, orderBy, flags, flagsSql, limit }` and must:
+Use `sealed.search` instead when SealQL must manage cursor pages, result-byte budgets, and candidate-shape checks around a custom Drizzle or raw `db.execute` query. The first table in `match` controls page order. Its callback receives `{ where, after, orderBy, flags, flagsSql, limit }` and must:
 
 - apply `where`, optional `after`, and `orderBy`;
 - apply a defined `limit`, but omit SQL LIMIT when it is undefined;

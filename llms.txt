@@ -18,3 +18,4 @@ Start with `docs/llm-integration.md`. It routes readers to the ORM-neutral contr
 - Warning: substring search on fixed-format, small-alphabet fields such as phone or account numbers lets an attacker with some known values rebuild most values; prefer exact search there. Exact search still leaks equality and frequency.
 - Managed writes and the documented migration → `extraMigrationSql` → `reindex` → query deployment order prevent silent search omissions.
 - `count` returns one exact safe `number`; a budget or safe-integer overflow is an error. Search has no implicit work ceiling, so applications set budgets from measurements.
+- Use `sealed.where` for verified encrypted predicates inside caller-owned Drizzle JOINs, subqueries, ordering, and counts; reserve `sealed.search` for SealQL-managed cursor paging and candidate-shape checks.
