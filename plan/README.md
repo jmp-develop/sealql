@@ -13,6 +13,6 @@
 
 ## 현재 계획
 
-- [002](002-drizzle-usability-mvp.md) — Drizzle 결속 정리(F)와 배포 관문(B) 남음
+없음. 계획 002(Drizzle 사용성·결속)는 [결정 026](../docs/decisions/026-composable-where-and-input-types.md)·[027](../docs/decisions/027-drizzle-surface-and-prepare-gate.md)로 요약하고 지웠다.
 
 Drizzle 네이티브 API 계획(001)은 구현이 끝나 [`docs/decisions/013`](../docs/decisions/013-drizzle-native-api-implemented.md)로 요약하고 지웠다.

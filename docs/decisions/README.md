@@ -43,3 +43,4 @@
 | [024](024-candidate-token-selection.md) | 공통 후보 조건에 정렬 토큰 최대 세 개 사용 |
 | [025](025-leakage-reevaluation-and-rejected-mitigations.md) | 강한 공격 재평가, 타 제품 비교, 누출 완화안(MongoDB식·비트 축소·패딩·더미) 기각 |
 | [026](026-composable-where-and-input-types.md) | JOIN·자유 쿼리용 `sealed.where`와 관리형 입력 타입 공개 |
+| [027](027-drizzle-surface-and-prepare-gate.md) | Drizzle 내부 접근 격리와 `prepareAllSearch` 전체 검색 준비 관문 |

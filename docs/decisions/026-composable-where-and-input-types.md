@@ -1,6 +1,6 @@
 # 026. 조합 가능한 암호 검색 조건과 관리형 입력 타입
 
-- 상태: 확정 (2026-09-30). 관련: [013](013-drizzle-native-api-implemented.md), [020](020-companion-predicate-plans.md), [plan/002](../../plan/002-drizzle-usability-mvp.md).
+- 상태: 확정 (2026-09-30). 관련: [013](013-drizzle-native-api-implemented.md), [020](020-companion-predicate-plans.md), [027](027-drizzle-surface-and-prepare-gate.md).
 
 ## 결정
 
@@ -19,8 +19,8 @@
 | 안 | 이유 |
 |---|---|
 | `sealed.search` 콜백 규칙 완화 | 커서 페이지 넘김의 정확성 검사가 사라진다. 조건을 분리하는 편이 근본적이다 |
-| JOIN 도우미·AST 검사·검증 표시 | 표현력을 가리거나 누락을 증명하지 못한다([plan/002](../../plan/002-drizzle-usability-mvp.md)) |
-| DB 타입으로 암호 칼럼의 LIKE·정렬 차단 | 관리형 DB 권한·드라이버 문제로 불가(실측, plan/002 근거 절) |
+| JOIN 도우미·AST 검사·검증 표시 | 표현력을 가리거나 누락을 증명하지 못한다(계획 002 검토, 원본은 로컬 기록) |
+| DB 타입으로 암호 칼럼의 LIKE·정렬 차단 | 관리형 DB 권한·드라이버 문제로 불가(실측) |
 
 ## 대체 관계
 

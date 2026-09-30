@@ -4,7 +4,14 @@ This guide owns the `sealql/drizzle/v0.45` API. Read the ORM-neutral [core conce
 
 ## Install and verify the driver
 
-SealQL is not published to the npm registry. Run `npm pack` in a checkout and install the resulting `.tgz`, plus `drizzle-orm >=0.45.2 <0.46`. Use Node `>=22.12` or another runtime with compatible WebCrypto.
+Install the prebuilt release package with npm or pnpm, plus `drizzle-orm >=0.45.2 <0.46`:
+
+```sh
+npm install https://github.com/jmp-develop/sealql/releases/download/v1.1.0/sealql-1.1.0.tgz drizzle-orm@0.45
+pnpm add https://github.com/jmp-develop/sealql/releases/download/v1.1.0/sealql-1.1.0.tgz drizzle-orm@0.45
+```
+
+Use Node `>=22.12` or another runtime with compatible WebCrypto (Cloudflare Workers with `nodejs_compat` works). Verified on PostgreSQL 18.
 
 Managed writes (`insert`, `update`, `upsert`) and `reindex` open a database transaction, so they need a driver with transaction support, such as node-postgres (`pg`) or postgres-js. This applies wherever those calls run, including request handlers. A driver without transactions (for example `neon-http`) raises `UNSUPPORTED_DRIVER`. Reads, searches, and counts do not need a transaction.
 
