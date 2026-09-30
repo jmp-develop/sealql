@@ -7,7 +7,7 @@ SealQL exposes an ORM-neutral cryptographic core and versioned database adapters
 | Need | Read | Import | Example |
 |---|---|---|---|
 | Field sealing/opening without database integration | [Core concepts](core-concepts.md) | `sealql` | [Core sealer](../examples/core/sealer.ts) |
-| PostgreSQL fields, managed writes, and verified search through Drizzle ORM 0.45 | [Drizzle ORM 0.45](adapters/drizzle-v0.45.md) | `sealql` and `sealql/drizzle/v0.45` | [Executable app](../examples/drizzle/v0.45/app.ts) |
+| PostgreSQL fields, managed writes, and verified search through Drizzle ORM 0.45 | [Drizzle ORM 0.45](adapters/drizzle-v0.45.md) | `sealql` and `sealql/drizzle/v0.45` | [Injected integration flow](../examples/drizzle/v0.45/app.ts) and [runner](../scripts/run-drizzle-v0.45-example.ts) |
 
 Read [core concepts](core-concepts.md) before an adapter guide. The core document owns key policy, search-field selection, leakage, scope authorization, count/budget policy, and rebuild invariants. The adapter document owns installation, schema APIs, query shapes, migrations, drivers, and error handling.
 

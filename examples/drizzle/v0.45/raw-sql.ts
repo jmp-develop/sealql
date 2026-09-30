@@ -10,3 +10,20 @@ export async function openRawCustomers(db: PgDatabase<any, any, any>, tenantId: 
     columns: { id: 'c_id', tenantId: 'c_tenant', name: 'c_name_ct' }, scope: tenantId,
   });
 }
+
+export function searchCustomersWithJoin(
+  db: PgDatabase<any, any, any>, tenantId: string, name: string,
+) {
+  return sealed.search(db, {
+    scope: tenantId,
+    match: { c: [customerSeal, m => m.name.contains(name)] },
+    columns: { c: { id: 'c_id', tenantId: 'c_tenant', name: 'c_name_ct' } },
+    limit: 20,
+    query: ({ where, after, orderBy, flagsSql, limit }) => db.execute(sql`
+      select ${customer.id} as c_id, ${customer.tenantId} as c_tenant,
+        ${customer.name} as c_name_ct, permission.allowed, ${flagsSql}
+      from ${customer} inner join (select true as allowed) permission on permission.allowed
+      where ${where} ${after ? sql`and ${after}` : sql``}
+      order by ${sql.join(orderBy, sql.raw(', '))} limit ${limit}`),
+  });
+}

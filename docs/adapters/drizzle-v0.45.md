@@ -8,7 +8,14 @@ SealQL is not published to the npm registry. Run `npm pack` in a checkout and in
 
 Managed writes and `reindex` require a transactional PostgreSQL driver. Node pg, postgres-js, and local workerd with pg passed the repository database flow. Hosted Workers/Hyperdrive remains unverified. `neon-http` cannot run managed writes or `reindex` because it lacks the required transaction callback. These are verification results, not deployment guarantees.
 
-The [executable app](../../examples/drizzle/v0.45/app.ts) demonstrates connection, migration, `extraMigrationSql`, insert, search, count, and cleanup. Additional examples cover [managed writes](../../examples/drizzle/v0.45/managed-writes.ts), [search and errors](../../examples/drizzle/v0.45/search.ts), [raw SQL](../../examples/drizzle/v0.45/raw-sql.ts), [integer primary keys](../../examples/drizzle/v0.45/integer-primary-key.ts), and [model keys with tenant scopes](../../examples/drizzle/v0.45/tenant-model-key.ts).
+The [injected integration flow](../../examples/drizzle/v0.45/app.ts) demonstrates connection, migration, `extraMigrationSql`, insert, search, count, and cleanup. It is run by the repository [example runner](../../scripts/run-drizzle-v0.45-example.ts), which injects the disposable-database guard and example root key; it is not a standalone application entry point. With the read-only `bench_realistic_100k` fixture already present, prepare and run it with:
+
+```sh
+pg_ctl -D .local/pg-test -o "-h 127.0.0.1 -p 56439" -l .local/pg-test.log start -w -t 60
+npm run example:drizzle-v0.45
+```
+
+Additional examples cover [managed writes](../../examples/drizzle/v0.45/managed-writes.ts), [search and errors](../../examples/drizzle/v0.45/search.ts), [raw SQL and a JOIN callback](../../examples/drizzle/v0.45/raw-sql.ts), [integer primary keys](../../examples/drizzle/v0.45/integer-primary-key.ts), and a [fixed model key with tenant scopes](../../examples/drizzle/v0.45/model-key-tenant-scope.ts).
 
 ## Create and register a schema
 
@@ -49,6 +56,14 @@ drizzle-kit generate --custom --name seal_search
 drizzle-kit migrate
 ```
 
+The integration flow applies the same returned SQL directly; copy the resulting statements into the custom migration rather than relying on application startup:
+
+```ts
+for (const statement of sealed.extraMigrationSql(notesSeal)) {
+  await pool.query(statement);
+}
+```
+
 With `drizzle-kit push`, execute those statements after the push. They install schema-qualified predicate functions, substring statistics targets, and `MAIN` storage settings. They are idempotent and require no PostgreSQL extension. `MAIN` affects newly written values; `sealed.reindex` rewrites existing companion values, whereas PostgreSQL `REINDEX` does not.
 
 Package-name schema imports with UUID or `sealed.textId` rows, text scopes, and scope-free tables support drizzle-kit `generate`, `migrate`, and repeated `push` without schema drift.
@@ -77,6 +92,17 @@ await db.delete(notes).where(eq(notes.id, id));
 ```
 
 `insert`, `update`, and `upsert` use `db.transaction`; inside an existing Drizzle transaction they use a savepoint. Ciphertext and changed companion proof/token columns commit together. The helpers return row/scope identities, or opened rows with `{ returning: true }`. A UUID row ID may be generated; a text row ID must be supplied.
+
+Pass an existing transaction to a managed helper when encrypted and ordinary writes must share the caller's transaction:
+
+```ts
+await db.transaction(async tx => {
+  await updateCustomer(tx, tenantId, id, name);
+  await tx.update(audit).set({ changed: true }).where(eq(audit.id, id));
+});
+```
+
+The [managed-write example](../../examples/drizzle/v0.45/managed-writes.ts) contains the helper signatures used by this pattern.
 
 `undefined` omits a property. An omitted nullable encrypted field inserts null; an omitted required encrypted field, an update with no remaining fields, or an unknown property is `INVALID_VALUE`. Plain Drizzle encrypted writes raise `SEAL_REQUIRED`. Raw SQL ciphertext writes bypass companion maintenance and can silently omit search results.
 
@@ -110,11 +136,11 @@ Use SealQL match builders, not Drizzle `eq`/`like`/`ilike` or ordering on encryp
 type Page<T> = { items: T[]; nextCursor: string | null };
 ```
 
-When `limit` is omitted, all matches are returned. `columns` controls the parent projection while row/scope identity is included for authentication. Ordering accepts unencrypted columns and adds row identity as a final tie breaker. PostgreSQL null ordering applies. Continue with `cursor: page.nextCursor`; cursors do not expire or create a snapshot, and bind scope, match, ordinary filter, and ordering.
+When `limit` is omitted, all matches are returned. `columns` controls the parent projection while row/scope identity is included for authentication. Ordering accepts unencrypted columns and adds row identity as a final tie breaker. PostgreSQL null ordering applies. Continue with `cursor: page.nextCursor`; the current cursor format has no expiry and does not create a snapshot, and it binds scope, match, ordinary filter, and ordering.
 
-`sealed.count` accepts `scope`, `match`, an optional ordinary `where`, `budgets: { deadlineMs }`, and `signal`. Its exact-result and failure contract is owned by [core concepts](../core-concepts.md#exact-count-and-caller-budgets).
+`sealed.count` accepts `scope`, optional `match`, optional ordinary `where`, `budgets: { deadlineMs }`, and `signal`. If both predicates are absent, it returns the exact count of every parent row in the supplied scope (or every row for a scope-free model). Its exact-result and failure contract is owned by [core concepts](../core-concepts.md#exact-count-and-caller-budgets).
 
-Match builders compose exact equality, substring operations, LIKE, AND/OR, and parameterized ordinary SQL via `m.sql`. See the [search example](../../examples/drizzle/v0.45/search.ts) for exact, Boolean composition, LIKE, cursor iteration, and `SealError` handling. Search normalization and unsupported operations are defined in [standard search](../core-concepts.md#standard-search).
+Match builders compose exact equality, substring operations, LIKE, AND/OR, and parameterized ordinary SQL via `m.sql`. The [search example](../../examples/drizzle/v0.45/search.ts) shows exact and Boolean predicates, LIKE, cursor iteration, `m.sql`, encrypted-field projection, caller-supplied budgets, and a typed `QUERY_TOO_BROAD` response that is distinct from an empty result. Search normalization and unsupported operations are defined in [standard search](../core-concepts.md#standard-search).
 
 ## Custom JOIN search
 
@@ -123,6 +149,8 @@ Match builders compose exact equality, substring operations, LIKE, AND/OR, and p
 - apply `where`, optional `after`, and `orderBy`;
 - apply a defined `limit`, but omit SQL LIMIT when it is undefined;
 - select `flags` for Drizzle or `flagsSql` for raw SQL.
+
+The [raw SQL example](../../examples/drizzle/v0.45/raw-sql.ts) provides a complete callback that selects mapped ciphertext columns and `flagsSql`, applies `where`/`after`, reuses `orderBy`, and honors the numeric limit around a JOIN.
 
 A numeric caller limit makes callback `limit` a `number`; omitted or optional limits use `number | undefined`. A one-to-many join needs a unique many-side keyset column. Raw flat results map registered properties through the top-level `columns` option. SealQL removes internal flag and keyset aliases from returned items.
 
@@ -141,7 +169,7 @@ Catch `SealError` and branch on stable `error.code`, not message text. Database 
 | `NOT_FOUND`, `SCOPE_CONFLICT`, `SCOPE_MISMATCH`, `ROW_CONTEXT_MISSING` | Reconcile identity, authorization, or selected row/scope context. |
 | `LIMIT_EXCEEDED`, `CANCELLED`, `DB_TIMEOUT` | Apply the application's timeout/budget response; do not return an uncertain count. |
 | `QUERY_TOO_BROAD`, `UNSUPPORTED_SEARCH` | Require a supported profile and at least two usable normalized substring characters. |
-| `CURSOR_INVALID`, `CURSOR_EXPIRED` | Restart paging; current cursor formats do not normally expire. |
+| `CURSOR_INVALID`, `CURSOR_EXPIRED` | Restart paging. The current implementation has no cursor expiry and emits `CURSOR_INVALID` for invalid cursors; handling `CURSOR_EXPIRED` remains a defensive future/legacy branch. |
 | `VALIDATION_FAILED`, `INVALID_CIPHERTEXT`, `AUTHENTICATION_FAILED` | Reject the value and investigate data integrity or context mismatch. |
 | `KEY_NOT_FOUND`, `KEY_SCOPE_MISMATCH` | Stop the operation and fix secret/model-key configuration. |
 | `UNSUPPORTED_DRIVER` | Use a driver with the required transaction callback. |

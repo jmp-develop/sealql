@@ -17,7 +17,7 @@ The root export does not own tables, transactions, companion rows, database proo
 - The application authenticates a caller, derives the caller's authorized tenant or scope, and passes that value to every adapter operation. SealQL uses the supplied scope for AAD, token separation, cursors, and SQL isolation; it does not decide authorization.
 - A scope-free model uses the constant scope `_`. Adding a real scope later changes the cipher and token context, so every row must be re-encrypted and reindexed.
 
-Across all tenants, keep encryption calls for one derived field key and shard within the AES-GCM usage limit documented in the [threat model](threat-model.md#5-운영-필수-조치-라이브러리-밖).
+SealQL automatically maps each row identity to one of 256 deterministic field-key shards; there is no public shard selector or per-shard accounting setting. Without external per-shard accounting, a high-write application must conservatively keep aggregate writes for each model/field/key scope within the per-shard AES-GCM usage limit documented in the [threat model](threat-model.md#5-운영-필수-조치-라이브러리-밖).
 
 ## Standard search
 

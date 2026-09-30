@@ -1,3 +1,4 @@
+// Repository integration flow: scripts/run-drizzle-v0.45-example.ts injects the disposable-DB guard and key.
 import assert from 'node:assert/strict';
 import { generateDrizzleJson, generateMigration } from 'drizzle-kit/api';
 import { drizzle } from 'drizzle-orm/node-postgres';

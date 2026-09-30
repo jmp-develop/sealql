@@ -2,7 +2,7 @@
 
 SealQL's only product search design is `standard`: application-side HMAC candidate tokens narrow rows through PostgreSQL GIN/B-tree indexes, and per-row salted exact or occurrence proofs let PostgreSQL finish each predicate. An encrypted-only `count` reads the companion table, returns one exact scalar, and decrypts no fields. List queries return only final matches, then authenticate and decrypt only projected encrypted fields. Field ciphertext uses AES-256-GCM bound to the model, field, scope, and row.
 
-The product exposes `sealql` and `sealql/drizzle/v0.45`. The [integration entry](llm-integration.md) separates ORM-neutral [core concepts](core-concepts.md) from the [Drizzle ORM 0.45 guide](adapters/drizzle-v0.45.md); the compilable [executable app](../examples/drizzle/v0.45/app.ts) and adjacent examples cover schema, managed writes, reads, search, raw SQL, and key loading.
+The product exposes `sealql` and `sealql/drizzle/v0.45`. The [integration entry](llm-integration.md) separates ORM-neutral [core concepts](core-concepts.md) from the [Drizzle ORM 0.45 guide](adapters/drizzle-v0.45.md); the compilable [injected integration flow](../examples/drizzle/v0.45/app.ts), its repository [runner](../scripts/run-drizzle-v0.45-example.ts), and adjacent examples cover schema, managed writes, reads, search, raw SQL, and key loading.
 
 ## Storage and execution
 
@@ -12,7 +12,7 @@ Managed `insert`, `update`, and `upsert` operations update ciphertext and the af
 
 Substring candidate predicates send at most three existing tokens—the first, middle, and last in token-value order—to the common SQL builder. This is an index-selection input, not a candidate, result, or work limit; the full proof program still decides the predicate. Exact predicates and stored data are unchanged. See [decision 024](decisions/024-candidate-token-selection.md).
 
-Pure encrypted-predicate counts stay on the companion table. Unfiltered counts and queries using parent predicates or caller JOINs retain the parent relation. Finite ID-ordered pages try a bounded prefix, keep its final matches, and continue strictly after the complete prefix when necessary. Both paths apply proofs before `LIMIT`. Search has no implicit result or work ceiling; caller-supplied budgets may stop list work or impose a deadline. See [decisions 015](decisions/015-database-search-proofs.md), [020](decisions/020-companion-predicate-plans.md), and [014](decisions/014-unbounded-query-work.md).
+Pure encrypted-predicate counts stay on the companion table. `match` and `where` are both optional for count; with neither present, count returns the exact number of every parent row in the supplied scope (or every row for a scope-free model). Unfiltered counts and queries using parent predicates or caller JOINs retain the parent relation. Finite ID-ordered pages try a bounded prefix, keep its final matches, and continue strictly after the complete prefix when necessary. Both paths apply proofs before `LIMIT`. Search has no implicit result or work ceiling; caller-supplied budgets may stop list work or impose a deadline. See [decisions 015](decisions/015-database-search-proofs.md), [020](decisions/020-companion-predicate-plans.md), and [014](decisions/014-unbounded-query-work.md).
 
 ## Supported behavior
 

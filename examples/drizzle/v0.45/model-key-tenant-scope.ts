@@ -1,3 +1,4 @@
+// The model key is fixed across tenants; tenantId is the caller-authorized data scope, not a key selector.
 import type { PgDatabase } from 'drizzle-orm/pg-core';
 import { pgTable, uuid } from 'drizzle-orm/pg-core';
 import { createSealer } from 'sealql';

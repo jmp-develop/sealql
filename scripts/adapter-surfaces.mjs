@@ -10,11 +10,11 @@ export const adapterSurfaces = [{
     'search.ts',
     'raw-sql.ts',
     'integer-primary-key.ts',
-    'tenant-model-key.ts',
+    'model-key-tenant-scope.ts',
   ],
   smokeGroups: [
     ['schema.ts', 'managed-writes.ts', 'search.ts'],
-    ['schema.ts', 'app.ts', 'raw-sql.ts', 'integer-primary-key.ts', 'tenant-model-key.ts'],
+    ['schema.ts', 'app.ts', 'raw-sql.ts', 'integer-primary-key.ts', 'model-key-tenant-scope.ts'],
   ],
 }];
 
