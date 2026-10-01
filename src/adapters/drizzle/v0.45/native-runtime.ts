@@ -116,10 +116,11 @@ async function catalogPreflight(db: Db, reg: Registration): Promise<void> {
       and a.attnum>0 and not a.attisdropped order by a.attnum`));
   const expectedColumns = Object.values(getTableColumns(reg.index)) as PgColumn[];
   if (attributes.length !== expectedColumns.length) schemaFailure();
-  for (let i = 0; i < expectedColumns.length; i++) {
-    const actual = attributes[i], expected = expectedColumns[i];
-    if (actual.name !== expected.name || String(actual.type).replaceAll(' ', '') !== expected.getSQLType().replaceAll(' ', '') ||
-      actual.not_null !== expected.notNull || Number(actual.position) !== i + 1) schemaFailure();
+  const attributesByName = new Map(attributes.map(row => [row.name, row]));
+  for (const expected of expectedColumns) {
+    const actual = attributesByName.get(expected.name);
+    if (!actual || String(actual.type).replaceAll(' ', '') !== expected.getSQLType().replaceAll(' ', '') ||
+      actual.not_null !== expected.notNull) schemaFailure();
   }
 
   const indexRows = resultRows(await db.execute(sql`
@@ -189,8 +190,10 @@ async function catalogPreflight(db: Db, reg: Registration): Promise<void> {
 
   const byColumn = new Map(attributes.map(row => [row.name, row]));
   for (const profile of Object.values(storage.profiles ?? {})) {
-    const token = byColumn.get(profile.tokens);
-    if (!token || token.storage !== 'm' || (profile.mode === 'substring' && Number(token.statistics) !== 1000)) schemaFailure();
+    if (profile.tokens) {
+      const token = byColumn.get(profile.tokens);
+      if (!token || token.storage !== 'm' || (profile.mode === 'substring' && Number(token.statistics) !== 1000)) schemaFailure();
+    }
     if (profile.positions) for (const name of [profile.positions.stamps, profile.positions.offsets])
       if (byColumn.get(name)?.storage !== 'm') schemaFailure();
   }
@@ -255,10 +258,12 @@ async function prepare(reg: Registration, source: Record<string, unknown>, seale
       sealed.push(handle);
     }
     for (const profile of profiles(reg.model, field.spec.id ?? key, field.spec)) {
-      const tokens = value === null ? [] : await searchTokens(ring, scopeId, profile, searchPieces(profile, value), cache);
-      const column = reg.storage.index?.profiles?.[profile.indexId]?.tokens ?? fail('INVALID_SCHEMA');
-      index[column] = tokens.length ? tokens.map(BigInt) : null;
-      Object.assign(index, await proofValues(sealer, scopeId, profile, reg.storage.index!.profiles![profile.indexId], value));
+      const stored = reg.storage.index?.profiles?.[profile.indexId] ?? fail('INVALID_SCHEMA');
+      if (stored.tokens) {
+        const tokens = value === null ? [] : await searchTokens(ring, scopeId, profile, searchPieces(profile, value), cache);
+        index[stored.tokens] = tokens.length ? tokens.map(BigInt) : null;
+      }
+      Object.assign(index, await proofValues(sealer, scopeId, profile, stored, value));
     }
   }
   return { parent, index, identity: identityValue, sealed };
@@ -511,9 +516,12 @@ export function runtimeMethods(sealerOf: () => Sealer, registrationsOf: () => Re
           const values: Record<string, unknown> = { scopeId: rowScope, rowId };
           for (const { key, profile } of profileList) {
             const value = row[key];
-            const tokens = value === null ? [] : await searchTokens(ring, rowScope, profile, searchPieces(profile, value), cache);
-            values[reg.storage.index!.profiles![profile.indexId].tokens] = tokens.length ? tokens.map(BigInt) : null;
-            Object.assign(values, await proofValues(sealer, rowScope, profile, reg.storage.index!.profiles![profile.indexId], value));
+            const stored = reg.storage.index!.profiles![profile.indexId];
+            if (stored.tokens) {
+              const tokens = value === null ? [] : await searchTokens(ring, rowScope, profile, searchPieces(profile, value), cache);
+              values[stored.tokens] = tokens.length ? tokens.map(BigInt) : null;
+            }
+            Object.assign(values, await proofValues(sealer, rowScope, profile, stored, value));
           }
           if (tokenKeys.length && tokenKeys.every(key => values[key] === null)) {
             await tx.delete(reg.index).where(and(eq(index.scopeId, rowScope), eq(index.rowId, rowId)));

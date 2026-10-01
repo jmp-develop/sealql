@@ -1,5 +1,9 @@
 # Changelog
 
+## Unreleased
+
+- Bug fix: `prepareAllSearch` accepts correctly migrated search columns after profile changes, while still rejecting missing, extra, or incompatible columns.
+
 ## 1.1.1 — 2026-09-30
 
 - Published to the npm registry as `sealql` (`pnpm add sealql`).

@@ -8,6 +8,7 @@ export interface SearchProfile {
   modelId: string; fieldId: string; indexId: string; spec: FieldSpec;
   mode: SearchMode; bits: number;
   normalizer: string; protection?: SearchProtection; skipGrams?: boolean;
+  hardened?: true;
 }
 const buffer = (v: Uint8Array): ArrayBuffer => Uint8Array.from(v).buffer as ArrayBuffer;
 const whitespace = /[\u0009-\u000d\u0020\u0085\u00a0\u1680\u2000-\u200a\u2028\u2029\u202f\u205f\u3000]/g;
@@ -31,6 +32,7 @@ export function exactBitsForPopulation(population: number): number {
 }
 export function profiles(modelId: string, fieldId: string, spec: FieldSpec, defaultProtection: SearchProtection = 'standard'): SearchProfile[] {
   const search = spec.search;
+  if (spec.hardened !== undefined) ensure(spec.hardened === true && !!search, 'INVALID_SCHEMA');
   if (!search) return [];
   ensure((search.protection ?? defaultProtection) === 'standard', 'INVALID_SCHEMA');
   const normalizer = spec.type === 'text' ? (search as { normalizer?: string }).normalizer ?? 'legacy-text-v1' : '';
@@ -40,12 +42,14 @@ export function profiles(modelId: string, fieldId: string, spec: FieldSpec, defa
     const bits = mode === 'substring' ? 16 : option === true ? 16 : (option as { bits?: number }).bits ?? 16;
     const options: { skipGrams?: boolean } = mode === 'substring' && option !== true ? option as { skipGrams?: boolean } : {};
     return [{ modelId, fieldId, indexId: `${fieldId}/${mode}`, spec, mode, bits, normalizer, protection: 'standard' as const,
-      ...options, ...(mode === 'substring' ? { skipGrams: options.skipGrams !== false } : {}) }];
+      ...options, ...(mode === 'substring' ? { skipGrams: options.skipGrams !== false } : {}),
+      ...(spec.hardened ? { hardened: true as const } : {}) }];
   });
 }
 export function descriptorBytes(p: SearchProfile): Uint8Array {
   ensure(Number.isInteger(p.bits) && p.bits >= 2 && p.bits <= 32 && (p.mode !== 'substring' || p.bits === 16), 'INVALID_SCHEMA');
-  return frame([p.modelId, p.fieldId, p.indexId, codecId(p.spec), u32(codecVersion(p.spec)), codecParameters(p.spec), p.normalizer, p.mode, u32(p.bits), p.skipGrams ? 'skip' : '']);
+  return frame([p.modelId, p.fieldId, p.indexId, codecId(p.spec), u32(codecVersion(p.spec)), codecParameters(p.spec), p.normalizer, p.mode, u32(p.bits), p.skipGrams ? 'skip' : '',
+    ...(p.hardened ? ['hardened'] : [])]);
 }
 const piece = (kind: string, value: string): Uint8Array => frame([kind, utf8(value)]);
 export function searchPieces(p: SearchProfile, value: unknown, operation: 'write' | 'contains' | 'startsWith' | 'endsWith' = 'write'): Uint8Array[] {
@@ -66,7 +70,7 @@ export interface SearchTokenCache {
   profiles: Map<string, Promise<CryptoKey>>;
 }
 export async function searchTokens(ring: Keyring, scopeId: string, p: SearchProfile, pieces: readonly Uint8Array[], cache?: SearchTokenCache, checkpoint: () => void = () => {}): Promise<string[]> {
-  if (!pieces.length) return [];
+  if (p.hardened || !pieces.length) return [];
   checkpoint();
   const cacheId = hex(frame([ring.keyScopeId, descriptorBytes(p)]));
   let pendingKey = cache?.profiles.get(cacheId);

@@ -114,9 +114,9 @@ test('native managed writes and opens stay atomic', async () => {
     const orders = schema.table('orders', { id: uuid('id').primaryKey(), scopeId: uuid('scope_id').notNull(), customerId: uuid('customer_id').notNull(),
       label: sealed.text('label', { search: { exact: true } }) });
     const ordersSeal = sealed.register(orders, { row: 'id', scope: 'scopeId' });
-    const orderExact = registrationOf(ordersSeal).storage.index!.profiles!['label/exact'].tokens;
+    const orderExact = registrationOf(ordersSeal).storage.index!.profiles!['label/exact'].tokens!;
     const profiles = registrationOf(peopleSeal).storage.index!.profiles!;
-    const exact = profiles['name/exact'].tokens, substring = profiles['memo/substring'].tokens;
+    const exact = profiles['name/exact'].tokens!, substring = profiles['memo/substring'].tokens!;
     await pool.query(`create table "${schemaName}".people (id uuid primary key,scope_id uuid not null,created_at timestamptz(3) not null,name_ct bytea not null,memo_ct bytea)`);
     await pool.query(`create table "${schemaName}".people_seal_index (scope_id uuid not null,row_id uuid not null,"${exact}" bigint[],"${substring}" bigint[],unique(scope_id,row_id),foreign key(row_id) references "${schemaName}".people(id) on delete cascade)`);
     await pool.query(`create table "${schemaName}".orders (id uuid primary key,scope_id uuid not null,customer_id uuid not null,label_ct bytea not null)`);
@@ -459,7 +459,7 @@ test('text row IDs follow the database collation and keep index-backed keysets',
       name: sealed.text('name', { search: { exact: true } }),
     });
     const seal = sealed.register(rows, { row: 'id', scope: 'scopeId' });
-    const exact = registrationOf(seal).storage.index!.profiles!['name/exact'].tokens;
+    const exact = registrationOf(seal).storage.index!.profiles!['name/exact'].tokens!;
     assert.equal((await pool.query("select count(*)::int as n from pg_collation where collname='und-x-icu'")).rows[0].n, 1);
     await pool.query(`create table "${schemaName}".rows (id text collate "und-x-icu" primary key,scope_id uuid not null,name_ct bytea not null)`);
     await pool.query(`create table "${schemaName}".rows_seal_index (scope_id uuid not null,row_id text collate "und-x-icu" not null,

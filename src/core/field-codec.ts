@@ -7,7 +7,7 @@ export type SearchIndex = true | { bits?: number };
 export type SubstringIndex = true | { skipGrams?: boolean };
 export type TextSearch = ({ exact: SearchIndex; substring?: SubstringIndex } | { exact?: SearchIndex; substring: SubstringIndex }) & { normalizer?: 'nfc-v1' | 'legacy-text-v1' | 'phone-v1'; protection?: SearchProtection };
 export interface PlainValidator<T> { id: string; version: number; check(value: T): boolean }
-type Common<T> = { id?: string; validate?: PlainValidator<T>; maxBytes?: number };
+type Common<T> = { id?: string; validate?: PlainValidator<T>; maxBytes?: number; hardened?: true };
 export type FieldSpec =
   | (Common<string> & { type: 'text'; search?: false | TextSearch })
   | (Common<number> & { type: 'integer'; search?: false | { exact: SearchIndex; protection?: SearchProtection } })
@@ -91,6 +91,7 @@ export function validateField(spec: FieldSpec): void {
   if (spec.type === 'decimal') decimal('0', spec.precision, spec.scale);
   if (spec.validate) ensure(typeof spec.validate.id === 'string' && spec.validate.id.length > 0 && Number.isInteger(spec.validate.version) && spec.validate.version > 0 && typeof spec.validate.check === 'function', 'INVALID_SCHEMA');
   const search = spec.search;
+  if (spec.hardened !== undefined) ensure(spec.hardened === true && !!search && typeof search === 'object', 'INVALID_SCHEMA');
   if (search && typeof search === 'object') {
     ensure(['text', 'integer', 'bigint', 'decimal'].includes(spec.type), 'INVALID_SCHEMA');
     ensure(search.exact !== undefined || ('substring' in search && search.substring !== undefined), 'INVALID_SCHEMA');

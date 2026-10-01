@@ -10,11 +10,11 @@ export interface SealedModelDefinition {
 export interface SealedStorage {
   parent: { schema: string; name: string };
   index?: { schema: string; name: string; profiles?: Record<string, {
-    tokens: string; mode: 'exact' | 'substring'; protection: SearchProtection;
+    tokens?: string; mode: 'exact' | 'substring'; protection: SearchProtection;
     exact?: { salt: string; stamp: string };
     positions?: { salt: string; length: string; stamps: string; offsets: string };
   }> };
 }
 export type ProfileStorage = NonNullable<NonNullable<SealedStorage['index']>['profiles']>[string];
-export const profileColumns = (profile: ProfileStorage): string[] => [profile.tokens,
+export const profileColumns = (profile: ProfileStorage): string[] => [...(profile.tokens ? [profile.tokens] : []),
   ...[profile.exact, profile.positions].flatMap(group => group ? Object.values(group) : [])];

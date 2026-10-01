@@ -22,7 +22,7 @@ export function companionProfiles(definition: SealedModelDefinition): NonNullabl
       names.add(tokens);
       const positions = (prefix: string) => ({ salt: `${prefix}_salt_${tag}`, length: `${prefix}_len_${tag}`,
         stamps: `${prefix}_stamps_${tag}`, offsets: `${prefix}_offsets_${tag}` });
-      result[profile.indexId] = { tokens, mode: profile.mode, protection: 'standard',
+      result[profile.indexId] = { ...(profile.hardened ? {} : { tokens }), mode: profile.mode, protection: 'standard',
         ...(profile.mode === 'exact' ? { exact: { salt: `eq_salt_${tag}`, stamp: `eq_stamp_${tag}` } }
           : { positions: positions('pos') }) };
     }

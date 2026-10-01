@@ -41,7 +41,7 @@ export async function compileSearch(node: SearchNode, definition: SealedModelDef
   const pieces = simpleLike ? searchPieces(profile, simpleLike.value, simpleLike.op)
     : node.op === 'like' ? likeAnchors(node.value as string, profile) : searchPieces(profile, node.value, node.op === 'eq' ? 'write' : node.op);
   ensure(pieces.length > 0 || node.op === 'eq', 'QUERY_TOO_BROAD');
-  const tokens = await searchTokens(ring, scopeId, profile, pieces, tokenCache, checkpoint);
+  const tokens = profile.hardened ? [] : await searchTokens(ring, scopeId, profile, pieces, tokenCache, checkpoint);
   const proof = await compileStampQuery(ring, profile, scopeId, node);
   return { op: 'leaf', leaf: { node, profile, tokens, normalized, proof } };
 }

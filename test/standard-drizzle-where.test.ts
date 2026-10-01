@@ -62,15 +62,15 @@ test('sealed.where composes with ordinary Drizzle queries, joins, subqueries and
     await pool.query(`
       create table "${schemaName}".customers(id uuid primary key,scope_id uuid not null,status text not null,name_ct bytea not null,note_ct bytea not null);
       create table "${schemaName}".customers_seal_index(scope_id uuid not null,row_id uuid not null,
-        ${q(customerProfiles['name/exact'].tokens)} bigint[],${q(customerProfiles['note/substring'].tokens)} bigint[],
+        ${q(customerProfiles['name/exact'].tokens!)} bigint[],${q(customerProfiles['note/substring'].tokens!)} bigint[],
         unique(scope_id,row_id),foreign key(row_id) references "${schemaName}".customers(id) on delete cascade);
       create table "${schemaName}".orders(id uuid primary key,scope_id uuid not null,customer_id uuid not null,label_ct bytea not null);
       create table "${schemaName}".orders_seal_index(scope_id uuid not null,row_id uuid not null,
-        ${q(orderProfiles['label/exact'].tokens)} bigint[],unique(scope_id,row_id),
+        ${q(orderProfiles['label/exact'].tokens!)} bigint[],unique(scope_id,row_id),
         foreign key(row_id) references "${schemaName}".orders(id) on delete cascade);
       create table "${schemaName}".globals(code text primary key,title_ct bytea not null);
       create table "${schemaName}".globals_seal_index(scope_id text not null default '_',row_id text not null,
-        ${q(globalProfiles['title/exact'].tokens)} bigint[],unique(scope_id,row_id),
+        ${q(globalProfiles['title/exact'].tokens!)} bigint[],unique(scope_id,row_id),
         foreign key(row_id) references "${schemaName}".globals(code) on delete cascade);
       create table "${schemaName}".teams(customer_id uuid primary key,tier text not null);
       create table "${schemaName}".customer_ref(id uuid primary key,scope_id uuid not null,status text not null,name text not null,note text not null);

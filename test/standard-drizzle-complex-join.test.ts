@@ -42,11 +42,11 @@ try {
   await pool.query(`
     create table "${schemaName}".customers(id uuid primary key, scope_id uuid not null, name_ct bytea not null, note_ct bytea not null);
     create table "${schemaName}".customers_seal_index(scope_id uuid not null,row_id uuid not null,
-      ${q(customerProfiles['name/exact'].tokens)} bigint[], ${q(customerProfiles['note/substring'].tokens)} bigint[],
+      ${q(customerProfiles['name/exact'].tokens!)} bigint[], ${q(customerProfiles['note/substring'].tokens!)} bigint[],
       unique(scope_id,row_id),foreign key(row_id) references "${schemaName}".customers(id) on delete cascade);
     create table "${schemaName}".orders(id uuid primary key, scope_id uuid not null, customer_id uuid not null, label_ct bytea not null);
     create table "${schemaName}".orders_seal_index(scope_id uuid not null,row_id uuid not null,
-      ${q(orderProfiles['label/exact'].tokens)} bigint[], unique(scope_id,row_id),
+      ${q(orderProfiles['label/exact'].tokens!)} bigint[], unique(scope_id,row_id),
       foreign key(row_id) references "${schemaName}".orders(id) on delete cascade);
     create table "${schemaName}".teams(customer_id uuid primary key,tier text not null);
     create table "${schemaName}".regions(order_id uuid primary key,code text not null);

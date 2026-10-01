@@ -184,7 +184,7 @@ function register<T extends PgTable, R extends UuidOrTextKeys<T>, S extends Uuid
   const bytea = drizzleCustomType<{ data: Uint8Array; driverData: Uint8Array }>({ dataType: () => 'bytea',
     toDriver: value => value, fromDriver: value => typeof value === 'string' ? unhex((value as string).replace(/^\\x/, '')) : new Uint8Array(value) });
   for (const profile of Object.values(profiles)) {
-    companionColumns[profile.tokens] = bigint(profile.tokens, { mode: 'bigint' }).array();
+    if (profile.tokens) companionColumns[profile.tokens] = bigint(profile.tokens, { mode: 'bigint' }).array();
     if (profile.exact) {
       companionColumns[profile.exact.salt] = bytea(profile.exact.salt);
       companionColumns[profile.exact.stamp] = bigint(profile.exact.stamp, { mode: 'bigint' });
@@ -196,12 +196,12 @@ function register<T extends PgTable, R extends UuidOrTextKeys<T>, S extends Uuid
       companionColumns[group.offsets] = integer(group.offsets).array();
     }
   }
-  const substring = Object.values(profiles).filter(profile => profile.mode === 'substring');
+  const substring = Object.values(profiles).filter(profile => profile.mode === 'substring' && profile.tokens);
   const tableFactory: typeof pgTable = (tableConfig.schema ? pgSchema(tableConfig.schema).table : pgTable) as typeof pgTable;
   const companion = tableFactory(indexName, companionColumns, (t: any) => [
-    ...Object.entries(profiles).filter(([, profile]) => profile.mode === 'exact').map(([id, profile]) =>
-      check(`${companionIndexName(indexName, id)}_one_ck`, sql`${t[profile.tokens]} is null or
-        (cardinality(${t[profile.tokens]}) = 1 and array_ndims(${t[profile.tokens]}) = 1)`)),
+    ...Object.entries(profiles).filter(([, profile]) => profile.mode === 'exact' && profile.tokens).map(([id, profile]) =>
+      check(`${companionIndexName(indexName, id)}_one_ck`, sql`${t[profile.tokens!]} is null or
+        (cardinality(${t[profile.tokens!]}) = 1 and array_ndims(${t[profile.tokens!]}) = 1)`)),
     ...Object.values(profiles).flatMap(profile => {
       const groups = [profile.exact, profile.positions].filter(group => !!group);
       return groups.map(group => {
@@ -220,14 +220,14 @@ function register<T extends PgTable, R extends UuidOrTextKeys<T>, S extends Uuid
     rowUnique
       ? foreignKey({ columns: [t.rowId], foreignColumns: [rowColumn] }).onDelete('cascade')
       : foreignKey({ columns: [t.scopeId, t.rowId], foreignColumns: [scopeColumn!, rowColumn] }).onDelete('cascade'),
-    ...Object.entries(profiles).filter(([, profile]) => profile.mode === 'exact').map(([id, profile]) =>
+    ...Object.entries(profiles).filter(([, profile]) => profile.mode === 'exact' && profile.tokens).map(([id, profile]) =>
       index(`${companionIndexName(indexName, id)}_bt`).on(sql.raw('scope_id'), sql.raw(`(${profile.tokens}[1])`), sql.raw('row_id'),
         // Fixed-width identities keep the covering entry far below PostgreSQL's B-tree tuple limit.
         // Text identities retain the narrower index: adding proof data must not restrict accepted IDs.
         ...(rowType === 'uuid' && (!scopeColumn || scopeType === 'uuid')
-          ? [profile.exact!.salt, profile.exact!.stamp, profile.tokens].map(name => sql.raw(name)) : []))),
+          ? [profile.exact!.salt, profile.exact!.stamp, profile.tokens!].map(name => sql.raw(name)) : []))),
     ...(substring.length ? [index(`${companionIndexName(indexName, 'substring')}_gin`).using('gin',
-      t[substring[0].tokens], ...substring.slice(1).map(profile => t[profile.tokens]))] : []),
+      t[substring[0].tokens!], ...substring.slice(1).map(profile => t[profile.tokens!]))] : []),
   ]);
   const storage: SealedStorage = { parent: { schema: tableConfig.schema ?? 'public', name: tableName }, index: {
     schema: tableConfig.schema ?? 'public', name: indexName, profiles,
@@ -271,9 +271,9 @@ export function createSealed(options: { sealer: Sealer | (() => Sealer) }) {
       const index = reg.storage.index!, table = `${quote(index.schema)}.${quote(index.name)}`;
       const profiles = Object.values(index.profiles ?? {});
       return [...stampMigrationSql(reg.storage.parent.schema),
-        ...profiles.filter(profile => profile.mode === 'substring')
-          .map(profile => `alter table ${table} alter column ${quote(profile.tokens)} set statistics 1000`),
-        ...profiles.flatMap(profile => [profile.tokens, ...(profile.positions ? [profile.positions.stamps, profile.positions.offsets] : [])])
+        ...profiles.filter(profile => profile.mode === 'substring' && profile.tokens)
+          .map(profile => `alter table ${table} alter column ${quote(profile.tokens!)} set statistics 1000`),
+        ...profiles.flatMap(profile => [...(profile.tokens ? [profile.tokens] : []), ...(profile.positions ? [profile.positions.stamps, profile.positions.offsets] : [])])
           .map(column => `alter table ${table} alter column ${quote(column)} set storage main`),
       ];
     },

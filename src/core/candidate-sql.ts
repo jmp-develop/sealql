@@ -6,6 +6,8 @@ import { keyArray, patternProgram } from './stamp-query.js';
 import { type ProfileStorage } from './sealed-model.js';
 
 function tokenPredicate(alias: string, leaf: Extract<CompiledSearch, { op: 'leaf' }>['leaf'], mapped: ProfileStorage): Fragment {
+  if (leaf.profile.hardened) return q`true`;
+  ensure(mapped.tokens, 'INVALID_SCHEMA');
   if (leaf.profile.mode === 'exact') return q`(${ident(alias, mapped.tokens)})[1]=${leaf.tokens[0]}::bigint`;
   const tokens = leaf.tokens;
   // Three sorted pieces curb planner underestimation from correlated selectivities; this is not a candidate/result/work limit.
@@ -29,7 +31,7 @@ function leafPredicate(schema: string, alias: string, leaf: Extract<CompiledSear
         ${col(stream.length)},${col(stream.salt)},${col(stream.stamps)},${col(stream.offsets)},${proof.affix ?? 0})`;
     if (proof.whole) exact = q`(${col(stream.length)}=${proof.length} and ${exact})`;
   }
-  return q`(${tokenPredicate(alias, leaf, mapped)} and ${exact})`;
+  return leaf.profile.hardened ? exact : q`(${tokenPredicate(alias, leaf, mapped)} and ${exact})`;
 }
 
 /** Pure secured predicates are evaluated entirely against their companion. */
@@ -41,7 +43,7 @@ export function candidateRows(storage: SealedStorage, scopeId: string, search: C
   const inside = (node: CompiledSearch): Fragment => {
     if (node.op === 'all' || node.op === 'any') return q`(${join(node.children.map(inside), node.op === 'all' ? ' and ' : ' or ')})`;
     const { profile, tokens } = node.leaf;
-    ensure(tokens.length > 0, 'QUERY_TOO_BROAD');
+    ensure(profile.hardened || tokens.length > 0, 'QUERY_TOO_BROAD');
     const mapped = companion.profiles?.[profile.indexId];
     ensure(mapped && mapped.mode === profile.mode, 'INVALID_SCHEMA');
     return leafPredicate(companion.schema, '__seal_idx', node.leaf, mapped);
@@ -61,10 +63,10 @@ export function boundedCandidatePredicate(definition: SealedModelDefinition, sto
   const condition = (node: CompiledSearch, tokensOnly = false): Fragment => {
     if (node.op === 'all' || node.op === 'any') return q`(${join(node.children.map(child => condition(child, tokensOnly)), node.op === 'all' ? ' and ' : ' or ')})`;
     const { profile, tokens } = node.leaf;
-    ensure(tokens.length > 0, 'QUERY_TOO_BROAD');
+    ensure(profile.hardened || tokens.length > 0, 'QUERY_TOO_BROAD');
     const mapped = companion.profiles?.[profile.indexId];
     ensure(mapped && mapped.mode === profile.mode, 'INVALID_SCHEMA');
-    used.add(mapped.tokens);
+    if (mapped.tokens) used.add(mapped.tokens);
     const proofColumns = mapped.exact ?? mapped.positions!;
     Object.values(proofColumns).forEach(name => used.add(name));
     return tokensOnly ? tokenPredicate('c', node.leaf, mapped) : leafPredicate(companion.schema, 'c', node.leaf, mapped);

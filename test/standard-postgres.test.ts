@@ -37,13 +37,13 @@ async function setup(caseName: string, count: number) {
     });
     const seal = sealed.register(memo, { row: 'id', scope: 'scopeId' });
     const profiles = registrationOf(seal).storage.index!.profiles!;
-    const tokenColumns = Object.values(profiles).map(profile => `"${profile.tokens}" bigint[]`).join(',');
+    const tokenColumns = Object.values(profiles).map(profile => `"${profile.tokens!}" bigint[]`).join(',');
     await pool.query(`create table "${schemaName}".memo (id uuid primary key,scope_id uuid not null,rank integer,label text,extra text,moment timestamptz(6),body_ct bytea not null,address_ct bytea not null,amount_ct bytea,json_data_ct bytea)`);
     await pool.query(`create table "${schemaName}".memo_seal_index (scope_id uuid not null,row_id uuid not null,${tokenColumns},unique(scope_id,row_id),foreign key(row_id) references "${schemaName}".memo(id) on delete cascade)`);
     for (const [profileId, profile] of Object.entries(profiles)) if (profile.mode === 'exact')
-      await pool.query(`create index "${companionIndexName('memo_seal_index', profileId)}_bt" on "${schemaName}".memo_seal_index(scope_id,(("${profile.tokens}")[1]),row_id)`);
+      await pool.query(`create index "${companionIndexName('memo_seal_index', profileId)}_bt" on "${schemaName}".memo_seal_index(scope_id,(("${profile.tokens!}")[1]),row_id)`);
     const substring = Object.values(profiles).filter(profile => profile.mode === 'substring');
-    await pool.query(`create index "${companionIndexName('memo_seal_index', 'substring')}_gin" on "${schemaName}".memo_seal_index using gin(${substring.map(profile => `"${profile.tokens}"`).join(',')})`);
+    await pool.query(`create index "${companionIndexName('memo_seal_index', 'substring')}_gin" on "${schemaName}".memo_seal_index using gin(${substring.map(profile => `"${profile.tokens!}"`).join(',')})`);
     await installProofColumns(pool, seal);
     const logs: string[] = [], logEntries: { query: string; params: unknown[] }[] = [];
     const db = drizzle(pool, { logger: { logQuery(query, params) { logs.push(query); logEntries.push({ query, params }); } } });
@@ -163,8 +163,8 @@ test('native CRUD, verified pages, OR semi-join and bounded count', async () => 
     const before = (await c.pool.query(`select * from "${c.schemaName}".memo_seal_index where row_id=$1`, [first.id])).rows[0];
     const exactProfile = profiles('memo', 'body', registrationOf(c.seal).definition.fields.body).find(profile => profile.mode === 'exact')!;
     const expectedToken = await searchTokens(c.cipher.ring('memo'), scope, exactProfile, searchPieces(exactProfile, first.memo_plain), { profiles: new Map() });
-    assert.deepEqual(before[c.profiles['body/exact'].tokens].map(String), expectedToken);
-    const exactSql = c.logEntries.find(entry => entry.query.includes(' in (select ') && entry.query.includes(c.profiles['body/exact'].tokens));
+    assert.deepEqual(before[c.profiles['body/exact'].tokens!].map(String), expectedToken);
+    const exactSql = c.logEntries.find(entry => entry.query.includes(' in (select ') && entry.query.includes(c.profiles['body/exact'].tokens!));
     assert.ok(exactSql);
     assert.doesNotMatch(exactSql.query, /collate "C"/i);
     const prefixSql = c.logEntries.find(entry => entry.query.includes('with sample as materialized'));
@@ -206,18 +206,18 @@ test('native CRUD, verified pages, OR semi-join and bounded count', async () => 
     const substringProfile = profiles('memo', 'body', registrationOf(c.seal).definition.fields.body).find(profile => profile.mode === 'substring')!;
     const expectedSubstring = await searchTokens(c.cipher.ring('memo'), scope, substringProfile,
       searchPieces(substringProfile, first.memo_plain), { profiles: new Map() });
-    assert.deepEqual(before[c.profiles['body/substring'].tokens].map(String), expectedSubstring);
+    assert.deepEqual(before[c.profiles['body/substring'].tokens!].map(String), expectedSubstring);
     await c.sealed.update(c.db, c.seal, { id: first.id, scopeId: scope }, { body: second.memo_plain });
     const after = (await c.pool.query(`select * from "${c.schemaName}".memo_seal_index where row_id=$1`, [first.id])).rows[0];
-    assert.deepEqual(after[c.profiles['amount/exact'].tokens], before[c.profiles['amount/exact'].tokens]);
-    assert.notDeepEqual(after[c.profiles['body/exact'].tokens], before[c.profiles['body/exact'].tokens]);
+    assert.deepEqual(after[c.profiles['amount/exact'].tokens!], before[c.profiles['amount/exact'].tokens!]);
+    assert.notDeepEqual(after[c.profiles['body/exact'].tokens!], before[c.profiles['body/exact'].tokens!]);
     assert.equal((await c.sealed.findMany(c.db, c.seal, { scope, match: m => m.body.eq(first.memo_plain) })).items.length,
       c.rows.filter(row => row.id !== first.id && norm(row.memo_plain) === norm(first.memo_plain)).length);
     assert.equal((await c.sealed.findMany(c.db, c.seal, { scope,
       match: m => m.and(m.body.eq(second.memo_plain), m.address.contains(Array.from(norm(first.address_plain)).slice(0, 2).join(''))) })).items.some(row => row.id === first.id), true);
     await c.sealed.update(c.db, c.seal, { id: first.id, scopeId: scope }, { amount: null });
     const nulled = (await c.pool.query(`select * from "${c.schemaName}".memo_seal_index where row_id=$1`, [first.id])).rows[0];
-    assert.equal(nulled[c.profiles['amount/exact'].tokens], null);
+    assert.equal(nulled[c.profiles['amount/exact'].tokens!], null);
     assert.equal((await c.sealed.open(await c.db.select().from(c.memo).where(eq(c.memo.id, first.id))))[0].body, second.memo_plain);
     await assert.rejects(c.sealed.update(c.db, c.seal, { id: c.rows[29].id, scopeId: c.rows[29].id }, { body: second.memo_plain }),
       (error: unknown) => error instanceof SealError && error.code === 'NOT_FOUND');
@@ -282,7 +282,7 @@ test('false token candidates are rejected in the DB without opening condition fi
     const term = '빠른', scope = c.rows[0].scope_id;
     const expected = c.rows.filter(row => norm(row.memo_plain).includes(term)).map(row => row.id);
     assert.ok(expected.length >= 8);
-    const tokens = c.profiles['body/substring'].tokens;
+    const tokens = c.profiles['body/substring'].tokens!;
     await c.pool.query(`update "${c.schemaName}".memo_seal_index as target set "${tokens}"=source."${tokens}"
       from "${c.schemaName}".memo_seal_index as source where source.row_id=$1 and target.row_id<>source.row_id`, [expected[0]]);
     const originalOpen = c.cipher.open.bind(c.cipher);
