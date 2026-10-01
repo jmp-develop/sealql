@@ -60,7 +60,13 @@ export const contacts = pgTable('contacts', {
 export const contactsSeal = sealed.register(contacts, { row: 'id' });
 ```
 
-The option requires an enabled search profile: text supports exact and substring operations, while integer, bigint, and decimal support exact search. Omit `hardened` for the default token-based profile. Search predicates, `where`, `search`, and exact scalar `count` use the same API in both cases. Hardened fields store salted proofs without deterministic candidate tokens or their indexes. Without candidate narrowing, search work can grow with the number of rows in scope and be tens to hundreds of times slower than the default. The [initial sweep](https://github.com/jmp-develop/sealql/blob/main/bench/results/2026-10-02-hardened/perf/report-ko.md) measured up to about 160× overall time at 100,000 rows and about 8–40× in some 10,000-row cases; the [list-plan follow-up](https://github.com/jmp-develop/sealql/blob/main/bench/results/2026-10-02-hardened/list-plan/report-ko.md) measures the optimized finite-list path. Lists with few matches can still be slower than count because they visit heap rows in ID order. Combine other indexed conditions on large tables. Query observation and parameter logs expose the same query-key leakage as ordinary substring search. Review the [field choices and leakage boundary](../../README.md#choose-fields-and-search-profiles) before enabling it.
+The option requires an enabled search profile: text supports exact and substring operations, while integer, bigint, and decimal support exact search. Omit `hardened` for the default token-based profile. Queries, `where`, `search`, and exact `count` use the same API either way. A hardened field keeps no candidate index for any operation, exact match included, so its predicates check every row in scope; see [field choices](../README.md) for measured times and when to use it. Put a hardened predicate inside `m.and(...)` with an indexed condition to narrow the rows first; an OR branch on a hardened field checks the whole scope:
+
+```ts
+sealed.findMany(db, contactsSeal, { match: m => m.and(m.company.eq(company), m.phone.endsWith('5678')), limit: 20 });
+```
+
+Query observation and parameter logs expose the same query-key leakage as ordinary substring search.
 
 Hardened removes stored candidate-token determinism only: query parameters still carry value-specific keys. Disable bind-parameter logging in the database, driver, proxy, APM, and error paths for these fields too.
 
@@ -186,7 +192,7 @@ Search encrypted columns only with SealQL match builders (`m.field.eq`, `contain
 
 ### Search inside your own queries (JOIN, custom order)
 
-`sealed.where` is the default way to put encrypted search inside a caller-owned Drizzle query. It performs no database access and returns a `Promise<SQL>` condition containing the scope, candidate-token, and database-proof checks. Combine that condition with ordinary predicates, JOINs, subqueries, ordering, limits, and `count()` as usual, then pass selected encrypted rows to `sealed.open`:
+`sealed.where` is the default way to put encrypted search inside a caller-owned Drizzle query. It performs no database access and returns a `Promise<SQL>` condition containing the scope, candidate-token (ordinary fields), and database-proof checks. Combine that condition with ordinary predicates, JOINs, subqueries, ordering, limits, and `count()` as usual, then pass selected encrypted rows to `sealed.open`:
 
 ```ts
 const condition = await sealed.where(notesSeal, {
