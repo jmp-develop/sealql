@@ -15,12 +15,16 @@ import { stampMigrationSql } from '../src/core/stamp-sql.js';
 const render = (node: Node): string => node.kind === 'literal' ? node.text : node.kind === 'identifier'
   ? node.names.map(name => `"${name}"`).join('.') : node.kind === 'param' ? '?' : node.nodes.map(render).join('');
 
-test('hardened requires a searchable field and changes only enabled token descriptors', async () => {
+test('hardened validates through validateField and never derives candidate tokens', async () => {
   for (const spec of [
     { type: 'text', hardened: true }, { type: 'text', hardened: true, search: false },
     { type: 'text', hardened: false, search: { exact: true } },
     { type: 'boolean', hardened: true, search: { exact: true } },
-  ]) assert.throws(() => validateField(spec as never), { code: 'INVALID_SCHEMA' });
+    ...['boolean', 'instant', 'json', 'bytes'].map(type => ({ type, hardened: true, search: false })),
+  ]) {
+    assert.throws(() => validateField(spec as never), { code: 'INVALID_SCHEMA' });
+    assert.throws(() => profiles('rows', 'field', spec as never), { code: 'INVALID_SCHEMA' });
+  }
   assert.throws(() => profiles('rows', 'field', { type: 'text', hardened: true }), { code: 'INVALID_SCHEMA' });
   const ring = createSealer({ key: new Uint8Array(32).fill(93) }).ring('rows');
   for (const spec of [{ type: 'text', search: { exact: true, substring: true } },
@@ -30,9 +34,9 @@ test('hardened requires a searchable field and changes only enabled token descri
     const ordinary = profiles('rows', 'field', spec), hardened = profiles('rows', 'field', { ...spec, hardened: true });
     assert.equal(ordinary.length, hardened.length);
     for (let i = 0; i < ordinary.length; i++) {
-      assert.notDeepEqual(descriptorBytes(ordinary[i]), descriptorBytes(hardened[i]));
-      assert.deepEqual(descriptorBytes(ordinary[i]), descriptorBytes({ ...hardened[i], hardened: undefined } as never));
-      assert.deepEqual(await searchTokens(ring, 'scope', hardened[i], [new Uint8Array([1, 2])]), []);
+      assert.deepEqual(descriptorBytes(ordinary[i]), descriptorBytes(hardened[i]));
+      for (const pieces of [[], [new Uint8Array([1, 2])]])
+        await assert.rejects(searchTokens(ring, 'scope', hardened[i], pieces), { code: 'UNSUPPORTED_SEARCH' });
     }
   }
 });
@@ -74,6 +78,8 @@ test('hardened stores only ordinary proofs and applies them on companion and bou
   assert.match(dialect.sqlToQuery(where).sql, /sealql_match_positions/);
   await assert.rejects(sealed.where(seal, { match: m => m.body.contains('a') }), { code: 'QUERY_TOO_BROAD' });
   await assert.rejects(sealed.where(seal, { match: m => m.body.like('%a%') }), { code: 'QUERY_TOO_BROAD' });
-  for (const p of stored.filter(p => p.hardened)) assert.deepEqual(await searchTokens(sealer.ring(reg.model), '_', p, searchPieces(p, 'abcdefgh')), []);
+  for (const p of stored.filter(p => p.hardened)) {
+    await assert.rejects(searchTokens(sealer.ring(reg.model), '_', p, searchPieces(p, 'abcdefgh')), { code: 'UNSUPPORTED_SEARCH' });
+  }
   assert.ok(config.checks.every(c => c.value instanceof SQL));
 });

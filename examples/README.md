@@ -54,6 +54,8 @@ Do not recommend dummy values, token-bit reduction, padding, or a different reje
 
 With keys outside the database, ciphertext is not directly decrypted by a snapshot attacker. Ordinary searchable fields expose deterministic token equality, frequency and co-occurrence. Both ordinary and hardened fields expose ciphertext and normalized lengths, compact position permutations, query/update patterns, result volume, and the value or piece keys sent by observed queries. Observed piece keys reveal occurrences and positions for that piece.
 
+Hardened removes stored candidate-token determinism only. Query parameters still carry value-specific keys, so disabling bind-parameter logging is required for hardened fields too.
+
 Returned ciphertext authentication detects selected ciphertext movement or alteration; it does not prove that SQL predicates ran correctly or that the database returned every row. A hostile database can omit results or falsify predicates, including count. Resistance to keyless full-record recovery is not established. Disable bind-parameter logging in the database, driver, proxy, APM, and error paths. Use the [threat model](https://github.com/jmp-develop/sealql/blob/main/docs/threat-model.md), not local fixture results, for allowed security wording.
 
 ## Exact count and caller budgets
@@ -80,5 +82,7 @@ For a new searchable schema or any search-profile change, including enabling or 
 2. Apply every adapter-supplied predicate/storage statement (`extraMigrationSql` in the current Drizzle adapter).
 3. Run the adapter's all-model preparation gate (`prepareAllSearch` in the current Drizzle adapter), which checks installed catalog state and completes authenticated reindex with parent-row coverage.
 4. Only then deploy queries that use the profile.
+
+When converting an existing field from an ordinary profile to hardened, dropping its token columns leaves old tokens in table storage, WAL, and backups. Before deploying the new profile, rewrite the companion table (for example with `VACUUM FULL`, which locks and rewrites the table), or recreate the companion during migration and rebuild it through the sequence above. Discard pre-transition backups and WAL archives; a table rewrite does not securely erase old disk pages or retained copies. This extra cleanup applies only to existing fields being converted to hardened, not fields created as hardened.
 
 Do not query a partially rebuilt profile. SealQL has no persisted profile-version or rebuild-completion marker, so early search or count can silently omit existing rows. A predicate-function-only change may need the adapter SQL step without a data rewrite; the adapter guide must state that case explicitly.

@@ -219,10 +219,15 @@ function rowIdentity(reg: Registration, source: Record<string, unknown>, fill: b
 }
 interface Prepared { parent: Record<string, unknown>; index: Record<string, unknown>; identity: Record<string, unknown>; sealed: Sealed<unknown, unknown>[] }
 
-async function proofValues(sealer: Sealer, scope: string, profile: ReturnType<typeof profiles>[number], stored: ProfileStorage, value: unknown): Promise<Record<string, unknown>> {
+async function profileValues(sealer: Sealer, scope: string, profile: ReturnType<typeof profiles>[number], stored: ProfileStorage, value: unknown, cache: SearchTokenCache): Promise<Record<string, unknown>> {
   const result: Record<string, unknown> = {};
-  if (value === null) return Object.fromEntries(profileColumns(stored).filter(name => name !== stored.tokens).map(name => [name, null]));
+  if (value === null) return Object.fromEntries(profileColumns(stored).map(name => [name, null]));
   const ring = sealer.ring(profile.modelId);
+  if (!profile.hardened) {
+    const tokenColumn = stored.tokens ?? fail('INVALID_SCHEMA');
+    const tokens = await searchTokens(ring, scope, profile, searchPieces(profile, value), cache);
+    result[tokenColumn] = tokens.length ? tokens.map(BigInt) : null;
+  }
   if (stored.exact) {
     const proof = await exactProof(ring, profile, scope, value);
     result[stored.exact.salt] = proof.salt; result[stored.exact.stamp] = proof.stamp;
@@ -259,11 +264,7 @@ async function prepare(reg: Registration, source: Record<string, unknown>, seale
     }
     for (const profile of profiles(reg.model, field.spec.id ?? key, field.spec)) {
       const stored = reg.storage.index?.profiles?.[profile.indexId] ?? fail('INVALID_SCHEMA');
-      if (stored.tokens) {
-        const tokens = value === null ? [] : await searchTokens(ring, scopeId, profile, searchPieces(profile, value), cache);
-        index[stored.tokens] = tokens.length ? tokens.map(BigInt) : null;
-      }
-      Object.assign(index, await proofValues(sealer, scopeId, profile, stored, value));
+      Object.assign(index, await profileValues(sealer, scopeId, profile, stored, value, cache));
     }
   }
   return { parent, index, identity: identityValue, sealed };
@@ -490,7 +491,7 @@ export function runtimeMethods(sealerOf: () => Sealer, registrationsOf: () => Re
     const searchableFields = new Set(profileList.map(item => item.key)).size;
     let lastRow: string | undefined, lastScope: string | undefined, count = 0, fieldCount = 0, encountered = 0;
     const seen = new Set<string>();
-    const sealer = sealerOf(), ring = sealer.ring(reg.model);
+    const sealer = sealerOf();
     while (true) {
       if (control) await checkpoint(control.signal, 'beforeBatch', reg);
       let callbackEntered = false;
@@ -517,11 +518,7 @@ export function runtimeMethods(sealerOf: () => Sealer, registrationsOf: () => Re
           for (const { key, profile } of profileList) {
             const value = row[key];
             const stored = reg.storage.index!.profiles![profile.indexId];
-            if (stored.tokens) {
-              const tokens = value === null ? [] : await searchTokens(ring, rowScope, profile, searchPieces(profile, value), cache);
-              values[stored.tokens] = tokens.length ? tokens.map(BigInt) : null;
-            }
-            Object.assign(values, await proofValues(sealer, rowScope, profile, stored, value));
+            Object.assign(values, await profileValues(sealer, rowScope, profile, stored, value, cache));
           }
           if (tokenKeys.length && tokenKeys.every(key => values[key] === null)) {
             await tx.delete(reg.index).where(and(eq(index.scopeId, rowScope), eq(index.rowId, rowId)));

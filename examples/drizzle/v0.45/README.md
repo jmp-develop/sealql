@@ -62,6 +62,8 @@ export const contactsSeal = sealed.register(contacts, { row: 'id' });
 
 The option requires an enabled search profile: text supports exact and substring operations, while integer, bigint, and decimal support exact search. Omit `hardened` for the default token-based profile. Search predicates, `where`, `search`, and exact scalar `count` use the same API in both cases. Hardened fields store salted proofs without deterministic candidate tokens or their indexes. The database checks all rows in the search scope, so expect searches to be several times slower; combine other indexed conditions on large tables. Query observation and parameter logs expose the same query-key leakage as ordinary substring search. Review the [field choices and leakage boundary](../../README.md#choose-fields-and-search-profiles) before enabling it.
 
+Hardened removes stored candidate-token determinism only: query parameters still carry value-specific keys. Disable bind-parameter logging in the database, driver, proxy, APM, and error paths for these fields too.
+
 Rows use UUID or `sealed.textId`; scopes use UUID or text. A parent row must be unique, primary, or unique together with scope. Integer auto-increment primary keys need a separate unique UUID row identity as shown in the [integer-key example](integer-primary-key.ts). `sealed.textId` is a database-collated text column: empty IDs are allowed, NUL is not, and parent and companion identities must keep the same collation.
 
 Text-ID keyset ordering follows the database collation. For text positions, SealQL checks each candidate batch against database order with one extra SQL request per batch and raises `INVALID_CANDIDATE_SHAPE` if the callback returns an out-of-order batch.
@@ -105,6 +107,8 @@ Import `defineConfig` from `drizzle-kit`. Verify where the migration journal is 
 For profile additions or changes, follow the [rebuild invariant](../../README.md#rebuild-invariant). Generated migrations may rebuild a GIN index without `CONCURRENTLY`; plan for locking and rebuild time. Changes limited to installed LIKE predicate functions require `extraMigrationSql` again but no row rewrite when rows already use the compact-only profile.
 
 Enabling or disabling `hardened` requires the full sequence: schema migration → every `extraMigrationSql` statement → `prepareAllSearch`. Drain old reads and writes before migrating, and deploy the new profile only after preparation succeeds. Enabling removes that field's candidate-token columns and indexes; disabling recreates them and rebuilds tokens from authenticated ciphertext. Do not keep obsolete token columns or query a partially rebuilt profile.
+
+When converting an existing ordinary field to hardened, drizzle-kit's `DROP COLUMN` leaves old token data in table storage, WAL, and backups. After rebuilding and before deploying the new profile, rewrite the companion table with `VACUUM FULL` or an equivalent operation; this locks and rewrites the table. Alternatively, recreate the companion during migration, then apply `extraMigrationSql` and `prepareAllSearch` to rebuild it. Discard pre-transition backups and WAL archives; rewriting the active table does not securely erase old disk pages or retained copies. Fields created as hardened do not need this transition cleanup.
 
 ## Managed writes, deletion, and reindex
 

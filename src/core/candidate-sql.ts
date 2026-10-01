@@ -66,7 +66,7 @@ export function boundedCandidatePredicate(definition: SealedModelDefinition, sto
     ensure(profile.hardened || tokens.length > 0, 'QUERY_TOO_BROAD');
     const mapped = companion.profiles?.[profile.indexId];
     ensure(mapped && mapped.mode === profile.mode, 'INVALID_SCHEMA');
-    if (mapped.tokens) used.add(mapped.tokens);
+    if (!profile.hardened) { ensure(mapped.tokens, 'INVALID_SCHEMA'); used.add(mapped.tokens); }
     const proofColumns = mapped.exact ?? mapped.positions!;
     Object.values(proofColumns).forEach(name => used.add(name));
     return tokensOnly ? tokenPredicate('c', node.leaf, mapped) : leafPredicate(companion.schema, 'c', node.leaf, mapped);

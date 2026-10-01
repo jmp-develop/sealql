@@ -1,6 +1,6 @@
 import { frame, hex, u32, utf8 } from './bytes.js';
 import { ensure } from './errors.js';
-import { codecId, codecParameters, codecVersion, encodeField, type FieldSpec, type SearchProtection } from './field-codec.js';
+import { codecId, codecParameters, codecVersion, encodeField, validateField, type FieldSpec, type SearchProtection } from './field-codec.js';
 import type { Keyring } from './field-cipher.js';
 
 export type SearchMode = 'exact' | 'substring';
@@ -32,7 +32,7 @@ export function exactBitsForPopulation(population: number): number {
 }
 export function profiles(modelId: string, fieldId: string, spec: FieldSpec, defaultProtection: SearchProtection = 'standard'): SearchProfile[] {
   const search = spec.search;
-  if (spec.hardened !== undefined) ensure(spec.hardened === true && !!search, 'INVALID_SCHEMA');
+  if (spec.hardened !== undefined) validateField(spec);
   if (!search) return [];
   ensure((search.protection ?? defaultProtection) === 'standard', 'INVALID_SCHEMA');
   const normalizer = spec.type === 'text' ? (search as { normalizer?: string }).normalizer ?? 'legacy-text-v1' : '';
@@ -48,8 +48,7 @@ export function profiles(modelId: string, fieldId: string, spec: FieldSpec, defa
 }
 export function descriptorBytes(p: SearchProfile): Uint8Array {
   ensure(Number.isInteger(p.bits) && p.bits >= 2 && p.bits <= 32 && (p.mode !== 'substring' || p.bits === 16), 'INVALID_SCHEMA');
-  return frame([p.modelId, p.fieldId, p.indexId, codecId(p.spec), u32(codecVersion(p.spec)), codecParameters(p.spec), p.normalizer, p.mode, u32(p.bits), p.skipGrams ? 'skip' : '',
-    ...(p.hardened ? ['hardened'] : [])]);
+  return frame([p.modelId, p.fieldId, p.indexId, codecId(p.spec), u32(codecVersion(p.spec)), codecParameters(p.spec), p.normalizer, p.mode, u32(p.bits), p.skipGrams ? 'skip' : '']);
 }
 const piece = (kind: string, value: string): Uint8Array => frame([kind, utf8(value)]);
 export function searchPieces(p: SearchProfile, value: unknown, operation: 'write' | 'contains' | 'startsWith' | 'endsWith' = 'write'): Uint8Array[] {
@@ -70,7 +69,8 @@ export interface SearchTokenCache {
   profiles: Map<string, Promise<CryptoKey>>;
 }
 export async function searchTokens(ring: Keyring, scopeId: string, p: SearchProfile, pieces: readonly Uint8Array[], cache?: SearchTokenCache, checkpoint: () => void = () => {}): Promise<string[]> {
-  if (p.hardened || !pieces.length) return [];
+  ensure(!p.hardened, 'UNSUPPORTED_SEARCH');
+  if (!pieces.length) return [];
   checkpoint();
   const cacheId = hex(frame([ring.keyScopeId, descriptorBytes(p)]));
   let pendingKey = cache?.profiles.get(cacheId);
