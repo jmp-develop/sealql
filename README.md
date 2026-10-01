@@ -31,7 +31,7 @@ SealQL was built to close that gap. Values are stored encrypted, while **substri
 - Searches encrypted columns by **exact match, contains, starts with, ends with, and LIKE patterns**.
 - **Counts matches exactly inside the database**, without decrypting a single value.
 - Decrypts **only the rows you actually return** when you list results.
-- Keeps your ORM and SQL habits. JOINs, ordering, pagination, and aggregates work the way you already write them.
+- Keeps your ORM and SQL habits. JOINs, ordering, pagination, and aggregates over regular columns work the way you already write them.
 
 <br>
 
