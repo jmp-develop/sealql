@@ -52,6 +52,7 @@ Use `hardened: true` selectively when deterministic candidate tokens would expos
 ```ts
 export const contacts = pgTable('contacts', {
   id: uuid('id').primaryKey(),
+  company: sealed.text('company', { search: { exact: true } }),
   phone: sealed.text('phone', {
     search: { exact: true, substring: true },
     hardened: true,
@@ -66,9 +67,7 @@ The option requires an enabled search profile: text supports exact and substring
 sealed.findMany(db, contactsSeal, { match: m => m.and(m.company.eq(company), m.phone.endsWith('5678')), limit: 20 });
 ```
 
-Query observation and parameter logs expose the same query-key leakage as ordinary substring search.
-
-Hardened removes stored candidate-token determinism only: query parameters still carry value-specific keys. Disable bind-parameter logging in the database, driver, proxy, APM, and error paths for these fields too.
+Hardened removes stored candidate-token determinism only: query observation sees the same query keys as ordinary substring search, because query parameters still carry value-specific keys. Disable bind-parameter logging in the database, driver, proxy, APM, and error paths for these fields too.
 
 Rows use UUID or `sealed.textId`; scopes use UUID or text. A parent row must be unique, primary, or unique together with scope. Integer auto-increment primary keys need a separate unique UUID row identity as shown in the [integer-key example](integer-primary-key.ts). `sealed.textId` is a database-collated text column: empty IDs are allowed, NUL is not, and parent and companion identities must keep the same collation.
 
