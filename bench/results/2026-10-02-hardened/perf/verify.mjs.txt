@@ -1,0 +1,10 @@
+import assert from 'node:assert/strict';
+import fs from 'node:fs';
+const dir='.local/hardened-perf',r=JSON.parse(fs.readFileSync(`${dir}/raw.json`,'utf8'));
+assert.equal(r.complete,true);assert.equal(r.schemaDropped,true);assert.equal(r.sourceUnchanged,true);assert.equal(r.scopeRows,100000);assert.equal(r.ordinary.length,14);assert.equal(r.secure.length,102);assert.equal(r.writes.length,1);assert.equal(r.prepare.length,1);assert.equal(r.checks,3480);
+assert.deepEqual(r.prepareScope,{rows:1000,warmups:1,repetitions:3,reason:'25-minute budget; 100000-row rebuild excluded, no extrapolation'});
+const seen=new Set();
+for(const q of [...r.ordinary,...r.secure]){for(const p of Object.values(q.paths)){assert.equal(p.totalMsRuns.length,7);assert.equal(p.sqlMsRuns.length,7);assert.ok(p.totalMs>=p.sqlMs-0.01);assert.ok(p.totalMs>0);assert.ok(Number.isInteger(p.opens));}if(q.range){const key=[q.range,q.label,q.mode].join('/');assert.ok(!seen.has(key));seen.add(key);assert.ok(q.candidates.ordinary>=q.matched);assert.ok(q.candidates.hardened>=q.matched);assert.ok(q.candidates.hardened<=q.range);for(const p of ['ordinary','hardened'])assert.equal(q.paths[p].opens,q.mode==='count'?0:2*q.returned);}}
+for(const p of Object.values(r.prepare[0].paths))assert.equal(p.totalMsRuns.length,3);
+for(const file of ['report-ko.md','worker-body.txt']){const text=fs.readFileSync(`${dir}/${file}`,'utf8');assert.ok(!/(?<![A-Za-z0-9])[A-Za-z]:[\\/]|\/(?:Users|home)\/|file:\/\//i.test(text));assert.ok(text.includes('1,000'));assert.ok(text.includes('교차'));}
+console.log(JSON.stringify({complete:true,ordinaryQueries:14,secureQueries:102,checks:3480,insertRows:1000,prepareRows:1000,sourceUnchanged:true,schemaDropped:true,reportPrivacy:'pass'}));

@@ -23,6 +23,7 @@
 
 | 시도 | 핵심 수치 | 결론과 이유 | 근거 |
 |---|---|---|---|
+| **hardened 목록의 토큰 없는 직접 스캔** | 10만 전화 eq 210.35→206.93 ms, 0건 456.89→446.53 ms, LIKE 902.05→850.09 ms(전체). 초기 sweep 최대 약 160배/일반 | 채택. 중간 처리만 제거하고 일반 SQL 217항목 byte 동일. proof-first fallback 대안은 0건 645→217 ms지만 중간 빈도 8→214 ms라 기각; 희귀 ordered heap 방문은 남음 | [전후·계획·기각안](../bench/results/2026-10-02-hardened/list-plan/report-ko.md), [초기 sweep](../bench/results/2026-10-02-hardened/perf/report-ko.md) |
 | **P1: 후보 조건에 정렬 토큰 최대 3개** | 평균 56.5→47.9 ms, 200 ms 초과 9→6, 1초 0 | 채택. 플래너 과소추정 해소, 결과 불변 | [024](decisions/024-candidate-token-selection.md) |
 | P2/P3: 3개 + 나머지 비인라인 함수 검사, P4: 병렬 4 | 목록 39→67 ms 등 | 기각. 목록·소형 퇴행 | [024](decisions/024-candidate-token-selection.md), [마지막 비교](../bench/results/2026-09-29-lasthour/r9-impl/report-ko.md) |
 | 검색 표 parallel_workers=4, work_mem 32MB | 200 ms 초과 11→8, AND6 +4 ms | 미채택. 일부 개선·소형 퇴행 / 효과 없음 | [질의 조정](../bench/results/2026-09-29-followup/query-tuning/report-ko.md) |
@@ -31,12 +32,13 @@
 | PostgreSQL 18 bytea→bigint 직접 형변환 | 3–8% | 연기. PG18 요구 | [형변환 실험](../bench/results/2026-09-29-next-cast-astra/section-ko.md) |
 | 남은 병목 | 흔한 값 수만 건 count 200–450 ms: 일치 행마다 PL/pgSQL 도장 판정(1회 7–17 µs) | 저장 형식 불변 최적화는 뒤로 | [연구 최종](../bench/results/2026-09-29-count-final/report-ko.md) |
 
-## 3. 누출 완화 (모두 기각, [025](decisions/025-leakage-reevaluation-and-rejected-mitigations.md))
+## 3. 누출 완화 (기각안은 [025](decisions/025-leakage-reevaluation-and-rejected-mitigations.md))
 
-현재 누출 수치는 [threat-model](threat-model.md)에 있고, 제품 적용 기준은 [core concepts의 칸별 결정표](../examples/README.md#choose-fields-and-search-profiles)에 있다. 요지: 부분 검색을 켠 전화는 알려진 원문 1%·선택 삽입으로 99.8% 복원, 백업만으로는 0%. 그래서 형식 고정 칸은 **정확 일치만** 쓴다.
+현재 누출 수치는 [threat-model](threat-model.md)에 있고, 제품 적용 기준은 [core concepts의 칸별 결정표](../examples/README.md#choose-fields-and-search-profiles)에 있다. 요지: 부분 검색을 켠 전화는 알려진 원문 1%·선택 삽입으로 99.8% 복원, 백업만으로는 0%. 그래서 형식 고정 칸의 일반 프로필은 **정확 일치만** 쓴다. 부분 검색이 필요하면 칸별 hardened 옵션의 비용과 관찰 누출을 함께 검토한다.
 
 | 시도 | 핵심 수치 | 결론과 이유 | 근거 |
 |---|---|---|---|
+| **hardened: 후보 토큰 없는 salt 도장** | 피해·참조 각 1만 행에서 전화의 백업·알려진 원문·선택 삽입 복원 0%; 알려진 검색어 1,000회 관찰은 전화·주소·회사 100%, 이름 70.41%로 일반 부분 검색과 같음 | 칸별 선택 옵션. 저장 결정성만 제거하며 길이·관찰 누출과 탐색 미해결은 남음; 안전 증거가 아님 | [공격 원자료·한계](../bench/results/2026-10-02-hardened/attack/report-ko.md) |
 | 후보 토큰 비트 축소(10/12비트) | 충돌 인지 공격 99.6% 그대로(약한 공격의 3.1%는 착시), 드문 2글자 후보 최대 22.6배 | 기각 | [비트](../bench/results/2026-09-29-lasthour/m1-astra/report-ko.md), [전화 12비트](../bench/results/2026-09-29-followup/token-bits/report-ko.md) |
 | 본문 길이 패딩(64 B) | 용량 1.68배, 공백 수 추측 98–100% | 기각. 정규화 길이가 그대로 드러남 | [최종 검토](../bench/results/2026-09-29-final-review/m1-astra/report-ko.md) |
 | 가짜 값 통째로 k개(전화 k=1·3) | 후보 안 정답 100%, 후보 약 3개·12개, 검색어 관찰 100% 판별, 쓰기마다 새 더미면 두 스냅샷 100%, 후보 행 2.17·5.17배 | 기각. 후보 몇 개로 좁혀진 전화는 사실상 유출. 부분 검색 끄기가 비용 없이 0% | [조립·비용](../bench/results/2026-09-30-dummy-phone/dsol-a/report-ko.md), [관찰·스냅샷](../bench/results/2026-09-30-dummy-phone/dsol-b/report-ko.md) |
@@ -60,4 +62,4 @@
 
 ## 5. 아직 재지 않은 것
 
-T2(WAL·다중 스냅샷)의 전면 복원, 정확 일치 전용 SealQL의 같은 공격 수치, 실제 이름·자연어의 글자 단위 복원, 운영 규모·운영 데이터 성능.
+T2(WAL·다중 스냅샷)의 전면 복원, 정확 일치 전용 SealQL의 더 넓은 실제 데이터·공격 조건, 실제 이름·자연어의 글자 단위 복원, 운영 규모·운영 데이터 성능.

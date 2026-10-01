@@ -34,6 +34,7 @@ rtk proxy node --import tsx bench/common/load-product-fixture.ts
 - `final-return/`, `followup/r9-impl/`, `followup-wal/`: 기준선, 질의 튜닝, WAL 검증
 - `p1-verify/`, `lasthour/r9-impl/`, `lasthour/v-astra/`: 후보 3개 경로와 최종 공개 API 회귀
 - `scale-count-million/`: count 전용 10만/100만 행 비교
+- `hardened/list-plan.ts`: 기존 fixture의 1만/10만 행에서 평문·일반·hardened 목록 경로 전후를 예열 2회·교차 7회로 비교. `9f19c2e`의 `src/` 사본 경로를 첫 인자로 받고, [원자료·계획·기각안](results/2026-10-02-hardened/report-ko.md)에 조건과 한계를 보존한다.
 
 공격·누출 검증:
 

@@ -141,6 +141,13 @@ test('hardened predicates, native query surfaces, managed writes and profile mig
     assert.equal((await pool.query(`select count(*)::int n from "${schemaName}".global_rows_seal_index`)).rows[0].n, 0);
     await model.sealed.update(db, model.globalSeal, { code: fixture[1].id }, { note: fixture[1].memo_plain });
     assert.equal(await model.sealed.count(db, model.globalSeal, { match: m => m.note.eq(fixture[1].memo_plain) }), 1);
+    await model.sealed.update(db, model.globalSeal, { code: fixture[0].id }, { note: fixture[1].memo_plain });
+    const textFirst = await model.sealed.findMany(db, model.globalSeal, { match: m => m.note.eq(fixture[1].memo_plain), limit: 1 });
+    assert.deepEqual(textFirst.items.map(v => v.code), [fixture[0].id]);
+    assert.ok(textFirst.nextCursor);
+    const textSecond = await model.sealed.findMany(db, model.globalSeal, { match: m => m.note.eq(fixture[1].memo_plain), limit: 1, cursor: textFirst.nextCursor });
+    assert.deepEqual(textSecond.items.map(v => v.code), [fixture[1].id]);
+    await model.sealed.update(db, model.globalSeal, { code: fixture[0].id }, { note: null });
     const prepare = await model.sealed.prepareAllSearch(db, { batchSize: 7 });
     assert.equal(prepare.totalRows, 42);
     assert.equal(prepare.registrations[0].verifiedRows, 40);
@@ -179,7 +186,7 @@ test('hardened predicates, native query surfaces, managed writes and profile mig
   }
 });
 
-test('hardened bounded fallback finds sparse matches beyond the complete ID prefix', async () => {
+test('hardened ordered scans find sparse matches beyond the former ID prefix', async () => {
   const pool = new Pool({ host: '127.0.0.1', port: 56439, user: 'sealql_test', database: 'postgres' });
   const schemaName = 'test_hardened_fallback';
   let created = false;
@@ -201,11 +208,14 @@ test('hardened bounded fallback finds sparse matches beyond the complete ID pref
     const wanted = fixture[299], other = fixture[310];
     const found = await sealed.findMany(db, seal, { match: m => m.phone.eq(wanted.phone_plain), limit: 1 });
     assert.deepEqual(found.items.map(v => v.id), [wanted.id]);
+    const conjunction = await sealed.findMany(db, seal, { match: m => m.and(m.phone.eq(wanted.phone_plain), m.phone.startsWith(wanted.phone_plain.slice(0, 2))), limit: 1 });
+    assert.deepEqual(conjunction.items.map(v => v.id), [wanted.id]);
     const first = await sealed.findMany(db, seal, { match: m => m.or(m.phone.eq(wanted.phone_plain), m.phone.eq(other.phone_plain)), limit: 1 });
     assert.deepEqual(first.items.map(v => v.id), [wanted.id]);
     assert.ok(first.nextCursor);
     const second = await sealed.findMany(db, seal, { match: m => m.or(m.phone.eq(wanted.phone_plain), m.phone.eq(other.phone_plain)), limit: 1, cursor: first.nextCursor });
     assert.deepEqual(second.items.map(v => v.id), [other.id]);
+    if (second.nextCursor) assert.deepEqual((await sealed.findMany(db, seal, { match: m => m.or(m.phone.eq(wanted.phone_plain), m.phone.eq(other.phone_plain)), limit: 1, cursor: second.nextCursor })).items, []);
     await sealed.update(db, seal, { id: wanted.id }, { phone: '' });
     assert.equal(await sealed.count(db, seal, { match: m => m.phone.eq('') }), 1);
     const oneCharacter = wanted.phone_plain.slice(-1);

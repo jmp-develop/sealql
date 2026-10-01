@@ -1,0 +1,61 @@
+> node --import tsx --test test/*.test.ts
+✔ candidate token selection preserves all proof inputs across companion, parent and bounded paths (402.5002ms)
+✔ hardened predicates, native query surfaces, managed writes and profile migrations match plaintext (3425.9969ms)
+✔ hardened ordered scans find sparse matches beyond the former ID prefix (944.9856ms)
+✔ hardened validates through validateField and never derives candidate tokens (6.0578ms)
+✔ hardened stores only ordinary proofs and applies them on companion and bounded SQL (79.7999ms)
+✔ single-literal LIKE compiles to equivalent positional SQL without an exact profile (120.9685ms)
+{"likeSegmentComparisons":3836,"longValueLength":4002,"dbRowsInserted":0}
+✔ LIKE segment order matches PostgreSQL LIKE for overlaps, escapes, underscores, empty and long values (2466.8305ms)
+✔ large JSON and deep nesting have no library size or depth cap (52.2209ms)
+✔ search expression accepts more than eight leaves and nested groups (0.4409ms)
+✔ normalization folds NFC, full-width ASCII, and ASCII case (0.5029ms)
+✔ ciphertext binds row and field, rejects tampering, and uses multiple shards (38.1175ms)
+✔ cached field context preserves versionless AAD bytes and opens independent ciphertext (31.7004ms)
+✔ cursor key cache keeps independent root keys isolated (8.5252ms)
+✔ fixed global and model keys are copied at construction (2.4558ms)
+✔ field and token profile keys are shared across tenants without retaining scope prefixes (78.3689ms)
+✔ marked pieces are distinct from literal punctuation (0.8621ms)
+✔ substring skip grams default on and only explicit false disables them (1.5555ms)
+✔ exact bits allow 32 while substring tokens remain 16 (24.1234ms)
+✔ scalar count rejects unsafe integers, removed budgets, and cancellation without decryption (13.2109ms)
+✔ custom search matches plaintext across complex joins, nulls, duplicates, cursors, and count (485.9139ms)
+✔ sealed.where composes with ordinary Drizzle queries, joins, subqueries and count (424.7711ms)
+✔ open rejects pending queries and database wrapping sanitizes cause (16.2108ms)
+✔ transactionless drivers report UNSUPPORTED_DRIVER before any callback work (62.7505ms)
+✔ text position validation wraps SQL errors and checks cancellation before SQL (23.7641ms)
+✔ native managed writes and opens stay atomic (3466.2665ms)
+✔ text row IDs follow the database collation and keep index-backed keysets (689.1183ms)
+✔ package schema generates, migrates, and pushes twice without drift (5891.4542ms)
+✔ scope-free nullable index rows disappear when every token is null (177.0438ms)
+✔ composite parent key uses scope and row foreign key (126.9525ms)
+✔ native registration builds same-schema companion without loading a key (27.9548ms)
+✔ native CRUD, verified pages, OR semi-join and bounded count (1035.9116ms)
+✔ large searchable fields and public open have no implicit size or row budget (6201.1084ms)
+✔ insert splits above the PostgreSQL parameter limit within one transaction (81809.3895ms)
+✔ false token candidates are rejected in the DB without opening condition fields (1369.6727ms)
+✔ multicolumn GIN preserves writes, cursor search and exact count (145.1812ms)
+✔ reindex accepts a caller batch above the old maximum (16506.7747ms)
+✔ count returns one scalar without selecting or decrypting row values (13514.6662ms)
+✔ microsecond timestamp keysets resume under another DateStyle (226.189ms)
+✔ findMany returns a thousand-level JSON field with a result byte budget (142.466ms)
+✔ prepareAllSearch preflights every registration and proves full parent coverage (7810.371ms)
+✔ large final-match pages, root OR fallback and keysets match plaintext; repeated near misses terminate (9961.366ms)
+✔ DB proofs match plaintext across operators, types, nulls, mutations and JOIN projections (2030.0424ms)
+✔ ordinary SQL, parameters, DDL, migrations and descriptors match the pre-hardened bytes (153.0992ms)
+✔ stamp derivation and signed big endian digest match independent crypto (63.993ms)
+✔ position proofs retain occurrences, stream domains, Unicode and empty values (11.2765ms)
+✔ two-bit exact profiles are explicit; the population recommendation stays unchanged (2.237ms)
+Node pg flow {"ok":true,"insert":1,"count":1,"update":1,"reindex":1,"search":1,"substring":1,"afterDelete":0}
+postgres-js flow {"ok":true,"insert":1,"count":1,"update":1,"reindex":1,"search":1,"substring":1,"afterDelete":0}
+workerd pg flow {"ok":true,"insert":1,"count":1,"update":1,"reindex":1,"search":1,"substring":1,"afterDelete":0}
+✔ Node pg, postgres-js and local workerd pg execute the complete public DB flow (1232.7638ms)
+✔ v3 envelope crosses local workerd and Node WebCrypto (674.7844ms)
+ℹ tests 48
+ℹ suites 0
+ℹ pass 48
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 123450.4543

@@ -1,0 +1,72 @@
+import fs from 'node:fs';
+const d='.local/hardened-perf',r=JSON.parse(fs.readFileSync(`${d}/raw.json`,'utf8'));
+const f=v=>typeof v==='number'?v.toFixed(2):'측정 안 함';
+const cells=(x,n=7)=>`${f(x.sqlMs)} / ${f(x.totalMs)} ±${f(x.totalMsMad)}`;
+const percent=(a,b)=>((b/a-1)*100).toFixed(1)+'%';
+const ordinaryRows=r.ordinary.map(q=>{const b=q.paths.baseline,h=q.paths.current;const noise=Math.abs(h.totalMs-b.totalMs)<=b.totalMsMad+h.totalMsMad;return {q:q.query,b,h,noise,matched:q.matched,candidates:q.candidates,returned:q.mode==='list'?Math.min(20,q.matched):q.mode==='joinList'?20:1};});
+const writes=r.writes[0];if(writes){const b=writes.paths.baseline,h=writes.paths.current;ordinaryRows.push({q:'insert 1,000행',b,h,noise:Math.abs(h.totalMs-b.totalMs)<=b.totalMsMad+h.totalMsMad,matched:1000,candidates:'—',returned:1000});}
+const prep=r.prepare[0];if(prep?.paths){const b=prep.paths.baseline,h=prep.paths.current;ordinaryRows.push({q:'prepareAllSearch 1,000행¹',b,h,noise:Math.abs(h.totalMs-b.totalMs)<=b.totalMsMad+h.totalMsMad,matched:1000,candidates:'—',returned:'보고 1개'});}
+const table1=['| 일반 모델·작업 | v1.1.1 SQL / 전체 ±MAD (ms) | 4c83aae SQL / 전체 ±MAD (ms) | 전체 중앙값 차 | 반복 변동 범위² |','|---|---:|---:|---:|---|',...ordinaryRows.map(q=>`| ${q.q} | ${cells(q.b)} | ${cells(q.h)} | ${f(q.h.totalMs-q.b.totalMs)} (${percent(q.b.totalMs,q.h.totalMs)}) | ${q.noise?'범위 안':'범위 밖'} |`)].join('\n');
+const timingSecure=['| 범위 행 | 필드·연산 | 질의 | 방식 | 일치 / 반환 | 평문 SQL / 전체 (ms) | 일반 SQL / 전체 ±MAD (ms) | 강화 SQL / 전체 ±MAD (ms) | 강화/일반 전체 | 토큰 후보 일반 / 강화 | SQL 횟수 일반 / 강화 | 인증 복호화 일반 / 강화 |','|---:|---|---|---|---:|---:|---:|---:|---:|---:|---:|---:|',...r.secure.map(q=>`| ${q.range} | ${q.label} | ${q.node.value??q.node.children.map(c=>c.value).join(' & ')} | ${q.mode} | ${q.matched} / ${q.returned} | ${f(q.paths.plain.sqlMs)} / ${f(q.paths.plain.totalMs)} | ${cells(q.paths.ordinary)} | ${cells(q.paths.hardened)} | ${f(q.paths.hardened.totalMs/q.paths.ordinary.totalMs)}배 | ${q.candidates?.ordinary??'측정 안 함'} / ${q.candidates?.hardened??'측정 안 함'} | ${q.paths.ordinary.sqlCalls} / ${q.paths.hardened.sqlCalls} | ${q.paths.ordinary.opens} / ${q.paths.hardened.opens} |`)].join('\n');
+const ranges=[10000,100000];const summaryRows=[];for(const n of ranges)for(const field of ['phone','name'])for(const mode of ['count','list20','listAll']){const qs=r.secure.filter(q=>q.range===n&&q.label.startsWith(field+'-')&&q.mode===mode);if(!qs.length)continue;const vals=qs.map(q=>q.paths.hardened.totalMs/q.paths.ordinary.totalMs);const sqlRatios=qs.map(q=>q.paths.hardened.sqlMs/q.paths.ordinary.sqlMs);summaryRows.push(`| ${n} | ${field==='phone'?'전화':'이름'} | ${mode} | ${qs.length} | ${Math.min(...qs.map(q=>q.matched))}–${Math.max(...qs.map(q=>q.matched))} | ${f(Math.min(...sqlRatios))}–${f(Math.max(...sqlRatios))}배 | ${f(Math.min(...vals))}–${f(Math.max(...vals))}배 |`);}
+for(const q of r.secure.filter(q=>q.label==='mixed-AND'))summaryRows.push(`| ${q.range} | 일반 이름 AND 강화 전화 | ${q.mode} | 1 | ${q.matched} | ${f(q.paths.hardened.sqlMs/q.paths.ordinary.sqlMs)}배 | ${f(q.paths.hardened.totalMs/q.paths.ordinary.totalMs)}배 |`);
+const table2=['| 실제 companion 행 | 강화 필드 | 호출 | 질의 수 | 일치 행 범위 | 강화/일반 SQL 중앙값 범위 | 강화/일반 전체 중앙값 범위 |','|---:|---|---|---:|---:|---:|---:|',...summaryRows].join('\n');
+const gate=r.complete&&r.schemaDropped&&r.sourceUnchanged;
+const ordinaryMetrics=['| 일반 질의 | SQL 횟수 v1.1.1 / 4c83aae | 전체 토큰 후보 | 인증 복호화 v1.1.1 / 4c83aae |','|---|---:|---:|---:|',...r.ordinary.map(q=>`| ${q.query} | ${q.paths.baseline.sqlCalls} / ${q.paths.current.sqlCalls} | ${q.candidates??'측정 안 함'} | ${q.paths.baseline.opens} / ${q.paths.current.opens} |`)].join('\n');
+const lines=[
+'# 강화 검색 성능 및 일반 모델 버전 비교',
+'',
+`완료: **${gate?'전체 완료':'진행 중 또는 미완료'}**. 일반 14질의, insert 1,000행, ${prep?'prepareAllSearch 1,000행':'prepareAllSearch 미완료'}, 강화 ${r.secure.length}/102 조건, 평문 대조 ${r.checks}회. ${r.error?'오류: '+r.error:''}`,
+'',
+'전제: 일회용 DB 127.0.0.1:56439만 사용했고 `disposablePool` 내부 `assertDisposable`·사용자·데이터 디렉터리·포트를 먼저 확인했다. 코디네이터가 다른 DB 작업이 없음을 확인해 독점 순서로 실행했다. 원본 `bench_realistic_100k`를 읽기만 했으며 파생 전용 스키마는 마지막에 삭제했다.',
+'',
+`비교 대상은 별도 git worktree에서 빌드한 **v1.1.1**과 **4c83aae**이며 제품 코드·문서 수정과 커밋은 없다. 일반 14질의는 동일 부모·companion 물리 테이블과 키·salt·도장을 두 버전이 읽는다. 원본과 ID를 조인한 기존 현재 형식 파생 fixture를 복사했고 처음 100행 6필드 인증 복호화(600필드)를 원본과 대조했다. 강화 비교는 같은 모델·필드·키·scope·행 결속 및 동일 stampKey 유도를 유지해 암호문·salt·도장을 복사하고 해당 강화 토큰 열을 생략했다.`,
+'',
+`강화 비교의 1만/10만은 **별도 물리 부모·companion의 실제 행 수**다. 전화 강화 모델은 일반 이름과 강화 전화, 이름 강화 모델은 강화 이름과 일반 전화다. 목록은 ID순이고 이름·전화 2필드를 투영하며 매 반복 ID 순서·두 원문 값, count를 평문 및 메모리 기준과 대조한다. 일반 14질의 목록은 README와 같이 6필드를 투영한다. SUM/AVG는 암호화 이름의 조건으로 고른 **평문 points**만 계산한다.`,
+'',
+'조회·insert: 첫 측정 1회 별도 기록, 예열 2회, 경로 순서를 번갈아 교차 7회 중앙값. SQL 요청~응답은 드라이버 Client.query 왕복 합계이며 서버 실행 시간만이 아니다. 전체 시간은 API 시작부터 결과까지다. ±MAD는 반복값의 중앙 절대 편차이며 표의 SQL·전체 중앙값은 서로 합산하지 않는다. OS 캐시는 비우지 않았으므로 첫 측정을 콜드 캐시라고 부르지 않는다.',
+'',
+'¹ 코디네이터가 시간 제한에 맞춰 prepareAllSearch를 원본에서 파생한 **1,000행·6필드**로 축소 승인했다. 예열 1회·교차 3회로 별도 표기하며 10만 행 재구축 성능이나 분산으로 외삽하지 않는다. 10만 행 재구축은 중단한 초기 실행을 제외하고 미측정이다. insert는 같은 원본 1,000행을 두 전용 모델에 관리형 쓰기로 넣고 매번 트랜잭션을 롤백했으며, SQL에는 API 안의 쓰기 SQL만 포함하고 외부 롤백은 제외했다.',
+'',
+'² 판정은 |두 전체 중앙값의 차| ≤ 두 경로의 MAD 합이면 “반복 변동 범위 안”으로 표시한 기술 통계다. 7회(prepare는 3회)와 한 세션으로 무영향을 증명하는 통계적 동등성 시험은 아니다. 최대·최소·표준편차와 각 반복값은 raw.json에 보존했다.',
+'',
+'## 일반 모델 비교',
+'',
+table1,
+'',
+`14개 조회에서 ${ordinaryRows.slice(0,14).filter(q=>q.noise).length}/14가 위 기술 통계 범위 안이다. 이 실행에서 재현 가능한 일반 조회 퇴행은 관찰하지 못했지만 부재를 보장하지 않는다.`,
+'',
+ordinaryMetrics,
+'',
+'추가 지표도 동일 호출의 실제 계측이며 후보 수는 별도 token-only count다. insert와 prepare의 SQL 횟수·왕복 결과 행·복호화 호출도 raw.json에 보존했다. 일반 목록은 6필드, 강화 비교 목록은 2필드이므로 서로 투영 비용을 비교하지 않는다.',
+'',
+'## 강화 비교 요약',
+'',
+'전제: 표는 각 연산의 개별 중앙값 배율 **최솟값–최댓값**이며 모든 질의를 하나로 평균내지 않았다. 0건, 근접 100/1,000/10,000건 질의는 원본 어휘의 실제 빈도에서 골랐고 데이터나 정답 수를 조작하지 않았다.',
+'',
+table2,
+'',
+'## 강화 개별 결과',
+'',
+'토큰 후보는 별도 계측으로 전체 토큰 조건을 만족한 행 수이며 LIMIT/도장 판정 이전 값이다. 강화 단독 조건은 토큰이 없으므로 해당 실제 범위의 전 행이 후보이며 혼합 AND는 일반 이름의 후보 조건만 남는다. 목록20의 내부 제한 prefix/fallback에서 실제 방문한 행 수는 계측하지 않았으며 전체 토큰 후보를 방문량으로 해석하면 안 된다. 인증 복호화는 실제 Sealer.open 호출 수, SQL 횟수는 실제 Client.query 수다. count의 반환 행 1은 scalar 결과이고 일치 수와 다르다.',
+'',
+timingSecure,
+'',
+'## 결과 규모 선택',
+'',
+'| 칸 | contains 길이 | 목표 건수 | 고른 질의 | 실제 10만 행 일치 |',
+'|---|---:|---:|---|---:|',
+...(r.termTargets??[]).map(x=>`| ${x.field} | ${x.length} | ${x.target} | ${x.term} | ${x.hits} |`),
+'',
+'없는 질의는 전화 xx, 이름 zzzzzzzz이며 fixture의 실제 문자 밖인 부재 대조다. 이름의 3·4글자 어휘로 약1,000/100건을 만들 수 없을 때 가장 가까운 관측값을 사용했다. 같은 질의를 1만 행 표에서도 그대로 사용해 결과 크기가 작아질 수 있다.',
+'',
+`로캘: ${r.locale??'측정 안 함'}. C 로캘에서 한글 평문 LIKE 전체 스캔 배율은 성능 주장에 쓰지 않는다. 평문 시간은 조건 대조와 관측값으로만 제공하고 “암호화가 평문보다 빠르다”는 판단을 하지 않는다. 모든 결과는 로컬 합성 fixture 결과이며 운영 보장·보안 인증이 아니다.`,
+'',
+`원본 읽기값 SHA-256 전후 일치: ${r.sourceUnchanged?'확인':'미확인'}, 전용 스키마 삭제: ${r.schemaDropped?'확인':'미확인'}, 측정 시작 ${r.started}, 종료 ${r.finished??'진행 중'}.`,
+'',
+'출처: [raw.json](raw.json), [측정 스크립트](run.ts), [빌드 전 버전 체크포인트](checkpoint.json). README 질의 기준: bench/results/2026-09-30-readme-bench/run.ts.txt; 측정 규칙: docs/measurement.md. 재현은 두 빌드 디렉터리와 현재 형식 test_p1_verify 파생 fixture를 준비한 뒤 `rtk proxy node --import tsx .local/hardened-perf/run.ts`다(체크포인트가 있으면 일반 결과를 재사용하므로 새 전수 실행에는 별도 출력 디렉터리 또는 체크포인트 제외가 필요).',
+];
+fs.writeFileSync(`${d}/report-ko.md`,lines.join('\n')+'\n');
+const body=`일반 14질의·1,000행 insert와 승인된 1,000행 prepareAllSearch 및 실제 1만·10만 companion의 전화·이름 강화 ${r.secure.length}조건을 측정했습니다.\n\n전제: 조회·insert 예열2·교차7, prepare 예열1·교차3, 단위 ms, 동일 fixture·질의·투영, MAD=중앙 절대 편차, 범위 판정=|전체 중앙값 차|≤두 MAD 합, C 로캘 한글 평문 배율은 판정 제외\n\n${table1}\n\n${table2}\n\n평문 ID·원문·개수 대조 ${r.checks}회에서 불일치가 없으며 일반 조회 중앙값 차 ${ordinaryRows.slice(0,14).filter(q=>q.noise).length}/14개는 두 MAD 합 범위 안이지만 통계적 무영향 증명은 아닙니다.\n\n원본 ${r.sourceUnchanged?'불변':'불변 미확인'}·전용 스키마 ${r.schemaDropped?'삭제 완료':'삭제 미완료'}이고 본 작업의 제품 코드·문서 수정·커밋은 없으며 10만 행 prepare와 운영 성능·보안은 이 실험의 검증 범위 밖입니다.`;
+fs.writeFileSync(`${d}/worker-body.txt`,body);
+console.log(JSON.stringify({reportReady:gate,ordinary:r.ordinary.length,secure:r.secure.length,checks:r.checks,noiseQueries:ordinaryRows.slice(0,14).filter(q=>q.noise).length}));

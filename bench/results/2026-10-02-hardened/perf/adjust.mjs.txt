@@ -1,0 +1,15 @@
+import fs from 'node:fs';
+const file='.local/hardened-perf/run.ts';let s=fs.readFileSync(file,'utf8');
+s=s.replace("const field=sc.node.field??'phone',hard=field==='name'?hn:hp;","const field=sc.node.field??'phone',ord=n===10000?normal10:normal,hard=n===10000?(field==='name'?hn10:hp10):(field==='name'?hn:hp);");
+s=s.replace("const m=path==='ordinary'?normal:hard;const opts={scope,match:(b:any)=>match(sc.node,b),where:lte(m.table.id,source[n-1].id)};","const m=path==='ordinary'?ord:hard;const opts={scope,match:(b:any)=>match(sc.node,b)};");
+s=s.replace('candidateCount(normal,sc.node,n)','candidateCount(ord,sc.node,n)');
+s=s.replace("leaf(field,'startsWith',v.slice(0,2))","leaf(field,'startsWith',v.slice(0,field==='phone'?5:2))");
+const marker='const after=(await pool.query(`select id,scope_id as "scopeId",';
+const prep=`// Coordinator approved 1000 rows, one warmup and three alternating measured repetitions.
+result.prepareScope={rows:1000,warmups:1,repetitions:3,reason:'25-minute budget; 100000-row rebuild excluded, no extrapolation'};
+for(const m of writes)await m.sealed.insert(db,m.seal,input);
+const prepRuns:any={baseline:[],current:[]};
+for(let i=0;i<4;i++)for(const j of i%2===0?[0,1]:[1,0]){const m=writes[j],path=j===0?'baseline':'current';const r=await timed(()=>m.sealed.prepareAllSearch(db,{batchSize:1000}));assert.equal(r.value.totalRows,1000);const {value,statements,...metrics}=r;if(i>0)prepRuns[path].push(metrics);console.log(JSON.stringify({phase:'prepare1000',path,totalMs:r.totalMs}));}
+result.prepare=[{rows:1000,paths:Object.fromEntries(Object.entries(prepRuns).map(([p,r])=>[p,summary(r as any[])]))}];persist();
+`;
+assertMarker();function assertMarker(){if(!s.includes(marker))throw Error('Missing end marker');}s=s.replace(marker,prep+marker);fs.writeFileSync(file,s);

@@ -1,0 +1,723 @@
+{
+  "started": "2026-10-01T20:00:43.909Z",
+  "complete": true,
+  "databaseAccess": false,
+  "newFixtureGenerated": false,
+  "victimRows": 10000,
+  "referenceRows": 10000,
+  "identityDigest": "189a19c99711fbacd9cafdb548f243a63657e12a0c1514a736c1f92da670f382",
+  "fixtureHash": "17690c5e4e3623d7c8b1e774cdba962d9bd6d86c70b423dfccdd6813534b2528",
+  "seed": 108029,
+  "attacks": [
+    {
+      "field": "name",
+      "model": "random",
+      "attack": "empirical",
+      "rows": 10000,
+      "correct": 0,
+      "valuePct": 0,
+      "included": 0,
+      "candidateIncludesPct": 0,
+      "meanCandidateSize": 0,
+      "characters": 6473,
+      "totalCharacters": 92924,
+      "characterPct": 6.965907623434204,
+      "mostlyPct": 0
+    },
+    {
+      "field": "name",
+      "model": "random",
+      "attack": "uniform-distinct",
+      "rows": 10000,
+      "correct": 0,
+      "valuePct": 0,
+      "included": 0,
+      "candidateIncludesPct": 0,
+      "meanCandidateSize": 0,
+      "characters": 6568,
+      "totalCharacters": 92924,
+      "characterPct": 7.068141707201584,
+      "mostlyPct": 0.02
+    },
+    {
+      "field": "name",
+      "model": "S0",
+      "attack": "A-backup",
+      "rows": 10000,
+      "correct": 0,
+      "valuePct": 0,
+      "included": 0,
+      "candidateIncludesPct": 0,
+      "meanCandidateSize": 10000,
+      "characters": 31941,
+      "totalCharacters": 92924,
+      "characterPct": 34.37325125909345,
+      "mostlyPct": 0.08,
+      "selectedMethod": "group_frequency",
+      "familyScores": [
+        {
+          "method": "group_frequency",
+          "correct": 0
+        },
+        {
+          "method": "piece_frequency",
+          "correct": 0
+        },
+        {
+          "method": "rank_frequency",
+          "correct": 0
+        }
+      ],
+      "cappedRows": 0,
+      "candidateSizeIsLowerBound": false,
+      "knownRows": 0,
+      "candidateMeaning": "reference/known dictionary coverage, not a filtered universe"
+    },
+    {
+      "field": "name",
+      "model": "S0-exact",
+      "attack": "A-backup",
+      "rows": 10000,
+      "correct": 0,
+      "valuePct": 0,
+      "included": 0,
+      "candidateIncludesPct": 0,
+      "meanCandidateSize": 0,
+      "characters": 18065,
+      "totalCharacters": 92924,
+      "characterPct": 19.440618139554903,
+      "mostlyPct": 0,
+      "selectedMethod": "group_frequency",
+      "knownRows": 0,
+      "candidateMeaning": "learned exact bucket labels only; unknown labels unresolved",
+      "exactBits": 16
+    },
+    {
+      "field": "name",
+      "model": "H",
+      "attack": "A-backup",
+      "rows": 10000,
+      "correct": 0,
+      "valuePct": 0,
+      "included": 10000,
+      "candidateIncludesPct": 100,
+      "meanCandidateSize": 270314039.808,
+      "characters": 31941,
+      "totalCharacters": 92924,
+      "characterPct": 34.37325125909345,
+      "mostlyPct": 0.08,
+      "selectedMethod": "length/byte/offset-shape conditioned frequency prior",
+      "knownRows": 0,
+      "dictionaryIncludesPct": 0,
+      "stampEqualityLinks": 0,
+      "candidateMeaning": "reference-derived format universe; exact uniform-size calculation"
+    },
+    {
+      "field": "name",
+      "model": "S0",
+      "attack": "B-known-0.3pct",
+      "rows": 9970,
+      "correct": 0,
+      "valuePct": 0,
+      "included": 0,
+      "candidateIncludesPct": 0,
+      "meanCandidateSize": 10030,
+      "characters": 31810,
+      "totalCharacters": 92624,
+      "characterPct": 34.34315080324754,
+      "mostlyPct": 0.0802407221664995,
+      "selectedMethod": "group_frequency",
+      "familyScores": [
+        {
+          "method": "group_frequency",
+          "correct": 0
+        },
+        {
+          "method": "piece_frequency",
+          "correct": 0
+        },
+        {
+          "method": "rank_frequency",
+          "correct": 0
+        },
+        {
+          "method": "known_projection",
+          "correct": 0
+        },
+        {
+          "method": "known_fingerprint",
+          "correct": 0
+        },
+        {
+          "method": "collision-aware-dictionary",
+          "correct": 0
+        }
+      ],
+      "cappedRows": 0,
+      "candidateSizeIsLowerBound": false,
+      "knownRows": 30,
+      "candidateMeaning": "reference/known dictionary coverage, not a filtered universe"
+    },
+    {
+      "field": "name",
+      "model": "S0-exact",
+      "attack": "B-known-0.3pct",
+      "rows": 9970,
+      "correct": 0,
+      "valuePct": 0,
+      "included": 0,
+      "candidateIncludesPct": 0,
+      "meanCandidateSize": 0.0006018054162487463,
+      "characters": 17997,
+      "totalCharacters": 92624,
+      "characterPct": 19.430169286577993,
+      "mostlyPct": 0,
+      "selectedMethod": "group_frequency",
+      "knownRows": 30,
+      "candidateMeaning": "learned exact bucket labels only; unknown labels unresolved",
+      "exactBits": 16
+    },
+    {
+      "field": "name",
+      "model": "H",
+      "attack": "B-known-0.3pct",
+      "rows": 9970,
+      "correct": 0,
+      "valuePct": 0,
+      "included": 9970,
+      "candidateIncludesPct": 100,
+      "meanCandidateSize": 270460292.75025076,
+      "characters": 31810,
+      "totalCharacters": 92624,
+      "characterPct": 34.34315080324754,
+      "mostlyPct": 0.0802407221664995,
+      "selectedMethod": "length/byte/offset-shape conditioned frequency prior",
+      "knownRows": 30,
+      "dictionaryIncludesPct": 0,
+      "stampEqualityLinks": 0,
+      "candidateMeaning": "reference-derived format universe; exact uniform-size calculation"
+    },
+    {
+      "field": "name",
+      "model": "S0",
+      "attack": "B-known-1pct",
+      "rows": 9900,
+      "correct": 0,
+      "valuePct": 0,
+      "included": 0,
+      "candidateIncludesPct": 0,
+      "meanCandidateSize": 10100,
+      "characters": 31576,
+      "totalCharacters": 91984,
+      "characterPct": 34.32770916681162,
+      "mostlyPct": 0.08080808080808081,
+      "selectedMethod": "group_frequency",
+      "familyScores": [
+        {
+          "method": "group_frequency",
+          "correct": 0
+        },
+        {
+          "method": "piece_frequency",
+          "correct": 0
+        },
+        {
+          "method": "rank_frequency",
+          "correct": 0
+        },
+        {
+          "method": "known_projection",
+          "correct": 0
+        },
+        {
+          "method": "known_fingerprint",
+          "correct": 0
+        },
+        {
+          "method": "collision-aware-dictionary",
+          "correct": 0
+        }
+      ],
+      "cappedRows": 0,
+      "candidateSizeIsLowerBound": false,
+      "knownRows": 100,
+      "candidateMeaning": "reference/known dictionary coverage, not a filtered universe"
+    },
+    {
+      "field": "name",
+      "model": "S0-exact",
+      "attack": "B-known-1pct",
+      "rows": 9900,
+      "correct": 0,
+      "valuePct": 0,
+      "included": 0,
+      "candidateIncludesPct": 0,
+      "meanCandidateSize": 0.0012121212121212121,
+      "characters": 17815,
+      "totalCharacters": 91984,
+      "characterPct": 19.36749869542529,
+      "mostlyPct": 0,
+      "selectedMethod": "group_frequency",
+      "knownRows": 100,
+      "candidateMeaning": "learned exact bucket labels only; unknown labels unresolved",
+      "exactBits": 16
+    },
+    {
+      "field": "name",
+      "model": "H",
+      "attack": "B-known-1pct",
+      "rows": 9900,
+      "correct": 0,
+      "valuePct": 0,
+      "included": 9900,
+      "candidateIncludesPct": 100,
+      "meanCandidateSize": 270479252.94545454,
+      "characters": 31576,
+      "totalCharacters": 91984,
+      "characterPct": 34.32770916681162,
+      "mostlyPct": 0.08080808080808081,
+      "selectedMethod": "length/byte/offset-shape conditioned frequency prior",
+      "knownRows": 100,
+      "dictionaryIncludesPct": 0,
+      "stampEqualityLinks": 0,
+      "candidateMeaning": "reference-derived format universe; exact uniform-size calculation"
+    },
+    {
+      "field": "name",
+      "model": "S0",
+      "attack": "B-known-5pct",
+      "rows": 9500,
+      "correct": 0,
+      "valuePct": 0,
+      "included": 0,
+      "candidateIncludesPct": 0,
+      "meanCandidateSize": 10500,
+      "characters": 30223,
+      "totalCharacters": 88226,
+      "characterPct": 34.25634166798903,
+      "mostlyPct": 0.07368421052631578,
+      "selectedMethod": "group_frequency",
+      "familyScores": [
+        {
+          "method": "group_frequency",
+          "correct": 0
+        },
+        {
+          "method": "piece_frequency",
+          "correct": 0
+        },
+        {
+          "method": "rank_frequency",
+          "correct": 0
+        },
+        {
+          "method": "known_projection",
+          "correct": 0
+        },
+        {
+          "method": "known_fingerprint",
+          "correct": 0
+        },
+        {
+          "method": "collision-aware-dictionary",
+          "correct": 0
+        }
+      ],
+      "cappedRows": 0,
+      "candidateSizeIsLowerBound": false,
+      "knownRows": 500,
+      "candidateMeaning": "reference/known dictionary coverage, not a filtered universe"
+    },
+    {
+      "field": "name",
+      "model": "S0-exact",
+      "attack": "B-known-5pct",
+      "rows": 9500,
+      "correct": 0,
+      "valuePct": 0,
+      "included": 0,
+      "candidateIncludesPct": 0,
+      "meanCandidateSize": 0.006,
+      "characters": 17075,
+      "totalCharacters": 88226,
+      "characterPct": 19.35370525695373,
+      "mostlyPct": 0,
+      "selectedMethod": "group_frequency",
+      "knownRows": 500,
+      "candidateMeaning": "learned exact bucket labels only; unknown labels unresolved",
+      "exactBits": 16
+    },
+    {
+      "field": "name",
+      "model": "H",
+      "attack": "B-known-5pct",
+      "rows": 9500,
+      "correct": 0,
+      "valuePct": 0,
+      "included": 9500,
+      "candidateIncludesPct": 100,
+      "meanCandidateSize": 270665698.3578947,
+      "characters": 30223,
+      "totalCharacters": 88226,
+      "characterPct": 34.25634166798903,
+      "mostlyPct": 0.07368421052631578,
+      "selectedMethod": "length/byte/offset-shape conditioned frequency prior",
+      "knownRows": 500,
+      "dictionaryIncludesPct": 0,
+      "stampEqualityLinks": 0,
+      "candidateMeaning": "reference-derived format universe; exact uniform-size calculation"
+    },
+    {
+      "field": "name",
+      "model": "S0",
+      "attack": "C-insert100",
+      "rows": 10000,
+      "correct": 0,
+      "valuePct": 0,
+      "included": 0,
+      "candidateIncludesPct": 0,
+      "meanCandidateSize": 10000,
+      "characters": 31941,
+      "totalCharacters": 92924,
+      "characterPct": 34.37325125909345,
+      "mostlyPct": 0.08,
+      "selectedMethod": "group_frequency",
+      "familyScores": [
+        {
+          "method": "group_frequency",
+          "correct": 0
+        },
+        {
+          "method": "piece_frequency",
+          "correct": 0
+        },
+        {
+          "method": "rank_frequency",
+          "correct": 0
+        },
+        {
+          "method": "known_projection",
+          "correct": 0
+        },
+        {
+          "method": "known_fingerprint",
+          "correct": 0
+        },
+        {
+          "method": "collision-aware-dictionary",
+          "correct": 0
+        }
+      ],
+      "cappedRows": 0,
+      "candidateSizeIsLowerBound": false,
+      "knownRows": 100,
+      "candidateMeaning": "reference/known dictionary coverage, not a filtered universe"
+    },
+    {
+      "field": "name",
+      "model": "S0-exact",
+      "attack": "C-insert100",
+      "rows": 10000,
+      "correct": 0,
+      "valuePct": 0,
+      "included": 0,
+      "candidateIncludesPct": 0,
+      "meanCandidateSize": 0.0012,
+      "characters": 18065,
+      "totalCharacters": 92924,
+      "characterPct": 19.440618139554903,
+      "mostlyPct": 0,
+      "selectedMethod": "group_frequency",
+      "knownRows": 100,
+      "candidateMeaning": "learned exact bucket labels only; unknown labels unresolved",
+      "exactBits": 16
+    },
+    {
+      "field": "name",
+      "model": "H",
+      "attack": "C-insert100",
+      "rows": 10000,
+      "correct": 0,
+      "valuePct": 0,
+      "included": 10000,
+      "candidateIncludesPct": 100,
+      "meanCandidateSize": 270314039.808,
+      "characters": 31935,
+      "totalCharacters": 92924,
+      "characterPct": 34.366794369592355,
+      "mostlyPct": 0.04,
+      "selectedMethod": "length/byte/offset-shape conditioned frequency prior",
+      "knownRows": 100,
+      "dictionaryIncludesPct": 0,
+      "stampEqualityLinks": 0,
+      "candidateMeaning": "reference-derived format universe; exact uniform-size calculation"
+    },
+    {
+      "field": "name",
+      "model": "S0",
+      "attack": "C-insert1000",
+      "rows": 10000,
+      "correct": 0,
+      "valuePct": 0,
+      "included": 0,
+      "candidateIncludesPct": 0,
+      "meanCandidateSize": 10000,
+      "characters": 31941,
+      "totalCharacters": 92924,
+      "characterPct": 34.37325125909345,
+      "mostlyPct": 0.08,
+      "selectedMethod": "group_frequency",
+      "familyScores": [
+        {
+          "method": "group_frequency",
+          "correct": 0
+        },
+        {
+          "method": "piece_frequency",
+          "correct": 0
+        },
+        {
+          "method": "rank_frequency",
+          "correct": 0
+        },
+        {
+          "method": "known_projection",
+          "correct": 0
+        },
+        {
+          "method": "known_fingerprint",
+          "correct": 0
+        },
+        {
+          "method": "collision-aware-dictionary",
+          "correct": 0
+        }
+      ],
+      "cappedRows": 0,
+      "candidateSizeIsLowerBound": false,
+      "knownRows": 1000,
+      "candidateMeaning": "reference/known dictionary coverage, not a filtered universe"
+    },
+    {
+      "field": "name",
+      "model": "S0-exact",
+      "attack": "C-insert1000",
+      "rows": 10000,
+      "correct": 0,
+      "valuePct": 0,
+      "included": 0,
+      "candidateIncludesPct": 0,
+      "meanCandidateSize": 0.0143,
+      "characters": 18065,
+      "totalCharacters": 92924,
+      "characterPct": 19.440618139554903,
+      "mostlyPct": 0,
+      "selectedMethod": "group_frequency",
+      "knownRows": 1000,
+      "candidateMeaning": "learned exact bucket labels only; unknown labels unresolved",
+      "exactBits": 16
+    },
+    {
+      "field": "name",
+      "model": "H",
+      "attack": "C-insert1000",
+      "rows": 10000,
+      "correct": 0,
+      "valuePct": 0,
+      "included": 10000,
+      "candidateIncludesPct": 100,
+      "meanCandidateSize": 270314039.808,
+      "characters": 31872,
+      "totalCharacters": 92924,
+      "characterPct": 34.29899702983083,
+      "mostlyPct": 0.06,
+      "selectedMethod": "length/byte/offset-shape conditioned frequency prior",
+      "knownRows": 1000,
+      "dictionaryIncludesPct": 0,
+      "stampEqualityLinks": 0,
+      "candidateMeaning": "reference-derived format universe; exact uniform-size calculation"
+    },
+    {
+      "field": "name",
+      "model": "S0",
+      "attack": "D-observe1000-known",
+      "rows": 10000,
+      "correct": 7041,
+      "valuePct": 70.41,
+      "included": 10000,
+      "candidateIncludesPct": 100,
+      "meanCandidateSize": 21622.8765,
+      "characters": 89105,
+      "totalCharacters": 92924,
+      "characterPct": 95.89018983255133,
+      "mostlyPct": 94.19,
+      "queryPreparations": 1000,
+      "observedDistinctKeys": 1256,
+      "recoveredOccurrences": 63755,
+      "knownQueryPlaintext": true,
+      "partialCharactersUnfilled": 3819,
+      "candidateMeaning": "position-consistent candidates; unknown-label rank is one hypothesis",
+      "selectedMethod": "actual observed piece keys -> all-row salted ordinal proof lookup"
+    },
+    {
+      "field": "name",
+      "model": "H",
+      "attack": "D-observe1000-known",
+      "rows": 10000,
+      "correct": 7041,
+      "valuePct": 70.41,
+      "included": 10000,
+      "candidateIncludesPct": 100,
+      "meanCandidateSize": 21622.8765,
+      "characters": 89105,
+      "totalCharacters": 92924,
+      "characterPct": 95.89018983255133,
+      "mostlyPct": 94.19,
+      "queryPreparations": 1000,
+      "observedDistinctKeys": 1256,
+      "recoveredOccurrences": 63755,
+      "knownQueryPlaintext": true,
+      "partialCharactersUnfilled": 3819,
+      "candidateMeaning": "position-consistent candidates; unknown-label rank is one hypothesis",
+      "selectedMethod": "actual observed piece keys -> all-row salted ordinal proof lookup"
+    },
+    {
+      "field": "name",
+      "model": "S0",
+      "attack": "D-observe1000-unknown",
+      "rows": 10000,
+      "correct": 0,
+      "valuePct": 0,
+      "included": 0,
+      "candidateIncludesPct": 0,
+      "meanCandidateSize": 21622.8765,
+      "characters": 10092,
+      "totalCharacters": 92924,
+      "characterPct": 10.860488140846282,
+      "mostlyPct": 0,
+      "queryPreparations": 1000,
+      "observedDistinctKeys": 1256,
+      "recoveredOccurrences": 63755,
+      "knownQueryPlaintext": false,
+      "partialCharactersUnfilled": 3819,
+      "candidateMeaning": "position-consistent candidates; unknown-label rank is one hypothesis",
+      "selectedMethod": "opaque key document/occurrence frequency assignment + same proof locations"
+    },
+    {
+      "field": "name",
+      "model": "H",
+      "attack": "D-observe1000-unknown",
+      "rows": 10000,
+      "correct": 0,
+      "valuePct": 0,
+      "included": 0,
+      "candidateIncludesPct": 0,
+      "meanCandidateSize": 21622.8765,
+      "characters": 10092,
+      "totalCharacters": 92924,
+      "characterPct": 10.860488140846282,
+      "mostlyPct": 0,
+      "queryPreparations": 1000,
+      "observedDistinctKeys": 1256,
+      "recoveredOccurrences": 63755,
+      "knownQueryPlaintext": false,
+      "partialCharactersUnfilled": 3819,
+      "candidateMeaning": "position-consistent candidates; unknown-label rank is one hypothesis",
+      "selectedMethod": "opaque key document/occurrence frequency assignment + same proof locations"
+    },
+    {
+      "field": "name",
+      "model": "S0-exact",
+      "attack": "D-observe1000-known",
+      "rows": 10000,
+      "correct": 0,
+      "valuePct": 0,
+      "included": 0,
+      "candidateIncludesPct": 0,
+      "meanCandidateSize": 0,
+      "characters": 0,
+      "totalCharacters": 92924,
+      "characterPct": 0,
+      "mostlyPct": 0,
+      "queryPreparations": 1000,
+      "observedDistinctKeys": 1000,
+      "exactBits": 16
+    }
+  ],
+  "baselines": [
+    {
+      "field": "name",
+      "model": "random",
+      "attack": "empirical",
+      "rows": 10000,
+      "correct": 0,
+      "valuePct": 0,
+      "included": 0,
+      "candidateIncludesPct": 0,
+      "meanCandidateSize": 0,
+      "characters": 6473,
+      "totalCharacters": 92924,
+      "characterPct": 6.965907623434204,
+      "mostlyPct": 0
+    },
+    {
+      "field": "name",
+      "model": "random",
+      "attack": "uniform-distinct",
+      "rows": 10000,
+      "correct": 0,
+      "valuePct": 0,
+      "included": 0,
+      "candidateIncludesPct": 0,
+      "meanCandidateSize": 0,
+      "characters": 6568,
+      "totalCharacters": 92924,
+      "characterPct": 7.068141707201584,
+      "mostlyPct": 0.02
+    }
+  ],
+  "structure": [
+    {
+      "field": "name",
+      "rows": 10000,
+      "normalizedLengthRange": [
+        8,
+        15
+      ],
+      "cipherPlainBytesRange": [
+        14,
+        18
+      ],
+      "offsetPermutationComplete": 10000,
+      "stampCountEqualsNMinus1": 10000,
+      "sortedOffsetsRevealCharacters": false,
+      "referenceDictionaryCoveragePct": 0,
+      "grammarCandidateIncludesPct": 100,
+      "meanGrammarCandidates": 270314039.808,
+      "uniformGrammarExpectedPct": 6.972217547431349e-7,
+      "actualWhitespaceCounts": {
+        "1": 7707,
+        "2": 2293
+      },
+      "whitespaceSingleByteFormulaApplicableRows": 0,
+      "whitespaceSingleByteFormulaCorrect": 0
+    }
+  ],
+  "validation": [
+    {
+      "field": "name",
+      "tokenChecks": 5,
+      "positionProofChecks": 3,
+      "exactProofChecks": 3,
+      "hardenedTokenColumns": 0,
+      "salts": 10000
+    }
+  ],
+  "sourceHashes": {
+    "src/core/search-stamps.ts": "08fa58174ed7c0089ab3a3cf2c640ca50b9542f0d4ff9b843e7d053ec0707299",
+    "bench/attack-extra/codec.ts": "e5c3490770e5d84850649e9c8d5d37b7b3b50d36f6f0bc64bb35e6cfb5463958",
+    "bench/competitor-sim/attacks.ts": "d6dc63337fe7edf2e4aa659b54dba2768e509c8b2da479649ef6c63ff3b3352f",
+    "bench/competitor-sim/observation.ts": "297b9e4620a3aadf16042eb1c657f955fc43e1d9b1e258cfa54b2f374c76b68e"
+  },
+  "finished": "2026-10-01T20:03:49.069Z"
+}

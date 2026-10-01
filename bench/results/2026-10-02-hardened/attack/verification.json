@@ -1,0 +1,718 @@
+{
+  "passed": true,
+  "checked": 100,
+  "checks": [
+    {
+      "field": "phone",
+      "model": "random",
+      "attack": "empirical",
+      "correct": 0,
+      "rows": 10000
+    },
+    {
+      "field": "phone",
+      "model": "random",
+      "attack": "uniform-distinct",
+      "correct": 0,
+      "rows": 10000
+    },
+    {
+      "field": "phone",
+      "model": "S0",
+      "attack": "A-backup",
+      "correct": 0,
+      "rows": 10000
+    },
+    {
+      "field": "phone",
+      "model": "S0-exact",
+      "attack": "A-backup",
+      "correct": 0,
+      "rows": 10000
+    },
+    {
+      "field": "phone",
+      "model": "H",
+      "attack": "A-backup",
+      "correct": 0,
+      "rows": 10000
+    },
+    {
+      "field": "phone",
+      "model": "S0",
+      "attack": "B-known-0.3pct",
+      "correct": 7858,
+      "rows": 9970
+    },
+    {
+      "field": "phone",
+      "model": "S0-exact",
+      "attack": "B-known-0.3pct",
+      "correct": 0,
+      "rows": 9970
+    },
+    {
+      "field": "phone",
+      "model": "H",
+      "attack": "B-known-0.3pct",
+      "correct": 0,
+      "rows": 9970
+    },
+    {
+      "field": "phone",
+      "model": "S0",
+      "attack": "B-known-1pct",
+      "correct": 9877,
+      "rows": 9900
+    },
+    {
+      "field": "phone",
+      "model": "S0-exact",
+      "attack": "B-known-1pct",
+      "correct": 0,
+      "rows": 9900
+    },
+    {
+      "field": "phone",
+      "model": "H",
+      "attack": "B-known-1pct",
+      "correct": 0,
+      "rows": 9900
+    },
+    {
+      "field": "phone",
+      "model": "S0",
+      "attack": "B-known-5pct",
+      "correct": 9482,
+      "rows": 9500
+    },
+    {
+      "field": "phone",
+      "model": "S0-exact",
+      "attack": "B-known-5pct",
+      "correct": 0,
+      "rows": 9500
+    },
+    {
+      "field": "phone",
+      "model": "H",
+      "attack": "B-known-5pct",
+      "correct": 0,
+      "rows": 9500
+    },
+    {
+      "field": "phone",
+      "model": "S0",
+      "attack": "C-insert100",
+      "correct": 9974,
+      "rows": 10000
+    },
+    {
+      "field": "phone",
+      "model": "S0-exact",
+      "attack": "C-insert100",
+      "correct": 0,
+      "rows": 10000
+    },
+    {
+      "field": "phone",
+      "model": "H",
+      "attack": "C-insert100",
+      "correct": 0,
+      "rows": 10000
+    },
+    {
+      "field": "phone",
+      "model": "S0",
+      "attack": "C-insert1000",
+      "correct": 9980,
+      "rows": 10000
+    },
+    {
+      "field": "phone",
+      "model": "S0-exact",
+      "attack": "C-insert1000",
+      "correct": 0,
+      "rows": 10000
+    },
+    {
+      "field": "phone",
+      "model": "H",
+      "attack": "C-insert1000",
+      "correct": 0,
+      "rows": 10000
+    },
+    {
+      "field": "phone",
+      "model": "S0",
+      "attack": "D-observe1000-known",
+      "correct": 10000,
+      "rows": 10000
+    },
+    {
+      "field": "phone",
+      "model": "H",
+      "attack": "D-observe1000-known",
+      "correct": 10000,
+      "rows": 10000
+    },
+    {
+      "field": "phone",
+      "model": "S0",
+      "attack": "D-observe1000-unknown",
+      "correct": 0,
+      "rows": 10000
+    },
+    {
+      "field": "phone",
+      "model": "H",
+      "attack": "D-observe1000-unknown",
+      "correct": 0,
+      "rows": 10000
+    },
+    {
+      "field": "phone",
+      "model": "S0-exact",
+      "attack": "D-observe1000-known",
+      "correct": 0,
+      "rows": 10000
+    },
+    {
+      "field": "address",
+      "model": "random",
+      "attack": "empirical",
+      "correct": 2,
+      "rows": 10000
+    },
+    {
+      "field": "address",
+      "model": "random",
+      "attack": "uniform-distinct",
+      "correct": 1,
+      "rows": 10000
+    },
+    {
+      "field": "address",
+      "model": "S0",
+      "attack": "A-backup",
+      "correct": 31,
+      "rows": 10000
+    },
+    {
+      "field": "address",
+      "model": "S0-exact",
+      "attack": "A-backup",
+      "correct": 16,
+      "rows": 10000
+    },
+    {
+      "field": "address",
+      "model": "H",
+      "attack": "A-backup",
+      "correct": 20,
+      "rows": 10000
+    },
+    {
+      "field": "address",
+      "model": "S0",
+      "attack": "B-known-0.3pct",
+      "correct": 556,
+      "rows": 9970
+    },
+    {
+      "field": "address",
+      "model": "S0-exact",
+      "attack": "B-known-0.3pct",
+      "correct": 70,
+      "rows": 9970
+    },
+    {
+      "field": "address",
+      "model": "H",
+      "attack": "B-known-0.3pct",
+      "correct": 19,
+      "rows": 9970
+    },
+    {
+      "field": "address",
+      "model": "S0",
+      "attack": "B-known-1pct",
+      "correct": 5105,
+      "rows": 9900
+    },
+    {
+      "field": "address",
+      "model": "S0-exact",
+      "attack": "B-known-1pct",
+      "correct": 165,
+      "rows": 9900
+    },
+    {
+      "field": "address",
+      "model": "H",
+      "attack": "B-known-1pct",
+      "correct": 19,
+      "rows": 9900
+    },
+    {
+      "field": "address",
+      "model": "S0",
+      "attack": "B-known-5pct",
+      "correct": 6951,
+      "rows": 9500
+    },
+    {
+      "field": "address",
+      "model": "S0-exact",
+      "attack": "B-known-5pct",
+      "correct": 754,
+      "rows": 9500
+    },
+    {
+      "field": "address",
+      "model": "H",
+      "attack": "B-known-5pct",
+      "correct": 22,
+      "rows": 9500
+    },
+    {
+      "field": "address",
+      "model": "S0",
+      "attack": "C-insert100",
+      "correct": 5017,
+      "rows": 10000
+    },
+    {
+      "field": "address",
+      "model": "S0-exact",
+      "attack": "C-insert100",
+      "correct": 175,
+      "rows": 10000
+    },
+    {
+      "field": "address",
+      "model": "H",
+      "attack": "C-insert100",
+      "correct": 20,
+      "rows": 10000
+    },
+    {
+      "field": "address",
+      "model": "S0",
+      "attack": "C-insert1000",
+      "correct": 7366,
+      "rows": 10000
+    },
+    {
+      "field": "address",
+      "model": "S0-exact",
+      "attack": "C-insert1000",
+      "correct": 1515,
+      "rows": 10000
+    },
+    {
+      "field": "address",
+      "model": "H",
+      "attack": "C-insert1000",
+      "correct": 18,
+      "rows": 10000
+    },
+    {
+      "field": "address",
+      "model": "S0",
+      "attack": "D-observe1000-known",
+      "correct": 10000,
+      "rows": 10000
+    },
+    {
+      "field": "address",
+      "model": "H",
+      "attack": "D-observe1000-known",
+      "correct": 10000,
+      "rows": 10000
+    },
+    {
+      "field": "address",
+      "model": "S0",
+      "attack": "D-observe1000-unknown",
+      "correct": 0,
+      "rows": 10000
+    },
+    {
+      "field": "address",
+      "model": "H",
+      "attack": "D-observe1000-unknown",
+      "correct": 0,
+      "rows": 10000
+    },
+    {
+      "field": "address",
+      "model": "S0-exact",
+      "attack": "D-observe1000-known",
+      "correct": 1494,
+      "rows": 10000
+    },
+    {
+      "field": "name",
+      "model": "random",
+      "attack": "empirical",
+      "correct": 0,
+      "rows": 10000
+    },
+    {
+      "field": "name",
+      "model": "random",
+      "attack": "uniform-distinct",
+      "correct": 0,
+      "rows": 10000
+    },
+    {
+      "field": "name",
+      "model": "S0",
+      "attack": "A-backup",
+      "correct": 0,
+      "rows": 10000
+    },
+    {
+      "field": "name",
+      "model": "S0-exact",
+      "attack": "A-backup",
+      "correct": 0,
+      "rows": 10000
+    },
+    {
+      "field": "name",
+      "model": "H",
+      "attack": "A-backup",
+      "correct": 0,
+      "rows": 10000
+    },
+    {
+      "field": "name",
+      "model": "S0",
+      "attack": "B-known-0.3pct",
+      "correct": 0,
+      "rows": 9970
+    },
+    {
+      "field": "name",
+      "model": "S0-exact",
+      "attack": "B-known-0.3pct",
+      "correct": 0,
+      "rows": 9970
+    },
+    {
+      "field": "name",
+      "model": "H",
+      "attack": "B-known-0.3pct",
+      "correct": 0,
+      "rows": 9970
+    },
+    {
+      "field": "name",
+      "model": "S0",
+      "attack": "B-known-1pct",
+      "correct": 0,
+      "rows": 9900
+    },
+    {
+      "field": "name",
+      "model": "S0-exact",
+      "attack": "B-known-1pct",
+      "correct": 0,
+      "rows": 9900
+    },
+    {
+      "field": "name",
+      "model": "H",
+      "attack": "B-known-1pct",
+      "correct": 0,
+      "rows": 9900
+    },
+    {
+      "field": "name",
+      "model": "S0",
+      "attack": "B-known-5pct",
+      "correct": 0,
+      "rows": 9500
+    },
+    {
+      "field": "name",
+      "model": "S0-exact",
+      "attack": "B-known-5pct",
+      "correct": 0,
+      "rows": 9500
+    },
+    {
+      "field": "name",
+      "model": "H",
+      "attack": "B-known-5pct",
+      "correct": 0,
+      "rows": 9500
+    },
+    {
+      "field": "name",
+      "model": "S0",
+      "attack": "C-insert100",
+      "correct": 0,
+      "rows": 10000
+    },
+    {
+      "field": "name",
+      "model": "S0-exact",
+      "attack": "C-insert100",
+      "correct": 0,
+      "rows": 10000
+    },
+    {
+      "field": "name",
+      "model": "H",
+      "attack": "C-insert100",
+      "correct": 0,
+      "rows": 10000
+    },
+    {
+      "field": "name",
+      "model": "S0",
+      "attack": "C-insert1000",
+      "correct": 0,
+      "rows": 10000
+    },
+    {
+      "field": "name",
+      "model": "S0-exact",
+      "attack": "C-insert1000",
+      "correct": 0,
+      "rows": 10000
+    },
+    {
+      "field": "name",
+      "model": "H",
+      "attack": "C-insert1000",
+      "correct": 0,
+      "rows": 10000
+    },
+    {
+      "field": "name",
+      "model": "S0",
+      "attack": "D-observe1000-known",
+      "correct": 7041,
+      "rows": 10000
+    },
+    {
+      "field": "name",
+      "model": "H",
+      "attack": "D-observe1000-known",
+      "correct": 7041,
+      "rows": 10000
+    },
+    {
+      "field": "name",
+      "model": "S0",
+      "attack": "D-observe1000-unknown",
+      "correct": 0,
+      "rows": 10000
+    },
+    {
+      "field": "name",
+      "model": "H",
+      "attack": "D-observe1000-unknown",
+      "correct": 0,
+      "rows": 10000
+    },
+    {
+      "field": "name",
+      "model": "S0-exact",
+      "attack": "D-observe1000-known",
+      "correct": 0,
+      "rows": 10000
+    },
+    {
+      "field": "company",
+      "model": "random",
+      "attack": "empirical",
+      "correct": 1400,
+      "rows": 10000
+    },
+    {
+      "field": "company",
+      "model": "random",
+      "attack": "uniform-distinct",
+      "correct": 647,
+      "rows": 10000
+    },
+    {
+      "field": "company",
+      "model": "S0",
+      "attack": "A-backup",
+      "correct": 7062,
+      "rows": 10000
+    },
+    {
+      "field": "company",
+      "model": "S0-exact",
+      "attack": "A-backup",
+      "correct": 7017,
+      "rows": 10000
+    },
+    {
+      "field": "company",
+      "model": "H",
+      "attack": "A-backup",
+      "correct": 7017,
+      "rows": 10000
+    },
+    {
+      "field": "company",
+      "model": "S0",
+      "attack": "B-known-0.3pct",
+      "correct": 8875,
+      "rows": 9970
+    },
+    {
+      "field": "company",
+      "model": "S0-exact",
+      "attack": "B-known-0.3pct",
+      "correct": 7927,
+      "rows": 9970
+    },
+    {
+      "field": "company",
+      "model": "H",
+      "attack": "B-known-0.3pct",
+      "correct": 6992,
+      "rows": 9970
+    },
+    {
+      "field": "company",
+      "model": "S0",
+      "attack": "B-known-1pct",
+      "correct": 9740,
+      "rows": 9900
+    },
+    {
+      "field": "company",
+      "model": "S0-exact",
+      "attack": "B-known-1pct",
+      "correct": 7910,
+      "rows": 9900
+    },
+    {
+      "field": "company",
+      "model": "H",
+      "attack": "B-known-1pct",
+      "correct": 6984,
+      "rows": 9900
+    },
+    {
+      "field": "company",
+      "model": "S0",
+      "attack": "B-known-5pct",
+      "correct": 9447,
+      "rows": 9500
+    },
+    {
+      "field": "company",
+      "model": "S0-exact",
+      "attack": "B-known-5pct",
+      "correct": 7585,
+      "rows": 9500
+    },
+    {
+      "field": "company",
+      "model": "H",
+      "attack": "B-known-5pct",
+      "correct": 6696,
+      "rows": 9500
+    },
+    {
+      "field": "company",
+      "model": "S0",
+      "attack": "C-insert100",
+      "correct": 9896,
+      "rows": 10000
+    },
+    {
+      "field": "company",
+      "model": "S0-exact",
+      "attack": "C-insert100",
+      "correct": 7979,
+      "rows": 10000
+    },
+    {
+      "field": "company",
+      "model": "H",
+      "attack": "C-insert100",
+      "correct": 7017,
+      "rows": 10000
+    },
+    {
+      "field": "company",
+      "model": "S0",
+      "attack": "C-insert1000",
+      "correct": 10000,
+      "rows": 10000
+    },
+    {
+      "field": "company",
+      "model": "S0-exact",
+      "attack": "C-insert1000",
+      "correct": 8032,
+      "rows": 10000
+    },
+    {
+      "field": "company",
+      "model": "H",
+      "attack": "C-insert1000",
+      "correct": 7017,
+      "rows": 10000
+    },
+    {
+      "field": "company",
+      "model": "S0",
+      "attack": "D-observe1000-known",
+      "correct": 10000,
+      "rows": 10000
+    },
+    {
+      "field": "company",
+      "model": "H",
+      "attack": "D-observe1000-known",
+      "correct": 10000,
+      "rows": 10000
+    },
+    {
+      "field": "company",
+      "model": "S0",
+      "attack": "D-observe1000-unknown",
+      "correct": 0,
+      "rows": 10000
+    },
+    {
+      "field": "company",
+      "model": "H",
+      "attack": "D-observe1000-unknown",
+      "correct": 0,
+      "rows": 10000
+    },
+    {
+      "field": "company",
+      "model": "S0-exact",
+      "attack": "D-observe1000-known",
+      "correct": 10000,
+      "rows": 10000
+    }
+  ],
+  "productSourceHashes": {
+    "src/core/search-stamps.ts": "08fa58174ed7c0089ab3a3cf2c640ca50b9542f0d4ff9b843e7d053ec0707299",
+    "bench/attack-extra/codec.ts": "e5c3490770e5d84850649e9c8d5d37b7b3b50d36f6f0bc64bb35e6cfb5463958",
+    "bench/competitor-sim/attacks.ts": "d6dc63337fe7edf2e4aa659b54dba2768e509c8b2da479649ef6c63ff3b3352f",
+    "bench/competitor-sim/observation.ts": "297b9e4620a3aadf16042eb1c657f955fc43e1d9b1e258cfa54b2f374c76b68e"
+  },
+  "currentSourceHashes": {
+    "src/core/search-stamps.ts": "08fa58174ed7c0089ab3a3cf2c640ca50b9542f0d4ff9b843e7d053ec0707299",
+    "bench/attack-extra/codec.ts": "e5c3490770e5d84850649e9c8d5d37b7b3b50d36f6f0bc64bb35e6cfb5463958",
+    "bench/competitor-sim/attacks.ts": "d6dc63337fe7edf2e4aa659b54dba2768e509c8b2da479649ef6c63ff3b3352f",
+    "bench/competitor-sim/observation.ts": "297b9e4620a3aadf16042eb1c657f955fc43e1d9b1e258cfa54b2f374c76b68e"
+  }
+}

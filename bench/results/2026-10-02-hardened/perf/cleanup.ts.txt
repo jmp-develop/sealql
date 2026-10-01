@@ -1,0 +1,3 @@
+import {disposablePool} from '../../bench/common/db.ts';
+const p=await disposablePool();
+try{await p.query('drop schema if exists hardened_perf_run cascade');console.log('Owned benchmark schema dropped');}finally{await p.end();}

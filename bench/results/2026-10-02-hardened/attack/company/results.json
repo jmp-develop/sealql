@@ -1,0 +1,723 @@
+{
+  "started": "2026-10-01T20:00:54.721Z",
+  "complete": true,
+  "databaseAccess": false,
+  "newFixtureGenerated": false,
+  "victimRows": 10000,
+  "referenceRows": 10000,
+  "identityDigest": "189a19c99711fbacd9cafdb548f243a63657e12a0c1514a736c1f92da670f382",
+  "fixtureHash": "17690c5e4e3623d7c8b1e774cdba962d9bd6d86c70b423dfccdd6813534b2528",
+  "seed": 108029,
+  "attacks": [
+    {
+      "field": "company",
+      "model": "random",
+      "attack": "empirical",
+      "rows": 10000,
+      "correct": 1400,
+      "valuePct": 14,
+      "included": 0,
+      "candidateIncludesPct": 0,
+      "meanCandidateSize": 0,
+      "characters": 14853,
+      "totalCharacters": 93717,
+      "characterPct": 15.848778770127085,
+      "mostlyPct": 14.2
+    },
+    {
+      "field": "company",
+      "model": "random",
+      "attack": "uniform-distinct",
+      "rows": 10000,
+      "correct": 647,
+      "valuePct": 6.47,
+      "included": 0,
+      "candidateIncludesPct": 0,
+      "meanCandidateSize": 0,
+      "characters": 12114,
+      "totalCharacters": 93717,
+      "characterPct": 12.92615000480169,
+      "mostlyPct": 8.64
+    },
+    {
+      "field": "company",
+      "model": "S0",
+      "attack": "A-backup",
+      "rows": 10000,
+      "correct": 7062,
+      "valuePct": 70.62,
+      "included": 10000,
+      "candidateIncludesPct": 100,
+      "meanCandidateSize": 16,
+      "characters": 74477,
+      "totalCharacters": 93717,
+      "characterPct": 79.47010681093079,
+      "mostlyPct": 70.62,
+      "selectedMethod": "group_frequency",
+      "familyScores": [
+        {
+          "method": "group_frequency",
+          "correct": 7062
+        },
+        {
+          "method": "piece_frequency",
+          "correct": 7062
+        },
+        {
+          "method": "rank_frequency",
+          "correct": 7062
+        }
+      ],
+      "cappedRows": 0,
+      "candidateSizeIsLowerBound": false,
+      "knownRows": 0,
+      "candidateMeaning": "reference/known dictionary coverage, not a filtered universe"
+    },
+    {
+      "field": "company",
+      "model": "S0-exact",
+      "attack": "A-backup",
+      "rows": 10000,
+      "correct": 7017,
+      "valuePct": 70.17,
+      "included": 0,
+      "candidateIncludesPct": 0,
+      "meanCandidateSize": 0,
+      "characters": 73897,
+      "totalCharacters": 93717,
+      "characterPct": 78.85122229691518,
+      "mostlyPct": 70.17,
+      "selectedMethod": "group_frequency",
+      "knownRows": 0,
+      "candidateMeaning": "learned exact bucket labels only; unknown labels unresolved",
+      "exactBits": 2
+    },
+    {
+      "field": "company",
+      "model": "H",
+      "attack": "A-backup",
+      "rows": 10000,
+      "correct": 7017,
+      "valuePct": 70.17,
+      "included": 10000,
+      "candidateIncludesPct": 100,
+      "meanCandidateSize": 1.7904,
+      "characters": 73897,
+      "totalCharacters": 93717,
+      "characterPct": 78.85122229691518,
+      "mostlyPct": 70.17,
+      "selectedMethod": "length/byte/offset-shape conditioned frequency prior",
+      "knownRows": 0,
+      "dictionaryIncludesPct": 100,
+      "stampEqualityLinks": 0,
+      "candidateMeaning": "reference/known dictionary constrained by bytes and compact n"
+    },
+    {
+      "field": "company",
+      "model": "S0",
+      "attack": "B-known-0.3pct",
+      "rows": 9970,
+      "correct": 8875,
+      "valuePct": 89.01705115346039,
+      "included": 9970,
+      "candidateIncludesPct": 100,
+      "meanCandidateSize": 16,
+      "characters": 88606,
+      "totalCharacters": 93434,
+      "characterPct": 94.83271614187555,
+      "mostlyPct": 89.01705115346039,
+      "selectedMethod": "known_fingerprint",
+      "familyScores": [
+        {
+          "method": "group_frequency",
+          "correct": 7039
+        },
+        {
+          "method": "piece_frequency",
+          "correct": 7039
+        },
+        {
+          "method": "rank_frequency",
+          "correct": 7039
+        },
+        {
+          "method": "known_projection",
+          "correct": 6992
+        },
+        {
+          "method": "known_fingerprint",
+          "correct": 8875
+        },
+        {
+          "method": "collision-aware-dictionary",
+          "correct": 8755
+        }
+      ],
+      "cappedRows": 0,
+      "candidateSizeIsLowerBound": false,
+      "knownRows": 30,
+      "candidateMeaning": "reference/known dictionary coverage, not a filtered universe"
+    },
+    {
+      "field": "company",
+      "model": "S0-exact",
+      "attack": "B-known-0.3pct",
+      "rows": 9970,
+      "correct": 7927,
+      "valuePct": 79.5085255767302,
+      "included": 8755,
+      "candidateIncludesPct": 87.81344032096288,
+      "meanCandidateSize": 2.469307923771314,
+      "characters": 77398,
+      "totalCharacters": 93434,
+      "characterPct": 82.8370828606289,
+      "mostlyPct": 79.5085255767302,
+      "selectedMethod": "known_projection",
+      "knownRows": 30,
+      "candidateMeaning": "learned exact bucket labels only; unknown labels unresolved",
+      "exactBits": 2
+    },
+    {
+      "field": "company",
+      "model": "H",
+      "attack": "B-known-0.3pct",
+      "rows": 9970,
+      "correct": 6992,
+      "valuePct": 70.13039117352056,
+      "included": 9970,
+      "candidateIncludesPct": 100,
+      "meanCandidateSize": 1.7906720160481444,
+      "characters": 73658,
+      "totalCharacters": 93434,
+      "characterPct": 78.83425733672966,
+      "mostlyPct": 70.13039117352056,
+      "selectedMethod": "length/byte/offset-shape conditioned frequency prior",
+      "knownRows": 30,
+      "dictionaryIncludesPct": 100,
+      "stampEqualityLinks": 0,
+      "candidateMeaning": "reference/known dictionary constrained by bytes and compact n"
+    },
+    {
+      "field": "company",
+      "model": "S0",
+      "attack": "B-known-1pct",
+      "rows": 9900,
+      "correct": 9740,
+      "valuePct": 98.38383838383838,
+      "included": 9900,
+      "candidateIncludesPct": 100,
+      "meanCandidateSize": 16,
+      "characters": 91732,
+      "totalCharacters": 92820,
+      "characterPct": 98.82783882783883,
+      "mostlyPct": 98.38383838383838,
+      "selectedMethod": "known_fingerprint",
+      "familyScores": [
+        {
+          "method": "group_frequency",
+          "correct": 6988
+        },
+        {
+          "method": "piece_frequency",
+          "correct": 6988
+        },
+        {
+          "method": "rank_frequency",
+          "correct": 6988
+        },
+        {
+          "method": "known_projection",
+          "correct": 6943
+        },
+        {
+          "method": "known_fingerprint",
+          "correct": 9740
+        },
+        {
+          "method": "collision-aware-dictionary",
+          "correct": 9620
+        }
+      ],
+      "cappedRows": 0,
+      "candidateSizeIsLowerBound": false,
+      "knownRows": 100,
+      "candidateMeaning": "reference/known dictionary coverage, not a filtered universe"
+    },
+    {
+      "field": "company",
+      "model": "S0-exact",
+      "attack": "B-known-1pct",
+      "rows": 9900,
+      "correct": 7910,
+      "valuePct": 79.8989898989899,
+      "included": 9620,
+      "candidateIncludesPct": 97.17171717171718,
+      "meanCandidateSize": 2.562222222222222,
+      "characters": 77372,
+      "totalCharacters": 92820,
+      "characterPct": 83.357035121741,
+      "mostlyPct": 79.8989898989899,
+      "selectedMethod": "known_fingerprint",
+      "knownRows": 100,
+      "candidateMeaning": "learned exact bucket labels only; unknown labels unresolved",
+      "exactBits": 2
+    },
+    {
+      "field": "company",
+      "model": "H",
+      "attack": "B-known-1pct",
+      "rows": 9900,
+      "correct": 6984,
+      "valuePct": 70.54545454545455,
+      "included": 9900,
+      "candidateIncludesPct": 100,
+      "meanCandidateSize": 1.790909090909091,
+      "characters": 73668,
+      "totalCharacters": 92820,
+      "characterPct": 79.36651583710407,
+      "mostlyPct": 70.54545454545455,
+      "selectedMethod": "length/byte/offset-shape conditioned frequency prior",
+      "knownRows": 100,
+      "dictionaryIncludesPct": 100,
+      "stampEqualityLinks": 0,
+      "candidateMeaning": "reference/known dictionary constrained by bytes and compact n"
+    },
+    {
+      "field": "company",
+      "model": "S0",
+      "attack": "B-known-5pct",
+      "rows": 9500,
+      "correct": 9447,
+      "valuePct": 99.4421052631579,
+      "included": 9500,
+      "candidateIncludesPct": 100,
+      "meanCandidateSize": 16,
+      "characters": 88734,
+      "totalCharacters": 88946,
+      "characterPct": 99.76165313785893,
+      "mostlyPct": 99.4421052631579,
+      "selectedMethod": "known_fingerprint",
+      "familyScores": [
+        {
+          "method": "group_frequency",
+          "correct": 6702
+        },
+        {
+          "method": "piece_frequency",
+          "correct": 6702
+        },
+        {
+          "method": "rank_frequency",
+          "correct": 6702
+        },
+        {
+          "method": "known_projection",
+          "correct": 6665
+        },
+        {
+          "method": "known_fingerprint",
+          "correct": 9447
+        },
+        {
+          "method": "collision-aware-dictionary",
+          "correct": 9447
+        }
+      ],
+      "cappedRows": 0,
+      "candidateSizeIsLowerBound": false,
+      "knownRows": 500,
+      "candidateMeaning": "reference/known dictionary coverage, not a filtered universe"
+    },
+    {
+      "field": "company",
+      "model": "S0-exact",
+      "attack": "B-known-5pct",
+      "rows": 9500,
+      "correct": 7585,
+      "valuePct": 79.84210526315789,
+      "included": 9447,
+      "candidateIncludesPct": 99.4421052631579,
+      "meanCandidateSize": 2.893157894736842,
+      "characters": 74102,
+      "totalCharacters": 88946,
+      "characterPct": 83.31122253951835,
+      "mostlyPct": 79.84210526315789,
+      "selectedMethod": "known_fingerprint",
+      "knownRows": 500,
+      "candidateMeaning": "learned exact bucket labels only; unknown labels unresolved",
+      "exactBits": 2
+    },
+    {
+      "field": "company",
+      "model": "H",
+      "attack": "B-known-5pct",
+      "rows": 9500,
+      "correct": 6696,
+      "valuePct": 70.48421052631579,
+      "included": 9500,
+      "candidateIncludesPct": 100,
+      "meanCandidateSize": 1.7913684210526315,
+      "characters": 70546,
+      "totalCharacters": 88946,
+      "characterPct": 79.31329121039732,
+      "mostlyPct": 70.48421052631579,
+      "selectedMethod": "length/byte/offset-shape conditioned frequency prior",
+      "knownRows": 500,
+      "dictionaryIncludesPct": 100,
+      "stampEqualityLinks": 0,
+      "candidateMeaning": "reference/known dictionary constrained by bytes and compact n"
+    },
+    {
+      "field": "company",
+      "model": "S0",
+      "attack": "C-insert100",
+      "rows": 10000,
+      "correct": 9896,
+      "valuePct": 98.96,
+      "included": 10000,
+      "candidateIncludesPct": 100,
+      "meanCandidateSize": 16,
+      "characters": 93301,
+      "totalCharacters": 93717,
+      "characterPct": 99.55611041753365,
+      "mostlyPct": 98.96,
+      "selectedMethod": "known_fingerprint",
+      "familyScores": [
+        {
+          "method": "group_frequency",
+          "correct": 7062
+        },
+        {
+          "method": "piece_frequency",
+          "correct": 7062
+        },
+        {
+          "method": "rank_frequency",
+          "correct": 7062
+        },
+        {
+          "method": "known_projection",
+          "correct": 7017
+        },
+        {
+          "method": "known_fingerprint",
+          "correct": 9896
+        },
+        {
+          "method": "collision-aware-dictionary",
+          "correct": 9838
+        }
+      ],
+      "cappedRows": 0,
+      "candidateSizeIsLowerBound": false,
+      "knownRows": 100,
+      "candidateMeaning": "reference/known dictionary coverage, not a filtered universe"
+    },
+    {
+      "field": "company",
+      "model": "S0-exact",
+      "attack": "C-insert100",
+      "rows": 10000,
+      "correct": 7979,
+      "valuePct": 79.79,
+      "included": 9838,
+      "candidateIncludesPct": 98.38,
+      "meanCandidateSize": 2.7985,
+      "characters": 77785,
+      "totalCharacters": 93717,
+      "characterPct": 82.99988262535079,
+      "mostlyPct": 79.79,
+      "selectedMethod": "known_fingerprint",
+      "knownRows": 100,
+      "candidateMeaning": "learned exact bucket labels only; unknown labels unresolved",
+      "exactBits": 2
+    },
+    {
+      "field": "company",
+      "model": "H",
+      "attack": "C-insert100",
+      "rows": 10000,
+      "correct": 7017,
+      "valuePct": 70.17,
+      "included": 10000,
+      "candidateIncludesPct": 100,
+      "meanCandidateSize": 1.7904,
+      "characters": 73897,
+      "totalCharacters": 93717,
+      "characterPct": 78.85122229691518,
+      "mostlyPct": 70.17,
+      "selectedMethod": "length/byte/offset-shape conditioned frequency prior",
+      "knownRows": 100,
+      "dictionaryIncludesPct": 100,
+      "stampEqualityLinks": 0,
+      "candidateMeaning": "reference/known dictionary constrained by bytes and compact n"
+    },
+    {
+      "field": "company",
+      "model": "S0",
+      "attack": "C-insert1000",
+      "rows": 10000,
+      "correct": 10000,
+      "valuePct": 100,
+      "included": 10000,
+      "candidateIncludesPct": 100,
+      "meanCandidateSize": 16,
+      "characters": 93717,
+      "totalCharacters": 93717,
+      "characterPct": 100,
+      "mostlyPct": 100,
+      "selectedMethod": "known_fingerprint",
+      "familyScores": [
+        {
+          "method": "group_frequency",
+          "correct": 7062
+        },
+        {
+          "method": "piece_frequency",
+          "correct": 7062
+        },
+        {
+          "method": "rank_frequency",
+          "correct": 7062
+        },
+        {
+          "method": "known_projection",
+          "correct": 7017
+        },
+        {
+          "method": "known_fingerprint",
+          "correct": 10000
+        },
+        {
+          "method": "collision-aware-dictionary",
+          "correct": 10000
+        }
+      ],
+      "cappedRows": 0,
+      "candidateSizeIsLowerBound": false,
+      "knownRows": 1000,
+      "candidateMeaning": "reference/known dictionary coverage, not a filtered universe"
+    },
+    {
+      "field": "company",
+      "model": "S0-exact",
+      "attack": "C-insert1000",
+      "rows": 10000,
+      "correct": 8032,
+      "valuePct": 80.32,
+      "included": 10000,
+      "candidateIncludesPct": 100,
+      "meanCandidateSize": 2.8972,
+      "characters": 77997,
+      "totalCharacters": 93717,
+      "characterPct": 83.22609558564615,
+      "mostlyPct": 80.32,
+      "selectedMethod": "known_fingerprint",
+      "knownRows": 1000,
+      "candidateMeaning": "learned exact bucket labels only; unknown labels unresolved",
+      "exactBits": 2
+    },
+    {
+      "field": "company",
+      "model": "H",
+      "attack": "C-insert1000",
+      "rows": 10000,
+      "correct": 7017,
+      "valuePct": 70.17,
+      "included": 10000,
+      "candidateIncludesPct": 100,
+      "meanCandidateSize": 1.7904,
+      "characters": 73897,
+      "totalCharacters": 93717,
+      "characterPct": 78.85122229691518,
+      "mostlyPct": 70.17,
+      "selectedMethod": "length/byte/offset-shape conditioned frequency prior",
+      "knownRows": 1000,
+      "dictionaryIncludesPct": 100,
+      "stampEqualityLinks": 0,
+      "candidateMeaning": "reference/known dictionary constrained by bytes and compact n"
+    },
+    {
+      "field": "company",
+      "model": "S0",
+      "attack": "D-observe1000-known",
+      "rows": 10000,
+      "correct": 10000,
+      "valuePct": 100,
+      "included": 10000,
+      "candidateIncludesPct": 100,
+      "meanCandidateSize": 1,
+      "characters": 93717,
+      "totalCharacters": 93717,
+      "characterPct": 100,
+      "mostlyPct": 100,
+      "queryPreparations": 1000,
+      "observedDistinctKeys": 41,
+      "recoveredOccurrences": 50943,
+      "knownQueryPlaintext": true,
+      "partialCharactersUnfilled": 0,
+      "candidateMeaning": "position-consistent candidates; unknown-label rank is one hypothesis",
+      "selectedMethod": "actual observed piece keys -> all-row salted ordinal proof lookup"
+    },
+    {
+      "field": "company",
+      "model": "H",
+      "attack": "D-observe1000-known",
+      "rows": 10000,
+      "correct": 10000,
+      "valuePct": 100,
+      "included": 10000,
+      "candidateIncludesPct": 100,
+      "meanCandidateSize": 1,
+      "characters": 93717,
+      "totalCharacters": 93717,
+      "characterPct": 100,
+      "mostlyPct": 100,
+      "queryPreparations": 1000,
+      "observedDistinctKeys": 41,
+      "recoveredOccurrences": 50943,
+      "knownQueryPlaintext": true,
+      "partialCharactersUnfilled": 0,
+      "candidateMeaning": "position-consistent candidates; unknown-label rank is one hypothesis",
+      "selectedMethod": "actual observed piece keys -> all-row salted ordinal proof lookup"
+    },
+    {
+      "field": "company",
+      "model": "S0",
+      "attack": "D-observe1000-unknown",
+      "rows": 10000,
+      "correct": 0,
+      "valuePct": 0,
+      "included": 0,
+      "candidateIncludesPct": 0,
+      "meanCandidateSize": 1,
+      "characters": 34420,
+      "totalCharacters": 93717,
+      "characterPct": 36.727594780029236,
+      "mostlyPct": 0,
+      "queryPreparations": 1000,
+      "observedDistinctKeys": 41,
+      "recoveredOccurrences": 50943,
+      "knownQueryPlaintext": false,
+      "partialCharactersUnfilled": 0,
+      "candidateMeaning": "position-consistent candidates; unknown-label rank is one hypothesis",
+      "selectedMethod": "opaque key document/occurrence frequency assignment + same proof locations"
+    },
+    {
+      "field": "company",
+      "model": "H",
+      "attack": "D-observe1000-unknown",
+      "rows": 10000,
+      "correct": 0,
+      "valuePct": 0,
+      "included": 0,
+      "candidateIncludesPct": 0,
+      "meanCandidateSize": 1,
+      "characters": 34420,
+      "totalCharacters": 93717,
+      "characterPct": 36.727594780029236,
+      "mostlyPct": 0,
+      "queryPreparations": 1000,
+      "observedDistinctKeys": 41,
+      "recoveredOccurrences": 50943,
+      "knownQueryPlaintext": false,
+      "partialCharactersUnfilled": 0,
+      "candidateMeaning": "position-consistent candidates; unknown-label rank is one hypothesis",
+      "selectedMethod": "opaque key document/occurrence frequency assignment + same proof locations"
+    },
+    {
+      "field": "company",
+      "model": "S0-exact",
+      "attack": "D-observe1000-known",
+      "rows": 10000,
+      "correct": 10000,
+      "valuePct": 100,
+      "included": 10000,
+      "candidateIncludesPct": 100,
+      "meanCandidateSize": 1,
+      "characters": 93717,
+      "totalCharacters": 93717,
+      "characterPct": 100,
+      "mostlyPct": 100,
+      "queryPreparations": 1000,
+      "observedDistinctKeys": 16,
+      "exactBits": 2
+    }
+  ],
+  "baselines": [
+    {
+      "field": "company",
+      "model": "random",
+      "attack": "empirical",
+      "rows": 10000,
+      "correct": 1400,
+      "valuePct": 14,
+      "included": 0,
+      "candidateIncludesPct": 0,
+      "meanCandidateSize": 0,
+      "characters": 14853,
+      "totalCharacters": 93717,
+      "characterPct": 15.848778770127085,
+      "mostlyPct": 14.2
+    },
+    {
+      "field": "company",
+      "model": "random",
+      "attack": "uniform-distinct",
+      "rows": 10000,
+      "correct": 647,
+      "valuePct": 6.47,
+      "included": 0,
+      "candidateIncludesPct": 0,
+      "meanCandidateSize": 0,
+      "characters": 12114,
+      "totalCharacters": 93717,
+      "characterPct": 12.92615000480169,
+      "mostlyPct": 8.64
+    }
+  ],
+  "structure": [
+    {
+      "field": "company",
+      "rows": 10000,
+      "normalizedLengthRange": [
+        6,
+        17
+      ],
+      "cipherPlainBytesRange": [
+        17,
+        28
+      ],
+      "offsetPermutationComplete": 10000,
+      "stampCountEqualsNMinus1": 10000,
+      "sortedOffsetsRevealCharacters": false,
+      "referenceDictionaryCoveragePct": 100,
+      "grammarCandidateIncludesPct": 100,
+      "meanGrammarCandidates": 1.7904,
+      "uniformGrammarExpectedPct": 70.45000000000107,
+      "actualWhitespaceCounts": {
+        "1": 6045,
+        "2": 3955
+      },
+      "whitespaceSingleByteFormulaApplicableRows": 6045,
+      "whitespaceSingleByteFormulaCorrect": 6045
+    }
+  ],
+  "validation": [
+    {
+      "field": "company",
+      "tokenChecks": 5,
+      "positionProofChecks": 3,
+      "exactProofChecks": 3,
+      "hardenedTokenColumns": 0,
+      "salts": 10000
+    }
+  ],
+  "sourceHashes": {
+    "src/core/search-stamps.ts": "08fa58174ed7c0089ab3a3cf2c640ca50b9542f0d4ff9b843e7d053ec0707299",
+    "bench/attack-extra/codec.ts": "e5c3490770e5d84850649e9c8d5d37b7b3b50d36f6f0bc64bb35e6cfb5463958",
+    "bench/competitor-sim/attacks.ts": "d6dc63337fe7edf2e4aa659b54dba2768e509c8b2da479649ef6c63ff3b3352f",
+    "bench/competitor-sim/observation.ts": "297b9e4620a3aadf16042eb1c657f955fc43e1d9b1e258cfa54b2f374c76b68e"
+  },
+  "finished": "2026-10-01T20:01:34.392Z"
+}

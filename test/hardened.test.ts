@@ -70,7 +70,8 @@ test('hardened stores only ordinary proofs and applies them on companion and bou
     assert.doesNotMatch(render(candidateRows(reg.storage, '_', search).node), /tokens_|@>/);
     const bounded = render(boundedCandidatePredicate(reg.definition, reg.storage, '_', search, 1).node);
     assert.doesNotMatch(bounded, /tokens_|@>/);
-    assert.match(bounded, /and true/);
+    assert.doesNotMatch(bounded, /sample|quick|fallback|offset 0/);
+    assert.match(bounded, /order by "c"\."row_id" limit/);
     assert.match(bounded, op === 'eq' ? /pg_catalog.sha256/ : /sealql_match/);
   }
   const where = await sealed.where(seal, { match: m => m.and(m.body.contains('ab'), m.other.eq('cd')) });

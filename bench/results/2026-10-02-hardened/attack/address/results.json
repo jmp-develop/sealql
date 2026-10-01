@@ -1,0 +1,723 @@
+{
+  "started": "2026-10-01T20:00:32.753Z",
+  "complete": true,
+  "databaseAccess": false,
+  "newFixtureGenerated": false,
+  "victimRows": 10000,
+  "referenceRows": 10000,
+  "identityDigest": "189a19c99711fbacd9cafdb548f243a63657e12a0c1514a736c1f92da670f382",
+  "fixtureHash": "17690c5e4e3623d7c8b1e774cdba962d9bd6d86c70b423dfccdd6813534b2528",
+  "seed": 108029,
+  "attacks": [
+    {
+      "field": "address",
+      "model": "random",
+      "attack": "empirical",
+      "rows": 10000,
+      "correct": 2,
+      "valuePct": 0.02,
+      "included": 0,
+      "candidateIncludesPct": 0,
+      "meanCandidateSize": 0,
+      "characters": 23020,
+      "totalCharacters": 148907,
+      "characterPct": 15.459313531264481,
+      "mostlyPct": 9.14
+    },
+    {
+      "field": "address",
+      "model": "random",
+      "attack": "uniform-distinct",
+      "rows": 10000,
+      "correct": 1,
+      "valuePct": 0.01,
+      "included": 0,
+      "candidateIncludesPct": 0,
+      "meanCandidateSize": 0,
+      "characters": 23163,
+      "totalCharacters": 148907,
+      "characterPct": 15.555346625746271,
+      "mostlyPct": 8.93
+    },
+    {
+      "field": "address",
+      "model": "S0",
+      "attack": "A-backup",
+      "rows": 10000,
+      "correct": 31,
+      "valuePct": 0.31,
+      "included": 8217,
+      "candidateIncludesPct": 82.17,
+      "meanCandidateSize": 4890,
+      "characters": 115195,
+      "totalCharacters": 148907,
+      "characterPct": 77.36036586594317,
+      "mostlyPct": 66.26,
+      "selectedMethod": "piece_frequency",
+      "familyScores": [
+        {
+          "method": "group_frequency",
+          "correct": 11
+        },
+        {
+          "method": "piece_frequency",
+          "correct": 31
+        },
+        {
+          "method": "rank_frequency",
+          "correct": 18
+        }
+      ],
+      "cappedRows": 0,
+      "candidateSizeIsLowerBound": false,
+      "knownRows": 0,
+      "candidateMeaning": "reference/known dictionary coverage, not a filtered universe"
+    },
+    {
+      "field": "address",
+      "model": "S0-exact",
+      "attack": "A-backup",
+      "rows": 10000,
+      "correct": 16,
+      "valuePct": 0.16,
+      "included": 0,
+      "candidateIncludesPct": 0,
+      "meanCandidateSize": 0,
+      "characters": 111489,
+      "totalCharacters": 148907,
+      "characterPct": 74.87156413063187,
+      "mostlyPct": 61.68,
+      "selectedMethod": "rank_frequency",
+      "knownRows": 0,
+      "candidateMeaning": "learned exact bucket labels only; unknown labels unresolved",
+      "exactBits": 16
+    },
+    {
+      "field": "address",
+      "model": "H",
+      "attack": "A-backup",
+      "rows": 10000,
+      "correct": 20,
+      "valuePct": 0.2,
+      "included": 8217,
+      "candidateIncludesPct": 82.17,
+      "meanCandidateSize": 888.4912,
+      "characters": 111727,
+      "totalCharacters": 148907,
+      "characterPct": 75.03139543473443,
+      "mostlyPct": 62.35,
+      "selectedMethod": "length/byte/offset-shape conditioned frequency prior",
+      "knownRows": 0,
+      "dictionaryIncludesPct": 82.17,
+      "stampEqualityLinks": 0,
+      "candidateMeaning": "reference/known dictionary constrained by bytes and compact n"
+    },
+    {
+      "field": "address",
+      "model": "S0",
+      "attack": "B-known-0.3pct",
+      "rows": 9970,
+      "correct": 556,
+      "valuePct": 5.576730190571715,
+      "included": 8194,
+      "candidateIncludesPct": 82.18655967903712,
+      "meanCandidateSize": 4893,
+      "characters": 65720,
+      "totalCharacters": 148451,
+      "characterPct": 44.27050003031303,
+      "mostlyPct": 42.948846539618856,
+      "selectedMethod": "collision-aware-dictionary",
+      "familyScores": [
+        {
+          "method": "group_frequency",
+          "correct": 11
+        },
+        {
+          "method": "piece_frequency",
+          "correct": 31
+        },
+        {
+          "method": "rank_frequency",
+          "correct": 18
+        },
+        {
+          "method": "known_projection",
+          "correct": 19
+        },
+        {
+          "method": "known_fingerprint",
+          "correct": 67
+        },
+        {
+          "method": "collision-aware-dictionary",
+          "correct": 556
+        }
+      ],
+      "cappedRows": 0,
+      "candidateSizeIsLowerBound": false,
+      "knownRows": 30,
+      "candidateMeaning": "reference/known dictionary coverage, not a filtered universe"
+    },
+    {
+      "field": "address",
+      "model": "S0-exact",
+      "attack": "B-known-0.3pct",
+      "rows": 9970,
+      "correct": 70,
+      "valuePct": 0.7021063189568706,
+      "included": 49,
+      "candidateIncludesPct": 0.49147442326980945,
+      "meanCandidateSize": 0.005315947843530591,
+      "characters": 111560,
+      "totalCharacters": 148451,
+      "characterPct": 75.14937588834026,
+      "mostlyPct": 62.55767301905717,
+      "selectedMethod": "known_projection",
+      "knownRows": 30,
+      "candidateMeaning": "learned exact bucket labels only; unknown labels unresolved",
+      "exactBits": 16
+    },
+    {
+      "field": "address",
+      "model": "H",
+      "attack": "B-known-0.3pct",
+      "rows": 9970,
+      "correct": 19,
+      "valuePct": 0.1905717151454363,
+      "included": 8194,
+      "candidateIncludesPct": 82.18655967903712,
+      "meanCandidateSize": 889.3118355065195,
+      "characters": 111372,
+      "totalCharacters": 148451,
+      "characterPct": 75.02273477443735,
+      "mostlyPct": 62.34704112337011,
+      "selectedMethod": "length/byte/offset-shape conditioned frequency prior",
+      "knownRows": 30,
+      "dictionaryIncludesPct": 82.18655967903712,
+      "stampEqualityLinks": 0,
+      "candidateMeaning": "reference/known dictionary constrained by bytes and compact n"
+    },
+    {
+      "field": "address",
+      "model": "S0",
+      "attack": "B-known-1pct",
+      "rows": 9900,
+      "correct": 5105,
+      "valuePct": 51.56565656565657,
+      "included": 8150,
+      "candidateIncludesPct": 82.32323232323232,
+      "meanCandidateSize": 4907,
+      "characters": 101498,
+      "totalCharacters": 147418,
+      "characterPct": 68.85047958865268,
+      "mostlyPct": 67.48484848484848,
+      "selectedMethod": "collision-aware-dictionary",
+      "familyScores": [
+        {
+          "method": "group_frequency",
+          "correct": 11
+        },
+        {
+          "method": "piece_frequency",
+          "correct": 31
+        },
+        {
+          "method": "rank_frequency",
+          "correct": 18
+        },
+        {
+          "method": "known_projection",
+          "correct": 19
+        },
+        {
+          "method": "known_fingerprint",
+          "correct": 162
+        },
+        {
+          "method": "collision-aware-dictionary",
+          "correct": 5105
+        }
+      ],
+      "cappedRows": 0,
+      "candidateSizeIsLowerBound": false,
+      "knownRows": 100,
+      "candidateMeaning": "reference/known dictionary coverage, not a filtered universe"
+    },
+    {
+      "field": "address",
+      "model": "S0-exact",
+      "attack": "B-known-1pct",
+      "rows": 9900,
+      "correct": 165,
+      "valuePct": 1.6666666666666667,
+      "included": 144,
+      "candidateIncludesPct": 1.4545454545454546,
+      "meanCandidateSize": 0.015656565656565657,
+      "characters": 111261,
+      "totalCharacters": 147418,
+      "characterPct": 75.47314439213665,
+      "mostlyPct": 63.121212121212125,
+      "selectedMethod": "known_projection",
+      "knownRows": 100,
+      "candidateMeaning": "learned exact bucket labels only; unknown labels unresolved",
+      "exactBits": 16
+    },
+    {
+      "field": "address",
+      "model": "H",
+      "attack": "B-known-1pct",
+      "rows": 9900,
+      "correct": 19,
+      "valuePct": 0.1919191919191919,
+      "included": 8150,
+      "candidateIncludesPct": 82.32323232323232,
+      "meanCandidateSize": 891.4377777777778,
+      "characters": 110630,
+      "totalCharacters": 147418,
+      "characterPct": 75.04510982376644,
+      "mostlyPct": 62.41414141414141,
+      "selectedMethod": "length/byte/offset-shape conditioned frequency prior",
+      "knownRows": 100,
+      "dictionaryIncludesPct": 82.32323232323232,
+      "stampEqualityLinks": 0,
+      "candidateMeaning": "reference/known dictionary constrained by bytes and compact n"
+    },
+    {
+      "field": "address",
+      "model": "S0",
+      "attack": "B-known-5pct",
+      "rows": 9500,
+      "correct": 6951,
+      "valuePct": 73.16842105263157,
+      "included": 7916,
+      "candidateIncludesPct": 83.32631578947368,
+      "meanCandidateSize": 4976,
+      "characters": 107773,
+      "totalCharacters": 141542,
+      "characterPct": 76.14206383970836,
+      "mostlyPct": 73.6,
+      "selectedMethod": "collision-aware-dictionary",
+      "familyScores": [
+        {
+          "method": "group_frequency",
+          "correct": 10
+        },
+        {
+          "method": "piece_frequency",
+          "correct": 29
+        },
+        {
+          "method": "rank_frequency",
+          "correct": 17
+        },
+        {
+          "method": "known_projection",
+          "correct": 19
+        },
+        {
+          "method": "known_fingerprint",
+          "correct": 749
+        },
+        {
+          "method": "collision-aware-dictionary",
+          "correct": 6951
+        }
+      ],
+      "cappedRows": 0,
+      "candidateSizeIsLowerBound": false,
+      "knownRows": 500,
+      "candidateMeaning": "reference/known dictionary coverage, not a filtered universe"
+    },
+    {
+      "field": "address",
+      "model": "S0-exact",
+      "attack": "B-known-5pct",
+      "rows": 9500,
+      "correct": 754,
+      "valuePct": 7.936842105263158,
+      "included": 731,
+      "candidateIncludesPct": 7.6947368421052635,
+      "meanCandidateSize": 0.08178947368421052,
+      "characters": 109136,
+      "totalCharacters": 141542,
+      "characterPct": 77.10502889601673,
+      "mostlyPct": 65.53684210526316,
+      "selectedMethod": "known_fingerprint",
+      "knownRows": 500,
+      "candidateMeaning": "learned exact bucket labels only; unknown labels unresolved",
+      "exactBits": 16
+    },
+    {
+      "field": "address",
+      "model": "H",
+      "attack": "B-known-5pct",
+      "rows": 9500,
+      "correct": 22,
+      "valuePct": 0.23157894736842105,
+      "included": 7916,
+      "candidateIncludesPct": 83.32631578947368,
+      "meanCandidateSize": 903.7577894736842,
+      "characters": 106313,
+      "totalCharacters": 141542,
+      "characterPct": 75.11056788797671,
+      "mostlyPct": 62.50526315789474,
+      "selectedMethod": "length/byte/offset-shape conditioned frequency prior",
+      "knownRows": 500,
+      "dictionaryIncludesPct": 83.32631578947368,
+      "stampEqualityLinks": 0,
+      "candidateMeaning": "reference/known dictionary constrained by bytes and compact n"
+    },
+    {
+      "field": "address",
+      "model": "S0",
+      "attack": "C-insert100",
+      "rows": 10000,
+      "correct": 5017,
+      "valuePct": 50.17,
+      "included": 8217,
+      "candidateIncludesPct": 82.17,
+      "meanCandidateSize": 4890,
+      "characters": 99007,
+      "totalCharacters": 148907,
+      "characterPct": 66.48915094656397,
+      "mostlyPct": 65.03,
+      "selectedMethod": "collision-aware-dictionary",
+      "familyScores": [
+        {
+          "method": "group_frequency",
+          "correct": 11
+        },
+        {
+          "method": "piece_frequency",
+          "correct": 31
+        },
+        {
+          "method": "rank_frequency",
+          "correct": 18
+        },
+        {
+          "method": "known_projection",
+          "correct": 20
+        },
+        {
+          "method": "known_fingerprint",
+          "correct": 172
+        },
+        {
+          "method": "collision-aware-dictionary",
+          "correct": 5017
+        }
+      ],
+      "cappedRows": 0,
+      "candidateSizeIsLowerBound": false,
+      "knownRows": 100,
+      "candidateMeaning": "reference/known dictionary coverage, not a filtered universe"
+    },
+    {
+      "field": "address",
+      "model": "S0-exact",
+      "attack": "C-insert100",
+      "rows": 10000,
+      "correct": 175,
+      "valuePct": 1.75,
+      "included": 154,
+      "candidateIncludesPct": 1.54,
+      "meanCandidateSize": 0.0166,
+      "characters": 112348,
+      "totalCharacters": 148907,
+      "characterPct": 75.44843425762389,
+      "mostlyPct": 62.96,
+      "selectedMethod": "known_projection",
+      "knownRows": 100,
+      "candidateMeaning": "learned exact bucket labels only; unknown labels unresolved",
+      "exactBits": 16
+    },
+    {
+      "field": "address",
+      "model": "H",
+      "attack": "C-insert100",
+      "rows": 10000,
+      "correct": 20,
+      "valuePct": 0.2,
+      "included": 8217,
+      "candidateIncludesPct": 82.17,
+      "meanCandidateSize": 888.4912,
+      "characters": 111718,
+      "totalCharacters": 148907,
+      "characterPct": 75.02535139382299,
+      "mostlyPct": 62.35,
+      "selectedMethod": "length/byte/offset-shape conditioned frequency prior",
+      "knownRows": 100,
+      "dictionaryIncludesPct": 82.17,
+      "stampEqualityLinks": 0,
+      "candidateMeaning": "reference/known dictionary constrained by bytes and compact n"
+    },
+    {
+      "field": "address",
+      "model": "S0",
+      "attack": "C-insert1000",
+      "rows": 10000,
+      "correct": 7366,
+      "valuePct": 73.66,
+      "included": 8217,
+      "candidateIncludesPct": 82.17,
+      "meanCandidateSize": 4890,
+      "characters": 113901,
+      "totalCharacters": 148907,
+      "characterPct": 76.49136709489815,
+      "mostlyPct": 74.12,
+      "selectedMethod": "collision-aware-dictionary",
+      "familyScores": [
+        {
+          "method": "group_frequency",
+          "correct": 11
+        },
+        {
+          "method": "piece_frequency",
+          "correct": 31
+        },
+        {
+          "method": "rank_frequency",
+          "correct": 18
+        },
+        {
+          "method": "known_projection",
+          "correct": 20
+        },
+        {
+          "method": "known_fingerprint",
+          "correct": 1505
+        },
+        {
+          "method": "collision-aware-dictionary",
+          "correct": 7366
+        }
+      ],
+      "cappedRows": 0,
+      "candidateSizeIsLowerBound": false,
+      "knownRows": 1000,
+      "candidateMeaning": "reference/known dictionary coverage, not a filtered universe"
+    },
+    {
+      "field": "address",
+      "model": "S0-exact",
+      "attack": "C-insert1000",
+      "rows": 10000,
+      "correct": 1515,
+      "valuePct": 15.15,
+      "included": 1494,
+      "candidateIncludesPct": 14.94,
+      "meanCandidateSize": 0.1589,
+      "characters": 117598,
+      "totalCharacters": 148907,
+      "characterPct": 78.97412478929802,
+      "mostlyPct": 68.06,
+      "selectedMethod": "known_fingerprint",
+      "knownRows": 1000,
+      "candidateMeaning": "learned exact bucket labels only; unknown labels unresolved",
+      "exactBits": 16
+    },
+    {
+      "field": "address",
+      "model": "H",
+      "attack": "C-insert1000",
+      "rows": 10000,
+      "correct": 18,
+      "valuePct": 0.18,
+      "included": 8217,
+      "candidateIncludesPct": 82.17,
+      "meanCandidateSize": 888.4912,
+      "characters": 111742,
+      "totalCharacters": 148907,
+      "characterPct": 75.0414688362535,
+      "mostlyPct": 62.35,
+      "selectedMethod": "length/byte/offset-shape conditioned frequency prior",
+      "knownRows": 1000,
+      "dictionaryIncludesPct": 82.17,
+      "stampEqualityLinks": 0,
+      "candidateMeaning": "reference/known dictionary constrained by bytes and compact n"
+    },
+    {
+      "field": "address",
+      "model": "S0",
+      "attack": "D-observe1000-known",
+      "rows": 10000,
+      "correct": 10000,
+      "valuePct": 100,
+      "included": 10000,
+      "candidateIncludesPct": 100,
+      "meanCandidateSize": 1,
+      "characters": 148907,
+      "totalCharacters": 148907,
+      "characterPct": 100,
+      "mostlyPct": 100,
+      "queryPreparations": 1000,
+      "observedDistinctKeys": 157,
+      "recoveredOccurrences": 98999,
+      "knownQueryPlaintext": true,
+      "partialCharactersUnfilled": 0,
+      "candidateMeaning": "position-consistent candidates; unknown-label rank is one hypothesis",
+      "selectedMethod": "actual observed piece keys -> all-row salted ordinal proof lookup"
+    },
+    {
+      "field": "address",
+      "model": "H",
+      "attack": "D-observe1000-known",
+      "rows": 10000,
+      "correct": 10000,
+      "valuePct": 100,
+      "included": 10000,
+      "candidateIncludesPct": 100,
+      "meanCandidateSize": 1,
+      "characters": 148907,
+      "totalCharacters": 148907,
+      "characterPct": 100,
+      "mostlyPct": 100,
+      "queryPreparations": 1000,
+      "observedDistinctKeys": 157,
+      "recoveredOccurrences": 98999,
+      "knownQueryPlaintext": true,
+      "partialCharactersUnfilled": 0,
+      "candidateMeaning": "position-consistent candidates; unknown-label rank is one hypothesis",
+      "selectedMethod": "actual observed piece keys -> all-row salted ordinal proof lookup"
+    },
+    {
+      "field": "address",
+      "model": "S0",
+      "attack": "D-observe1000-unknown",
+      "rows": 10000,
+      "correct": 0,
+      "valuePct": 0,
+      "included": 0,
+      "candidateIncludesPct": 0,
+      "meanCandidateSize": 1,
+      "characters": 38353,
+      "totalCharacters": 148907,
+      "characterPct": 25.75634456405676,
+      "mostlyPct": 0,
+      "queryPreparations": 1000,
+      "observedDistinctKeys": 157,
+      "recoveredOccurrences": 98999,
+      "knownQueryPlaintext": false,
+      "partialCharactersUnfilled": 0,
+      "candidateMeaning": "position-consistent candidates; unknown-label rank is one hypothesis",
+      "selectedMethod": "opaque key document/occurrence frequency assignment + same proof locations"
+    },
+    {
+      "field": "address",
+      "model": "H",
+      "attack": "D-observe1000-unknown",
+      "rows": 10000,
+      "correct": 0,
+      "valuePct": 0,
+      "included": 0,
+      "candidateIncludesPct": 0,
+      "meanCandidateSize": 1,
+      "characters": 38353,
+      "totalCharacters": 148907,
+      "characterPct": 25.75634456405676,
+      "mostlyPct": 0,
+      "queryPreparations": 1000,
+      "observedDistinctKeys": 157,
+      "recoveredOccurrences": 98999,
+      "knownQueryPlaintext": false,
+      "partialCharactersUnfilled": 0,
+      "candidateMeaning": "position-consistent candidates; unknown-label rank is one hypothesis",
+      "selectedMethod": "opaque key document/occurrence frequency assignment + same proof locations"
+    },
+    {
+      "field": "address",
+      "model": "S0-exact",
+      "attack": "D-observe1000-known",
+      "rows": 10000,
+      "correct": 1494,
+      "valuePct": 14.94,
+      "included": 1494,
+      "candidateIncludesPct": 14.94,
+      "meanCandidateSize": 0.1494,
+      "characters": 22238,
+      "totalCharacters": 148907,
+      "characterPct": 14.934153532070352,
+      "mostlyPct": 14.94,
+      "queryPreparations": 1000,
+      "observedDistinctKeys": 912,
+      "exactBits": 16
+    }
+  ],
+  "baselines": [
+    {
+      "field": "address",
+      "model": "random",
+      "attack": "empirical",
+      "rows": 10000,
+      "correct": 2,
+      "valuePct": 0.02,
+      "included": 0,
+      "candidateIncludesPct": 0,
+      "meanCandidateSize": 0,
+      "characters": 23020,
+      "totalCharacters": 148907,
+      "characterPct": 15.459313531264481,
+      "mostlyPct": 9.14
+    },
+    {
+      "field": "address",
+      "model": "random",
+      "attack": "uniform-distinct",
+      "rows": 10000,
+      "correct": 1,
+      "valuePct": 0.01,
+      "included": 0,
+      "candidateIncludesPct": 0,
+      "meanCandidateSize": 0,
+      "characters": 23163,
+      "totalCharacters": 148907,
+      "characterPct": 15.555346625746271,
+      "mostlyPct": 8.93
+    }
+  ],
+  "structure": [
+    {
+      "field": "address",
+      "rows": 10000,
+      "normalizedLengthRange": [
+        11,
+        18
+      ],
+      "cipherPlainBytesRange": [
+        22,
+        43
+      ],
+      "offsetPermutationComplete": 10000,
+      "stampCountEqualsNMinus1": 10000,
+      "sortedOffsetsRevealCharacters": false,
+      "referenceDictionaryCoveragePct": 82.17,
+      "grammarCandidateIncludesPct": 82.17,
+      "meanGrammarCandidates": 888.4912,
+      "uniformGrammarExpectedPct": 0.24500824661464812,
+      "actualWhitespaceCounts": {
+        "3": 1726,
+        "4": 8274
+      },
+      "whitespaceSingleByteFormulaApplicableRows": 0,
+      "whitespaceSingleByteFormulaCorrect": 0
+    }
+  ],
+  "validation": [
+    {
+      "field": "address",
+      "tokenChecks": 5,
+      "positionProofChecks": 3,
+      "exactProofChecks": 3,
+      "hardenedTokenColumns": 0,
+      "salts": 10000
+    }
+  ],
+  "sourceHashes": {
+    "src/core/search-stamps.ts": "08fa58174ed7c0089ab3a3cf2c640ca50b9542f0d4ff9b843e7d053ec0707299",
+    "bench/attack-extra/codec.ts": "e5c3490770e5d84850649e9c8d5d37b7b3b50d36f6f0bc64bb35e6cfb5463958",
+    "bench/competitor-sim/attacks.ts": "d6dc63337fe7edf2e4aa659b54dba2768e509c8b2da479649ef6c63ff3b3352f",
+    "bench/competitor-sim/observation.ts": "297b9e4620a3aadf16042eb1c657f955fc43e1d9b1e258cfa54b2f374c76b68e"
+  },
+  "finished": "2026-10-01T20:02:32.733Z"
+}

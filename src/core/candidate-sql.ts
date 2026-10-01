@@ -60,24 +60,32 @@ export function boundedCandidatePredicate(definition: SealedModelDefinition, sto
   ensure(storage.index && Number.isSafeInteger(limit) && limit > 0, 'INVALID_VALUE');
   const companion = storage.index;
   const used = new Set<string>();
+  let hasTokens = false;
   const condition = (node: CompiledSearch, tokensOnly = false): Fragment => {
     if (node.op === 'all' || node.op === 'any') return q`(${join(node.children.map(child => condition(child, tokensOnly)), node.op === 'all' ? ' and ' : ' or ')})`;
     const { profile, tokens } = node.leaf;
     ensure(profile.hardened || tokens.length > 0, 'QUERY_TOO_BROAD');
     const mapped = companion.profiles?.[profile.indexId];
     ensure(mapped && mapped.mode === profile.mode, 'INVALID_SCHEMA');
-    if (!profile.hardened) { ensure(mapped.tokens, 'INVALID_SCHEMA'); used.add(mapped.tokens); }
+    if (!profile.hardened) { ensure(mapped.tokens, 'INVALID_SCHEMA'); used.add(mapped.tokens); hasTokens = true; }
     const proofColumns = mapped.exact ?? mapped.positions!;
     Object.values(proofColumns).forEach(name => used.add(name));
     return tokensOnly ? tokenPredicate('c', node.leaf, mapped) : leafPredicate(companion.schema, 'c', node.leaf, mapped);
   };
   const tokenWhere = condition(search);
-  const coarseWhere = condition(search, true);
   const index = ident(companion.schema, companion.name);
   const rowId = ident('c', 'row_id');
   const keyset = after === undefined ? q`` : q` and ${rowId}>${after}`;
   const sampleColumns = join([...used].map(name => ident(name)), ',');
   const row = ident(storage.parent.name, definition.columns[definition.identity.row].name);
+  // Without candidate tokens, use one ordered proof scan instead of a
+  // materialized prefix/fallback split. The ordinary token path stays intact.
+  if (!hasTokens) return q`${row} in (
+    select ${rowId} from ${index} as ${ident('c')}
+    where ${ident('c', 'scope_id')}=${scopeId}${keyset} and ${tokenWhere}
+    order by ${rowId} limit ${limit}
+  )`;
+  const coarseWhere = condition(search, true);
   const ordered = q`(
     select ${ident('row_id')},${sampleColumns} from ${index} as ${ident('c')}
     where ${ident('c', 'scope_id')}=${scopeId} and ${rowId}>(select row_id from sample order by row_id desc limit 1) and ${coarseWhere}

@@ -1,0 +1,74 @@
+[
+  {
+    "field": "company",
+    "attack": "D-observe1000-unknown-pattern-dictionary",
+    "rows": 10000,
+    "correct": 6897,
+    "valuePct": 68.97,
+    "candidateIncludesPct": 100,
+    "meanCandidateSize": 2.0859,
+    "observedKeys": 41,
+    "method": "reference dictionary + anonymous proof-location pair equality; query plaintext never provided",
+    "candidateMeaning": "dictionary candidates only; out-of-dictionary values unresolved"
+  },
+  {
+    "field": "company",
+    "model": "S0-exact",
+    "attack": "D-observe1000-unknown",
+    "rows": 10000,
+    "correct": 3054,
+    "valuePct": 30.54,
+    "candidateIncludesPct": 30.54,
+    "meanCandidateSize": 1,
+    "method": "opaque salted exact-proof hit classes + reference frequency; no query labels",
+    "candidateMeaning": "one inferred label per hit class, unobserved unresolved"
+  },
+  {
+    "field": "address",
+    "attack": "D-observe1000-unknown-pattern-dictionary",
+    "rows": 10000,
+    "correct": 22,
+    "valuePct": 0.22,
+    "candidateIncludesPct": 82.17,
+    "meanCandidateSize": 954.0867,
+    "observedKeys": 157,
+    "method": "reference dictionary + anonymous proof-location pair equality; query plaintext never provided",
+    "candidateMeaning": "dictionary candidates only; out-of-dictionary values unresolved"
+  },
+  {
+    "field": "address",
+    "model": "S0-exact",
+    "attack": "D-observe1000-unknown",
+    "rows": 10000,
+    "correct": 0,
+    "valuePct": 0,
+    "candidateIncludesPct": 0,
+    "meanCandidateSize": 0.1494,
+    "method": "opaque salted exact-proof hit classes + reference frequency; no query labels",
+    "candidateMeaning": "one inferred label per hit class, unobserved unresolved"
+  },
+  {
+    "field": "name",
+    "attack": "D-observe1000-unknown-pattern-dictionary",
+    "rows": 10000,
+    "correct": 0,
+    "valuePct": 0,
+    "candidateIncludesPct": 0,
+    "meanCandidateSize": 4927.3533,
+    "observedKeys": 1256,
+    "method": "reference dictionary + anonymous proof-location pair equality; query plaintext never provided",
+    "candidateMeaning": "dictionary candidates only; out-of-dictionary values unresolved"
+  },
+  {
+    "field": "name",
+    "model": "S0-exact",
+    "attack": "D-observe1000-unknown",
+    "rows": 10000,
+    "correct": 0,
+    "valuePct": 0,
+    "candidateIncludesPct": 0,
+    "meanCandidateSize": 0,
+    "method": "opaque salted exact-proof hit classes + reference frequency; no query labels",
+    "candidateMeaning": "one inferred label per hit class, unobserved unresolved"
+  }
+]
