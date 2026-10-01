@@ -15,8 +15,9 @@ Everything an application developer or AI needs is in `examples/`: concepts and 
 - `standard` is the only product search design. Do not present rejected stateful, posting-page, or bucket research as product behavior.
 - Keys are fixed global or model keys. There is no key version, in-place rotation, user/group key, or database policy table.
 - Substring search and each LIKE literal run require at least two normalized characters. Encrypted range, sort, aggregate, exact statistics, and standalone one-character substring search are unsupported.
-- Warning: substring search on fixed-format, small-alphabet fields such as phone or account numbers lets an attacker with some known values rebuild most values; prefer exact search there. Exact search still leaks equality and frequency.
-- Managed writes and the documented migration → `extraMigrationSql` → `reindex` → query deployment order prevent silent search omissions.
+- Warning: ordinary substring tokens on fixed-format, small-alphabet fields such as phone or account numbers let an attacker with known values assemble unseen values; prefer exact search or use `hardened: true` for partial lookup. Ordinary exact search still leaks equality and frequency.
+- Field option `hardened: true` omits deterministic candidate tokens and uses salted proofs with the same query API; use it only where token leakage matters, expect searches to be several times slower, and combine other indexed conditions on large scopes. Query observation and parameter logs expose the same query-key leakage as ordinary substring search; enabling or disabling it requires migration → `extraMigrationSql` → `prepareAllSearch`.
+- Managed writes and the documented migration → `extraMigrationSql` → `prepareAllSearch` → query deployment order prevent silent search omissions.
 - `count` returns one exact safe `number`; a budget or safe-integer overflow is an error. Search has no implicit work ceiling, so applications set budgets from measurements.
 - Use `sealed.where` for verified encrypted predicates inside caller-owned Drizzle JOINs, subqueries, ordering, and counts; reserve `sealed.search` for SealQL-managed cursor paging and candidate-shape checks.
 - After migrations and `extraMigrationSql`, use top-level `prepareAllSearch` as the offline all-registered-model catalog, reindex, and coverage gate before deploying new search code.

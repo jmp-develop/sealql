@@ -28,7 +28,7 @@ SealQL automatically maps each row identity to one of 256 deterministic field-ke
 
 ## Standard search
 
-`standard` is the only product search design. The application derives HMAC candidate tokens; PostgreSQL indexes narrow rows and per-row salted proofs decide exact or positional predicates. A list query then authenticates only projected encrypted fields. An encrypted-only count reads proof data and decrypts no fields.
+`standard` is the only product search design. By default, the application derives HMAC candidate tokens; PostgreSQL indexes narrow rows and per-row salted proofs decide exact or positional predicates. The field option `hardened: true` omits candidate tokens and uses the same salted proofs and query API. A list query then authenticates only projected encrypted fields. An encrypted-only count reads proof data and decrypts no fields.
 
 Searchable text supports exact equality, `contains`, `startsWith`, `endsWith`, and LIKE. Normalization folds NFC, full-width ASCII, ASCII case, and profile-specific whitespace. Substring operations and every LIKE literal run require at least two normalized characters; exact equality also accepts empty and one-character values. LIKE uses `%`, `_`, and backslash escapes with PostgreSQL-like meanings.
 
@@ -42,7 +42,8 @@ Start with no search profile. Add only the operation the product actually needs.
 
 | Field/use | Choice | Reason and required review |
 |---|---|---|
-| Fixed format and small alphabet: phone, bank account, resident-registration-like values | Warning: substring search is not recommended; prefer exact only. Enable substring only when the product truly needs partial lookup and accepts the risk below. | Known plaintext or chosen insertions can teach an attacker to assemble unseen values. In the measured fixture, phone substring profiles allowed about 99.8% whole-value recovery under specified T3 conditions; follow the [canonical measurements](https://github.com/jmp-develop/sealql/blob/main/docs/threat-model.md#3-누출-매트릭스), not a generic safety claim. |
+| Fixed format and small alphabet: phone, bank account, resident-registration-like values | Prefer exact only for ordinary profiles. Partial search is available with `hardened: true` when the product needs it. | Ordinary substring tokens let known plaintext or chosen insertions teach an attacker to assemble unseen values; see the [canonical measurements](https://github.com/jmp-develop/sealql/blob/main/docs/threat-model.md#3-누출-매트릭스). Hardened fields remove that token-based assembly channel, with the search cost and remaining leakage below. |
+| A searchable field where deterministic-token leakage matters | Use `hardened: true` selectively, for example for partial search on phone or account numbers. | No deterministic candidate tokens are created, so database snapshots and chosen insertions cannot assemble values from those tokens. The database checks salted proofs for every row in the search scope; expect searches to be several times slower than the default. On large tables, combine the predicate with other indexed conditions to narrow that scope. Query observation, including parameter logs, exposes the same query-key leakage as ordinary substring search. |
 | Low-cardinality state or short choice | Prefer no encrypted search; if equality lookup is necessary, use exact only. | Exact search exposes equality and frequency. Coarser exact candidates do not remove that leakage. |
 | Name, memo, or address | Substring search is available; enable it where partial lookup is needed. | Review whether originals are public or inferable, whether an attacker can insert chosen values in the same scope, and whether value reconstruction is acceptable. The [T3 model](https://github.com/jmp-develop/sealql/blob/main/docs/threat-model.md#2-공격자-유형) explicitly includes known plaintext and public distributions. |
 | Numeric/date value needing range, order, or aggregate | Do not use an encrypted SealQL query for that operation. | These operations are unsupported; do not weaken encryption or invent approximate public results to simulate them. |
@@ -51,7 +52,7 @@ Do not recommend dummy values, token-bit reduction, padding, or a different reje
 
 ## Leakage and trust boundary
 
-With keys outside the database, ciphertext is not directly decrypted by a snapshot attacker. The database still observes deterministic token equality, frequency and co-occurrence, ciphertext and normalized lengths, compact position permutations, query/update patterns, result volume, and the value or piece keys sent by observed queries. Observed piece keys reveal occurrences and positions for that piece.
+With keys outside the database, ciphertext is not directly decrypted by a snapshot attacker. Ordinary searchable fields expose deterministic token equality, frequency and co-occurrence. Both ordinary and hardened fields expose ciphertext and normalized lengths, compact position permutations, query/update patterns, result volume, and the value or piece keys sent by observed queries. Observed piece keys reveal occurrences and positions for that piece.
 
 Returned ciphertext authentication detects selected ciphertext movement or alteration; it does not prove that SQL predicates ran correctly or that the database returned every row. A hostile database can omit results or falsify predicates, including count. Resistance to keyless full-record recovery is not established. Disable bind-parameter logging in the database, driver, proxy, APM, and error paths. Use the [threat model](https://github.com/jmp-develop/sealql/blob/main/docs/threat-model.md), not local fixture results, for allowed security wording.
 
@@ -73,7 +74,7 @@ A list projection budget may return a short page with a continuation cursor afte
 
 ## Rebuild invariant
 
-For a new searchable schema or any search-profile change, deployment order is:
+For a new searchable schema or any search-profile change, including enabling or disabling `hardened`, deployment order is:
 
 1. Apply the adapter's schema migration.
 2. Apply every adapter-supplied predicate/storage statement (`extraMigrationSql` in the current Drizzle adapter).

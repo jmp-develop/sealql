@@ -1,8 +1,9 @@
 # Changelog
 
-## Unreleased
+## 1.2.0 — Draft
 
-- Bug fix: `prepareAllSearch` accepts correctly migrated search columns after profile changes, while still rejecting missing, extra, or incompatible columns.
+- Added per-field `hardened: true` for searchable fields: omit deterministic candidate tokens and evaluate existing salted proofs with the same query API.
+- Fixed `prepareAllSearch` rejecting valid search-profile migrations because of physical column order; it still rejects missing, extra, or incompatible columns.
 
 ## 1.1.1 — 2026-09-30
 

@@ -45,13 +45,28 @@ export const notesSeal = sealed.register(notes, { row: 'id', scope: 'scopeId' })
 
 Export both the parent and returned companion table in the schema read by drizzle-kit. A lazy `createSealed({ sealer: () => sealer })` lets drizzle-kit import schema without secret access; data operations still require the configured key.
 
-Builders are `sealed.text`, `integer`, `bigint`, `decimal`, `boolean`, `instant`, `json`, and `bytes`. Options include `nullable`, physical `column`, caller limit `maxBytes`, stable field `id`, `validate`, and eligible `search`; decimal also requires `precision` and `scale`. The first builder argument is the default field ID and physical ciphertext column prefix, not the JavaScript property name. Preserve that ID across a property rename to preserve cipher context.
+Builders are `sealed.text`, `integer`, `bigint`, `decimal`, `boolean`, `instant`, `json`, and `bytes`. Options include `nullable`, physical `column`, caller limit `maxBytes`, stable field `id`, `validate`, eligible `search`, and `hardened: true` for searchable fields; decimal also requires `precision` and `scale`. The first builder argument is the default field ID and physical ciphertext column prefix, not the JavaScript property name. Preserve that ID across a property rename to preserve cipher context.
+
+Use `hardened: true` selectively when deterministic candidate tokens would expose sensitive values, such as partial phone-number lookup:
+
+```ts
+export const contacts = pgTable('contacts', {
+  id: uuid('id').primaryKey(),
+  phone: sealed.text('phone', {
+    search: { exact: true, substring: true },
+    hardened: true,
+  }),
+});
+export const contactsSeal = sealed.register(contacts, { row: 'id' });
+```
+
+The option requires an enabled search profile: text supports exact and substring operations, while integer, bigint, and decimal support exact search. Omit `hardened` for the default token-based profile. Search predicates, `where`, `search`, and exact scalar `count` use the same API in both cases. Hardened fields store salted proofs without deterministic candidate tokens or their indexes. The database checks all rows in the search scope, so expect searches to be several times slower; combine other indexed conditions on large tables. Query observation and parameter logs expose the same query-key leakage as ordinary substring search. Review the [field choices and leakage boundary](../../README.md#choose-fields-and-search-profiles) before enabling it.
 
 Rows use UUID or `sealed.textId`; scopes use UUID or text. A parent row must be unique, primary, or unique together with scope. Integer auto-increment primary keys need a separate unique UUID row identity as shown in the [integer-key example](integer-primary-key.ts). `sealed.textId` is a database-collated text column: empty IDs are allowed, NUL is not, and parent and companion identities must keep the same collation.
 
 Text-ID keyset ordering follows the database collation. For text positions, SealQL checks each candidate batch against database order with one extra SQL request per batch and raises `INVALID_CANDIDATE_SHAPE` if the callback returns an out-of-order batch.
 
-The generated companion has one row per parent identity, a unique scope/row B-tree, exact expression indexes, and a multicolumn GIN index for substring profiles. The business table has no token columns or trigger. Parent deletion through Drizzle cascades to the companion.
+The generated companion has one row per parent identity, a unique scope/row B-tree, exact expression indexes for ordinary exact profiles, and a multicolumn GIN index for ordinary substring profiles. The business table has no token columns or trigger. Parent deletion through Drizzle cascades to the companion.
 
 ## Migrate and rebuild
 
@@ -88,6 +103,8 @@ export default defineConfig({
 Import `defineConfig` from `drizzle-kit`. Verify where the migration journal is created: moving it into an application schema can conflict with an existing `CREATE SCHEMA`, and `push` may propose deleting it unless excluded.
 
 For profile additions or changes, follow the [rebuild invariant](../../README.md#rebuild-invariant). Generated migrations may rebuild a GIN index without `CONCURRENTLY`; plan for locking and rebuild time. Changes limited to installed LIKE predicate functions require `extraMigrationSql` again but no row rewrite when rows already use the compact-only profile.
+
+Enabling or disabling `hardened` requires the full sequence: schema migration → every `extraMigrationSql` statement → `prepareAllSearch`. Drain old reads and writes before migrating, and deploy the new profile only after preparation succeeds. Enabling removes that field's candidate-token columns and indexes; disabling recreates them and rebuilds tokens from authenticated ciphertext. Do not keep obsolete token columns or query a partially rebuilt profile.
 
 ## Managed writes, deletion, and reindex
 
