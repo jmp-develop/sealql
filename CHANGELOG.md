@@ -1,10 +1,11 @@
 # Changelog
 
-## 1.2.0 — Draft
+## 1.2.0 — 2026-10-02
 
 - Added per-field `hardened: true` for searchable fields: omit deterministic candidate tokens and evaluate existing salted proofs with the same query API.
 - Fixed `prepareAllSearch` rejecting valid search-profile migrations because of physical column order; it still rejects missing, extra, or incompatible columns.
 - Removed the finite-list prefix/fallback split when all encrypted predicates are hardened, while preserving ordinary SQL and cursor behavior.
+- Ordinary (non-hardened) fields are unchanged: generated SQL, parameters, `extraMigrationSql`, and storage are byte-identical to 1.1.1.
 
 ## 1.1.1 — 2026-09-30
 
