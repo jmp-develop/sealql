@@ -5,7 +5,7 @@ export type JsonValue = null | boolean | number | string | JsonValue[] | { [key:
 export type SearchProtection = 'standard';
 export type SearchIndex = true | { bits?: number };
 export type SubstringIndex = true | { skipGrams?: boolean };
-export type TextSearch = ({ exact: SearchIndex; substring?: SubstringIndex } | { exact?: SearchIndex; substring: SubstringIndex }) & { normalizer?: 'nfc-v1' | 'legacy-text-v1' | 'phone-v1'; protection?: SearchProtection };
+export type TextSearch = ({ exact: SearchIndex; substring?: SubstringIndex } | { exact?: SearchIndex; substring: SubstringIndex }) & { normalizer?: 'digits' | 'keep-spaces'; protection?: SearchProtection };
 export interface PlainValidator<T> { id: string; version: number; check(value: T): boolean }
 type Common<T> = { id?: string; validate?: PlainValidator<T>; maxBytes?: number; hardened?: true };
 export type FieldSpec =
@@ -98,7 +98,7 @@ export function validateField(spec: FieldSpec): void {
     for (const [key, value] of Object.entries(search)) {
       ensure(['exact', 'substring', 'normalizer', 'protection'].includes(key), 'INVALID_SCHEMA');
       if (key === 'protection') { ensure(value === 'standard', 'INVALID_SCHEMA'); continue; }
-      if (key === 'normalizer') { ensure(spec.type === 'text' && ['nfc-v1', 'legacy-text-v1', 'phone-v1'].includes(value as string), 'INVALID_SCHEMA'); continue; }
+      if (key === 'normalizer') { ensure(spec.type === 'text' && ['digits', 'keep-spaces'].includes(value as string), 'INVALID_SCHEMA'); continue; }
       if (key === 'substring') {
         ensure(spec.type === 'text' && (value === true || (value && typeof value === 'object' && Object.keys(value).every(k => ['skipGrams'].includes(k)) && Object.values(value).every(v => typeof v === 'boolean'))), 'INVALID_SCHEMA');
       } else ensure(value === true || (value && typeof value === 'object' && Number.isInteger((value as { bits?: number }).bits ?? 16) && ((value as { bits?: number }).bits ?? 16) >= 2 && ((value as { bits?: number }).bits ?? 16) <= 32), 'INVALID_SCHEMA');

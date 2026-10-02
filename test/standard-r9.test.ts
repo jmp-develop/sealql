@@ -38,8 +38,8 @@ test('DB proofs match plaintext across operators, types, nulls, mutations and JO
     const cipher = createSealer({key:new Uint8Array(32).fill(39)}), sealed = createSealed({sealer:cipher});
     const table = pgSchema(schemaName).table('rows', { id:uuid('id').primaryKey(), scopeId:uuid('scope_id').notNull(),
       body:sealed.text('body',{nullable:true,search:{exact:true,substring:true}}),
-      nfc:sealed.text('nfc',{search:{exact:true,substring:true,normalizer:'nfc-v1'}}),
-      phone:sealed.text('phone',{search:{exact:true,substring:true,normalizer:'phone-v1'}}),
+      nfc:sealed.text('nfc',{search:{exact:true,substring:true,normalizer:'keep-spaces'}}),
+      phone:sealed.text('phone',{search:{exact:true,substring:true,normalizer:'digits'}}),
       amount:sealed.integer('amount',{search:{exact:{bits:2}}}), big:sealed.bigint('big',{search:{exact:true}}),
       price:sealed.decimal('price',{precision:12,scale:2,search:{exact:true}}),
     });

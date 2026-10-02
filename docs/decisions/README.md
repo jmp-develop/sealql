@@ -45,3 +45,4 @@
 | [026](026-composable-where-and-input-types.md) | JOIN·자유 쿼리용 `sealed.where`와 관리형 입력 타입 공개 |
 | [027](027-drizzle-surface-and-prepare-gate.md) | Drizzle 내부 접근 격리와 `prepareAllSearch` 전체 검색 준비 관문 |
 | [028](028-hardened-fields-and-list-plan.md) | 칸별 후보 토큰 생략, 토큰 없는 유한 목록 경로와 누출·성능 경계 |
+| [029](029-normalizer-names-and-field-choice-owner.md) | 정규화 옵션 `digits`·`keep-spaces` 공개 이름, 필드 선택은 사용자 결정 |

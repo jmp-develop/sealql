@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.3.0 — 2026-10-02
+
+- Renamed the text search `normalizer` options to describe their behavior: `'phone-v1'` → `'digits'` (ignore `-`, `(`, `)`, `.`, and a leading `+`; for any number written with separators) and `'nfc-v1'` → `'keep-spaces'` (keep whitespace for exact equality). Fields that used the old names must be reindexed (`prepareAllSearch`). The default rule and ordinary fields are unchanged.
+- Documented search normalization: values and queries are compared after the same normalization, and stored values keep the original input.
+- Usage guides now state that choosing encrypted fields, search options, `normalizer`, and `hardened` is the application owner's decision; AI assistants recommend and let the user choose. Hardened guidance is consolidated in one section and no longer framed around phone numbers.
+
 ## 1.2.0 — 2026-10-02
 
 - Added per-field `hardened: true` for searchable fields: omit deterministic candidate tokens and evaluate existing salted proofs with the same query API.

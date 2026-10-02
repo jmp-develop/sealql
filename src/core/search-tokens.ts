@@ -17,8 +17,8 @@ const fold = (value: string) => value.normalize('NFC').replace(/[！-～]/g, c =
 export function normalizeText(value: string, normalizer: string): string {
   utf8(value);
   let s = fold(value);
-  if (normalizer === 'nfc-v1') return s;
-  ensure(normalizer === 'legacy-text-v1' || normalizer === 'phone-v1', 'INVALID_SCHEMA');
+  if (normalizer === 'keep-spaces') return s;
+  ensure(normalizer === 'legacy-text-v1' || normalizer === 'digits', 'INVALID_SCHEMA');
   s = s.replace(whitespace, '');
   if (normalizer === 'legacy-text-v1') return s;
   s = s.replace(/[-().]/g, '').replace(/^\+/, '');

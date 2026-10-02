@@ -45,29 +45,28 @@ export const notesSeal = sealed.register(notes, { row: 'id', scope: 'scopeId' })
 
 Export both the parent and returned companion table in the schema read by drizzle-kit. A lazy `createSealed({ sealer: () => sealer })` lets drizzle-kit import schema without secret access; data operations still require the configured key.
 
-Builders are `sealed.text`, `integer`, `bigint`, `decimal`, `boolean`, `instant`, `json`, and `bytes`. Options include `nullable`, physical `column`, caller limit `maxBytes`, stable field `id`, `validate`, eligible `search`, and `hardened: true` for searchable fields; decimal also requires `precision` and `scale`. The first builder argument is the default field ID and physical ciphertext column prefix, not the JavaScript property name. Preserve that ID across a property rename to preserve cipher context.
+Builders are `sealed.text`, `integer`, `bigint`, `decimal`, `boolean`, `instant`, `json`, and `bytes`. Options include `nullable`, physical `column`, caller limit `maxBytes`, stable field `id`, `validate`, eligible `search` (text profiles may set a [`normalizer`](../../README.md#standard-search)), and `hardened: true` for searchable fields; decimal also requires `precision` and `scale`. The first builder argument is the default field ID and physical ciphertext column prefix, not the JavaScript property name. Preserve that ID across a property rename to preserve cipher context.
 
-Use `hardened: true` selectively when deterministic candidate tokens would expose sensitive values, such as partial phone-number lookup:
+`hardened: true` keeps the same query API while storing no candidate tokens for that field. When to recommend it, its security effect, and its cost are in [hardened fields](../../README.md#hardened-fields). It requires an enabled search profile: text supports exact and substring operations, while integer, bigint, and decimal support exact search. Any searchable field can use it. The example shows syntax only; which fields use `hardened` or a `normalizer` is the user's choice:
 
 ```ts
 export const contacts = pgTable('contacts', {
   id: uuid('id').primaryKey(),
   company: sealed.text('company', { search: { exact: true } }),
+  name: sealed.text('name', { search: { exact: true, substring: true }, hardened: true }),
   phone: sealed.text('phone', {
-    search: { exact: true, substring: true },
+    search: { exact: true, substring: true, normalizer: 'digits' },
     hardened: true,
   }),
 });
 export const contactsSeal = sealed.register(contacts, { row: 'id' });
 ```
 
-The option requires an enabled search profile: text supports exact and substring operations, while integer, bigint, and decimal support exact search. Omit `hardened` for the default token-based profile. Queries, `where`, `search`, and exact `count` use the same API either way. A hardened field keeps no candidate index for any operation, exact match included, so its predicates check every row in scope; see [field choices](../README.md) for measured times and when to use it. Put a hardened predicate inside `m.and(...)` with an indexed condition to narrow the rows first; an OR branch on a hardened field checks the whole scope:
+Queries, `where`, `search`, and exact `count` are written the same way as for ordinary fields. Put a hardened predicate inside `m.and(...)` with an indexed condition so rows are narrowed first:
 
 ```ts
-sealed.findMany(db, contactsSeal, { match: m => m.and(m.company.eq(company), m.phone.endsWith('5678')), limit: 20 });
+sealed.findMany(db, contactsSeal, { match: m => m.and(m.company.eq(company), m.phone.contains('1234-5678')), limit: 20 });
 ```
-
-Hardened removes stored candidate-token determinism only: query observation sees the same query keys as ordinary substring search, because query parameters still carry value-specific keys. Disable bind-parameter logging in the database, driver, proxy, APM, and error paths for these fields too.
 
 Rows use UUID or `sealed.textId`; scopes use UUID or text. A parent row must be unique, primary, or unique together with scope. Integer auto-increment primary keys need a separate unique UUID row identity as shown in the [integer-key example](integer-primary-key.ts). `sealed.textId` is a database-collated text column: empty IDs are allowed, NUL is not, and parent and companion identities must keep the same collation.
 
